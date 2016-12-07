@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entitydifferentiation:EntityDifferentiation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xmlns:entitydifferentiation="http://www.modelum.es/entitydifferentiation" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.schemainference/model/nosqlschema.ecore http://www.modelum.es/entitydifferentiation platform:/resource/es.um.nosql.schemainference.entitydifferentiation/model/entitydifferentiation.ecore" name="books">
+  <entityDiffSpecs>
+    <entity href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#Company"/>
+    <entityVersionProps>
+      <entityVersion href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.0/@entityversions.0"/>
+    </entityVersionProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.0/@entityversions.0/@properties.1"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.0/@entityversions.0/@properties.0"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <entityDiffSpecs>
+    <entity href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#Content"/>
+    <entityVersionProps>
+      <entityVersion href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.1/@entityversions.0"/>
+    </entityVersionProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.1/@entityversions.0/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.1/@entityversions.0/@properties.1"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <entityDiffSpecs>
+    <entity href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#Book"/>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.2/@entityversions.0/@properties.6"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.2/@entityversions.0/@properties.2"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.2/@entityversions.0/@properties.1"/>
+      </propertySpecs>
+      <entityVersion href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.2/@entityversions.0"/>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.2/@entityversions.1/@properties.1"/>
+      </propertySpecs>
+      <entityVersion href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.2/@entityversions.1"/>
+    </entityVersionProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.2/@entityversions.0/@properties.4"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Reference" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.2/@entityversions.0/@properties.3"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.2/@entityversions.0/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.2/@entityversions.0/@properties.5"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <entityDiffSpecs>
+    <entity href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#Author"/>
+    <entityVersionProps>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.3/@entityversions.0/@properties.1"/>
+      </propertySpecs>
+      <entityVersion href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.3/@entityversions.0"/>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.3/@entityversions.1/@properties.2"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.3/@entityversions.1/@properties.1"/>
+      </propertySpecs>
+      <entityVersion href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.3/@entityversions.1"/>
+    </entityVersionProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.3/@entityversions.0/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.3/@entityversions.0/@properties.2"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <entityDiffSpecs>
+    <entity href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#Journal"/>
+    <entityVersionProps>
+      <entityVersion href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.4/@entityversions.0"/>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.4/@entityversions.1/@properties.4"/>
+      </propertySpecs>
+      <entityVersion href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.4/@entityversions.1"/>
+    </entityVersionProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.4/@entityversions.1/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.4/@entityversions.1/@properties.2"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.4/@entityversions.1/@properties.3"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.4/@entityversions.1/@properties.1"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.4/@entityversions.1/@properties.5"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <entityDiffSpecs>
+    <entity href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#Publisher"/>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.5/@entityversions.0/@properties.1"/>
+      </propertySpecs>
+      <entityVersion href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.5/@entityversions.0"/>
+    </entityVersionProps>
+    <entityVersionProps>
+      <entityVersion href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.5/@entityversions.1"/>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.5/@entityversions.2/@properties.1"/>
+      </propertySpecs>
+      <entityVersion href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.5/@entityversions.2"/>
+    </entityVersionProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.5/@entityversions.2/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.5/@entityversions.2/@properties.2"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:///home/seve/git/nosql/proy/es.um.nosql.schemainference.entitydifferentiation/tests/books.xmi#//@entities.5/@entityversions.2/@properties.3"/>
+    </commonProps>
+  </entityDiffSpecs>
+</entitydifferentiation:EntityDifferentiation>

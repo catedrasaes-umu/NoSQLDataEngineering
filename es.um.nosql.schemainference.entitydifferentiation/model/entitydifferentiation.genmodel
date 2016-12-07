@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.um.nosql.schemainference.entitydifferentiation/src"
+    modelPluginID="es.um.nosql.schemainference.entitydifferentiation" modelName="Entitydifferentiation"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" usedGenPackages="../../es.um.nosql.schemainference/model/nosqlschema.genmodel#//NoSQLSchema"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>entitydifferentiation.ecore</foreignModel>
+  <genPackages prefix="Entitydifferentiation" basePackage="es.um.nosql.schemainference"
+      disposableProviderFactory="true" ecorePackage="entitydifferentiation.ecore#/">
+    <genClasses ecoreClass="entitydifferentiation.ecore#//Entitydifferentiation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//Entitydifferentiation/entityDiffSpecs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entitydifferentiation.ecore#//Entitydifferentiation/name"/>
+    </genClasses>
+    <genClasses ecoreClass="entitydifferentiation.ecore#//EntityDiffSpec">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDiffSpec/entity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDiffSpec/entityVersionProps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDiffSpec/commonProps"/>
+    </genClasses>
+    <genClasses ecoreClass="entitydifferentiation.ecore#//PropertySpec">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//PropertySpec/property"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entitydifferentiation.ecore#//PropertySpec/needsTypeCheck"/>
+    </genClasses>
+    <genClasses ecoreClass="entitydifferentiation.ecore#//EntityVersionProp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityVersionProp/propertySpecs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityVersionProp/entityVersion"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
