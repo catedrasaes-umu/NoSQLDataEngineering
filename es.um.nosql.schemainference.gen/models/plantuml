@@ -1,0 +1,232 @@
+File Book1
+@startuml
+title <b> Book1
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Book{
+	<b> String _id
+	<b> String title
+	<b> String type
+	<b> int year
+}
+
+Book --> "[1..1] publisher_id" Publisher
+   
+Class Publisher {
+	<b> String _id
+	<b> String city
+	<b> String name
+	<b> String type
+}  
+
+Publisher --> "[1..*] journals" Journal
+   
+Class Journal {
+	<b> String _id
+	<b> String discipline
+	<b> String[] issnTuple
+	<b> String name
+	<b> String type
+	<b> int number
+}  
+Book *--> "[1..*] authors" Authors
+Class Authors {
+	<b> String _id
+	<b> String name
+	<b> String company
+	<b> String country
+}  
+Authors *--> "[1..1] company" Company
+Class Company {
+	<b> String country
+	<b> String name
+}  
+Book *--> "[1..1] content" Content
+Class Content {
+	<b> int chapters
+	<b> int pages
+}  
+@enduml
+File Book2
+@startuml
+title <b> Book2
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Book{
+	<b> String _id
+	<b> String title
+	<b> String type
+}
+
+Book --> "[1..1] publisher_id" Publisher
+   
+Class Publisher {
+	<b> String _id
+	<b> String city
+	<b> String name
+	<b> String type
+}  
+
+Publisher --> "[1..*] journals" Journal
+   
+Class Journal {
+	<b> String _id
+	<b> String discipline
+	<b> String[] issnTuple
+	<b> String name
+	<b> String type
+	<b> int number
+}  
+Book *--> "[1..1] author" Author
+Class Author {
+	<b> String _id
+	<b> String name
+}  
+Author *--> "[1..1] company" Company
+Class Company {
+	<b> String country
+	<b> String name
+}  
+@enduml
+File Journal1
+@startuml
+title <b> Journal1
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Journal{
+	<b> String _id
+	<b> String discipline
+	<b> String[] issnTuple
+	<b> String name
+	<b> String type
+}
+@enduml
+File Journal2
+@startuml
+title <b> Journal2
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Journal{
+	<b> String _id
+	<b> String discipline
+	<b> String[] issnTuple
+	<b> String name
+	<b> int number
+	<b> String type
+}
+@enduml
+File Publisher1
+@startuml
+title <b> Publisher1
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Publisher{
+	<b> String _id
+	<b> String city
+	<b> String name
+	<b> String type
+}
+@enduml
+File Publisher2
+@startuml
+title <b> Publisher2
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Publisher{
+	<b> String _id
+	<b> String name
+	<b> String type
+}
+@enduml
+File Publisher3
+@startuml
+title <b> Publisher3
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Publisher{
+	<b> String _id
+	<b> String name
+	<b> String type
+}
+
+Publisher --> "[1..*] journals" Journal
+   
+Class Journal {
+	<b> String _id
+	<b> String discipline
+	<b> String[] issnTuple
+	<b> String name
+	<b> String type
+	<b> int number
+}  
+@enduml
