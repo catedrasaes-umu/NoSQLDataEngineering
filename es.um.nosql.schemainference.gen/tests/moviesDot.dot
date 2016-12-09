@@ -1,5 +1,5 @@
 digraph {
-	rankdir = LR;
+	rankdir = TD;
 	compound=true;
 	entitydifferentiation_EntityDifferentiation_227502219 [label=<
 		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
@@ -14,7 +14,7 @@ digraph {
 				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
 			</TD></TR>
 		</TABLE>>, margin=0, shape=plaintext]
-	
+
 	entitydifferentiation_EntityDiffSpec_1295039813 [label=<
 		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
 			<TR><TD BGCOLOR="#9DBDF9">
@@ -25,11 +25,12 @@ digraph {
 				</TABLE>
 			</TD></TR>
 			<TR><TD ALIGN="LEFT" BGCOLOR="#DEE9FD">
-				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD ALIGN="CENTER">ref(Entity): Movie</TD></TR></TABLE>
 			</TD></TR>
 		</TABLE>>, margin=0, shape=plaintext]
-	
-		
+
+
 	entitydifferentiation_PropertySpec_1288854991 [label=<
 		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
 			<TR><TD BGCOLOR="#98FB98">
@@ -45,22 +46,7 @@ digraph {
 				</TABLE>
 			</TD></TR>
 		</TABLE>>, margin=0, shape=plaintext]
-		
-	entitydifferentiation_PropertySpec_1213264738 [label=<
-		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
-			<TR><TD BGCOLOR="#98FB98">
-				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
-					<TR>
-						<TD ALIGN="CENTER">PropertySpec</TD>
-					</TR>
-				</TABLE>
-			</TD></TR>
-			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
-				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0">
-					<TR><TD> </TD><TD ALIGN="LEFT">needsTypeCheck&nbsp;:&nbsp;false</TD><TD> </TD></TR>
-				</TABLE>
-			</TD></TR>
-		</TABLE>>, margin=0, shape=plaintext]	
+
 	
 	entitydifferentiation_PropertySpec_569976775 [label=<
 		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
@@ -92,7 +78,7 @@ digraph {
 				</TABLE>
 			</TD></TR>
 		</TABLE>>, margin=0, shape=plaintext]
-	
+
 	entitydifferentiation_PropertySpec_324203449 [label=<
 		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
 			<TR><TD BGCOLOR="#98FB98">
@@ -123,56 +109,42 @@ digraph {
 				</TABLE>
 			</TD></TR>
 		</TABLE>>, margin=0, shape=plaintext]
-	
-	
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
+
 	entitydifferentiation_Property_1288854991 [label=<
 		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
 			<TR><TD BGCOLOR="cyan">
 				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
 					<TR>
-						<TD ALIGN="CENTER">Property</TD>
+						<TD ALIGN="CENTER">Aggregate</TD>
 					</TR>
 				</TABLE>
 			</TD></TR>
 			<TR><TD ALIGN="LEFT" BGCOLOR="deepskyblue2">
 				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0">
-					<TR><TD> </TD><TD ALIGN="LEFT">Aggregate&nbsp;:&nbsp;prizes</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">name&nbsp;:&nbsp;prizes</TD><TD> </TD></TR>
 				</TABLE>
 			</TD></TR>
 		</TABLE>>, margin=0, shape=plaintext]
-	entitydifferentiation_Property_1213264738 [label=<
-		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
-			<TR><TD BGCOLOR="cyan">
-				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
-					<TR>
-						<TD ALIGN="CENTER">Property</TD>
-					</TR>
-				</TABLE>
-			</TD></TR>
-			<TR><TD ALIGN="LEFT" BGCOLOR="deepskyblue2">
-				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0">
-					<TR><TD> </TD><TD ALIGN="LEFT">Attribute&nbsp;:&nbsp;genre</TD><TD> </TD></TR>
-				</TABLE>
-			</TD></TR>
-		</TABLE>>, margin=0, shape=plaintext]
+	
 	entitydifferentiation_Property_569976775 [label=<
 		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
 			<TR><TD BGCOLOR="cyan">
 				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
 					<TR>
-						<TD ALIGN="CENTER">Property</TD>
+						<TD ALIGN="CENTER">Aggregate</TD>
 					</TR>
 				</TABLE>
 			</TD></TR>
 			<TR><TD ALIGN="LEFT" BGCOLOR="deepskyblue2">
 				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0">
-					<TR><TD> </TD><TD ALIGN="LEFT">Aggregate&nbsp;:&nbsp;criticisms</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">name&nbsp;:&nbsp;criticisms</TD><TD> </TD></TR>
 				</TABLE>
 			</TD></TR>
 		</TABLE>>, margin=0, shape=plaintext]
@@ -181,13 +153,13 @@ digraph {
 			<TR><TD BGCOLOR="cyan">
 				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
 					<TR>
-						<TD ALIGN="CENTER">Property</TD>
+						<TD ALIGN="CENTER">Aggregate</TD>
 					</TR>
 				</TABLE>
 			</TD></TR>
 			<TR><TD ALIGN="LEFT" BGCOLOR="deepskyblue2">
 				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0">
-					<TR><TD> </TD><TD ALIGN="LEFT">Attribute&nbsp;:&nbsp;genre</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">name&nbsp;:&nbsp;criticisms</TD><TD> </TD></TR>
 				</TABLE>
 			</TD></TR>
 		</TABLE>>, margin=0, shape=plaintext]
@@ -196,13 +168,13 @@ digraph {
 			<TR><TD BGCOLOR="cyan">
 				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
 					<TR>
-						<TD ALIGN="CENTER">Property</TD>
+						<TD ALIGN="CENTER">Reference</TD>
 					</TR>
 				</TABLE>
 			</TD></TR>
 			<TR><TD ALIGN="LEFT" BGCOLOR="deepskyblue2">
 				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0">
-					<TR><TD> </TD><TD ALIGN="LEFT">Reference&nbsp;:&nbsp;director_id</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">name&nbsp;:&nbsp;director_id</TD><TD> </TD></TR>
 				</TABLE>
 			</TD></TR>
 		</TABLE>>, margin=0, shape=plaintext]
@@ -211,19 +183,19 @@ digraph {
 			<TR><TD BGCOLOR="cyan">
 				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
 					<TR>
-						<TD ALIGN="CENTER">Property</TD>
+						<TD ALIGN="CENTER">Attribute</TD>
 					</TR>
 				</TABLE>
 			</TD></TR>
 			<TR><TD ALIGN="LEFT" BGCOLOR="deepskyblue2">
 				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0">
-					<TR><TD> </TD><TD ALIGN="LEFT">Attribute&nbsp;:&nbsp;title</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">name&nbsp;:&nbsp;title</TD><TD> </TD></TR>
 				</TABLE>
 			</TD></TR>
 		</TABLE>>, margin=0, shape=plaintext]
-	
-	
-		
+
+
+
 	entitydifferentiation_EntityVersionProp_765167267 [label=<
 		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
 			<TR><TD BGCOLOR="#FFF575">
@@ -234,10 +206,10 @@ digraph {
 				</TABLE>
 			</TD></TR>
 			<TR><TD ALIGN="LEFT" BGCOLOR="#FFFBD1">
-				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD ALIGN="center">ref(EntityVersion): Movie1</TD></TR></TABLE>
 			</TD></TR>
 		</TABLE>>, margin=0, shape=plaintext]
-	
+
 	entitydifferentiation_EntityVersionProp_1076360619 [label=<
 		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
 			<TR><TD BGCOLOR="#FFF575">
@@ -248,43 +220,42 @@ digraph {
 				</TABLE>
 			</TD></TR>
 			<TR><TD ALIGN="LEFT" BGCOLOR="#FFFBD1">
-				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD ALIGN="center">ref(EntityVersion): Movie2</TD></TR></TABLE>
 			</TD></TR>
 		</TABLE>>, margin=0, shape=plaintext]
-	
-	
-	
-	
+
+
+
+
 	entitydifferentiation_EntityDifferentiation_227502219->entitydifferentiation_EntityDiffSpec_1295039813 [label="entityDiffSpecs", arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
-	
+
 	entitydifferentiation_EntityVersionProp_765167267->entitydifferentiation_PropertySpec_1288854991 [label="propertySpecs", arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
-	entitydifferentiation_EntityVersionProp_765167267->entitydifferentiation_PropertySpec_1213264738 [label="propertySpecs", arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	
 	entitydifferentiation_EntityVersionProp_765167267->entitydifferentiation_PropertySpec_569976775 [label="propertySpecs", arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
-		
-	entitydifferentiation_PropertySpec_1288854991->entitydifferentiation_Property_1288854991 [label="notCommon", arrowhead = normal, arrowtail = none, dir = both, minlen=1, color="#000000"]
-	entitydifferentiation_PropertySpec_1213264738->entitydifferentiation_Property_1213264738 [label="notCommon", arrowhead = normal, arrowtail = none, dir = both, minlen=1, color="#000000"]
-	entitydifferentiation_PropertySpec_569976775->entitydifferentiation_Property_569976775 [label="notCommon", arrowhead = normal, arrowtail = none, dir = both, minlen=1, color="#000000"]
+
+	entitydifferentiation_PropertySpec_1288854991->entitydifferentiation_Property_1288854991 [label="property", arrowhead = normal, arrowtail = none, dir = both, minlen=1, color="#000000"]
 	
-	
-	
+	entitydifferentiation_PropertySpec_569976775->entitydifferentiation_Property_569976775 [label="property", arrowhead = normal, arrowtail = none, dir = both, minlen=1, color="#000000"]
+
+
+
 	entitydifferentiation_EntityVersionProp_1076360619->entitydifferentiation_PropertySpec_1875539371 [label="propertySpecs", arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
-	
-	entitydifferentiation_PropertySpec_1875539371->entitydifferentiation_Property_1875539371 [label="notCommon", arrowhead = normal, arrowtail = none, dir = both, minlen=1, color="#000000"]
-	
-	
-	
-	
+
+	entitydifferentiation_PropertySpec_1875539371->entitydifferentiation_Property_1875539371 [label="property", arrowhead = normal, arrowtail = none, dir = both, minlen=1, color="#000000"]
+
+
+
+
 	entitydifferentiation_EntityDiffSpec_1295039813->entitydifferentiation_EntityVersionProp_765167267 [label="entityVersionProps", arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
 	entitydifferentiation_EntityDiffSpec_1295039813->entitydifferentiation_EntityVersionProp_1076360619 [label="entityVersionprops", arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
-	
-	
+
+
 	entitydifferentiation_EntityDiffSpec_1295039813->entitydifferentiation_PropertySpec_324203449 [label="commonProps", arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
 	entitydifferentiation_EntityDiffSpec_1295039813->entitydifferentiation_PropertySpec_671653053 [label="commonProps", arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
-	
-	
-	entitydifferentiation_PropertySpec_324203449->entitydifferentiation_Property_324203449 [label="common", arrowhead = normal, arrowtail = none, dir = both, minlen=1, color="#000000"]
-	entitydifferentiation_PropertySpec_671653053->entitydifferentiation_Property_671653053 [label="common", arrowhead = normal, arrowtail = none, dir = both, minlen=1, color="#000000"]
-	
-	
-}
 
+
+	entitydifferentiation_PropertySpec_324203449->entitydifferentiation_Property_324203449 [label="property", arrowhead = normal, arrowtail = none, dir = both, minlen=1, color="#000000"]
+	entitydifferentiation_PropertySpec_671653053->entitydifferentiation_Property_671653053 [label="property", arrowhead = normal, arrowtail = none, dir = both, minlen=1, color="#000000"]
+
+
+}
