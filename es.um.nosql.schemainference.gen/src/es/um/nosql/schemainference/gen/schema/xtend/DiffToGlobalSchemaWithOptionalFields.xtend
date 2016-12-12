@@ -191,7 +191,7 @@ def analyzeEnt(EntityDiffSpec ent){
     «var Aggregate Ag = aggV.getValue()»
     	«Ag.name»:	{type:«nameAg», required:true},
   	«ENDFOR»
-  //Others 
+  // Not Common Properties 
     «FOR at: notCommonAttrs»
       «analyzeAttribute(at.type,at.name,primsL, tuplesL,prims,tuples)»
     «ENDFOR»
