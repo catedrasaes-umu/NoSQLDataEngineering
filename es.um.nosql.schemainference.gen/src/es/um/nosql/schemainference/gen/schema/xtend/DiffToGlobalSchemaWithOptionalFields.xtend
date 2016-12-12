@@ -20,6 +20,9 @@ import java.util.Map
 import java.util.HashMap
 import java.util.Iterator
 import java.util.Map.Entry
+import java.util.stream.Stream
+import java.util.stream.Collectors
+
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec
@@ -38,8 +41,8 @@ class DiffToGlobalSchemaWithOptionalFields
     var List<Attribute> notCommonAttrs=new ArrayList
     var List<Aggregate> notCommonAggrs=new ArrayList
     var List<Reference> notCommonRefs=new ArrayList
-//    var Map<String, Aggregate>finalCommonAggrs=new HashMap
-	var Map<String, Aggregate> finalNotCommonAggrs=new HashMap
+    var Map<String, Aggregate>finalCommonAggrs=new HashMap
+    var Map<String, Aggregate>finalNotCommonAggrs=new HashMap
     var List<EntityDiffSpec> eDiffRoots=new ArrayList;
     var List<EntityDiffSpec> eDiffs=new ArrayList;
 		    
@@ -113,9 +116,19 @@ def analyzeEnt(EntityDiffSpec ent){
   getProps(ent)
 
 '''
-  «whiteLine»
   «var contVer2=0»
   «FOR entVer: ent.entityVersionProps»	
+  «var List<Attribute> atV=new ArrayList»
+  «var List<Reference> refV=new ArrayList»
+  «var List<Aggregate> aggrV=new ArrayList»
+  «var List<Property> props=new ArrayList»
+  «var List<PrimitiveType> primsL=new ArrayList»
+  «var List<Tuple> tuplesL=new ArrayList»
+  
+  «var propSp=entVer.propertySpecs.toList»
+  «FOR i:0..<propSp.size»
+    «props.add(i,propSp.get(i).property)»
+  «ENDFOR»
   //File «ent.entity.name.toFirstUpper»«contVer2+=1»
   var mongoose = require('mongoose');
   var assert=require('assert');
@@ -128,46 +141,84 @@ def analyzeEnt(EntityDiffSpec ent){
     	console.log('Conectado a MongoDB');
     }
   });
-  
-  «prims.clear»
-  «tuples.clear»
-  «refs.clear»
-  «ags.clear»
   «getAggregatesCommons(commonAggrs)»
   «getAggregatesNotCommons(notCommonAggrs)»
-    
+  «var aV=props.filter(Attribute).toList»
+  «var rV=props.filter(Reference).toList»
+  «var agV=props.filter(Aggregate).toList»
+  «concatAtts(atV,aV,atV)»
+  «concatRs(refV,rV,refV)»
+  «concatAgs(aggrV,agV,aggrV)»
+  «var Map<String, Aggregate>verAggs=new HashMap»
+  «FOR a1:aggrV»
+    «var String nameA=(a1.eContainer.eContainer as Entity).name+a1.name+(a1.eContainer as EntityVersion).versionId.toString»
+    «verAggs.put(nameA,a1)»
+  «ENDFOR»
+  «var Map<String, Aggregate>remainingAgs=new HashMap»
+  «FOR Entry<String, Aggregate> agV1: finalNotCommonAggrs.entrySet()»
+    «var String nameAg = agV1.key»
+    «var Aggregate Ag = agV1.value»
+    «remainingAgs.put(nameAg,Ag)»
+  «ENDFOR»
+  «removeVerAgs(verAggs,remainingAgs)»
+  «prims.clear»
+  «tuples.clear»
+  «primsL.clear»
+  «tuplesL.clear»  
+  «refs.clear»
+  «ags.clear»
   var «ent.entity.name.toFirstLower»Schema = new mongoose.Schema({
-    «FOR a: commonAttrs»
-      «printAttribute(a,a.name,true)»
+  // Common Properties	
+    «FOR ac: commonAttrs»
+      «printAttribute(ac,ac.name,true)»
     «ENDFOR»
-    «FOR r: commonRefs»
-      «printRef(r,true)»
-    «ENDFOR»
-    «FOR at: notCommonAttrs»
-      «analyzeAttribute(at.type,at.name,prims,tuples)»
-    «ENDFOR»
-    «FOR r2: notCommonRefs»
-      «analyzeReference(r2,r2.name,refs)»
+    «FOR rc: commonRefs»
+      «printRef(rc,true)»
     «ENDFOR»
     «FOR agC:commonAggrs»
      «tab»«agC.name»:	{type:«agC.name»Obj, required:true},
     «ENDFOR»
-    «FOR agN:notCommonAggrs»
-     «tab»«agN.name»:	«agN.name»Obj,
+    
+  // add required for «ent.entity.name.toFirstUpper»«entVer.entityVersion.versionId» entity version
+    «FOR at1: atV»
+      «printAttribute(at1,at1.name,true)»
     «ENDFOR»
+    «FOR r2: refV»
+      «printRef(r2,true)»
+    «ENDFOR»
+  	«FOR Entry<String, Aggregate> aggV : verAggs.entrySet()»
+    «var String nameAg = aggV.getKey()»
+    «var Aggregate Ag = aggV.getValue()»
+    	«Ag.name»:	{type:«nameAg», required:true},
+  	«ENDFOR»
+  //Others 
+    «FOR at: notCommonAttrs»
+      «analyzeAttribute(at.type,at.name,primsL, tuplesL,prims,tuples)»
+    «ENDFOR»
+    «FOR r2: notCommonRefs»
+      «analyzeReference(r2,r2.name,refs)»
+    «ENDFOR»
+  
+  	«FOR Entry<String, Aggregate> aA : remainingAgs.entrySet()»
+    «var String nameAg = aA.getKey()»
+    «var Aggregate Ag = aA.getValue()»
+    	«Ag.name»:	«nameAg»,
+  	«ENDFOR»
     
   },{collection:'«ent.entity.name.toFirstLower»'});
-  
-  «var versionProps=entVer.propertySpecs»
-  «FOR prop: versionProps»
-     «ent.entity.name.toFirstLower»Schema.path('«prop.property.name»').required()
-  «ENDFOR»
   
   var «ent.entity.name.toFirstUpper» = mongoose.model('«ent.entity.name.toFirstUpper»',«ent.entity.name.toFirstLower»Schema);
 
   «ENDFOR»
   
 '''
+}
+
+def removeVerAgs(Map <String, Aggregate> aggs,Map <String, Aggregate>finalAggs){
+  for(Entry<String, Aggregate> agV2: aggs.entrySet()){
+     finalAggs.remove(agV2.key)
+  }
+  	
 }
 
 def getProps(EntityDiffSpec ent){
@@ -204,12 +255,6 @@ var commonPropsAux=ent.commonProps
       notCommonAggrs.add(contAgg+=1,aggr.get(i))
     }
   }
-  var notCommonAttrsSet=notCommonAttrs.toSet
-  var notCommonRefsSet=notCommonRefs.toSet
-  var notCommonAggrsSet=notCommonAggrs.toSet
-  notCommonAttrs=notCommonAttrsSet.toList
-  notCommonRefs=notCommonRefsSet.toList
-  notCommonAggrs=notCommonAggrsSet.toList
 }
 
 def dispatch printRef(Reference r, boolean isC){
@@ -220,56 +265,6 @@ def dispatch printRef(Reference r){
   '''	«r.name»«IF r.upperBound==-1»:	{},«ELSE»:	String,«ENDIF»'''
 }
 
-def checkAggr(Aggregate aggr, boolean isR){
-  if(aggr.refTo!=null)
-  {
-  	checkAggregate(aggr.refTo,aggr.name, isR)
-  }
-}
-
-//check Aggregate.refTo
-def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR)'''
-  «var List<Attribute> at=new ArrayList»
-  «var List<Reference> ref=new ArrayList»
-  «var List<Aggregate> aggr=new ArrayList»
-  «var List<String> prims=new ArrayList»
-  «var List<String> tuples=new ArrayList»
-  «var List<Reference> refs=new ArrayList»
-  «var List<Aggregate> ags=new ArrayList»
-  «var int contAt=-1»«var int contRf=-1»«var int contAgg=-1»
-  «FOR EntityVersion ev:agL»
-    «var a=ev.properties.filter(Attribute)»
-    «var r=ev.properties.filter(Reference)»
-    «var ag=ev.properties.filter(Aggregate)»
-    «FOR i:0..<a.size»
-      «at.add(contAt+=1,a.get(i))»
-    «ENDFOR»
-    «FOR i:0..<r.size»
-      «ref.add(contRf+=1,r.get(i))»
-    «ENDFOR»
-    «FOR i:0..<ag.size»
-      «aggr.add(contAgg+=1,ag.get(i))»
-    «ENDFOR»
-  «ENDFOR»
-  «IF isR==true»
-    «nameAg»Obj=	{
-    «ELSE»
-    «nameAg»:	{
-  «ENDIF»
-  	«FOR Attribute at2: at»
-  	«analyzeAttribute(at2.type,at2.name,prims,tuples)»
-  	«ENDFOR»
-  	«FOR Aggregate ag: aggr»
-  	«analyzeAggregate(ag,ag.name,ags)»
-  	«ENDFOR»
-  	«FOR Aggregate a4: ags»
-  	 «checkAggr(a4, false)»
-  	«ENDFOR»
-  	«FOR Reference rf2: ref»
-  	«analyzeReference(rf2,rf2.name,refs)»
-  	«ENDFOR»
-  } 
-'''
 
 def dispatch printAttribute(Attribute a, String name, boolean isC)'''
   «printType(a.type,name, isC)»
@@ -306,7 +301,7 @@ def dispatch printType(Tuple tuple, String name){
 
 def dispatch analyzeAggregate(Aggregate ag, String name, List<Aggregate> AgL) {
 	  var boolean rAggreg
-	  rAggreg=reviseAggregList(AgL,name)
+	  rAggreg=reviseAggregList(AgL,name,ag)
 	  if (!rAggreg)
 	    {
 	      AgL.add(AgL.size,ag)
@@ -315,10 +310,10 @@ def dispatch analyzeAggregate(Aggregate ag, String name, List<Aggregate> AgL) {
 }
 
 	
-def boolean reviseAggregList(List<Aggregate> ag, String name) {
+def boolean reviseAggregList(List<Aggregate> ag, String name, Aggregate a) {
 	 for (i : 0 ..< ag.size) {
 	    val element = ag.get(i)
-	    if(element.name==name)
+	    if(element.name==name && element.refTo.size==a.refTo.size)
 	    	return true
 	 }
      return false
@@ -327,7 +322,7 @@ def boolean reviseAggregList(List<Aggregate> ag, String name) {
 //is repeated reference?	
 def analyzeReference(Reference ref, String name, List<Reference> RfL) {
   var boolean rRef
-  rRef=analyzeRefList(RfL,name)
+  rRef=analyzeRefList(RfL,name,ref)
   if (!rRef)
     {
       RfL.add(ref)
@@ -336,10 +331,10 @@ def analyzeReference(Reference ref, String name, List<Reference> RfL) {
     }
 }
 
-def boolean analyzeRefList(List<Reference> r, String name) {
- for (i : 0 ..< r.size) {
-    val element = r.get(i)
-    if(element.name==name)
+def boolean analyzeRefList(List<Reference> rL, String name, Reference r) {
+ for (i : 0 ..< rL.size) {
+    val Reference element = rL.get(i)
+    if(element.name==name && element.refTo.name==r.refTo.name)
     	return true
  }
     return false
@@ -347,45 +342,49 @@ def boolean analyzeRefList(List<Reference> r, String name) {
 	
 	
 //for abstract Type class
-def dispatch analyzeAttribute(Type at2, String name, List<String> PrL,List<String> TuL) {
+def dispatch analyzeAttribute(Type at2, String name,List<PrimitiveType>PrL,List<Tuple>TuL,List<String> p, List<String> t) {
   throw new UnsupportedOperationException("TODO: auto-generated method stub")
 }
 
 
-def dispatch analyzeAttribute(PrimitiveType primT, String name, List<String> PrL,List<String> TuL) {
+def dispatch analyzeAttribute(PrimitiveType primT, String name, List<PrimitiveType> PrL,List<Tuple> TuL,List<String> p, List<String> t) {
   var boolean rPrim
-  rPrim=analyzePrimList(PrL,primT,name)  
+  rPrim=analyzePrimList(PrL,p,primT,name)  
   if (!rPrim){
-   	PrL.add(name)
+   	p.add(name)
+   	PrL.add(primT)
    	'''«printType(primT,name)»'''
   }
 }
 
 
-def boolean analyzePrimList(List<String> p, PrimitiveType pr, String name) {
-  for (i : 0 ..< p.size) {
-    val element = p.get(i)
-    if(element==name)
+def boolean analyzePrimList(List<PrimitiveType> pp,List<String> ps, PrimitiveType pr, String name) {
+  for (i : 0 ..< ps.size) {
+    val element = ps.get(i)
+    val elementP = pp.get(i)
+    if(element==name && elementP.name==pr.name)
     	return true
   }
   return false
 }
 	
-def dispatch analyzeAttribute(Tuple tuple, String name, List<String> PrL,List<String> TuL) {
+def dispatch analyzeAttribute(Tuple tuple, String name, List<PrimitiveType> PrL,List<Tuple> TuL,List<String> p, List<String> t) {
   var boolean rTuple
-  rTuple=analyzeTupleList(TuL,name)  
+  rTuple=analyzeTupleList(TuL,t,tuple,name)  
   if (!rTuple)
    {
-   	TuL.add(name)
+   	t.add(name)
+   	TuL.add(tuple)
    	'''«printType(tuple,name)»'''
    	//'''	«name»:	[]'''
    }
 }
 
-def boolean analyzeTupleList(List<String> t, String name) {
-   for (i : 0 ..< t.size) {
-    val element = t.get(i)
-    if(element==name)
+def boolean analyzeTupleList(List<Tuple> tt,List<String> ts, Tuple t, String name) {
+   for (i : 0 ..< ts.size) {
+    val element = ts.get(i)
+    val elementT = tt.get(i)
+    if(element==name && elementT.elements.size==t.elements.size)
     	return true
     }
     return false
@@ -393,74 +392,169 @@ def boolean analyzeTupleList(List<String> t, String name) {
 
 def getAggregatesCommons(List<Aggregate> ags)'''
 «FOR p:ags» 
- «reviseProp(p,true)»
+ «reviseProp(p,true,p.name+"Obj")»
 «ENDFOR»
 '''
 
-def getAggregatesNotCommons(List<Aggregate> ags)'''
-  «var List<Aggregate> ags2= new ArrayList»
-  «FOR a1:ags» 
-    «FOR a2:ags»
-      «var rA=compareAggregates(a1, a2)»
-      «IF !rA» 
-      «ags2.add(ags2.size, p)»
-      «var ver=p.refTo.»
-      «finalNotCommonAggrs.put(p.name,p)»
-    «ENDIF»
-    «ENDFOR»
-  «ENDFOR»
-  «FOR p:ags2» 
-      «reviseProp(p,true)»
+def getAggregatesNotCommons(List<Aggregate> ags){
+  var List<Aggregate> ags2= new ArrayList
+  for(a1:ags){
+     var indexPosi=reviseAggregNotCommons(a1, ags2)
+     if (indexPosi == -1){
+       ags2.add(ags2.size, a1)
+       var String nameA=(a1.eContainer.eContainer as Entity).name+a1.name+(a1.eContainer as EntityVersion).versionId.toString
+       addAg(finalNotCommonAggrs,nameA,a1)
+     }
+     else{
+       var res=compareAggregates(a1, ags2.get(indexPosi))
+       if (res==false){ 
+          ags2.add(ags2.size, a1)
+          var String nameA=(a1.eContainer.eContainer as Entity).name+a1.name+(a1.eContainer as EntityVersion).versionId.toString
+          addAg(finalNotCommonAggrs,nameA,a1)
+       }
+     }
+  }
+
+'''
+  «FOR Entry<String, Aggregate> aA : finalNotCommonAggrs.entrySet()»
+    «var String nameAg = aA.getKey()»
+    «var Aggregate Ag = aA.getValue()»
+    «reviseProp(Ag,true, nameAg)»
   «ENDFOR»
 '''
-
-def getAggregates2(Map<Entity, String> props){
-for (Entry<Entity, String> p : props.entrySet()){
-			var Entity clave = p.getKey();
-			var String valor = p.getValue();
-			System.out.println(clave+"  ->  "+valor.toString());
-		}
-
+}
+def addAg(Map <String, Aggregate> agMap,String name, Aggregate a){
+	agMap.put(name,a)
 }
 
+def int reviseAggregNotCommons(Aggregate a, List<Aggregate> ag) {
+	 var List<Aggregate> ags3= new ArrayList
+	 for (i : 0 ..< ag.size) {
+	    val element = ag.get(i)
+	    if(element.name==a.name)
+	    return i  
+	 }
+     return -1
+}
+
+
 def boolean compareAggregates(Aggregate a1, Aggregate a2) {
-  if(a1.name != a2.name)
+  if(a1.refTo.size != a2.refTo.size)
     return false
-  else if(a1.refTo.size != a2.refTo.size)
-     return false
   else{
-  	var List<String> entVs1= new ArrayList
+    var List<String> entVs1= new ArrayList
     var List<String> entVs2= new ArrayList
-  	for(i:0..<a1.refTo.size){
-  	  entVs1.add(i,a1.refTo.get(i).versionId.toString)
-  	}
-  	for(j:0..<a2.refTo.size){
-  	  entVs2.add(j,a1.refTo.get(j).versionId.toString)
-  	}
-  	for(i:0..<entVs1.size){
-  	  if(entVs1.get(i)!=entVs2.get(i))
-  	   return false
-  	}
+    for(i:0..<a1.refTo.size){
+      entVs1.add(i,a1.refTo.get(i).versionId.toString)
+    }
+    for(j:0..<a2.refTo.size){
+      entVs2.add(j,a2.refTo.get(j).versionId.toString)
+    }
+    for(i:0..<entVs1.size){
+      if(entVs1.get(i)!=entVs2.get(i))
+        return false
+    }
   }
   return true
 }
 
 //for abstract Property class
-def dispatch reviseProp(Property p, boolean r) {
+def dispatch reviseProp(Property p, boolean r, String s) {
   throw new UnsupportedOperationException("TODO: auto-generated method stub")
 }
 	
-def dispatch reviseProp(Association ass, boolean r)'''
-  «reviseAssociation(ass,r)»
+def dispatch reviseProp(Association ass, boolean r, String s)'''
+  «reviseAssociation(ass,r,s)»
 '''
 	
 //for abstract association class
-def dispatch reviseAssociation(Association ass2, boolean r) {
+def dispatch reviseAssociation(Association ass2, boolean r, String s) {
   throw new UnsupportedOperationException("TODO: auto-generated method stub")
 }
 	
-def dispatch reviseAssociation(Aggregate ag, boolean r) {
-   checkAggr(ag, r)
-}	
+def dispatch reviseAssociation(Aggregate ag, boolean r, String s) {
+   checkAggr(ag, r, s)
+}
+
+def checkAggr(Aggregate aggr, boolean isR, String nameA){
+  if(aggr.refTo!=null)
+  {
+  	checkAggregate(aggr.refTo,nameA, isR)
+  }
+}
+
+def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR){
+  var List<Attribute> at=new ArrayList
+  var List<Reference> ref=new ArrayList
+  var List<Aggregate> aggr=new ArrayList
+  var List<String> prims=new ArrayList
+  var List<String> tuples=new ArrayList
+  var List<PrimitiveType> primsL=new ArrayList
+  var List<Tuple> tuplesL=new ArrayList
+  
+  var List<Reference> refs=new ArrayList
+  var List<Aggregate> ags=new ArrayList
+  for (EntityVersion ev:agL){
+    var a=ev.properties.filter(Attribute).toList
+    var r=ev.properties.filter(Reference).toList
+    var ag=ev.properties.filter(Aggregate).toList
+    concatAtts(at,a,at)
+    concatRs(ref,r,ref)
+    concatAgs(aggr,ag,aggr)
+  }
+
+'''
+  «IF isR==true»
+    var «nameAg»=	{
+    «ELSE»
+    «nameAg»:	{
+  «ENDIF»
+  	«FOR Attribute at2: at»
+  	«analyzeAttribute(at2.type,at2.name,primsL, tuplesL, prims,tuples)»
+  	«ENDFOR»
+  	«FOR Aggregate ag: aggr»
+  	«analyzeAggregate(ag,ag.name,ags)»
+  	«ENDFOR»
+  	«FOR Aggregate a4: ags»
+  	 «checkAggr(a4,false,a4.name)»
+  	«ENDFOR»
+  	«FOR Reference rf2: ref»
+  	«analyzeReference(rf2,rf2.name,refs)»
+  	«ENDFOR»
+      } 
+'''
+}
+def concatAtts(List<Attribute> atLA,List<Attribute> atLB, List<Attribute> resL){	
+  var Stream<Attribute> s1=atLA.stream
+  var Stream<Attribute> s2=atLB.stream
+  var Stream<Attribute> s3=Stream.concat(s1,s2)
+  var List<Attribute>res= s3.collect(Collectors.toList)
+  resL.clear
+  for(i:0..<res.size){
+  	resL.add(i,res.get(i))
+  }
+}
+
+def concatRs(List<Reference> atLA,List<Reference> atLB,List<Reference> resL){	
+  var Stream<Reference> s1=atLA.stream
+  var Stream<Reference> s2=atLB.stream
+  var Stream<Reference> s3=Stream.concat(s1,s2)
+  var List<Reference>res= s3.collect(Collectors.toList)
+  resL.clear
+  for(i:0..<res.size){
+  	resL.add(i,res.get(i))
+  }
+}
+
+def concatAgs(List<Aggregate> atLA,List<Aggregate> atLB, List<Aggregate> resL){	
+  var Stream<Aggregate> s1=atLA.stream
+  var Stream<Aggregate> s2=atLB.stream
+  var Stream<Aggregate> s3=Stream.concat(s1,s2)
+  var List<Aggregate>res= s3.collect(Collectors.toList)
+  resL.clear
+  for(i:0..<res.size){
+  	resL.add(i,res.get(i))
+  }
+}
 	
 }
