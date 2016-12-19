@@ -1,0 +1,596 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Version_Diff:NoSQLDifferences xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Version_Diff="http://www.modelum.es/version_diff" name="Art">
+  <hasTypeDifferences name="ArtisticType_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="authorsNumber">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="ArtisticType"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="popularity">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="ArtisticType_2">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="popularity">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="ArtisticType"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="authorsNumber">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Style_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="period">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="featured_authors">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Style"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Piece_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="year">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="author">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Piece"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="material">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="artisticType">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="size">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasStyle">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="-1">
+        <type>Style_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasArtisticType">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="ArtisticType"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="style">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Piece_2">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="year">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="author">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="material">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Piece"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="artisticType">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="size">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasStyle">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="-1">
+        <type>Style_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasArtisticType">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="ArtisticType"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="style">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Piece_3">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="year">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="author">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="material">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="artisticType">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Piece"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="size">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasStyle">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="-1">
+        <type>Style_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasArtisticType">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="ArtisticType"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="style">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Piece_4">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="year">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="author">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="material">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="artisticType">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="style">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="size">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Piece"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasStyle">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="-1">
+        <type>Style_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasArtisticType">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="ArtisticType"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Piece_5">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="year">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="author">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="material">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="artisticType">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="size">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasStyle">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="-1">
+        <type>Style_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Piece"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasArtisticType">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="ArtisticType"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="style">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Piece_6">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="year">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="author">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="material">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="size">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasStyle">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="-1">
+        <type>Style_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasArtisticType">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="ArtisticType"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Piece"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="artisticType">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="style">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Exposing_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="date">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasPieces">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Piece"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Exposing"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="isItinerant">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="isTemporary">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="isPermanent">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Exposing_2">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="date">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasPieces">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Piece"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="isItinerant">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="isTemporary">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="isPermanent">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Exposing"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Restorer_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hours_per_week">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="salary">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Restorer"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="tools">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="string"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Restorer_2">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="salary">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="tools">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Restorer"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hours_per_week">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Guide_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="showsExposings">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Exposing"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="showsPieces">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Piece"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Guide"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="salary">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="languages">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="showsExposings">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+        <type>Exposing_2</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Guide_2">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="salary">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="showsExposings">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Exposing"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="showsPieces">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Piece"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Guide"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="languages">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="showsExposings">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+        <type>Exposing_2</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Guide_3">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="salary">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="languages">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="showsPieces">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Piece"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="showsExposings">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+        <type>Exposing_2</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Guide"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="showsExposings">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Exposing"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Director_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hours_per_week">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="salary">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Director"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Museum_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="location">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasPieces">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Piece"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Museum"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="foundationYear">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="schedule">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[string;int;int]</type>
+        <type>Tuple[string;int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasExposings">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Exposing"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasDirector">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+        <type>Director_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasGuides">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+        <type>Guide_3</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasGuards">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+        <type>Guard_1</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Museum_2">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="location">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="foundationYear">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasPieces">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Piece"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Museum"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="schedule">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[string;int;int]</type>
+        <type>Tuple[string;int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasExposings">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Exposing"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasDirector">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+        <type>Director_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasGuides">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+        <type>Guide_3</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasGuards">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+        <type>Guard_1</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Museum_3">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="location">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="foundationYear">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasPieces">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Piece"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="schedule">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[string;int;int]</type>
+        <type>Tuple[string;int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Museum"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasExposings">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Exposing"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasDirector">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+        <type>Director_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasGuides">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+        <type>Guide_3</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasGuards">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+        <type>Guard_1</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Museum_4">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="location">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="foundationYear">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasPieces">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Piece"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="schedule">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[string;int;int]</type>
+        <type>Tuple[string;int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasExposings">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Exposing"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasDirector">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+        <type>Director_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasGuides">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+        <type>Guide_3</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasGuards">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+        <type>Guard_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Museum"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Guard_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hours_per_week">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="salary">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Guard"/>
+    </hints>
+  </hasTypeDifferences>
+</Version_Diff:NoSQLDifferences>

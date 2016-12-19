@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Version_Diff:NoSQLDifferences xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Version_Diff="http://www.modelum.es/version_diff" name="Books">
+  <hasTypeDifferences name="Publisher_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="city">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="journal">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Journal"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Publisher_2">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="journal">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="city">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Publisher_3">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="journal">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="city">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Journal_1">
+    <hints xsi:type="Version_Diff:HasField" withName="issn">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="discipline">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="number">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Journal_2">
+    <hints xsi:type="Version_Diff:HasField" withName="issn">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="discipline">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="number">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Journal"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Book_1">
+    <hints xsi:type="Version_Diff:HasField" withName="title">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="year">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="publisher">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="content">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+        <type>Content_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="author">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="-1">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Book"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Book_2">
+    <hints xsi:type="Version_Diff:HasField" withName="title">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="publisher">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="author">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="year">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="content">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+        <type>Content_1</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Author_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="company">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+        <type>Company_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="company">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="country">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Author_2">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="company">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="country">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="company">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+        <type>Company_1</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Company_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="country">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Company"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Content_1">
+    <hints xsi:type="Version_Diff:HasField" withName="chapters">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="pages">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Content"/>
+    </hints>
+  </hasTypeDifferences>
+</Version_Diff:NoSQLDifferences>

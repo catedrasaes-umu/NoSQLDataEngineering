@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Version_Diff:NoSQLDifferences xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Version_Diff="http://www.modelum.es/version_diff" name="Food">
+  <hasTypeDifferences name="Restaurant_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="location">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="manager">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasWaiters">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Waiter"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasMenu">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Menu"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Restaurant"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Table_1">
+    <hints xsi:type="Version_Diff:HasField" withName="number">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="occupied">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="location">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Table"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="isOccupied">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="position">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Table_2">
+    <hints xsi:type="Version_Diff:HasField" withName="number">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="isOccupied">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="position">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Table"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="occupied">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="location">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Waiter_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="nif">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hours_per_week">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="salary">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Waiter"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hours_per_week">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="salary">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="tablesAssigned">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasTables">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="5">
+        <type>Table_2</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Waiter_2">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="nif">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hours_per_week">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="salary">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="tablesAssigned">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Waiter"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasTables">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="5">
+        <type>Table_2</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hours_per_week">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="salary">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Waiter_3">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="nif">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hours_per_week">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="salary">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasTables">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="5">
+        <type>Table_2</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Waiter"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="tablesAssigned">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hours_per_week">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="salary">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Menu_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="price">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasDishes">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Dish"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Menu"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Dish_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="price">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasIngredients">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="-1">
+        <type>Ingredient_2</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Dish"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="isSeasonal">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="suitableForCeliacs">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="suitableForDiabetics">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="calories">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Dish_2">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="price">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="isSeasonal">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasIngredients">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="-1">
+        <type>Ingredient_2</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Dish"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="suitableForCeliacs">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="suitableForDiabetics">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="calories">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Dish_3">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="price">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="isSeasonal">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="suitableForCeliacs">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="suitableForDiabetics">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasIngredients">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="-1">
+        <type>Ingredient_2</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Dish"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="calories">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Dish_4">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="price">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="isSeasonal">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="suitableForCeliacs">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="suitableForDiabetics">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="calories">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="hasIngredients">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="-1">
+        <type>Ingredient_2</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Dish"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Ingredient_1">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="price">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Ingredient"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="quantity">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="isSeasonal">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Ingredient_2">
+    <hints xsi:type="Version_Diff:HasField" withName="name">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="price">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="quantity">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="isSeasonal">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="boolean"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Ingredient"/>
+    </hints>
+  </hasTypeDifferences>
+</Version_Diff:NoSQLDifferences>

@@ -1,0 +1,2146 @@
+<?xml version="1.0" encoding="ASCII"?>
+<Version_Diff:NoSQLDifferences xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Version_Diff="http://www.modelum.es/version_diff" name="example">
+  <hasTypeDifferences name="Book_1">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>string</type>
+        <type>int</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>float</type>
+        <type>float</type>
+        <type>string</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Book"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Book_2">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>string</type>
+        <type>int</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>float</type>
+        <type>float</type>
+        <type>string</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Book"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Book_3">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>string</type>
+        <type>int</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>float</type>
+        <type>float</type>
+        <type>string</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Book"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Book_4">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>string</type>
+        <type>int</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>float</type>
+        <type>float</type>
+        <type>string</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Author_1">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>int</type>
+        <type>Tuple[int;int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>float</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_2">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="3">
+        <type>Author_3</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>string</type>
+        <type>Tuple[int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>bool</type>
+        <type>Tuple[int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int;int]</type>
+        <type>Tuple[int;int]</type>
+        <type>string</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="string"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Author_2">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>string</type>
+        <type>Tuple[int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>bool</type>
+        <type>Tuple[int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>int</type>
+        <type>Tuple[int;int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>float</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_2">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="3">
+        <type>Author_3</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int;int]</type>
+        <type>Tuple[int;int]</type>
+        <type>string</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="string"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Author_3">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>int</type>
+        <type>Tuple[int;int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>float</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_2">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="3">
+        <type>Author_3</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>string</type>
+        <type>Tuple[int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>bool</type>
+        <type>Tuple[int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int;int]</type>
+        <type>Tuple[int;int]</type>
+        <type>string</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="string"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Author_4">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>float</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>int</type>
+        <type>Tuple[int;int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_2">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="3">
+        <type>Author_3</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>string</type>
+        <type>Tuple[int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>bool</type>
+        <type>Tuple[int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int;int]</type>
+        <type>Tuple[int;int]</type>
+        <type>string</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="string"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Author_5">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int;int]</type>
+        <type>Tuple[int;int]</type>
+        <type>string</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>int</type>
+        <type>Tuple[int;int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>float</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_2">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="3">
+        <type>Author_3</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>string</type>
+        <type>Tuple[int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>bool</type>
+        <type>Tuple[int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Author_6">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>int</type>
+        <type>Tuple[int;int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>float</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_2">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="3">
+        <type>Author_3</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>string</type>
+        <type>Tuple[int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>bool</type>
+        <type>Tuple[int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int;int]</type>
+        <type>Tuple[int;int]</type>
+        <type>string</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="string"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Author_7">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="aggregates_2">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="3">
+        <type>Author_3</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>int</type>
+        <type>Tuple[int;int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>float</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>string</type>
+        <type>Tuple[int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>bool</type>
+        <type>Tuple[int;int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int;int]</type>
+        <type>Tuple[int;int]</type>
+        <type>string</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="string"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Journal_1">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int;int;int]</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Book_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="2" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Content_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Content"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_1">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="2">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_2">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="3">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_1">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="3">
+        <type>Journal_1</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Journal_2">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="2" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Content_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Content"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_1">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="2">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_2">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="3">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int;int;int]</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Book_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_1">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="3">
+        <type>Journal_1</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Journal_3">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="aggregates_1">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="3">
+        <type>Journal_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="2" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Content_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Content"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_1">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="2">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_2">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="3">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int;int;int]</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Book_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Journal_4">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="aggregates_1">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="2">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="aggregates_2">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="3">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="2" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Content_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Content"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int;int;int]</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Book_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_1">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="3">
+        <type>Journal_1</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Journal_5">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Content_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Content"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_1">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="2">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_2">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="3">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int;int;int]</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Book_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_1">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="3">
+        <type>Journal_1</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Journal_6">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="2" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Content_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Content"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_1">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="2">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_2">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="3">
+        <type>Author_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int;int;int]</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Book_1</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_1">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="3">
+        <type>Journal_1</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Publisher_1">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>int</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>int</type>
+        <type>bool</type>
+        <type>string</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_4">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Author_6</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="1" type="Journal"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Publisher_2">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>int</type>
+        <type>bool</type>
+        <type>string</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atBool_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>int</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_4">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Author_6</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="1" type="Journal"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Publisher_3">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_4">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Author_6</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>int</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>int</type>
+        <type>bool</type>
+        <type>string</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="1" type="Journal"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Publisher_4">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>int</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>int</type>
+        <type>bool</type>
+        <type>string</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_4">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Author_6</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="1" type="Journal"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Publisher_5">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atBool_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>int</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>int</type>
+        <type>bool</type>
+        <type>string</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_4">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Author_6</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="1" type="Journal"/>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Publisher_6">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="1" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atBool_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>int</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>int</type>
+        <type>bool</type>
+        <type>string</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_1">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_4">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>Tuple[int]</type>
+        <type>string</type>
+        <type>float</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="aggregates_0">
+      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="2">
+        <type>Author_6</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Content_1">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Content"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>bool</type>
+        <type>Tuple[int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>string</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>float</type>
+        <type>string</type>
+        <type>Tuple[int]</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Content_2">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Content"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>string</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="1" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>bool</type>
+        <type>Tuple[int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>float</type>
+        <type>string</type>
+        <type>Tuple[int]</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Content_3">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Content"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="1" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>string</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>bool</type>
+        <type>Tuple[int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>float</type>
+        <type>string</type>
+        <type>Tuple[int]</type>
+      </withType>
+    </hints>
+  </hasTypeDifferences>
+  <hasTypeDifferences name="Content_4">
+    <hints xsi:type="Version_Diff:HasField" withName="type">
+      <withType xsi:type="Version_Diff:EntityType" type="Content"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atStr_3">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atInt_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>float</type>
+        <type>string</type>
+        <type>Tuple[int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasField" withName="Author_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Author"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atFloat_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atBool_0">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="bool"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>string</type>
+        <type>bool</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Book_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="2" type="Book"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Journal_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" upperBound="1" type="Journal"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_1">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atInt_2">
+      <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="atTuple_0">
+      <withType xsi:type="Version_Diff:HeterogeneousTupleType">
+        <type>bool</type>
+        <type>bool</type>
+        <type>Tuple[int]</type>
+      </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="Publisher_id_reference">
+      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Publisher"/>
+    </hints>
+  </hasTypeDifferences>
+</Version_Diff:NoSQLDifferences>

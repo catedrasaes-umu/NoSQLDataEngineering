@@ -1,0 +1,187 @@
+/* ============================== */
+/* Common style                   */
+/* ============================== */
+body
+{
+	margin: 0;
+}
+
+.d3Container
+{
+	text-align: center;
+	padding-top: 50px;
+}
+
+nav
+{
+    background-color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul
+{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+nav ul li
+{
+	display: inline-block;
+	list-style-type: none;
+}
+
+nav ul li h3
+{
+	color: #aaa;
+	display: block;
+	text-decoration: none;
+	padding-right: 100px;
+}
+
+nav ul li a
+{
+	color: #aaa;
+	display: block;
+	line-height: 2.5em;
+	padding: 0.5em 0.5em;
+	text-decoration: none;
+}
+
+nav ul li a:hover:not(.active)
+{
+    background-color: #111;
+}
+
+/* ============================== */
+/* Bubbles chart                  */
+/* ============================== */
+.bubble_circle
+{
+	fill: rgb(31, 119, 180);
+	fill-opacity: .25;
+	stroke: rgb(31, 119, 180);
+	stroke-width: 1px;
+}
+
+.bubble_leaf .bubble_circle
+{
+	fill: white;
+	fill-opacity: 1;
+}
+
+.bubble_leaf .bubble_circle:hover
+{
+	stroke: #000;
+	stroke-width: 1.5px;
+}
+
+.bubble_text
+{
+	font: 12px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-anchor: middle;
+	text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+	pointer-events: none;
+	font-weight: bold;
+}
+
+/* ============================== */
+/* Donuts chart                   */
+/* ============================== */
+.donut_text
+{
+	font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+	font-weight: bold;
+	text-anchor: middle;
+}
+
+.donut_legend
+{
+	font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+}
+
+.donut_pie
+{
+	padding: 10px 0 0 10px;
+}
+
+.donut_arc
+{
+	stroke: #fff;
+}
+
+.donut_arc:hover
+{
+	stroke: #000;
+	stroke-width: 1.5px;
+}
+
+/* ============================== */
+/* Bars chart                     */
+/* ============================== */
+.bars_text, .bars_axis .tick text
+{
+	text-anchor: end;
+}
+
+.bars_label, .bars_text, .bars_axis .tick text
+{
+	font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+}
+
+.bars_label, .bars_axis .tick text
+{
+	font-weight: bold;
+}
+
+.bars_x .bars_axis path
+{
+  display: none;
+}
+
+.bars_axis path, .bars_axis line
+{
+  fill: none;
+  stroke: #000;
+  shape-rendering: crispEdges;
+}
+
+.bars_state rect:hover
+{
+	stroke: #000;
+	stroke-width: 1.5px;
+}
+
+/* ============================== */
+/* Tree chart                     */
+/* ============================== */
+.tree_node
+{
+	cursor: pointer;
+}
+
+.tree_node circle
+{
+	fill: #fff;
+	stroke: steelblue;
+	stroke-width: 1.5px;
+}
+
+.tree_node text
+{
+	font: 14px "Helvetica Neue", Helvetica, Arial, sans-serif;
+	text-shadow: 0 1px 0 #fff, 1px 0 0 #fff, -1px 0 0 #fff, 0 -1px 0 #fff;
+	font-weight: bold;
+}
+
+.tree_link
+{
+	fill: none;
+	stroke: #ccc;
+	stroke-width: 1.5px;
+}

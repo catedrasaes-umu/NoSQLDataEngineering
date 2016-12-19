@@ -1,0 +1,2148 @@
+[
+  {
+    "_id": 1,
+    "type": "ArtisticType",
+    "name": "value_29",
+    "authorsNumber": 120
+  },
+  {
+    "_id": 2,
+    "type": "ArtisticType",
+    "name": "value_9",
+    "authorsNumber": 115
+  },
+  {
+    "_id": 3,
+    "type": "ArtisticType",
+    "name": "value_153",
+    "authorsNumber": 129
+  },
+  {
+    "_id": 4,
+    "type": "ArtisticType",
+    "name": "value_85",
+    "authorsNumber": 68
+  },
+  {
+    "_id": 5,
+    "type": "ArtisticType",
+    "name": "value_195",
+    "popularity": 21.02
+  },
+  {
+    "_id": 6,
+    "type": "ArtisticType",
+    "name": "value_46",
+    "popularity": 86.77
+  },
+  {
+    "_id": 7,
+    "type": "ArtisticType",
+    "name": "value_26",
+    "popularity": 51.12
+  },
+  {
+    "_id": 8,
+    "type": "ArtisticType",
+    "name": "value_130",
+    "popularity": 49.56
+  },
+  {
+    "_id": 9,
+    "type": "Style",
+    "name": "value_188",
+    "period": [
+      146,
+      67
+    ],
+    "featured_authors": [
+      "value_139",
+      "value_11"
+    ]
+  },
+  {
+    "_id": 10,
+    "type": "Style",
+    "name": "value_40",
+    "period": [
+      106,
+      26
+    ],
+    "featured_authors": [
+      "value_140",
+      "value_32"
+    ]
+  },
+  {
+    "_id": 11,
+    "type": "Style",
+    "name": "value_84",
+    "period": [
+      58,
+      73
+    ],
+    "featured_authors": [
+      "value_124",
+      "value_181"
+    ]
+  },
+  {
+    "_id": 12,
+    "type": "Style",
+    "name": "value_28",
+    "period": [
+      106,
+      23
+    ],
+    "featured_authors": [
+      "value_156",
+      "value_22"
+    ]
+  },
+  {
+    "_id": 13,
+    "type": "Style",
+    "name": "value_80",
+    "period": [
+      167,
+      21
+    ],
+    "featured_authors": [
+      "value_80",
+      "value_149"
+    ]
+  },
+  {
+    "_id": 14,
+    "type": "Piece",
+    "name": "value_34",
+    "year": 133,
+    "author": "value_23"
+  },
+  {
+    "_id": 15,
+    "type": "Piece",
+    "name": "value_89",
+    "year": 137,
+    "author": "value_30"
+  },
+  {
+    "_id": 16,
+    "type": "Piece",
+    "name": "value_70",
+    "year": 167,
+    "author": "value_144"
+  },
+  {
+    "_id": 17,
+    "type": "Piece",
+    "name": "value_187",
+    "year": 135,
+    "author": "value_143"
+  },
+  {
+    "_id": 18,
+    "type": "Piece",
+    "name": "value_124",
+    "year": 71,
+    "author": "value_198"
+  },
+  {
+    "_id": 19,
+    "type": "Piece",
+    "name": "value_5",
+    "year": 96,
+    "author": "value_141",
+    "material": "value_58"
+  },
+  {
+    "_id": 20,
+    "type": "Piece",
+    "name": "value_38",
+    "year": 79,
+    "author": "value_172",
+    "material": "value_41"
+  },
+  {
+    "_id": 21,
+    "type": "Piece",
+    "name": "value_72",
+    "year": 10,
+    "author": "value_104",
+    "material": "value_92"
+  },
+  {
+    "_id": 22,
+    "type": "Piece",
+    "name": "value_156",
+    "year": 151,
+    "author": "value_101",
+    "material": "value_127"
+  },
+  {
+    "_id": 23,
+    "type": "Piece",
+    "name": "value_86",
+    "year": 110,
+    "author": "value_32",
+    "material": "value_79"
+  },
+  {
+    "_id": 24,
+    "type": "Piece",
+    "name": "value_75",
+    "year": 154,
+    "author": "value_148",
+    "material": "value_26",
+    "artisticType": "value_66"
+  },
+  {
+    "_id": 25,
+    "type": "Piece",
+    "name": "value_61",
+    "year": 71,
+    "author": "value_20",
+    "material": "value_44",
+    "artisticType": "value_113"
+  },
+  {
+    "_id": 26,
+    "type": "Piece",
+    "name": "value_32",
+    "year": 13,
+    "author": "value_28",
+    "material": "value_163",
+    "artisticType": "value_146"
+  },
+  {
+    "_id": 27,
+    "type": "Piece",
+    "name": "value_2",
+    "year": 155,
+    "author": "value_96",
+    "material": "value_190",
+    "artisticType": "value_166"
+  },
+  {
+    "_id": 28,
+    "type": "Piece",
+    "name": "value_141",
+    "year": 87,
+    "author": "value_77",
+    "material": "value_126",
+    "artisticType": "value_156"
+  },
+  {
+    "_id": 29,
+    "type": "Piece",
+    "name": "value_132",
+    "year": 20,
+    "author": "value_93",
+    "material": "value_133",
+    "artisticType": "value_144"
+  },
+  {
+    "_id": 30,
+    "type": "Piece",
+    "name": "value_112",
+    "year": 68,
+    "author": "value_104",
+    "material": "value_15",
+    "artisticType": "value_103"
+  },
+  {
+    "_id": 31,
+    "type": "Piece",
+    "name": "value_96",
+    "year": 167,
+    "author": "value_141",
+    "material": "value_87",
+    "artisticType": "value_152"
+  },
+  {
+    "_id": 32,
+    "type": "Piece",
+    "name": "value_55",
+    "year": 68,
+    "author": "value_112",
+    "material": "value_180",
+    "artisticType": "value_47",
+    "style": "value_6",
+    "size": [
+      61.01,
+      50.72
+    ]
+  },
+  {
+    "_id": 33,
+    "type": "Piece",
+    "name": "value_69",
+    "year": 27,
+    "author": "value_118",
+    "material": "value_134",
+    "artisticType": "value_70",
+    "style": "value_123",
+    "size": [
+      62.41,
+      92.3
+    ]
+  },
+  {
+    "_id": 34,
+    "type": "Piece",
+    "name": "value_154",
+    "year": 21,
+    "author": "value_3",
+    "material": "value_182",
+    "artisticType": "value_137",
+    "style": "value_127",
+    "size": [
+      67.89,
+      54.56
+    ]
+  },
+  {
+    "_id": 35,
+    "type": "Piece",
+    "name": "value_169",
+    "year": 51,
+    "author": "value_78",
+    "material": "value_188",
+    "artisticType": "value_57",
+    "style": "value_117",
+    "size": [
+      98.38,
+      93.87
+    ]
+  },
+  {
+    "_id": 36,
+    "type": "Piece",
+    "name": "value_182",
+    "year": 144,
+    "author": "value_147",
+    "material": "value_108",
+    "artisticType": "value_70",
+    "style": "value_199",
+    "size": [
+      19.69,
+      15.98
+    ]
+  },
+  {
+    "_id": 37,
+    "type": "Piece",
+    "name": "value_3",
+    "year": 79,
+    "author": "value_139",
+    "material": "value_140",
+    "artisticType": "value_128",
+    "size": [
+      42.15,
+      86.9
+    ],
+    "hasStyle": [
+      {
+        "_id": 9,
+        "type": "Style",
+        "name": "value_188",
+        "period": [
+          146,
+          67
+        ],
+        "featured_authors": [
+          "value_139",
+          "value_11"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": 38,
+    "type": "Piece",
+    "name": "value_166",
+    "year": 24,
+    "author": "value_77",
+    "material": "value_155",
+    "artisticType": "value_165",
+    "size": [
+      6.88,
+      43.47
+    ],
+    "hasStyle": [
+      {
+        "_id": 9,
+        "type": "Style",
+        "name": "value_188",
+        "period": [
+          146,
+          67
+        ],
+        "featured_authors": [
+          "value_139",
+          "value_11"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": 39,
+    "type": "Piece",
+    "name": "value_97",
+    "year": 107,
+    "author": "value_138",
+    "material": "value_41",
+    "artisticType": "value_64",
+    "size": [
+      14.76,
+      19.86
+    ],
+    "hasStyle": [
+      {
+        "_id": 9,
+        "type": "Style",
+        "name": "value_188",
+        "period": [
+          146,
+          67
+        ],
+        "featured_authors": [
+          "value_139",
+          "value_11"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": 40,
+    "type": "Piece",
+    "name": "value_28",
+    "year": 140,
+    "author": "value_169",
+    "material": "value_86",
+    "artisticType": "value_46",
+    "size": [
+      70.96,
+      52.8
+    ],
+    "hasStyle": [
+      {
+        "_id": 9,
+        "type": "Style",
+        "name": "value_188",
+        "period": [
+          146,
+          67
+        ],
+        "featured_authors": [
+          "value_139",
+          "value_11"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": 41,
+    "type": "Piece",
+    "name": "value_25",
+    "year": 46,
+    "author": "value_23",
+    "material": "value_66",
+    "artisticType": "value_149",
+    "size": [
+      47.99,
+      80.17
+    ],
+    "hasStyle": [
+      {
+        "_id": 9,
+        "type": "Style",
+        "name": "value_188",
+        "period": [
+          146,
+          67
+        ],
+        "featured_authors": [
+          "value_139",
+          "value_11"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": 42,
+    "type": "Piece",
+    "name": "value_174",
+    "year": 21,
+    "author": "value_200",
+    "material": "value_116",
+    "artisticType": "value_148",
+    "size": [
+      76.8,
+      12.57
+    ],
+    "hasStyle": [
+      {
+        "_id": 9,
+        "type": "Style",
+        "name": "value_188",
+        "period": [
+          146,
+          67
+        ],
+        "featured_authors": [
+          "value_139",
+          "value_11"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": 43,
+    "type": "Piece",
+    "name": "value_160",
+    "year": 93,
+    "author": "value_128",
+    "material": "value_95",
+    "artisticType": "value_25",
+    "size": [
+      29.92,
+      29.13
+    ],
+    "hasStyle": [
+      {
+        "_id": 9,
+        "type": "Style",
+        "name": "value_188",
+        "period": [
+          146,
+          67
+        ],
+        "featured_authors": [
+          "value_139",
+          "value_11"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": 44,
+    "type": "Piece",
+    "name": "value_197",
+    "year": 5,
+    "author": "value_65",
+    "material": "value_137",
+    "size": [
+      5.1,
+      90.23
+    ],
+    "hasArtisticType": [
+      "126"
+    ],
+    "hasStyle": [
+      {
+        "_id": 9,
+        "type": "Style",
+        "name": "value_188",
+        "period": [
+          146,
+          67
+        ],
+        "featured_authors": [
+          "value_139",
+          "value_11"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": 45,
+    "type": "Piece",
+    "name": "value_171",
+    "year": 40,
+    "author": "value_54",
+    "material": "value_43",
+    "size": [
+      50.61,
+      68.39
+    ],
+    "hasArtisticType": [
+      "195"
+    ],
+    "hasStyle": [
+      {
+        "_id": 9,
+        "type": "Style",
+        "name": "value_188",
+        "period": [
+          146,
+          67
+        ],
+        "featured_authors": [
+          "value_139",
+          "value_11"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": 46,
+    "type": "Piece",
+    "name": "value_64",
+    "year": 127,
+    "author": "value_66",
+    "material": "value_40",
+    "size": [
+      71.15,
+      60.17
+    ],
+    "hasArtisticType": [
+      "48"
+    ],
+    "hasStyle": [
+      {
+        "_id": 9,
+        "type": "Style",
+        "name": "value_188",
+        "period": [
+          146,
+          67
+        ],
+        "featured_authors": [
+          "value_139",
+          "value_11"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": 47,
+    "type": "Piece",
+    "name": "value_142",
+    "year": 53,
+    "author": "value_65",
+    "material": "value_199",
+    "size": [
+      83.17,
+      38.43
+    ],
+    "hasArtisticType": "185",
+    "hasStyle": [
+      {
+        "_id": 9,
+        "type": "Style",
+        "name": "value_188",
+        "period": [
+          146,
+          67
+        ],
+        "featured_authors": [
+          "value_139",
+          "value_11"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": 48,
+    "type": "Piece",
+    "name": "value_122",
+    "year": 8,
+    "author": "value_85",
+    "material": "value_200",
+    "size": [
+      86.01,
+      27.55
+    ],
+    "hasArtisticType": [
+      "100"
+    ],
+    "hasStyle": [
+      {
+        "_id": 9,
+        "type": "Style",
+        "name": "value_188",
+        "period": [
+          146,
+          67
+        ],
+        "featured_authors": [
+          "value_139",
+          "value_11"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": 49,
+    "type": "Piece",
+    "name": "value_40",
+    "year": 173,
+    "author": "value_26",
+    "material": "value_90",
+    "size": [
+      33.05,
+      61.89
+    ],
+    "hasArtisticType": [
+      "45"
+    ],
+    "hasStyle": [
+      {
+        "_id": 9,
+        "type": "Style",
+        "name": "value_188",
+        "period": [
+          146,
+          67
+        ],
+        "featured_authors": [
+          "value_139",
+          "value_11"
+        ]
+      }
+    ]
+  },
+  {
+    "_id": 50,
+    "type": "Exposing",
+    "name": "value_114",
+    "date": [
+      "value_70",
+      "value_89"
+    ],
+    "hasPieces": [
+      "100",
+      "41",
+      "50"
+    ]
+  },
+  {
+    "_id": 51,
+    "type": "Exposing",
+    "name": "value_152",
+    "date": [
+      "value_85",
+      "value_129"
+    ],
+    "hasPieces": [
+      "194",
+      "17"
+    ]
+  },
+  {
+    "_id": 52,
+    "type": "Exposing",
+    "name": "value_191",
+    "date": [
+      "value_124",
+      "value_126"
+    ],
+    "hasPieces": [
+      "31",
+      "178"
+    ]
+  },
+  {
+    "_id": 53,
+    "type": "Exposing",
+    "name": "value_106",
+    "date": [
+      "value_127",
+      "value_86"
+    ],
+    "hasPieces": [
+      "61",
+      "13",
+      "12"
+    ]
+  },
+  {
+    "_id": 54,
+    "type": "Exposing",
+    "name": "value_100",
+    "date": [
+      "value_35",
+      "value_186"
+    ],
+    "hasPieces": [
+      "62",
+      "116",
+      "54"
+    ]
+  },
+  {
+    "_id": 55,
+    "type": "Exposing",
+    "name": "value_147",
+    "date": [
+      "value_184",
+      "value_143"
+    ],
+    "hasPieces": [
+      "91"
+    ]
+  },
+  {
+    "_id": 56,
+    "type": "Exposing",
+    "name": "value_134",
+    "date": [
+      "value_152",
+      "value_92"
+    ],
+    "hasPieces": [
+      "13",
+      "119",
+      "52",
+      "83"
+    ],
+    "isItinerant": true,
+    "isTemporary": true,
+    "isPermanent": true
+  },
+  {
+    "_id": 57,
+    "type": "Exposing",
+    "name": "value_160",
+    "date": [
+      "value_36",
+      "value_28"
+    ],
+    "hasPieces": [
+      "84"
+    ],
+    "isItinerant": false,
+    "isTemporary": true,
+    "isPermanent": false
+  },
+  {
+    "_id": 58,
+    "type": "Exposing",
+    "name": "value_89",
+    "date": [
+      "value_42",
+      "value_29"
+    ],
+    "hasPieces": [
+      "46",
+      "18",
+      "46"
+    ],
+    "isItinerant": false,
+    "isTemporary": false,
+    "isPermanent": false
+  },
+  {
+    "_id": 59,
+    "type": "Exposing",
+    "name": "value_70",
+    "date": [
+      "value_144",
+      "value_98"
+    ],
+    "hasPieces": [
+      "180",
+      "187",
+      "107",
+      "68",
+      "148"
+    ],
+    "isItinerant": true,
+    "isTemporary": true,
+    "isPermanent": true
+  },
+  {
+    "_id": 60,
+    "type": "Exposing",
+    "name": "value_60",
+    "date": [
+      "value_99",
+      "value_89"
+    ],
+    "hasPieces": [
+      "173",
+      "155",
+      "149"
+    ],
+    "isItinerant": true,
+    "isTemporary": false,
+    "isPermanent": true
+  },
+  {
+    "_id": 61,
+    "type": "Exposing",
+    "name": "value_131",
+    "date": [
+      "value_171",
+      "value_97"
+    ],
+    "hasPieces": [
+      "48"
+    ],
+    "isItinerant": false,
+    "isTemporary": true,
+    "isPermanent": true
+  },
+  {
+    "_id": 62,
+    "type": "Restorer",
+    "name": "value_75",
+    "hours_per_week": 197,
+    "salary": 47.04
+  },
+  {
+    "_id": 63,
+    "type": "Restorer",
+    "name": "value_111",
+    "hours_per_week": 40,
+    "salary": 69.3
+  },
+  {
+    "_id": 64,
+    "type": "Restorer",
+    "name": "value_189",
+    "hours_per_week": 2,
+    "salary": 80.31
+  },
+  {
+    "_id": 65,
+    "type": "Restorer",
+    "name": "value_117",
+    "salary": 10.45,
+    "tools": [
+      "value_111",
+      "value_177"
+    ]
+  },
+  {
+    "_id": 66,
+    "type": "Restorer",
+    "name": "value_183",
+    "salary": 90.19,
+    "tools": [
+      "value_183",
+      "value_103"
+    ]
+  },
+  {
+    "_id": 67,
+    "type": "Restorer",
+    "name": "value_149",
+    "salary": 79.4,
+    "tools": [
+      "value_40",
+      "value_178"
+    ]
+  },
+  {
+    "_id": 68,
+    "type": "Restorer",
+    "name": "value_13",
+    "salary": 27.26,
+    "tools": [
+      "value_8",
+      "value_27"
+    ]
+  },
+  {
+    "_id": 69,
+    "type": "Restorer",
+    "name": "value_73",
+    "salary": 77.35,
+    "tools": [
+      "value_101",
+      "value_177"
+    ]
+  },
+  {
+    "_id": 70,
+    "type": "Guide",
+    "name": "value_20",
+    "showsExposings": [
+      "180"
+    ],
+    "showsPieces": []
+  },
+  {
+    "_id": 71,
+    "type": "Guide",
+    "name": "value_24",
+    "showsExposings": [
+      "181",
+      "142"
+    ],
+    "showsPieces": [
+      "165"
+    ]
+  },
+  {
+    "_id": 72,
+    "type": "Guide",
+    "name": "value_169",
+    "showsExposings": [
+      "60",
+      "92"
+    ],
+    "showsPieces": [
+      "87",
+      "28",
+      "102"
+    ]
+  },
+  {
+    "_id": 73,
+    "type": "Guide",
+    "name": "value_47",
+    "showsExposings": [
+      "97",
+      "66",
+      "37"
+    ],
+    "showsPieces": [
+      "43",
+      "195",
+      "99"
+    ]
+  },
+  {
+    "_id": 74,
+    "type": "Guide",
+    "name": "value_50",
+    "showsExposings": [
+      "19",
+      "126",
+      "152"
+    ],
+    "showsPieces": [
+      "28"
+    ]
+  },
+  {
+    "_id": 75,
+    "type": "Guide",
+    "name": "value_59",
+    "showsExposings": [
+      "47",
+      "174"
+    ],
+    "showsPieces": [
+      "33",
+      "25"
+    ]
+  },
+  {
+    "_id": 76,
+    "type": "Guide",
+    "name": "value_138",
+    "showsExposings": [
+      "93"
+    ],
+    "showsPieces": [
+      "88",
+      "48"
+    ]
+  },
+  {
+    "_id": 77,
+    "type": "Guide",
+    "name": "value_136",
+    "salary": 23.1,
+    "showsExposings": [
+      "31",
+      "1"
+    ],
+    "showsPieces": [
+      "126",
+      "106"
+    ]
+  },
+  {
+    "_id": 78,
+    "type": "Guide",
+    "name": "value_80",
+    "salary": 24.06,
+    "showsExposings": [
+      "184"
+    ],
+    "showsPieces": [
+      "181",
+      "157",
+      "85"
+    ]
+  },
+  {
+    "_id": 79,
+    "type": "Guide",
+    "name": "value_137",
+    "salary": 22.86,
+    "showsExposings": [
+      "127"
+    ],
+    "showsPieces": [
+      "30",
+      "28"
+    ]
+  },
+  {
+    "_id": 80,
+    "type": "Guide",
+    "name": "value_37",
+    "salary": 19.82,
+    "showsExposings": [],
+    "showsPieces": [
+      "50"
+    ]
+  },
+  {
+    "_id": 81,
+    "type": "Guide",
+    "name": "value_179",
+    "salary": 65.91,
+    "showsExposings": [
+      "65"
+    ],
+    "showsPieces": [
+      "10"
+    ]
+  },
+  {
+    "_id": 82,
+    "type": "Guide",
+    "name": "value_3",
+    "salary": 98.71,
+    "showsExposings": [
+      "192"
+    ],
+    "showsPieces": [
+      "2",
+      "151"
+    ]
+  },
+  {
+    "_id": 83,
+    "type": "Guide",
+    "name": "value_95",
+    "salary": 87.57,
+    "showsExposings": [
+      "25",
+      "14",
+      "116"
+    ],
+    "showsPieces": [
+      "73",
+      "181",
+      "54"
+    ]
+  },
+  {
+    "_id": 84,
+    "type": "Guide",
+    "name": "value_166",
+    "salary": 91.07,
+    "showsExposings": [
+      "89"
+    ],
+    "showsPieces": [
+      "60",
+      "88",
+      "37",
+      "123"
+    ]
+  },
+  {
+    "_id": 85,
+    "type": "Guide",
+    "name": "value_44",
+    "salary": 91.59,
+    "showsExposings": [
+      "194",
+      "14"
+    ],
+    "showsPieces": [
+      "158"
+    ]
+  },
+  {
+    "_id": 86,
+    "type": "Guide",
+    "name": "value_106",
+    "salary": 4.37,
+    "languages": [
+      "value_168"
+    ],
+    "showsPieces": [
+      "40",
+      "2"
+    ],
+    "showsExposings": [
+      {
+        "_id": 56,
+        "type": "Exposing",
+        "name": "value_134",
+        "date": [
+          "value_152",
+          "value_92"
+        ],
+        "hasPieces": [
+          "13",
+          "119",
+          "52",
+          "83"
+        ],
+        "isItinerant": true,
+        "isTemporary": true,
+        "isPermanent": true
+      }
+    ]
+  },
+  {
+    "_id": 87,
+    "type": "Guide",
+    "name": "value_186",
+    "salary": 9.24,
+    "languages": [
+      "value_124"
+    ],
+    "showsPieces": [],
+    "showsExposings": [
+      {
+        "_id": 56,
+        "type": "Exposing",
+        "name": "value_134",
+        "date": [
+          "value_152",
+          "value_92"
+        ],
+        "hasPieces": [
+          "13",
+          "119",
+          "52",
+          "83"
+        ],
+        "isItinerant": true,
+        "isTemporary": true,
+        "isPermanent": true
+      }
+    ]
+  },
+  {
+    "_id": 88,
+    "type": "Guide",
+    "name": "value_76",
+    "salary": 7.23,
+    "languages": [
+      "value_20"
+    ],
+    "showsPieces": [
+      "18",
+      "27"
+    ],
+    "showsExposings": [
+      {
+        "_id": 56,
+        "type": "Exposing",
+        "name": "value_134",
+        "date": [
+          "value_152",
+          "value_92"
+        ],
+        "hasPieces": [
+          "13",
+          "119",
+          "52",
+          "83"
+        ],
+        "isItinerant": true,
+        "isTemporary": true,
+        "isPermanent": true
+      }
+    ]
+  },
+  {
+    "_id": 89,
+    "type": "Guide",
+    "name": "value_65",
+    "salary": 25.44,
+    "languages": [
+      "value_11"
+    ],
+    "showsPieces": [],
+    "showsExposings": [
+      {
+        "_id": 56,
+        "type": "Exposing",
+        "name": "value_134",
+        "date": [
+          "value_152",
+          "value_92"
+        ],
+        "hasPieces": [
+          "13",
+          "119",
+          "52",
+          "83"
+        ],
+        "isItinerant": true,
+        "isTemporary": true,
+        "isPermanent": true
+      }
+    ]
+  },
+  {
+    "_id": 90,
+    "type": "Guide",
+    "name": "value_115",
+    "salary": 57.32,
+    "languages": [
+      "value_5"
+    ],
+    "showsPieces": [],
+    "showsExposings": [
+      {
+        "_id": 56,
+        "type": "Exposing",
+        "name": "value_134",
+        "date": [
+          "value_152",
+          "value_92"
+        ],
+        "hasPieces": [
+          "13",
+          "119",
+          "52",
+          "83"
+        ],
+        "isItinerant": true,
+        "isTemporary": true,
+        "isPermanent": true
+      }
+    ]
+  },
+  {
+    "_id": 91,
+    "type": "Guide",
+    "name": "value_76",
+    "salary": 57.44,
+    "languages": [
+      "value_70"
+    ],
+    "showsPieces": [
+      "172",
+      "66"
+    ],
+    "showsExposings": [
+      {
+        "_id": 56,
+        "type": "Exposing",
+        "name": "value_134",
+        "date": [
+          "value_152",
+          "value_92"
+        ],
+        "hasPieces": [
+          "13",
+          "119",
+          "52",
+          "83"
+        ],
+        "isItinerant": true,
+        "isTemporary": true,
+        "isPermanent": true
+      }
+    ]
+  },
+  {
+    "_id": 92,
+    "type": "Director",
+    "name": "value_30",
+    "hours_per_week": 87,
+    "salary": 97.22
+  },
+  {
+    "_id": 93,
+    "type": "Director",
+    "name": "value_94",
+    "hours_per_week": 66,
+    "salary": 33.46
+  },
+  {
+    "_id": 94,
+    "type": "Director",
+    "name": "value_106",
+    "hours_per_week": 91,
+    "salary": 46.88
+  },
+  {
+    "_id": 95,
+    "type": "Director",
+    "name": "value_106",
+    "hours_per_week": 190,
+    "salary": 77.9
+  },
+  {
+    "_id": 96,
+    "type": "Director",
+    "name": "value_70",
+    "hours_per_week": 123,
+    "salary": 78.88
+  },
+  {
+    "_id": 97,
+    "type": "Director",
+    "name": "value_107",
+    "hours_per_week": 55,
+    "salary": 75.21
+  },
+  {
+    "_id": 98,
+    "type": "Museum",
+    "name": "value_24",
+    "location": "value_98",
+    "hasPieces": [
+      "37",
+      "27"
+    ]
+  },
+  {
+    "_id": 99,
+    "type": "Museum",
+    "name": "value_182",
+    "location": "value_57",
+    "hasPieces": [
+      "125",
+      "102",
+      "161"
+    ]
+  },
+  {
+    "_id": 100,
+    "type": "Museum",
+    "name": "value_73",
+    "location": "value_31",
+    "hasPieces": [
+      "52",
+      "72"
+    ]
+  },
+  {
+    "_id": 101,
+    "type": "Museum",
+    "name": "value_87",
+    "location": "value_178",
+    "hasPieces": [
+      "124",
+      "4",
+      "9",
+      "7",
+      "15"
+    ]
+  },
+  {
+    "_id": 102,
+    "type": "Museum",
+    "name": "value_138",
+    "location": "value_153",
+    "hasPieces": [
+      "163",
+      "128"
+    ]
+  },
+  {
+    "_id": 103,
+    "type": "Museum",
+    "name": "value_96",
+    "location": "value_3",
+    "hasPieces": [
+      "28",
+      "119",
+      "81",
+      "139",
+      "20"
+    ]
+  },
+  {
+    "_id": 104,
+    "type": "Museum",
+    "name": "value_85",
+    "location": "value_178",
+    "hasPieces": [
+      "91",
+      "35"
+    ]
+  },
+  {
+    "_id": 105,
+    "type": "Museum",
+    "name": "value_189",
+    "location": "value_108",
+    "foundationYear": 50,
+    "hasPieces": [
+      "141",
+      "182",
+      "81"
+    ]
+  },
+  {
+    "_id": 106,
+    "type": "Museum",
+    "name": "value_26",
+    "location": "value_97",
+    "foundationYear": 61,
+    "hasPieces": [
+      "24",
+      "105",
+      "79"
+    ]
+  },
+  {
+    "_id": 107,
+    "type": "Museum",
+    "name": "value_191",
+    "location": "value_62",
+    "foundationYear": 121,
+    "hasPieces": [
+      "133",
+      "85",
+      "50"
+    ]
+  },
+  {
+    "_id": 108,
+    "type": "Museum",
+    "name": "value_191",
+    "location": "value_171",
+    "foundationYear": 164,
+    "hasPieces": [
+      "62",
+      "91",
+      "190",
+      "29"
+    ]
+  },
+  {
+    "_id": 109,
+    "type": "Museum",
+    "name": "value_190",
+    "location": "value_14",
+    "foundationYear": 132,
+    "hasPieces": [
+      "154",
+      "35",
+      "85"
+    ]
+  },
+  {
+    "_id": 110,
+    "type": "Museum",
+    "name": "value_170",
+    "location": "value_159",
+    "foundationYear": 117,
+    "hasPieces": [
+      "99",
+      "9",
+      "44"
+    ],
+    "schedule": [
+      [
+        "value_116",
+        64,
+        164
+      ],
+      [
+        "value_126",
+        64,
+        98
+      ]
+    ]
+  },
+  {
+    "_id": 111,
+    "type": "Museum",
+    "name": "value_25",
+    "location": "value_184",
+    "foundationYear": 199,
+    "hasPieces": [
+      "144",
+      "162",
+      "139"
+    ],
+    "schedule": [
+      [
+        "value_8",
+        90,
+        120
+      ],
+      [
+        "value_172",
+        52,
+        110
+      ]
+    ]
+  },
+  {
+    "_id": 112,
+    "type": "Museum",
+    "name": "value_6",
+    "location": "value_92",
+    "foundationYear": 37,
+    "hasPieces": [
+      "88",
+      "31"
+    ],
+    "schedule": [
+      [
+        "value_128",
+        122,
+        199
+      ],
+      [
+        "value_96",
+        80,
+        181
+      ]
+    ]
+  },
+  {
+    "_id": 113,
+    "type": "Museum",
+    "name": "value_197",
+    "location": "value_172",
+    "foundationYear": 6,
+    "hasPieces": [
+      "147"
+    ],
+    "schedule": [
+      [
+        "value_160",
+        69,
+        111
+      ],
+      [
+        "value_116",
+        195,
+        172
+      ]
+    ]
+  },
+  {
+    "_id": 114,
+    "type": "Museum",
+    "name": "value_109",
+    "location": "value_100",
+    "foundationYear": 124,
+    "hasPieces": [
+      "60"
+    ],
+    "schedule": [
+      [
+        "value_42",
+        103,
+        50
+      ],
+      [
+        "value_61",
+        130,
+        91
+      ]
+    ]
+  },
+  {
+    "_id": 115,
+    "type": "Museum",
+    "name": "value_172",
+    "location": "value_80",
+    "foundationYear": 105,
+    "hasPieces": [
+      "73",
+      "91",
+      "81"
+    ],
+    "schedule": [
+      [
+        "value_11",
+        13,
+        40
+      ],
+      [
+        "value_193",
+        109,
+        78
+      ]
+    ]
+  },
+  {
+    "_id": 116,
+    "type": "Museum",
+    "name": "value_176",
+    "location": "value_126",
+    "foundationYear": 187,
+    "hasPieces": [
+      "31",
+      "48",
+      "50",
+      "136",
+      "89"
+    ],
+    "schedule": [
+      [
+        "value_118",
+        44,
+        117
+      ],
+      [
+        "value_186",
+        128,
+        129
+      ]
+    ]
+  },
+  {
+    "_id": 117,
+    "type": "Museum",
+    "name": "value_126",
+    "location": "value_3",
+    "foundationYear": 87,
+    "hasPieces": [
+      "196"
+    ],
+    "schedule": [
+      [
+        "value_62",
+        157,
+        81
+      ],
+      [
+        "value_176",
+        130,
+        144
+      ]
+    ]
+  },
+  {
+    "_id": 118,
+    "type": "Museum",
+    "name": "value_8",
+    "location": "value_67",
+    "foundationYear": 129,
+    "hasPieces": [
+      "46",
+      "78"
+    ],
+    "schedule": [
+      [
+        "value_39",
+        24,
+        21
+      ],
+      [
+        "value_128",
+        119,
+        96
+      ]
+    ],
+    "hasExposings": [
+      "86"
+    ],
+    "hasDirector": [
+      {
+        "_id": 92,
+        "type": "Director",
+        "name": "value_30",
+        "hours_per_week": 87,
+        "salary": 97.22
+      }
+    ],
+    "hasGuides": [
+      {
+        "_id": 86,
+        "type": "Guide",
+        "name": "value_106",
+        "salary": 4.37,
+        "languages": [
+          "value_168"
+        ],
+        "showsPieces": [
+          "40",
+          "2"
+        ],
+        "showsExposings": [
+          {
+            "_id": 56,
+            "type": "Exposing",
+            "name": "value_134",
+            "date": [
+              "value_152",
+              "value_92"
+            ],
+            "hasPieces": [
+              "13",
+              "119",
+              "52",
+              "83"
+            ],
+            "isItinerant": true,
+            "isTemporary": true,
+            "isPermanent": true
+          }
+        ]
+      }
+    ],
+    "hasGuards": [
+      {
+        "_id": 123,
+        "type": "Guard",
+        "name": "value_165",
+        "hours_per_week": 68,
+        "salary": 93.88
+      }
+    ]
+  },
+  {
+    "_id": 119,
+    "type": "Museum",
+    "name": "value_144",
+    "location": "value_58",
+    "foundationYear": 84,
+    "hasPieces": [
+      "189",
+      "159",
+      "119"
+    ],
+    "schedule": [
+      [
+        "value_159",
+        55,
+        108
+      ],
+      [
+        "value_157",
+        14,
+        36
+      ]
+    ],
+    "hasExposings": [
+      "181",
+      "158"
+    ],
+    "hasDirector": [
+      {
+        "_id": 92,
+        "type": "Director",
+        "name": "value_30",
+        "hours_per_week": 87,
+        "salary": 97.22
+      }
+    ],
+    "hasGuides": [
+      {
+        "_id": 86,
+        "type": "Guide",
+        "name": "value_106",
+        "salary": 4.37,
+        "languages": [
+          "value_168"
+        ],
+        "showsPieces": [
+          "40",
+          "2"
+        ],
+        "showsExposings": [
+          {
+            "_id": 56,
+            "type": "Exposing",
+            "name": "value_134",
+            "date": [
+              "value_152",
+              "value_92"
+            ],
+            "hasPieces": [
+              "13",
+              "119",
+              "52",
+              "83"
+            ],
+            "isItinerant": true,
+            "isTemporary": true,
+            "isPermanent": true
+          }
+        ]
+      }
+    ],
+    "hasGuards": [
+      {
+        "_id": 123,
+        "type": "Guard",
+        "name": "value_165",
+        "hours_per_week": 68,
+        "salary": 93.88
+      }
+    ]
+  },
+  {
+    "_id": 120,
+    "type": "Museum",
+    "name": "value_29",
+    "location": "value_185",
+    "foundationYear": 170,
+    "hasPieces": [
+      "46",
+      "150",
+      "129",
+      "41"
+    ],
+    "schedule": [
+      [
+        "value_113",
+        30,
+        156
+      ],
+      [
+        "value_189",
+        95,
+        117
+      ]
+    ],
+    "hasExposings": [
+      "195",
+      "15",
+      "164"
+    ],
+    "hasDirector": [
+      {
+        "_id": 92,
+        "type": "Director",
+        "name": "value_30",
+        "hours_per_week": 87,
+        "salary": 97.22
+      }
+    ],
+    "hasGuides": [
+      {
+        "_id": 86,
+        "type": "Guide",
+        "name": "value_106",
+        "salary": 4.37,
+        "languages": [
+          "value_168"
+        ],
+        "showsPieces": [
+          "40",
+          "2"
+        ],
+        "showsExposings": [
+          {
+            "_id": 56,
+            "type": "Exposing",
+            "name": "value_134",
+            "date": [
+              "value_152",
+              "value_92"
+            ],
+            "hasPieces": [
+              "13",
+              "119",
+              "52",
+              "83"
+            ],
+            "isItinerant": true,
+            "isTemporary": true,
+            "isPermanent": true
+          }
+        ]
+      }
+    ],
+    "hasGuards": [
+      {
+        "_id": 123,
+        "type": "Guard",
+        "name": "value_165",
+        "hours_per_week": 68,
+        "salary": 93.88
+      }
+    ]
+  },
+  {
+    "_id": 121,
+    "type": "Museum",
+    "name": "value_29",
+    "location": "value_152",
+    "foundationYear": 172,
+    "hasPieces": [
+      "60",
+      "19",
+      "37",
+      "165"
+    ],
+    "schedule": [
+      [
+        "value_98",
+        173,
+        185
+      ],
+      [
+        "value_14",
+        179,
+        41
+      ]
+    ],
+    "hasExposings": [],
+    "hasDirector": [
+      {
+        "_id": 92,
+        "type": "Director",
+        "name": "value_30",
+        "hours_per_week": 87,
+        "salary": 97.22
+      }
+    ],
+    "hasGuides": [
+      {
+        "_id": 86,
+        "type": "Guide",
+        "name": "value_106",
+        "salary": 4.37,
+        "languages": [
+          "value_168"
+        ],
+        "showsPieces": [
+          "40",
+          "2"
+        ],
+        "showsExposings": [
+          {
+            "_id": 56,
+            "type": "Exposing",
+            "name": "value_134",
+            "date": [
+              "value_152",
+              "value_92"
+            ],
+            "hasPieces": [
+              "13",
+              "119",
+              "52",
+              "83"
+            ],
+            "isItinerant": true,
+            "isTemporary": true,
+            "isPermanent": true
+          }
+        ]
+      }
+    ],
+    "hasGuards": [
+      {
+        "_id": 123,
+        "type": "Guard",
+        "name": "value_165",
+        "hours_per_week": 68,
+        "salary": 93.88
+      }
+    ]
+  },
+  {
+    "_id": 122,
+    "type": "Museum",
+    "name": "value_124",
+    "location": "value_5",
+    "foundationYear": 150,
+    "hasPieces": [
+      "15",
+      "134",
+      "148",
+      "95"
+    ],
+    "schedule": [
+      [
+        "value_22",
+        180,
+        182
+      ],
+      [
+        "value_105",
+        23,
+        56
+      ]
+    ],
+    "hasExposings": [
+      "92",
+      "93",
+      "139"
+    ],
+    "hasDirector": [
+      {
+        "_id": 92,
+        "type": "Director",
+        "name": "value_30",
+        "hours_per_week": 87,
+        "salary": 97.22
+      }
+    ],
+    "hasGuides": [
+      {
+        "_id": 86,
+        "type": "Guide",
+        "name": "value_106",
+        "salary": 4.37,
+        "languages": [
+          "value_168"
+        ],
+        "showsPieces": [
+          "40",
+          "2"
+        ],
+        "showsExposings": [
+          {
+            "_id": 56,
+            "type": "Exposing",
+            "name": "value_134",
+            "date": [
+              "value_152",
+              "value_92"
+            ],
+            "hasPieces": [
+              "13",
+              "119",
+              "52",
+              "83"
+            ],
+            "isItinerant": true,
+            "isTemporary": true,
+            "isPermanent": true
+          }
+        ]
+      }
+    ],
+    "hasGuards": [
+      {
+        "_id": 123,
+        "type": "Guard",
+        "name": "value_165",
+        "hours_per_week": 68,
+        "salary": 93.88
+      }
+    ]
+  },
+  {
+    "_id": 123,
+    "type": "Guard",
+    "name": "value_165",
+    "hours_per_week": 68,
+    "salary": 93.88
+  },
+  {
+    "_id": 124,
+    "type": "Guard",
+    "name": "value_20",
+    "hours_per_week": 137,
+    "salary": 67.42
+  },
+  {
+    "_id": 125,
+    "type": "Guard",
+    "name": "value_55",
+    "hours_per_week": 134,
+    "salary": 97.28
+  }
+]
