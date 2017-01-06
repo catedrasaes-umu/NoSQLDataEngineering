@@ -5,7 +5,8 @@
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>dsl4mongoose.ecore</foreignModel>
-  <genPackages prefix="Dsl4mongoose" disposableProviderFactory="true" ecorePackage="dsl4mongoose.ecore#/">
+  <genPackages prefix="Dsl4mongoose" basePackage="es.um.nosql.schemainference" disposableProviderFactory="true"
+      ecorePackage="dsl4mongoose.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="dsl4mongoose.ecore#//IndexKind">
       <genEnumLiterals ecoreEnumLiteral="dsl4mongoose.ecore#//IndexKind/Sorted"/>
       <genEnumLiterals ecoreEnumLiteral="dsl4mongoose.ecore#//IndexKind/Hashed"/>
