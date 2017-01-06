@@ -1,0 +1,23 @@
+ODMParameters {
+	mapper: Mongoose 
+	Entity Movie{
+		validators{(genre: 'enum (drama, comedy, children)'),
+			       (title: 'length < 40')
+		}
+		uniques {title}
+		updates {genre, title}
+		indexes {_id -> kind: Hashed, year -> kind: Sorted}
+	}
+	
+	Entity Director{
+		uniques {name}
+		updates {name}
+		indexes {_id -> kind:Hashed, year -> kind: Sorted}
+	}
+	
+	Entity Criticism {
+		validators { (color: 'enum (green, red, yellow)')}
+		uniques {journalist}
+	}
+	discriminator Entity MovieTheater{}
+}

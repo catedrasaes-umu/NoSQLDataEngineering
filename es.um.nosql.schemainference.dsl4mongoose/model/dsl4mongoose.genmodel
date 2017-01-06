@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.um.nosql.schemainference.dsl4mongoose/src"
+    modelPluginID="es.um.nosql.schemainference.dsl4mongoose" modelName="Dsl4mongoose"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>dsl4mongoose.ecore</foreignModel>
+  <genPackages prefix="Dsl4mongoose" disposableProviderFactory="true" ecorePackage="dsl4mongoose.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dsl4mongoose.ecore#//IndexKind">
+      <genEnumLiterals ecoreEnumLiteral="dsl4mongoose.ecore#//IndexKind/Sorted"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4mongoose.ecore#//IndexKind/Hashed"/>
+    </genEnums>
+    <genClasses ecoreClass="dsl4mongoose.ecore#//MongooseModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4mongoose.ecore#//MongooseModel/parameters"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4mongoose.ecore#//MongooseModel/mapper"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4mongoose.ecore#//EntityParameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4mongoose.ecore#//EntityParameter/validators"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4mongoose.ecore#//EntityParameter/uniques"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4mongoose.ecore#//EntityParameter/updates"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4mongoose.ecore#//EntityParameter/discriminator"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4mongoose.ecore#//EntityParameter/indexes"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4mongoose.ecore#//Validator">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4mongoose.ecore#//Validator/ValidatorName"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dsl4mongoose.ecore#//NamedElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4mongoose.ecore#//NamedElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="dsl4mongoose.ecore#//Unique"/>
+    <genClasses ecoreClass="dsl4mongoose.ecore#//Update"/>
+    <genClasses ecoreClass="dsl4mongoose.ecore#//Index">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4mongoose.ecore#//Index/kind"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dsl4mongoose.ecore#//FieldParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dsl4mongoose.ecore#//FieldParameter/fieldName"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

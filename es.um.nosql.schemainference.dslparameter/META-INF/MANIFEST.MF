@@ -1,0 +1,26 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: es.um.nosql.schemainference.dslparameter
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: es.um.nosql.schemainference.dslparameter; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: es.um.nosql.schemainference.dsl4mongoose,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib,
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: es.um.nosql.schemainference.dslparameter.services,
+ es.um.nosql.schemainference.dslparameter.formatting,
+ es.um.nosql.schemainference.dslparameter.parser.antlr,
+ es.um.nosql.schemainference.dslparameter.validation,
+ es.um.nosql.schemainference.dslparameter.scoping,
+ es.um.nosql.schemainference.dslparameter.parser.antlr.internal,
+ es.um.nosql.schemainference.dslparameter,
+ es.um.nosql.schemainference.dslparameter.serializer,
+ es.um.nosql.schemainference.dslparameter.generator
+Import-Package: org.apache.log4j
