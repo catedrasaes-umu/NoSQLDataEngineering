@@ -1,0 +1,244 @@
+File Movie1
+@startuml
+title <b> Movie1
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Movie{
+	<b> String _id
+	<b> String genre
+	<b> String title
+	<b> String type
+	<b> int year
+}
+
+Movie --> "[1..1] director_id" Director
+   
+Class Director {
+	<b> String _id
+	<b> String[] actor_moviesTuple
+	<b> String[] directed_moviesTuple
+	<b> String name
+	<b> String type
+	<b> String directed_movies
+}  
+Movie *--> "[1..*] criticisms" Criticisms
+Class Criticisms {
+	<b> String color
+	<b> String jornalist
+	<b> String media
+	<b> String url
+}  
+Movie *--> "[1..*] prizes" Prizes
+Class Prizes {
+	<b> String event
+	<b> String[] nameTuple
+	<b> int year
+	<b> String name
+}  
+@enduml
+File Movie2
+@startuml
+title <b> Movie2
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Movie{
+	<b> String _id
+	<b> String genre
+	<b> String title
+	<b> String type
+	<b> int year
+}
+
+Movie --> "[1..1] director_id" Director
+   
+Class Director {
+	<b> String _id
+	<b> String[] actor_moviesTuple
+	<b> String[] directed_moviesTuple
+	<b> String name
+	<b> String type
+	<b> String directed_movies
+}  
+@enduml
+File Movie3
+@startuml
+title <b> Movie3
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Movie{
+	<b> String _id
+	<b> String genre
+	<b> String title
+	<b> String type
+	<b> int year
+}
+
+Movie --> "[1..1] director_id" Director
+   
+Class Director {
+	<b> String _id
+	<b> String[] actor_moviesTuple
+	<b> String[] directed_moviesTuple
+	<b> String name
+	<b> String type
+	<b> String directed_movies
+}  
+Movie *--> "[1..*] prizes" Prizes
+Class Prizes {
+	<b> String event
+	<b> String[] nameTuple
+	<b> int year
+	<b> String name
+}  
+@enduml
+File Movie4
+@startuml
+title <b> Movie4
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Movie{
+	<b> String _id
+	<b> String genre
+	<b> String title
+	<b> String type
+	<b> int year
+}
+
+Movie --> "[1..1] director_id" Director
+   
+Class Director {
+	<b> String _id
+	<b> String[] actor_moviesTuple
+	<b> String[] directed_moviesTuple
+	<b> String name
+	<b> String type
+	<b> String directed_movies
+}  
+Movie *--> "[1..*] criticisms" Criticisms
+Class Criticisms {
+	<b> String color
+	<b> String jornalist
+	<b> String media
+	<b> String url
+}  
+@enduml
+File Movie5
+@startuml
+title <b> Movie5
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Movie{
+	<b> String _id
+	<b> String[] genreTuple
+	<b> String title
+	<b> String type
+	<b> String[] writersTuple
+	<b> int year
+}
+
+Movie --> "[1..1] director_id" Director
+   
+Class Director {
+	<b> String _id
+	<b> String[] actor_moviesTuple
+	<b> String[] directed_moviesTuple
+	<b> String name
+	<b> String type
+	<b> String directed_movies
+}  
+@enduml
+File Director1
+@startuml
+title <b> Director1
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Director{
+	<b> String _id
+	<b> String[] actor_moviesTuple
+	<b> String[] directed_moviesTuple
+	<b> String name
+	<b> String type
+}
+@enduml
+File Director2
+@startuml
+title <b> Director2
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Director{
+	<b> String _id
+	<b> String directed_movies
+	<b> String name
+	<b> String type
+}
+@enduml
