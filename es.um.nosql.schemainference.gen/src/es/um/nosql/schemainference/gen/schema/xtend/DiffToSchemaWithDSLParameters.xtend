@@ -1,5 +1,13 @@
 package es.um.nosql.schemainference.gen.schema.xtend
 
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EPackage
+import org.eclipse.emf.ecore.resource.Resource$Factory$Registry
+import org.eclipse.emf.ecore.resource.Resource$Factory
+import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
+import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl
+
+
 import es.um.nosql.schemainference.util.emf.ResourceManager
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage
 import java.io.File
@@ -23,14 +31,24 @@ import java.util.Map.Entry
 import java.util.stream.Stream
 import java.util.stream.Collectors
 
+import es.um.nosql.schemainference.dsl4mongoose.Dsl4mongoosePackage
+import es.um.nosql.schemainference.dsl4mongoose.MongooseModel
+import es.um.nosql.schemainference.dsl4mongoose.EntityParameter
+import es.um.nosql.schemainference.dsl4mongoose.Index
+import es.um.nosql.schemainference.dsl4mongoose.Unique
+import es.um.nosql.schemainference.dsl4mongoose.IndexKind
+import es.um.nosql.schemainference.dsl4mongoose.Validator
+import es.um.nosql.schemainference.dsl4mongoose.FieldParameter
+
+
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec
 import es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec
-import java.util.stream.Stream
 
-class DiffToGlobalSchemaWithOptionalFields
+
+class DiffToSchemaWithDSLParameters
 {
 	var modelName = "";
 	var whiteLine="\n"
@@ -45,7 +63,6 @@ class DiffToGlobalSchemaWithOptionalFields
     var Map<String, Aggregate>finalNotCommonAggrs=new HashMap
     var List<EntityDiffSpec> eDiffRoots=new ArrayList;
     var List<EntityDiffSpec> eDiffs=new ArrayList;
-		    
 	def static void main(String[] args) 
     {
 		if (args.length < 1)
@@ -54,13 +71,31 @@ class DiffToGlobalSchemaWithOptionalFields
 			System.exit(-1)
 		}
 
+        //val inputModel = new File(args.head)
         val inputModel = new File(args.head)
         val ResourceManager rm = new ResourceManager(EntitydifferentiationPackage.eINSTANCE,
         	NoSQLSchemaPackage.eINSTANCE)
         rm.loadResourcesAsStrings(inputModel.getPath())
         val EntityDifferentiation td = rm.resources.head.contents.head as EntityDifferentiation
         
-		val outputDir = new File(if (args.length > 1) args.get(1) else ".")
+        //val inputModel2 = new File(args.get(1)).path.toString
+        //EPackage$Registry.INSTANCE.put(Dsl4mongoosePackage.eINSTANCE.nsURI, Dsl4mongoosePackage.eINSTANCE) 
+        //Resource$Factory.Registry.INSTANCE.extensionToFactoryMap.put("xmi", new XMIResourceFactoryImpl);
+        //val resourceSet = new ResourceSetImpl
+        //val rm2 = resourceSet.getResource(URI.createURI(inputModel2), true)
+        //val MongooseModel td2 = rm2.contents.head as MongooseModel
+        
+        
+               
+        val inputModel2 = new File(args.get(1))
+        val ResourceManager rm2 = new ResourceManager(Dsl4mongoosePackage.eINSTANCE)
+        rm2.loadResourcesAsStrings(inputModel2.getPath)
+        val MongooseModel td2 = rm2.resources.head.contents.head as MongooseModel
+        
+        
+        
+        
+		val outputDir = new File(if (args.length > 1) args.get(2) else ".")
 								.toPath().resolve(td.name).toFile()
 		// Create destination directory if it does not exist
 		outputDir.mkdirs()
@@ -72,17 +107,17 @@ class DiffToGlobalSchemaWithOptionalFields
 //        val NoSQLDifferences dataModelObject = M2M.getInstance().transform(modelObject)
 //
 
-		val diff_to_js = new DiffToGlobalSchemaWithOptionalFields()
+		val diff_to_js = new DiffToSchemaWithDSLParameters
 		val outFile = outputDir.toPath().resolve(td.name + ".js").toFile()
 		val outFileWriter = new PrintStream(outFile)
 
-        outFileWriter.println(diff_to_js.generate(td))
+        outFileWriter.println(diff_to_js.generate(td, td2))
         outFileWriter.close()
         
         System.exit(0)
     }
 
-	def generate(EntityDifferentiation diff)
+	def generate(EntityDifferentiation diff, MongooseModel dslM)
 	{
 		modelName = diff.name;
 		var tf=diff
@@ -96,12 +131,12 @@ class DiffToGlobalSchemaWithOptionalFields
 	}
   '''
   «FOR entL: eDiffRoots»
-	«analyzeEnt(entL)»
+	«analyzeEnt(entL, dslM)»
   «ENDFOR»
   '''
 }	
 	
-def analyzeEnt(EntityDiffSpec ent){
+def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   var List<String> prims=new ArrayList
   var List<String> tuples=new ArrayList
   var List<Reference> refs=new ArrayList
@@ -114,6 +149,7 @@ def analyzeEnt(EntityDiffSpec ent){
   notCommonAggrs.clear
   notCommonRefs.clear
   getProps(ent)
+  
 
 '''
   «var contVer2=0»
@@ -141,8 +177,8 @@ def analyzeEnt(EntityDiffSpec ent){
     	console.log('Conectado a MongoDB');
     }
   });
-  «getAggregatesCommons(commonAggrs)»
-  «getAggregatesNotCommons(notCommonAggrs)»
+  «getAggregatesCommons(commonAggrs, dslM)»
+  «getAggregatesNotCommons(notCommonAggrs, dslM)»
   «var aV=props.filter(Attribute).toList»
   «var rV=props.filter(Reference).toList»
   «var agV=props.filter(Aggregate).toList»
@@ -191,7 +227,7 @@ def analyzeEnt(EntityDiffSpec ent){
     «var Aggregate Ag = aggV.getValue()»
     	«Ag.name»:	{type:«nameAg», required:true},
   	«ENDFOR»
-  // Not Common Properties
+  // Not Common Properties 
     «FOR at: notCommonAttrs»
       «analyzeAttribute(at.type,at.name,primsL, tuplesL,prims,tuples)»
     «ENDFOR»
@@ -299,6 +335,39 @@ def dispatch printType(Tuple tuple, String name){
   '''	«name»:	[],'''
 }
 
+def dispatch printType(Type at2, String name,  List<FieldParameter> pL) {
+  throw new UnsupportedOperationException("TODO: auto-generated method stub")
+}
+
+def dispatch printType(PrimitiveType primT, String name,  List<FieldParameter> pL){
+  var List<Validator>vts=pL.filter(Validator).toList
+  var String fieldSchema=name+": {type: "+primT.name
+  for(Validator v:vts){
+  	var String vName=v.validatorName
+    var boolean enumIs=vName.contains("enum")
+    if(enumIs){
+      var String enumVal=vName.replace('(','[').replace(')',']')
+      enumVal=enumVal.replaceFirst("enum","enum:")
+      fieldSchema+=" ,"+enumVal
+    }
+  }
+  '''«fieldSchema»},'''
+}
+
+/*
+def dispatch printType(Tuple tuple, String name,  List<FieldParameter> pL){
+    var String vt=v.validatorName
+  var boolean enumIs=vt.contains("enum")
+  if(enumIs){
+    var String enumVal=vt.replace('(','[').replace(')',']')
+    '''	«name»:	{type: [], «enumVal»}'''
+  }
+  else
+
+  '''	«name»:	[],'''
+}
+*/
+
 def dispatch analyzeAggregate(Aggregate ag, String name, List<Aggregate> AgL) {
 	  var boolean rAggreg
 	  rAggreg=reviseAggregList(AgL,name,ag)
@@ -325,7 +394,7 @@ def analyzeReference(Reference ref, String name, List<Reference> RfL) {
   rRef=analyzeRefList(RfL,name,ref)
   if (!rRef)
     {
-      RfL.add(ref)
+      RfL.add(RfL.size,ref)
       '''«printRef(ref)»'''
       //checkRef(ref)
     }
@@ -351,9 +420,9 @@ def dispatch analyzeAttribute(PrimitiveType primT, String name, List<PrimitiveTy
   var boolean rPrim
   rPrim=analyzePrimList(PrL,p,primT,name)  
   if (!rPrim){
-   	p.add(name)
-   	PrL.add(primT)
-   	'''«printType(primT,name)»'''
+   	p.add(p.size,name)
+   	PrL.add(PrL.size,primT)
+   	//'''«printType(primT,name)»'''
   }
 }
 
@@ -373,9 +442,9 @@ def dispatch analyzeAttribute(Tuple tuple, String name, List<PrimitiveType> PrL,
   rTuple=analyzeTupleList(TuL,t,tuple,name)  
   if (!rTuple)
    {
-   	t.add(name)
-   	TuL.add(tuple)
-   	'''«printType(tuple,name)»'''
+   	t.add(t.size,name)
+   	TuL.add(TuL.size,tuple)
+   	//'''«printType(tuple,name)»'''
    	//'''	«name»:	[]'''
    }
 }
@@ -390,13 +459,14 @@ def boolean analyzeTupleList(List<Tuple> tt,List<String> ts, Tuple t, String nam
     return false
 }
 
-def getAggregatesCommons(List<Aggregate> ags)'''
+def getAggregatesCommons(List<Aggregate> ags, MongooseModel dslM)'''
 «FOR p:ags» 
- «reviseProp(p,true,p.name+"Obj")»
+ 
+ «checkAggr(p,true,p.name+"Obj", dslM)»
 «ENDFOR»
 '''
 
-def getAggregatesNotCommons(List<Aggregate> ags){
+def getAggregatesNotCommons(List<Aggregate> ags, MongooseModel dslM){
   var List<Aggregate> ags2= new ArrayList
   for(a1:ags){
      var indexPosi=reviseAggregNotCommons(a1, ags2)
@@ -419,7 +489,7 @@ def getAggregatesNotCommons(List<Aggregate> ags){
   «FOR Entry<String, Aggregate> aA : finalNotCommonAggrs.entrySet()»
     «var String nameAg = aA.getKey()»
     «var Aggregate Ag = aA.getValue()»
-    «reviseProp(Ag,true, nameAg)»
+    «checkAggr(Ag,true, nameAg, dslM)»
   «ENDFOR»
 '''
 }
@@ -458,32 +528,34 @@ def boolean compareAggregates(Aggregate a1, Aggregate a2) {
   return true
 }
 
+/*
 //for abstract Property class
-def dispatch reviseProp(Property p, boolean r, String s) {
+def dispatch reviseProp(Property p, boolean r, String nameA) {
   throw new UnsupportedOperationException("TODO: auto-generated method stub")
 }
 	
-def dispatch reviseProp(Association ass, boolean r, String s)'''
-  «reviseAssociation(ass,r,s)»
+def dispatch reviseProp(Association ass, boolean r, String nameA)'''
+  «reviseAssociation(ass,r,nameA)»
 '''
 	
 //for abstract association class
-def dispatch reviseAssociation(Association ass2, boolean r, String s) {
+def dispatch reviseAssociation(Association ass2, boolean r, String nameA) {
   throw new UnsupportedOperationException("TODO: auto-generated method stub")
 }
 	
-def dispatch reviseAssociation(Aggregate ag, boolean r, String s) {
-   checkAggr(ag, r, s)
+def dispatch reviseAssociation(Aggregate ag, boolean r, String nameA) {
+   checkAggr(ag, r, nameA)
 }
-
-def checkAggr(Aggregate aggr, boolean isR, String nameA){
+* 
+*/
+def checkAggr(Aggregate aggr, boolean isR, String nameA, MongooseModel dslM){
   if(aggr.refTo!=null)
   {
-  	checkAggregate(aggr.refTo,nameA, isR)
+  	checkAggregate(aggr.refTo,nameA, isR, dslM)
   }
 }
 
-def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR){
+def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR, MongooseModel dslM){
   var List<Attribute> at=new ArrayList
   var List<Reference> ref=new ArrayList
   var List<Aggregate> aggr=new ArrayList
@@ -491,9 +563,11 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR){
   var List<String> tuples=new ArrayList
   var List<PrimitiveType> primsL=new ArrayList
   var List<Tuple> tuplesL=new ArrayList
-  
+  var EntityParameter entM 
   var List<Reference> refs=new ArrayList
   var List<Aggregate> ags=new ArrayList
+
+  
   for (EntityVersion ev:agL){
     var a=ev.properties.filter(Attribute).toList
     var r=ev.properties.filter(Reference).toList
@@ -502,7 +576,14 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR){
     concatRs(ref,r,ref)
     concatAgs(aggr,ag,aggr)
   }
-
+  
+  var Entity entAg=agL.get(0).eContainer as Entity
+  var params=dslM.parameters.toList
+  var List<FieldParameter>paramsL=new ArrayList
+  var boolean areThereParams=false
+  entM=getDslEntity(params, entAg)
+  if(entM!=null)
+    areThereParams=true
 '''
   «IF isR==true»
     var «nameAg»=	{
@@ -512,11 +593,19 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR){
   	«FOR Attribute at2: at»
   	«analyzeAttribute(at2.type,at2.name,primsL, tuplesL, prims,tuples)»
   	«ENDFOR»
+  	«FOR i:0..<primsL.size»
+  	«paramsL.clear»
+  	«IF areThereParams»«lookFor(prims.get(i),entM, paramsL)»«ENDIF»
+  	«IF !paramsL.empty»
+  	«printType(primsL.get(i),prims.get(i), paramsL)»
+  	«ELSE»«printType(primsL.get(i),prims.get(i))»
+    «ENDIF»
+  	«ENDFOR»
   	«FOR Aggregate ag: aggr»
   	«analyzeAggregate(ag,ag.name,ags)»
   	«ENDFOR»
   	«FOR Aggregate a4: ags»
-  	 «checkAggr(a4,false,a4.name)»
+  	 «checkAggr(a4,false,a4.name, dslM)»
   	«ENDFOR»
   	«FOR Reference rf2: ref»
   	«analyzeReference(rf2,rf2.name,refs)»
@@ -524,6 +613,33 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR){
       } 
 '''
 }
+
+def lookFor(String nameF,EntityParameter ep, List<FieldParameter>paramsL){
+  var List<Validator> vals=new ArrayList	
+  var List<Unique> uniqs=new ArrayList
+  var List<Index> indxs=new ArrayList
+  if(ep!=null){
+  	vals=ep.validators
+  	uniqs=ep.uniques
+  	indxs=ep.indexes
+    if(vals!=null){
+   	 for(Validator v:vals){
+  	   if(nameF==v.fieldName)
+  	     paramsL.add(v)
+   	 }//end for
+   }//end vals==null
+}//end ep==null
+}//end def
+
+def getDslEntity(List <EntityParameter> ps, Entity eT){
+  	for(e:ps){
+  		if(eT.name==e.name){
+  		  return e 
+  		}
+  	}
+	return null
+}
+
 def concatAtts(List<Attribute> atLA,List<Attribute> atLB, List<Attribute> resL){	
   var Stream<Attribute> s1=atLA.stream
   var Stream<Attribute> s2=atLB.stream
