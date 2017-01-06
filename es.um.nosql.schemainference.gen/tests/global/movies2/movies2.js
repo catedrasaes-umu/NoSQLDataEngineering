@@ -44,9 +44,11 @@ var movieSchema = new mongoose.Schema({
   	genre:	{type:String, required:true},
 	criticisms:	{type:Moviecriticisms1, required:true},
 	prizes:	{type:Movieprizes1, required:true},
-// Not Common Properties 
+//Others 
   	genres:	[],
   	writers:	[],
+  	genre:	String,
+
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes3,
   
@@ -98,9 +100,10 @@ var movieSchema = new mongoose.Schema({
   
 // add required for Movie2 entity version
   	genre:	{type:String, required:true},
-//Not Common Properties 
+//Others 
   	genres:	[],
   	writers:	[],
+  	genre:	String,
 
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
@@ -156,9 +159,10 @@ var movieSchema = new mongoose.Schema({
 // add required for Movie3 entity version
   	genre:	{type:String, required:true},
 	prizes:	{type:Movieprizes3, required:true},
-//Not Common Properties 
+//Others 
   	genres:	[],
   	writers:	[],
+  	genre:	String,
 
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
@@ -213,9 +217,10 @@ var movieSchema = new mongoose.Schema({
 // add required for Movie4 entity version
   	genre:	{type:String, required:true},
 	criticisms:	{type:Moviecriticisms4, required:true},
-//Not Common Properties 
+//Others 
   	genres:	[],
   	writers:	[],
+  	genre:	String,
 
 	criticisms:	Moviecriticisms1,
 	prizes:	Movieprizes1,
@@ -270,7 +275,9 @@ var movieSchema = new mongoose.Schema({
 // add required for Movie5 entity version
   	genres:	{type:[], required:true},
   	writers:	{type:[], required:true},
-//Not Common Properties 
+//Others 
+  	genres:	[],
+  	writers:	[],
   	genre:	String,
 
 	criticisms:	Moviecriticisms1,
@@ -326,7 +333,11 @@ var directorSchema = new mongoose.Schema({
 // add required for Director1 entity version
   	actor_movies:	{type:[], required:true},
   	directed_movies:	{type:[], required:true},
-//Not Common Properties 
+//Others 
+  	directed_movies:	[],
+  	actor_movies:	[],
+  	directed_movies:	[],
+
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
@@ -378,9 +389,10 @@ var directorSchema = new mongoose.Schema({
   
 // add required for Director2 entity version
   	directed_movies:	{type:[], required:true},
-
-//Not Common Properties 
+//Others 
+  	directed_movies:	[],
   	actor_movies:	[],
+  	directed_movies:	[],
 
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,

@@ -234,7 +234,6 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
     «FOR r2: notCommonRefs»
       «analyzeReference(r2,r2.name,refs)»
     «ENDFOR»
-  
   	«FOR Entry<String, Aggregate> aA : remainingAgs.entrySet()»
     «var String nameAg = aA.getKey()»
     «var Aggregate Ag = aA.getValue()»
@@ -340,18 +339,42 @@ def dispatch printType(Type at2, String name,  List<FieldParameter> pL) {
 }
 
 def dispatch printType(PrimitiveType primT, String name,  List<FieldParameter> pL){
-  var List<Validator>vts=pL.filter(Validator).toList
-  var String fieldSchema=name+": {type: "+primT.name
-  for(Validator v:vts){
-  	var String vName=v.validatorName
-    var boolean enumIs=vName.contains("enum")
-    if(enumIs){
-      var String enumVal=vName.replace('(','[').replace(')',']')
-      enumVal=enumVal.replaceFirst("enum","enum:")
-      fieldSchema+=" ,"+enumVal
-    }
-  }
-  '''«fieldSchema»},'''
+  var String fSchema
+  var String fieldSchema=name+": {type: "+primT.name	
+	for(FieldParameter fp:pL){
+	  fSchema=checkValidator(fp, fieldSchema)
+	}
+	'''«fSchema»},'''
+}
+
+def dispatch checkValidator(FieldParameter fp, String fieldS){
+  throw new UnsupportedOperationException("TODO: auto-generated method stub")
+}
+
+
+def dispatch String checkValidator(Validator fp, String fieldSchema){
+  var String fS=fieldSchema
+  var String vName=fp.validatorName
+  var boolean whatValIs
+  var String v
+  var String valName
+  if(whatValIs=vName.contains("enum"))
+    v="enum"	
+  else if(whatValIs=vName.contains("uniques"))
+         v="uniques"
+       else if (whatValIs=vName.contains("indexes"))
+              v="indexes"
+  println("Ahora "+v)
+  switch (v){
+    case "enum":{
+  	             valName=vName.replace('(','[').replace(')',']')
+                 valName=valName.replaceFirst("enum","enum:")
+                 fS+=" ,"+valName
+                }
+    case "uniques":fS+=" ,"+"unique:true"          
+}//end switch
+
+   return(fS)
 }
 
 /*
@@ -468,7 +491,9 @@ def getAggregatesCommons(List<Aggregate> ags, MongooseModel dslM)'''
 
 def getAggregatesNotCommons(List<Aggregate> ags, MongooseModel dslM){
   var List<Aggregate> ags2= new ArrayList
+  
   for(a1:ags){
+  	println("nC Ags: "+a1.name)
      var indexPosi=reviseAggregNotCommons(a1, ags2)
      if (indexPosi == -1){
        ags2.add(ags2.size, a1)
@@ -484,10 +509,12 @@ def getAggregatesNotCommons(List<Aggregate> ags, MongooseModel dslM){
        }
      }
   }
-
+println("finalNCAgs: "+finalNotCommonAggrs.size)
+println("Ags: "+ags.size)
 '''
   «FOR Entry<String, Aggregate> aA : finalNotCommonAggrs.entrySet()»
     «var String nameAg = aA.getKey()»
+    «println("nC Ags: "+nameAg)»
     «var Aggregate Ag = aA.getValue()»
     «checkAggr(Ag,true, nameAg, dslM)»
   «ENDFOR»
@@ -567,7 +594,7 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR, Mongoos
   var List<Reference> refs=new ArrayList
   var List<Aggregate> ags=new ArrayList
 
-  
+  println("Aggr: "+nameAg)
   for (EntityVersion ev:agL){
     var a=ev.properties.filter(Attribute).toList
     var r=ev.properties.filter(Reference).toList
@@ -584,6 +611,7 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR, Mongoos
   entM=getDslEntity(params, entAg)
   if(entM!=null)
     areThereParams=true
+ 
 '''
   «IF isR==true»
     var «nameAg»=	{
