@@ -629,6 +629,9 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR, Mongoos
   	«ELSE»«printType(primsL.get(i),prims.get(i))»
     «ENDIF»
   	«ENDFOR»
+  	«FOR j:0..<tuplesL.size»
+  	«printType(tuplesL.get(j),tuples.get(j))»
+  	«ENDFOR»
   	«FOR Aggregate ag: aggr»
   	«analyzeAggregate(ag,ag.name,ags)»
   	«ENDFOR»
