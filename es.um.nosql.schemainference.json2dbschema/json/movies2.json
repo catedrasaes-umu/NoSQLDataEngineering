@@ -94,14 +94,12 @@
         {
          "journalist": "Jordi Costa",
          "media": "El pais",
-         "url": "http://elpais.com/",
          "color": "red"
         },
         {
          "journalist": "Lou Lumenick",
          "media": "New York Post",
-         "color": "green",
-         "url": "http://nypost.com/"
+         "color": "green"
         }
       ]
     },
