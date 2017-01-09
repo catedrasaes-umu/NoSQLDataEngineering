@@ -331,7 +331,7 @@ def dispatch printType(PrimitiveType primT, String name){
 }
 
 def dispatch printType(Tuple tuple, String name){
-  '''	«name»:	[],'''
+  '''«name»:	[],'''
 }
 
 def dispatch printType(Type at2, String name,  List<FieldParameter> pL) {
@@ -340,19 +340,34 @@ def dispatch printType(Type at2, String name,  List<FieldParameter> pL) {
 
 def dispatch printType(PrimitiveType primT, String name,  List<FieldParameter> pL){
   var String fSchema
-  var String fieldSchema=name+": {type: "+primT.name	
+  var String fieldSchema=name+":\t{type: "+primT.name	
 	for(FieldParameter fp:pL){
-	  fSchema=checkValidator(fp, fieldSchema)
+	  fSchema=checkParameter(fp, fieldSchema)
 	}
 	'''«fSchema»},'''
 }
 
-def dispatch checkValidator(FieldParameter fp, String fieldS){
+def dispatch checkParameter(FieldParameter fp, String fieldS){
   throw new UnsupportedOperationException("TODO: auto-generated method stub")
 }
 
+def dispatch String checkParameter(Unique fp, String fieldSchema){
+  var String fS=fieldSchema
+  fS+=" ,"+"unique: true"          
+  return(fS)
+}
 
-def dispatch String checkValidator(Validator fp, String fieldSchema){
+def dispatch String checkParameter(Index fp, String fieldSchema){
+  var String fS=fieldSchema
+  fS+=" ,"+"index: "          
+  switch (fp.kind){
+  	case 1: fS+="true"
+  	case 0: fS+="Hashed"
+  	  }
+  return(fS)
+}
+
+def dispatch String checkParameter(Validator fp, String fieldSchema){
   var String fS=fieldSchema
   var String vName=fp.validatorName
   var boolean whatValIs
@@ -360,18 +375,12 @@ def dispatch String checkValidator(Validator fp, String fieldSchema){
   var String valName
   if(whatValIs=vName.contains("enum"))
     v="enum"	
-  else if(whatValIs=vName.contains("uniques"))
-         v="uniques"
-       else if (whatValIs=vName.contains("indexes"))
-              v="indexes"
-  println("Ahora "+v)
   switch (v){
     case "enum":{
   	             valName=vName.replace('(','[').replace(')',']')
                  valName=valName.replaceFirst("enum","enum:")
                  fS+=" ,"+valName
                 }
-    case "uniques":fS+=" ,"+"unique:true"          
 }//end switch
 
    return(fS)
@@ -493,7 +502,6 @@ def getAggregatesNotCommons(List<Aggregate> ags, MongooseModel dslM){
   var List<Aggregate> ags2= new ArrayList
   
   for(a1:ags){
-  	println("nC Ags: "+a1.name)
      var indexPosi=reviseAggregNotCommons(a1, ags2)
      if (indexPosi == -1){
        ags2.add(ags2.size, a1)
@@ -509,12 +517,9 @@ def getAggregatesNotCommons(List<Aggregate> ags, MongooseModel dslM){
        }
      }
   }
-println("finalNCAgs: "+finalNotCommonAggrs.size)
-println("Ags: "+ags.size)
 '''
   «FOR Entry<String, Aggregate> aA : finalNotCommonAggrs.entrySet()»
     «var String nameAg = aA.getKey()»
-    «println("nC Ags: "+nameAg)»
     «var Aggregate Ag = aA.getValue()»
     «checkAggr(Ag,true, nameAg, dslM)»
   «ENDFOR»
@@ -594,7 +599,6 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR, Mongoos
   var List<Reference> refs=new ArrayList
   var List<Aggregate> ags=new ArrayList
 
-  println("Aggr: "+nameAg)
   for (EntityVersion ev:agL){
     var a=ev.properties.filter(Attribute).toList
     var r=ev.properties.filter(Reference).toList
@@ -657,6 +661,12 @@ def lookFor(String nameF,EntityParameter ep, List<FieldParameter>paramsL){
    	 for(Validator v:vals){
   	   if(nameF==v.fieldName)
   	     paramsL.add(v)
+   	 }//end for
+   }//end vals==null
+   if(uniqs!=null){
+   	 for(Unique u:uniqs){
+  	   if(nameF==u.fieldName)
+  	     paramsL.add(u)
    	 }//end for
    }//end vals==null
 }//end ep==null
