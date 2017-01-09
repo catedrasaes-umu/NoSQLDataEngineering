@@ -3,10 +3,6 @@
  */
 package es.um.nosql.schemainference.nosqlimport.couchdb;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,6 +12,8 @@ import org.lightcouch.DesignDocument.MapReduce;
 
 import com.google.gson.JsonObject;
 
+import es.um.nosql.schemainference.nosqlimport.util.MapReduceSources;
+
 /**
  * @author dsevilla
  *
@@ -24,7 +22,7 @@ public class CouchDBSchemaInference
 {
 	public static void main(String[] args)
 	{
-		if (args.length == 0)
+		if (args.length < 2)
 		{
 			System.err.println("USAGE: inference dbName viewDir (a directory where the map.js and reduce.js files live.)");
 			return;
@@ -32,14 +30,9 @@ public class CouchDBSchemaInference
 
 		String dbName = args[0];
 		String dirName = args[1];
-		Path dir = new File(dirName).toPath();
-
-		Path mapFile = dir.resolve("map.js");
-		Path reduceFile = dir.resolve("reduce.js");
 
 		try {
-			String mapFunc = new String(Files.readAllBytes(mapFile));
-			String reduceFunc = new String(Files.readAllBytes(reduceFile));
+			MapReduceSources mrs = MapReduceSources.fromDir(dirName);
 
 			CouchDbProperties properties =
 					new CouchDbProperties(dbName, true, "http", "127.0.0.1", 5984,
@@ -52,8 +45,8 @@ public class CouchDBSchemaInference
 			//			System.out.println(o.toString());
 
 			MapReduce mapRedObj = new MapReduce();
-			mapRedObj.setMap(mapFunc);
-			mapRedObj.setReduce(reduceFunc);
+			mapRedObj.setMap(mrs.getMapJSCode());
+			mapRedObj.setReduce(mrs.getReduceJSCode());
 
 			List<JsonObject> list = dbClient.view("_temp_view")
 					.tempView(mapRedObj)
@@ -76,7 +69,7 @@ public class CouchDBSchemaInference
 				result.add(obj);
 			}
 
-		} catch (IOException e) {
+		} catch (Exception e) {
 			System.err.println("Cannot access map.js and/or reduce.js files.");
 			e.printStackTrace();
 		}

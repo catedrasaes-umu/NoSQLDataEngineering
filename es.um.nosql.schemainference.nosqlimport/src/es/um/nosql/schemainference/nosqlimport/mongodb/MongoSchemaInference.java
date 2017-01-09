@@ -3,15 +3,15 @@
  */
 package es.um.nosql.schemainference.nosqlimport.mongodb;
 
-import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.util.Optional;
 
 import org.bson.Document;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MapReduceIterable;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
+
+import es.um.nosql.schemainference.nosqlimport.util.MapReduceSources;
 
 /**
  * @author dsevilla
@@ -27,13 +27,14 @@ public class MongoSchemaInference
 			return;
 		}
 
-		String dirName = args[0];
-		Path dir = new File(dirName).toPath();
-
-		MongoClient mongo;
-
+		Optional<MongoClient> mongoRef = Optional.empty();
+		
 		try {
-			mongo = new MongoClient("localhost", 27017);
+			String dirName = args[0];
+			MapReduceSources mrs = MapReduceSources.fromDir(dirName);
+
+			mongoRef = Optional.of(new MongoClient("localhost", 27017));
+			MongoClient mongo = mongoRef.get();
 			MongoDatabase db = mongo.getDatabase("library");
 
 			MongoCollection<Document> books = db.getCollection("books");
@@ -63,16 +64,8 @@ public class MongoSchemaInference
 			book.put("pages", 150);
 			books.insertOne(book);
 
-			// Read the map file
-			Path mapFile = dir.resolve("map.js");
-			String mapFunction = new String(Files.readAllBytes(mapFile));
-
-			// Read the reduce file
-			Path reduceFile = dir.resolve("reduce.js");
-			String reduceFunction = new String(Files.readAllBytes(reduceFile));
-
 			MapReduceIterable<Document> cmd =
-					books.mapReduce(mapFunction, reduceFunction);
+					books.mapReduce(mrs.getMapJSCode(), mrs.getReduceJSCode());
 
 			for (Document o : cmd) {
 				System.out.println(o.toString());
@@ -80,6 +73,8 @@ public class MongoSchemaInference
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		} finally {
+			mongoRef.ifPresent(mongo -> mongo.close());
 		}
 	}
 }
