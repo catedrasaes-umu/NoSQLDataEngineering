@@ -12,14 +12,14 @@ mongoose.connect(url, function(error){
   }
 });
 var Moviecriticisms1=	{
-	color: {type: String ,enum: [green, red, yellow]},
-	journalist:	String,
+	color:	{type: String ,enum: [green, red, yellow]},
+	journalist:	{type: String ,unique: true},
 	media:	String,
 	url:	String,
     } 
 var Moviecriticisms4=	{
-	color: {type: String ,enum: [green, red, yellow]},
-	journalist:	String,
+	color:	{type: String ,enum: [green, red, yellow]},
+	journalist:	{type: String ,unique: true},
 	media:	String,
     } 
 var Movieprizes1=	{
@@ -67,14 +67,14 @@ mongoose.connect(url, function(error){
   }
 });
 var Moviecriticisms1=	{
-	color: {type: String ,enum: [green, red, yellow]},
-	journalist:	String,
+	color:	{type: String ,enum: [green, red, yellow]},
+	journalist:	{type: String ,unique: true},
 	media:	String,
 	url:	String,
     } 
 var Moviecriticisms4=	{
-	color: {type: String ,enum: [green, red, yellow]},
-	journalist:	String,
+	color:	{type: String ,enum: [green, red, yellow]},
+	journalist:	{type: String ,unique: true},
 	media:	String,
     } 
 var Movieprizes1=	{
@@ -121,27 +121,23 @@ mongoose.connect(url, function(error){
   	console.log('Conectado a MongoDB');
   }
 });
-nC Ags: Moviecriticisms1
 var Moviecriticisms1=	{
-	color: {type: String ,enum: [green, red, yellow]},
-	journalist:	String,
+	color:	{type: String ,enum: [green, red, yellow]},
+	journalist:	{type: String ,unique: true},
 	media:	String,
 	url:	String,
     } 
-nC Ags: Moviecriticisms4
 var Moviecriticisms4=	{
-	color: {type: String ,enum: [green, red, yellow]},
-	journalist:	String,
+	color:	{type: String ,enum: [green, red, yellow]},
+	journalist:	{type: String ,unique: true},
 	media:	String,
     } 
-nC Ags: Movieprizes1
 var Movieprizes1=	{
 	event:	String,
 	year:	Number,
 	name:	String,
-		name:	[],
+	name:	[],
     } 
-nC Ags: Movieprizes3
 var Movieprizes3=	{
 	event:	String,
 	name:	String,
@@ -180,27 +176,23 @@ mongoose.connect(url, function(error){
   	console.log('Conectado a MongoDB');
   }
 });
-nC Ags: Moviecriticisms1
 var Moviecriticisms1=	{
-	color: {type: String ,enum: [green, red, yellow]},
-	journalist:	String,
+	color:	{type: String ,enum: [green, red, yellow]},
+	journalist:	{type: String ,unique: true},
 	media:	String,
 	url:	String,
     } 
-nC Ags: Moviecriticisms4
 var Moviecriticisms4=	{
-	color: {type: String ,enum: [green, red, yellow]},
-	journalist:	String,
+	color:	{type: String ,enum: [green, red, yellow]},
+	journalist:	{type: String ,unique: true},
 	media:	String,
     } 
-nC Ags: Movieprizes1
 var Movieprizes1=	{
 	event:	String,
 	year:	Number,
 	name:	String,
-		name:	[],
+	name:	[],
     } 
-nC Ags: Movieprizes3
 var Movieprizes3=	{
 	event:	String,
 	name:	String,
@@ -239,27 +231,23 @@ mongoose.connect(url, function(error){
   	console.log('Conectado a MongoDB');
   }
 });
-nC Ags: Moviecriticisms1
 var Moviecriticisms1=	{
-	color: {type: String ,enum: [green, red, yellow]},
-	journalist:	String,
+	color:	{type: String ,enum: [green, red, yellow]},
+	journalist:	{type: String ,unique: true},
 	media:	String,
 	url:	String,
     } 
-nC Ags: Moviecriticisms4
 var Moviecriticisms4=	{
-	color: {type: String ,enum: [green, red, yellow]},
-	journalist:	String,
+	color:	{type: String ,enum: [green, red, yellow]},
+	journalist:	{type: String ,unique: true},
 	media:	String,
     } 
-nC Ags: Movieprizes1
 var Movieprizes1=	{
 	event:	String,
 	year:	Number,
 	name:	String,
-		name:	[],
+	name:	[],
     } 
-nC Ags: Movieprizes3
 var Movieprizes3=	{
 	event:	String,
 	name:	String,
@@ -300,27 +288,23 @@ mongoose.connect(url, function(error){
   	console.log('Conectado a MongoDB');
   }
 });
-nC Ags: Moviecriticisms1
 var Moviecriticisms1=	{
-	color: {type: String ,enum: [green, red, yellow]},
-	journalist:	String,
+	color:	{type: String ,enum: [green, red, yellow]},
+	journalist:	{type: String ,unique: true},
 	media:	String,
 	url:	String,
     } 
-nC Ags: Moviecriticisms4
 var Moviecriticisms4=	{
-	color: {type: String ,enum: [green, red, yellow]},
-	journalist:	String,
+	color:	{type: String ,enum: [green, red, yellow]},
+	journalist:	{type: String ,unique: true},
 	media:	String,
     } 
-nC Ags: Movieprizes1
 var Movieprizes1=	{
 	event:	String,
 	year:	Number,
 	name:	String,
-		name:	[],
+	name:	[],
     } 
-nC Ags: Movieprizes3
 var Movieprizes3=	{
 	event:	String,
 	name:	String,
@@ -358,27 +342,23 @@ mongoose.connect(url, function(error){
   	console.log('Conectado a MongoDB');
   }
 });
-nC Ags: Moviecriticisms1
 var Moviecriticisms1=	{
-	color: {type: String ,enum: [green, red, yellow]},
-	journalist:	String,
+	color:	{type: String ,enum: [green, red, yellow]},
+	journalist:	{type: String ,unique: true},
 	media:	String,
 	url:	String,
     } 
-nC Ags: Moviecriticisms4
 var Moviecriticisms4=	{
-	color: {type: String ,enum: [green, red, yellow]},
-	journalist:	String,
+	color:	{type: String ,enum: [green, red, yellow]},
+	journalist:	{type: String ,unique: true},
 	media:	String,
     } 
-nC Ags: Movieprizes1
 var Movieprizes1=	{
 	event:	String,
 	year:	Number,
 	name:	String,
-		name:	[],
+	name:	[],
     } 
-nC Ags: Movieprizes3
 var Movieprizes3=	{
 	event:	String,
 	name:	String,
