@@ -374,13 +374,20 @@ def dispatch String checkParameter(Validator fp, String fieldSchema){
   var String v
   var String valName
   if(whatValIs=vName.contains("enum"))
-    v="enum"	
+    v="enum"
+  else if(whatValIs=vName.contains("length"))
+         v="length"
   switch (v){
     case "enum":{
   	             valName=vName.replace('(','[').replace(')',']')
                  valName=valName.replaceFirst("enum","enum:")
                  fS+=" ,"+valName
                 }
+    case "length":{
+    	            var int i=vName.indexOf('<')
+    	            var String lValue=vName.substring(i+2,vName.length)
+    	            fS+=" ,"+"maxlength: "+lValue          
+                  }
 }//end switch
 
    return(fS)
