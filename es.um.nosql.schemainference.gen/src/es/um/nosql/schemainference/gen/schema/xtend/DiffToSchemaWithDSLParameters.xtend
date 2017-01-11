@@ -149,8 +149,15 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   notCommonAggrs.clear
   notCommonRefs.clear
   getProps(ent)
-  
-
+  var EntityParameter entM 
+  var params=dslM.parameters.toList
+  var Entity entSch=ent.entity
+  var List<FieldParameter>paramsL=new ArrayList
+  var boolean areThereParams=false
+  entM=getDslEntity(params, entSch)
+  if(entM!=null)
+    areThereParams=true
+ 
 '''
   «var contVer2=0»
   «FOR entVer: ent.entityVersionProps»	
@@ -206,13 +213,17 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   var «ent.entity.name.toFirstLower»Schema = new mongoose.Schema({
   // Common Properties	
     «FOR ac: commonAttrs»
-      «printAttribute(ac,ac.name,true)»
-    «ENDFOR»
-    «FOR rc: commonRefs»
-      «printRef(rc,true)»
+    «paramsL.clear»
+    «IF areThereParams»«lookFor(ac.name,entM, paramsL)»«ENDIF»
+    «IF !paramsL.empty»	«printAttribute(ac,ac.name, true, paramsL)»
+    «ELSE»«printAttribute(ac,ac.name,true)»
+    «ENDIF»
+   	«ENDFOR»
+  	«FOR rc: commonRefs»
+  	 «printRef(rc,true)»
     «ENDFOR»
     «FOR agC:commonAggrs»
-     «tab»«agC.name»:	{type:«agC.name»Obj, required:true},
+     «agC.name»:	{type:«agC.name»Obj, required:true},
     «ENDFOR»
     
   // add required for «ent.entity.name.toFirstUpper»«entVer.entityVersion.versionId» entity version
@@ -227,6 +238,7 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
     «var Aggregate Ag = aggV.getValue()»
     	«Ag.name»:	{type:«nameAg», required:true},
   	«ENDFOR»
+  	
   // Not Common Properties 
     «FOR at: notCommonAttrs»
       «analyzeAttribute(at.type,at.name,primsL, tuplesL,prims,tuples)»
@@ -293,11 +305,12 @@ var commonPropsAux=ent.commonProps
 }
 
 def dispatch printRef(Reference r, boolean isC){
-  '''	«r.name»«IF r.upperBound==-1»:	{type: {}, required: true},«ELSE»:	{type: String, required: true},«ENDIF»'''
+'''«r.name»«IF r.upperBound==-1»:	{type: {}, required: true, ref: «r.refTo.name»},
+«ELSE»:	{type: String, required: true, ref: «r.refTo.name»},«ENDIF»'''
 }
 
 def dispatch printRef(Reference r){
-  '''	«r.name»«IF r.upperBound==-1»:	{},«ELSE»:	String,«ENDIF»'''
+  '''	«r.name»«IF r.upperBound==-1»:	{type:{}, ref: «r.refTo.name»}«ELSE»:	{type:String, ref: «r.refTo.name»}«ENDIF»'''
 }
 
 
@@ -310,13 +323,41 @@ def dispatch printType(Type at2, String name, boolean isC) {
 }
 
 def dispatch printType(PrimitiveType primT, String name, boolean isC){
-  '''	«name»:	{type:«primT.name», required:true},'''
+  '''	«name»:	{type: «primT.name», required: true},'''
 }
 
 def dispatch printType(Tuple tuple, String name, boolean isC){
   '''	«name»:	{type:[], required:true},'''
 }
 
+
+def dispatch printAttribute(Attribute a, String name, boolean isC, List<FieldParameter> pL)'''
+  «printType(a.type,name, isC, pL)»
+'''
+
+def dispatch printType(Type at2, String name, boolean isC, List<FieldParameter> pL) {
+  throw new UnsupportedOperationException("TODO: auto-generated method stub")
+}
+
+def dispatch printType(PrimitiveType primT, String name, boolean isC, List<FieldParameter> pL){
+  var String fSchema
+  var String fieldSchema=name+":\t{type: "+primT.name+", required:true"	
+	for(FieldParameter fp:pL){
+	  fSchema=checkParameter(fp, fieldSchema)
+	  fieldSchema=fSchema
+	}
+	'''«fSchema»},'''
+}
+
+def dispatch printType(Tuple tuple, String name, boolean isC, List<FieldParameter> pL){
+  var String fSchema
+  var String fieldSchema=name+":\t{type: "+"[], required:true"	
+	for(FieldParameter fp:pL){
+	  fSchema=checkParameter(fp, fieldSchema)
+	  fieldSchema=fSchema
+	}
+	'''«fSchema»},'''
+}
 
 def dispatch printAttribute(Attribute a, String name)'''
   «printType(a.type,name)»
@@ -331,14 +372,53 @@ def dispatch printType(PrimitiveType primT, String name){
 }
 
 def dispatch printType(Tuple tuple, String name){
-  '''«name»:	[],'''
+  '''	«name»:	[],'''
 }
 
-def dispatch printType(Type at2, String name,  List<FieldParameter> pL) {
+def dispatch printAttribute(Attribute a, String name, List<FieldParameter> pL)'''
+  «printType(a.type,name, pL)»
+'''
+
+def dispatch printType(Type at2, String name, List<FieldParameter> pL) {
   throw new UnsupportedOperationException("TODO: auto-generated method stub")
 }
 
-def dispatch printType(PrimitiveType primT, String name,  List<FieldParameter> pL){
+def dispatch printType(PrimitiveType primT, String name, List<FieldParameter> pL){
+  var String fSchema
+  var String fieldSchema=name+":\t{type: "+primT.name	
+	for(FieldParameter fp:pL){
+	  fSchema=checkParameter(fp, fieldSchema)
+	  fieldSchema=fSchema
+	}
+	'''«fSchema»},'''
+}
+
+def dispatch printType(Tuple tuple, String name, List<FieldParameter> pL){
+  var String fSchema
+  var String fieldSchema=name+":\t{type: "+"[]"	
+	for(FieldParameter fp:pL){
+	  fSchema=checkParameter(fp, fieldSchema)
+	  fieldSchema=fSchema
+	}
+	'''«fSchema»},'''
+}
+
+def dispatch printTypeAg(Type at2, String name,  List<FieldParameter> pL) {
+  throw new UnsupportedOperationException("TODO: auto-generated method stub")
+}
+
+def dispatch printTypeAg(Tuple t, String name,  List<FieldParameter> pL){
+  var String fSchema
+  var String fieldSchema=name+":\t{type: "+"[]"	
+	for(FieldParameter fp:pL){
+	  fSchema=checkParameter(fp, fieldSchema)
+	  fieldSchema=fSchema
+	}
+	'''«fSchema»},'''
+}
+
+
+def dispatch printTypeAg(PrimitiveType primT, String name,  List<FieldParameter> pL){
   var String fSchema
   var String fieldSchema=name+":\t{type: "+primT.name	
 	for(FieldParameter fp:pL){
@@ -353,40 +433,43 @@ def dispatch checkParameter(FieldParameter fp, String fieldS){
 
 def dispatch String checkParameter(Unique fp, String fieldSchema){
   var String fS=fieldSchema
-  fS+=" ,"+"unique: true"          
+  fS+=","+" unique: true"          
   return(fS)
 }
 
 def dispatch String checkParameter(Index fp, String fieldSchema){
   var String fS=fieldSchema
-  fS+=" ,"+"index: "          
-  switch (fp.kind){
-  	case 1: fS+="true"
-  	case 0: fS+="Hashed"
+  fS+=","+" index: "   
+  println("Index: "+fS)  
+  var String kind=fp.kind.toString     
+  switch (kind){
+  	case "Sorted": fS+="true"
+  	case "Hashed": fS+="Hashed"
   	  }
+  	  println("Index: "+fS)
   return(fS)
 }
 
+//In here it define validators
 def dispatch String checkParameter(Validator fp, String fieldSchema){
   var String fS=fieldSchema
   var String vName=fp.validatorName
-  var boolean whatValIs
   var String v
   var String valName
-  if(whatValIs=vName.contains("enum"))
+  if(vName.contains("enum"))
     v="enum"
-  else if(whatValIs=vName.contains("length"))
+  else if(vName.contains("length"))
          v="length"
   switch (v){
     case "enum":{
   	             valName=vName.replace('(','[').replace(')',']')
                  valName=valName.replaceFirst("enum","enum:")
-                 fS+=" ,"+valName
+                 fS+=", "+valName
                 }
     case "length":{
     	            var int i=vName.indexOf('<')
     	            var String lValue=vName.substring(i+2,vName.length)
-    	            fS+=" ,"+"maxlength: "+lValue          
+    	            fS+=","+" maxlength: "+lValue
                   }
 }//end switch
 
@@ -636,12 +719,12 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR, Mongoos
   	«paramsL.clear»
   	«IF areThereParams»«lookFor(prims.get(i),entM, paramsL)»«ENDIF»
   	«IF !paramsL.empty»
-  	«printType(primsL.get(i),prims.get(i), paramsL)»
+  	«printTypeAg(primsL.get(i),prims.get(i), paramsL)»
   	«ELSE»«printType(primsL.get(i),prims.get(i))»
     «ENDIF»
   	«ENDFOR»
   	«FOR j:0..<tuplesL.size»
-  	«printType(tuplesL.get(j),tuples.get(j))»
+  «printType(tuplesL.get(j),tuples.get(j))»
   	«ENDFOR»
   	«FOR Aggregate ag: aggr»
   	«analyzeAggregate(ag,ag.name,ags)»
@@ -675,7 +758,13 @@ def lookFor(String nameF,EntityParameter ep, List<FieldParameter>paramsL){
   	   if(nameF==u.fieldName)
   	     paramsL.add(u)
    	 }//end for
-   }//end vals==null
+   }//end uniqs==null
+   if(indxs!=null){
+   	 for(Index ind:indxs){
+  	   if(nameF==ind.fieldName)
+  	     paramsL.add(ind)
+   	 }//end for
+   }//end indxs==null
 }//end ep==null
 }//end def
 

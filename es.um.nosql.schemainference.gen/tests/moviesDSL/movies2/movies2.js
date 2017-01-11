@@ -12,14 +12,14 @@ mongoose.connect(url, function(error){
   }
 });
 var Moviecriticisms1=	{
-	color:	{type: String ,enum: [green, red, yellow]},
-	journalist:	{type: String ,unique: true},
+	color:	{type: String, enum: [green, red, yellow]},
+	journalist:	{type: String, unique: true},
 	media:	String,
 	url:	String,
     } 
 var Moviecriticisms4=	{
-	color:	{type: String ,enum: [green, red, yellow]},
-	journalist:	{type: String ,unique: true},
+	color:	{type: String, enum: [green, red, yellow]},
+	journalist:	{type: String, unique: true},
 	media:	String,
     } 
 var Movieprizes1=	{
@@ -35,16 +35,17 @@ var Movieprizes3=	{
     } 
 var movieSchema = new mongoose.Schema({
 // Common Properties	
-  	title:	{type:String, required:true},
-  	_id:	{type:String, required:true},
-  	year:	{type:Number, required:true},
-  	type:	{type:String, required:true},
-  	director_id:	{type: String, required: true},
+  	title:	{type: String, required:true, maxlength: 40, unique: true},
+  	_id:	{type: String, required:true, index: Hashed},
+  	year:	{type: Number, required:true, index: true},
+  	type:	{type: String, required: true},
+	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie1 entity version
-  	genre:	{type:String, required:true},
+  	genre:	{type: String, required: true},
 	criticisms:	{type:Moviecriticisms1, required:true},
 	prizes:	{type:Movieprizes1, required:true},
+	
 // Not Common Properties 
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes3,
@@ -67,14 +68,14 @@ mongoose.connect(url, function(error){
   }
 });
 var Moviecriticisms1=	{
-	color:	{type: String ,enum: [green, red, yellow]},
-	journalist:	{type: String ,unique: true},
+	color:	{type: String, enum: [green, red, yellow]},
+	journalist:	{type: String, unique: true},
 	media:	String,
 	url:	String,
     } 
 var Moviecriticisms4=	{
-	color:	{type: String ,enum: [green, red, yellow]},
-	journalist:	{type: String ,unique: true},
+	color:	{type: String, enum: [green, red, yellow]},
+	journalist:	{type: String, unique: true},
 	media:	String,
     } 
 var Movieprizes1=	{
@@ -90,14 +91,15 @@ var Movieprizes3=	{
     } 
 var movieSchema = new mongoose.Schema({
 // Common Properties	
-  	title:	{type:String, required:true},
-  	_id:	{type:String, required:true},
-  	year:	{type:Number, required:true},
-  	type:	{type:String, required:true},
-  	director_id:	{type: String, required: true},
+  	title:	{type: String, required:true, maxlength: 40, unique: true},
+  	_id:	{type: String, required:true, index: Hashed},
+  	year:	{type: Number, required:true, index: true},
+  	type:	{type: String, required: true},
+	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie2 entity version
-  	genre:	{type:String, required:true},
+  	genre:	{type: String, required: true},
+	
 // Not Common Properties 
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
@@ -122,14 +124,14 @@ mongoose.connect(url, function(error){
   }
 });
 var Moviecriticisms1=	{
-	color:	{type: String ,enum: [green, red, yellow]},
-	journalist:	{type: String ,unique: true},
+	color:	{type: String, enum: [green, red, yellow]},
+	journalist:	{type: String, unique: true},
 	media:	String,
 	url:	String,
     } 
 var Moviecriticisms4=	{
-	color:	{type: String ,enum: [green, red, yellow]},
-	journalist:	{type: String ,unique: true},
+	color:	{type: String, enum: [green, red, yellow]},
+	journalist:	{type: String, unique: true},
 	media:	String,
     } 
 var Movieprizes1=	{
@@ -145,15 +147,16 @@ var Movieprizes3=	{
     } 
 var movieSchema = new mongoose.Schema({
 // Common Properties	
-  	title:	{type:String, required:true},
-  	_id:	{type:String, required:true},
-  	year:	{type:Number, required:true},
-  	type:	{type:String, required:true},
-  	director_id:	{type: String, required: true},
+  	title:	{type: String, required:true, maxlength: 40, unique: true},
+  	_id:	{type: String, required:true, index: Hashed},
+  	year:	{type: Number, required:true, index: true},
+  	type:	{type: String, required: true},
+	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie3 entity version
-  	genre:	{type:String, required:true},
+  	genre:	{type: String, required: true},
 	prizes:	{type:Movieprizes3, required:true},
+	
 // Not Common Properties 
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
@@ -177,14 +180,14 @@ mongoose.connect(url, function(error){
   }
 });
 var Moviecriticisms1=	{
-	color:	{type: String ,enum: [green, red, yellow]},
-	journalist:	{type: String ,unique: true},
+	color:	{type: String, enum: [green, red, yellow]},
+	journalist:	{type: String, unique: true},
 	media:	String,
 	url:	String,
     } 
 var Moviecriticisms4=	{
-	color:	{type: String ,enum: [green, red, yellow]},
-	journalist:	{type: String ,unique: true},
+	color:	{type: String, enum: [green, red, yellow]},
+	journalist:	{type: String, unique: true},
 	media:	String,
     } 
 var Movieprizes1=	{
@@ -200,15 +203,16 @@ var Movieprizes3=	{
     } 
 var movieSchema = new mongoose.Schema({
 // Common Properties	
-  	title:	{type:String, required:true},
-  	_id:	{type:String, required:true},
-  	year:	{type:Number, required:true},
-  	type:	{type:String, required:true},
-  	director_id:	{type: String, required: true},
+  	title:	{type: String, required:true, maxlength: 40, unique: true},
+  	_id:	{type: String, required:true, index: Hashed},
+  	year:	{type: Number, required:true, index: true},
+  	type:	{type: String, required: true},
+	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie4 entity version
-  	genre:	{type:String, required:true},
+  	genre:	{type: String, required: true},
 	criticisms:	{type:Moviecriticisms4, required:true},
+	
 // Not Common Properties 
 	criticisms:	Moviecriticisms1,
 	prizes:	Movieprizes1,
@@ -232,14 +236,14 @@ mongoose.connect(url, function(error){
   }
 });
 var Moviecriticisms1=	{
-	color:	{type: String ,enum: [green, red, yellow]},
-	journalist:	{type: String ,unique: true},
+	color:	{type: String, enum: [green, red, yellow]},
+	journalist:	{type: String, unique: true},
 	media:	String,
 	url:	String,
     } 
 var Moviecriticisms4=	{
-	color:	{type: String ,enum: [green, red, yellow]},
-	journalist:	{type: String ,unique: true},
+	color:	{type: String, enum: [green, red, yellow]},
+	journalist:	{type: String, unique: true},
 	media:	String,
     } 
 var Movieprizes1=	{
@@ -255,15 +259,16 @@ var Movieprizes3=	{
     } 
 var movieSchema = new mongoose.Schema({
 // Common Properties	
-  	title:	{type:String, required:true},
-  	_id:	{type:String, required:true},
-  	year:	{type:Number, required:true},
-  	type:	{type:String, required:true},
-  	director_id:	{type: String, required: true},
+  	title:	{type: String, required:true, maxlength: 40, unique: true},
+  	_id:	{type: String, required:true, index: Hashed},
+  	year:	{type: Number, required:true, index: true},
+  	type:	{type: String, required: true},
+	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie5 entity version
   	genres:	{type:[], required:true},
   	writers:	{type:[], required:true},
+	
 // Not Common Properties 
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
@@ -289,14 +294,14 @@ mongoose.connect(url, function(error){
   }
 });
 var Moviecriticisms1=	{
-	color:	{type: String ,enum: [green, red, yellow]},
-	journalist:	{type: String ,unique: true},
+	color:	{type: String, enum: [green, red, yellow]},
+	journalist:	{type: String, unique: true},
 	media:	String,
 	url:	String,
     } 
 var Moviecriticisms4=	{
-	color:	{type: String ,enum: [green, red, yellow]},
-	journalist:	{type: String ,unique: true},
+	color:	{type: String, enum: [green, red, yellow]},
+	journalist:	{type: String, unique: true},
 	media:	String,
     } 
 var Movieprizes1=	{
@@ -312,13 +317,14 @@ var Movieprizes3=	{
     } 
 var directorSchema = new mongoose.Schema({
 // Common Properties	
-  	_id:	{type:String, required:true},
-  	name:	{type:String, required:true},
-  	type:	{type:String, required:true},
+  	_id:	{type: String, required:true, index: Hashed},
+  	name:	{type: String, required:true, unique: true},
+  	type:	{type: String, required: true},
   
 // add required for Director1 entity version
   	actor_movies:	{type:[], required:true},
   	directed_movies:	{type:[], required:true},
+	
 // Not Common Properties 
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
@@ -343,14 +349,14 @@ mongoose.connect(url, function(error){
   }
 });
 var Moviecriticisms1=	{
-	color:	{type: String ,enum: [green, red, yellow]},
-	journalist:	{type: String ,unique: true},
+	color:	{type: String, enum: [green, red, yellow]},
+	journalist:	{type: String, unique: true},
 	media:	String,
 	url:	String,
     } 
 var Moviecriticisms4=	{
-	color:	{type: String ,enum: [green, red, yellow]},
-	journalist:	{type: String ,unique: true},
+	color:	{type: String, enum: [green, red, yellow]},
+	journalist:	{type: String, unique: true},
 	media:	String,
     } 
 var Movieprizes1=	{
@@ -366,12 +372,13 @@ var Movieprizes3=	{
     } 
 var directorSchema = new mongoose.Schema({
 // Common Properties	
-  	_id:	{type:String, required:true},
-  	name:	{type:String, required:true},
-  	type:	{type:String, required:true},
+  	_id:	{type: String, required:true, index: Hashed},
+  	name:	{type: String, required:true, unique: true},
+  	type:	{type: String, required: true},
   
 // add required for Director2 entity version
   	directed_movies:	{type:[], required:true},
+	
 // Not Common Properties 
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
