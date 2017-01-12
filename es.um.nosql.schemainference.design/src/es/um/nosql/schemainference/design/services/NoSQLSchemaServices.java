@@ -40,7 +40,6 @@ public class NoSQLSchemaServices
 
 		result.sort(new Comparator<Entity>()
 		{
-			@Override
 			public int compare(Entity e0, Entity e1)
 			{
 				return e0.getName().compareTo(e1.getName());
@@ -56,7 +55,6 @@ public class NoSQLSchemaServices
 
 		ECollections.sort(model.getEntities(), new Comparator<Entity>()
 		{
-			@Override
 			public int compare(Entity e0, Entity e1)
 			{
 				return e0.getName().compareTo(e1.getName());
@@ -75,7 +73,6 @@ public class NoSQLSchemaServices
 		List<EntityVersion> result = SchemaCollector.getEVersionsFromSchema(root);
 		result.sort(new Comparator<EntityVersion>()
 		{
-			@Override
 			public int compare(EntityVersion ev0, EntityVersion ev1)
 			{
 				return ev0.getVersionId() > ev1.getVersionId() ? 1 : -1;
@@ -83,6 +80,21 @@ public class NoSQLSchemaServices
 		});
 
 		return result;
+/*
+		Cache<EntityVersion, List<EntityVersion>> rootsCache = Caffeine.newBuilder().build();
+		return rootsCache.get(root,
+				ev ->
+				{
+					List<EntityVersion> result = SchemaCollector.getEVersionsFromSchema(ev);
+					result.sort(new Comparator<EntityVersion>()
+					{
+						public int compare(EntityVersion ev0, EntityVersion ev1)
+						{
+							return ev0.getVersionId() > ev1.getVersionId() ? 1 : -1;
+						}
+					});
+					return result;
+				});*/
 	}
 
 	public List<Entity> getEntitiesFromSchema(EntityVersion root)
@@ -90,7 +102,6 @@ public class NoSQLSchemaServices
 		List<Entity> result = SchemaCollector.getEntitiesFromSchema(root);
 		result.sort(new Comparator<Entity>()
 		{
-			@Override
 			public int compare(Entity e0, Entity e1)
 			{
 				return e0.getName().compareTo(e1.getName());
@@ -136,7 +147,6 @@ public class NoSQLSchemaServices
 
 		ECollections.sort(model.getEntities(), new Comparator<Entity>()
 		{
-			@Override
 			public int compare(Entity e0, Entity e1)
 			{
 				return e0.getName().compareTo(e1.getName());
