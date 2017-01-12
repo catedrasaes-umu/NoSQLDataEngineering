@@ -148,6 +148,8 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   notCommonAttrs.clear
   notCommonAggrs.clear
   notCommonRefs.clear
+  finalNotCommonAggrs.clear
+  
   getProps(ent)
   var EntityParameter entM 
   var params=dslM.parameters.toList
@@ -251,11 +253,9 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
     «var Aggregate Ag = aA.getValue()»
     	«Ag.name»:	«nameAg»,
   	«ENDFOR»
-    
   },{collection:'«ent.entity.name.toFirstLower»'});
   
   var «ent.entity.name.toFirstUpper» = mongoose.model('«ent.entity.name.toFirstUpper»',«ent.entity.name.toFirstLower»Schema);
-
   «ENDFOR»
   
 '''

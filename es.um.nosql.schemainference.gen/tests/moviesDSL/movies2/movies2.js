@@ -49,11 +49,9 @@ var movieSchema = new mongoose.Schema({
 // Not Common Properties 
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes3,
-  
 },{collection:'movie'});
 
 var Movie = mongoose.model('Movie',movieSchema);
-
 
 //File Movie2
 var mongoose = require('mongoose');
@@ -105,11 +103,9 @@ var movieSchema = new mongoose.Schema({
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
 	prizes:	Movieprizes3,
-  
 },{collection:'movie'});
 
 var Movie = mongoose.model('Movie',movieSchema);
-
 
 //File Movie3
 var mongoose = require('mongoose');
@@ -161,11 +157,9 @@ var movieSchema = new mongoose.Schema({
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
-  
 },{collection:'movie'});
 
 var Movie = mongoose.model('Movie',movieSchema);
-
 
 //File Movie4
 var mongoose = require('mongoose');
@@ -217,11 +211,9 @@ var movieSchema = new mongoose.Schema({
 	criticisms:	Moviecriticisms1,
 	prizes:	Movieprizes1,
 	prizes:	Movieprizes3,
-  
 },{collection:'movie'});
 
 var Movie = mongoose.model('Movie',movieSchema);
-
 
 //File Movie5
 var mongoose = require('mongoose');
@@ -274,11 +266,9 @@ var movieSchema = new mongoose.Schema({
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
 	prizes:	Movieprizes3,
-  
 },{collection:'movie'});
 
 var Movie = mongoose.model('Movie',movieSchema);
-
 
 
 //File Director1
@@ -293,28 +283,6 @@ mongoose.connect(url, function(error){
   	console.log('Conectado a MongoDB');
   }
 });
-var Moviecriticisms1=	{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
-	url:	String,
-    } 
-var Moviecriticisms4=	{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
-    } 
-var Movieprizes1=	{
-	event:	String,
-	year:	Number,
-	name:	String,
-	name:	[],
-    } 
-var Movieprizes3=	{
-	event:	String,
-	name:	String,
-	year:	Number,
-    } 
 var directorSchema = new mongoose.Schema({
 // Common Properties	
   	_id:	{type: String, required:true, index: Hashed},
@@ -326,15 +294,9 @@ var directorSchema = new mongoose.Schema({
   	directed_movies:	{type:[], required:true},
 	
 // Not Common Properties 
-	criticisms:	Moviecriticisms1,
-	criticisms:	Moviecriticisms4,
-	prizes:	Movieprizes1,
-	prizes:	Movieprizes3,
-  
 },{collection:'director'});
 
 var Director = mongoose.model('Director',directorSchema);
-
 
 //File Director2
 var mongoose = require('mongoose');
@@ -348,28 +310,6 @@ mongoose.connect(url, function(error){
   	console.log('Conectado a MongoDB');
   }
 });
-var Moviecriticisms1=	{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
-	url:	String,
-    } 
-var Moviecriticisms4=	{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
-    } 
-var Movieprizes1=	{
-	event:	String,
-	year:	Number,
-	name:	String,
-	name:	[],
-    } 
-var Movieprizes3=	{
-	event:	String,
-	name:	String,
-	year:	Number,
-    } 
 var directorSchema = new mongoose.Schema({
 // Common Properties	
   	_id:	{type: String, required:true, index: Hashed},
@@ -380,14 +320,8 @@ var directorSchema = new mongoose.Schema({
   	directed_movies:	{type:[], required:true},
 	
 // Not Common Properties 
-	criticisms:	Moviecriticisms1,
-	criticisms:	Moviecriticisms4,
-	prizes:	Movieprizes1,
-	prizes:	Movieprizes3,
-  
 },{collection:'director'});
 
 var Director = mongoose.model('Director',directorSchema);
-
 
 
