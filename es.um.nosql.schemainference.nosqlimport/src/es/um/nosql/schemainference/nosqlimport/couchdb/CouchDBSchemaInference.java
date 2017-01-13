@@ -22,20 +22,20 @@ public class CouchDBSchemaInference
 {
 	public static void main(String[] args)
 	{
-		if (args.length < 2)
+/*		if (args.length < 2)
 		{
 			System.err.println("USAGE: inference dbName viewDir (a directory where the map.js and reduce.js files live.)");
 			return;
 		}
-
-		String dbName = args[0];
-		String dirName = args[1];
+*/
+		String dbName = "test";//args[0];
+		String dirName = "/home/alberto/repos/NoSQLDataEngineering/es.um.nosql.schemainference.nosqlimport/mapreduce/couchdb/v1/";//args[1];
 
 		try {
 			MapReduceSources mrs = MapReduceSources.fromDir(dirName);
 
 			CouchDbProperties properties =
-					new CouchDbProperties(dbName, true, "http", "127.0.0.1", 5984,
+					new CouchDbProperties(dbName, true, "http", "155.54.190.237", 5984,
 							null,null);
 			CouchDbClient dbClient = new CouchDbClient(properties);
 

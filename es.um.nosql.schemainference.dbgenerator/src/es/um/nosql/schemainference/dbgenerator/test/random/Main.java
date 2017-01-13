@@ -4,8 +4,11 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
-import data.utils.io.NoSQLSchemaIO;
+import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.schemainference.dbgenerator.util.ModelLoader;
 
 /**
  * Main class used to generate a JSON file for the DBSCHEMA models existing in an input folder.
@@ -28,8 +31,7 @@ public class Main
 //		generateModelAndJson();
 		generateJsonFromModel();
 	}
-
-	@SuppressWarnings("unused")
+/*
 	private static void generateModelAndJson()
 	{
 		String NAME = "example";
@@ -48,10 +50,24 @@ public class Main
 
 		nosqld_io.write(schema, OUTPUT_FOLDER + NAME + MODEL_EXT);
 	}
-
+*/
 	private static void generateJsonFromModel()
 	{
-		NoSQLSchemaIO nosqld_io = NoSQLSchemaIO.getInstance();
+		String filename = "model/NoSQLSchema.xmi";
+		File file = new File(filename);
+		String dbname = file.getName().split("\\.")[0];
+
+		ModelLoader<NoSQLSchema> loader = new ModelLoader<>(NoSQLSchemaPackage.eINSTANCE);
+		NoSQLSchema schema = loader.load(file);
+		JsonGenerator generator = new JsonGenerator();
+		try
+		{
+			System.out.println(generator.generate(schema));
+		} catch (JsonProcessingException e)
+		{
+			e.printStackTrace();
+		}
+/*		NoSQLSchemaIO nosqld_io = NoSQLSchemaIO.getInstance();
 		JsonGenerator generator = new JsonGenerator();
 
 		for (File file : new File(INPUT_FOLDER).listFiles())
@@ -66,5 +82,6 @@ public class Main
 				exception.printStackTrace();
 			}
 		}
+*/
 	}
 }

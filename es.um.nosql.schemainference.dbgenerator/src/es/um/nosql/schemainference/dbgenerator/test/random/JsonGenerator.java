@@ -6,6 +6,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate;
 import es.um.nosql.schemainference.NoSQLSchema.Attribute;
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
@@ -26,10 +32,12 @@ public class JsonGenerator
 	private static final int MIN_INSTANCES = 3;
 	private static final int MAX_INSTANCES = 10;
 
-	private Map<EntityVersion, List<JsonObject>> mapEV;
+	private JsonNodeFactory factory = JsonNodeFactory.instance;
+
+	private Map<EntityVersion, List<ObjectNode>> mapEV;
 	private Random random;
 
-	private JacksonArrayJsonArray lStorage;
+	private ArrayNode lStorage;
 
 	/**
 	 * Method used to get a random value between two values.
@@ -60,13 +68,14 @@ public class JsonGenerator
 	 * Method used to generate the Json code from the DBSCHEMA.
 	 * @param schema The schema.
 	 * @return A Json object formatted accordingly.
+	 * @throws JsonProcessingException 
 	 */
-	public String generate(NoSQLSchema schema)
+	public String generate(NoSQLSchema schema) throws JsonProcessingException
 	{
-		mapEV = new HashMap<EntityVersion, List<JsonObject>>();
+		mapEV = new HashMap<EntityVersion, List<ObjectNode>>();
 
 		random = new Random();
-		lStorage = new JsonArray();
+		lStorage = factory.arrayNode();
 
 		// First run to generate all the primitive types, tuples and references.
 		int IDENTIFIER = 0;
@@ -74,13 +83,13 @@ public class JsonGenerator
 		{
 			for (EntityVersion eVersion : entity.getEntityversions())
 			{
-				mapEV.put(eVersion, new ArrayList<JsonObject>());
+				mapEV.put(eVersion, new ArrayList<ObjectNode>());
 
 				for (int i = 0; i < getRandomBetween(MIN_INSTANCES, MAX_INSTANCES); i++)
 				{
-					JsonObject strObj = new JsonObject();
-					strObj.addProperty("_id", ++IDENTIFIER);
-					strObj.addProperty("type", entity.getName());
+					ObjectNode strObj = factory.objectNode();
+					strObj.put("_id", ++IDENTIFIER);
+					strObj.put("type", entity.getName());
 
 					for (Property property : eVersion.getProperties())
 					{
@@ -100,11 +109,11 @@ public class JsonGenerator
 							int uBound = ref.getUpperBound() > 0 ? ref.getUpperBound() : 5;
 
 							if (lBound == 1 && lBound == uBound && random.nextBoolean())
-								strObj.addProperty(ref.getName(), String.valueOf(random.nextInt(200)));
+								strObj.put(ref.getName(), String.valueOf(random.nextInt(200)));
 							else
 							{
-								JsonArray refArray = new JsonArray();
-								strObj.add(ref.getName(), refArray);
+								ArrayNode refArray = factory.arrayNode();
+								strObj.put(ref.getName(), refArray);
 
 								for (int j = 0; j < getRandomBetween(lBound, uBound); j++)
 									refArray.add(String.valueOf(random.nextInt(200)));
@@ -121,15 +130,15 @@ public class JsonGenerator
 		// Second run to generate the aggregates since now all the versions and instances exist.
 		for (Entity entity : schema.getEntities())
 			for (EntityVersion eVersion : entity.getEntityversions())
-				for (JsonObject strObj : mapEV.get(eVersion))
+				for (ObjectNode strObj : mapEV.get(eVersion))
 				{
 					for (Property property : eVersion.getProperties())
 					{
 						if (property instanceof Aggregate)
 						{
 							Aggregate aggr = (Aggregate)property;
-							JsonArray array = new JsonArray();
-							strObj.add(aggr.getName(), array);
+							ArrayNode array = factory.arrayNode();
+							strObj.put(aggr.getName(), array);
 
 							for (EntityVersion aggrEV : aggr.getRefTo())
 								array.add(mapEV.get(aggrEV).get(0));
@@ -137,9 +146,7 @@ public class JsonGenerator
 					}
 				}
 
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-		return gson.toJson(lStorage);
+		return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(lStorage);
 	}
 
 	/**
@@ -148,14 +155,14 @@ public class JsonGenerator
 	 * @param name The type key.
 	 * @param type The type to generate.
 	 */
-	private void generatePrimitiveType(JsonObject strObj, String name, String type)
+	private void generatePrimitiveType(ObjectNode strObj, String name, String type)
 	{
 		switch (type)
 		{
-			case "String": case "string": {strObj.addProperty(name, "value_" + getRandomBetween(1, 200)); break;}
-			case "Int": case "int": {strObj.addProperty(name, random.nextInt(200)); break;}
-			case "Double": case "double": case "float": case "Float": {strObj.addProperty(name, getRandomFloat()); break;}
-			case "Bool": case "bool": case "Boolean": case "boolean": {strObj.addProperty(name, random.nextBoolean()); break;}
+			case "String": case "string": {strObj.put(name, "value_" + getRandomBetween(1, 200)); break;}
+			case "Int": case "int": {strObj.put(name, random.nextInt(200)); break;}
+			case "Double": case "double": case "float": case "Float": {strObj.put(name, getRandomFloat()); break;}
+			case "Bool": case "bool": case "Boolean": case "boolean": {strObj.put(name, random.nextBoolean()); break;}
 		}
 	}
 
@@ -164,7 +171,7 @@ public class JsonGenerator
 	 * @param arrayObj The JsonArray in which the type is being stored.
 	 * @param type The type to generate.
 	 */
-	private void generatePrimitiveType(JsonArray arrayObj, String type)
+	private void generatePrimitiveType(ArrayNode arrayObj, String type)
 	{
 		switch (type)
 		{
@@ -181,10 +188,10 @@ public class JsonGenerator
 	 * @param name The tuple key.
 	 * @param elements The tuple to generate.
 	 */
-	private void generateTuple(JsonObject strObj, String name, List<Type> elements)
+	private void generateTuple(ObjectNode strObj, String name, List<Type> elements)
 	{
-		JsonArray array = new JsonArray();
-		strObj.add(name, array);
+		ArrayNode array = factory.arrayNode();
+		strObj.put(name, array);
 
 		for (Type type : elements)
 		{
@@ -192,7 +199,7 @@ public class JsonGenerator
 				generatePrimitiveType(array, ((PrimitiveType)type).getName());
 			else if (type instanceof Tuple)
 			{
-				JsonArray innerArray = new JsonArray();
+				ArrayNode innerArray = factory.arrayNode();
 				array.add(innerArray);
 				generateTuple(innerArray, ((Tuple)type).getElements());
 			}
@@ -204,7 +211,7 @@ public class JsonGenerator
 	 * @param arrayObj The JsonArray in which the type is being inserted.
 	 * @param elements The tuple to generate.
 	 */
-	private void generateTuple(JsonArray arrayObj, List<Type> elements)
+	private void generateTuple(ArrayNode arrayObj, List<Type> elements)
 	{
 		for (Type type : elements)
 		{
@@ -214,7 +221,7 @@ public class JsonGenerator
 			}
 			else if (type instanceof Tuple)
 			{
-				JsonArray innerArray = new JsonArray();
+				ArrayNode innerArray = factory.arrayNode();
 				arrayObj.add(innerArray);
 				generateTuple(innerArray, ((Tuple)type).getElements());
 			}

@@ -1,14 +1,15 @@
-package random;
+package es.um.nosql.schemainference.dbgenerator.test.random;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Random;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
-import com.google.gson.JsonObject;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate;
 import es.um.nosql.schemainference.NoSQLSchema.Attribute;
@@ -53,7 +54,8 @@ public class ObjGenerator
 	private Map<String, Entity> mapE;
 	private Random random;
 
-	private JsonArray lStorage;
+	private JsonNodeFactory factory = JsonNodeFactory.instance;
+	private ArrayNode lStorage;
 
 	/**
 	 * Method used to get a random value between two values.
@@ -88,7 +90,7 @@ public class ObjGenerator
 		mapEV = new HashMap<String, EntityVersion>();
 
 		random = new Random();
-		lStorage = new JsonArray();
+		lStorage = factory.arrayNode();
 
 		for (String entity : ENTITIES)
 		{
@@ -109,9 +111,9 @@ public class ObjGenerator
 				oev.setRoot(true);
 				mapE.get(entity).getEntityversions().add(oev);
 
-				JsonObject strObj = new JsonObject();
+				ObjectNode strObj = factory.objectNode();
 
-				strObj.addProperty("_id", IDENTIFIER);
+				strObj.put("_id", IDENTIFIER);
 
 				// Generate "type" (entityName) attribute.
 				generateType(oev, strObj, entity);
@@ -149,12 +151,12 @@ public class ObjGenerator
 					oev.getProperties().add(ref);
 
 					if (randomVal)
-						strObj.addProperty(e.getName() + "_id_reference", String.valueOf(getRandomBetween(1000, 2000)));
+						strObj.put(e.getName() + "_id_reference", String.valueOf(getRandomBetween(1000, 2000)));
 					else
 					{
-						JsonArray refArray = new JsonArray();
+						ArrayNode refArray = factory.arrayNode();
 						refArray.add(String.valueOf(getRandomBetween(1000, 2000)));
-						strObj.add(e.getName() + "_id_reference", refArray);
+						strObj.put(e.getName() + "_id_reference", refArray);
 					}
 				}
 
@@ -187,9 +189,14 @@ public class ObjGenerator
 	 */
 	public String toString()
 	{
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-		return gson.toJson(lStorage);
+		try
+		{
+			return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(lStorage);
+		} catch (JsonProcessingException e)
+		{
+			e.printStackTrace();
+			return null;
+		}
 	}
 
 	/**
@@ -198,7 +205,7 @@ public class ObjGenerator
 	 * @param strObj The JSON object to which the "type" field is being added.
 	 * @param type The type to be given.
 	 */
-	private void generateType(EntityVersion oev, JsonObject strObj, String type)
+	private void generateType(EntityVersion oev, ObjectNode strObj, String type)
 	{
 		Attribute attribute = NoSQLSchemaFactory.eINSTANCE.createAttribute();
 		PrimitiveType pType = NoSQLSchemaFactory.eINSTANCE.createPrimitiveType();
@@ -207,7 +214,7 @@ public class ObjGenerator
 		attribute.setType(pType);
 		oev.getProperties().add(attribute);
 
-		strObj.addProperty(attribute.getName(), type);
+		strObj.put(attribute.getName(), type);
 	}
 
 	/**
@@ -215,7 +222,7 @@ public class ObjGenerator
 	 * @param oev The EntityVersion to which the string is being associated.
 	 * @param strObj The JSON object to which the "string" field is being added.
 	 */
-	private void generateStrings(EntityVersion oev, JsonObject strObj)
+	private void generateStrings(EntityVersion oev, ObjectNode strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_STRING_ATTR, MAX_STRING_ATTR); j++)
 		{
@@ -226,7 +233,7 @@ public class ObjGenerator
 			attribute.setType(pType);
 			oev.getProperties().add(attribute);
 
-			strObj.addProperty(attribute.getName(), "value_" + j);
+			strObj.put(attribute.getName(), "value_" + j);
 		}
 	}
 
@@ -235,7 +242,7 @@ public class ObjGenerator
 	 * @param oev The EntityVersion to which the int is being associated.
 	 * @param strObj The JSON object to which the "int" field is being added.
 	 */
-	private void generateInts(EntityVersion oev, JsonObject strObj)
+	private void generateInts(EntityVersion oev, ObjectNode strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_INT_ATTR, MAX_INT_ATTR); j++)
 		{
@@ -246,7 +253,7 @@ public class ObjGenerator
 			attribute.setType(pType);
 			oev.getProperties().add(attribute);
 
-			strObj.addProperty(attribute.getName(), random.nextInt(50));
+			strObj.put(attribute.getName(), random.nextInt(50));
 		}
 	}
 
@@ -255,7 +262,7 @@ public class ObjGenerator
 	 * @param oev The EntityVersion to which the float is being associated.
 	 * @param strObj The JSON object to which the "float" field is being added.
 	 */
-	private void generateFloats(EntityVersion oev, JsonObject strObj)
+	private void generateFloats(EntityVersion oev, ObjectNode strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_FLOAT_ATTR, MAX_FLOAT_ATTR); j++)
 		{
@@ -266,7 +273,7 @@ public class ObjGenerator
 			attribute.setType(pType);
 			oev.getProperties().add(attribute);
 
-			strObj.addProperty(attribute.getName(), (float)Math.round(random.nextFloat() * 100 * 100d) / 100d);
+			strObj.put(attribute.getName(), (float)Math.round(random.nextFloat() * 100 * 100d) / 100d);
 		}
 	}
 
@@ -275,7 +282,7 @@ public class ObjGenerator
 	 * @param oev The EntityVersion to which the bool is being associated.
 	 * @param strObj The JSON object to which the "bool" field is being added.
 	 */
-	private void generateBools(EntityVersion oev, JsonObject strObj)
+	private void generateBools(EntityVersion oev, ObjectNode strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_BOOL_ATTR, MAX_BOOL_ATTR); j++)
 		{
@@ -286,7 +293,7 @@ public class ObjGenerator
 			attribute.setType(pType);
 			oev.getProperties().add(attribute);
 
-			strObj.addProperty(attribute.getName(), random.nextBoolean());
+			strObj.put(attribute.getName(), random.nextBoolean());
 		}
 	}
 
@@ -295,7 +302,7 @@ public class ObjGenerator
 	 * @param oev The EntityVersion to which the tuple is being associated.
 	 * @param strObj The JSON object to which the "tuple" field is being added.
 	 */
-	private void generateTuples(EntityVersion oev, JsonObject strObj)
+	private void generateTuples(EntityVersion oev, ObjectNode strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_TUPLE_ATTR, MAX_TUPLE_ATTR); j++)
 		{
@@ -304,7 +311,7 @@ public class ObjGenerator
 			attribute.setName("atTuple_" + j);
 			attribute.setType(tuple);
 
-			JsonArray array = new JsonArray();
+			ArrayNode array = factory.arrayNode();
 			for (int k = 0; k < 5; k++)
 				switch(random.nextInt(5))
 				{
@@ -359,7 +366,7 @@ public class ObjGenerator
 							Tuple anotherTuple = NoSQLSchemaFactory.eINSTANCE.createTuple();
 							tuple.getElements().add(anotherTuple);
 
-							JsonArray arrayAux = new JsonArray();
+							ArrayNode arrayAux = factory.arrayNode();
 							array.add(arrayAux);
 							for (int l = 0; l < random.nextInt(3) + 1; l++)
 							{
@@ -376,7 +383,7 @@ public class ObjGenerator
 			if (array.size() > 0)
 			{
 				oev.getProperties().add(attribute);
-				strObj.add(attribute.getName(), array);
+				strObj.put(attribute.getName(), array);
 			}
 		}
 	}
@@ -386,7 +393,7 @@ public class ObjGenerator
 	 * @param oev The EntityVersion to which the aggregation is being associated.
 	 * @param strObj The JSON object to which the "Aggregate" field is being added.
 	 */
-	private void generateAggregates(EntityVersion oev, JsonObject strObj)
+	private void generateAggregates(EntityVersion oev, ObjectNode strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_AGGR, MAX_AGGR) && !mapEV.isEmpty(); j++)
 		{
@@ -404,10 +411,10 @@ public class ObjGenerator
 				ev.setRoot(false);
 				aggr.getRefTo().add(ev);
 
-				for (JsonElement jElem : lStorage)
-					if (jElem.getAsJsonObject().get("_id").getAsInt() == (ev.getVersionId()))
+				for (JsonNode jElem : lStorage)
+					if (jElem.get("_id").asInt() == (ev.getVersionId()))
 					{
-						strObj.add(aggr.getName(), jElem);
+						strObj.put(aggr.getName(), jElem);
 						break;
 					}
 			}
@@ -416,7 +423,7 @@ public class ObjGenerator
 				aggr.setLowerBound(random.nextInt(2));
 				aggr.setUpperBound(random.nextInt(2) + 2);
 
-				JsonArray aggrArray = new JsonArray();
+				ArrayNode aggrArray = factory.arrayNode();
 
 				for (int k = 1; k < getRandomBetween(aggr.getLowerBound(), aggr.getUpperBound()) && k < mapEV.size(); k++)
 				{
@@ -425,18 +432,18 @@ public class ObjGenerator
 					ev.setRoot(false);
 					aggr.getRefTo().add(ev);
 
-					for (JsonElement jElem : lStorage)
-						if (jElem.getAsJsonObject().get("_id").getAsInt() == (ev.getVersionId()))
+					for (JsonNode jElem : lStorage)
+						if (jElem.get("_id").asInt() == (ev.getVersionId()))
 						{
 							aggrArray.add(jElem);
 							break;
 						}
 				}
 
-				if (aggrArray.getAsJsonArray().size() > 0)
+				if (aggrArray.size() > 0)
 				{
 					oev.getProperties().add(aggr);
-					strObj.add(aggr.getName(), aggrArray);
+					strObj.put(aggr.getName(), aggrArray);
 				}
 			}
 		}
