@@ -214,6 +214,7 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   «refs.clear»
   «ags.clear»
   var «ent.entity.name.toFirstLower»Schema = new mongoose.Schema({
+
   // Common Properties	
     «FOR ac: commonAttrs»
     «paramsL.clear»
@@ -225,15 +226,22 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   	«FOR rc: commonRefs»
   	 «printRef(rc,true)»
     «ENDFOR»
-    «FOR agC:commonAggrs»
-     «agC.name»:	{type:«agC.name»Obj, required:true},
-    «ENDFOR»
+  	«FOR Entry<String, Aggregate> aA : finalCommonAggrs.entrySet()»
+    «var String nameAg = aA.getKey()»
+    «var Aggregate Ag = aA.getValue()»
+    	«Ag.name»:	«nameAg»,
+  	«ENDFOR»
     
   // add required for «ent.entity.name.toFirstUpper»«entVer.entityVersion.versionId» entity version
-    «FOR at1: atV»
-      «printAttribute(at1,at1.name,true)»
-      «println(at1.type.eClass.name.toString)»
-    «ENDFOR»
+    «var List<Attribute> restAtts=new ArrayList»
+    «removeAtts(atV,notCommonAttrs,restAtts)»
+    «FOR ac: atV»
+    «paramsL.clear»
+    «IF areThereParams»«lookFor(ac.name,entM, paramsL)»«ENDIF»
+    «IF !paramsL.empty»	«printAttribute(ac,ac.name, true, paramsL)»
+    «ELSE»«printAttribute(ac,ac.name,true)»
+    «ENDIF»
+   	«ENDFOR»
     «FOR r2: refV»
       «printRef(r2,true)»
     «ENDFOR»
@@ -244,20 +252,16 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   	«ENDFOR»
   	«primsL.clear»
   	«prims.clear»
+
   // Not Common Properties 
-    «FOR at: notCommonAttrs»
+    «FOR at: restAtts»
       «analyzeAttribute(at.type,at.name,primsL, tuplesL,prims,tuples)»
     «ENDFOR»
   	«FOR i:0..<primsL.size»
-  	«paramsL.clear»
-  	«IF areThereParams»«lookFor(prims.get(i),entM, paramsL)»«ENDIF»
-  	«IF !paramsL.empty»
-  	«printTypeAg(primsL.get(i),prims.get(i), paramsL)»
-  	«ELSE»«printType(primsL.get(i),prims.get(i))»
-    «ENDIF»
+  	«printType(primsL.get(i),prims.get(i))»
   	«ENDFOR»
   	«FOR j:0..<tuplesL.size»
-  «printType(tuplesL.get(j),tuples.get(j))»
+  	«printType(tuplesL.get(j),tuples.get(j))»
   	«ENDFOR»
     «FOR r2: notCommonRefs»
       «analyzeReference(r2,r2.name,refs)»
@@ -273,6 +277,19 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   «ENDFOR»
   
 '''
+}
+
+def removeAtts(List<Attribute> verL, List<Attribute> origL,List<Attribute> resL){
+  for(j:0..<origL.size)
+      resL.add(j,origL.get(j))
+  for(i:0..<origL.size){
+  	var Attribute a=origL.get(i)
+  	for(k:0..<verL.size){
+  	   var Attribute at=verL.get(k)
+  	   if(a.name==at.name && a.type.class.name.toString==at.type.class.name.toString)
+  	    resL.remove(a)
+    }
+  }
 }
 
 def removeVerAgs(Map <String, Aggregate> aggs,Map <String, Aggregate>finalAggs){
@@ -382,11 +399,11 @@ def dispatch printType(Type at2, String name) {
 }
 
 def dispatch printType(PrimitiveType primT, String name){
-  '''	«name»:	«primT.name»,'''
+  '''«name»:	«primT.name»,'''
 }
 
 def dispatch printType(Tuple tuple, String name){
-  '''	«name»:	[],'''
+  '''«name»:	[],'''
 }
 
 def dispatch printAttribute(Attribute a, String name, List<FieldParameter> pL)'''
@@ -733,11 +750,16 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR, Mongoos
   	«IF areThereParams»«lookFor(prims.get(i),entM, paramsL)»«ENDIF»
   	«IF !paramsL.empty»
   	«printTypeAg(primsL.get(i),prims.get(i), paramsL)»
-  	«ELSE»«printType(primsL.get(i),prims.get(i))»
+  	«ELSE»	«printType(primsL.get(i),prims.get(i))»
     «ENDIF»
   	«ENDFOR»
-  	«FOR j:0..<tuplesL.size»
-  «printType(tuplesL.get(j),tuples.get(j))»
+  	«FOR i:0..<tuplesL.size»
+  	«paramsL.clear»
+  	«IF areThereParams»«lookFor(tuples.get(i),entM, paramsL)»«ENDIF»
+  	«IF !paramsL.empty»
+  	«printTypeAg(tuplesL.get(i),tuples.get(i), paramsL)»
+  	«ELSE»	«printType(tuplesL.get(i),tuples.get(i))»
+    «ENDIF»
   	«ENDFOR»
   	«FOR Aggregate ag: aggr»
   	«analyzeAggregate(ag,ag.name,ags)»
