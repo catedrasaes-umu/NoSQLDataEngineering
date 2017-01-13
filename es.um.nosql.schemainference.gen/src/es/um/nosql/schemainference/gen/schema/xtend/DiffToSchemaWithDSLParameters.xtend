@@ -149,7 +149,7 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   notCommonAggrs.clear
   notCommonRefs.clear
   finalNotCommonAggrs.clear
-  
+  finalCommonAggrs.clear
   getProps(ent)
   var EntityParameter entM 
   var params=dslM.parameters.toList
@@ -187,7 +187,8 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
     }
   });
   «getAggregatesCommons(commonAggrs, dslM)»
-  «getAggregatesNotCommons(notCommonAggrs, dslM)»
+  «getAggregates(commonAggrs, finalCommonAggrs,dslM)»
+  «getAggregates(notCommonAggrs, finalNotCommonAggrs,dslM)»
   «var aV=props.filter(Attribute).toList»
   «var rV=props.filter(Reference).toList»
   «var agV=props.filter(Aggregate).toList»
@@ -231,6 +232,7 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   // add required for «ent.entity.name.toFirstUpper»«entVer.entityVersion.versionId» entity version
     «FOR at1: atV»
       «printAttribute(at1,at1.name,true)»
+      «println(at1.type.eClass.name.toString)»
     «ENDFOR»
     «FOR r2: refV»
       «printRef(r2,true)»
@@ -240,11 +242,23 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
     «var Aggregate Ag = aggV.getValue()»
     	«Ag.name»:	{type:«nameAg», required:true},
   	«ENDFOR»
-  	
+  	«primsL.clear»
+  	«prims.clear»
   // Not Common Properties 
     «FOR at: notCommonAttrs»
       «analyzeAttribute(at.type,at.name,primsL, tuplesL,prims,tuples)»
     «ENDFOR»
+  	«FOR i:0..<primsL.size»
+  	«paramsL.clear»
+  	«IF areThereParams»«lookFor(prims.get(i),entM, paramsL)»«ENDIF»
+  	«IF !paramsL.empty»
+  	«printTypeAg(primsL.get(i),prims.get(i), paramsL)»
+  	«ELSE»«printType(primsL.get(i),prims.get(i))»
+    «ENDIF»
+  	«ENDFOR»
+  	«FOR j:0..<tuplesL.size»
+  «printType(tuplesL.get(j),tuples.get(j))»
+  	«ENDFOR»
     «FOR r2: notCommonRefs»
       «analyzeReference(r2,r2.name,refs)»
     «ENDFOR»
@@ -440,13 +454,11 @@ def dispatch String checkParameter(Unique fp, String fieldSchema){
 def dispatch String checkParameter(Index fp, String fieldSchema){
   var String fS=fieldSchema
   fS+=","+" index: "   
-  println("Index: "+fS)  
   var String kind=fp.kind.toString     
   switch (kind){
   	case "Sorted": fS+="true"
   	case "Hashed": fS+="Hashed"
   	  }
-  	  println("Index: "+fS)
   return(fS)
 }
 
@@ -533,33 +545,33 @@ def boolean analyzeRefList(List<Reference> rL, String name, Reference r) {
 	
 	
 //for abstract Type class
-def dispatch analyzeAttribute(Type at2, String name,List<PrimitiveType>PrL,List<Tuple>TuL,List<String> p, List<String> t) {
+def dispatch analyzeAttribute(Type at2, String name,List<PrimitiveType>PrL,List<Tuple>TuL,List<String> pL, List<String> t) {
   throw new UnsupportedOperationException("TODO: auto-generated method stub")
 }
 
 
-def dispatch analyzeAttribute(PrimitiveType primT, String name, List<PrimitiveType> PrL,List<Tuple> TuL,List<String> p, List<String> t) {
+def dispatch analyzeAttribute(PrimitiveType primT, String name, List<PrimitiveType> PrL,List<Tuple> TuL,List<String> pL, List<String> t) {
   var boolean rPrim
-  rPrim=analyzePrimList(PrL,p,primT,name)  
+  rPrim=analyzePrimList(PrL,pL,primT,name)  
   if (!rPrim){
-   	p.add(p.size,name)
+   	pL.add(pL.size,name)
    	PrL.add(PrL.size,primT)
    	//'''«printType(primT,name)»'''
   }
 }
 
 
-def boolean analyzePrimList(List<PrimitiveType> pp,List<String> ps, PrimitiveType pr, String name) {
+def boolean analyzePrimList(List<PrimitiveType> ptL,List<String> ps, PrimitiveType pr, String name) {
   for (i : 0 ..< ps.size) {
     val element = ps.get(i)
-    val elementP = pp.get(i)
+    val elementP = ptL.get(i)
     if(element==name && elementP.name==pr.name)
     	return true
   }
   return false
 }
 	
-def dispatch analyzeAttribute(Tuple tuple, String name, List<PrimitiveType> PrL,List<Tuple> TuL,List<String> p, List<String> t) {
+def dispatch analyzeAttribute(Tuple tuple, String name, List<PrimitiveType> PrL,List<Tuple> TuL,List<String> pL, List<String> t) {
   var boolean rTuple
   rTuple=analyzeTupleList(TuL,t,tuple,name)  
   if (!rTuple)
@@ -587,8 +599,8 @@ def getAggregatesCommons(List<Aggregate> ags, MongooseModel dslM)'''
  «checkAggr(p,true,p.name+"Obj", dslM)»
 «ENDFOR»
 '''
-
-def getAggregatesNotCommons(List<Aggregate> ags, MongooseModel dslM){
+		
+def getAggregates(List<Aggregate> ags, Map<String, Aggregate> restListAg, MongooseModel dslM){
   var List<Aggregate> ags2= new ArrayList
   
   for(a1:ags){
@@ -596,25 +608,26 @@ def getAggregatesNotCommons(List<Aggregate> ags, MongooseModel dslM){
      if (indexPosi == -1){
        ags2.add(ags2.size, a1)
        var String nameA=(a1.eContainer.eContainer as Entity).name+a1.name+(a1.eContainer as EntityVersion).versionId.toString
-       addAg(finalNotCommonAggrs,nameA,a1)
+       addAg(restListAg,nameA,a1)
      }
      else{
        var res=compareAggregates(a1, ags2.get(indexPosi))
        if (res==false){ 
           ags2.add(ags2.size, a1)
           var String nameA=(a1.eContainer.eContainer as Entity).name+a1.name+(a1.eContainer as EntityVersion).versionId.toString
-          addAg(finalNotCommonAggrs,nameA,a1)
+          addAg(restListAg,nameA,a1)
        }
      }
   }
 '''
-  «FOR Entry<String, Aggregate> aA : finalNotCommonAggrs.entrySet()»
+  «FOR Entry<String, Aggregate> aA : restListAg.entrySet()»
     «var String nameAg = aA.getKey()»
     «var Aggregate Ag = aA.getValue()»
     «checkAggr(Ag,true, nameAg, dslM)»
   «ENDFOR»
 '''
 }
+
 def addAg(Map <String, Aggregate> agMap,String name, Aggregate a){
 	agMap.put(name,a)
 }

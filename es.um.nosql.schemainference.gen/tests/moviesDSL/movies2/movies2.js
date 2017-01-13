@@ -43,10 +43,13 @@ var movieSchema = new mongoose.Schema({
   
 // add required for Movie1 entity version
   	genre:	{type: String, required: true},
+  PrimitiveType
 	criticisms:	{type:Moviecriticisms1, required:true},
 	prizes:	{type:Movieprizes1, required:true},
-	
 // Not Common Properties 
+	genre:	{type: String, enum: [drama, comedy, children]},
+		genres:	[],
+	writers:	[],
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes3,
 },{collection:'movie'});
@@ -97,8 +100,11 @@ var movieSchema = new mongoose.Schema({
   
 // add required for Movie2 entity version
   	genre:	{type: String, required: true},
-	
+  PrimitiveType
 // Not Common Properties 
+	genre:	{type: String, enum: [drama, comedy, children]},
+		genres:	[],
+	writers:	[],
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
@@ -151,9 +157,12 @@ var movieSchema = new mongoose.Schema({
   
 // add required for Movie3 entity version
   	genre:	{type: String, required: true},
+  PrimitiveType
 	prizes:	{type:Movieprizes3, required:true},
-	
 // Not Common Properties 
+	genre:	{type: String, enum: [drama, comedy, children]},
+		genres:	[],
+	writers:	[],
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
@@ -205,9 +214,12 @@ var movieSchema = new mongoose.Schema({
   
 // add required for Movie4 entity version
   	genre:	{type: String, required: true},
+  PrimitiveType
 	criticisms:	{type:Moviecriticisms4, required:true},
-	
 // Not Common Properties 
+	genre:	{type: String, enum: [drama, comedy, children]},
+		genres:	[],
+	writers:	[],
 	criticisms:	Moviecriticisms1,
 	prizes:	Movieprizes1,
 	prizes:	Movieprizes3,
@@ -259,9 +271,13 @@ var movieSchema = new mongoose.Schema({
   
 // add required for Movie5 entity version
   	genres:	{type:[], required:true},
+  Tuple
   	writers:	{type:[], required:true},
-	
+  Tuple
 // Not Common Properties 
+	genre:	{type: String, enum: [drama, comedy, children]},
+		genres:	[],
+	writers:	[],
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
@@ -291,9 +307,13 @@ var directorSchema = new mongoose.Schema({
   
 // add required for Director1 entity version
   	actor_movies:	{type:[], required:true},
+  Tuple
   	directed_movies:	{type:[], required:true},
-	
+  Tuple
 // Not Common Properties 
+	directed_movies:	[],
+	actor_movies:	[],
+	directed_movies:	[],
 },{collection:'director'});
 
 var Director = mongoose.model('Director',directorSchema);
@@ -318,8 +338,11 @@ var directorSchema = new mongoose.Schema({
   
 // add required for Director2 entity version
   	directed_movies:	{type:[], required:true},
-	
+  Tuple
 // Not Common Properties 
+	directed_movies:	[],
+	actor_movies:	[],
+	directed_movies:	[],
 },{collection:'director'});
 
 var Director = mongoose.model('Director',directorSchema);
