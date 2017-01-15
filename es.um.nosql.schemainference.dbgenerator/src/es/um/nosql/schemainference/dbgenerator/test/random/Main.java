@@ -8,7 +8,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.schemainference.dbgenerator.util.ModelLoader;
+import es.um.nosql.schemainference.dbgenerator.utils.ModelLoader;
 
 /**
  * Main class used to generate a JSON file for the DBSCHEMA models existing in an input folder.

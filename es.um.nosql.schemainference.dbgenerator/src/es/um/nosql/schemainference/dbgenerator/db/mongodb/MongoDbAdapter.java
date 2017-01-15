@@ -1,4 +1,4 @@
-package es.um.nosql.schemainference.dbgenerator.test.util.mongodb;
+package es.um.nosql.schemainference.dbgenerator.db.mongodb;
 
 public class MongoDbAdapter
 {

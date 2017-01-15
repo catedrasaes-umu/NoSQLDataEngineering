@@ -1,0 +1,415 @@
+[ {
+  "type" : "Company",
+  "country" : "value_166",
+  "name" : "value_143"
+}, {
+  "type" : "Company",
+  "country" : "value_71",
+  "name" : "value_133"
+}, {
+  "type" : "Company",
+  "country" : "value_193",
+  "name" : "value_52"
+}, {
+  "type" : "Company",
+  "country" : "value_169",
+  "name" : "value_116"
+}, {
+  "type" : "Company",
+  "country" : "value_127",
+  "name" : "value_40"
+}, {
+  "type" : "Content"
+}, {
+  "type" : "Content"
+}, {
+  "type" : "Content"
+}, {
+  "type" : "Content"
+}, {
+  "type" : "Content"
+}, {
+  "type" : "value_90",
+  "_id" : "value_53",
+  "publisher_id" : "85",
+  "title" : "value_170",
+  "authors" : [ {
+    "type" : "Author",
+    "_id" : "value_128",
+    "name" : "value_143",
+    "company" : [ {
+      "type" : "Company",
+      "country" : "value_166",
+      "name" : "value_143"
+    } ]
+  }, {
+    "type" : "Author",
+    "_id" : "value_199",
+    "company" : [ "170" ],
+    "country" : "value_113",
+    "name" : "value_17"
+  } ],
+  "content" : [ {
+    "type" : "Content"
+  } ]
+}, {
+  "type" : "value_58",
+  "_id" : "value_159",
+  "publisher_id" : [ "118" ],
+  "title" : "value_197",
+  "authors" : [ {
+    "type" : "Author",
+    "_id" : "value_128",
+    "name" : "value_143",
+    "company" : [ {
+      "type" : "Company",
+      "country" : "value_166",
+      "name" : "value_143"
+    } ]
+  }, {
+    "type" : "Author",
+    "_id" : "value_199",
+    "company" : [ "170" ],
+    "country" : "value_113",
+    "name" : "value_17"
+  } ],
+  "content" : [ {
+    "type" : "Content"
+  } ]
+}, {
+  "type" : "value_124",
+  "_id" : "value_87",
+  "publisher_id" : "17",
+  "title" : "value_47",
+  "authors" : [ {
+    "type" : "Author",
+    "_id" : "value_128",
+    "name" : "value_143",
+    "company" : [ {
+      "type" : "Company",
+      "country" : "value_166",
+      "name" : "value_143"
+    } ]
+  }, {
+    "type" : "Author",
+    "_id" : "value_199",
+    "company" : [ "170" ],
+    "country" : "value_113",
+    "name" : "value_17"
+  } ],
+  "content" : [ {
+    "type" : "Content"
+  } ]
+}, {
+  "type" : "value_47",
+  "_id" : "value_99",
+  "publisher_id" : [ "110" ],
+  "title" : "value_150",
+  "authors" : [ {
+    "type" : "Author",
+    "_id" : "value_128",
+    "name" : "value_143",
+    "company" : [ {
+      "type" : "Company",
+      "country" : "value_166",
+      "name" : "value_143"
+    } ]
+  }, {
+    "type" : "Author",
+    "_id" : "value_199",
+    "company" : [ "170" ],
+    "country" : "value_113",
+    "name" : "value_17"
+  } ],
+  "content" : [ {
+    "type" : "Content"
+  } ]
+}, {
+  "type" : "value_180",
+  "_id" : "value_15",
+  "publisher_id" : [ "183" ],
+  "title" : "value_104",
+  "author" : [ {
+    "type" : "Author",
+    "_id" : "value_128",
+    "name" : "value_143",
+    "company" : [ {
+      "type" : "Company",
+      "country" : "value_166",
+      "name" : "value_143"
+    } ]
+  } ]
+}, {
+  "type" : "value_150",
+  "_id" : "value_190",
+  "publisher_id" : "187",
+  "title" : "value_33",
+  "author" : [ {
+    "type" : "Author",
+    "_id" : "value_128",
+    "name" : "value_143",
+    "company" : [ {
+      "type" : "Company",
+      "country" : "value_166",
+      "name" : "value_143"
+    } ]
+  } ]
+}, {
+  "type" : "value_179",
+  "_id" : "value_170",
+  "publisher_id" : "118",
+  "title" : "value_161",
+  "author" : [ {
+    "type" : "Author",
+    "_id" : "value_128",
+    "name" : "value_143",
+    "company" : [ {
+      "type" : "Company",
+      "country" : "value_166",
+      "name" : "value_143"
+    } ]
+  } ]
+}, {
+  "type" : "value_151",
+  "_id" : "value_131",
+  "publisher_id" : "167",
+  "title" : "value_83",
+  "author" : [ {
+    "type" : "Author",
+    "_id" : "value_128",
+    "name" : "value_143",
+    "company" : [ {
+      "type" : "Company",
+      "country" : "value_166",
+      "name" : "value_143"
+    } ]
+  } ]
+}, {
+  "type" : "Author",
+  "_id" : "value_128",
+  "name" : "value_143",
+  "company" : [ {
+    "type" : "Company",
+    "country" : "value_166",
+    "name" : "value_143"
+  } ]
+}, {
+  "type" : "Author",
+  "_id" : "value_88",
+  "name" : "value_69",
+  "company" : [ {
+    "type" : "Company",
+    "country" : "value_166",
+    "name" : "value_143"
+  } ]
+}, {
+  "type" : "Author",
+  "_id" : "value_15",
+  "name" : "value_98",
+  "company" : [ {
+    "type" : "Company",
+    "country" : "value_166",
+    "name" : "value_143"
+  } ]
+}, {
+  "type" : "Author",
+  "_id" : "value_122",
+  "name" : "value_32",
+  "company" : [ {
+    "type" : "Company",
+    "country" : "value_166",
+    "name" : "value_143"
+  } ]
+}, {
+  "type" : "Author",
+  "_id" : "value_18",
+  "name" : "value_77",
+  "company" : [ {
+    "type" : "Company",
+    "country" : "value_166",
+    "name" : "value_143"
+  } ]
+}, {
+  "type" : "Author",
+  "_id" : "value_6",
+  "name" : "value_193",
+  "company" : [ {
+    "type" : "Company",
+    "country" : "value_166",
+    "name" : "value_143"
+  } ]
+}, {
+  "type" : "Author",
+  "_id" : "value_199",
+  "company" : [ "170" ],
+  "country" : "value_113",
+  "name" : "value_17"
+}, {
+  "type" : "Author",
+  "_id" : "value_20",
+  "company" : "62",
+  "country" : "value_130",
+  "name" : "value_110"
+}, {
+  "type" : "Author",
+  "_id" : "value_180",
+  "company" : "85",
+  "country" : "value_132",
+  "name" : "value_110"
+}, {
+  "type" : "Author",
+  "_id" : "value_46",
+  "company" : [ "27" ],
+  "country" : "value_193",
+  "name" : "value_1"
+}, {
+  "type" : "Author",
+  "_id" : "value_99",
+  "company" : [ "151" ],
+  "country" : "value_35",
+  "name" : "value_186"
+}, {
+  "type" : "value_154",
+  "_id" : "value_163",
+  "discipline" : "value_169",
+  "issn" : [ "value_85", "value_107" ],
+  "name" : "value_21"
+}, {
+  "type" : "value_97",
+  "_id" : "value_57",
+  "discipline" : "value_37",
+  "issn" : [ "value_125", "value_114" ],
+  "name" : "value_159"
+}, {
+  "type" : "value_79",
+  "_id" : "value_102",
+  "discipline" : "value_184",
+  "issn" : [ "value_156", "value_160" ],
+  "name" : "value_198"
+}, {
+  "type" : "value_94",
+  "_id" : "value_125",
+  "discipline" : "value_17",
+  "issn" : [ "value_152", "value_105" ],
+  "name" : "value_123"
+}, {
+  "type" : "value_54",
+  "_id" : "value_191",
+  "discipline" : "value_51",
+  "issn" : [ "value_83", "value_25" ],
+  "name" : "value_120"
+}, {
+  "type" : "value_96",
+  "_id" : "value_71",
+  "discipline" : "value_51",
+  "issn" : [ "value_1", "value_3" ],
+  "name" : "value_115"
+}, {
+  "type" : "value_10",
+  "_id" : "value_123",
+  "discipline" : "value_153",
+  "issn" : [ "value_116", "value_34" ],
+  "name" : "value_1"
+}, {
+  "type" : "value_11",
+  "_id" : "value_77",
+  "discipline" : "value_3",
+  "issn" : [ "value_117", "value_59" ],
+  "name" : "value_69"
+}, {
+  "type" : "value_87",
+  "_id" : "value_156",
+  "discipline" : "value_32",
+  "issn" : [ "value_76", "value_120" ],
+  "name" : "value_108"
+}, {
+  "type" : "value_106",
+  "_id" : "value_153",
+  "discipline" : "value_176",
+  "issn" : [ "value_68", "value_119" ],
+  "name" : "value_198"
+}, {
+  "type" : "value_192",
+  "_id" : "value_83",
+  "discipline" : "value_17",
+  "issn" : [ "value_155", "value_116" ],
+  "name" : "value_133"
+}, {
+  "type" : "value_24",
+  "_id" : "value_91",
+  "discipline" : "value_26",
+  "issn" : [ "value_171", "value_160" ],
+  "name" : "value_193"
+}, {
+  "type" : "value_131",
+  "_id" : "value_85",
+  "discipline" : "value_200",
+  "issn" : [ "value_183", "value_88" ],
+  "name" : "value_118"
+}, {
+  "type" : "value_12",
+  "_id" : "value_197",
+  "discipline" : "value_89",
+  "issn" : [ "value_15", "value_17" ],
+  "name" : "value_122"
+}, {
+  "type" : "value_70",
+  "_id" : "value_178",
+  "city" : "value_62",
+  "name" : "value_101"
+}, {
+  "type" : "value_151",
+  "_id" : "value_44",
+  "city" : "value_107",
+  "name" : "value_190"
+}, {
+  "type" : "value_148",
+  "_id" : "value_67",
+  "city" : "value_143",
+  "name" : "value_9"
+}, {
+  "type" : "value_30",
+  "_id" : "value_144",
+  "city" : "value_127",
+  "name" : "value_77"
+}, {
+  "type" : "value_61",
+  "_id" : "value_60",
+  "city" : "value_117",
+  "name" : "value_111"
+}, {
+  "type" : "value_86",
+  "_id" : "value_189",
+  "name" : "value_44"
+}, {
+  "type" : "value_93",
+  "_id" : "value_41",
+  "name" : "value_162"
+}, {
+  "type" : "value_122",
+  "_id" : "value_23",
+  "name" : "value_150"
+}, {
+  "type" : "value_139",
+  "_id" : "value_150",
+  "name" : "value_156"
+}, {
+  "type" : "value_38",
+  "_id" : "value_167",
+  "name" : "value_179"
+}, {
+  "type" : "value_85",
+  "_id" : "value_182",
+  "journals" : [ "162" ],
+  "name" : "value_89"
+}, {
+  "type" : "value_33",
+  "_id" : "value_138",
+  "journals" : [ "15" ],
+  "name" : "value_88"
+}, {
+  "type" : "value_93",
+  "_id" : "value_103",
+  "journals" : [ "107" ],
+  "name" : "value_30"
+} ]

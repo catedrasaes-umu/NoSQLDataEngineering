@@ -1,4 +1,4 @@
-package es.um.nosql.schemainference.dbgenerator.test.util.couchdb;
+package es.um.nosql.schemainference.dbgenerator.db.couchdb;
 
 import org.ektorp.http.StdHttpClient;
 

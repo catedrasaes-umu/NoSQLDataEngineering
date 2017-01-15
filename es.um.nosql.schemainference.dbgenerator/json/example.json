@@ -1,0 +1,1546 @@
+[ {
+  "type" : "Book",
+  "atStr_0" : "value_185",
+  "atStr_1" : "value_156",
+  "atStr_2" : "value_71",
+  "atInt_0" : 104,
+  "atTuple_0" : [ "value_115", 110 ],
+  "atTuple_1" : [ 68.69, 68.18, "value_2" ],
+  "Publisher_id_reference" : [ "162" ]
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_189",
+  "atStr_1" : "value_16",
+  "atStr_2" : "value_133",
+  "atInt_0" : 61,
+  "atTuple_0" : [ "value_29", 190 ],
+  "atTuple_1" : [ 44.29, 31.57, "value_156" ],
+  "Publisher_id_reference" : "64"
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_152",
+  "atStr_1" : "value_147",
+  "atStr_2" : "value_173",
+  "atInt_0" : 149,
+  "atTuple_0" : [ "value_179", 117 ],
+  "atTuple_1" : [ 33.49, 59.88, "value_116" ],
+  "Publisher_id_reference" : "78"
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_132",
+  "atStr_1" : "value_198",
+  "atStr_2" : "value_74",
+  "atInt_0" : 73,
+  "atTuple_0" : [ "value_25", 163 ],
+  "atTuple_1" : [ 65.18, 52.1, "value_139" ],
+  "Publisher_id_reference" : "49"
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_48",
+  "atStr_1" : "value_80",
+  "atStr_2" : "value_110",
+  "atInt_0" : 56,
+  "atTuple_0" : [ "value_1", 95 ],
+  "atTuple_1" : [ 39.6, 60.72, "value_129" ],
+  "Publisher_id_reference" : [ "172" ]
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_141",
+  "atStr_1" : "value_80",
+  "atStr_2" : "value_7",
+  "atInt_0" : 35,
+  "atTuple_0" : [ "value_165", 68 ],
+  "atTuple_1" : [ 25.58, 96.43, "value_76" ],
+  "Publisher_id_reference" : "186"
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_78",
+  "atStr_1" : "value_177",
+  "atStr_2" : "value_200",
+  "atInt_0" : 73,
+  "atTuple_0" : [ "value_183", 33 ],
+  "atTuple_1" : [ 76.31, 15.14, "value_139" ],
+  "Publisher_id_reference" : [ "78" ]
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_41",
+  "atStr_1" : "value_92",
+  "atStr_2" : "value_89",
+  "atInt_0" : 150,
+  "atTuple_0" : [ "value_123", 187 ],
+  "atTuple_1" : [ 81.2, 78.39, "value_80" ],
+  "Publisher_id_reference" : "129"
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_59",
+  "atStr_1" : "value_14",
+  "atInt_0" : 88,
+  "Author_id_reference" : [ "162" ]
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_3",
+  "atStr_1" : "value_105",
+  "atInt_0" : 194,
+  "Author_id_reference" : [ "126" ]
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_139",
+  "atStr_1" : "value_4",
+  "atInt_0" : 146,
+  "Author_id_reference" : "33"
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_125",
+  "atStr_1" : "value_156",
+  "atInt_0" : 105,
+  "Author_id_reference" : "162"
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_167",
+  "atStr_1" : "value_190",
+  "atInt_0" : 62,
+  "Author_id_reference" : [ "57" ]
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_160",
+  "atStr_1" : "value_197",
+  "atInt_0" : 41,
+  "Author_id_reference" : "152"
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_134",
+  "atStr_1" : "value_29",
+  "atInt_0" : 82,
+  "Author_id_reference" : [ "130" ]
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_175",
+  "atStr_1" : "value_94",
+  "atFloat_0" : 4.83,
+  "atBool_0" : true
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_23",
+  "atStr_1" : "value_47",
+  "atFloat_0" : 19.37,
+  "atBool_0" : true
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_28",
+  "atStr_1" : "value_91",
+  "atFloat_0" : 83.37,
+  "atBool_0" : false
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_97",
+  "atStr_1" : "value_183",
+  "atFloat_0" : 29.9,
+  "atBool_0" : true
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_11",
+  "atStr_1" : "value_151",
+  "atFloat_0" : 61.34,
+  "atBool_0" : false
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_199",
+  "atStr_1" : "value_113",
+  "atInt_0" : 186,
+  "atFloat_0" : 12.09,
+  "atBool_0" : false,
+  "Book_id_reference" : [ "101" ]
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_113",
+  "atStr_1" : "value_189",
+  "atInt_0" : 24,
+  "atFloat_0" : 8.16,
+  "atBool_0" : true,
+  "Book_id_reference" : "118"
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_133",
+  "atStr_1" : "value_115",
+  "atInt_0" : 126,
+  "atFloat_0" : 17.75,
+  "atBool_0" : false,
+  "Book_id_reference" : "87"
+}, {
+  "type" : "Book",
+  "atStr_0" : "value_187",
+  "atStr_1" : "value_131",
+  "atInt_0" : 176,
+  "atFloat_0" : 88.25,
+  "atBool_0" : true,
+  "Book_id_reference" : [ "123" ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_147",
+  "atStr_1" : "value_86",
+  "atInt_0" : 13
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_170",
+  "atStr_1" : "value_88",
+  "atInt_0" : 42
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_54",
+  "atStr_1" : "value_171",
+  "atInt_0" : 10
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_186",
+  "atStr_1" : "value_1",
+  "atInt_0" : 82
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_155",
+  "atStr_1" : "value_65",
+  "atInt_0" : 5
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_32",
+  "atStr_1" : "value_71",
+  "atInt_0" : 72
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_52",
+  "atStr_1" : "value_61",
+  "atInt_0" : 165,
+  "atInt_1" : 196,
+  "atFloat_0" : 86.03,
+  "atBool_0" : false,
+  "atTuple_0" : [ "value_14", [ 71 ] ],
+  "atTuple_1" : [ false, true, [ 142, 151 ] ],
+  "Book_id_reference" : [ "28" ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_25",
+  "atStr_1" : "value_74",
+  "atInt_0" : 72,
+  "atInt_1" : 21,
+  "atFloat_0" : 21.61,
+  "atBool_0" : true,
+  "atTuple_0" : [ "value_7", [ 6 ] ],
+  "atTuple_1" : [ false, true, [ 172, 155 ] ],
+  "Book_id_reference" : [ "66", "119" ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_42",
+  "atStr_1" : "value_147",
+  "atInt_0" : 189,
+  "atInt_1" : 116,
+  "atFloat_0" : 28.35,
+  "atBool_0" : true,
+  "atTuple_0" : [ "value_160", [ 21 ] ],
+  "atTuple_1" : [ false, true, [ 84, 129 ] ],
+  "Book_id_reference" : [ "182" ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_73",
+  "atStr_1" : "value_197",
+  "atInt_0" : 178,
+  "atInt_1" : 168,
+  "atFloat_0" : 46.49,
+  "atBool_0" : false,
+  "atTuple_0" : [ "value_7", [ 42 ] ],
+  "atTuple_1" : [ false, true, [ 1, 94 ] ],
+  "Book_id_reference" : [ "35", "21" ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_81",
+  "atStr_1" : "value_88",
+  "atInt_0" : 135,
+  "atInt_1" : 47,
+  "atFloat_0" : 27.66,
+  "atBool_0" : true,
+  "atTuple_0" : [ "value_125", [ 124 ] ],
+  "atTuple_1" : [ false, false, [ 68, 183 ] ],
+  "Book_id_reference" : [ ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_124",
+  "atStr_1" : "value_73",
+  "atFloat_0" : 28.84,
+  "atTuple_0" : [ true, 179, [ 152, 5, 13 ] ],
+  "Publisher_id_reference" : "136",
+  "Author_id_reference" : "133",
+  "Journal_id_reference" : [ "80" ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_73",
+  "atStr_1" : "value_39",
+  "atFloat_0" : 48.31,
+  "atTuple_0" : [ true, 190, [ 154, 128, 134 ] ],
+  "Publisher_id_reference" : [ "63" ],
+  "Author_id_reference" : [ "193" ],
+  "Journal_id_reference" : "54"
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_185",
+  "atStr_1" : "value_188",
+  "atFloat_0" : 59.31,
+  "atTuple_0" : [ false, 110, [ 166, 168, 118 ] ],
+  "Publisher_id_reference" : [ "176" ],
+  "Author_id_reference" : "46",
+  "Journal_id_reference" : "108"
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_137",
+  "atStr_1" : "value_60",
+  "atFloat_0" : 61.5,
+  "atTuple_0" : [ true, 95, [ 127, 100, 144 ] ],
+  "Publisher_id_reference" : [ "46" ],
+  "Author_id_reference" : [ "96" ],
+  "Journal_id_reference" : "153"
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_103",
+  "atFloat_0" : 22.78,
+  "atFloat_1" : 46.61,
+  "atBool_0" : false,
+  "atTuple_0" : [ [ 103 ], 27.19, false ],
+  "Author_id_reference" : [ "178" ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_39",
+  "atFloat_0" : 35.42,
+  "atFloat_1" : 36.98,
+  "atBool_0" : true,
+  "atTuple_0" : [ [ 114 ], 24.05, false ],
+  "Author_id_reference" : [ "191", "19" ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_24",
+  "atFloat_0" : 88.15,
+  "atFloat_1" : 82.79,
+  "atBool_0" : false,
+  "atTuple_0" : [ [ 18 ], 33.9, false ],
+  "Author_id_reference" : [ "34" ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_10",
+  "atFloat_0" : 94.09,
+  "atFloat_1" : 71.73,
+  "atBool_0" : false,
+  "atTuple_0" : [ [ 113 ], 45.8, false ],
+  "Author_id_reference" : [ "51" ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_73",
+  "atFloat_0" : 6.16,
+  "atFloat_1" : 67.85,
+  "atBool_0" : false,
+  "atTuple_0" : [ [ 147 ], 35.35, true ],
+  "Author_id_reference" : [ ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_154",
+  "atFloat_0" : 13.04,
+  "atFloat_1" : 95.21,
+  "atBool_0" : true,
+  "atTuple_0" : [ [ 6 ], 84.31, false ],
+  "Author_id_reference" : [ "49", "2" ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_136",
+  "atStr_1" : "value_37",
+  "atStr_2" : "value_11",
+  "atStr_3" : "value_42",
+  "atInt_0" : 185,
+  "atFloat_0" : 79.26,
+  "atFloat_1" : 95.57,
+  "atTuple_0" : [ [ 58, 99 ], [ 130, 156 ], "value_62", true ],
+  "atTuple_1" : [ "value_21" ],
+  "Publisher_id_reference" : [ ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_140",
+  "atStr_1" : "value_195",
+  "atStr_2" : "value_63",
+  "atStr_3" : "value_122",
+  "atInt_0" : 60,
+  "atFloat_0" : 48.3,
+  "atFloat_1" : 34.46,
+  "atTuple_0" : [ [ 145, 35 ], [ 15, 101 ], "value_2", false ],
+  "atTuple_1" : [ "value_140" ],
+  "Publisher_id_reference" : [ "80", "147" ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_4",
+  "atStr_1" : "value_168",
+  "atStr_2" : "value_13",
+  "atStr_3" : "value_34",
+  "atInt_0" : 148,
+  "atFloat_0" : 83.06,
+  "atFloat_1" : 59.12,
+  "atTuple_0" : [ [ 128, 122 ], [ 105, 131 ], "value_185", true ],
+  "atTuple_1" : [ "value_62" ],
+  "Publisher_id_reference" : [ "87" ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_184",
+  "atStr_1" : "value_1",
+  "atStr_2" : "value_149",
+  "atStr_3" : "value_185",
+  "atInt_0" : 182,
+  "atFloat_0" : 97.92,
+  "atFloat_1" : 22.66,
+  "atTuple_0" : [ [ 81, 18 ], [ 98, 196 ], "value_157", true ],
+  "atTuple_1" : [ "value_168" ],
+  "Publisher_id_reference" : [ ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_4"
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_196"
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_56"
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_44"
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_10"
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_54"
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_31"
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_27",
+  "atStr_1" : "value_110",
+  "atStr_2" : "value_131",
+  "atStr_3" : "value_164",
+  "atInt_0" : 109,
+  "atFloat_0" : 54.69,
+  "atBool_0" : false,
+  "atTuple_0" : [ true, "value_11", 4.12 ],
+  "Journal_id_reference" : "85",
+  "aggregates_0" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_147",
+    "atStr_1" : "value_86",
+    "atInt_0" : 13
+  } ],
+  "aggregates_2" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_124",
+    "atStr_1" : "value_73",
+    "atFloat_0" : 28.84,
+    "atTuple_0" : [ true, 179, [ 152, 5, 13 ] ],
+    "Publisher_id_reference" : "136",
+    "Author_id_reference" : "133",
+    "Journal_id_reference" : [ "80" ]
+  } ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_8",
+  "atStr_1" : "value_15",
+  "atStr_2" : "value_42",
+  "atStr_3" : "value_144",
+  "atInt_0" : 167,
+  "atFloat_0" : 69.51,
+  "atBool_0" : false,
+  "atTuple_0" : [ false, "value_200", 37.15 ],
+  "Journal_id_reference" : "172",
+  "aggregates_0" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_147",
+    "atStr_1" : "value_86",
+    "atInt_0" : 13
+  } ],
+  "aggregates_2" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_124",
+    "atStr_1" : "value_73",
+    "atFloat_0" : 28.84,
+    "atTuple_0" : [ true, 179, [ 152, 5, 13 ] ],
+    "Publisher_id_reference" : "136",
+    "Author_id_reference" : "133",
+    "Journal_id_reference" : [ "80" ]
+  } ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_161",
+  "atStr_1" : "value_122",
+  "atStr_2" : "value_17",
+  "atStr_3" : "value_173",
+  "atInt_0" : 122,
+  "atFloat_0" : 97.55,
+  "atBool_0" : true,
+  "atTuple_0" : [ true, "value_60", 52.49 ],
+  "Journal_id_reference" : "158",
+  "aggregates_0" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_147",
+    "atStr_1" : "value_86",
+    "atInt_0" : 13
+  } ],
+  "aggregates_2" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_124",
+    "atStr_1" : "value_73",
+    "atFloat_0" : 28.84,
+    "atTuple_0" : [ true, 179, [ 152, 5, 13 ] ],
+    "Publisher_id_reference" : "136",
+    "Author_id_reference" : "133",
+    "Journal_id_reference" : [ "80" ]
+  } ]
+}, {
+  "type" : "Author",
+  "atStr_0" : "value_173",
+  "atStr_1" : "value_183",
+  "atStr_2" : "value_15",
+  "atStr_3" : "value_163",
+  "atInt_0" : 159,
+  "atFloat_0" : 21.48,
+  "atBool_0" : false,
+  "atTuple_0" : [ false, "value_16", 15.11 ],
+  "Journal_id_reference" : "82",
+  "aggregates_0" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_147",
+    "atStr_1" : "value_86",
+    "atInt_0" : 13
+  } ],
+  "aggregates_2" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_124",
+    "atStr_1" : "value_73",
+    "atFloat_0" : 28.84,
+    "atTuple_0" : [ true, 179, [ 152, 5, 13 ] ],
+    "Publisher_id_reference" : "136",
+    "Author_id_reference" : "133",
+    "Journal_id_reference" : [ "80" ]
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_93",
+  "atStr_1" : "value_191",
+  "atInt_0" : 30,
+  "atInt_1" : 30,
+  "atFloat_0" : 81.79,
+  "atBool_0" : false,
+  "atTuple_0" : [ [ 114, 90, 70 ], 70.53 ],
+  "atTuple_1" : [ 87 ],
+  "Book_id_reference" : [ "194" ],
+  "Author_id_reference" : [ "117" ],
+  "aggregates_0" : [ {
+    "type" : "Book",
+    "atStr_0" : "value_185",
+    "atStr_1" : "value_156",
+    "atStr_2" : "value_71",
+    "atInt_0" : 104,
+    "atTuple_0" : [ "value_115", 110 ],
+    "atTuple_1" : [ 68.69, 68.18, "value_2" ],
+    "Publisher_id_reference" : [ "162" ]
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_178",
+  "atStr_1" : "value_24",
+  "atInt_0" : 73,
+  "atInt_1" : 40,
+  "atFloat_0" : 45.6,
+  "atBool_0" : false,
+  "atTuple_0" : [ [ 187, 53, 12 ], 21.19 ],
+  "atTuple_1" : [ 81 ],
+  "Book_id_reference" : [ "31", "71" ],
+  "Author_id_reference" : "66",
+  "aggregates_0" : [ {
+    "type" : "Book",
+    "atStr_0" : "value_185",
+    "atStr_1" : "value_156",
+    "atStr_2" : "value_71",
+    "atInt_0" : 104,
+    "atTuple_0" : [ "value_115", 110 ],
+    "atTuple_1" : [ 68.69, 68.18, "value_2" ],
+    "Publisher_id_reference" : [ "162" ]
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_72",
+  "atStr_1" : "value_78",
+  "atInt_0" : 77,
+  "atInt_1" : 133,
+  "atFloat_0" : 29.41,
+  "atBool_0" : false,
+  "atTuple_0" : [ [ 105, 125, 112 ], 61.7 ],
+  "atTuple_1" : [ 81 ],
+  "Book_id_reference" : [ ],
+  "Author_id_reference" : "183",
+  "aggregates_0" : [ {
+    "type" : "Book",
+    "atStr_0" : "value_185",
+    "atStr_1" : "value_156",
+    "atStr_2" : "value_71",
+    "atInt_0" : 104,
+    "atTuple_0" : [ "value_115", 110 ],
+    "atTuple_1" : [ 68.69, 68.18, "value_2" ],
+    "Publisher_id_reference" : [ "162" ]
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_84",
+  "atStr_1" : "value_11",
+  "atInt_0" : 147,
+  "atInt_1" : 9,
+  "atFloat_0" : 43.11,
+  "atBool_0" : false,
+  "atTuple_0" : [ [ 56, 16, 148 ], 93.79 ],
+  "atTuple_1" : [ 184 ],
+  "Book_id_reference" : [ "125", "95" ],
+  "Author_id_reference" : [ "54" ],
+  "aggregates_0" : [ {
+    "type" : "Book",
+    "atStr_0" : "value_185",
+    "atStr_1" : "value_156",
+    "atStr_2" : "value_71",
+    "atInt_0" : 104,
+    "atTuple_0" : [ "value_115", 110 ],
+    "atTuple_1" : [ 68.69, 68.18, "value_2" ],
+    "Publisher_id_reference" : [ "162" ]
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_94",
+  "atStr_1" : "value_197",
+  "atInt_0" : 191,
+  "atInt_1" : 190,
+  "atFloat_0" : 64.18,
+  "atBool_0" : false,
+  "atTuple_0" : [ [ 78, 41, 54 ], 32.66 ],
+  "atTuple_1" : [ 33 ],
+  "Book_id_reference" : [ "141", "166" ],
+  "Author_id_reference" : "29",
+  "aggregates_0" : [ {
+    "type" : "Book",
+    "atStr_0" : "value_185",
+    "atStr_1" : "value_156",
+    "atStr_2" : "value_71",
+    "atInt_0" : 104,
+    "atTuple_0" : [ "value_115", 110 ],
+    "atTuple_1" : [ 68.69, 68.18, "value_2" ],
+    "Publisher_id_reference" : [ "162" ]
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_33",
+  "atStr_1" : "value_107",
+  "atInt_0" : 42,
+  "atInt_1" : 165,
+  "atFloat_0" : 22.81,
+  "atBool_0" : false,
+  "atTuple_0" : [ [ 174, 106, 21 ], 44.33 ],
+  "atTuple_1" : [ 122 ],
+  "Book_id_reference" : [ "39", "95" ],
+  "Author_id_reference" : "98",
+  "aggregates_0" : [ {
+    "type" : "Book",
+    "atStr_0" : "value_185",
+    "atStr_1" : "value_156",
+    "atStr_2" : "value_71",
+    "atInt_0" : 104,
+    "atTuple_0" : [ "value_115", 110 ],
+    "atTuple_1" : [ 68.69, 68.18, "value_2" ],
+    "Publisher_id_reference" : [ "162" ]
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_164",
+  "atFloat_0" : 24.88,
+  "atBool_0" : false,
+  "atTuple_0" : [ 4.46 ],
+  "Journal_id_reference" : [ "130", "109" ],
+  "Content_id_reference" : "93"
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_180",
+  "atFloat_0" : 36.32,
+  "atBool_0" : false,
+  "atTuple_0" : [ 95.42 ],
+  "Journal_id_reference" : [ "21" ],
+  "Content_id_reference" : "163"
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_53",
+  "atFloat_0" : 47.3,
+  "atBool_0" : false,
+  "atTuple_0" : [ 64.87 ],
+  "Journal_id_reference" : [ "138", "68" ],
+  "Content_id_reference" : "36"
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_165",
+  "atFloat_0" : 9.57,
+  "atBool_0" : false,
+  "atTuple_0" : [ 30.14 ],
+  "Journal_id_reference" : [ "78" ],
+  "Content_id_reference" : [ "99" ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_69",
+  "atFloat_0" : 77.56,
+  "atBool_0" : false,
+  "atTuple_0" : [ 27.66 ],
+  "Journal_id_reference" : [ "199" ],
+  "Content_id_reference" : [ "126" ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_19",
+  "atFloat_0" : 26.12,
+  "atBool_0" : true,
+  "atTuple_0" : [ 26.16 ],
+  "Journal_id_reference" : [ "172", "56" ],
+  "Content_id_reference" : "84"
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_128",
+  "atStr_1" : "value_61",
+  "atStr_2" : "value_1",
+  "atStr_3" : "value_128",
+  "atInt_0" : 57,
+  "atInt_1" : 78,
+  "Publisher_id_reference" : [ "142" ],
+  "Author_id_reference" : [ "180" ],
+  "aggregates_1" : [ {
+    "type" : "Journal",
+    "atStr_0" : "value_93",
+    "atStr_1" : "value_191",
+    "atInt_0" : 30,
+    "atInt_1" : 30,
+    "atFloat_0" : 81.79,
+    "atBool_0" : false,
+    "atTuple_0" : [ [ 114, 90, 70 ], 70.53 ],
+    "atTuple_1" : [ 87 ],
+    "Book_id_reference" : [ "194" ],
+    "Author_id_reference" : [ "117" ],
+    "aggregates_0" : [ {
+      "type" : "Book",
+      "atStr_0" : "value_185",
+      "atStr_1" : "value_156",
+      "atStr_2" : "value_71",
+      "atInt_0" : 104,
+      "atTuple_0" : [ "value_115", 110 ],
+      "atTuple_1" : [ 68.69, 68.18, "value_2" ],
+      "Publisher_id_reference" : [ "162" ]
+    } ]
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_42",
+  "atStr_1" : "value_151",
+  "atStr_2" : "value_125",
+  "atStr_3" : "value_30",
+  "atInt_0" : 163,
+  "atInt_1" : 187,
+  "Publisher_id_reference" : "109",
+  "Author_id_reference" : [ "119" ],
+  "aggregates_1" : [ {
+    "type" : "Journal",
+    "atStr_0" : "value_93",
+    "atStr_1" : "value_191",
+    "atInt_0" : 30,
+    "atInt_1" : 30,
+    "atFloat_0" : 81.79,
+    "atBool_0" : false,
+    "atTuple_0" : [ [ 114, 90, 70 ], 70.53 ],
+    "atTuple_1" : [ 87 ],
+    "Book_id_reference" : [ "194" ],
+    "Author_id_reference" : [ "117" ],
+    "aggregates_0" : [ {
+      "type" : "Book",
+      "atStr_0" : "value_185",
+      "atStr_1" : "value_156",
+      "atStr_2" : "value_71",
+      "atInt_0" : 104,
+      "atTuple_0" : [ "value_115", 110 ],
+      "atTuple_1" : [ 68.69, 68.18, "value_2" ],
+      "Publisher_id_reference" : [ "162" ]
+    } ]
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_19",
+  "atStr_1" : "value_65",
+  "atStr_2" : "value_185",
+  "atStr_3" : "value_53",
+  "atInt_0" : 67,
+  "atInt_1" : 46,
+  "Publisher_id_reference" : [ "122" ],
+  "Author_id_reference" : [ "91" ],
+  "aggregates_1" : [ {
+    "type" : "Journal",
+    "atStr_0" : "value_93",
+    "atStr_1" : "value_191",
+    "atInt_0" : 30,
+    "atInt_1" : 30,
+    "atFloat_0" : 81.79,
+    "atBool_0" : false,
+    "atTuple_0" : [ [ 114, 90, 70 ], 70.53 ],
+    "atTuple_1" : [ 87 ],
+    "Book_id_reference" : [ "194" ],
+    "Author_id_reference" : [ "117" ],
+    "aggregates_0" : [ {
+      "type" : "Book",
+      "atStr_0" : "value_185",
+      "atStr_1" : "value_156",
+      "atStr_2" : "value_71",
+      "atInt_0" : 104,
+      "atTuple_0" : [ "value_115", 110 ],
+      "atTuple_1" : [ 68.69, 68.18, "value_2" ],
+      "Publisher_id_reference" : [ "162" ]
+    } ]
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_102",
+  "atStr_1" : "value_95",
+  "atStr_2" : "value_81",
+  "atStr_3" : "value_124",
+  "atInt_0" : 193,
+  "atInt_1" : 41,
+  "Publisher_id_reference" : [ "139" ],
+  "Author_id_reference" : [ "37" ],
+  "aggregates_1" : [ {
+    "type" : "Journal",
+    "atStr_0" : "value_93",
+    "atStr_1" : "value_191",
+    "atInt_0" : 30,
+    "atInt_1" : 30,
+    "atFloat_0" : 81.79,
+    "atBool_0" : false,
+    "atTuple_0" : [ [ 114, 90, 70 ], 70.53 ],
+    "atTuple_1" : [ 87 ],
+    "Book_id_reference" : [ "194" ],
+    "Author_id_reference" : [ "117" ],
+    "aggregates_0" : [ {
+      "type" : "Book",
+      "atStr_0" : "value_185",
+      "atStr_1" : "value_156",
+      "atStr_2" : "value_71",
+      "atInt_0" : 104,
+      "atTuple_0" : [ "value_115", 110 ],
+      "atTuple_1" : [ 68.69, 68.18, "value_2" ],
+      "Publisher_id_reference" : [ "162" ]
+    } ]
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_167",
+  "atStr_1" : "value_90",
+  "atStr_2" : "value_18",
+  "atStr_3" : "value_49",
+  "atInt_0" : 174,
+  "atInt_1" : 21,
+  "Publisher_id_reference" : [ "42" ],
+  "Author_id_reference" : [ "124", "189" ],
+  "aggregates_1" : [ {
+    "type" : "Journal",
+    "atStr_0" : "value_93",
+    "atStr_1" : "value_191",
+    "atInt_0" : 30,
+    "atInt_1" : 30,
+    "atFloat_0" : 81.79,
+    "atBool_0" : false,
+    "atTuple_0" : [ [ 114, 90, 70 ], 70.53 ],
+    "atTuple_1" : [ 87 ],
+    "Book_id_reference" : [ "194" ],
+    "Author_id_reference" : [ "117" ],
+    "aggregates_0" : [ {
+      "type" : "Book",
+      "atStr_0" : "value_185",
+      "atStr_1" : "value_156",
+      "atStr_2" : "value_71",
+      "atInt_0" : 104,
+      "atTuple_0" : [ "value_115", 110 ],
+      "atTuple_1" : [ 68.69, 68.18, "value_2" ],
+      "Publisher_id_reference" : [ "162" ]
+    } ]
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_127",
+  "atStr_1" : "value_162",
+  "atStr_2" : "value_94",
+  "atStr_3" : "value_198",
+  "atInt_0" : 103,
+  "atInt_1" : 67,
+  "atBool_0" : true,
+  "aggregates_1" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_147",
+    "atStr_1" : "value_86",
+    "atInt_0" : 13
+  } ],
+  "aggregates_2" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_147",
+    "atStr_1" : "value_86",
+    "atInt_0" : 13
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_86",
+  "atStr_1" : "value_48",
+  "atStr_2" : "value_47",
+  "atStr_3" : "value_184",
+  "atInt_0" : 159,
+  "atInt_1" : 171,
+  "atBool_0" : false,
+  "aggregates_1" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_147",
+    "atStr_1" : "value_86",
+    "atInt_0" : 13
+  } ],
+  "aggregates_2" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_147",
+    "atStr_1" : "value_86",
+    "atInt_0" : 13
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_155",
+  "atStr_1" : "value_151",
+  "atStr_2" : "value_69",
+  "atStr_3" : "value_121",
+  "atInt_0" : 82,
+  "atInt_1" : 6,
+  "atBool_0" : true,
+  "aggregates_1" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_147",
+    "atStr_1" : "value_86",
+    "atInt_0" : 13
+  } ],
+  "aggregates_2" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_147",
+    "atStr_1" : "value_86",
+    "atInt_0" : 13
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_33",
+  "atStr_1" : "value_97",
+  "atStr_2" : "value_82",
+  "atStr_3" : "value_139",
+  "atInt_0" : 15,
+  "atInt_1" : 30,
+  "atBool_0" : true,
+  "aggregates_1" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_147",
+    "atStr_1" : "value_86",
+    "atInt_0" : 13
+  } ],
+  "aggregates_2" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_147",
+    "atStr_1" : "value_86",
+    "atInt_0" : 13
+  } ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_52",
+  "atStr_1" : "value_196",
+  "atInt_0" : 164,
+  "atInt_1" : 199,
+  "atInt_2" : 119,
+  "atFloat_0" : 14.95,
+  "atBool_0" : false,
+  "Journal_id_reference" : [ ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_110",
+  "atStr_1" : "value_194",
+  "atInt_0" : 114,
+  "atInt_1" : 184,
+  "atInt_2" : 1,
+  "atFloat_0" : 29.32,
+  "atBool_0" : false,
+  "Journal_id_reference" : [ "113", "173" ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_142",
+  "atStr_1" : "value_24",
+  "atInt_0" : 191,
+  "atInt_1" : 57,
+  "atInt_2" : 31,
+  "atFloat_0" : 28.62,
+  "atBool_0" : false,
+  "Journal_id_reference" : [ ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_132",
+  "atStr_1" : "value_137",
+  "atInt_0" : 7,
+  "atFloat_0" : 15.46,
+  "atTuple_0" : [ [ 171, 181, 89 ] ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_116",
+  "atStr_1" : "value_195",
+  "atInt_0" : 174,
+  "atFloat_0" : 28.43,
+  "atTuple_0" : [ [ 30, 92, 178 ] ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_18",
+  "atStr_1" : "value_92",
+  "atInt_0" : 131,
+  "atFloat_0" : 74.85,
+  "atTuple_0" : [ [ 107, 88, 199 ] ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_96",
+  "atStr_1" : "value_19",
+  "atInt_0" : 9,
+  "atFloat_0" : 6.54,
+  "atTuple_0" : [ [ 32, 56, 128 ] ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_131",
+  "atStr_1" : "value_87",
+  "atInt_0" : 167,
+  "atFloat_0" : 36.7,
+  "atTuple_0" : [ [ 40, 67, 46 ] ]
+}, {
+  "type" : "Journal",
+  "atStr_0" : "value_69",
+  "atStr_1" : "value_51",
+  "atInt_0" : 98,
+  "atFloat_0" : 19.34,
+  "atTuple_0" : [ [ 180, 162, 139 ] ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_111",
+  "atStr_1" : "value_33",
+  "atStr_2" : "value_62",
+  "atInt_0" : 153,
+  "atFloat_0" : 13.08,
+  "atBool_0" : true,
+  "atBool_1" : false
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_7",
+  "atStr_1" : "value_41",
+  "atStr_2" : "value_158",
+  "atInt_0" : 44,
+  "atFloat_0" : 51.36,
+  "atBool_0" : true,
+  "atBool_1" : true
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_184",
+  "atStr_1" : "value_132",
+  "atStr_2" : "value_116",
+  "atInt_0" : 74,
+  "atFloat_0" : 18.69,
+  "atBool_0" : true,
+  "atBool_1" : false
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_190",
+  "atStr_1" : "value_38",
+  "atStr_2" : "value_170",
+  "atInt_0" : 1,
+  "atFloat_0" : 21.66,
+  "atBool_0" : false,
+  "atBool_1" : false
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_108",
+  "atStr_1" : "value_158",
+  "atStr_2" : "value_3",
+  "atInt_0" : 177,
+  "atFloat_0" : 70.09,
+  "atBool_0" : false,
+  "atBool_1" : true
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_96",
+  "atStr_1" : "value_65",
+  "atStr_2" : "value_173",
+  "atInt_0" : 195,
+  "atFloat_0" : 31.92,
+  "atBool_0" : false,
+  "atBool_1" : true
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_37",
+  "atStr_1" : "value_76",
+  "atStr_2" : "value_111",
+  "atInt_0" : 132,
+  "atInt_1" : 102,
+  "atFloat_0" : 33.81,
+  "atTuple_0" : [ 81, true, "value_80" ],
+  "atTuple_1" : [ false, "value_65", 73.03 ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_90",
+  "atStr_1" : "value_153",
+  "atStr_2" : "value_100",
+  "atInt_0" : 108,
+  "atInt_1" : 3,
+  "atFloat_0" : 65.21,
+  "atTuple_0" : [ 132, false, "value_25" ],
+  "atTuple_1" : [ true, "value_111", 38.76 ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_1",
+  "atStr_1" : "value_102",
+  "atStr_2" : "value_184",
+  "atInt_0" : 80,
+  "atInt_1" : 60,
+  "atFloat_0" : 55.47,
+  "atTuple_0" : [ 20, false, "value_165" ],
+  "atTuple_1" : [ false, "value_181", 29.7 ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_77",
+  "atStr_1" : "value_4",
+  "atStr_2" : "value_92",
+  "atInt_0" : 195,
+  "atInt_1" : 76,
+  "atFloat_0" : 83.62,
+  "atTuple_0" : [ 72, false, "value_132" ],
+  "atTuple_1" : [ false, "value_155", 28.9 ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_133",
+  "atStr_1" : "value_31",
+  "atStr_2" : "value_172",
+  "atInt_0" : 32,
+  "atInt_1" : 124,
+  "atFloat_0" : 65.99,
+  "atTuple_0" : [ 15, false, "value_70" ],
+  "atTuple_1" : [ true, "value_38", 97.18 ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_35",
+  "atStr_1" : "value_181",
+  "atStr_2" : "value_183",
+  "atStr_3" : "value_170",
+  "atStr_4" : "value_49",
+  "atFloat_0" : 39.65,
+  "atFloat_1" : 69.96,
+  "atBool_0" : true,
+  "atBool_1" : false,
+  "atTuple_0" : [ [ 31 ], "value_98", 17.75 ],
+  "Book_id_reference" : "4",
+  "aggregates_0" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_4"
+  } ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_7",
+  "atStr_1" : "value_115",
+  "atStr_2" : "value_49",
+  "atStr_3" : "value_198",
+  "atStr_4" : "value_71",
+  "atFloat_0" : 24.99,
+  "atFloat_1" : 73.22,
+  "atBool_0" : true,
+  "atBool_1" : false,
+  "atTuple_0" : [ [ 181 ], "value_39", 63.62 ],
+  "Book_id_reference" : "28",
+  "aggregates_0" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_4"
+  } ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_42",
+  "atStr_1" : "value_137",
+  "atStr_2" : "value_104",
+  "atStr_3" : "value_30",
+  "atStr_4" : "value_96",
+  "atFloat_0" : 2.13,
+  "atFloat_1" : 48.43,
+  "atBool_0" : true,
+  "atBool_1" : false,
+  "atTuple_0" : [ [ 69 ], "value_80", 41.07 ],
+  "Book_id_reference" : [ "106" ],
+  "aggregates_0" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_4"
+  } ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_190",
+  "atStr_1" : "value_96",
+  "atStr_2" : "value_187",
+  "atStr_3" : "value_12",
+  "atStr_4" : "value_45",
+  "atFloat_0" : 14.08,
+  "atFloat_1" : 69.44,
+  "atBool_0" : false,
+  "atBool_1" : false,
+  "atTuple_0" : [ [ 131 ], "value_186", 65.18 ],
+  "Book_id_reference" : "166",
+  "aggregates_0" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_4"
+  } ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_41",
+  "atStr_1" : "value_84",
+  "atStr_2" : "value_97",
+  "atStr_3" : "value_148",
+  "atStr_4" : "value_113",
+  "atFloat_0" : 45.23,
+  "atFloat_1" : 50.31,
+  "atBool_0" : false,
+  "atBool_1" : true,
+  "atTuple_0" : [ [ 33 ], "value_46", 98.9 ],
+  "Book_id_reference" : [ "152" ],
+  "aggregates_0" : [ {
+    "type" : "Author",
+    "atStr_0" : "value_4"
+  } ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_141",
+  "atStr_1" : "value_68",
+  "atInt_0" : 39,
+  "atFloat_0" : 25.43,
+  "atFloat_1" : 98.62,
+  "atBool_0" : true,
+  "atBool_1" : false,
+  "atTuple_0" : [ true, "value_57", 131 ],
+  "Publisher_id_reference" : "58"
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_129",
+  "atStr_1" : "value_197",
+  "atInt_0" : 146,
+  "atFloat_0" : 59.56,
+  "atFloat_1" : 80.97,
+  "atBool_0" : false,
+  "atBool_1" : false,
+  "atTuple_0" : [ false, "value_162", 40 ],
+  "Publisher_id_reference" : [ "18" ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_4",
+  "atStr_1" : "value_3",
+  "atInt_0" : 119,
+  "atFloat_0" : 99.95,
+  "atFloat_1" : 90.25,
+  "atBool_0" : false,
+  "atBool_1" : false,
+  "atTuple_0" : [ true, "value_154", 44 ],
+  "Publisher_id_reference" : [ "144" ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_194",
+  "atStr_1" : "value_110",
+  "atInt_0" : 170,
+  "atFloat_0" : 80.66,
+  "atFloat_1" : 15.79,
+  "atBool_0" : true,
+  "atBool_1" : false,
+  "atTuple_0" : [ false, "value_166", 102 ],
+  "Publisher_id_reference" : "74"
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_109",
+  "atStr_1" : "value_137",
+  "atInt_0" : 13,
+  "atFloat_0" : 98.04,
+  "atFloat_1" : 91.93,
+  "atBool_0" : true,
+  "atBool_1" : false,
+  "atTuple_0" : [ true, "value_119", 157 ],
+  "Publisher_id_reference" : "74"
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_127",
+  "atStr_1" : "value_116",
+  "atInt_0" : 66,
+  "atFloat_0" : 16.09,
+  "atFloat_1" : 12.13,
+  "atBool_0" : true,
+  "atBool_1" : true,
+  "atTuple_0" : [ false, "value_92", 105 ],
+  "Publisher_id_reference" : "99"
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_110",
+  "atStr_1" : "value_129",
+  "atInt_0" : 27,
+  "atFloat_0" : 50.05,
+  "atFloat_1" : 6.37,
+  "atBool_0" : false,
+  "atBool_1" : false,
+  "atTuple_0" : [ true, "value_49", 50 ],
+  "Publisher_id_reference" : [ "187" ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_136",
+  "atStr_1" : "value_169",
+  "atInt_0" : 98,
+  "atTuple_0" : [ [ 50 ], 46.08 ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_40",
+  "atStr_1" : "value_100",
+  "atInt_0" : 86,
+  "atTuple_0" : [ [ 127 ], 75.66 ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_118",
+  "atStr_1" : "value_168",
+  "atInt_0" : 31,
+  "atTuple_0" : [ [ 167 ], 24.02 ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_119",
+  "atInt_0" : 18,
+  "atBool_0" : true,
+  "Journal_id_reference" : [ "28" ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_6",
+  "atInt_0" : 198,
+  "atBool_0" : true,
+  "Journal_id_reference" : [ "196" ]
+}, {
+  "type" : "Publisher",
+  "atStr_0" : "value_176",
+  "atInt_0" : 153,
+  "atBool_0" : true,
+  "Journal_id_reference" : [ "69", "121" ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_69",
+  "atStr_1" : "value_35",
+  "atStr_2" : "value_120",
+  "atInt_0" : 99,
+  "atInt_1" : 96,
+  "atInt_2" : 138,
+  "atFloat_0" : 97.18,
+  "atTuple_0" : [ true, true, [ 119 ] ],
+  "Publisher_id_reference" : [ "103" ],
+  "Journal_id_reference" : "93"
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_193",
+  "atStr_1" : "value_58",
+  "atStr_2" : "value_49",
+  "atInt_0" : 102,
+  "atInt_1" : 164,
+  "atInt_2" : 142,
+  "atFloat_0" : 7.34,
+  "atTuple_0" : [ false, false, [ 98 ] ],
+  "Publisher_id_reference" : [ "37" ],
+  "Journal_id_reference" : [ "55" ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_70",
+  "atStr_1" : "value_168",
+  "atStr_2" : "value_113",
+  "atInt_0" : 178,
+  "atInt_1" : 64,
+  "atInt_2" : 96,
+  "atFloat_0" : 87.16,
+  "atTuple_0" : [ true, false, [ 154 ] ],
+  "Publisher_id_reference" : "94",
+  "Journal_id_reference" : "92"
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_130",
+  "atStr_1" : "value_6",
+  "atStr_2" : "value_128",
+  "atInt_0" : 109,
+  "atInt_1" : 14,
+  "atInt_2" : 145,
+  "atFloat_0" : 75.47,
+  "atTuple_0" : [ true, false, [ 164 ] ],
+  "Publisher_id_reference" : [ "75" ],
+  "Journal_id_reference" : [ "36" ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_200",
+  "atStr_1" : "value_33",
+  "atStr_2" : "value_109",
+  "atInt_0" : 46,
+  "atInt_1" : 44,
+  "atInt_2" : 125,
+  "atFloat_0" : 64.77,
+  "atTuple_0" : [ true, true, [ 195 ] ],
+  "Publisher_id_reference" : "129",
+  "Journal_id_reference" : [ "111" ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_59",
+  "atStr_1" : "value_46",
+  "atStr_2" : "value_83",
+  "atInt_0" : 6,
+  "atInt_1" : 134,
+  "atInt_2" : 83,
+  "atFloat_0" : 37.15,
+  "atTuple_0" : [ false, true, [ 160 ] ],
+  "Publisher_id_reference" : [ "165" ],
+  "Journal_id_reference" : "190"
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_117",
+  "atStr_1" : "value_157",
+  "atInt_0" : 164,
+  "atFloat_0" : 17.51,
+  "atBool_0" : true,
+  "atTuple_0" : [ "value_198", true ],
+  "Book_id_reference" : [ "177" ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_62",
+  "atStr_1" : "value_150",
+  "atInt_0" : 123,
+  "atFloat_0" : 40.27,
+  "atBool_0" : false,
+  "atTuple_0" : [ "value_150", false ],
+  "Book_id_reference" : [ "160" ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_38",
+  "atStr_1" : "value_27",
+  "atInt_0" : 140,
+  "atFloat_0" : 25.87,
+  "atBool_0" : false,
+  "atTuple_0" : [ "value_138", true ],
+  "Book_id_reference" : [ "132" ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_193",
+  "atStr_1" : "value_122",
+  "atInt_0" : 112,
+  "atFloat_0" : 25.35,
+  "atBool_0" : false,
+  "atTuple_0" : [ "value_61", false ],
+  "Book_id_reference" : [ "185" ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_111",
+  "atStr_1" : "value_53",
+  "atInt_0" : 163,
+  "atFloat_0" : 34.03,
+  "atBool_0" : true,
+  "atTuple_0" : [ "value_28", true ],
+  "Book_id_reference" : [ ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_23",
+  "atStr_1" : "value_133",
+  "atInt_0" : 8,
+  "atFloat_0" : 87.93,
+  "atBool_0" : false,
+  "atTuple_0" : [ "value_50", false ],
+  "Book_id_reference" : [ "51" ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_155",
+  "atStr_1" : "value_69",
+  "atInt_0" : 19,
+  "atFloat_0" : 78.58,
+  "atBool_0" : true,
+  "atTuple_0" : [ "value_175", true ],
+  "Book_id_reference" : [ ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_57",
+  "atStr_1" : "value_125",
+  "atFloat_0" : 51.3,
+  "atBool_0" : true,
+  "Author_id_reference" : "15",
+  "Journal_id_reference" : [ "33" ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_103",
+  "atStr_1" : "value_104",
+  "atFloat_0" : 67.04,
+  "atBool_0" : true,
+  "Author_id_reference" : [ "7" ],
+  "Journal_id_reference" : [ "43" ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_64",
+  "atStr_1" : "value_22",
+  "atFloat_0" : 55.21,
+  "atBool_0" : false,
+  "Author_id_reference" : [ "175" ],
+  "Journal_id_reference" : [ "125" ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_71",
+  "atStr_1" : "value_141",
+  "atFloat_0" : 13.13,
+  "atBool_0" : false,
+  "Author_id_reference" : [ "160" ],
+  "Journal_id_reference" : [ "92" ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_187",
+  "atStr_1" : "value_106",
+  "atFloat_0" : 94.81,
+  "atBool_0" : true,
+  "Author_id_reference" : "153",
+  "Journal_id_reference" : [ ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_200",
+  "atStr_1" : "value_14",
+  "atStr_2" : "value_199",
+  "atStr_3" : "value_130",
+  "atInt_0" : 8,
+  "atTuple_0" : [ 8.29, "value_120", [ 176 ] ],
+  "Author_id_reference" : "9"
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_161",
+  "atStr_1" : "value_66",
+  "atStr_2" : "value_48",
+  "atStr_3" : "value_57",
+  "atInt_0" : 175,
+  "atTuple_0" : [ 52.51, "value_124", [ 13 ] ],
+  "Author_id_reference" : "78"
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_122",
+  "atStr_1" : "value_130",
+  "atStr_2" : "value_33",
+  "atStr_3" : "value_126",
+  "atInt_0" : 109,
+  "atTuple_0" : [ 70.75, "value_57", [ 157 ] ],
+  "Author_id_reference" : [ "36" ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_143",
+  "atStr_1" : "value_111",
+  "atStr_2" : "value_150",
+  "atStr_3" : "value_46",
+  "atInt_0" : 103,
+  "atTuple_0" : [ 54.7, "value_169", [ 93 ] ],
+  "Author_id_reference" : [ "110" ]
+}, {
+  "type" : "Content",
+  "atStr_0" : "value_136",
+  "atStr_1" : "value_139",
+  "atStr_2" : "value_37",
+  "atStr_3" : "value_179",
+  "atInt_0" : 129,
+  "atTuple_0" : [ 17.93, "value_108", [ 175 ] ],
+  "Author_id_reference" : [ "86" ]
+} ]

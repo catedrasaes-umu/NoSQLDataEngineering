@@ -29,7 +29,7 @@ public class CouchDBSchemaInference
 		}
 */
 		String dbName = "test";//args[0];
-		String dirName = "/home/alberto/repos/NoSQLDataEngineering/es.um.nosql.schemainference.nosqlimport/mapreduce/couchdb/v1/";//args[1];
+		String dirName = "mapreduce/couchdb/v1";//args[1];
 
 		try {
 			MapReduceSources mrs = MapReduceSources.fromDir(dirName);
