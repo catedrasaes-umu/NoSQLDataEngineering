@@ -28,7 +28,7 @@ public class CouchDBSchemaInference
 			return;
 		}
 */
-		String dbName = "test";//args[0];
+		String dbName = "books";//args[0];
 		String dirName = "mapreduce/couchdb/v1";//args[1];
 
 		try {
@@ -58,16 +58,16 @@ public class CouchDBSchemaInference
 			for (JsonObject o : list)
 				System.out.println(o.toString());
 
-			// Produce all the actual objects from the query. Couchdb won't allow include_docs to be specified
-			// for a reduce view, and if I include the document itself it causes a view overflow. So we have
-			// to take all the value objects and obtain them from the database directly
-			List<JsonObject> result = new ArrayList<JsonObject>(list.size());
-			for (JsonObject o : list)
-			{
-				String doc_id = o.get("value").getAsString();
-				JsonObject obj = dbClient.find(JsonObject.class, doc_id);
-				result.add(obj);
-			}
+//			// Produce all the actual objects from the query. Couchdb won't allow include_docs to be specified
+//			// for a reduce view, and if I include the document itself it causes a view overflow. So we have
+//			// to take all the value objects and obtain them from the database directly
+//			List<JsonObject> result = new ArrayList<JsonObject>(list.size());
+//			for (JsonObject o : list)
+//			{
+//				String doc_id = o.get("value").getAsString();
+//				JsonObject obj = dbClient.find(JsonObject.class, doc_id);
+//				result.add(obj);
+//			}
 		} catch (MapReduceSources.MalformedDirectoryStructure e)
 		{
 			System.err.println("Cannot access map.js and/or reduce.js files.");

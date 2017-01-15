@@ -53,7 +53,7 @@ public class Main
 */
 	private static void generateJsonFromModel()
 	{
-		String filename = "model/NoSQLSchema.xmi";
+		String filename = "models/NoSQLSchema.xmi";
 		File file = new File(filename);
 		String dbname = file.getName().split("\\.")[0];
 
