@@ -35,7 +35,7 @@ public class CouchDBSchemaInference
 			MapReduceSources mrs = MapReduceSources.fromDir(dirName);
 
 			CouchDbProperties properties =
-					new CouchDbProperties(dbName, true, "http", "155.54.190.237", 5984,
+					new CouchDbProperties(dbName, true, "http", "localhost", 5984,
 							null,null);
 			CouchDbClient dbClient = new CouchDbClient(properties);
 
@@ -68,9 +68,12 @@ public class CouchDBSchemaInference
 				JsonObject obj = dbClient.find(JsonObject.class, doc_id);
 				result.add(obj);
 			}
-
-		} catch (Exception e) {
+		} catch (MapReduceSources.MalformedDirectoryStructure e)
+		{
 			System.err.println("Cannot access map.js and/or reduce.js files.");
+			e.printStackTrace();			
+		} catch (Exception e) {
+			System.err.println("Error in the process!.");
 			e.printStackTrace();
 		}
 	}
