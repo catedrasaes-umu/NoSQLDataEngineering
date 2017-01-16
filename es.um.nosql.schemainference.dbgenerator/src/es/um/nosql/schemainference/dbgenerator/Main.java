@@ -4,7 +4,7 @@ import es.um.nosql.schemainference.dbgenerator.utils.DbType;
 
 public class Main
 {
-	private static final String COUCHDB_IP = "localhost";
+	private static final String COUCHDB_IP = "155.54.190.237";
 
 //	private static final String MONGODB_IP = "155.54.190.237";
 

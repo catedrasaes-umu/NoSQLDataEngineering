@@ -1,1266 +1,431 @@
 [ {
   "id" : 1,
   "type" : "Actor",
-  "Name" : "value_58",
-  "Age" : 60,
-  "Birthday" : "value_199"
+  "Name" : "value_52",
+  "Age" : 166,
+  "Birthday" : "value_136"
 }, {
   "id" : 2,
   "type" : "Actor",
-  "Name" : "value_38",
-  "Age" : 62,
-  "Birthday" : "value_101"
+  "Name" : "value_188",
+  "Age" : 164,
+  "Birthday" : "value_27"
 }, {
   "id" : 3,
   "type" : "Actor",
-  "Name" : "value_121",
-  "Age" : 41,
-  "Birthday" : "value_6"
+  "Name" : "value_168",
+  "Age" : 90,
+  "Birthday" : "value_84",
+  "Nationality" : [ "value_15", "value_41" ],
+  "hasAwards" : [ {
+    "id" : 9,
+    "type" : "Award",
+    "Name" : "value_126",
+    "Institution" : "value_169",
+    "Year" : 148
+  } ]
 }, {
   "id" : 4,
   "type" : "Actor",
-  "Name" : "value_187",
-  "Age" : 160,
-  "Birthday" : "value_196"
+  "Name" : "value_196",
+  "Age" : 173,
+  "Birthday" : "value_36",
+  "Nationality" : [ "value_122", "value_172" ],
+  "hasAwards" : [ {
+    "id" : 9,
+    "type" : "Award",
+    "Name" : "value_126",
+    "Institution" : "value_169",
+    "Year" : 148
+  } ]
 }, {
   "id" : 5,
   "type" : "Actor",
-  "Name" : "value_17",
-  "Age" : 44,
-  "Birthday" : "value_93"
+  "Name" : "value_35",
+  "Age" : 38,
+  "Birthday" : "value_135",
+  "Nationality" : [ "value_111", "value_11" ],
+  "Debut_year" : 163,
+  "hasAwards" : [ {
+    "id" : 9,
+    "type" : "Award",
+    "Name" : "value_126",
+    "Institution" : "value_169",
+    "Year" : 148
+  } ]
 }, {
   "id" : 6,
   "type" : "Actor",
-  "Name" : "value_180",
-  "Age" : 160,
-  "Birthday" : "value_171"
+  "Name" : "value_100",
+  "Age" : 13,
+  "Birthday" : "value_55",
+  "Nationality" : [ "value_125", "value_170" ],
+  "Debut_year" : 22,
+  "hasAwards" : [ {
+    "id" : 9,
+    "type" : "Award",
+    "Name" : "value_126",
+    "Institution" : "value_169",
+    "Year" : 148
+  } ]
 }, {
   "id" : 7,
   "type" : "Actor",
-  "Name" : "value_69",
-  "Age" : 103,
-  "Birthday" : "value_2",
-  "Nationality" : [ "value_79", "value_106" ],
+  "Name" : "value_198",
+  "Age" : 127,
+  "Birthday" : "value_109",
+  "Nationality" : [ "value_155", "value_188" ],
+  "Debut_year" : 8,
+  "Website" : "value_195",
   "hasAwards" : [ {
-    "id" : 20,
+    "id" : 9,
     "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
+    "Name" : "value_126",
+    "Institution" : "value_169",
+    "Year" : 148
   } ]
 }, {
   "id" : 8,
   "type" : "Actor",
-  "Name" : "value_174",
-  "Age" : 27,
-  "Birthday" : "value_25",
-  "Nationality" : [ "value_179", "value_186" ],
+  "Name" : "value_26",
+  "Age" : 76,
+  "Birthday" : "value_69",
+  "Nationality" : [ "value_195", "value_191" ],
+  "Debut_year" : 49,
+  "Website" : "value_128",
   "hasAwards" : [ {
-    "id" : 20,
+    "id" : 9,
     "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
+    "Name" : "value_126",
+    "Institution" : "value_169",
+    "Year" : 148
   } ]
 }, {
   "id" : 9,
-  "type" : "Actor",
-  "Name" : "value_152",
-  "Age" : 75,
-  "Birthday" : "value_180",
-  "Nationality" : [ "value_95", "value_125" ],
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
+  "type" : "Award",
+  "Name" : "value_126",
+  "Institution" : "value_169",
+  "Year" : 148
 }, {
   "id" : 10,
-  "type" : "Actor",
-  "Name" : "value_183",
-  "Age" : 91,
-  "Birthday" : "value_106",
-  "Nationality" : [ "value_142", "value_188" ],
-  "Debut_year" : 41,
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
+  "type" : "Award",
+  "Name" : "value_28",
+  "Institution" : "value_191",
+  "Year" : 41
 }, {
   "id" : 11,
-  "type" : "Actor",
-  "Name" : "value_95",
-  "Age" : 26,
-  "Birthday" : "value_160",
-  "Nationality" : [ "value_60", "value_63" ],
-  "Debut_year" : 88,
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
+  "type" : "Director",
+  "Name" : "value_64",
+  "Age" : "value_25"
 }, {
   "id" : 12,
-  "type" : "Actor",
-  "Name" : "value_183",
-  "Age" : 56,
-  "Birthday" : "value_190",
-  "Nationality" : [ "value_30", "value_99" ],
-  "Debut_year" : 122,
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
+  "type" : "Director",
+  "Name" : "value_75",
+  "Age" : "value_163"
 }, {
   "id" : 13,
-  "type" : "Actor",
-  "Name" : "value_124",
-  "Age" : 129,
-  "Birthday" : "value_60",
-  "Nationality" : [ "value_9", "value_75" ],
-  "Debut_year" : 39,
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
+  "type" : "Director",
+  "Name" : "value_193",
+  "Age" : 98,
+  "Oscars" : 41
 }, {
   "id" : 14,
-  "type" : "Actor",
-  "Name" : "value_134",
-  "Age" : 6,
-  "Birthday" : "value_155",
-  "Nationality" : [ "value_155", "value_107" ],
-  "Debut_year" : 94,
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
+  "type" : "Director",
+  "Name" : "value_20",
+  "Age" : 78,
+  "Oscars" : 62
 }, {
   "id" : 15,
-  "type" : "Actor",
-  "Name" : "value_191",
-  "Age" : 79,
-  "Birthday" : "value_173",
-  "Nationality" : [ "value_90", "value_146" ],
-  "Debut_year" : 47,
-  "Website" : "value_26",
+  "type" : "Director",
+  "Name" : "value_63",
+  "Age" : 82,
   "hasAwards" : [ {
-    "id" : 20,
+    "id" : 9,
     "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
+    "Name" : "value_126",
+    "Institution" : "value_169",
+    "Year" : 148
   } ]
 }, {
   "id" : 16,
-  "type" : "Actor",
-  "Name" : "value_66",
-  "Age" : 198,
-  "Birthday" : "value_37",
-  "Nationality" : [ "value_38", "value_22" ],
-  "Debut_year" : 4,
-  "Website" : "value_132",
+  "type" : "Director",
+  "Name" : "value_143",
+  "Age" : 22,
   "hasAwards" : [ {
-    "id" : 20,
+    "id" : 9,
     "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
+    "Name" : "value_126",
+    "Institution" : "value_169",
+    "Year" : 148
   } ]
 }, {
   "id" : 17,
-  "type" : "Actor",
-  "Name" : "value_57",
-  "Age" : 137,
-  "Birthday" : "value_73",
-  "Nationality" : [ "value_95", "value_48" ],
-  "Debut_year" : 81,
-  "Website" : "value_162",
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
+  "type" : "Movie",
+  "Name" : "value_88",
+  "Director" : "value_122",
+  "Year" : 120,
+  "Rating" : 45.09,
+  "Genre" : [ "value_124", "value_83" ]
 }, {
   "id" : 18,
-  "type" : "Actor",
-  "Name" : "value_158",
-  "Age" : 131,
-  "Birthday" : "value_161",
-  "Nationality" : [ "value_32", "value_139" ],
-  "Debut_year" : 96,
-  "Website" : "value_145",
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
+  "type" : "Movie",
+  "Name" : "value_144",
+  "Director" : "value_114",
+  "Year" : 193,
+  "Rating" : 59.19,
+  "Genre" : [ "value_8", "value_115" ]
 }, {
   "id" : 19,
-  "type" : "Actor",
-  "Name" : "value_75",
-  "Age" : 117,
-  "Birthday" : "value_110",
-  "Nationality" : [ "value_98", "value_149" ],
-  "Debut_year" : 149,
-  "Website" : "value_118",
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
+  "type" : "Movie",
+  "Name" : "value_45",
+  "Year" : 63,
+  "Rating" : 29.43,
+  "Genre" : [ "value_126", "value_26" ],
+  "Oscars" : 3,
+  "hasDirector" : [ "24" ],
+  "hasProducers" : [ "170", "155", "6", "14" ],
+  "hasActors" : [ "161" ]
 }, {
   "id" : 20,
-  "type" : "Award",
-  "Name" : "value_89",
-  "Institution" : "value_141",
-  "Year" : 14
+  "type" : "Movie",
+  "Name" : "value_131",
+  "Year" : 86,
+  "Rating" : 36.21,
+  "Genre" : [ "value_7", "value_73" ],
+  "Oscars" : 164,
+  "hasDirector" : "44",
+  "hasProducers" : [ "159" ],
+  "hasActors" : [ "14", "137", "48" ]
 }, {
   "id" : 21,
-  "type" : "Award",
-  "Name" : "value_197",
-  "Institution" : "value_105",
-  "Year" : 140
+  "type" : "Movie",
+  "Name" : "value_100",
+  "Year" : 55,
+  "Genre" : [ "value_11", "value_172" ],
+  "Awards" : 67,
+  "hasDirector" : "68",
+  "hasProducers" : [ "157", "56" ],
+  "hasActors" : [ "123", "112", "98" ],
+  "hasRating" : [ "115" ]
 }, {
   "id" : 22,
-  "type" : "Award",
-  "Name" : "value_138",
-  "Institution" : "value_150",
-  "Year" : 91
+  "type" : "Movie",
+  "Name" : "value_145",
+  "Year" : 11,
+  "Genre" : [ "value_63", "value_130" ],
+  "Awards" : 97,
+  "hasDirector" : "83",
+  "hasProducers" : [ "152", "168", "174" ],
+  "hasActors" : [ "115" ],
+  "hasRating" : [ "100" ]
 }, {
   "id" : 23,
-  "type" : "Award",
-  "Name" : "value_28",
-  "Institution" : "value_152",
-  "Year" : 19
+  "type" : "Movie",
+  "Name" : "value_1",
+  "Year" : 20,
+  "Genre" : [ "value_25", "value_9" ],
+  "Awards" : 199,
+  "hasDirector" : "188",
+  "hasProducers" : [ "157", "25", "109" ],
+  "hasActors" : [ "33", "116" ],
+  "hasRating" : [ {
+    "id" : 33,
+    "type" : "Rating",
+    "Rating" : 14.13
+  } ]
 }, {
   "id" : 24,
-  "type" : "Award",
-  "Name" : "value_50",
-  "Institution" : "value_9",
-  "Year" : 190
+  "type" : "Movie",
+  "Name" : "value_59",
+  "Year" : 92,
+  "Genre" : [ "value_72", "value_36" ],
+  "Awards" : 1,
+  "hasDirector" : [ "64" ],
+  "hasProducers" : [ "81", "181" ],
+  "hasActors" : [ ],
+  "hasRating" : [ {
+    "id" : 33,
+    "type" : "Rating",
+    "Rating" : 14.13
+  } ]
 }, {
   "id" : 25,
-  "type" : "Award",
-  "Name" : "value_70",
-  "Institution" : "value_54",
-  "Year" : 90
+  "type" : "Movie",
+  "Name" : "value_4",
+  "Year" : 1,
+  "Genre" : [ "value_2", "value_53" ],
+  "Awards" : 149,
+  "hasDirector" : [ "83" ],
+  "hasProducers" : [ "125" ],
+  "hasActors" : [ ],
+  "hasRating" : [ {
+    "id" : 35,
+    "type" : "Rating",
+    "Rating" : 9.29,
+    "Votes" : 128
+  } ]
 }, {
   "id" : 26,
-  "type" : "Director",
-  "Name" : "value_104",
-  "Age" : "value_19"
+  "type" : "Movie",
+  "Name" : "value_148",
+  "Year" : 110,
+  "Genre" : [ "value_17", "value_180" ],
+  "Awards" : 88,
+  "hasDirector" : [ "141" ],
+  "hasProducers" : [ "111", "5", "11", "78" ],
+  "hasActors" : [ "154", "94", "102", "59" ],
+  "hasRating" : [ {
+    "id" : 35,
+    "type" : "Rating",
+    "Rating" : 9.29,
+    "Votes" : 128
+  } ]
 }, {
   "id" : 27,
-  "type" : "Director",
-  "Name" : "value_7",
-  "Age" : "value_34"
-}, {
-  "id" : 28,
-  "type" : "Director",
-  "Name" : "value_85",
-  "Age" : "value_22"
-}, {
-  "id" : 29,
-  "type" : "Director",
-  "Name" : "value_61",
-  "Age" : "value_55"
-}, {
-  "id" : 30,
-  "type" : "Director",
-  "Name" : "value_174",
-  "Age" : "value_174"
-}, {
-  "id" : 31,
-  "type" : "Director",
-  "Name" : "value_82",
-  "Age" : "value_168"
-}, {
-  "id" : 32,
-  "type" : "Director",
-  "Name" : "value_84",
-  "Age" : 64,
-  "Oscars" : 82
-}, {
-  "id" : 33,
-  "type" : "Director",
-  "Name" : "value_147",
-  "Age" : 195,
-  "Oscars" : 193
-}, {
-  "id" : 34,
-  "type" : "Director",
-  "Name" : "value_161",
-  "Age" : 60,
-  "Oscars" : 40
-}, {
-  "id" : 35,
-  "type" : "Director",
-  "Name" : "value_193",
-  "Age" : 155,
-  "Oscars" : 121
-}, {
-  "id" : 36,
-  "type" : "Director",
-  "Name" : "value_17",
-  "Age" : 108,
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
-}, {
-  "id" : 37,
-  "type" : "Director",
-  "Name" : "value_40",
-  "Age" : 183,
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
-}, {
-  "id" : 38,
-  "type" : "Director",
-  "Name" : "value_32",
-  "Age" : 70,
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
-}, {
-  "id" : 39,
-  "type" : "Director",
-  "Name" : "value_88",
-  "Age" : 60,
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
-}, {
-  "id" : 40,
-  "type" : "Director",
-  "Name" : "value_26",
-  "Age" : 74,
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
-}, {
-  "id" : 41,
-  "type" : "Director",
-  "Name" : "value_67",
-  "Age" : 168,
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
-}, {
-  "id" : 42,
-  "type" : "Director",
-  "Name" : "value_122",
-  "Age" : 4,
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
-}, {
-  "id" : 43,
-  "type" : "Movie",
-  "Name" : "value_94",
-  "Director" : "value_186",
-  "Year" : 84,
-  "Rating" : 46.51,
-  "Genre" : [ "value_106", "value_145" ]
-}, {
-  "id" : 44,
-  "type" : "Movie",
-  "Name" : "value_51",
-  "Director" : "value_178",
-  "Year" : 151,
-  "Rating" : 67.06,
-  "Genre" : [ "value_144", "value_88" ]
-}, {
-  "id" : 45,
-  "type" : "Movie",
-  "Name" : "value_64",
-  "Director" : "value_48",
-  "Year" : 163,
-  "Rating" : 18.77,
-  "Genre" : [ "value_142", "value_186" ]
-}, {
-  "id" : 46,
-  "type" : "Movie",
-  "Name" : "value_149",
-  "Director" : "value_101",
-  "Year" : 59,
-  "Rating" : 52.32,
-  "Genre" : [ "value_90", "value_150" ]
-}, {
-  "id" : 47,
-  "type" : "Movie",
-  "Name" : "value_52",
-  "Director" : "value_25",
-  "Year" : 66,
-  "Rating" : 51.53,
-  "Genre" : [ "value_33", "value_83" ]
-}, {
-  "id" : 48,
-  "type" : "Movie",
-  "Name" : "value_104",
-  "Director" : "value_181",
-  "Year" : 8,
-  "Rating" : 58.01,
-  "Genre" : [ "value_48", "value_190" ]
-}, {
-  "id" : 49,
-  "type" : "Movie",
-  "Name" : "value_15",
-  "Director" : "value_21",
-  "Year" : 2,
-  "Rating" : 52.01,
-  "Genre" : [ "value_72", "value_4" ]
-}, {
-  "id" : 50,
-  "type" : "Movie",
-  "Name" : "value_65",
-  "Director" : "value_105",
-  "Year" : 107,
-  "Rating" : 37.15,
-  "Genre" : [ "value_70", "value_52" ]
-}, {
-  "id" : 51,
-  "type" : "Movie",
-  "Name" : "value_51",
-  "Year" : 145,
-  "Rating" : 18.82,
-  "Genre" : [ "value_190", "value_126" ],
-  "Oscars" : 169,
-  "hasDirector" : "1",
-  "hasProducers" : [ "138" ],
-  "hasActors" : [ ]
-}, {
-  "id" : 52,
-  "type" : "Movie",
-  "Name" : "value_175",
-  "Year" : 124,
-  "Rating" : 38.75,
-  "Genre" : [ "value_65", "value_134" ],
-  "Oscars" : 19,
-  "hasDirector" : [ "172" ],
-  "hasProducers" : [ "96" ],
-  "hasActors" : [ "131", "120" ]
-}, {
-  "id" : 53,
-  "type" : "Movie",
-  "Name" : "value_48",
-  "Year" : 190,
-  "Rating" : 93.33,
-  "Genre" : [ "value_66", "value_8" ],
-  "Oscars" : 104,
-  "hasDirector" : "27",
-  "hasProducers" : [ "148", "2" ],
-  "hasActors" : [ "164", "183" ]
-}, {
-  "id" : 54,
-  "type" : "Movie",
-  "Name" : "value_84",
-  "Year" : 19,
-  "Rating" : 10.5,
-  "Genre" : [ "value_147", "value_170" ],
-  "Oscars" : 105,
-  "hasDirector" : [ "130" ],
-  "hasProducers" : [ "94", "48", "178", "2", "159" ],
-  "hasActors" : [ "158", "5" ]
-}, {
-  "id" : 55,
-  "type" : "Movie",
-  "Name" : "value_147",
-  "Year" : 183,
-  "Rating" : 52.57,
-  "Genre" : [ "value_146", "value_174" ],
-  "Oscars" : 159,
-  "hasDirector" : "117",
-  "hasProducers" : [ "26", "96", "170" ],
-  "hasActors" : [ "193", "81", "175" ]
-}, {
-  "id" : 56,
   "type" : "Movie",
   "Name" : "value_60",
-  "Year" : 123,
-  "Rating" : 50.76,
-  "Genre" : [ "value_60", "value_177" ],
-  "Oscars" : 110,
-  "hasDirector" : [ "53" ],
-  "hasProducers" : [ "154" ],
-  "hasActors" : [ "151" ]
-}, {
-  "id" : 57,
-  "type" : "Movie",
-  "Name" : "value_198",
-  "Year" : 23,
-  "Rating" : 72.65,
-  "Genre" : [ "value_118", "value_117" ],
-  "Oscars" : 137,
-  "hasDirector" : [ "97" ],
-  "hasProducers" : [ "138" ],
-  "hasActors" : [ ]
-}, {
-  "id" : 58,
-  "type" : "Movie",
-  "Name" : "value_146",
-  "Year" : 69,
-  "Genre" : [ "value_1", "value_129" ],
-  "Awards" : 108,
-  "hasDirector" : "27",
-  "hasProducers" : [ "32", "195", "124" ],
-  "hasActors" : [ "123" ],
-  "hasRating" : "128"
-}, {
-  "id" : 59,
-  "type" : "Movie",
-  "Name" : "value_200",
-  "Year" : 120,
-  "Genre" : [ "value_3", "value_57" ],
-  "Awards" : 107,
-  "hasDirector" : "187",
-  "hasProducers" : [ "139", "63", "22", "92" ],
-  "hasActors" : [ "115", "141" ],
-  "hasRating" : [ "188" ]
-}, {
-  "id" : 60,
-  "type" : "Movie",
-  "Name" : "value_132",
-  "Year" : 44,
-  "Genre" : [ "value_55", "value_128" ],
-  "Awards" : 42,
-  "hasDirector" : "165",
-  "hasProducers" : [ "56", "178", "81" ],
-  "hasActors" : [ ],
-  "hasRating" : "56"
-}, {
-  "id" : 61,
-  "type" : "Movie",
-  "Name" : "value_80",
-  "Year" : 161,
-  "Genre" : [ "value_81", "value_182" ],
-  "Awards" : 198,
-  "hasDirector" : "113",
-  "hasProducers" : [ "195" ],
-  "hasActors" : [ "153", "191" ],
-  "hasRating" : "189"
-}, {
-  "id" : 62,
-  "type" : "Movie",
-  "Name" : "value_27",
-  "Year" : 14,
-  "Genre" : [ "value_14", "value_123" ],
-  "Awards" : 30,
-  "hasDirector" : "6",
-  "hasProducers" : [ "5" ],
-  "hasActors" : [ "113", "166" ],
-  "hasRating" : [ "172" ]
-}, {
-  "id" : 63,
-  "type" : "Movie",
-  "Name" : "value_30",
-  "Year" : 159,
-  "Genre" : [ "value_146", "value_24" ],
-  "Awards" : 0,
-  "hasDirector" : "126",
-  "hasProducers" : [ "44", "155", "118" ],
-  "hasActors" : [ "121", "96" ],
+  "Year" : 111,
+  "Genre" : [ "value_172", "value_52" ],
+  "hasDirector" : [ "60" ],
+  "hasProducers" : [ "29" ],
+  "hasActors" : [ "79" ],
   "hasRating" : [ {
-    "id" : 96,
+    "id" : 35,
     "type" : "Rating",
-    "Rating" : 12.9
+    "Rating" : 9.29,
+    "Votes" : 128
+  } ],
+  "hasAwards" : [ {
+    "id" : 9,
+    "type" : "Award",
+    "Name" : "value_126",
+    "Institution" : "value_169",
+    "Year" : 148
   } ]
 }, {
-  "id" : 64,
+  "id" : 28,
   "type" : "Movie",
-  "Name" : "value_27",
-  "Year" : 123,
-  "Genre" : [ "value_34", "value_119" ],
-  "Awards" : 106,
-  "hasDirector" : "144",
-  "hasProducers" : [ "41", "124", "96", "175" ],
-  "hasActors" : [ "28", "125", "175", "24" ],
+  "Name" : "value_7",
+  "Year" : 140,
+  "Genre" : [ "value_127", "value_174" ],
+  "hasDirector" : "125",
+  "hasProducers" : [ "45" ],
+  "hasActors" : [ "118", "185" ],
   "hasRating" : [ {
-    "id" : 96,
+    "id" : 35,
     "type" : "Rating",
-    "Rating" : 12.9
+    "Rating" : 9.29,
+    "Votes" : 128
+  } ],
+  "hasAwards" : [ {
+    "id" : 9,
+    "type" : "Award",
+    "Name" : "value_126",
+    "Institution" : "value_169",
+    "Year" : 148
   } ]
 }, {
-  "id" : 65,
-  "type" : "Movie",
-  "Name" : "value_78",
-  "Year" : 179,
-  "Genre" : [ "value_124", "value_66" ],
-  "Awards" : 151,
-  "hasDirector" : [ "131" ],
-  "hasProducers" : [ "71", "32" ],
-  "hasActors" : [ "2", "90" ],
-  "hasRating" : [ {
-    "id" : 96,
-    "type" : "Rating",
-    "Rating" : 12.9
-  } ]
-}, {
-  "id" : 66,
-  "type" : "Movie",
-  "Name" : "value_83",
-  "Year" : 22,
-  "Genre" : [ "value_50", "value_33" ],
-  "Awards" : 65,
-  "hasDirector" : "6",
-  "hasProducers" : [ "114", "23" ],
-  "hasActors" : [ "197" ],
-  "hasRating" : [ {
-    "id" : 96,
-    "type" : "Rating",
-    "Rating" : 12.9
-  } ]
-}, {
-  "id" : 67,
-  "type" : "Movie",
-  "Name" : "value_135",
-  "Year" : 99,
-  "Genre" : [ "value_139", "value_34" ],
-  "Awards" : 104,
-  "hasDirector" : "25",
-  "hasProducers" : [ "180", "179", "147" ],
-  "hasActors" : [ "59" ],
-  "hasRating" : [ {
-    "id" : 96,
-    "type" : "Rating",
-    "Rating" : 12.9
-  } ]
-}, {
-  "id" : 68,
-  "type" : "Movie",
-  "Name" : "value_69",
-  "Year" : 61,
-  "Genre" : [ "value_22", "value_144" ],
-  "Awards" : 17,
-  "hasDirector" : "176",
-  "hasProducers" : [ "124" ],
-  "hasActors" : [ "118", "182" ],
-  "hasRating" : [ {
-    "id" : 103,
-    "type" : "Rating",
-    "Rating" : 28.22,
-    "Votes" : 67
-  } ]
-}, {
-  "id" : 69,
-  "type" : "Movie",
-  "Name" : "value_190",
-  "Year" : 152,
-  "Genre" : [ "value_124", "value_98" ],
-  "Awards" : 138,
-  "hasDirector" : [ "55" ],
-  "hasProducers" : [ "47", "195" ],
-  "hasActors" : [ "116", "53" ],
-  "hasRating" : [ {
-    "id" : 103,
-    "type" : "Rating",
-    "Rating" : 28.22,
-    "Votes" : 67
-  } ]
-}, {
-  "id" : 70,
-  "type" : "Movie",
-  "Name" : "value_37",
-  "Year" : 33,
-  "Genre" : [ "value_29", "value_55" ],
-  "Awards" : 120,
-  "hasDirector" : [ "175" ],
-  "hasProducers" : [ "101", "141", "85" ],
-  "hasActors" : [ "38", "168", "20", "30" ],
-  "hasRating" : [ {
-    "id" : 103,
-    "type" : "Rating",
-    "Rating" : 28.22,
-    "Votes" : 67
-  } ]
-}, {
-  "id" : 71,
-  "type" : "Movie",
-  "Name" : "value_127",
-  "Year" : 42,
-  "Genre" : [ "value_78", "value_200" ],
-  "Awards" : 178,
-  "hasDirector" : "142",
-  "hasProducers" : [ "9", "150" ],
-  "hasActors" : [ ],
-  "hasRating" : [ {
-    "id" : 103,
-    "type" : "Rating",
-    "Rating" : 28.22,
-    "Votes" : 67
-  } ]
-}, {
-  "id" : 72,
-  "type" : "Movie",
-  "Name" : "value_53",
-  "Year" : 25,
-  "Genre" : [ "value_92", "value_164" ],
-  "Awards" : 35,
-  "hasDirector" : [ "194" ],
-  "hasProducers" : [ "106" ],
-  "hasActors" : [ "163", "177", "103" ],
-  "hasRating" : [ {
-    "id" : 103,
-    "type" : "Rating",
-    "Rating" : 28.22,
-    "Votes" : 67
-  } ]
-}, {
-  "id" : 73,
-  "type" : "Movie",
+  "id" : 29,
+  "type" : "Producer",
   "Name" : "value_126",
-  "Year" : 32,
-  "Genre" : [ "value_36", "value_179" ],
-  "Awards" : 49,
-  "hasDirector" : [ "170" ],
-  "hasProducers" : [ "139", "126", "122", "57" ],
-  "hasActors" : [ "119", "147" ],
-  "hasRating" : [ {
-    "id" : 103,
-    "type" : "Rating",
-    "Rating" : 28.22,
-    "Votes" : 67
-  } ]
-}, {
-  "id" : 74,
-  "type" : "Movie",
-  "Name" : "value_152",
-  "Year" : 139,
-  "Genre" : [ "value_119", "value_143" ],
-  "Awards" : 33,
-  "hasDirector" : "53",
-  "hasProducers" : [ "66", "188", "12", "130", "19" ],
-  "hasActors" : [ "64" ],
-  "hasRating" : [ {
-    "id" : 103,
-    "type" : "Rating",
-    "Rating" : 28.22,
-    "Votes" : 67
-  } ]
-}, {
-  "id" : 75,
-  "type" : "Movie",
-  "Name" : "value_193",
-  "Year" : 32,
-  "Genre" : [ "value_179", "value_149" ],
-  "hasDirector" : "137",
-  "hasProducers" : [ "2", "113" ],
-  "hasActors" : [ "100", "92" ],
-  "hasRating" : [ {
-    "id" : 103,
-    "type" : "Rating",
-    "Rating" : 28.22,
-    "Votes" : 67
-  } ],
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
-}, {
-  "id" : 76,
-  "type" : "Movie",
-  "Name" : "value_55",
-  "Year" : 10,
-  "Genre" : [ "value_139", "value_134" ],
-  "hasDirector" : "79",
-  "hasProducers" : [ "18" ],
-  "hasActors" : [ ],
-  "hasRating" : [ {
-    "id" : 103,
-    "type" : "Rating",
-    "Rating" : 28.22,
-    "Votes" : 67
-  } ],
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
-}, {
-  "id" : 77,
-  "type" : "Movie",
-  "Name" : "value_97",
-  "Year" : 88,
-  "Genre" : [ "value_183", "value_98" ],
-  "hasDirector" : [ "77" ],
-  "hasProducers" : [ "158", "196", "173" ],
-  "hasActors" : [ "143", "2", "171", "52" ],
-  "hasRating" : [ {
-    "id" : 103,
-    "type" : "Rating",
-    "Rating" : 28.22,
-    "Votes" : 67
-  } ],
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
-}, {
-  "id" : 78,
-  "type" : "Movie",
-  "Name" : "value_108",
-  "Year" : 17,
-  "Genre" : [ "value_159", "value_119" ],
-  "hasDirector" : [ "102" ],
-  "hasProducers" : [ "180", "110", "14" ],
-  "hasActors" : [ ],
-  "hasRating" : [ {
-    "id" : 103,
-    "type" : "Rating",
-    "Rating" : 28.22,
-    "Votes" : 67
-  } ],
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
-}, {
-  "id" : 79,
-  "type" : "Movie",
-  "Name" : "value_12",
-  "Year" : 60,
-  "Genre" : [ "value_184", "value_99" ],
-  "hasDirector" : "135",
-  "hasProducers" : [ "10", "79", "24" ],
-  "hasActors" : [ "154" ],
-  "hasRating" : [ {
-    "id" : 103,
-    "type" : "Rating",
-    "Rating" : 28.22,
-    "Votes" : 67
-  } ],
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
-}, {
-  "id" : 80,
-  "type" : "Movie",
-  "Name" : "value_70",
-  "Year" : 182,
-  "Genre" : [ "value_41", "value_167" ],
-  "hasDirector" : "96",
-  "hasProducers" : [ "87" ],
-  "hasActors" : [ "14" ],
-  "hasRating" : [ {
-    "id" : 103,
-    "type" : "Rating",
-    "Rating" : 28.22,
-    "Votes" : 67
-  } ],
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
-}, {
-  "id" : 81,
-  "type" : "Movie",
-  "Name" : "value_97",
-  "Year" : 52,
-  "Genre" : [ "value_165", "value_45" ],
-  "hasDirector" : [ "174" ],
-  "hasProducers" : [ "94", "40", "195", "140", "76" ],
-  "hasActors" : [ "129", "47" ],
-  "hasRating" : [ {
-    "id" : 103,
-    "type" : "Rating",
-    "Rating" : 28.22,
-    "Votes" : 67
-  } ],
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
-}, {
-  "id" : 82,
-  "type" : "Movie",
-  "Name" : "value_199",
-  "Year" : 157,
-  "Genre" : [ "value_164", "value_193" ],
-  "hasDirector" : [ "109" ],
-  "hasProducers" : [ "155", "59", "69", "61" ],
-  "hasActors" : [ "52", "68", "126" ],
-  "hasRating" : [ {
-    "id" : 103,
-    "type" : "Rating",
-    "Rating" : 28.22,
-    "Votes" : 67
-  } ],
-  "hasAwards" : [ {
-    "id" : 20,
-    "type" : "Award",
-    "Name" : "value_89",
-    "Institution" : "value_141",
-    "Year" : 14
-  } ]
-}, {
-  "id" : 83,
-  "type" : "Producer",
-  "Name" : "value_173",
-  "Budget" : 76.36,
+  "Budget" : 73.33,
   "hasStudio" : [ {
-    "id" : 109,
+    "id" : 37,
     "type" : "Studio",
-    "Name" : "value_159",
-    "Location" : "value_9",
-    "Year" : "value_36",
-    "Website" : "value_85"
+    "Name" : "value_131",
+    "Location" : "value_76",
+    "Year" : "value_145",
+    "Website" : "value_9"
   } ]
 }, {
-  "id" : 84,
+  "id" : 30,
   "type" : "Producer",
-  "Name" : "value_57",
-  "Budget" : 72.4,
+  "Name" : "value_53",
+  "Budget" : 0.12,
   "hasStudio" : [ {
-    "id" : 109,
+    "id" : 37,
     "type" : "Studio",
-    "Name" : "value_159",
-    "Location" : "value_9",
-    "Year" : "value_36",
-    "Website" : "value_85"
+    "Name" : "value_131",
+    "Location" : "value_76",
+    "Year" : "value_145",
+    "Website" : "value_9"
   } ]
 }, {
-  "id" : 85,
+  "id" : 31,
   "type" : "Producer",
-  "Name" : "value_138",
-  "Budget" : 72.09,
+  "Name" : "value_90",
+  "Budget_per_year" : 70.74,
+  "Movies_per_year" : 197,
   "hasStudio" : [ {
-    "id" : 109,
+    "id" : 39,
     "type" : "Studio",
-    "Name" : "value_159",
-    "Location" : "value_9",
-    "Year" : "value_36",
-    "Website" : "value_85"
+    "Name" : "value_158",
+    "Location" : "value_113",
+    "Year" : 148,
+    "Website" : "value_116",
+    "Founder" : "value_133"
   } ]
 }, {
-  "id" : 86,
+  "id" : 32,
   "type" : "Producer",
-  "Name" : "value_200",
-  "Budget" : 10.98,
+  "Name" : "value_194",
+  "Budget_per_year" : 78.42,
+  "Movies_per_year" : 95,
   "hasStudio" : [ {
-    "id" : 109,
+    "id" : 39,
     "type" : "Studio",
-    "Name" : "value_159",
-    "Location" : "value_9",
-    "Year" : "value_36",
-    "Website" : "value_85"
+    "Name" : "value_158",
+    "Location" : "value_113",
+    "Year" : 148,
+    "Website" : "value_116",
+    "Founder" : "value_133"
   } ]
 }, {
-  "id" : 87,
-  "type" : "Producer",
-  "Name" : "value_147",
-  "Budget" : 67.75,
-  "hasStudio" : [ {
-    "id" : 109,
-    "type" : "Studio",
-    "Name" : "value_159",
-    "Location" : "value_9",
-    "Year" : "value_36",
-    "Website" : "value_85"
-  } ]
-}, {
-  "id" : 88,
-  "type" : "Producer",
-  "Name" : "value_143",
-  "Budget" : 74.23,
-  "hasStudio" : [ {
-    "id" : 109,
-    "type" : "Studio",
-    "Name" : "value_159",
-    "Location" : "value_9",
-    "Year" : "value_36",
-    "Website" : "value_85"
-  } ]
-}, {
-  "id" : 89,
-  "type" : "Producer",
-  "Name" : "value_101",
-  "Budget" : 25.33,
-  "hasStudio" : [ {
-    "id" : 109,
-    "type" : "Studio",
-    "Name" : "value_159",
-    "Location" : "value_9",
-    "Year" : "value_36",
-    "Website" : "value_85"
-  } ]
-}, {
-  "id" : 90,
-  "type" : "Producer",
-  "Name" : "value_152",
-  "Budget_per_year" : 41.67,
-  "Movies_per_year" : 47,
-  "hasStudio" : [ {
-    "id" : 113,
-    "type" : "Studio",
-    "Name" : "value_26",
-    "Location" : "value_21",
-    "Year" : 158,
-    "Website" : "value_154",
-    "Founder" : "value_140"
-  } ]
-}, {
-  "id" : 91,
-  "type" : "Producer",
-  "Name" : "value_122",
-  "Budget_per_year" : 48.61,
-  "Movies_per_year" : 89,
-  "hasStudio" : [ {
-    "id" : 113,
-    "type" : "Studio",
-    "Name" : "value_26",
-    "Location" : "value_21",
-    "Year" : 158,
-    "Website" : "value_154",
-    "Founder" : "value_140"
-  } ]
-}, {
-  "id" : 92,
-  "type" : "Producer",
-  "Name" : "value_12",
-  "Budget_per_year" : 56.22,
-  "Movies_per_year" : 67,
-  "hasStudio" : [ {
-    "id" : 113,
-    "type" : "Studio",
-    "Name" : "value_26",
-    "Location" : "value_21",
-    "Year" : 158,
-    "Website" : "value_154",
-    "Founder" : "value_140"
-  } ]
-}, {
-  "id" : 93,
-  "type" : "Producer",
-  "Name" : "value_109",
-  "Budget_per_year" : 74.53,
-  "Movies_per_year" : 116,
-  "hasStudio" : [ {
-    "id" : 113,
-    "type" : "Studio",
-    "Name" : "value_26",
-    "Location" : "value_21",
-    "Year" : 158,
-    "Website" : "value_154",
-    "Founder" : "value_140"
-  } ]
-}, {
-  "id" : 94,
-  "type" : "Producer",
-  "Name" : "value_18",
-  "Budget_per_year" : 68.61,
-  "Movies_per_year" : 1,
-  "hasStudio" : [ {
-    "id" : 113,
-    "type" : "Studio",
-    "Name" : "value_26",
-    "Location" : "value_21",
-    "Year" : 158,
-    "Website" : "value_154",
-    "Founder" : "value_140"
-  } ]
-}, {
-  "id" : 95,
-  "type" : "Producer",
-  "Name" : "value_135",
-  "Budget_per_year" : 65.42,
-  "Movies_per_year" : 179,
-  "hasStudio" : [ {
-    "id" : 113,
-    "type" : "Studio",
-    "Name" : "value_26",
-    "Location" : "value_21",
-    "Year" : 158,
-    "Website" : "value_154",
-    "Founder" : "value_140"
-  } ]
-}, {
-  "id" : 96,
+  "id" : 33,
   "type" : "Rating",
-  "Rating" : 12.9
+  "Rating" : 14.13
 }, {
-  "id" : 97,
+  "id" : 34,
   "type" : "Rating",
-  "Rating" : 64.16
+  "Rating" : 24.16
 }, {
-  "id" : 98,
+  "id" : 35,
   "type" : "Rating",
-  "Rating" : 72.47
+  "Rating" : 9.29,
+  "Votes" : 128
 }, {
-  "id" : 99,
+  "id" : 36,
   "type" : "Rating",
-  "Rating" : 34.33
+  "Rating" : 50.12,
+  "Votes" : 0
 }, {
-  "id" : 100,
-  "type" : "Rating",
-  "Rating" : 19.98
-}, {
-  "id" : 101,
-  "type" : "Rating",
-  "Rating" : 99.92
-}, {
-  "id" : 102,
-  "type" : "Rating",
-  "Rating" : 98.77
-}, {
-  "id" : 103,
-  "type" : "Rating",
-  "Rating" : 28.22,
-  "Votes" : 67
-}, {
-  "id" : 104,
-  "type" : "Rating",
-  "Rating" : 40.03,
-  "Votes" : 148
-}, {
-  "id" : 105,
-  "type" : "Rating",
-  "Rating" : 46.64,
-  "Votes" : 79
-}, {
-  "id" : 106,
-  "type" : "Rating",
-  "Rating" : 90.89,
-  "Votes" : 29
-}, {
-  "id" : 107,
-  "type" : "Rating",
-  "Rating" : 38.46,
-  "Votes" : 14
-}, {
-  "id" : 108,
-  "type" : "Rating",
-  "Rating" : 2.06,
-  "Votes" : 7
-}, {
-  "id" : 109,
+  "id" : 37,
   "type" : "Studio",
-  "Name" : "value_159",
-  "Location" : "value_9",
-  "Year" : "value_36",
-  "Website" : "value_85"
+  "Name" : "value_131",
+  "Location" : "value_76",
+  "Year" : "value_145",
+  "Website" : "value_9"
 }, {
-  "id" : 110,
+  "id" : 38,
   "type" : "Studio",
-  "Name" : "value_140",
-  "Location" : "value_162",
-  "Year" : "value_15",
-  "Website" : "value_184"
+  "Name" : "value_163",
+  "Location" : "value_103",
+  "Year" : "value_198",
+  "Website" : "value_139"
 }, {
-  "id" : 111,
+  "id" : 39,
   "type" : "Studio",
-  "Name" : "value_198",
-  "Location" : "value_161",
-  "Year" : "value_92",
-  "Website" : "value_82"
+  "Name" : "value_158",
+  "Location" : "value_113",
+  "Year" : 148,
+  "Website" : "value_116",
+  "Founder" : "value_133"
 }, {
-  "id" : 112,
+  "id" : 40,
   "type" : "Studio",
-  "Name" : "value_166",
-  "Location" : "value_77",
-  "Year" : "value_112",
-  "Website" : "value_62"
-}, {
-  "id" : 113,
-  "type" : "Studio",
-  "Name" : "value_26",
-  "Location" : "value_21",
-  "Year" : 158,
-  "Website" : "value_154",
-  "Founder" : "value_140"
-}, {
-  "id" : 114,
-  "type" : "Studio",
-  "Name" : "value_18",
-  "Location" : "value_192",
-  "Year" : 193,
-  "Website" : "value_182",
-  "Founder" : "value_186"
-}, {
-  "id" : 115,
-  "type" : "Studio",
-  "Name" : "value_192",
-  "Location" : "value_39",
-  "Year" : 7,
-  "Website" : "value_87",
-  "Founder" : "value_158"
-}, {
-  "id" : 116,
-  "type" : "Studio",
-  "Name" : "value_97",
-  "Location" : "value_141",
-  "Year" : 62,
-  "Website" : "value_127",
-  "Founder" : "value_101"
+  "Name" : "value_102",
+  "Location" : "value_54",
+  "Year" : 74,
+  "Website" : "value_123",
+  "Founder" : "value_62"
 } ]

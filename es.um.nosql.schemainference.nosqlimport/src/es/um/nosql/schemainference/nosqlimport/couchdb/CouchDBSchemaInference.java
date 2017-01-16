@@ -10,6 +10,8 @@ import org.lightcouch.CouchDbClient;
 import org.lightcouch.CouchDbProperties;
 import org.lightcouch.DesignDocument.MapReduce;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
 import es.um.nosql.schemainference.nosqlimport.util.MapReduceSources;
@@ -28,7 +30,7 @@ public class CouchDBSchemaInference
 			return;
 		}
 */
-		String dbName = "books";//args[0];
+		String dbName = "art";//args[0];
 		String dirName = "mapreduce/couchdb/v1";//args[1];
 
 		try {
@@ -55,8 +57,10 @@ public class CouchDBSchemaInference
 					.reduce(true)
 					.query(JsonObject.class);
 
+			Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
 			for (JsonObject o : list)
-				System.out.println(o.toString());
+				System.out.println(gson.toJson(o));
 
 //			// Produce all the actual objects from the query. Couchdb won't allow include_docs to be specified
 //			// for a reduce view, and if I include the document itself it causes a view overflow. So we have

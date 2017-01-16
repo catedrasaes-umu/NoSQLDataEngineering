@@ -1,10 +1,11 @@
-package es.um.nosql.schemainference.dbgenerator.test.random;
+package es.um.nosql.schemainference.dbgenerator.generator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -29,13 +30,18 @@ import es.um.nosql.schemainference.NoSQLSchema.Type;
  */
 public class JsonGenerator
 {
-	private static final int MIN_INSTANCES = 3;
-	private static final int MAX_INSTANCES = 10;
+	private static final int MIN_INSTANCES_VERSION = 2;
+	private static final int MAX_INSTANCES_VERSION = 2;
+
+	private static int MIN_INT_VALUE = 0;
+	private static int MAX_INT_VALUE = 200;
+
+	private static int MIN_STR_VALUE = 1;
+	private static int MAX_STR_VALUE = 200;
 
 	private JsonNodeFactory factory = JsonNodeFactory.instance;
 
 	private Map<EntityVersion, List<ObjectNode>> mapEV;
-	private Random random;
 
 	private ArrayNode lStorage;
 
@@ -50,13 +56,9 @@ public class JsonGenerator
 		return (new Random()).nextInt(maxValue + 1 - minValue) + minValue;
 	}
 
-	/**
-	 * Method used to generate a random float and make sure it doesn't end in .00.
-	 * @return A random float value.
-	 */
 	private float getRandomFloat()
 	{
-		double d = Math.round(random.nextFloat() * 100 * 100d) / 100d;
+		double d = Math.round(ThreadLocalRandom.current().nextFloat() * 100 * 100d) / 100d;
 
 		if (d == Math.floor(d))
 			d += 0.01;
@@ -64,17 +66,24 @@ public class JsonGenerator
 		return (float) d;
 	}
 
-	/**
-	 * Method used to generate the Json code from the DBSCHEMA.
-	 * @param schema The schema.
-	 * @return A Json object formatted accordingly.
-	 * @throws JsonProcessingException 
-	 */
+	private String getRandomString()
+	{
+		return "value_" + ThreadLocalRandom.current().nextInt(MIN_STR_VALUE, MAX_STR_VALUE);
+	}
+
+	private int getRandomInt()
+	{
+		return ThreadLocalRandom.current().nextInt(MIN_INT_VALUE, MAX_INT_VALUE);
+	}
+
+	private boolean getRandomBoolean()
+	{
+		return ThreadLocalRandom.current().nextBoolean();
+	}
+
 	public String generate(NoSQLSchema schema) throws JsonProcessingException
 	{
 		mapEV = new HashMap<EntityVersion, List<ObjectNode>>();
-
-		random = new Random();
 		lStorage = factory.arrayNode();
 
 		// First run to generate all the primitive types, tuples and references.
@@ -85,7 +94,7 @@ public class JsonGenerator
 			{
 				mapEV.put(eVersion, new ArrayList<ObjectNode>());
 
-				for (int i = 0; i < getRandomBetween(MIN_INSTANCES, MAX_INSTANCES); i++)
+				for (int i = 0; i < getRandomBetween(MIN_INSTANCES_VERSION, MAX_INSTANCES_VERSION); i++)
 				{
 					ObjectNode strObj = factory.objectNode();
 					strObj.put("id", ++IDENTIFIER);
@@ -108,15 +117,15 @@ public class JsonGenerator
 							int lBound = ref.getLowerBound() > 0 ? ref.getLowerBound() : 0;
 							int uBound = ref.getUpperBound() > 0 ? ref.getUpperBound() : 5;
 
-							if (lBound == 1 && lBound == uBound && random.nextBoolean())
-								strObj.put(ref.getName(), String.valueOf(random.nextInt(200)));
+							if (lBound == 1 && lBound == uBound && getRandomBoolean())
+								strObj.put(ref.getName(), String.valueOf(getRandomInt()));
 							else
 							{
 								ArrayNode refArray = factory.arrayNode();
 								strObj.put(ref.getName(), refArray);
 
 								for (int j = 0; j < getRandomBetween(lBound, uBound); j++)
-									refArray.add(String.valueOf(random.nextInt(200)));
+									refArray.add(String.valueOf(getRandomInt()));
 							}
 						}
 					}
@@ -159,10 +168,10 @@ public class JsonGenerator
 	{
 		switch (type)
 		{
-			case "String": case "string": {strObj.put(name, "value_" + getRandomBetween(1, 200)); break;}
-			case "Int": case "int": {strObj.put(name, random.nextInt(200)); break;}
+			case "String": case "string": {strObj.put(name, getRandomString()); break;}
+			case "Int": case "int": {strObj.put(name, getRandomInt()); break;}
 			case "Double": case "double": case "float": case "Float": {strObj.put(name, getRandomFloat()); break;}
-			case "Bool": case "bool": case "Boolean": case "boolean": {strObj.put(name, random.nextBoolean()); break;}
+			case "Bool": case "bool": case "Boolean": case "boolean": {strObj.put(name, getRandomBoolean()); break;}
 		}
 	}
 
@@ -175,10 +184,10 @@ public class JsonGenerator
 	{
 		switch (type)
 		{
-			case "String": case "string": {arrayObj.add("value_" + getRandomBetween(1, 200)); break;}
-			case "Int": case "int": {arrayObj.add(random.nextInt(200)); break;}
+			case "String": case "string": {arrayObj.add(getRandomString()); break;}
+			case "Int": case "int": {arrayObj.add(getRandomInt()); break;}
 			case "Double": case "double": case "float": case "Float": {arrayObj.add(getRandomFloat()); break;}
-			case "Bool": case "bool": case "Boolean": case "boolean": {arrayObj.add(random.nextBoolean()); break;}
+			case "Bool": case "bool": case "Boolean": case "boolean": {arrayObj.add(getRandomBoolean()); break;}
 		}
 	}
 
@@ -216,9 +225,7 @@ public class JsonGenerator
 		for (Type type : elements)
 		{
 			if (type instanceof PrimitiveType)
-			{
 				generatePrimitiveType(arrayObj, ((PrimitiveType)type).getName());
-			}
 			else if (type instanceof Tuple)
 			{
 				ArrayNode innerArray = factory.arrayNode();

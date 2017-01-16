@@ -8,6 +8,7 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.schemainference.dbgenerator.generator.JsonGenerator;
 import es.um.nosql.schemainference.dbgenerator.utils.ModelLoader;
 
 /**

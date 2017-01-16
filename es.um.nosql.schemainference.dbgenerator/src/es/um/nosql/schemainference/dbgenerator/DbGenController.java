@@ -11,7 +11,7 @@ import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.schemainference.dbgenerator.db.DbClient;
 import es.um.nosql.schemainference.dbgenerator.db.couchdb.CouchDbAdapter;
 import es.um.nosql.schemainference.dbgenerator.db.mongodb.MongoDbAdapter;
-import es.um.nosql.schemainference.dbgenerator.test.random.JsonGenerator;
+import es.um.nosql.schemainference.dbgenerator.generator.JsonGenerator;
 import es.um.nosql.schemainference.dbgenerator.utils.DbType;
 import es.um.nosql.schemainference.dbgenerator.utils.ModelLoader;
 
@@ -48,7 +48,6 @@ public class DbGenController
 				String jsonContent = generator.generate(schema);
 				client.insert(schema.getName(), jsonContent);
 				fileOut.println(generator.generate(schema));
-
 			} catch (FileNotFoundException exception)
 			{
 				exception.printStackTrace();
