@@ -30,20 +30,32 @@ import es.um.nosql.schemainference.NoSQLSchema.Type;
  */
 public class JsonGenerator
 {
-	private static final int MIN_INSTANCES_VERSION = 2;
-	private static final int MAX_INSTANCES_VERSION = 2;
+	private int MIN_INSTANCES_VERSION;
+	private int MAX_INSTANCES_VERSION;
 
-	private static int MIN_INT_VALUE = 0;
-	private static int MAX_INT_VALUE = 200;
+	private int MIN_INT_VALUE;
+	private int MAX_INT_VALUE;
 
-	private static int MIN_STR_VALUE = 1;
-	private static int MAX_STR_VALUE = 200;
+	private int MIN_STR_VALUE;
+	private int MAX_STR_VALUE;
 
 	private JsonNodeFactory factory = JsonNodeFactory.instance;
 
 	private Map<EntityVersion, List<ObjectNode>> mapEV;
 
 	private ArrayNode lStorage;
+
+	public JsonGenerator()
+	{
+		MIN_INSTANCES_VERSION = 3;
+		MAX_INSTANCES_VERSION = 10;
+
+		MIN_INT_VALUE = 0;
+		MAX_INT_VALUE = 200;
+
+		MIN_STR_VALUE = 1;
+		MAX_STR_VALUE = 200;
+	}
 
 	/**
 	 * Method used to get a random value between two values.
@@ -79,6 +91,26 @@ public class JsonGenerator
 	private boolean getRandomBoolean()
 	{
 		return ThreadLocalRandom.current().nextBoolean();
+	}
+
+	public void setRandomIntRange(int minValue, int maxValue)
+	{
+		MIN_INT_VALUE = 0;
+		MAX_INT_VALUE = 200;
+	}
+
+	public void setRandomStrRange(int minValue, int maxValue)
+	{
+		MIN_STR_VALUE = 1;
+		MAX_INT_VALUE = 200;
+	}
+
+	public String generate(NoSQLSchema schema, int minInstances, int maxInstances) throws JsonProcessingException
+	{
+		MIN_INSTANCES_VERSION = minInstances;
+		MAX_INSTANCES_VERSION = maxInstances;
+
+		return generate(schema);
 	}
 
 	public String generate(NoSQLSchema schema) throws JsonProcessingException

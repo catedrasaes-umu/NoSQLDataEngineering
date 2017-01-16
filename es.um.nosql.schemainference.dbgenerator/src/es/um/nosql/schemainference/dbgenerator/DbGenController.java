@@ -45,7 +45,7 @@ public class DbGenController
 
 			try(PrintWriter fileOut = new PrintWriter(jsonFolder + schema.getName() + ".json"))
 			{
-				String jsonContent = generator.generate(schema);
+				String jsonContent = generator.generate(schema, 10, 30);
 				client.insert(schema.getName(), jsonContent);
 				fileOut.println(generator.generate(schema));
 			} catch (FileNotFoundException exception)
