@@ -34,8 +34,15 @@ public class DbGenController
 		return client.shutdown();
 	}
 
-	public void startTest(String modelsFolder, String jsonFolder)
+	private void cleanDbs()
 	{
+		client.cleanDbs();
+	}
+
+	public void startTest(String modelsFolder, String jsonFolder, int minInstances, int maxInstances)
+	{
+		cleanDbs();
+
 		ModelLoader<NoSQLSchema> loader = new ModelLoader<NoSQLSchema>(NoSQLSchemaPackage.eINSTANCE);
 		JsonGenerator generator = new JsonGenerator();
 
@@ -45,7 +52,7 @@ public class DbGenController
 
 			try(PrintWriter fileOut = new PrintWriter(jsonFolder + schema.getName() + ".json"))
 			{
-				String jsonContent = generator.generate(schema, 10, 30);
+				String jsonContent = generator.generate(schema, minInstances, maxInstances);
 				client.insert(schema.getName(), jsonContent);
 				fileOut.println(generator.generate(schema));
 			} catch (FileNotFoundException exception)

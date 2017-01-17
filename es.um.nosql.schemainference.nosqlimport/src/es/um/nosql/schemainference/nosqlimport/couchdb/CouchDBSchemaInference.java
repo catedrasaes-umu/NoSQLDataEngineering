@@ -1,9 +1,5 @@
-/**
- *
- */
 package es.um.nosql.schemainference.nosqlimport.couchdb;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.lightcouch.CouchDbClient;
@@ -30,6 +26,10 @@ public class CouchDBSchemaInference
 			return;
 		}
 */
+		/**
+		 * "art" database will not work
+		 * "movies", "food" and "books" will
+		 */
 		String dbName = "art";//args[0];
 		String dirName = "mapreduce/couchdb/v1";//args[1];
 

@@ -4,7 +4,7 @@ import es.um.nosql.schemainference.dbgenerator.utils.DbType;
 
 public class Main
 {
-	private static final String COUCHDB_IP = "155.54.190.237";
+	private static final String COUCHDB_IP = "localhost";
 
 //	private static final String MONGODB_IP = "155.54.190.237";
 
@@ -14,7 +14,15 @@ public class Main
 
 	public static void main(String[] args)
 	{
+		/**
+		 * Minimum and maximum instances generated (at random) for each version
+		 * JSON_FOLDER indicates where will be the json files generated
+		 * The generated content will be also stored on the database
+		 */
+		int minInstances = 100;
+		int maxInstances = 100;
+
 		DbGenController controller = new DbGenController(DbType.COUCHDB, COUCHDB_IP);
-		controller.startTest(INPUT_FOLDER, JSON_FOLDER);
+		controller.startTest(INPUT_FOLDER, JSON_FOLDER, minInstances, maxInstances);
 	}
 }

@@ -75,6 +75,13 @@ public class CouchDbClient extends StdCouchDbInstance implements DbClient
 	}
 
 	@Override
+	public void cleanDbs()
+	{
+		for (String dbName : getAllDatabases())
+			deleteDatabase(dbName);
+	}
+
+	@Override
 	public boolean shutdown()
 	{
 		return true;

@@ -32,6 +32,11 @@ public class MongoDbClient extends MongoClient implements DbClient
 	}
 
 	@Override
+	public void cleanDbs()
+	{
+	}
+
+	@Override
 	public boolean shutdown()
 	{
 		return true;

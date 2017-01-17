@@ -129,7 +129,7 @@ public class JsonGenerator
 				for (int i = 0; i < getRandomBetween(MIN_INSTANCES_VERSION, MAX_INSTANCES_VERSION); i++)
 				{
 					ObjectNode strObj = factory.objectNode();
-					strObj.put("id", ++IDENTIFIER);
+					strObj.put("_id", Integer.toString(++IDENTIFIER));
 					strObj.put("type", entity.getName());
 
 					for (Property property : eVersion.getProperties())
