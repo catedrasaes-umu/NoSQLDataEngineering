@@ -11,6 +11,7 @@ import es.um.nosql.schemainference.NoSQLSchema.Tuple
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate
 import es.um.nosql.schemainference.NoSQLSchema.Reference
 import java.util.ArrayList
+import java.util.List
 class PlantumlGenerator {
   var ArrayList<Entity> entsList=new ArrayList
   EntityVersion evAux
@@ -89,7 +90,8 @@ def printAgg(Aggregate ag3, String name)'''
 def dispatch checkRefAggr(Aggregate aggr){
   if(aggr.refTo!=null)
   {
-  	checkAssociation(aggr.refTo,aggr.name)
+  	var Entity entAg=aggr.refTo.get(0).eContainer as Entity
+  	checkAssociation(aggr.refTo.toList,aggr.name, entAg)
   }
 }
 
@@ -156,7 +158,7 @@ def dispatch checkAssociation(Entity e)'''
 '''
 
 //check Aggregate.refTo
-def dispatch checkAssociation(Iterable <EntityVersion> agL, String nameAg)'''
+def dispatch checkAssociation(List <EntityVersion> agL, String nameAg, Entity entAg)'''
   «var ArrayList<Attribute> at = new ArrayList»
   «var ArrayList<Reference> ref = new ArrayList»
   «var ArrayList<Aggregate> aggr =new ArrayList»
@@ -180,7 +182,7 @@ def dispatch checkAssociation(Iterable <EntityVersion> agL, String nameAg)'''
      «FOR i:0..<ag.size»
        «aggr.add(contAgg+=1,ag.get(i))»
      «ENDFOR»  «ENDFOR»
-  Class «nameAg.toFirstUpper» {
+  Class «entAg.name.toFirstUpper» {
   «FOR Attribute at2: at»
   	«analyzeAttribute(at2.type,at2.name,prims,tuples)»
   «ENDFOR»

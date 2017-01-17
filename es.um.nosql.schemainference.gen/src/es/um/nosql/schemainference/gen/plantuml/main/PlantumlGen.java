@@ -42,7 +42,7 @@ public class PlantumlGen {
 			outputDir.mkdirs();
 
 			// FIXME: Cambiar "salida.uml" por el fichero de salida
-			File outFile = outputDir.toPath().resolve("movies.uml").toFile();
+			File outFile = outputDir.toPath().resolve("movies.txt").toFile();
 			outFileWriter = new PrintStream(outFile);
 		}
 

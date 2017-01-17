@@ -214,7 +214,7 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   «refs.clear»
   «ags.clear»
   var «ent.entity.name.toFirstLower»Schema = new mongoose.Schema({
-
+  
   // Common Properties	
     «FOR ac: commonAttrs»
     «paramsL.clear»
