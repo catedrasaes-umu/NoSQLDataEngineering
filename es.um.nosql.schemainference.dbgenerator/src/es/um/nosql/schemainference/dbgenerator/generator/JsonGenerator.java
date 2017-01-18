@@ -33,11 +33,8 @@ public class JsonGenerator
 	private int MIN_INSTANCES_VERSION;
 	private int MAX_INSTANCES_VERSION;
 
-	private int MIN_INT_VALUE;
-	private int MAX_INT_VALUE;
-
-	private int MIN_STR_VALUE;
-	private int MAX_STR_VALUE;
+	private int zeroFactor;
+	private int currentId;
 
 	private JsonNodeFactory factory = JsonNodeFactory.instance;
 
@@ -50,59 +47,24 @@ public class JsonGenerator
 		MIN_INSTANCES_VERSION = 3;
 		MAX_INSTANCES_VERSION = 10;
 
-		MIN_INT_VALUE = 0;
-		MAX_INT_VALUE = 200;
-
-		MIN_STR_VALUE = 1;
-		MAX_STR_VALUE = 200;
+		zeroFactor = 0;
+		currentId = 0;
 	}
 
-	/**
-	 * Method used to get a random value between two values.
-	 * @param minValue The minimum value.
-	 * @param maxValue The maximum value.
-	 * @return A random integer between the two given values.
-	 */
-	private int getRandomBetween(int minValue, int maxValue)
+	private void setIdGeneratorFactor(NoSQLSchema schema)
 	{
-		return (new Random()).nextInt(maxValue + 1 - minValue) + minValue;
+		int maxObjects = schema.getEntities().size();
+
+		for (Entity entity : schema.getEntities())
+			maxObjects += entity.getEntityversions().size();
+
+		maxObjects *= MAX_INSTANCES_VERSION;
+		zeroFactor = Integer.toString(maxObjects).length();
 	}
 
-	private float getRandomFloat()
+	private String getId()
 	{
-		double d = Math.round(ThreadLocalRandom.current().nextFloat() * 100 * 100d) / 100d;
-
-		if (d == Math.floor(d))
-			d += 0.01;
-
-		return (float) d;
-	}
-
-	private String getRandomString()
-	{
-		return "value_" + ThreadLocalRandom.current().nextInt(MIN_STR_VALUE, MAX_STR_VALUE);
-	}
-
-	private int getRandomInt()
-	{
-		return ThreadLocalRandom.current().nextInt(MIN_INT_VALUE, MAX_INT_VALUE);
-	}
-
-	private boolean getRandomBoolean()
-	{
-		return ThreadLocalRandom.current().nextBoolean();
-	}
-
-	public void setRandomIntRange(int minValue, int maxValue)
-	{
-		MIN_INT_VALUE = 0;
-		MAX_INT_VALUE = 200;
-	}
-
-	public void setRandomStrRange(int minValue, int maxValue)
-	{
-		MIN_STR_VALUE = 1;
-		MAX_INT_VALUE = 200;
+		return String.format("%0" + zeroFactor + "d", ++currentId);
 	}
 
 	public String generate(NoSQLSchema schema, int minInstances, int maxInstances) throws JsonProcessingException
@@ -117,9 +79,10 @@ public class JsonGenerator
 	{
 		mapEV = new HashMap<EntityVersion, List<ObjectNode>>();
 		lStorage = factory.arrayNode();
+		setIdGeneratorFactor(schema);
+		currentId = 0;
 
 		// First run to generate all the primitive types, tuples and references.
-		int IDENTIFIER = 0;
 		for (Entity entity : schema.getEntities())
 		{
 			for (EntityVersion eVersion : entity.getEntityversions())
@@ -129,7 +92,7 @@ public class JsonGenerator
 				for (int i = 0; i < getRandomBetween(MIN_INSTANCES_VERSION, MAX_INSTANCES_VERSION); i++)
 				{
 					ObjectNode strObj = factory.objectNode();
-					strObj.put("_id", Integer.toString(++IDENTIFIER));
+					strObj.put("_id", getId());
 					strObj.put("type", entity.getName());
 
 					for (Property property : eVersion.getProperties())
@@ -150,6 +113,7 @@ public class JsonGenerator
 							int uBound = ref.getUpperBound() > 0 ? ref.getUpperBound() : 5;
 
 							if (lBound == 1 && lBound == uBound && getRandomBoolean())
+								//TODO: Should it be a certain value, not a random one
 								strObj.put(ref.getName(), String.valueOf(getRandomInt()));
 							else
 							{
@@ -157,6 +121,7 @@ public class JsonGenerator
 								strObj.put(ref.getName(), refArray);
 
 								for (int j = 0; j < getRandomBetween(lBound, uBound); j++)
+									//TODO: Should it be a certain value, not a random one
 									refArray.add(String.valueOf(getRandomInt()));
 							}
 						}
@@ -188,6 +153,36 @@ public class JsonGenerator
 				}
 
 		return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(lStorage);
+	}
+
+	private int getRandomBetween(int minValue, int maxValue)
+	{
+		return (new Random()).nextInt(maxValue + 1 - minValue) + minValue;
+	}
+
+	private float getRandomFloat()
+	{
+		double d = Math.round(ThreadLocalRandom.current().nextFloat() * 100 * 100d) / 100d;
+
+		if (d == Math.floor(d))
+			d += 0.01;
+
+		return (float) d;
+	}
+
+	private String getRandomString()
+	{
+		return "value_" + getRandomInt();
+	}
+
+	private int getRandomInt()
+	{
+		return ThreadLocalRandom.current().nextInt(0, 1000000);
+	}
+
+	private boolean getRandomBoolean()
+	{
+		return ThreadLocalRandom.current().nextBoolean();
 	}
 
 	/**
