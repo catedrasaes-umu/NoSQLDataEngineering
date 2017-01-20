@@ -1,0 +1,152 @@
+{
+  "rows": [
+      {  
+        "type": "movie",
+        "title": "Citizen Kane",
+        "year": 1941,
+        "director_id": "123451",
+        "genre": "Drama",
+        "_id": "1",
+        "prizes": [
+          {
+            "year": 1941,
+            "event": "Oscar",
+            "names": [
+              "Best screenplay",
+              "Best Writing"
+            ]  
+          },
+          {
+            "year": 1941,
+            "event": "New York Film Critics Circle Awards",
+            "name": "Best Screenplay"
+          },
+          {
+            "year": 1999,
+            "event": "Village Voice Film Poll",
+            "name":"Best Film of the Century"
+          },
+          {
+            "year": 1941,
+            "event": "National Board of Review, USA",
+            "names": [
+              "Best Film",
+              "Top Ten Films"
+            ]  
+          }
+        ],
+        "criticisms": [
+          {
+           "journalist": "Roger Ebert",
+           "media": {
+                     "name": "Chicago Sun-Times",
+                     "url": "http://chicago.suntimes.com/"
+                    },
+           "color": "green"
+          },
+          {
+           "journalist": "Pablo Kurt",
+           "media": {
+           			 "name": "FILMAFFINITY",
+                     "url": "http://www.filmaffinity.com/es/main.html"
+                    },
+           "color": "green"
+          },
+          {
+           "journalist": "Richard Brody",
+           "media": "The New Yorker",
+           "color": "green"
+          }
+        ]
+      },
+      {
+        "type": "movie",
+        "title": "The Man Who Would Be King",
+        "year": 1975, 
+        "director_id": "928672", 
+        "genre": "Adventures",
+        "_id": "2"
+      },
+      {
+        "_id": "3",
+        "type": "movie",
+        "title": "After hours",
+        "year": 1985,
+        "director_id": "907863",
+        "genre": "Comedy",
+        "prizes": [
+          {
+            "year": 1986,
+            "event": "Independent Spirit Awards",
+            "name": "Best Director"
+          },
+          {
+            "year": 1986,
+            "event": "Festival Cannes",
+            "name": "Best director"
+          }
+        ]
+      },
+      {
+        "_id": "4",
+        "type": "movie",
+        "title": "Truth",
+        "year": 2014, 
+        "director_id": "345679",
+        "genre": "Drama",
+        "criticisms": [
+          {
+           "journalist": "Jordi Costa",
+           "media": "El pais",
+           "color": "red"
+          },
+          {
+            "journalist": "Lou Lumenick",
+            "media": "New York Post",
+            "color": "green"
+          }
+        ]
+      },
+      {
+        "type": "movie",
+        "title": "Touch of Evil",
+        "year": 1958, 
+        "writers": ["Orson Welles", "Whit Masterson"],
+        "director_id": "123451", 
+        "genres": ["Thriller", "Classic"],
+        "_id": "5"
+      },
+      {
+        "name": "Orson Welles",
+        "directed_movies": ["1", "5"],
+        "actor_movies": ["1","5"],
+        "type": "director",
+        "_id": "123451"
+      },
+      {
+        "type": "director",
+        "directed_movies": ["4"],
+        "name": "James Vanderbilt",
+        "_id": "345679"
+      },
+      {
+        "type": "director",
+        "directed_movies": ["3"],
+        "name": "Martin Scorsese",
+        "_id": "907863"
+      },
+      {
+        "type": "director",
+        "directed_movies": ["2"],
+        "name": "John Huston",
+        "_id": "928672"
+      },
+      { 
+        "type": "movieTheater",
+        "_id": "22",
+        "name": "String",
+        "city": "String",
+        "country": "String"
+      }
+  ]
+}

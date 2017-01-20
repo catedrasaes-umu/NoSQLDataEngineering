@@ -80,10 +80,11 @@ def analyzeEnt(Entity ent2)  {
 }
 
 def printAgg(Aggregate ag3, String name)'''
+  «var Entity entAg=ag3.refTo.get(0).eContainer as Entity»
   «IF ag3.upperBound==-1»
-   «name.toFirstUpper» *--> "[1..*] «ag3.name.toLowerCase»" «ag3.name.toFirstUpper»
+   «name.toFirstUpper» *--> "[1..*] «ag3.name.toLowerCase»" «entAg.name.toFirstUpper»
   «ELSE»
-  	«name.toFirstUpper» *--> "[1..1] «ag3.name.toLowerCase»" «ag3.name.toFirstUpper»
+  	«name.toFirstUpper» *--> "[1..1] «ag3.name.toLowerCase»" «entAg.name.toFirstUpper»
   «ENDIF»
 '''
 
@@ -194,7 +195,7 @@ def dispatch checkAssociation(List <EntityVersion> agL, String nameAg, Entity en
     «checkRefAggr(rf3)»
   «ENDFOR»
   «FOR Aggregate ag: aggr»
-      «analyzeAggregate(ag,ag.name,ags,nameAg)»
+      «analyzeAggregate(ag,ag.name,ags,entAg.name)»
   «ENDFOR»
   «FOR Aggregate a4: ags»
     «checkRefAggr(a4)»
