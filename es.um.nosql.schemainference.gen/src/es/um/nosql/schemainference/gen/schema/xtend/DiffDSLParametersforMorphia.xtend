@@ -1,5 +1,4 @@
 package es.um.nosql.schemainference.gen.schema.xtend
-
 import org.eclipse.emf.common.util.URI
 import org.eclipse.emf.ecore.EPackage
 import org.eclipse.emf.ecore.resource.Resource$Factory$Registry
@@ -48,8 +47,7 @@ import es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec
 
 
-class DiffToSchemaWithDSLParameters
-{
+class DiffDSLParametersforMorphia {
 	var modelName = "";
 	var whiteLine="\n"
 	var tab="\t"
@@ -95,7 +93,7 @@ class DiffToSchemaWithDSLParameters
         					+ " in "
         					+ outputDir.getPath())
 
-		val diff_to_js = new DiffToSchemaWithDSLParameters
+		val diff_to_js = new DiffDSLParametersforMorphia
 		val outFile = outputDir.toPath().resolve(td.name + ".js").toFile()
 		val outFileWriter = new PrintStream(outFile)
 
@@ -867,5 +865,7 @@ def concatAgs(List<Aggregate> atLA,List<Aggregate> atLB, List<Aggregate> resL){
   	resL.add(i,res.get(i))
   }
 }
+
+
 	
 }
