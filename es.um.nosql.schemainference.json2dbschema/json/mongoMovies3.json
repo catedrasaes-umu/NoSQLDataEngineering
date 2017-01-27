@@ -144,9 +144,17 @@
       { 
         "type": "movieTheater",
         "_id": "22",
-        "name": "String",
-        "city": "String",
-        "country": "String"
+        "name": "Electric Cinema",
+        "city": "London",
+        "country": "England"
+      },
+      { 
+        "type": "movieTheater",
+        "_id": "23",
+        "name": "Kinepolis",
+        "city": "Madrid",
+        "country": "Spain",
+        "roomNumbers": 25
       }
   ]
 }

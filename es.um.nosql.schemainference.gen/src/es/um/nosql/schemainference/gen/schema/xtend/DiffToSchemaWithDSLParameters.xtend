@@ -263,40 +263,6 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   
   var «ent.entity.name.toFirstUpper» = mongoose.model('«ent.entity.name.toFirstUpper»',«ent.entity.name.toFirstLower»Schema);
   
-  // Update
-  
-  «var List<Update> updList=new ArrayList»
-  «IF areThereParams»
-  «updList=entM.updates.toList» 
-  «IF updList!=null»
- 
-  «println(updList.size)»
-  «println(updList.get(0).fieldName)»
-  function «ent.entity.name.toLowerCase»_Updating(query , fieldsToUpdate) {
-  «ent.entity.name.toFirstUpper».findOne (
-  query ,
-  function (err , «ent.entity.name.toLowerCase») {
-  if (! err ) {
-  «FOR Update fUpd:updList»	
-  «ent.entity.name.toLowerCase».«fUpd.fieldName» = aGenre ;
-  «ent.entity.name.toLowerCase»movie . save (function (err , user ) {«ENDFOR»
-  console . log ( ’ Movie saved : ’, movie );
-  }) ;
-  }
-  }
-  );
-  }  
-Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$set:{"author": author},$set:{"similar": similar}}).exec(function(err, book){
-       if(err){
-           console.log(err);
-           res.status(500).send(err);
-       } else {
-            res.status(200).send(book);
-       }
-});
-  «ENDIF» 
-  «ENDIF»	
-  
 «ENDFOR»
   
 '''

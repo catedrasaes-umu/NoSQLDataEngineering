@@ -123,6 +123,26 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityversions>
+    <entityversions versionId="2" root="true">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="city">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="country">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="roomNumbers">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
   </entities>
   <entities name="Media">
     <entityversions versionId="1">

@@ -59,24 +59,6 @@ var movieSchema = new mongoose.Schema({
 
 var Movie = mongoose.model('Movie',movieSchema);
 
-// Update
-
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@646007f4 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@481a15ff (fieldName: title)] 
-2
-genre
-function update_genre ( query , aGenre ) {
-Movie . findOne (
-query ,
-function (err , movie ) {
-if (! err ) {
-movie . genre = aGenre ;
-movie . save (function (err , user ) {
-console . log ( ’ Movie saved : ’, movie );
-}) ;
-}
-}
-);
-}  
 
 //File Movie2
 var mongoose = require('mongoose');
@@ -138,24 +120,6 @@ var movieSchema = new mongoose.Schema({
 
 var Movie = mongoose.model('Movie',movieSchema);
 
-// Update
-
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@646007f4 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@481a15ff (fieldName: title)] 
-2
-genre
-function update_genre ( query , aGenre ) {
-Movie . findOne (
-query ,
-function (err , movie ) {
-if (! err ) {
-movie . genre = aGenre ;
-movie . save (function (err , user ) {
-console . log ( ’ Movie saved : ’, movie );
-}) ;
-}
-}
-);
-}  
 
 //File Movie3
 var mongoose = require('mongoose');
@@ -217,24 +181,6 @@ var movieSchema = new mongoose.Schema({
 
 var Movie = mongoose.model('Movie',movieSchema);
 
-// Update
-
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@646007f4 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@481a15ff (fieldName: title)] 
-2
-genre
-function update_genre ( query , aGenre ) {
-Movie . findOne (
-query ,
-function (err , movie ) {
-if (! err ) {
-movie . genre = aGenre ;
-movie . save (function (err , user ) {
-console . log ( ’ Movie saved : ’, movie );
-}) ;
-}
-}
-);
-}  
 
 //File Movie4
 var mongoose = require('mongoose');
@@ -296,24 +242,6 @@ var movieSchema = new mongoose.Schema({
 
 var Movie = mongoose.model('Movie',movieSchema);
 
-// Update
-
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@646007f4 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@481a15ff (fieldName: title)] 
-2
-genre
-function update_genre ( query , aGenre ) {
-Movie . findOne (
-query ,
-function (err , movie ) {
-if (! err ) {
-movie . genre = aGenre ;
-movie . save (function (err , user ) {
-console . log ( ’ Movie saved : ’, movie );
-}) ;
-}
-}
-);
-}  
 
 //File Movie5
 var mongoose = require('mongoose');
@@ -375,24 +303,6 @@ var movieSchema = new mongoose.Schema({
 
 var Movie = mongoose.model('Movie',movieSchema);
 
-// Update
-
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@646007f4 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@481a15ff (fieldName: title)] 
-2
-genre
-function update_genre ( query , aGenre ) {
-Movie . findOne (
-query ,
-function (err , movie ) {
-if (! err ) {
-movie . genre = aGenre ;
-movie . save (function (err , user ) {
-console . log ( ’ Movie saved : ’, movie );
-}) ;
-}
-}
-);
-}  
 
 
 //File Movietheater1
@@ -419,25 +329,41 @@ var movietheaterSchema = new mongoose.Schema({
 // add required for Movietheater1 entity version
 
 // Not Common Properties 
+	roomNumbers:	Number,
 },{collection:'movietheater'});
 
 var Movietheater = mongoose.model('Movietheater',movietheaterSchema);
 
-// Update
 
-function update_genre ( query , aGenre ) {
-Movie . findOne (
-query ,
-function (err , movie ) {
-if (! err ) {
-movie . genre = aGenre ;
-movie . save (function (err , user ) {
-console . log ( ’ Movie saved : ’, movie );
-}) ;
-}
-}
-);
-}  
+//File Movietheater2
+var mongoose = require('mongoose');
+var assert=require('assert');
+var url='mongodb://localhost/dbmongoose'
+mongoose.connect(url, function(error){
+	if(error){
+  	    throw error;
+  }
+  else{
+  	console.log('Conectado a MongoDB');
+  }
+});
+var movietheaterSchema = new mongoose.Schema({
+
+// Common Properties	
+  	_id:	{type: String, required: true},
+  	name:	{type: String, required: true},
+  	type:	{type: String, required: true},
+  	city:	{type: String, required: true},
+  	country:	{type: String, required: true},
+  
+// add required for Movietheater2 entity version
+  	roomNumbers:	{type: Number, required: true},
+
+// Not Common Properties 
+},{collection:'movietheater'});
+
+var Movietheater = mongoose.model('Movietheater',movietheaterSchema);
+
 
 
 //File Director1
@@ -468,24 +394,6 @@ var directorSchema = new mongoose.Schema({
 
 var Director = mongoose.model('Director',directorSchema);
 
-// Update
-
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@545997b1 (fieldName: name)] 
-1
-name
-function update_genre ( query , aGenre ) {
-Movie . findOne (
-query ,
-function (err , movie ) {
-if (! err ) {
-movie . genre = aGenre ;
-movie . save (function (err , user ) {
-console . log ( ’ Movie saved : ’, movie );
-}) ;
-}
-}
-);
-}  
 
 //File Director2
 var mongoose = require('mongoose');
@@ -515,23 +423,5 @@ var directorSchema = new mongoose.Schema({
 
 var Director = mongoose.model('Director',directorSchema);
 
-// Update
-
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@545997b1 (fieldName: name)] 
-1
-name
-function update_genre ( query , aGenre ) {
-Movie . findOne (
-query ,
-function (err , movie ) {
-if (! err ) {
-movie . genre = aGenre ;
-movie . save (function (err , user ) {
-console . log ( ’ Movie saved : ’, movie );
-}) ;
-}
-}
-);
-}  
 
 
