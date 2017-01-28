@@ -1,0 +1,15 @@
+{ 
+  "student":{
+              "name": {
+                 "firstName": "Severino",
+   				 "lastName": "Feliciano"
+              },
+              "phone": "123456789",
+              "email": "severino.feliciano@.um.es",
+              "supervisors": ["99988877", "22233344"],
+              "program": {
+                          "title": "PhD in Computer Science",
+						  "centre": "Faculty of Computer Science"
+						 }
+  }
+}					  
