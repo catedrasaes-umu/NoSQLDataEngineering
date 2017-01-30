@@ -47,9 +47,9 @@ public class CouchDBSchemaInference2
 */
 			ObjectMapper oMapper = new ObjectMapper();
 
-			for (JsonNode o : list)
+/*			for (JsonNode o : list)
 				System.out.println(oMapper.writerWithDefaultPrettyPrinter().writeValueAsString(o));
-
+*/
 //			// Produce all the actual objects from the query. Couchdb won't allow include_docs to be specified
 //			// for a reduce view, and if I include the document itself it causes a view overflow. So we have
 //			// to take all the value objects and obtain them from the database directly

@@ -10,7 +10,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
+import es.um.nosql.schemainference.nosqlimport.util.CouchDBStreamAdapter;
 import es.um.nosql.schemainference.nosqlimport.util.MapReduceSources;
+import es.um.nosql.schemainference.nosqlimport.util.StreamManager;
 
 /**
  * @author dsevilla
@@ -30,15 +32,13 @@ public class CouchDBSchemaInference
 		 * "art" database will not work
 		 * "movies", "food" and "books" will
 		 */
-		String dbName = "art";//args[0];
+		String dbName = "books";//args[0];
 		String dirName = "mapreduce/couchdb/v1";//args[1];
 
 		try {
 			MapReduceSources mrs = MapReduceSources.fromDir(dirName);
 
-			CouchDbProperties properties =
-					new CouchDbProperties(dbName, true, "http", "localhost", 5984,
-							null,null);
+			CouchDbProperties properties = new CouchDbProperties(dbName, true, "http", "localhost", 5984, null,null);
 			CouchDbClient dbClient = new CouchDbClient(properties);
 
 			//		List<JsonObject> allDocs = dbClient.view("_all_docs").query(JsonObject.class);
@@ -50,17 +50,11 @@ public class CouchDBSchemaInference
 			mapRedObj.setMap(mrs.getMapJSCode());
 			mapRedObj.setReduce(mrs.getReduceJSCode());
 
-			List<JsonObject> list = dbClient.view("_temp_view")
-					.tempView(mapRedObj)
-					.group(true)
-					.includeDocs(false)
-					.reduce(true)
-					.query(JsonObject.class);
+			List<JsonObject> list = dbClient.view("_temp_view").tempView(mapRedObj).group(true)
+					.includeDocs(false).reduce(true).query(JsonObject.class);
 
-			Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-			for (JsonObject o : list)
-				System.out.println(gson.toJson(o));
+			CouchDBStreamAdapter adapter = new CouchDBStreamAdapter();
+			StreamManager.getStrManager().printStream(adapter.adaptStream(list.stream()));
 
 //			// Produce all the actual objects from the query. Couchdb won't allow include_docs to be specified
 //			// for a reduce view, and if I include the document itself it causes a view overflow. So we have
