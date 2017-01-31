@@ -32,8 +32,8 @@ public class CouchDBSchemaInference
 		 * "art" database will not work
 		 * "movies", "food" and "books" will
 		 */
-		String dbName = "books";//args[0];
-		String dirName = "mapreduce/couchdb/v1";//args[1];
+		String dbName = "art";//args[0];
+		String dirName = "mapreduce/couchdb/v2";//args[1];
 
 		try {
 			MapReduceSources mrs = MapReduceSources.fromDir(dirName);

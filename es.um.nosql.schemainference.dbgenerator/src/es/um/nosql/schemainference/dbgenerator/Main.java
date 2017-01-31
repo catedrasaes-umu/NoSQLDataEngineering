@@ -19,8 +19,8 @@ public class Main
 		 * JSON_FOLDER indicates where will be the json files generated
 		 * The generated content will be also stored on the database
 		 */
-		int minInstances = 1;
-		int maxInstances = 1;
+		int minInstances = 3;
+		int maxInstances = 9;
 
 		DbGenController controller = new DbGenController(DbType.COUCHDB, COUCHDB_IP);
 		controller.startTest(INPUT_FOLDER, JSON_FOLDER, minInstances, maxInstances);
