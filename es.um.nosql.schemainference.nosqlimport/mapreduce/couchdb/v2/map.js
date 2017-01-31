@@ -29,7 +29,7 @@ function (documents)
             return (typeof value)[0];
     }
 
-    var schema = flattenObject(documents);
+    var schema = JSON.stringify(flattenObject(documents));
 
     emit(schema, {schema: schema, count: 1});
 }

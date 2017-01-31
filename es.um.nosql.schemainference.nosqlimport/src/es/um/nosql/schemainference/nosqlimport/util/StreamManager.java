@@ -7,6 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class StreamManager
 {
@@ -30,11 +31,9 @@ public class StreamManager
 					public void accept(JsonObject object)
 					{
 						System.out.println(gson.toJson(object));
-//						JsonObject value = object.get("value").getAsJsonObject();
-//						System.out.println(gson.toJson(value));
-//						JsonObject schema = value.get("schema").getAsJsonObject();
-//						System.out.println(gson.toJson(schema));
-
+//						JsonParser jsonParser = new JsonParser();
+//						JsonObject jo = (JsonObject)jsonParser.parse(object.get("key").getAsString());
+//						System.out.println(gson.toJson(jo));
 					}
 				});
 //		System.out.println(stream);
