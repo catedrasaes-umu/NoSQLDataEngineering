@@ -93,11 +93,11 @@ class DiffDSLParametersforMorphia {
         					+ " in "
         					+ outputDir.getPath())
 
-		val diff_to_js = new DiffDSLParametersforMorphia
-		val outFile = outputDir.toPath().resolve(td.name + ".js").toFile()
+		val diff_to_morphia = new DiffDSLParametersforMorphia
+		val outFile = outputDir.toPath().resolve(td.name + ".java").toFile()
 		val outFileWriter = new PrintStream(outFile)
 
-        outFileWriter.println(diff_to_js.generate(td, td2))
+        outFileWriter.println(diff_to_morphia.generate(td, td2))
         outFileWriter.close()
         
         System.exit(0)
@@ -161,17 +161,30 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
     «props.add(i,propSp.get(i).property)»
   «ENDFOR»
   //File «ent.entity.name.toFirstUpper»«contVer2+=1»
-  var mongoose = require('mongoose');
-  var assert=require('assert');
-  var url='mongodb://localhost/dbmongoose'
-  mongoose.connect(url, function(error){
-  	if(error){
-    	    throw error;
-    }
-    else{
-    	console.log('Conectado a MongoDB');
-    }
-  });
+  package «ent.entity.name.toLowerCase».morphia;
+  import com.mongodb.MongoClient;
+  import org.bson.types.ObjectId;
+  import org.mongodb.morphia.Datastore;
+  import org.mongodb.morphia.Morphia;
+  import org.mongodb.morphia.annotations.Entity;
+  import org.mongodb.morphia.annotations.Field;
+  import org.mongodb.morphia.annotations.Id;
+  import org.mongodb.morphia.annotations.Index;
+  import org.mongodb.morphia.annotations.Indexes;
+  import org.mongodb.morphia.annotations.Indexed;
+  import org.mongodb.morphia.annotations.IndexOptions; 
+  import org.mongodb.morphia.utils.IndexDirection;
+  import org.mongodb.morphia.utils.IndexType;
+  import static org.mongodb.morphia.utils.IndexType.TEXT;
+  import static org.mongodb.morphia.utils.IndexType.HASHED;
+  import org.mongodb.morphia.annotations.Property;
+  import org.mongodb.morphia.annotations.Reference;
+  import org.mongodb.morphia.query.Query;
+  import org.mongodb.morphia.query.UpdateOperations;
+  import org.mongodb.morphia.query.UpdateResults;
+  import java.net.UnknownHostException;
+  import java.util.ArrayList;
+  import java.util.List;
   «getAggregatesCommons(commonAggrs, dslM)»
   «getAggregates(commonAggrs, finalCommonAggrs,dslM)»
   «getAggregates(notCommonAggrs, finalNotCommonAggrs,dslM)»
@@ -268,8 +281,6 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   «updList=entM.updates.toList» 
   «IF updList!=null»
  
-  «println(updList.size)»
-  «println(updList.get(0).fieldName)»
   function «ent.entity.name.toLowerCase»_Updating(query , fieldsToUpdate) {
   «ent.entity.name.toFirstUpper».findOne (
   query ,
