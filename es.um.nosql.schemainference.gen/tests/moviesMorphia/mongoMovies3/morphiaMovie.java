@@ -18,33 +18,51 @@ import static org.mongodb.morphia.utils.IndexType.TEXT;
 import static org.mongodb.morphia.utils.IndexType.HASHED;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-var Moviecriticisms1=	{
+//code for embedded Moviecriticisms1 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Moviecriticisms1{
 	color:	{type: String, enum: [green, red, yellow]},
 	journalist:	{type: String, unique: true},
 	media:	String,
+	@Embbeded
 	media:	{
 		name:	String,
 		url:	String,
 	    } 
     } 
-var Moviecriticisms4=	{
+//code for embedded Moviecriticisms4 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Moviecriticisms4{
 	color:	{type: String, enum: [green, red, yellow]},
 	journalist:	{type: String, unique: true},
 	media:	String,
     } 
-var Movieprizes1=	{
+//code for embedded Movieprizes1 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Movieprizes1{
 	event:	String,
 	year:	Number,
 	name:	String,
 	names:	[],
     } 
-var Movieprizes3=	{
+//code for embedded Movieprizes3 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Movieprizes3{
 	event:	String,
 	name:	String,
 	year:	Number,
@@ -119,33 +137,51 @@ import static org.mongodb.morphia.utils.IndexType.TEXT;
 import static org.mongodb.morphia.utils.IndexType.HASHED;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-var Moviecriticisms1=	{
+//code for embedded Moviecriticisms1 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Moviecriticisms1{
 	color:	{type: String, enum: [green, red, yellow]},
 	journalist:	{type: String, unique: true},
 	media:	String,
+	@Embbeded
 	media:	{
 		name:	String,
 		url:	String,
 	    } 
     } 
-var Moviecriticisms4=	{
+//code for embedded Moviecriticisms4 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Moviecriticisms4{
 	color:	{type: String, enum: [green, red, yellow]},
 	journalist:	{type: String, unique: true},
 	media:	String,
     } 
-var Movieprizes1=	{
+//code for embedded Movieprizes1 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Movieprizes1{
 	event:	String,
 	year:	Number,
 	name:	String,
 	names:	[],
     } 
-var Movieprizes3=	{
+//code for embedded Movieprizes3 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Movieprizes3{
 	event:	String,
 	name:	String,
 	year:	Number,
@@ -220,33 +256,51 @@ import static org.mongodb.morphia.utils.IndexType.TEXT;
 import static org.mongodb.morphia.utils.IndexType.HASHED;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-var Moviecriticisms1=	{
+//code for embedded Moviecriticisms1 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Moviecriticisms1{
 	color:	{type: String, enum: [green, red, yellow]},
 	journalist:	{type: String, unique: true},
 	media:	String,
+	@Embbeded
 	media:	{
 		name:	String,
 		url:	String,
 	    } 
     } 
-var Moviecriticisms4=	{
+//code for embedded Moviecriticisms4 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Moviecriticisms4{
 	color:	{type: String, enum: [green, red, yellow]},
 	journalist:	{type: String, unique: true},
 	media:	String,
     } 
-var Movieprizes1=	{
+//code for embedded Movieprizes1 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Movieprizes1{
 	event:	String,
 	year:	Number,
 	name:	String,
 	names:	[],
     } 
-var Movieprizes3=	{
+//code for embedded Movieprizes3 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Movieprizes3{
 	event:	String,
 	name:	String,
 	year:	Number,
@@ -321,33 +375,51 @@ import static org.mongodb.morphia.utils.IndexType.TEXT;
 import static org.mongodb.morphia.utils.IndexType.HASHED;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-var Moviecriticisms1=	{
+//code for embedded Moviecriticisms1 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Moviecriticisms1{
 	color:	{type: String, enum: [green, red, yellow]},
 	journalist:	{type: String, unique: true},
 	media:	String,
+	@Embbeded
 	media:	{
 		name:	String,
 		url:	String,
 	    } 
     } 
-var Moviecriticisms4=	{
+//code for embedded Moviecriticisms4 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Moviecriticisms4{
 	color:	{type: String, enum: [green, red, yellow]},
 	journalist:	{type: String, unique: true},
 	media:	String,
     } 
-var Movieprizes1=	{
+//code for embedded Movieprizes1 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Movieprizes1{
 	event:	String,
 	year:	Number,
 	name:	String,
 	names:	[],
     } 
-var Movieprizes3=	{
+//code for embedded Movieprizes3 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Movieprizes3{
 	event:	String,
 	name:	String,
 	year:	Number,
@@ -422,33 +494,51 @@ import static org.mongodb.morphia.utils.IndexType.TEXT;
 import static org.mongodb.morphia.utils.IndexType.HASHED;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-var Moviecriticisms1=	{
+//code for embedded Moviecriticisms1 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Moviecriticisms1{
 	color:	{type: String, enum: [green, red, yellow]},
 	journalist:	{type: String, unique: true},
 	media:	String,
+	@Embbeded
 	media:	{
 		name:	String,
 		url:	String,
 	    } 
     } 
-var Moviecriticisms4=	{
+//code for embedded Moviecriticisms4 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Moviecriticisms4{
 	color:	{type: String, enum: [green, red, yellow]},
 	journalist:	{type: String, unique: true},
 	media:	String,
     } 
-var Movieprizes1=	{
+//code for embedded Movieprizes1 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Movieprizes1{
 	event:	String,
 	year:	Number,
 	name:	String,
 	names:	[],
     } 
-var Movieprizes3=	{
+//code for embedded Movieprizes3 File
+package movie.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Movieprizes3{
 	event:	String,
 	name:	String,
 	year:	Number,
@@ -524,6 +614,7 @@ import static org.mongodb.morphia.utils.IndexType.TEXT;
 import static org.mongodb.morphia.utils.IndexType.HASHED;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 import org.mongodb.morphia.query.UpdateResults;
@@ -570,6 +661,7 @@ import static org.mongodb.morphia.utils.IndexType.TEXT;
 import static org.mongodb.morphia.utils.IndexType.HASHED;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 import org.mongodb.morphia.query.UpdateResults;
@@ -617,6 +709,7 @@ import static org.mongodb.morphia.utils.IndexType.TEXT;
 import static org.mongodb.morphia.utils.IndexType.HASHED;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 import org.mongodb.morphia.query.UpdateResults;
@@ -685,6 +778,7 @@ import static org.mongodb.morphia.utils.IndexType.TEXT;
 import static org.mongodb.morphia.utils.IndexType.HASHED;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.query.Query;
 import org.mongodb.morphia.query.UpdateOperations;
 import org.mongodb.morphia.query.UpdateResults;
@@ -732,6 +826,291 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
             res.status(200).send(book);
        }
 });
+
+
+
+//File Media1
+package media.morphia;
+import com.mongodb.MongoClient;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.Morphia;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Field;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Index;
+import org.mongodb.morphia.annotations.Indexes;
+import org.mongodb.morphia.annotations.Indexed;
+import org.mongodb.morphia.annotations.IndexOptions; 
+import org.mongodb.morphia.utils.IndexDirection;
+import org.mongodb.morphia.utils.IndexType;
+import static org.mongodb.morphia.utils.IndexType.TEXT;
+import static org.mongodb.morphia.utils.IndexType.HASHED;
+import org.mongodb.morphia.annotations.Property;
+import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.query.UpdateOperations;
+import org.mongodb.morphia.query.UpdateResults;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+var mediaSchema = new mongoose.Schema({
+
+// Common Properties	
+  	name:	{type: String, required: true},
+  	url:	{type: String, required: true},
+  
+// add required for Media1 entity version
+
+// Not Common Properties 
+},{collection:'media'});
+
+var Media = mongoose.model('Media',mediaSchema);
+
+// Update
+
+
+
+
+//File Criticism1
+package criticism.morphia;
+import com.mongodb.MongoClient;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.Morphia;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Field;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Index;
+import org.mongodb.morphia.annotations.Indexes;
+import org.mongodb.morphia.annotations.Indexed;
+import org.mongodb.morphia.annotations.IndexOptions; 
+import org.mongodb.morphia.utils.IndexDirection;
+import org.mongodb.morphia.utils.IndexType;
+import static org.mongodb.morphia.utils.IndexType.TEXT;
+import static org.mongodb.morphia.utils.IndexType.HASHED;
+import org.mongodb.morphia.annotations.Property;
+import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.query.UpdateOperations;
+import org.mongodb.morphia.query.UpdateResults;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+//code for embedded Criticismmedia1 File
+package criticism.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Criticismmedia1{
+	name:	String,
+	url:	String,
+    } 
+var criticismSchema = new mongoose.Schema({
+
+// Common Properties	
+  	color:	{type: String, required:true, enum: [green, red, yellow]},
+  	journalist:	{type: String, required:true, unique: true},
+    
+// add required for Criticism1 entity version
+	media:	{type:Criticismmedia1, required:true},
+
+// Not Common Properties 
+	media:	String,
+},{collection:'criticism'});
+
+var Criticism = mongoose.model('Criticism',criticismSchema);
+
+// Update
+
+[] 
+ 
+  function criticism_Updating(query , fieldsToUpdate) {
+  Criticism.findOne (
+  query ,
+  function (err , criticism) {
+  if (! err ) {
+  console . log ( ’ Movie saved : ’, movie );
+  }) ;
+  }
+  }
+  );
+  }  
+Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$set:{"author": author},$set:{"similar": similar}}).exec(function(err, book){
+       if(err){
+           console.log(err);
+           res.status(500).send(err);
+       } else {
+            res.status(200).send(book);
+       }
+});
+
+
+//File Criticism2
+package criticism.morphia;
+import com.mongodb.MongoClient;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.Morphia;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Field;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Index;
+import org.mongodb.morphia.annotations.Indexes;
+import org.mongodb.morphia.annotations.Indexed;
+import org.mongodb.morphia.annotations.IndexOptions; 
+import org.mongodb.morphia.utils.IndexDirection;
+import org.mongodb.morphia.utils.IndexType;
+import static org.mongodb.morphia.utils.IndexType.TEXT;
+import static org.mongodb.morphia.utils.IndexType.HASHED;
+import org.mongodb.morphia.annotations.Property;
+import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.query.UpdateOperations;
+import org.mongodb.morphia.query.UpdateResults;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+//code for embedded Criticismmedia1 File
+package criticism.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+@Embbeded
+public class Criticismmedia1{
+	name:	String,
+	url:	String,
+    } 
+var criticismSchema = new mongoose.Schema({
+
+// Common Properties	
+  	color:	{type: String, required:true, enum: [green, red, yellow]},
+  	journalist:	{type: String, required:true, unique: true},
+    
+// add required for Criticism2 entity version
+  	media:	{type: String, required: true},
+
+// Not Common Properties 
+	media:	Criticismmedia1,
+},{collection:'criticism'});
+
+var Criticism = mongoose.model('Criticism',criticismSchema);
+
+// Update
+
+[] 
+ 
+  function criticism_Updating(query , fieldsToUpdate) {
+  Criticism.findOne (
+  query ,
+  function (err , criticism) {
+  if (! err ) {
+  console . log ( ’ Movie saved : ’, movie );
+  }) ;
+  }
+  }
+  );
+  }  
+Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$set:{"author": author},$set:{"similar": similar}}).exec(function(err, book){
+       if(err){
+           console.log(err);
+           res.status(500).send(err);
+       } else {
+            res.status(200).send(book);
+       }
+});
+
+
+
+//File Prize1
+package prize.morphia;
+import com.mongodb.MongoClient;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.Morphia;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Field;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Index;
+import org.mongodb.morphia.annotations.Indexes;
+import org.mongodb.morphia.annotations.Indexed;
+import org.mongodb.morphia.annotations.IndexOptions; 
+import org.mongodb.morphia.utils.IndexDirection;
+import org.mongodb.morphia.utils.IndexType;
+import static org.mongodb.morphia.utils.IndexType.TEXT;
+import static org.mongodb.morphia.utils.IndexType.HASHED;
+import org.mongodb.morphia.annotations.Property;
+import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.query.UpdateOperations;
+import org.mongodb.morphia.query.UpdateResults;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+var prizeSchema = new mongoose.Schema({
+
+// Common Properties	
+  	event:	{type: String, required: true},
+  	year:	{type: Number, required: true},
+  
+// add required for Prize1 entity version
+  	names:	{type:[], required:true},
+
+// Not Common Properties 
+	name:	String,
+},{collection:'prize'});
+
+var Prize = mongoose.model('Prize',prizeSchema);
+
+// Update
+
+
+
+//File Prize2
+package prize.morphia;
+import com.mongodb.MongoClient;
+import org.bson.types.ObjectId;
+import org.mongodb.morphia.Datastore;
+import org.mongodb.morphia.Morphia;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Field;
+import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Index;
+import org.mongodb.morphia.annotations.Indexes;
+import org.mongodb.morphia.annotations.Indexed;
+import org.mongodb.morphia.annotations.IndexOptions; 
+import org.mongodb.morphia.utils.IndexDirection;
+import org.mongodb.morphia.utils.IndexType;
+import static org.mongodb.morphia.utils.IndexType.TEXT;
+import static org.mongodb.morphia.utils.IndexType.HASHED;
+import org.mongodb.morphia.annotations.Property;
+import org.mongodb.morphia.annotations.Reference;
+import org.mongodb.morphia.annotations.Embedded;
+import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.query.UpdateOperations;
+import org.mongodb.morphia.query.UpdateResults;
+import java.net.UnknownHostException;
+import java.util.ArrayList;
+import java.util.List;
+var prizeSchema = new mongoose.Schema({
+
+// Common Properties	
+  	event:	{type: String, required: true},
+  	year:	{type: Number, required: true},
+  
+// add required for Prize2 entity version
+  	name:	{type: String, required: true},
+
+// Not Common Properties 
+	names:	[],
+},{collection:'prize'});
+
+var Prize = mongoose.model('Prize',prizeSchema);
+
+// Update
+
+
 
 
 

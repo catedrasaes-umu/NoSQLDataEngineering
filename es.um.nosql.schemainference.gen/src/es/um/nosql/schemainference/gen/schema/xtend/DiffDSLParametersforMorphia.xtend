@@ -51,6 +51,7 @@ class DiffDSLParametersforMorphia {
 	var modelName = "";
 	var whiteLine="\n"
 	var tab="\t"
+	var String morphiaPackage
 	var List<Attribute>commonAttrs=new ArrayList
     var List<Aggregate>commonAggrs=new ArrayList
     var List<Reference>commonRefs=new ArrayList
@@ -85,7 +86,9 @@ class DiffDSLParametersforMorphia {
         
         
 		val outputDir = new File(if (args.length > 1) args.get(2) else ".")
-								.toPath().resolve(td.name).toFile()
+							.toPath().resolve(td.name).toFile()
+        //val outputDir = new File(args.get(2)).toPath().resolve(td.name).toFile()
+        //outDir=outputDir.toString								
 		// Create destination directory if it does not exist
 		outputDir.mkdirs()
         System.out.println("Generating Javascript for " 
@@ -94,7 +97,8 @@ class DiffDSLParametersforMorphia {
         					+ outputDir.getPath())
 
 		val diff_to_morphia = new DiffDSLParametersforMorphia
-		val outFile = outputDir.toPath().resolve(td.name + ".java").toFile()
+		val outFile = outputDir.toPath().resolve("morphiaMovie.java").toFile()
+		//outDir=outputDir.toString
 		val outFileWriter = new PrintStream(outFile)
 
         outFileWriter.println(diff_to_morphia.generate(td, td2))
@@ -115,11 +119,16 @@ class DiffDSLParametersforMorphia {
 	      else
 	      eDiffs.add(eD)
 	}
-  '''
-  «FOR entL: eDiffRoots»
-	«analyzeEnt(entL, dslM)»
+  var code='''
+  «FOR entRL: eDiffRoots»
+	«analyzeEnt(entRL, dslM)»
   «ENDFOR»
+  «FOR entNRL: eDiffs»
+	«analyzeEnt(entNRL, dslM)»
+  «ENDFOR»
+  
   '''
+  println(code)
 }	
 	
 def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
@@ -127,7 +136,7 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   var List<String> tuples=new ArrayList
   var List<Reference> refs=new ArrayList
   var List<Aggregate> ags=new ArrayList
-	
+  morphiaPackage=ent.entity.name.toLowerCase+".morphiaMapper"
   commonAttrs.clear
   commonAggrs.clear
   commonRefs.clear
@@ -179,6 +188,7 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   import static org.mongodb.morphia.utils.IndexType.HASHED;
   import org.mongodb.morphia.annotations.Property;
   import org.mongodb.morphia.annotations.Reference;
+  import org.mongodb.morphia.annotations.Embedded;
   import org.mongodb.morphia.query.Query;
   import org.mongodb.morphia.query.UpdateOperations;
   import org.mongodb.morphia.query.UpdateResults;
@@ -770,8 +780,13 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR, Mongoos
  
 '''
   «IF isR==true»
-    var «nameAg»=	{
+    //code for embedded «nameAg» File
+    package «morphiaPackage»;
+    import org.mongodb.morphia.annotations.Embedded;
+    @Embbeded
+    public class «nameAg»{
     «ELSE»
+    @Embbeded
     «nameAg»:	{
   «ENDIF»
   	«FOR Attribute at2: at»
