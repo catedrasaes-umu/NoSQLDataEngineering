@@ -1,9 +1,7 @@
 
-
-
-//For Roots
-//File Movie1
-package movie.morphiaMapper.morphia;
+//Root Entity
+//File Movie1.java
+package mongoMovies3.morphiaMapper;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -28,70 +26,60 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-//code for embedded Moviecriticisms1 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Moviecriticisms1{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
-	@Embbeded
-	media:	{
-		name:	String,
-		url:	String,
-	    } 
-    } 
-//code for embedded Moviecriticisms4 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Moviecriticisms4{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
-    } 
-//code for embedded Movieprizes1 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Movieprizes1{
-	event:	String,
-	year:	Number,
-	name:	String,
-	names:	[],
-    } 
-//code for embedded Movieprizes3 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Movieprizes3{
-	event:	String,
-	name:	String,
-	year:	Number,
-    } 
-var movieSchema = new mongoose.Schema({
+@Entity(movie)
+class Movie{
 
 // Common Properties	
-  	title:	{type: String, required:true, maxlength: 40, unique: true},
-  	_id:	{type: String, required:true, index: Hashed},
-  	year:	{type: Number, required:true, index: true},
-  	type:	{type: String, required: true},
+  	@, maxlength: 40Indexed (unique=true)
+  	private String	title;
+  	@Indexed (IndexDirection.
+  	private String	_id;
+  	@Indexed (IndexDirection.
+  	private Number	year;
+  	private String	type
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie1 entity version
-  	genre:	{type: String, required:true, enum: [drama, comedy, children]},
+  	@, enum: [drama, comedy, children]
+  	private String	genre;
 	criticisms:	{type:Moviecriticisms1, required:true},
 	prizes:	{type:Movieprizes1, required:true},
 
 // Not Common Properties 
-	genres:	[],
-	writers:	[],
+	private String[]	genres;
+	private String[]	writers;
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes3,
-},{collection:'movie'});
+}
 
-var Movie = mongoose.model('Movie',movieSchema);
+//Root Entity Code
+@Entity(movie)
+class Movie{
+
+// Common Properties	
+  	@, maxlength: 40Indexed (unique=true)
+  	private String	title;
+  	@Indexed (IndexDirection.
+  	private String	_id;
+  	@Indexed (IndexDirection.
+  	private Number	year;
+  	private String	type
+	director_id:	{type: String, required: true, ref: Director},
+  
+// add required for Movie1 entity version
+  	@, enum: [drama, comedy, children]
+  	private String	genre;
+	criticisms:	{type:Moviecriticisms1, required:true},
+	prizes:	{type:Movieprizes1, required:true},
+
+// Not Common Properties 
+	private String[]	genres;
+	private String[]	writers;
+	criticisms:	Moviecriticisms4,
+	prizes:	Movieprizes3,
+}
+  
+
 
   
 
@@ -123,11 +111,9 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 });
 
 
-
-
-//For Roots
-//File Movie2
-package movie.morphiaMapper.morphia;
+//Root Entity
+//File Movie2.java
+package mongoMovies3.morphiaMapper;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -152,70 +138,60 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-//code for embedded Moviecriticisms1 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Moviecriticisms1{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
-	@Embbeded
-	media:	{
-		name:	String,
-		url:	String,
-	    } 
-    } 
-//code for embedded Moviecriticisms4 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Moviecriticisms4{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
-    } 
-//code for embedded Movieprizes1 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Movieprizes1{
-	event:	String,
-	year:	Number,
-	name:	String,
-	names:	[],
-    } 
-//code for embedded Movieprizes3 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Movieprizes3{
-	event:	String,
-	name:	String,
-	year:	Number,
-    } 
-var movieSchema = new mongoose.Schema({
+@Entity(movie)
+class Movie{
 
 // Common Properties	
-  	title:	{type: String, required:true, maxlength: 40, unique: true},
-  	_id:	{type: String, required:true, index: Hashed},
-  	year:	{type: Number, required:true, index: true},
-  	type:	{type: String, required: true},
+  	@, maxlength: 40Indexed (unique=true)
+  	private String	title;
+  	@Indexed (IndexDirection.
+  	private String	_id;
+  	@Indexed (IndexDirection.
+  	private Number	year;
+  	private String	type
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie2 entity version
-  	genre:	{type: String, required:true, enum: [drama, comedy, children]},
+  	@, enum: [drama, comedy, children]
+  	private String	genre;
 
 // Not Common Properties 
-	genres:	[],
-	writers:	[],
+	private String[]	genres;
+	private String[]	writers;
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
 	prizes:	Movieprizes3,
-},{collection:'movie'});
+}
 
-var Movie = mongoose.model('Movie',movieSchema);
+//Root Entity Code
+@Entity(movie)
+class Movie{
+
+// Common Properties	
+  	@, maxlength: 40Indexed (unique=true)
+  	private String	title;
+  	@Indexed (IndexDirection.
+  	private String	_id;
+  	@Indexed (IndexDirection.
+  	private Number	year;
+  	private String	type
+	director_id:	{type: String, required: true, ref: Director},
+  
+// add required for Movie2 entity version
+  	@, enum: [drama, comedy, children]
+  	private String	genre;
+
+// Not Common Properties 
+	private String[]	genres;
+	private String[]	writers;
+	criticisms:	Moviecriticisms1,
+	criticisms:	Moviecriticisms4,
+	prizes:	Movieprizes1,
+	prizes:	Movieprizes3,
+}
+  
+
 
   
 
@@ -247,11 +223,9 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 });
 
 
-
-
-//For Roots
-//File Movie3
-package movie.morphiaMapper.morphia;
+//Root Entity
+//File Movie3.java
+package mongoMovies3.morphiaMapper;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -276,70 +250,60 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-//code for embedded Moviecriticisms1 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Moviecriticisms1{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
-	@Embbeded
-	media:	{
-		name:	String,
-		url:	String,
-	    } 
-    } 
-//code for embedded Moviecriticisms4 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Moviecriticisms4{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
-    } 
-//code for embedded Movieprizes1 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Movieprizes1{
-	event:	String,
-	year:	Number,
-	name:	String,
-	names:	[],
-    } 
-//code for embedded Movieprizes3 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Movieprizes3{
-	event:	String,
-	name:	String,
-	year:	Number,
-    } 
-var movieSchema = new mongoose.Schema({
+@Entity(movie)
+class Movie{
 
 // Common Properties	
-  	title:	{type: String, required:true, maxlength: 40, unique: true},
-  	_id:	{type: String, required:true, index: Hashed},
-  	year:	{type: Number, required:true, index: true},
-  	type:	{type: String, required: true},
+  	@, maxlength: 40Indexed (unique=true)
+  	private String	title;
+  	@Indexed (IndexDirection.
+  	private String	_id;
+  	@Indexed (IndexDirection.
+  	private Number	year;
+  	private String	type
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie3 entity version
-  	genre:	{type: String, required:true, enum: [drama, comedy, children]},
+  	@, enum: [drama, comedy, children]
+  	private String	genre;
 	prizes:	{type:Movieprizes3, required:true},
 
 // Not Common Properties 
-	genres:	[],
-	writers:	[],
+	private String[]	genres;
+	private String[]	writers;
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
-},{collection:'movie'});
+}
 
-var Movie = mongoose.model('Movie',movieSchema);
+//Root Entity Code
+@Entity(movie)
+class Movie{
+
+// Common Properties	
+  	@, maxlength: 40Indexed (unique=true)
+  	private String	title;
+  	@Indexed (IndexDirection.
+  	private String	_id;
+  	@Indexed (IndexDirection.
+  	private Number	year;
+  	private String	type
+	director_id:	{type: String, required: true, ref: Director},
+  
+// add required for Movie3 entity version
+  	@, enum: [drama, comedy, children]
+  	private String	genre;
+	prizes:	{type:Movieprizes3, required:true},
+
+// Not Common Properties 
+	private String[]	genres;
+	private String[]	writers;
+	criticisms:	Moviecriticisms1,
+	criticisms:	Moviecriticisms4,
+	prizes:	Movieprizes1,
+}
+  
+
 
   
 
@@ -371,11 +335,9 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 });
 
 
-
-
-//For Roots
-//File Movie4
-package movie.morphiaMapper.morphia;
+//Root Entity
+//File Movie4.java
+package mongoMovies3.morphiaMapper;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -400,70 +362,60 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-//code for embedded Moviecriticisms1 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Moviecriticisms1{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
-	@Embbeded
-	media:	{
-		name:	String,
-		url:	String,
-	    } 
-    } 
-//code for embedded Moviecriticisms4 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Moviecriticisms4{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
-    } 
-//code for embedded Movieprizes1 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Movieprizes1{
-	event:	String,
-	year:	Number,
-	name:	String,
-	names:	[],
-    } 
-//code for embedded Movieprizes3 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Movieprizes3{
-	event:	String,
-	name:	String,
-	year:	Number,
-    } 
-var movieSchema = new mongoose.Schema({
+@Entity(movie)
+class Movie{
 
 // Common Properties	
-  	title:	{type: String, required:true, maxlength: 40, unique: true},
-  	_id:	{type: String, required:true, index: Hashed},
-  	year:	{type: Number, required:true, index: true},
-  	type:	{type: String, required: true},
+  	@, maxlength: 40Indexed (unique=true)
+  	private String	title;
+  	@Indexed (IndexDirection.
+  	private String	_id;
+  	@Indexed (IndexDirection.
+  	private Number	year;
+  	private String	type
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie4 entity version
-  	genre:	{type: String, required:true, enum: [drama, comedy, children]},
+  	@, enum: [drama, comedy, children]
+  	private String	genre;
 	criticisms:	{type:Moviecriticisms4, required:true},
 
 // Not Common Properties 
-	genres:	[],
-	writers:	[],
+	private String[]	genres;
+	private String[]	writers;
 	criticisms:	Moviecriticisms1,
 	prizes:	Movieprizes1,
 	prizes:	Movieprizes3,
-},{collection:'movie'});
+}
 
-var Movie = mongoose.model('Movie',movieSchema);
+//Root Entity Code
+@Entity(movie)
+class Movie{
+
+// Common Properties	
+  	@, maxlength: 40Indexed (unique=true)
+  	private String	title;
+  	@Indexed (IndexDirection.
+  	private String	_id;
+  	@Indexed (IndexDirection.
+  	private Number	year;
+  	private String	type
+	director_id:	{type: String, required: true, ref: Director},
+  
+// add required for Movie4 entity version
+  	@, enum: [drama, comedy, children]
+  	private String	genre;
+	criticisms:	{type:Moviecriticisms4, required:true},
+
+// Not Common Properties 
+	private String[]	genres;
+	private String[]	writers;
+	criticisms:	Moviecriticisms1,
+	prizes:	Movieprizes1,
+	prizes:	Movieprizes3,
+}
+  
+
 
   
 
@@ -495,11 +447,9 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 });
 
 
-
-
-//For Roots
-//File Movie5
-package movie.morphiaMapper.morphia;
+//Root Entity
+//File Movie5.java
+package mongoMovies3.morphiaMapper;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -524,70 +474,58 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-//code for embedded Moviecriticisms1 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Moviecriticisms1{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
-	@Embbeded
-	media:	{
-		name:	String,
-		url:	String,
-	    } 
-    } 
-//code for embedded Moviecriticisms4 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Moviecriticisms4{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
-    } 
-//code for embedded Movieprizes1 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Movieprizes1{
-	event:	String,
-	year:	Number,
-	name:	String,
-	names:	[],
-    } 
-//code for embedded Movieprizes3 File
-package movie.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Movieprizes3{
-	event:	String,
-	name:	String,
-	year:	Number,
-    } 
-var movieSchema = new mongoose.Schema({
+@Entity(movie)
+class Movie{
 
 // Common Properties	
-  	title:	{type: String, required:true, maxlength: 40, unique: true},
-  	_id:	{type: String, required:true, index: Hashed},
-  	year:	{type: Number, required:true, index: true},
-  	type:	{type: String, required: true},
+  	@, maxlength: 40Indexed (unique=true)
+  	private String	title;
+  	@Indexed (IndexDirection.
+  	private String	_id;
+  	@Indexed (IndexDirection.
+  	private Number	year;
+  	private String	type
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie5 entity version
-  	genres:	{type:[], required:true},
-  	writers:	{type:[], required:true},
+  	private String[]	genres;
+  	private String[]	writers;
 
 // Not Common Properties 
-	genre:	String,
+	private String	genre;
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
 	prizes:	Movieprizes3,
-},{collection:'movie'});
+}
 
-var Movie = mongoose.model('Movie',movieSchema);
+//Root Entity Code
+@Entity(movie)
+class Movie{
+
+// Common Properties	
+  	@, maxlength: 40Indexed (unique=true)
+  	private String	title;
+  	@Indexed (IndexDirection.
+  	private String	_id;
+  	@Indexed (IndexDirection.
+  	private Number	year;
+  	private String	type
+	director_id:	{type: String, required: true, ref: Director},
+  
+// add required for Movie5 entity version
+  	private String[]	genres;
+  	private String[]	writers;
+
+// Not Common Properties 
+	private String	genre;
+	criticisms:	Moviecriticisms1,
+	criticisms:	Moviecriticisms4,
+	prizes:	Movieprizes1,
+	prizes:	Movieprizes3,
+}
+  
+
 
   
 
@@ -620,11 +558,9 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 
 
 
-
-
-//For Roots
-//File Movietheater1
-package movietheater.morphiaMapper.morphia;
+//Root Entity
+//File Movietheater1.java
+package mongoMovies3.morphiaMapper;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -649,22 +585,40 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-var movietheaterSchema = new mongoose.Schema({
+@Entity(movietheater)
+class Movietheater{
 
 // Common Properties	
-  	_id:	{type: String, required: true},
-  	name:	{type: String, required: true},
-  	type:	{type: String, required: true},
-  	city:	{type: String, required: true},
-  	country:	{type: String, required: true},
+  	private String	_id
+  	private String	name
+  	private String	type
+  	private String	city
+  	private String	country
   
 // add required for Movietheater1 entity version
 
 // Not Common Properties 
-	roomNumbers:	Number,
-},{collection:'movietheater'});
+	private Number	roomNumbers;
+}
 
-var Movietheater = mongoose.model('Movietheater',movietheaterSchema);
+//Root Entity Code
+@Entity(movietheater)
+class Movietheater{
+
+// Common Properties	
+  	private String	_id
+  	private String	name
+  	private String	type
+  	private String	city
+  	private String	country
+  
+// add required for Movietheater1 entity version
+
+// Not Common Properties 
+	private Number	roomNumbers;
+}
+  
+
 
   
 
@@ -672,11 +626,9 @@ var Movietheater = mongoose.model('Movietheater',movietheaterSchema);
 
 
 
-
-
-//For Roots
-//File Movietheater2
-package movietheater.morphiaMapper.morphia;
+//Root Entity
+//File Movietheater2.java
+package mongoMovies3.morphiaMapper;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -701,22 +653,40 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-var movietheaterSchema = new mongoose.Schema({
+@Entity(movietheater)
+class Movietheater{
 
 // Common Properties	
-  	_id:	{type: String, required: true},
-  	name:	{type: String, required: true},
-  	type:	{type: String, required: true},
-  	city:	{type: String, required: true},
-  	country:	{type: String, required: true},
+  	private String	_id
+  	private String	name
+  	private String	type
+  	private String	city
+  	private String	country
   
 // add required for Movietheater2 entity version
-  	roomNumbers:	{type: Number, required: true},
+  	private Number	roomNumbers
 
 // Not Common Properties 
-},{collection:'movietheater'});
+}
 
-var Movietheater = mongoose.model('Movietheater',movietheaterSchema);
+//Root Entity Code
+@Entity(movietheater)
+class Movietheater{
+
+// Common Properties	
+  	private String	_id
+  	private String	name
+  	private String	type
+  	private String	city
+  	private String	country
+  
+// add required for Movietheater2 entity version
+  	private Number	roomNumbers
+
+// Not Common Properties 
+}
+  
+
 
   
 
@@ -725,11 +695,9 @@ var Movietheater = mongoose.model('Movietheater',movietheaterSchema);
 
 
 
-
-
-//For Roots
-//File Director1
-package director.morphiaMapper.morphia;
+//Root Entity
+//File Director1.java
+package mongoMovies3.morphiaMapper;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -754,21 +722,42 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-var directorSchema = new mongoose.Schema({
+@Entity(director)
+class Director{
 
 // Common Properties	
-  	_id:	{type: String, required:true, index: Hashed},
-  	name:	{type: String, required:true, unique: true},
-  	type:	{type: String, required: true},
+  	@Indexed (IndexDirection.
+  	private String	_id;
+  	@Indexed (unique=true)
+  	private String	name;
+  	private String	type
   
 // add required for Director1 entity version
-  	actor_movies:	{type:[], required:true},
-  	directed_movies:	{type:[], required:true},
+  	private String[]	actor_movies;
+  	private String[]	directed_movies;
 
 // Not Common Properties 
-},{collection:'director'});
+}
 
-var Director = mongoose.model('Director',directorSchema);
+//Root Entity Code
+@Entity(director)
+class Director{
+
+// Common Properties	
+  	@Indexed (IndexDirection.
+  	private String	_id;
+  	@Indexed (unique=true)
+  	private String	name;
+  	private String	type
+  
+// add required for Director1 entity version
+  	private String[]	actor_movies;
+  	private String[]	directed_movies;
+
+// Not Common Properties 
+}
+  
+
 
   
 
@@ -799,11 +788,9 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 });
 
 
-
-
-//For Roots
-//File Director2
-package director.morphiaMapper.morphia;
+//Root Entity
+//File Director2.java
+package mongoMovies3.morphiaMapper;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -828,21 +815,42 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
-var directorSchema = new mongoose.Schema({
+@Entity(director)
+class Director{
 
 // Common Properties	
-  	_id:	{type: String, required:true, index: Hashed},
-  	name:	{type: String, required:true, unique: true},
-  	type:	{type: String, required: true},
+  	@Indexed (IndexDirection.
+  	private String	_id;
+  	@Indexed (unique=true)
+  	private String	name;
+  	private String	type
   
 // add required for Director2 entity version
-  	directed_movies:	{type:[], required:true},
+  	private String[]	directed_movies;
 
 // Not Common Properties 
-	actor_movies:	[],
-},{collection:'director'});
+	private String[]	actor_movies;
+}
 
-var Director = mongoose.model('Director',directorSchema);
+//Root Entity Code
+@Entity(director)
+class Director{
+
+// Common Properties	
+  	@Indexed (IndexDirection.
+  	private String	_id;
+  	@Indexed (unique=true)
+  	private String	name;
+  	private String	type
+  
+// add required for Director2 entity version
+  	private String[]	directed_movies;
+
+// Not Common Properties 
+	private String[]	actor_movies;
+}
+  
+
 
   
 
@@ -874,17 +882,16 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 
 
 
-
-
-//for noRoots
+//Embedded Entity
 //File Media
-package media.morphiaMapper.morphia;
+package mongoMovies3.morphiaMapper;
 import org.mongodb.morphia.annotations.Embedded;
-var mediaSchema = new mongoose.Schema({
+@Embedded
+public class Media {
 
 // Common Properties	
-  	name:	{type: String, required: true},
-  	url:	{type: String, required: true},
+  	private String	name
+  	private String	url
   
 // add required for Media1 entity version
 
@@ -901,31 +908,24 @@ var Media = mongoose.model('Media',mediaSchema);
 
 
 
-
-
-//for noRoots
+//Embedded Entity
 //File Criticism
-package criticism.morphiaMapper.morphia;
+package mongoMovies3.morphiaMapper;
 import org.mongodb.morphia.annotations.Embedded;
-//code for embedded Criticismmedia1 File
-package criticism.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Criticismmedia1{
-	name:	String,
-	url:	String,
-    } 
-var criticismSchema = new mongoose.Schema({
+@Embedded
+public class Criticism {
 
 // Common Properties	
-  	color:	{type: String, required:true, enum: [green, red, yellow]},
-  	journalist:	{type: String, required:true, unique: true},
+  	@, enum: [green, red, yellow]
+  	private String	color;
+  	@Indexed (unique=true)
+  	private String	journalist;
     
 // add required for Criticism1 entity version
 	media:	{type:Criticismmedia1, required:true},
 
 // Not Common Properties 
-	media:	String,
+	private String	media;
 },{collection:'criticism'});
 
 var Criticism = mongoose.model('Criticism',criticismSchema);
@@ -958,28 +958,21 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 });
 
 
-
-
-//for noRoots
+//Embedded Entity
 //File Criticism
-package criticism.morphiaMapper.morphia;
+package mongoMovies3.morphiaMapper;
 import org.mongodb.morphia.annotations.Embedded;
-//code for embedded Criticismmedia1 File
-package criticism.morphiaMapper;
-import org.mongodb.morphia.annotations.Embedded;
-@Embbeded
-public class Criticismmedia1{
-	name:	String,
-	url:	String,
-    } 
-var criticismSchema = new mongoose.Schema({
+@Embedded
+public class Criticism {
 
 // Common Properties	
-  	color:	{type: String, required:true, enum: [green, red, yellow]},
-  	journalist:	{type: String, required:true, unique: true},
+  	@, enum: [green, red, yellow]
+  	private String	color;
+  	@Indexed (unique=true)
+  	private String	journalist;
     
 // add required for Criticism2 entity version
-  	media:	{type: String, required: true},
+  	private String	media
 
 // Not Common Properties 
 	media:	Criticismmedia1,
@@ -1016,23 +1009,22 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 
 
 
-
-
-//for noRoots
+//Embedded Entity
 //File Prize
-package prize.morphiaMapper.morphia;
+package mongoMovies3.morphiaMapper;
 import org.mongodb.morphia.annotations.Embedded;
-var prizeSchema = new mongoose.Schema({
+@Embedded
+public class Prize {
 
 // Common Properties	
-  	event:	{type: String, required: true},
-  	year:	{type: Number, required: true},
+  	private String	event
+  	private Number	year
   
 // add required for Prize1 entity version
-  	names:	{type:[], required:true},
+  	private String[]	names;
 
 // Not Common Properties 
-	name:	String,
+	private String	name;
 },{collection:'prize'});
 
 var Prize = mongoose.model('Prize',prizeSchema);
@@ -1044,23 +1036,22 @@ var Prize = mongoose.model('Prize',prizeSchema);
 
 
 
-
-
-//for noRoots
+//Embedded Entity
 //File Prize
-package prize.morphiaMapper.morphia;
+package mongoMovies3.morphiaMapper;
 import org.mongodb.morphia.annotations.Embedded;
-var prizeSchema = new mongoose.Schema({
+@Embedded
+public class Prize {
 
 // Common Properties	
-  	event:	{type: String, required: true},
-  	year:	{type: Number, required: true},
+  	private String	event
+  	private Number	year
   
 // add required for Prize2 entity version
-  	name:	{type: String, required: true},
+  	private String	name
 
 // Not Common Properties 
-	names:	[],
+	private String[]	names;
 },{collection:'prize'});
 
 var Prize = mongoose.model('Prize',prizeSchema);

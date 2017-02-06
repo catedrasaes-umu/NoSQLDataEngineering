@@ -23,6 +23,7 @@ import es.um.nosql.schemainference.NoSQLSchema.Aggregate
 import es.um.nosql.schemainference.NoSQLSchema.Entity
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion
 import java.util.ArrayList
+import java.util.Arrays
 import java.util.List
 import java.util.Map
 import java.util.HashMap
@@ -46,7 +47,7 @@ import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec
 import es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec
-
+import java.util.Set
 
 class DiffDSLParametersforMorphia {
 	val whiteLine="\n"
@@ -113,7 +114,7 @@ class DiffDSLParametersforMorphia {
 
 	def generate(EntityDifferentiation diff, MongooseModel dslM)
 	{
-		morphiaPackage=diff.name
+		morphiaPackage=diff.name+".morphiaMapper"
 		println(morphiaPackage)
 		var tf=diff
 		eDiffRoots.clear
@@ -132,7 +133,6 @@ class DiffDSLParametersforMorphia {
 	«analyzeEnt(entNRL, dslM, noRoot)»
   «ENDFOR»
   '''
-  
 }	
 	
 def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
@@ -140,7 +140,6 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   var List<String> tuples=new ArrayList
   var List<Reference> refs=new ArrayList
   var List<Aggregate> ags=new ArrayList
-  morphiaPackage=ent.entity.name.toLowerCase+".morphiaMapper"
   commonAttrs.clear
   commonAggrs.clear
   commonRefs.clear
@@ -168,17 +167,15 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   «var List<Property> props=new ArrayList»
   «var List<PrimitiveType> primsL=new ArrayList»
   «var List<Tuple> tuplesL=new ArrayList»
-  
   «var propSp=entVer.propertySpecs.toList»
   «FOR i:0..<propSp.size»
     «props.add(i,propSp.get(i).property)»
   «ENDFOR»
-
   
   «IF root»
-  //For Roots
-  //File «ent.entity.name.toFirstUpper»«contVer2+=1»
-  package «morphiaPackage».morphia;
+  //Root Entity
+  //File «ent.entity.name.toFirstUpper»«contVer2+=1».java
+  package «morphiaPackage»;
   import com.mongodb.MongoClient;
   import org.bson.types.ObjectId;
   import org.mongodb.morphia.Datastore;
@@ -203,7 +200,6 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   import java.net.UnknownHostException;
   import java.util.ArrayList;
   import java.util.List;
-  «getAggregatesCommons(commonAggrs, dslM)»
   «getAggregates(commonAggrs, finalCommonAggrs,dslM)»
   «getAggregates(notCommonAggrs, finalNotCommonAggrs,dslM)»
   «var aV=props.filter(Attribute).toList»
@@ -230,8 +226,9 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   «tuplesL.clear»  
   «refs.clear»
   «ags.clear»
-  var «ent.entity.name.toFirstLower»Schema = new mongoose.Schema({
   
+  @Entity(«ent.entity.name.toFirstLower»)
+  class «ent.entity.name.toFirstUpper»{
   // Common Properties	
     «FOR ac: commonAttrs»
     «paramsL.clear»
@@ -288,14 +285,74 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
     «var Aggregate Ag = aA.getValue()»
     	«Ag.name»:	«nameAg»,
   	«ENDFOR»
-  },{collection:'«ent.entity.name.toFirstLower»'});
+  }
   
-  var «ent.entity.name.toFirstUpper» = mongoose.model('«ent.entity.name.toFirstUpper»',«ent.entity.name.toFirstLower»Schema);
+  //Root Entity Code
+  @Entity(«ent.entity.name.toFirstLower»)
+  class «ent.entity.name.toFirstUpper»{
+  
+  // Common Properties	
+    «FOR ac: commonAttrs»
+    «paramsL.clear»
+    «IF areThereParams»«lookFor(ac.name,entM, paramsL)»«ENDIF»
+    «IF !paramsL.empty»	«printAttribute(ac,ac.name, true, paramsL)»
+    «ELSE»«printAttribute(ac,ac.name,true)»
+    «ENDIF»
+   	«ENDFOR»
+  	«FOR rc: commonRefs»
+  	 «printRef(rc,true)»
+    «ENDFOR»
+  	«FOR Entry<String, Aggregate> aA : finalCommonAggrs.entrySet()»
+    «var String nameAg = aA.getKey()»
+    «var Aggregate Ag = aA.getValue()»
+    	«Ag.name»:	«nameAg»,
+  	«ENDFOR»
+    
+  // add required for «ent.entity.name.toFirstUpper»«entVer.entityVersion.versionId» entity version
+    «FOR ac: atV»
+    «paramsL.clear»
+    «IF areThereParams»«lookFor(ac.name,entM, paramsL)»«ENDIF»
+    «IF !paramsL.empty»	«printAttribute(ac,ac.name, true, paramsL)»
+    «ELSE»«printAttribute(ac,ac.name,true)»
+    «ENDIF»
+   	«ENDFOR»
+    «FOR r2: refV»
+      «printRef(r2,true)»
+    «ENDFOR»
+  	«FOR Entry<String, Aggregate> aggV : verAggs.entrySet()»
+    «var String nameAg = aggV.getKey()»
+    «var Aggregate Ag = aggV.getValue()»
+    	«Ag.name»:	{type:«nameAg», required:true},
+  	«ENDFOR»
+  	«primsL.clear»
+  	«prims.clear»
+
+  // Not Common Properties 
+    «FOR at: restAtts»
+      «analyzeAttribute(at.type,at.name,primsL, tuplesL,prims,tuples)»
+    «ENDFOR»
+  	«FOR i:0..<primsL.size»
+  	«printType(primsL.get(i),prims.get(i))»
+  	«ENDFOR»
+  	«FOR j:0..<tuplesL.size»
+  	«printType(tuplesL.get(j),tuples.get(j))»
+  	«ENDFOR»
+    «FOR r2: notCommonRefs»
+      «analyzeReference(r2,r2.name,refs)»
+    «ENDFOR»
+  	«FOR Entry<String, Aggregate> aA : remainingAgs.entrySet()»
+    «var String nameAg = aA.getKey()»
+    «var Aggregate Ag = aA.getValue()»
+    	«Ag.name»:	«nameAg»,
+  	«ENDFOR»
+  }
+    
+  
   
   «ELSE»
-  //for noRoots
+  //Embedded Entity
   //File «ent.entity.name.toFirstUpper»
-  package «morphiaPackage».morphia;
+  package «morphiaPackage»;
   import org.mongodb.morphia.annotations.Embedded;
   «getAggregatesCommons(commonAggrs, dslM)»
   «getAggregates(commonAggrs, finalCommonAggrs,dslM)»
@@ -324,7 +381,8 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   «tuplesL.clear»  
   «refs.clear»
   «ags.clear»
-  var «ent.entity.name.toFirstLower»Schema = new mongoose.Schema({
+  @Embedded
+  public class «ent.entity.name.toFirstUpper» {
   
   // Common Properties	
     «FOR ac: commonAttrs»
@@ -502,13 +560,23 @@ def dispatch printType(Type at2, String name, boolean isC) {
 }
 
 def dispatch printType(PrimitiveType primT, String name, boolean isC){
-  '''	«name»:	{type: «primT.name», required: true},'''
+  '''	private «primT.name»	«name»''';
 }
 
 def dispatch printType(Tuple tuple, String name, boolean isC){
-  '''	«name»:	{type:[], required:true},'''
+  var List<Type>tupleElements=tuple.elements.toList
+  var String typeName=findingFirst(tupleElements,0)
+  '''	private «typeName»[]	«name»;'''
 }
 
+def String findingFirst(List<Type>tupleL, int i){
+  if (tupleL.get(i).class.getSimpleName=="PrimitiveTypeImpl")
+   return ((tupleL.get(i) as PrimitiveType).name)
+  else{
+    var j=i+1
+    findingFirst(tupleL, j)
+  }
+}
 
 def dispatch printAttribute(Attribute a, String name, boolean isC, List<FieldParameter> pL)'''
   «printType(a.type,name, isC, pL)»
@@ -520,38 +588,49 @@ def dispatch printType(Type at2, String name, boolean isC, List<FieldParameter> 
 
 def dispatch printType(PrimitiveType primT, String name, boolean isC, List<FieldParameter> pL){
   var String fSchema
-  var String fieldSchema=name+":\t{type: "+primT.name+", required:true"	
+  var String fieldSchema="@"
+//":\t{type: "+primT.name	
 	for(FieldParameter fp:pL){
 	  fSchema=checkParameter(fp, fieldSchema)
 	  fieldSchema=fSchema
 	}
-	'''«fSchema»},'''
+	'''
+	«fSchema»
+		private «primT.name»	«name»;
+	'''
 }
 
 def dispatch printType(Tuple tuple, String name, boolean isC, List<FieldParameter> pL){
   var String fSchema
-  var String fieldSchema=name+":\t{type: "+"[], required:true"	
+  var String fieldSchema="@"
+  var List<Type>tupleElements=tuple.elements.toList
+  var String typeName=findingFirst(tupleElements,0)
+  //name+":\t{type: "+"[]"	
 	for(FieldParameter fp:pL){
 	  fSchema=checkParameter(fp, fieldSchema)
 	  fieldSchema=fSchema
 	}
-	'''«fSchema»},'''
+	'''
+	«fSchema»
+		private «typeName»[]	«name»;
+	'''
 }
 
-def dispatch printAttribute(Attribute a, String name)'''
-  «printType(a.type,name)»
-'''
 
+//ojo ojo ojo
 def dispatch printType(Type at2, String name) {
   throw new UnsupportedOperationException("TODO: auto-generated method stub")
 }
 
 def dispatch printType(PrimitiveType primT, String name){
-  '''«name»:	«primT.name»,'''
+  '''private «primT.name»	«name»;'''
 }
 
 def dispatch printType(Tuple tuple, String name){
-  '''«name»:	[],'''
+  var List<Type>tupleElements=tuple.elements.toList
+  var String typeName=findingFirst(tupleElements,0)
+  '''private «typeName»[]	«name»;'''
+
 }
 
 def dispatch printAttribute(Attribute a, String name, List<FieldParameter> pL)'''
@@ -564,22 +643,32 @@ def dispatch printType(Type at2, String name, List<FieldParameter> pL) {
 
 def dispatch printType(PrimitiveType primT, String name, List<FieldParameter> pL){
   var String fSchema
-  var String fieldSchema=name+":\t{type: "+primT.name	
+  var String fieldSchema="@"
+//":\t{type: "+primT.name	
 	for(FieldParameter fp:pL){
 	  fSchema=checkParameter(fp, fieldSchema)
 	  fieldSchema=fSchema
 	}
-	'''«fSchema»},'''
+	'''
+	«fSchema»
+		private «primT.name»	«name»
+	'''
 }
 
 def dispatch printType(Tuple tuple, String name, List<FieldParameter> pL){
   var String fSchema
-  var String fieldSchema=name+":\t{type: "+"[]"	
+  var String fieldSchema="@"
+  var List<Type>tupleElements=tuple.elements.toList
+  var String typeName=findingFirst(tupleElements,0)
+  //name+":\t{type: "+"[]"	
 	for(FieldParameter fp:pL){
 	  fSchema=checkParameter(fp, fieldSchema)
 	  fieldSchema=fSchema
 	}
-	'''«fSchema»},'''
+	'''
+	«fSchema»
+		private «typeName»[]	«name»;
+	'''
 }
 
 def dispatch printTypeAg(Type at2, String name,  List<FieldParameter> pL) {
@@ -612,18 +701,20 @@ def dispatch checkParameter(FieldParameter fp, String fieldS){
 
 def dispatch String checkParameter(Unique fp, String fieldSchema){
   var String fS=fieldSchema
-  fS+=","+" unique: true"          
+  fS+="Indexed (unique=true)"          
   return(fS)
 }
 
 def dispatch String checkParameter(Index fp, String fieldSchema){
   var String fS=fieldSchema
-  fS+=","+" index: "   
+  fS+="Indexed (IndexDirection."   
   var String kind=fp.kind.toString     
   switch (kind){
-  	case "Sorted": fS+="true"
-  	case "Hashed": fS+="Hashed"
-  	  }
+  	case "ASC": fS+="ASC)"
+  	case "DESC": fS+="DESC)"
+  	case "GEO2D": fS+="GEO2D)"
+  	case "GEO2DSPHERE": fS+="GEO2DSPHERE)"
+  }
   return(fS)
 }
 
@@ -784,13 +875,6 @@ def getAggregates(List<Aggregate> ags, Map<String, Aggregate> restListAg, Mongoo
        }
      }
   }
-'''
-  «FOR Entry<String, Aggregate> aA : restListAg.entrySet()»
-    «var String nameAg = aA.getKey()»
-    «var Aggregate Ag = aA.getValue()»
-    «checkAggr(Ag,true, nameAg, dslM)»
-  «ENDFOR»
-'''
 }
 
 def addAg(Map <String, Aggregate> agMap,String name, Aggregate a){
