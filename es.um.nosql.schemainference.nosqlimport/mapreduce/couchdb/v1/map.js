@@ -1,6 +1,5 @@
 function(doc)
 {
-
     function flatten_schema (obj , interesting_keys)
     {
         var retschema = '';
@@ -41,18 +40,13 @@ function(doc)
         		retschema += "[]";
         	else
         	{
-
         		// See if we can produce just one array object with one inside type (homogeneous)
         		var schemas = obj.map(function (e) { return flatten_schema(e, interesting_keys); });
 
         		if (schemas.every(function (e) { return e == schemas[0]; }))
-        		{
         			retschema += '[' + schemas[0] + ']';
-        		}
         		else
-        		{
         			retschema += '[' + schemas.join('') + ']';
-        		}
         	}
         } // null
         else if (obj === null)
