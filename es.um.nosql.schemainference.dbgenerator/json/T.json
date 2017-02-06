@@ -1,209 +1,477 @@
 [ {
-  "id" : 1,
+  "_id" : "001",
   "type" : "Company",
-  "country" : "value_8",
-  "name" : "value_174"
+  "country" : "value_724295",
+  "name" : "value_42071"
 }, {
-  "id" : 2,
+  "_id" : "002",
   "type" : "Company",
-  "country" : "value_86",
-  "name" : "value_45"
+  "country" : "value_874531",
+  "name" : "value_977139"
 }, {
-  "id" : 3,
+  "_id" : "003",
+  "type" : "Company",
+  "country" : "value_951316",
+  "name" : "value_77381"
+}, {
+  "_id" : "004",
+  "type" : "Company",
+  "country" : "value_233846",
+  "name" : "value_583910"
+}, {
+  "_id" : "005",
+  "type" : "Company",
+  "country" : "value_149673",
+  "name" : "value_525421"
+}, {
+  "_id" : "006",
+  "type" : "Company",
+  "country" : "value_278681",
+  "name" : "value_875035"
+}, {
+  "_id" : "007",
   "type" : "Content"
 }, {
-  "id" : 4,
+  "_id" : "008",
   "type" : "Content"
 }, {
-  "id" : 5,
-  "type" : "value_127",
-  "_id" : "value_172",
-  "publisher_id" : [ "171" ],
-  "title" : "value_115",
+  "_id" : "009",
+  "type" : "Content"
+}, {
+  "_id" : "010",
+  "type" : "Content"
+}, {
+  "_id" : "011",
+  "type" : "Content"
+}, {
+  "_id" : "012",
+  "type" : "Content"
+}, {
+  "_id" : "value_935548",
+  "type" : "value_364171",
+  "publisher_id" : [ "742741" ],
+  "title" : "value_428267",
   "authors" : [ {
-    "id" : 9,
+    "_id" : "value_252137",
     "type" : "Author",
-    "_id" : "value_18",
-    "name" : "value_58",
+    "name" : "value_85149",
     "company" : [ {
-      "id" : 1,
+      "_id" : "001",
       "type" : "Company",
-      "country" : "value_8",
-      "name" : "value_174"
+      "country" : "value_724295",
+      "name" : "value_42071"
     } ]
   }, {
-    "id" : 11,
+    "_id" : "value_428361",
     "type" : "Author",
-    "_id" : "value_175",
-    "company" : "107",
-    "country" : "value_20",
-    "name" : "value_13"
+    "company" : "938920",
+    "country" : "value_831346",
+    "name" : "value_449578"
   } ],
   "content" : [ {
-    "id" : 3,
+    "_id" : "007",
     "type" : "Content"
   } ]
 }, {
-  "id" : 6,
-  "type" : "value_24",
-  "_id" : "value_125",
-  "publisher_id" : "140",
-  "title" : "value_11",
+  "_id" : "value_789889",
+  "type" : "value_144730",
+  "publisher_id" : [ "713373" ],
+  "title" : "value_709874",
   "authors" : [ {
-    "id" : 9,
+    "_id" : "value_252137",
     "type" : "Author",
-    "_id" : "value_18",
-    "name" : "value_58",
+    "name" : "value_85149",
     "company" : [ {
-      "id" : 1,
+      "_id" : "001",
       "type" : "Company",
-      "country" : "value_8",
-      "name" : "value_174"
+      "country" : "value_724295",
+      "name" : "value_42071"
     } ]
   }, {
-    "id" : 11,
+    "_id" : "value_428361",
     "type" : "Author",
-    "_id" : "value_175",
-    "company" : "107",
-    "country" : "value_20",
-    "name" : "value_13"
+    "company" : "938920",
+    "country" : "value_831346",
+    "name" : "value_449578"
   } ],
   "content" : [ {
-    "id" : 3,
+    "_id" : "007",
     "type" : "Content"
   } ]
 }, {
-  "id" : 7,
-  "type" : "value_114",
-  "_id" : "value_18",
-  "publisher_id" : [ "17" ],
-  "title" : "value_83",
-  "author" : [ {
-    "id" : 9,
+  "_id" : "value_902227",
+  "type" : "value_959310",
+  "publisher_id" : [ "314053" ],
+  "title" : "value_968324",
+  "authors" : [ {
+    "_id" : "value_252137",
     "type" : "Author",
-    "_id" : "value_18",
-    "name" : "value_58",
+    "name" : "value_85149",
     "company" : [ {
-      "id" : 1,
+      "_id" : "001",
       "type" : "Company",
-      "country" : "value_8",
-      "name" : "value_174"
+      "country" : "value_724295",
+      "name" : "value_42071"
+    } ]
+  }, {
+    "_id" : "value_428361",
+    "type" : "Author",
+    "company" : "938920",
+    "country" : "value_831346",
+    "name" : "value_449578"
+  } ],
+  "content" : [ {
+    "_id" : "007",
+    "type" : "Content"
+  } ]
+}, {
+  "_id" : "value_709811",
+  "type" : "value_148246",
+  "publisher_id" : [ "968830" ],
+  "title" : "value_545850",
+  "authors" : [ {
+    "_id" : "value_252137",
+    "type" : "Author",
+    "name" : "value_85149",
+    "company" : [ {
+      "_id" : "001",
+      "type" : "Company",
+      "country" : "value_724295",
+      "name" : "value_42071"
+    } ]
+  }, {
+    "_id" : "value_428361",
+    "type" : "Author",
+    "company" : "938920",
+    "country" : "value_831346",
+    "name" : "value_449578"
+  } ],
+  "content" : [ {
+    "_id" : "007",
+    "type" : "Content"
+  } ]
+}, {
+  "_id" : "value_853318",
+  "type" : "value_901141",
+  "publisher_id" : "69876",
+  "title" : "value_302956",
+  "authors" : [ {
+    "_id" : "value_252137",
+    "type" : "Author",
+    "name" : "value_85149",
+    "company" : [ {
+      "_id" : "001",
+      "type" : "Company",
+      "country" : "value_724295",
+      "name" : "value_42071"
+    } ]
+  }, {
+    "_id" : "value_428361",
+    "type" : "Author",
+    "company" : "938920",
+    "country" : "value_831346",
+    "name" : "value_449578"
+  } ],
+  "content" : [ {
+    "_id" : "007",
+    "type" : "Content"
+  } ]
+}, {
+  "_id" : "value_62105",
+  "type" : "value_108118",
+  "publisher_id" : [ "698177" ],
+  "title" : "value_567223",
+  "author" : [ {
+    "_id" : "value_252137",
+    "type" : "Author",
+    "name" : "value_85149",
+    "company" : [ {
+      "_id" : "001",
+      "type" : "Company",
+      "country" : "value_724295",
+      "name" : "value_42071"
     } ]
   } ]
 }, {
-  "id" : 8,
-  "type" : "value_79",
-  "_id" : "value_172",
-  "publisher_id" : "42",
-  "title" : "value_98",
+  "_id" : "value_12263",
+  "type" : "value_72266",
+  "publisher_id" : "849553",
+  "title" : "value_834192",
   "author" : [ {
-    "id" : 9,
+    "_id" : "value_252137",
     "type" : "Author",
-    "_id" : "value_18",
-    "name" : "value_58",
+    "name" : "value_85149",
     "company" : [ {
-      "id" : 1,
+      "_id" : "001",
       "type" : "Company",
-      "country" : "value_8",
-      "name" : "value_174"
+      "country" : "value_724295",
+      "name" : "value_42071"
     } ]
   } ]
 }, {
-  "id" : 9,
-  "type" : "Author",
-  "_id" : "value_18",
-  "name" : "value_58",
-  "company" : [ {
-    "id" : 1,
-    "type" : "Company",
-    "country" : "value_8",
-    "name" : "value_174"
+  "_id" : "value_492701",
+  "type" : "value_406974",
+  "publisher_id" : [ "517949" ],
+  "title" : "value_724319",
+  "author" : [ {
+    "_id" : "value_252137",
+    "type" : "Author",
+    "name" : "value_85149",
+    "company" : [ {
+      "_id" : "001",
+      "type" : "Company",
+      "country" : "value_724295",
+      "name" : "value_42071"
+    } ]
   } ]
 }, {
-  "id" : 10,
-  "type" : "Author",
-  "_id" : "value_160",
-  "name" : "value_189",
-  "company" : [ {
-    "id" : 1,
-    "type" : "Company",
-    "country" : "value_8",
-    "name" : "value_174"
+  "_id" : "value_792652",
+  "type" : "value_553916",
+  "publisher_id" : [ "171721" ],
+  "title" : "value_465244",
+  "author" : [ {
+    "_id" : "value_252137",
+    "type" : "Author",
+    "name" : "value_85149",
+    "company" : [ {
+      "_id" : "001",
+      "type" : "Company",
+      "country" : "value_724295",
+      "name" : "value_42071"
+    } ]
   } ]
 }, {
-  "id" : 11,
+  "_id" : "value_209505",
+  "type" : "value_29928",
+  "publisher_id" : "939387",
+  "title" : "value_834276",
+  "author" : [ {
+    "_id" : "value_252137",
+    "type" : "Author",
+    "name" : "value_85149",
+    "company" : [ {
+      "_id" : "001",
+      "type" : "Company",
+      "country" : "value_724295",
+      "name" : "value_42071"
+    } ]
+  } ]
+}, {
+  "_id" : "value_94835",
+  "type" : "value_580415",
+  "publisher_id" : [ "404461" ],
+  "title" : "value_624897",
+  "author" : [ {
+    "_id" : "value_252137",
+    "type" : "Author",
+    "name" : "value_85149",
+    "company" : [ {
+      "_id" : "001",
+      "type" : "Company",
+      "country" : "value_724295",
+      "name" : "value_42071"
+    } ]
+  } ]
+}, {
+  "_id" : "value_319009",
+  "type" : "value_547784",
+  "publisher_id" : "596872",
+  "title" : "value_32212",
+  "author" : [ {
+    "_id" : "value_252137",
+    "type" : "Author",
+    "name" : "value_85149",
+    "company" : [ {
+      "_id" : "001",
+      "type" : "Company",
+      "country" : "value_724295",
+      "name" : "value_42071"
+    } ]
+  } ]
+}, {
+  "_id" : "value_252137",
   "type" : "Author",
-  "_id" : "value_175",
-  "company" : "107",
-  "country" : "value_20",
-  "name" : "value_13"
+  "name" : "value_85149",
+  "company" : [ {
+    "_id" : "001",
+    "type" : "Company",
+    "country" : "value_724295",
+    "name" : "value_42071"
+  } ]
 }, {
-  "id" : 12,
+  "_id" : "value_967",
   "type" : "Author",
-  "_id" : "value_69",
-  "company" : "153",
-  "country" : "value_76",
-  "name" : "value_91"
+  "name" : "value_317695",
+  "company" : [ {
+    "_id" : "001",
+    "type" : "Company",
+    "country" : "value_724295",
+    "name" : "value_42071"
+  } ]
 }, {
-  "id" : 13,
-  "type" : "value_62",
-  "_id" : "value_129",
-  "discipline" : "value_75",
-  "issn" : [ "value_58", "value_151" ],
-  "name" : "value_187"
+  "_id" : "value_294356",
+  "type" : "Author",
+  "name" : "value_307412",
+  "company" : [ {
+    "_id" : "001",
+    "type" : "Company",
+    "country" : "value_724295",
+    "name" : "value_42071"
+  } ]
 }, {
-  "id" : 14,
-  "type" : "value_23",
-  "_id" : "value_144",
-  "discipline" : "value_29",
-  "issn" : [ "value_191", "value_23" ],
-  "name" : "value_77"
+  "_id" : "value_428361",
+  "type" : "Author",
+  "company" : "938920",
+  "country" : "value_831346",
+  "name" : "value_449578"
 }, {
-  "id" : 15,
-  "type" : "value_199",
-  "_id" : "value_131",
-  "discipline" : "value_192",
-  "issn" : [ "value_30", "value_153" ],
-  "name" : "value_83"
+  "_id" : "value_506205",
+  "type" : "Author",
+  "company" : [ "797646" ],
+  "country" : "value_755444",
+  "name" : "value_253642"
 }, {
-  "id" : 16,
-  "type" : "value_131",
-  "_id" : "value_131",
-  "discipline" : "value_68",
-  "issn" : [ "value_98", "value_104" ],
-  "name" : "value_5"
+  "_id" : "value_489802",
+  "type" : "Author",
+  "company" : [ "791152" ],
+  "country" : "value_485149",
+  "name" : "value_593075"
 }, {
-  "id" : 17,
-  "type" : "value_18",
-  "_id" : "value_32",
-  "city" : "value_138",
-  "name" : "value_130"
+  "_id" : "value_228477",
+  "type" : "Author",
+  "company" : "137468",
+  "country" : "value_936181",
+  "name" : "value_161001"
 }, {
-  "id" : 18,
-  "type" : "value_3",
-  "_id" : "value_186",
-  "city" : "value_191",
-  "name" : "value_89"
+  "_id" : "value_170687",
+  "type" : "value_120915",
+  "discipline" : "value_344253",
+  "issn" : [ "value_466528", "value_888575" ],
+  "name" : "value_288443"
 }, {
-  "id" : 19,
-  "type" : "value_169",
-  "_id" : "value_191",
-  "name" : "value_105"
+  "_id" : "value_11126",
+  "type" : "value_733862",
+  "discipline" : "value_823132",
+  "issn" : [ "value_682443", "value_386862" ],
+  "name" : "value_734450"
 }, {
-  "id" : 20,
-  "type" : "value_95",
-  "_id" : "value_33",
-  "name" : "value_89"
+  "_id" : "value_715219",
+  "type" : "value_618006",
+  "discipline" : "value_352613",
+  "issn" : [ "value_44586", "value_139154" ],
+  "name" : "value_383346"
 }, {
-  "id" : 21,
-  "type" : "value_13",
-  "_id" : "value_69",
-  "journals" : [ "64" ],
-  "name" : "value_187"
+  "_id" : "value_214311",
+  "type" : "value_696181",
+  "discipline" : "value_188022",
+  "issn" : [ "value_22025", "value_353746" ],
+  "name" : "value_262601"
 }, {
-  "id" : 22,
-  "type" : "value_84",
-  "_id" : "value_126",
-  "journals" : [ "190", "134" ],
-  "name" : "value_21"
+  "_id" : "value_382588",
+  "type" : "value_322821",
+  "discipline" : "value_126334",
+  "issn" : [ "value_434183", "value_728833" ],
+  "name" : "value_32495"
+}, {
+  "_id" : "value_896630",
+  "type" : "value_629909",
+  "discipline" : "value_289514",
+  "issn" : [ "value_602147", "value_428908" ],
+  "name" : "value_774756"
+}, {
+  "_id" : "value_287039",
+  "type" : "value_954001",
+  "discipline" : "value_856344",
+  "issn" : [ "value_974661", "value_733997" ],
+  "name" : "value_169920"
+}, {
+  "_id" : "value_103230",
+  "type" : "value_799223",
+  "discipline" : "value_963856",
+  "issn" : [ "value_224174", "value_488407" ],
+  "name" : "value_580454"
+}, {
+  "_id" : "value_619440",
+  "type" : "value_258334",
+  "discipline" : "value_12071",
+  "issn" : [ "value_302621", "value_940222" ],
+  "name" : "value_273914"
+}, {
+  "_id" : "value_518107",
+  "type" : "value_907263",
+  "discipline" : "value_940880",
+  "issn" : [ "value_658493", "value_696113" ],
+  "name" : "value_189504"
+}, {
+  "_id" : "value_787842",
+  "type" : "value_817453",
+  "city" : "value_818331",
+  "name" : "value_890732"
+}, {
+  "_id" : "value_258930",
+  "type" : "value_10558",
+  "city" : "value_829382",
+  "name" : "value_430082"
+}, {
+  "_id" : "value_881307",
+  "type" : "value_519880",
+  "city" : "value_903219",
+  "name" : "value_114609"
+}, {
+  "_id" : "value_522978",
+  "type" : "value_261085",
+  "city" : "value_480863",
+  "name" : "value_568977"
+}, {
+  "_id" : "value_473650",
+  "type" : "value_165936",
+  "city" : "value_151422",
+  "name" : "value_586001"
+}, {
+  "_id" : "value_476566",
+  "type" : "value_477318",
+  "city" : "value_976695",
+  "name" : "value_185976"
+}, {
+  "_id" : "value_641994",
+  "type" : "value_312082",
+  "city" : "value_959597",
+  "name" : "value_510454"
+}, {
+  "_id" : "value_956474",
+  "type" : "value_1630",
+  "city" : "value_117718",
+  "name" : "value_832157"
+}, {
+  "_id" : "value_47796",
+  "type" : "value_953674",
+  "city" : "value_340567",
+  "name" : "value_694715"
+}, {
+  "_id" : "value_118741",
+  "type" : "value_538384",
+  "name" : "value_613701"
+}, {
+  "_id" : "value_216334",
+  "type" : "value_249822",
+  "name" : "value_969913"
+}, {
+  "_id" : "value_155544",
+  "type" : "value_208282",
+  "name" : "value_705290"
+}, {
+  "_id" : "value_912636",
+  "type" : "value_211276",
+  "journals" : [ "209658", "228731" ],
+  "name" : "value_621595"
+}, {
+  "_id" : "value_571478",
+  "type" : "value_587842",
+  "journals" : [ "302514" ],
+  "name" : "value_690608"
+}, {
+  "_id" : "value_371223",
+  "type" : "value_570309",
+  "journals" : [ "935376", "194372" ],
+  "name" : "value_989580"
 } ]
