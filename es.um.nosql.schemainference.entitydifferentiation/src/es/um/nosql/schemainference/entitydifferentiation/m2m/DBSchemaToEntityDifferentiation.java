@@ -119,7 +119,8 @@ public class DBSchemaToEntityDifferentiation
 	private void doTransform(NoSQLSchema schema, EntityDifferentiation diff)
 	{
 		diff.setName(schema.getName());
-
+		diff.setSchema(schema);
+		
 		initCalculations(schema);
 
 		// Generate entity References

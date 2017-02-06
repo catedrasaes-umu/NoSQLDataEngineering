@@ -6,6 +6,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="entityDiffSpecs" upperBound="-1"
         eType="#//EntityDiffSpec" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="schema" lowerBound="1"
+        eType="ecore:EClass ../../es.um.nosql.schemainference/model/nosqlschema.ecore#//NoSQLSchema"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntityDiffSpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" lowerBound="1"

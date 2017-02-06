@@ -2,6 +2,7 @@
  */
 package es.um.nosql.schemainference.entitydifferentiation;
 
+import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -17,6 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation#getEntityDiffSpecs <em>Entity Diff Specs</em>}</li>
  *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation#getName <em>Name</em>}</li>
+ *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation#getSchema <em>Schema</em>}</li>
  * </ul>
  *
  * @see es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage#getEntityDifferentiation()
@@ -65,5 +67,31 @@ public interface EntityDifferentiation extends EObject {
 	 * @generated
 	 */
 	void setName(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Schema</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Schema</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Schema</em>' reference.
+	 * @see #setSchema(NoSQLSchema)
+	 * @see es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage#getEntityDifferentiation_Schema()
+	 * @model required="true"
+	 * @generated
+	 */
+	NoSQLSchema getSchema();
+
+	/**
+	 * Sets the value of the '{@link es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation#getSchema <em>Schema</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Schema</em>' reference.
+	 * @see #getSchema()
+	 * @generated
+	 */
+	void setSchema(NoSQLSchema value);
 
 } // EntityDifferentiation

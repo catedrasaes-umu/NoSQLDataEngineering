@@ -149,6 +149,15 @@ public class EntitydifferentiationPackageImpl extends EPackageImpl implements En
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getEntityDifferentiation_Schema() {
+		return (EReference)entityDifferentiationEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getEntityDiffSpec() {
 		return entityDiffSpecEClass;
 	}
@@ -265,6 +274,7 @@ public class EntitydifferentiationPackageImpl extends EPackageImpl implements En
 		entityDifferentiationEClass = createEClass(ENTITY_DIFFERENTIATION);
 		createEReference(entityDifferentiationEClass, ENTITY_DIFFERENTIATION__ENTITY_DIFF_SPECS);
 		createEAttribute(entityDifferentiationEClass, ENTITY_DIFFERENTIATION__NAME);
+		createEReference(entityDifferentiationEClass, ENTITY_DIFFERENTIATION__SCHEMA);
 
 		entityDiffSpecEClass = createEClass(ENTITY_DIFF_SPEC);
 		createEReference(entityDiffSpecEClass, ENTITY_DIFF_SPEC__ENTITY);
@@ -316,6 +326,7 @@ public class EntitydifferentiationPackageImpl extends EPackageImpl implements En
 		initEClass(entityDifferentiationEClass, EntityDifferentiation.class, "EntityDifferentiation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEntityDifferentiation_EntityDiffSpecs(), this.getEntityDiffSpec(), null, "entityDiffSpecs", null, 0, -1, EntityDifferentiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getEntityDifferentiation_Name(), ecorePackage.getEString(), "name", null, 0, 1, EntityDifferentiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEntityDifferentiation_Schema(), theNoSQLSchemaPackage.getNoSQLSchema(), null, "schema", null, 1, 1, EntityDifferentiation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(entityDiffSpecEClass, EntityDiffSpec.class, "EntityDiffSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEntityDiffSpec_Entity(), theNoSQLSchemaPackage.getEntity(), null, "entity", null, 1, 1, EntityDiffSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

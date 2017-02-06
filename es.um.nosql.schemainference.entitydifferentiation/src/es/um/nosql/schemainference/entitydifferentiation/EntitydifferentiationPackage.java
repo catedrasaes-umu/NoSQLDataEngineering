@@ -85,13 +85,22 @@ public interface EntitydifferentiationPackage extends EPackage {
 	int ENTITY_DIFFERENTIATION__NAME = 1;
 
 	/**
+	 * The feature id for the '<em><b>Schema</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_DIFFERENTIATION__SCHEMA = 2;
+
+	/**
 	 * The number of structural features of the '<em>Entity Differentiation</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_DIFFERENTIATION_FEATURE_COUNT = 2;
+	int ENTITY_DIFFERENTIATION_FEATURE_COUNT = 3;
 
 	/**
 	 * The number of operations of the '<em>Entity Differentiation</em>' class.
@@ -282,6 +291,17 @@ public interface EntitydifferentiationPackage extends EPackage {
 	EAttribute getEntityDifferentiation_Name();
 
 	/**
+	 * Returns the meta object for the reference '{@link es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation#getSchema <em>Schema</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Schema</em>'.
+	 * @see es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation#getSchema()
+	 * @see #getEntityDifferentiation()
+	 * @generated
+	 */
+	EReference getEntityDifferentiation_Schema();
+
+	/**
 	 * Returns the meta object for class '{@link es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec <em>Entity Diff Spec</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -436,6 +456,14 @@ public interface EntitydifferentiationPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute ENTITY_DIFFERENTIATION__NAME = eINSTANCE.getEntityDifferentiation_Name();
+
+		/**
+		 * The meta object literal for the '<em><b>Schema</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENTITY_DIFFERENTIATION__SCHEMA = eINSTANCE.getEntityDifferentiation_Schema();
 
 		/**
 		 * The meta object literal for the '{@link es.um.nosql.schemainference.entitydifferentiation.impl.EntityDiffSpecImpl <em>Entity Diff Spec</em>}' class.

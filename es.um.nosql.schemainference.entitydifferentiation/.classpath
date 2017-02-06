@@ -24,6 +24,5 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.xtend.XTEND_CONTAINER"/>
-	<classpathentry combineaccessrules="false" kind="src" path="/es.um.nosql.schemainference"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

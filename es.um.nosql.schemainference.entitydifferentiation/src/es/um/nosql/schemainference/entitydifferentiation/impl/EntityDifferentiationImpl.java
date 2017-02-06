@@ -2,6 +2,7 @@
  */
 package es.um.nosql.schemainference.entitydifferentiation.impl;
 
+import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation;
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage;
@@ -32,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.impl.EntityDifferentiationImpl#getEntityDiffSpecs <em>Entity Diff Specs</em>}</li>
  *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.impl.EntityDifferentiationImpl#getName <em>Name</em>}</li>
+ *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.impl.EntityDifferentiationImpl#getSchema <em>Schema</em>}</li>
  * </ul>
  *
  * @generated
@@ -66,6 +68,16 @@ public class EntityDifferentiationImpl extends MinimalEObjectImpl.Container impl
 	 * @ordered
 	 */
 	protected String name = NAME_EDEFAULT;
+
+	/**
+	 * The cached value of the '{@link #getSchema() <em>Schema</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getSchema()
+	 * @generated
+	 * @ordered
+	 */
+	protected NoSQLSchema schema;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -124,6 +136,44 @@ public class EntityDifferentiationImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public NoSQLSchema getSchema() {
+		if (schema != null && schema.eIsProxy()) {
+			InternalEObject oldSchema = (InternalEObject)schema;
+			schema = (NoSQLSchema)eResolveProxy(oldSchema);
+			if (schema != oldSchema) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntitydifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA, oldSchema, schema));
+			}
+		}
+		return schema;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public NoSQLSchema basicGetSchema() {
+		return schema;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setSchema(NoSQLSchema newSchema) {
+		NoSQLSchema oldSchema = schema;
+		schema = newSchema;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntitydifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA, oldSchema, schema));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -145,6 +195,9 @@ public class EntityDifferentiationImpl extends MinimalEObjectImpl.Container impl
 				return getEntityDiffSpecs();
 			case EntitydifferentiationPackage.ENTITY_DIFFERENTIATION__NAME:
 				return getName();
+			case EntitydifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA:
+				if (resolve) return getSchema();
+				return basicGetSchema();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -165,6 +218,9 @@ public class EntityDifferentiationImpl extends MinimalEObjectImpl.Container impl
 			case EntitydifferentiationPackage.ENTITY_DIFFERENTIATION__NAME:
 				setName((String)newValue);
 				return;
+			case EntitydifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA:
+				setSchema((NoSQLSchema)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -183,6 +239,9 @@ public class EntityDifferentiationImpl extends MinimalEObjectImpl.Container impl
 			case EntitydifferentiationPackage.ENTITY_DIFFERENTIATION__NAME:
 				setName(NAME_EDEFAULT);
 				return;
+			case EntitydifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA:
+				setSchema((NoSQLSchema)null);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -199,6 +258,8 @@ public class EntityDifferentiationImpl extends MinimalEObjectImpl.Container impl
 				return entityDiffSpecs != null && !entityDiffSpecs.isEmpty();
 			case EntitydifferentiationPackage.ENTITY_DIFFERENTIATION__NAME:
 				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case EntitydifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA:
+				return schema != null;
 		}
 		return super.eIsSet(featureID);
 	}
