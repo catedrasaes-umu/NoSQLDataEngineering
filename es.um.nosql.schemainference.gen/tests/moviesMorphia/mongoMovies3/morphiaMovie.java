@@ -1,6 +1,9 @@
 
+
+
+//For Roots
 //File Movie1
-package movie.morphia;
+package movie.morphiaMapper.morphia;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -90,9 +93,11 @@ var movieSchema = new mongoose.Schema({
 
 var Movie = mongoose.model('Movie',movieSchema);
 
+  
+
 // Update
 
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@481a15ff (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@78186a70 (fieldName: title)] 
+[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@545997b1 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@4cf4d528 (fieldName: title)] 
  
   function movie_Updating(query , fieldsToUpdate) {
   Movie.findOne (
@@ -118,8 +123,11 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 });
 
 
+
+
+//For Roots
 //File Movie2
-package movie.morphia;
+package movie.morphiaMapper.morphia;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -209,9 +217,11 @@ var movieSchema = new mongoose.Schema({
 
 var Movie = mongoose.model('Movie',movieSchema);
 
+  
+
 // Update
 
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@481a15ff (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@78186a70 (fieldName: title)] 
+[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@545997b1 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@4cf4d528 (fieldName: title)] 
  
   function movie_Updating(query , fieldsToUpdate) {
   Movie.findOne (
@@ -237,8 +247,11 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 });
 
 
+
+
+//For Roots
 //File Movie3
-package movie.morphia;
+package movie.morphiaMapper.morphia;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -328,9 +341,11 @@ var movieSchema = new mongoose.Schema({
 
 var Movie = mongoose.model('Movie',movieSchema);
 
+  
+
 // Update
 
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@481a15ff (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@78186a70 (fieldName: title)] 
+[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@545997b1 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@4cf4d528 (fieldName: title)] 
  
   function movie_Updating(query , fieldsToUpdate) {
   Movie.findOne (
@@ -356,8 +371,11 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 });
 
 
+
+
+//For Roots
 //File Movie4
-package movie.morphia;
+package movie.morphiaMapper.morphia;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -447,9 +465,11 @@ var movieSchema = new mongoose.Schema({
 
 var Movie = mongoose.model('Movie',movieSchema);
 
+  
+
 // Update
 
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@481a15ff (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@78186a70 (fieldName: title)] 
+[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@545997b1 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@4cf4d528 (fieldName: title)] 
  
   function movie_Updating(query , fieldsToUpdate) {
   Movie.findOne (
@@ -475,8 +495,11 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 });
 
 
+
+
+//For Roots
 //File Movie5
-package movie.morphia;
+package movie.morphiaMapper.morphia;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -566,9 +589,11 @@ var movieSchema = new mongoose.Schema({
 
 var Movie = mongoose.model('Movie',movieSchema);
 
+  
+
 // Update
 
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@481a15ff (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@78186a70 (fieldName: title)] 
+[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@545997b1 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@4cf4d528 (fieldName: title)] 
  
   function movie_Updating(query , fieldsToUpdate) {
   Movie.findOne (
@@ -595,8 +620,11 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 
 
 
+
+
+//For Roots
 //File Movietheater1
-package movietheater.morphia;
+package movietheater.morphiaMapper.morphia;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -638,12 +666,17 @@ var movietheaterSchema = new mongoose.Schema({
 
 var Movietheater = mongoose.model('Movietheater',movietheaterSchema);
 
+  
+
 // Update
 
 
 
+
+
+//For Roots
 //File Movietheater2
-package movietheater.morphia;
+package movietheater.morphiaMapper.morphia;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -685,13 +718,18 @@ var movietheaterSchema = new mongoose.Schema({
 
 var Movietheater = mongoose.model('Movietheater',movietheaterSchema);
 
+  
+
 // Update
 
 
 
 
+
+
+//For Roots
 //File Director1
-package director.morphia;
+package director.morphiaMapper.morphia;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -732,9 +770,11 @@ var directorSchema = new mongoose.Schema({
 
 var Director = mongoose.model('Director',directorSchema);
 
+  
+
 // Update
 
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@306279ee (fieldName: name)] 
+[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@77846d2c (fieldName: name)] 
  
   function director_Updating(query , fieldsToUpdate) {
   Director.findOne (
@@ -759,8 +799,11 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 });
 
 
+
+
+//For Roots
 //File Director2
-package director.morphia;
+package director.morphiaMapper.morphia;
 import com.mongodb.MongoClient;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
@@ -801,9 +844,11 @@ var directorSchema = new mongoose.Schema({
 
 var Director = mongoose.model('Director',directorSchema);
 
+  
+
 // Update
 
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@306279ee (fieldName: name)] 
+[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@77846d2c (fieldName: name)] 
  
   function director_Updating(query , fieldsToUpdate) {
   Director.findOne (
@@ -829,32 +874,12 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 
 
 
-//File Media1
-package media.morphia;
-import com.mongodb.MongoClient;
-import org.bson.types.ObjectId;
-import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.Morphia;
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Field;
-import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.Index;
-import org.mongodb.morphia.annotations.Indexes;
-import org.mongodb.morphia.annotations.Indexed;
-import org.mongodb.morphia.annotations.IndexOptions; 
-import org.mongodb.morphia.utils.IndexDirection;
-import org.mongodb.morphia.utils.IndexType;
-import static org.mongodb.morphia.utils.IndexType.TEXT;
-import static org.mongodb.morphia.utils.IndexType.HASHED;
-import org.mongodb.morphia.annotations.Property;
-import org.mongodb.morphia.annotations.Reference;
+
+
+//for noRoots
+//File Media
+package media.morphiaMapper.morphia;
 import org.mongodb.morphia.annotations.Embedded;
-import org.mongodb.morphia.query.Query;
-import org.mongodb.morphia.query.UpdateOperations;
-import org.mongodb.morphia.query.UpdateResults;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
 var mediaSchema = new mongoose.Schema({
 
 // Common Properties	
@@ -868,37 +893,20 @@ var mediaSchema = new mongoose.Schema({
 
 var Media = mongoose.model('Media',mediaSchema);
 
+
+  
+
 // Update
 
 
 
 
-//File Criticism1
-package criticism.morphia;
-import com.mongodb.MongoClient;
-import org.bson.types.ObjectId;
-import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.Morphia;
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Field;
-import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.Index;
-import org.mongodb.morphia.annotations.Indexes;
-import org.mongodb.morphia.annotations.Indexed;
-import org.mongodb.morphia.annotations.IndexOptions; 
-import org.mongodb.morphia.utils.IndexDirection;
-import org.mongodb.morphia.utils.IndexType;
-import static org.mongodb.morphia.utils.IndexType.TEXT;
-import static org.mongodb.morphia.utils.IndexType.HASHED;
-import org.mongodb.morphia.annotations.Property;
-import org.mongodb.morphia.annotations.Reference;
+
+
+//for noRoots
+//File Criticism
+package criticism.morphiaMapper.morphia;
 import org.mongodb.morphia.annotations.Embedded;
-import org.mongodb.morphia.query.Query;
-import org.mongodb.morphia.query.UpdateOperations;
-import org.mongodb.morphia.query.UpdateResults;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
 //code for embedded Criticismmedia1 File
 package criticism.morphiaMapper;
 import org.mongodb.morphia.annotations.Embedded;
@@ -922,6 +930,9 @@ var criticismSchema = new mongoose.Schema({
 
 var Criticism = mongoose.model('Criticism',criticismSchema);
 
+
+  
+
 // Update
 
 [] 
@@ -947,32 +958,12 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 });
 
 
-//File Criticism2
-package criticism.morphia;
-import com.mongodb.MongoClient;
-import org.bson.types.ObjectId;
-import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.Morphia;
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Field;
-import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.Index;
-import org.mongodb.morphia.annotations.Indexes;
-import org.mongodb.morphia.annotations.Indexed;
-import org.mongodb.morphia.annotations.IndexOptions; 
-import org.mongodb.morphia.utils.IndexDirection;
-import org.mongodb.morphia.utils.IndexType;
-import static org.mongodb.morphia.utils.IndexType.TEXT;
-import static org.mongodb.morphia.utils.IndexType.HASHED;
-import org.mongodb.morphia.annotations.Property;
-import org.mongodb.morphia.annotations.Reference;
+
+
+//for noRoots
+//File Criticism
+package criticism.morphiaMapper.morphia;
 import org.mongodb.morphia.annotations.Embedded;
-import org.mongodb.morphia.query.Query;
-import org.mongodb.morphia.query.UpdateOperations;
-import org.mongodb.morphia.query.UpdateResults;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
 //code for embedded Criticismmedia1 File
 package criticism.morphiaMapper;
 import org.mongodb.morphia.annotations.Embedded;
@@ -996,6 +987,9 @@ var criticismSchema = new mongoose.Schema({
 
 var Criticism = mongoose.model('Criticism',criticismSchema);
 
+
+  
+
 // Update
 
 [] 
@@ -1022,32 +1016,12 @@ Book.findOneAndUpdate({_id:bookId},{$set:{"name": name},$set:{"genre": genre},$s
 
 
 
-//File Prize1
-package prize.morphia;
-import com.mongodb.MongoClient;
-import org.bson.types.ObjectId;
-import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.Morphia;
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Field;
-import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.Index;
-import org.mongodb.morphia.annotations.Indexes;
-import org.mongodb.morphia.annotations.Indexed;
-import org.mongodb.morphia.annotations.IndexOptions; 
-import org.mongodb.morphia.utils.IndexDirection;
-import org.mongodb.morphia.utils.IndexType;
-import static org.mongodb.morphia.utils.IndexType.TEXT;
-import static org.mongodb.morphia.utils.IndexType.HASHED;
-import org.mongodb.morphia.annotations.Property;
-import org.mongodb.morphia.annotations.Reference;
+
+
+//for noRoots
+//File Prize
+package prize.morphiaMapper.morphia;
 import org.mongodb.morphia.annotations.Embedded;
-import org.mongodb.morphia.query.Query;
-import org.mongodb.morphia.query.UpdateOperations;
-import org.mongodb.morphia.query.UpdateResults;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
 var prizeSchema = new mongoose.Schema({
 
 // Common Properties	
@@ -1063,36 +1037,19 @@ var prizeSchema = new mongoose.Schema({
 
 var Prize = mongoose.model('Prize',prizeSchema);
 
+
+  
+
 // Update
 
 
 
-//File Prize2
-package prize.morphia;
-import com.mongodb.MongoClient;
-import org.bson.types.ObjectId;
-import org.mongodb.morphia.Datastore;
-import org.mongodb.morphia.Morphia;
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Field;
-import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.Index;
-import org.mongodb.morphia.annotations.Indexes;
-import org.mongodb.morphia.annotations.Indexed;
-import org.mongodb.morphia.annotations.IndexOptions; 
-import org.mongodb.morphia.utils.IndexDirection;
-import org.mongodb.morphia.utils.IndexType;
-import static org.mongodb.morphia.utils.IndexType.TEXT;
-import static org.mongodb.morphia.utils.IndexType.HASHED;
-import org.mongodb.morphia.annotations.Property;
-import org.mongodb.morphia.annotations.Reference;
+
+
+//for noRoots
+//File Prize
+package prize.morphiaMapper.morphia;
 import org.mongodb.morphia.annotations.Embedded;
-import org.mongodb.morphia.query.Query;
-import org.mongodb.morphia.query.UpdateOperations;
-import org.mongodb.morphia.query.UpdateResults;
-import java.net.UnknownHostException;
-import java.util.ArrayList;
-import java.util.List;
 var prizeSchema = new mongoose.Schema({
 
 // Common Properties	
@@ -1108,8 +1065,10 @@ var prizeSchema = new mongoose.Schema({
 
 var Prize = mongoose.model('Prize',prizeSchema);
 
-// Update
 
+  
+
+// Update
 
 
 

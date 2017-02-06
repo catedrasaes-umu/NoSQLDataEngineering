@@ -11,6 +11,7 @@ import es.um.nosql.schemainference.util.emf.ResourceManager
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage
 import java.io.File
 import java.io.PrintStream
+import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema
 import es.um.nosql.schemainference.NoSQLSchema.Property
 import es.um.nosql.schemainference.NoSQLSchema.Association
 import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType
@@ -48,10 +49,11 @@ import es.um.nosql.schemainference.entitydifferentiation.PropertySpec
 
 
 class DiffDSLParametersforMorphia {
-	var modelName = "";
-	var whiteLine="\n"
-	var tab="\t"
+	val whiteLine="\n"
+	val tab="\t"
 	var String morphiaPackage
+	val boolean root=true
+	val boolean noRoot=false
 	var List<Attribute>commonAttrs=new ArrayList
     var List<Aggregate>commonAggrs=new ArrayList
     var List<Reference>commonRefs=new ArrayList
@@ -90,6 +92,8 @@ class DiffDSLParametersforMorphia {
         //val outputDir = new File(args.get(2)).toPath().resolve(td.name).toFile()
         //outDir=outputDir.toString								
 		// Create destination directory if it does not exist
+		//val modelName=inputModel.name as String
+		//println(modelName)
 		outputDir.mkdirs()
         System.out.println("Generating Javascript for " 
         					+ inputModel.getPath() 
@@ -109,7 +113,8 @@ class DiffDSLParametersforMorphia {
 
 	def generate(EntityDifferentiation diff, MongooseModel dslM)
 	{
-		modelName = diff.name;
+		morphiaPackage=diff.name
+		println(morphiaPackage)
 		var tf=diff
 		eDiffRoots.clear
 		eDiffs.clear
@@ -119,19 +124,18 @@ class DiffDSLParametersforMorphia {
 	      else
 	      eDiffs.add(eD)
 	}
-  var code='''
+  '''
   «FOR entRL: eDiffRoots»
-	«analyzeEnt(entRL, dslM)»
+	«analyzeEnt(entRL, dslM,root )»
   «ENDFOR»
   «FOR entNRL: eDiffs»
-	«analyzeEnt(entNRL, dslM)»
+	«analyzeEnt(entNRL, dslM, noRoot)»
   «ENDFOR»
-  
   '''
-  println(code)
+  
 }	
 	
-def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
+def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   var List<String> prims=new ArrayList
   var List<String> tuples=new ArrayList
   var List<Reference> refs=new ArrayList
@@ -169,8 +173,12 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   «FOR i:0..<propSp.size»
     «props.add(i,propSp.get(i).property)»
   «ENDFOR»
+
+  
+  «IF root»
+  //For Roots
   //File «ent.entity.name.toFirstUpper»«contVer2+=1»
-  package «ent.entity.name.toLowerCase».morphia;
+  package «morphiaPackage».morphia;
   import com.mongodb.MongoClient;
   import org.bson.types.ObjectId;
   import org.mongodb.morphia.Datastore;
@@ -283,6 +291,104 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   },{collection:'«ent.entity.name.toFirstLower»'});
   
   var «ent.entity.name.toFirstUpper» = mongoose.model('«ent.entity.name.toFirstUpper»',«ent.entity.name.toFirstLower»Schema);
+  
+  «ELSE»
+  //for noRoots
+  //File «ent.entity.name.toFirstUpper»
+  package «morphiaPackage».morphia;
+  import org.mongodb.morphia.annotations.Embedded;
+  «getAggregatesCommons(commonAggrs, dslM)»
+  «getAggregates(commonAggrs, finalCommonAggrs,dslM)»
+  «getAggregates(notCommonAggrs, finalNotCommonAggrs,dslM)»
+  «var aV=props.filter(Attribute).toList»
+  «var rV=props.filter(Reference).toList»
+  «var agV=props.filter(Aggregate).toList»
+  «concatAtts(atV,aV,atV)»
+  «concatRs(refV,rV,refV)»
+  «concatAgs(aggrV,agV,aggrV)»
+  «var Map<String, Aggregate>verAggs=new HashMap»
+  «FOR a1:aggrV»
+    «var String nameA=(a1.eContainer.eContainer as Entity).name+a1.name+(a1.eContainer as EntityVersion).versionId.toString»
+    «verAggs.put(nameA,a1)»
+  «ENDFOR»
+  «var Map<String, Aggregate>remainingAgs=new HashMap»
+  «FOR Entry<String, Aggregate> agV1: finalNotCommonAggrs.entrySet()»
+    «var String nameAg = agV1.key»
+    «var Aggregate Ag = agV1.value»
+    «remainingAgs.put(nameAg,Ag)»
+  «ENDFOR»
+  «removeVerAgs(verAggs,remainingAgs)»
+  «prims.clear»
+  «tuples.clear»
+  «primsL.clear»
+  «tuplesL.clear»  
+  «refs.clear»
+  «ags.clear»
+  var «ent.entity.name.toFirstLower»Schema = new mongoose.Schema({
+  
+  // Common Properties	
+    «FOR ac: commonAttrs»
+    «paramsL.clear»
+    «IF areThereParams»«lookFor(ac.name,entM, paramsL)»«ENDIF»
+    «IF !paramsL.empty»	«printAttribute(ac,ac.name, true, paramsL)»
+    «ELSE»«printAttribute(ac,ac.name,true)»
+    «ENDIF»
+   	«ENDFOR»
+  	«FOR rc: commonRefs»
+  	 «printRef(rc,true)»
+    «ENDFOR»
+  	«FOR Entry<String, Aggregate> aA : finalCommonAggrs.entrySet()»
+    «var String nameAg = aA.getKey()»
+    «var Aggregate Ag = aA.getValue()»
+    	«Ag.name»:	«nameAg»,
+  	«ENDFOR»
+    
+  // add required for «ent.entity.name.toFirstUpper»«entVer.entityVersion.versionId» entity version
+    «var List<Attribute> restAtts=new ArrayList»
+    «removeAtts(atV,notCommonAttrs,restAtts)»
+    «FOR ac: atV»
+    «paramsL.clear»
+    «IF areThereParams»«lookFor(ac.name,entM, paramsL)»«ENDIF»
+    «IF !paramsL.empty»	«printAttribute(ac,ac.name, true, paramsL)»
+    «ELSE»«printAttribute(ac,ac.name,true)»
+    «ENDIF»
+   	«ENDFOR»
+    «FOR r2: refV»
+      «printRef(r2,true)»
+    «ENDFOR»
+  	«FOR Entry<String, Aggregate> aggV : verAggs.entrySet()»
+    «var String nameAg = aggV.getKey()»
+    «var Aggregate Ag = aggV.getValue()»
+    	«Ag.name»:	{type:«nameAg», required:true},
+  	«ENDFOR»
+  	«primsL.clear»
+  	«prims.clear»
+
+  // Not Common Properties 
+    «FOR at: restAtts»
+      «analyzeAttribute(at.type,at.name,primsL, tuplesL,prims,tuples)»
+    «ENDFOR»
+  	«FOR i:0..<primsL.size»
+  	«printType(primsL.get(i),prims.get(i))»
+  	«ENDFOR»
+  	«FOR j:0..<tuplesL.size»
+  	«printType(tuplesL.get(j),tuples.get(j))»
+  	«ENDFOR»
+    «FOR r2: notCommonRefs»
+      «analyzeReference(r2,r2.name,refs)»
+    «ENDFOR»
+  	«FOR Entry<String, Aggregate> aA : remainingAgs.entrySet()»
+    «var String nameAg = aA.getKey()»
+    «var Aggregate Ag = aA.getValue()»
+    	«Ag.name»:	«nameAg»,
+  	«ENDFOR»
+  },{collection:'«ent.entity.name.toFirstLower»'});
+  
+  var «ent.entity.name.toFirstUpper» = mongoose.model('«ent.entity.name.toFirstUpper»',«ent.entity.name.toFirstLower»Schema);
+  
+  
+  «ENDIF»
+    
   
   // Update
   
