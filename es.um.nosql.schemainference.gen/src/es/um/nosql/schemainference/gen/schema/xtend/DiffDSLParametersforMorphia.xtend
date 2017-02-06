@@ -291,7 +291,6 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   }
 
   //Root Entity Code
-  @Entity(«ent.entity.name.toFirstLower»)
   class «ent.entity.name.toFirstUpper»{
   
   // Common Properties	
@@ -570,7 +569,7 @@ def dispatch printType(Tuple tuple, String name, boolean isC){
 
 //Commons Attributes for methods
 def dispatch printAttribute(Attribute a, String name, boolean isC, String c)'''
-  «printType(a.type,name, c)»
+  «printType(a.type,name, isC, c)»
 '''
 
 def dispatch printType(Type at2, String name, boolean isC, String c) {
@@ -579,13 +578,29 @@ def dispatch printType(Type at2, String name, boolean isC, String c) {
 
 def dispatch printType(PrimitiveType primT, String name, boolean isC, String c){
   primT.name=primT.name.replace("Number","int")
-  '''	private «primT.name» «name»;'''
+'''
+  public «primT.name» get«name.toFirstUpper»() {
+    return «name»;
+  }
+  
+  public void set«name.toFirstUpper»(final «primT.name» «name») {
+   this.«name» = «name»;
+  }
+'''
 }
 
 def dispatch printType(Tuple tuple, String name, boolean isC, String c){
   var List<Type>tupleElements=tuple.elements.toList
   var String typeName=findingFirst(tupleElements,0)
-  '''	private «typeName»[] «name»;'''
+'''
+  public «typeName»[] get«name.toFirstUpper»() {
+    return «name»;
+  }
+  
+  public void set«name.toFirstUpper»(final «typeName»[] «name») {
+   this.«name» = «name»;
+  }
+'''
 }
 
 //find first one in tuple

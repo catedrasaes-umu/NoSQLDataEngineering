@@ -29,6 +29,7 @@ import java.util.List;
 
 @Entity(movie)
 class Movie{
+
 // Common Properties	
   	@, maxlength: 40Indexed (unique=true)
   	private String title;
@@ -50,20 +51,42 @@ class Movie{
 	private String[] writers;
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes3,
+
+public Movie{
 }
 
 //Root Entity Code
-@Entity(movie)
 class Movie{
 
 // Common Properties	
-  	@, maxlength: 40Indexed (unique=true)
-  	private String title;
-  	@Indexed (IndexDirection.
-  	private String _id;
-  	@Indexed (IndexDirection.
-  	private int year;
-  	private String type;
+  public String getTitle() {
+    return title;
+  }
+  
+  public void setTitle(final String title) {
+   this.title = title;
+  }
+  public String get_id() {
+    return _id;
+  }
+  
+  public void set_id(final String _id) {
+   this._id = _id;
+  }
+  public int getYear() {
+    return year;
+  }
+  
+  public void setYear(final int year) {
+   this.year = year;
+  }
+  public String getType() {
+    return type;
+  }
+  
+  public void setType(final String type) {
+   this.type = type;
+  }
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie1 entity version
@@ -141,6 +164,7 @@ import java.util.List;
 
 @Entity(movie)
 class Movie{
+
 // Common Properties	
   	@, maxlength: 40Indexed (unique=true)
   	private String title;
@@ -162,20 +186,42 @@ class Movie{
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
 	prizes:	Movieprizes3,
+
+public Movie{
 }
 
 //Root Entity Code
-@Entity(movie)
 class Movie{
 
 // Common Properties	
-  	@, maxlength: 40Indexed (unique=true)
-  	private String title;
-  	@Indexed (IndexDirection.
-  	private String _id;
-  	@Indexed (IndexDirection.
-  	private int year;
-  	private String type;
+  public String getTitle() {
+    return title;
+  }
+  
+  public void setTitle(final String title) {
+   this.title = title;
+  }
+  public String get_id() {
+    return _id;
+  }
+  
+  public void set_id(final String _id) {
+   this._id = _id;
+  }
+  public int getYear() {
+    return year;
+  }
+  
+  public void setYear(final int year) {
+   this.year = year;
+  }
+  public String getType() {
+    return type;
+  }
+  
+  public void setType(final String type) {
+   this.type = type;
+  }
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie2 entity version
@@ -253,6 +299,7 @@ import java.util.List;
 
 @Entity(movie)
 class Movie{
+
 // Common Properties	
   	@, maxlength: 40Indexed (unique=true)
   	private String title;
@@ -274,20 +321,42 @@ class Movie{
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
+
+public Movie{
 }
 
 //Root Entity Code
-@Entity(movie)
 class Movie{
 
 // Common Properties	
-  	@, maxlength: 40Indexed (unique=true)
-  	private String title;
-  	@Indexed (IndexDirection.
-  	private String _id;
-  	@Indexed (IndexDirection.
-  	private int year;
-  	private String type;
+  public String getTitle() {
+    return title;
+  }
+  
+  public void setTitle(final String title) {
+   this.title = title;
+  }
+  public String get_id() {
+    return _id;
+  }
+  
+  public void set_id(final String _id) {
+   this._id = _id;
+  }
+  public int getYear() {
+    return year;
+  }
+  
+  public void setYear(final int year) {
+   this.year = year;
+  }
+  public String getType() {
+    return type;
+  }
+  
+  public void setType(final String type) {
+   this.type = type;
+  }
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie3 entity version
@@ -365,6 +434,7 @@ import java.util.List;
 
 @Entity(movie)
 class Movie{
+
 // Common Properties	
   	@, maxlength: 40Indexed (unique=true)
   	private String title;
@@ -386,20 +456,42 @@ class Movie{
 	criticisms:	Moviecriticisms1,
 	prizes:	Movieprizes1,
 	prizes:	Movieprizes3,
+
+public Movie{
 }
 
 //Root Entity Code
-@Entity(movie)
 class Movie{
 
 // Common Properties	
-  	@, maxlength: 40Indexed (unique=true)
-  	private String title;
-  	@Indexed (IndexDirection.
-  	private String _id;
-  	@Indexed (IndexDirection.
-  	private int year;
-  	private String type;
+  public String getTitle() {
+    return title;
+  }
+  
+  public void setTitle(final String title) {
+   this.title = title;
+  }
+  public String get_id() {
+    return _id;
+  }
+  
+  public void set_id(final String _id) {
+   this._id = _id;
+  }
+  public int getYear() {
+    return year;
+  }
+  
+  public void setYear(final int year) {
+   this.year = year;
+  }
+  public String getType() {
+    return type;
+  }
+  
+  public void setType(final String type) {
+   this.type = type;
+  }
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie4 entity version
@@ -477,6 +569,7 @@ import java.util.List;
 
 @Entity(movie)
 class Movie{
+
 // Common Properties	
   	@, maxlength: 40Indexed (unique=true)
   	private String title;
@@ -497,20 +590,42 @@ class Movie{
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
 	prizes:	Movieprizes3,
+
+public Movie{
 }
 
 //Root Entity Code
-@Entity(movie)
 class Movie{
 
 // Common Properties	
-  	@, maxlength: 40Indexed (unique=true)
-  	private String title;
-  	@Indexed (IndexDirection.
-  	private String _id;
-  	@Indexed (IndexDirection.
-  	private int year;
-  	private String type;
+  public String getTitle() {
+    return title;
+  }
+  
+  public void setTitle(final String title) {
+   this.title = title;
+  }
+  public String get_id() {
+    return _id;
+  }
+  
+  public void set_id(final String _id) {
+   this._id = _id;
+  }
+  public int getYear() {
+    return year;
+  }
+  
+  public void setYear(final int year) {
+   this.year = year;
+  }
+  public String getType() {
+    return type;
+  }
+  
+  public void setType(final String type) {
+   this.type = type;
+  }
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie5 entity version
@@ -588,6 +703,7 @@ import java.util.List;
 
 @Entity(movietheater)
 class Movietheater{
+
 // Common Properties	
   	private String _id;
   	private String name;
@@ -599,18 +715,49 @@ class Movietheater{
 
 // Not Common Properties 
 	private int roomNumbers;
+
+public Movietheater{
 }
 
 //Root Entity Code
-@Entity(movietheater)
 class Movietheater{
 
 // Common Properties	
-  	private String _id;
-  	private String name;
-  	private String type;
-  	private String city;
-  	private String country;
+  public String get_id() {
+    return _id;
+  }
+  
+  public void set_id(final String _id) {
+   this._id = _id;
+  }
+  public String getName() {
+    return name;
+  }
+  
+  public void setName(final String name) {
+   this.name = name;
+  }
+  public String getType() {
+    return type;
+  }
+  
+  public void setType(final String type) {
+   this.type = type;
+  }
+  public String getCity() {
+    return city;
+  }
+  
+  public void setCity(final String city) {
+   this.city = city;
+  }
+  public String getCountry() {
+    return country;
+  }
+  
+  public void setCountry(final String country) {
+   this.country = country;
+  }
   
 // add required for Movietheater1 entity version
 
@@ -656,6 +803,7 @@ import java.util.List;
 
 @Entity(movietheater)
 class Movietheater{
+
 // Common Properties	
   	private String _id;
   	private String name;
@@ -667,18 +815,49 @@ class Movietheater{
   	private int roomNumbers;
 
 // Not Common Properties 
+
+public Movietheater{
 }
 
 //Root Entity Code
-@Entity(movietheater)
 class Movietheater{
 
 // Common Properties	
-  	private String _id;
-  	private String name;
-  	private String type;
-  	private String city;
-  	private String country;
+  public String get_id() {
+    return _id;
+  }
+  
+  public void set_id(final String _id) {
+   this._id = _id;
+  }
+  public String getName() {
+    return name;
+  }
+  
+  public void setName(final String name) {
+   this.name = name;
+  }
+  public String getType() {
+    return type;
+  }
+  
+  public void setType(final String type) {
+   this.type = type;
+  }
+  public String getCity() {
+    return city;
+  }
+  
+  public void setCity(final String city) {
+   this.city = city;
+  }
+  public String getCountry() {
+    return country;
+  }
+  
+  public void setCountry(final String country) {
+   this.country = country;
+  }
   
 // add required for Movietheater2 entity version
   	private int roomNumbers;
@@ -725,6 +904,7 @@ import java.util.List;
 
 @Entity(director)
 class Director{
+
 // Common Properties	
   	@Indexed (IndexDirection.
   	private String _id;
@@ -737,18 +917,35 @@ class Director{
   	private String[] directed_movies;
 
 // Not Common Properties 
+
+public Director{
 }
 
 //Root Entity Code
-@Entity(director)
 class Director{
 
 // Common Properties	
-  	@Indexed (IndexDirection.
-  	private String _id;
-  	@Indexed (unique=true)
-  	private String name;
-  	private String type;
+  public String get_id() {
+    return _id;
+  }
+  
+  public void set_id(final String _id) {
+   this._id = _id;
+  }
+  public String getName() {
+    return name;
+  }
+  
+  public void setName(final String name) {
+   this.name = name;
+  }
+  public String getType() {
+    return type;
+  }
+  
+  public void setType(final String type) {
+   this.type = type;
+  }
   
 // add required for Director1 entity version
   	private String[] actor_movies;
@@ -818,6 +1015,7 @@ import java.util.List;
 
 @Entity(director)
 class Director{
+
 // Common Properties	
   	@Indexed (IndexDirection.
   	private String _id;
@@ -830,18 +1028,35 @@ class Director{
 
 // Not Common Properties 
 	private String[] actor_movies;
+
+public Director{
 }
 
 //Root Entity Code
-@Entity(director)
 class Director{
 
 // Common Properties	
-  	@Indexed (IndexDirection.
-  	private String _id;
-  	@Indexed (unique=true)
-  	private String name;
-  	private String type;
+  public String get_id() {
+    return _id;
+  }
+  
+  public void set_id(final String _id) {
+   this._id = _id;
+  }
+  public String getName() {
+    return name;
+  }
+  
+  public void setName(final String name) {
+   this.name = name;
+  }
+  public String getType() {
+    return type;
+  }
+  
+  public void setType(final String type) {
+   this.type = type;
+  }
   
 // add required for Director2 entity version
   	private String[] directed_movies;
