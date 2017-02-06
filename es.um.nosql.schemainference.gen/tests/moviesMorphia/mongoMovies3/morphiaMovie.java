@@ -26,28 +26,28 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity(movie)
 class Movie{
-
 // Common Properties	
   	@, maxlength: 40Indexed (unique=true)
-  	private String	title;
+  	private String title;
   	@Indexed (IndexDirection.
-  	private String	_id;
+  	private String _id;
   	@Indexed (IndexDirection.
-  	private Number	year;
-  	private String	type
+  	private int year;
+  	private String type;
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie1 entity version
   	@, enum: [drama, comedy, children]
-  	private String	genre;
+  	private String genre;
 	criticisms:	{type:Moviecriticisms1, required:true},
 	prizes:	{type:Movieprizes1, required:true},
 
 // Not Common Properties 
-	private String[]	genres;
-	private String[]	writers;
+	private String[] genres;
+	private String[] writers;
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes3,
 }
@@ -58,23 +58,23 @@ class Movie{
 
 // Common Properties	
   	@, maxlength: 40Indexed (unique=true)
-  	private String	title;
+  	private String title;
   	@Indexed (IndexDirection.
-  	private String	_id;
+  	private String _id;
   	@Indexed (IndexDirection.
-  	private Number	year;
-  	private String	type
+  	private int year;
+  	private String type;
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie1 entity version
   	@, enum: [drama, comedy, children]
-  	private String	genre;
+  	private String genre;
 	criticisms:	{type:Moviecriticisms1, required:true},
 	prizes:	{type:Movieprizes1, required:true},
 
 // Not Common Properties 
-	private String[]	genres;
-	private String[]	writers;
+	private String[] genres;
+	private String[] writers;
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes3,
 }
@@ -138,26 +138,26 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity(movie)
 class Movie{
-
 // Common Properties	
   	@, maxlength: 40Indexed (unique=true)
-  	private String	title;
+  	private String title;
   	@Indexed (IndexDirection.
-  	private String	_id;
+  	private String _id;
   	@Indexed (IndexDirection.
-  	private Number	year;
-  	private String	type
+  	private int year;
+  	private String type;
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie2 entity version
   	@, enum: [drama, comedy, children]
-  	private String	genre;
+  	private String genre;
 
 // Not Common Properties 
-	private String[]	genres;
-	private String[]	writers;
+	private String[] genres;
+	private String[] writers;
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
@@ -170,21 +170,21 @@ class Movie{
 
 // Common Properties	
   	@, maxlength: 40Indexed (unique=true)
-  	private String	title;
+  	private String title;
   	@Indexed (IndexDirection.
-  	private String	_id;
+  	private String _id;
   	@Indexed (IndexDirection.
-  	private Number	year;
-  	private String	type
+  	private int year;
+  	private String type;
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie2 entity version
   	@, enum: [drama, comedy, children]
-  	private String	genre;
+  	private String genre;
 
 // Not Common Properties 
-	private String[]	genres;
-	private String[]	writers;
+	private String[] genres;
+	private String[] writers;
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
@@ -250,27 +250,27 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity(movie)
 class Movie{
-
 // Common Properties	
   	@, maxlength: 40Indexed (unique=true)
-  	private String	title;
+  	private String title;
   	@Indexed (IndexDirection.
-  	private String	_id;
+  	private String _id;
   	@Indexed (IndexDirection.
-  	private Number	year;
-  	private String	type
+  	private int year;
+  	private String type;
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie3 entity version
   	@, enum: [drama, comedy, children]
-  	private String	genre;
+  	private String genre;
 	prizes:	{type:Movieprizes3, required:true},
 
 // Not Common Properties 
-	private String[]	genres;
-	private String[]	writers;
+	private String[] genres;
+	private String[] writers;
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
@@ -282,22 +282,22 @@ class Movie{
 
 // Common Properties	
   	@, maxlength: 40Indexed (unique=true)
-  	private String	title;
+  	private String title;
   	@Indexed (IndexDirection.
-  	private String	_id;
+  	private String _id;
   	@Indexed (IndexDirection.
-  	private Number	year;
-  	private String	type
+  	private int year;
+  	private String type;
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie3 entity version
   	@, enum: [drama, comedy, children]
-  	private String	genre;
+  	private String genre;
 	prizes:	{type:Movieprizes3, required:true},
 
 // Not Common Properties 
-	private String[]	genres;
-	private String[]	writers;
+	private String[] genres;
+	private String[] writers;
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
@@ -362,27 +362,27 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity(movie)
 class Movie{
-
 // Common Properties	
   	@, maxlength: 40Indexed (unique=true)
-  	private String	title;
+  	private String title;
   	@Indexed (IndexDirection.
-  	private String	_id;
+  	private String _id;
   	@Indexed (IndexDirection.
-  	private Number	year;
-  	private String	type
+  	private int year;
+  	private String type;
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie4 entity version
   	@, enum: [drama, comedy, children]
-  	private String	genre;
+  	private String genre;
 	criticisms:	{type:Moviecriticisms4, required:true},
 
 // Not Common Properties 
-	private String[]	genres;
-	private String[]	writers;
+	private String[] genres;
+	private String[] writers;
 	criticisms:	Moviecriticisms1,
 	prizes:	Movieprizes1,
 	prizes:	Movieprizes3,
@@ -394,22 +394,22 @@ class Movie{
 
 // Common Properties	
   	@, maxlength: 40Indexed (unique=true)
-  	private String	title;
+  	private String title;
   	@Indexed (IndexDirection.
-  	private String	_id;
+  	private String _id;
   	@Indexed (IndexDirection.
-  	private Number	year;
-  	private String	type
+  	private int year;
+  	private String type;
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie4 entity version
   	@, enum: [drama, comedy, children]
-  	private String	genre;
+  	private String genre;
 	criticisms:	{type:Moviecriticisms4, required:true},
 
 // Not Common Properties 
-	private String[]	genres;
-	private String[]	writers;
+	private String[] genres;
+	private String[] writers;
 	criticisms:	Moviecriticisms1,
 	prizes:	Movieprizes1,
 	prizes:	Movieprizes3,
@@ -474,25 +474,25 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity(movie)
 class Movie{
-
 // Common Properties	
   	@, maxlength: 40Indexed (unique=true)
-  	private String	title;
+  	private String title;
   	@Indexed (IndexDirection.
-  	private String	_id;
+  	private String _id;
   	@Indexed (IndexDirection.
-  	private Number	year;
-  	private String	type
+  	private int year;
+  	private String type;
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie5 entity version
-  	private String[]	genres;
-  	private String[]	writers;
+  	private String[] genres;
+  	private String[] writers;
 
 // Not Common Properties 
-	private String	genre;
+	private String genre;
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
@@ -505,20 +505,20 @@ class Movie{
 
 // Common Properties	
   	@, maxlength: 40Indexed (unique=true)
-  	private String	title;
+  	private String title;
   	@Indexed (IndexDirection.
-  	private String	_id;
+  	private String _id;
   	@Indexed (IndexDirection.
-  	private Number	year;
-  	private String	type
+  	private int year;
+  	private String type;
 	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie5 entity version
-  	private String[]	genres;
-  	private String[]	writers;
+  	private String[] genres;
+  	private String[] writers;
 
 // Not Common Properties 
-	private String	genre;
+	private String genre;
 	criticisms:	Moviecriticisms1,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
@@ -585,20 +585,20 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity(movietheater)
 class Movietheater{
-
 // Common Properties	
-  	private String	_id
-  	private String	name
-  	private String	type
-  	private String	city
-  	private String	country
+  	private String _id;
+  	private String name;
+  	private String type;
+  	private String city;
+  	private String country;
   
 // add required for Movietheater1 entity version
 
 // Not Common Properties 
-	private Number	roomNumbers;
+	private int roomNumbers;
 }
 
 //Root Entity Code
@@ -606,16 +606,16 @@ class Movietheater{
 class Movietheater{
 
 // Common Properties	
-  	private String	_id
-  	private String	name
-  	private String	type
-  	private String	city
-  	private String	country
+  	private String _id;
+  	private String name;
+  	private String type;
+  	private String city;
+  	private String country;
   
 // add required for Movietheater1 entity version
 
 // Not Common Properties 
-	private Number	roomNumbers;
+	private int roomNumbers;
 }
   
 
@@ -653,18 +653,18 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity(movietheater)
 class Movietheater{
-
 // Common Properties	
-  	private String	_id
-  	private String	name
-  	private String	type
-  	private String	city
-  	private String	country
+  	private String _id;
+  	private String name;
+  	private String type;
+  	private String city;
+  	private String country;
   
 // add required for Movietheater2 entity version
-  	private Number	roomNumbers
+  	private int roomNumbers;
 
 // Not Common Properties 
 }
@@ -674,14 +674,14 @@ class Movietheater{
 class Movietheater{
 
 // Common Properties	
-  	private String	_id
-  	private String	name
-  	private String	type
-  	private String	city
-  	private String	country
+  	private String _id;
+  	private String name;
+  	private String type;
+  	private String city;
+  	private String country;
   
 // add required for Movietheater2 entity version
-  	private Number	roomNumbers
+  	private int roomNumbers;
 
 // Not Common Properties 
 }
@@ -722,19 +722,19 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity(director)
 class Director{
-
 // Common Properties	
   	@Indexed (IndexDirection.
-  	private String	_id;
+  	private String _id;
   	@Indexed (unique=true)
-  	private String	name;
-  	private String	type
+  	private String name;
+  	private String type;
   
 // add required for Director1 entity version
-  	private String[]	actor_movies;
-  	private String[]	directed_movies;
+  	private String[] actor_movies;
+  	private String[] directed_movies;
 
 // Not Common Properties 
 }
@@ -745,14 +745,14 @@ class Director{
 
 // Common Properties	
   	@Indexed (IndexDirection.
-  	private String	_id;
+  	private String _id;
   	@Indexed (unique=true)
-  	private String	name;
-  	private String	type
+  	private String name;
+  	private String type;
   
 // add required for Director1 entity version
-  	private String[]	actor_movies;
-  	private String[]	directed_movies;
+  	private String[] actor_movies;
+  	private String[] directed_movies;
 
 // Not Common Properties 
 }
@@ -815,21 +815,21 @@ import org.mongodb.morphia.query.UpdateResults;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
 import java.util.List;
+
 @Entity(director)
 class Director{
-
 // Common Properties	
   	@Indexed (IndexDirection.
-  	private String	_id;
+  	private String _id;
   	@Indexed (unique=true)
-  	private String	name;
-  	private String	type
+  	private String name;
+  	private String type;
   
 // add required for Director2 entity version
-  	private String[]	directed_movies;
+  	private String[] directed_movies;
 
 // Not Common Properties 
-	private String[]	actor_movies;
+	private String[] actor_movies;
 }
 
 //Root Entity Code
@@ -838,16 +838,16 @@ class Director{
 
 // Common Properties	
   	@Indexed (IndexDirection.
-  	private String	_id;
+  	private String _id;
   	@Indexed (unique=true)
-  	private String	name;
-  	private String	type
+  	private String name;
+  	private String type;
   
 // add required for Director2 entity version
-  	private String[]	directed_movies;
+  	private String[] directed_movies;
 
 // Not Common Properties 
-	private String[]	actor_movies;
+	private String[] actor_movies;
 }
   
 
@@ -890,8 +890,8 @@ import org.mongodb.morphia.annotations.Embedded;
 public class Media {
 
 // Common Properties	
-  	private String	name
-  	private String	url
+  	private String name;
+  	private String url;
   
 // add required for Media1 entity version
 
@@ -917,15 +917,15 @@ public class Criticism {
 
 // Common Properties	
   	@, enum: [green, red, yellow]
-  	private String	color;
+  	private String color;
   	@Indexed (unique=true)
-  	private String	journalist;
+  	private String journalist;
     
 // add required for Criticism1 entity version
 	media:	{type:Criticismmedia1, required:true},
 
 // Not Common Properties 
-	private String	media;
+	private String media;
 },{collection:'criticism'});
 
 var Criticism = mongoose.model('Criticism',criticismSchema);
@@ -967,12 +967,12 @@ public class Criticism {
 
 // Common Properties	
   	@, enum: [green, red, yellow]
-  	private String	color;
+  	private String color;
   	@Indexed (unique=true)
-  	private String	journalist;
+  	private String journalist;
     
 // add required for Criticism2 entity version
-  	private String	media
+  	private String media;
 
 // Not Common Properties 
 	media:	Criticismmedia1,
@@ -1017,14 +1017,14 @@ import org.mongodb.morphia.annotations.Embedded;
 public class Prize {
 
 // Common Properties	
-  	private String	event
-  	private Number	year
+  	private String event;
+  	private int year;
   
 // add required for Prize1 entity version
-  	private String[]	names;
+  	private String[] names;
 
 // Not Common Properties 
-	private String	name;
+	private String name;
 },{collection:'prize'});
 
 var Prize = mongoose.model('Prize',prizeSchema);
@@ -1044,14 +1044,14 @@ import org.mongodb.morphia.annotations.Embedded;
 public class Prize {
 
 // Common Properties	
-  	private String	event
-  	private Number	year
+  	private String event;
+  	private int year;
   
 // add required for Prize2 entity version
-  	private String	name
+  	private String name;
 
 // Not Common Properties 
-	private String[]	names;
+	private String[] names;
 },{collection:'prize'});
 
 var Prize = mongoose.model('Prize',prizeSchema);

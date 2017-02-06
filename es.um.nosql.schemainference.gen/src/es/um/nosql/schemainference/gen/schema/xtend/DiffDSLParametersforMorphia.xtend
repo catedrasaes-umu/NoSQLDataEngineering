@@ -229,6 +229,7 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   
   @Entity(«ent.entity.name.toFirstLower»)
   class «ent.entity.name.toFirstUpper»{
+  
   // Common Properties	
     «FOR ac: commonAttrs»
     «paramsL.clear»
@@ -285,19 +286,17 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
     «var Aggregate Ag = aA.getValue()»
     	«Ag.name»:	«nameAg»,
   	«ENDFOR»
+
+  public «ent.entity.name.toFirstUpper»{
   }
-  
+
   //Root Entity Code
   @Entity(«ent.entity.name.toFirstLower»)
   class «ent.entity.name.toFirstUpper»{
   
   // Common Properties	
     «FOR ac: commonAttrs»
-    «paramsL.clear»
-    «IF areThereParams»«lookFor(ac.name,entM, paramsL)»«ENDIF»
-    «IF !paramsL.empty»	«printAttribute(ac,ac.name, true, paramsL)»
-    «ELSE»«printAttribute(ac,ac.name,true)»
-    «ENDIF»
+    «printAttribute(ac,ac.name,true,"code")»
    	«ENDFOR»
   	«FOR rc: commonRefs»
   	 «printRef(rc,true)»
@@ -354,7 +353,6 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   //File «ent.entity.name.toFirstUpper»
   package «morphiaPackage»;
   import org.mongodb.morphia.annotations.Embedded;
-  «getAggregatesCommons(commonAggrs, dslM)»
   «getAggregates(commonAggrs, finalCommonAggrs,dslM)»
   «getAggregates(notCommonAggrs, finalNotCommonAggrs,dslM)»
   «var aV=props.filter(Attribute).toList»
@@ -550,7 +548,7 @@ def dispatch printRef(Reference r){
   '''	«r.name»«IF r.upperBound==-1»:	{type:{}, ref: «r.refTo.name»}«ELSE»:	{type:String, ref: «r.refTo.name»}«ENDIF»'''
 }
 
-
+//Commons Attributes for annotations
 def dispatch printAttribute(Attribute a, String name, boolean isC)'''
   «printType(a.type,name, isC)»
 '''
@@ -560,15 +558,37 @@ def dispatch printType(Type at2, String name, boolean isC) {
 }
 
 def dispatch printType(PrimitiveType primT, String name, boolean isC){
-  '''	private «primT.name»	«name»''';
+  primT.name=primT.name.replace("Number","int")
+  '''	private «primT.name» «name»;'''
 }
 
 def dispatch printType(Tuple tuple, String name, boolean isC){
   var List<Type>tupleElements=tuple.elements.toList
   var String typeName=findingFirst(tupleElements,0)
-  '''	private «typeName»[]	«name»;'''
+  '''	private «typeName»[] «name»;'''
 }
 
+//Commons Attributes for methods
+def dispatch printAttribute(Attribute a, String name, boolean isC, String c)'''
+  «printType(a.type,name, c)»
+'''
+
+def dispatch printType(Type at2, String name, boolean isC, String c) {
+  throw new UnsupportedOperationException("TODO: auto-generated method stub")
+}
+
+def dispatch printType(PrimitiveType primT, String name, boolean isC, String c){
+  primT.name=primT.name.replace("Number","int")
+  '''	private «primT.name» «name»;'''
+}
+
+def dispatch printType(Tuple tuple, String name, boolean isC, String c){
+  var List<Type>tupleElements=tuple.elements.toList
+  var String typeName=findingFirst(tupleElements,0)
+  '''	private «typeName»[] «name»;'''
+}
+
+//find first one in tuple
 def String findingFirst(List<Type>tupleL, int i){
   if (tupleL.get(i).class.getSimpleName=="PrimitiveTypeImpl")
    return ((tupleL.get(i) as PrimitiveType).name)
@@ -578,6 +598,7 @@ def String findingFirst(List<Type>tupleL, int i){
   }
 }
 
+//Commons Attributes with parameters for annotations
 def dispatch printAttribute(Attribute a, String name, boolean isC, List<FieldParameter> pL)'''
   «printType(a.type,name, isC, pL)»
 '''
@@ -588,6 +609,7 @@ def dispatch printType(Type at2, String name, boolean isC, List<FieldParameter> 
 
 def dispatch printType(PrimitiveType primT, String name, boolean isC, List<FieldParameter> pL){
   var String fSchema
+  primT.name=primT.name.replace("Number","int")
   var String fieldSchema="@"
 //":\t{type: "+primT.name	
 	for(FieldParameter fp:pL){
@@ -596,7 +618,7 @@ def dispatch printType(PrimitiveType primT, String name, boolean isC, List<Field
 	}
 	'''
 	«fSchema»
-		private «primT.name»	«name»;
+		private «primT.name» «name»;
 	'''
 }
 
@@ -612,7 +634,7 @@ def dispatch printType(Tuple tuple, String name, boolean isC, List<FieldParamete
 	}
 	'''
 	«fSchema»
-		private «typeName»[]	«name»;
+		private «typeName»[] «name»;
 	'''
 }
 
@@ -623,13 +645,14 @@ def dispatch printType(Type at2, String name) {
 }
 
 def dispatch printType(PrimitiveType primT, String name){
-  '''private «primT.name»	«name»;'''
+  primT.name=primT.name.replace("Number","int")
+  '''private «primT.name» «name»;'''
 }
 
 def dispatch printType(Tuple tuple, String name){
   var List<Type>tupleElements=tuple.elements.toList
   var String typeName=findingFirst(tupleElements,0)
-  '''private «typeName»[]	«name»;'''
+  '''private «typeName»[] «name»;'''
 
 }
 
@@ -643,6 +666,7 @@ def dispatch printType(Type at2, String name, List<FieldParameter> pL) {
 
 def dispatch printType(PrimitiveType primT, String name, List<FieldParameter> pL){
   var String fSchema
+  primT.name=primT.name.replace("Number","int")
   var String fieldSchema="@"
 //":\t{type: "+primT.name	
 	for(FieldParameter fp:pL){
@@ -651,7 +675,7 @@ def dispatch printType(PrimitiveType primT, String name, List<FieldParameter> pL
 	}
 	'''
 	«fSchema»
-		private «primT.name»	«name»
+		private «primT.name» «name»;
 	'''
 }
 
@@ -667,10 +691,11 @@ def dispatch printType(Tuple tuple, String name, List<FieldParameter> pL){
 	}
 	'''
 	«fSchema»
-		private «typeName»[]	«name»;
+		private «typeName»[] «name»;
 	'''
 }
 
+/* 
 def dispatch printTypeAg(Type at2, String name,  List<FieldParameter> pL) {
   throw new UnsupportedOperationException("TODO: auto-generated method stub")
 }
@@ -694,6 +719,8 @@ def dispatch printTypeAg(PrimitiveType primT, String name,  List<FieldParameter>
 	}
 	'''«fSchema»},'''
 }
+* 
+*/
 
 def dispatch checkParameter(FieldParameter fp, String fieldS){
   throw new UnsupportedOperationException("TODO: auto-generated method stub")
@@ -848,13 +875,6 @@ def boolean analyzeTupleList(List<Tuple> tt,List<String> ts, Tuple t, String nam
     }
     return false
 }
-
-def getAggregatesCommons(List<Aggregate> ags, MongooseModel dslM)'''
-«FOR p:ags» 
- 
- «checkAggr(p,true,p.name+"Obj", dslM)»
-«ENDFOR»
-'''
 		
 def getAggregates(List<Aggregate> ags, Map<String, Aggregate> restListAg, MongooseModel dslM){
   var List<Aggregate> ags2= new ArrayList
@@ -932,6 +952,9 @@ def dispatch reviseAssociation(Aggregate ag, boolean r, String nameA) {
 }
 * 
 */
+
+/*
+
 def checkAggr(Aggregate aggr, boolean isR, String nameA, MongooseModel dslM){
   if(aggr.refTo!=null)
   {
@@ -1010,6 +1033,11 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, boolean isR, Mongoos
       } 
 '''
 }
+
+* 
+* 
+*/
+
 
 def lookFor(String nameF,EntityParameter ep, List<FieldParameter>paramsL){
   var List<Validator> vals=new ArrayList	
