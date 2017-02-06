@@ -43,8 +43,10 @@ class Movie{
 // add required for Movie1 entity version
   	@, enum: [drama, comedy, children]
   	private String genre;
-	criticisms:	{type:Moviecriticisms1, required:true},
-	prizes:	{type:Movieprizes1, required:true},
+	@Embedded
+	private ArrayList<Criticism> criticisms;
+	@Embedded
+	private ArrayList<Prize> prizes;
 
 // Not Common Properties 
 	private String[] genres;
@@ -313,7 +315,8 @@ class Movie{
 // add required for Movie3 entity version
   	@, enum: [drama, comedy, children]
   	private String genre;
-	prizes:	{type:Movieprizes3, required:true},
+	@Embedded
+	private ArrayList<Prize> prizes;
 
 // Not Common Properties 
 	private String[] genres;
@@ -448,7 +451,8 @@ class Movie{
 // add required for Movie4 entity version
   	@, enum: [drama, comedy, children]
   	private String genre;
-	criticisms:	{type:Moviecriticisms4, required:true},
+	@Embedded
+	private ArrayList<Criticism> criticisms;
 
 // Not Common Properties 
 	private String[] genres;

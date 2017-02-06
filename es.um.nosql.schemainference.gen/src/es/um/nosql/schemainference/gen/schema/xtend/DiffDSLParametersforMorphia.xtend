@@ -263,7 +263,13 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   	«FOR Entry<String, Aggregate> aggV : verAggs.entrySet()»
     «var String nameAg = aggV.getKey()»
     «var Aggregate Ag = aggV.getValue()»
-    	«Ag.name»:	{type:«nameAg», required:true},
+    	@Embedded
+    «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
+    «IF Ag.upperBound==-1»
+	«tab»private ArrayList<«eAg.name.toFirstUpper»> «Ag.name»;
+    «ELSE»
+    «tab»private «eAg.name.toFirstUpper» «Ag.name»;
+    «ENDIF»
   	«ENDFOR»
   	«primsL.clear»
   	«prims.clear»
