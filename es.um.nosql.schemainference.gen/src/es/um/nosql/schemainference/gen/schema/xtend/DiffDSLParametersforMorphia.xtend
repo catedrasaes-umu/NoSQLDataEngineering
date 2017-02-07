@@ -160,6 +160,7 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
  
 '''
   «var contVer2=0»
+  «var contVer3=0»
   «FOR entVer: ent.entityVersionProps»	
   «var List<Attribute> atV=new ArrayList»
   «var List<Reference> refV=new ArrayList»
@@ -223,14 +224,15 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   «prims.clear»
   «tuples.clear»
   «primsL.clear»
-  «tuplesL.clear»  
+  «tuplesL.clear»
   «refs.clear»
   «ags.clear»
   
+  //Annotations class
   @Entity(«ent.entity.name.toFirstLower»)
   class «ent.entity.name.toFirstUpper»{
   
-  // Common Properties	
+  	// Common Properties	
     «FOR ac: commonAttrs»
     «paramsL.clear»
     «IF areThereParams»«lookFor(ac.name,entM, paramsL)»«ENDIF»
@@ -239,15 +241,22 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
     «ENDIF»
    	«ENDFOR»
   	«FOR rc: commonRefs»
-  	 «printRef(rc,true)»
+  	 «printRef(rc)»
     «ENDFOR»
   	«FOR Entry<String, Aggregate> aA : finalCommonAggrs.entrySet()»
     «var String nameAg = aA.getKey()»
     «var Aggregate Ag = aA.getValue()»
-    	«Ag.name»:	«nameAg»,
+    «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
+    	@Embedded
+    «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
+    «IF Ag.upperBound==-1»
+	«tab»private ArrayList<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly»;
+    «ELSE»
+    «tab»private «eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly»;
+    «ENDIF»
   	«ENDFOR»
     
-  // add required for «ent.entity.name.toFirstUpper»«entVer.entityVersion.versionId» entity version
+  	// add required for «ent.entity.name.toFirstUpper»«entVer.entityVersion.versionId» entity version
     «var List<Attribute> restAtts=new ArrayList»
     «removeAtts(atV,notCommonAttrs,restAtts)»
     «FOR ac: atV»
@@ -258,17 +267,18 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
     «ENDIF»
    	«ENDFOR»
     «FOR r2: refV»
-      «printRef(r2,true)»
+      «printRef(r2)»
     «ENDFOR»
   	«FOR Entry<String, Aggregate> aggV : verAggs.entrySet()»
     «var String nameAg = aggV.getKey()»
     «var Aggregate Ag = aggV.getValue()»
+    «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
     	@Embedded
     «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
     «IF Ag.upperBound==-1»
-	«tab»private ArrayList<«eAg.name.toFirstUpper»> «Ag.name»;
+	«tab»private ArrayList<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly»;
     «ELSE»
-    «tab»private «eAg.name.toFirstUpper» «Ag.name»;
+    «tab»private «eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly»;
     «ENDIF»
   	«ENDFOR»
   	«primsL.clear»
@@ -290,72 +300,128 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   	«FOR Entry<String, Aggregate> aA : remainingAgs.entrySet()»
     «var String nameAg = aA.getKey()»
     «var Aggregate Ag = aA.getValue()»
-    	«Ag.name»:	«nameAg»,
+    «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
+    	@Embedded
+    «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
+    «IF Ag.upperBound==-1»
+	«tab»private List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly»;
+    «ELSE»
+    «tab»private «eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly»;
+    «ENDIF»
   	«ENDFOR»
 
   public «ent.entity.name.toFirstUpper»{
   }
 
   //Root Entity Code
-  class «ent.entity.name.toFirstUpper»{
   
-  // Common Properties	
-    «FOR ac: commonAttrs»
-    «printAttribute(ac,ac.name,true,"code")»
-   	«ENDFOR»
-  	«FOR rc: commonRefs»
-  	 «printRef(rc,true)»
-    «ENDFOR»
-  	«FOR Entry<String, Aggregate> aA : finalCommonAggrs.entrySet()»
-    «var String nameAg = aA.getKey()»
-    «var Aggregate Ag = aA.getValue()»
-    	«Ag.name»:	«nameAg»,
-  	«ENDFOR»
+  //Common Properties	
+  «FOR ac: commonAttrs»
+  «printAttribute(ac,ac.name,true,"code")»
+  «ENDFOR»
+  «FOR rc: commonRefs»
+  «printRef(rc,"code")»
+  «ENDFOR»
+  «FOR Entry<String, Aggregate> aA : finalCommonAggrs.entrySet()»
+  «var String nameAg = aA.getKey()»
+  «var Aggregate Ag = aA.getValue()»
+  «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
+  «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
+  «IF Ag.upperBound==-1»
+  public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
+	return «Ag.name»«numberOnly»;
+  }
+	  
+  public void set«Ag.name.toFirstUpper»«numberOnly»(List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly») {
+    this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  }
+  «ELSE»
+  public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
+	return «Ag.name»«numberOnly»;
+  }
+	  
+  public void set«Ag.name.toFirstUpper»«numberOnly»(«eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly») {
+    this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  }
+  «ENDIF»
+  «ENDFOR»
     
   // add required for «ent.entity.name.toFirstUpper»«entVer.entityVersion.versionId» entity version
-    «FOR ac: atV»
-    «paramsL.clear»
-    «IF areThereParams»«lookFor(ac.name,entM, paramsL)»«ENDIF»
-    «IF !paramsL.empty»	«printAttribute(ac,ac.name, true, paramsL)»
-    «ELSE»«printAttribute(ac,ac.name,true)»
-    «ENDIF»
-   	«ENDFOR»
-    «FOR r2: refV»
-      «printRef(r2,true)»
-    «ENDFOR»
-  	«FOR Entry<String, Aggregate> aggV : verAggs.entrySet()»
-    «var String nameAg = aggV.getKey()»
-    «var Aggregate Ag = aggV.getValue()»
-    	«Ag.name»:	{type:«nameAg», required:true},
-  	«ENDFOR»
-  	«primsL.clear»
-  	«prims.clear»
+  «FOR ac: atV»
+  «printAttribute(ac,ac.name,true,"code")»
+  «ENDFOR»
+  «FOR r2: refV»
+  «printRef(r2,"code")»
+  «ENDFOR»
+  «FOR Entry<String, Aggregate> aggV : verAggs.entrySet()»
+  «var String nameAg = aggV.getKey()»
+  «var Aggregate Ag = aggV.getValue()»
+  «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
+  «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
+  «IF Ag.upperBound==-1»
+  public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
+	return «Ag.name»«numberOnly»;
+  }
+	  
+  public void set«Ag.name.toFirstUpper»«numberOnly»(List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly») {
+	this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  }
+  «ELSE»
+  public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
+	return «Ag.name»«numberOnly»;
+  }
+	  
+  public void set«Ag.name.toFirstUpper»«numberOnly»(«eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly») {
+	this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  }
+  «ENDIF»
+  «ENDFOR»
+  «primsL.clear»
+  «prims.clear»
 
   // Not Common Properties 
-    «FOR at: restAtts»
-      «analyzeAttribute(at.type,at.name,primsL, tuplesL,prims,tuples)»
-    «ENDFOR»
-  	«FOR i:0..<primsL.size»
-  	«printType(primsL.get(i),prims.get(i))»
-  	«ENDFOR»
-  	«FOR j:0..<tuplesL.size»
-  	«printType(tuplesL.get(j),tuples.get(j))»
-  	«ENDFOR»
-    «FOR r2: notCommonRefs»
-      «analyzeReference(r2,r2.name,refs)»
-    «ENDFOR»
-  	«FOR Entry<String, Aggregate> aA : remainingAgs.entrySet()»
-    «var String nameAg = aA.getKey()»
-    «var Aggregate Ag = aA.getValue()»
-    	«Ag.name»:	«nameAg»,
-  	«ENDFOR»
+  «FOR at: restAtts»
+  «analyzeAttribute(at.type,at.name,primsL, tuplesL,prims,tuples)»
+  «ENDFOR»
+  «FOR i:0..<primsL.size»
+  «printType(primsL.get(i),prims.get(i),"code")»
+  «ENDFOR»
+  «FOR j:0..<tuplesL.size»
+  «printType(tuplesL.get(j),tuples.get(j),"code")»
+  «ENDFOR»
+  «FOR r2: notCommonRefs»
+  «analyzeReference(r2,r2.name,refs,"code")»
+  «ENDFOR»
+  «FOR Entry<String, Aggregate> aA : remainingAgs.entrySet()»
+  «var String nameAg = aA.getKey()»
+  «var Aggregate Ag = aA.getValue()»
+  «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
+  «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
+  «IF Ag.upperBound==-1»
+  public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
+	return «Ag.name»«numberOnly»;
   }
-    
+	  
+  public void set«Ag.name.toFirstUpper»«numberOnly»(List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly») {
+	this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  }
+  «ELSE»
+  public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
+	return «Ag.name»«numberOnly»;
+  }
+	  
+  public void set«Ag.name.toFirstUpper»«numberOnly»(«eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly») {
+	this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  }
+  «ENDIF»
+  
+  «ENDFOR»
+  }//end Class
   
   
   «ELSE»
   //Embedded Entity
-  //File «ent.entity.name.toFirstUpper»
+  //File «ent.entity.name.toFirstUpper»«contVer3+=1».java
   package «morphiaPackage»;
   import org.mongodb.morphia.annotations.Embedded;
   «getAggregates(commonAggrs, finalCommonAggrs,dslM)»
@@ -381,13 +447,15 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   «prims.clear»
   «tuples.clear»
   «primsL.clear»
-  «tuplesL.clear»  
+  «tuplesL.clear»
   «refs.clear»
   «ags.clear»
-  @Embedded
-  public class «ent.entity.name.toFirstUpper» {
   
-  // Common Properties	
+  //Annotations Embedded Class
+  @Embedded
+  class «ent.entity.name.toFirstUpper»«contVer3»{
+  
+  	// Common Properties	
     «FOR ac: commonAttrs»
     «paramsL.clear»
     «IF areThereParams»«lookFor(ac.name,entM, paramsL)»«ENDIF»
@@ -396,15 +464,22 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
     «ENDIF»
    	«ENDFOR»
   	«FOR rc: commonRefs»
-  	 «printRef(rc,true)»
+  	 «printRef(rc)»
     «ENDFOR»
   	«FOR Entry<String, Aggregate> aA : finalCommonAggrs.entrySet()»
     «var String nameAg = aA.getKey()»
     «var Aggregate Ag = aA.getValue()»
-    	«Ag.name»:	«nameAg»,
+    «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
+    	@Embedded
+    «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
+    «IF Ag.upperBound==-1»
+	«tab»private ArrayList<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly»;
+    «ELSE»
+    «tab»private «eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly»;
+    «ENDIF»
   	«ENDFOR»
     
-  // add required for «ent.entity.name.toFirstUpper»«entVer.entityVersion.versionId» entity version
+  	// add required for «ent.entity.name.toFirstUpper»«entVer.entityVersion.versionId» entity version
     «var List<Attribute> restAtts=new ArrayList»
     «removeAtts(atV,notCommonAttrs,restAtts)»
     «FOR ac: atV»
@@ -415,12 +490,19 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
     «ENDIF»
    	«ENDFOR»
     «FOR r2: refV»
-      «printRef(r2,true)»
+      «printRef(r2)»
     «ENDFOR»
   	«FOR Entry<String, Aggregate> aggV : verAggs.entrySet()»
     «var String nameAg = aggV.getKey()»
     «var Aggregate Ag = aggV.getValue()»
-    	«Ag.name»:	{type:«nameAg», required:true},
+    «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
+    	@Embedded
+    «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
+    «IF Ag.upperBound==-1»
+	«tab»private ArrayList<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly»;
+    «ELSE»
+    «tab»private «eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly»;
+    «ENDIF»
   	«ENDFOR»
   	«primsL.clear»
   	«prims.clear»
@@ -441,11 +523,123 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   	«FOR Entry<String, Aggregate> aA : remainingAgs.entrySet()»
     «var String nameAg = aA.getKey()»
     «var Aggregate Ag = aA.getValue()»
-    	«Ag.name»:	«nameAg»,
+    «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
+    	@Embedded
+    «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
+    «IF Ag.upperBound==-1»
+	«tab»private List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly»;
+    «ELSE»
+    «tab»private «eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly»;
+    «ENDIF»
   	«ENDFOR»
-  },{collection:'«ent.entity.name.toFirstLower»'});
+
+  public «ent.entity.name.toFirstUpper»{
+  }
+
+  //Embedded Entity Code
   
-  var «ent.entity.name.toFirstUpper» = mongoose.model('«ent.entity.name.toFirstUpper»',«ent.entity.name.toFirstLower»Schema);
+  //Common Properties	
+  «FOR ac: commonAttrs»
+  «printAttribute(ac,ac.name,true,"code")»
+  «ENDFOR»
+  «FOR rc: commonRefs»
+  «printRef(rc,"code")»
+  «ENDFOR»
+  «FOR Entry<String, Aggregate> aA : finalCommonAggrs.entrySet()»
+  «var String nameAg = aA.getKey()»
+  «var Aggregate Ag = aA.getValue()»
+  «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
+  «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
+  «IF Ag.upperBound==-1»
+  public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
+	return «Ag.name»«numberOnly»;
+  }
+	  
+  public void set«Ag.name.toFirstUpper»«numberOnly»(List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly») {
+    this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  }
+  «ELSE»
+  public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
+	return «Ag.name»«numberOnly»;
+  }
+	  
+  public void set«Ag.name.toFirstUpper»«numberOnly»(«eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly») {
+    this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  }
+  «ENDIF»
+  «ENDFOR»
+    
+  // add required for «ent.entity.name.toFirstUpper»«entVer.entityVersion.versionId» entity version
+  «FOR ac: atV»
+  «printAttribute(ac,ac.name,true,"code")»
+  «ENDFOR»
+  «FOR r2: refV»
+  «printRef(r2,"code")»
+  «ENDFOR»
+  «FOR Entry<String, Aggregate> aggV : verAggs.entrySet()»
+  «var String nameAg = aggV.getKey()»
+  «var Aggregate Ag = aggV.getValue()»
+  «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
+  «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
+  «IF Ag.upperBound==-1»
+  public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
+	return «Ag.name»«numberOnly»;
+  }
+	  
+  public void set«Ag.name.toFirstUpper»«numberOnly»(List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly») {
+	this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  }
+  «ELSE»
+  public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
+	return «Ag.name»«numberOnly»;
+  }
+	  
+  public void set«Ag.name.toFirstUpper»«numberOnly»(«eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly») {
+	this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  }
+  «ENDIF»
+  «ENDFOR»
+  «primsL.clear»
+  «prims.clear»
+
+  // Not Common Properties 
+  «FOR at: restAtts»
+  «analyzeAttribute(at.type,at.name,primsL, tuplesL,prims,tuples)»
+  «ENDFOR»
+  «FOR i:0..<primsL.size»
+  «printType(primsL.get(i),prims.get(i),"code")»
+  «ENDFOR»
+  «FOR j:0..<tuplesL.size»
+  «printType(tuplesL.get(j),tuples.get(j),"code")»
+  «ENDFOR»
+  «FOR r2: notCommonRefs»
+  «analyzeReference(r2,r2.name,refs,"code")»
+  «ENDFOR»
+  «FOR Entry<String, Aggregate> aA : remainingAgs.entrySet()»
+  «var String nameAg = aA.getKey()»
+  «var Aggregate Ag = aA.getValue()»
+  «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
+  «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
+  «IF Ag.upperBound==-1»
+  public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
+	return «Ag.name»«numberOnly»;
+  }
+	  
+  public void set«Ag.name.toFirstUpper»«numberOnly»(List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly») {
+	this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  }
+  «ELSE»
+  public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
+	return «Ag.name»«numberOnly»;
+  }
+	  
+  public void set«Ag.name.toFirstUpper»«numberOnly»(«eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly») {
+	this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  }
+  «ENDIF»
+  
+  «ENDFOR»
+  }//end Class
   
   
   «ENDIF»
@@ -544,13 +738,39 @@ var commonPropsAux=ent.commonProps
   }
 }
 
-def dispatch printRef(Reference r, boolean isC){
-'''«r.name»«IF r.upperBound==-1»:	{type: {}, required: true, ref: «r.refTo.name»},
-«ELSE»:	{type: String, required: true, ref: «r.refTo.name»},«ENDIF»'''
-}
-
+//Reference for annotations
 def dispatch printRef(Reference r){
-  '''	«r.name»«IF r.upperBound==-1»:	{type:{}, ref: «r.refTo.name»}«ELSE»:	{type:String, ref: «r.refTo.name»}«ENDIF»'''
+'''
+  @Reference
+  «IF r.upperBound==-1»
+  private List<«r.refTo.name»> «r.name»;
+  «ELSE»
+  «r.name=r.name.replace("_id","").replace("id","")»
+  private «r.refTo.name» «r.name»;
+  «ENDIF»
+'''
+}
+//Reference for methods
+def dispatch printRef(Reference r, String c){
+'''
+  «IF r.upperBound==-1»
+  public List<«r.refTo.name»> get«r.name.toFirstUpper»() {
+    return «r.name»;
+  }
+  
+  public void set«r.name.toFirstUpper»(List<«r.refTo.name»> «r.name») {
+    this.«r.name» = «r.name»;
+  }
+  «ELSE»
+  public List<«r.refTo.name»> get«r.name.toFirstUpper»() {
+    return «r.name»;
+  }
+    
+  public void set«r.name.toFirstUpper»(«r.refTo.name» «r.name») {
+    this.«r.name» = «r.name»;
+  }
+  «ENDIF»  
+'''
 }
 
 //Commons Attributes for annotations
@@ -589,8 +809,8 @@ def dispatch printType(PrimitiveType primT, String name, boolean isC, String c){
     return «name»;
   }
   
-  public void set«name.toFirstUpper»(final «primT.name» «name») {
-   this.«name» = «name»;
+  public void set«name.toFirstUpper»(«primT.name» «name») {
+    this.«name» = «name»;
   }
 '''
 }
@@ -603,8 +823,8 @@ def dispatch printType(Tuple tuple, String name, boolean isC, String c){
     return «name»;
   }
   
-  public void set«name.toFirstUpper»(final «typeName»[] «name») {
-   this.«name» = «name»;
+  public void set«name.toFirstUpper»(«typeName»[] «name») {
+    this.«name» = «name»;
   }
 '''
 }
@@ -660,7 +880,7 @@ def dispatch printType(Tuple tuple, String name, boolean isC, List<FieldParamete
 }
 
 
-//ojo ojo ojo
+//not commons for annotations
 def dispatch printType(Type at2, String name) {
   throw new UnsupportedOperationException("TODO: auto-generated method stub")
 }
@@ -675,6 +895,38 @@ def dispatch printType(Tuple tuple, String name){
   var String typeName=findingFirst(tupleElements,0)
   '''private «typeName»[] «name»;'''
 
+}
+
+//not commons for methods
+def dispatch printType(Type at2, String name, String c) {
+  throw new UnsupportedOperationException("TODO: auto-generated method stub")
+}
+
+def dispatch printType(PrimitiveType primT, String name, String c){
+  primT.name=primT.name.replace("Number","int")
+  '''
+  public «primT.name» get«name.toFirstUpper»() {
+    return «name»;
+  }
+  
+  public void set«name.toFirstUpper»(«primT.name» «name») {
+    this.«name» = «name»;
+  }
+  '''
+}
+
+def dispatch printType(Tuple tuple, String name, String c){
+  var List<Type>tupleElements=tuple.elements.toList
+  var String typeName=findingFirst(tupleElements,0)
+  '''
+  public «typeName»[] get«name.toFirstUpper»() {
+    return «name»;
+  }
+  
+  public void set«name.toFirstUpper»(«typeName»[] «name») {
+    this.«name» = «name»;
+  }
+  '''
 }
 
 def dispatch printAttribute(Attribute a, String name, List<FieldParameter> pL)'''
@@ -826,7 +1078,7 @@ def boolean reviseAggregList(List<Aggregate> ag, String name, Aggregate a) {
      return false
 }
 
-//is repeated reference?	
+//check reference for annotations
 def analyzeReference(Reference ref, String name, List<Reference> RfL) {
   var boolean rRef
   rRef=analyzeRefList(RfL,name,ref)
@@ -837,6 +1089,19 @@ def analyzeReference(Reference ref, String name, List<Reference> RfL) {
       //checkRef(ref)
     }
 }
+
+//check reference for code
+def analyzeReference(Reference ref, String name, List<Reference> RfL, String c) {
+  var boolean rRef
+  rRef=analyzeRefList(RfL,name,ref)
+  if (!rRef)
+    {
+      RfL.add(RfL.size,ref)
+      '''«printRef(ref,c)»'''
+      //checkRef(ref)
+    }
+}
+
 
 def boolean analyzeRefList(List<Reference> rL, String name, Reference r) {
  for (i : 0 ..< rL.size) {
