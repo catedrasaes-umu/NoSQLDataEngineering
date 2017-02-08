@@ -25,17 +25,12 @@ public class StreamManager
 	{
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-		stream.forEach(new Consumer<JsonObject>()
-				{
-					@Override
-					public void accept(JsonObject object)
-					{
-						System.out.println(gson.toJson(object));
+		stream.forEach(object-> {
+			System.out.println(gson.toJson(object));
 //						JsonParser jsonParser = new JsonParser();
 //						JsonObject jo = (JsonObject)jsonParser.parse(object.get("key").getAsString());
 //						System.out.println(gson.toJson(jo));
-					}
-				});
+		});
 //		System.out.println(stream);
 	}
 }
