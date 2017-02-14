@@ -1,33 +1,42 @@
 function(doc)
 {
+	function flatten_schema_str(obj, interesting_keys)
+	{
+		return JSON.stringify(flatten_schema(obj,interesting_keys));
+	}
+	
     function flatten_schema (obj , interesting_keys)
     {
-        var retschema = '';
+        var retschema = null;
 
         function _search_string_in_array(str, strArray) {
-            for (var j=0; j<strArray.length; j++) {
-                if (strArray[j].match(str)) return j;
-            }
-            return -1;
+        	return !strArray.every(function (s) {
+        		return !s.toLowerCase().match(str);
+        	});
         }
 
-        function _complex_obj(obj, output_keys)
+        function _complex_obj(obj, asObject)
         {
-            var _retschema = '';
+            var _retschema;
+            if (asObject)
+            	_retschema = {};
+            else
+            	_retschema = [];
+            
             Object.keys(obj).sort().forEach(function (key) {
                 //if (!obj.hasOwnProperty(key))
                 //    return;
 
-                if (output_keys)
+                if (asObject)
                 {
-                    _retschema += key + ':';
-
                     if ((typeof interesting_keys !== 'undefined')
-                        && (-1 !== _search_string_in_array(key, interesting_keys)))
-                        _retschema += '"' + escape(obj[key]) + '"';
+                        && _search_string_in_array(key, interesting_keys))
+                        _retschema[key] = obj[key];
+                    else
+                    	_retschema[key] = flatten_schema(obj[key]);
                 }
-
-                _retschema += flatten_schema(obj[key]);
+                else
+                	_retschema.push(flatten_schema(obj[key]));
             });
 
             return _retschema;
@@ -37,41 +46,47 @@ function(doc)
         if (isArray(obj))
         {
         	if (obj.length == 0)
-        		retschema += "[]";
+        		retschema = [];
         	else
         	{
         		// See if we can produce just one array object with one inside type (homogeneous)
         		var schemas = obj.map(function (e) { return flatten_schema(e, interesting_keys); });
 
-        		if (schemas.every(function (e) { return e == schemas[0]; }))
-        			retschema += '[' + schemas[0] + ']';
+        		var str_schema_0 = JSON.stringify(schemas[0]);
+        		if (obj.length == 1 || schemas.every(function (e) { return JSON.stringify(e) == str_schema_0; }))
+        			retschema = [ schemas[0] ];
         		else
-        			retschema += '[' + schemas.join('') + ']';
+        			retschema = schemas;
         	}
         } // null
         else if (obj === null)
         {
-            retschema += '0';
+            retschema = null;
         } // Date
         else if (obj instanceof Date)
         {
-            retschema += 'd';
+            retschema = new Date();
         }// Object
-        else if ((typeof obj) === 'object')
+        else if ((typeof obj) == 'object')
         {
-            retschema += '{' + _complex_obj(obj, true) + '}';
+            retschema = _complex_obj(obj, true);
         }
         // Other
-        else
+        else if ((typeof obj) == 'number')
         {
-            // number, string, boolean
-            retschema += (typeof obj)[0];
+        	retschema = 0;
+        } else if ((typeof obj == 'boolean'))
+        {
+        	retschema = true;
+      	} else if ((typeof obj == 'string'))
+            retschema = 's';
         }
 
         return retschema;
     }
 
-    var schema = flatten_schema(doc,['type']);
+
+    var schema = flatten_schema_str(doc, ['type']);
 
     emit(schema, {schema: schema, count: 1});
 }
