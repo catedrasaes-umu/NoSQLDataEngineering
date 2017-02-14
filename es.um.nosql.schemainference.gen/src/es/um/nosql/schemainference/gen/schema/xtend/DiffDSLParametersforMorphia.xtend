@@ -327,6 +327,7 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   «var Aggregate Ag = aA.getValue()»
   «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
   «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
+
   «IF Ag.upperBound==-1»
   public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
 	return «Ag.name»«numberOnly»;
@@ -339,13 +340,13 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
 	return «Ag.name»«numberOnly»;
   }
-	  
+    
   public void set«Ag.name.toFirstUpper»«numberOnly»(«eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly») {
     this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
   }
   «ENDIF»
   «ENDFOR»
-    
+	
   // add required for «ent.entity.name.toFirstUpper»«entVer.entityVersion.versionId» entity version
   «FOR ac: atV»
   «printAttribute(ac,ac.name,true,"code")»
@@ -358,22 +359,22 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   «var Aggregate Ag = aggV.getValue()»
   «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
   «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
-  «IF Ag.upperBound==-1»
-  public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
-	return «Ag.name»«numberOnly»;
-  }
+
+  «IF Ag.upperBound==-1»	public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
+	  return «Ag.name»«numberOnly»;
+  	}
 	  
-  public void set«Ag.name.toFirstUpper»«numberOnly»(List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly») {
-	this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
-  }
+  	public void set«Ag.name.toFirstUpper»«numberOnly»(List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly») {
+	  this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  	}
   «ELSE»
-  public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
-	return «Ag.name»«numberOnly»;
-  }
+  	public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
+	  return «Ag.name»«numberOnly»;
+  	}
 	  
-  public void set«Ag.name.toFirstUpper»«numberOnly»(«eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly») {
-	this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
-  }
+  	public void set«Ag.name.toFirstUpper»«numberOnly»(«eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly») {
+	  this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  	}
   «ENDIF»
   «ENDFOR»
   «primsL.clear»
@@ -550,22 +551,20 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   «var Aggregate Ag = aA.getValue()»
   «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
   «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
-  «IF Ag.upperBound==-1»
-  public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
+  «IF Ag.upperBound==-1»	public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
 	return «Ag.name»«numberOnly»;
-  }
+  	}
 	  
-  public void set«Ag.name.toFirstUpper»«numberOnly»(List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly») {
-    this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
-  }
-  «ELSE»
-  public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
-	return «Ag.name»«numberOnly»;
-  }
+  	public void set«Ag.name.toFirstUpper»«numberOnly»(List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly») {
+      this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  	}
+  «ELSE»	public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
+	  return «Ag.name»«numberOnly»;
+	}
 	  
-  public void set«Ag.name.toFirstUpper»«numberOnly»(«eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly») {
-    this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
-  }
+  	public void set«Ag.name.toFirstUpper»«numberOnly»(«eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly») {
+      this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  	}
   «ENDIF»
   «ENDFOR»
     
@@ -581,22 +580,20 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   «var Aggregate Ag = aggV.getValue()»
   «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
   «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
-  «IF Ag.upperBound==-1»
-  public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
-	return «Ag.name»«numberOnly»;
-  }
+  «IF Ag.upperBound==-1»  public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
+	  return «Ag.name»«numberOnly»;
+  	}
 	  
-  public void set«Ag.name.toFirstUpper»«numberOnly»(List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly») {
-	this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
-  }
-  «ELSE»
-  public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
-	return «Ag.name»«numberOnly»;
-  }
+  	public void set«Ag.name.toFirstUpper»«numberOnly»(List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly») {
+	  this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  	}
+  «ELSE»	public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
+	  return «Ag.name»«numberOnly»;
+  	}
 	  
-  public void set«Ag.name.toFirstUpper»«numberOnly»(«eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly») {
-	this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
-  }
+  	public void set«Ag.name.toFirstUpper»«numberOnly»(«eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly») {
+	  this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  	}
   «ENDIF»
   «ENDFOR»
   «primsL.clear»
@@ -620,18 +617,16 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM, boolean root){
   «var Aggregate Ag = aA.getValue()»
   «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
   «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
-  «IF Ag.upperBound==-1»
-  public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
+  «IF Ag.upperBound==-1»	public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
 	return «Ag.name»«numberOnly»;
-  }
+  	}
 	  
-  public void set«Ag.name.toFirstUpper»«numberOnly»(List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly») {
-	this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
-  }
-  «ELSE»
-  public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
-	return «Ag.name»«numberOnly»;
-  }
+  	public void set«Ag.name.toFirstUpper»«numberOnly»(List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly») {
+	  this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
+  	}
+  «ELSE»	public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
+	  return «Ag.name»«numberOnly»;
+  	}
 	  
   public void set«Ag.name.toFirstUpper»«numberOnly»(«eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly») {
 	this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
@@ -739,7 +734,7 @@ var commonPropsAux=ent.commonProps
 }
 
 //Reference for annotations
-def dispatch printRef(Reference r){
+def dispatch printRef(Reference r)
 '''
   @Reference
   «IF r.upperBound==-1»
@@ -749,29 +744,26 @@ def dispatch printRef(Reference r){
   private «r.refTo.name» «r.name»;
   «ENDIF»
 '''
-}
+
 //Reference for methods
-def dispatch printRef(Reference r, String c){
-'''
-  «IF r.upperBound==-1»
-  public List<«r.refTo.name»> get«r.name.toFirstUpper»() {
-    return «r.name»;
-  }
+def dispatch printRef(Reference r, String c)'''
+ «IF r.upperBound==-1»	public List<«r.refTo.name»> get«r.name.toFirstUpper»(){
+      return «r.name»;
+  	}
   
-  public void set«r.name.toFirstUpper»(List<«r.refTo.name»> «r.name») {
-    this.«r.name» = «r.name»;
-  }
-  «ELSE»
-  public List<«r.refTo.name»> get«r.name.toFirstUpper»() {
-    return «r.name»;
-  }
+  	public void set«r.name.toFirstUpper»(List<«r.refTo.name»> «r.name»){
+      this.«r.name» = «r.name»;
+  	}
+  «ELSE»	public List<«r.refTo.name»> get«r.name.toFirstUpper»(){
+      return «r.name»;
+  	}
     
-  public void set«r.name.toFirstUpper»(«r.refTo.name» «r.name») {
-    this.«r.name» = «r.name»;
-  }
+  	public void set«r.name.toFirstUpper»(«r.refTo.name» «r.name»){
+      this.«r.name» = «r.name»;
+  	}
   «ENDIF»  
 '''
-}
+
 
 //Commons Attributes for annotations
 def dispatch printAttribute(Attribute a, String name, boolean isC)'''
@@ -804,28 +796,26 @@ def dispatch printType(Type at2, String name, boolean isC, String c) {
 
 def dispatch printType(PrimitiveType primT, String name, boolean isC, String c){
   primT.name=primT.name.replace("Number","int")
-'''
-  public «primT.name» get«name.toFirstUpper»() {
-    return «name»;
-  }
+'''	public «primT.name» get«name.toFirstUpper»(){
+      return «name»;
+  	}
   
-  public void set«name.toFirstUpper»(«primT.name» «name») {
-    this.«name» = «name»;
-  }
+  	public void set«name.toFirstUpper»(«primT.name» «name»){
+      this.«name» = «name»;
+  	}
 '''
 }
 
 def dispatch printType(Tuple tuple, String name, boolean isC, String c){
   var List<Type>tupleElements=tuple.elements.toList
   var String typeName=findingFirst(tupleElements,0)
-'''
-  public «typeName»[] get«name.toFirstUpper»() {
-    return «name»;
-  }
+'''		public «typeName»[] get«name.toFirstUpper»(){
+      return «name»;
+  	}
   
-  public void set«name.toFirstUpper»(«typeName»[] «name») {
-    this.«name» = «name»;
-  }
+  	public void set«name.toFirstUpper»(«typeName»[] «name»){
+      this.«name» = «name»;
+  	}
 '''
 }
 
@@ -904,28 +894,26 @@ def dispatch printType(Type at2, String name, String c) {
 
 def dispatch printType(PrimitiveType primT, String name, String c){
   primT.name=primT.name.replace("Number","int")
-  '''
-  public «primT.name» get«name.toFirstUpper»() {
-    return «name»;
-  }
+  '''	public «primT.name» get«name.toFirstUpper»(){
+      return «name»;
+  	}
   
-  public void set«name.toFirstUpper»(«primT.name» «name») {
-    this.«name» = «name»;
-  }
+  	public void set«name.toFirstUpper»(«primT.name» «name»){
+      this.«name» = «name»;
+  	}
   '''
 }
 
 def dispatch printType(Tuple tuple, String name, String c){
   var List<Type>tupleElements=tuple.elements.toList
   var String typeName=findingFirst(tupleElements,0)
-  '''
-  public «typeName»[] get«name.toFirstUpper»() {
-    return «name»;
-  }
+  '''	public «typeName»[] get«name.toFirstUpper»(){
+      return «name»;
+  	}
   
-  public void set«name.toFirstUpper»(«typeName»[] «name») {
-    this.«name» = «name»;
-  }
+  	public void set«name.toFirstUpper»(«typeName»[] «name»){
+      this.«name» = «name»;
+  	}
   '''
 }
 

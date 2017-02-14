@@ -37,19 +37,19 @@
         ],
         "criticisms": [
           {
-           "journalist": "Roger Ebert",
-           "media": {
-                     "name": "Chicago Sun-Times",
-                     "url": "http://chicago.suntimes.com/"
-                    },
+            "journalist": "Roger Ebert",
+            "media": {
+              "name": "Chicago Sun-Times",
+              "url": "http://chicago.suntimes.com/"
+            },
            "color": "green"
           },
           {
-           "journalist": "Pablo Kurt",
-           "media": {
-           			 "name": "FILMAFFINITY",
-                     "url": "http://www.filmaffinity.com/es/main.html"
-                    },
+            "journalist": "Pablo Kurt",
+            "media": {
+              "name": "FILMAFFINITY",
+              "url": "http://www.filmaffinity.com/es/main.html"
+            },
            "color": "green"
           },
           {
@@ -81,7 +81,7 @@
             "name": "Best Director"
           },
           {
-            "year": 1986,
+	    "year": 1986,
             "event": "Festival Cannes",
             "name": "Best director"
           }
@@ -91,19 +91,23 @@
         "_id": "4",
         "type": "movie",
         "title": "Truth",
-        "year": 2014, 
+        "year": 2015, 
         "director_id": "345679",
         "genre": "Drama",
+	"rating":{
+	  "score": 6.8,
+	  "voters": 12682
+	},
         "criticisms": [
           {
-           "journalist": "Jordi Costa",
-           "media": "El pais",
-           "color": "red"
+             "journalist": "Jordi Costa",
+             "media": "El pais",
+             "color": "red"
           },
           {
-            "journalist": "Lou Lumenick",
-            "media": "New York Post",
-            "color": "green"
+             "journalist": "Lou Lumenick",
+             "media": "New York Post",
+             "color": "green"
           }
         ]
       },
