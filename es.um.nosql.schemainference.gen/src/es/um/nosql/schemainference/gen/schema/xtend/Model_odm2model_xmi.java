@@ -18,8 +18,8 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 
 import com.google.inject.Injector;
 
-import es.um.nosql.schemainference.dsl4mongoose2.Dsl4mongoosePackage;
-import es.um.nosql.schemainference.dsl4mongoose2.MongooseModel;
+import es.um.nosql.schemainference.dsl4mongoose.Dsl4mongoosePackage;
+import es.um.nosql.schemainference.dsl4mongoose.MongooseModel;
 import es.um.nosql.schemainference.dslparameter.ODMParameterStandaloneSetupGenerated;
 
 

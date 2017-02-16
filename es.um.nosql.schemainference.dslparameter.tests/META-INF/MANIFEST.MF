@@ -9,5 +9,14 @@ Require-Bundle: es.um.nosql.schemainference.dslparameter,
  es.um.nosql.schemainference.dsl4mongoose,
  org.junit;bundle-version="4.7.0",
  org.eclipse.xtext.junit4,
- org.eclipse.xtext.xbase.junit
+ org.eclipse.xtext.xbase.junit,
+ org.eclipse.xtext.xbase.lib
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: es.um.nosql.schemainference.dslparameter.tests
+Import-Package: org.hamcrest.core,
+ org.junit;version="4.5.0",
+ org.junit.runners.model;version="4.5.0",
+ org.junit.runner;version="4.5.0",
+ org.junit.runners;version="4.5.0",
+ org.junit.runner.manipulation;version="4.5.0",
+ org.junit.runner.notification;version="4.5.0"
