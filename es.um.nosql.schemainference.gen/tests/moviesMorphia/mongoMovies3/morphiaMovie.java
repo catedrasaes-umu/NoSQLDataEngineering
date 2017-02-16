@@ -38,7 +38,6 @@ class Movie{
 	@Indexed (IndexDirection.
 	private int year;
 	private String type;
-
 	@Reference
 	private Director director;
 
@@ -61,6 +60,16 @@ class Movie{
 public Movie{
 }
 
+public Movie(String title,String _id,int year,String type,Director director,String genre,String[] genres,String[] writers,){
+	this.title=title;
+	this._id=_id;
+	this.year=year;
+	this.type=type;
+	this.director=director;
+	this.genre=genre;
+	this.genres=genres;
+	this.writers=writers;
+}
 //Root Entity Code
 //Common Properties
 
@@ -233,7 +242,6 @@ class Movie{
 	@Indexed (IndexDirection.
 	private int year;
 	private String type;
-
 	@Reference
 	private Director director;
 
@@ -256,6 +264,16 @@ class Movie{
 public Movie{
 }
 
+public Movie(String title,String _id,int year,String type,Director director,String genre,String[] genres,String[] writers,){
+	this.title=title;
+	this._id=_id;
+	this.year=year;
+	this.type=type;
+	this.director=director;
+	this.genre=genre;
+	this.genres=genres;
+	this.writers=writers;
+}
 //Root Entity Code
 //Common Properties
 
@@ -428,7 +446,6 @@ class Movie{
 	@Indexed (IndexDirection.
 	private int year;
 	private String type;
-
 	@Reference
 	private Director director;
 
@@ -451,6 +468,16 @@ class Movie{
 public Movie{
 }
 
+public Movie(String title,String _id,int year,String type,Director director,String genre,String[] genres,String[] writers,){
+	this.title=title;
+	this._id=_id;
+	this.year=year;
+	this.type=type;
+	this.director=director;
+	this.genre=genre;
+	this.genres=genres;
+	this.writers=writers;
+}
 //Root Entity Code
 //Common Properties
 
@@ -623,7 +650,6 @@ class Movie{
 	@Indexed (IndexDirection.
 	private int year;
 	private String type;
-
 	@Reference
 	private Director director;
 
@@ -646,6 +672,16 @@ class Movie{
 public Movie{
 }
 
+public Movie(String title,String _id,int year,String type,Director director,String genre,String[] genres,String[] writers,){
+	this.title=title;
+	this._id=_id;
+	this.year=year;
+	this.type=type;
+	this.director=director;
+	this.genre=genre;
+	this.genres=genres;
+	this.writers=writers;
+}
 //Root Entity Code
 //Common Properties
 
@@ -818,7 +854,6 @@ class Movie{
 	@Indexed (IndexDirection.
 	private int year;
 	private String type;
-
 	@Reference
 	private Director director;
 
@@ -840,6 +875,16 @@ class Movie{
 public Movie{
 }
 
+public Movie(String title,String _id,int year,String type,Director director,String genres,String writers,String genre,){
+	this.title=title;
+	this._id=_id;
+	this.year=year;
+	this.type=type;
+	this.director=director;
+	this.genres=genres;
+	this.writers=writers;
+	this.genre=genre;
+}
 //Root Entity Code
 //Common Properties
 
@@ -1019,6 +1064,14 @@ class Movietheater{
 public Movietheater{
 }
 
+public Movietheater(String _id,String name,String type,String city,String country,Number roomNumbers,){
+	this._id=_id;
+	this.name=name;
+	this.type=type;
+	this.city=city;
+	this.country=country;
+	this.roomNumbers=roomNumbers;
+}
 //Root Entity Code
 //Common Properties
 
@@ -1126,6 +1179,14 @@ class Movietheater{
 public Movietheater{
 }
 
+public Movietheater(String _id,String name,String type,String city,String country,int roomNumbers,){
+	this._id=_id;
+	this.name=name;
+	this.type=type;
+	this.city=city;
+	this.country=country;
+	this.roomNumbers=roomNumbers;
+}
 //Root Entity Code
 //Common Properties
 
@@ -1234,6 +1295,13 @@ class Director{
 public Director{
 }
 
+public Director(String _id,String name,String type,String actor_movies,String directed_movies,){
+	this._id=_id;
+	this.name=name;
+	this.type=type;
+	this.actor_movies=actor_movies;
+	this.directed_movies=directed_movies;
+}
 //Root Entity Code
 //Common Properties
 
@@ -1357,6 +1425,13 @@ class Director{
 public Director{
 }
 
+public Director(String _id,String name,String type,String directed_movies,String[] actor_movies,){
+	this._id=_id;
+	this.name=name;
+	this.type=type;
+	this.directed_movies=directed_movies;
+	this.actor_movies=actor_movies;
+}
 //Root Entity Code
 //Common Properties
 

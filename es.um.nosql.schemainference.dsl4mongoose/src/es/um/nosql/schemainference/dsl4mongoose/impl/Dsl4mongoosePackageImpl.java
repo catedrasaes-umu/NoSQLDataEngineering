@@ -458,6 +458,10 @@ public class Dsl4mongoosePackageImpl extends EPackageImpl implements Dsl4mongoos
 		initEEnum(indexKindEEnum, IndexKind.class, "IndexKind");
 		addEEnumLiteral(indexKindEEnum, IndexKind.SORTED);
 		addEEnumLiteral(indexKindEEnum, IndexKind.HASHED);
+		addEEnumLiteral(indexKindEEnum, IndexKind.ASC);
+		addEEnumLiteral(indexKindEEnum, IndexKind.DESC);
+		addEEnumLiteral(indexKindEEnum, IndexKind.GEO2D);
+		addEEnumLiteral(indexKindEEnum, IndexKind.GEO2DSPHERE);
 
 		// Create resource
 		createResource(eNS_URI);

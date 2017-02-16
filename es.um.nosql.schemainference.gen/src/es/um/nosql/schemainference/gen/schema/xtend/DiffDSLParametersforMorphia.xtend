@@ -55,6 +55,8 @@ class DiffDSLParametersforMorphia {
 	var String morphiaPackage
 	val boolean root=true
 	val boolean noRoot=false
+	var String entityProps=""
+	var String thisEntityProps=""
 	var List<Attribute>commonAttrs=new ArrayList
     var List<Aggregate>commonAggrs=new ArrayList
     var List<Reference>commonRefs=new ArrayList
@@ -304,6 +306,11 @@ class «ent.entity.name.toFirstUpper»{
 public «ent.entity.name.toFirstUpper»{
 }
 
+public «ent.entity.name.toFirstUpper»(«entityProps»){
+«thisEntityProps»	
+}
+«entityProps=""»
+«thisEntityProps=""»
 //Root Entity Code
 //Common Properties
 «FOR ac: commonAttrs»
@@ -718,17 +725,24 @@ var commonPropsAux=ent.commonProps
 }
 
 //Reference for annotations
-def dispatch printRef(Reference r)
-'''
+def dispatch printRef(Reference r){
+var String withList
+if(r.upperBound==-1)
+  withList="List"
+else{
+   withList=""
+   r.name=r.name.replace("_id","").replace("id","")
+   } 
+entityProps+=withList+r.refTo.name+" "+r.name+","
+thisEntityProps+= "\tthis."+r.name+"="+r.name+";\n"
 
+'''
 «tab»@Reference
 «IF r.upperBound==-1»	private List<«r.refTo.name»> «r.name»;
-«ELSE»
-«r.name=r.name.replace("_id","").replace("id","")»
-	private «r.refTo.name» «r.name»;
+«ELSE»	private «r.refTo.name» «r.name»;
 «ENDIF»
 '''
-
+}
 //Reference for methods
 def dispatch printRef(Reference r, String c)'''
   
@@ -761,6 +775,8 @@ def dispatch printType(Type at2, String name, boolean isC) {
 }
 
 def dispatch printType(PrimitiveType primT, String name, boolean isC){
+  entityProps+=	primT.name+" "+name+","
+  thisEntityProps+= "\tthis."+name+"="+name+";\n"
   primT.name=primT.name.replace("Number","int")
 '''	private «primT.name» «name»;'''
 }
@@ -768,6 +784,8 @@ def dispatch printType(PrimitiveType primT, String name, boolean isC){
 def dispatch printType(Tuple tuple, String name, boolean isC){
   var List<Type>tupleElements=tuple.elements.toList
   var String typeName=findingFirst(tupleElements,0)
+  entityProps+=	typeName+" "+name+","
+  thisEntityProps+= "\tthis."+name+"="+name+";\n"
 '''	private «typeName»[] «name»;'''
 }
 
@@ -831,6 +849,8 @@ def dispatch printType(Type at2, String name, boolean isC, List<FieldParameter> 
 def dispatch printType(PrimitiveType primT, String name, boolean isC, List<FieldParameter> pL){
   var String fSchema
   primT.name=primT.name.replace("Number","int")
+  entityProps+=	primT.name+" "+name+","
+  thisEntityProps+= "\tthis."+name+"="+name+";\n"
   var String fieldSchema="\t@"
 //":\t{type: "+primT.name	
 	for(FieldParameter fp:pL){
@@ -848,6 +868,8 @@ def dispatch printType(Tuple tuple, String name, boolean isC, List<FieldParamete
   var String fieldSchema="\t@"
   var List<Type>tupleElements=tuple.elements.toList
   var String typeName=findingFirst(tupleElements,0)
+  entityProps+=	typeName+"[] "+name+","
+  thisEntityProps+= "\tthis."+name+"="+name+";\n"
   //name+":\t{type: "+"[]"	
 	for(FieldParameter fp:pL){
 	  fSchema=checkParameter(fp, fieldSchema)
@@ -866,6 +888,8 @@ def dispatch printType(Type at2, String name) {
 }
 
 def dispatch printType(PrimitiveType primT, String name){
+  entityProps+=	primT.name+" "+name+","
+  thisEntityProps+= "\tthis."+name+"="+name+";\n"
   primT.name=primT.name.replace("Number","int")
   '''	private «primT.name» «name»;'''
 }
@@ -873,6 +897,8 @@ def dispatch printType(PrimitiveType primT, String name){
 def dispatch printType(Tuple tuple, String name){
   var List<Type>tupleElements=tuple.elements.toList
   var String typeName=findingFirst(tupleElements,0)
+  entityProps+=	typeName+"[] "+name+","
+  thisEntityProps+= "\tthis."+name+"="+name+";\n"
   '''	private «typeName»[] «name»;'''
 
 }
@@ -921,6 +947,8 @@ def dispatch printType(Type at2, String name, List<FieldParameter> pL) {
 
 def dispatch printType(PrimitiveType primT, String name, List<FieldParameter> pL){
   var String fSchema
+  entityProps+=	primT.name+" "+name+","
+  thisEntityProps+= "\tthis."+name+"="+name+";\n"
   primT.name=primT.name.replace("Number","int")
   var String fieldSchema="@"
 //":\t{type: "+primT.name	
@@ -939,6 +967,8 @@ def dispatch printType(Tuple tuple, String name, List<FieldParameter> pL){
   var String fieldSchema="@"
   var List<Type>tupleElements=tuple.elements.toList
   var String typeName=findingFirst(tupleElements,0)
+  entityProps+=	typeName+"[] "+name+","
+  thisEntityProps+= "\tthis."+name+"="+name+";\n"
   //name+":\t{type: "+"[]"	
 	for(FieldParameter fp:pL){
 	  fSchema=checkParameter(fp, fieldSchema)

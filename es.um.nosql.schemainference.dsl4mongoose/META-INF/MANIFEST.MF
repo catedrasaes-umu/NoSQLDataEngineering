@@ -8,6 +8,9 @@ Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Export-Package: es.um.nosql.schemainference.dsl4mongoose,
  es.um.nosql.schemainference.dsl4mongoose.impl,
+ es.um.nosql.schemainference.dsl4mongoose.util,
+ es.um.nosql.schemainference.dsl4mongoose,
+ es.um.nosql.schemainference.dsl4mongoose.impl,
  es.um.nosql.schemainference.dsl4mongoose.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport

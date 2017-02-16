@@ -36,7 +36,47 @@ public enum IndexKind implements Enumerator {
 	 * @generated
 	 * @ordered
 	 */
-	HASHED(0, "Hashed", "Hashed");
+	HASHED(0, "Hashed", "Hashed"),
+
+	/**
+	 * The '<em><b>ASC</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #ASC_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	ASC(0, "ASC", "ASC"),
+
+	/**
+	 * The '<em><b>DESC</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #DESC_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	DESC(0, "DESC", "DESC"),
+
+	/**
+	 * The '<em><b>GEO2D</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #GEO2D_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	GEO2D(0, "GEO2D", "GEO2D"),
+
+	/**
+	 * The '<em><b>GEO2DSPHERE</b></em>' literal object.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #GEO2DSPHERE_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	GEO2DSPHERE(0, "GEO2DSPHERE", "GEO2DSPHERE");
 
 	/**
 	 * The '<em><b>Sorted</b></em>' literal value.
@@ -69,6 +109,66 @@ public enum IndexKind implements Enumerator {
 	public static final int HASHED_VALUE = 0;
 
 	/**
+	 * The '<em><b>ASC</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>ASC</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #ASC
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int ASC_VALUE = 0;
+
+	/**
+	 * The '<em><b>DESC</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>DESC</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #DESC
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int DESC_VALUE = 0;
+
+	/**
+	 * The '<em><b>GEO2D</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>GEO2D</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #GEO2D
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GEO2D_VALUE = 0;
+
+	/**
+	 * The '<em><b>GEO2DSPHERE</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of '<em><b>GEO2DSPHERE</b></em>' literal object isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @see #GEO2DSPHERE
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int GEO2DSPHERE_VALUE = 0;
+
+	/**
 	 * An array of all the '<em><b>Index Kind</b></em>' enumerators.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -78,6 +178,10 @@ public enum IndexKind implements Enumerator {
 		new IndexKind[] {
 			SORTED,
 			HASHED,
+			ASC,
+			DESC,
+			GEO2D,
+			GEO2DSPHERE,
 		};
 
 	/**

@@ -10,6 +10,3 @@ Require-Bundle: es.um.nosql.schemainference.dslparameter,
  org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.ide
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: es.um.nosql.schemainference.dslparameter.ide.contentassist.antlr,
- es.um.nosql.schemainference.dslparameter.ide.contentassist.antlr.internal
-

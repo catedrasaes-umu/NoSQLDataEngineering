@@ -31,6 +31,10 @@
   <eClassifiers xsi:type="ecore:EEnum" name="IndexKind">
     <eLiterals name="Sorted" value="1"/>
     <eLiterals name="Hashed"/>
+    <eLiterals name="ASC"/>
+    <eLiterals name="DESC"/>
+    <eLiterals name="GEO2D"/>
+    <eLiterals name="GEO2DSPHERE"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FieldParameter" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="fieldName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

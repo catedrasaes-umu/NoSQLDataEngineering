@@ -101,7 +101,10 @@
         "criticisms": [
           {
              "journalist": "Jordi Costa",
-             "media": "El pais",
+             "media": {
+	        "name": "El País",
+		"url": "http://elpais.com/"
+	     },
              "color": "red"
           },
           {

@@ -5,11 +5,14 @@
     rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
     complianceLevel="8.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
   <foreignModel>dsl4mongoose.ecore</foreignModel>
-  <genPackages prefix="Dsl4mongoose" basePackage="es.um.nosql.schemainference" disposableProviderFactory="true"
-      ecorePackage="dsl4mongoose.ecore#/">
+  <genPackages prefix="Dsl4mongoose" disposableProviderFactory="true" ecorePackage="dsl4mongoose.ecore#/">
     <genEnums typeSafeEnumCompatible="false" ecoreEnum="dsl4mongoose.ecore#//IndexKind">
       <genEnumLiterals ecoreEnumLiteral="dsl4mongoose.ecore#//IndexKind/Sorted"/>
       <genEnumLiterals ecoreEnumLiteral="dsl4mongoose.ecore#//IndexKind/Hashed"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4mongoose.ecore#//IndexKind/ASC"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4mongoose.ecore#//IndexKind/DESC"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4mongoose.ecore#//IndexKind/GEO2D"/>
+      <genEnumLiterals ecoreEnumLiteral="dsl4mongoose.ecore#//IndexKind/GEO2DSPHERE"/>
     </genEnums>
     <genClasses ecoreClass="dsl4mongoose.ecore#//MongooseModel">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dsl4mongoose.ecore#//MongooseModel/parameters"/>

@@ -54,6 +54,5 @@ Index returns Index:
 		('kind:' kind=IndexKind)?
 ;
 
-
 enum IndexKind returns IndexKind:
-				Sorted = 'Sorted' | Hashed = 'Hashed';
+				Sorted = 'Sorted' | Hashed = 'Hashed' | ASC = 'ASC' | DESC = 'DESC' | GEO2D = 'GEO2D' | GEO2DSPHERE = 'GEO2DSPHERE';
