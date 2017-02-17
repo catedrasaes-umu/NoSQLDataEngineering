@@ -60,12 +60,13 @@
         ]
       },
       {
+        "_id": "2",
         "type": "movie",
         "title": "The Man Who Would Be King",
         "year": 1975, 
         "director_id": "928672", 
         "genre": "Adventures",
-        "_id": "2"
+	"running time": 129
       },
       {
         "_id": "3",
