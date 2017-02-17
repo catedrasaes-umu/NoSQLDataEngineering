@@ -54,10 +54,7 @@
           },
           {
            "journalist": "Richard Brody",
-           "media": {
-	      "name": "The New Yorker",
-	      "url": "http://www.newyorker.com/"
-	   },
+           "media":  "The New Yorker",
            "color": "green"
           }
         ]
