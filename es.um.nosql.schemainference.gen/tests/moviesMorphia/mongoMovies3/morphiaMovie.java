@@ -31,27 +31,37 @@ import java.util.List;
 class Movie{
 
 //Common Properties	
-	@, maxlength: 40Indexed (unique=true)
+	@Indexed (unique=true)
 	private String title;
-	@Indexed (IndexDirection.
+	@Indexed (IndexDirection.ASC)
 	private String _id;
-	@Indexed (IndexDirection.
+	@Indexed (IndexDirection.DESC)
 	private int year;
 	private String type;
-	@Reference
-	private Director director;
 
 //add required for Movie1 entity version
-	@, enum: [drama, comedy, children]
 	private String genre;
+	@Reference
+	private Director director;
 	@Embedded
 	private ArrayList<Criticism1> criticisms1;
 	@Embedded
 	private ArrayList<Prize1> prizes1;
 
 // Not Common Properties 
+	private int running_time;
 	private String[] genres;
 	private String[] writers;
+	@Reference
+	private Director director;
+	@Reference
+	private Director director;
+	@Reference
+	private Director director;
+	@Reference
+	private Director director;
+	@Embedded
+	private Rating4 rating4;
 	@Embedded
 	private List<Criticism4> criticisms4;
 	@Embedded
@@ -60,15 +70,20 @@ class Movie{
 public Movie{
 }
 
-public Movie(String title,String _id,int year,String type,Director director,String genre,String[] genres,String[] writers,){
+public Movie(String title,String _id,int year,String type,String genre,Director director,Number running_time,String[] genres,String[] writers,Director director,Director director,Director director,Director director,){
 	this.title=title;
 	this._id=_id;
 	this.year=year;
 	this.type=type;
-	this.director=director;
 	this.genre=genre;
+	this.director=director;
+	this.running_time=running_time;
 	this.genres=genres;
 	this.writers=writers;
+	this.director=director;
+	this.director=director;
+	this.director=director;
+	this.director=director;
 }
 //Root Entity Code
 //Common Properties
@@ -105,14 +120,6 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
       this.type = type;
   	}
 
-	public List<Director> getDirector(){
-	  return director;
-	}
-
-	public void setDirector(Director director){
-      this.director = director;
-  	}
-
 // add required for Movie1 entity version
 
 	public String getGenre(){
@@ -121,6 +128,14 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
  
   	public void setGenre(String genre){
       this.genre = genre;
+  	}
+
+	public List<Director> getDirector(){
+	  return director;
+	}
+
+	public void setDirector(Director director){
+      this.director = director;
   	}
 
 	public List<Criticism1> getCriticisms1(){
@@ -141,6 +156,14 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
 
 // Not Common Properties 
 
+	public int getRunning_time(){
+	  return running_time;
+	}
+
+	public void setRunning_time(int running_time){
+      this.running_time = running_time;
+	}
+
 	public String[] getGenres(){
       return genres;
 	}
@@ -156,6 +179,14 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
   	public void setWriters(String[] writers){
       this.writers = writers;
   	}
+
+	public Rating4 getRating4(){
+      return rating4;
+	}
+
+	public void setRating4(Rating4 rating4){
+      this.rating4 = rating4;
+	}
 
 	public List<Criticism4> getCriticisms4(){
 	  return criticisms4;
@@ -177,7 +208,7 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
 
 // Update
 
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@545997b1 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@4cf4d528 (fieldName: title)] 
+[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@27d415d9 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@5c18298f (fieldName: title)] 
 
 function movie_Updating(query , fieldsToUpdate) {
 Movie.findOne (
@@ -235,25 +266,27 @@ import java.util.List;
 class Movie{
 
 //Common Properties	
-	@, maxlength: 40Indexed (unique=true)
+	@Indexed (unique=true)
 	private String title;
-	@Indexed (IndexDirection.
+	@Indexed (IndexDirection.ASC)
 	private String _id;
-	@Indexed (IndexDirection.
+	@Indexed (IndexDirection.DESC)
 	private int year;
 	private String type;
-	@Reference
-	private Director director;
 
 //add required for Movie2 entity version
-	@, enum: [drama, comedy, children]
 	private String genre;
+	private int running_time;
+	@Reference
+	private Director director;
 
 // Not Common Properties 
 	private String[] genres;
 	private String[] writers;
+	@Reference
+	private Director director;
 	@Embedded
-	private List<Criticism1> criticisms1;
+	private Rating4 rating4;
 	@Embedded
 	private List<Criticism4> criticisms4;
 	@Embedded
@@ -264,15 +297,17 @@ class Movie{
 public Movie{
 }
 
-public Movie(String title,String _id,int year,String type,Director director,String genre,String[] genres,String[] writers,){
+public Movie(String title,String _id,int year,String type,String genre,int running_time,Director director,String[] genres,String[] writers,Director director,){
 	this.title=title;
 	this._id=_id;
 	this.year=year;
 	this.type=type;
-	this.director=director;
 	this.genre=genre;
+	this.running_time=running_time;
+	this.director=director;
 	this.genres=genres;
 	this.writers=writers;
+	this.director=director;
 }
 //Root Entity Code
 //Common Properties
@@ -309,14 +344,6 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
       this.type = type;
   	}
 
-	public List<Director> getDirector(){
-	  return director;
-	}
-
-	public void setDirector(Director director){
-      this.director = director;
-  	}
-
 // add required for Movie2 entity version
 
 	public String getGenre(){
@@ -325,6 +352,22 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
  
   	public void setGenre(String genre){
       this.genre = genre;
+  	}
+
+	public int getRunning_time(){
+	  return running_time;
+	}
+ 
+  	public void setRunning_time(int running_time){
+      this.running_time = running_time;
+  	}
+
+	public List<Director> getDirector(){
+	  return director;
+	}
+
+	public void setDirector(Director director){
+      this.director = director;
   	}
 
 // Not Common Properties 
@@ -345,12 +388,12 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
       this.writers = writers;
   	}
 
-	public List<Criticism1> getCriticisms1(){
-	  return criticisms1;
+	public Rating4 getRating4(){
+      return rating4;
 	}
 
-	public void setCriticisms1(List<Criticism1> criticisms1){
-      this.criticisms1 = criticisms1;
+	public void setRating4(Rating4 rating4){
+      this.rating4 = rating4;
 	}
 
 	public List<Criticism4> getCriticisms4(){
@@ -381,7 +424,7 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
 
 // Update
 
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@545997b1 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@4cf4d528 (fieldName: title)] 
+[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@27d415d9 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@5c18298f (fieldName: title)] 
 
 function movie_Updating(query , fieldsToUpdate) {
 Movie.findOne (
@@ -439,27 +482,29 @@ import java.util.List;
 class Movie{
 
 //Common Properties	
-	@, maxlength: 40Indexed (unique=true)
+	@Indexed (unique=true)
 	private String title;
-	@Indexed (IndexDirection.
+	@Indexed (IndexDirection.ASC)
 	private String _id;
-	@Indexed (IndexDirection.
+	@Indexed (IndexDirection.DESC)
 	private int year;
 	private String type;
-	@Reference
-	private Director director;
 
 //add required for Movie3 entity version
-	@, enum: [drama, comedy, children]
 	private String genre;
+	@Reference
+	private Director director;
 	@Embedded
 	private ArrayList<Prize3> prizes3;
 
 // Not Common Properties 
+	private int running_time;
 	private String[] genres;
 	private String[] writers;
+	@Reference
+	private Director director;
 	@Embedded
-	private List<Criticism1> criticisms1;
+	private Rating4 rating4;
 	@Embedded
 	private List<Criticism4> criticisms4;
 	@Embedded
@@ -468,15 +513,17 @@ class Movie{
 public Movie{
 }
 
-public Movie(String title,String _id,int year,String type,Director director,String genre,String[] genres,String[] writers,){
+public Movie(String title,String _id,int year,String type,String genre,Director director,int running_time,String[] genres,String[] writers,Director director,){
 	this.title=title;
 	this._id=_id;
 	this.year=year;
 	this.type=type;
-	this.director=director;
 	this.genre=genre;
+	this.director=director;
+	this.running_time=running_time;
 	this.genres=genres;
 	this.writers=writers;
+	this.director=director;
 }
 //Root Entity Code
 //Common Properties
@@ -513,14 +560,6 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
       this.type = type;
   	}
 
-	public List<Director> getDirector(){
-	  return director;
-	}
-
-	public void setDirector(Director director){
-      this.director = director;
-  	}
-
 // add required for Movie3 entity version
 
 	public String getGenre(){
@@ -529,6 +568,14 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
  
   	public void setGenre(String genre){
       this.genre = genre;
+  	}
+
+	public List<Director> getDirector(){
+	  return director;
+	}
+
+	public void setDirector(Director director){
+      this.director = director;
   	}
 
 	public List<Prize3> getPrizes3(){
@@ -540,6 +587,14 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
 	}
 
 // Not Common Properties 
+
+	public int getRunning_time(){
+	  return running_time;
+	}
+
+	public void setRunning_time(int running_time){
+      this.running_time = running_time;
+	}
 
 	public String[] getGenres(){
       return genres;
@@ -557,12 +612,12 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
       this.writers = writers;
   	}
 
-	public List<Criticism1> getCriticisms1(){
-	  return criticisms1;
+	public Rating4 getRating4(){
+      return rating4;
 	}
 
-	public void setCriticisms1(List<Criticism1> criticisms1){
-      this.criticisms1 = criticisms1;
+	public void setRating4(Rating4 rating4){
+      this.rating4 = rating4;
 	}
 
 	public List<Criticism4> getCriticisms4(){
@@ -585,7 +640,7 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
 
 // Update
 
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@545997b1 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@4cf4d528 (fieldName: title)] 
+[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@27d415d9 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@5c18298f (fieldName: title)] 
 
 function movie_Updating(query , fieldsToUpdate) {
 Movie.findOne (
@@ -643,27 +698,29 @@ import java.util.List;
 class Movie{
 
 //Common Properties	
-	@, maxlength: 40Indexed (unique=true)
+	@Indexed (unique=true)
 	private String title;
-	@Indexed (IndexDirection.
+	@Indexed (IndexDirection.ASC)
 	private String _id;
-	@Indexed (IndexDirection.
+	@Indexed (IndexDirection.DESC)
 	private int year;
 	private String type;
-	@Reference
-	private Director director;
 
 //add required for Movie4 entity version
-	@, enum: [drama, comedy, children]
 	private String genre;
+	@Reference
+	private Director director;
+	@Embedded
+	private Rating4 rating4;
 	@Embedded
 	private ArrayList<Criticism4> criticisms4;
 
 // Not Common Properties 
+	private int running_time;
 	private String[] genres;
 	private String[] writers;
-	@Embedded
-	private List<Criticism1> criticisms1;
+	@Reference
+	private Director director;
 	@Embedded
 	private List<Prize1> prizes1;
 	@Embedded
@@ -672,15 +729,17 @@ class Movie{
 public Movie{
 }
 
-public Movie(String title,String _id,int year,String type,Director director,String genre,String[] genres,String[] writers,){
+public Movie(String title,String _id,int year,String type,String genre,Director director,int running_time,String[] genres,String[] writers,Director director,){
 	this.title=title;
 	this._id=_id;
 	this.year=year;
 	this.type=type;
-	this.director=director;
 	this.genre=genre;
+	this.director=director;
+	this.running_time=running_time;
 	this.genres=genres;
 	this.writers=writers;
+	this.director=director;
 }
 //Root Entity Code
 //Common Properties
@@ -717,14 +776,6 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
       this.type = type;
   	}
 
-	public List<Director> getDirector(){
-	  return director;
-	}
-
-	public void setDirector(Director director){
-      this.director = director;
-  	}
-
 // add required for Movie4 entity version
 
 	public String getGenre(){
@@ -735,6 +786,22 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
       this.genre = genre;
   	}
 
+	public List<Director> getDirector(){
+	  return director;
+	}
+
+	public void setDirector(Director director){
+      this.director = director;
+  	}
+
+	public Rating4 getRating4(){
+      return rating4;
+	}
+  
+	public void setRating4(Rating4 rating4){
+      this.rating4 = rating4;
+	}
+
 	public List<Criticism4> getCriticisms4(){
       return criticisms4;
 	  }
@@ -744,6 +811,14 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
 	}
 
 // Not Common Properties 
+
+	public int getRunning_time(){
+	  return running_time;
+	}
+
+	public void setRunning_time(int running_time){
+      this.running_time = running_time;
+	}
 
 	public String[] getGenres(){
       return genres;
@@ -760,14 +835,6 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
   	public void setWriters(String[] writers){
       this.writers = writers;
   	}
-
-	public List<Criticism1> getCriticisms1(){
-	  return criticisms1;
-	}
-
-	public void setCriticisms1(List<Criticism1> criticisms1){
-      this.criticisms1 = criticisms1;
-	}
 
 	public List<Prize1> getPrizes1(){
 	  return prizes1;
@@ -789,7 +856,7 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
 
 // Update
 
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@545997b1 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@4cf4d528 (fieldName: title)] 
+[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@27d415d9 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@5c18298f (fieldName: title)] 
 
 function movie_Updating(query , fieldsToUpdate) {
 Movie.findOne (
@@ -847,24 +914,27 @@ import java.util.List;
 class Movie{
 
 //Common Properties	
-	@, maxlength: 40Indexed (unique=true)
+	@Indexed (unique=true)
 	private String title;
-	@Indexed (IndexDirection.
+	@Indexed (IndexDirection.ASC)
 	private String _id;
-	@Indexed (IndexDirection.
+	@Indexed (IndexDirection.DESC)
 	private int year;
 	private String type;
-	@Reference
-	private Director director;
 
 //add required for Movie5 entity version
 	private String[] genres;
 	private String[] writers;
+	@Reference
+	private Director director;
 
 // Not Common Properties 
 	private String genre;
+	private int running_time;
+	@Reference
+	private Director director;
 	@Embedded
-	private List<Criticism1> criticisms1;
+	private Rating4 rating4;
 	@Embedded
 	private List<Criticism4> criticisms4;
 	@Embedded
@@ -875,15 +945,17 @@ class Movie{
 public Movie{
 }
 
-public Movie(String title,String _id,int year,String type,Director director,String genres,String writers,String genre,){
+public Movie(String title,String _id,int year,String type,String genres,String writers,Director director,String genre,int running_time,Director director,){
 	this.title=title;
 	this._id=_id;
 	this.year=year;
 	this.type=type;
-	this.director=director;
 	this.genres=genres;
 	this.writers=writers;
+	this.director=director;
 	this.genre=genre;
+	this.running_time=running_time;
+	this.director=director;
 }
 //Root Entity Code
 //Common Properties
@@ -920,14 +992,6 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
       this.type = type;
   	}
 
-	public List<Director> getDirector(){
-	  return director;
-	}
-
-	public void setDirector(Director director){
-      this.director = director;
-  	}
-
 // add required for Movie5 entity version
 
 	public String[] getGenres(){
@@ -946,6 +1010,14 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
       this.writers = writers;
   	}
 
+	public List<Director> getDirector(){
+	  return director;
+	}
+
+	public void setDirector(Director director){
+      this.director = director;
+  	}
+
 // Not Common Properties 
 
 	public String getGenre(){
@@ -956,12 +1028,20 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
       this.genre = genre;
 	}
 
-	public List<Criticism1> getCriticisms1(){
-	  return criticisms1;
+	public int getRunning_time(){
+	  return running_time;
 	}
 
-	public void setCriticisms1(List<Criticism1> criticisms1){
-      this.criticisms1 = criticisms1;
+	public void setRunning_time(int running_time){
+      this.running_time = running_time;
+	}
+
+	public Rating4 getRating4(){
+      return rating4;
+	}
+
+	public void setRating4(Rating4 rating4){
+      this.rating4 = rating4;
 	}
 
 	public List<Criticism4> getCriticisms4(){
@@ -992,7 +1072,7 @@ public Movie(String title,String _id,int year,String type,Director director,Stri
 
 // Update
 
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@545997b1 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@4cf4d528 (fieldName: title)] 
+[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@27d415d9 (fieldName: genre), es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@5c18298f (fieldName: title)] 
 
 function movie_Updating(query , fieldsToUpdate) {
 Movie.findOne (
@@ -1280,27 +1360,35 @@ import java.util.List;
 class Director{
 
 //Common Properties	
-	@Indexed (IndexDirection.
+	@Indexed (IndexDirection.DESC)
 	private String _id;
 	@Indexed (unique=true)
 	private String name;
 	private String type;
 
 //add required for Director1 entity version
-	private String[] actor_movies;
-	private String[] directed_movies;
+	@Reference
+	private List<Movie> actor_movies;
+	@Reference
+	private List<Movie> directed_movies;
 
 // Not Common Properties 
+	@Reference
+	private Movie directed_movies;
+	@Reference
+	private List<Movie> actor_movies;
 
 public Director{
 }
 
-public Director(String _id,String name,String type,String actor_movies,String directed_movies,){
+public Director(String _id,String name,String type,ListMovie actor_movies,ListMovie directed_movies,Movie directed_movies,ListMovie actor_movies,){
 	this._id=_id;
 	this.name=name;
 	this.type=type;
 	this.actor_movies=actor_movies;
 	this.directed_movies=directed_movies;
+	this.directed_movies=directed_movies;
+	this.actor_movies=actor_movies;
 }
 //Root Entity Code
 //Common Properties
@@ -1331,21 +1419,23 @@ public Director(String _id,String name,String type,String actor_movies,String di
 
 // add required for Director1 entity version
 
-	public String[] getActor_movies(){
+	public List<Movie> getActor_movies(){
       return actor_movies;
 	}
 
-	public void setActor_movies(String[] actor_movies){
+  	public void setActor_movies(List<Movie> actor_movies){
       this.actor_movies = actor_movies;
   	}
 
-	public String[] getDirected_movies(){
+
+	public List<Movie> getDirected_movies(){
       return directed_movies;
 	}
 
-	public void setDirected_movies(String[] directed_movies){
+  	public void setDirected_movies(List<Movie> directed_movies){
       this.directed_movies = directed_movies;
   	}
+
 
 // Not Common Properties 
 }//end Class
@@ -1353,7 +1443,7 @@ public Director(String _id,String name,String type,String actor_movies,String di
 
 // Update
 
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@77846d2c (fieldName: name)] 
+[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@31f924f5 (fieldName: name)] 
 
 function director_Updating(query , fieldsToUpdate) {
 Director.findOne (
@@ -1410,25 +1500,30 @@ import java.util.List;
 class Director{
 
 //Common Properties	
-	@Indexed (IndexDirection.
+	@Indexed (IndexDirection.DESC)
 	private String _id;
 	@Indexed (unique=true)
 	private String name;
 	private String type;
 
 //add required for Director2 entity version
-	private String[] directed_movies;
+	@Reference
+	private Movie directed_movies;
 
 // Not Common Properties 
-	private String[] actor_movies;
+	@Reference
+	private Movie directed_movies;
+	@Reference
+	private List<Movie> actor_movies;
 
 public Director{
 }
 
-public Director(String _id,String name,String type,String directed_movies,String[] actor_movies,){
+public Director(String _id,String name,String type,Movie directed_movies,Movie directed_movies,ListMovie actor_movies,){
 	this._id=_id;
 	this.name=name;
 	this.type=type;
+	this.directed_movies=directed_movies;
 	this.directed_movies=directed_movies;
 	this.actor_movies=actor_movies;
 }
@@ -1461,29 +1556,21 @@ public Director(String _id,String name,String type,String directed_movies,String
 
 // add required for Director2 entity version
 
-	public String[] getDirected_movies(){
-      return directed_movies;
+	public List<Movie> getDirected_movies(){
+	  return directed_movies;
 	}
 
-	public void setDirected_movies(String[] directed_movies){
+	public void setDirected_movies(Movie directed_movies){
       this.directed_movies = directed_movies;
   	}
 
 // Not Common Properties 
-
-	public String[] getActor_movies(){
-      return actor_movies;
-	}
-  
-  	public void setActor_movies(String[] actor_movies){
-      this.actor_movies = actor_movies;
-  	}
 }//end Class
 
 
 // Update
 
-[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@77846d2c (fieldName: name)] 
+[es.um.nosql.schemainference.dsl4mongoose.impl.UpdateImpl@31f924f5 (fieldName: name)] 
 
 function director_Updating(query , fieldsToUpdate) {
 Director.findOne (
@@ -1506,6 +1593,56 @@ console.log(err);
 res.status(200).send(book);
 }
 });
+
+
+//Embedded Entity
+//File Rating1.java
+package mongoMovies3.morphiaMapper;
+import org.mongodb.morphia.annotations.Embedded;
+
+//Annotations Embedded Class
+@Embedded
+class Rating1{
+
+// Common Properties	
+	private int score;
+	private int voters;
+
+//add required for Rating1 entity version
+
+// Not Common Properties 
+
+public Rating1{
+}
+
+//Embedded Entity Code
+
+//Common Properties	
+
+	public int getScore(){
+	  return score;
+	}
+ 
+  	public void setScore(int score){
+      this.score = score;
+  	}
+
+	public int getVoters(){
+	  return voters;
+	}
+ 
+  	public void setVoters(int voters){
+      this.voters = voters;
+  	}
+
+// add required for Rating1 entity version
+
+// Not Common Properties 
+}//end Class
+
+
+// Update
+
 
 
 //Embedded Entity
@@ -1568,7 +1705,6 @@ import org.mongodb.morphia.annotations.Embedded;
 class Criticism1{
 
 // Common Properties	
-	@, enum: [green, red, yellow]
 	private String color;
 	@Indexed (unique=true)
 	private String journalist;
@@ -1661,7 +1797,6 @@ import org.mongodb.morphia.annotations.Embedded;
 class Criticism2{
 
 // Common Properties	
-	@, enum: [green, red, yellow]
 	private String color;
 	@Indexed (unique=true)
 	private String journalist;
