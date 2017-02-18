@@ -11,6 +11,8 @@ import java.util.stream.Stream;
 
 import org.apache.commons.lang3.tuple.Pair;
 
+import com.google.common.base.Strings;
+
 /**
  * @author dsevilla
  *
@@ -19,24 +21,29 @@ public class ReferenceMatcher<T>
 {
 	// List of affixes to check for references
 	private static List<String> Affixes =
-			Arrays.asList("_id", "id", "_ptr", "_ref", "_ids", "_refs");
+			Arrays.asList("id", "ptr", "ref", "ids", "refs", "");
 
-	private List<Pair<String, T>> idRegexps;
+	private static List<String> StopChars =
+			Arrays.asList("_", ".", "-", "");
+
+	private List<Pair<String,T>> idRegexps;
 		
 	public ReferenceMatcher(Stream<Pair<String, T>> stream)
 	{		
 		// Build the regexp that will allow checking if a field may be a reference
 		// to another entity
-		idRegexps = stream.flatMap(entry -> 
-			Stream.concat(
-				Affixes.stream().map(str ->
-					Pair.of((entry.getKey() + str).toLowerCase(), entry.getValue()))
-					,
+		
+		idRegexps = stream.flatMap(entry ->
+			Affixes.stream().flatMap(affix ->
 				Stream.concat(
-						Affixes.stream().map(str ->
-							Pair.of((str + entry.getKey()).toLowerCase(), entry.getValue()))
-						,
-						Stream.of(Pair.of(entry.getKey().toLowerCase(), entry.getValue()))))
+					// prefix
+					StopChars.stream().map(c ->
+						Pair.of(("^" + entry.getKey() + c + affix).toLowerCase(), entry.getValue())),
+					// postfix
+					StopChars.stream().filter(c -> !c.isEmpty() || !affix.isEmpty()).map(c ->
+						Pair.of((affix + c + entry.getKey()).toLowerCase(), entry.getValue()))
+				)
+			)
 		).collect(Collectors.toList());
 	}
 	
