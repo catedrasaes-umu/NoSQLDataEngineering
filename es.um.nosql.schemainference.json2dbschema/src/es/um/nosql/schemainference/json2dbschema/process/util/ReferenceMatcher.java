@@ -11,8 +11,6 @@ import java.util.stream.Stream;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-import com.google.common.base.Strings;
-
 /**
  * @author dsevilla
  *
@@ -38,10 +36,10 @@ public class ReferenceMatcher<T>
 				Stream.concat(
 					// prefix
 					StopChars.stream().map(c ->
-						Pair.of(("^" + entry.getKey() + c + affix).toLowerCase(), entry.getValue())),
+						Pair.of(("^" + entry.getKey() + c + affix + ".*$").toLowerCase(), entry.getValue())),
 					// postfix
 					StopChars.stream().filter(c -> !c.isEmpty() || !affix.isEmpty()).map(c ->
-						Pair.of((affix + c + entry.getKey()).toLowerCase(), entry.getValue()))
+						Pair.of(("^.*?" + affix + c + entry.getKey() + "$").toLowerCase(), entry.getValue()))
 				)
 			)
 		).collect(Collectors.toList());
