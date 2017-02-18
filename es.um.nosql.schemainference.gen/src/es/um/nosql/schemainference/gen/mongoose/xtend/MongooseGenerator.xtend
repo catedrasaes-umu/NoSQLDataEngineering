@@ -14,9 +14,8 @@ import es.um.nosql.schemainference.NoSQLSchema.Aggregate
 import es.um.nosql.schemainference.NoSQLSchema.Reference
 import java.util.ArrayList
 
-//import java.util.ArrayList
-
-class MongooseGenerator {
+class MongooseGenerator 
+{
     var ArrayList<Entity> entsList = new ArrayList
 	EntityVersion eV
 	var int totalEnts = 0

@@ -118,7 +118,7 @@ public class NoSQLModelBuilder
 							evTo.getProperties().stream().filter(pTo -> pTo instanceof Reference))
 							.filter(rTo -> ((Reference)rTo).getRefTo() == eFrom).findFirst();
 
-					refTo.ifPresent(r_ -> ((Reference)r_).setOpposite(ref));
+					refTo.ifPresent(r_ -> ref.setOpposite((Reference)r_));
 				});
 			});
 		});
