@@ -1,0 +1,18 @@
+ODMParameters {
+	mapper: Mongoose 
+	Entity Movie{
+		uniques {title}
+		updates {genre, title}
+		indexes {_id -> kind: ASC, year -> kind: DESC}
+	}
+	
+	Entity Director{
+		uniques {name}
+		updates {name}
+		indexes {_id -> kind: DESC, year -> kind: ASC}
+	}
+	
+	Entity Criticism {
+		uniques {journalist}
+	}
+}

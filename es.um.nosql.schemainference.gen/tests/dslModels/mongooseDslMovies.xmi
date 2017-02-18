@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="ASCII"?>
+<dsl4mongoose:MongooseModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:dsl4mongoose="http://www.modelum.es/dsl4mongoose" mapper="Mongoose">
+  <parameters name="Movie">
+    <validators fieldName="genre" ValidatorName="enum (drama, comedy, children)"/>
+    <validators fieldName="title" ValidatorName="length &lt; 40"/>
+    <uniques fieldName="title"/>
+    <updates fieldName="genre"/>
+    <updates fieldName="title"/>
+    <indexes fieldName="_id" kind="Hashed"/>
+    <indexes fieldName="year"/>
+  </parameters>
+  <parameters name="Director">
+    <uniques fieldName="name"/>
+    <updates fieldName="name"/>
+    <indexes fieldName="_id" kind="Hashed"/>
+    <indexes fieldName="year"/>
+  </parameters>
+  <parameters name="Criticism">
+    <validators fieldName="color" ValidatorName="enum (green, red, yellow)"/>
+    <uniques fieldName="journalist"/>
+  </parameters>
+  <parameters name="MovieTheater" discriminator="true"/>
+</dsl4mongoose:MongooseModel>

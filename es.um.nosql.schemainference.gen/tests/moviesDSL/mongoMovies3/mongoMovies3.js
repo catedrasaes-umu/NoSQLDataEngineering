@@ -11,7 +11,11 @@ mongoose.connect(url, function(error){
   	console.log('Conectado a MongoDB');
   }
 });
-var Moviecriticisms1=	{
+var Movierating4=	{
+	score:	Number,
+	voters:	Number,
+    } 
+var Moviecriticisms4=	{
 	color:	{type: String, enum: [green, red, yellow]},
 	journalist:	{type: String, unique: true},
 	media:	String,
@@ -19,11 +23,6 @@ var Moviecriticisms1=	{
 		name:	String,
 		url:	String,
 	    } 
-    } 
-var Moviecriticisms4=	{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
     } 
 var Movieprizes1=	{
 	event:	String,
@@ -43,16 +42,19 @@ var movieSchema = new mongoose.Schema({
   	_id:	{type: String, required:true, index: Hashed},
   	year:	{type: Number, required:true, index: true},
   	type:	{type: String, required: true},
-	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie1 entity version
   	genre:	{type: String, required:true, enum: [drama, comedy, children]},
+    director_id:	{type: String, required: true, ref: Director},
 	criticisms:	{type:Moviecriticisms1, required:true},
 	prizes:	{type:Movieprizes1, required:true},
 
 // Not Common Properties 
+	running_time:	Number,
 	genres:	[],
 	writers:	[],
+  	director_id:	{type:String, ref: Director},
+	rating:	Movierating4,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes3,
 },{collection:'movie'});
@@ -72,7 +74,11 @@ mongoose.connect(url, function(error){
   	console.log('Conectado a MongoDB');
   }
 });
-var Moviecriticisms1=	{
+var Movierating4=	{
+	score:	Number,
+	voters:	Number,
+    } 
+var Moviecriticisms4=	{
 	color:	{type: String, enum: [green, red, yellow]},
 	journalist:	{type: String, unique: true},
 	media:	String,
@@ -80,11 +86,6 @@ var Moviecriticisms1=	{
 		name:	String,
 		url:	String,
 	    } 
-    } 
-var Moviecriticisms4=	{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
     } 
 var Movieprizes1=	{
 	event:	String,
@@ -104,15 +105,17 @@ var movieSchema = new mongoose.Schema({
   	_id:	{type: String, required:true, index: Hashed},
   	year:	{type: Number, required:true, index: true},
   	type:	{type: String, required: true},
-	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie2 entity version
   	genre:	{type: String, required:true, enum: [drama, comedy, children]},
+  	running_time:	{type: Number, required: true},
+  director_id:	{type: String, required: true, ref: Director},
 
 // Not Common Properties 
 	genres:	[],
 	writers:	[],
-	criticisms:	Moviecriticisms1,
+  	director_id:	{type:String, ref: Director},
+	rating:	Movierating4,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
 	prizes:	Movieprizes3,
@@ -133,7 +136,11 @@ mongoose.connect(url, function(error){
   	console.log('Conectado a MongoDB');
   }
 });
-var Moviecriticisms1=	{
+var Movierating4=	{
+	score:	Number,
+	voters:	Number,
+    } 
+var Moviecriticisms4=	{
 	color:	{type: String, enum: [green, red, yellow]},
 	journalist:	{type: String, unique: true},
 	media:	String,
@@ -141,11 +148,6 @@ var Moviecriticisms1=	{
 		name:	String,
 		url:	String,
 	    } 
-    } 
-var Moviecriticisms4=	{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
     } 
 var Movieprizes1=	{
 	event:	String,
@@ -165,16 +167,18 @@ var movieSchema = new mongoose.Schema({
   	_id:	{type: String, required:true, index: Hashed},
   	year:	{type: Number, required:true, index: true},
   	type:	{type: String, required: true},
-	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie3 entity version
   	genre:	{type: String, required:true, enum: [drama, comedy, children]},
+    director_id:	{type: String, required: true, ref: Director},
 	prizes:	{type:Movieprizes3, required:true},
 
 // Not Common Properties 
+	running_time:	Number,
 	genres:	[],
 	writers:	[],
-	criticisms:	Moviecriticisms1,
+  	director_id:	{type:String, ref: Director},
+	rating:	Movierating4,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
 },{collection:'movie'});
@@ -194,7 +198,11 @@ mongoose.connect(url, function(error){
   	console.log('Conectado a MongoDB');
   }
 });
-var Moviecriticisms1=	{
+var Movierating4=	{
+	score:	Number,
+	voters:	Number,
+    } 
+var Moviecriticisms4=	{
 	color:	{type: String, enum: [green, red, yellow]},
 	journalist:	{type: String, unique: true},
 	media:	String,
@@ -202,11 +210,6 @@ var Moviecriticisms1=	{
 		name:	String,
 		url:	String,
 	    } 
-    } 
-var Moviecriticisms4=	{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
     } 
 var Movieprizes1=	{
 	event:	String,
@@ -226,16 +229,18 @@ var movieSchema = new mongoose.Schema({
   	_id:	{type: String, required:true, index: Hashed},
   	year:	{type: Number, required:true, index: true},
   	type:	{type: String, required: true},
-	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie4 entity version
   	genre:	{type: String, required:true, enum: [drama, comedy, children]},
+    director_id:	{type: String, required: true, ref: Director},
+	rating:	{type:Movierating4, required:true},
 	criticisms:	{type:Moviecriticisms4, required:true},
 
 // Not Common Properties 
+	running_time:	Number,
 	genres:	[],
 	writers:	[],
-	criticisms:	Moviecriticisms1,
+  	director_id:	{type:String, ref: Director},
 	prizes:	Movieprizes1,
 	prizes:	Movieprizes3,
 },{collection:'movie'});
@@ -255,7 +260,11 @@ mongoose.connect(url, function(error){
   	console.log('Conectado a MongoDB');
   }
 });
-var Moviecriticisms1=	{
+var Movierating4=	{
+	score:	Number,
+	voters:	Number,
+    } 
+var Moviecriticisms4=	{
 	color:	{type: String, enum: [green, red, yellow]},
 	journalist:	{type: String, unique: true},
 	media:	String,
@@ -263,11 +272,6 @@ var Moviecriticisms1=	{
 		name:	String,
 		url:	String,
 	    } 
-    } 
-var Moviecriticisms4=	{
-	color:	{type: String, enum: [green, red, yellow]},
-	journalist:	{type: String, unique: true},
-	media:	String,
     } 
 var Movieprizes1=	{
 	event:	String,
@@ -287,15 +291,17 @@ var movieSchema = new mongoose.Schema({
   	_id:	{type: String, required:true, index: Hashed},
   	year:	{type: Number, required:true, index: true},
   	type:	{type: String, required: true},
-	director_id:	{type: String, required: true, ref: Director},
   
 // add required for Movie5 entity version
   	genres:	{type:[], required:true},
   	writers:	{type:[], required:true},
+  director_id:	{type: String, required: true, ref: Director},
 
 // Not Common Properties 
 	genre:	String,
-	criticisms:	Moviecriticisms1,
+	running_time:	Number,
+  	director_id:	{type:String, ref: Director},
+	rating:	Movierating4,
 	criticisms:	Moviecriticisms4,
 	prizes:	Movieprizes1,
 	prizes:	Movieprizes3,
@@ -386,10 +392,12 @@ var directorSchema = new mongoose.Schema({
   	type:	{type: String, required: true},
   
 // add required for Director1 entity version
-  	actor_movies:	{type:[], required:true},
-  	directed_movies:	{type:[], required:true},
+  actor_movies:	{type: {}, required: true, ref: Movie},
+  directed_movies:	{type: {}, required: true, ref: Movie},
 
 // Not Common Properties 
+  	directed_movies:	{type:String, ref: Movie},
+  	actor_movies:	{type:{}, ref: Movie},
 },{collection:'director'});
 
 var Director = mongoose.model('Director',directorSchema);
@@ -415,10 +423,11 @@ var directorSchema = new mongoose.Schema({
   	type:	{type: String, required: true},
   
 // add required for Director2 entity version
-  	directed_movies:	{type:[], required:true},
+  directed_movies:	{type: String, required: true, ref: Movie},
 
 // Not Common Properties 
-	actor_movies:	[],
+  	directed_movies:	{type:String, ref: Movie},
+  	actor_movies:	{type:{}, ref: Movie},
 },{collection:'director'});
 
 var Director = mongoose.model('Director',directorSchema);

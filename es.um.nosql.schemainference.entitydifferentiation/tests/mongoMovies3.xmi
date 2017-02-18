@@ -5,12 +5,12 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="criticisms" upperBound="-1" refTo="//@entities.4/@entityversions.0 //@entities.4/@entityversions.1"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="director_id" lowerBound="1" upperBound="1" refTo="Director"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="criticisms" upperBound="-1" refTo="//@entities.5/@entityversions.0 //@entities.5/@entityversions.1"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="director_id" lowerBound="1" upperBound="1" opposite="//@entities.4/@entityversions.1/@properties.1" refTo="Director"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="genre">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="-1" refTo="//@entities.5/@entityversions.0 //@entities.5/@entityversions.1"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="-1" refTo="//@entities.6/@entityversions.0 //@entities.6/@entityversions.1"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="title">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -28,6 +28,9 @@
       <properties xsi:type="NoSQLSchema:Reference" name="director_id" lowerBound="1" upperBound="1" refTo="Director"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="genre">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="running_time">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="title">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -47,7 +50,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="genre">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="-1" refTo="//@entities.5/@entityversions.1"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="-1" refTo="//@entities.6/@entityversions.1"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="title">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -62,11 +65,12 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="criticisms" upperBound="-1" refTo="//@entities.4/@entityversions.1"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="criticisms" upperBound="-1" refTo="//@entities.5/@entityversions.0 //@entities.5/@entityversions.1"/>
       <properties xsi:type="NoSQLSchema:Reference" name="director_id" lowerBound="1" upperBound="1" refTo="Director"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="genre">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="rating" lowerBound="1" upperBound="1" refTo="//@entities.2/@entityversions.0"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="title">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -144,6 +148,16 @@
       </properties>
     </entityversions>
   </entities>
+  <entities name="Rating">
+    <entityversions versionId="1">
+      <properties xsi:type="NoSQLSchema:Attribute" name="score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="voters">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+    </entityversions>
+  </entities>
   <entities name="Media">
     <entityversions versionId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
@@ -159,18 +173,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="actor_movies">
-        <type xsi:type="NoSQLSchema:Tuple">
-          <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-          <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="directed_movies">
-        <type xsi:type="NoSQLSchema:Tuple">
-          <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-          <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="actor_movies" upperBound="-1" opposite="//@entities.0/@entityversions.4/@properties.1" refTo="Movie"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="directed_movies" upperBound="-1" refTo="Movie"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -182,11 +186,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="directed_movies">
-        <type xsi:type="NoSQLSchema:Tuple">
-          <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="directed_movies" upperBound="1" refTo="Movie"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -203,7 +203,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="journalist">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="media" lowerBound="1" upperBound="1" refTo="//@entities.2/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="media" lowerBound="1" upperBound="1" refTo="//@entities.3/@entityversions.0"/>
     </entityversions>
     <entityversions versionId="2">
       <properties xsi:type="NoSQLSchema:Attribute" name="color">

@@ -330,7 +330,7 @@ def dispatch printRef(Reference r, boolean isC){
 }
 
 def dispatch printRef(Reference r){
-  '''	«r.name»«IF r.upperBound==-1»:	{type:{}, ref: «r.refTo.name»}«ELSE»:	{type:String, ref: «r.refTo.name»}«ENDIF»'''
+  '''	«r.name»«IF r.upperBound==-1»:	{type:{}, ref: «r.refTo.name»},«ELSE»:	{type:String, ref: «r.refTo.name»},«ENDIF»'''
 }
 
 

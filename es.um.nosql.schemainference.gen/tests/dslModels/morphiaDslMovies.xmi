@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<dsl4mongoose:MongooseModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:dsl4mongoose="http://www.modelum.es/dsl4mongoose" mapper="Mongoose">
+  <parameters name="Movie">
+    <uniques fieldName="title"/>
+    <updates fieldName="genre"/>
+    <updates fieldName="title"/>
+    <indexes fieldName="_id" kind="ASC"/>
+    <indexes fieldName="year" kind="DESC"/>
+  </parameters>
+  <parameters name="Director">
+    <uniques fieldName="name"/>
+    <updates fieldName="name"/>
+    <indexes fieldName="_id" kind="DESC"/>
+    <indexes fieldName="year" kind="ASC"/>
+  </parameters>
+  <parameters name="Criticism">
+    <uniques fieldName="journalist"/>
+  </parameters>
+</dsl4mongoose:MongooseModel>
