@@ -13,45 +13,29 @@ import es.um.nosql.schemainference.NoSQLSchema.Tuple
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate
 import es.um.nosql.schemainference.NoSQLSchema.Reference
 import java.util.ArrayList
-import java.util.List
 
 //import java.util.ArrayList
 
 class MongooseGenerator {
-  //«contEnt=nosqlschema.entities.size»	
- // vaL int contEnt=0
-  var String nameEnt
-  var ArrayList<Entity> entsList=new ArrayList
-  EntityVersion eV
-  EntityVersion evAux
-  Entity entAux
-  NoSQLSchema schema
-  var int indexEl=0
-  var int totalEnts=0
-  def generate (NoSQLSchema nosqlschema) {
-	for(lEnt:nosqlschema.entities){
-  	  entAux=lEnt
-  	  evAux=entAux.entityversions.get(0)
-  	  if(evAux.root==true){
-  	     indexEl++
-  	     entsList.add(lEnt)
-  	  }
-	}
-	'''
-	var mongoose = require('mongoose');
-	mongoose.connect('mongodb://localhost/dbmongoose', function(error){
-	         if(error){
-		        throw error;
-		     }
-		     //else{
-		        //console.log('Conectado a MongoDB');
-		     //}
-	});
-	«FOR entL: entsList»
-	      «reviseEnt(entL)»
-	«ENDFOR»
-   '''
-}	
+    var ArrayList<Entity> entsList = new ArrayList
+	EntityVersion eV
+	var int totalEnts = 0
+
+	def generate (NoSQLSchema nosqlschema) 
+  	{
+		'''
+		var mongoose = require('mongoose');
+		mongoose.connect('mongodb://localhost/dbmongoose', function(error){
+			if(error){
+		    	throw error;
+		    }
+		});
+		«FOR entL: nosqlschema.entities.filter[e | e.entityversions.exists[ev | ev.root]]»
+			«reviseEnt(entL)»
+		«ENDFOR»
+		'''
+   	}
+   		
 	def reviseEnt(Entity ent2)  {
 	  var ArrayList<String> PrimList = new ArrayList
       var ArrayList<String> TupleList = new ArrayList
@@ -92,11 +76,9 @@ class MongooseGenerator {
 	}
 	
 	def reviseEntVer (EntityVersion entVer2,ArrayList<String> PrL,ArrayList<String> TuL,ArrayList<String> RfL,ArrayList<String> AgL) '''
-	    «var int contVer=0»
-	    
-	        «FOR Property prop : entVer2.properties»
-		        «reviseProp(prop,prop.name, PrL, TuL, RfL, AgL)»
-		    «ENDFOR»
+		«FOR Property prop : entVer2.properties»
+			«reviseProp(prop,prop.name, PrL, TuL, RfL, AgL)»
+		«ENDFOR»
 	'''
 	
 	//for abstract Property class
@@ -199,23 +181,11 @@ class MongooseGenerator {
 	
 	def dispatch reviseAttribute(Tuple tuple, String name, ArrayList<String> PrL,ArrayList<String> TuL) {
 	var boolean rTuple
-	  rTuple=reviseTupleList(TuL,name)  
+	  rTuple=TuL.contains(name)
 	  if (!rTuple)
 	   {
 	   	TuL.add(name)
-	   	/*var String prop
-        prop=name+": []"
-	    propsList.add(prop)*/
 	    '''	«name»: [],'''
 	   }
-	}
-	
-	def boolean reviseTupleList(ArrayList<String> t, String name) {
-	 for (i : 0 ..< t.size) {
-	    val element = t.get(i)
-	    if(element==name)
-	    	return true
-	 }
-     return false
 	}
 }//end program
