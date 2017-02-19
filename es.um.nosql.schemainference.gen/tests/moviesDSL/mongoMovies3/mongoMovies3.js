@@ -391,7 +391,6 @@ var directorSchema = new mongoose.Schema({
   actor_movies:	{type: {}, required: true, ref: Movie},
 
 // Not Common Properties 
-  	actor_movies:	{type:{}, ref: Movie},
 },{collection:'director'});
 
 var Director = mongoose.model('Director',directorSchema);

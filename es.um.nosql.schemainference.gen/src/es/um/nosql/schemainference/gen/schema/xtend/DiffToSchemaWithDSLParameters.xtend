@@ -233,6 +233,8 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
     «FOR r2: refV»
       «printRef(r2,true)»
     «ENDFOR»
+    «var List<Reference> restRefs=new ArrayList»
+    «removeRefs(refV,notCommonRefs,restRefs)»
   	«FOR Entry<String, Aggregate> aggV : verAggs.entrySet()»
     «var String nameAg = aggV.getKey()»
     «var Aggregate Ag = aggV.getValue()»
@@ -251,7 +253,7 @@ def analyzeEnt(EntityDiffSpec ent,MongooseModel dslM){
   	«FOR j:0..<tuplesL.size»
   	«printType(tuplesL.get(j),tuples.get(j))»
   	«ENDFOR»
-    «FOR r2: notCommonRefs»
+    «FOR r2: restRefs»
       «analyzeReference(r2,r2.name,refs)»
     «ENDFOR»
   	«FOR Entry<String, Aggregate> aA : remainingAgs.entrySet()»
@@ -276,6 +278,19 @@ def removeAtts(List<Attribute> verL, List<Attribute> origL,List<Attribute> resL)
   	for(k:0..<verL.size){
   	   var Attribute at=verL.get(k)
   	   if(a.name==at.name && a.type.class.name.toString==at.type.class.name.toString)
+  	    resL.remove(a)
+    }
+  }
+}
+
+def removeRefs(List<Reference> verL, List<Reference> origL,List<Reference> resL){
+  for(j:0..<origL.size)
+      resL.add(j,origL.get(j))
+  for(i:0..<origL.size){
+  	var Reference a=origL.get(i)
+  	for(k:0..<verL.size){
+  	   var Reference at=verL.get(k)
+  	   if(a.name==at.name && a.class.name.toString==at.class.name.toString && a.upperBound==at.upperBound)
   	    resL.remove(a)
     }
   }
