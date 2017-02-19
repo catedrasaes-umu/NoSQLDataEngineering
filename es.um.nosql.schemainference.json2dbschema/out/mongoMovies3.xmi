@@ -186,7 +186,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="directed_movies" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.2" refTo="Movie"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="directed_movies" upperBound="-1" opposite="//@entities.0/@entityversions.0/@properties.2" refTo="Movie"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>

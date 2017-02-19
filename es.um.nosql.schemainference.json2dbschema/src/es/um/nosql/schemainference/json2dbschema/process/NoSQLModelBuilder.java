@@ -190,8 +190,10 @@ public class NoSQLModelBuilder
 					Reference ref = (Reference)p;
 					ref.setName(en);
 					// All arrays that come from a real array are signaled by a 0 lower bound
-					ref.setLowerBound(sc.getLowerBounds() == 1 ? 0 : sc.getLowerBounds());
-					ref.setUpperBound(sc.getUpperBounds() > 1 ? -1 : sc.getUpperBounds());
+					//ref.setLowerBound(sc.getLowerBounds() == 1 ? 0 : sc.getLowerBounds());
+					//ref.setUpperBound(sc.getUpperBounds() > 1 ? -1 : sc.getUpperBounds());
+					ref.setLowerBound(0);
+					ref.setUpperBound(-1);
 					return p;
 				}).orElseGet(() -> {
 					// Or else  build a tuple with the correct types
