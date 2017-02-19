@@ -231,7 +231,7 @@ import java.util.List;
 «ags.clear»
 //Annotations class
 @Entity(«ent.entity.name.toFirstLower»)
-class «ent.entity.name.toFirstUpper»{
+class «ent.entity.name.toFirstUpper»«contVer2»{
 
 //Common Properties	
 «FOR ac: commonAttrs»
@@ -268,6 +268,8 @@ class «ent.entity.name.toFirstUpper»{
 «FOR r2: refV»
 «printRef(r2)»
 «ENDFOR»
+«var List<Reference> restRefs=new ArrayList»
+«removeRefs(refV,notCommonRefs,restRefs)»
 «FOR Entry<String, Aggregate> aggV : verAggs.entrySet()»
 «var String nameAg = aggV.getKey()»
 «var Aggregate Ag = aggV.getValue()»
@@ -289,7 +291,7 @@ class «ent.entity.name.toFirstUpper»{
 «ENDFOR»
 «FOR j:0..<tuplesL.size»«printType(tuplesL.get(j),tuples.get(j))»
 «ENDFOR»
-«FOR r2: notCommonRefs»
+«FOR r2: restRefs»
 «analyzeReference(r2,r2.name,refs)»
 «ENDFOR»
   	«FOR Entry<String, Aggregate> aA : remainingAgs.entrySet()»
@@ -303,14 +305,15 @@ class «ent.entity.name.toFirstUpper»{
     «ENDIF»
   	«ENDFOR»
 
-public «ent.entity.name.toFirstUpper»{
+public «ent.entity.name.toFirstUpper»«contVer2»{
 }
 
-public «ent.entity.name.toFirstUpper»(«entityProps»){
+public «ent.entity.name.toFirstUpper»«contVer2»(«entityProps»){
 «thisEntityProps»	
 }
 «entityProps=""»
 «thisEntityProps=""»
+
 //Root Entity Code
 //Common Properties
 «FOR ac: commonAttrs»
@@ -483,6 +486,8 @@ class «ent.entity.name.toFirstUpper»«contVer3»{
 «FOR r2: refV»
 «printRef(r2)»
 «ENDFOR»
+«var List<Reference> restRefs=new ArrayList»
+«removeRefs(refV,notCommonRefs,restRefs)»
 «FOR Entry<String, Aggregate> aggV : verAggs.entrySet()»
 «var String nameAg = aggV.getKey()»
 «var Aggregate Ag = aggV.getValue()»
@@ -505,7 +510,7 @@ class «ent.entity.name.toFirstUpper»«contVer3»{
 «ENDFOR»
 «FOR j:0..<tuplesL.size»«printType(tuplesL.get(j),tuples.get(j))»
 «ENDFOR»
-«FOR r2: notCommonRefs»
+«FOR r2: restRefs»
 «analyzeReference(r2,r2.name,refs)»
     «ENDFOR»
   	«FOR Entry<String, Aggregate> aA : remainingAgs.entrySet()»
@@ -680,6 +685,20 @@ def removeAtts(List<Attribute> verL, List<Attribute> origL,List<Attribute> resL)
     }
   }
 }
+
+def removeRefs(List<Reference> verL, List<Reference> origL,List<Reference> resL){
+  for(j:0..<origL.size)
+      resL.add(j,origL.get(j))
+  for(i:0..<origL.size){
+  	var Reference a=origL.get(i)
+  	for(k:0..<verL.size){
+  	   var Reference at=verL.get(k)
+  	   if(a.name==at.name && a.class.name.toString==at.class.name.toString && a.upperBound==at.upperBound)
+  	    resL.remove(a)
+    }
+  }
+}
+
 
 def removeVerAgs(Map <String, Aggregate> aggs,Map <String, Aggregate>finalAggs){
   for(Entry<String, Aggregate> agV2: aggs.entrySet()){

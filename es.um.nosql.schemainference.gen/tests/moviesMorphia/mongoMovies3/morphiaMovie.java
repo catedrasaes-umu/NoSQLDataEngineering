@@ -38,11 +38,11 @@ class Movie{
 	@Indexed (IndexDirection.DESC)
 	private int year;
 	private String type;
+	@Reference
+	private Director director;
 
 //add required for Movie1 entity version
 	private String genre;
-	@Reference
-	private Director director;
 	@Embedded
 	private ArrayList<Criticism1> criticisms1;
 	@Embedded
@@ -52,14 +52,6 @@ class Movie{
 	private int running_time;
 	private String[] genres;
 	private String[] writers;
-	@Reference
-	private Director director;
-	@Reference
-	private Director director;
-	@Reference
-	private Director director;
-	@Reference
-	private Director director;
 	@Embedded
 	private Rating4 rating4;
 	@Embedded
@@ -70,21 +62,18 @@ class Movie{
 public Movie{
 }
 
-public Movie(String title,String _id,int year,String type,String genre,Director director,Number running_time,String[] genres,String[] writers,Director director,Director director,Director director,Director director,){
+public Movie(String title,String _id,int year,String type,Director director,String genre,Number running_time,String[] genres,String[] writers,){
 	this.title=title;
 	this._id=_id;
 	this.year=year;
 	this.type=type;
-	this.genre=genre;
 	this.director=director;
+	this.genre=genre;
 	this.running_time=running_time;
 	this.genres=genres;
 	this.writers=writers;
-	this.director=director;
-	this.director=director;
-	this.director=director;
-	this.director=director;
 }
+
 //Root Entity Code
 //Common Properties
 
@@ -120,6 +109,14 @@ public Movie(String title,String _id,int year,String type,String genre,Director 
       this.type = type;
   	}
 
+	public List<Director> getDirector(){
+	  return director;
+	}
+
+	public void setDirector(Director director){
+      this.director = director;
+  	}
+
 // add required for Movie1 entity version
 
 	public String getGenre(){
@@ -128,14 +125,6 @@ public Movie(String title,String _id,int year,String type,String genre,Director 
  
   	public void setGenre(String genre){
       this.genre = genre;
-  	}
-
-	public List<Director> getDirector(){
-	  return director;
-	}
-
-	public void setDirector(Director director){
-      this.director = director;
   	}
 
 	public List<Criticism1> getCriticisms1(){
@@ -273,18 +262,16 @@ class Movie{
 	@Indexed (IndexDirection.DESC)
 	private int year;
 	private String type;
+	@Reference
+	private Director director;
 
 //add required for Movie2 entity version
 	private String genre;
 	private int running_time;
-	@Reference
-	private Director director;
 
 // Not Common Properties 
 	private String[] genres;
 	private String[] writers;
-	@Reference
-	private Director director;
 	@Embedded
 	private Rating4 rating4;
 	@Embedded
@@ -297,18 +284,18 @@ class Movie{
 public Movie{
 }
 
-public Movie(String title,String _id,int year,String type,String genre,int running_time,Director director,String[] genres,String[] writers,Director director,){
+public Movie(String title,String _id,int year,String type,Director director,String genre,int running_time,String[] genres,String[] writers,){
 	this.title=title;
 	this._id=_id;
 	this.year=year;
 	this.type=type;
+	this.director=director;
 	this.genre=genre;
 	this.running_time=running_time;
-	this.director=director;
 	this.genres=genres;
 	this.writers=writers;
-	this.director=director;
 }
+
 //Root Entity Code
 //Common Properties
 
@@ -344,6 +331,14 @@ public Movie(String title,String _id,int year,String type,String genre,int runni
       this.type = type;
   	}
 
+	public List<Director> getDirector(){
+	  return director;
+	}
+
+	public void setDirector(Director director){
+      this.director = director;
+  	}
+
 // add required for Movie2 entity version
 
 	public String getGenre(){
@@ -360,14 +355,6 @@ public Movie(String title,String _id,int year,String type,String genre,int runni
  
   	public void setRunning_time(int running_time){
       this.running_time = running_time;
-  	}
-
-	public List<Director> getDirector(){
-	  return director;
-	}
-
-	public void setDirector(Director director){
-      this.director = director;
   	}
 
 // Not Common Properties 
@@ -489,11 +476,11 @@ class Movie{
 	@Indexed (IndexDirection.DESC)
 	private int year;
 	private String type;
+	@Reference
+	private Director director;
 
 //add required for Movie3 entity version
 	private String genre;
-	@Reference
-	private Director director;
 	@Embedded
 	private ArrayList<Prize3> prizes3;
 
@@ -501,8 +488,6 @@ class Movie{
 	private int running_time;
 	private String[] genres;
 	private String[] writers;
-	@Reference
-	private Director director;
 	@Embedded
 	private Rating4 rating4;
 	@Embedded
@@ -513,18 +498,18 @@ class Movie{
 public Movie{
 }
 
-public Movie(String title,String _id,int year,String type,String genre,Director director,int running_time,String[] genres,String[] writers,Director director,){
+public Movie(String title,String _id,int year,String type,Director director,String genre,int running_time,String[] genres,String[] writers,){
 	this.title=title;
 	this._id=_id;
 	this.year=year;
 	this.type=type;
-	this.genre=genre;
 	this.director=director;
+	this.genre=genre;
 	this.running_time=running_time;
 	this.genres=genres;
 	this.writers=writers;
-	this.director=director;
 }
+
 //Root Entity Code
 //Common Properties
 
@@ -560,6 +545,14 @@ public Movie(String title,String _id,int year,String type,String genre,Director 
       this.type = type;
   	}
 
+	public List<Director> getDirector(){
+	  return director;
+	}
+
+	public void setDirector(Director director){
+      this.director = director;
+  	}
+
 // add required for Movie3 entity version
 
 	public String getGenre(){
@@ -568,14 +561,6 @@ public Movie(String title,String _id,int year,String type,String genre,Director 
  
   	public void setGenre(String genre){
       this.genre = genre;
-  	}
-
-	public List<Director> getDirector(){
-	  return director;
-	}
-
-	public void setDirector(Director director){
-      this.director = director;
   	}
 
 	public List<Prize3> getPrizes3(){
@@ -705,11 +690,11 @@ class Movie{
 	@Indexed (IndexDirection.DESC)
 	private int year;
 	private String type;
+	@Reference
+	private Director director;
 
 //add required for Movie4 entity version
 	private String genre;
-	@Reference
-	private Director director;
 	@Embedded
 	private Rating4 rating4;
 	@Embedded
@@ -719,8 +704,6 @@ class Movie{
 	private int running_time;
 	private String[] genres;
 	private String[] writers;
-	@Reference
-	private Director director;
 	@Embedded
 	private List<Prize1> prizes1;
 	@Embedded
@@ -729,18 +712,18 @@ class Movie{
 public Movie{
 }
 
-public Movie(String title,String _id,int year,String type,String genre,Director director,int running_time,String[] genres,String[] writers,Director director,){
+public Movie(String title,String _id,int year,String type,Director director,String genre,int running_time,String[] genres,String[] writers,){
 	this.title=title;
 	this._id=_id;
 	this.year=year;
 	this.type=type;
-	this.genre=genre;
 	this.director=director;
+	this.genre=genre;
 	this.running_time=running_time;
 	this.genres=genres;
 	this.writers=writers;
-	this.director=director;
 }
+
 //Root Entity Code
 //Common Properties
 
@@ -776,6 +759,14 @@ public Movie(String title,String _id,int year,String type,String genre,Director 
       this.type = type;
   	}
 
+	public List<Director> getDirector(){
+	  return director;
+	}
+
+	public void setDirector(Director director){
+      this.director = director;
+  	}
+
 // add required for Movie4 entity version
 
 	public String getGenre(){
@@ -784,14 +775,6 @@ public Movie(String title,String _id,int year,String type,String genre,Director 
  
   	public void setGenre(String genre){
       this.genre = genre;
-  	}
-
-	public List<Director> getDirector(){
-	  return director;
-	}
-
-	public void setDirector(Director director){
-      this.director = director;
   	}
 
 	public Rating4 getRating4(){
@@ -921,18 +904,16 @@ class Movie{
 	@Indexed (IndexDirection.DESC)
 	private int year;
 	private String type;
+	@Reference
+	private Director director;
 
 //add required for Movie5 entity version
 	private String[] genres;
 	private String[] writers;
-	@Reference
-	private Director director;
 
 // Not Common Properties 
 	private String genre;
 	private int running_time;
-	@Reference
-	private Director director;
 	@Embedded
 	private Rating4 rating4;
 	@Embedded
@@ -945,18 +926,18 @@ class Movie{
 public Movie{
 }
 
-public Movie(String title,String _id,int year,String type,String genres,String writers,Director director,String genre,int running_time,Director director,){
+public Movie(String title,String _id,int year,String type,Director director,String genres,String writers,String genre,int running_time,){
 	this.title=title;
 	this._id=_id;
 	this.year=year;
 	this.type=type;
+	this.director=director;
 	this.genres=genres;
 	this.writers=writers;
-	this.director=director;
 	this.genre=genre;
 	this.running_time=running_time;
-	this.director=director;
 }
+
 //Root Entity Code
 //Common Properties
 
@@ -992,6 +973,14 @@ public Movie(String title,String _id,int year,String type,String genres,String w
       this.type = type;
   	}
 
+	public List<Director> getDirector(){
+	  return director;
+	}
+
+	public void setDirector(Director director){
+      this.director = director;
+  	}
+
 // add required for Movie5 entity version
 
 	public String[] getGenres(){
@@ -1008,14 +997,6 @@ public Movie(String title,String _id,int year,String type,String genres,String w
 
 	public void setWriters(String[] writers){
       this.writers = writers;
-  	}
-
-	public List<Director> getDirector(){
-	  return director;
-	}
-
-	public void setDirector(Director director){
-      this.director = director;
   	}
 
 // Not Common Properties 
@@ -1152,6 +1133,7 @@ public Movietheater(String _id,String name,String type,String city,String countr
 	this.country=country;
 	this.roomNumbers=roomNumbers;
 }
+
 //Root Entity Code
 //Common Properties
 
@@ -1267,6 +1249,7 @@ public Movietheater(String _id,String name,String type,String city,String countr
 	this.country=country;
 	this.roomNumbers=roomNumbers;
 }
+
 //Root Entity Code
 //Common Properties
 
@@ -1365,31 +1348,26 @@ class Director{
 	@Indexed (unique=true)
 	private String name;
 	private String type;
+	@Reference
+	private List<Movie> directed_movies;
 
 //add required for Director1 entity version
 	@Reference
 	private List<Movie> actor_movies;
-	@Reference
-	private List<Movie> directed_movies;
 
 // Not Common Properties 
-	@Reference
-	private Movie directed_movies;
-	@Reference
-	private List<Movie> actor_movies;
 
 public Director{
 }
 
-public Director(String _id,String name,String type,ListMovie actor_movies,ListMovie directed_movies,Movie directed_movies,ListMovie actor_movies,){
+public Director(String _id,String name,String type,ListMovie directed_movies,ListMovie actor_movies,){
 	this._id=_id;
 	this.name=name;
 	this.type=type;
-	this.actor_movies=actor_movies;
-	this.directed_movies=directed_movies;
 	this.directed_movies=directed_movies;
 	this.actor_movies=actor_movies;
 }
+
 //Root Entity Code
 //Common Properties
 
@@ -1417,6 +1395,15 @@ public Director(String _id,String name,String type,ListMovie actor_movies,ListMo
       this.type = type;
   	}
 
+	public List<Movie> getDirected_movies(){
+      return directed_movies;
+	}
+
+  	public void setDirected_movies(List<Movie> directed_movies){
+      this.directed_movies = directed_movies;
+  	}
+
+
 // add required for Director1 entity version
 
 	public List<Movie> getActor_movies(){
@@ -1428,16 +1415,16 @@ public Director(String _id,String name,String type,ListMovie actor_movies,ListMo
   	}
 
 
-	public List<Movie> getDirected_movies(){
-      return directed_movies;
+// Not Common Properties 
+
+	public List<Movie> getActor_movies(){
+      return actor_movies;
 	}
 
-  	public void setDirected_movies(List<Movie> directed_movies){
-      this.directed_movies = directed_movies;
+  	public void setActor_movies(List<Movie> actor_movies){
+      this.actor_movies = actor_movies;
   	}
 
-
-// Not Common Properties 
 }//end Class
 
 
@@ -1505,28 +1492,26 @@ class Director{
 	@Indexed (unique=true)
 	private String name;
 	private String type;
+	@Reference
+	private List<Movie> directed_movies;
 
 //add required for Director2 entity version
-	@Reference
-	private Movie directed_movies;
 
 // Not Common Properties 
-	@Reference
-	private Movie directed_movies;
 	@Reference
 	private List<Movie> actor_movies;
 
 public Director{
 }
 
-public Director(String _id,String name,String type,Movie directed_movies,Movie directed_movies,ListMovie actor_movies,){
+public Director(String _id,String name,String type,ListMovie directed_movies,ListMovie actor_movies,){
 	this._id=_id;
 	this.name=name;
 	this.type=type;
 	this.directed_movies=directed_movies;
-	this.directed_movies=directed_movies;
 	this.actor_movies=actor_movies;
 }
+
 //Root Entity Code
 //Common Properties
 
@@ -1554,15 +1539,16 @@ public Director(String _id,String name,String type,Movie directed_movies,Movie d
       this.type = type;
   	}
 
-// add required for Director2 entity version
-
 	public List<Movie> getDirected_movies(){
-	  return directed_movies;
+      return directed_movies;
 	}
 
-	public void setDirected_movies(Movie directed_movies){
+  	public void setDirected_movies(List<Movie> directed_movies){
       this.directed_movies = directed_movies;
   	}
+
+
+// add required for Director2 entity version
 
 // Not Common Properties 
 }//end Class
