@@ -1,3 +1,4 @@
+
 File Movie1
 @startuml
 title <b> Movie1
@@ -21,27 +22,35 @@ Class Movie{
 	<b> int year
 }
 
-Movie --> "[1..1] director_id" Director
+Movie --> "[1..1] director" Director
    
 Class Director {
 	<b> String _id
-	<b> String[] actor_moviesTuple
-	<b> String[] directed_moviesTuple
 	<b> String name
 	<b> String type
 }  
+
+Director --> "[1..*] actor_movies" Movie
+
+Director --> "[1..*] directed_movies" Movie
+
 Movie *--> "[1..*] criticisms" Criticism
+
 Class Criticism {
 	<b> String color
 	<b> String journalist
 	<b> String media
 }  
+
 Criticism *--> "[1..1] media" Media
+
 Class Media {
 	<b> String name
 	<b> String url
 }  
+
 Movie *--> "[1..*] prizes" Prize
+
 Class Prize {
 	<b> String event
 	<b> String[] namesTuple
@@ -49,6 +58,7 @@ Class Prize {
 	<b> String name
 }  
 @enduml
+
 File Movie2
 @startuml
 title <b> Movie2
@@ -67,21 +77,25 @@ skinparam stereotypeCBorderColor SpringGreen
 Class Movie{
 	<b> String _id
 	<b> String genre
+	<b> int running_time
 	<b> String title
 	<b> String type
 	<b> int year
 }
 
-Movie --> "[1..1] director_id" Director
+Movie --> "[1..1] director" Director
    
 Class Director {
 	<b> String _id
-	<b> String[] actor_moviesTuple
-	<b> String[] directed_moviesTuple
 	<b> String name
 	<b> String type
 }  
+
+Director --> "[1..*] actor_movies" Movie
+
+Director --> "[1..*] directed_movies" Movie
 @enduml
+
 File Movie3
 @startuml
 title <b> Movie3
@@ -105,22 +119,27 @@ Class Movie{
 	<b> int year
 }
 
-Movie --> "[1..1] director_id" Director
+Movie --> "[1..1] director" Director
    
 Class Director {
 	<b> String _id
-	<b> String[] actor_moviesTuple
-	<b> String[] directed_moviesTuple
 	<b> String name
 	<b> String type
 }  
+
+Director --> "[1..*] actor_movies" Movie
+
+Director --> "[1..*] directed_movies" Movie
+
 Movie *--> "[1..*] prizes" Prize
+
 Class Prize {
 	<b> String event
 	<b> String name
 	<b> int year
 }  
 @enduml
+
 File Movie4
 @startuml
 title <b> Movie4
@@ -144,22 +163,41 @@ Class Movie{
 	<b> int year
 }
 
-Movie --> "[1..1] director_id" Director
+Movie --> "[1..1] director" Director
    
 Class Director {
 	<b> String _id
-	<b> String[] actor_moviesTuple
-	<b> String[] directed_moviesTuple
 	<b> String name
 	<b> String type
 }  
+
+Director --> "[1..*] actor_movies" Movie
+
+Director --> "[1..*] directed_movies" Movie
+
 Movie *--> "[1..*] criticisms" Criticism
+
 Class Criticism {
 	<b> String color
 	<b> String journalist
 	<b> String media
 }  
+
+Criticism *--> "[1..1] media" Media
+
+Class Media {
+	<b> String name
+	<b> String url
+}  
+
+Movie *--> "[1..1] rating" Rating
+
+Class Rating {
+	<b> int score
+	<b> int voters
+}  
 @enduml
+
 File Movie5
 @startuml
 title <b> Movie5
@@ -184,16 +222,68 @@ Class Movie{
 	<b> int year
 }
 
-Movie --> "[1..1] director_id" Director
+Movie --> "[1..1] director" Director
    
 Class Director {
 	<b> String _id
-	<b> String[] actor_moviesTuple
-	<b> String[] directed_moviesTuple
 	<b> String name
 	<b> String type
 }  
+
+Director --> "[1..*] actor_movies" Movie
+
+Director --> "[1..*] directed_movies" Movie
 @enduml
+
+File Movietheater1
+@startuml
+title <b> Movietheater1
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Movietheater{
+	<b> String _id
+	<b> String city
+	<b> String country
+	<b> String name
+	<b> String type
+}
+@enduml
+
+File Movietheater2
+@startuml
+title <b> Movietheater2
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Movietheater{
+	<b> String _id
+	<b> String city
+	<b> String country
+	<b> String name
+	<b> int roomNumbers
+	<b> String type
+}
+@enduml
+
 File Director1
 @startuml
 title <b> Director1
@@ -211,12 +301,59 @@ skinparam stereotypeCBorderColor SpringGreen
 
 Class Director{
 	<b> String _id
-	<b> String[] actor_moviesTuple
-	<b> String[] directed_moviesTuple
 	<b> String name
 	<b> String type
 }
+
+Director --> "[1..*] actor_movies" Movie
+   
+Class Movie {
+	<b> String _id
+	<b> String genre
+	<b> String title
+	<b> String type
+	<b> int year
+	<b> int running_time
+	<b> String[] genresTuple
+	<b> String[] writersTuple
+}  
+
+Movie --> "[1..1] director" Director
+
+Movie *--> "[1..*] criticisms" Criticism
+
+Movie *--> "[1..*] prizes" Prize
+
+Movie *--> "[1..1] rating" Rating
+
+Class Criticism {
+	<b> String color
+	<b> String journalist
+	<b> String media
+}  
+
+Criticism *--> "[1..1] media" Media
+
+Class Media {
+	<b> String name
+	<b> String url
+}  
+
+Class Prize {
+	<b> String event
+	<b> String[] namesTuple
+	<b> int year
+	<b> String name
+}  
+
+Class Rating {
+	<b> int score
+	<b> int voters
+}  
+
+Director --> "[1..*] directed_movies" Movie
 @enduml
+
 File Director2
 @startuml
 title <b> Director2
@@ -234,8 +371,53 @@ skinparam stereotypeCBorderColor SpringGreen
 
 Class Director{
 	<b> String _id
-	<b> String[] directed_moviesTuple
 	<b> String name
 	<b> String type
 }
+
+Director --> "[1..*] directed_movies" Movie
+   
+Class Movie {
+	<b> String _id
+	<b> String genre
+	<b> String title
+	<b> String type
+	<b> int year
+	<b> int running_time
+	<b> String[] genresTuple
+	<b> String[] writersTuple
+}  
+
+Movie --> "[1..1] director" Director
+
+Movie *--> "[1..*] criticisms" Criticism
+
+Movie *--> "[1..*] prizes" Prize
+
+Movie *--> "[1..1] rating" Rating
+
+Class Criticism {
+	<b> String color
+	<b> String journalist
+	<b> String media
+}  
+
+Criticism *--> "[1..1] media" Media
+
+Class Media {
+	<b> String name
+	<b> String url
+}  
+
+Class Prize {
+	<b> String event
+	<b> String[] namesTuple
+	<b> int year
+	<b> String name
+}  
+
+Class Rating {
+	<b> int score
+	<b> int voters
+}  
 @enduml

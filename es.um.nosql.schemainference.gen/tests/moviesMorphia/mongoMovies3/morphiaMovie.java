@@ -28,7 +28,7 @@ import java.util.ArrayList;
 import java.util.List;
 //Annotations class
 @Entity(movie)
-class Movie{
+class Movie1{
 
 //Common Properties	
 	@Indexed (unique=true)
@@ -59,10 +59,10 @@ class Movie{
 	@Embedded
 	private List<Prize3> prizes3;
 
-public Movie{
+public Movie1{
 }
 
-public Movie(String title,String _id,int year,String type,Director director,String genre,Number running_time,String[] genres,String[] writers,){
+public Movie1(String title,String _id,int year,String type,Director director,String genre,Number running_time,String[] genres,String[] writers,){
 	this.title=title;
 	this._id=_id;
 	this.year=year;
@@ -252,7 +252,7 @@ import java.util.ArrayList;
 import java.util.List;
 //Annotations class
 @Entity(movie)
-class Movie{
+class Movie2{
 
 //Common Properties	
 	@Indexed (unique=true)
@@ -281,10 +281,10 @@ class Movie{
 	@Embedded
 	private List<Prize3> prizes3;
 
-public Movie{
+public Movie2{
 }
 
-public Movie(String title,String _id,int year,String type,Director director,String genre,int running_time,String[] genres,String[] writers,){
+public Movie2(String title,String _id,int year,String type,Director director,String genre,int running_time,String[] genres,String[] writers,){
 	this.title=title;
 	this._id=_id;
 	this.year=year;
@@ -466,7 +466,7 @@ import java.util.ArrayList;
 import java.util.List;
 //Annotations class
 @Entity(movie)
-class Movie{
+class Movie3{
 
 //Common Properties	
 	@Indexed (unique=true)
@@ -495,10 +495,10 @@ class Movie{
 	@Embedded
 	private List<Prize1> prizes1;
 
-public Movie{
+public Movie3{
 }
 
-public Movie(String title,String _id,int year,String type,Director director,String genre,int running_time,String[] genres,String[] writers,){
+public Movie3(String title,String _id,int year,String type,Director director,String genre,int running_time,String[] genres,String[] writers,){
 	this.title=title;
 	this._id=_id;
 	this.year=year;
@@ -680,7 +680,7 @@ import java.util.ArrayList;
 import java.util.List;
 //Annotations class
 @Entity(movie)
-class Movie{
+class Movie4{
 
 //Common Properties	
 	@Indexed (unique=true)
@@ -709,10 +709,10 @@ class Movie{
 	@Embedded
 	private List<Prize3> prizes3;
 
-public Movie{
+public Movie4{
 }
 
-public Movie(String title,String _id,int year,String type,Director director,String genre,int running_time,String[] genres,String[] writers,){
+public Movie4(String title,String _id,int year,String type,Director director,String genre,int running_time,String[] genres,String[] writers,){
 	this.title=title;
 	this._id=_id;
 	this.year=year;
@@ -894,7 +894,7 @@ import java.util.ArrayList;
 import java.util.List;
 //Annotations class
 @Entity(movie)
-class Movie{
+class Movie5{
 
 //Common Properties	
 	@Indexed (unique=true)
@@ -923,10 +923,10 @@ class Movie{
 	@Embedded
 	private List<Prize3> prizes3;
 
-public Movie{
+public Movie5{
 }
 
-public Movie(String title,String _id,int year,String type,Director director,String genres,String writers,String genre,int running_time,){
+public Movie5(String title,String _id,int year,String type,Director director,String genres,String writers,String genre,int running_time,){
 	this.title=title;
 	this._id=_id;
 	this.year=year;
@@ -1108,7 +1108,7 @@ import java.util.ArrayList;
 import java.util.List;
 //Annotations class
 @Entity(movietheater)
-class Movietheater{
+class Movietheater1{
 
 //Common Properties	
 	private String _id;
@@ -1122,10 +1122,10 @@ class Movietheater{
 // Not Common Properties 
 	private int roomNumbers;
 
-public Movietheater{
+public Movietheater1{
 }
 
-public Movietheater(String _id,String name,String type,String city,String country,Number roomNumbers,){
+public Movietheater1(String _id,String name,String type,String city,String country,Number roomNumbers,){
 	this._id=_id;
 	this.name=name;
 	this.type=type;
@@ -1224,7 +1224,7 @@ import java.util.ArrayList;
 import java.util.List;
 //Annotations class
 @Entity(movietheater)
-class Movietheater{
+class Movietheater2{
 
 //Common Properties	
 	private String _id;
@@ -1238,10 +1238,10 @@ class Movietheater{
 
 // Not Common Properties 
 
-public Movietheater{
+public Movietheater2{
 }
 
-public Movietheater(String _id,String name,String type,String city,String country,int roomNumbers,){
+public Movietheater2(String _id,String name,String type,String city,String country,int roomNumbers,){
 	this._id=_id;
 	this.name=name;
 	this.type=type;
@@ -1340,7 +1340,7 @@ import java.util.ArrayList;
 import java.util.List;
 //Annotations class
 @Entity(director)
-class Director{
+class Director1{
 
 //Common Properties	
 	@Indexed (IndexDirection.DESC)
@@ -1357,10 +1357,10 @@ class Director{
 
 // Not Common Properties 
 
-public Director{
+public Director1{
 }
 
-public Director(String _id,String name,String type,ListMovie directed_movies,ListMovie actor_movies,){
+public Director1(String _id,String name,String type,ListMovie directed_movies,ListMovie actor_movies,){
 	this._id=_id;
 	this.name=name;
 	this.type=type;
@@ -1484,7 +1484,7 @@ import java.util.ArrayList;
 import java.util.List;
 //Annotations class
 @Entity(director)
-class Director{
+class Director2{
 
 //Common Properties	
 	@Indexed (IndexDirection.DESC)
@@ -1501,10 +1501,10 @@ class Director{
 	@Reference
 	private List<Movie> actor_movies;
 
-public Director{
+public Director2{
 }
 
-public Director(String _id,String name,String type,ListMovie directed_movies,ListMovie actor_movies,){
+public Director2(String _id,String name,String type,ListMovie directed_movies,ListMovie actor_movies,){
 	this._id=_id;
 	this.name=name;
 	this.type=type;
