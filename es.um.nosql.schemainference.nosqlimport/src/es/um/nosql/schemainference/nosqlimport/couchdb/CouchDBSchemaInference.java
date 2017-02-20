@@ -32,7 +32,7 @@ public class CouchDBSchemaInference
 		 * "art" database will not work
 		 * "movies", "food" and "books" will
 		 */
-		String dbName = "books";//args[0];
+		String dbName = "errormap";//args[0];
 		String dirName = "mapreduce/couchdb/v1";//args[1];
 
 		try {
@@ -52,6 +52,8 @@ public class CouchDBSchemaInference
 
 			List<JsonObject> list = dbClient.view("_temp_view").tempView(mapRedObj).group(true)
 					.includeDocs(false).reduce(true).query(JsonObject.class);
+
+//			List<JsonObject> list = dbClient.view("_temp_view").tempView(mapRedObj).query(JsonObject.class);
 
 			CouchDBStreamAdapter adapter = new CouchDBStreamAdapter();
 			StreamManager.getStrManager().printStream(adapter.adaptStream(list.stream()));

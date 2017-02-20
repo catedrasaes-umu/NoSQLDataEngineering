@@ -20,7 +20,7 @@ public class Main
 		 * The generated content will be also stored on the database
 		 */
 		int minInstances = 3;
-		int maxInstances = 9;
+		int maxInstances = 3;
 
 		DbGenController controller = new DbGenController(DbType.COUCHDB, COUCHDB_IP);
 		controller.startTest(INPUT_FOLDER, JSON_FOLDER, minInstances, maxInstances);

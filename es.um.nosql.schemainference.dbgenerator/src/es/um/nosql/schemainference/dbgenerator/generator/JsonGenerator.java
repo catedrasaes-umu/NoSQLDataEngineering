@@ -92,8 +92,6 @@ public class JsonGenerator
 				for (int i = 0; i < getRandomBetween(MIN_INSTANCES_VERSION, MAX_INSTANCES_VERSION); i++)
 				{
 					ObjectNode strObj = factory.objectNode();
-					strObj.put("_id", getId());
-					strObj.put("type", entity.getName());
 
 					for (Property property : eVersion.getProperties())
 					{
@@ -126,6 +124,10 @@ public class JsonGenerator
 							}
 						}
 					}
+					// We will override the _id and the type parameters...
+					strObj.put("_id", getId());
+					strObj.put("type", entity.getName());
+
 					mapEV.get(eVersion).add(strObj);
 
 					lStorage.add(strObj);
@@ -196,7 +198,7 @@ public class JsonGenerator
 		switch (type)
 		{
 			case "String": case "string": {strObj.put(name, getRandomString()); break;}
-			case "Int": case "int": {strObj.put(name, getRandomInt()); break;}
+			case "Int": case "int": case "Number": case "number": {strObj.put(name, getRandomInt()); break;}
 			case "Double": case "double": case "float": case "Float": {strObj.put(name, getRandomFloat()); break;}
 			case "Bool": case "bool": case "Boolean": case "boolean": {strObj.put(name, getRandomBoolean()); break;}
 		}
@@ -212,7 +214,7 @@ public class JsonGenerator
 		switch (type)
 		{
 			case "String": case "string": {arrayObj.add(getRandomString()); break;}
-			case "Int": case "int": {arrayObj.add(getRandomInt()); break;}
+			case "Int": case "int": case "Number": case "number": {arrayObj.add(getRandomInt()); break;}
 			case "Double": case "double": case "float": case "Float": {arrayObj.add(getRandomFloat()); break;}
 			case "Bool": case "bool": case "Boolean": case "boolean": {arrayObj.add(getRandomBoolean()); break;}
 		}

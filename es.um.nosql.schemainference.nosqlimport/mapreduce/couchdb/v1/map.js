@@ -9,8 +9,10 @@ function(doc)
     {
         var retschema = null;
 
-        function _search_string_in_array(str, strArray) {
-        	return !strArray.every(function (s) {
+        function _search_string_in_array(str, strArray)
+        {
+        	return !strArray.every(function (s)
+            {
         		return !s.toLowerCase().match(str);
         	});
         }
@@ -23,10 +25,10 @@ function(doc)
             else
             	_retschema = [];
             
-            Object.keys(obj).sort().forEach(function (key) {
+            Object.keys(obj).sort().forEach(function (key)
+            {
                 //if (!obj.hasOwnProperty(key))
                 //    return;
-
                 if (asObject)
                 {
                     if ((typeof interesting_keys !== 'undefined')
@@ -79,6 +81,7 @@ function(doc)
         {
         	retschema = true;
       	} else if ((typeof obj == 'string'))
+        {
             retschema = 's';
         }
 

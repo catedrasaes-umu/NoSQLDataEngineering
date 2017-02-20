@@ -145,7 +145,7 @@
                   </style>
                 </conditionalStyles>
                 <conditionalStyles predicateExpression="aql: self.oclIsTypeOf(NoSQLSchema::Aggregate)">
-                  <style labelSize="9" labelExpression="aql: self.name + ': ' + self.oclAsType(NoSQLSchema::Aggregate).refTo.ancestors()->filter(NoSQLSchema::Entity)->first().name + ' v_' + self.oclAsType(NoSQLSchema::Aggregate).refTo.versionId" iconPath="/es.um.nosql.schemainference.design/images/icons/Aggr16.png">
+                  <style labelSize="9" labelExpression="aql: self.name + ': ' + self.oclAsType(NoSQLSchema::Aggregate).refTo.ancestors()->filter(NoSQLSchema::Entity)->first().name + ' v_[' + self.oclAsType(NoSQLSchema::Aggregate).refTo->collect(ev | ev.versionId + ' ') + ']'" iconPath="/es.um.nosql.schemainference.design/images/icons/Aggr16.png">
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
                   </style>
@@ -890,6 +890,7 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="es.um.nosql.schemainference.design.services.NoSQLSchemaServices"/>
+    <ownedJavaExtensions qualifiedClassName="es.um.nosql.schemainference.design.services.NoSQLSchemaLabels"/>
   </ownedViewpoints>
   <userColorsPalettes name="Palette">
     <entries xsi:type="description:UserFixedColor" red="255" green="240" blue="171" name="Yellow-1"/>
