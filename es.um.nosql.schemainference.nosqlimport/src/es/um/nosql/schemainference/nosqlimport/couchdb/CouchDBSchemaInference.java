@@ -6,13 +6,10 @@ import org.lightcouch.CouchDbClient;
 import org.lightcouch.CouchDbProperties;
 import org.lightcouch.DesignDocument.MapReduce;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
 import es.um.nosql.schemainference.nosqlimport.util.CouchDBStreamAdapter;
 import es.um.nosql.schemainference.nosqlimport.util.MapReduceSources;
-import es.um.nosql.schemainference.nosqlimport.util.StreamManager;
 
 /**
  * @author dsevilla
@@ -22,31 +19,33 @@ public class CouchDBSchemaInference
 {
 	public static void main(String[] args)
 	{
-/*		if (args.length < 2)
+/*		if (args.length < 3)
 		{
-			System.err.println("USAGE: inference dbName viewDir (a directory where the map.js and reduce.js files live.)");
+			System.err.println("USAGE: inference dbIP dbName viewDir (a directory where the map.js and reduce.js files live.)");
 			return;
 		}
+
+		String dbIP = args[0];
+		String dbName = args[1];
+		String dirName = args[2];
 */
-		/**
-		 * "art" database will not work
-		 * "movies", "food" and "books" will
-		 */
-		String dbName = "mongomovies3";//args[0];
-		String dirName = "mapreduce/couchdb/v1";//args[1];
+		String dbIP = "localhost";
+		String dbName = "mongomovies3";
+		String dirName = "mapreduce/couchdb/v1";
 
 		try
 		{
 			MapReduceSources mrs = MapReduceSources.fromDir(dirName);
-			CouchDbProperties properties = new CouchDbProperties(dbName, true, "http", "localhost", 5984, null, null);
+			CouchDbProperties properties = new CouchDbProperties(dbName, true, "http", dbIP, 5984, null, null);
 			CouchDbClient dbClient = new CouchDbClient(properties);
 			MapReduce mapRedObj = new MapReduce();
 			mapRedObj.setMap(mrs.getMapJSCode());
 			mapRedObj.setReduce(mrs.getReduceJSCode());
 			List<JsonObject> list = dbClient.view("_temp_view").tempView(mapRedObj).group(true)
 					.includeDocs(false).reduce(true).query(JsonObject.class);
+
 			CouchDBStreamAdapter adapter = new CouchDBStreamAdapter();
-			StreamManager.getStrManager().printStream(adapter.adaptStream(list.stream()));
+			adapter.printStream(adapter.adaptStream(list.stream()));
 
 //			// Produce all the actual objects from the query. Couchdb won't allow include_docs to be specified
 //			// for a reduce view, and if I include the document itself it causes a view overflow. So we have
@@ -62,7 +61,8 @@ public class CouchDBSchemaInference
 		{
 			System.err.println("Cannot access map.js and/or reduce.js files.");
 			e.printStackTrace();			
-		} catch (Exception e) {
+		} catch (Exception e)
+		{
 			System.err.println("Error in the process!.");
 			e.printStackTrace();
 		}

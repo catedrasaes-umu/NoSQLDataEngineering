@@ -890,7 +890,6 @@
       </defaultLayer>
     </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="es.um.nosql.schemainference.design.services.NoSQLSchemaServices"/>
-    <ownedJavaExtensions qualifiedClassName="es.um.nosql.schemainference.design.services.NoSQLSchemaLabels"/>
   </ownedViewpoints>
   <userColorsPalettes name="Palette">
     <entries xsi:type="description:UserFixedColor" red="255" green="240" blue="171" name="Yellow-1"/>
