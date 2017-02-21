@@ -1,1084 +1,556 @@
 [ {
-  "_id" : "001",
-  "type" : "Actor",
-  "Name" : "value_986638",
-  "Age" : 784995,
-  "Birthday" : "value_972038"
+  "Name" : "value_823626",
+  "Age" : 579108,
+  "Birthday" : "value_921970",
+  "_id" : "01",
+  "type" : "Actor"
 }, {
-  "_id" : "002",
-  "type" : "Actor",
-  "Name" : "value_68626",
-  "Age" : 513143,
-  "Birthday" : "value_22551"
+  "Name" : "value_358211",
+  "Age" : 472064,
+  "Birthday" : "value_933814",
+  "_id" : "02",
+  "type" : "Actor"
 }, {
-  "_id" : "003",
-  "type" : "Actor",
-  "Name" : "value_424633",
-  "Age" : 258692,
-  "Birthday" : "value_452621"
+  "Name" : "value_279850",
+  "Age" : 489617,
+  "Birthday" : "value_465124",
+  "_id" : "03",
+  "type" : "Actor"
 }, {
-  "_id" : "004",
+  "Name" : "value_679940",
+  "Age" : 761322,
+  "Birthday" : "value_620120",
+  "Nationality" : [ "value_572165", "value_738198" ],
+  "_id" : "04",
   "type" : "Actor",
-  "Name" : "value_618456",
-  "Age" : 318999,
-  "Birthday" : "value_336001"
-}, {
-  "_id" : "005",
-  "type" : "Actor",
-  "Name" : "value_95221",
-  "Age" : 457759,
-  "Birthday" : "value_220398"
-}, {
-  "_id" : "006",
-  "type" : "Actor",
-  "Name" : "value_607274",
-  "Age" : 497080,
-  "Birthday" : "value_566248",
-  "Nationality" : [ "value_912184", "value_406033" ],
   "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
+    "Name" : "value_685889",
+    "Institution" : "value_493068",
+    "Year" : 22153,
+    "_id" : "15",
+    "type" : "Award"
   } ]
 }, {
-  "_id" : "007",
+  "Name" : "value_901042",
+  "Age" : 261094,
+  "Birthday" : "value_750669",
+  "Nationality" : [ "value_803583", "value_479124" ],
+  "_id" : "05",
   "type" : "Actor",
-  "Name" : "value_87269",
-  "Age" : 978732,
-  "Birthday" : "value_558013",
-  "Nationality" : [ "value_486361", "value_495849" ],
   "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
+    "Name" : "value_660783",
+    "Institution" : "value_128511",
+    "Year" : 381783,
+    "_id" : "14",
+    "type" : "Award"
   } ]
 }, {
-  "_id" : "008",
+  "Name" : "value_549894",
+  "Age" : 210112,
+  "Birthday" : "value_809389",
+  "Nationality" : [ "value_319718", "value_583505" ],
+  "_id" : "06",
   "type" : "Actor",
-  "Name" : "value_692067",
-  "Age" : 206546,
-  "Birthday" : "value_63732",
-  "Nationality" : [ "value_121144", "value_458401" ],
   "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
+    "Name" : "value_685889",
+    "Institution" : "value_493068",
+    "Year" : 22153,
+    "_id" : "15",
+    "type" : "Award"
   } ]
 }, {
-  "_id" : "009",
+  "Name" : "value_929737",
+  "Age" : 269924,
+  "Birthday" : "value_970679",
+  "Nationality" : [ "value_983728", "value_98317" ],
+  "Debut_year" : 207188,
+  "_id" : "07",
   "type" : "Actor",
-  "Name" : "value_434027",
-  "Age" : 774098,
-  "Birthday" : "value_356259",
-  "Nationality" : [ "value_58203", "value_554917" ],
-  "Debut_year" : 689031,
   "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
+    "Name" : "value_660783",
+    "Institution" : "value_128511",
+    "Year" : 381783,
+    "_id" : "14",
+    "type" : "Award"
   } ]
 }, {
-  "_id" : "010",
+  "Name" : "value_193393",
+  "Age" : 73233,
+  "Birthday" : "value_339100",
+  "Nationality" : [ "value_17415", "value_890941" ],
+  "Debut_year" : 117725,
+  "_id" : "08",
   "type" : "Actor",
-  "Name" : "value_739343",
-  "Age" : 812400,
-  "Birthday" : "value_43233",
-  "Nationality" : [ "value_193695", "value_496344" ],
-  "Debut_year" : 863685,
   "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
+    "Name" : "value_660783",
+    "Institution" : "value_128511",
+    "Year" : 381783,
+    "_id" : "14",
+    "type" : "Award"
   } ]
 }, {
-  "_id" : "011",
+  "Name" : "value_251896",
+  "Age" : 104694,
+  "Birthday" : "value_74096",
+  "Nationality" : [ "value_289564", "value_739298" ],
+  "Debut_year" : 666587,
+  "_id" : "09",
   "type" : "Actor",
-  "Name" : "value_843132",
-  "Age" : 600310,
-  "Birthday" : "value_184934",
-  "Nationality" : [ "value_687704", "value_922127" ],
-  "Debut_year" : 924983,
   "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
+    "Name" : "value_112033",
+    "Institution" : "value_612588",
+    "Year" : 198832,
+    "_id" : "13",
+    "type" : "Award"
   } ]
 }, {
-  "_id" : "012",
+  "Name" : "value_776401",
+  "Age" : 519099,
+  "Birthday" : "value_975512",
+  "Nationality" : [ "value_901472", "value_542900" ],
+  "Debut_year" : 711368,
+  "Website" : "value_536673",
+  "_id" : "10",
   "type" : "Actor",
-  "Name" : "value_137816",
-  "Age" : 895770,
-  "Birthday" : "value_955867",
-  "Nationality" : [ "value_805743", "value_416779" ],
-  "Debut_year" : 693004,
   "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
+    "Name" : "value_112033",
+    "Institution" : "value_612588",
+    "Year" : 198832,
+    "_id" : "13",
+    "type" : "Award"
   } ]
 }, {
-  "_id" : "013",
+  "Name" : "value_437977",
+  "Age" : 300871,
+  "Birthday" : "value_724786",
+  "Nationality" : [ "value_529223", "value_800880" ],
+  "Debut_year" : 811650,
+  "Website" : "value_946281",
+  "_id" : "11",
   "type" : "Actor",
-  "Name" : "value_764104",
-  "Age" : 49331,
-  "Birthday" : "value_568082",
-  "Nationality" : [ "value_10946", "value_462055" ],
-  "Debut_year" : 937731,
-  "Website" : "value_462366",
   "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
+    "Name" : "value_685889",
+    "Institution" : "value_493068",
+    "Year" : 22153,
+    "_id" : "15",
+    "type" : "Award"
   } ]
 }, {
-  "_id" : "014",
+  "Name" : "value_2740",
+  "Age" : 916518,
+  "Birthday" : "value_358597",
+  "Nationality" : [ "value_463992", "value_466613" ],
+  "Debut_year" : 894484,
+  "Website" : "value_106685",
+  "_id" : "12",
   "type" : "Actor",
-  "Name" : "value_576185",
-  "Age" : 849187,
-  "Birthday" : "value_462406",
-  "Nationality" : [ "value_8545", "value_981156" ],
-  "Debut_year" : 937704,
-  "Website" : "value_19724",
   "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
+    "Name" : "value_112033",
+    "Institution" : "value_612588",
+    "Year" : 198832,
+    "_id" : "13",
+    "type" : "Award"
   } ]
 }, {
-  "_id" : "015",
-  "type" : "Actor",
-  "Name" : "value_744848",
-  "Age" : 907408,
-  "Birthday" : "value_812174",
-  "Nationality" : [ "value_763761", "value_25707" ],
-  "Debut_year" : 654280,
-  "Website" : "value_951034",
-  "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
-  } ]
+  "Name" : "value_290033",
+  "Age" : "value_605679",
+  "_id" : "16",
+  "type" : "Director"
 }, {
-  "_id" : "016",
-  "type" : "Actor",
-  "Name" : "value_414754",
-  "Age" : 973218,
-  "Birthday" : "value_138868",
-  "Nationality" : [ "value_724374", "value_484645" ],
-  "Debut_year" : 690993,
-  "Website" : "value_476893",
-  "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
-  } ]
+  "Name" : "value_178035",
+  "Age" : "value_39798",
+  "_id" : "17",
+  "type" : "Director"
 }, {
-  "_id" : "017",
-  "type" : "Award",
-  "Name" : "value_863360",
-  "Institution" : "value_725322",
-  "Year" : 686857
+  "Name" : "value_55376",
+  "Age" : "value_749422",
+  "_id" : "18",
+  "type" : "Director"
 }, {
-  "_id" : "018",
-  "type" : "Award",
-  "Name" : "value_482492",
-  "Institution" : "value_440384",
-  "Year" : 945609
+  "Name" : "value_327331",
+  "Age" : 766167,
+  "Oscars" : 363180,
+  "_id" : "19",
+  "type" : "Director"
 }, {
-  "_id" : "019",
-  "type" : "Award",
-  "Name" : "value_666240",
-  "Institution" : "value_556133",
-  "Year" : 29039
+  "Name" : "value_783711",
+  "Age" : 24540,
+  "Oscars" : 179094,
+  "_id" : "20",
+  "type" : "Director"
 }, {
-  "_id" : "020",
-  "type" : "Award",
-  "Name" : "value_846195",
-  "Institution" : "value_691151",
-  "Year" : 451895
+  "Name" : "value_736479",
+  "Age" : 498703,
+  "Oscars" : 528906,
+  "_id" : "21",
+  "type" : "Director"
 }, {
-  "_id" : "021",
+  "Name" : "value_625102",
+  "Age" : 285098,
+  "_id" : "22",
   "type" : "Director",
-  "Name" : "value_169081",
-  "Age" : "value_527261"
-}, {
-  "_id" : "022",
-  "type" : "Director",
-  "Name" : "value_163617",
-  "Age" : "value_839526"
-}, {
-  "_id" : "023",
-  "type" : "Director",
-  "Name" : "value_300235",
-  "Age" : "value_915310"
-}, {
-  "_id" : "024",
-  "type" : "Director",
-  "Name" : "value_761552",
-  "Age" : "value_669087"
-}, {
-  "_id" : "025",
-  "type" : "Director",
-  "Name" : "value_182535",
-  "Age" : 505421,
-  "Oscars" : 223300
-}, {
-  "_id" : "026",
-  "type" : "Director",
-  "Name" : "value_586086",
-  "Age" : 382443,
-  "Oscars" : 521679
-}, {
-  "_id" : "027",
-  "type" : "Director",
-  "Name" : "value_542757",
-  "Age" : 293949,
-  "Oscars" : 102336
-}, {
-  "_id" : "028",
-  "type" : "Director",
-  "Name" : "value_426800",
-  "Age" : 739923,
-  "Oscars" : 674829
-}, {
-  "_id" : "029",
-  "type" : "Director",
-  "Name" : "value_470260",
-  "Age" : 924165,
-  "Oscars" : 730409
-}, {
-  "_id" : "030",
-  "type" : "Director",
-  "Name" : "value_654488",
-  "Age" : 361308,
-  "Oscars" : 113154
-}, {
-  "_id" : "031",
-  "type" : "Director",
-  "Name" : "value_124789",
-  "Age" : 15439,
   "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
+    "Name" : "value_660783",
+    "Institution" : "value_128511",
+    "Year" : 381783,
+    "_id" : "14",
+    "type" : "Award"
   } ]
 }, {
-  "_id" : "032",
+  "Name" : "value_791233",
+  "Age" : 590139,
+  "_id" : "23",
   "type" : "Director",
-  "Name" : "value_770331",
-  "Age" : 140135,
   "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
+    "Name" : "value_112033",
+    "Institution" : "value_612588",
+    "Year" : 198832,
+    "_id" : "13",
+    "type" : "Award"
   } ]
 }, {
-  "_id" : "033",
+  "Name" : "value_436900",
+  "Age" : 851654,
+  "_id" : "24",
   "type" : "Director",
-  "Name" : "value_978772",
-  "Age" : 687213,
   "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
+    "Name" : "value_112033",
+    "Institution" : "value_612588",
+    "Year" : 198832,
+    "_id" : "13",
+    "type" : "Award"
   } ]
 }, {
-  "_id" : "034",
-  "type" : "Director",
-  "Name" : "value_357200",
-  "Age" : 476910,
-  "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
-  } ]
+  "Name" : "value_243356",
+  "Director" : "value_841283",
+  "Year" : 998189,
+  "Rating" : 95.09,
+  "Genre" : [ "value_695503", "value_113170" ],
+  "_id" : "25",
+  "type" : "Movie"
 }, {
-  "_id" : "035",
-  "type" : "Director",
-  "Name" : "value_631688",
-  "Age" : 574731,
-  "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
-  } ]
+  "Name" : "value_953381",
+  "Director" : "value_384666",
+  "Year" : 340746,
+  "Rating" : 29.35,
+  "Genre" : [ "value_30266", "value_272222" ],
+  "_id" : "26",
+  "type" : "Movie"
 }, {
-  "_id" : "036",
+  "Name" : "value_177724",
+  "Director" : "value_680118",
+  "Year" : 899467,
+  "Rating" : 28.25,
+  "Genre" : [ "value_378328", "value_963835" ],
+  "_id" : "27",
+  "type" : "Movie"
+}, {
+  "Name" : "value_321599",
+  "Year" : 156915,
+  "Rating" : 89.51,
+  "Genre" : [ "value_896022", "value_330725" ],
+  "Oscars" : 245144,
+  "_id" : "28",
   "type" : "Movie",
-  "Name" : "value_16965",
-  "Director" : "value_498849",
-  "Year" : 411918,
-  "Rating" : 40.64,
-  "Genre" : [ "value_595120", "value_30664" ]
-}, {
-  "_id" : "037",
-  "type" : "Movie",
-  "Name" : "value_640988",
-  "Director" : "value_954282",
-  "Year" : 855465,
-  "Rating" : 60.18,
-  "Genre" : [ "value_429434", "value_869362" ]
-}, {
-  "_id" : "038",
-  "type" : "Movie",
-  "Name" : "value_270836",
-  "Director" : "value_330064",
-  "Year" : 265571,
-  "Rating" : 86.72,
-  "Genre" : [ "value_250094", "value_727144" ]
-}, {
-  "_id" : "039",
-  "type" : "Movie",
-  "Name" : "value_931192",
-  "Year" : 311135,
-  "Rating" : 24.34,
-  "Genre" : [ "value_167249", "value_233335" ],
-  "Oscars" : 466276,
-  "hasDirector" : "451332",
-  "hasProducers" : [ "205236" ],
-  "hasActors" : [ "789004" ]
-}, {
-  "_id" : "040",
-  "type" : "Movie",
-  "Name" : "value_18570",
-  "Year" : 842612,
-  "Rating" : 19.72,
-  "Genre" : [ "value_93698", "value_102878" ],
-  "Oscars" : 601490,
-  "hasDirector" : "531442",
-  "hasProducers" : [ "635890", "176598" ],
+  "hasDirector" : "22",
+  "hasProducers" : [ "47", "46", "46" ],
   "hasActors" : [ ]
 }, {
-  "_id" : "041",
+  "Name" : "value_781477",
+  "Year" : 440423,
+  "Rating" : 5.23,
+  "Genre" : [ "value_709081", "value_779941" ],
+  "Oscars" : 423812,
+  "_id" : "29",
   "type" : "Movie",
-  "Name" : "value_223624",
-  "Year" : 975063,
-  "Rating" : 47.8,
-  "Genre" : [ "value_25088", "value_746394" ],
-  "Oscars" : 96897,
-  "hasDirector" : [ "16453" ],
-  "hasProducers" : [ "619541", "473300", "428905", "417341" ],
-  "hasActors" : [ "878286", "127074" ]
+  "hasDirector" : "24",
+  "hasProducers" : [ "46", "47" ],
+  "hasActors" : [ "12", "11" ]
 }, {
-  "_id" : "042",
+  "Name" : "value_467242",
+  "Year" : 628434,
+  "Rating" : 38.88,
+  "Genre" : [ "value_259313", "value_155914" ],
+  "Oscars" : 574659,
+  "_id" : "30",
   "type" : "Movie",
-  "Name" : "value_508797",
-  "Year" : 239626,
-  "Rating" : 11.67,
-  "Genre" : [ "value_975422", "value_391326" ],
-  "Oscars" : 920368,
-  "hasDirector" : "406498",
-  "hasProducers" : [ "13544", "915598" ],
-  "hasActors" : [ "559271", "144704", "863162" ]
+  "hasDirector" : "24",
+  "hasProducers" : [ "47", "47", "46" ],
+  "hasActors" : [ "12", "10", "12" ]
 }, {
-  "_id" : "043",
+  "Name" : "value_927837",
+  "Year" : 720845,
+  "Genre" : [ "value_934549", "value_263671" ],
+  "Awards" : 736897,
+  "_id" : "31",
   "type" : "Movie",
-  "Name" : "value_395878",
-  "Year" : 494125,
-  "Rating" : 41.03,
-  "Genre" : [ "value_387999", "value_798658" ],
-  "Oscars" : 169259,
-  "hasDirector" : [ "966402" ],
-  "hasProducers" : [ "163534", "694371", "223692" ],
-  "hasActors" : [ "667858" ]
+  "hasDirector" : "24",
+  "hasProducers" : [ "47" ],
+  "hasActors" : [ "11" ],
+  "hasRating" : "52"
 }, {
-  "_id" : "044",
+  "Name" : "value_64418",
+  "Year" : 163475,
+  "Genre" : [ "value_56054", "value_520981" ],
+  "Awards" : 59055,
+  "_id" : "32",
   "type" : "Movie",
-  "Name" : "value_940019",
-  "Year" : 404173,
-  "Genre" : [ "value_603761", "value_695469" ],
-  "Awards" : 432031,
-  "hasDirector" : [ "178682" ],
-  "hasProducers" : [ "539361", "771291" ],
-  "hasActors" : [ "189650", "699613" ],
-  "hasRating" : "967510"
+  "hasDirector" : "23",
+  "hasProducers" : [ "47", "46", "47", "46" ],
+  "hasActors" : [ "12", "12" ],
+  "hasRating" : "54"
 }, {
-  "_id" : "045",
+  "Name" : "value_198486",
+  "Year" : 572833,
+  "Genre" : [ "value_246315", "value_512035" ],
+  "Awards" : 674007,
+  "_id" : "33",
   "type" : "Movie",
-  "Name" : "value_993985",
-  "Year" : 966692,
-  "Genre" : [ "value_534415", "value_631089" ],
-  "Awards" : 771368,
-  "hasDirector" : "579121",
-  "hasProducers" : [ "299946", "531071", "800822" ],
-  "hasActors" : [ "914850" ],
-  "hasRating" : [ "491827" ]
+  "hasDirector" : "24",
+  "hasProducers" : [ "47" ],
+  "hasActors" : [ "10" ],
+  "hasRating" : "53"
 }, {
-  "_id" : "046",
+  "Name" : "value_564709",
+  "Year" : 571745,
+  "Genre" : [ "value_536050", "value_602551" ],
+  "Awards" : 616377,
+  "_id" : "34",
   "type" : "Movie",
-  "Name" : "value_198700",
-  "Year" : 487571,
-  "Genre" : [ "value_524429", "value_177439" ],
-  "Awards" : 685187,
-  "hasDirector" : [ "179702" ],
-  "hasProducers" : [ "403393", "735805" ],
-  "hasActors" : [ "237413" ],
-  "hasRating" : "415905"
-}, {
-  "_id" : "047",
-  "type" : "Movie",
-  "Name" : "value_311455",
-  "Year" : 951307,
-  "Genre" : [ "value_100813", "value_729249" ],
-  "Awards" : 356166,
-  "hasDirector" : [ "134969" ],
-  "hasProducers" : [ "7335", "913024", "104479", "616967" ],
-  "hasActors" : [ "853785", "508049" ],
-  "hasRating" : "61148"
-}, {
-  "_id" : "048",
-  "type" : "Movie",
-  "Name" : "value_446935",
-  "Year" : 462808,
-  "Genre" : [ "value_231948", "value_25755" ],
-  "Awards" : 270579,
-  "hasDirector" : [ "65202" ],
-  "hasProducers" : [ "429782", "930660", "390892" ],
-  "hasActors" : [ "51328" ],
-  "hasRating" : [ "96672" ]
-}, {
-  "_id" : "049",
-  "type" : "Movie",
-  "Name" : "value_479929",
-  "Year" : 104247,
-  "Genre" : [ "value_86236", "value_291686" ],
-  "Awards" : 509056,
-  "hasDirector" : [ "992350" ],
-  "hasProducers" : [ "655935", "538342" ],
-  "hasActors" : [ "967972", "46315", "207752" ],
-  "hasRating" : "934361"
-}, {
-  "_id" : "050",
-  "type" : "Movie",
-  "Name" : "value_458182",
-  "Year" : 92783,
-  "Genre" : [ "value_394347", "value_362899" ],
-  "Awards" : 505694,
-  "hasDirector" : [ "921517" ],
-  "hasProducers" : [ "951247", "544228", "18091" ],
-  "hasActors" : [ "339679", "745368" ],
-  "hasRating" : [ "220421" ]
-}, {
-  "_id" : "051",
-  "type" : "Movie",
-  "Name" : "value_955892",
-  "Year" : 881700,
-  "Genre" : [ "value_83446", "value_228038" ],
-  "Awards" : 964021,
-  "hasDirector" : "176928",
-  "hasProducers" : [ "290918", "992758" ],
-  "hasActors" : [ "194626", "444118" ],
+  "hasDirector" : "23",
+  "hasProducers" : [ "46", "48" ],
+  "hasActors" : [ "12" ],
   "hasRating" : [ {
-    "_id" : "081",
-    "type" : "Rating",
-    "Rating" : 52.6
+    "Rating" : 65.67,
+    "_id" : "50",
+    "type" : "Rating"
   } ]
 }, {
-  "_id" : "052",
+  "Name" : "value_368277",
+  "Year" : 387398,
+  "Genre" : [ "value_88611", "value_746630" ],
+  "Awards" : 989673,
+  "_id" : "35",
   "type" : "Movie",
-  "Name" : "value_984538",
-  "Year" : 828465,
-  "Genre" : [ "value_966022", "value_899969" ],
-  "Awards" : 142284,
-  "hasDirector" : [ "18876" ],
-  "hasProducers" : [ "108484", "252736" ],
+  "hasDirector" : "24",
+  "hasProducers" : [ "48", "47", "47", "47" ],
   "hasActors" : [ ],
   "hasRating" : [ {
-    "_id" : "081",
-    "type" : "Rating",
-    "Rating" : 52.6
+    "Rating" : 33.64,
+    "_id" : "49",
+    "type" : "Rating"
   } ]
 }, {
-  "_id" : "053",
+  "Name" : "value_755031",
+  "Year" : 42453,
+  "Genre" : [ "value_546866", "value_266327" ],
+  "Awards" : 628854,
+  "_id" : "36",
   "type" : "Movie",
-  "Name" : "value_228686",
-  "Year" : 248946,
-  "Genre" : [ "value_371273", "value_991474" ],
-  "Awards" : 842121,
-  "hasDirector" : "639379",
-  "hasProducers" : [ "901394", "242042", "586611" ],
-  "hasActors" : [ "492059" ],
+  "hasDirector" : "23",
+  "hasProducers" : [ "47", "48" ],
+  "hasActors" : [ "12", "11" ],
   "hasRating" : [ {
-    "_id" : "081",
-    "type" : "Rating",
-    "Rating" : 52.6
+    "Rating" : 33.64,
+    "_id" : "49",
+    "type" : "Rating"
   } ]
 }, {
-  "_id" : "054",
+  "Name" : "value_155241",
+  "Year" : 671544,
+  "Genre" : [ "value_84596", "value_158803" ],
+  "Awards" : 835542,
+  "_id" : "37",
   "type" : "Movie",
-  "Name" : "value_977995",
-  "Year" : 855406,
-  "Genre" : [ "value_987129", "value_978833" ],
-  "Awards" : 983776,
-  "hasDirector" : "534453",
-  "hasProducers" : [ "557663", "813903", "389650" ],
-  "hasActors" : [ "867125", "893963" ],
+  "hasDirector" : "23",
+  "hasProducers" : [ "46", "47" ],
+  "hasActors" : [ "10", "10" ],
   "hasRating" : [ {
-    "_id" : "081",
-    "type" : "Rating",
-    "Rating" : 52.6
+    "Rating" : 29.65,
+    "Votes" : 899362,
+    "_id" : "53",
+    "type" : "Rating"
   } ]
 }, {
-  "_id" : "055",
+  "Name" : "value_230419",
+  "Year" : 565052,
+  "Genre" : [ "value_386640", "value_567338" ],
+  "Awards" : 290625,
+  "_id" : "38",
   "type" : "Movie",
-  "Name" : "value_598814",
-  "Year" : 978687,
-  "Genre" : [ "value_895350", "value_361550" ],
-  "Awards" : 381775,
-  "hasDirector" : "788977",
-  "hasProducers" : [ "264447", "121786", "645808" ],
-  "hasActors" : [ ],
+  "hasDirector" : "23",
+  "hasProducers" : [ "46", "46", "46" ],
+  "hasActors" : [ "12", "12" ],
   "hasRating" : [ {
-    "_id" : "081",
-    "type" : "Rating",
-    "Rating" : 52.6
+    "Rating" : 29.65,
+    "Votes" : 899362,
+    "_id" : "53",
+    "type" : "Rating"
   } ]
 }, {
-  "_id" : "056",
+  "Name" : "value_470972",
+  "Year" : 53078,
+  "Genre" : [ "value_919743", "value_177968" ],
+  "Awards" : 640999,
+  "_id" : "39",
   "type" : "Movie",
-  "Name" : "value_244248",
-  "Year" : 303894,
-  "Genre" : [ "value_945964", "value_223899" ],
-  "Awards" : 927572,
-  "hasDirector" : [ "774491" ],
-  "hasProducers" : [ "784821" ],
-  "hasActors" : [ "127764", "211872", "248895" ],
+  "hasDirector" : "24",
+  "hasProducers" : [ "47", "48" ],
+  "hasActors" : [ "11", "10", "10", "10" ],
   "hasRating" : [ {
-    "_id" : "081",
-    "type" : "Rating",
-    "Rating" : 52.6
+    "Rating" : 29.65,
+    "Votes" : 899362,
+    "_id" : "53",
+    "type" : "Rating"
   } ]
 }, {
-  "_id" : "057",
+  "Name" : "value_88447",
+  "Year" : 603968,
+  "Genre" : [ "value_399085", "value_425171" ],
+  "_id" : "40",
   "type" : "Movie",
-  "Name" : "value_403258",
-  "Year" : 443369,
-  "Genre" : [ "value_315300", "value_616107" ],
-  "Awards" : 365605,
-  "hasDirector" : "356242",
-  "hasProducers" : [ "652789", "319773", "658235" ],
-  "hasActors" : [ ],
+  "hasDirector" : "23",
+  "hasProducers" : [ "46" ],
+  "hasActors" : [ "12", "12", "10" ],
   "hasRating" : [ {
-    "_id" : "081",
-    "type" : "Rating",
-    "Rating" : 52.6
-  } ]
-}, {
-  "_id" : "058",
-  "type" : "Movie",
-  "Name" : "value_966712",
-  "Year" : 850729,
-  "Genre" : [ "value_59089", "value_47564" ],
-  "Awards" : 333190,
-  "hasDirector" : "97026",
-  "hasProducers" : [ "981057", "497283" ],
-  "hasActors" : [ "348891", "73516", "264070" ],
-  "hasRating" : [ {
-    "_id" : "087",
-    "type" : "Rating",
-    "Rating" : 87.33,
-    "Votes" : 921783
-  } ]
-}, {
-  "_id" : "059",
-  "type" : "Movie",
-  "Name" : "value_519094",
-  "Year" : 284204,
-  "Genre" : [ "value_807444", "value_833307" ],
-  "Awards" : 584002,
-  "hasDirector" : [ "650223" ],
-  "hasProducers" : [ "195980", "309585" ],
-  "hasActors" : [ ],
-  "hasRating" : [ {
-    "_id" : "087",
-    "type" : "Rating",
-    "Rating" : 87.33,
-    "Votes" : 921783
-  } ]
-}, {
-  "_id" : "060",
-  "type" : "Movie",
-  "Name" : "value_449939",
-  "Year" : 40608,
-  "Genre" : [ "value_355951", "value_164972" ],
-  "Awards" : 671154,
-  "hasDirector" : "663129",
-  "hasProducers" : [ "426022" ],
-  "hasActors" : [ ],
-  "hasRating" : [ {
-    "_id" : "087",
-    "type" : "Rating",
-    "Rating" : 87.33,
-    "Votes" : 921783
-  } ]
-}, {
-  "_id" : "061",
-  "type" : "Movie",
-  "Name" : "value_748006",
-  "Year" : 506409,
-  "Genre" : [ "value_494252", "value_761410" ],
-  "Awards" : 87470,
-  "hasDirector" : [ "869964" ],
-  "hasProducers" : [ "756893" ],
-  "hasActors" : [ "774509" ],
-  "hasRating" : [ {
-    "_id" : "087",
-    "type" : "Rating",
-    "Rating" : 87.33,
-    "Votes" : 921783
-  } ]
-}, {
-  "_id" : "062",
-  "type" : "Movie",
-  "Name" : "value_624301",
-  "Year" : 602692,
-  "Genre" : [ "value_75377", "value_64746" ],
-  "Awards" : 455929,
-  "hasDirector" : "245889",
-  "hasProducers" : [ "840852", "951238", "46976", "115636" ],
-  "hasActors" : [ "503794", "719688" ],
-  "hasRating" : [ {
-    "_id" : "087",
-    "type" : "Rating",
-    "Rating" : 87.33,
-    "Votes" : 921783
-  } ]
-}, {
-  "_id" : "063",
-  "type" : "Movie",
-  "Name" : "value_415448",
-  "Year" : 8590,
-  "Genre" : [ "value_396392", "value_297265" ],
-  "hasDirector" : [ "351337" ],
-  "hasProducers" : [ "891176" ],
-  "hasActors" : [ "636823" ],
-  "hasRating" : [ {
-    "_id" : "087",
-    "type" : "Rating",
-    "Rating" : 87.33,
-    "Votes" : 921783
+    "Rating" : 62.83,
+    "Votes" : 963246,
+    "_id" : "54",
+    "type" : "Rating"
   } ],
   "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
+    "Name" : "value_685889",
+    "Institution" : "value_493068",
+    "Year" : 22153,
+    "_id" : "15",
+    "type" : "Award"
   } ]
 }, {
-  "_id" : "064",
+  "Name" : "value_234782",
+  "Year" : 443511,
+  "Genre" : [ "value_629973", "value_623768" ],
+  "_id" : "41",
   "type" : "Movie",
-  "Name" : "value_154320",
-  "Year" : 979607,
-  "Genre" : [ "value_378772", "value_158068" ],
-  "hasDirector" : [ "725438" ],
-  "hasProducers" : [ "235980", "608974", "300136" ],
-  "hasActors" : [ "970151" ],
+  "hasDirector" : "24",
+  "hasProducers" : [ "47", "48", "46" ],
+  "hasActors" : [ "11", "12", "11" ],
   "hasRating" : [ {
-    "_id" : "087",
-    "type" : "Rating",
-    "Rating" : 87.33,
-    "Votes" : 921783
+    "Rating" : 7.84,
+    "Votes" : 433714,
+    "_id" : "52",
+    "type" : "Rating"
   } ],
   "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
+    "Name" : "value_660783",
+    "Institution" : "value_128511",
+    "Year" : 381783,
+    "_id" : "14",
+    "type" : "Award"
   } ]
 }, {
-  "_id" : "065",
+  "Name" : "value_798123",
+  "Year" : 530084,
+  "Genre" : [ "value_478611", "value_287505" ],
+  "_id" : "42",
   "type" : "Movie",
-  "Name" : "value_652833",
-  "Year" : 751976,
-  "Genre" : [ "value_347733", "value_447622" ],
-  "hasDirector" : [ "15538" ],
-  "hasProducers" : [ "73612", "191993", "147559" ],
-  "hasActors" : [ ],
+  "hasDirector" : "24",
+  "hasProducers" : [ "48" ],
+  "hasActors" : [ "10", "12", "10", "11", "12" ],
   "hasRating" : [ {
-    "_id" : "087",
-    "type" : "Rating",
-    "Rating" : 87.33,
-    "Votes" : 921783
+    "Rating" : 29.65,
+    "Votes" : 899362,
+    "_id" : "53",
+    "type" : "Rating"
   } ],
   "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
+    "Name" : "value_112033",
+    "Institution" : "value_612588",
+    "Year" : 198832,
+    "_id" : "13",
+    "type" : "Award"
   } ]
 }, {
-  "_id" : "066",
-  "type" : "Movie",
-  "Name" : "value_991603",
-  "Year" : 781611,
-  "Genre" : [ "value_680357", "value_607843" ],
-  "hasDirector" : [ "1167" ],
-  "hasProducers" : [ "992825", "292876", "888580", "515864" ],
-  "hasActors" : [ "284652" ],
-  "hasRating" : [ {
-    "_id" : "087",
-    "type" : "Rating",
-    "Rating" : 87.33,
-    "Votes" : 921783
-  } ],
-  "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
-  } ]
-}, {
-  "_id" : "067",
-  "type" : "Movie",
-  "Name" : "value_549427",
-  "Year" : 742128,
-  "Genre" : [ "value_434517", "value_50175" ],
-  "hasDirector" : "243033",
-  "hasProducers" : [ "615082", "588580", "218083" ],
-  "hasActors" : [ ],
-  "hasRating" : [ {
-    "_id" : "087",
-    "type" : "Rating",
-    "Rating" : 87.33,
-    "Votes" : 921783
-  } ],
-  "hasAwards" : [ {
-    "_id" : "017",
-    "type" : "Award",
-    "Name" : "value_863360",
-    "Institution" : "value_725322",
-    "Year" : 686857
-  } ]
-}, {
-  "_id" : "068",
+  "Name" : "value_151252",
+  "Budget" : 30.21,
+  "_id" : "43",
   "type" : "Producer",
-  "Name" : "value_115908",
-  "Budget" : 22.46,
   "hasStudio" : [ {
-    "_id" : "092",
-    "type" : "Studio",
-    "Name" : "value_81192",
-    "Location" : "value_787894",
-    "Year" : "value_272994",
-    "Website" : "value_663664"
+    "Name" : "value_662187",
+    "Location" : "value_688094",
+    "Year" : "value_92075",
+    "Website" : "value_376935",
+    "_id" : "56",
+    "type" : "Studio"
   } ]
 }, {
-  "_id" : "069",
+  "Name" : "value_376556",
+  "Budget" : 84.54,
+  "_id" : "44",
   "type" : "Producer",
-  "Name" : "value_131706",
-  "Budget" : 4.23,
   "hasStudio" : [ {
-    "_id" : "092",
-    "type" : "Studio",
-    "Name" : "value_81192",
-    "Location" : "value_787894",
-    "Year" : "value_272994",
-    "Website" : "value_663664"
+    "Name" : "value_648419",
+    "Location" : "value_790795",
+    "Year" : "value_383800",
+    "Website" : "value_491529",
+    "_id" : "57",
+    "type" : "Studio"
   } ]
 }, {
-  "_id" : "070",
+  "Name" : "value_354659",
+  "Budget" : 44.93,
+  "_id" : "45",
   "type" : "Producer",
-  "Name" : "value_688203",
-  "Budget" : 79.88,
   "hasStudio" : [ {
-    "_id" : "092",
-    "type" : "Studio",
-    "Name" : "value_81192",
-    "Location" : "value_787894",
-    "Year" : "value_272994",
-    "Website" : "value_663664"
+    "Name" : "value_662187",
+    "Location" : "value_688094",
+    "Year" : "value_92075",
+    "Website" : "value_376935",
+    "_id" : "56",
+    "type" : "Studio"
   } ]
 }, {
-  "_id" : "071",
+  "Name" : "value_20109",
+  "Budget_per_year" : 17.5,
+  "Movies_per_year" : 482180,
+  "_id" : "46",
   "type" : "Producer",
-  "Name" : "value_320552",
-  "Budget" : 51.22,
   "hasStudio" : [ {
-    "_id" : "092",
-    "type" : "Studio",
-    "Name" : "value_81192",
-    "Location" : "value_787894",
-    "Year" : "value_272994",
-    "Website" : "value_663664"
+    "Name" : "value_712970",
+    "Location" : "value_261161",
+    "Year" : 997170,
+    "Website" : "value_529323",
+    "Founder" : "value_807254",
+    "_id" : "60",
+    "type" : "Studio"
   } ]
 }, {
-  "_id" : "072",
+  "Name" : "value_387165",
+  "Budget_per_year" : 30.05,
+  "Movies_per_year" : 399554,
+  "_id" : "47",
   "type" : "Producer",
-  "Name" : "value_173719",
-  "Budget" : 50.17,
   "hasStudio" : [ {
-    "_id" : "092",
-    "type" : "Studio",
-    "Name" : "value_81192",
-    "Location" : "value_787894",
-    "Year" : "value_272994",
-    "Website" : "value_663664"
+    "Name" : "value_442668",
+    "Location" : "value_266450",
+    "Year" : 549342,
+    "Website" : "value_504888",
+    "Founder" : "value_30928",
+    "_id" : "59",
+    "type" : "Studio"
   } ]
 }, {
-  "_id" : "073",
+  "Name" : "value_320762",
+  "Budget_per_year" : 70.9,
+  "Movies_per_year" : 187353,
+  "_id" : "48",
   "type" : "Producer",
-  "Name" : "value_815610",
-  "Budget" : 18.72,
   "hasStudio" : [ {
-    "_id" : "092",
-    "type" : "Studio",
-    "Name" : "value_81192",
-    "Location" : "value_787894",
-    "Year" : "value_272994",
-    "Website" : "value_663664"
+    "Name" : "value_471962",
+    "Location" : "value_386418",
+    "Year" : 867880,
+    "Website" : "value_715409",
+    "Founder" : "value_870797",
+    "_id" : "58",
+    "type" : "Studio"
   } ]
-}, {
-  "_id" : "074",
-  "type" : "Producer",
-  "Name" : "value_898678",
-  "Budget" : 70.88,
-  "hasStudio" : [ {
-    "_id" : "092",
-    "type" : "Studio",
-    "Name" : "value_81192",
-    "Location" : "value_787894",
-    "Year" : "value_272994",
-    "Website" : "value_663664"
-  } ]
-}, {
-  "_id" : "075",
-  "type" : "Producer",
-  "Name" : "value_779835",
-  "Budget" : 63.77,
-  "hasStudio" : [ {
-    "_id" : "092",
-    "type" : "Studio",
-    "Name" : "value_81192",
-    "Location" : "value_787894",
-    "Year" : "value_272994",
-    "Website" : "value_663664"
-  } ]
-}, {
-  "_id" : "076",
-  "type" : "Producer",
-  "Name" : "value_662496",
-  "Budget_per_year" : 81.76,
-  "Movies_per_year" : 630935,
-  "hasStudio" : [ {
-    "_id" : "096",
-    "type" : "Studio",
-    "Name" : "value_857899",
-    "Location" : "value_513216",
-    "Year" : 658549,
-    "Website" : "value_555298",
-    "Founder" : "value_425907"
-  } ]
-}, {
-  "_id" : "077",
-  "type" : "Producer",
-  "Name" : "value_158012",
-  "Budget_per_year" : 26.19,
-  "Movies_per_year" : 709032,
-  "hasStudio" : [ {
-    "_id" : "096",
-    "type" : "Studio",
-    "Name" : "value_857899",
-    "Location" : "value_513216",
-    "Year" : 658549,
-    "Website" : "value_555298",
-    "Founder" : "value_425907"
-  } ]
-}, {
-  "_id" : "078",
-  "type" : "Producer",
-  "Name" : "value_913475",
-  "Budget_per_year" : 34.15,
-  "Movies_per_year" : 124658,
-  "hasStudio" : [ {
-    "_id" : "096",
-    "type" : "Studio",
-    "Name" : "value_857899",
-    "Location" : "value_513216",
-    "Year" : 658549,
-    "Website" : "value_555298",
-    "Founder" : "value_425907"
-  } ]
-}, {
-  "_id" : "079",
-  "type" : "Producer",
-  "Name" : "value_344520",
-  "Budget_per_year" : 46.04,
-  "Movies_per_year" : 611117,
-  "hasStudio" : [ {
-    "_id" : "096",
-    "type" : "Studio",
-    "Name" : "value_857899",
-    "Location" : "value_513216",
-    "Year" : 658549,
-    "Website" : "value_555298",
-    "Founder" : "value_425907"
-  } ]
-}, {
-  "_id" : "080",
-  "type" : "Producer",
-  "Name" : "value_253685",
-  "Budget_per_year" : 38.9,
-  "Movies_per_year" : 881815,
-  "hasStudio" : [ {
-    "_id" : "096",
-    "type" : "Studio",
-    "Name" : "value_857899",
-    "Location" : "value_513216",
-    "Year" : 658549,
-    "Website" : "value_555298",
-    "Founder" : "value_425907"
-  } ]
-}, {
-  "_id" : "081",
-  "type" : "Rating",
-  "Rating" : 52.6
-}, {
-  "_id" : "082",
-  "type" : "Rating",
-  "Rating" : 88.37
-}, {
-  "_id" : "083",
-  "type" : "Rating",
-  "Rating" : 24.81
-}, {
-  "_id" : "084",
-  "type" : "Rating",
-  "Rating" : 53.76
-}, {
-  "_id" : "085",
-  "type" : "Rating",
-  "Rating" : 14.05
-}, {
-  "_id" : "086",
-  "type" : "Rating",
-  "Rating" : 94.88
-}, {
-  "_id" : "087",
-  "type" : "Rating",
-  "Rating" : 87.33,
-  "Votes" : 921783
-}, {
-  "_id" : "088",
-  "type" : "Rating",
-  "Rating" : 24.46,
-  "Votes" : 872919
-}, {
-  "_id" : "089",
-  "type" : "Rating",
-  "Rating" : 60.43,
-  "Votes" : 912515
-}, {
-  "_id" : "090",
-  "type" : "Rating",
-  "Rating" : 24.71,
-  "Votes" : 608849
-}, {
-  "_id" : "091",
-  "type" : "Rating",
-  "Rating" : 40.76,
-  "Votes" : 468392
-}, {
-  "_id" : "092",
-  "type" : "Studio",
-  "Name" : "value_81192",
-  "Location" : "value_787894",
-  "Year" : "value_272994",
-  "Website" : "value_663664"
-}, {
-  "_id" : "093",
-  "type" : "Studio",
-  "Name" : "value_842907",
-  "Location" : "value_637752",
-  "Year" : "value_268937",
-  "Website" : "value_506230"
-}, {
-  "_id" : "094",
-  "type" : "Studio",
-  "Name" : "value_448553",
-  "Location" : "value_367442",
-  "Year" : "value_31541",
-  "Website" : "value_11987"
-}, {
-  "_id" : "095",
-  "type" : "Studio",
-  "Name" : "value_643838",
-  "Location" : "value_813915",
-  "Year" : "value_749235",
-  "Website" : "value_612615"
-}, {
-  "_id" : "096",
-  "type" : "Studio",
-  "Name" : "value_857899",
-  "Location" : "value_513216",
-  "Year" : 658549,
-  "Website" : "value_555298",
-  "Founder" : "value_425907"
-}, {
-  "_id" : "097",
-  "type" : "Studio",
-  "Name" : "value_307389",
-  "Location" : "value_732308",
-  "Year" : 809850,
-  "Website" : "value_862522",
-  "Founder" : "value_984951"
-}, {
-  "_id" : "098",
-  "type" : "Studio",
-  "Name" : "value_173940",
-  "Location" : "value_161442",
-  "Year" : 893628,
-  "Website" : "value_514962",
-  "Founder" : "value_470650"
-}, {
-  "_id" : "099",
-  "type" : "Studio",
-  "Name" : "value_164404",
-  "Location" : "value_886983",
-  "Year" : 958404,
-  "Website" : "value_433827",
-  "Founder" : "value_596123"
-}, {
-  "_id" : "100",
-  "type" : "Studio",
-  "Name" : "value_429357",
-  "Location" : "value_366454",
-  "Year" : 660195,
-  "Website" : "value_774495",
-  "Founder" : "value_800376"
 } ]

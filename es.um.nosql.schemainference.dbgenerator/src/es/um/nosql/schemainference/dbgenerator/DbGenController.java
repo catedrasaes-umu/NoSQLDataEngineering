@@ -55,12 +55,15 @@ public class DbGenController
 				String jsonContent = generator.generate(schema, minInstances, maxInstances);
 				client.insert(schema.getName(), jsonContent);
 				fileOut.println(generator.generate(schema));
-			} catch (FileNotFoundException exception)
+			} catch (FileNotFoundException e1)
 			{
-				exception.printStackTrace();
-			} catch (JsonProcessingException e)
+				e1.printStackTrace();
+			} catch (JsonProcessingException e2)
 			{
-				e.printStackTrace();
+				e2.printStackTrace();
+			} catch (Exception e3)
+			{
+				e3.printStackTrace();
 			}
 		}
 

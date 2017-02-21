@@ -1,30 +1,30 @@
 [ {
   "_id" : "01",
-  "director_id" : "671457",
   "type" : "Movie",
   "criticisms" : [ {
-    "color" : "value_515727",
-    "_id" : "07",
+    "color" : "value_70245",
+    "_id" : "08",
     "type" : "Criticism"
-  } ]
+  } ],
+  "director_id" : "06"
 }, {
   "_id" : "02",
-  "director_id" : "572180",
   "type" : "Movie",
   "criticisms" : [ {
-    "color" : "value_515727",
+    "color" : "value_698423",
     "_id" : "07",
     "type" : "Criticism"
-  } ]
+  } ],
+  "director_id" : "06"
 }, {
   "_id" : "03",
-  "director_id" : [ "263850" ],
   "type" : "Movie",
   "criticisms" : [ {
-    "color" : "value_515727",
+    "color" : "value_698423",
     "_id" : "07",
     "type" : "Criticism"
-  } ]
+  } ],
+  "director_id" : "06"
 }, {
   "_id" : "04",
   "type" : "Director"
@@ -34,16 +34,4 @@
 }, {
   "_id" : "06",
   "type" : "Director"
-}, {
-  "color" : "value_515727",
-  "_id" : "07",
-  "type" : "Criticism"
-}, {
-  "color" : "value_975885",
-  "_id" : "08",
-  "type" : "Criticism"
-}, {
-  "color" : "value_593647",
-  "_id" : "09",
-  "type" : "Criticism"
 } ]

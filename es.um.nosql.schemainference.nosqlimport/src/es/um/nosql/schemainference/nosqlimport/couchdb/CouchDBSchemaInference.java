@@ -32,29 +32,19 @@ public class CouchDBSchemaInference
 		 * "art" database will not work
 		 * "movies", "food" and "books" will
 		 */
-		String dbName = "errormap";//args[0];
+		String dbName = "mongomovies3";//args[0];
 		String dirName = "mapreduce/couchdb/v1";//args[1];
 
-		try {
+		try
+		{
 			MapReduceSources mrs = MapReduceSources.fromDir(dirName);
-
-			CouchDbProperties properties = new CouchDbProperties(dbName, true, "http", "localhost", 5984, null,null);
+			CouchDbProperties properties = new CouchDbProperties(dbName, true, "http", "localhost", 5984, null, null);
 			CouchDbClient dbClient = new CouchDbClient(properties);
-
-			//		List<JsonObject> allDocs = dbClient.view("_all_docs").query(JsonObject.class);
-			//
-			//		for (JsonObject o : allDocs)
-			//			System.out.println(o.toString());
-
 			MapReduce mapRedObj = new MapReduce();
 			mapRedObj.setMap(mrs.getMapJSCode());
 			mapRedObj.setReduce(mrs.getReduceJSCode());
-
 			List<JsonObject> list = dbClient.view("_temp_view").tempView(mapRedObj).group(true)
 					.includeDocs(false).reduce(true).query(JsonObject.class);
-
-//			List<JsonObject> list = dbClient.view("_temp_view").tempView(mapRedObj).query(JsonObject.class);
-
 			CouchDBStreamAdapter adapter = new CouchDBStreamAdapter();
 			StreamManager.getStrManager().printStream(adapter.adaptStream(list.stream()));
 
