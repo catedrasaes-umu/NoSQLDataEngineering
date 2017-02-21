@@ -1,217 +1,217 @@
 [ {
-  "name" : "value_599262",
-  "city" : "value_537952",
-  "_id" : "01",
-  "type" : "Publisher"
-}, {
-  "name" : "value_654981",
-  "city" : "value_947145",
-  "_id" : "02",
-  "type" : "Publisher"
-}, {
-  "name" : "value_302377",
-  "city" : "value_223904",
-  "_id" : "03",
-  "type" : "Publisher"
-}, {
-  "name" : "value_989090",
-  "_id" : "04",
-  "type" : "Publisher"
-}, {
-  "name" : "value_428253",
-  "_id" : "05",
-  "type" : "Publisher"
-}, {
-  "name" : "value_509015",
-  "_id" : "06",
-  "type" : "Publisher"
-}, {
-  "name" : "value_475142",
   "_id" : "07",
-  "type" : "Publisher",
-  "journal" : [ "13" ]
+  "title" : "value_554623",
+  "type" : "Book",
+  "year" : 584874,
+  "author" : [ {
+    "_id" : "14",
+    "name" : "value_215081",
+    "type" : "value_357848",
+    "company" : [ {
+      "_id" : "01",
+      "country" : "value_138174",
+      "name" : "value_296239",
+      "type" : "value_698480"
+    } ]
+  } ],
+  "content" : [ {
+    "_id" : "04",
+    "chapters" : 226873,
+    "pages" : 53524,
+    "type" : "value_879286"
+  } ],
+  "publisher" : "33"
 }, {
-  "name" : "value_506851",
   "_id" : "08",
-  "type" : "Publisher",
-  "journal" : [ "15", "15" ]
+  "title" : "value_205333",
+  "type" : "Book",
+  "year" : 295300,
+  "author" : [ {
+    "_id" : "13",
+    "name" : "value_557024",
+    "type" : "value_936052",
+    "company" : [ {
+      "_id" : "01",
+      "country" : "value_138174",
+      "name" : "value_296239",
+      "type" : "value_698480"
+    } ]
+  } ],
+  "content" : [ {
+    "_id" : "05",
+    "chapters" : 296016,
+    "pages" : 974972,
+    "type" : "value_703736"
+  } ],
+  "publisher" : "33"
 }, {
-  "name" : "value_614627",
   "_id" : "09",
-  "type" : "Publisher",
-  "journal" : [ "14", "15", "15" ]
+  "title" : "value_388500",
+  "type" : "Book",
+  "year" : 555607,
+  "author" : [ {
+    "_id" : "15",
+    "name" : "value_299615",
+    "type" : "value_176801",
+    "company" : [ {
+      "_id" : "01",
+      "country" : "value_138174",
+      "name" : "value_296239",
+      "type" : "value_698480"
+    } ]
+  } ],
+  "content" : [ {
+    "_id" : "05",
+    "chapters" : 296016,
+    "pages" : 974972,
+    "type" : "value_703736"
+  } ],
+  "publisher" : "32"
 }, {
-  "issn" : [ "value_215523", "value_618657" ],
-  "name" : "value_986129",
-  "discipline" : "value_432810",
   "_id" : "10",
-  "type" : "Journal"
+  "title" : "value_536237",
+  "type" : "Book",
+  "author" : [ {
+    "_id" : "14",
+    "name" : "value_215081",
+    "type" : "value_357848",
+    "company" : [ {
+      "_id" : "01",
+      "country" : "value_138174",
+      "name" : "value_296239",
+      "type" : "value_698480"
+    } ]
+  } ],
+  "publisher" : "31"
 }, {
-  "issn" : [ "value_869076", "value_18112" ],
-  "name" : "value_787008",
-  "discipline" : "value_8678",
   "_id" : "11",
-  "type" : "Journal"
+  "title" : "value_283474",
+  "type" : "Book",
+  "author" : [ {
+    "_id" : "15",
+    "name" : "value_299615",
+    "type" : "value_176801",
+    "company" : [ {
+      "_id" : "01",
+      "country" : "value_138174",
+      "name" : "value_296239",
+      "type" : "value_698480"
+    } ]
+  } ],
+  "publisher" : "33"
 }, {
-  "issn" : [ "value_546123", "value_530020" ],
-  "name" : "value_901022",
-  "discipline" : "value_624438",
   "_id" : "12",
-  "type" : "Journal"
+  "title" : "value_751186",
+  "type" : "Book",
+  "author" : [ {
+    "_id" : "13",
+    "name" : "value_557024",
+    "type" : "value_936052",
+    "company" : [ {
+      "_id" : "01",
+      "country" : "value_138174",
+      "name" : "value_296239",
+      "type" : "value_698480"
+    } ]
+  } ],
+  "publisher" : "32"
 }, {
-  "issn" : [ "value_726426", "value_933647" ],
-  "name" : "value_303697",
-  "discipline" : "value_82849",
-  "number" : 444492,
-  "_id" : "13",
-  "type" : "Journal"
-}, {
-  "issn" : [ "value_376714", "value_525048" ],
-  "name" : "value_269291",
-  "discipline" : "value_617021",
-  "number" : 913772,
-  "_id" : "14",
-  "type" : "Journal"
-}, {
-  "issn" : [ "value_433137", "value_669353" ],
-  "name" : "value_224938",
-  "discipline" : "value_75890",
-  "number" : 191277,
-  "_id" : "15",
-  "type" : "Journal"
-}, {
-  "title" : "value_156206",
-  "year" : 668675,
   "_id" : "16",
-  "type" : "Book",
-  "publisher" : "07",
-  "content" : [ {
-    "chapters" : 535153,
-    "pages" : 177539,
-    "_id" : "33",
-    "type" : "Content"
-  } ],
-  "author" : [ {
-    "name" : "value_416855",
-    "_id" : "24",
-    "type" : "Author",
-    "company" : [ {
-      "name" : "value_541912",
-      "country" : "value_837004",
-      "_id" : "29",
-      "type" : "Company"
-    } ]
-  } ]
+  "company" : "value_928739",
+  "country" : "value_899355",
+  "name" : "value_432916",
+  "type" : "Author"
 }, {
-  "title" : "value_912624",
-  "year" : 427189,
   "_id" : "17",
-  "type" : "Book",
-  "publisher" : "08",
-  "content" : [ {
-    "chapters" : 553676,
-    "pages" : 207111,
-    "_id" : "32",
-    "type" : "Content"
-  } ],
-  "author" : [ {
-    "name" : "value_749842",
-    "_id" : "22",
-    "type" : "Author",
-    "company" : [ {
-      "name" : "value_897723",
-      "country" : "value_765006",
-      "_id" : "30",
-      "type" : "Company"
-    } ]
-  } ]
+  "company" : "value_32600",
+  "country" : "value_580087",
+  "name" : "value_806178",
+  "type" : "Author"
 }, {
-  "title" : "value_654893",
-  "year" : 558796,
   "_id" : "18",
-  "type" : "Book",
-  "publisher" : "09",
-  "content" : [ {
-    "chapters" : 553676,
-    "pages" : 207111,
-    "_id" : "32",
-    "type" : "Content"
-  } ],
-  "author" : [ {
-    "name" : "value_759444",
-    "_id" : "23",
-    "type" : "Author",
-    "company" : [ {
-      "name" : "value_897723",
-      "country" : "value_765006",
-      "_id" : "30",
-      "type" : "Company"
-    } ]
-  } ]
+  "company" : "value_868957",
+  "country" : "value_894518",
+  "name" : "value_568468",
+  "type" : "Author"
 }, {
-  "title" : "value_622610",
   "_id" : "19",
-  "type" : "Book",
-  "publisher" : "09",
-  "author" : [ {
-    "name" : "value_749842",
-    "_id" : "22",
-    "type" : "Author",
-    "company" : [ {
-      "name" : "value_897723",
-      "country" : "value_765006",
-      "_id" : "30",
-      "type" : "Company"
-    } ]
-  } ]
+  "discipline" : "value_160403",
+  "issn" : [ "value_281827", "value_814340" ],
+  "name" : "value_184615",
+  "type" : "Journal"
 }, {
-  "title" : "value_523026",
   "_id" : "20",
-  "type" : "Book",
-  "publisher" : "08",
-  "author" : [ {
-    "name" : "value_749842",
-    "_id" : "22",
-    "type" : "Author",
-    "company" : [ {
-      "name" : "value_897723",
-      "country" : "value_765006",
-      "_id" : "30",
-      "type" : "Company"
-    } ]
-  } ]
+  "discipline" : "value_181637",
+  "issn" : [ "value_545217", "value_452768" ],
+  "name" : "value_570257",
+  "type" : "Journal"
 }, {
-  "title" : "value_751240",
   "_id" : "21",
-  "type" : "Book",
-  "publisher" : "07",
-  "author" : [ {
-    "name" : "value_749842",
-    "_id" : "22",
-    "type" : "Author",
-    "company" : [ {
-      "name" : "value_897723",
-      "country" : "value_765006",
-      "_id" : "30",
-      "type" : "Company"
-    } ]
-  } ]
+  "discipline" : "value_336496",
+  "issn" : [ "value_102595", "value_498089" ],
+  "name" : "value_865146",
+  "type" : "Journal"
 }, {
-  "name" : "value_531909",
-  "company" : "value_371506",
-  "country" : "value_753751",
+  "_id" : "22",
+  "discipline" : "value_120424",
+  "issn" : [ "value_425720", "value_679473" ],
+  "name" : "value_411220",
+  "number" : 45050,
+  "type" : "Journal"
+}, {
+  "_id" : "23",
+  "discipline" : "value_774228",
+  "issn" : [ "value_751692", "value_55056" ],
+  "name" : "value_846767",
+  "number" : 82871,
+  "type" : "Journal"
+}, {
+  "_id" : "24",
+  "discipline" : "value_169725",
+  "issn" : [ "value_777720", "value_475409" ],
+  "name" : "value_384793",
+  "number" : 326343,
+  "type" : "Journal"
+}, {
   "_id" : "25",
-  "type" : "Author"
+  "city" : "value_799602",
+  "name" : "value_428104",
+  "type" : "Publisher"
 }, {
-  "name" : "value_954920",
-  "company" : "value_260190",
-  "country" : "value_833404",
   "_id" : "26",
-  "type" : "Author"
+  "city" : "value_711111",
+  "name" : "value_446423",
+  "type" : "Publisher"
 }, {
-  "name" : "value_771960",
-  "company" : "value_507911",
-  "country" : "value_999470",
   "_id" : "27",
-  "type" : "Author"
+  "city" : "value_343448",
+  "name" : "value_704006",
+  "type" : "Publisher"
+}, {
+  "_id" : "28",
+  "name" : "value_262339",
+  "type" : "Publisher"
+}, {
+  "_id" : "29",
+  "name" : "value_222887",
+  "type" : "Publisher"
+}, {
+  "_id" : "30",
+  "name" : "value_55626",
+  "type" : "Publisher"
+}, {
+  "_id" : "31",
+  "name" : "value_895135",
+  "type" : "Publisher",
+  "journal" : [ "24" ]
+}, {
+  "_id" : "32",
+  "name" : "value_47306",
+  "type" : "Publisher",
+  "journal" : [ "22" ]
+}, {
+  "_id" : "33",
+  "name" : "value_145723",
+  "type" : "Publisher",
+  "journal" : [ "22" ]
 } ]

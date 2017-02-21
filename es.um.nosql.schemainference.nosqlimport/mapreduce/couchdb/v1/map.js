@@ -52,7 +52,7 @@ function(doc)
         	else
         	{
         		// See if we can produce just one array object with one inside type (homogeneous)
-        		var schemas = obj.map(function (e) { return flatten_schema(e, interesting_keys); });
+        		var schemas = obj.map(function (e) { return flatten_schema(e); });
 
         		var str_schema_0 = JSON.stringify(schemas[0]);
         		if (obj.length == 1 || schemas.every(function (e) { return JSON.stringify(e) == str_schema_0; }))

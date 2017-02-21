@@ -105,7 +105,8 @@ public class JsonGenerator
                     }
                     // We will override the _id and the type parameters...
                     strObj.put("_id", getId());
-                    strObj.put("type", entity.getName());
+                    if (eVersion.isRoot())
+                    	strObj.put("type", entity.getName());
 
                     evMap.get(eVersion).add(strObj);
                     entityIdMap.get(entity.getName()).add(strObj.get("_id").asText());
