@@ -10,16 +10,12 @@ import es.um.nosql.schemainference.nosqlimport.couchdb.CouchDBSchemaInference;
 public class Main
 {
 	private static final String COUCHDB_IP = "localhost";
-
-	private static final String INPUT_FOLDER = "models/";
-
+	private static final String MODELS_FOLDER = "models/";
 	private static final String JSON_FOLDER = "json/";
-
 	private static final String TABLENAME = "mongomovies3";
-
 	private static final String OUTPUT_JSON = JSON_FOLDER + TABLENAME + "_2.json";
-
-	private static final String OUTPUT_MODEL = INPUT_FOLDER + TABLENAME + "_2.xmi";
+	private static final String OUTPUT_MODEL = MODELS_FOLDER + TABLENAME + "_2.xmi";
+	private final static String MAPREDUCE_FOLDER = "mapreduce/couchdb/v1";
 
 	public static void main(String[] args) throws IOException
 	{
@@ -27,10 +23,10 @@ public class Main
 		int maxInstances = 10;
 
 		DbGenController controller = new DbGenController(DbType.COUCHDB, COUCHDB_IP);
-		controller.startTest(INPUT_FOLDER, JSON_FOLDER, minInstances, maxInstances);
+		controller.startTest(MODELS_FOLDER, JSON_FOLDER, minInstances, maxInstances);
 
 		System.out.println("Starting inference...");
-		CouchDBSchemaInference inferrer = new CouchDBSchemaInference(COUCHDB_IP, TABLENAME);
+		CouchDBSchemaInference inferrer = new CouchDBSchemaInference(COUCHDB_IP, TABLENAME, MAPREDUCE_FOLDER);
 		inferrer.inferAndWrite(OUTPUT_JSON);
 		System.out.println("Inference finished: " + OUTPUT_JSON);
 

@@ -26,11 +26,6 @@ public class CouchDBSchemaInference
 	private String tableName;
 	private String mapRedDir;
 
-	public CouchDBSchemaInference(String ip, String tableName)
-	{
-		this(ip, tableName, DEFAULT_MAPREDUCE);
-	}
-
 	public CouchDBSchemaInference(String ip, String tableName, String mapRedDir)
 	{
 		this.dbIP = ip;
