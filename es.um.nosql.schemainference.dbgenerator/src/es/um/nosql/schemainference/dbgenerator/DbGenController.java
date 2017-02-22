@@ -41,20 +41,26 @@ public class DbGenController
 
 	public void startTest(String modelsFolder, String jsonFolder, int minInstances, int maxInstances)
 	{
-		cleanDbs();
+		long startTime = System.currentTimeMillis();
 
+		cleanDbs();
+		System.out.println("Database tables cleaned in " + (System.currentTimeMillis() - startTime) + " ms");
+
+		System.out.println("Reading input models...");
 		ModelLoader<NoSQLSchema> loader = new ModelLoader<NoSQLSchema>(NoSQLSchemaPackage.eINSTANCE);
 		JsonGenerator generator = new JsonGenerator();
 
 		for (File file : new File(modelsFolder).listFiles())
 		{
+			long intermTime = System.currentTimeMillis();
 			NoSQLSchema schema = loader.load(file);
 
 			try(PrintWriter fileOut = new PrintWriter(jsonFolder + schema.getName() + ".json"))
 			{
 				String jsonContent = generator.generate(schema, minInstances, maxInstances);
 				client.insert(schema.getName(), jsonContent);
-				fileOut.println(generator.generate(schema));
+				fileOut.println(jsonContent);
+				System.out.println(schema.getName() + " table created in " + (System.currentTimeMillis() - intermTime) + " ms");
 			} catch (FileNotFoundException e1)
 			{
 				e1.printStackTrace();
@@ -67,6 +73,7 @@ public class DbGenController
 			}
 		}
 
+		System.out.println("Test finished in " + (System.currentTimeMillis() - startTime + " ms"));
 		shutdown();
 	}
 }

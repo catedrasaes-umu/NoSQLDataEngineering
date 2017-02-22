@@ -4,6 +4,7 @@ import java.util.stream.Stream;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 
@@ -14,8 +15,10 @@ public class CouchDBStreamAdapter
 		JsonParser parser = new JsonParser();
 
 		return stream.map(jsonObject -> {
-//			System.out.println(jsonObject);
-			return parser.parse(jsonObject.get("key").getAsString()).getAsJsonObject();
+			JsonObject jObj = parser.parse(jsonObject.get("key").getAsString()).getAsJsonObject();
+			jObj.remove("_rev");
+
+			return jObj;
 		});
 	}
 
@@ -25,10 +28,17 @@ public class CouchDBStreamAdapter
 
 		stream.forEach(object-> {
 			System.out.println(gson.toJson(object));
-//						JsonParser jsonParser = new JsonParser();
-//						JsonObject jo = (JsonObject)jsonParser.parse(object.get("key").getAsString());
-//						System.out.println(gson.toJson(jo));
 		});
-//		System.out.println(stream);
+	}
+
+	public JsonObject stream2Json(Stream<JsonObject> stream)
+	{
+		JsonObject result = new JsonObject();
+		JsonArray array = new JsonArray();
+		result.add("rows", array);
+
+		stream.forEach(elem -> array.add(elem));
+
+		return result;
 	}
 }

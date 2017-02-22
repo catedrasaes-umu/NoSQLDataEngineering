@@ -1,11 +1,15 @@
 package es.um.nosql.schemainference.nosqlimport.couchdb;
 
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import org.lightcouch.CouchDbClient;
 import org.lightcouch.CouchDbProperties;
 import org.lightcouch.DesignDocument.MapReduce;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
 import es.um.nosql.schemainference.nosqlimport.util.CouchDBStreamAdapter;
@@ -13,30 +17,39 @@ import es.um.nosql.schemainference.nosqlimport.util.MapReduceSources;
 
 /**
  * @author dsevilla
- *
  */
 public class CouchDBSchemaInference
 {
-	public static void main(String[] args)
+	private final static String DEFAULT_MAPREDUCE = "mapreduce/couchdb/v1";
+
+	private String dbIP;
+	private String tableName;
+	private String mapRedDir;
+
+	public CouchDBSchemaInference(String ip, String tableName)
 	{
-/*		if (args.length < 3)
-		{
-			System.err.println("USAGE: inference dbIP dbName viewDir (a directory where the map.js and reduce.js files live.)");
-			return;
-		}
+		this(ip, tableName, DEFAULT_MAPREDUCE);
+	}
 
-		String dbIP = args[0];
-		String dbName = args[1];
-		String dirName = args[2];
-*/
-		String dbIP = "localhost";
-		String dbName = "mongomovies3";
-		String dirName = "mapreduce/couchdb/v1";
+	public CouchDBSchemaInference(String ip, String tableName, String mapRedDir)
+	{
+		this.dbIP = ip;
+		this.tableName = tableName;
+		this.mapRedDir = mapRedDir;
+	}
 
+	public void inferAndWrite(String outputJson)
+	{
+		json2File(outputJson, performMapReduce());
+	}
+
+	public JsonObject performMapReduce()
+	{
+		JsonObject result = null;
 		try
 		{
-			MapReduceSources mrs = MapReduceSources.fromDir(dirName);
-			CouchDbProperties properties = new CouchDbProperties(dbName, true, "http", dbIP, 5984, null, null);
+			MapReduceSources mrs = MapReduceSources.fromDir(mapRedDir);
+			CouchDbProperties properties = new CouchDbProperties(tableName, true, "http", dbIP, 5984, null, null);
 			CouchDbClient dbClient = new CouchDbClient(properties);
 			MapReduce mapRedObj = new MapReduce();
 			mapRedObj.setMap(mrs.getMapJSCode());
@@ -45,18 +58,9 @@ public class CouchDBSchemaInference
 					.includeDocs(false).reduce(true).query(JsonObject.class);
 
 			CouchDBStreamAdapter adapter = new CouchDBStreamAdapter();
-			adapter.printStream(adapter.adaptStream(list.stream()));
 
-//			// Produce all the actual objects from the query. Couchdb won't allow include_docs to be specified
-//			// for a reduce view, and if I include the document itself it causes a view overflow. So we have
-//			// to take all the value objects and obtain them from the database directly
-//			List<JsonObject> result = new ArrayList<JsonObject>(list.size());
-//			for (JsonObject o : list)
-//			{
-//				String doc_id = o.get("value").getAsString();
-//				JsonObject obj = dbClient.find(JsonObject.class, doc_id);
-//				result.add(obj);
-//			}
+			result = adapter.stream2Json(adapter.adaptStream(list.stream()));
+
 		} catch (MapReduceSources.MalformedDirectoryStructure e)
 		{
 			System.err.println("Cannot access map.js and/or reduce.js files.");
@@ -65,6 +69,23 @@ public class CouchDBSchemaInference
 		{
 			System.err.println("Error in the process!.");
 			e.printStackTrace();
+		}
+
+		return result;
+	}
+
+	private void json2File(String jsonPath, JsonObject json)
+	{
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+		try
+		{
+			PrintWriter writer = new PrintWriter(jsonPath, "UTF-8");
+			writer.print(gson.toJson(json));
+			writer.close();
+		} catch (IOException e)
+		{
+			System.err.println("Error while writing JSON inference to file!");
 		}
 	}
 }

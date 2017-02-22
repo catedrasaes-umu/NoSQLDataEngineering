@@ -1,481 +1,155 @@
 [ {
-  "name" : "value_214053",
-  "authorsNumber" : 568800,
+  "name" : "value_373669",
+  "authorsNumber" : 900755,
   "_id" : "01",
   "type" : "ArtisticType"
 }, {
-  "name" : "value_697265",
-  "authorsNumber" : 659959,
+  "name" : "value_434855",
+  "popularity" : 24.91,
   "_id" : "02",
   "type" : "ArtisticType"
 }, {
-  "name" : "value_73235",
-  "authorsNumber" : 160063,
+  "name" : "value_532853",
+  "year" : 289639,
+  "author" : "value_249033",
   "_id" : "03",
-  "type" : "ArtisticType"
+  "type" : "Piece"
 }, {
-  "name" : "value_250368",
-  "popularity" : 82.74,
+  "name" : "value_653499",
+  "year" : 776569,
+  "author" : "value_115466",
+  "material" : "value_905194",
   "_id" : "04",
-  "type" : "ArtisticType"
+  "type" : "Piece"
 }, {
-  "name" : "value_504695",
-  "popularity" : 26.81,
+  "name" : "value_57531",
+  "year" : 902169,
+  "author" : "value_860723",
+  "material" : "value_842429",
+  "artisticType" : "value_779803",
   "_id" : "05",
-  "type" : "ArtisticType"
+  "type" : "Piece"
 }, {
-  "name" : "value_205986",
-  "popularity" : 41.57,
+  "name" : "value_694566",
+  "year" : 846395,
+  "author" : "value_321649",
+  "material" : "value_814065",
+  "artisticType" : "value_952879",
+  "style" : "value_662144",
+  "size" : [ 22.32, 92.36 ],
   "_id" : "06",
-  "type" : "ArtisticType"
+  "type" : "Piece"
 }, {
-  "name" : "value_573682",
-  "year" : 891847,
-  "author" : "value_197956",
+  "name" : "value_939894",
+  "year" : 248637,
+  "author" : "value_617862",
+  "material" : "value_817680",
+  "artisticType" : "value_594587",
+  "size" : [ 14.46, 24.23 ],
+  "_id" : "07",
+  "type" : "Piece",
+  "hasStyle" : [ {
+    "name" : "value_586693",
+    "period" : [ 677764, 766202 ],
+    "featured_authors" : [ "value_965329", "value_385302" ]
+  } ]
+}, {
+  "name" : "value_661395",
+  "year" : 249746,
+  "author" : "value_118756",
+  "material" : "value_846641",
+  "size" : [ 38.21, 98.16 ],
+  "_id" : "08",
+  "type" : "Piece",
+  "hasStyle" : [ {
+    "name" : "value_586693",
+    "period" : [ 677764, 766202 ],
+    "featured_authors" : [ "value_965329", "value_385302" ]
+  } ],
+  "hasArtisticType" : "01"
+}, {
+  "name" : "value_861147",
+  "date" : [ "value_618002", "value_821228" ],
+  "_id" : "09",
+  "type" : "Exposing",
+  "hasPieces" : [ "06", "03", "05", "05" ]
+}, {
+  "name" : "value_971848",
+  "hours_per_week" : 275084,
+  "salary" : 24.57,
   "_id" : "10",
-  "type" : "Piece"
+  "type" : "Restorer"
 }, {
-  "name" : "value_932493",
-  "year" : 690197,
-  "author" : "value_940826",
+  "name" : "value_504307",
+  "salary" : 87.71,
+  "tools" : [ "value_776418", "value_14323" ],
   "_id" : "11",
-  "type" : "Piece"
+  "type" : "Restorer"
 }, {
-  "name" : "value_558640",
-  "year" : 455465,
-  "author" : "value_324036",
+  "name" : "value_996536",
   "_id" : "12",
-  "type" : "Piece"
+  "type" : "Guide",
+  "showsExposings" : [ "09", "09", "09" ],
+  "showsPieces" : [ "05" ]
 }, {
-  "name" : "value_740370",
-  "year" : 157356,
-  "author" : "value_788171",
-  "material" : "value_127211",
+  "name" : "value_351857",
+  "salary" : 90.02,
   "_id" : "13",
-  "type" : "Piece"
+  "type" : "Guide",
+  "showsExposings" : [ "09" ],
+  "showsPieces" : [ "05", "07", "04" ]
 }, {
-  "name" : "value_949569",
-  "year" : 297076,
-  "author" : "value_357447",
-  "material" : "value_61859",
+  "name" : "value_623463",
+  "location" : "value_878199",
   "_id" : "14",
-  "type" : "Piece"
+  "type" : "Museum",
+  "hasPieces" : [ "03" ]
 }, {
-  "name" : "value_4280",
-  "year" : 308912,
-  "author" : "value_155164",
-  "material" : "value_916816",
+  "name" : "value_957378",
+  "location" : "value_59059",
+  "foundationYear" : 42047,
   "_id" : "15",
-  "type" : "Piece"
+  "type" : "Museum",
+  "hasPieces" : [ "03", "04", "06" ]
 }, {
-  "name" : "value_447836",
-  "year" : 476083,
-  "author" : "value_109388",
-  "material" : "value_844821",
-  "artisticType" : "value_427557",
+  "name" : "value_67854",
+  "location" : "value_224982",
+  "foundationYear" : 732334,
+  "schedule" : [ [ "value_743254", 458769, 333780 ], [ "value_983484", 578077, 190693 ] ],
   "_id" : "16",
-  "type" : "Piece"
+  "type" : "Museum",
+  "hasPieces" : [ "07", "05", "04", "03" ]
 }, {
-  "name" : "value_762117",
-  "year" : 617209,
-  "author" : "value_293600",
-  "material" : "value_59118",
-  "artisticType" : "value_530772",
+  "name" : "value_133344",
+  "location" : "value_934030",
+  "foundationYear" : 409049,
+  "schedule" : [ [ "value_536857", 936155, 744784 ], [ "value_889198", 798493, 803935 ] ],
   "_id" : "17",
-  "type" : "Piece"
-}, {
-  "name" : "value_304625",
-  "year" : 227548,
-  "author" : "value_184991",
-  "material" : "value_984301",
-  "artisticType" : "value_612994",
-  "_id" : "18",
-  "type" : "Piece"
-}, {
-  "name" : "value_16114",
-  "year" : 465117,
-  "author" : "value_425377",
-  "material" : "value_527209",
-  "artisticType" : "value_979356",
-  "style" : "value_454345",
-  "size" : [ 14.57, 91.42 ],
-  "_id" : "19",
-  "type" : "Piece"
-}, {
-  "name" : "value_970642",
-  "year" : 18657,
-  "author" : "value_433513",
-  "material" : "value_421960",
-  "artisticType" : "value_623296",
-  "style" : "value_58184",
-  "size" : [ 31.37, 31.45 ],
-  "_id" : "20",
-  "type" : "Piece"
-}, {
-  "name" : "value_798640",
-  "year" : 254154,
-  "author" : "value_687583",
-  "material" : "value_117623",
-  "artisticType" : "value_361064",
-  "style" : "value_611210",
-  "size" : [ 59.78, 64.66 ],
-  "_id" : "21",
-  "type" : "Piece"
-}, {
-  "name" : "value_388071",
-  "year" : 796645,
-  "author" : "value_335848",
-  "material" : "value_226282",
-  "artisticType" : "value_249590",
-  "size" : [ 6.01, 1.99 ],
-  "_id" : "22",
-  "type" : "Piece",
-  "hasStyle" : [ {
-    "name" : "value_13477",
-    "period" : [ 267821, 864088 ],
-    "featured_authors" : [ "value_298658", "value_955756" ],
-    "_id" : "07"
-  } ]
-}, {
-  "name" : "value_172854",
-  "year" : 930666,
-  "author" : "value_690597",
-  "material" : "value_130126",
-  "artisticType" : "value_44448",
-  "size" : [ 28.73, 44.06 ],
-  "_id" : "23",
-  "type" : "Piece",
-  "hasStyle" : [ {
-    "name" : "value_13477",
-    "period" : [ 267821, 864088 ],
-    "featured_authors" : [ "value_298658", "value_955756" ],
-    "_id" : "07"
-  } ]
-}, {
-  "name" : "value_213617",
-  "year" : 692632,
-  "author" : "value_265603",
-  "material" : "value_20671",
-  "artisticType" : "value_478714",
-  "size" : [ 72.1, 48.44 ],
-  "_id" : "24",
-  "type" : "Piece",
-  "hasStyle" : [ {
-    "name" : "value_944443",
-    "period" : [ 398898, 15300 ],
-    "featured_authors" : [ "value_944269", "value_336159" ],
-    "_id" : "08"
-  } ]
-}, {
-  "name" : "value_740427",
-  "year" : 895467,
-  "author" : "value_519376",
-  "material" : "value_437255",
-  "size" : [ 24.16, 63.86 ],
-  "_id" : "25",
-  "type" : "Piece",
-  "hasStyle" : [ {
-    "name" : "value_13477",
-    "period" : [ 267821, 864088 ],
-    "featured_authors" : [ "value_298658", "value_955756" ],
-    "_id" : "07"
-  } ],
-  "hasArtisticType" : "05"
-}, {
-  "name" : "value_71942",
-  "year" : 674264,
-  "author" : "value_810930",
-  "material" : "value_247396",
-  "size" : [ 90.37, 50.25 ],
-  "_id" : "26",
-  "type" : "Piece",
-  "hasStyle" : [ {
-    "name" : "value_848085",
-    "period" : [ 594604, 855172 ],
-    "featured_authors" : [ "value_715181", "value_129386" ],
-    "_id" : "09"
-  } ],
-  "hasArtisticType" : "04"
-}, {
-  "name" : "value_535916",
-  "year" : 672263,
-  "author" : "value_946149",
-  "material" : "value_713736",
-  "size" : [ 88.76, 68.56 ],
-  "_id" : "27",
-  "type" : "Piece",
-  "hasStyle" : [ {
-    "name" : "value_848085",
-    "period" : [ 594604, 855172 ],
-    "featured_authors" : [ "value_715181", "value_129386" ],
-    "_id" : "09"
-  } ],
-  "hasArtisticType" : "04"
-}, {
-  "name" : "value_549949",
-  "date" : [ "value_240931", "value_539321" ],
-  "_id" : "28",
-  "type" : "Exposing",
-  "hasPieces" : [ "27" ]
-}, {
-  "name" : "value_521568",
-  "date" : [ "value_169718", "value_780552" ],
-  "_id" : "29",
-  "type" : "Exposing",
-  "hasPieces" : [ "26" ]
-}, {
-  "name" : "value_800175",
-  "date" : [ "value_380217", "value_896403" ],
-  "_id" : "30",
-  "type" : "Exposing",
-  "hasPieces" : [ "25", "26" ]
-}, {
-  "name" : "value_160611",
-  "hours_per_week" : 614409,
-  "salary" : 92.96,
-  "_id" : "34",
-  "type" : "Restorer"
-}, {
-  "name" : "value_235919",
-  "hours_per_week" : 252342,
-  "salary" : 80.13,
-  "_id" : "35",
-  "type" : "Restorer"
-}, {
-  "name" : "value_378245",
-  "hours_per_week" : 628680,
-  "salary" : 72.6,
-  "_id" : "36",
-  "type" : "Restorer"
-}, {
-  "name" : "value_167776",
-  "salary" : 81.8,
-  "tools" : [ "value_39293", "value_866218" ],
-  "_id" : "37",
-  "type" : "Restorer"
-}, {
-  "name" : "value_523790",
-  "salary" : 12.42,
-  "tools" : [ "value_735140", "value_253715" ],
-  "_id" : "38",
-  "type" : "Restorer"
-}, {
-  "name" : "value_820193",
-  "salary" : 62.07,
-  "tools" : [ "value_972242", "value_383077" ],
-  "_id" : "39",
-  "type" : "Restorer"
-}, {
-  "name" : "value_39097",
-  "_id" : "40",
-  "type" : "Guide",
-  "showsExposings" : [ "32" ],
-  "showsPieces" : [ ]
-}, {
-  "name" : "value_129121",
-  "_id" : "41",
-  "type" : "Guide",
-  "showsExposings" : [ "31" ],
-  "showsPieces" : [ ]
-}, {
-  "name" : "value_955932",
-  "_id" : "42",
-  "type" : "Guide",
-  "showsExposings" : [ "31", "33" ],
-  "showsPieces" : [ "26", "26" ]
-}, {
-  "name" : "value_986333",
-  "salary" : 92.01,
-  "_id" : "43",
-  "type" : "Guide",
-  "showsExposings" : [ "33", "32", "32" ],
-  "showsPieces" : [ "25" ]
-}, {
-  "name" : "value_840453",
-  "salary" : 31.25,
-  "_id" : "44",
-  "type" : "Guide",
-  "showsExposings" : [ "31", "32" ],
-  "showsPieces" : [ "27" ]
-}, {
-  "name" : "value_554548",
-  "salary" : 82.33,
-  "_id" : "45",
-  "type" : "Guide",
-  "showsExposings" : [ "31" ],
-  "showsPieces" : [ "25", "26" ]
-}, {
-  "name" : "value_789571",
-  "location" : "value_576188",
-  "_id" : "52",
   "type" : "Museum",
-  "hasPieces" : [ "25", "27", "27" ]
-}, {
-  "name" : "value_938453",
-  "location" : "value_76018",
-  "_id" : "53",
-  "type" : "Museum",
-  "hasPieces" : [ "27", "26" ]
-}, {
-  "name" : "value_973911",
-  "location" : "value_398651",
-  "_id" : "54",
-  "type" : "Museum",
-  "hasPieces" : [ "27", "26", "26", "26" ]
-}, {
-  "name" : "value_456998",
-  "location" : "value_149259",
-  "foundationYear" : 197639,
-  "_id" : "55",
-  "type" : "Museum",
-  "hasPieces" : [ "25", "25", "27", "25" ]
-}, {
-  "name" : "value_699838",
-  "location" : "value_183717",
-  "foundationYear" : 201801,
-  "_id" : "56",
-  "type" : "Museum",
-  "hasPieces" : [ "25", "26", "26" ]
-}, {
-  "name" : "value_509662",
-  "location" : "value_728962",
-  "foundationYear" : 482797,
-  "_id" : "57",
-  "type" : "Museum",
-  "hasPieces" : [ "27" ]
-}, {
-  "name" : "value_790751",
-  "location" : "value_892881",
-  "foundationYear" : 742881,
-  "schedule" : [ [ "value_481528", 300481, 262953 ], [ "value_165069", 941128, 102484 ] ],
-  "_id" : "58",
-  "type" : "Museum",
-  "hasPieces" : [ "27", "26" ]
-}, {
-  "name" : "value_911797",
-  "location" : "value_119521",
-  "foundationYear" : 221315,
-  "schedule" : [ [ "value_387815", 341654, 168916 ], [ "value_205976", 36059, 280635 ] ],
-  "_id" : "59",
-  "type" : "Museum",
-  "hasPieces" : [ "26", "25", "26", "26" ]
-}, {
-  "name" : "value_825932",
-  "location" : "value_972977",
-  "foundationYear" : 4110,
-  "schedule" : [ [ "value_547050", 232217, 69922 ], [ "value_545517", 648655, 326941 ] ],
-  "_id" : "60",
-  "type" : "Museum",
-  "hasPieces" : [ "25", "27" ]
-}, {
-  "name" : "value_241329",
-  "location" : "value_161116",
-  "foundationYear" : 732645,
-  "schedule" : [ [ "value_400815", 31647, 484452 ], [ "value_738071", 957766, 743699 ] ],
-  "_id" : "61",
-  "type" : "Museum",
-  "hasPieces" : [ "26", "27", "25" ],
-  "hasExposings" : [ "32" ],
+  "hasPieces" : [ "06", "07", "05" ],
+  "hasExposings" : [ "09", "09", "09" ],
   "hasDirector" : [ {
-    "name" : "value_155788",
-    "hours_per_week" : 352722,
-    "salary" : 36.38,
-    "_id" : "51"
+    "name" : "value_224135",
+    "hours_per_week" : 972558,
+    "salary" : 32.55
   } ],
   "hasGuides" : [ {
-    "name" : "value_333863",
-    "salary" : 71.49,
-    "languages" : [ "value_57277" ],
-    "_id" : "46",
-    "showsPieces" : [ "26", "26" ],
+    "name" : "value_160751",
+    "salary" : 80.37,
+    "languages" : [ "value_996324" ],
+    "showsPieces" : [ "05", "04", "06", "03" ],
     "showsExposings" : [ {
-      "name" : "value_382999",
-      "date" : [ "value_950482", "value_804272" ],
-      "isItinerant" : false,
+      "name" : "value_513002",
+      "date" : [ "value_624777", "value_119614" ],
+      "isItinerant" : true,
       "isTemporary" : true,
       "isPermanent" : true,
-      "_id" : "31",
-      "hasPieces" : [ "27", "27" ]
+      "hasPieces" : [ "08", "08" ]
     } ]
   } ],
   "hasGuards" : [ {
-    "name" : "value_232759",
-    "hours_per_week" : 557179,
-    "salary" : 72.67,
-    "_id" : "66"
-  } ]
-}, {
-  "name" : "value_870148",
-  "location" : "value_259920",
-  "foundationYear" : 853362,
-  "schedule" : [ [ "value_797746", 277939, 253970 ], [ "value_656068", 13333, 176534 ] ],
-  "_id" : "62",
-  "type" : "Museum",
-  "hasPieces" : [ "25" ],
-  "hasExposings" : [ "33" ],
-  "hasDirector" : [ {
-    "name" : "value_333006",
-    "hours_per_week" : 946912,
-    "salary" : 35.59,
-    "_id" : "50"
-  } ],
-  "hasGuides" : [ {
-    "name" : "value_527770",
-    "salary" : 0.43,
-    "languages" : [ "value_644532" ],
-    "_id" : "48",
-    "showsPieces" : [ "26", "26" ],
-    "showsExposings" : [ {
-      "name" : "value_234083",
-      "date" : [ "value_231352", "value_962236" ],
-      "isItinerant" : false,
-      "isTemporary" : true,
-      "isPermanent" : true,
-      "_id" : "33",
-      "hasPieces" : [ "25", "26", "26" ]
-    } ]
-  } ],
-  "hasGuards" : [ {
-    "name" : "value_696751",
-    "hours_per_week" : 555141,
-    "salary" : 21.01,
-    "_id" : "64"
-  } ]
-}, {
-  "name" : "value_384667",
-  "location" : "value_674921",
-  "foundationYear" : 853048,
-  "schedule" : [ [ "value_54821", 240239, 71739 ], [ "value_206210", 401328, 134005 ] ],
-  "_id" : "63",
-  "type" : "Museum",
-  "hasPieces" : [ "27", "25" ],
-  "hasExposings" : [ ],
-  "hasDirector" : [ {
-    "name" : "value_333006",
-    "hours_per_week" : 946912,
-    "salary" : 35.59,
-    "_id" : "50"
-  } ],
-  "hasGuides" : [ {
-    "name" : "value_333863",
-    "salary" : 71.49,
-    "languages" : [ "value_57277" ],
-    "_id" : "46",
-    "showsPieces" : [ "26", "26" ],
-    "showsExposings" : [ {
-      "name" : "value_382999",
-      "date" : [ "value_950482", "value_804272" ],
-      "isItinerant" : false,
-      "isTemporary" : true,
-      "isPermanent" : true,
-      "_id" : "31",
-      "hasPieces" : [ "27", "27" ]
-    } ]
-  } ],
-  "hasGuards" : [ {
-    "name" : "value_232759",
-    "hours_per_week" : 557179,
-    "salary" : 72.67,
-    "_id" : "66"
+    "name" : "value_357968",
+    "hours_per_week" : 372549,
+    "salary" : 84.35
   } ]
 } ]

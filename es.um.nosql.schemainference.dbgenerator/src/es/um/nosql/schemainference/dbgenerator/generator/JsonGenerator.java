@@ -74,7 +74,6 @@ public class JsonGenerator
     {
     	evMap = new HashMap<EntityVersion, List<ObjectNode>>();
     	entityIdMap = new HashMap<String, List<String>>();
-    	List<ObjectNode> bannedEVList = new ArrayList<ObjectNode>();
 
         lStorage = factory.arrayNode();
 
@@ -83,10 +82,11 @@ public class JsonGenerator
 
         // First run to generate all the primitive types and tuples.
         for (Entity entity : schema.getEntities())
+        {
+        	entityIdMap.put(entity.getName(), new ArrayList<String>());
             for (EntityVersion eVersion : entity.getEntityversions())
             {
             	evMap.put(eVersion, new ArrayList<ObjectNode>());
-            	entityIdMap.put(entity.getName(), new ArrayList<String>());
 
                 for (int i = 0; i < getRandomBetween(MIN_INSTANCES_VERSION, MAX_INSTANCES_VERSION); i++)
                 {
@@ -103,15 +103,20 @@ public class JsonGenerator
                                 generateTuple(strObj, attr.getName(), ((Tuple)attr.getType()).getElements());
                         }
                     }
+
                     // We will override the _id and the type parameters...
-                    strObj.put("_id", getId());
                     if (eVersion.isRoot())
+                    {
+                        strObj.put("_id", getId());
                     	strObj.put("type", entity.getName());
+                        lStorage.add(strObj);
+                        entityIdMap.get(entity.getName()).add(strObj.get("_id").asText());
+                    }
 
                     evMap.get(eVersion).add(strObj);
-                    entityIdMap.get(entity.getName()).add(strObj.get("_id").asText());
                 }
             }
+        }
 
         // Second run to generate the references and aggregates since now all the versions and instances exist.
         for (Entity entity : schema.getEntities())
@@ -147,28 +152,20 @@ public class JsonGenerator
                             for (EntityVersion aggrEV : aggr.getRefTo())
                             {
                             	ObjectNode aggrNode = getRandomAggr(aggrEV);
-                            	bannedEVList.addAll(evMap.get(aggrEV));
                                 array.add(aggrNode);
                             }
                         }
                     }
                 }
 
-        // A third run is required to add the actual JSON objects to the array, now that we know what are the aggregated EVs which we will not add
-        for (Entity entity : schema.getEntities())
-        	for (EntityVersion eVersion : entity.getEntityversions())
-        		for (ObjectNode strObj : evMap.get(eVersion))
-        			if (!bannedEVList.contains(strObj))
-        				lStorage.add(strObj);
-
         return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(lStorage);
     }
 
     private String getRandomRefId(String name) throws Exception
     {
-        for (String eName : entityIdMap.keySet())
-            if (eName.toLowerCase().contains(name.toLowerCase()) || name.toLowerCase().contains(eName.toLowerCase()))
-                return entityIdMap.get(eName).get(getRandomBetween(0, entityIdMap.get(eName).size() - 1));
+    	for (String eName : entityIdMap.keySet())
+    		if (eName.toLowerCase().contains(name.toLowerCase()) || name.toLowerCase().contains(eName.toLowerCase()))
+    			return entityIdMap.get(eName).get(getRandomBetween(0, entityIdMap.get(eName).size() - 1));
 
         throw new Exception("Reference not found: " + name);
     }

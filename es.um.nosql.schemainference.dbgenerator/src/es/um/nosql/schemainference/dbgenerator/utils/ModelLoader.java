@@ -10,9 +10,6 @@ import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-/**
- * @author dsevilla
- */
 public class ModelLoader<T>
 {
 	//TODO: Probably this whole ModelLoader should be changed. I know it's meant to be generic,
@@ -39,11 +36,4 @@ public class ModelLoader<T>
 		Resource r = resourceSet.getResource(URI.createFileURI(file.getAbsolutePath()), true);
 		return (T)r.getContents().get(0);
 	}
-
-	/*
-	public ResourceSet getSet()
-	{
-		return set;
-	}
-	*/
 }

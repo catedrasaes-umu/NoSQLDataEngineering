@@ -1,328 +1,105 @@
 [ {
-  "name" : "value_388780",
-  "location" : "value_242004",
-  "manager" : "value_328561",
+  "name" : "value_397028",
+  "location" : "value_69547",
+  "manager" : "value_602579",
   "_id" : "01",
   "type" : "Restaurant",
-  "hasWaiters" : [ "16", "16", "17" ],
-  "hasMenu" : "21"
+  "hasWaiters" : [ "05", "05", "03" ],
+  "hasMenu" : "06"
 }, {
-  "name" : "value_489398",
-  "location" : "value_397351",
-  "manager" : "value_200",
+  "number" : 708215,
+  "occupied" : "value_30492",
+  "location" : "value_176675",
   "_id" : "02",
-  "type" : "Restaurant",
-  "hasWaiters" : [ "18", "18" ],
-  "hasMenu" : "21"
+  "type" : "Table"
 }, {
-  "name" : "value_560437",
-  "location" : "value_89253",
-  "manager" : "value_337791",
+  "name" : "value_57620",
+  "nif" : "value_877007",
+  "hours_per_week" : "value_382828",
+  "salary" : 248676,
   "_id" : "03",
-  "type" : "Restaurant",
-  "hasWaiters" : [ "16" ],
-  "hasMenu" : "20"
+  "type" : "Waiter"
 }, {
-  "number" : 833492,
-  "occupied" : "value_448019",
-  "location" : "value_445201",
+  "name" : "value_964125",
+  "nif" : "value_757161",
+  "hours_per_week" : 295903,
+  "salary" : 28.55,
+  "tablesAssigned" : [ 524547, 264432, 36164 ],
   "_id" : "04",
-  "type" : "Table"
+  "type" : "Waiter"
 }, {
-  "number" : 141491,
-  "occupied" : "value_278504",
-  "location" : "value_198599",
+  "name" : "value_17051",
+  "nif" : "value_590786",
+  "hours_per_week" : 33272,
+  "salary" : 33.35,
   "_id" : "05",
-  "type" : "Table"
+  "type" : "Waiter",
+  "hasTables" : [ {
+    "number" : 279656,
+    "isOccupied" : true,
+    "position" : [ 92852, 905569 ]
+  } ]
 }, {
-  "number" : 610494,
-  "occupied" : "value_447795",
-  "location" : "value_371483",
+  "name" : "value_267157",
+  "price" : 5.55,
   "_id" : "06",
-  "type" : "Table"
+  "type" : "Menu",
+  "hasDishes" : [ "10", "10", "08" ]
 }, {
-  "name" : "value_589688",
-  "nif" : "value_612462",
-  "hours_per_week" : "value_785235",
-  "salary" : 41722,
+  "name" : "value_208675",
+  "price" : 29.98,
+  "_id" : "07",
+  "type" : "Dish",
+  "hasIngredients" : [ {
+    "name" : "value_289719",
+    "price" : 0.14,
+    "quantity" : "value_243890",
+    "isSeasonal" : false
+  } ]
+}, {
+  "name" : "value_990783",
+  "price" : 83.33,
+  "isSeasonal" : false,
+  "_id" : "08",
+  "type" : "Dish",
+  "hasIngredients" : [ {
+    "name" : "value_289719",
+    "price" : 0.14,
+    "quantity" : "value_243890",
+    "isSeasonal" : false
+  } ]
+}, {
+  "name" : "value_976815",
+  "price" : 79.56,
+  "isSeasonal" : true,
+  "suitableForCeliacs" : false,
+  "suitableForDiabetics" : true,
+  "_id" : "09",
+  "type" : "Dish",
+  "hasIngredients" : [ {
+    "name" : "value_289719",
+    "price" : 0.14,
+    "quantity" : "value_243890",
+    "isSeasonal" : false
+  } ]
+}, {
+  "name" : "value_651434",
+  "price" : 93.3,
+  "isSeasonal" : true,
+  "suitableForCeliacs" : true,
+  "suitableForDiabetics" : false,
+  "calories" : 44.95,
   "_id" : "10",
-  "type" : "Waiter"
+  "type" : "Dish",
+  "hasIngredients" : [ {
+    "name" : "value_289719",
+    "price" : 0.14,
+    "quantity" : "value_243890",
+    "isSeasonal" : false
+  } ]
 }, {
-  "name" : "value_250768",
-  "nif" : "value_383125",
-  "hours_per_week" : "value_451487",
-  "salary" : 253674,
+  "name" : "value_161416",
+  "price" : 60.85,
   "_id" : "11",
-  "type" : "Waiter"
-}, {
-  "name" : "value_918511",
-  "nif" : "value_474058",
-  "hours_per_week" : "value_573249",
-  "salary" : 864429,
-  "_id" : "12",
-  "type" : "Waiter"
-}, {
-  "name" : "value_317082",
-  "nif" : "value_852879",
-  "hours_per_week" : 387812,
-  "salary" : 78.43,
-  "tablesAssigned" : [ 232467, 815129, 909706 ],
-  "_id" : "13",
-  "type" : "Waiter"
-}, {
-  "name" : "value_626510",
-  "nif" : "value_238475",
-  "hours_per_week" : 290345,
-  "salary" : 75.01,
-  "tablesAssigned" : [ 710364, 441093, 974551 ],
-  "_id" : "14",
-  "type" : "Waiter"
-}, {
-  "name" : "value_954556",
-  "nif" : "value_514131",
-  "hours_per_week" : 571529,
-  "salary" : 52.45,
-  "tablesAssigned" : [ 635697, 972734, 58047 ],
-  "_id" : "15",
-  "type" : "Waiter"
-}, {
-  "name" : "value_702007",
-  "nif" : "value_266162",
-  "hours_per_week" : 385825,
-  "salary" : 69.7,
-  "_id" : "16",
-  "type" : "Waiter",
-  "hasTables" : [ {
-    "number" : 841546,
-    "isOccupied" : true,
-    "position" : [ 755201, 585543 ],
-    "_id" : "09"
-  } ]
-}, {
-  "name" : "value_439882",
-  "nif" : "value_329532",
-  "hours_per_week" : 55667,
-  "salary" : 61.02,
-  "_id" : "17",
-  "type" : "Waiter",
-  "hasTables" : [ {
-    "number" : 841546,
-    "isOccupied" : true,
-    "position" : [ 755201, 585543 ],
-    "_id" : "09"
-  } ]
-}, {
-  "name" : "value_860165",
-  "nif" : "value_224964",
-  "hours_per_week" : 416586,
-  "salary" : 32.21,
-  "_id" : "18",
-  "type" : "Waiter",
-  "hasTables" : [ {
-    "number" : 328657,
-    "isOccupied" : false,
-    "position" : [ 123145, 416372 ],
-    "_id" : "08"
-  } ]
-}, {
-  "name" : "value_389044",
-  "price" : 33.71,
-  "_id" : "19",
-  "type" : "Menu",
-  "hasDishes" : [ "31", "31", "33" ]
-}, {
-  "name" : "value_367798",
-  "price" : 57.47,
-  "_id" : "20",
-  "type" : "Menu",
-  "hasDishes" : [ "31", "32", "31", "33", "33" ]
-}, {
-  "name" : "value_760868",
-  "price" : 51.13,
-  "_id" : "21",
-  "type" : "Menu",
-  "hasDishes" : [ "33" ]
-}, {
-  "name" : "value_910657",
-  "price" : 25.55,
-  "_id" : "22",
-  "type" : "Dish",
-  "hasIngredients" : [ {
-    "name" : "value_117662",
-    "price" : 45.85,
-    "quantity" : "value_339050",
-    "isSeasonal" : false,
-    "_id" : "38"
-  } ]
-}, {
-  "name" : "value_833602",
-  "price" : 87.91,
-  "_id" : "23",
-  "type" : "Dish",
-  "hasIngredients" : [ {
-    "name" : "value_375583",
-    "price" : 87.97,
-    "quantity" : "value_388405",
-    "isSeasonal" : true,
-    "_id" : "39"
-  } ]
-}, {
-  "name" : "value_466157",
-  "price" : 84.19,
-  "_id" : "24",
-  "type" : "Dish",
-  "hasIngredients" : [ {
-    "name" : "value_613509",
-    "price" : 31.25,
-    "quantity" : "value_990168",
-    "isSeasonal" : true,
-    "_id" : "37"
-  } ]
-}, {
-  "name" : "value_476071",
-  "price" : 21.75,
-  "isSeasonal" : false,
-  "_id" : "25",
-  "type" : "Dish",
-  "hasIngredients" : [ {
-    "name" : "value_375583",
-    "price" : 87.97,
-    "quantity" : "value_388405",
-    "isSeasonal" : true,
-    "_id" : "39"
-  } ]
-}, {
-  "name" : "value_519633",
-  "price" : 80.19,
-  "isSeasonal" : true,
-  "_id" : "26",
-  "type" : "Dish",
-  "hasIngredients" : [ {
-    "name" : "value_613509",
-    "price" : 31.25,
-    "quantity" : "value_990168",
-    "isSeasonal" : true,
-    "_id" : "37"
-  } ]
-}, {
-  "name" : "value_90467",
-  "price" : 99.51,
-  "isSeasonal" : true,
-  "_id" : "27",
-  "type" : "Dish",
-  "hasIngredients" : [ {
-    "name" : "value_117662",
-    "price" : 45.85,
-    "quantity" : "value_339050",
-    "isSeasonal" : false,
-    "_id" : "38"
-  } ]
-}, {
-  "name" : "value_813757",
-  "price" : 93.44,
-  "isSeasonal" : false,
-  "suitableForCeliacs" : true,
-  "suitableForDiabetics" : true,
-  "_id" : "28",
-  "type" : "Dish",
-  "hasIngredients" : [ {
-    "name" : "value_613509",
-    "price" : 31.25,
-    "quantity" : "value_990168",
-    "isSeasonal" : true,
-    "_id" : "37"
-  } ]
-}, {
-  "name" : "value_829405",
-  "price" : 17.24,
-  "isSeasonal" : false,
-  "suitableForCeliacs" : false,
-  "suitableForDiabetics" : true,
-  "_id" : "29",
-  "type" : "Dish",
-  "hasIngredients" : [ {
-    "name" : "value_117662",
-    "price" : 45.85,
-    "quantity" : "value_339050",
-    "isSeasonal" : false,
-    "_id" : "38"
-  } ]
-}, {
-  "name" : "value_942191",
-  "price" : 88.3,
-  "isSeasonal" : false,
-  "suitableForCeliacs" : false,
-  "suitableForDiabetics" : false,
-  "_id" : "30",
-  "type" : "Dish",
-  "hasIngredients" : [ {
-    "name" : "value_375583",
-    "price" : 87.97,
-    "quantity" : "value_388405",
-    "isSeasonal" : true,
-    "_id" : "39"
-  } ]
-}, {
-  "name" : "value_794842",
-  "price" : 16.6,
-  "isSeasonal" : false,
-  "suitableForCeliacs" : true,
-  "suitableForDiabetics" : true,
-  "calories" : 40.35,
-  "_id" : "31",
-  "type" : "Dish",
-  "hasIngredients" : [ {
-    "name" : "value_613509",
-    "price" : 31.25,
-    "quantity" : "value_990168",
-    "isSeasonal" : true,
-    "_id" : "37"
-  } ]
-}, {
-  "name" : "value_617691",
-  "price" : 71.52,
-  "isSeasonal" : true,
-  "suitableForCeliacs" : true,
-  "suitableForDiabetics" : false,
-  "calories" : 52.65,
-  "_id" : "32",
-  "type" : "Dish",
-  "hasIngredients" : [ {
-    "name" : "value_613509",
-    "price" : 31.25,
-    "quantity" : "value_990168",
-    "isSeasonal" : true,
-    "_id" : "37"
-  } ]
-}, {
-  "name" : "value_855653",
-  "price" : 4.07,
-  "isSeasonal" : false,
-  "suitableForCeliacs" : false,
-  "suitableForDiabetics" : false,
-  "calories" : 39.42,
-  "_id" : "33",
-  "type" : "Dish",
-  "hasIngredients" : [ {
-    "name" : "value_117662",
-    "price" : 45.85,
-    "quantity" : "value_339050",
-    "isSeasonal" : false,
-    "_id" : "38"
-  } ]
-}, {
-  "name" : "value_694962",
-  "price" : 10.56,
-  "_id" : "34",
-  "type" : "Ingredient"
-}, {
-  "name" : "value_329313",
-  "price" : 19.77,
-  "_id" : "35",
-  "type" : "Ingredient"
-}, {
-  "name" : "value_980421",
-  "price" : 5.14,
-  "_id" : "36",
   "type" : "Ingredient"
 } ]
