@@ -8,8 +8,8 @@ import org.lightcouch.CouchDbClient;
 import org.lightcouch.CouchDbProperties;
 import org.lightcouch.DesignDocument.MapReduce;
 
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.JsonObject;
 
 import es.um.nosql.schemainference.nosqlimport.util.CouchDBStreamAdapter;
@@ -20,8 +20,6 @@ import es.um.nosql.schemainference.nosqlimport.util.MapReduceSources;
  */
 public class CouchDBSchemaInference
 {
-	private final static String DEFAULT_MAPREDUCE = "mapreduce/couchdb/v1";
-
 	private String dbIP;
 	private String tableName;
 	private String mapRedDir;
@@ -38,9 +36,9 @@ public class CouchDBSchemaInference
 		json2File(outputJson, performMapReduce());
 	}
 
-	public JsonObject performMapReduce()
+	public ObjectNode performMapReduce()
 	{
-		JsonObject result = null;
+		ObjectNode result = null;
 		try
 		{
 			MapReduceSources mrs = MapReduceSources.fromDir(mapRedDir);
@@ -54,6 +52,8 @@ public class CouchDBSchemaInference
 
 			CouchDBStreamAdapter adapter = new CouchDBStreamAdapter();
 
+			// This step will cast Gson objects to Jackson objects and remove the pesky _rev attribute
+			// It will also concatenate each object in a rows[] array and create a global json object.
 			result = adapter.stream2Json(adapter.adaptStream(list.stream()));
 
 		} catch (MapReduceSources.MalformedDirectoryStructure e)
@@ -69,14 +69,14 @@ public class CouchDBSchemaInference
 		return result;
 	}
 
-	private void json2File(String jsonPath, JsonObject json)
+	private void json2File(String jsonPath, ObjectNode json)
 	{
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+		ObjectMapper mapper = new ObjectMapper();
 
 		try
 		{
 			PrintWriter writer = new PrintWriter(jsonPath, "UTF-8");
-			writer.print(gson.toJson(json));
+			writer.print(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json));
 			writer.close();
 		} catch (IOException e)
 		{
