@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.schemainference/model/dbschema.ecore" name="Food_2.xmi">
+  <entities name="Restaurant">
+    <entityversions versionId="1" root="true">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="hasMenu" lowerBound="1" upperBound="1" refTo="Menu"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="hasWaiters" upperBound="-1" refTo="Waiter"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="location">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="manager">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+  </entities>
+  <entities name="Hasingredient">
+    <entityversions versionId="1">
+      <properties xsi:type="NoSQLSchema:Attribute" name="isSeasonal">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Boolean"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="price">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="quantity">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+  </entities>
+  <entities name="Table">
+    <entityversions versionId="1" root="true">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="location">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="number">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="occupied">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+  </entities>
+  <entities name="Ingredient">
+    <entityversions versionId="1" root="true">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="price">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+  </entities>
+  <entities name="Dish">
+    <entityversions versionId="1" root="true">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="calories">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="hasIngredients" upperBound="1" refTo="//@entities.1/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="isSeasonal">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Boolean"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="price">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="suitableForCeliacs">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Boolean"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="suitableForDiabetics">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Boolean"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+    <entityversions versionId="2" root="true">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="hasIngredients" upperBound="1" refTo="//@entities.1/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="isSeasonal">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Boolean"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="price">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="suitableForCeliacs">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Boolean"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="suitableForDiabetics">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Boolean"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+    <entityversions versionId="3" root="true">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="hasIngredients" upperBound="1" refTo="//@entities.1/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="isSeasonal">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Boolean"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="price">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+    <entityversions versionId="4" root="true">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="hasIngredients" upperBound="1" refTo="//@entities.1/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="price">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+  </entities>
+  <entities name="Hastable">
+    <entityversions versionId="1">
+      <properties xsi:type="NoSQLSchema:Attribute" name="isOccupied">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Boolean"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="number">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="position">
+        <type xsi:type="NoSQLSchema:Tuple">
+          <elements xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+        </type>
+      </properties>
+    </entityversions>
+  </entities>
+  <entities name="Menu">
+    <entityversions versionId="1" root="true">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="hasDishes" upperBound="-1" refTo="Dish"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="price">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+  </entities>
+  <entities name="Waiter">
+    <entityversions versionId="1" root="true">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="hasTables" upperBound="1" refTo="//@entities.5/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="hours_per_week">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="nif">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="salary">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+    <entityversions versionId="2" root="true">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="hours_per_week">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="nif">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="salary">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+    <entityversions versionId="3" root="true">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="hours_per_week">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="nif">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="salary">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="tablesAssigned" upperBound="-1" refTo="Table"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+  </entities>
+</NoSQLSchema:NoSQLSchema>

@@ -47,33 +47,40 @@ public class DbGenController
 		System.out.println("Database tables cleaned in " + (System.currentTimeMillis() - startTime) + " ms");
 
 		System.out.println("Reading input models...");
+
+		for (String fileRoute : new File(modelsFolder).list())
+			insertTableDb(fileRoute, jsonFolder, minInstances, maxInstances);
+
+		System.out.println("Test finished in " + (System.currentTimeMillis() - startTime + " ms"));
+		shutdown();
+	}
+
+	public void insertTableDb(String modelRoute, String jsonFolder, int minInstances, int maxInstances)
+	{
+		long startTime = System.currentTimeMillis();
+
+		System.out.println("Reading input model...");
 		ModelLoader<NoSQLSchema> loader = new ModelLoader<NoSQLSchema>(NoSQLSchemaPackage.eINSTANCE);
 		JsonGenerator generator = new JsonGenerator();
 
-		for (File file : new File(modelsFolder).listFiles())
+		NoSQLSchema schema = loader.load(new File(modelRoute));
+
+		try(PrintWriter fileOut = new PrintWriter(jsonFolder + schema.getName() + ".json"))
 		{
-			long intermTime = System.currentTimeMillis();
-			NoSQLSchema schema = loader.load(file);
-
-			try(PrintWriter fileOut = new PrintWriter(jsonFolder + schema.getName() + ".json"))
-			{
-				String jsonContent = generator.generate(schema, minInstances, maxInstances);
-				client.insert(schema.getName(), jsonContent);
-				fileOut.println(jsonContent);
-				System.out.println(schema.getName() + " table created in " + (System.currentTimeMillis() - intermTime) + " ms");
-			} catch (FileNotFoundException e1)
-			{
-				e1.printStackTrace();
-			} catch (JsonProcessingException e2)
-			{
-				e2.printStackTrace();
-			} catch (Exception e3)
-			{
-				e3.printStackTrace();
-			}
+			String jsonContent = generator.generate(schema, minInstances, maxInstances);
+			client.insert(schema.getName(), jsonContent);
+			fileOut.println(jsonContent);
+			System.out.println(schema.getName() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
+		} catch (FileNotFoundException e1)
+		{
+			e1.printStackTrace();
+		} catch (JsonProcessingException e2)
+		{
+			e2.printStackTrace();
+		} catch (Exception e3)
+		{
+			e3.printStackTrace();
 		}
-
-		System.out.println("Test finished in " + (System.currentTimeMillis() - startTime + " ms"));
 		shutdown();
 	}
 }

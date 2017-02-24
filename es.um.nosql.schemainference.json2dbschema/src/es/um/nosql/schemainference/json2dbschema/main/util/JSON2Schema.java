@@ -34,7 +34,7 @@ public class JSON2Schema<JE, Adapter extends IAJAdapter<JE>>
 		this.adapter = adapter;
 	}
 
-	public es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema fromJSONFile(String jsonFileName) throws JsonProcessingException, IOException
+	public NoSQLSchema fromJSONFile(String jsonFileName) throws JsonProcessingException, IOException
 	{
 		File jsonFile = new File(jsonFileName);
 
@@ -54,6 +54,7 @@ public class JSON2Schema<JE, Adapter extends IAJAdapter<JE>>
 	{
 		SchemaInference si = new SchemaInference(rows);
 		NoSQLModelBuilder builder = new NoSQLModelBuilder(factory, schemaName);
+
 		return builder.build(si.infer());
 	}
 }

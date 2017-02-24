@@ -3,6 +3,7 @@ package es.um.nosql.schemainference.nosqlimport.couchdb;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.List;
+import java.util.stream.Stream;
 
 import org.lightcouch.CouchDbClient;
 import org.lightcouch.CouchDbProperties;
@@ -10,6 +11,7 @@ import org.lightcouch.DesignDocument.MapReduce;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 
 import es.um.nosql.schemainference.nosqlimport.util.CouchDBStreamAdapter;
@@ -20,28 +22,42 @@ import es.um.nosql.schemainference.nosqlimport.util.MapReduceSources;
  */
 public class CouchDBSchemaInference
 {
-	private String dbIP;
-	private String tableName;
-	private String mapRedDir;
+	private CouchDBStreamAdapter adapter;
 
-	public CouchDBSchemaInference(String ip, String tableName, String mapRedDir)
+	public CouchDBSchemaInference()
 	{
-		this.dbIP = ip;
-		this.tableName = tableName;
-		this.mapRedDir = mapRedDir;
+		this.adapter = new CouchDBStreamAdapter();
 	}
 
-	public void inferAndWrite(String outputJson)
+	public Stream<JsonObject> mapRed2Stream(String dbIP, String tableName, String mapRedDir)
 	{
-		json2File(outputJson, performMapReduce());
+		return performMapReduce(dbIP, tableName, mapRedDir);
 	}
 
-	public JsonObject performMapReduce()
+	public JsonArray mapRed2Array(String dbIP, String tableName, String mapRedDir)
 	{
-		JsonObject result = null;
+		return adapter.stream2JsonArray(performMapReduce(dbIP, tableName, mapRedDir));
+	}
 
+	public void mapRed2File(String dbIP, String tableName, String mapRedDir, String outputFile)
+	{
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+		try
+		{
+			PrintWriter writer = new PrintWriter(outputFile, "UTF-8");
+			writer.print(gson.toJson(adapter.stream2JsonObject(performMapReduce(dbIP, tableName, mapRedDir))));
+			writer.close();
+		} catch (IOException e)
+		{
+			System.err.println("Error while writing JSON inference to file!");
+		}
+	}
+
+	private Stream<JsonObject> performMapReduce(String dbIP, String tableName, String mapRedDir)
+	{
 		MapReduceSources mrs = MapReduceSources.fromDir(mapRedDir);
-		CouchDbProperties properties = new CouchDbProperties(tableName, true, "http", dbIP, 5984, null, null);
+		CouchDbProperties properties = new CouchDbProperties(tableName.toLowerCase(), true, "http", dbIP, 5984, null, null);
 		CouchDbClient dbClient = new CouchDbClient(properties);
 		MapReduce mapRedObj = new MapReduce();
 		mapRedObj.setMap(mrs.getMapJSCode());
@@ -49,27 +65,7 @@ public class CouchDBSchemaInference
 		List<JsonObject> list = dbClient.view("_temp_view").tempView(mapRedObj).group(true)
 			.includeDocs(false).reduce(true).query(JsonObject.class);
 
-		CouchDBStreamAdapter adapter = new CouchDBStreamAdapter();
-
 		// This step will remove the pesky _rev attribute
-		// It will also concatenate each object in a rows[] array and create a global json object.
-		result = adapter.stream2Json(adapter.adaptStream(list.stream()));
-
-		return result;
-	}
-
-	private void json2File(String jsonPath, JsonObject json)
-	{
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-
-		try
-		{
-			PrintWriter writer = new PrintWriter(jsonPath, "UTF-8");
-			writer.print(gson.toJson(json));
-			writer.close();
-		} catch (IOException e)
-		{
-			System.err.println("Error while writing JSON inference to file!");
-		}
+		return adapter.adaptStream(list.stream());
 	}
 }

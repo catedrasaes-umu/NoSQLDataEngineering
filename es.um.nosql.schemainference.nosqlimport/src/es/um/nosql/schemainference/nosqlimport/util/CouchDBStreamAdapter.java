@@ -31,12 +31,20 @@ public class CouchDBStreamAdapter
 		});
 	}
 
-	public JsonObject stream2Json(Stream<JsonObject> stream)
+	public JsonObject stream2JsonObject(Stream<JsonObject> stream)
 	{
 		JsonObject result = new JsonObject();
 		JsonArray array = new JsonArray();
 		stream.forEach(elem -> array.add(elem));
 		result.add("rows", array);
+
+		return result;
+	}
+
+	public JsonArray stream2JsonArray(Stream<JsonObject> stream)
+	{
+		JsonArray result = new JsonArray();
+		stream.forEach(elem -> result.add(elem));
 
 		return result;
 	}
