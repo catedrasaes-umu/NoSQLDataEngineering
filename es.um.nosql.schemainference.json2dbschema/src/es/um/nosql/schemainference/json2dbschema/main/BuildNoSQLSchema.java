@@ -1,5 +1,6 @@
 package es.um.nosql.schemainference.json2dbschema.main;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.HashMap;
@@ -103,14 +104,12 @@ public class BuildNoSQLSchema
 		}		
 	}
 
-	/*
 	public static void main(String[] args) throws IOException
 	{
 		String inputFile;
 		String outputFile;
-		OutputStream outputStream = System.out;
 
-		if (args.length < 1)
+		if (args.length < 2)
 		{
 			System.err.println("At least the JSON file must be specified.");
 			System.err.println("Usage: BuildNoSQLSchema JSONfile [outputXMIfile]");
@@ -119,24 +118,13 @@ public class BuildNoSQLSchema
 		} else
 		{
 			inputFile = args[0];
-
-			if (args.length < 2)
-			{
-				outputStream = System.out;
-				outputFile = "-";
-			}
-			else
-			{
-				outputFile = args[1];
-				File file = new File(outputFile);
-				file.getParentFile().mkdirs();
-				file.createNewFile();
-				outputStream = new FileOutputStream(file);
-			}
+			outputFile = args[1];
+			File file = new File(outputFile);
+			file.getParentFile().mkdirs();
+			file.createNewFile();
 		}
 
 		BuildNoSQLSchema builder = new BuildNoSQLSchema();
-		builder.buildFromJacksonFile(inputFile, outputFile, outputStream);
+		builder.buildFromJacksonFile(inputFile, outputFile);
 	}
-	*/
 }
