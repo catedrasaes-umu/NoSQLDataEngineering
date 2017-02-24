@@ -15,10 +15,8 @@ import es.um.nosql.schemainference.json2dbschema.util.abstractjson.IAJNull;
 import es.um.nosql.schemainference.json2dbschema.util.abstractjson.IAJObject;
 import es.um.nosql.schemainference.json2dbschema.util.abstractjson.IAJTextual;
 
-public class GsonElement implements IAJElement {
-
-	private JsonElement e;
-
+public class GsonElement implements IAJElement
+{
 	private class It implements Iterator<IAJElement>
 	{
 		private Iterator<JsonElement> theIt;
@@ -41,18 +39,45 @@ public class GsonElement implements IAJElement {
 		}
 	}
 
-	public GsonElement(JsonElement e) {
+	public GsonElement(JsonElement e)
+	{
 		this.e = e;
 	}
 
 	@Override
-	public Iterator<IAJElement> iterator() {
+	public Iterator<IAJElement> iterator()
+	{
 		if (e.isJsonArray())
 		{
 			JsonArray a = e.getAsJsonArray();
 			return new It(a.iterator());
 		}
 
+		return null;
+	}
+
+	private JsonElement e;
+
+	@Override
+	public IAJElement get(int index)
+	{
+		if (e.isJsonArray())
+		{
+			JsonArray a = e.getAsJsonArray();
+			return new GsonArray(a.get(index));
+		}
+		return null;
+	}
+
+	@Override
+	public IAJElement get(String fieldName)
+	{
+		if (e.isJsonObject())
+		{
+			JsonObject o = e.getAsJsonObject();
+			// Maybe return a GsonElement?
+			return new GsonArray(o.get(fieldName));
+		}
 		return null;
 	}
 
@@ -68,7 +93,7 @@ public class GsonElement implements IAJElement {
 
 	@Override
 	public boolean isNumber() {
-		if (e.isJsonPrimitive())
+		if (e != null && e.isJsonPrimitive())
 		{
 			JsonPrimitive p = e.getAsJsonPrimitive();
 			return p.isNumber();
@@ -78,7 +103,7 @@ public class GsonElement implements IAJElement {
 
 	@Override
 	public boolean isTextual() {
-		if (e.isJsonPrimitive())
+		if (e != null && e.isJsonPrimitive())
 		{
 			JsonPrimitive p = e.getAsJsonPrimitive();
 			return p.isString();
@@ -88,7 +113,7 @@ public class GsonElement implements IAJElement {
 
 	@Override
 	public boolean isBoolean() {
-		if (e.isJsonPrimitive())
+		if (e != null && e.isJsonPrimitive())
 		{
 			JsonPrimitive p = e.getAsJsonPrimitive();
 			return p.isBoolean();
@@ -110,7 +135,7 @@ public class GsonElement implements IAJElement {
 
 	@Override
 	public IAJObject asObject() {
-		if (e.isJsonArray())
+		if (e.isJsonObject())
 			return new GsonObject(e.getAsJsonObject());
 		return null;
 	}
@@ -138,26 +163,6 @@ public class GsonElement implements IAJElement {
 	@Override
 	public IAJNumber asNumber() {
 		return isNumber() ? new GsonNumber(e) : null;
-	}
-
-	@Override
-	public IAJElement get(int index) {
-		if (e.isJsonArray())
-		{
-			JsonArray a = e.getAsJsonArray();
-			return new GsonArray(a.get(index));
-		}
-		return null;
-	}
-
-	@Override
-	public IAJElement get(String fieldName) {
-		if (e.isJsonObject())
-		{
-			JsonObject o = e.getAsJsonObject();
-			return new GsonArray(o.get(fieldName));
-		}
-		return null;
 	}
 
 	@Override

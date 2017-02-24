@@ -1,61 +1,42 @@
 package es.um.nosql.schemainference.nosqlimport.util;
 
-import java.io.IOException;
 import java.util.stream.Stream;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.google.gson.JsonParser;
 
 public class CouchDBStreamAdapter
 {
-	private ObjectMapper mapper = new ObjectMapper();
-
-	public Stream<ObjectNode> adaptStream(Stream<JsonObject> stream)
+	public Stream<JsonObject> adaptStream(Stream<JsonObject> stream)
 	{
 		return stream.map(jsonObject ->
 		{
-			ObjectNode jObj = null;
-			try
-			{
-				jObj = (ObjectNode) mapper.readTree(jsonObject.get("key").getAsString());
-				jObj.remove("_rev");
-			} catch (JsonProcessingException e)
-			{
-				e.printStackTrace();
-			} catch (IOException e)
-			{
-				e.printStackTrace();
-			}
+			JsonObject result = (JsonObject)(new JsonParser()).parse(jsonObject.get("key").getAsString());
+			result.remove("_rev");
 
-			return jObj;
+			return result;
 		});
 	}
 
-	public void printStream(Stream<ObjectNode> stream)
+	public void printStream(Stream<JsonObject> stream)
 	{
-		stream.forEach(object->
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+
+		stream.forEach(jsonObject ->
 		{
-			try
-			{
-				System.out.println(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(object));
-			} catch (JsonProcessingException e)
-			{
-				e.printStackTrace();
-			}
+			System.out.println(gson.toJson(jsonObject));
 		});
 	}
 
-	public ObjectNode stream2Json(Stream<ObjectNode> stream)
+	public JsonObject stream2Json(Stream<JsonObject> stream)
 	{
-		JsonNodeFactory factory = JsonNodeFactory.instance;
-		ObjectNode result = factory.objectNode();
-		ArrayNode array = result.putArray("rows");
-
+		JsonObject result = new JsonObject();
+		JsonArray array = new JsonArray();
 		stream.forEach(elem -> array.add(elem));
+		result.add("rows", array);
 
 		return result;
 	}

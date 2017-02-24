@@ -224,6 +224,7 @@ public class SchemaInference
 
 		ObjectSC schema = new ObjectSC();
 		schema.isRoot = isRoot;
+
 		schema.entityName = typeName.orElse(
 				Inflector.getInstance().capitalize(elementName.orElse("")));
 

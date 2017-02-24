@@ -17,6 +17,7 @@ public class JacksonElement implements IAJElement
 	private class It implements Iterator<IAJElement>
 	{
 		private Iterator<JsonNode> theIt;
+
 		public It(Iterator<JsonNode> i)
 		{
 			theIt = i;

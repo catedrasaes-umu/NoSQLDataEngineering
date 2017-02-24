@@ -8,8 +8,8 @@ import org.lightcouch.CouchDbClient;
 import org.lightcouch.CouchDbProperties;
 import org.lightcouch.DesignDocument.MapReduce;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
 
 import es.um.nosql.schemainference.nosqlimport.util.CouchDBStreamAdapter;
@@ -36,47 +36,36 @@ public class CouchDBSchemaInference
 		json2File(outputJson, performMapReduce());
 	}
 
-	public ObjectNode performMapReduce()
+	public JsonObject performMapReduce()
 	{
-		ObjectNode result = null;
-		try
-		{
-			MapReduceSources mrs = MapReduceSources.fromDir(mapRedDir);
-			CouchDbProperties properties = new CouchDbProperties(tableName, true, "http", dbIP, 5984, null, null);
-			CouchDbClient dbClient = new CouchDbClient(properties);
-			MapReduce mapRedObj = new MapReduce();
-			mapRedObj.setMap(mrs.getMapJSCode());
-			mapRedObj.setReduce(mrs.getReduceJSCode());
-			List<JsonObject> list = dbClient.view("_temp_view").tempView(mapRedObj).group(true)
-					.includeDocs(false).reduce(true).query(JsonObject.class);
+		JsonObject result = null;
 
-			CouchDBStreamAdapter adapter = new CouchDBStreamAdapter();
+		MapReduceSources mrs = MapReduceSources.fromDir(mapRedDir);
+		CouchDbProperties properties = new CouchDbProperties(tableName, true, "http", dbIP, 5984, null, null);
+		CouchDbClient dbClient = new CouchDbClient(properties);
+		MapReduce mapRedObj = new MapReduce();
+		mapRedObj.setMap(mrs.getMapJSCode());
+		mapRedObj.setReduce(mrs.getReduceJSCode());
+		List<JsonObject> list = dbClient.view("_temp_view").tempView(mapRedObj).group(true)
+			.includeDocs(false).reduce(true).query(JsonObject.class);
 
-			// This step will cast Gson objects to Jackson objects and remove the pesky _rev attribute
-			// It will also concatenate each object in a rows[] array and create a global json object.
-			result = adapter.stream2Json(adapter.adaptStream(list.stream()));
+		CouchDBStreamAdapter adapter = new CouchDBStreamAdapter();
 
-		} catch (MapReduceSources.MalformedDirectoryStructure e)
-		{
-			System.err.println("Cannot access map.js and/or reduce.js files.");
-			e.printStackTrace();			
-		} catch (Exception e)
-		{
-			System.err.println("Error in the process!.");
-			e.printStackTrace();
-		}
+		// This step will remove the pesky _rev attribute
+		// It will also concatenate each object in a rows[] array and create a global json object.
+		result = adapter.stream2Json(adapter.adaptStream(list.stream()));
 
 		return result;
 	}
 
-	private void json2File(String jsonPath, ObjectNode json)
+	private void json2File(String jsonPath, JsonObject json)
 	{
-		ObjectMapper mapper = new ObjectMapper();
+		Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
 		try
 		{
 			PrintWriter writer = new PrintWriter(jsonPath, "UTF-8");
-			writer.print(mapper.writerWithDefaultPrettyPrinter().writeValueAsString(json));
+			writer.print(gson.toJson(json));
 			writer.close();
 		} catch (IOException e)
 		{

@@ -40,10 +40,8 @@ public class JacksonAdapter implements IAJAdapter<JsonNode>
 			JsonNode root = m.readTree(jsonFile);
 			return wrap(root);
 		} catch (JsonProcessingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

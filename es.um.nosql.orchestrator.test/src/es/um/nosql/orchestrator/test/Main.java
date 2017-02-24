@@ -31,7 +31,7 @@ public class Main
 		System.out.println("Inference finished: " + OUTPUT_JSON);
 
 		System.out.println("Starting BuildNoSQLSchema...");
-		BuildNoSQLSchema.main(new String[]{OUTPUT_JSON, OUTPUT_MODEL});
+		BuildNoSQLSchema.mainGson(new String[]{OUTPUT_JSON, OUTPUT_MODEL});
 		System.out.println("BuildNoSQLSchema created: " + OUTPUT_MODEL);
 	}
 }
