@@ -22,7 +22,7 @@ Class Movie1{
 	<b> int year
 }
 
-Movie --> "[1..1] director" Director
+Movie1 --> "[1..1] director" Director
    
 Class Director {
 	<b> String _id
@@ -34,40 +34,44 @@ Director --> "[1..*] actor_movies" Movie
 
 Director --> "[1..*] directed_movies" Movie
 
-Movie *--> "[1..*] criticisms" Criticism1
+Movie1 *--> "[1..1] criticism1" Criticism1
+
+Movie1 *--> "[1..1] criticism2" Criticism2
 
 
-Class Criticism {
+Class Criticism1 {
 	<b> String color
 	<b> String journalist
 }
 
-Criticism1 *--> "[1..1] media" Media1
+Criticism1 *--> "[1..1] media1" Media1
 
 
-Class Media {
+Class Media1 {
 	<b> String name
 	<b> String url
 }
 
 
-Class Criticism {
+Class Criticism2 {
 	<b> String color
 	<b> String journalist
 	<b> String media
 }
 
 
-Movie *--> "[1..*] prizes" Prize1
+Movie1 *--> "[1..1] prize1" Prize1
+
+Movie1 *--> "[1..1] prize2" Prize2
 
 
-Class Prize {
+Class Prize1 {
 	<b> String event
 	<b> String[] namesTuple
 	<b> int year
 }
 
-Class Prize {
+Class Prize2 {
 	<b> String event
 	<b> String name
 	<b> int year
@@ -99,7 +103,7 @@ Class Movie2{
 	<b> int year
 }
 
-Movie --> "[1..1] director" Director
+Movie2 --> "[1..1] director" Director
    
 Class Director {
 	<b> String _id
@@ -135,7 +139,7 @@ Class Movie3{
 	<b> int year
 }
 
-Movie --> "[1..1] director" Director
+Movie3 --> "[1..1] director" Director
    
 Class Director {
 	<b> String _id
@@ -147,10 +151,10 @@ Director --> "[1..*] actor_movies" Movie
 
 Director --> "[1..*] directed_movies" Movie
 
-Movie *--> "[1..*] prizes" Prize3
+Movie3 *--> "[1..1] prize2" Prize2
 
 
-Class Prize {
+Class Prize2 {
 	<b> String event
 	<b> String name
 	<b> int year
@@ -181,7 +185,7 @@ Class Movie4{
 	<b> int year
 }
 
-Movie --> "[1..1] director" Director
+Movie4 --> "[1..1] director" Director
    
 Class Director {
 	<b> String _id
@@ -193,34 +197,36 @@ Director --> "[1..*] actor_movies" Movie
 
 Director --> "[1..*] directed_movies" Movie
 
-Movie *--> "[1..*] criticisms" Criticism4
+Movie4 *--> "[1..1] criticism1" Criticism1
+
+Movie4 *--> "[1..1] criticism2" Criticism2
 
 
-Class Criticism {
+Class Criticism1 {
 	<b> String color
 	<b> String journalist
 }
 
-Criticism1 *--> "[1..1] media" Media4
+Criticism1 *--> "[1..1] media1" Media1
 
 
-Class Media {
+Class Media1 {
 	<b> String name
 	<b> String url
 }
 
 
-Class Criticism {
+Class Criticism2 {
 	<b> String color
 	<b> String journalist
 	<b> String media
 }
 
 
-Movie *--> "[1..1] rating" Rating4
+Movie4 *--> "[1..1] rating1" Rating1
 
 
-Class Rating {
+Class Rating1 {
 	<b> int score
 	<b> int voters
 }
@@ -251,7 +257,7 @@ Class Movie5{
 	<b> int year
 }
 
-Movie --> "[1..1] director" Director
+Movie5 --> "[1..1] director" Director
    
 Class Director {
 	<b> String _id
@@ -334,7 +340,7 @@ Class Director1{
 	<b> String type
 }
 
-Director --> "[1..*] actor_movies" Movie
+Director1 --> "[1..*] actor_movies" Movie
    
 Class Movie {
 	<b> String _id
@@ -393,7 +399,7 @@ Class Rating {
 	<b> int voters
 }  
 
-Director --> "[1..*] directed_movies" Movie
+Director1 --> "[1..*] directed_movies" Movie
 @enduml
 
 File Director2
@@ -417,7 +423,7 @@ Class Director2{
 	<b> String type
 }
 
-Director --> "[1..*] directed_movies" Movie
+Director2 --> "[1..*] directed_movies" Movie
    
 Class Movie {
 	<b> String _id

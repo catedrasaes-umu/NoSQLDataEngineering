@@ -76,13 +76,12 @@ def analyzeEnt(Entity ent2)  {
     «ENDFOR»
     }
     «FOR Reference r: Ref»
-     «printRef(r,ent2.name)»
+     «printRef(r,ent2.name+contVer)»
      «checkRef(r)»
     «ENDFOR»
     «FOR Aggregate ag2: Aggreg»
     «var Entity entAg=ag2.refTo.get(0).eContainer as Entity»
-    «printAgg(ag2,ent2.name+contVer.toString,entAg.name)»
-    «checkAggr(ag2,contVer.toString)»
+    «checkAggr(ag2,ent2.name+contVer.toString)»
     «ENDFOR»
     @enduml
   «ENDFOR»  
@@ -97,8 +96,17 @@ def wasVisited(List<String> ents, String entName){
   return false  
 }
 
+def printRef2(Reference r, String name){
+r.name=r.name.replace("_id","").replace("id","")
+'''
 
-
+   «IF r.upperBound==1»
+   «name» --> "[1..1] «r.name»" «r.refTo.name»
+  «ELSE»
+   «name» --> "[1..*] «r.name»" «r.refTo.name»
+  «ENDIF»
+'''
+}
 
 def printRef(Reference r, String name){
 r.name=r.name.replace("_id","").replace("id","")
@@ -172,16 +180,12 @@ def checkReference(Entity e)'''
   «ENDFOR»
 '''
 
-def printAgg(Aggregate ag3, String name, String entAg){
+def printAgg(String name, String entAg)
 '''
 
-  «IF ag3.upperBound==-1»
-   «name.toFirstUpper» *--> "[1..*] «entAg.toLowerCase»" «entAg.toFirstUpper»
-  «ELSE»
   	«name.toFirstUpper» *--> "[1..1] «entAg.toLowerCase»" «entAg.toFirstUpper»
-  «ENDIF»
 '''
-}
+
 
 
 def printAgg(Aggregate ag3, String name){
@@ -196,15 +200,23 @@ def printAgg(Aggregate ag3, String name){
 '''
 }
 
+def printAggs(List <EntityVersion> agL, String father, String child)
+'''
+  «FOR ev:agL»
+  «printAgg(father,child+ev.versionId)»
+  «ENDFOR»	
+'''
 
 
-
-
-def checkAggr(Aggregate aggr, String v){
+def checkAggr(Aggregate aggr, String FatherName){
   if(aggr.refTo!=null)
   {
   	var Entity entAg=aggr.refTo.get(0).eContainer as Entity
-  	checkAggregate(aggr.refTo.toList, entAg.name.toFirstUpper)
+  	var aL=aggr.refTo.toList
+    '''
+  	«printAggs(aL, FatherName, entAg.name)»
+  	«checkAggregate(aL, entAg.name)»
+  	'''
   }
 }
 
@@ -217,7 +229,7 @@ def checkAggr(Aggregate aggr){
 }
 
 //check Aggregate.refTo for root
-def checkAggregate(List <EntityVersion> agL, String Father)'''
+def checkAggregate(List <EntityVersion> agL, String father)'''
   «var List<String> prims = new ArrayList»
   «var List<String> tuples = new ArrayList»
   «var List<Reference> refs=new ArrayList»
@@ -229,16 +241,13 @@ def checkAggregate(List <EntityVersion> agL, String Father)'''
   «var at=ev.properties.filter(Attribute).toList»
   «var aggr=ev.properties.filter(Aggregate).toList»
 
-  Class «ame.toFirstUpper» {
+  Class «(father+ev.versionId).toFirstUpper» {
   «FOR Attribute at2: at»
   	«printAttribute(at2,at2.name)»
   «ENDFOR»
   }
-  «FOR Aggregate ag: aggr»
-      «printAgg(ag,entAg.name+ev.versionId,v)»
-  «ENDFOR»
   «FOR Aggregate a4: aggr»
-    «checkAggr(a4,v)»
+    «checkAggr(a4,father+ev.versionId)»
   «ENDFOR»
  «ENDFOR»
   
