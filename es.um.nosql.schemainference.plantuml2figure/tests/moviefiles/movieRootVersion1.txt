@@ -1,0 +1,79 @@
+File Movie1
+@startuml
+title <b> Movie1
+skinparam backgroundColor transparent 
+skinparam class { 
+  BackgroundColor Blue \n
+  ArrowColor Blue 
+  BorderColor Red \n
+  FontSize 18 \n
+  FontName Arial \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Movie1{
+	<b> String _id
+	<b> String genre
+	<b> String title
+	<b> String type
+	<b> int year
+}
+
+Movie1 --> "[1..1] director" Director
+   
+Class Director {
+	<b> String _id
+	<b> String name
+	<b> String type
+}  
+
+Director --> "[1..*] actor_movies" Movie1
+
+Director --> "[1..*] directed_movies" Movie1
+
+Movie1 *--> "[1..1] criticism1" Criticism1
+
+Movie1 *--> "[1..1] criticism2" Criticism2
+
+
+Class Criticism1 {
+	<b> String color
+	<b> String journalist
+}
+
+Criticism1 *--> "[1..1] media1" Media1
+
+
+Class Media1 {
+	<b> String name
+	<b> String url
+}
+
+
+Class Criticism2 {
+	<b> String color
+	<b> String journalist
+	<b> String media
+}
+
+
+Movie1 *--> "[1..1] prize1" Prize1
+
+Movie1 *--> "[1..1] prize2" Prize2
+
+
+Class Prize1 {
+	<b> String event
+	<b> String[] namesTuple
+	<b> int year
+}
+
+Class Prize2 {
+	<b> String event
+	<b> String name
+	<b> int year
+}
+
+@enduml
