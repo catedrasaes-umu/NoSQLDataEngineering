@@ -19,7 +19,7 @@ public class ReferenceMatcher<T>
 {
 	// List of affixes to check for references
 	private static List<String> Affixes =
-			Arrays.asList("id", "ptr", "ref", "ids", "refs", "");
+			Arrays.asList("id", "ptr", "ref", "ids", "refs", "has", "");
 
 	private static List<String> StopChars =
 			Arrays.asList("_", ".", "-", "");
