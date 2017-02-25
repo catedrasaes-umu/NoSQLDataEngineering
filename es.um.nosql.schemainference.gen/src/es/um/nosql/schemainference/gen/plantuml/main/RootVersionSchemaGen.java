@@ -19,7 +19,7 @@ public class RootVersionSchemaGen {
 	 */
 	public static void main(String[] args) throws IOException
 	{
-		(new PlantumlGen()).execute(args);
+		(new RootVersionSchemaGen()).execute(args);
 	}
 
 	/**
@@ -42,7 +42,7 @@ public class RootVersionSchemaGen {
 			outputDir.mkdirs();
 
 			// FIXME: Cambiar "salida.uml" por el fichero de salida
-			File outFile = outputDir.toPath().resolve("movies.txt").toFile();
+			File outFile = outputDir.toPath().resolve("rootVersionMovies.txt").toFile();
 			outFileWriter = new PrintStream(outFile);
 		}
 

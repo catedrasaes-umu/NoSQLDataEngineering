@@ -21,6 +21,8 @@ class RootVersionSchemaGenerator {
   Entity entAux
   var int indexEl=0
   var int totalEnts=0
+  var boolean root=true
+  var boolean notRoot=false
   //var Map<Entity, String> entNames=new HashMap
   var List<String> ents= new ArrayList
 def generate (NoSQLSchema nosqlschema)
@@ -63,7 +65,7 @@ def analyzeEnt(Entity ent2)  {
     skinparam stereotypeCBackgroundColor YellowGreen
     skinparam stereotypeCBorderColor SpringGreen
     
-    Class «ent2.name.toFirstUpper»{
+    Class «ent2.name.toFirstUpper»«contVer»{
     «ents.add(0,ent2.name)»
     «var eV=ent2.entityversions.get(contVer-1)»
     «var At=eV.properties.filter(Attribute)»
@@ -78,8 +80,9 @@ def analyzeEnt(Entity ent2)  {
      «checkRef(r)»
     «ENDFOR»
     «FOR Aggregate ag2: Aggreg»
-     «printAgg(ag2,ent2.name)»
-     «checkAggr(ag2)»
+    «var Entity entAg=ag2.refTo.get(0).eContainer as Entity»
+    «printAgg(ag2,ent2.name+contVer.toString,entAg.name)»
+    «checkAggr(ag2,contVer.toString)»
     «ENDFOR»
     @enduml
   «ENDFOR»  
@@ -94,23 +97,8 @@ def wasVisited(List<String> ents, String entName){
   return false  
 }
 
-def printAgg(Aggregate ag3, String name)'''
 
-  «var Entity entAg=ag3.refTo.get(0).eContainer as Entity»
-  «IF ag3.upperBound==-1»
-   «name.toFirstUpper» *--> "[1..*] «ag3.name.toLowerCase»" «entAg.name.toFirstUpper»
-  «ELSE»
-  	«name.toFirstUpper» *--> "[1..1] «ag3.name.toLowerCase»" «entAg.name.toFirstUpper»
-  «ENDIF»
-'''
 
-def checkAggr(Aggregate aggr){
-  if(aggr.refTo!=null)
-  {
-  	var Entity entAg=aggr.refTo.get(0).eContainer as Entity
-  	checkAggregate(aggr.refTo.toList,aggr.name, entAg)
-  }
-}
 
 def printRef(Reference r, String name){
 r.name=r.name.replace("_id","").replace("id","")
@@ -145,9 +133,11 @@ def checkReference(Entity e)'''
   «var List<String> tuples = new ArrayList»
   «var List<Reference> refs=new ArrayList»
   «var List<Aggregate> ags = new ArrayList»
+  «var List<PrimitiveType> primsL=new ArrayList»
+  «var List<Tuple> tuplesL=new ArrayList»
   «var int contAt=-1»
-  «var int contRf=-1»  
-  «var int contAgg=-1»      
+  «var int contRf=-1»
+  «var int contAgg=-1»
   «FOR EntityVersion ev:e.entityversions»
      «var a=ev.properties.filter(Attribute)»
      «var r=ev.properties.filter(Reference)»
@@ -165,7 +155,7 @@ def checkReference(Entity e)'''
      
   Class «e.name.toFirstUpper» {
   «FOR Attribute at2: at»
-  	«analyzeAttribute(at2.type,at2.name,prims,tuples)»
+  	«analyzeAttribute(at2.type,at2.name,primsL, tuplesL,prims,tuples)»
   «ENDFOR»
   }  
   «FOR Reference rf2: ref»
@@ -182,7 +172,79 @@ def checkReference(Entity e)'''
   «ENDFOR»
 '''
 
-//check Aggregate.refTo
+def printAgg(Aggregate ag3, String name, String entAg){
+'''
+
+  «IF ag3.upperBound==-1»
+   «name.toFirstUpper» *--> "[1..*] «entAg.toLowerCase»" «entAg.toFirstUpper»
+  «ELSE»
+  	«name.toFirstUpper» *--> "[1..1] «entAg.toLowerCase»" «entAg.toFirstUpper»
+  «ENDIF»
+'''
+}
+
+
+def printAgg(Aggregate ag3, String name){
+'''
+
+  «var Entity entAg=ag3.refTo.get(0).eContainer as Entity»
+  «IF ag3.upperBound==-1»
+   «name.toFirstUpper» *--> "[1..*] «ag3.name.toLowerCase»" «entAg.name.toFirstUpper»
+  «ELSE»
+  	«name.toFirstUpper» *--> "[1..1] «ag3.name.toLowerCase»" «entAg.name.toFirstUpper»
+  «ENDIF»
+'''
+}
+
+
+
+
+
+def checkAggr(Aggregate aggr, String v){
+  if(aggr.refTo!=null)
+  {
+  	var Entity entAg=aggr.refTo.get(0).eContainer as Entity
+  	checkAggregate(aggr.refTo.toList, entAg.name.toFirstUpper)
+  }
+}
+
+def checkAggr(Aggregate aggr){
+  if(aggr.refTo!=null)
+  {
+  	var Entity entAg=aggr.refTo.get(0).eContainer as Entity
+  	checkAggregate(aggr.refTo.toList,aggr.name, entAg)
+  }
+}
+
+//check Aggregate.refTo for root
+def checkAggregate(List <EntityVersion> agL, String Father)'''
+  «var List<String> prims = new ArrayList»
+  «var List<String> tuples = new ArrayList»
+  «var List<Reference> refs=new ArrayList»
+  «var List<Aggregate> ags = new ArrayList»
+  «var List<PrimitiveType> primsL=new ArrayList»
+  «var List<Tuple> tuplesL=new ArrayList»
+  
+  «FOR EntityVersion ev:agL»
+  «var at=ev.properties.filter(Attribute).toList»
+  «var aggr=ev.properties.filter(Aggregate).toList»
+
+  Class «ame.toFirstUpper» {
+  «FOR Attribute at2: at»
+  	«printAttribute(at2,at2.name)»
+  «ENDFOR»
+  }
+  «FOR Aggregate ag: aggr»
+      «printAgg(ag,entAg.name+ev.versionId,v)»
+  «ENDFOR»
+  «FOR Aggregate a4: aggr»
+    «checkAggr(a4,v)»
+  «ENDFOR»
+ «ENDFOR»
+  
+'''
+
+//check Aggregate.refTo for not root
 def checkAggregate(List <EntityVersion> agL, String nameAg, Entity entAg)'''
   «var List<Attribute> at = new ArrayList»
   «var List<Aggregate> aggr =new ArrayList»
@@ -190,17 +252,17 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, Entity entAg)'''
   «var List<String> tuples = new ArrayList»
   «var List<Reference> refs=new ArrayList»
   «var List<Aggregate> ags = new ArrayList»
+  «var List<PrimitiveType> primsL=new ArrayList»
+  «var List<Tuple> tuplesL=new ArrayList»
+  
   «var int contAt=-1»
-  «var int contRf=-1»  
+  «var int contRf=-1»
   «var int contAgg=-1»
   «FOR EntityVersion ev:agL»
      «var a=ev.properties.filter(Attribute)»
      «var ag=ev.properties.filter(Aggregate)»
      «FOR i:0..<a.size»
         «at.add(contAt+=1,a.get(i))»
-     «ENDFOR»
-     «FOR i:0..<r.size»
-       «ref.add(contRf+=1,r.get(i))»
      «ENDFOR»
      «FOR i:0..<ag.size»
        «aggr.add(contAgg+=1,ag.get(i))»
@@ -209,15 +271,9 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, Entity entAg)'''
 
   Class «entAg.name.toFirstUpper» {
   «FOR Attribute at2: at»
-  	«analyzeAttribute(at2.type,at2.name,prims,tuples)»
+  	«analyzeAttribute(at2.type,at2.name,primsL, tuplesL,prims,tuples)»
   «ENDFOR»
   }  
-  «FOR Reference rf2: ref»
-    «analyzeReference(rf2,rf2.name,refs,nameAg)»
-  «ENDFOR»
-  «FOR Reference rf3: refs»
-    «checkRef(rf3)»
-  «ENDFOR»
   «FOR Aggregate ag: aggr»
       «analyzeAggregate(ag,ag.name,ags,entAg.name)»
   «ENDFOR»
@@ -225,6 +281,7 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, Entity entAg)'''
     «checkAggr(a4)»
   «ENDFOR»
 '''
+
 
 def printAttribute(Attribute a, String name)'''
   «printType(a.type,name)»
@@ -296,58 +353,65 @@ def boolean compareAggregates(Aggregate a1, Aggregate a2) {
 //is repeated reference?	
 def analyzeReference(Reference ref, String name, List<Reference> RfL, String name2) {
   var boolean rRef
-  rRef=analyzeRefList(RfL,name)
+  rRef=analyzeRefList(RfL,name,ref)
   if (!rRef)
     {
-      RfL.add(ref)
+      RfL.add(RfL.size,ref)
       printRef(ref,name2)
       //checkRef(ref)
     }
 }
 	
-def boolean analyzeRefList(List<Reference> r, String name) {
- for (i : 0 ..< r.size) {
-    val element = r.get(i)
-    if(element.name==name)
+
+def boolean analyzeRefList(List<Reference> rL, String name, Reference r) {
+ for (i : 0 ..< rL.size) {
+    val Reference element = rL.get(i)
+    if(element.name==name && element.refTo.name==r.refTo.name)
     	return true
  }
     return false
 }
+
+
 	
 //for abstract Type class
-def dispatch analyzeAttribute(Type at2, String name, List<String> PrL,List<String> TuL) {
+def dispatch analyzeAttribute(Type at2, String name,List<PrimitiveType>PrL,List<Tuple>TuL,List<String> pL, List<String> t) {
   throw new UnsupportedOperationException("TODO: auto-generated method stub")
 }
 
-def dispatch analyzeAttribute(PrimitiveType primT, String name, List<String> PrL,List<String> TuL) {
+def dispatch analyzeAttribute(PrimitiveType primT, String name, List<PrimitiveType> PrL,List<Tuple> TuL,List<String> pL,List<String> t) {
   var boolean rPrim
-  rPrim=analyzePrimList(PrL,primT,name)  
+  rPrim=analyzePrimList(PrL,pL,primT,name)  
   if (!rPrim){
-   	PrL.add(name)
+   	PrL.add(PrL.size,primT)
+   	pL.add(pL.size,name)
    	if (primT.name=="Number"){
-      var t="int"
-      '''	<b> «t» «name»'''
+      var tS="int"
+      '''	<b> «tS» «name»'''
     }  
-   else
+    else
       '''	<b> «primT.name» «name»'''
     }
 }
 	
-def boolean analyzePrimList(List<String> p, PrimitiveType pr, String name) {
-  for (i : 0 ..< p.size) {
-    val element = p.get(i)
-    if(element==name)
+
+def boolean analyzePrimList(List<PrimitiveType> ptL,List<String> ps, PrimitiveType pr, String name) {
+  for (i : 0 ..< ps.size) {
+    val element = ps.get(i)
+    val elementP = ptL.get(i)
+    if(element==name && elementP.name==pr.name)
     	return true
   }
   return false
 }
-	
-def dispatch analyzeAttribute(Tuple tuple, String name, List<String> PrL,List<String> TuL) {
+
+def dispatch analyzeAttribute(Tuple tuple, String name, List<PrimitiveType> PrL,List<Tuple> TuL, List<String> pL,List<String> t) {
   var boolean rTuple
-  rTuple=analyzeTupleList(TuL,name)  
+  rTuple=analyzeTupleList(TuL,t,tuple,name)  
   if (!rTuple)
    {
-   	TuL.add(name)
+   	t.add(t.size,name)
+   	TuL.add(TuL.size,tuple)
    	if (tuple.elements.size>0){
       var el=tuple.elements.get(0) as PrimitiveType
       '''	<b> «el.name»[] «name»Tuple'''
@@ -357,10 +421,11 @@ def dispatch analyzeAttribute(Tuple tuple, String name, List<String> PrL,List<St
 	}
 }
 	
-def boolean analyzeTupleList(List<String> t, String name) {
-   for (i : 0 ..< t.size) {
-    val element = t.get(i)
-    if(element==name)
+def boolean analyzeTupleList(List<Tuple> tt,List<String> ts, Tuple t, String name) {
+   for (i : 0 ..< ts.size) {
+    val element = ts.get(i)
+    val elementT = tt.get(i)
+    if(element==name && elementT.elements.size==t.elements.size)
     	return true
     }
     return false

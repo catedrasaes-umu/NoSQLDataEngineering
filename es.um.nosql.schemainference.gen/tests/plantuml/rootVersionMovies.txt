@@ -1,0 +1,478 @@
+
+File Movie1
+@startuml
+title <b> Movie1
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Movie1{
+	<b> String _id
+	<b> String genre
+	<b> String title
+	<b> String type
+	<b> int year
+}
+
+Movie --> "[1..1] director" Director
+   
+Class Director {
+	<b> String _id
+	<b> String name
+	<b> String type
+}  
+
+Director --> "[1..*] actor_movies" Movie
+
+Director --> "[1..*] directed_movies" Movie
+
+Movie *--> "[1..*] criticisms" Criticism1
+
+
+Class Criticism {
+	<b> String color
+	<b> String journalist
+}
+
+Criticism1 *--> "[1..1] media" Media1
+
+
+Class Media {
+	<b> String name
+	<b> String url
+}
+
+
+Class Criticism {
+	<b> String color
+	<b> String journalist
+	<b> String media
+}
+
+
+Movie *--> "[1..*] prizes" Prize1
+
+
+Class Prize {
+	<b> String event
+	<b> String[] namesTuple
+	<b> int year
+}
+
+Class Prize {
+	<b> String event
+	<b> String name
+	<b> int year
+}
+
+@enduml
+
+File Movie2
+@startuml
+title <b> Movie2
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Movie2{
+	<b> String _id
+	<b> String genre
+	<b> int running_time
+	<b> String title
+	<b> String type
+	<b> int year
+}
+
+Movie --> "[1..1] director" Director
+   
+Class Director {
+	<b> String _id
+	<b> String name
+	<b> String type
+}  
+
+Director --> "[1..*] actor_movies" Movie
+
+Director --> "[1..*] directed_movies" Movie
+@enduml
+
+File Movie3
+@startuml
+title <b> Movie3
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Movie3{
+	<b> String _id
+	<b> String genre
+	<b> String title
+	<b> String type
+	<b> int year
+}
+
+Movie --> "[1..1] director" Director
+   
+Class Director {
+	<b> String _id
+	<b> String name
+	<b> String type
+}  
+
+Director --> "[1..*] actor_movies" Movie
+
+Director --> "[1..*] directed_movies" Movie
+
+Movie *--> "[1..*] prizes" Prize3
+
+
+Class Prize {
+	<b> String event
+	<b> String name
+	<b> int year
+}
+
+@enduml
+
+File Movie4
+@startuml
+title <b> Movie4
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Movie4{
+	<b> String _id
+	<b> String genre
+	<b> String title
+	<b> String type
+	<b> int year
+}
+
+Movie --> "[1..1] director" Director
+   
+Class Director {
+	<b> String _id
+	<b> String name
+	<b> String type
+}  
+
+Director --> "[1..*] actor_movies" Movie
+
+Director --> "[1..*] directed_movies" Movie
+
+Movie *--> "[1..*] criticisms" Criticism4
+
+
+Class Criticism {
+	<b> String color
+	<b> String journalist
+}
+
+Criticism1 *--> "[1..1] media" Media4
+
+
+Class Media {
+	<b> String name
+	<b> String url
+}
+
+
+Class Criticism {
+	<b> String color
+	<b> String journalist
+	<b> String media
+}
+
+
+Movie *--> "[1..1] rating" Rating4
+
+
+Class Rating {
+	<b> int score
+	<b> int voters
+}
+
+@enduml
+
+File Movie5
+@startuml
+title <b> Movie5
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Movie5{
+	<b> String _id
+	<b> String[] genresTuple
+	<b> String title
+	<b> String type
+	<b> String[] writersTuple
+	<b> int year
+}
+
+Movie --> "[1..1] director" Director
+   
+Class Director {
+	<b> String _id
+	<b> String name
+	<b> String type
+}  
+
+Director --> "[1..*] actor_movies" Movie
+
+Director --> "[1..*] directed_movies" Movie
+@enduml
+
+File Movietheater1
+@startuml
+title <b> Movietheater1
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Movietheater1{
+	<b> String _id
+	<b> String city
+	<b> String country
+	<b> String name
+	<b> String type
+}
+@enduml
+
+File Movietheater2
+@startuml
+title <b> Movietheater2
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Movietheater2{
+	<b> String _id
+	<b> String city
+	<b> String country
+	<b> String name
+	<b> int roomNumbers
+	<b> String type
+}
+@enduml
+
+File Director1
+@startuml
+title <b> Director1
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Director1{
+	<b> String _id
+	<b> String name
+	<b> String type
+}
+
+Director --> "[1..*] actor_movies" Movie
+   
+Class Movie {
+	<b> String _id
+	<b> String genre
+	<b> String title
+	<b> String type
+	<b> int year
+	<b> int running_time
+	<b> String[] genresTuple
+	<b> String[] writersTuple
+}  
+
+Movie --> "[1..1] director" Director
+
+Movie *--> "[1..*] criticisms" Criticism
+
+Movie *--> "[1..*] prizes" Prize
+
+Movie *--> "[1..*] prizes" Prize
+
+Movie *--> "[1..1] rating" Rating
+
+
+Class Criticism {
+	<b> String color
+	<b> String journalist
+	<b> String media
+}  
+
+Criticism *--> "[1..1] media" Media
+
+
+Class Media {
+	<b> String name
+	<b> String url
+}  
+
+
+Class Prize {
+	<b> String event
+	<b> String[] namesTuple
+	<b> int year
+	<b> String name
+}  
+
+
+Class Prize {
+	<b> String event
+	<b> String name
+	<b> int year
+}  
+
+
+Class Rating {
+	<b> int score
+	<b> int voters
+}  
+
+Director --> "[1..*] directed_movies" Movie
+@enduml
+
+File Director2
+@startuml
+title <b> Director2
+skinparam backgroundColor AntiqueWhite/Gold 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Director2{
+	<b> String _id
+	<b> String name
+	<b> String type
+}
+
+Director --> "[1..*] directed_movies" Movie
+   
+Class Movie {
+	<b> String _id
+	<b> String genre
+	<b> String title
+	<b> String type
+	<b> int year
+	<b> int running_time
+	<b> String[] genresTuple
+	<b> String[] writersTuple
+}  
+
+Movie --> "[1..1] director" Director
+
+Movie *--> "[1..*] criticisms" Criticism
+
+Movie *--> "[1..*] prizes" Prize
+
+Movie *--> "[1..*] prizes" Prize
+
+Movie *--> "[1..1] rating" Rating
+
+
+Class Criticism {
+	<b> String color
+	<b> String journalist
+	<b> String media
+}  
+
+Criticism *--> "[1..1] media" Media
+
+
+Class Media {
+	<b> String name
+	<b> String url
+}  
+
+
+Class Prize {
+	<b> String event
+	<b> String[] namesTuple
+	<b> int year
+	<b> String name
+}  
+
+
+Class Prize {
+	<b> String event
+	<b> String name
+	<b> int year
+}  
+
+
+Class Rating {
+	<b> int score
+	<b> int voters
+}  
+@enduml
