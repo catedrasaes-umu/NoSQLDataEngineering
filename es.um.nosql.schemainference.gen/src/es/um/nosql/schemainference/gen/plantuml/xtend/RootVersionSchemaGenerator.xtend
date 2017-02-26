@@ -52,20 +52,19 @@ def analyzeEnt(Entity ent2)  {
 
     File «ent2.name.toFirstUpper»«contVer+=1»
     @startuml
-    title <b> «ent2.name.toFirstUpper»«contVer»
-    skinparam backgroundColor AntiqueWhite/Gold 
+    skinparam backgroundColor transparent 
     skinparam class { 
-      BackgroundColor PaleGreen \n
+      BackgroundColor Blue \n
       ArrowColor Blue 
-      BorderColor SeaGreen \n
+      BorderColor Red \n
       FontSize 18 \n
-      FontName Courier \n
+      FontName Arial \n
     }
 	    			  
-    skinparam stereotypeCBackgroundColor YellowGreen
+    skinparam stereotypeCBackgroundColor Blue
     skinparam stereotypeCBorderColor SpringGreen
     
-    Class «ent2.name.toFirstUpper»«contVer»{
+    Class «ent2.name.toFirstUpper»«contVer»<<(R,Turquoise)>>{
     «ents.add(0,ent2.name)»
     «var eV=ent2.entityversions.get(contVer-1)»
     «var At=eV.properties.filter(Attribute)»
@@ -99,11 +98,8 @@ def wasVisited(List<String> ents, String entName){
 def printRef2(Reference r, String name){
 r.name=r.name.replace("_id","").replace("id","")
 '''
-
-   «IF r.upperBound==1»
-   «name» --> "[1..1] «r.name»" «r.refTo.name»
-  «ELSE»
-   «name» --> "[1..*] «r.name»" «r.refTo.name»
+  «IF r.upperBound==1»	<i><color:Navy>ref «r.refTo.name» «r.name»</color>
+  «ELSE»	<i><color:Navy>ref «r.refTo.name»[] «r.name»</color>
   «ENDIF»
 '''
 }
@@ -120,26 +116,22 @@ r.name=r.name.replace("_id","").replace("id","")
 '''
 }
 
+
+
 def checkRef(Reference ref){
   var boolean visited=false
-  if(ref.refTo!=null){
-    visited=wasVisited(ents,ref.refTo.name)
-    if(!visited){
-      ents.add(ref.refTo.name)
+  if(ref.refTo!=null)
       checkReference(ref.refTo) 
-    }
-    
-  }
 }
 
 //check Reference.refTo
 def checkReference(Entity e)'''
   «var List<Attribute> at = new ArrayList»
   «var List<Reference> ref = new ArrayList»
+  «var List<Reference> refs=new ArrayList»
   «var List<Aggregate> aggr =new ArrayList»
   «var List<String> prims = new ArrayList»
   «var List<String> tuples = new ArrayList»
-  «var List<Reference> refs=new ArrayList»
   «var List<Aggregate> ags = new ArrayList»
   «var List<PrimitiveType> primsL=new ArrayList»
   «var List<Tuple> tuplesL=new ArrayList»
@@ -160,18 +152,15 @@ def checkReference(Entity e)'''
        «aggr.add(contAgg+=1,ag.get(i))»
      «ENDFOR»
   «ENDFOR»
-     
-  Class «e.name.toFirstUpper» {
+
+  Class «e.name.toFirstUpper»<<(E,Tomato)>>{
   «FOR Attribute at2: at»
   	«analyzeAttribute(at2.type,at2.name,primsL, tuplesL,prims,tuples)»
   «ENDFOR»
-  }  
   «FOR Reference rf2: ref»
-    «analyzeReference(rf2,rf2.name,refs,e.name)»
+    «analyzeReference2(rf2,rf2.name,refs,e.name)»
   «ENDFOR»
-  «FOR Reference rf3: refs»
-    «checkRef(rf3)»
-  «ENDFOR»
+  }
   «FOR Aggregate a3:aggr»
       «analyzeAggregate(a3,a3.name,ags,e.name)»
   «ENDFOR»
@@ -241,7 +230,7 @@ def checkAggregate(List <EntityVersion> agL, String father)'''
   «var at=ev.properties.filter(Attribute).toList»
   «var aggr=ev.properties.filter(Aggregate).toList»
 
-  Class «(father+ev.versionId).toFirstUpper» {
+  Class «(father+ev.versionId).toFirstUpper»<<(V,BurlyWood)>>{
   «FOR Attribute at2: at»
   	«printAttribute(at2,at2.name)»
   «ENDFOR»
@@ -358,8 +347,18 @@ def boolean compareAggregates(Aggregate a1, Aggregate a2) {
   return true
 }
 
-
-//is repeated reference?	
+//is repeated reference?
+def analyzeReference2(Reference ref, String name, List<Reference> RfL, String name2) {
+  var boolean rRef
+  rRef=analyzeRefList(RfL,name,ref)
+  if (!rRef)
+    {
+      RfL.add(RfL.size,ref)
+      printRef2(ref,name2)
+      //checkRef(ref)
+    }
+}
+	
 def analyzeReference(Reference ref, String name, List<Reference> RfL, String name2) {
   var boolean rRef
   rRef=analyzeRefList(RfL,name,ref)

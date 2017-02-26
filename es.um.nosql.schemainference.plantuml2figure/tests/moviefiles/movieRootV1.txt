@@ -1,6 +1,5 @@
 File Movie1
 @startuml
-title <b> Movie1
 skinparam backgroundColor transparent 
 skinparam class { 
   BackgroundColor Blue \n
@@ -10,10 +9,10 @@ skinparam class {
   FontName Arial \n
 }
 	    			  
-skinparam stereotypeCBackgroundColor YellowGreen
+skinparam stereotypeCBackgroundColor Blue
 skinparam stereotypeCBorderColor SpringGreen
 
-Class Movie1{
+Class Movie1<<(R,Turquoise)>>{
 	<b> String _id
 	<b> String genre
 	<b> String title
@@ -22,23 +21,21 @@ Class Movie1{
 }
 
 Movie1 --> "[1..1] director" Director
-   
-Class Director {
+
+Class Director<<(E,Tomato)>>{
 	<b> String _id
 	<b> String name
 	<b> String type
-}  
-
-Director --> "[1..*] actor_movies" Movie1
-
-Director --> "[1..*] directed_movies" Movie1
+	<i><color:Navy>ref Movie[] actor_movies</color>
+	<i><color:Navy>ref Movie[] directed_movies</color>
+}
 
 Movie1 *--> "[1..1] criticism1" Criticism1
 
 Movie1 *--> "[1..1] criticism2" Criticism2
 
 
-Class Criticism1 {
+Class Criticism1<<(V,BurlyWood)>>{
 	<b> String color
 	<b> String journalist
 }
@@ -46,13 +43,13 @@ Class Criticism1 {
 Criticism1 *--> "[1..1] media1" Media1
 
 
-Class Media1 {
+Class Media1<<(V,BurlyWood)>>{
 	<b> String name
 	<b> String url
 }
 
 
-Class Criticism2 {
+Class Criticism2<<(V,BurlyWood)>>{
 	<b> String color
 	<b> String journalist
 	<b> String media
@@ -64,13 +61,13 @@ Movie1 *--> "[1..1] prize1" Prize1
 Movie1 *--> "[1..1] prize2" Prize2
 
 
-Class Prize1 {
+Class Prize1<<(V,BurlyWood)>>{
 	<b> String event
 	<b> String[] namesTuple
 	<b> int year
 }
 
-Class Prize2 {
+Class Prize2<<(V,BurlyWood)>>{
 	<b> String event
 	<b> String name
 	<b> int year
