@@ -149,7 +149,7 @@ class DiffToJS
 		«IF exact == EXACT_TYPE && !propsToGenerateNot.empty»
 		««« As we only need the name, avoid repeated names of properties here.»
 		«FOR p : propsToGenerateNot.map[p | p.property.name].toSet»
-			b = b && «genNotPropForName(p)»;
+			b = b && «genNotPropForPropName(p)»;
 		«ENDFOR»
 		«ENDIF»
 		'''
@@ -166,7 +166,7 @@ class DiffToJS
 			'''("«p.property.name»" in obj)'''
 	}
 
-    def genNotPropForName(String p)
+    def genNotPropForPropName(String p)
 		'''!("«p»" in obj)'''
 
 	def dispatch genTypeCheck(Property p) {
