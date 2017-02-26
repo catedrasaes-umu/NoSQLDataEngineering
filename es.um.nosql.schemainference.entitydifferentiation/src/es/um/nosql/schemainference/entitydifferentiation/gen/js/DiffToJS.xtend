@@ -147,8 +147,9 @@ class DiffToJS
 			b = b && «genProp(p)»;
 		«ENDFOR»
 		«IF exact == EXACT_TYPE && !propsToGenerateNot.empty»
-		«FOR p : propsToGenerateNot»
-			b = b && «genNotProp(p)»;
+		««« As we only need the name, avoid repeated names of properties here.»
+		«FOR p : propsToGenerateNot.map[p | p.property.name].toSet»
+			b = b && «genNotPropForName(p)»;
 		«ENDFOR»
 		«ENDIF»
 		'''
@@ -165,8 +166,8 @@ class DiffToJS
 			'''("«p.property.name»" in obj)'''
 	}
 
-    def genNotProp(PropertySpec p)
-		'''!("«p.property.name»" in obj)'''
+    def genNotPropForName(String p)
+		'''!("«p»" in obj)'''
 
 	def dispatch genTypeCheck(Property p) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
