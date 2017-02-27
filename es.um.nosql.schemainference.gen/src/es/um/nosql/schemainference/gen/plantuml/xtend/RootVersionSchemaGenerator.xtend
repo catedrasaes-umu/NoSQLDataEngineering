@@ -301,10 +301,10 @@ def dispatch printType(PrimitiveType primT, String name){
 def dispatch printType(Tuple tuple, String name){
   if (tuple.elements.size>0){
     var el=tuple.elements.get(0) as PrimitiveType
-    '''	<b> «el.name»[] «name»Tuple'''
+    '''	<b> «el.name»[] «name»'''
   }  
   else
-	'''	<b> [] «name»Tuple'''
+	'''	<b> [] «name»'''
 }
 
 def dispatch analyzeAggregate(Aggregate ag, String name, List<Aggregate> AgL, String name3) {
@@ -422,10 +422,10 @@ def dispatch analyzeAttribute(Tuple tuple, String name, List<PrimitiveType> PrL,
    	TuL.add(TuL.size,tuple)
    	if (tuple.elements.size>0){
       var el=tuple.elements.get(0) as PrimitiveType
-      '''	<b> «el.name»[] «name»Tuple'''
+      '''	<b> «el.name»[] «name»'''
     }  
     else
-     '''	<b> [] «name»Tuple'''
+     '''	<b> [] «name»'''
 	}
 }
 	

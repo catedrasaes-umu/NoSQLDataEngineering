@@ -33,65 +33,69 @@ def generate (NoSQLSchema nosqlschema)
   	}
   }
   '''
+  @startuml
+  skinparam backgroundColor transparent 
+  skinparam class { 
+    BackgroundColor PaleGreen \n
+    ArrowColor Blue 
+    BorderColor SeaGreen \n
+    FontSize 18 \n
+    FontName Courier \n
+  }
   «FOR entL: entsList»
-	«analyzeEnt(entL)»
+  «analyzeEnt(entL)»
   «ENDFOR»
+  @enduml
   '''
 }	
 	
-def analyzeEnt(Entity ent2)  {
-  totalEnts++
-  var int totalEntVersions=ent2.entityversions.size
-  var int contVer=0;
-'''
-  «FOR EntityVersion entVer : ent2.entityversions»
-    «ents.clear»
+def analyzeEnt(Entity ent2)'''
+    «var List<Attribute> at = new ArrayList»
+    «var List<Reference> ref = new ArrayList»
+    «var List<Aggregate> aggr =new ArrayList»
+    «var List<String> prims = new ArrayList»
+    «var List<String> tuples = new ArrayList»
+    «var List<Reference> refs=new ArrayList»
+    «var List<Aggregate> ags = new ArrayList»
+    «var List<PrimitiveType> primsL=new ArrayList»
+    «var List<Tuple> tuplesL=new ArrayList»
+    «var int contAt=-1»
+    «var int contRf=-1»
+    «var int contAgg=-1»
+    «FOR EntityVersion ev:ent2.entityversions»
+       «var a=ev.properties.filter(Attribute)»
+       «var r=ev.properties.filter(Reference)»
+       «var ag=ev.properties.filter(Aggregate)»
+       «FOR i:0..<a.size»
+          «at.add(contAt+=1,a.get(i))»
+       «ENDFOR»
+       «FOR i:0..<r.size»
+         «ref.add(contRf+=1,r.get(i))»
+       «ENDFOR»
+       «FOR i:0..<ag.size»
+         «aggr.add(contAgg+=1,ag.get(i))»
+       «ENDFOR»
+    «ENDFOR»
 
-    File «ent2.name.toFirstUpper»«contVer+=1»
-    @startuml
-    title <b> «ent2.name.toFirstUpper»«contVer»
-    skinparam backgroundColor AntiqueWhite/Gold 
-    skinparam class { 
-      BackgroundColor PaleGreen \n
-      ArrowColor Blue 
-      BorderColor SeaGreen \n
-      FontSize 18 \n
-      FontName Courier \n
-    }
-	    			  
-    skinparam stereotypeCBackgroundColor YellowGreen
-    skinparam stereotypeCBorderColor SpringGreen
+    Class «ent2.name.toFirstUpper»<<(R,Tomato)>>{
+    «FOR Attribute at2: at»
+    	«analyzeAttribute(at2.type,at2.name,primsL,tuplesL,prims,tuples)»
+    «ENDFOR»
+    }  
+    «FOR Reference rf2: ref»
+      «analyzeReference2(rf2,rf2.name,refs,ent2.name)»
+    «ENDFOR»
+    «FOR Reference r: refs»
+      «printRef(r,ent2.name)»
+    «ENDFOR»
+    «FOR Aggregate a3:aggr»
+        «analyzeAggregate(a3,a3.name,ags,ent2.name)»
+    «ENDFOR»
+    «FOR Aggregate a4: ags»
+       «checkAggr(a4)»
+    «ENDFOR»
     
-    Class «ent2.name.toFirstUpper»{
-    «ents.add(0,ent2.name)»
-    «var eV=ent2.entityversions.get(contVer-1)»
-    «var At=eV.properties.filter(Attribute)»
-    «var Ref=eV.properties.filter(Reference)»
-    «var Aggreg=eV.properties.filter(Aggregate)»
-    «FOR Attribute a: At»
-    	«printAttribute(a,a.name)»
-    «ENDFOR»
-    }
-    «FOR Reference r: Ref»
-     «printRef(r,ent2.name)»
-     «checkRef(r)»
-    «ENDFOR»
-    «FOR Aggregate ag2: Aggreg»
-     «printAgg(ag2,ent2.name)»
-     «checkAggr(ag2)»
-    «ENDFOR»
-    @enduml
-  «ENDFOR»  
 '''
-}
-
-def wasVisited(List<String> ents, String entName){
-  for (ent : ents){
-    if(ent==entName)
-      return true	
-  }
-  return false  
-}
 
 def printAgg(Aggregate ag3, String name)'''
 
@@ -123,64 +127,6 @@ r.name=r.name.replace("_id","").replace("id","")
 '''
 }
 
-def checkRef(Reference ref){
-  var boolean visited=false
-  if(ref.refTo!=null){
-    visited=wasVisited(ents,ref.refTo.name)
-    if(!visited){
-      ents.add(ref.refTo.name)
-      checkReference(ref.refTo) 
-    }
-    
-  }
-}
-
-//check Reference.refTo
-def checkReference(Entity e)'''
-  «var List<Attribute> at = new ArrayList»
-  «var List<Reference> ref = new ArrayList»
-  «var List<Aggregate> aggr =new ArrayList»
-  «var List<String> prims = new ArrayList»
-  «var List<String> tuples = new ArrayList»
-  «var List<Reference> refs=new ArrayList»
-  «var List<Aggregate> ags = new ArrayList»
-  «var int contAt=-1»
-  «var int contRf=-1»  
-  «var int contAgg=-1»      
-  «FOR EntityVersion ev:e.entityversions»
-     «var a=ev.properties.filter(Attribute)»
-     «var r=ev.properties.filter(Reference)»
-     «var ag=ev.properties.filter(Aggregate)»
-     «FOR i:0..<a.size»
-        «at.add(contAt+=1,a.get(i))»
-     «ENDFOR»
-     «FOR i:0..<r.size»
-       «ref.add(contRf+=1,r.get(i))»
-     «ENDFOR»
-     «FOR i:0..<ag.size»
-       «aggr.add(contAgg+=1,ag.get(i))»
-     «ENDFOR»
-  «ENDFOR»
-     
-  Class «e.name.toFirstUpper» {
-  «FOR Attribute at2: at»
-  	«analyzeAttribute(at2.type,at2.name,prims,tuples)»
-  «ENDFOR»
-  }  
-  «FOR Reference rf2: ref»
-    «analyzeReference(rf2,rf2.name,refs,e.name)»
-  «ENDFOR»
-  «FOR Reference rf3: refs»
-    «checkRef(rf3)»
-  «ENDFOR»
-  «FOR Aggregate a3:aggr»
-      «analyzeAggregate(a3,a3.name,ags,e.name)»
-  «ENDFOR»
-  «FOR Aggregate a4: ags»
-     «checkAggr(a4)»
-  «ENDFOR»
-'''
-
 //check Aggregate.refTo
 def checkAggregate(List <EntityVersion> agL, String nameAg, Entity entAg)'''
   «var List<Attribute> at = new ArrayList»
@@ -190,8 +136,10 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, Entity entAg)'''
   «var List<String> tuples = new ArrayList»
   «var List<Reference> refs=new ArrayList»
   «var List<Aggregate> ags = new ArrayList»
+  «var List<PrimitiveType> primsL=new ArrayList»
+  «var List<Tuple> tuplesL=new ArrayList»
   «var int contAt=-1»
-  «var int contRf=-1»  
+  «var int contRf=-1»
   «var int contAgg=-1»
   «FOR EntityVersion ev:agL»
      «var a=ev.properties.filter(Attribute)»
@@ -208,17 +156,11 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, Entity entAg)'''
      «ENDFOR»
   «ENDFOR»
 
-  Class «entAg.name.toFirstUpper» {
+  Class «entAg.name.toFirstUpper»<<(A,BurlyWood)>> {
   «FOR Attribute at2: at»
-  	«analyzeAttribute(at2.type,at2.name,prims,tuples)»
+  	«analyzeAttribute(at2.type,at2.name,primsL,tuplesL,prims,tuples)»
   «ENDFOR»
-  }  
-  «FOR Reference rf2: ref»
-    «analyzeReference(rf2,rf2.name,refs,nameAg)»
-  «ENDFOR»
-  «FOR Reference rf3: refs»
-    «checkRef(rf3)»
-  «ENDFOR»
+  }
   «FOR Aggregate ag: aggr»
       «analyzeAggregate(ag,ag.name,ags,entAg.name)»
   «ENDFOR»
@@ -247,10 +189,10 @@ def dispatch printType(PrimitiveType primT, String name){
 def dispatch printType(Tuple tuple, String name){
   if (tuple.elements.size>0){
     var el=tuple.elements.get(0) as PrimitiveType
-    '''	<b> «el.name»[] «name»Tuple'''
+    '''	<b> «el.name»[] «name»'''
   }  
   else
-	'''	<b> [] «name»Tuple'''
+	'''	<b> [] «name»'''
 }
 
 def dispatch analyzeAggregate(Aggregate ag, String name, List<Aggregate> AgL, String name3) {
@@ -267,7 +209,7 @@ def dispatch analyzeAggregate(Aggregate ag, String name, List<Aggregate> AgL, St
 	def boolean reviseAggregList(List<Aggregate> ag, String name, Aggregate Ag) {
 	 for (i : 0 ..< ag.size) {
 	    val element = ag.get(i)
-	    if(element.name==name && compareAggregates(element,Ag))
+	    if(element.name==name)
 	    	return true
 	 }
      return false
@@ -306,6 +248,16 @@ def analyzeReference(Reference ref, String name, List<Reference> RfL, String nam
     }
 }
 	
+def analyzeReference2(Reference ref, String name, List<Reference> RfL, String name2) {
+  var boolean rRef
+  rRef=analyzeRefList(RfL,name,ref)
+  if (!rRef)
+    {
+      RfL.add(RfL.size,ref)
+      //printRef(ref,name2)
+      //checkRef(ref)
+    }
+}
 
 def boolean analyzeRefList(List<Reference> rL, String name, Reference r) {
  for (i : 0 ..< rL.size) {
@@ -358,10 +310,10 @@ def dispatch analyzeAttribute(Tuple tuple, String name, List<PrimitiveType> PrL,
    	TuL.add(TuL.size,tuple)
    	if (tuple.elements.size>0){
       var el=tuple.elements.get(0) as PrimitiveType
-      '''	<b> «el.name»[] «name»Tuple'''
+      '''	<b> «el.name»[] «name»'''
     }  
     else
-     '''	<b> [] «name»Tuple'''
+     '''	<b> [] «name»'''
 	}
 }
 	

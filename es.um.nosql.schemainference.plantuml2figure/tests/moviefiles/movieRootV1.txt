@@ -63,7 +63,7 @@ Movie1 *--> "[1..1] prize2" Prize2
 
 Class Prize1<<(V,BurlyWood)>>{
 	<b> String event
-	<b> String[] namesTuple
+	<b> String[] names
 	<b> int year
 }
 

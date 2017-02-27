@@ -64,7 +64,7 @@ Movie1 *--> "[1..1] prize2" Prize2
 
 Class Prize1<<(V,BurlyWood)>>{
 	<b> String event
-	<b> String[] namesTuple
+	<b> String[] names
 	<b> int year
 }
 
@@ -237,10 +237,10 @@ skinparam stereotypeCBorderColor SpringGreen
 
 Class Movie5<<(R,Turquoise)>>{
 	<b> String _id
-	<b> String[] genresTuple
+	<b> String[] genres
 	<b> String title
 	<b> String type
-	<b> String[] writersTuple
+	<b> String[] writers
 	<b> int year
 }
 
@@ -331,8 +331,8 @@ Class Movie<<(E,Tomato)>>{
 	<b> String type
 	<b> int year
 	<b> int running_time
-	<b> String[] genresTuple
-	<b> String[] writersTuple
+	<b> String[] genres
+	<b> String[] writers
 	<i><color:Navy>ref Director director</color>
 }
 
@@ -362,7 +362,7 @@ Class Media {
 
 Class Prize {
 	<b> String event
-	<b> String[] namesTuple
+	<b> String[] names
 	<b> int year
 	<b> String name
 }  
@@ -389,8 +389,8 @@ Class Movie<<(E,Tomato)>>{
 	<b> String type
 	<b> int year
 	<b> int running_time
-	<b> String[] genresTuple
-	<b> String[] writersTuple
+	<b> String[] genres
+	<b> String[] writers
 	<i><color:Navy>ref Director director</color>
 }
 
@@ -420,7 +420,7 @@ Class Media {
 
 Class Prize {
 	<b> String event
-	<b> String[] namesTuple
+	<b> String[] names
 	<b> int year
 	<b> String name
 }  
@@ -468,8 +468,8 @@ Class Movie<<(E,Tomato)>>{
 	<b> String type
 	<b> int year
 	<b> int running_time
-	<b> String[] genresTuple
-	<b> String[] writersTuple
+	<b> String[] genres
+	<b> String[] writers
 	<i><color:Navy>ref Director director</color>
 }
 
@@ -499,7 +499,7 @@ Class Media {
 
 Class Prize {
 	<b> String event
-	<b> String[] namesTuple
+	<b> String[] names
 	<b> int year
 	<b> String name
 }  
