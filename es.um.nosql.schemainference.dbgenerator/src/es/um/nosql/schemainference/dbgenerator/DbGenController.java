@@ -49,7 +49,7 @@ public class DbGenController
 		System.out.println("Reading input models...");
 
 		for (String fileRoute : new File(modelsFolder).list())
-			insertTableDb(fileRoute, jsonFolder, minInstances, maxInstances);
+			insertTableDb(modelsFolder + fileRoute, jsonFolder, minInstances, maxInstances);
 
 		System.out.println("Test finished in " + (System.currentTimeMillis() - startTime + " ms"));
 		shutdown();
@@ -59,7 +59,7 @@ public class DbGenController
 	{
 		long startTime = System.currentTimeMillis();
 
-		System.out.println("Reading input model...");
+		System.out.println("Reading input model " + modelRoute + "...");
 		ModelLoader<NoSQLSchema> loader = new ModelLoader<NoSQLSchema>(NoSQLSchemaPackage.eINSTANCE);
 		JsonGenerator generator = new JsonGenerator();
 
@@ -81,6 +81,6 @@ public class DbGenController
 		{
 			e3.printStackTrace();
 		}
-		shutdown();
+//		shutdown();
 	}
 }

@@ -1,18 +1,22 @@
 package es.um.nosql.schemainference.dbgenerator.db.mongodb;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 import org.bson.Document;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 import es.um.nosql.schemainference.dbgenerator.db.DbClient;
 
-/**
- * Not implemented yet. Do not even try.
- * @author Alberto
- */
 public class MongoDbClient extends MongoClient implements DbClient
 {
 	public MongoDbClient(String ip, int port)
@@ -20,116 +24,54 @@ public class MongoDbClient extends MongoClient implements DbClient
 		super(ip, port);
 	}
 
-	public void cleanup()
-	{
-		MongoDatabase db = getDatabase("library");
-		db.drop();
-	}
-
 	@Override
 	public void insert(String name, String jsonContent)
 	{
+		// For each object create a collection of that type (obj.type) and remove the type attribute.
+		try
+		{
+			MongoDatabase db = getDatabase(name);
+			ObjectMapper mapper = new ObjectMapper();
+			JsonNode jsonItems = mapper.readTree(jsonContent);
+			Map<String, List<Document>> collections = new HashMap<String, List<Document>>();
+
+			for (JsonNode item : jsonItems)
+			{
+				String type = item.get("type").asText();
+				if (!collections.containsKey(type))
+					collections.put(type, new ArrayList<Document>());
+
+				ObjectNode object = (ObjectNode)item;
+				object.remove("type");
+
+				collections.get(type).add(Document.parse(object.toString()));
+			}
+
+			// For each entity detected insert all its objects as a collection
+			for (String collName : collections.keySet())
+			{
+				MongoCollection<Document> collection = db.getCollection(collName);
+				collection.insertMany(collections.get(collName));
+			}
+
+		} catch (Exception e)
+		{
+			e.printStackTrace();
+		}
 	}
 
 	@Override
 	public void cleanDbs()
 	{
+		for (String dbName : listDatabaseNames())
+			if (!dbName.equals("admin") && !dbName.equals("local"))
+				dropDatabase(dbName);
 	}
 
 	@Override
 	public boolean shutdown()
 	{
+		close();
 		return true;
-	}
-
-	public void printDatabase(String dbName)
-	{
-		MongoDatabase database = getDatabase(dbName);
-		for (String s : database.listCollectionNames())
-			for (Document doc : database.getCollection(s).find())
-				System.out.println(doc.keySet());
-	}
-
-	public void testInsert()
-	{
-		MongoDatabase db = getDatabase("library");
-		MongoCollection<Document> books = db.getCollection("books");
-		Document book = new Document();
-		book.put("name", "Understanding JAVA");
-		book.put("pages", 100);
-		books.insertOne(book);
-
-		book = new Document();
-		book.put("name", "Understanding JSON");
-		book.put("pages", 200);
-		books.insertOne(book);
-
-		book = new Document();
-		book.put("name", "Understanding XML");
-		book.put("pages", 300);
-		books.insertOne(book);
-
-		book = new Document();
-		book.put("name", "Understanding Web Services");
-		book.put("pages", 400);
-		books.insertOne(book);
-
-		book = new Document();
-		book.put("name", "Understanding Axis2");
-		book.put("pages", 150);
-		books.insertOne(book);
-
-		printDatabase("library");
-		cleanup();
-/*
- * MongoClient mongo;
-		String filename = args.length == 0 ? "model/test.xmi" : args[0];
-		File file = new File(filename);
-
-		ModelLoader<NoSQLSchema> loader = new ModelLoader<>(NoSQLSchemaPackage.eINSTANCE);
-		NoSQLSchema schema = loader.load(file);
-
-		try {
-			mongo = new MongoClient("localhost", 27017);
-			MongoDatabase db = mongo.getDatabase("library");
-
-			collections = schema.getEntities().stream()
-					.collect(Collectors.toMap(Function.identity(),
-							e -> db.getCollection(e.getName())));
-
-
-
-			MongoCollection<Document> books = db.getCollection("books");
-
-			Document book = new Document();
-			book.put("name", "Understanding JAVA");
-			book.put("pages", 100);
-			books.insertOne(book);
-
-			book = new Document();
-			book.put("name", "Understanding JSON");
-			book.put("pages", 200);
-			books.insertOne(book);
-
-			book = new Document();
-			book.put("name", "Understanding XML");
-			book.put("pages", 300);
-			books.insertOne(book);
-
-			book = new Document();
-			book.put("name", "Understanding Web Services");
-			book.put("pages", 400);
-			books.insertOne(book);
-
-			book = new Document();
-			book.put("name", "Understanding Axis2");
-			book.put("pages", 150);
-			books.insertOne(book);
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
- */
 	}
 }

@@ -14,15 +14,15 @@ public class Main
 	private static final String COUCHDB_IP = "localhost";
 	private static final String JSON_FOLDER = "json/";
 	private static final String MODELS_FOLDER = "models/";
-	private static final String TABLENAME = "mongoMovies3";
-	private static final String MODEL_FILE = MODELS_FOLDER + TABLENAME + ".xmi";
+	private static final String TABLENAME = "Food";
+	private static final String MODEL_FILE = MODELS_FOLDER + TABLENAME + ".nosqlschema";
 	private static final String OUTPUT_MODEL = MODELS_FOLDER + TABLENAME + "_2.xmi";
 	private static final String MAPREDUCE_FOLDER = "mapreduce/couchdb/v1";
 
 	public static void main(String[] args) throws IOException
 	{
-		int minInstances = 5;
-		int maxInstances = 10;
+		int minInstances = 1;
+		int maxInstances = 3;
 
 		DbGenController controller = new DbGenController(DbType.COUCHDB, COUCHDB_IP);
 		controller.insertTableDb(MODEL_FILE, JSON_FOLDER, minInstances, maxInstances);

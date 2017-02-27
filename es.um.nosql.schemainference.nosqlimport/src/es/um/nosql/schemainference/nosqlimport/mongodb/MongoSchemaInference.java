@@ -21,16 +21,11 @@ public class MongoSchemaInference
 {
 	public static void main(String[] args)
 	{
-		if (args.length == 0)
-		{
-			System.err.println("I need as a parameter a directory where the map.js and reduce.js files live.");
-			return;
-		}
-
 		Optional<MongoClient> mongoRef = Optional.empty();
 		
-		try {
-			String dirName = args[0];
+		try
+		{
+			String dirName = "mapreduce/mongodb/v2/";
 			MapReduceSources mrs = MapReduceSources.fromDir(dirName);
 
 			mongoRef = Optional.of(new MongoClient("localhost", 27017));
@@ -64,16 +59,16 @@ public class MongoSchemaInference
 			book.put("pages", 150);
 			books.insertOne(book);
 
-			MapReduceIterable<Document> cmd =
-					books.mapReduce(mrs.getMapJSCode(), mrs.getReduceJSCode());
+			MapReduceIterable<Document> cmd = books.mapReduce(mrs.getMapJSCode(), mrs.getReduceJSCode());
 
 			for (Document o : cmd) {
 				System.out.println(o.toString());
 			}
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
+		} catch (Exception e)
+		{
 			e.printStackTrace();
-		} finally {
+		} finally
+		{
 			mongoRef.ifPresent(mongo -> mongo.close());
 		}
 	}
