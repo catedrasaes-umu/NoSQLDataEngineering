@@ -8,7 +8,10 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.function.Function;
+import java.util.function.Supplier;
 import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
@@ -52,13 +55,13 @@ public class Main {
 		return classes;
 	}
 	
-	public static Map<String, int[]> one_hot(Map<String, List<String>> classes, List<String> featuresList){
+	public static Map<String, int[]> one_hot(Map<String, List<String>> classes, List<String> featuresList)
+	{
 		Map<String, int[]> result = new HashMap<String, int[]>();
 		Map<String, Integer> features = new HashMap<String, Integer>();
 		
-		for (int i = 0; i < featuresList.size(); i++){
-			features.put(featuresList.get(i), i);
-		}
+		features = IntStream.range(0, featuresList.size()).boxed()
+			.collect(Collectors.toMap(i -> featuresList.get(i), Function.identity()));
 		
 		int vector_size = features.size(); // Features + Tag
 		
