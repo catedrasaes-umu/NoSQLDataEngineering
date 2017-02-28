@@ -81,6 +81,6 @@ public class DbGenController
 		{
 			e3.printStackTrace();
 		}
-//		shutdown();
+		shutdown();
 	}
 }

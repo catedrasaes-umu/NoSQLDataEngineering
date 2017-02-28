@@ -1,753 +1,811 @@
 [ {
   "_id" : "001",
-  "genre" : "value_702743",
-  "title" : "value_136453",
+  "genre" : "value_850855",
+  "title" : "value_858300",
   "type" : "Movie",
-  "year" : 165510,
+  "year" : 558911,
   "criticisms" : [ {
-    "color" : "value_609680",
-    "journalist" : "value_105769",
+    "color" : "value_449860",
+    "journalist" : "value_776831",
     "media" : [ {
-      "name" : "value_580547",
-      "url" : "value_38213"
+      "name" : "value_580240",
+      "url" : "value_29099"
     } ]
   }, {
-    "color" : "value_405571",
-    "journalist" : "value_587964",
-    "media" : "value_460960"
+    "color" : "value_198437",
+    "journalist" : "value_60832",
+    "media" : "value_971734"
   } ],
-  "director_id" : "070",
+  "director_id" : "065",
   "prizes" : [ {
-    "event" : "value_781949",
-    "names" : [ "value_854691", "value_29032" ],
-    "year" : 109442
+    "event" : "value_913068",
+    "names" : [ "value_85316", "value_202872" ],
+    "year" : 589109
   }, {
-    "event" : "value_513686",
-    "name" : "value_361934",
-    "year" : 157412
+    "event" : "value_973980",
+    "name" : "value_273644",
+    "year" : 90046
   } ]
 }, {
   "_id" : "002",
-  "genre" : "value_915817",
-  "title" : "value_514900",
+  "genre" : "value_35373",
+  "title" : "value_692572",
   "type" : "Movie",
-  "year" : 29103,
+  "year" : 33720,
   "criticisms" : [ {
-    "color" : "value_609680",
-    "journalist" : "value_105769",
+    "color" : "value_961976",
+    "journalist" : "value_641303",
     "media" : [ {
-      "name" : "value_580547",
-      "url" : "value_38213"
+      "name" : "value_812510",
+      "url" : "value_469419"
     } ]
   }, {
-    "color" : "value_38801",
-    "journalist" : "value_579502",
-    "media" : "value_654263"
+    "color" : "value_198437",
+    "journalist" : "value_60832",
+    "media" : "value_971734"
   } ],
-  "director_id" : "055",
+  "director_id" : "065",
   "prizes" : [ {
-    "event" : "value_921140",
-    "names" : [ "value_11932", "value_806673" ],
-    "year" : 264256
+    "event" : "value_59572",
+    "names" : [ "value_464068", "value_529947" ],
+    "year" : 986488
   }, {
-    "event" : "value_702579",
-    "name" : "value_937701",
-    "year" : 935794
+    "event" : "value_392117",
+    "name" : "value_667485",
+    "year" : 246011
   } ]
 }, {
   "_id" : "003",
-  "genre" : "value_640504",
-  "title" : "value_303738",
+  "genre" : "value_378883",
+  "title" : "value_875306",
   "type" : "Movie",
-  "year" : 616812,
+  "year" : 375469,
   "criticisms" : [ {
-    "color" : "value_979962",
-    "journalist" : "value_255677",
+    "color" : "value_238917",
+    "journalist" : "value_565274",
     "media" : [ {
-      "name" : "value_232246",
-      "url" : "value_50778"
+      "name" : "value_606035",
+      "url" : "value_901930"
     } ]
   }, {
-    "color" : "value_429227",
-    "journalist" : "value_886629",
-    "media" : "value_510086"
+    "color" : "value_198437",
+    "journalist" : "value_60832",
+    "media" : "value_971734"
   } ],
-  "director_id" : "062",
+  "director_id" : "063",
   "prizes" : [ {
-    "event" : "value_781949",
-    "names" : [ "value_854691", "value_29032" ],
-    "year" : 109442
+    "event" : "value_59572",
+    "names" : [ "value_464068", "value_529947" ],
+    "year" : 986488
   }, {
-    "event" : "value_688038",
-    "name" : "value_999929",
-    "year" : 511480
+    "event" : "value_197858",
+    "name" : "value_28478",
+    "year" : 178104
   } ]
 }, {
   "_id" : "004",
-  "genre" : "value_701238",
-  "title" : "value_774094",
+  "genre" : "value_541565",
+  "title" : "value_754390",
   "type" : "Movie",
-  "year" : 931118,
+  "year" : 838395,
   "criticisms" : [ {
-    "color" : "value_369707",
-    "journalist" : "value_953333",
+    "color" : "value_566985",
+    "journalist" : "value_483379",
     "media" : [ {
-      "name" : "value_491685",
-      "url" : "value_241935"
+      "name" : "value_580240",
+      "url" : "value_29099"
     } ]
   }, {
-    "color" : "value_38801",
-    "journalist" : "value_579502",
-    "media" : "value_654263"
+    "color" : "value_799067",
+    "journalist" : "value_404525",
+    "media" : "value_27075"
   } ],
-  "director_id" : "065",
+  "director_id" : "057",
   "prizes" : [ {
-    "event" : "value_421019",
-    "names" : [ "value_972139", "value_948319" ],
-    "year" : 996923
+    "event" : "value_913068",
+    "names" : [ "value_85316", "value_202872" ],
+    "year" : 589109
   }, {
-    "event" : "value_872281",
-    "name" : "value_498150",
-    "year" : 555560
+    "event" : "value_613482",
+    "name" : "value_993351",
+    "year" : 244312
   } ]
 }, {
   "_id" : "005",
-  "genre" : "value_279835",
-  "title" : "value_770075",
+  "genre" : "value_10462",
+  "title" : "value_227745",
   "type" : "Movie",
-  "year" : 133441,
+  "year" : 633644,
   "criticisms" : [ {
-    "color" : "value_979962",
-    "journalist" : "value_255677",
+    "color" : "value_566985",
+    "journalist" : "value_483379",
     "media" : [ {
-      "name" : "value_232246",
-      "url" : "value_50778"
+      "name" : "value_580240",
+      "url" : "value_29099"
     } ]
   }, {
-    "color" : "value_429227",
-    "journalist" : "value_886629",
-    "media" : "value_510086"
+    "color" : "value_946574",
+    "journalist" : "value_43188",
+    "media" : "value_572969"
   } ],
-  "director_id" : "062",
+  "director_id" : "069",
   "prizes" : [ {
-    "event" : "value_921140",
-    "names" : [ "value_11932", "value_806673" ],
-    "year" : 264256
+    "event" : "value_176234",
+    "names" : [ "value_779307", "value_214977" ],
+    "year" : 763173
   }, {
-    "event" : "value_702579",
-    "name" : "value_937701",
-    "year" : 935794
+    "event" : "value_392117",
+    "name" : "value_667485",
+    "year" : 246011
   } ]
 }, {
   "_id" : "006",
-  "genre" : "value_21079",
-  "title" : "value_389674",
+  "genre" : "value_183233",
+  "title" : "value_860046",
   "type" : "Movie",
-  "year" : 410795,
+  "year" : 175308,
   "criticisms" : [ {
-    "color" : "value_457469",
-    "journalist" : "value_586569",
+    "color" : "value_832816",
+    "journalist" : "value_364983",
     "media" : [ {
-      "name" : "value_491685",
-      "url" : "value_241935"
+      "name" : "value_812510",
+      "url" : "value_469419"
     } ]
   }, {
-    "color" : "value_405571",
-    "journalist" : "value_587964",
-    "media" : "value_460960"
+    "color" : "value_665666",
+    "journalist" : "value_490313",
+    "media" : "value_970282"
   } ],
-  "director_id" : "064",
+  "director_id" : "056",
   "prizes" : [ {
-    "event" : "value_921140",
-    "names" : [ "value_11932", "value_806673" ],
-    "year" : 264256
+    "event" : "value_424020",
+    "names" : [ "value_922349", "value_911962" ],
+    "year" : 582891
   }, {
-    "event" : "value_688038",
-    "name" : "value_999929",
-    "year" : 511480
+    "event" : "value_197858",
+    "name" : "value_28478",
+    "year" : 178104
   } ]
 }, {
   "_id" : "007",
-  "genre" : "value_633722",
-  "title" : "value_361794",
+  "genre" : "value_253609",
+  "title" : "value_102206",
   "type" : "Movie",
-  "year" : 463599,
+  "year" : 608459,
   "criticisms" : [ {
-    "color" : "value_325027",
-    "journalist" : "value_755900",
+    "color" : "value_842563",
+    "journalist" : "value_127050",
     "media" : [ {
-      "name" : "value_580547",
-      "url" : "value_38213"
+      "name" : "value_812510",
+      "url" : "value_469419"
     } ]
   }, {
-    "color" : "value_986629",
-    "journalist" : "value_715156",
-    "media" : "value_31260"
+    "color" : "value_228691",
+    "journalist" : "value_633097",
+    "media" : "value_279083"
   } ],
   "director_id" : "063",
   "prizes" : [ {
-    "event" : "value_421019",
-    "names" : [ "value_972139", "value_948319" ],
-    "year" : 996923
+    "event" : "value_913068",
+    "names" : [ "value_85316", "value_202872" ],
+    "year" : 589109
   }, {
-    "event" : "value_688038",
-    "name" : "value_999929",
-    "year" : 511480
+    "event" : "value_613482",
+    "name" : "value_993351",
+    "year" : 244312
   } ]
 }, {
   "_id" : "008",
-  "genre" : "value_726277",
-  "running_time" : 998720,
-  "title" : "value_698539",
+  "genre" : "value_943489",
+  "running_time" : 929813,
+  "title" : "value_767237",
   "type" : "Movie",
-  "year" : 777584,
-  "director_id" : "060"
+  "year" : 49363,
+  "director_id" : "067"
 }, {
   "_id" : "009",
-  "genre" : "value_633076",
-  "running_time" : 837921,
-  "title" : "value_455655",
+  "genre" : "value_244813",
+  "running_time" : 937745,
+  "title" : "value_672348",
   "type" : "Movie",
-  "year" : 94833,
-  "director_id" : "056"
+  "year" : 967139,
+  "director_id" : "062"
 }, {
   "_id" : "010",
-  "genre" : "value_512342",
-  "running_time" : 790404,
-  "title" : "value_872777",
+  "genre" : "value_274524",
+  "running_time" : 491165,
+  "title" : "value_208221",
   "type" : "Movie",
-  "year" : 427043,
-  "director_id" : "070"
+  "year" : 386458,
+  "director_id" : "067"
 }, {
   "_id" : "011",
-  "genre" : "value_337207",
-  "running_time" : 870858,
-  "title" : "value_150685",
+  "genre" : "value_999824",
+  "running_time" : 193722,
+  "title" : "value_960050",
   "type" : "Movie",
-  "year" : 607289,
-  "director_id" : "068"
+  "year" : 384387,
+  "director_id" : "057"
 }, {
   "_id" : "012",
-  "genre" : "value_357839",
-  "running_time" : 171171,
-  "title" : "value_976782",
+  "genre" : "value_783501",
+  "running_time" : 915014,
+  "title" : "value_446050",
   "type" : "Movie",
-  "year" : 510243,
-  "director_id" : "058"
+  "year" : 934582,
+  "director_id" : "069"
 }, {
   "_id" : "013",
-  "genre" : "value_136847",
-  "running_time" : 378226,
-  "title" : "value_134820",
+  "genre" : "value_608726",
+  "running_time" : 337651,
+  "title" : "value_523228",
   "type" : "Movie",
-  "year" : 74695,
-  "director_id" : "060"
+  "year" : 532469,
+  "director_id" : "063"
 }, {
   "_id" : "014",
-  "genre" : "value_845533",
-  "running_time" : 291010,
-  "title" : "value_972637",
+  "genre" : "value_479822",
+  "running_time" : 166647,
+  "title" : "value_802487",
   "type" : "Movie",
-  "year" : 978460,
-  "director_id" : "054"
+  "year" : 134898,
+  "director_id" : "057"
 }, {
   "_id" : "015",
-  "genre" : "value_761121",
-  "running_time" : 669635,
-  "title" : "value_632515",
+  "genre" : "value_714545",
+  "running_time" : 400073,
+  "title" : "value_890825",
   "type" : "Movie",
-  "year" : 519868,
-  "director_id" : "061"
+  "year" : 351809,
+  "director_id" : "056"
 }, {
   "_id" : "016",
-  "genre" : "value_890256",
-  "running_time" : 604760,
-  "title" : "value_555823",
+  "genre" : "value_792610",
+  "title" : "value_153841",
   "type" : "Movie",
-  "year" : 678461,
-  "director_id" : "055"
+  "year" : 974261,
+  "director_id" : "058",
+  "prizes" : [ {
+    "event" : "value_197858",
+    "name" : "value_28478",
+    "year" : 178104
+  } ]
 }, {
   "_id" : "017",
-  "genre" : "value_900478",
-  "title" : "value_444438",
+  "genre" : "value_279854",
+  "title" : "value_468457",
   "type" : "Movie",
-  "year" : 292476,
+  "year" : 91697,
   "director_id" : "056",
   "prizes" : [ {
-    "event" : "value_513686",
-    "name" : "value_361934",
-    "year" : 157412
+    "event" : "value_392117",
+    "name" : "value_667485",
+    "year" : 246011
   } ]
 }, {
   "_id" : "018",
-  "genre" : "value_235164",
-  "title" : "value_673541",
+  "genre" : "value_501072",
+  "title" : "value_697339",
   "type" : "Movie",
-  "year" : 677867,
-  "director_id" : "068",
+  "year" : 398573,
+  "director_id" : "056",
   "prizes" : [ {
-    "event" : "value_688038",
-    "name" : "value_999929",
-    "year" : 511480
+    "event" : "value_734760",
+    "name" : "value_190167",
+    "year" : 260946
   } ]
 }, {
   "_id" : "019",
-  "genre" : "value_98264",
-  "title" : "value_253213",
+  "genre" : "value_937588",
+  "title" : "value_162708",
   "type" : "Movie",
-  "year" : 248429,
-  "director_id" : "062",
+  "year" : 93393,
+  "director_id" : "061",
   "prizes" : [ {
-    "event" : "value_721953",
-    "name" : "value_214297",
-    "year" : 8596
+    "event" : "value_613482",
+    "name" : "value_993351",
+    "year" : 244312
   } ]
 }, {
   "_id" : "020",
-  "genre" : "value_21247",
-  "title" : "value_666924",
+  "genre" : "value_226943",
+  "title" : "value_592472",
   "type" : "Movie",
-  "year" : 277517,
-  "director_id" : "054",
+  "year" : 590495,
+  "director_id" : "061",
   "prizes" : [ {
-    "event" : "value_721953",
-    "name" : "value_214297",
-    "year" : 8596
+    "event" : "value_197858",
+    "name" : "value_28478",
+    "year" : 178104
   } ]
 }, {
   "_id" : "021",
-  "genre" : "value_696227",
-  "title" : "value_397919",
+  "genre" : "value_652270",
+  "title" : "value_997156",
   "type" : "Movie",
-  "year" : 787060,
-  "director_id" : "060",
+  "year" : 874457,
+  "director_id" : "069",
   "prizes" : [ {
-    "event" : "value_721953",
-    "name" : "value_214297",
-    "year" : 8596
+    "event" : "value_50074",
+    "name" : "value_161729",
+    "year" : 113589
   } ]
 }, {
   "_id" : "022",
-  "genre" : "value_806274",
-  "title" : "value_515876",
+  "genre" : "value_320001",
+  "title" : "value_419906",
   "type" : "Movie",
-  "year" : 731628,
-  "director_id" : "068",
+  "year" : 355659,
+  "director_id" : "069",
   "prizes" : [ {
-    "event" : "value_688038",
-    "name" : "value_999929",
-    "year" : 511480
+    "event" : "value_973980",
+    "name" : "value_273644",
+    "year" : 90046
   } ]
 }, {
   "_id" : "023",
-  "genre" : "value_967962",
-  "title" : "value_156254",
+  "genre" : "value_802723",
+  "title" : "value_506964",
   "type" : "Movie",
-  "year" : 782314,
-  "director_id" : "065",
-  "prizes" : [ {
-    "event" : "value_618783",
-    "name" : "value_804230",
-    "year" : 567596
+  "year" : 620276,
+  "criticisms" : [ {
+    "color" : "value_508118",
+    "journalist" : "value_700917",
+    "media" : [ {
+      "name" : "value_118712",
+      "url" : "value_815277"
+    } ]
+  }, {
+    "color" : "value_198437",
+    "journalist" : "value_60832",
+    "media" : "value_971734"
+  } ],
+  "director_id" : "056",
+  "rating" : [ {
+    "score" : 434777,
+    "voters" : 277793
   } ]
 }, {
   "_id" : "024",
-  "genre" : "value_741859",
-  "title" : "value_802090",
+  "genre" : "value_559234",
+  "title" : "value_757682",
   "type" : "Movie",
-  "year" : 802320,
+  "year" : 348936,
   "criticisms" : [ {
-    "color" : "value_316208",
-    "journalist" : "value_842438",
+    "color" : "value_832816",
+    "journalist" : "value_364983",
     "media" : [ {
-      "name" : "value_491685",
-      "url" : "value_241935"
+      "name" : "value_812510",
+      "url" : "value_469419"
     } ]
   }, {
-    "color" : "value_38801",
-    "journalist" : "value_579502",
-    "media" : "value_654263"
+    "color" : "value_228691",
+    "journalist" : "value_633097",
+    "media" : "value_279083"
   } ],
-  "director_id" : "058",
+  "director_id" : "061",
   "rating" : [ {
-    "score" : 581149,
-    "voters" : 673918
+    "score" : 576040,
+    "voters" : 934355
   } ]
 }, {
   "_id" : "025",
-  "genre" : "value_550181",
-  "title" : "value_653869",
+  "genre" : "value_417765",
+  "title" : "value_733277",
   "type" : "Movie",
-  "year" : 167930,
+  "year" : 992136,
   "criticisms" : [ {
-    "color" : "value_457469",
-    "journalist" : "value_586569",
+    "color" : "value_961976",
+    "journalist" : "value_641303",
     "media" : [ {
-      "name" : "value_491685",
-      "url" : "value_241935"
+      "name" : "value_812510",
+      "url" : "value_469419"
     } ]
   }, {
-    "color" : "value_405571",
-    "journalist" : "value_587964",
-    "media" : "value_460960"
+    "color" : "value_946574",
+    "journalist" : "value_43188",
+    "media" : "value_572969"
   } ],
-  "director_id" : "059",
+  "director_id" : "061",
   "rating" : [ {
-    "score" : 307586,
-    "voters" : 978356
+    "score" : 576040,
+    "voters" : 934355
   } ]
 }, {
   "_id" : "026",
-  "genre" : "value_731868",
-  "title" : "value_320820",
+  "genre" : "value_876696",
+  "title" : "value_496561",
   "type" : "Movie",
-  "year" : 227709,
+  "year" : 378349,
   "criticisms" : [ {
-    "color" : "value_457469",
-    "journalist" : "value_586569",
+    "color" : "value_238917",
+    "journalist" : "value_565274",
     "media" : [ {
-      "name" : "value_491685",
-      "url" : "value_241935"
+      "name" : "value_606035",
+      "url" : "value_901930"
     } ]
   }, {
-    "color" : "value_405571",
-    "journalist" : "value_587964",
-    "media" : "value_460960"
+    "color" : "value_665666",
+    "journalist" : "value_490313",
+    "media" : "value_970282"
   } ],
-  "director_id" : "054",
+  "director_id" : "055",
   "rating" : [ {
-    "score" : 472958,
-    "voters" : 928118
+    "score" : 549489,
+    "voters" : 790263
   } ]
 }, {
   "_id" : "027",
-  "genre" : "value_182890",
-  "title" : "value_66234",
+  "genre" : "value_926806",
+  "title" : "value_889272",
   "type" : "Movie",
-  "year" : 291057,
+  "year" : 312581,
   "criticisms" : [ {
-    "color" : "value_369707",
-    "journalist" : "value_953333",
+    "color" : "value_961976",
+    "journalist" : "value_641303",
     "media" : [ {
-      "name" : "value_491685",
-      "url" : "value_241935"
+      "name" : "value_812510",
+      "url" : "value_469419"
     } ]
   }, {
-    "color" : "value_716678",
-    "journalist" : "value_654594",
-    "media" : "value_794217"
+    "color" : "value_946574",
+    "journalist" : "value_43188",
+    "media" : "value_572969"
   } ],
-  "director_id" : "070",
+  "director_id" : "066",
   "rating" : [ {
-    "score" : 307586,
-    "voters" : 978356
+    "score" : 156031,
+    "voters" : 246888
   } ]
 }, {
   "_id" : "028",
-  "genre" : "value_52204",
-  "title" : "value_601890",
+  "genre" : "value_392511",
+  "title" : "value_64833",
   "type" : "Movie",
-  "year" : 40378,
+  "year" : 299476,
   "criticisms" : [ {
-    "color" : "value_609680",
-    "journalist" : "value_105769",
+    "color" : "value_961976",
+    "journalist" : "value_641303",
     "media" : [ {
-      "name" : "value_580547",
-      "url" : "value_38213"
+      "name" : "value_812510",
+      "url" : "value_469419"
     } ]
   }, {
-    "color" : "value_986629",
-    "journalist" : "value_715156",
-    "media" : "value_31260"
+    "color" : "value_228691",
+    "journalist" : "value_633097",
+    "media" : "value_279083"
   } ],
-  "director_id" : "063",
+  "director_id" : "066",
   "rating" : [ {
-    "score" : 458089,
-    "voters" : 490167
+    "score" : 456155,
+    "voters" : 864180
   } ]
 }, {
   "_id" : "029",
-  "genre" : "value_419928",
-  "title" : "value_981931",
+  "genre" : "value_589306",
+  "title" : "value_529911",
   "type" : "Movie",
-  "year" : 376992,
+  "year" : 394347,
   "criticisms" : [ {
-    "color" : "value_457469",
-    "journalist" : "value_586569",
+    "color" : "value_172373",
+    "journalist" : "value_751640",
     "media" : [ {
-      "name" : "value_491685",
-      "url" : "value_241935"
+      "name" : "value_489333",
+      "url" : "value_92396"
     } ]
   }, {
-    "color" : "value_405571",
-    "journalist" : "value_587964",
-    "media" : "value_460960"
+    "color" : "value_946574",
+    "journalist" : "value_43188",
+    "media" : "value_572969"
   } ],
-  "director_id" : "067",
+  "director_id" : "061",
   "rating" : [ {
-    "score" : 458089,
-    "voters" : 490167
+    "score" : 576040,
+    "voters" : 934355
   } ]
 }, {
   "_id" : "030",
-  "genres" : [ "value_378497", "value_802017" ],
-  "title" : "value_667162",
+  "genre" : "value_470534",
+  "title" : "value_795357",
   "type" : "Movie",
-  "writers" : [ "value_145028", "value_290765" ],
-  "year" : 963739,
-  "director_id" : "055"
+  "year" : 407416,
+  "criticisms" : [ {
+    "color" : "value_172373",
+    "journalist" : "value_751640",
+    "media" : [ {
+      "name" : "value_489333",
+      "url" : "value_92396"
+    } ]
+  }, {
+    "color" : "value_799067",
+    "journalist" : "value_404525",
+    "media" : "value_27075"
+  } ],
+  "director_id" : "058",
+  "rating" : [ {
+    "score" : 781128,
+    "voters" : 970410
+  } ]
 }, {
   "_id" : "031",
-  "genres" : [ "value_877462", "value_368134" ],
-  "title" : "value_317312",
+  "genre" : "value_330340",
+  "title" : "value_102428",
   "type" : "Movie",
-  "writers" : [ "value_580460", "value_17565" ],
-  "year" : 391473,
-  "director_id" : "058"
+  "year" : 936413,
+  "criticisms" : [ {
+    "color" : "value_842563",
+    "journalist" : "value_127050",
+    "media" : [ {
+      "name" : "value_812510",
+      "url" : "value_469419"
+    } ]
+  }, {
+    "color" : "value_665666",
+    "journalist" : "value_490313",
+    "media" : "value_970282"
+  } ],
+  "director_id" : "069",
+  "rating" : [ {
+    "score" : 576040,
+    "voters" : 934355
+  } ]
 }, {
   "_id" : "032",
-  "genres" : [ "value_250777", "value_164356" ],
-  "title" : "value_993633",
+  "genre" : "value_45097",
+  "title" : "value_84321",
   "type" : "Movie",
-  "writers" : [ "value_479028", "value_528870" ],
-  "year" : 589303,
-  "director_id" : "070"
+  "year" : 598052,
+  "criticisms" : [ {
+    "color" : "value_508118",
+    "journalist" : "value_700917",
+    "media" : [ {
+      "name" : "value_118712",
+      "url" : "value_815277"
+    } ]
+  }, {
+    "color" : "value_799067",
+    "journalist" : "value_404525",
+    "media" : "value_27075"
+  } ],
+  "director_id" : "055",
+  "rating" : [ {
+    "score" : 456155,
+    "voters" : 864180
+  } ]
 }, {
   "_id" : "033",
-  "genres" : [ "value_756148", "value_495155" ],
-  "title" : "value_101952",
+  "genres" : [ "value_900443", "value_260238" ],
+  "title" : "value_879985",
   "type" : "Movie",
-  "writers" : [ "value_857745", "value_437806" ],
-  "year" : 732646,
-  "director_id" : "054"
+  "writers" : [ "value_19790", "value_58094" ],
+  "year" : 474860,
+  "director_id" : "065"
 }, {
   "_id" : "034",
-  "genres" : [ "value_197682", "value_381059" ],
-  "title" : "value_473997",
+  "genres" : [ "value_418908", "value_407017" ],
+  "title" : "value_955864",
   "type" : "Movie",
-  "writers" : [ "value_132847", "value_657942" ],
-  "year" : 10768,
-  "director_id" : "064"
+  "writers" : [ "value_836783", "value_523471" ],
+  "year" : 847377,
+  "director_id" : "063"
 }, {
   "_id" : "035",
-  "genres" : [ "value_451754", "value_383242" ],
-  "title" : "value_882044",
+  "genres" : [ "value_854801", "value_969943" ],
+  "title" : "value_351239",
   "type" : "Movie",
-  "writers" : [ "value_467610", "value_25473" ],
-  "year" : 808653,
-  "director_id" : "066"
+  "writers" : [ "value_116071", "value_315939" ],
+  "year" : 137438,
+  "director_id" : "059"
 }, {
   "_id" : "036",
-  "genres" : [ "value_209531", "value_579280" ],
-  "title" : "value_80270",
+  "genres" : [ "value_100459", "value_812439" ],
+  "title" : "value_491056",
   "type" : "Movie",
-  "writers" : [ "value_294857", "value_78884" ],
-  "year" : 587725,
+  "writers" : [ "value_542136", "value_930450" ],
+  "year" : 700493,
   "director_id" : "059"
 }, {
   "_id" : "037",
-  "genres" : [ "value_140272", "value_422456" ],
-  "title" : "value_986513",
+  "genres" : [ "value_549906", "value_746341" ],
+  "title" : "value_842406",
   "type" : "Movie",
-  "writers" : [ "value_324028", "value_299073" ],
-  "year" : 859864,
-  "director_id" : "062"
+  "writers" : [ "value_387969", "value_231378" ],
+  "year" : 991045,
+  "director_id" : "059"
 }, {
   "_id" : "038",
-  "city" : "value_965049",
-  "country" : "value_377376",
-  "name" : "value_728217",
-  "type" : "Movietheater"
+  "genres" : [ "value_150367", "value_674337" ],
+  "title" : "value_231698",
+  "type" : "Movie",
+  "writers" : [ "value_671433", "value_242869" ],
+  "year" : 607951,
+  "director_id" : "066"
 }, {
   "_id" : "039",
-  "city" : "value_25978",
-  "country" : "value_428652",
-  "name" : "value_6600",
-  "type" : "Movietheater"
+  "genres" : [ "value_248348", "value_116655" ],
+  "title" : "value_436860",
+  "type" : "Movie",
+  "writers" : [ "value_86893", "value_168709" ],
+  "year" : 416987,
+  "director_id" : "067"
 }, {
   "_id" : "040",
-  "city" : "value_302921",
-  "country" : "value_398541",
-  "name" : "value_900470",
-  "type" : "Movietheater"
+  "genres" : [ "value_346484", "value_689722" ],
+  "title" : "value_186844",
+  "type" : "Movie",
+  "writers" : [ "value_869868", "value_928485" ],
+  "year" : 748088,
+  "director_id" : "057"
 }, {
   "_id" : "041",
-  "city" : "value_689793",
-  "country" : "value_334258",
-  "name" : "value_944432",
-  "type" : "Movietheater"
+  "genres" : [ "value_930113", "value_283458" ],
+  "title" : "value_966622",
+  "type" : "Movie",
+  "writers" : [ "value_753837", "value_112357" ],
+  "year" : 145196,
+  "director_id" : "060"
 }, {
   "_id" : "042",
-  "city" : "value_929194",
-  "country" : "value_718458",
-  "name" : "value_94780",
+  "city" : "value_621144",
+  "country" : "value_586553",
+  "name" : "value_45668",
   "type" : "Movietheater"
 }, {
   "_id" : "043",
-  "city" : "value_307914",
-  "country" : "value_922693",
-  "name" : "value_534401",
+  "city" : "value_181786",
+  "country" : "value_914654",
+  "name" : "value_245318",
   "type" : "Movietheater"
 }, {
   "_id" : "044",
-  "city" : "value_571393",
-  "country" : "value_221277",
-  "name" : "value_67775",
+  "city" : "value_458814",
+  "country" : "value_480078",
+  "name" : "value_390298",
   "type" : "Movietheater"
 }, {
   "_id" : "045",
-  "city" : "value_71905",
-  "country" : "value_429805",
-  "name" : "value_457601",
+  "city" : "value_786473",
+  "country" : "value_551594",
+  "name" : "value_35060",
   "type" : "Movietheater"
 }, {
   "_id" : "046",
-  "city" : "value_647408",
-  "country" : "value_551537",
-  "name" : "value_433982",
-  "roomNumbers" : 732715,
+  "city" : "value_721481",
+  "country" : "value_205049",
+  "name" : "value_37841",
   "type" : "Movietheater"
 }, {
   "_id" : "047",
-  "city" : "value_931412",
-  "country" : "value_507120",
-  "name" : "value_503140",
-  "roomNumbers" : 613986,
+  "city" : "value_934854",
+  "country" : "value_916525",
+  "name" : "value_775333",
   "type" : "Movietheater"
 }, {
   "_id" : "048",
-  "city" : "value_342314",
-  "country" : "value_125528",
-  "name" : "value_207213",
-  "roomNumbers" : 17633,
+  "city" : "value_174672",
+  "country" : "value_984664",
+  "name" : "value_536508",
   "type" : "Movietheater"
 }, {
   "_id" : "049",
-  "city" : "value_5392",
-  "country" : "value_86554",
-  "name" : "value_715048",
-  "roomNumbers" : 951650,
+  "city" : "value_940077",
+  "country" : "value_494658",
+  "name" : "value_861077",
+  "roomNumbers" : 83013,
   "type" : "Movietheater"
 }, {
   "_id" : "050",
-  "city" : "value_298408",
-  "country" : "value_741456",
-  "name" : "value_373820",
-  "roomNumbers" : 410965,
+  "city" : "value_123656",
+  "country" : "value_952652",
+  "name" : "value_549040",
+  "roomNumbers" : 384228,
   "type" : "Movietheater"
 }, {
   "_id" : "051",
-  "city" : "value_695165",
-  "country" : "value_49138",
-  "name" : "value_474681",
-  "roomNumbers" : 153376,
+  "city" : "value_522408",
+  "country" : "value_999993",
+  "name" : "value_560657",
+  "roomNumbers" : 840927,
   "type" : "Movietheater"
 }, {
   "_id" : "052",
-  "city" : "value_829366",
-  "country" : "value_627573",
-  "name" : "value_943693",
-  "roomNumbers" : 80833,
+  "city" : "value_374606",
+  "country" : "value_705928",
+  "name" : "value_644351",
+  "roomNumbers" : 227251,
   "type" : "Movietheater"
 }, {
   "_id" : "053",
-  "city" : "value_134333",
-  "country" : "value_476574",
-  "name" : "value_74507",
-  "roomNumbers" : 149355,
+  "city" : "value_370184",
+  "country" : "value_241735",
+  "name" : "value_896337",
+  "roomNumbers" : 765696,
   "type" : "Movietheater"
 }, {
   "_id" : "054",
-  "name" : "value_176458",
-  "type" : "Director",
-  "actor_movies" : [ ],
-  "directed_movies" : [ "035" ]
+  "city" : "value_467378",
+  "country" : "value_927500",
+  "name" : "value_938034",
+  "roomNumbers" : 529400,
+  "type" : "Movietheater"
 }, {
   "_id" : "055",
-  "name" : "value_967952",
+  "name" : "value_630569",
   "type" : "Director",
-  "actor_movies" : [ "012", "031" ],
-  "directed_movies" : [ "014", "007" ]
+  "actor_movies" : [ "025" ],
+  "directed_movies" : [ "001", "023", "022" ]
 }, {
   "_id" : "056",
-  "name" : "value_5463",
+  "name" : "value_603435",
   "type" : "Director",
-  "actor_movies" : [ "011", "026", "023" ],
-  "directed_movies" : [ "009", "034", "013", "016" ]
+  "actor_movies" : [ "016" ],
+  "directed_movies" : [ "011", "009", "020", "012" ]
 }, {
   "_id" : "057",
-  "name" : "value_81361",
+  "name" : "value_466345",
   "type" : "Director",
-  "actor_movies" : [ "018", "006" ],
-  "directed_movies" : [ ]
+  "actor_movies" : [ "018" ],
+  "directed_movies" : [ "002", "012" ]
 }, {
   "_id" : "058",
-  "name" : "value_805126",
+  "name" : "value_865958",
   "type" : "Director",
   "actor_movies" : [ ],
-  "directed_movies" : [ "010", "017" ]
+  "directed_movies" : [ "015", "022" ]
 }, {
   "_id" : "059",
-  "name" : "value_240954",
+  "name" : "value_178710",
   "type" : "Director",
-  "actor_movies" : [ "030", "021", "033" ],
-  "directed_movies" : [ "017", "035", "035" ]
+  "actor_movies" : [ "021", "003", "034" ],
+  "directed_movies" : [ "032", "033", "029", "029" ]
 }, {
   "_id" : "060",
-  "name" : "value_566842",
+  "name" : "value_132158",
   "type" : "Director",
-  "actor_movies" : [ "029", "004", "025" ],
-  "directed_movies" : [ "005", "008", "032" ]
+  "directed_movies" : [ "016", "031", "041" ]
 }, {
   "_id" : "061",
-  "name" : "value_251783",
+  "name" : "value_768293",
   "type" : "Director",
-  "actor_movies" : [ ],
-  "directed_movies" : [ ]
+  "directed_movies" : [ "026", "034" ]
 }, {
   "_id" : "062",
-  "name" : "value_132017",
+  "name" : "value_507383",
   "type" : "Director",
-  "actor_movies" : [ "012" ],
-  "directed_movies" : [ "033" ]
+  "directed_movies" : [ "010" ]
 }, {
   "_id" : "063",
-  "name" : "value_702327",
+  "name" : "value_565706",
   "type" : "Director",
-  "directed_movies" : [ "017" ]
+  "directed_movies" : [ "015" ]
 }, {
   "_id" : "064",
-  "name" : "value_935690",
+  "name" : "value_337732",
   "type" : "Director",
-  "directed_movies" : [ "014" ]
+  "directed_movies" : [ ]
 }, {
   "_id" : "065",
-  "name" : "value_658329",
+  "name" : "value_854218",
   "type" : "Director",
-  "directed_movies" : [ "037" ]
+  "directed_movies" : [ "023" ]
 }, {
   "_id" : "066",
-  "name" : "value_230635",
+  "name" : "value_1726",
   "type" : "Director",
-  "directed_movies" : [ "019" ]
+  "directed_movies" : [ "022", "009" ]
 }, {
   "_id" : "067",
-  "name" : "value_466757",
+  "name" : "value_152643",
   "type" : "Director",
-  "directed_movies" : [ ]
+  "directed_movies" : [ "005", "021", "028" ]
 }, {
   "_id" : "068",
-  "name" : "value_2228",
+  "name" : "value_891562",
   "type" : "Director",
-  "directed_movies" : [ "011", "017", "036" ]
+  "directed_movies" : [ "039", "006", "020", "029" ]
 }, {
   "_id" : "069",
-  "name" : "value_729513",
+  "name" : "value_527943",
   "type" : "Director",
-  "directed_movies" : [ "016" ]
-}, {
-  "_id" : "070",
-  "name" : "value_680221",
-  "type" : "Director",
-  "directed_movies" : [ ]
+  "directed_movies" : [ "008", "003" ]
 } ]

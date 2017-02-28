@@ -50,6 +50,7 @@ public class MongoDbClient extends MongoClient implements DbClient
 			// For each entity detected insert all its objects as a collection
 			for (String collName : collections.keySet())
 			{
+				dropDatabase(collName);
 				MongoCollection<Document> collection = db.getCollection(collName);
 				collection.insertMany(collections.get(collName));
 			}

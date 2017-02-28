@@ -1,63 +1,96 @@
-function() {
-function flatten_schema (obj , interesting_keys)
+function()
 {
-    var retschema = '';
-
-    function _search_string_in_array(str, strArray) {
-        for (var j=0; j<strArray.length; j++) {
-            if (strArray[j].match(str)) return j;
-        }
-        return -1;
-    }
-
-    function _complex_obj(obj, output_keys)
+	function flatten_schema_str(obj, interesting_keys)
+	{
+		return JSON.stringify(flatten_schema(obj,interesting_keys));
+	}
+	
+    function flatten_schema (obj , interesting_keys)
     {
-        var _retschema = '';
-        Object.keys(obj).sort().forEach(function (key) {
-            //if (!obj.hasOwnProperty(key))
-            //    return;
+        var retschema = null;
 
-            if (output_keys)
+        function _search_string_in_array(str, strArray)
+        {
+        	return !strArray.every(function (s)
             {
-                _retschema += key + ':';
+        		return !s.toLowerCase().match(str);
+        	});
+        }
 
-                if ((typeof interesting_keys !== 'undefined')
-                    && (-1 !== _search_string_in_array(key, interesting_keys)))
-                    _retschema += '"' + escape(obj[key]) + '"';
-            }
+        function _complex_obj(obj, asObject)
+        {
+            var _retschema;
+            if (asObject)
+            	_retschema = {};
+            else
+            	_retschema = [];
+            
+            Object.keys(obj).sort().forEach(function (key)
+            {
+                //if (!obj.hasOwnProperty(key))
+                //    return;
+                if (asObject)
+                {
+                    if ((typeof interesting_keys !== 'undefined')
+                        && _search_string_in_array(key, interesting_keys))
+                        _retschema[key] = obj[key];
+                    else
+                    	_retschema[key] = flatten_schema(obj[key]);
+                }
+                else
+                	_retschema.push(flatten_schema(obj[key]));
+            });
 
-            _retschema += flatten_schema(obj[key]);
-        });
+            return _retschema;
+        };
 
-        return _retschema;
-    };
+        // Array
+        if (Array.isArray(obj))
+        {
+        	if (obj.length == 0)
+        		retschema = [];
+        	else
+        	{
+        		// See if we can produce just one array object with one inside type (homogeneous)
+        		var schemas = obj.map(function (e) { return flatten_schema(e); });
 
-    // Array
-    if (obj instanceof Array)
-    {
-        retschema += '[' + _complex_obj(obj, false) + ']';
-    } // null
-    else if (obj === null)
-    {
-        retschema += '0';
-    } // Date
-    else if (obj instanceof Date)
-    {
-        retschema += 'd';
-    }// Object
-    else if ((typeof obj) === 'object')
-    {
-        retschema += '{' + _complex_obj(obj, true) + '}';
+        		var str_schema_0 = JSON.stringify(schemas[0]);
+        		if (obj.length == 1 || schemas.every(function (e) { return JSON.stringify(e) == str_schema_0; }))
+        			retschema = [ schemas[0] ];
+        		else
+        			retschema = schemas;
+        	}
+        } // null
+        else if (obj === null)
+        {
+            retschema = null;
+        } // Date
+        else if (obj instanceof Date)
+        {
+            retschema = new Date();
+        }// Object
+        else if ((typeof obj) == 'object')
+        {
+            retschema = _complex_obj(obj, true);
+        }
+        // Other
+        else if ((typeof obj) == 'number')
+        {
+        	retschema = 0;
+        } else if ((typeof obj == 'boolean'))
+        {
+        	retschema = true;
+      	} else if ((typeof obj == 'string'))
+        {
+            retschema = 's';
+        }
+
+        return retschema;
     }
-    // Other
-    else
-    {
-        // number, string, boolean
-        retschema += (typeof obj)[0];
-    }
 
-    return retschema;
-}
 
-  emit(flatten_schema(this,['type']), this._id);
+//    var schema = flatten_schema_str(doc, ['type']);
+//      emit(flatten_schema(this,['type']), this._id);
+    var schema = flatten_schema_str(this, ['type']);
+    emit(schema, {schema: schema, count: 1});
 }
