@@ -14,6 +14,7 @@ import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.schemainference.NoSQLSchema.Property;
 import weka.classifiers.Classifier;
 import weka.classifiers.trees.REPTree;
 import weka.core.Attribute;
@@ -29,15 +30,17 @@ public class Main {
 		return classifier;
 	}
 	
-	public static Map<String, List<String>> getClasses(NoSQLSchema schema){
+	public static Map<String, List<String>> getClasses(NoSQLSchema schema)
+	{
 		Map<String, List<String>> classes = new HashMap<String, List<String>>();
 		
-		for (Entity entity: schema.getEntities()){
-			for (EntityVersion entityVersion: entity.getEntityversions()){
-
+		for (Entity entity: schema.getEntities())
+		{
+			for (EntityVersion entityVersion: entity.getEntityversions())
+			{
 				// Get List of properties Names
 				List<String> properties = entityVersion.getProperties().stream()
-						.map( x -> x.getName())
+						.map(Property::getName)
 						.collect(Collectors.toList());
 								
 				// Add current Entity Version to entities Map
@@ -45,8 +48,8 @@ public class Main {
 				classes.put(key, properties);
 			}
 		}
-		return classes;
 
+		return classes;
 	}
 	
 	public static Map<String, int[]> one_hot(Map<String, List<String>> classes, List<String> featuresList){
@@ -77,7 +80,8 @@ public class Main {
 	
 	
 	
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 		ModelLoader<NoSQLSchema> loader = new ModelLoader<NoSQLSchema>(NoSQLSchemaPackage.eINSTANCE);
 		NoSQLSchema schema = loader.load(new File("model/mongoMovies3.xmi"));
 		
@@ -98,8 +102,7 @@ public class Main {
 		int maxNumFeatures = featuresList.size();
 		
 		// Encode classes into binary vectors
-		Map<String, int[]> values = one_hot(classes, featuresList);
-		
+		Map<String, int[]> values = one_hot(classes, featuresList);	
 		
 		// Define Weka Instances Model
 		ArrayList<Attribute> atts = new ArrayList<Attribute>();
