@@ -1,4 +1,4 @@
-package es.um.nosql.schemainference.attic.utils;
+package es.um.nosql.schemainference.decisiontree.utils;
 
 import java.io.File;
 import java.util.Map;
