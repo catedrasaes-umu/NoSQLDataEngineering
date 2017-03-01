@@ -19,7 +19,7 @@ import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.schemainference.NoSQLSchema.Property;
 import weka.classifiers.Classifier;
-import weka.classifiers.trees.REPTree;
+import weka.classifiers.trees.J48;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instance;
@@ -27,8 +27,9 @@ import weka.core.Instances;
 
 public class Main {
 
-	public static Classifier generateTree(Instances train) throws Exception{
-		Classifier classifier = new REPTree();
+	public static Classifier generateTree(Instances train) throws Exception{	
+		J48 classifier = new J48();
+		classifier.setUnpruned(true);
 		classifier.buildClassifier(train);
 		return classifier;
 	}
@@ -82,6 +83,7 @@ public class Main {
 	}
 	
 	
+<<<<<<< 6a6a498d0ee31d699384c248e9ef9e2d786246a4:attic/es.um.nosql.schemainference.decisiontree/src/es/um/nosql/schemainference/decisiontree/utils/Main.java
 	
 	public static void main(String[] args)
 	{
@@ -106,28 +108,43 @@ public class Main {
 		
 		// Encode classes into binary vectors
 		Map<String, int[]> values = one_hot(classes, featuresList);	
+
+    }
+        
+    public static ArrayList<Attribute> get_weka_attributes(List<String> classes, List<String> features){
+		// Count properties
+		int maxNumFeatures = features.size();
+
+		// Define Nominal values for features fields	
+		List<String> f_values = Arrays.asList(new String[]{"1","0"});
 		
 		// Define Weka Instances Model
 		ArrayList<Attribute> atts = new ArrayList<Attribute>();
 		for (int i = 0; i < maxNumFeatures; i++){
-			Attribute attribute = new Attribute("f"+i);
+			Attribute attribute = new Attribute(features.get(i), f_values);
 			atts.add(attribute);
 		}
-
-		Attribute tag = new Attribute("tag", Arrays.asList(classes.keySet().toArray(new String[num_classes])));		
+		Attribute tag = new Attribute("tag", classes);	
 		atts.add(tag);
+		return atts;
 		
+	}
+	
+	public static Instances getDataset(ArrayList<Attribute> attributes, List<String> classes, Map<String, int[]> binary_vectors){
 		// Build a Dataset from Weka Attributes 
-		Instances dataset = new Instances("Train", atts, num_classes);
+		int num_classes = classes.size();
+		Instances dataset = new Instances("Train", attributes, num_classes);
+		Attribute tag = attributes.get(attributes.size() - 1);
 
 		// For each classes, create a Weka Instance and add it to the dataset
-		for (String name: values.keySet()){
+		for (String name: classes){
 			// TODO: Update to Class Weight
 			double weight = 1.0; 
-			int[] vector = values.get(name);
+			int[] vector = binary_vectors.get(name);
 			Instance ints = new DenseInstance(vector.length + 1);
+			
 			for (int i = 0; i < vector.length; i++){
-				ints.setValue(atts.get(i), vector[i]);
+				ints.setValue(attributes.get(i), String.valueOf(vector[i]));
 			}
 			
 			ints.setValue(tag, name);
@@ -135,16 +152,51 @@ public class Main {
 		}
 
 		dataset.setClass(tag);
-		System.out.println(dataset.	toSummaryString());
+		return dataset;
+	}
+	
+	public static void main(String[] args) {
+		ModelLoader<NoSQLSchema> loader = new ModelLoader<NoSQLSchema>(NoSQLSchemaPackage.eINSTANCE);
+		NoSQLSchema schema = loader.load(new File("model/mongoMovies3.xmi"));
+		
+		// Get list of classes and list of their properties
+		Map<String, List<String>> classes = getClasses(schema);
+		
+		// Count classes
+		int num_classes = classes.size();
+
+		// Get List of properties names
+		Set<String> featuresNames = new HashSet<String>();		
+		for (List<String> list : classes.values()){
+			featuresNames.addAll(list);
+		}
+		
+		List<String> featuresList = Arrays.asList(featuresNames.toArray(new String[featuresNames.size()]));		
+		List<String> classesList = Arrays.asList(classes.keySet().toArray(new String[num_classes]));
+		
+		// Encode classes into binary vectors
+		Map<String, int[]> binary_vectors = one_hot(classes, featuresList);
+		
+		// Build Attribute models for weka
+		ArrayList<Attribute> atts = get_weka_attributes(classesList, featuresList);
+		Attribute tag = atts.get(atts.size() - 1);
+		
+		// Generate Dataset
+		Instances dataset = getDataset(atts, classesList, binary_vectors);
+
+		// Print Datset
+		System.out.println(dataset.toSummaryString());
+		
 		
 		
 		try {
+			// Get Classification Tree 
 			Classifier tree = generateTree(dataset);
+			// Print Tree stats
 			System.out.println(tree);
 			System.out.println(dataset.numClasses());
 			for (int i = 0; i < dataset.numInstances(); i++){
-				System.out.println(dataset.get(i));
-				System.out.println(tree.classifyInstance(dataset.get(i)));
+				System.out.println(dataset.get(i).stringValue(tag)+": "+ tree.classifyInstance(dataset.get(i)));
 			}
 		} 
 		
