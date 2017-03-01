@@ -9,7 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.function.Function;
-import java.util.function.Supplier;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
@@ -81,35 +80,6 @@ public class Main {
 		
 		return result;
 	}
-	
-	
-<<<<<<< 6a6a498d0ee31d699384c248e9ef9e2d786246a4:attic/es.um.nosql.schemainference.decisiontree/src/es/um/nosql/schemainference/decisiontree/utils/Main.java
-	
-	public static void main(String[] args)
-	{
-		ModelLoader<NoSQLSchema> loader = new ModelLoader<NoSQLSchema>(NoSQLSchemaPackage.eINSTANCE);
-		NoSQLSchema schema = loader.load(new File("model/mongoMovies3.xmi"));
-		
-		// Get list of classes and list of their properties
-		Map<String, List<String>> classes = getClasses(schema);
-		
-		// Count classes
-		int num_classes = classes.size();
-
-		// Get List of properties names
-		Set<String> featuresNames = new HashSet<String>();		
-		for (List<String> list : classes.values()){
-			featuresNames.addAll(list);
-		}
-		List<String> featuresList = Arrays.asList(featuresNames.toArray(new String[featuresNames.size()]));
-		
-		// Count properties
-		int maxNumFeatures = featuresList.size();
-		
-		// Encode classes into binary vectors
-		Map<String, int[]> values = one_hot(classes, featuresList);	
-
-    }
         
     public static ArrayList<Attribute> get_weka_attributes(List<String> classes, List<String> features){
 		// Count properties
