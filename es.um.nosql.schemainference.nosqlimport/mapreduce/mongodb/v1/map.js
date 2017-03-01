@@ -88,9 +88,7 @@ function()
         return retschema;
     }
 
+    var schema = flatten_schema_str(this, []);
 
-//    var schema = flatten_schema_str(doc, ['type']);
-//      emit(flatten_schema(this,['type']), this._id);
-    var schema = flatten_schema_str(this, ['type']);
     emit(schema, {schema: schema, count: 1});
 }
