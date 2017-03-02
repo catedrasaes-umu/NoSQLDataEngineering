@@ -26,7 +26,8 @@ import weka.core.Instances;
 
 public class Main {
 
-	public static Classifier generateTree(Instances train) throws Exception{	
+	public static Classifier generateTree(Instances train) throws Exception
+    {
 		J48 classifier = new J48();
 		classifier.setUnpruned(true);
 		classifier.buildClassifier(train);
@@ -66,11 +67,13 @@ public class Main {
 		int vector_size = features.size(); // Features + Tag
 		
 		String[] list_classes = classes.keySet().toArray(new String[classes.size()]);
-		for (int i=0; i < list_classes.length; i++){
+		for (int i=0; i < list_classes.length; i++)
+        {
 			int[] base = new int[vector_size];
 			String tag = list_classes[i];
 			List<String> current_features = classes.get(tag);
-			for (String feature: current_features){
+			for (String feature: current_features)
+            {
 				int index = features.get(feature);
 				base[index] = 1;
 			}
@@ -80,8 +83,9 @@ public class Main {
 		
 		return result;
 	}
-        
-    public static ArrayList<Attribute> get_weka_attributes(List<String> classes, List<String> features){
+
+    public static ArrayList<Attribute> get_weka_attributes(List<String> classes, List<String> features)
+    {
 		// Count properties
 		int maxNumFeatures = features.size();
 
@@ -90,7 +94,8 @@ public class Main {
 		
 		// Define Weka Instances Model
 		ArrayList<Attribute> atts = new ArrayList<Attribute>();
-		for (int i = 0; i < maxNumFeatures; i++){
+		for (int i = 0; i < maxNumFeatures; i++)
+        {
 			Attribute attribute = new Attribute(features.get(i), f_values);
 			atts.add(attribute);
 		}
@@ -100,7 +105,8 @@ public class Main {
 		
 	}
 	
-	public static Instances getDataset(ArrayList<Attribute> attributes, List<String> classes, Map<String, int[]> binary_vectors){
+	public static Instances getDataset(ArrayList<Attribute> attributes, List<String> classes, Map<String, int[]> binary_vectors)
+    {
 		// Build a Dataset from Weka Attributes 
 		int num_classes = classes.size();
 		Instances dataset = new Instances("Train", attributes, num_classes);
@@ -125,7 +131,8 @@ public class Main {
 		return dataset;
 	}
 	
-	public static void main(String[] args) {
+	public static void main(String[] args)
+    {
 		ModelLoader<NoSQLSchema> loader = new ModelLoader<NoSQLSchema>(NoSQLSchemaPackage.eINSTANCE);
 		NoSQLSchema schema = loader.load(new File("model/mongoMovies3.xmi"));
 		
