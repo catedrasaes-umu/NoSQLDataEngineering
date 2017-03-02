@@ -102,7 +102,6 @@ public class Main {
 		Attribute tag = new Attribute("tag", classes);	
 		atts.add(tag);
 		return atts;
-		
 	}
 	
 	public static Instances getDataset(ArrayList<Attribute> attributes, List<String> classes, Map<String, int[]> binary_vectors)
@@ -113,13 +112,15 @@ public class Main {
 		Attribute tag = attributes.get(attributes.size() - 1);
 
 		// For each classes, create a Weka Instance and add it to the dataset
-		for (String name: classes){
+		for (String name: classes)
+		{
 			// TODO: Update to Class Weight
 			double weight = 1.0; 
 			int[] vector = binary_vectors.get(name);
 			Instance ints = new DenseInstance(vector.length + 1);
 			
-			for (int i = 0; i < vector.length; i++){
+			for (int i = 0; i < vector.length; i++)
+			{
 				ints.setValue(attributes.get(i), String.valueOf(vector[i]));
 			}
 			
@@ -144,7 +145,8 @@ public class Main {
 
 		// Get List of properties names
 		Set<String> featuresNames = new HashSet<String>();		
-		for (List<String> list : classes.values()){
+		for (List<String> list : classes.values())
+		{
 			featuresNames.addAll(list);
 		}
 		
@@ -163,7 +165,6 @@ public class Main {
 
 		// Print Datset
 		System.out.println(dataset.toSummaryString());
-		
 		
 		
 		try {

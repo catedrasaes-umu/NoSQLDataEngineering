@@ -17,14 +17,14 @@ public class MongoDBStreamAdapter extends AbstractStreamAdapter
 		Stream<JsonObject> result = Stream.empty();
 		JsonParser parser = new JsonParser();
 
-		for (String type : mapRedMap.keySet())
-			result = Stream.concat(result, StreamSupport.stream(mapRedMap.get(type).spliterator(), false).map(doc ->
-			{
-				JsonObject jObj = (JsonObject)(parser).parse(doc.get("_id").toString());
-				jObj.addProperty("type", type);
-
-				return jObj;
-			}));
+		result = mapRedMap.entrySet().stream().reduce(Stream.empty(), (s,e) ->
+					StreamSupport.stream(e.getValue().spliterator(),false).map(doc ->
+					{
+						JsonObject jObj = (JsonObject)(parser).parse(doc.get("_id").toString());
+						jObj.addProperty("type", e.getKey());
+						return jObj;
+					}),
+					Stream::concat);
 
 		return result;
 	}
