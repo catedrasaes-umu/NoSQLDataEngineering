@@ -36,7 +36,8 @@ public class NoSQLSchemaSerializer
 
 		StringBuilder result = new StringBuilder();
 
-		result.append("NoSQLSchema name:" + theSchema.getName() + System.lineSeparator());
+		result.append("NoSQLSchema name:" + theSchema.getName()
+			+ System.lineSeparator());
 
 		for (Entity entity : theSchema.getEntities())
 			result.append(serializePretty(entity, TAB));
