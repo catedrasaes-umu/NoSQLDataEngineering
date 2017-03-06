@@ -1,6 +1,7 @@
 package es.um.nosql.schemainference.util.emf;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate;
 import es.um.nosql.schemainference.NoSQLSchema.Association;
@@ -17,10 +18,8 @@ import es.um.nosql.schemainference.NoSQLSchema.Type;
 public class NoSQLSchemaSerializer
 {
 	private static NoSQLSchemaSerializer instance;
-
-	private static final char ENDLINE = '\n';
-
-	private static final char TAB = '\t';
+	
+	private static final String TAB = "\t";
 
 	public static NoSQLSchemaSerializer getInstance()
 	{
@@ -35,13 +34,12 @@ public class NoSQLSchemaSerializer
 		if (theSchema == null)
 			return null;
 
-		String tabs = new StringBuilder(TAB).toString();
 		StringBuilder result = new StringBuilder();
 
-		result.append("NoSQLSchema name:" + theSchema.getName() + ENDLINE);
+		result.append("NoSQLSchema name:" + theSchema.getName() + System.lineSeparator());
 
 		for (Entity entity : theSchema.getEntities())
-			result.append(serializePretty(entity, tabs));
+			result.append(serializePretty(entity, TAB));
 
 		return result.toString();
 	}
@@ -57,14 +55,13 @@ public class NoSQLSchemaSerializer
 			return null;
 
 		String tabs = defTabs + TAB;
-		StringBuilder result = new StringBuilder();
 
-		result.append(tabs + "Entity name:" + entity.getName() + ENDLINE);
-
-		for (EntityVersion eVersion : entity.getEntityversions())
-			result.append(serializePretty(eVersion, tabs));
-
-		return result.toString();
+		String result = tabs + "Entity name:" + entity.getName() + System.lineSeparator() 
+				 + entity.getEntityversions().stream()
+				 	.map(ev -> serializePretty(ev,tabs))
+				 	.collect(Collectors.joining(""));
+		
+		return result;
 	}
 
 	public String serializePretty(EntityVersion eVersion)
@@ -78,15 +75,14 @@ public class NoSQLSchemaSerializer
 			return null;
 
 		String tabs = defTabs + TAB;
-		StringBuilder result = new StringBuilder();
-
-		result.append(tabs + "EntityVersion versionId:" + eVersion.getVersionId() + ENDLINE);
 		String propertiesTabs = tabs + TAB;
 
-		for (Property property : eVersion.getProperties())
-			result.append(propertiesTabs + serialize(property) + ENDLINE);
-
-		return result.toString();
+		String result = tabs + "EntityVersion versionId:" + eVersion.getVersionId() + System.lineSeparator() 
+				 + eVersion.getProperties().stream()
+				 	.map(p -> propertiesTabs + serialize(p) + System.lineSeparator())
+				 	.collect(Collectors.joining(""));
+		
+		return result;
 	}
 
 	public String serialize(Property property)
@@ -109,7 +105,7 @@ public class NoSQLSchemaSerializer
 		if (attribute == null)
 			return null;
 
-		return "Attribute name:" + attribute.getName() + "," + serialize(attribute.getType());
+		return attribute.getName() + ":" + serialize(attribute.getType());
 	}
 
 	public String serialize(Type type)
@@ -120,9 +116,9 @@ public class NoSQLSchemaSerializer
 		StringBuilder result = new StringBuilder();
 
 		if (type instanceof PrimitiveType)
-			result.append("type:" + ((PrimitiveType)type).getName());
+			result.append(((PrimitiveType)type).getName());
 		if (type instanceof Tuple)
-			result.append("type:Tuple[" + serialize(((Tuple)type).getElements()) + "]");
+			result.append("Tuple[" + serialize(((Tuple)type).getElements()) + "]");
 
 		return result.toString();
 	}
@@ -132,19 +128,15 @@ public class NoSQLSchemaSerializer
 		if (typeList == null)
 			return null;
 
-		StringBuilder result = new StringBuilder();
+		String result = typeList.stream().map(type ->
+			{
+				if (type instanceof PrimitiveType)
+					return ((PrimitiveType)type).getName();
+				else // if (type instanceof Tuple)
+					return "Tuple[" + serialize(((Tuple)type).getElements()) + "]";
+			}).collect(Collectors.joining(";"));
 
-		for (int i = 0; i < typeList.size(); i++)
-		{
-			Type type = typeList.get(i);
-			if (type instanceof PrimitiveType)
-				result.append(((PrimitiveType)type).getName());
-			if (type instanceof Tuple)
-				result.append("Tuple[" + serialize(((Tuple)type).getElements()) + "]");
-			if (i != (typeList.size() - 1))
-				result.append(";");
-		}
-		return result.toString();
+		return result;
 	}
 
 	public String serialize(Association association)
@@ -155,7 +147,7 @@ public class NoSQLSchemaSerializer
 		StringBuilder result = new StringBuilder();
 
 		result.append(" name:" + association.getName() + ",");
-		result.append("lowerBound:" + association.getLowerBound() + ",upperBound:" + association.getUpperBound() + ",");
+		//result.append("lowerBound:" + association.getLowerBound() + ",upperBound:" + association.getUpperBound() + ",");
 
 		if (association instanceof Aggregate)
 		{
@@ -163,16 +155,13 @@ public class NoSQLSchemaSerializer
 			result.insert(0, "Aggregate");
 			result.append("refTo:");
 
-			for (int i = 0; i < aggregate.getRefTo().size(); i++)
-			{
-				EntityVersion eVersion = aggregate.getRefTo().get(i);
-				result.append(((Entity)eVersion.eContainer()).getName() + "_" + eVersion.getVersionId());
-				if (i != (aggregate.getRefTo().size() - 1))
-					result.append(",");
-			}
+			result.append(
+					aggregate.getRefTo().stream()
+					.map(ev ->
+						((Entity)ev.eContainer()).getName() + "_" + ev.getVersionId())
+					.collect(Collectors.joining()));
 		}
-
-		if (association instanceof Reference)
+		else if (association instanceof Reference)
 		{
 			Reference reference = (Reference)association;
 			result.insert(0, "Reference");
