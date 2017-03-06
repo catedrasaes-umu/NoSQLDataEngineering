@@ -7,6 +7,7 @@ import es.um.nosql.schemainference.NoSQLSchema.Association;
 import es.um.nosql.schemainference.NoSQLSchema.Attribute;
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
+import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType;
 import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.NoSQLSchema.Reference;
@@ -17,12 +18,75 @@ public class NoSQLSchemaSerializer
 {
 	private static NoSQLSchemaSerializer instance;
 
+	private static final char ENDLINE = '\n';
+
+	private static final char TAB = '\t';
+
 	public static NoSQLSchemaSerializer getInstance()
 	{
 		if (instance == null)
 			instance = new NoSQLSchemaSerializer();
 
 		return instance;
+	}
+
+	public String serializePretty(NoSQLSchema theSchema)
+	{
+		if (theSchema == null)
+			return null;
+
+		String tabs = new StringBuilder(TAB).toString();
+		StringBuilder result = new StringBuilder();
+
+		result.append("NoSQLSchema name:" + theSchema.getName() + ENDLINE);
+
+		for (Entity entity : theSchema.getEntities())
+			result.append(serializePretty(entity, tabs));
+
+		return result.toString();
+	}
+
+	public String SerializePretty(Entity entity)
+	{
+		return serializePretty(entity, "");
+	}
+
+	private String serializePretty(Entity entity, String defTabs)
+	{
+		if (entity == null)
+			return null;
+
+		String tabs = defTabs + TAB;
+		StringBuilder result = new StringBuilder();
+
+		result.append(tabs + "Entity name:" + entity.getName() + ENDLINE);
+
+		for (EntityVersion eVersion : entity.getEntityversions())
+			result.append(serializePretty(eVersion, tabs));
+
+		return result.toString();
+	}
+
+	public String serializePretty(EntityVersion eVersion)
+	{
+		return serializePretty(eVersion, "");
+	}
+
+	private String serializePretty(EntityVersion eVersion, String defTabs)
+	{
+		if (eVersion == null)
+			return null;
+
+		String tabs = defTabs + TAB;
+		StringBuilder result = new StringBuilder();
+
+		result.append(tabs + "EntityVersion versionId:" + eVersion.getVersionId() + ENDLINE);
+		String propertiesTabs = tabs + TAB;
+
+		for (Property property : eVersion.getProperties())
+			result.append(propertiesTabs + serialize(property) + ENDLINE);
+
+		return result.toString();
 	}
 
 	public String serialize(Property property)
