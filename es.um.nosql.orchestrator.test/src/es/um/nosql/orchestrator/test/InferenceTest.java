@@ -10,7 +10,7 @@ import es.um.nosql.schemainference.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.schemainference.nosqlimport.db.couchdb.CouchDBSchemaInference;
 import es.um.nosql.schemainference.nosqlimport.db.mongodb.MongoDBSchemaInference;
 
-public class Main
+public class InferenceTest
 {
 	private static final String COUCHDB_IP = "localhost";
 	private static final String MONGODB_IP = "localhost";

@@ -13,7 +13,7 @@ import es.um.nosql.schemainference.dbgenerator.db.couchdb.CouchDbAdapter;
 import es.um.nosql.schemainference.dbgenerator.db.mongodb.MongoDbAdapter;
 import es.um.nosql.schemainference.dbgenerator.generator.JsonGenerator;
 import es.um.nosql.schemainference.dbgenerator.utils.DbType;
-import es.um.nosql.schemainference.dbgenerator.utils.ModelLoader;
+import es.um.nosql.schemainference.util.emf.ModelLoader;
 
 public class DbGenController
 {
