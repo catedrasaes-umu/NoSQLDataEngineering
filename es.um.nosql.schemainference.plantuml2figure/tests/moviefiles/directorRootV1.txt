@@ -1,0 +1,69 @@
+File Director1
+@startuml
+skinparam backgroundColor transparent 
+skinparam class { 
+  BackgroundColor Blue \n
+  ArrowColor Blue 
+  BorderColor Red \n
+  FontSize 18 \n
+  FontName Arial \n
+}
+	    			  
+skinparam stereotypeCBackgroundColor Blue
+skinparam stereotypeCBorderColor SpringGreen
+
+Class Director1<<(R,Turquoise)>>{
+	<b> String _id
+	<b> String name
+	<b> String type
+}
+
+Director1 --> "[1..*] actor_movies" Movie
+
+Class Movie<<(E,Tomato)>>{
+	<b> String _id
+	<b> String genre
+	<b> String title
+	<b> String type
+	<b> int year
+	<b> int running_time
+	<b> String[] genres
+	<b> String[] writers
+	<i><color:Navy>ref Director director</color>
+}
+
+Movie *--> "[1..*] criticisms" Criticism
+
+Movie *--> "[1..*] prizes" Prize
+
+Movie *--> "[1..1] rating" Rating
+
+
+Class Criticism {
+	<b> String color
+	<b> String journalist
+	<b> String media
+}  
+
+Criticism *--> "[1..1] media" Media
+
+Class Media {
+	<b> String name
+	<b> String url
+}  
+
+Class Prize {
+	<b> String event
+	<b> String[] names
+	<b> int year
+	<b> String name
+}  
+
+Class Rating {
+	<b> int score
+	<b> int voters
+}  
+
+Director1 --> "[1..*] directed_movies" Movie
+
+@enduml
