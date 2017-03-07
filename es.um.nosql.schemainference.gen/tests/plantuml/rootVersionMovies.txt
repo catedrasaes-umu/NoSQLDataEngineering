@@ -340,8 +340,6 @@ Movie *--> "[1..*] criticisms" Criticism
 
 Movie *--> "[1..*] prizes" Prize
 
-Movie *--> "[1..*] prizes" Prize
-
 Movie *--> "[1..1] rating" Rating
 
 
@@ -353,12 +351,10 @@ Class Criticism {
 
 Criticism *--> "[1..1] media" Media
 
-
 Class Media {
 	<b> String name
 	<b> String url
 }  
-
 
 Class Prize {
 	<b> String event
@@ -366,14 +362,6 @@ Class Prize {
 	<b> int year
 	<b> String name
 }  
-
-
-Class Prize {
-	<b> String event
-	<b> String name
-	<b> int year
-}  
-
 
 Class Rating {
 	<b> int score
@@ -382,61 +370,6 @@ Class Rating {
 
 Director1 --> "[1..*] directed_movies" Movie
 
-Class Movie<<(E,Tomato)>>{
-	<b> String _id
-	<b> String genre
-	<b> String title
-	<b> String type
-	<b> int year
-	<b> int running_time
-	<b> String[] genres
-	<b> String[] writers
-	<i><color:Navy>ref Director director</color>
-}
-
-Movie *--> "[1..*] criticisms" Criticism
-
-Movie *--> "[1..*] prizes" Prize
-
-Movie *--> "[1..*] prizes" Prize
-
-Movie *--> "[1..1] rating" Rating
-
-
-Class Criticism {
-	<b> String color
-	<b> String journalist
-	<b> String media
-}  
-
-Criticism *--> "[1..1] media" Media
-
-
-Class Media {
-	<b> String name
-	<b> String url
-}  
-
-
-Class Prize {
-	<b> String event
-	<b> String[] names
-	<b> int year
-	<b> String name
-}  
-
-
-Class Prize {
-	<b> String event
-	<b> String name
-	<b> int year
-}  
-
-
-Class Rating {
-	<b> int score
-	<b> int voters
-}  
 @enduml
 
 File Director2
