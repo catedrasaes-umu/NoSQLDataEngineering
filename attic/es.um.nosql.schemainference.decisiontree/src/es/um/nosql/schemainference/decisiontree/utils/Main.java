@@ -1,6 +1,7 @@
 package es.um.nosql.schemainference.decisiontree.utils;
 
 import java.io.File;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -17,12 +18,15 @@ import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.schemainference.NoSQLSchema.Property;
+import es.um.nosql.schemainference.util.emf.ModelLoader;
+import es.um.nosql.schemainference.util.emf.NoSQLSchemaSerializer;
 import weka.classifiers.Classifier;
 import weka.classifiers.trees.J48;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
+import weka.core.converters.ArffSaver;
 
 public class Main {
 
@@ -30,6 +34,7 @@ public class Main {
     {
 		J48 classifier = new J48();
 		classifier.setUnpruned(true);
+		classifier.setMinNumObj(1);
 		classifier.buildClassifier(train);
 		return classifier;
 	}
@@ -42,9 +47,10 @@ public class Main {
 		{
 			for (EntityVersion entityVersion: entity.getEntityversions())
 			{
+				NoSQLSchemaSerializer noSQLSchemaSerializer = NoSQLSchemaSerializer.getInstance();
 				// Get List of properties Names
 				List<String> properties = entityVersion.getProperties().stream()
-						.map(Property::getName)
+						.map(x -> noSQLSchemaSerializer.serialize(x))
 						.collect(Collectors.toList());
 								
 				// Add current Entity Version to entities Map
@@ -162,17 +168,12 @@ public class Main {
 		
 		// Generate Dataset
 		Instances dataset = getDataset(atts, classesList, binary_vectors);
-
-		// Print Datset
-		System.out.println(dataset.toSummaryString());
-		
+				
 		
 		try {
 			// Get Classification Tree 
 			Classifier tree = generateTree(dataset);
-			// Print Tree stats
 			System.out.println(tree);
-			System.out.println(dataset.numClasses());
 			for (int i = 0; i < dataset.numInstances(); i++){
 				System.out.println(dataset.get(i).stringValue(tag)+": "+ tree.classifyInstance(dataset.get(i)));
 			}
