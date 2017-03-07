@@ -39,7 +39,7 @@ Movie *--> "[1..*] prizes" Prize
 Movie *--> "[1..1] rating" Rating
 
 
-Class Criticism {
+Class Criticism<<(E,Tomato)>>{
 	<b> String color
 	<b> String journalist
 	<b> String media
@@ -48,28 +48,20 @@ Class Criticism {
 Criticism *--> "[1..1] media" Media
 
 
-Class Media {
+Class Media<<(E,Tomato)>>{
 	<b> String name
 	<b> String url
 }  
 
 
-Class Prize {
+Class Prize<<(E,Tomato)>>{
 	<b> String event
 	<b> String[] names
 	<b> int year
 	<b> String name
 }  
 
-
-Class Prize {
-	<b> String event
-	<b> String name
-	<b> int year
-}  
-
-
-Class Rating {
+Class Rating<<(E,Tomato)>>{
 	<b> int score
 	<b> int voters
 }  

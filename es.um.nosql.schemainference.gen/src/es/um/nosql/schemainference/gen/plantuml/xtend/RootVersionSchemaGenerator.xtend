@@ -267,7 +267,7 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, Entity entAg)'''
      «ENDFOR»
   «ENDFOR»
 
-  Class «entAg.name.toFirstUpper» {
+  Class «entAg.name.toFirstUpper»<<(E,Tomato)>>{
   «FOR Attribute at2: at»
   	«analyzeAttribute(at2.type,at2.name,primsL, tuplesL,prims,tuples)»
   «ENDFOR»
