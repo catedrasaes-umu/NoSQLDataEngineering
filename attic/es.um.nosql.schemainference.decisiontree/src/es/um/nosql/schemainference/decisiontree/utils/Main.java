@@ -1,7 +1,6 @@
 package es.um.nosql.schemainference.decisiontree.utils;
 
 import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -19,7 +18,6 @@ import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.util.emf.ModelLoader;
 import es.um.nosql.schemainference.util.emf.NoSQLSchemaSerializer;
 import weka.classifiers.Classifier;
@@ -29,7 +27,6 @@ import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
-import weka.core.converters.ArffSaver;
 
 public class Main {
 
@@ -88,7 +85,7 @@ public class Main {
 			{
 				// Get List of properties Names
 				List<String> properties = entityVersion.getProperties().stream()
-						.map(x -> noSQLSchemaSerializer.serialize(x))
+						.map(NoSQLSchemaSerializer::serialize)
 						.collect(Collectors.toList());
 								
 				// Add current Entity Version to entities Map

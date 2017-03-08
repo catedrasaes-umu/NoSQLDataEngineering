@@ -17,19 +17,9 @@ import es.um.nosql.schemainference.NoSQLSchema.Type;
 
 public class NoSQLSchemaSerializer
 {
-	private static NoSQLSchemaSerializer instance;
-	
 	private static final String TAB = "\t";
 
-	public static NoSQLSchemaSerializer getInstance()
-	{
-		if (instance == null)
-			instance = new NoSQLSchemaSerializer();
-
-		return instance;
-	}
-
-	public String serializePretty(NoSQLSchema theSchema)
+	public static String serializePretty(NoSQLSchema theSchema)
 	{
 		if (theSchema == null)
 			return null;
@@ -45,12 +35,12 @@ public class NoSQLSchemaSerializer
 		return result.toString();
 	}
 
-	public String SerializePretty(Entity entity)
+	public static String serializePretty(Entity entity)
 	{
 		return serializePretty(entity, "");
 	}
 
-	private String serializePretty(Entity entity, String defTabs)
+	private static String serializePretty(Entity entity, String defTabs)
 	{
 		if (entity == null)
 			return null;
@@ -70,7 +60,7 @@ public class NoSQLSchemaSerializer
 		return serializePretty(eVersion, "");
 	}
 
-	private String serializePretty(EntityVersion eVersion, String defTabs)
+	private static String serializePretty(EntityVersion eVersion, String defTabs)
 	{
 		if (eVersion == null)
 			return null;
@@ -86,7 +76,7 @@ public class NoSQLSchemaSerializer
 		return result;
 	}
 
-	public String serialize(Property property)
+	public static String serialize(Property property)
 	{
 		if (property == null)
 			return null;
@@ -101,7 +91,7 @@ public class NoSQLSchemaSerializer
 		return result.toString();
 	}
 
-	public String serialize(Attribute attribute)
+	public static String serialize(Attribute attribute)
 	{
 		if (attribute == null)
 			return null;
@@ -109,7 +99,7 @@ public class NoSQLSchemaSerializer
 		return attribute.getName() + ":" + serialize(attribute.getType());
 	}
 
-	public String serialize(Type type)
+	public static String serialize(Type type)
 	{
 		if (type == null)
 			return null;
@@ -124,7 +114,7 @@ public class NoSQLSchemaSerializer
 		return result.toString();
 	}
 
-	public String serialize(List<Type> typeList)
+	public static String serialize(List<Type> typeList)
 	{
 		if (typeList == null)
 			return null;
@@ -140,7 +130,7 @@ public class NoSQLSchemaSerializer
 		return result;
 	}
 
-	public String serialize(Association association)
+	public static String serialize(Association association)
 	{
 		if (association == null)
 			return null;
