@@ -8,72 +8,20 @@ import es.um.nosql.schemainference.NoSQLSchema.Association;
 import es.um.nosql.schemainference.NoSQLSchema.Attribute;
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType;
 import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.NoSQLSchema.Reference;
 import es.um.nosql.schemainference.NoSQLSchema.Tuple;
 import es.um.nosql.schemainference.NoSQLSchema.Type;
 
-public class NoSQLSchemaSerializer
+public class Serializer
 {
-	private static final String TAB = "\t";
-
-	public static String serializePretty(NoSQLSchema theSchema)
-	{
-		if (theSchema == null)
-			return null;
-
-		StringBuilder result = new StringBuilder();
-
-		result.append("NoSQLSchema name:" + theSchema.getName()
-			+ System.lineSeparator());
-
-		for (Entity entity : theSchema.getEntities())
-			result.append(serializePretty(entity, TAB));
-
-		return result.toString();
-	}
-
-	public static String serializePretty(Entity entity)
-	{
-		return serializePretty(entity, "");
-	}
-
-	private static String serializePretty(Entity entity, String defTabs)
-	{
-		if (entity == null)
-			return null;
-
-		String tabs = defTabs + TAB;
-
-		String result = tabs + "Entity name:" + entity.getName() + System.lineSeparator() 
-				 + entity.getEntityversions().stream()
-				 	.map(ev -> serializePretty(ev,tabs))
-				 	.collect(Collectors.joining(""));
-		
-		return result;
-	}
-
-	public String serializePretty(EntityVersion eVersion)
-	{
-		return serializePretty(eVersion, "");
-	}
-
-	private static String serializePretty(EntityVersion eVersion, String defTabs)
+	public static String serialize(EntityVersion eVersion)
 	{
 		if (eVersion == null)
 			return null;
 
-		String tabs = defTabs + TAB;
-		String propertiesTabs = tabs + TAB;
-
-		String result = tabs + "EntityVersion versionId:" + eVersion.getVersionId() + System.lineSeparator() 
-				 + eVersion.getProperties().stream()
-				 	.map(p -> propertiesTabs + serialize(p) + System.lineSeparator())
-				 	.collect(Collectors.joining(""));
-		
-		return result;
+		return ((Entity)eVersion.eContainer()).getName() + "_" + eVersion.getVersionId();
 	}
 
 	public static String serialize(Property property)
@@ -108,7 +56,7 @@ public class NoSQLSchemaSerializer
 
 		if (type instanceof PrimitiveType)
 			result.append(((PrimitiveType)type).getName());
-		if (type instanceof Tuple)
+		else // if (type instanceof Tuple)
 			result.append("Tuple[" + serialize(((Tuple)type).getElements()) + "]");
 
 		return result.toString();
@@ -137,26 +85,25 @@ public class NoSQLSchemaSerializer
 
 		StringBuilder result = new StringBuilder();
 
-		result.append(" name:" + association.getName() + ",");
-		//result.append("lowerBound:" + association.getLowerBound() + ",upperBound:" + association.getUpperBound() + ",");
+		result.append(association.getName() + ":");
 
 		if (association instanceof Aggregate)
 		{
 			Aggregate aggregate = (Aggregate)association;
-			result.insert(0, "Aggregate");
-			result.append("refTo:");
+			result.append("[");
 
 			result.append(
 					aggregate.getRefTo().stream()
-					.map(ev ->
-						((Entity)ev.eContainer()).getName() + "_" + ev.getVersionId())
-					.collect(Collectors.joining()));
+					.map(ev -> serialize(ev))
+					.collect(Collectors.joining(";")));
+			result.append("]:[" + association.getLowerBound() + ".." + association.getUpperBound() + "]");
 		}
 		else if (association instanceof Reference)
 		{
 			Reference reference = (Reference)association;
-			result.insert(0, "Reference");
-			result.append("opposite:");
+			result.append(((Entity)reference.getRefTo()).getName());
+			result.append(":[" + association.getLowerBound() + ".." + association.getUpperBound() + "]:");
+			result.append("opp[");
 
 			Reference oppositeRef = reference.getOpposite();
 
@@ -164,11 +111,9 @@ public class NoSQLSchemaSerializer
 				result.append(oppositeRef);
 			else
 			{
-				result.append("(name:" + oppositeRef.getName() + ",");
-				result.append("lowerBound:" + oppositeRef.getLowerBound() + ",upperBound:" + oppositeRef.getUpperBound() + ",");
-				result.append("refTo:" + ((Entity)oppositeRef.getRefTo()).getName() + ")");
+				result.append(oppositeRef.getName() + ":" + ((Entity)oppositeRef.getRefTo()).getName());
+				result.append(":[" + oppositeRef.getLowerBound() + ".." + oppositeRef.getUpperBound() + "]]");
 			}
-			result.append(",refTo:" + ((Entity)reference.getRefTo()).getName());
 		}
 
 		return result.toString();
