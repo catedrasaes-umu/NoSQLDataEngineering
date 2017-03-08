@@ -23,7 +23,12 @@ public abstract class AbstractStreamAdapter
 	{
 		JsonObject result = new JsonObject();
 		JsonArray array = new JsonArray();
-		stream.forEach(elem -> array.add(elem));
+
+		try (Stream<JsonObject> copyOfAStream = stream)
+		{
+			copyOfAStream.forEach(elem -> array.add(elem));
+		}
+
 		result.add("rows", array);
 
 		return result;
@@ -32,7 +37,11 @@ public abstract class AbstractStreamAdapter
 	public JsonArray stream2JsonArray(Stream<JsonObject> stream)
 	{
 		JsonArray result = new JsonArray();
-		stream.forEach(elem -> result.add(elem));
+
+		try (Stream<JsonObject> copyOfAStream = stream)
+		{
+			copyOfAStream.forEach(elem -> result.add(elem));
+		};
 
 		return result;
 	}

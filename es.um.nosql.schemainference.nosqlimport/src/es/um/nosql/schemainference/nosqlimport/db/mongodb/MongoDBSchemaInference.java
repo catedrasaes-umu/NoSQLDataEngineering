@@ -72,7 +72,7 @@ public class MongoDBSchemaInference
 		}
 
 		Stream<JsonObject> result = adapter.adaptStream(mapRedMap);
-		mClient.close();
+		result = result.onClose(() -> { mClient.close();});
 
 		return result;
 	}
