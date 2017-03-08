@@ -18,6 +18,7 @@ import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.util.emf.ModelLoader;
 import es.um.nosql.schemainference.util.emf.NoSQLSchemaSerializer;
 import weka.classifiers.Classifier;
@@ -58,14 +59,13 @@ public class Main {
 	public static Map<String, Property> getProperties(NoSQLSchema schema)
 	{
 		Map<String, Property> properties = new HashMap<String, Property>();
-		NoSQLSchemaSerializer noSQLSchemaSerializer = NoSQLSchemaSerializer.getInstance();				
 		
 		for (Entity entity: schema.getEntities())
 		{
 			for (EntityVersion entityVersion: entity.getEntityversions())
 			{
 				for (Property property: entityVersion.getProperties()){
-					properties.put(noSQLSchemaSerializer.getInstance().serialize(property), property);
+					properties.put(NoSQLSchemaSerializer.serialize(property), property);
 				}
 			}
 		}
@@ -77,8 +77,6 @@ public class Main {
 	public static Map<String, List<String>> getClasses(NoSQLSchema schema)
 	{
 		Map<String, List<String>> classes = new HashMap<String, List<String>>();
-		NoSQLSchemaSerializer noSQLSchemaSerializer = NoSQLSchemaSerializer.getInstance();
-
 		for (Entity entity: schema.getEntities())
 		{
 			for (EntityVersion entityVersion: entity.getEntityversions())
