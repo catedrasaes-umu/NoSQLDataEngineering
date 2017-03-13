@@ -20,7 +20,7 @@ import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.util.emf.ModelLoader;
-import es.um.nosql.schemainference.util.emf.NoSQLSchemaSerializer;
+import es.um.nosql.schemainference.util.emf.Serializer;
 import weka.classifiers.trees.j48.ClassifierSplitModel;
 import weka.classifiers.trees.j48.ClassifierTree;
 import weka.core.Attribute;
@@ -64,7 +64,7 @@ public class Main {
 			for (EntityVersion entityVersion: entity.getEntityversions())
 			{
 				for (Property property: entityVersion.getProperties()){
-					properties.put(NoSQLSchemaSerializer.serialize(property), property);
+					properties.put(Serializer.serialize(property), property);
 				}
 			}
 		}
@@ -82,7 +82,7 @@ public class Main {
 			{
 				// Get List of properties Names
 				List<String> properties = entityVersion.getProperties().stream()
-						.map(NoSQLSchemaSerializer::serialize)
+						.map(Serializer::serialize)
 						.collect(Collectors.toList());
 								
 				// Add current Entity Version to entities Map
