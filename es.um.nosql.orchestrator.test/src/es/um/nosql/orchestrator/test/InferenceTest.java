@@ -38,7 +38,7 @@ public class InferenceTest
 
 		System.out.println("Starting BuildNoSQLSchema...");
 		BuildNoSQLSchema builder = new BuildNoSQLSchema();
-		builder.buildFromGsonArray(TABLENAME + "_2.xmi", jArray, COUCHDB_OUTPUT_MODEL);
+		builder.buildFromGsonArray(TABLENAME, jArray, COUCHDB_OUTPUT_MODEL);
 		System.out.println("BuildNoSQLSchema created: " + COUCHDB_OUTPUT_MODEL);
 	}
 
@@ -57,13 +57,30 @@ public class InferenceTest
 
 		System.out.println("Starting BuildNoSQLSchema...");
 		BuildNoSQLSchema builder = new BuildNoSQLSchema();
-		builder.buildFromGsonArray(TABLENAME + "_2.xmi", jArray, MONGODB_OUTPUT_MODEL);
+		builder.buildFromGsonArray(TABLENAME, jArray, MONGODB_OUTPUT_MODEL);
 		System.out.println("BuildNoSQLSchema created: " + MONGODB_OUTPUT_MODEL);
+	}
+
+	private static void prepareMongoDBSOFExample()
+	{
+		String stackOverflowTable = "stackoverflow";
+		String stackOverflowModel = MODELS_FOLDER + stackOverflowTable + "_SOF.xmi";
+
+		System.out.println("Starting inference...");
+		MongoDBSchemaInference inferrer = new MongoDBSchemaInference();
+		JsonArray jArray = inferrer.mapRed2Array(MONGODB_IP, stackOverflowTable, MONGODB_MAPREDUCE_FOLDER);
+		System.out.println("Inference finished.");
+
+		System.out.println("Starting BuildNoSQLSchema...");
+		BuildNoSQLSchema builder = new BuildNoSQLSchema();
+		builder.buildFromGsonArray(stackOverflowTable, jArray, stackOverflowModel);
+		System.out.println("BuildNoSQLSchema created: " + stackOverflowModel);
 	}
 
 	public static void main(String[] args) throws IOException
 	{
-		prepareCouchDBExample();
-		prepareMongoDBExample();
+//		prepareCouchDBExample();
+//		prepareMongoDBExample();
+		prepareMongoDBSOFExample();
 	}
 }
