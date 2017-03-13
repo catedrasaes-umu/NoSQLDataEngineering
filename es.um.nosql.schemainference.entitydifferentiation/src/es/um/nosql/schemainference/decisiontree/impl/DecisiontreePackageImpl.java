@@ -4,11 +4,11 @@ package es.um.nosql.schemainference.decisiontree.impl;
 
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
 
+import es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity;
 import es.um.nosql.schemainference.decisiontree.DecisionTreeNode;
 import es.um.nosql.schemainference.decisiontree.DecisionTrees;
 import es.um.nosql.schemainference.decisiontree.DecisiontreeFactory;
 import es.um.nosql.schemainference.decisiontree.DecisiontreePackage;
-import es.um.nosql.schemainference.decisiontree.DecisonTreeForEntity;
 import es.um.nosql.schemainference.decisiontree.IntermediateNode;
 import es.um.nosql.schemainference.decisiontree.LeafNode;
 
@@ -51,7 +51,7 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass decisonTreeForEntityEClass = null;
+	private EClass decisionTreeForEntityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -192,8 +192,8 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getDecisonTreeForEntity() {
-		return decisonTreeForEntityEClass;
+	public EClass getDecisionTreeForEntity() {
+		return decisionTreeForEntityEClass;
 	}
 
 	/**
@@ -201,8 +201,8 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDecisonTreeForEntity_Root() {
-		return (EReference)decisonTreeForEntityEClass.getEStructuralFeatures().get(0);
+	public EReference getDecisionTreeForEntity_Root() {
+		return (EReference)decisionTreeForEntityEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -210,8 +210,8 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getDecisonTreeForEntity_Entity() {
-		return (EReference)decisonTreeForEntityEClass.getEStructuralFeatures().get(1);
+	public EReference getDecisionTreeForEntity_Entity() {
+		return (EReference)decisionTreeForEntityEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -270,9 +270,9 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 		intermediateNodeEClass = createEClass(INTERMEDIATE_NODE);
 		createEReference(intermediateNodeEClass, INTERMEDIATE_NODE__CHECKED_PROPERTY);
 
-		decisonTreeForEntityEClass = createEClass(DECISON_TREE_FOR_ENTITY);
-		createEReference(decisonTreeForEntityEClass, DECISON_TREE_FOR_ENTITY__ROOT);
-		createEReference(decisonTreeForEntityEClass, DECISON_TREE_FOR_ENTITY__ENTITY);
+		decisionTreeForEntityEClass = createEClass(DECISION_TREE_FOR_ENTITY);
+		createEReference(decisionTreeForEntityEClass, DECISION_TREE_FOR_ENTITY__ROOT);
+		createEReference(decisionTreeForEntityEClass, DECISION_TREE_FOR_ENTITY__ENTITY);
 
 		decisionTreesEClass = createEClass(DECISION_TREES);
 		createEReference(decisionTreesEClass, DECISION_TREES__TREES);
@@ -323,12 +323,12 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 		initEClass(intermediateNodeEClass, IntermediateNode.class, "IntermediateNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getIntermediateNode_CheckedProperty(), theNoSQLSchemaPackage.getProperty(), null, "checkedProperty", null, 1, 1, IntermediateNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(decisonTreeForEntityEClass, DecisonTreeForEntity.class, "DecisonTreeForEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDecisonTreeForEntity_Root(), this.getDecisionTreeNode(), null, "root", null, 0, 1, DecisonTreeForEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getDecisonTreeForEntity_Entity(), theNoSQLSchemaPackage.getEntity(), null, "entity", null, 1, 1, DecisonTreeForEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(decisionTreeForEntityEClass, DecisionTreeForEntity.class, "DecisionTreeForEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getDecisionTreeForEntity_Root(), this.getDecisionTreeNode(), null, "root", null, 0, 1, DecisionTreeForEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDecisionTreeForEntity_Entity(), theNoSQLSchemaPackage.getEntity(), null, "entity", null, 1, 1, DecisionTreeForEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(decisionTreesEClass, DecisionTrees.class, "DecisionTrees", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getDecisionTrees_Trees(), this.getDecisonTreeForEntity(), null, "trees", null, 0, -1, DecisionTrees.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getDecisionTrees_Trees(), this.getDecisionTreeForEntity(), null, "trees", null, 0, -1, DecisionTrees.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

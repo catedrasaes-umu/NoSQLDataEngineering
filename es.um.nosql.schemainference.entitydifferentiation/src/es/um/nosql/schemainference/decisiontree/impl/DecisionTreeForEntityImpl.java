@@ -4,9 +4,9 @@ package es.um.nosql.schemainference.decisiontree.impl;
 
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 
+import es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity;
 import es.um.nosql.schemainference.decisiontree.DecisionTreeNode;
 import es.um.nosql.schemainference.decisiontree.DecisiontreePackage;
-import es.um.nosql.schemainference.decisiontree.DecisonTreeForEntity;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -19,19 +19,19 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Decison Tree For Entity</b></em>'.
+ * An implementation of the model object '<em><b>Decision Tree For Entity</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.schemainference.decisiontree.impl.DecisonTreeForEntityImpl#getRoot <em>Root</em>}</li>
- *   <li>{@link es.um.nosql.schemainference.decisiontree.impl.DecisonTreeForEntityImpl#getEntity <em>Entity</em>}</li>
+ *   <li>{@link es.um.nosql.schemainference.decisiontree.impl.DecisionTreeForEntityImpl#getRoot <em>Root</em>}</li>
+ *   <li>{@link es.um.nosql.schemainference.decisiontree.impl.DecisionTreeForEntityImpl#getEntity <em>Entity</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class DecisonTreeForEntityImpl extends MinimalEObjectImpl.Container implements DecisonTreeForEntity {
+public class DecisionTreeForEntityImpl extends MinimalEObjectImpl.Container implements DecisionTreeForEntity {
 	/**
 	 * The cached value of the '{@link #getRoot() <em>Root</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -57,7 +57,7 @@ public class DecisonTreeForEntityImpl extends MinimalEObjectImpl.Container imple
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected DecisonTreeForEntityImpl() {
+	protected DecisionTreeForEntityImpl() {
 		super();
 	}
 
@@ -68,7 +68,7 @@ public class DecisonTreeForEntityImpl extends MinimalEObjectImpl.Container imple
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return DecisiontreePackage.Literals.DECISON_TREE_FOR_ENTITY;
+		return DecisiontreePackage.Literals.DECISION_TREE_FOR_ENTITY;
 	}
 
 	/**
@@ -89,7 +89,7 @@ public class DecisonTreeForEntityImpl extends MinimalEObjectImpl.Container imple
 		DecisionTreeNode oldRoot = root;
 		root = newRoot;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DecisiontreePackage.DECISON_TREE_FOR_ENTITY__ROOT, oldRoot, newRoot);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DecisiontreePackage.DECISION_TREE_FOR_ENTITY__ROOT, oldRoot, newRoot);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -104,14 +104,14 @@ public class DecisonTreeForEntityImpl extends MinimalEObjectImpl.Container imple
 		if (newRoot != root) {
 			NotificationChain msgs = null;
 			if (root != null)
-				msgs = ((InternalEObject)root).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DecisiontreePackage.DECISON_TREE_FOR_ENTITY__ROOT, null, msgs);
+				msgs = ((InternalEObject)root).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DecisiontreePackage.DECISION_TREE_FOR_ENTITY__ROOT, null, msgs);
 			if (newRoot != null)
-				msgs = ((InternalEObject)newRoot).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DecisiontreePackage.DECISON_TREE_FOR_ENTITY__ROOT, null, msgs);
+				msgs = ((InternalEObject)newRoot).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DecisiontreePackage.DECISION_TREE_FOR_ENTITY__ROOT, null, msgs);
 			msgs = basicSetRoot(newRoot, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DecisiontreePackage.DECISON_TREE_FOR_ENTITY__ROOT, newRoot, newRoot));
+			eNotify(new ENotificationImpl(this, Notification.SET, DecisiontreePackage.DECISION_TREE_FOR_ENTITY__ROOT, newRoot, newRoot));
 	}
 
 	/**
@@ -125,7 +125,7 @@ public class DecisonTreeForEntityImpl extends MinimalEObjectImpl.Container imple
 			entity = (Entity)eResolveProxy(oldEntity);
 			if (entity != oldEntity) {
 				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DecisiontreePackage.DECISON_TREE_FOR_ENTITY__ENTITY, oldEntity, entity));
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DecisiontreePackage.DECISION_TREE_FOR_ENTITY__ENTITY, oldEntity, entity));
 			}
 		}
 		return entity;
@@ -149,7 +149,7 @@ public class DecisonTreeForEntityImpl extends MinimalEObjectImpl.Container imple
 		Entity oldEntity = entity;
 		entity = newEntity;
 		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DecisiontreePackage.DECISON_TREE_FOR_ENTITY__ENTITY, oldEntity, entity));
+			eNotify(new ENotificationImpl(this, Notification.SET, DecisiontreePackage.DECISION_TREE_FOR_ENTITY__ENTITY, oldEntity, entity));
 	}
 
 	/**
@@ -160,7 +160,7 @@ public class DecisonTreeForEntityImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case DecisiontreePackage.DECISON_TREE_FOR_ENTITY__ROOT:
+			case DecisiontreePackage.DECISION_TREE_FOR_ENTITY__ROOT:
 				return basicSetRoot(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -174,9 +174,9 @@ public class DecisonTreeForEntityImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case DecisiontreePackage.DECISON_TREE_FOR_ENTITY__ROOT:
+			case DecisiontreePackage.DECISION_TREE_FOR_ENTITY__ROOT:
 				return getRoot();
-			case DecisiontreePackage.DECISON_TREE_FOR_ENTITY__ENTITY:
+			case DecisiontreePackage.DECISION_TREE_FOR_ENTITY__ENTITY:
 				if (resolve) return getEntity();
 				return basicGetEntity();
 		}
@@ -191,10 +191,10 @@ public class DecisonTreeForEntityImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case DecisiontreePackage.DECISON_TREE_FOR_ENTITY__ROOT:
+			case DecisiontreePackage.DECISION_TREE_FOR_ENTITY__ROOT:
 				setRoot((DecisionTreeNode)newValue);
 				return;
-			case DecisiontreePackage.DECISON_TREE_FOR_ENTITY__ENTITY:
+			case DecisiontreePackage.DECISION_TREE_FOR_ENTITY__ENTITY:
 				setEntity((Entity)newValue);
 				return;
 		}
@@ -209,10 +209,10 @@ public class DecisonTreeForEntityImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case DecisiontreePackage.DECISON_TREE_FOR_ENTITY__ROOT:
+			case DecisiontreePackage.DECISION_TREE_FOR_ENTITY__ROOT:
 				setRoot((DecisionTreeNode)null);
 				return;
-			case DecisiontreePackage.DECISON_TREE_FOR_ENTITY__ENTITY:
+			case DecisiontreePackage.DECISION_TREE_FOR_ENTITY__ENTITY:
 				setEntity((Entity)null);
 				return;
 		}
@@ -227,12 +227,12 @@ public class DecisonTreeForEntityImpl extends MinimalEObjectImpl.Container imple
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case DecisiontreePackage.DECISON_TREE_FOR_ENTITY__ROOT:
+			case DecisiontreePackage.DECISION_TREE_FOR_ENTITY__ROOT:
 				return root != null;
-			case DecisiontreePackage.DECISON_TREE_FOR_ENTITY__ENTITY:
+			case DecisiontreePackage.DECISION_TREE_FOR_ENTITY__ENTITY:
 				return entity != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //DecisonTreeForEntityImpl
+} //DecisionTreeForEntityImpl

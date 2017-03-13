@@ -80,8 +80,8 @@ public class DecisiontreeAdapterFactory extends AdapterFactoryImpl {
 				return createIntermediateNodeAdapter();
 			}
 			@Override
-			public Adapter caseDecisonTreeForEntity(DecisonTreeForEntity object) {
-				return createDecisonTreeForEntityAdapter();
+			public Adapter caseDecisionTreeForEntity(DecisionTreeForEntity object) {
+				return createDecisionTreeForEntityAdapter();
 			}
 			@Override
 			public Adapter caseDecisionTrees(DecisionTrees object) {
@@ -150,16 +150,16 @@ public class DecisiontreeAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.decisiontree.DecisonTreeForEntity <em>Decison Tree For Entity</em>}'.
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity <em>Decision Tree For Entity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see es.um.nosql.schemainference.decisiontree.DecisonTreeForEntity
+	 * @see es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity
 	 * @generated
 	 */
-	public Adapter createDecisonTreeForEntityAdapter() {
+	public Adapter createDecisionTreeForEntityAdapter() {
 		return null;
 	}
 

@@ -40,13 +40,13 @@ public interface DecisiontreeFactory extends EFactory {
 	IntermediateNode createIntermediateNode();
 
 	/**
-	 * Returns a new object of class '<em>Decison Tree For Entity</em>'.
+	 * Returns a new object of class '<em>Decision Tree For Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Decison Tree For Entity</em>'.
+	 * @return a new object of class '<em>Decision Tree For Entity</em>'.
 	 * @generated
 	 */
-	DecisonTreeForEntity createDecisonTreeForEntity();
+	DecisionTreeForEntity createDecisionTreeForEntity();
 
 	/**
 	 * Returns a new object of class '<em>Decision Trees</em>'.

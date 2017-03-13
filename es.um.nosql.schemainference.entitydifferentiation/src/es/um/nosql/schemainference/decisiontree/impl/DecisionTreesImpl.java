@@ -2,10 +2,9 @@
  */
 package es.um.nosql.schemainference.decisiontree.impl;
 
+import es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity;
 import es.um.nosql.schemainference.decisiontree.DecisionTrees;
 import es.um.nosql.schemainference.decisiontree.DecisiontreePackage;
-import es.um.nosql.schemainference.decisiontree.DecisonTreeForEntity;
-
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -42,7 +41,7 @@ public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements D
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<DecisonTreeForEntity> trees;
+	protected EList<DecisionTreeForEntity> trees;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -68,9 +67,9 @@ public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements D
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<DecisonTreeForEntity> getTrees() {
+	public EList<DecisionTreeForEntity> getTrees() {
 		if (trees == null) {
-			trees = new EObjectContainmentEList<DecisonTreeForEntity>(DecisonTreeForEntity.class, this, DecisiontreePackage.DECISION_TREES__TREES);
+			trees = new EObjectContainmentEList<DecisionTreeForEntity>(DecisionTreeForEntity.class, this, DecisiontreePackage.DECISION_TREES__TREES);
 		}
 		return trees;
 	}
@@ -114,7 +113,7 @@ public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements D
 		switch (featureID) {
 			case DecisiontreePackage.DECISION_TREES__TREES:
 				getTrees().clear();
-				getTrees().addAll((Collection<? extends DecisonTreeForEntity>)newValue);
+				getTrees().addAll((Collection<? extends DecisionTreeForEntity>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

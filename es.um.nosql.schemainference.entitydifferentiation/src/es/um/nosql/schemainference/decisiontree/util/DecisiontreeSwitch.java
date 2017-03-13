@@ -86,9 +86,9 @@ public class DecisiontreeSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case DecisiontreePackage.DECISON_TREE_FOR_ENTITY: {
-				DecisonTreeForEntity decisonTreeForEntity = (DecisonTreeForEntity)theEObject;
-				T result = caseDecisonTreeForEntity(decisonTreeForEntity);
+			case DecisiontreePackage.DECISION_TREE_FOR_ENTITY: {
+				DecisionTreeForEntity decisionTreeForEntity = (DecisionTreeForEntity)theEObject;
+				T result = caseDecisionTreeForEntity(decisionTreeForEntity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -148,17 +148,17 @@ public class DecisiontreeSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Decison Tree For Entity</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Decision Tree For Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Decison Tree For Entity</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Decision Tree For Entity</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseDecisonTreeForEntity(DecisonTreeForEntity object) {
+	public T caseDecisionTreeForEntity(DecisionTreeForEntity object) {
 		return null;
 	}
 

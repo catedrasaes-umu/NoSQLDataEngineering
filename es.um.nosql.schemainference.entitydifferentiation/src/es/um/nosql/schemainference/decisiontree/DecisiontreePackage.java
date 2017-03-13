@@ -212,14 +212,14 @@ public interface DecisiontreePackage extends EPackage {
 	int INTERMEDIATE_NODE_OPERATION_COUNT = DECISION_TREE_NODE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.schemainference.decisiontree.impl.DecisonTreeForEntityImpl <em>Decison Tree For Entity</em>}' class.
+	 * The meta object id for the '{@link es.um.nosql.schemainference.decisiontree.impl.DecisionTreeForEntityImpl <em>Decision Tree For Entity</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.schemainference.decisiontree.impl.DecisonTreeForEntityImpl
-	 * @see es.um.nosql.schemainference.decisiontree.impl.DecisiontreePackageImpl#getDecisonTreeForEntity()
+	 * @see es.um.nosql.schemainference.decisiontree.impl.DecisionTreeForEntityImpl
+	 * @see es.um.nosql.schemainference.decisiontree.impl.DecisiontreePackageImpl#getDecisionTreeForEntity()
 	 * @generated
 	 */
-	int DECISON_TREE_FOR_ENTITY = 3;
+	int DECISION_TREE_FOR_ENTITY = 3;
 
 	/**
 	 * The feature id for the '<em><b>Root</b></em>' containment reference.
@@ -228,7 +228,7 @@ public interface DecisiontreePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DECISON_TREE_FOR_ENTITY__ROOT = 0;
+	int DECISION_TREE_FOR_ENTITY__ROOT = 0;
 
 	/**
 	 * The feature id for the '<em><b>Entity</b></em>' reference.
@@ -237,25 +237,25 @@ public interface DecisiontreePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int DECISON_TREE_FOR_ENTITY__ENTITY = 1;
+	int DECISION_TREE_FOR_ENTITY__ENTITY = 1;
 
 	/**
-	 * The number of structural features of the '<em>Decison Tree For Entity</em>' class.
+	 * The number of structural features of the '<em>Decision Tree For Entity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DECISON_TREE_FOR_ENTITY_FEATURE_COUNT = 2;
+	int DECISION_TREE_FOR_ENTITY_FEATURE_COUNT = 2;
 
 	/**
-	 * The number of operations of the '<em>Decison Tree For Entity</em>' class.
+	 * The number of operations of the '<em>Decision Tree For Entity</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DECISON_TREE_FOR_ENTITY_OPERATION_COUNT = 0;
+	int DECISION_TREE_FOR_ENTITY_OPERATION_COUNT = 0;
 
 	/**
 	 * The meta object id for the '{@link es.um.nosql.schemainference.decisiontree.impl.DecisionTreesImpl <em>Decision Trees</em>}' class.
@@ -370,36 +370,36 @@ public interface DecisiontreePackage extends EPackage {
 	EReference getIntermediateNode_CheckedProperty();
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.schemainference.decisiontree.DecisonTreeForEntity <em>Decison Tree For Entity</em>}'.
+	 * Returns the meta object for class '{@link es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity <em>Decision Tree For Entity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Decison Tree For Entity</em>'.
-	 * @see es.um.nosql.schemainference.decisiontree.DecisonTreeForEntity
+	 * @return the meta object for class '<em>Decision Tree For Entity</em>'.
+	 * @see es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity
 	 * @generated
 	 */
-	EClass getDecisonTreeForEntity();
+	EClass getDecisionTreeForEntity();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link es.um.nosql.schemainference.decisiontree.DecisonTreeForEntity#getRoot <em>Root</em>}'.
+	 * Returns the meta object for the containment reference '{@link es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity#getRoot <em>Root</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Root</em>'.
-	 * @see es.um.nosql.schemainference.decisiontree.DecisonTreeForEntity#getRoot()
-	 * @see #getDecisonTreeForEntity()
+	 * @see es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity#getRoot()
+	 * @see #getDecisionTreeForEntity()
 	 * @generated
 	 */
-	EReference getDecisonTreeForEntity_Root();
+	EReference getDecisionTreeForEntity_Root();
 
 	/**
-	 * Returns the meta object for the reference '{@link es.um.nosql.schemainference.decisiontree.DecisonTreeForEntity#getEntity <em>Entity</em>}'.
+	 * Returns the meta object for the reference '{@link es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity#getEntity <em>Entity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Entity</em>'.
-	 * @see es.um.nosql.schemainference.decisiontree.DecisonTreeForEntity#getEntity()
-	 * @see #getDecisonTreeForEntity()
+	 * @see es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity#getEntity()
+	 * @see #getDecisionTreeForEntity()
 	 * @generated
 	 */
-	EReference getDecisonTreeForEntity_Entity();
+	EReference getDecisionTreeForEntity_Entity();
 
 	/**
 	 * Returns the meta object for class '{@link es.um.nosql.schemainference.decisiontree.DecisionTrees <em>Decision Trees</em>}'.
@@ -508,14 +508,14 @@ public interface DecisiontreePackage extends EPackage {
 		EReference INTERMEDIATE_NODE__CHECKED_PROPERTY = eINSTANCE.getIntermediateNode_CheckedProperty();
 
 		/**
-		 * The meta object literal for the '{@link es.um.nosql.schemainference.decisiontree.impl.DecisonTreeForEntityImpl <em>Decison Tree For Entity</em>}' class.
+		 * The meta object literal for the '{@link es.um.nosql.schemainference.decisiontree.impl.DecisionTreeForEntityImpl <em>Decision Tree For Entity</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.schemainference.decisiontree.impl.DecisonTreeForEntityImpl
-		 * @see es.um.nosql.schemainference.decisiontree.impl.DecisiontreePackageImpl#getDecisonTreeForEntity()
+		 * @see es.um.nosql.schemainference.decisiontree.impl.DecisionTreeForEntityImpl
+		 * @see es.um.nosql.schemainference.decisiontree.impl.DecisiontreePackageImpl#getDecisionTreeForEntity()
 		 * @generated
 		 */
-		EClass DECISON_TREE_FOR_ENTITY = eINSTANCE.getDecisonTreeForEntity();
+		EClass DECISION_TREE_FOR_ENTITY = eINSTANCE.getDecisionTreeForEntity();
 
 		/**
 		 * The meta object literal for the '<em><b>Root</b></em>' containment reference feature.
@@ -523,7 +523,7 @@ public interface DecisiontreePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DECISON_TREE_FOR_ENTITY__ROOT = eINSTANCE.getDecisonTreeForEntity_Root();
+		EReference DECISION_TREE_FOR_ENTITY__ROOT = eINSTANCE.getDecisionTreeForEntity_Root();
 
 		/**
 		 * The meta object literal for the '<em><b>Entity</b></em>' reference feature.
@@ -531,7 +531,7 @@ public interface DecisiontreePackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference DECISON_TREE_FOR_ENTITY__ENTITY = eINSTANCE.getDecisonTreeForEntity_Entity();
+		EReference DECISION_TREE_FOR_ENTITY__ENTITY = eINSTANCE.getDecisionTreeForEntity_Entity();
 
 		/**
 		 * The meta object literal for the '{@link es.um.nosql.schemainference.decisiontree.impl.DecisionTreesImpl <em>Decision Trees</em>}' class.

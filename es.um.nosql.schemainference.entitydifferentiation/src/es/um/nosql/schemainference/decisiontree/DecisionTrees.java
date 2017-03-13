@@ -25,7 +25,7 @@ import org.eclipse.emf.ecore.EObject;
 public interface DecisionTrees extends EObject {
 	/**
 	 * Returns the value of the '<em><b>Trees</b></em>' containment reference list.
-	 * The list contents are of type {@link es.um.nosql.schemainference.decisiontree.DecisonTreeForEntity}.
+	 * The list contents are of type {@link es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Trees</em>' containment reference list isn't clear,
@@ -37,6 +37,6 @@ public interface DecisionTrees extends EObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<DecisonTreeForEntity> getTrees();
+	EList<DecisionTreeForEntity> getTrees();
 
 } // DecisionTrees

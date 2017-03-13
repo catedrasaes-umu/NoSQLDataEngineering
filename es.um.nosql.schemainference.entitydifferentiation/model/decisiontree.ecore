@@ -16,7 +16,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="checkedProperty" lowerBound="1"
         eType="ecore:EClass ../../es.um.nosql.schemainference/model/nosqlschema.ecore#//Property"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="DecisonTreeForEntity">
+  <eClassifiers xsi:type="ecore:EClass" name="DecisionTreeForEntity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//DecisionTreeNode"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" lowerBound="1"
@@ -24,6 +24,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DecisionTrees">
     <eStructuralFeatures xsi:type="ecore:EReference" name="trees" upperBound="-1"
-        eType="#//DecisonTreeForEntity" containment="true"/>
+        eType="#//DecisionTreeForEntity" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>
