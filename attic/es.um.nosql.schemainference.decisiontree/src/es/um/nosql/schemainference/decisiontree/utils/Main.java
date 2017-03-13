@@ -15,6 +15,8 @@ import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import org.apache.commons.lang3.tuple.Pair;
+
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
@@ -42,35 +44,23 @@ public class Main {
 	
 	public static Map<String, EntityVersion> getEntityVersions(NoSQLSchema schema)
 	{
-		Map<String, EntityVersion> entityVersions = new HashMap<String, EntityVersion>();		
-		for (Entity entity: schema.getEntities())
-		{
-			for (EntityVersion entityVersion: entity.getEntityversions())
-			{
-				String key = String.format("%1$s:%2$d", entity.getName(), entityVersion.getVersionId());
-				entityVersions.put(key, entityVersion);
-			}
-		}
-
-		return entityVersions;
+		return 
+			schema.getEntities().stream().flatMap(e ->
+				e.getEntityversions().stream()
+				.filter(EntityVersion::isRoot)
+				.map(ev ->
+					Pair.of(String.format("%1$s:%2$d", e.getName(), ev.getVersionId())
+							,ev)))
+			.collect(Collectors.toMap(Pair::getKey,Pair::getValue));
 	}
 	
-	public static Map<String, Property> getProperties(NoSQLSchema schema)
+	public static Map<String, List<Property>> getProperties(NoSQLSchema schema)
 	{
-		Map<String, Property> properties = new HashMap<String, Property>();
-		
-		for (Entity entity: schema.getEntities())
-		{
-			for (EntityVersion entityVersion: entity.getEntityversions())
-			{
-				for (Property property: entityVersion.getProperties()){
-					properties.put(Serializer.serialize(property), property);
-				}
-			}
-		}
-
-		return properties;
-		
+		return	
+			schema.getEntities().stream().flatMap(e ->
+				e.getEntityversions().stream().filter(EntityVersion::isRoot))
+				.flatMap(ev -> ev.getProperties().stream())
+				.collect(Collectors.groupingBy(Serializer::serialize));
 	}
 	
 	public static Map<String, List<String>> getClasses(NoSQLSchema schema)
@@ -80,6 +70,10 @@ public class Main {
 		{
 			for (EntityVersion entityVersion: entity.getEntityversions())
 			{
+				// FIXME
+				if (!entityVersion.isRoot())
+					continue;
+				
 				// Get List of properties Names
 				List<String> properties = entityVersion.getProperties().stream()
 						.map(Serializer::serialize)
@@ -171,7 +165,7 @@ public class Main {
 	}
 	
 
-	public static ModelTree getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, Property> properties) throws Exception
+	public static ModelTree getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, List<Property>> properties) throws Exception
 	{
 		if (tree.isLeaf())
 		{
@@ -194,12 +188,13 @@ public class Main {
 			ClassifierSplitModel classifierSplitModel = tree.getLocalModel();
 			ClassifierTree[] sons = tree.getSons();	
 			String left = tree.getLocalModel().leftSide(tree.getTrainingData());
-			Property p = properties.get(left.trim());
+			List<Property> p = properties.get(left.trim());
 			
 			if (p==null) throw new Exception("Unknown Property Name: " + left.trim());
+			
 			if (sons.length != 2) throw new Exception("This is not a binary decision tree");
 
-			ModelTree m = new ModelTree(p);			
+			ModelTree m = new ModelTree(p.get(0));			
 			for (int i = 0 ; i < sons.length; i++)
 			{
 				String value = tree.getLocalModel().rightSide(i, tree.getTrainingData());
