@@ -19,4 +19,7 @@ Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: es.um.nosql.schemainference.entitydifferentiation,
  es.um.nosql.schemainference.entitydifferentiation.impl,
- es.um.nosql.schemainference.entitydifferentiation.util
+ es.um.nosql.schemainference.entitydifferentiation.util,
+ es.um.nosql.schemainference.decisiontree,
+ es.um.nosql.schemainference.decisiontree.impl,
+ es.um.nosql.schemainference.decisiontree.util

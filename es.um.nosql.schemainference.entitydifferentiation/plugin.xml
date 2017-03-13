@@ -14,4 +14,12 @@
             genModel="model/entitydifferentiation.genmodel"/>
    </extension>
 
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated decisiontree -->
+      <package
+            uri="urn:es.um.nosql.schemainference.decisiontree"
+            class="es.um.nosql.schemainference.decisiontree.DecisiontreePackage"
+            genModel="model/decisiontree.genmodel"/>
+   </extension>
+
 </plugin>

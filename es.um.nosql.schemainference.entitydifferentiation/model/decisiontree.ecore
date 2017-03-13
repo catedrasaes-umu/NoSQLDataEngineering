@@ -1,4 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
-    name="decisiontree" nsURI="urn:es.um.nosql.schemainference.decisiontree"
-    nsPrefix="decisiontree"/>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="decisiontree" nsURI="urn:es.um.nosql.schemainference.decisiontree"
+    nsPrefix="decisiontree">
+  <eClassifiers xsi:type="ecore:EClass" name="DecisionTreeNode" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="yesBranch" eType="#//DecisionTreeNode"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="noBranch" eType="#//DecisionTreeNode"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LeafNode" eSuperTypes="#//DecisionTreeNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="identifiedVersion" lowerBound="1"
+        eType="ecore:EClass ../../es.um.nosql.schemainference/model/nosqlschema.ecore#//EntityVersion"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntermediateNode" eSuperTypes="#//DecisionTreeNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="checkedProperty" lowerBound="1"
+        eType="ecore:EClass ../../es.um.nosql.schemainference/model/nosqlschema.ecore#//Property"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DecisonTreeForEntity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//DecisionTreeNode"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entity" lowerBound="1"
+        eType="ecore:EClass ../../es.um.nosql.schemainference/model/nosqlschema.ecore#//Entity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DecisionTrees">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trees" upperBound="-1"
+        eType="#//DecisonTreeForEntity" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>
