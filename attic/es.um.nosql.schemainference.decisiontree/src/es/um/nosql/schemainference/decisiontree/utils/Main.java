@@ -3,6 +3,7 @@ package es.um.nosql.schemainference.decisiontree.utils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -38,7 +39,6 @@ public class Main {
 		classifier.buildClassifier(train);
 		return classifier;
 	}
-	
 	
 	public static Map<String, EntityVersion> getEntityVersions(NoSQLSchema schema)
 	{
@@ -184,7 +184,7 @@ public class Main {
 			if (matcher.find())
 			{
 				EntityVersion ev = entityVersions.get(matcher.group(1));
-				return new ModelTree(ev);			
+				return new ModelTree((Entity)ev.eContainer(),ev);
 			}
 			
 			else throw new Exception("Invalid exp reg for: "+tag);
@@ -225,15 +225,17 @@ public class Main {
 		runModelTree(tree, 0);
 	}
 	
-	public static void runModelTree(ModelTree tree, int level){
-		String indent = "";
-		for (int i = 0; i<level; i++) indent += "  ";
+	public static void runModelTree(ModelTree tree, int level)
+	{
+		String indent = String.join("", Collections.nCopies(level, "  "));
 		
-		if (tree.is_leaft()){
-			Entity e = (Entity) tree.getTag().eContainer();
+		if (tree.is_leaft())
+		{
+			Entity e = tree.getEntity();
 			System.out.println(indent+"Entity: "+e.getName()+", Version: "+tree.getTag().getVersionId());
 		}
-		else{
+		else
+		{
 			System.out.println(indent+tree.getProperty().getName()+" is present");
 			runModelTree(tree.getNodePresent(), level+1);
 			System.out.println(indent+tree.getProperty().getName()+" isn't present");
@@ -280,11 +282,13 @@ public class Main {
 			
 			System.out.println(tree);
 			for (int i = 0; i < dataset.numInstances(); i++){
-				System.out.println(dataset.get(i).stringValue(tag)+": "+ tree.classifyInstance(dataset.get(i)));
+				System.out.println(dataset.get(i).stringValue(tag)+": "
+						+ tree.classifyInstance(dataset.get(i)));
 			}
 			
-			ModelTree  modelTree = Main.getModelTree(root, Main.getEntityVersions(schema), Main.getProperties(schema));
-			Main.runModelTree(modelTree);
+			ModelTree modelTree = 
+					getModelTree(root, getEntityVersions(schema), getProperties(schema));
+			runModelTree(modelTree);
 		} 
 		
 		catch (Exception e) {
