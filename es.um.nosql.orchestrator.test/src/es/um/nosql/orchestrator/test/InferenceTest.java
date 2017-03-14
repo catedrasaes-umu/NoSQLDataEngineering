@@ -4,8 +4,8 @@ import java.io.IOException;
 
 import com.google.gson.JsonArray;
 
-import es.um.nosql.schemainference.dbgenerator.DbGenController;
-import es.um.nosql.schemainference.dbgenerator.utils.DbType;
+import es.um.nosql.schemainference.db.DbController;
+import es.um.nosql.schemainference.db.utils.DbType;
 import es.um.nosql.schemainference.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.schemainference.nosqlimport.db.couchdb.CouchDBSchemaInference;
 import es.um.nosql.schemainference.nosqlimport.db.mongodb.MongoDBSchemaInference;
@@ -29,7 +29,7 @@ public class InferenceTest
 		int minInstances = 5;
 		int maxInstances = 10;
 
-		DbGenController controller = new DbGenController(DbType.COUCHDB, COUCHDB_IP);
+		DbController controller = new DbController(DbType.COUCHDB, COUCHDB_IP);
 		controller.insertTableDb(MODEL_FILE, JSON_FOLDER, minInstances, maxInstances);
 
 		System.out.println("Starting inference...");
@@ -49,7 +49,7 @@ public class InferenceTest
 		int minInstances = 5;
 		int maxInstances = 10;
 
-		DbGenController controller = new DbGenController(DbType.MONGODB, MONGODB_IP);
+		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
 		controller.insertTableDb(MODEL_FILE, JSON_FOLDER, minInstances, maxInstances);
 
 		System.out.println("Starting inference...");

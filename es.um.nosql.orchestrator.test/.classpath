@@ -11,7 +11,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry combineaccessrules="false" kind="src" path="/es.um.nosql.schemainference.dbgenerator"/>
+	<classpathentry combineaccessrules="false" kind="src" path="/es.um.nosql.schemainference.db"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/es.um.nosql.schemainference.json2dbschema"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/es.um.nosql.schemainference.nosqlimport"/>
 	<classpathentry kind="con" path="org.eclipse.m2e.MAVEN2_CLASSPATH_CONTAINER">
