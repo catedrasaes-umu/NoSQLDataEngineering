@@ -224,7 +224,7 @@ public class Main {
 	{
 		String indent = String.join("", Collections.nCopies(level, "  "));
 		
-		if (tree.is_leaft())
+		if (tree.is_leaf())
 		{
 			Entity e = tree.getEntity();
 			System.out.println(indent+"Entity: "+e.getName()+", Version: "+tree.getTag().getVersionId());

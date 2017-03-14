@@ -12,7 +12,8 @@ public class ModelTree
 	private ModelTree nodeAbsent;
 	private Entity entity;
 
-	public ModelTree(Entity e, EntityVersion tag){
+	public ModelTree(Entity e, EntityVersion tag)
+	{
 		super();
 		this.tag = tag;
 		this.entity = e;
@@ -59,11 +60,13 @@ public class ModelTree
 		return nodeAbsent;
 	}
 
-	public void setNodeAbsent(ModelTree nodeAbsent) {
+	public void setNodeAbsent(ModelTree nodeAbsent)
+	{
 		this.nodeAbsent = nodeAbsent;
 	}
 
-	public boolean is_leaft(){
-		return ((this.nodePresent == null) & (this.nodeAbsent == null));
+	public boolean is_leaf()
+	{
+		return nodePresent == null && nodeAbsent == null;
 	}
 }
