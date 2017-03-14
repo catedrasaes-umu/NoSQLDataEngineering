@@ -42,18 +42,6 @@ public class Main2 {
 		return classifier;
 	}
 	
-	public static Map<String, EntityVersion> getEntityVersions(NoSQLSchema schema)
-	{
-		return 
-			schema.getEntities().stream().flatMap(e ->
-				e.getEntityversions().stream()
-				.filter(EntityVersion::isRoot)
-				.map(ev ->
-					Pair.of(String.format("%1$s:%2$d", e.getName(), ev.getVersionId())
-							,ev)))
-			.collect(Collectors.toMap(Pair::getKey,Pair::getValue));
-	}
-	
 	public static Map<String, List<Property>> getProperties(NoSQLSchema schema)
 	{
 		return	
