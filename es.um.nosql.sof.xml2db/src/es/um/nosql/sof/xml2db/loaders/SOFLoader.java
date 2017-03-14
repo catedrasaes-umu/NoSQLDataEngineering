@@ -31,8 +31,9 @@ public class SOFLoader
 		mClient = new MongoClient(databaseIP);
 	}
 
-	public void readXMLFile(String userXMLRoute)
+	public void readXMLFile(String userXMLRoute, int limit)
 	{
+		long startTime = System.currentTimeMillis();
 		try (BufferedReader reader = new BufferedReader(new FileReader(new File(userXMLRoute))))
 		{
 			jsonArray = new ObjectMapper().createArrayNode();
@@ -66,11 +67,17 @@ public class SOFLoader
 					storeJsonContent(collectionName);
 					numLines = 0;
 				}
+
+				if (lineCounter > limit)
+				{
+					System.out.println("Limit reached: " + limit + ". Exiting...");
+					break;
+				}
 			}
 
 			System.out.println("File ending reached. Storing remaining files...");
 			storeJsonContent(collectionName);
-			System.out.println("XML file succesfully read!");
+			System.out.println("XML file succesfully read in " + (System.currentTimeMillis() - startTime) + " ms");
 		} catch(Exception e)
 		{
 			e.printStackTrace();

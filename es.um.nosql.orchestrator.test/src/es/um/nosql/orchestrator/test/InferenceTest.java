@@ -25,6 +25,7 @@ public class InferenceTest
 
 	private static void prepareCouchDBExample()
 	{
+		long startTime = System.currentTimeMillis();
 		int minInstances = 5;
 		int maxInstances = 10;
 
@@ -39,11 +40,12 @@ public class InferenceTest
 		System.out.println("Starting BuildNoSQLSchema...");
 		BuildNoSQLSchema builder = new BuildNoSQLSchema();
 		builder.buildFromGsonArray(TABLENAME, jArray, COUCHDB_OUTPUT_MODEL);
-		System.out.println("BuildNoSQLSchema created: " + COUCHDB_OUTPUT_MODEL);
+		System.out.println("BuildNoSQLSchema created: " + COUCHDB_OUTPUT_MODEL + " in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
 
 	private static void prepareMongoDBExample()
 	{
+		long startTime = System.currentTimeMillis();
 		int minInstances = 5;
 		int maxInstances = 10;
 
@@ -58,11 +60,13 @@ public class InferenceTest
 		System.out.println("Starting BuildNoSQLSchema...");
 		BuildNoSQLSchema builder = new BuildNoSQLSchema();
 		builder.buildFromGsonArray(TABLENAME, jArray, MONGODB_OUTPUT_MODEL);
-		System.out.println("BuildNoSQLSchema created: " + MONGODB_OUTPUT_MODEL);
+		System.out.println("BuildNoSQLSchema created: " + MONGODB_OUTPUT_MODEL + " in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
 
 	private static void prepareMongoDBSOFExample()
 	{
+		long startTime = System.currentTimeMillis();
+
 		String stackOverflowTable = "stackoverflow";
 		String stackOverflowModel = MODELS_FOLDER + stackOverflowTable + "_SOF.xmi";
 
@@ -74,7 +78,8 @@ public class InferenceTest
 		System.out.println("Starting BuildNoSQLSchema...");
 		BuildNoSQLSchema builder = new BuildNoSQLSchema();
 		builder.buildFromGsonArray(stackOverflowTable, jArray, stackOverflowModel);
-		System.out.println("BuildNoSQLSchema created: " + stackOverflowModel);
+
+		System.out.println("BuildNoSQLSchema created: " + stackOverflowModel + " in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
 
 	public static void main(String[] args) throws IOException
