@@ -88,6 +88,10 @@ public class DecisiontreeAdapterFactory extends AdapterFactoryImpl {
 				return createDecisionTreesAdapter();
 			}
 			@Override
+			public Adapter casePropertySpec2(PropertySpec2 object) {
+				return createPropertySpec2Adapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -174,6 +178,20 @@ public class DecisiontreeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createDecisionTreesAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.decisiontree.PropertySpec2 <em>Property Spec2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see es.um.nosql.schemainference.decisiontree.PropertySpec2
+	 * @generated
+	 */
+	public Adapter createPropertySpec2Adapter() {
 		return null;
 	}
 

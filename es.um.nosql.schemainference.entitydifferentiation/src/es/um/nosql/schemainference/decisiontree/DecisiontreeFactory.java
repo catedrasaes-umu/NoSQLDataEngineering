@@ -58,6 +58,15 @@ public interface DecisiontreeFactory extends EFactory {
 	DecisionTrees createDecisionTrees();
 
 	/**
+	 * Returns a new object of class '<em>Property Spec2</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Property Spec2</em>'.
+	 * @generated
+	 */
+	PropertySpec2 createPropertySpec2();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

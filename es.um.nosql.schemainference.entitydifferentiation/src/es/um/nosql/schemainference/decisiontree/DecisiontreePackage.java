@@ -2,6 +2,7 @@
  */
 package es.um.nosql.schemainference.decisiontree;
 
+import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -296,6 +297,53 @@ public interface DecisiontreePackage extends EPackage {
 
 
 	/**
+	 * The meta object id for the '{@link es.um.nosql.schemainference.decisiontree.impl.PropertySpec2Impl <em>Property Spec2</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see es.um.nosql.schemainference.decisiontree.impl.PropertySpec2Impl
+	 * @see es.um.nosql.schemainference.decisiontree.impl.DecisiontreePackageImpl#getPropertySpec2()
+	 * @generated
+	 */
+	int PROPERTY_SPEC2 = 5;
+
+	/**
+	 * The feature id for the '<em><b>Needs Type Check</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_SPEC2__NEEDS_TYPE_CHECK = 0;
+
+	/**
+	 * The feature id for the '<em><b>Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_SPEC2__PROPERTY = 1;
+
+	/**
+	 * The number of structural features of the '<em>Property Spec2</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_SPEC2_FEATURE_COUNT = 2;
+
+	/**
+	 * The number of operations of the '<em>Property Spec2</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROPERTY_SPEC2_OPERATION_COUNT = 0;
+
+
+	/**
 	 * Returns the meta object for class '{@link es.um.nosql.schemainference.decisiontree.DecisionTreeNode <em>Decision Tree Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -421,6 +469,38 @@ public interface DecisiontreePackage extends EPackage {
 	 * @generated
 	 */
 	EReference getDecisionTrees_Trees();
+
+	/**
+	 * Returns the meta object for class '{@link es.um.nosql.schemainference.decisiontree.PropertySpec2 <em>Property Spec2</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Property Spec2</em>'.
+	 * @see es.um.nosql.schemainference.decisiontree.PropertySpec2
+	 * @generated
+	 */
+	EClass getPropertySpec2();
+
+	/**
+	 * Returns the meta object for the attribute '{@link es.um.nosql.schemainference.decisiontree.PropertySpec2#isNeedsTypeCheck <em>Needs Type Check</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Needs Type Check</em>'.
+	 * @see es.um.nosql.schemainference.decisiontree.PropertySpec2#isNeedsTypeCheck()
+	 * @see #getPropertySpec2()
+	 * @generated
+	 */
+	EAttribute getPropertySpec2_NeedsTypeCheck();
+
+	/**
+	 * Returns the meta object for the reference '{@link es.um.nosql.schemainference.decisiontree.PropertySpec2#getProperty <em>Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Property</em>'.
+	 * @see es.um.nosql.schemainference.decisiontree.PropertySpec2#getProperty()
+	 * @see #getPropertySpec2()
+	 * @generated
+	 */
+	EReference getPropertySpec2_Property();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -550,6 +630,32 @@ public interface DecisiontreePackage extends EPackage {
 		 * @generated
 		 */
 		EReference DECISION_TREES__TREES = eINSTANCE.getDecisionTrees_Trees();
+
+		/**
+		 * The meta object literal for the '{@link es.um.nosql.schemainference.decisiontree.impl.PropertySpec2Impl <em>Property Spec2</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see es.um.nosql.schemainference.decisiontree.impl.PropertySpec2Impl
+		 * @see es.um.nosql.schemainference.decisiontree.impl.DecisiontreePackageImpl#getPropertySpec2()
+		 * @generated
+		 */
+		EClass PROPERTY_SPEC2 = eINSTANCE.getPropertySpec2();
+
+		/**
+		 * The meta object literal for the '<em><b>Needs Type Check</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PROPERTY_SPEC2__NEEDS_TYPE_CHECK = eINSTANCE.getPropertySpec2_NeedsTypeCheck();
+
+		/**
+		 * The meta object literal for the '<em><b>Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROPERTY_SPEC2__PROPERTY = eINSTANCE.getPropertySpec2_Property();
 
 	}
 

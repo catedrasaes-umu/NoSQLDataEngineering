@@ -60,6 +60,7 @@ public class DecisiontreeFactoryImpl extends EFactoryImpl implements Decisiontre
 			case DecisiontreePackage.INTERMEDIATE_NODE: return createIntermediateNode();
 			case DecisiontreePackage.DECISION_TREE_FOR_ENTITY: return createDecisionTreeForEntity();
 			case DecisiontreePackage.DECISION_TREES: return createDecisionTrees();
+			case DecisiontreePackage.PROPERTY_SPEC2: return createPropertySpec2();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -103,6 +104,16 @@ public class DecisiontreeFactoryImpl extends EFactoryImpl implements Decisiontre
 	public DecisionTrees createDecisionTrees() {
 		DecisionTreesImpl decisionTrees = new DecisionTreesImpl();
 		return decisionTrees;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PropertySpec2 createPropertySpec2() {
+		PropertySpec2Impl propertySpec2 = new PropertySpec2Impl();
+		return propertySpec2;
 	}
 
 	/**

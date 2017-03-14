@@ -14,7 +14,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntermediateNode" eSuperTypes="#//DecisionTreeNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="checkedProperty" lowerBound="1"
-        eType="ecore:EClass ../../es.um.nosql.schemainference/model/nosqlschema.ecore#//Property"/>
+        eType="#//PropertySpec2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DecisionTreeForEntity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//DecisionTreeNode"
@@ -25,5 +25,11 @@
   <eClassifiers xsi:type="ecore:EClass" name="DecisionTrees">
     <eStructuralFeatures xsi:type="ecore:EReference" name="trees" upperBound="-1"
         eType="#//DecisionTreeForEntity" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertySpec2">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="needsTypeCheck" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" lowerBound="1"
+        eType="ecore:EClass ../../es.um.nosql.schemainference/model/nosqlschema.ecore#//Property"/>
   </eClassifiers>
 </ecore:EPackage>

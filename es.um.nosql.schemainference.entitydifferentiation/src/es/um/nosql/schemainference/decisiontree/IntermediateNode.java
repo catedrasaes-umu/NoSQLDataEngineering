@@ -2,8 +2,6 @@
  */
 package es.um.nosql.schemainference.decisiontree;
 
-import es.um.nosql.schemainference.NoSQLSchema.Property;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Intermediate Node</b></em>'.
@@ -30,12 +28,12 @@ public interface IntermediateNode extends DecisionTreeNode {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Checked Property</em>' reference.
-	 * @see #setCheckedProperty(Property)
+	 * @see #setCheckedProperty(PropertySpec2)
 	 * @see es.um.nosql.schemainference.decisiontree.DecisiontreePackage#getIntermediateNode_CheckedProperty()
 	 * @model required="true"
 	 * @generated
 	 */
-	Property getCheckedProperty();
+	PropertySpec2 getCheckedProperty();
 
 	/**
 	 * Sets the value of the '{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckedProperty <em>Checked Property</em>}' reference.
@@ -45,6 +43,6 @@ public interface IntermediateNode extends DecisionTreeNode {
 	 * @see #getCheckedProperty()
 	 * @generated
 	 */
-	void setCheckedProperty(Property value);
+	void setCheckedProperty(PropertySpec2 value);
 
 } // IntermediateNode

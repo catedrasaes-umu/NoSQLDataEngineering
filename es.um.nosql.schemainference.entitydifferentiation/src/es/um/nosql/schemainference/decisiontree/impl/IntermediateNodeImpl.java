@@ -2,11 +2,10 @@
  */
 package es.um.nosql.schemainference.decisiontree.impl;
 
-import es.um.nosql.schemainference.NoSQLSchema.Property;
-
 import es.um.nosql.schemainference.decisiontree.DecisiontreePackage;
 import es.um.nosql.schemainference.decisiontree.IntermediateNode;
 
+import es.um.nosql.schemainference.decisiontree.PropertySpec2;
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
@@ -36,7 +35,7 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
 	 * @generated
 	 * @ordered
 	 */
-	protected Property checkedProperty;
+	protected PropertySpec2 checkedProperty;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -62,10 +61,10 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property getCheckedProperty() {
+	public PropertySpec2 getCheckedProperty() {
 		if (checkedProperty != null && checkedProperty.eIsProxy()) {
 			InternalEObject oldCheckedProperty = (InternalEObject)checkedProperty;
-			checkedProperty = (Property)eResolveProxy(oldCheckedProperty);
+			checkedProperty = (PropertySpec2)eResolveProxy(oldCheckedProperty);
 			if (checkedProperty != oldCheckedProperty) {
 				if (eNotificationRequired())
 					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DecisiontreePackage.INTERMEDIATE_NODE__CHECKED_PROPERTY, oldCheckedProperty, checkedProperty));
@@ -79,7 +78,7 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Property basicGetCheckedProperty() {
+	public PropertySpec2 basicGetCheckedProperty() {
 		return checkedProperty;
 	}
 
@@ -88,8 +87,8 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public void setCheckedProperty(Property newCheckedProperty) {
-		Property oldCheckedProperty = checkedProperty;
+	public void setCheckedProperty(PropertySpec2 newCheckedProperty) {
+		PropertySpec2 oldCheckedProperty = checkedProperty;
 		checkedProperty = newCheckedProperty;
 		if (eNotificationRequired())
 			eNotify(new ENotificationImpl(this, Notification.SET, DecisiontreePackage.INTERMEDIATE_NODE__CHECKED_PROPERTY, oldCheckedProperty, checkedProperty));
@@ -119,7 +118,7 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
 			case DecisiontreePackage.INTERMEDIATE_NODE__CHECKED_PROPERTY:
-				setCheckedProperty((Property)newValue);
+				setCheckedProperty((PropertySpec2)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -134,7 +133,7 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
 	public void eUnset(int featureID) {
 		switch (featureID) {
 			case DecisiontreePackage.INTERMEDIATE_NODE__CHECKED_PROPERTY:
-				setCheckedProperty((Property)null);
+				setCheckedProperty((PropertySpec2)null);
 				return;
 		}
 		super.eUnset(featureID);
