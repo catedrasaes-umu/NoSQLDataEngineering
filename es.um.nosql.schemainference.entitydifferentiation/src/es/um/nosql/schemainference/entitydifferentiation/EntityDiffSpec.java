@@ -4,6 +4,7 @@ package es.um.nosql.schemainference.entitydifferentiation;
 
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 
+import es.um.nosql.schemainference.NoSQLSchema.Property;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -20,6 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec#getEntity <em>Entity</em>}</li>
  *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec#getEntityVersionProps <em>Entity Version Props</em>}</li>
  *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec#getCommonProps <em>Common Props</em>}</li>
+ *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec#getNotProps <em>Not Props</em>}</li>
  * </ul>
  *
  * @see es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage#getEntityDiffSpec()
@@ -84,5 +86,21 @@ public interface EntityDiffSpec extends EObject {
 	 * @generated
 	 */
 	EList<PropertySpec> getCommonProps();
+
+	/**
+	 * Returns the value of the '<em><b>Not Props</b></em>' containment reference list.
+	 * The list contents are of type {@link es.um.nosql.schemainference.NoSQLSchema.Property}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Not Props</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Not Props</em>' containment reference list.
+	 * @see es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage#getEntityDiffSpec_NotProps()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Property> getNotProps();
 
 } // EntityDiffSpec

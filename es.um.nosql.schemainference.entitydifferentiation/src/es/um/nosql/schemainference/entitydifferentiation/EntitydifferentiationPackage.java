@@ -149,13 +149,22 @@ public interface EntitydifferentiationPackage extends EPackage {
 	int ENTITY_DIFF_SPEC__COMMON_PROPS = 2;
 
 	/**
+	 * The feature id for the '<em><b>Not Props</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ENTITY_DIFF_SPEC__NOT_PROPS = 3;
+
+	/**
 	 * The number of structural features of the '<em>Entity Diff Spec</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ENTITY_DIFF_SPEC_FEATURE_COUNT = 3;
+	int ENTITY_DIFF_SPEC_FEATURE_COUNT = 4;
 
 	/**
 	 * The number of operations of the '<em>Entity Diff Spec</em>' class.
@@ -345,6 +354,17 @@ public interface EntitydifferentiationPackage extends EPackage {
 	EReference getEntityDiffSpec_CommonProps();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec#getNotProps <em>Not Props</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Not Props</em>'.
+	 * @see es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec#getNotProps()
+	 * @see #getEntityDiffSpec()
+	 * @generated
+	 */
+	EReference getEntityDiffSpec_NotProps();
+
+	/**
 	 * Returns the meta object for class '{@link es.um.nosql.schemainference.entitydifferentiation.PropertySpec <em>Property Spec</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -498,6 +518,14 @@ public interface EntitydifferentiationPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ENTITY_DIFF_SPEC__COMMON_PROPS = eINSTANCE.getEntityDiffSpec_CommonProps();
+
+		/**
+		 * The meta object literal for the '<em><b>Not Props</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ENTITY_DIFF_SPEC__NOT_PROPS = eINSTANCE.getEntityDiffSpec_NotProps();
 
 		/**
 		 * The meta object literal for the '{@link es.um.nosql.schemainference.entitydifferentiation.impl.PropertySpecImpl <em>Property Spec</em>}' class.

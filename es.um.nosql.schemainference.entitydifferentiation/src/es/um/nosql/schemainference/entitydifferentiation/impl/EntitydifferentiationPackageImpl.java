@@ -194,6 +194,15 @@ public class EntitydifferentiationPackageImpl extends EPackageImpl implements En
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EReference getEntityDiffSpec_NotProps() {
+		return (EReference)entityDiffSpecEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPropertySpec() {
 		return propertySpecEClass;
 	}
@@ -280,6 +289,7 @@ public class EntitydifferentiationPackageImpl extends EPackageImpl implements En
 		createEReference(entityDiffSpecEClass, ENTITY_DIFF_SPEC__ENTITY);
 		createEReference(entityDiffSpecEClass, ENTITY_DIFF_SPEC__ENTITY_VERSION_PROPS);
 		createEReference(entityDiffSpecEClass, ENTITY_DIFF_SPEC__COMMON_PROPS);
+		createEReference(entityDiffSpecEClass, ENTITY_DIFF_SPEC__NOT_PROPS);
 
 		propertySpecEClass = createEClass(PROPERTY_SPEC);
 		createEReference(propertySpecEClass, PROPERTY_SPEC__PROPERTY);
@@ -332,6 +342,7 @@ public class EntitydifferentiationPackageImpl extends EPackageImpl implements En
 		initEReference(getEntityDiffSpec_Entity(), theNoSQLSchemaPackage.getEntity(), null, "entity", null, 1, 1, EntityDiffSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntityDiffSpec_EntityVersionProps(), this.getEntityVersionProp(), null, "entityVersionProps", null, 0, -1, EntityDiffSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntityDiffSpec_CommonProps(), this.getPropertySpec(), null, "commonProps", null, 0, -1, EntityDiffSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEntityDiffSpec_NotProps(), theNoSQLSchemaPackage.getProperty(), null, "notProps", null, 0, -1, EntityDiffSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertySpecEClass, PropertySpec.class, "PropertySpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPropertySpec_Property(), theNoSQLSchemaPackage.getProperty(), null, "property", null, 1, 1, PropertySpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
