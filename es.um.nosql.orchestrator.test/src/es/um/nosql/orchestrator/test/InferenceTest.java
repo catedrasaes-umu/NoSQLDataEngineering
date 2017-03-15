@@ -84,8 +84,8 @@ public class InferenceTest
 
 	public static void main(String[] args) throws IOException
 	{
-		prepareCouchDBExample();
-		prepareMongoDBExample();
-		prepareMongoDBSOFExample();
+//		prepareCouchDBExample();
+//		prepareMongoDBExample();
+//		prepareMongoDBSOFExample();
 	}
 }

@@ -20,10 +20,10 @@ public class Model2Db
 
 	public void storeJSONContent(String modelRoute, String jsonFolder, int minInstances, int maxInstances)
 	{
-		ModelLoader<NoSQLSchema> loader = new ModelLoader<NoSQLSchema>(NoSQLSchemaPackage.eINSTANCE);
+		ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
 		JsonGenerator generator = new JsonGenerator();
 
-		NoSQLSchema schema = loader.load(new File(modelRoute));
+		NoSQLSchema schema = loader.load(new File(modelRoute), NoSQLSchema.class);
 		String jsonContent = "";
 
 		try(PrintWriter fileOut = new PrintWriter(jsonFolder + schema.getName() + ".json"))

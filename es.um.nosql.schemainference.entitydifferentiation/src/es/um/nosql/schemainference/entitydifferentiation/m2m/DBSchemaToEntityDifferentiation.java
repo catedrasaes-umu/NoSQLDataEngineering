@@ -37,6 +37,7 @@ import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPa
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec;
 import es.um.nosql.schemainference.entitydifferentiation.m2m.util.PropertyHashingStrategy;
 import es.um.nosql.schemainference.entitydifferentiation.m2m.util.PropertyJustNameHashingStrategy;
+import es.um.nosql.schemainference.util.emf.ModelLoader;
 import es.um.nosql.schemainference.util.emf.ResourceManager;
 
 /**
@@ -45,6 +46,7 @@ import es.um.nosql.schemainference.util.emf.ResourceManager;
  */
 public class DBSchemaToEntityDifferentiation
 {
+	private static final String MODEL_ROUTE = "tests/mongoMovies3.xmi";
 	//private static final String SPECIAL_TYPE_IDENTIFIER = "type";
 
 	/**
@@ -52,6 +54,8 @@ public class DBSchemaToEntityDifferentiation
 	 */
 	public static void main(String[] args)
 	{
+//		ModelLoader<NoSQLSchema> loader = new ModelLoader<NoSQLSchema>(NoSQLSchemaPackage.eINSTANCE);
+		
 		(new DBSchemaToEntityDifferentiation()).run(args);
 	}
 
