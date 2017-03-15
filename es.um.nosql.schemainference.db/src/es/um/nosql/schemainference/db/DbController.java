@@ -1,12 +1,13 @@
 package es.um.nosql.schemainference.db;
 
 
-import org.apache.commons.lang3.tuple.Pair;
+import java.nio.file.Paths;
 
 import es.um.nosql.schemainference.db.adapters.DbClient;
 import es.um.nosql.schemainference.db.adapters.couchdb.CouchDbAdapter;
 import es.um.nosql.schemainference.db.adapters.mongodb.MongoDbAdapter;
 import es.um.nosql.schemainference.db.interfaces.Model2Db;
+import es.um.nosql.schemainference.db.interfaces.XML2Db;
 import es.um.nosql.schemainference.db.utils.DbType;
 
 public class DbController
@@ -28,45 +29,27 @@ public class DbController
 		return client.shutdown();
 	}
 
-	public void model2Couch(String modelRoute, String jsonFolder, int minInstances, int maxInstances)
+	public void model2Db(String modelRoute, String jsonFolder, int minInstances, int maxInstances)
 	{
 		long startTime = System.currentTimeMillis();
 
 		System.out.println("Reading input model " + modelRoute + "...");
-		Model2Db mInterface = new Model2Db();
-		Pair<String, String> jsonPair = mInterface.getJSONContent(modelRoute, jsonFolder, minInstances, maxInstances);
+		Model2Db loader = new Model2Db(client);
+		
+		loader.storeJSONContent(modelRoute, jsonFolder, minInstances, maxInstances);
 
-		client.cleanDb(jsonPair.getLeft());
-		client.insert(jsonPair.getLeft(), jsonPair.getRight());
-
-		System.out.println(jsonPair.getLeft() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
+		System.out.println(Paths.get(modelRoute).getFileName() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
-	
-	public void model2Mongo(String modelRoute, String jsonFolder, int minInstances, int maxInstances)
-	{
-		long startTime = System.currentTimeMillis();
 
-		System.out.println("Reading input model " + modelRoute + "...");
-		Model2Db mInterface = new Model2Db();
-		Pair<String, String> jsonPair = mInterface.getJSONContent(modelRoute, jsonFolder, minInstances, maxInstances);
-
-		client.cleanDb(jsonPair.getLeft());
-		client.insert(jsonPair.getLeft(), jsonPair.getRight());
-
-		System.out.println(jsonPair.getLeft() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
-	}
-/*
-	public void insertFromXML(String xmlRoute)
+	public void xml2Db(String xmlRoute, String dbName)
 	{
 		long startTime = System.currentTimeMillis();
 
 		System.out.println("Reading xml file " + xmlRoute + "...");
-		Pair<String, String> jsonPair = xmlInterface.getJSONContent(xmlRoute);
+		XML2Db loader = new XML2Db(client);
 
-		client.cleanDb(jsonPair.getLeft());
-		client.insert(jsonPair.getLeft(), jsonPair.getRight());
+		loader.storeXMLContent(xmlRoute, dbName);
 
-		System.out.println(jsonPair.getLeft() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
+		System.out.println(dbName + ":" + Paths.get(xmlRoute).getFileName() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
-*/
 }

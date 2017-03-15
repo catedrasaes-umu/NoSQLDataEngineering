@@ -2,7 +2,6 @@ package es.um.nosql.schemainference.db;
 
 import java.io.File;
 
-import es.um.nosql.schemainference.db.interfaces.SOFLoader;
 import es.um.nosql.schemainference.db.utils.DbType;
 
 public class Main
@@ -15,7 +14,7 @@ public class Main
 
 	private static final String JSON_FOLDER = "json/";
 
-	public static void prepareModel2CouchExample()
+	public static void prepareModel2Couch()
 	{
 		int minInstances = 2;
 		int maxInstances = 5;
@@ -23,12 +22,12 @@ public class Main
 		DbController controller = new DbController(DbType.COUCHDB, COUCHDB_IP);
 
 		for (String fileRoute : new File(INPUT_FOLDER).list())
-			controller.model2Couch(INPUT_FOLDER + fileRoute, JSON_FOLDER, minInstances, maxInstances);
+			controller.model2Db(INPUT_FOLDER + fileRoute, JSON_FOLDER, minInstances, maxInstances);
 
 		controller.shutdown();
 	}
 
-	public static void prepareModel2MongoExample()
+	public static void prepareModel2Mongo()
 	{
 		int minInstances = 2;
 		int maxInstances = 5;
@@ -36,7 +35,7 @@ public class Main
 		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
 
 		for (String fileRoute : new File(INPUT_FOLDER).list())
-			controller.model2Couch(INPUT_FOLDER + fileRoute, JSON_FOLDER, minInstances, maxInstances);
+			controller.model2Db(INPUT_FOLDER + fileRoute, JSON_FOLDER, minInstances, maxInstances);
 
 		controller.shutdown();
 	}
@@ -44,22 +43,40 @@ public class Main
 	public static void prepareXML2Mongo()
 	{
 		String BASE_DIR = "/media/alberto/braxis/StackOverFlow/";
+		String USER_FILE = BASE_DIR + "Users2.xml";
+		String VOTES_FILE = BASE_DIR + "Votes.xml";
+		String COMMENTS_FILE = BASE_DIR + "Comments.xml";
+		String POSTS_FILE = BASE_DIR + "Posts.xml";
+		String DBNAME = "stackoverflow";
+
+		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
+		controller.xml2Db(USER_FILE, DBNAME);//6438660 filas => 38 minutos
+		//controller.xml2Db(VOTES_FILE, DBNAME);//116720227 filas => 10 horas
+		//controller.xml2Db(COMMENTS_FILE, DBNAME);//53566720 filas => 5 horas
+		//controller.xml2Db(POSTS_FILE, DBNAME);
+	}
+
+	public static void prepareXML2Couch()
+	{
+		String BASE_DIR = "/media/alberto/braxis/StackOverFlow/";
 		String USER_FILE = BASE_DIR + "Users.xml";
 		String VOTES_FILE = BASE_DIR + "Votes.xml";
 		String COMMENTS_FILE = BASE_DIR + "Comments.xml";
 		String POSTS_FILE = BASE_DIR + "Posts.xml";
+		String DBNAME = "stackoverflow";
 
-		SOFLoader loader = new SOFLoader(MONGODB_IP);
-		loader.readXMLFile(USER_FILE);//6438660
-		loader.readXMLFile(VOTES_FILE);//116720227
-		loader.readXMLFile(COMMENTS_FILE);//53566720
-		loader.readXMLFile(POSTS_FILE);//
+		DbController controller = new DbController(DbType.COUCHDB, COUCHDB_IP);
+		controller.xml2Db(USER_FILE, DBNAME);
+		controller.xml2Db(VOTES_FILE, DBNAME);
+		controller.xml2Db(COMMENTS_FILE, DBNAME);
+		controller.xml2Db(POSTS_FILE, DBNAME);
 	}
 
 	public static void main(String[] args)
 	{
 //		prepareModel2Couch();
 //		prepareModel2Mongo();
-		prepareXML2Mongo();
+//		prepareXML2Mongo();
+//		prepareXML2Couch();
 	}
 }

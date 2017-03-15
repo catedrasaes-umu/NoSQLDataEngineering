@@ -23,14 +23,14 @@ public class InferenceTest
 	private static final String COUCHDB_MAPREDUCE_FOLDER = "mapreduce/couchdb/v1";
 	private static final String MONGODB_MAPREDUCE_FOLDER = "mapreduce/mongodb/v1";
 
-	private static void prepareCouchDBExample()
+	public static void prepareCouchDBExample()
 	{
 		long startTime = System.currentTimeMillis();
 		int minInstances = 5;
 		int maxInstances = 10;
 
 		DbController controller = new DbController(DbType.COUCHDB, COUCHDB_IP);
-		controller.insertTableDb(MODEL_FILE, JSON_FOLDER, minInstances, maxInstances);
+		controller.model2Db(MODEL_FILE, JSON_FOLDER, minInstances, maxInstances);
 
 		System.out.println("Starting inference...");
 		CouchDBSchemaInference inferrer = new CouchDBSchemaInference();
@@ -43,14 +43,14 @@ public class InferenceTest
 		System.out.println("BuildNoSQLSchema created: " + COUCHDB_OUTPUT_MODEL + " in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
 
-	private static void prepareMongoDBExample()
+	public static void prepareMongoDBExample()
 	{
 		long startTime = System.currentTimeMillis();
 		int minInstances = 5;
 		int maxInstances = 10;
 
 		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
-		controller.insertTableDb(MODEL_FILE, JSON_FOLDER, minInstances, maxInstances);
+		controller.model2Db(MODEL_FILE, JSON_FOLDER, minInstances, maxInstances);
 
 		System.out.println("Starting inference...");
 		MongoDBSchemaInference inferrer = new MongoDBSchemaInference();
@@ -63,7 +63,7 @@ public class InferenceTest
 		System.out.println("BuildNoSQLSchema created: " + MONGODB_OUTPUT_MODEL + " in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
 
-	private static void prepareMongoDBSOFExample()
+	public static void prepareMongoDBSOFExample()
 	{
 		long startTime = System.currentTimeMillis();
 
@@ -84,8 +84,8 @@ public class InferenceTest
 
 	public static void main(String[] args) throws IOException
 	{
-//		prepareCouchDBExample();
-//		prepareMongoDBExample();
+		prepareCouchDBExample();
+		prepareMongoDBExample();
 		prepareMongoDBSOFExample();
 	}
 }
