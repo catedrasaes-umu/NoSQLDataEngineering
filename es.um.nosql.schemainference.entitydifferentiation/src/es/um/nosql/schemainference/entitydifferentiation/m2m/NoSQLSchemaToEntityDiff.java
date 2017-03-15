@@ -44,7 +44,7 @@ import es.um.nosql.schemainference.util.emf.ResourceManager;
  * @author dsevilla
  *
  */
-public class DBSchemaToEntityDifferentiation
+public class NoSQLSchemaToEntityDiff
 {
 	private static final String MODEL_ROUTE = "tests/mongoMovies3.xmi";
 	//private static final String SPECIAL_TYPE_IDENTIFIER = "type";
@@ -53,10 +53,8 @@ public class DBSchemaToEntityDifferentiation
 	 * @param args
 	 */
 	public static void main(String[] args)
-	{
-//		ModelLoader<NoSQLSchema> loader = new ModelLoader<NoSQLSchema>(NoSQLSchemaPackage.eINSTANCE);
-		
-		(new DBSchemaToEntityDifferentiation()).run(args);
+	{		
+		(new NoSQLSchemaToEntityDiff()).run(args);
 	}
 
 	private Map<Entity, Set<Property>> commonEntityProperties;
