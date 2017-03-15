@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.util.ExtendedMetaData;
 import org.eclipse.emf.ecore.xmi.XMLResource;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-public class ModelLoader<T>
+public class ModelLoader
 {
 	private ResourceSet resourceSet;
 	static Resource.Factory.Registry reg = Resource.Factory.Registry.INSTANCE;
@@ -41,14 +41,14 @@ public class ModelLoader<T>
 	}
 
 	// builder
-	public ModelLoader<T> forPackages(EPackage... packages)
+	public ModelLoader forPackages(EPackage... packages)
 	{
 		registerPackages(packages);
 		return this;
 	}
 
 	// builder
-	public ModelLoader<T> withExtension(String extension, Object rf)
+	public ModelLoader withExtension(String extension, Object rf)
 	{
 		registerExtension(extension,rf);
 		return this;
@@ -66,7 +66,7 @@ public class ModelLoader<T>
 	}
 	
 	@SuppressWarnings("unchecked")
-	public T load(File file)
+	public <T> T load(File file, Class<T> c)
 	{
 		Resource r = resourceSet.getResource(URI.createFileURI(file.getAbsolutePath()), true);
 		return (T)r.getContents().get(0);

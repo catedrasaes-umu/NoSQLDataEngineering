@@ -228,8 +228,9 @@ public class Main2 {
 
 	public static void main(String[] args)
     {
-		ModelLoader<NoSQLSchema> loader = new ModelLoader<NoSQLSchema>(NoSQLSchemaPackage.eINSTANCE);
-		NoSQLSchema schema = loader.load(new File("model/mongoMovies3.xmi"));
+		ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
+		NoSQLSchema schema = loader.load(new File("model/mongoMovies3.xmi"),
+				NoSQLSchema.class);
 		
 		// Get list of classes and list of their properties
 		Map<String, List<String>> classes = getClasses(schema);
