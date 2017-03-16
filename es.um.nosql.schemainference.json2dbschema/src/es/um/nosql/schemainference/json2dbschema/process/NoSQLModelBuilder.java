@@ -136,10 +136,12 @@ public class NoSQLModelBuilder
 				.filter(e -> e.getEntityversions().stream().anyMatch(EntityVersion::isRoot))
 				.map(e -> 
 					Pair.of(Arrays.stream(new String[]{
-							e.getName(),
-							Inflector.getInstance().pluralize(e.getName()),
-							Inflector.getInstance().singularize(e.getName())
-					}, e)));
+								e.getName(),
+								Inflector.getInstance().pluralize(e.getName()),
+								Inflector.getInstance().singularize(e.getName())})
+								.collect(Collectors.toSet())
+							,e))
+				.flatMap(p -> p.getKey().stream().map(s -> Pair.of(s,p.getValue()))));
 	}
 
 	private void fillEV(SchemaComponent schema, EntityVersion ev)
