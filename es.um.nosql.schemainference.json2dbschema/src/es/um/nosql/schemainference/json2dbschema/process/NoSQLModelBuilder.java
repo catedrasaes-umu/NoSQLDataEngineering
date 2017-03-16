@@ -4,6 +4,7 @@
 package es.um.nosql.schemainference.json2dbschema.process;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
@@ -97,9 +98,7 @@ public class NoSQLModelBuilder
 
 		// Consider as reference matcher only those Entities of which
 		// at least one version is root
-		rm = new ReferenceMatcher<Entity>(mEntities.stream()
-				.filter(e -> e.getEntityversions().stream().anyMatch(EntityVersion::isRoot))
-				.map(e -> Pair.of(e.getName(), e)));
+		rm = createReferenceMatcher();
 
 		// Populate empty EntityVersions
 		mEntityVersions.forEach((schema, ev) -> fillEV(schema, ev));
@@ -128,6 +127,19 @@ public class NoSQLModelBuilder
 		finalSchema.getEntities().addAll(mEntities);
 
 		return finalSchema;
+	}
+
+	private ReferenceMatcher<Entity> createReferenceMatcher() 
+	{
+		return 
+			new ReferenceMatcher<Entity>(mEntities.stream()
+				.filter(e -> e.getEntityversions().stream().anyMatch(EntityVersion::isRoot))
+				.map(e -> 
+					Pair.of(Arrays.stream(new String[]{
+							e.getName(),
+							Inflector.getInstance().pluralize(e.getName()),
+							Inflector.getInstance().singularize(e.getName())
+					}, e)));
 	}
 
 	private void fillEV(SchemaComponent schema, EntityVersion ev)
