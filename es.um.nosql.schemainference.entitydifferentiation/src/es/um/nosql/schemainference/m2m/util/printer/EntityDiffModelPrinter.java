@@ -1,7 +1,7 @@
 /**
  *
  */
-package es.um.nosql.schemainference.entitydifferentiation.m2m.util.printer;
+package es.um.nosql.schemainference.m2m.util.printer;
 
 
 import java.io.File;

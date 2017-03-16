@@ -1,7 +1,7 @@
 /**
  *
  */
-package es.um.nosql.schemainference.entitydifferentiation.m2m;
+package es.um.nosql.schemainference.m2m;
 
 import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.toCollection;
@@ -37,8 +37,8 @@ import es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp;
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationFactory;
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage;
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec;
-import es.um.nosql.schemainference.entitydifferentiation.m2m.util.PropertyHashingStrategy;
-import es.um.nosql.schemainference.entitydifferentiation.m2m.util.PropertyJustNameHashingStrategy;
+import es.um.nosql.schemainference.m2m.util.PropertyHashingStrategy;
+import es.um.nosql.schemainference.m2m.util.PropertyJustNameHashingStrategy;
 import es.um.nosql.schemainference.util.emf.ResourceManager;
 
 /**

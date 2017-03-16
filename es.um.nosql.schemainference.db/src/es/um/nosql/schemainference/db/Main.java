@@ -50,10 +50,10 @@ public class Main
 		String DBNAME = "stackoverflow";
 
 		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
-		controller.xml2Db(USER_FILE, DBNAME);//6438660 filas => 38 minutos
-		controller.xml2Db(VOTES_FILE, DBNAME);//116720227 filas => 10 horas
-		controller.xml2Db(COMMENTS_FILE, DBNAME);//53566720 filas => 5 horas
-		//controller.xml2Db(POSTS_FILE, DBNAME);
+//		controller.xml2Db(USER_FILE, DBNAME);//6438660 filas => 38 minutos
+//		controller.xml2Db(VOTES_FILE, DBNAME);//116720227 filas => 10 horas
+//		controller.xml2Db(COMMENTS_FILE, DBNAME);//53566720 filas => 5 horas
+		controller.xml2Db(POSTS_FILE, DBNAME);
 	}
 
 	public static void prepareXML2Couch()

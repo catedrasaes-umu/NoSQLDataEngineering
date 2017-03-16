@@ -1,4 +1,4 @@
-package es.um.nosql.schemainference.entitydifferentiation.m2m.util;
+package es.um.nosql.schemainference.m2m.util;
 
 import org.eclipse.collections.api.block.HashingStrategy;
 import es.um.nosql.schemainference.NoSQLSchema.Property;
