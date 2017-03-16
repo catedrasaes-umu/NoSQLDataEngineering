@@ -73,7 +73,8 @@ public class NoSQLSchemaToEntityDiff
 
 		// Load the origin model.
 		File sourceRes = new File(args[0]);
-		rm.loadResourcesAsStrings("file://" + sourceRes.getAbsolutePath());
+		//rm.loadResourcesAsStrings("file://" + sourceRes.getAbsolutePath());
+		rm.loadResourcesAsStrings(args[0]);
 
 		Iterable<Resource> resources = rm.getResources();
 		EntityDifferentiation diff = EntitydifferentiationFactory.eINSTANCE.createEntityDifferentiation();
@@ -81,7 +82,8 @@ public class NoSQLSchemaToEntityDiff
 		doTransform((NoSQLSchema)resources.iterator().next().getContents().get(0), diff);
 
 		File outResource = new File(args[1]);
-		Resource outputRes = rm.getResourceSet().createResource(URI.createFileURI("file://" + outResource.getAbsolutePath()));
+		//Resource outputRes = rm.getResourceSet().createResource(URI.createFileURI("file://" + outResource.getAbsolutePath()));
+		Resource outputRes = rm.getResourceSet().createResource(URI.createFileURI(args[1]));
 		outputRes.getContents().add(diff);
 
 		// Configure output
