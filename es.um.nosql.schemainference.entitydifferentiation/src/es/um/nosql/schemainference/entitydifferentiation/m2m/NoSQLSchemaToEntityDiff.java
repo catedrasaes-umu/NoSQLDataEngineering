@@ -14,7 +14,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Collections;
 import java.util.HashMap;
-	import java.util.List;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -39,7 +39,6 @@ import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPa
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec;
 import es.um.nosql.schemainference.entitydifferentiation.m2m.util.PropertyHashingStrategy;
 import es.um.nosql.schemainference.entitydifferentiation.m2m.util.PropertyJustNameHashingStrategy;
-import es.um.nosql.schemainference.util.emf.ModelLoader;
 import es.um.nosql.schemainference.util.emf.ResourceManager;
 
 /**
