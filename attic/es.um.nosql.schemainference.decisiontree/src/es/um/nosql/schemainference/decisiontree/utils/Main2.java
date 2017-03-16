@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -14,6 +15,8 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -22,6 +25,10 @@ import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.schemainference.NoSQLSchema.Property;
+import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec;
+import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation;
+import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage;
+import es.um.nosql.schemainference.entitydifferentiation.PropertySpec;
 import es.um.nosql.schemainference.util.emf.ModelLoader;
 import es.um.nosql.schemainference.util.emf.Serializer;
 import weka.classifiers.trees.j48.ClassifierSplitModel;
@@ -33,7 +40,7 @@ import weka.core.Instances;
 
 public class Main2 {
 
-	public static OpenJ48 generateTree(Instances train) throws Exception
+	private OpenJ48 generateTree(Instances train) throws Exception
     {
 		OpenJ48 classifier = new OpenJ48();
 		classifier.setUnpruned(true);
@@ -42,16 +49,7 @@ public class Main2 {
 		return classifier;
 	}
 	
-	public static Map<String, List<Property>> getProperties(NoSQLSchema schema)
-	{
-		return	
-			schema.getEntities().stream().flatMap(e ->
-				e.getEntityversions().stream().filter(EntityVersion::isRoot))
-				.flatMap(ev -> ev.getProperties().stream())
-				.collect(Collectors.groupingBy(Serializer::serialize));
-	}
-	
-	public static Map<String, List<String>> getClasses(NoSQLSchema schema)
+	private Map<String, List<String>> getClasses(NoSQLSchema schema)
 	{
 		Map<String, List<String>> classes = new HashMap<String, List<String>>();
 		for (Entity entity: schema.getEntities())
@@ -76,7 +74,7 @@ public class Main2 {
 		return classes;
 	}
 	
-	public static Map<String, int[]> oneHot(Map<String, List<String>> classes, List<String> featuresList)
+	private Map<String, int[]> oneHot(Map<String, List<String>> classes, List<String> featuresList)
 	{
 		Map<String, int[]> result = new HashMap<String, int[]>();
 		Map<String, Integer> features = new HashMap<String, Integer>();
@@ -104,7 +102,7 @@ public class Main2 {
 		return result;
 	}
 
-    public static ArrayList<Attribute> getWekaAttributes(List<String> classes, List<String> features)
+    private ArrayList<Attribute> getWekaAttributes(List<String> classes, List<String> features)
     {
 		// Count properties
 		int maxNumFeatures = features.size();
@@ -124,7 +122,7 @@ public class Main2 {
 		return atts;
 	}
 	
-	public static Instances getDataset(ArrayList<Attribute> attributes, List<String> classes, Map<String, int[]> binary_vectors)
+	private Instances getDataset(ArrayList<Attribute> attributes, List<String> classes, Map<String, int[]> binary_vectors)
     {
 		// Build a Dataset from Weka Attributes 
 		int num_classes = classes.size();
@@ -153,7 +151,7 @@ public class Main2 {
 	}
 	
 
-	public static ModelTree getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, List<Property>> properties) throws Exception
+	private ModelTree getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, List<Property>> properties) throws Exception
 	{
 		if (tree.isLeaf())
 		{
@@ -204,11 +202,11 @@ public class Main2 {
 		}
 	}
 	
-	public static void runModelTree(ModelTree tree){
+	private void runModelTree(ModelTree tree){
 		runModelTree(tree, 0);
 	}
 	
-	public static void runModelTree(ModelTree tree, int level)
+	private void runModelTree(ModelTree tree, int level)
 	{
 		String indent = String.join("", Collections.nCopies(level, "  "));
 		
@@ -228,58 +226,73 @@ public class Main2 {
 
 	public static void main(String[] args)
     {
-		ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
-		NoSQLSchema schema = loader.load(new File("model/mongoMovies3.xmi"),
-				NoSQLSchema.class);
-		
-		// Get list of classes and list of their properties
-		Map<String, List<String>> classes = getClasses(schema);
-		
-		// Count classes
-		int num_classes = classes.size();
+		(new Main2()).run(args);		
+	}
 
-		// Get List of properties names
-		Set<String> featuresNames = new HashSet<String>();		
-		for (List<String> list : classes.values())
-		{
-			featuresNames.addAll(list);
-		}
+	private void run(String[] args)
+	{		
+		ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
+		loader.registerPackages(EntitydifferentiationPackage.eINSTANCE);
+		EntityDifferentiation diff = loader.load(new File("model/mongoMovies3_Diff.xmi"),
+				EntityDifferentiation.class);
+
+		for (EntityDiffSpec eds : diff.getEntityDiffSpecs())
+			generateTreeForEntity(eds);
+	}
+	
+	private void generateTreeForEntity(EntityDiffSpec eds)
+	{
 		
-		List<String> featuresList = Arrays.asList(featuresNames.toArray(new String[featuresNames.size()]));		
-		List<String> classesList = Arrays.asList(classes.keySet().toArray(new String[num_classes]));
-		
-		// Encode classes into binary vectors
-		Map<String, int[]> binary_vectors = oneHot(classes, featuresList);
-		
-		// Build Attribute models for weka
-		ArrayList<Attribute> atts = getWekaAttributes(classesList, featuresList);
-		Attribute tag = atts.get(atts.size() - 1);
-		
-		// Generate Dataset
-		Instances dataset = getDataset(atts, classesList, binary_vectors);
-				
-		
-		try {
-			// Get Classification Tree 
-			OpenJ48 tree = generateTree(dataset);
-			ClassifierTree root = tree.get_m_root();
-			
-			System.out.println(tree);
-			for (int i = 0; i < dataset.numInstances(); i++){
-				System.out.println(dataset.get(i).stringValue(tag)+": "
-						+ tree.classifyInstance(dataset.get(i)));
-			}
-			
-			ModelTree modelTree = 
-					getModelTree(root, getEntityVersions(schema), getProperties(schema));
-			runModelTree(modelTree);
-		} 
-		
-		catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
+		List<Pair<String, PropertySpec>> features = 
+			Stream.concat(null,null).collect(Collectors.gro)
+					
+//		// Get list of classes and list of their properties
+//		Map<String, List<String>> classes = getClasses(schema);
+//		
+//		// Count classes
+//		int num_classes = classes.size();
+//
+//		// Get List of properties names
+//		Set<String> featuresNames = new HashSet<String>();		
+//		for (List<String> list : classes.values())
+//		{
+//			featuresNames.addAll(list);
+//		}
+//		
+//		List<String> featuresList = Arrays.asList(featuresNames.toArray(new String[featuresNames.size()]));		
+//		List<String> classesList = Arrays.asList(classes.keySet().toArray(new String[num_classes]));
+//		
+//		// Encode classes into binary vectors
+//		Map<String, int[]> binary_vectors = oneHot(classes, featuresList);
+//		
+//		// Build Attribute models for weka
+//		ArrayList<Attribute> atts = getWekaAttributes(classesList, featuresList);
+//		Attribute tag = atts.get(atts.size() - 1);
+//		
+//		// Generate Dataset
+//		Instances dataset = getDataset(atts, classesList, binary_vectors);
+//				
+//		
+//		try {
+//			// Get Classification Tree 
+//			OpenJ48 tree = generateTree(dataset);
+//			ClassifierTree root = tree.get_m_root();
+//			
+//			System.out.println(tree);
+//			for (int i = 0; i < dataset.numInstances(); i++){
+//				System.out.println(dataset.get(i).stringValue(tag)+": "
+//						+ tree.classifyInstance(dataset.get(i)));
+//			}
+//			
+//			ModelTree modelTree = 
+//					getModelTree(root, getEntityVersions(schema), getProperties(schema));
+//			runModelTree(modelTree);
+//		} 
+//		
+//		catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}		
 	}
 
 }
