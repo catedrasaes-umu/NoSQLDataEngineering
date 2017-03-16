@@ -14,8 +14,10 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.set.strategy.mutable.UnifiedSetWithHashingStrategy;
@@ -382,8 +384,25 @@ public class NoSQLSchemaToEntityDiff
 			
 			// Calc notProps
 			
-			// For each property appearing in the 
-			
+			// For each entity version, for each property appearing in the rest 
+			// of entityVersions but not in this one, add a "notProp"
+			for (EntityVersionProp evp: de.getEntityVersionProps())
+			{
+				Set<String> ownPropNames =
+						evp.getPropertySpecs().stream().map(pe -> pe.getProperty().getName())
+						.collect(Collectors.toSet());
+				
+				Map<String, List<PropertySpec>> otherPropsByName = 
+					de.getEntityVersionProps().stream()
+					.filter(_evp -> _evp != evp)
+					.flatMap(_evp -> _evp.getPropertySpecs().stream())
+					.filter(_ps -> !ownPropNames.contains(_ps.getProperty().getName()))
+					.collect(Collectors.groupingBy(_ps -> _ps.getProperty().getName()));
+				
+				otherPropsByName.entrySet().stream().forEach(_e ->
+					evp.getNotProps().add(_e.getValue().get(0).getProperty())
+				);
+			}
 		}
 
 		// Add it to the model
