@@ -4,6 +4,7 @@ package es.um.nosql.schemainference.entitydifferentiation;
 
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
 
+import es.um.nosql.schemainference.NoSQLSchema.Property;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -19,6 +20,7 @@ import org.eclipse.emf.ecore.EObject;
  * <ul>
  *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp#getPropertySpecs <em>Property Specs</em>}</li>
  *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp#getEntityVersion <em>Entity Version</em>}</li>
+ *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp#getNotProps <em>Not Props</em>}</li>
  * </ul>
  *
  * @see es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage#getEntityVersionProp()
@@ -67,5 +69,21 @@ public interface EntityVersionProp extends EObject {
 	 * @generated
 	 */
 	void setEntityVersion(EntityVersion value);
+
+	/**
+	 * Returns the value of the '<em><b>Not Props</b></em>' containment reference list.
+	 * The list contents are of type {@link es.um.nosql.schemainference.NoSQLSchema.Property}.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Not Props</em>' containment reference list isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Not Props</em>' containment reference list.
+	 * @see es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage#getEntityVersionProp_NotProps()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<Property> getNotProps();
 
 } // EntityVersionProp

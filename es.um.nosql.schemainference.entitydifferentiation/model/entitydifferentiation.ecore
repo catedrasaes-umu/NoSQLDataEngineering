@@ -16,9 +16,6 @@
         eType="#//EntityVersionProp" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="commonProps" upperBound="-1"
         eType="#//PropertySpec" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="notProps" upperBound="-1"
-        eType="ecore:EClass ../../es.um.nosql.schemainference/model/nosqlschema.ecore#//Property"
-        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="PropertySpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" lowerBound="1"
@@ -30,5 +27,8 @@
         eType="#//PropertySpec" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entityVersion" lowerBound="1"
         eType="ecore:EClass ../../es.um.nosql.schemainference/model/nosqlschema.ecore#//EntityVersion"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="notProps" upperBound="-1"
+        eType="ecore:EClass ../../es.um.nosql.schemainference/model/nosqlschema.ecore#//Property"
+        containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

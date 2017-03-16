@@ -379,6 +379,11 @@ public class NoSQLSchemaToEntityDiff
 					evp.getPropertySpecs().add(pe);
 				});
 			}
+			
+			// Calc notProps
+			
+			// For each property appearing in the 
+			
 		}
 
 		// Add it to the model

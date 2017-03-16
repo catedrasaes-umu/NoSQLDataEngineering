@@ -3,8 +3,6 @@
 package es.um.nosql.schemainference.entitydifferentiation.impl;
 
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
-
-import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec;
 import es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp;
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage;
@@ -37,7 +35,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.impl.EntityDiffSpecImpl#getEntity <em>Entity</em>}</li>
  *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.impl.EntityDiffSpecImpl#getEntityVersionProps <em>Entity Version Props</em>}</li>
  *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.impl.EntityDiffSpecImpl#getCommonProps <em>Common Props</em>}</li>
- *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.impl.EntityDiffSpecImpl#getNotProps <em>Not Props</em>}</li>
  * </ul>
  *
  * @generated
@@ -72,16 +69,6 @@ public class EntityDiffSpecImpl extends MinimalEObjectImpl.Container implements 
 	 * @ordered
 	 */
 	protected EList<PropertySpec> commonProps;
-
-	/**
-	 * The cached value of the '{@link #getNotProps() <em>Not Props</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getNotProps()
-	 * @generated
-	 * @ordered
-	 */
-	protected EList<Property> notProps;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -169,18 +156,6 @@ public class EntityDiffSpecImpl extends MinimalEObjectImpl.Container implements 
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Property> getNotProps() {
-		if (notProps == null) {
-			notProps = new EObjectContainmentEList<Property>(Property.class, this, EntitydifferentiationPackage.ENTITY_DIFF_SPEC__NOT_PROPS);
-		}
-		return notProps;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
@@ -188,8 +163,6 @@ public class EntityDiffSpecImpl extends MinimalEObjectImpl.Container implements 
 				return ((InternalEList<?>)getEntityVersionProps()).basicRemove(otherEnd, msgs);
 			case EntitydifferentiationPackage.ENTITY_DIFF_SPEC__COMMON_PROPS:
 				return ((InternalEList<?>)getCommonProps()).basicRemove(otherEnd, msgs);
-			case EntitydifferentiationPackage.ENTITY_DIFF_SPEC__NOT_PROPS:
-				return ((InternalEList<?>)getNotProps()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -209,8 +182,6 @@ public class EntityDiffSpecImpl extends MinimalEObjectImpl.Container implements 
 				return getEntityVersionProps();
 			case EntitydifferentiationPackage.ENTITY_DIFF_SPEC__COMMON_PROPS:
 				return getCommonProps();
-			case EntitydifferentiationPackage.ENTITY_DIFF_SPEC__NOT_PROPS:
-				return getNotProps();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -235,10 +206,6 @@ public class EntityDiffSpecImpl extends MinimalEObjectImpl.Container implements 
 				getCommonProps().clear();
 				getCommonProps().addAll((Collection<? extends PropertySpec>)newValue);
 				return;
-			case EntitydifferentiationPackage.ENTITY_DIFF_SPEC__NOT_PROPS:
-				getNotProps().clear();
-				getNotProps().addAll((Collection<? extends Property>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -260,9 +227,6 @@ public class EntityDiffSpecImpl extends MinimalEObjectImpl.Container implements 
 			case EntitydifferentiationPackage.ENTITY_DIFF_SPEC__COMMON_PROPS:
 				getCommonProps().clear();
 				return;
-			case EntitydifferentiationPackage.ENTITY_DIFF_SPEC__NOT_PROPS:
-				getNotProps().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -281,8 +245,6 @@ public class EntityDiffSpecImpl extends MinimalEObjectImpl.Container implements 
 				return entityVersionProps != null && !entityVersionProps.isEmpty();
 			case EntitydifferentiationPackage.ENTITY_DIFF_SPEC__COMMON_PROPS:
 				return commonProps != null && !commonProps.isEmpty();
-			case EntitydifferentiationPackage.ENTITY_DIFF_SPEC__NOT_PROPS:
-				return notProps != null && !notProps.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

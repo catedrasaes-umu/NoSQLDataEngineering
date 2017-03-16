@@ -4,6 +4,7 @@ package es.um.nosql.schemainference.entitydifferentiation.impl;
 
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
 
+import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp;
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage;
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec;
@@ -34,6 +35,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.impl.EntityVersionPropImpl#getPropertySpecs <em>Property Specs</em>}</li>
  *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.impl.EntityVersionPropImpl#getEntityVersion <em>Entity Version</em>}</li>
+ *   <li>{@link es.um.nosql.schemainference.entitydifferentiation.impl.EntityVersionPropImpl#getNotProps <em>Not Props</em>}</li>
  * </ul>
  *
  * @generated
@@ -58,6 +60,16 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
 	 * @ordered
 	 */
 	protected EntityVersion entityVersion;
+
+	/**
+	 * The cached value of the '{@link #getNotProps() <em>Not Props</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getNotProps()
+	 * @generated
+	 * @ordered
+	 */
+	protected EList<Property> notProps;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -133,11 +145,25 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EList<Property> getNotProps() {
+		if (notProps == null) {
+			notProps = new EObjectContainmentEList<Property>(Property.class, this, EntitydifferentiationPackage.ENTITY_VERSION_PROP__NOT_PROPS);
+		}
+		return notProps;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case EntitydifferentiationPackage.ENTITY_VERSION_PROP__PROPERTY_SPECS:
 				return ((InternalEList<?>)getPropertySpecs()).basicRemove(otherEnd, msgs);
+			case EntitydifferentiationPackage.ENTITY_VERSION_PROP__NOT_PROPS:
+				return ((InternalEList<?>)getNotProps()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -155,6 +181,8 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
 			case EntitydifferentiationPackage.ENTITY_VERSION_PROP__ENTITY_VERSION:
 				if (resolve) return getEntityVersion();
 				return basicGetEntityVersion();
+			case EntitydifferentiationPackage.ENTITY_VERSION_PROP__NOT_PROPS:
+				return getNotProps();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -175,6 +203,10 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
 			case EntitydifferentiationPackage.ENTITY_VERSION_PROP__ENTITY_VERSION:
 				setEntityVersion((EntityVersion)newValue);
 				return;
+			case EntitydifferentiationPackage.ENTITY_VERSION_PROP__NOT_PROPS:
+				getNotProps().clear();
+				getNotProps().addAll((Collection<? extends Property>)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -193,6 +225,9 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
 			case EntitydifferentiationPackage.ENTITY_VERSION_PROP__ENTITY_VERSION:
 				setEntityVersion((EntityVersion)null);
 				return;
+			case EntitydifferentiationPackage.ENTITY_VERSION_PROP__NOT_PROPS:
+				getNotProps().clear();
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -209,6 +244,8 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
 				return propertySpecs != null && !propertySpecs.isEmpty();
 			case EntitydifferentiationPackage.ENTITY_VERSION_PROP__ENTITY_VERSION:
 				return entityVersion != null;
+			case EntitydifferentiationPackage.ENTITY_VERSION_PROP__NOT_PROPS:
+				return notProps != null && !notProps.isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
