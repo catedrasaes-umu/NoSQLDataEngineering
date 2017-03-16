@@ -3,6 +3,7 @@
   <viewpoint:DAnalysis xmi:id="_cYJUcCaYEeaCVLabc7FRZA" selectedViews="_gqLKUCaYEeaCVLabc7FRZA" version="11.1.0.201608251200">
     <semanticResources>nosqlschema.ecore</semanticResources>
     <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
+    <semanticResources>nosqlschema.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_gqLKUCaYEeaCVLabc7FRZA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
       <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_5qB9cAghEeeuuIyWhsLyzQ" name="NoSQLSchema class diagram" representation="_g6gsYCaYEeaCVLabc7FRZA">
