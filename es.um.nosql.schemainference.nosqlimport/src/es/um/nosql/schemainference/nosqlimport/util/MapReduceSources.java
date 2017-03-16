@@ -15,7 +15,7 @@ public class MapReduceSources
 {
 	@SuppressWarnings("serial")
 	public static class MalformedDirectoryStructure extends RuntimeException
-	{		
+	{
 	}
 	
 	public static MapReduceSources fromDir(String dir) throws MalformedDirectoryStructure

@@ -1,4 +1,4 @@
-package es.um.nosql.schemainference.entitydifferentiation.gen.js
+package es.um.nosql.schemainference.m2t.gen.js
 
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation
 import es.um.nosql.schemainference.util.emf.ResourceManager
@@ -135,11 +135,7 @@ class DiffToJS
 
 	    // Add the not checks
 		if (exact == EXACT_TYPE)
-		{
-			val ownPropertyNames = evp.propertySpecs.map[p | p.property.name]
-			propsToGenerateNot = spec.entityVersionProps.filter[evp1 |  evp1 != evp ]
-				.map[propertySpecs].flatten.filter[p | !ownPropertyNames.contains(p.property.name)]
-		}
+			propsToGenerateNot = evp.notProps
 
 		'''
 		«IF !typeCheck.empty»b = b && «typeCheck»;«ENDIF»
