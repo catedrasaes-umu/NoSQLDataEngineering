@@ -28,7 +28,6 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="entityVersion" lowerBound="1"
         eType="ecore:EClass ../../es.um.nosql.schemainference/model/nosqlschema.ecore#//EntityVersion"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="notProps" upperBound="-1"
-        eType="ecore:EClass ../../es.um.nosql.schemainference/model/nosqlschema.ecore#//Property"
-        containment="true"/>
+        eType="#//PropertySpec" containment="true"/>
   </eClassifiers>
 </ecore:EPackage>

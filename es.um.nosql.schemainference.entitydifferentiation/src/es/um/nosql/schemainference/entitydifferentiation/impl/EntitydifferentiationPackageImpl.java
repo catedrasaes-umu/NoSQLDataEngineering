@@ -350,7 +350,7 @@ public class EntitydifferentiationPackageImpl extends EPackageImpl implements En
 		initEClass(entityVersionPropEClass, EntityVersionProp.class, "EntityVersionProp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEntityVersionProp_PropertySpecs(), this.getPropertySpec(), null, "propertySpecs", null, 0, -1, EntityVersionProp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getEntityVersionProp_EntityVersion(), theNoSQLSchemaPackage.getEntityVersion(), null, "entityVersion", null, 1, 1, EntityVersionProp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getEntityVersionProp_NotProps(), theNoSQLSchemaPackage.getProperty(), null, "notProps", null, 0, -1, EntityVersionProp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getEntityVersionProp_NotProps(), this.getPropertySpec(), null, "notProps", null, 0, -1, EntityVersionProp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

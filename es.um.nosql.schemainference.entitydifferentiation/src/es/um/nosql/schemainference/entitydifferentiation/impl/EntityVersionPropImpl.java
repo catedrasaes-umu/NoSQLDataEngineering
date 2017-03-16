@@ -3,8 +3,6 @@
 package es.um.nosql.schemainference.entitydifferentiation.impl;
 
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
-
-import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp;
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage;
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec;
@@ -69,7 +67,7 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
 	 * @generated
 	 * @ordered
 	 */
-	protected EList<Property> notProps;
+	protected EList<PropertySpec> notProps;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -145,9 +143,9 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EList<Property> getNotProps() {
+	public EList<PropertySpec> getNotProps() {
 		if (notProps == null) {
-			notProps = new EObjectContainmentEList<Property>(Property.class, this, EntitydifferentiationPackage.ENTITY_VERSION_PROP__NOT_PROPS);
+			notProps = new EObjectContainmentEList<PropertySpec>(PropertySpec.class, this, EntitydifferentiationPackage.ENTITY_VERSION_PROP__NOT_PROPS);
 		}
 		return notProps;
 	}
@@ -205,7 +203,7 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
 				return;
 			case EntitydifferentiationPackage.ENTITY_VERSION_PROP__NOT_PROPS:
 				getNotProps().clear();
-				getNotProps().addAll((Collection<? extends Property>)newValue);
+				getNotProps().addAll((Collection<? extends PropertySpec>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

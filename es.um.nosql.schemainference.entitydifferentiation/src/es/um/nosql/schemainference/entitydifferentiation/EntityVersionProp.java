@@ -3,8 +3,6 @@
 package es.um.nosql.schemainference.entitydifferentiation;
 
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
-
-import es.um.nosql.schemainference.NoSQLSchema.Property;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EObject;
@@ -72,7 +70,7 @@ public interface EntityVersionProp extends EObject {
 
 	/**
 	 * Returns the value of the '<em><b>Not Props</b></em>' containment reference list.
-	 * The list contents are of type {@link es.um.nosql.schemainference.NoSQLSchema.Property}.
+	 * The list contents are of type {@link es.um.nosql.schemainference.entitydifferentiation.PropertySpec}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Not Props</em>' containment reference list isn't clear,
@@ -84,6 +82,6 @@ public interface EntityVersionProp extends EObject {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<Property> getNotProps();
+	EList<PropertySpec> getNotProps();
 
 } // EntityVersionProp
