@@ -90,7 +90,7 @@ public class BuildNoSQLSchema
 
 		// Make the actual URI to be exported in the generated models. This
 		// allows using the models without having to register them.
-		packageInstance.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.schemainference/model/dbschema.ecore", true));
+		packageInstance.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.schemainference/model/nosqlschema.ecore", true));
 		Map<Object,Object> options = new HashMap<Object,Object>();
 		options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
 		options.put(XMIResource.OPTION_ENCODING, "UTF-8");
