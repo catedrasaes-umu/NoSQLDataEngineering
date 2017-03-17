@@ -50,7 +50,7 @@ public class Main2 {
 		classifier.buildClassifier(train);
 		return classifier;
 	}
-	
+
 	private Map<String, List<String>> getClasses(NoSQLSchema schema)
 	{
 		Map<String, List<String>> classes = new HashMap<String, List<String>>();
@@ -61,12 +61,12 @@ public class Main2 {
 				// FIXME
 				if (!entityVersion.isRoot())
 					continue;
-				
+
 				// Get List of properties Names
 				List<String> properties = entityVersion.getProperties().stream()
 						.map(Serializer::serialize)
 						.collect(toList());
-								
+
 				// Add current Entity Version to entities Map
 				String key = String.format("%1$s:%2$d", entity.getName(), entityVersion.getVersionId());
 				classes.put(key, properties);
@@ -75,30 +75,25 @@ public class Main2 {
 
 		return classes;
 	}
-	
-    private ArrayList<Attribute> getWekaAttributes(List<String> classes, List<String> features)
-    {
-		// Count properties
-		int maxNumFeatures = features.size();
 
-		// Define Nominal values for features fields	
-		List<String> f_values = Arrays.asList(new String[]{"1","0"});
-		
+    private ArrayList<Attribute> getWekaAttributes(EntityDiffSpec eds, Map<String, PropertySpec> features, List<String> classes)
+    {
+		// Define Nominal values for features fields
+		final List<String> f_values = Arrays.asList(new String[]{"1","0"});
+
 		// Define Weka Instances Model
-		ArrayList<Attribute> atts = new ArrayList<Attribute>();
-		for (int i = 0; i < maxNumFeatures; i++)
-        {
-			Attribute attribute = new Attribute(features.get(i), f_values);
-			atts.add(attribute);
-		}
-		Attribute tag = new Attribute("tag", classes);	
-		atts.add(tag);
+		ArrayList<Attribute> atts =
+			features.keySet().stream().map(s -> new Attribute(s, f_values))
+			.collect(toCollection(ArrayList::new));
+
+
+		atts.add(new Attribute("tag", classes));
 		return atts;
 	}
-	
+
 	private Instances getDataset(ArrayList<Attribute> attributes, List<String> classes, Map<String, int[]> binary_vectors)
     {
-		// Build a Dataset from Weka Attributes 
+		// Build a Dataset from Weka Attributes
 		int num_classes = classes.size();
 		Instances dataset = new Instances("Train", attributes, num_classes);
 		Attribute tag = attributes.get(attributes.size() - 1);
@@ -107,23 +102,23 @@ public class Main2 {
 		for (String name: classes)
 		{
 			// TODO: Update to Class Weight
-			double weight = 1.0; 
+			double weight = 1.0;
 			int[] vector = binary_vectors.get(name);
 			Instance ints = new DenseInstance(vector.length + 1);
-			
+
 			for (int i = 0; i < vector.length; i++)
 			{
 				ints.setValue(attributes.get(i), String.valueOf(vector[i]));
 			}
-			
+
 			ints.setValue(tag, name);
-			dataset.add(ints);			
+			dataset.add(ints);
 		}
 
 		dataset.setClass(tag);
 		return dataset;
 	}
-	
+
 
 	private ModelTree getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, List<Property>> properties) throws Exception
 	{
@@ -131,30 +126,30 @@ public class Main2 {
 		{
 			// Print Class value
 			String tag = tree.prefix();
-			
+
 			Pattern pattern = Pattern.compile("\\[(.*?) \\([\\d\\.\\,]+\\)\\]");
 			Matcher matcher = pattern.matcher(tag);
-			
+
 			if (matcher.find())
 			{
 				EntityVersion ev = entityVersions.get(matcher.group(1));
 				return new ModelTree((Entity)ev.eContainer(),ev);
 			}
-			
+
 			else throw new Exception("Invalid exp reg for: "+tag);
 		}
 		else
-		{			
+		{
 			ClassifierSplitModel classifierSplitModel = tree.getLocalModel();
-			ClassifierTree[] sons = tree.getSons();	
+			ClassifierTree[] sons = tree.getSons();
 			String left = tree.getLocalModel().leftSide(tree.getTrainingData());
 			List<Property> p = properties.get(left.trim());
-			
+
 			if (p==null) throw new Exception("Unknown Property Name: " + left.trim());
-			
+
 			if (sons.length != 2) throw new Exception("This is not a binary decision tree");
 
-			ModelTree m = new ModelTree(p.get(0));			
+			ModelTree m = new ModelTree(p.get(0));
 			for (int i = 0 ; i < sons.length; i++)
 			{
 				String value = tree.getLocalModel().rightSide(i, tree.getTrainingData());
@@ -171,19 +166,19 @@ public class Main2 {
 					throw new Exception("Unknown Right side: " + value.trim());
 				}
 			}
-			
+
 			return m;
 		}
 	}
-	
+
 	private void runModelTree(ModelTree tree){
 		runModelTree(tree, 0);
 	}
-	
+
 	private void runModelTree(ModelTree tree, int level)
 	{
 		String indent = String.join("", Collections.nCopies(level, "  "));
-		
+
 		if (tree.is_leaf())
 		{
 			Entity e = tree.getEntity();
@@ -200,11 +195,11 @@ public class Main2 {
 
 	public static void main(String[] args)
     {
-		(new Main2()).run(args);		
+		(new Main2()).run(args);
 	}
 
 	private void run(String[] args)
-	{		
+	{
 		ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
 		loader.registerPackages(EntitydifferentiationPackage.eINSTANCE);
 		EntityDifferentiation diff = loader.load(new File("model/mongoMovies3_Diff.xmi"),
@@ -213,7 +208,7 @@ public class Main2 {
 		for (EntityDiffSpec eds : diff.getEntityDiffSpecs())
 			generateTreeForEntity(eds);
 	}
-	
+
 	private String serialize(PropertySpec ps)
 	{
 		if (ps.isNeedsTypeCheck())
@@ -226,32 +221,32 @@ public class Main2 {
 	{
 		return "!" + ps.getProperty().getName();
 	}
-	
+
 	private void generateTreeForEntity(EntityDiffSpec eds)
 	{
 		Map<EntityVersionProp, List<Pair<String, PropertySpec>>> propsByEv =
 			eds.getEntityVersionProps().stream()
 			.collect(toMap(Function.identity(),
-					evp -> 
+					evp ->
 						Stream.concat(
 								evp.getPropertySpecs().stream().map(ps -> Pair.of(serialize(ps), ps)),
 								evp.getNotProps().stream().map(ps -> Pair.of(serializeNot(ps), ps)))
 							.collect(toList())));
-		
-		Map<String, PropertySpec> features = 
+
+		Map<String, PropertySpec> features =
 			propsByEv.values().stream().flatMap(l -> l.stream())
 				.collect(groupingBy(Pair::getKey,
 									mapping(Pair::getValue,
 											reducing(null, (l,r) -> r))));
-		
+
 		// Generate inverted index for feature serialization to feature vector position
 		final Iterator<Map.Entry<String,PropertySpec>> it = features.entrySet().iterator();
-		Map<String,Integer> arrayPos = 
+		Map<String,Integer> arrayPos =
 			IntStream.range(0,features.entrySet().size())
 				.boxed()
 				.collect(toMap(e -> it.next().getKey(),
 							Function.identity()));
-		
+
 		Map<EntityVersionProp, int[]> featuresByEv =
 			propsByEv.entrySet().stream()
 			.collect(toMap(Map.Entry::getKey,
@@ -261,37 +256,42 @@ public class Main2 {
 						return values;
 					}));
 
+		final String entityName = eds.getEntity().getName();
+		List<String> classes = eds.getEntityVersionProps().stream()
+				.map(evp -> String.format("%1$s_%2$d", entityName, evp.getEntityVersion().getVersionId()))
+				.collect(toList());
+
 		// Count classes
 		int num_classes = eds.getEntityVersionProps().size();
-	
-//		// Build Attribute models for weka
-//		ArrayList<Attribute> atts = getWekaAttributes(classesList, featuresList);
+
+		// Build Attribute models for weka
+		ArrayList<Attribute> atts = getWekaAttributes(eds, features, classes);
 //		Attribute tag = atts.get(atts.size() - 1);
-//		
+//
 //		// Generate Dataset
 //		Instances dataset = getDataset(atts, classesList, binary_vectors);
-//				
-//		
+//
+//
 //		try {
-//			// Get Classification Tree 
+//			// Get Classification Tree
 //			OpenJ48 tree = generateTree(dataset);
 //			ClassifierTree root = tree.get_m_root();
-//			
+//
 //			System.out.println(tree);
 //			for (int i = 0; i < dataset.numInstances(); i++){
 //				System.out.println(dataset.get(i).stringValue(tag)+": "
 //						+ tree.classifyInstance(dataset.get(i)));
 //			}
-//			
-//			ModelTree modelTree = 
+//
+//			ModelTree modelTree =
 //					getModelTree(root, getEntityVersions(schema), getProperties(schema));
 //			runModelTree(modelTree);
-//		} 
-//		
+//		}
+//
 //		catch (Exception e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
-//		}		
+//		}
 	}
 
 }
