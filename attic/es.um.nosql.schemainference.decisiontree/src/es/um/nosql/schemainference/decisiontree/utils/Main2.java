@@ -13,7 +13,7 @@ import java.util.Set;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.stream.Collectors;
+import static java.util.stream.Collectors.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
@@ -27,6 +27,7 @@ import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation;
+import es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp;
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage;
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec;
 import es.um.nosql.schemainference.util.emf.ModelLoader;
@@ -63,7 +64,7 @@ public class Main2 {
 				// Get List of properties Names
 				List<String> properties = entityVersion.getProperties().stream()
 						.map(Serializer::serialize)
-						.collect(Collectors.toList());
+						.collect(toList());
 								
 				// Add current Entity Version to entities Map
 				String key = String.format("%1$s:%2$d", entity.getName(), entityVersion.getVersionId());
@@ -80,7 +81,7 @@ public class Main2 {
 		Map<String, Integer> features = new HashMap<String, Integer>();
 		
 		features = IntStream.range(0, featuresList.size()).boxed()
-			.collect(Collectors.toMap(i -> featuresList.get(i), Function.identity()));
+			.collect(toMap(i -> featuresList.get(i), Function.identity()));
 		
 		int vector_size = features.size(); // Features + Tag
 		
@@ -240,11 +241,36 @@ public class Main2 {
 			generateTreeForEntity(eds);
 	}
 	
+	private String serialize(PropertySpec ps)
+	{
+		if (ps.isNeedsTypeCheck())
+			return Serializer.serialize(ps.getProperty());
+		else
+			return ps.getProperty().getName();
+	}
+
+	private String serializeNot(PropertySpec ps)
+	{
+		return "!" + ps.getProperty().getName();
+	}
+	
 	private void generateTreeForEntity(EntityDiffSpec eds)
 	{
-		
-		List<Pair<String, PropertySpec>> features = 
-			Stream.concat(null,null).collect(Collectors.gro)
+		Map<String, PropertySpec> features = 
+			Stream.concat(
+					// own properties
+					eds.getEntityVersionProps().stream()
+					.flatMap(evp -> evp.getPropertySpecs().stream())
+					.map(pe -> Pair.of(serialize(pe), pe)),
+					// not properties
+					eds.getEntityVersionProps().stream()
+					.flatMap(evp -> evp.getNotProps().stream())
+					.map(pe -> Pair.of(serializeNot(pe), pe)))
+				.collect(groupingBy(Pair::getKey,
+									mapping(Pair::getValue,
+											reducing(null, (l,r) -> r))));
+						
+		features.forEach((n,ps) -> System.out.println(n));
 					
 //		// Get list of classes and list of their properties
 //		Map<String, List<String>> classes = getClasses(schema);

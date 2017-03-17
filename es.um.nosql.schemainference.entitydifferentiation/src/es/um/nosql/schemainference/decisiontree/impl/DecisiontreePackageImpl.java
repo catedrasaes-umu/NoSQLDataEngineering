@@ -192,8 +192,17 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIntermediateNode_CheckedProperty() {
+	public EReference getIntermediateNode_CheckHasProperty() {
 		return (EReference)intermediateNodeEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getIntermediateNode_CheckHasNotProperty() {
+		return (EReference)intermediateNodeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -304,7 +313,8 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 		createEReference(leafNodeEClass, LEAF_NODE__IDENTIFIED_VERSION);
 
 		intermediateNodeEClass = createEClass(INTERMEDIATE_NODE);
-		createEReference(intermediateNodeEClass, INTERMEDIATE_NODE__CHECKED_PROPERTY);
+		createEReference(intermediateNodeEClass, INTERMEDIATE_NODE__CHECK_HAS_PROPERTY);
+		createEReference(intermediateNodeEClass, INTERMEDIATE_NODE__CHECK_HAS_NOT_PROPERTY);
 
 		decisionTreeForEntityEClass = createEClass(DECISION_TREE_FOR_ENTITY);
 		createEReference(decisionTreeForEntityEClass, DECISION_TREE_FOR_ENTITY__ROOT);
@@ -361,7 +371,8 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 		initEReference(getLeafNode_IdentifiedVersion(), theNoSQLSchemaPackage.getEntityVersion(), null, "identifiedVersion", null, 1, 1, LeafNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(intermediateNodeEClass, IntermediateNode.class, "IntermediateNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIntermediateNode_CheckedProperty(), this.getPropertySpec2(), null, "checkedProperty", null, 1, 1, IntermediateNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIntermediateNode_CheckHasProperty(), this.getPropertySpec2(), null, "checkHasProperty", null, 0, 1, IntermediateNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getIntermediateNode_CheckHasNotProperty(), this.getPropertySpec2(), null, "checkHasNotProperty", null, 0, 1, IntermediateNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(decisionTreeForEntityEClass, DecisionTreeForEntity.class, "DecisionTreeForEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDecisionTreeForEntity_Root(), this.getDecisionTreeNode(), null, "root", null, 0, 1, DecisionTreeForEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

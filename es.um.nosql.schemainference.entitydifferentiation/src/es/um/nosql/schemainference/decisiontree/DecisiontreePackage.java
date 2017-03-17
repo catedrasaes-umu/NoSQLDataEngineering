@@ -186,13 +186,22 @@ public interface DecisiontreePackage extends EPackage {
 	int INTERMEDIATE_NODE__NO_BRANCH = DECISION_TREE_NODE__NO_BRANCH;
 
 	/**
-	 * The feature id for the '<em><b>Checked Property</b></em>' reference.
+	 * The feature id for the '<em><b>Check Has Property</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERMEDIATE_NODE__CHECKED_PROPERTY = DECISION_TREE_NODE_FEATURE_COUNT + 0;
+	int INTERMEDIATE_NODE__CHECK_HAS_PROPERTY = DECISION_TREE_NODE_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Check Has Not Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int INTERMEDIATE_NODE__CHECK_HAS_NOT_PROPERTY = DECISION_TREE_NODE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Intermediate Node</em>' class.
@@ -201,7 +210,7 @@ public interface DecisiontreePackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int INTERMEDIATE_NODE_FEATURE_COUNT = DECISION_TREE_NODE_FEATURE_COUNT + 1;
+	int INTERMEDIATE_NODE_FEATURE_COUNT = DECISION_TREE_NODE_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Intermediate Node</em>' class.
@@ -407,15 +416,26 @@ public interface DecisiontreePackage extends EPackage {
 	EClass getIntermediateNode();
 
 	/**
-	 * Returns the meta object for the reference '{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckedProperty <em>Checked Property</em>}'.
+	 * Returns the meta object for the reference '{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckHasProperty <em>Check Has Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Checked Property</em>'.
-	 * @see es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckedProperty()
+	 * @return the meta object for the reference '<em>Check Has Property</em>'.
+	 * @see es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckHasProperty()
 	 * @see #getIntermediateNode()
 	 * @generated
 	 */
-	EReference getIntermediateNode_CheckedProperty();
+	EReference getIntermediateNode_CheckHasProperty();
+
+	/**
+	 * Returns the meta object for the reference '{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckHasNotProperty <em>Check Has Not Property</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Check Has Not Property</em>'.
+	 * @see es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckHasNotProperty()
+	 * @see #getIntermediateNode()
+	 * @generated
+	 */
+	EReference getIntermediateNode_CheckHasNotProperty();
 
 	/**
 	 * Returns the meta object for class '{@link es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity <em>Decision Tree For Entity</em>}'.
@@ -580,12 +600,20 @@ public interface DecisiontreePackage extends EPackage {
 		EClass INTERMEDIATE_NODE = eINSTANCE.getIntermediateNode();
 
 		/**
-		 * The meta object literal for the '<em><b>Checked Property</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Check Has Property</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INTERMEDIATE_NODE__CHECKED_PROPERTY = eINSTANCE.getIntermediateNode_CheckedProperty();
+		EReference INTERMEDIATE_NODE__CHECK_HAS_PROPERTY = eINSTANCE.getIntermediateNode_CheckHasProperty();
+
+		/**
+		 * The meta object literal for the '<em><b>Check Has Not Property</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference INTERMEDIATE_NODE__CHECK_HAS_NOT_PROPERTY = eINSTANCE.getIntermediateNode_CheckHasNotProperty();
 
 		/**
 		 * The meta object literal for the '{@link es.um.nosql.schemainference.decisiontree.impl.DecisionTreeForEntityImpl <em>Decision Tree For Entity</em>}' class.

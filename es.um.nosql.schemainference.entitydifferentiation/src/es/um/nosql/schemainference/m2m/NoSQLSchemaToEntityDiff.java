@@ -16,6 +16,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -393,15 +394,18 @@ public class NoSQLSchemaToEntityDiff
 						evp.getPropertySpecs().stream().map(pe -> pe.getProperty().getName())
 						.collect(Collectors.toSet());
 				
-				Map<String, List<PropertySpec>> otherPropsByName = 
+				Map<String, PropertySpec> otherPropsByName = 
 					de.getEntityVersionProps().stream()
 					.filter(_evp -> _evp != evp)
 					.flatMap(_evp -> _evp.getPropertySpecs().stream())
 					.filter(_ps -> !ownPropNames.contains(_ps.getProperty().getName()))
-					.collect(Collectors.groupingBy(_ps -> _ps.getProperty().getName()));
+					.collect(Collectors.groupingBy(
+								_ps -> _ps.getProperty().getName(),
+								Collectors.reducing(null,(l,r) -> r)
+							));
 				
 				otherPropsByName.entrySet().stream().forEach(_e ->
-					evp.getNotProps().add(genPropertySpecNamed(_e.getValue().get(0).getProperty()))
+					evp.getNotProps().add(genPropertySpecNamed(_e.getValue().getProperty()))
 				);
 			}
 		}

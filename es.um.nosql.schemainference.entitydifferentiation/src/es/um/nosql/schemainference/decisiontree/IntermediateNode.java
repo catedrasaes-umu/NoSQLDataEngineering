@@ -11,7 +11,8 @@ package es.um.nosql.schemainference.decisiontree;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckedProperty <em>Checked Property</em>}</li>
+ *   <li>{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckHasProperty <em>Check Has Property</em>}</li>
+ *   <li>{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckHasNotProperty <em>Check Has Not Property</em>}</li>
  * </ul>
  *
  * @see es.um.nosql.schemainference.decisiontree.DecisiontreePackage#getIntermediateNode()
@@ -20,29 +21,55 @@ package es.um.nosql.schemainference.decisiontree;
  */
 public interface IntermediateNode extends DecisionTreeNode {
 	/**
-	 * Returns the value of the '<em><b>Checked Property</b></em>' reference.
+	 * Returns the value of the '<em><b>Check Has Property</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Checked Property</em>' reference isn't clear,
+	 * If the meaning of the '<em>Check Has Property</em>' reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Checked Property</em>' reference.
-	 * @see #setCheckedProperty(PropertySpec2)
-	 * @see es.um.nosql.schemainference.decisiontree.DecisiontreePackage#getIntermediateNode_CheckedProperty()
-	 * @model required="true"
+	 * @return the value of the '<em>Check Has Property</em>' reference.
+	 * @see #setCheckHasProperty(PropertySpec2)
+	 * @see es.um.nosql.schemainference.decisiontree.DecisiontreePackage#getIntermediateNode_CheckHasProperty()
+	 * @model
 	 * @generated
 	 */
-	PropertySpec2 getCheckedProperty();
+	PropertySpec2 getCheckHasProperty();
 
 	/**
-	 * Sets the value of the '{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckedProperty <em>Checked Property</em>}' reference.
+	 * Sets the value of the '{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckHasProperty <em>Check Has Property</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Checked Property</em>' reference.
-	 * @see #getCheckedProperty()
+	 * @param value the new value of the '<em>Check Has Property</em>' reference.
+	 * @see #getCheckHasProperty()
 	 * @generated
 	 */
-	void setCheckedProperty(PropertySpec2 value);
+	void setCheckHasProperty(PropertySpec2 value);
+
+	/**
+	 * Returns the value of the '<em><b>Check Has Not Property</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Check Has Not Property</em>' reference isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Check Has Not Property</em>' reference.
+	 * @see #setCheckHasNotProperty(PropertySpec2)
+	 * @see es.um.nosql.schemainference.decisiontree.DecisiontreePackage#getIntermediateNode_CheckHasNotProperty()
+	 * @model
+	 * @generated
+	 */
+	PropertySpec2 getCheckHasNotProperty();
+
+	/**
+	 * Sets the value of the '{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckHasNotProperty <em>Check Has Not Property</em>}' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Check Has Not Property</em>' reference.
+	 * @see #getCheckHasNotProperty()
+	 * @generated
+	 */
+	void setCheckHasNotProperty(PropertySpec2 value);
 
 } // IntermediateNode

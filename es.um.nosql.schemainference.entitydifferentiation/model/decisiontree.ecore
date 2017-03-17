@@ -13,8 +13,8 @@
         eType="ecore:EClass ../../es.um.nosql.schemainference/model/nosqlschema.ecore#//EntityVersion"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntermediateNode" eSuperTypes="#//DecisionTreeNode">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="checkedProperty" lowerBound="1"
-        eType="#//PropertySpec2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="checkHasProperty" eType="#//PropertySpec2"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="checkHasNotProperty" eType="#//PropertySpec2"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DecisionTreeForEntity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//DecisionTreeNode"
