@@ -13,7 +13,7 @@ import es.um.nosql.schemainference.db.adapters.DbClient;
 
 public class XML2Db
 {
-	private int MAX_LINES_BEFORE_STORE = 50000;
+	private int MAX_LINES_BEFORE_STORE = 25000;
 
 	private DbClient client;
 

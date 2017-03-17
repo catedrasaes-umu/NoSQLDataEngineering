@@ -42,7 +42,7 @@ public class Main
 
 	public static void prepareXML2Mongo()
 	{
-		String BASE_DIR = "/media/alberto/braxis/StackOverFlow/";
+		String BASE_DIR = "/media/alberto/braxis1/StackOverFlow/";
 		String USER_FILE = BASE_DIR + "Users.xml";
 		String VOTES_FILE = BASE_DIR + "Votes.xml";
 		String COMMENTS_FILE = BASE_DIR + "Comments.xml";
