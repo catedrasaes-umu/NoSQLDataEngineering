@@ -76,34 +76,6 @@ public class Main2 {
 		return classes;
 	}
 	
-	private Map<String, int[]> oneHot(Map<String, List<String>> classes, List<String> featuresList)
-	{
-		Map<String, int[]> result = new HashMap<String, int[]>();
-		Map<String, Integer> features = new HashMap<String, Integer>();
-		
-		features = IntStream.range(0, featuresList.size()).boxed()
-			.collect(toMap(i -> featuresList.get(i), Function.identity()));
-		
-		int vector_size = features.size(); // Features + Tag
-		
-		String[] list_classes = classes.keySet().toArray(new String[classes.size()]);
-		for (int i=0; i < list_classes.length; i++)
-        {
-			int[] base = new int[vector_size];
-			String tag = list_classes[i];
-			List<String> current_features = classes.get(tag);
-			for (String feature: current_features)
-            {
-				int index = features.get(feature);
-				base[index] = 1;
-			}
-
-			result.put(tag, base);
-		}
-		
-		return result;
-	}
-
     private ArrayList<Attribute> getWekaAttributes(List<String> classes, List<String> features)
     {
 		// Count properties
@@ -291,13 +263,7 @@ public class Main2 {
 
 		// Count classes
 		int num_classes = eds.getEntityVersionProps().size();
-
-//		List<String> featuresList = Arrays.asList(featuresNames.toArray(new String[featuresNames.size()]));		
-//		List<String> classesList = Arrays.asList(classes.keySet().toArray(new String[num_classes]));
-//		
-//		// Encode classes into binary vectors
-//		Map<String, int[]> binary_vectors = oneHot(classes, featuresList);
-//		
+	
 //		// Build Attribute models for weka
 //		ArrayList<Attribute> atts = getWekaAttributes(classesList, featuresList);
 //		Attribute tag = atts.get(atts.size() - 1);
