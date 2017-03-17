@@ -14,7 +14,6 @@ public class InferenceTest
 {
 	private static final String COUCHDB_IP = "localhost";
 	private static final String MONGODB_IP = "localhost";
-	private static final String JSON_FOLDER = "json/";
 	private static final String MODELS_FOLDER = "models/";
 	private static final String TABLENAME = "mongoMovies3";
 	private static final String MODEL_FILE = MODELS_FOLDER + TABLENAME + ".xmi";
@@ -30,7 +29,7 @@ public class InferenceTest
 		int maxInstances = 10;
 
 		DbController controller = new DbController(DbType.COUCHDB, COUCHDB_IP);
-		controller.model2Db(MODEL_FILE, JSON_FOLDER, minInstances, maxInstances);
+		controller.model2Db(MODEL_FILE, minInstances, maxInstances);
 
 		System.out.println("Starting inference...");
 		CouchDBSchemaInference inferrer = new CouchDBSchemaInference();
@@ -50,7 +49,7 @@ public class InferenceTest
 		int maxInstances = 10;
 
 		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
-		controller.model2Db(MODEL_FILE, JSON_FOLDER, minInstances, maxInstances);
+		controller.model2Db(MODEL_FILE, minInstances, maxInstances);
 
 		System.out.println("Starting inference...");
 		MongoDBSchemaInference inferrer = new MongoDBSchemaInference();
@@ -67,7 +66,7 @@ public class InferenceTest
 	{
 		long startTime = System.currentTimeMillis();
 
-		String stackOverflowTable = "stackoverflow";
+		String stackOverflowTable = "stackoverflow2";
 		String stackOverflowModel = MODELS_FOLDER + stackOverflowTable + "_SOF.xmi";
 
 		System.out.println("Starting inference...");
@@ -86,6 +85,6 @@ public class InferenceTest
 	{
 //		prepareCouchDBExample();
 //		prepareMongoDBExample();
-//		prepareMongoDBSOFExample();
+		prepareMongoDBSOFExample();
 	}
 }

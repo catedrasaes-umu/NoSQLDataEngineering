@@ -1,7 +1,6 @@
 package es.um.nosql.schemainference.db.interfaces;
 
 import java.io.File;
-import java.io.PrintWriter;
 
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
@@ -18,7 +17,7 @@ public class Model2Db
 		this.client = client;
 	}
 
-	public void storeJSONContent(String modelRoute, String jsonFolder, int minInstances, int maxInstances)
+	public void storeJSONContent(String modelRoute, int minInstances, int maxInstances)
 	{
 		ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
 		JsonGenerator generator = new JsonGenerator();
@@ -26,10 +25,9 @@ public class Model2Db
 		NoSQLSchema schema = loader.load(new File(modelRoute), NoSQLSchema.class);
 		String jsonContent = "";
 
-		try(PrintWriter fileOut = new PrintWriter(jsonFolder + schema.getName() + ".json"))
+		try
 		{
 			jsonContent = generator.generate(schema, minInstances, maxInstances);
-			fileOut.println(jsonContent);
 		} catch (Exception e)
 		{
 			e.printStackTrace();

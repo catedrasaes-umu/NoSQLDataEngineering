@@ -29,14 +29,14 @@ public class DbController
 		return client.shutdown();
 	}
 
-	public void model2Db(String modelRoute, String jsonFolder, int minInstances, int maxInstances)
+	public void model2Db(String modelRoute, int minInstances, int maxInstances)
 	{
 		long startTime = System.currentTimeMillis();
 
 		System.out.println("Reading input model " + modelRoute + "...");
 		Model2Db loader = new Model2Db(client);
-		
-		loader.storeJSONContent(modelRoute, jsonFolder, minInstances, maxInstances);
+
+		loader.storeJSONContent(modelRoute, minInstances, maxInstances);
 
 		System.out.println(Paths.get(modelRoute).getFileName() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
