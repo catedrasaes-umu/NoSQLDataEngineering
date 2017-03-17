@@ -3,6 +3,7 @@ package es.um.nosql.schemainference.decisiontree.utils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -18,9 +19,7 @@ import static java.util.stream.Collectors.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 import java.util.stream.StreamSupport;
-
 import org.apache.commons.lang3.tuple.Pair;
-
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
@@ -86,39 +85,9 @@ public class Main2 {
 			features.keySet().stream().map(s -> new Attribute(s, f_values))
 			.collect(toCollection(ArrayList::new));
 
-
 		atts.add(new Attribute("tag", classes));
 		return atts;
 	}
-
-	private Instances getDataset(ArrayList<Attribute> attributes, List<String> classes, Map<String, int[]> binary_vectors)
-    {
-		// Build a Dataset from Weka Attributes
-		int num_classes = classes.size();
-		Instances dataset = new Instances("Train", attributes, num_classes);
-		Attribute tag = attributes.get(attributes.size() - 1);
-
-		// For each classes, create a Weka Instance and add it to the dataset
-		for (String name: classes)
-		{
-			// TODO: Update to Class Weight
-			double weight = 1.0;
-			int[] vector = binary_vectors.get(name);
-			Instance ints = new DenseInstance(vector.length + 1);
-
-			for (int i = 0; i < vector.length; i++)
-			{
-				ints.setValue(attributes.get(i), String.valueOf(vector[i]));
-			}
-
-			ints.setValue(tag, name);
-			dataset.add(ints);
-		}
-
-		dataset.setClass(tag);
-		return dataset;
-	}
-
 
 	private ModelTree getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, List<Property>> properties) throws Exception
 	{
@@ -233,6 +202,7 @@ public class Main2 {
 								evp.getNotProps().stream().map(ps -> Pair.of(serializeNot(ps), ps)))
 							.collect(toList())));
 
+		// serializedFeature -> PropertySpec
 		Map<String, PropertySpec> features =
 			propsByEv.values().stream().flatMap(l -> l.stream())
 				.collect(groupingBy(Pair::getKey,
@@ -242,56 +212,59 @@ public class Main2 {
 		// Generate inverted index for feature serialization to feature vector position
 		final Iterator<Map.Entry<String,PropertySpec>> it = features.entrySet().iterator();
 		Map<String,Integer> arrayPos =
-			IntStream.range(0,features.entrySet().size())
+			IntStream.range(0,features.size())
 				.boxed()
 				.collect(toMap(e -> it.next().getKey(),
-							Function.identity()));
+						Function.identity()));
 
-		Map<EntityVersionProp, int[]> featuresByEv =
+		final String entityName = eds.getEntity().getName();
+		Map<String,EntityVersionProp> classNameToEv = eds.getEntityVersionProps().stream()
+				.map(evp -> Pair.of(String.format("%1$s_%2$d", entityName, evp.getEntityVersion().getVersionId()),evp))
+				.collect(toMap(Pair::getKey,Pair::getValue));
+		Map<EntityVersionProp,String> EvToClassName = classNameToEv.entrySet().stream()
+				.collect(toMap(Map.Entry::getValue,
+						Map.Entry::getKey));
+		
+		Map<EntityVersionProp, Instance> featuresByEv =
 			propsByEv.entrySet().stream()
 			.collect(toMap(Map.Entry::getKey,
 					e -> {
-						int[] values = new int[features.size()];
-						e.getValue().forEach(p -> values[arrayPos.get(p.getKey())] = 1);
-						return values;
+						Instance ints = new DenseInstance(features.size() + 1);
+						e.getValue().forEach(p -> ints.setValue(arrayPos.get(p.getKey()),"1"));
+						ints.setValue(features.size(), EvToClassName.get(e.getKey()));
+						return ints;
 					}));
 
-		final String entityName = eds.getEntity().getName();
-		List<String> classes = eds.getEntityVersionProps().stream()
-				.map(evp -> String.format("%1$s_%2$d", entityName, evp.getEntityVersion().getVersionId()))
-				.collect(toList());
-
 		// Count classes
-		int num_classes = eds.getEntityVersionProps().size();
-
+		List<String> classes = new ArrayList<String>(classNameToEv.keySet());
+		int num_classes = classes.size();
+		
 		// Build Attribute models for weka
 		ArrayList<Attribute> atts = getWekaAttributes(eds, features, classes);
-//		Attribute tag = atts.get(atts.size() - 1);
-//
-//		// Generate Dataset
-//		Instances dataset = getDataset(atts, classesList, binary_vectors);
-//
-//
-//		try {
-//			// Get Classification Tree
-//			OpenJ48 tree = generateTree(dataset);
-//			ClassifierTree root = tree.get_m_root();
-//
-//			System.out.println(tree);
-//			for (int i = 0; i < dataset.numInstances(); i++){
-//				System.out.println(dataset.get(i).stringValue(tag)+": "
-//						+ tree.classifyInstance(dataset.get(i)));
-//			}
-//
-//			ModelTree modelTree =
-//					getModelTree(root, getEntityVersions(schema), getProperties(schema));
-//			runModelTree(modelTree);
-//		}
-//
-//		catch (Exception e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+		Attribute tag = atts.get(atts.size() - 1);
+
+		// Generate Dataset
+		Instances dataset = new Instances("Train", atts, num_classes);
+		dataset.addAll(featuresByEv.values());
+		dataset.setClass(tag);
+		
+		try {
+			// Get Classification Tree
+			OpenJ48 tree = generateTree(dataset);
+			ClassifierTree root = tree.get_m_root();
+
+			System.out.println(tree);
+			for (int i = 0; i < dataset.numInstances(); i++){
+				System.out.println(dataset.get(i).stringValue(tag)+": "
+						+ tree.classifyInstance(dataset.get(i)));
+			}
+
+			ModelTree modelTree =
+					getModelTree(root, getEntityVersions(schema), getProperties(schema));
+			runModelTree(modelTree);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 	}
 
 }
