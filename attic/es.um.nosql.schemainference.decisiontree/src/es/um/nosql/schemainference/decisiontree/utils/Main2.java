@@ -104,23 +104,18 @@ public class Main2 {
 		return result;
 	}
 
-    private ArrayList<Attribute> getWekaAttributes(List<String> classes, List<String> features)
+    private ArrayList<Attribute> getWekaAttributes(EntityDiffSpec eds, Map<String, PropertySpec> features, List<String> classes)
     {
-		// Count properties
-		int maxNumFeatures = features.size();
-
 		// Define Nominal values for features fields	
-		List<String> f_values = Arrays.asList(new String[]{"1","0"});
+		final List<String> f_values = Arrays.asList(new String[]{"1","0"});
 		
 		// Define Weka Instances Model
-		ArrayList<Attribute> atts = new ArrayList<Attribute>();
-		for (int i = 0; i < maxNumFeatures; i++)
-        {
-			Attribute attribute = new Attribute(features.get(i), f_values);
-			atts.add(attribute);
-		}
-		Attribute tag = new Attribute("tag", classes);	
-		atts.add(tag);
+		ArrayList<Attribute> atts = 
+			features.keySet().stream().map(s -> new Attribute(s, f_values))
+			.collect(toCollection(ArrayList::new));
+		
+							
+		atts.add(new Attribute("tag", classes));
 		return atts;
 	}
 	
@@ -288,18 +283,17 @@ public class Main2 {
 						e.getValue().forEach(p -> values[arrayPos.get(p.getKey())] = 1);
 						return values;
 					}));
-
+		
+		final String entityName = eds.getEntity().getName();
+		List<String> classes = eds.getEntityVersionProps().stream()
+				.map(evp -> String.format("%1$s_%2$d", entityName, evp.getEntityVersion().getVersionId()))
+				.collect(toList());
+		
 		// Count classes
 		int num_classes = eds.getEntityVersionProps().size();
 
-//		List<String> featuresList = Arrays.asList(featuresNames.toArray(new String[featuresNames.size()]));		
-//		List<String> classesList = Arrays.asList(classes.keySet().toArray(new String[num_classes]));
-//		
-//		// Encode classes into binary vectors
-//		Map<String, int[]> binary_vectors = oneHot(classes, featuresList);
-//		
-//		// Build Attribute models for weka
-//		ArrayList<Attribute> atts = getWekaAttributes(classesList, featuresList);
+		// Build Attribute models for weka
+		ArrayList<Attribute> atts = getWekaAttributes(eds, features, classes);
 //		Attribute tag = atts.get(atts.size() - 1);
 //		
 //		// Generate Dataset
