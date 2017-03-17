@@ -7,6 +7,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -256,35 +257,41 @@ public class Main2 {
 	
 	private void generateTreeForEntity(EntityDiffSpec eds)
 	{
+		Map<EntityVersionProp, List<Pair<String, PropertySpec>>> propsByEv =
+			eds.getEntityVersionProps().stream()
+			.collect(toMap(Function.identity(),
+					evp -> 
+						Stream.concat(
+								evp.getPropertySpecs().stream().map(ps -> Pair.of(serialize(ps), ps)),
+								evp.getNotProps().stream().map(ps -> Pair.of(serializeNot(ps), ps)))
+							.collect(toList())));
+		
 		Map<String, PropertySpec> features = 
-			Stream.concat(
-					// own properties
-					eds.getEntityVersionProps().stream()
-					.flatMap(evp -> evp.getPropertySpecs().stream())
-					.map(pe -> Pair.of(serialize(pe), pe)),
-					// not properties
-					eds.getEntityVersionProps().stream()
-					.flatMap(evp -> evp.getNotProps().stream())
-					.map(pe -> Pair.of(serializeNot(pe), pe)))
+			propsByEv.values().stream().flatMap(l -> l.stream())
 				.collect(groupingBy(Pair::getKey,
 									mapping(Pair::getValue,
 											reducing(null, (l,r) -> r))));
-						
-		features.forEach((n,ps) -> System.out.println(n));
-					
-//		// Get list of classes and list of their properties
-//		Map<String, List<String>> classes = getClasses(schema);
-//		
-//		// Count classes
-//		int num_classes = classes.size();
-//
-//		// Get List of properties names
-//		Set<String> featuresNames = new HashSet<String>();		
-//		for (List<String> list : classes.values())
-//		{
-//			featuresNames.addAll(list);
-//		}
-//		
+		
+		// Generate inverted index for feature serialization to feature vector position
+		final Iterator<Map.Entry<String,PropertySpec>> it = features.entrySet().iterator();
+		Map<String,Integer> arrayPos = 
+			IntStream.range(0,features.entrySet().size())
+				.boxed()
+				.collect(toMap(e -> it.next().getKey(),
+							Function.identity()));
+		
+		Map<EntityVersionProp, int[]> featuresByEv =
+			propsByEv.entrySet().stream()
+			.collect(toMap(Map.Entry::getKey,
+					e -> {
+						int[] values = new int[features.size()];
+						e.getValue().forEach(p -> values[arrayPos.get(p.getKey())] = 1);
+						return values;
+					}));
+
+		// Count classes
+		int num_classes = eds.getEntityVersionProps().size();
+
 //		List<String> featuresList = Arrays.asList(featuresNames.toArray(new String[featuresNames.size()]));		
 //		List<String> classesList = Arrays.asList(classes.keySet().toArray(new String[num_classes]));
 //		
