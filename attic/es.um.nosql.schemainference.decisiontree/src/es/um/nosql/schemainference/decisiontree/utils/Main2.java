@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -48,46 +49,7 @@ public class Main2 {
 		classifier.setMinNumObj(1);
 		classifier.buildClassifier(train);
 		return classifier;
-	}
-
-	private Map<String, List<String>> getClasses(NoSQLSchema schema)
-	{
-		Map<String, List<String>> classes = new HashMap<String, List<String>>();
-		for (Entity entity: schema.getEntities())
-		{
-			for (EntityVersion entityVersion: entity.getEntityversions())
-			{
-				// FIXME
-				if (!entityVersion.isRoot())
-					continue;
-
-				// Get List of properties Names
-				List<String> properties = entityVersion.getProperties().stream()
-						.map(Serializer::serialize)
-						.collect(toList());
-
-				// Add current Entity Version to entities Map
-				String key = String.format("%1$s:%2$d", entity.getName(), entityVersion.getVersionId());
-				classes.put(key, properties);
-			}
-		}
-
-		return classes;
-	}
-
-    private ArrayList<Attribute> getWekaAttributes(EntityDiffSpec eds, Map<String, PropertySpec> features, List<String> classes)
-    {
-		// Define Nominal values for features fields
-		final List<String> f_values = Arrays.asList(new String[]{"1","0"});
-
-		// Define Weka Instances Model
-		ArrayList<Attribute> atts =
-			features.keySet().stream().map(s -> new Attribute(s, f_values))
-			.collect(toCollection(ArrayList::new));
-
-		atts.add(new Attribute("tag", classes));
-		return atts;
-	}
+    }
 
 	private ModelTree getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, List<Property>> properties) throws Exception
 	{
@@ -174,8 +136,9 @@ public class Main2 {
 		EntityDifferentiation diff = loader.load(new File("model/mongoMovies3_Diff.xmi"),
 				EntityDifferentiation.class);
 
-		for (EntityDiffSpec eds : diff.getEntityDiffSpecs())
-			generateTreeForEntity(eds);
+		diff.getEntityDiffSpecs().stream().filter(ed -> ed.getEntityVersionProps().size() > 1)
+		.forEach(eds -> 
+			generateTreeForEntity(eds));
 	}
 
 	private String serialize(PropertySpec ps)
@@ -200,23 +163,38 @@ public class Main2 {
 						Stream.concat(
 								evp.getPropertySpecs().stream().map(ps -> Pair.of(serialize(ps), ps)),
 								evp.getNotProps().stream().map(ps -> Pair.of(serializeNot(ps), ps)))
-							.collect(toList())));
-
-		// serializedFeature -> PropertySpec
+							.collect(toList()),
+					(u,v) -> u,
+					LinkedHashMap::new));
+		
+		// serializedFeature -> PropertySpec. We do the final reducing to leave just one element on 
+		// the list, as there may be features in different entity version that serialize to the same
+		// string. We just select one.
 		Map<String, PropertySpec> features =
 			propsByEv.values().stream().flatMap(l -> l.stream())
-				.collect(groupingBy(Pair::getKey,
-									mapping(Pair::getValue,
-											reducing(null, (l,r) -> r))));
+				.collect(toMap(Pair::getKey,
+							   Pair::getValue,
+							   (u,v) -> u,
+							   LinkedHashMap::new));
 
-		// Generate inverted index for feature serialization to feature vector position
-		final Iterator<Map.Entry<String,PropertySpec>> it = features.entrySet().iterator();
-		Map<String,Integer> arrayPos =
-			IntStream.range(0,features.size())
-				.boxed()
-				.collect(toMap(e -> it.next().getKey(),
-						Function.identity()));
+		final List<String> f_values = Arrays.asList(new String[]{"1","0"});
 
+		// Attributes associated to each feature (propertyspec serialization)
+		Map<String, Attribute> attrMap =
+			features.keySet().stream()
+				.collect(toMap(Function.identity(),
+						 s -> new Attribute(s, f_values),
+						 (u,v) -> u,
+						 LinkedHashMap::new));
+		
+//		// Generate inverted index for feature serialization to feature vector position
+//		final Iterator<Map.Entry<String,PropertySpec>> it = features.entrySet().iterator();
+//		Map<String,Integer> arrayPos =
+//			IntStream.range(0,features.size())
+//				.boxed()
+//				.collect(toMap(e -> it.next().getKey(),
+//						Function.identity()));
+		
 		final String entityName = eds.getEntity().getName();
 		Map<String,EntityVersionProp> classNameToEv = eds.getEntityVersionProps().stream()
 				.map(evp -> Pair.of(String.format("%1$s_%2$d", entityName, evp.getEntityVersion().getVersionId()),evp))
@@ -224,27 +202,33 @@ public class Main2 {
 		Map<EntityVersionProp,String> EvToClassName = classNameToEv.entrySet().stream()
 				.collect(toMap(Map.Entry::getValue,
 						Map.Entry::getKey));
+
+		// Get classes and count them. We do it in the order that they are obtained
+		// from the original list of EntityVersionProps
+		List<String> classes = propsByEv.keySet().stream()
+				.map(evp -> EvToClassName.get(evp))
+				.collect(toCollection(ArrayList::new));
+		int num_classes = classes.size();
+				
+		// Define Weka Instances Model
+		// Build Attribute models for weka
+		ArrayList<Attribute> atts = new ArrayList<>(attrMap.values());
+		Attribute tag = new Attribute("tag", classes);
+		atts.add(tag);
+		
+		// Generate Dataset
+		Instances dataset = new Instances("Train", atts, num_classes);
 		
 		Map<EntityVersionProp, Instance> featuresByEv =
 			propsByEv.entrySet().stream()
 			.collect(toMap(Map.Entry::getKey,
 					e -> {
-						Instance ints = new DenseInstance(features.size() + 1);
-						e.getValue().forEach(p -> ints.setValue(arrayPos.get(p.getKey()),"1"));
-						ints.setValue(features.size(), EvToClassName.get(e.getKey()));
+						Instance ints = new DenseInstance(features.size()+ 1);
+						e.getValue().forEach(p -> ints.setValue(attrMap.get(p.getKey()),"1"));
+						ints.setValue(tag, EvToClassName.get(e.getKey()));
 						return ints;
 					}));
-
-		// Count classes
-		List<String> classes = new ArrayList<String>(classNameToEv.keySet());
-		int num_classes = classes.size();
 		
-		// Build Attribute models for weka
-		ArrayList<Attribute> atts = getWekaAttributes(eds, features, classes);
-		Attribute tag = atts.get(atts.size() - 1);
-
-		// Generate Dataset
-		Instances dataset = new Instances("Train", atts, num_classes);
 		dataset.addAll(featuresByEv.values());
 		dataset.setClass(tag);
 		
@@ -259,9 +243,9 @@ public class Main2 {
 						+ tree.classifyInstance(dataset.get(i)));
 			}
 
-			ModelTree modelTree =
-					getModelTree(root, getEntityVersions(schema), getProperties(schema));
-			runModelTree(modelTree);
+//			ModelTree modelTree =
+//					getModelTree(root, getEntityVersions(schema), getProperties(schema));
+//			runModelTree(modelTree);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
