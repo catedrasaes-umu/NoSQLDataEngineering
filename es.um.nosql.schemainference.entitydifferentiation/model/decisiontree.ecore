@@ -14,7 +14,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntermediateNode" abstract="true" eSuperTypes="#//DecisionTreeNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" lowerBound="1"
-        eType="#//PropertySpec2"/>
+        eType="#//PropertySpec2" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DecisionTreeForEntity">
     <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//DecisionTreeNode"

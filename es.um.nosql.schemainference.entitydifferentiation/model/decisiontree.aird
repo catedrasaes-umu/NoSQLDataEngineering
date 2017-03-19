@@ -636,11 +636,11 @@
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_U8asYAgpEeemnv6T81DU_g" name="[1..1] property" sourceNode="_s8PC4AgmEeemnv6T81DU_g" targetNode="_2gw-oAieEeeQq8lUXoG0OA">
       <target xmi:type="ecore:EReference" href="decisiontree.ecore#//IntermediateNode/property"/>
       <semanticElements xmi:type="ecore:EReference" href="decisiontree.ecore#//IntermediateNode/property"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_QCJwcAzMEeepfvGJ0vEHaw" description="_cTMiIAgoEeemnv6T81DU_g" routingStyle="manhattan" strokeColor="0,0,0">
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_QCJwcQzMEeepfvGJ0vEHaw" showIcon="false">
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_271PcAzPEeepfvGJ0vEHaw" description="_kw_04AgoEeemnv6T81DU_g" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_271PcQzPEeepfvGJ0vEHaw" showIcon="false">
           <labelFormat>bold</labelFormat>
         </centerLabelStyle>
-        <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_QCJwcgzMEeepfvGJ0vEHaw" labelSize="6" showIcon="false" labelColor="39,76,114"/>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_271PcgzPEeepfvGJ0vEHaw" labelSize="6" showIcon="false" labelColor="39,76,114"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>

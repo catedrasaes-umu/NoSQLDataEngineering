@@ -8,6 +8,7 @@ import es.um.nosql.schemainference.decisiontree.IntermediateNode;
 import es.um.nosql.schemainference.decisiontree.PropertySpec2;
 import org.eclipse.emf.common.notify.Notification;
 
+import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
@@ -28,7 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public abstract class IntermediateNodeImpl extends DecisionTreeNodeImpl implements IntermediateNode {
 	/**
-	 * The cached value of the '{@link #getProperty() <em>Property</em>}' reference.
+	 * The cached value of the '{@link #getProperty() <em>Property</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see #getProperty()
@@ -61,14 +62,6 @@ public abstract class IntermediateNodeImpl extends DecisionTreeNodeImpl implemen
 	 * @generated
 	 */
 	public PropertySpec2 getProperty() {
-		if (property != null && property.eIsProxy()) {
-			InternalEObject oldProperty = (InternalEObject)property;
-			property = (PropertySpec2)eResolveProxy(oldProperty);
-			if (property != oldProperty) {
-				if (eNotificationRequired())
-					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DecisiontreePackage.INTERMEDIATE_NODE__PROPERTY, oldProperty, property));
-			}
-		}
 		return property;
 	}
 
@@ -77,8 +70,14 @@ public abstract class IntermediateNodeImpl extends DecisionTreeNodeImpl implemen
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public PropertySpec2 basicGetProperty() {
-		return property;
+	public NotificationChain basicSetProperty(PropertySpec2 newProperty, NotificationChain msgs) {
+		PropertySpec2 oldProperty = property;
+		property = newProperty;
+		if (eNotificationRequired()) {
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DecisiontreePackage.INTERMEDIATE_NODE__PROPERTY, oldProperty, newProperty);
+			if (msgs == null) msgs = notification; else msgs.add(notification);
+		}
+		return msgs;
 	}
 
 	/**
@@ -87,10 +86,31 @@ public abstract class IntermediateNodeImpl extends DecisionTreeNodeImpl implemen
 	 * @generated
 	 */
 	public void setProperty(PropertySpec2 newProperty) {
-		PropertySpec2 oldProperty = property;
-		property = newProperty;
-		if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, DecisiontreePackage.INTERMEDIATE_NODE__PROPERTY, oldProperty, property));
+		if (newProperty != property) {
+			NotificationChain msgs = null;
+			if (property != null)
+				msgs = ((InternalEObject)property).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DecisiontreePackage.INTERMEDIATE_NODE__PROPERTY, null, msgs);
+			if (newProperty != null)
+				msgs = ((InternalEObject)newProperty).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DecisiontreePackage.INTERMEDIATE_NODE__PROPERTY, null, msgs);
+			msgs = basicSetProperty(newProperty, msgs);
+			if (msgs != null) msgs.dispatch();
+		}
+		else if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DecisiontreePackage.INTERMEDIATE_NODE__PROPERTY, newProperty, newProperty));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case DecisiontreePackage.INTERMEDIATE_NODE__PROPERTY:
+				return basicSetProperty(null, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**
@@ -102,8 +122,7 @@ public abstract class IntermediateNodeImpl extends DecisionTreeNodeImpl implemen
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case DecisiontreePackage.INTERMEDIATE_NODE__PROPERTY:
-				if (resolve) return getProperty();
-				return basicGetProperty();
+				return getProperty();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}

@@ -31,7 +31,7 @@ import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
 
-public class Main {
+public class OldMain {
 
 	public static OpenJ48 generateTree(Instances train) throws Exception
     {

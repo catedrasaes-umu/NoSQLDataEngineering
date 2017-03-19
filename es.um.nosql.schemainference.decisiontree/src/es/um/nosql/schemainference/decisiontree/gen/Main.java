@@ -1,6 +1,9 @@
 package es.um.nosql.schemainference.decisiontree.gen;
 
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
@@ -13,9 +16,17 @@ import java.util.regex.Pattern;
 import static java.util.stream.Collectors.*;
 import java.util.stream.Stream;
 import org.apache.commons.lang3.tuple.Pair;
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity;
+import es.um.nosql.schemainference.decisiontree.DecisionTreeNode;
+import es.um.nosql.schemainference.decisiontree.DecisionTrees;
+import es.um.nosql.schemainference.decisiontree.DecisiontreeFactory;
+import es.um.nosql.schemainference.decisiontree.DecisiontreePackage;
 import es.um.nosql.schemainference.decisiontree.utils.ModelNode;
 import es.um.nosql.schemainference.decisiontree.utils.OpenJ48;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec;
@@ -42,7 +53,7 @@ public class Main
 		return classifier;
     }
 
-	static Pattern pattern = Pattern.compile("\\[(.*?) \\([\\d\\.\\,]+\\)\\]");
+	static Pattern pattern = Pattern.compile("\\[(.*?) .*$");
 	
 	private ModelNode getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, PropertySpec> properties) throws Exception
 	{
@@ -88,27 +99,25 @@ public class Main
 		}
 	}
 
-	private void runModelTree(Entity e, ModelNode tree){
-		runModelTree(e, tree, 0);
+	private void printModelTree(Entity e, ModelNode tree){
+		printModelTree(e, tree, 0);
 	}
 
-	private void runModelTree(Entity e, ModelNode tree, int level)
+	private void printModelTree(Entity e, ModelNode tree, int level)
 	{
 		String indent = String.join("", Collections.nCopies(level, "  "));
 
 		if (tree.is_leaf())
-		{
 			System.out.println(indent+"Entity: "+e.getName()+", Version: "+tree.getTag().getVersionId());
-		}
 		else
 		{
-			Function<Boolean,String> present = (v) -> v ? " is present." : " is NOT present."; 
+			Function<Boolean,String> present = v -> v ? " is present." : " is NOT present."; 
 			
 			System.out.println(indent+tree.getProperty().getProperty().getName()+ present.apply(!tree.isCheckNot()));
-			runModelTree(e, tree.getNodePresent(), level+1);
+			printModelTree(e, tree.getNodePresent(), level+1);
 			
 			System.out.println(indent+tree.getProperty().getProperty().getName()+ present.apply(tree.isCheckNot()));
-			runModelTree(e, tree.getNodeAbsent(), level+1);
+			printModelTree(e, tree.getNodeAbsent(), level+1);
 		}
 	}
 
@@ -119,14 +128,47 @@ public class Main
 
 	private void run(String[] args)
 	{
+		if (args.length != 2)
+		{
+			System.err.println("Usage: decisiontree infile outfile");
+			System.exit(1);
+		}
+		
 		ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
-		loader.registerPackages(EntitydifferentiationPackage.eINSTANCE);
-		EntityDifferentiation diff = loader.load(new File("model/mongoMovies3_Diff.xmi"),
+		loader.registerPackages(EntitydifferentiationPackage.eINSTANCE,DecisiontreePackage.eINSTANCE);
+		EntityDifferentiation diff = loader.load(new File(args[0]),
 				EntityDifferentiation.class);
 
+		// Create a DecisionTree Model to be written
+		DecisionTrees dt = DecisiontreeFactory.eINSTANCE.createDecisionTrees();
+		
 		diff.getEntityDiffSpecs().stream().filter(ed -> ed.getEntityVersionProps().size() > 1)
-			.forEach(eds -> 
-				generateTreeForEntity(eds));
+			.forEach(eds -> {
+				ModelNode root = generateTreeForEntity(eds);
+				
+				DecisionTreeForEntity dte = DecisiontreeFactory.eINSTANCE.createDecisionTreeForEntity();
+				dte.setEntity(eds.getEntity());
+				// fill dte
+				dte.setRoot(decisionTreeForEntity(dte, root));
+				
+				dt.getTrees().add(dte);
+			});
+		
+		// Write model to disk.
+		File outResource = new File(args[1]);
+		Resource outputRes = loader.getResourceSet().createResource(URI.createFileURI(args[1]));
+		outputRes.getContents().add(dt);
+		try {
+			OutputStream os = new FileOutputStream(outResource);
+			outputRes.save(os, null/*, options*/);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	private DecisionTreeNode decisionTreeForEntity(DecisionTreeForEntity dte, ModelNode root)
+	{
+		return null;
 	}
 
 	private String serialize(PropertySpec ps)
@@ -142,7 +184,7 @@ public class Main
 		return "!" + ps.getProperty().getName();
 	}
 
-	private void generateTreeForEntity(EntityDiffSpec eds)
+	private ModelNode generateTreeForEntity(EntityDiffSpec eds)
 	{
 		Map<EntityVersionProp, List<Pair<String, PropertySpec>>> propsByEv =
 			eds.getEntityVersionProps().stream()
@@ -229,7 +271,7 @@ public class Main
 			OpenJ48 tree = generateTree(dataset);
 			ClassifierTree root = tree.get_m_root();
 
-			System.out.println(tree.graph());
+			System.out.println(tree);
 			for (int i = 0; i < dataset.numInstances(); i++){
 				System.out.println(dataset.get(i).stringValue(tag)+": "
 						+ tree.classifyInstance(dataset.get(i)));
@@ -241,10 +283,16 @@ public class Main
 								.collect(toMap(Map.Entry::getKey,
 											   v -> v.getValue().getEntityVersion())),
 							features);
-			runModelTree(eds.getEntity(),modelTree);
+			
+			printModelTree(eds.getEntity(),modelTree);
+			
+			return modelTree;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
+		// Error
+		return null;
 	}
 
 }

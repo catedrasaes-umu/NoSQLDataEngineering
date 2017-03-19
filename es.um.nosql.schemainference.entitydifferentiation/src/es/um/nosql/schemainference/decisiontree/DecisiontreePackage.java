@@ -186,7 +186,7 @@ public interface DecisiontreePackage extends EPackage {
 	int INTERMEDIATE_NODE__NO_BRANCH = DECISION_TREE_NODE__NO_BRANCH;
 
 	/**
-	 * The feature id for the '<em><b>Property</b></em>' reference.
+	 * The feature id for the '<em><b>Property</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -372,7 +372,7 @@ public interface DecisiontreePackage extends EPackage {
 	int HAS_PROPERTY__NO_BRANCH = INTERMEDIATE_NODE__NO_BRANCH;
 
 	/**
-	 * The feature id for the '<em><b>Property</b></em>' reference.
+	 * The feature id for the '<em><b>Property</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -427,7 +427,7 @@ public interface DecisiontreePackage extends EPackage {
 	int HAS_NOT_PROPERTY__NO_BRANCH = INTERMEDIATE_NODE__NO_BRANCH;
 
 	/**
-	 * The feature id for the '<em><b>Property</b></em>' reference.
+	 * The feature id for the '<em><b>Property</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -518,10 +518,10 @@ public interface DecisiontreePackage extends EPackage {
 	EClass getIntermediateNode();
 
 	/**
-	 * Returns the meta object for the reference '{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getProperty <em>Property</em>}'.
+	 * Returns the meta object for the containment reference '{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getProperty <em>Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Property</em>'.
+	 * @return the meta object for the containment reference '<em>Property</em>'.
 	 * @see es.um.nosql.schemainference.decisiontree.IntermediateNode#getProperty()
 	 * @see #getIntermediateNode()
 	 * @generated
@@ -711,7 +711,7 @@ public interface DecisiontreePackage extends EPackage {
 		EClass INTERMEDIATE_NODE = eINSTANCE.getIntermediateNode();
 
 		/**
-		 * The meta object literal for the '<em><b>Property</b></em>' reference feature.
+		 * The meta object literal for the '<em><b>Property</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
