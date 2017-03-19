@@ -2,18 +2,17 @@ package es.um.nosql.schemainference.decisiontree.utils;
 
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
-import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec;
 
-public class ModelTree
+public class ModelTree2
 {
-	private Property property;
+	private PropertySpec property;
 	private EntityVersion tag;
-	private ModelTree nodePresent;
-	private ModelTree nodeAbsent;
+	private ModelTree2 nodePresent;
+	private ModelTree2 nodeAbsent;
 	private Entity entity;
 
-	public ModelTree(Entity e, EntityVersion tag)
+	public ModelTree2(Entity e, EntityVersion tag)
 	{
 		super();
 		this.tag = tag;
@@ -28,16 +27,16 @@ public class ModelTree
 		this.entity = entity;
 	}
 
-	public ModelTree(Property property) {
+	public ModelTree2(PropertySpec property) {
 		super();
 		this.property = property;
 	}
 
-	public Property getProperty() {
+	public PropertySpec getProperty() {
 		return property;
 	}
 	
-	public void setProperty(Property property) {
+	public void setProperty(PropertySpec property) {
 		this.property = property;
 	}
 	
@@ -49,19 +48,19 @@ public class ModelTree
 		this.tag = tag;
 	}
 
-	public ModelTree getNodePresent() {
+	public ModelTree2 getNodePresent() {
 		return nodePresent;
 	}
 
-	public void setNodePresent(ModelTree nodePresent) {
+	public void setNodePresent(ModelTree2 nodePresent) {
 		this.nodePresent = nodePresent;
 	}
 
-	public ModelTree getNodeAbsent() {
+	public ModelTree2 getNodeAbsent() {
 		return nodeAbsent;
 	}
 
-	public void setNodeAbsent(ModelTree nodeAbsent)
+	public void setNodeAbsent(ModelTree2 nodeAbsent)
 	{
 		this.nodeAbsent = nodeAbsent;
 	}

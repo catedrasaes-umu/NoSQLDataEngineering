@@ -42,7 +42,7 @@ public class Main2
 		return classifier;
     }
 
-	private ModelTree getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, PropertySpec> properties) throws Exception
+	private ModelTree2 getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, PropertySpec> properties) throws Exception
 	{
 		if (tree.isLeaf())
 		{
@@ -55,7 +55,7 @@ public class Main2
 			if (matcher.find())
 			{
 				EntityVersion ev = entityVersions.get(matcher.group(1));
-				return new ModelTree((Entity)ev.eContainer(),ev);
+				return new ModelTree2((Entity)ev.eContainer(),ev);
 			}
 			else
 				throw new Exception("Invalid exp reg for: "+tag);
@@ -71,11 +71,11 @@ public class Main2
 
 			if (sons.length != 2) throw new Exception("This is not a binary decision tree");
 
-			ModelTree m = new ModelTree(p);
+			ModelTree2 m = new ModelTree2(p);
 			for (int i = 0 ; i < sons.length; i++)
 			{
 				String value = tree.getLocalModel().rightSide(i, tree.getTrainingData());
-				ModelTree node = getModelTree(sons[i], entityVersions, properties);
+				ModelTree2 node = getModelTree(sons[i], entityVersions, properties);
 				if (value.trim().equals("= 1"))
 					m.setNodePresent(node);
 				else if (value.trim().contentEquals("= 0"))
@@ -88,11 +88,11 @@ public class Main2
 		}
 	}
 
-	private void runModelTree(ModelTree tree){
+	private void runModelTree(ModelTree2 tree){
 		runModelTree(tree, 0);
 	}
 
-	private void runModelTree(ModelTree tree, int level)
+	private void runModelTree(ModelTree2 tree, int level)
 	{
 		String indent = String.join("", Collections.nCopies(level, "  "));
 
@@ -233,7 +233,7 @@ public class Main2
 						+ tree.classifyInstance(dataset.get(i)));
 			}
 
-			ModelTree modelTree =
+			ModelTree2 modelTree =
 					getModelTree(root,
 							classNameToEvp.entrySet().stream()
 								.collect(toMap(Map.Entry::getKey,
