@@ -1,4 +1,4 @@
-package es.um.nosql.schemainference.decisiontree.utils;
+package es.um.nosql.schemainference.decisiontree.gen;
 
 import java.io.File;
 import java.util.ArrayList;
@@ -16,6 +16,8 @@ import org.apache.commons.lang3.tuple.Pair;
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.schemainference.decisiontree.utils.ModelNode;
+import es.um.nosql.schemainference.decisiontree.utils.OpenJ48;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation;
 import es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp;
@@ -23,16 +25,14 @@ import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPa
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec;
 import es.um.nosql.schemainference.util.emf.ModelLoader;
 import es.um.nosql.schemainference.util.emf.Serializer;
-import weka.classifiers.trees.j48.ClassifierSplitModel;
 import weka.classifiers.trees.j48.ClassifierTree;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
 
-public class Main2 
+public class Main 
 {
-
 	private OpenJ48 generateTree(Instances train) throws Exception
     {
 		OpenJ48 classifier = new OpenJ48();
@@ -114,7 +114,7 @@ public class Main2
 
 	public static void main(String[] args)
     {
-		(new Main2()).run(args);
+		(new Main()).run(args);
 	}
 
 	private void run(String[] args)
