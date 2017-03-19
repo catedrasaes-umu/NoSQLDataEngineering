@@ -3,27 +3,18 @@ package es.um.nosql.schemainference.decisiontree.utils;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collection;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Iterator;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.function.Function;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import static java.util.stream.Collectors.*;
-import java.util.stream.IntStream;
 import java.util.stream.Stream;
-import java.util.stream.StreamSupport;
 import org.apache.commons.lang3.tuple.Pair;
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec;
@@ -40,7 +31,8 @@ import weka.core.DenseInstance;
 import weka.core.Instance;
 import weka.core.Instances;
 
-public class Main2 {
+public class Main2 
+{
 
 	private OpenJ48 generateTree(Instances train) throws Exception
     {
@@ -51,7 +43,7 @@ public class Main2 {
 		return classifier;
     }
 
-	private ModelTree getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, List<Property>> properties) throws Exception
+	private ModelTree getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, PropertySpec> properties) throws Exception
 	{
 		if (tree.isLeaf())
 		{
@@ -66,36 +58,31 @@ public class Main2 {
 				EntityVersion ev = entityVersions.get(matcher.group(1));
 				return new ModelTree((Entity)ev.eContainer(),ev);
 			}
-
-			else throw new Exception("Invalid exp reg for: "+tag);
+			else
+				throw new Exception("Invalid exp reg for: "+tag);
 		}
 		else
 		{
 			ClassifierSplitModel classifierSplitModel = tree.getLocalModel();
 			ClassifierTree[] sons = tree.getSons();
 			String left = tree.getLocalModel().leftSide(tree.getTrainingData());
-			List<Property> p = properties.get(left.trim());
+			PropertySpec p = properties.get(left.trim());
 
 			if (p==null) throw new Exception("Unknown Property Name: " + left.trim());
 
 			if (sons.length != 2) throw new Exception("This is not a binary decision tree");
 
-			ModelTree m = new ModelTree(p.get(0));
+			ModelTree m = new ModelTree(p);
 			for (int i = 0 ; i < sons.length; i++)
 			{
 				String value = tree.getLocalModel().rightSide(i, tree.getTrainingData());
 				ModelTree node = getModelTree(sons[i], entityVersions, properties);
 				if (value.trim().equals("= 1"))
-				{
 					m.setNodePresent(node);
-				}else if (value.trim().contentEquals("= 0"))
-				{
+				else if (value.trim().contentEquals("= 0"))
 					m.setNodeAbsent(node);
-				}
 				else
-				{
 					throw new Exception("Unknown Right side: " + value.trim());
-				}
 			}
 
 			return m;
@@ -117,9 +104,9 @@ public class Main2 {
 		}
 		else
 		{
-			System.out.println(indent+tree.getProperty().getName()+" is present");
+			System.out.println(indent+tree.getProperty().getProperty().getName()+" is present");
 			runModelTree(tree.getNodePresent(), level+1);
-			System.out.println(indent+tree.getProperty().getName()+" isn't present");
+			System.out.println(indent+tree.getProperty().getProperty().getName()+" isn't present");
 			runModelTree(tree.getNodeAbsent(), level+1);
 		}
 	}
@@ -137,8 +124,8 @@ public class Main2 {
 				EntityDifferentiation.class);
 
 		diff.getEntityDiffSpecs().stream().filter(ed -> ed.getEntityVersionProps().size() > 1)
-		.forEach(eds -> 
-			generateTreeForEntity(eds));
+			.forEach(eds -> 
+				generateTreeForEntity(eds));
 	}
 
 	private String serialize(PropertySpec ps)
@@ -196,17 +183,17 @@ public class Main2 {
 //						Function.identity()));
 		
 		final String entityName = eds.getEntity().getName();
-		Map<String,EntityVersionProp> classNameToEv = eds.getEntityVersionProps().stream()
+		Map<String,EntityVersionProp> classNameToEvp = eds.getEntityVersionProps().stream()
 				.map(evp -> Pair.of(String.format("%1$s_%2$d", entityName, evp.getEntityVersion().getVersionId()),evp))
 				.collect(toMap(Pair::getKey,Pair::getValue));
-		Map<EntityVersionProp,String> EvToClassName = classNameToEv.entrySet().stream()
+		Map<EntityVersionProp,String> evpToClassName = classNameToEvp.entrySet().stream()
 				.collect(toMap(Map.Entry::getValue,
 						Map.Entry::getKey));
 
 		// Get classes and count them. We do it in the order that they are obtained
 		// from the original list of EntityVersionProps
 		List<String> classes = propsByEv.keySet().stream()
-				.map(evp -> EvToClassName.get(evp))
+				.map(evp -> evpToClassName.get(evp))
 				.collect(toCollection(ArrayList::new));
 		int num_classes = classes.size();
 				
@@ -219,14 +206,18 @@ public class Main2 {
 		// Generate Dataset
 		Instances dataset = new Instances("Train", atts, num_classes);
 		
+		final double[] defaultValues = new double[features.size()+1];
+		Arrays.fill(defaultValues,1.0);
+		
 		Map<EntityVersionProp, Instance> featuresByEv =
 			propsByEv.entrySet().stream()
 			.collect(toMap(Map.Entry::getKey,
 					e -> {
-						Instance ints = new DenseInstance(features.size()+ 1);
-						e.getValue().forEach(p -> ints.setValue(attrMap.get(p.getKey()),"1"));
-						ints.setValue(tag, EvToClassName.get(e.getKey()));
-						return ints;
+						Instance _inst = new DenseInstance(features.size()+ 1);
+						Instance inst = _inst.copy(defaultValues);
+						e.getValue().forEach(p -> inst.setValue(attrMap.get(p.getKey()),"1"));
+						inst.setValue(tag, evpToClassName.get(e.getKey()));
+						return inst;
 					}));
 		
 		dataset.addAll(featuresByEv.values());
@@ -243,9 +234,13 @@ public class Main2 {
 						+ tree.classifyInstance(dataset.get(i)));
 			}
 
-//			ModelTree modelTree =
-//					getModelTree(root, getEntityVersions(schema), getProperties(schema));
-//			runModelTree(modelTree);
+			ModelTree modelTree =
+					getModelTree(root,
+							classNameToEvp.entrySet().stream()
+								.collect(toMap(Map.Entry::getKey,
+											   v -> v.getValue().getEntityVersion())),
+							features);
+			runModelTree(modelTree);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

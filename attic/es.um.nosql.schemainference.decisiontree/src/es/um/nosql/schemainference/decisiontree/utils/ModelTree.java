@@ -2,11 +2,11 @@ package es.um.nosql.schemainference.decisiontree.utils;
 
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
-import es.um.nosql.schemainference.NoSQLSchema.Property;
+import es.um.nosql.schemainference.entitydifferentiation.PropertySpec;
 
 public class ModelTree
 {
-	private Property property;
+	private PropertySpec property;
 	private EntityVersion tag;
 	private ModelTree nodePresent;
 	private ModelTree nodeAbsent;
@@ -27,16 +27,16 @@ public class ModelTree
 		this.entity = entity;
 	}
 
-	public ModelTree(Property property) {
+	public ModelTree(PropertySpec property) {
 		super();
 		this.property = property;
 	}
 
-	public Property getProperty() {
+	public PropertySpec getProperty() {
 		return property;
 	}
 	
-	public void setProperty(Property property) {
+	public void setProperty(PropertySpec property) {
 		this.property = property;
 	}
 	
