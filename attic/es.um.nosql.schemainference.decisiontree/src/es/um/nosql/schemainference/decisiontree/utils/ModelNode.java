@@ -13,7 +13,8 @@ public class ModelNode
 
 	public ModelNode(EntityVersion tag)
 	{
-		this.tag = tag;
+		setTag(tag);
+		setCheckNot(false);
 	}
 	
 	public ModelNode(PropertySpec property, boolean checkNot)

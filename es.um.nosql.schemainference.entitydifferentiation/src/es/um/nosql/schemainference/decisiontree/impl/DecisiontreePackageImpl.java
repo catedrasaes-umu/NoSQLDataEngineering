@@ -9,6 +9,8 @@ import es.um.nosql.schemainference.decisiontree.DecisionTreeNode;
 import es.um.nosql.schemainference.decisiontree.DecisionTrees;
 import es.um.nosql.schemainference.decisiontree.DecisiontreeFactory;
 import es.um.nosql.schemainference.decisiontree.DecisiontreePackage;
+import es.um.nosql.schemainference.decisiontree.HasNotProperty;
+import es.um.nosql.schemainference.decisiontree.HasProperty;
 import es.um.nosql.schemainference.decisiontree.IntermediateNode;
 import es.um.nosql.schemainference.decisiontree.LeafNode;
 
@@ -68,6 +70,20 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 	 * @generated
 	 */
 	private EClass propertySpec2EClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass hasPropertyEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass hasNotPropertyEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -192,17 +208,8 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getIntermediateNode_CheckHasProperty() {
+	public EReference getIntermediateNode_Property() {
 		return (EReference)intermediateNodeEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public EReference getIntermediateNode_CheckHasNotProperty() {
-		return (EReference)intermediateNodeEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -282,6 +289,24 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getHasProperty() {
+		return hasPropertyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EClass getHasNotProperty() {
+		return hasNotPropertyEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public DecisiontreeFactory getDecisiontreeFactory() {
 		return (DecisiontreeFactory)getEFactoryInstance();
 	}
@@ -313,8 +338,7 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 		createEReference(leafNodeEClass, LEAF_NODE__IDENTIFIED_VERSION);
 
 		intermediateNodeEClass = createEClass(INTERMEDIATE_NODE);
-		createEReference(intermediateNodeEClass, INTERMEDIATE_NODE__CHECK_HAS_PROPERTY);
-		createEReference(intermediateNodeEClass, INTERMEDIATE_NODE__CHECK_HAS_NOT_PROPERTY);
+		createEReference(intermediateNodeEClass, INTERMEDIATE_NODE__PROPERTY);
 
 		decisionTreeForEntityEClass = createEClass(DECISION_TREE_FOR_ENTITY);
 		createEReference(decisionTreeForEntityEClass, DECISION_TREE_FOR_ENTITY__ROOT);
@@ -326,6 +350,10 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 		propertySpec2EClass = createEClass(PROPERTY_SPEC2);
 		createEAttribute(propertySpec2EClass, PROPERTY_SPEC2__NEEDS_TYPE_CHECK);
 		createEReference(propertySpec2EClass, PROPERTY_SPEC2__PROPERTY);
+
+		hasPropertyEClass = createEClass(HAS_PROPERTY);
+
+		hasNotPropertyEClass = createEClass(HAS_NOT_PROPERTY);
 	}
 
 	/**
@@ -361,6 +389,8 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 		// Add supertypes to classes
 		leafNodeEClass.getESuperTypes().add(this.getDecisionTreeNode());
 		intermediateNodeEClass.getESuperTypes().add(this.getDecisionTreeNode());
+		hasPropertyEClass.getESuperTypes().add(this.getIntermediateNode());
+		hasNotPropertyEClass.getESuperTypes().add(this.getIntermediateNode());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(decisionTreeNodeEClass, DecisionTreeNode.class, "DecisionTreeNode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -370,9 +400,8 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 		initEClass(leafNodeEClass, LeafNode.class, "LeafNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getLeafNode_IdentifiedVersion(), theNoSQLSchemaPackage.getEntityVersion(), null, "identifiedVersion", null, 1, 1, LeafNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(intermediateNodeEClass, IntermediateNode.class, "IntermediateNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getIntermediateNode_CheckHasProperty(), this.getPropertySpec2(), null, "checkHasProperty", null, 0, 1, IntermediateNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getIntermediateNode_CheckHasNotProperty(), this.getPropertySpec2(), null, "checkHasNotProperty", null, 0, 1, IntermediateNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(intermediateNodeEClass, IntermediateNode.class, "IntermediateNode", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getIntermediateNode_Property(), this.getPropertySpec2(), null, "property", null, 1, 1, IntermediateNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(decisionTreeForEntityEClass, DecisionTreeForEntity.class, "DecisionTreeForEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDecisionTreeForEntity_Root(), this.getDecisionTreeNode(), null, "root", null, 0, 1, DecisionTreeForEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -384,6 +413,10 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 		initEClass(propertySpec2EClass, PropertySpec2.class, "PropertySpec2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertySpec2_NeedsTypeCheck(), ecorePackage.getEBoolean(), "needsTypeCheck", null, 1, 1, PropertySpec2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPropertySpec2_Property(), theNoSQLSchemaPackage.getProperty(), null, "property", null, 1, 1, PropertySpec2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(hasPropertyEClass, HasProperty.class, "HasProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+		initEClass(hasNotPropertyEClass, HasNotProperty.class, "HasNotProperty", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		// Create resource
 		createResource(eNS_URI);

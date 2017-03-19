@@ -48,7 +48,6 @@ public class Main2
 	{
 		if (tree.isLeaf())
 		{
-			// Print Class value
 			String tag = tree.prefix();
 			Matcher matcher = pattern.matcher(tag);
 
@@ -77,9 +76,9 @@ public class Main2
 			{
 				String value = tree.getLocalModel().rightSide(i, tree.getTrainingData()).trim();
 				ModelNode node = getModelTree(sons[i], entityVersions, properties);
-				if (value.equals("= 1"))
+				if (value.equals("= yes"))
 					m.setNodePresent(node);
-				else if (value.contentEquals("= 0"))
+				else if (value.contentEquals("= no"))
 					m.setNodeAbsent(node);
 				else
 					throw new Exception("Unknown Right side: " + value.trim());
@@ -166,7 +165,7 @@ public class Main2
 							   (u,v) -> u,
 							   LinkedHashMap::new));
 
-		final List<String> f_values = Arrays.asList(new String[]{"1","0"});
+		final List<String> f_values = Arrays.asList(new String[]{"yes","no"});
 
 		// Attributes associated to each feature (propertyspec serialization)
 		Map<String, Attribute> attrMap =
@@ -217,7 +216,7 @@ public class Main2
 					e -> {
 						Instance _inst = new DenseInstance(features.size()+ 1);
 						Instance inst = _inst.copy(defaultValues);
-						e.getValue().forEach(p -> inst.setValue(attrMap.get(p.getKey()),"1"));
+						e.getValue().forEach(p -> inst.setValue(attrMap.get(p.getKey()),"yes"));
 						inst.setValue(tag, evpToClassName.get(e.getKey()));
 						return inst;
 					}));
@@ -230,7 +229,7 @@ public class Main2
 			OpenJ48 tree = generateTree(dataset);
 			ClassifierTree root = tree.get_m_root();
 
-			System.out.println(tree);
+			System.out.println(tree.graph());
 			for (int i = 0; i < dataset.numInstances(); i++){
 				System.out.println(dataset.get(i).stringValue(tag)+": "
 						+ tree.classifyInstance(dataset.get(i)));

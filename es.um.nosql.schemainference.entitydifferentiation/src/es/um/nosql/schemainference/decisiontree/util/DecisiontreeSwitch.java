@@ -104,6 +104,22 @@ public class DecisiontreeSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case DecisiontreePackage.HAS_PROPERTY: {
+				HasProperty hasProperty = (HasProperty)theEObject;
+				T result = caseHasProperty(hasProperty);
+				if (result == null) result = caseIntermediateNode(hasProperty);
+				if (result == null) result = caseDecisionTreeNode(hasProperty);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DecisiontreePackage.HAS_NOT_PROPERTY: {
+				HasNotProperty hasNotProperty = (HasNotProperty)theEObject;
+				T result = caseHasNotProperty(hasNotProperty);
+				if (result == null) result = caseIntermediateNode(hasNotProperty);
+				if (result == null) result = caseDecisionTreeNode(hasNotProperty);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			default: return defaultCase(theEObject);
 		}
 	}
@@ -195,6 +211,36 @@ public class DecisiontreeSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePropertySpec2(PropertySpec2 object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Has Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Has Property</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHasProperty(HasProperty object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Has Not Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Has Not Property</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseHasNotProperty(HasNotProperty object) {
 		return null;
 	}
 

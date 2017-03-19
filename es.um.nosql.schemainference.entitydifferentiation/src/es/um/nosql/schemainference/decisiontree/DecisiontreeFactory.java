@@ -31,15 +31,6 @@ public interface DecisiontreeFactory extends EFactory {
 	LeafNode createLeafNode();
 
 	/**
-	 * Returns a new object of class '<em>Intermediate Node</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Intermediate Node</em>'.
-	 * @generated
-	 */
-	IntermediateNode createIntermediateNode();
-
-	/**
 	 * Returns a new object of class '<em>Decision Tree For Entity</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,6 +56,24 @@ public interface DecisiontreeFactory extends EFactory {
 	 * @generated
 	 */
 	PropertySpec2 createPropertySpec2();
+
+	/**
+	 * Returns a new object of class '<em>Has Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Has Property</em>'.
+	 * @generated
+	 */
+	HasProperty createHasProperty();
+
+	/**
+	 * Returns a new object of class '<em>Has Not Property</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Has Not Property</em>'.
+	 * @generated
+	 */
+	HasNotProperty createHasNotProperty();
 
 	/**
 	 * Returns the package supported by this factory.
