@@ -42,43 +42,44 @@ public class Main2
 		return classifier;
     }
 
-	private ModelTree2 getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, PropertySpec> properties) throws Exception
+	static Pattern pattern = Pattern.compile("\\[(.*?) \\([\\d\\.\\,]+\\)\\]");
+	
+	private ModelNode getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, PropertySpec> properties) throws Exception
 	{
 		if (tree.isLeaf())
 		{
 			// Print Class value
 			String tag = tree.prefix();
-
-			Pattern pattern = Pattern.compile("\\[(.*?) \\([\\d\\.\\,]+\\)\\]");
 			Matcher matcher = pattern.matcher(tag);
 
 			if (matcher.find())
 			{
 				EntityVersion ev = entityVersions.get(matcher.group(1));
-				return new ModelTree2((Entity)ev.eContainer(),ev);
+				return new ModelNode(ev);
 			}
 			else
 				throw new Exception("Invalid exp reg for: "+tag);
 		}
 		else
 		{
-			ClassifierSplitModel classifierSplitModel = tree.getLocalModel();
+			//ClassifierSplitModel classifierSplitModel = tree.getLocalModel();
 			ClassifierTree[] sons = tree.getSons();
-			String left = tree.getLocalModel().leftSide(tree.getTrainingData());
-			PropertySpec p = properties.get(left.trim());
+			String left = tree.getLocalModel().leftSide(tree.getTrainingData()).trim();
+			
+			PropertySpec p = properties.get(left);
 
-			if (p==null) throw new Exception("Unknown Property Name: " + left.trim());
+			if (p==null) throw new Exception("Unknown Property Name: " + left);
 
 			if (sons.length != 2) throw new Exception("This is not a binary decision tree");
 
-			ModelTree2 m = new ModelTree2(p);
+			ModelNode m = new ModelNode(p, left.startsWith("!"));
 			for (int i = 0 ; i < sons.length; i++)
 			{
-				String value = tree.getLocalModel().rightSide(i, tree.getTrainingData());
-				ModelTree2 node = getModelTree(sons[i], entityVersions, properties);
-				if (value.trim().equals("= 1"))
+				String value = tree.getLocalModel().rightSide(i, tree.getTrainingData()).trim();
+				ModelNode node = getModelTree(sons[i], entityVersions, properties);
+				if (value.equals("= 1"))
 					m.setNodePresent(node);
-				else if (value.trim().contentEquals("= 0"))
+				else if (value.contentEquals("= 0"))
 					m.setNodeAbsent(node);
 				else
 					throw new Exception("Unknown Right side: " + value.trim());
@@ -88,25 +89,27 @@ public class Main2
 		}
 	}
 
-	private void runModelTree(ModelTree2 tree){
-		runModelTree(tree, 0);
+	private void runModelTree(Entity e, ModelNode tree){
+		runModelTree(e, tree, 0);
 	}
 
-	private void runModelTree(ModelTree2 tree, int level)
+	private void runModelTree(Entity e, ModelNode tree, int level)
 	{
 		String indent = String.join("", Collections.nCopies(level, "  "));
 
 		if (tree.is_leaf())
 		{
-			Entity e = tree.getEntity();
 			System.out.println(indent+"Entity: "+e.getName()+", Version: "+tree.getTag().getVersionId());
 		}
 		else
 		{
-			System.out.println(indent+tree.getProperty().getProperty().getName()+" is present");
-			runModelTree(tree.getNodePresent(), level+1);
-			System.out.println(indent+tree.getProperty().getProperty().getName()+" isn't present");
-			runModelTree(tree.getNodeAbsent(), level+1);
+			Function<Boolean,String> present = (v) -> v ? " is present." : " is NOT present."; 
+			
+			System.out.println(indent+tree.getProperty().getProperty().getName()+ present.apply(!tree.isCheckNot()));
+			runModelTree(e, tree.getNodePresent(), level+1);
+			
+			System.out.println(indent+tree.getProperty().getProperty().getName()+ present.apply(tree.isCheckNot()));
+			runModelTree(e, tree.getNodeAbsent(), level+1);
 		}
 	}
 
@@ -233,13 +236,13 @@ public class Main2
 						+ tree.classifyInstance(dataset.get(i)));
 			}
 
-			ModelTree2 modelTree =
+			ModelNode modelTree =
 					getModelTree(root,
 							classNameToEvp.entrySet().stream()
 								.collect(toMap(Map.Entry::getKey,
 											   v -> v.getValue().getEntityVersion())),
 							features);
-			runModelTree(modelTree);
+			runModelTree(eds.getEntity(),modelTree);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
