@@ -184,6 +184,7 @@ public class Main
 			IntermediateNode in = 
 					DecisiontreeFactory.eINSTANCE.createIntermediateNode();
 
+			// Exchange branches when the test is negative.
 			if (root.isCheckNot())
 			{
 				in.setNoBranch(decisionTreeForEntity(root.getNodePresent()));
@@ -290,8 +291,7 @@ public class Main
 			propsByEv.entrySet().stream()
 			.collect(toMap(Map.Entry::getKey,
 					e -> {
-						Instance _inst = new DenseInstance(features.size()+ 1);
-						Instance inst = _inst.copy(defaultValues);
+						Instance inst = new DenseInstance(1.0,defaultValues);
 						e.getValue().forEach(p -> inst.setValue(attrMap.get(p.getKey()),"yes"));
 						inst.setValue(tag, evpToClassName.get(e.getKey()));
 						return inst;

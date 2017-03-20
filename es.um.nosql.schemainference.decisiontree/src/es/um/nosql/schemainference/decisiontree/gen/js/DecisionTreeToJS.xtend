@@ -3,11 +3,8 @@ package es.um.nosql.schemainference.decisiontree.gen.js
 import es.um.nosql.schemainference.util.emf.ResourceManager
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage
 import java.io.File
-import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec
 import java.util.List
-import es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp
 import java.io.PrintStream
-import es.um.nosql.schemainference.entitydifferentiation.PropertySpec
 import es.um.nosql.schemainference.NoSQLSchema.Property
 import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType
 import es.um.nosql.schemainference.NoSQLSchema.Attribute
@@ -18,6 +15,9 @@ import es.um.nosql.schemainference.NoSQLSchema.Aggregate
 import es.um.nosql.schemainference.NoSQLSchema.Entity
 import es.um.nosql.schemainference.decisiontree.DecisiontreePackage
 import es.um.nosql.schemainference.decisiontree.DecisionTrees
+import es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity
+import es.um.nosql.schemainference.decisiontree.PropertySpec2
+import es.um.nosql.schemainference.decisiontree.DecisionTreeNode
 
 class DecisionTreeToJS
 {
@@ -74,48 +74,38 @@ class DecisionTreeToJS
 		var «dt.name» = {
 
 			name: "«dt.name»",
-			«genSpecs(diff.entityDiffSpecs)»
+			«genSpecs(dt.trees)»
 		}
 
 		module.exports = «dt.name»;
 		'''
 	}
 
-	def genSpecs(List<EntityDiffSpec> list) '''
-		«FOR EntityDiffSpec de : list SEPARATOR ','»
-			«genEntityDiffs(de)»
+	def genSpecs(List<DecisionTreeForEntity> list) '''
+		«FOR DecisionTreeForEntity dte : list SEPARATOR ','»
+			«genCheckFunction(dte)»
 		«ENDFOR»
 	'''
 
-	def genEntityDiffs(EntityDiffSpec spec) '''
-		«FOR evp : spec.entityVersionProps SEPARATOR ','»
-			«genEntityVersionDiff(evp, spec)»
-		«ENDFOR»
-	'''
-
-	def genEntityVersionDiff(EntityVersionProp evp, EntityDiffSpec spec) {
-		val entityVersionName = spec.entity.name.toFirstUpper + "_" + evp.entityVersion.versionId
+	def genCheckFunction(DecisionTreeForEntity dte)
+	{
+		val entityName = dte.entity.name.toFirstUpper
 
 		'''
-		«entityVersionName»: {
-			name: "«entityVersionName»",
-			isOfType: function (obj)
+		«entityName»: {
+			name: "«entityName»",
+			entityVersionForObject: function (obj)
 			{
-			    var b = true;
-				«generateHints(evp, spec, DUCK_TYPE)»
-		        return b;
+				«generateCheckTree(dte.root)»
 			}
 		}'''
 	}
 
-	def generateHints(EntityVersionProp evp, EntityDiffSpec spec, boolean exact) {
-		'''
-			b = b && «genProp(p)»;
-			b = b && «genNotPropForPropName(p)»;
-		'''
-    }
+	def generateCheckTree(DecisionTreeNode root) '''
+		b = b && genProp(p);
+	'''
 
-    def genProp(PropertySpec p)
+    def genProp(PropertySpec2 p)
     {
 		if (p.needsTypeCheck)
 			'''("«p.property.name»" in obj) && «genTypeCheck(p.property)»'''
