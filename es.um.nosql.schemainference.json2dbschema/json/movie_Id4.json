@@ -1,0 +1,31 @@
+{
+  "rows": [
+      {
+        "_id": "4",
+        "type": "movie",
+        "title": "Truth",
+        "year": 2015, 
+        "director_id": "345679",
+        "genre": "Drama",
+	    "rating":{
+	       "score": 6.8,
+	       "voters": 12682
+	    },
+        "criticisms": [
+          {
+             "journalist": "Jordi Costa",
+             "media": {
+	        "name": "El País",
+		"url": "http://elpais.com/"
+	     },
+             "color": "red"
+          },
+          {
+             "journalist": "Lou Lumenick",
+             "media": "New York Post",
+             "color": "green"
+          }
+        ]
+      }
+  ]
+}

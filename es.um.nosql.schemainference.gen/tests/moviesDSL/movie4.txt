@@ -1,0 +1,59 @@
+//File Movie4
+var mongoose = require('mongoose');
+var assert=require('assert');
+var url='mongodb://localhost/dbmongoose'
+mongoose.connect(url, function(error){
+	if(error){
+  	    throw error;
+  }
+  else{
+  	console.log('Conectado a MongoDB');
+  }
+});
+var Movierating4=	{
+	score:	Number,
+	voters:	Number,
+    } 
+var Moviecriticisms4=	{
+	color:	{type: String, enum: [green, red, yellow]},
+	journalist:	{type: String, unique: true},
+	media:	String,
+	media:	{
+		name:	String,
+		url:	String,
+	    } 
+    } 
+var Movieprizes1=	{
+	event:	String,
+	year:	Number,
+	name:	String,
+	names:	[],
+    } 
+var Movieprizes3=	{
+	event:	String,
+	name:	String,
+	year:	Number,
+    } 
+var movieSchema = new mongoose.Schema({
+
+// Common Properties	
+  	title:	{type: String, required:true, maxlength: 40, unique: true},
+  	_id:	{type: String, required:true, index: Hashed},
+  	year:	{type: Number, required:true, index: true},
+  	type:	{type: String, required: true},
+	director_id:	{type: String, required: true, ref: Director},
+  
+// add required for Movie4 entity version
+  	genre:	{type: String, required:true, enum: [drama, comedy, children]},
+	rating:	{type:Movierating4, required:true},
+	criticisms:	{type:Moviecriticisms4, required:true},
+
+// Not Common Properties 
+	running_time:	Number,
+	genres:	[],
+	writers:	[],
+	prizes:	Movieprizes1,
+	prizes:	Movieprizes3,
+},{collection:'movie'});
+
+var Movie = mongoose.model('Movie',movieSchema);
