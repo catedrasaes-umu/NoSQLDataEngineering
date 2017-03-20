@@ -1,0 +1,634 @@
+digraph {
+	rankdir = LR;
+	compound=true;
+	NoSQLSchema_NoSQLSchema_25275048 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#D0BCFE">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">NoSQLSchema&nbsp;:&nbsp;movie_Id4</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#EFE8FE">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Entity_14509555 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#9DBDF9">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Entity&nbsp;:&nbsp;Movie</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DEE9FD">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Entity_16354044 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#9DBDF9">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Entity&nbsp;:&nbsp;Rating</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DEE9FD">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Entity_17433361 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#9DBDF9">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Entity&nbsp;:&nbsp;Media</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DEE9FD">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Entity_8445997 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#9DBDF9">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Entity&nbsp;:&nbsp;Criticism</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DEE9FD">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_EntityVersion_6338947 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">EntityVersion</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0">
+					<TR><TD> </TD><TD ALIGN="LEFT">versionId&nbsp;:&nbsp;1</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">count&nbsp;:&nbsp;0</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">root&nbsp;:&nbsp;true</TD><TD> </TD></TR>
+				</TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_EntityVersion_16758614 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">EntityVersion</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0">
+					<TR><TD> </TD><TD ALIGN="LEFT">versionId&nbsp;:&nbsp;1</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">count&nbsp;:&nbsp;0</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">root&nbsp;:&nbsp;false</TD><TD> </TD></TR>
+				</TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_EntityVersion_30426863 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">EntityVersion</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0">
+					<TR><TD> </TD><TD ALIGN="LEFT">versionId&nbsp;:&nbsp;1</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">count&nbsp;:&nbsp;0</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">root&nbsp;:&nbsp;false</TD><TD> </TD></TR>
+				</TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_EntityVersion_7668609 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">EntityVersion</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0">
+					<TR><TD> </TD><TD ALIGN="LEFT">versionId&nbsp;:&nbsp;1</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">count&nbsp;:&nbsp;0</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">root&nbsp;:&nbsp;false</TD><TD> </TD></TR>
+				</TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_EntityVersion_12672975 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">EntityVersion</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0">
+					<TR><TD> </TD><TD ALIGN="LEFT">versionId&nbsp;:&nbsp;2</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">count&nbsp;:&nbsp;0</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">root&nbsp;:&nbsp;false</TD><TD> </TD></TR>
+				</TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_5895943 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#E3D6AA">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Attribute&nbsp;:&nbsp;_id</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#F5F1E2">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_4707024 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#E3D6AA">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Attribute&nbsp;:&nbsp;director_id</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#F5F1E2">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_30335242 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#E3D6AA">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Attribute&nbsp;:&nbsp;genre</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#F5F1E2">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_1291151 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#E3D6AA">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Attribute&nbsp;:&nbsp;title</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#F5F1E2">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_879413 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#E3D6AA">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Attribute&nbsp;:&nbsp;type</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#F5F1E2">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_22989697 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#E3D6AA">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Attribute&nbsp;:&nbsp;year</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#F5F1E2">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_27683531 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#E3D6AA">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Attribute&nbsp;:&nbsp;score</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#F5F1E2">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_2785490 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#E3D6AA">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Attribute&nbsp;:&nbsp;voters</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#F5F1E2">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_26240791 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#E3D6AA">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Attribute&nbsp;:&nbsp;name</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#F5F1E2">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_27411269 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#E3D6AA">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Attribute&nbsp;:&nbsp;url</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#F5F1E2">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_19058529 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#E3D6AA">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Attribute&nbsp;:&nbsp;color</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#F5F1E2">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_13719613 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#E3D6AA">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Attribute&nbsp;:&nbsp;journalist</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#F5F1E2">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_4186330 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#E3D6AA">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Attribute&nbsp;:&nbsp;color</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#F5F1E2">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_22360322 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#E3D6AA">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Attribute&nbsp;:&nbsp;journalist</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#F5F1E2">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_4734681 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#E3D6AA">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Attribute&nbsp;:&nbsp;media</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#F5F1E2">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Aggregate_29940939 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#9DBDF9">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Aggregate&nbsp;:&nbsp;criticisms</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DEE9FD">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0">
+					<TR><TD> </TD><TD ALIGN="LEFT">lowerBound&nbsp;:&nbsp;0</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">upperBound&nbsp;:&nbsp;-1</TD><TD> </TD></TR>
+				</TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Aggregate_6996777 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#9DBDF9">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Aggregate&nbsp;:&nbsp;rating</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DEE9FD">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0">
+					<TR><TD> </TD><TD ALIGN="LEFT">lowerBound&nbsp;:&nbsp;1</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">upperBound&nbsp;:&nbsp;1</TD><TD> </TD></TR>
+				</TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Aggregate_28356310 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#9DBDF9">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">Aggregate&nbsp;:&nbsp;media</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DEE9FD">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0">
+					<TR><TD> </TD><TD ALIGN="LEFT">lowerBound&nbsp;:&nbsp;1</TD><TD> </TD></TR>
+					<TR><TD> </TD><TD ALIGN="LEFT">upperBound&nbsp;:&nbsp;1</TD><TD> </TD></TR>
+				</TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_PrimitiveType_5889166 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">PrimitiveType&nbsp;:&nbsp;String</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_PrimitiveType_29883216 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">PrimitiveType&nbsp;:&nbsp;String</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_PrimitiveType_12539580 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">PrimitiveType&nbsp;:&nbsp;String</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_PrimitiveType_5103158 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">PrimitiveType&nbsp;:&nbsp;String</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_PrimitiveType_10261462 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">PrimitiveType&nbsp;:&nbsp;String</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_PrimitiveType_29625458 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">PrimitiveType&nbsp;:&nbsp;Number</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_PrimitiveType_11159185 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">PrimitiveType&nbsp;:&nbsp;Number</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_PrimitiveType_24429958 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">PrimitiveType&nbsp;:&nbsp;Number</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_PrimitiveType_5102294 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">PrimitiveType&nbsp;:&nbsp;String</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_PrimitiveType_3048736 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">PrimitiveType&nbsp;:&nbsp;String</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_PrimitiveType_29839328 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">PrimitiveType&nbsp;:&nbsp;String</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_PrimitiveType_15611437 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">PrimitiveType&nbsp;:&nbsp;String</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_PrimitiveType_19129326 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">PrimitiveType&nbsp;:&nbsp;String</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_PrimitiveType_27014592 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">PrimitiveType&nbsp;:&nbsp;String</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_PrimitiveType_3837677 [label=<
+		<TABLE BORDER="0" CELLBORDER="0" CELLSPACING="0" CELLPADDING="0">
+			<TR><TD BGCOLOR="#98FB98">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0" CELLPADDING="1">
+					<TR>
+						<TD ALIGN="CENTER">PrimitiveType&nbsp;:&nbsp;String</TD>
+					</TR>
+				</TABLE>
+			</TD></TR>
+			<TR><TD ALIGN="LEFT" BGCOLOR="#DCFDDC">
+				<TABLE BORDER="1" CELLBORDER="0" CELLSPACING="0"><TR><TD> </TD></TR></TABLE>
+			</TD></TR>
+		</TABLE>>, margin=0, shape=plaintext]
+	NoSQLSchema_Attribute_5895943->NoSQLSchema_PrimitiveType_5889166 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_6338947->NoSQLSchema_Attribute_5895943 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_6338947->NoSQLSchema_Aggregate_29940939 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Attribute_4707024->NoSQLSchema_PrimitiveType_29883216 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_6338947->NoSQLSchema_Attribute_4707024 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Attribute_30335242->NoSQLSchema_PrimitiveType_12539580 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_6338947->NoSQLSchema_Attribute_30335242 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_6338947->NoSQLSchema_Aggregate_6996777 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Attribute_1291151->NoSQLSchema_PrimitiveType_5103158 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_6338947->NoSQLSchema_Attribute_1291151 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Attribute_879413->NoSQLSchema_PrimitiveType_10261462 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_6338947->NoSQLSchema_Attribute_879413 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Attribute_22989697->NoSQLSchema_PrimitiveType_29625458 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_6338947->NoSQLSchema_Attribute_22989697 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Entity_14509555->NoSQLSchema_EntityVersion_6338947 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_NoSQLSchema_25275048->NoSQLSchema_Entity_14509555 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Attribute_27683531->NoSQLSchema_PrimitiveType_11159185 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_16758614->NoSQLSchema_Attribute_27683531 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Attribute_2785490->NoSQLSchema_PrimitiveType_24429958 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_16758614->NoSQLSchema_Attribute_2785490 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Entity_16354044->NoSQLSchema_EntityVersion_16758614 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_NoSQLSchema_25275048->NoSQLSchema_Entity_16354044 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Attribute_26240791->NoSQLSchema_PrimitiveType_5102294 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_30426863->NoSQLSchema_Attribute_26240791 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Attribute_27411269->NoSQLSchema_PrimitiveType_3048736 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_30426863->NoSQLSchema_Attribute_27411269 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Entity_17433361->NoSQLSchema_EntityVersion_30426863 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_NoSQLSchema_25275048->NoSQLSchema_Entity_17433361 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Attribute_19058529->NoSQLSchema_PrimitiveType_29839328 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_7668609->NoSQLSchema_Attribute_19058529 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Attribute_13719613->NoSQLSchema_PrimitiveType_15611437 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_7668609->NoSQLSchema_Attribute_13719613 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_7668609->NoSQLSchema_Aggregate_28356310 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Entity_8445997->NoSQLSchema_EntityVersion_7668609 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Attribute_4186330->NoSQLSchema_PrimitiveType_19129326 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_12672975->NoSQLSchema_Attribute_4186330 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Attribute_22360322->NoSQLSchema_PrimitiveType_27014592 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_12672975->NoSQLSchema_Attribute_22360322 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Attribute_4734681->NoSQLSchema_PrimitiveType_3837677 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_EntityVersion_12672975->NoSQLSchema_Attribute_4734681 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_Entity_8445997->NoSQLSchema_EntityVersion_12672975 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+	NoSQLSchema_NoSQLSchema_25275048->NoSQLSchema_Entity_8445997 [arrowhead = normal, arrowtail = diamond, dir = both, minlen=1, color="#000000"]
+}
