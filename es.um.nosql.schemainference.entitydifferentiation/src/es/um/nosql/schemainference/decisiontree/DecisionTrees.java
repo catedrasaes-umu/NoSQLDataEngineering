@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link es.um.nosql.schemainference.decisiontree.DecisionTrees#getTrees <em>Trees</em>}</li>
+ *   <li>{@link es.um.nosql.schemainference.decisiontree.DecisionTrees#getName <em>Name</em>}</li>
  * </ul>
  *
  * @see es.um.nosql.schemainference.decisiontree.DecisiontreePackage#getDecisionTrees()
@@ -38,5 +39,31 @@ public interface DecisionTrees extends EObject {
 	 * @generated
 	 */
 	EList<DecisionTreeForEntity> getTrees();
+
+	/**
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Name</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see es.um.nosql.schemainference.decisiontree.DecisiontreePackage#getDecisionTrees_Name()
+	 * @model
+	 * @generated
+	 */
+	String getName();
+
+	/**
+	 * Sets the value of the '{@link es.um.nosql.schemainference.decisiontree.DecisionTrees#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
+	void setName(String value);
 
 } // DecisionTrees

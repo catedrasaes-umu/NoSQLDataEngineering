@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="ASCII"?>
+<decisiontree:DecisionTrees xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xmlns:decisiontree="urn:es.um.nosql.schemainference.decisiontree" name="mongoMovies3">
+  <trees>
+    <root xsi:type="decisiontree:HasProperty">
+      <yesBranch xsi:type="decisiontree:HasProperty">
+        <yesBranch xsi:type="decisiontree:LeafNode">
+          <identifiedVersion href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.0/@entityversions.0"/>
+        </yesBranch>
+        <noBranch xsi:type="decisiontree:LeafNode">
+          <identifiedVersion href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.0/@entityversions.3"/>
+        </noBranch>
+        <property needsTypeCheck="true">
+          <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.0/@entityversions.0/@properties.4"/>
+        </property>
+      </yesBranch>
+      <noBranch xsi:type="decisiontree:HasProperty">
+        <yesBranch xsi:type="decisiontree:HasNotProperty">
+          <yesBranch xsi:type="decisiontree:LeafNode">
+            <identifiedVersion href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.0/@entityversions.2"/>
+          </yesBranch>
+          <noBranch xsi:type="decisiontree:LeafNode">
+            <identifiedVersion href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.0/@entityversions.1"/>
+          </noBranch>
+          <property>
+            <property xsi:type="NoSQLSchema:Attribute" href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.0/@entityversions.1/@properties.3"/>
+          </property>
+        </yesBranch>
+        <noBranch xsi:type="decisiontree:LeafNode">
+          <identifiedVersion href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.0/@entityversions.4"/>
+        </noBranch>
+        <property>
+          <property xsi:type="NoSQLSchema:Attribute" href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.0/@entityversions.0/@properties.3"/>
+        </property>
+      </noBranch>
+      <property>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.0/@entityversions.0/@properties.1"/>
+      </property>
+    </root>
+    <entity href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#Movie"/>
+  </trees>
+  <trees>
+    <root xsi:type="decisiontree:HasNotProperty">
+      <yesBranch xsi:type="decisiontree:LeafNode">
+        <identifiedVersion href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.1/@entityversions.0"/>
+      </yesBranch>
+      <noBranch xsi:type="decisiontree:LeafNode">
+        <identifiedVersion href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.1/@entityversions.1"/>
+      </noBranch>
+      <property>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.1/@entityversions.1/@properties.4"/>
+      </property>
+    </root>
+    <entity href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#Movietheater"/>
+  </trees>
+  <trees>
+    <root xsi:type="decisiontree:HasProperty">
+      <yesBranch xsi:type="decisiontree:LeafNode">
+        <identifiedVersion href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.4/@entityversions.0"/>
+      </yesBranch>
+      <noBranch xsi:type="decisiontree:LeafNode">
+        <identifiedVersion href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.4/@entityversions.1"/>
+      </noBranch>
+      <property>
+        <property xsi:type="NoSQLSchema:Reference" href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.4/@entityversions.0/@properties.1"/>
+      </property>
+    </root>
+    <entity href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#Director"/>
+  </trees>
+  <trees>
+    <root xsi:type="decisiontree:HasProperty">
+      <yesBranch xsi:type="decisiontree:LeafNode">
+        <identifiedVersion href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.5/@entityversions.0"/>
+      </yesBranch>
+      <noBranch xsi:type="decisiontree:LeafNode">
+        <identifiedVersion href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.5/@entityversions.1"/>
+      </noBranch>
+      <property needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.5/@entityversions.0/@properties.2"/>
+      </property>
+    </root>
+    <entity href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#Criticism"/>
+  </trees>
+  <trees>
+    <root xsi:type="decisiontree:HasProperty">
+      <yesBranch xsi:type="decisiontree:LeafNode">
+        <identifiedVersion href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.6/@entityversions.0"/>
+      </yesBranch>
+      <noBranch xsi:type="decisiontree:LeafNode">
+        <identifiedVersion href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.6/@entityversions.1"/>
+      </noBranch>
+      <property>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#//@entities.6/@entityversions.0/@properties.1"/>
+      </property>
+    </root>
+    <entity href="file:/home/dsevilla/prog/NoSQLDataEngineering/es.um.nosql.schemainference.decisiontree/model/mongoMovies3.xmi#Prize"/>
+  </trees>
+</decisiontree:DecisionTrees>

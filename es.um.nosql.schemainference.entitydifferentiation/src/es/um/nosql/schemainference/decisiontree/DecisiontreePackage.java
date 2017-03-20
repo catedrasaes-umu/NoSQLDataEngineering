@@ -278,13 +278,22 @@ public interface DecisiontreePackage extends EPackage {
 	int DECISION_TREES__TREES = 0;
 
 	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int DECISION_TREES__NAME = 1;
+
+	/**
 	 * The number of structural features of the '<em>Decision Trees</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int DECISION_TREES_FEATURE_COUNT = 1;
+	int DECISION_TREES_FEATURE_COUNT = 2;
 
 	/**
 	 * The number of operations of the '<em>Decision Trees</em>' class.
@@ -582,6 +591,17 @@ public interface DecisiontreePackage extends EPackage {
 	EReference getDecisionTrees_Trees();
 
 	/**
+	 * Returns the meta object for the attribute '{@link es.um.nosql.schemainference.decisiontree.DecisionTrees#getName <em>Name</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see es.um.nosql.schemainference.decisiontree.DecisionTrees#getName()
+	 * @see #getDecisionTrees()
+	 * @generated
+	 */
+	EAttribute getDecisionTrees_Name();
+
+	/**
 	 * Returns the meta object for class '{@link es.um.nosql.schemainference.decisiontree.PropertySpec2 <em>Property Spec2</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -761,6 +781,14 @@ public interface DecisiontreePackage extends EPackage {
 		 * @generated
 		 */
 		EReference DECISION_TREES__TREES = eINSTANCE.getDecisionTrees_Trees();
+
+		/**
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute DECISION_TREES__NAME = eINSTANCE.getDecisionTrees_Name();
 
 		/**
 		 * The meta object literal for the '{@link es.um.nosql.schemainference.decisiontree.impl.PropertySpec2Impl <em>Property Spec2</em>}' class.

@@ -262,6 +262,15 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getDecisionTrees_Name() {
+		return (EAttribute)decisionTreesEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getPropertySpec2() {
 		return propertySpec2EClass;
 	}
@@ -346,6 +355,7 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 
 		decisionTreesEClass = createEClass(DECISION_TREES);
 		createEReference(decisionTreesEClass, DECISION_TREES__TREES);
+		createEAttribute(decisionTreesEClass, DECISION_TREES__NAME);
 
 		propertySpec2EClass = createEClass(PROPERTY_SPEC2);
 		createEAttribute(propertySpec2EClass, PROPERTY_SPEC2__NEEDS_TYPE_CHECK);
@@ -409,6 +419,7 @@ public class DecisiontreePackageImpl extends EPackageImpl implements Decisiontre
 
 		initEClass(decisionTreesEClass, DecisionTrees.class, "DecisionTrees", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getDecisionTrees_Trees(), this.getDecisionTreeForEntity(), null, "trees", null, 0, -1, DecisionTrees.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getDecisionTrees_Name(), ecorePackage.getEString(), "name", null, 0, 1, DecisionTrees.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(propertySpec2EClass, PropertySpec2.class, "PropertySpec2", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getPropertySpec2_NeedsTypeCheck(), ecorePackage.getEBoolean(), "needsTypeCheck", null, 1, 1, PropertySpec2.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -6,14 +6,14 @@ import es.um.nosql.schemainference.entitydifferentiation.PropertySpec;
 public class ModelNode
 {
 	private PropertySpec property;
-	private EntityVersion tag;
+	private EntityVersion ev;
 	private ModelNode nodePresent;
 	private ModelNode nodeAbsent;
 	private boolean checkNot;
 
 	public ModelNode(EntityVersion tag)
 	{
-		setTag(tag);
+		setEv(tag);
 		setCheckNot(false);
 	}
 	
@@ -31,12 +31,12 @@ public class ModelNode
 		this.property = property;
 	}
 	
-	public EntityVersion getTag() {
-		return tag;
+	public EntityVersion getEv() {
+		return ev;
 	}
 
-	public void setTag(EntityVersion tag) {
-		this.tag = tag;
+	public void setEv(EntityVersion tag) {
+		this.ev = tag;
 	}
 
 	public ModelNode getNodePresent() {

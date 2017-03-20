@@ -27,6 +27,9 @@ import es.um.nosql.schemainference.decisiontree.DecisionTreeNode;
 import es.um.nosql.schemainference.decisiontree.DecisionTrees;
 import es.um.nosql.schemainference.decisiontree.DecisiontreeFactory;
 import es.um.nosql.schemainference.decisiontree.DecisiontreePackage;
+import es.um.nosql.schemainference.decisiontree.IntermediateNode;
+import es.um.nosql.schemainference.decisiontree.LeafNode;
+import es.um.nosql.schemainference.decisiontree.PropertySpec2;
 import es.um.nosql.schemainference.decisiontree.utils.ModelNode;
 import es.um.nosql.schemainference.decisiontree.utils.OpenJ48;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec;
@@ -108,7 +111,7 @@ public class Main
 		String indent = String.join("", Collections.nCopies(level, "  "));
 
 		if (tree.is_leaf())
-			System.out.println(indent+"Entity: "+e.getName()+", Version: "+tree.getTag().getVersionId());
+			System.out.println(indent+"Entity: "+e.getName()+", Version: "+tree.getEv().getVersionId());
 		else
 		{
 			Function<Boolean,String> present = v -> v ? " is present." : " is NOT present."; 
@@ -141,15 +144,17 @@ public class Main
 
 		// Create a DecisionTree Model to be written
 		DecisionTrees dt = DecisiontreeFactory.eINSTANCE.createDecisionTrees();
+		dt.setName(diff.getName());
 		
 		diff.getEntityDiffSpecs().stream().filter(ed -> ed.getEntityVersionProps().size() > 1)
 			.forEach(eds -> {
 				ModelNode root = generateTreeForEntity(eds);
 				
-				DecisionTreeForEntity dte = DecisiontreeFactory.eINSTANCE.createDecisionTreeForEntity();
+				DecisionTreeForEntity dte = 
+					DecisiontreeFactory.eINSTANCE.createDecisionTreeForEntity();
 				dte.setEntity(eds.getEntity());
 				// fill dte
-				dte.setRoot(decisionTreeForEntity(dte, root));
+				dte.setRoot(decisionTreeForEntity(root));
 				
 				dt.getTrees().add(dte);
 			});
@@ -166,9 +171,32 @@ public class Main
 		}
 	}
 
-	private DecisionTreeNode decisionTreeForEntity(DecisionTreeForEntity dte, ModelNode root)
+	private DecisionTreeNode decisionTreeForEntity(ModelNode root)
 	{
-		return null;
+		if (root.is_leaf())
+		{
+			LeafNode ln =  DecisiontreeFactory.eINSTANCE.createLeafNode();
+			ln.setIdentifiedVersion(root.getEv());
+			return ln;
+		}
+		else
+		{
+			IntermediateNode in = root.isCheckNot() ?
+					  DecisiontreeFactory.eINSTANCE.createHasNotProperty()
+					: DecisiontreeFactory.eINSTANCE.createHasProperty();
+			
+			in.setYesBranch(decisionTreeForEntity(root.getNodePresent()));					
+			in.setNoBranch(decisionTreeForEntity(root.getNodeAbsent()));
+			
+			// Create PropertySpec2 from PropertySpec
+			PropertySpec2 ps2 = DecisiontreeFactory.eINSTANCE.createPropertySpec2();
+			ps2.setProperty(root.getProperty().getProperty());
+			ps2.setNeedsTypeCheck(root.getProperty().isNeedsTypeCheck());
+			
+			in.setProperty(ps2);
+			
+			return in;
+		}
 	}
 
 	private String serialize(PropertySpec ps)
