@@ -18,6 +18,9 @@ import es.um.nosql.schemainference.decisiontree.DecisionTrees
 import es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity
 import es.um.nosql.schemainference.decisiontree.PropertySpec2
 import es.um.nosql.schemainference.decisiontree.DecisionTreeNode
+import es.um.nosql.schemainference.decisiontree.IntermediateNode
+import es.um.nosql.schemainference.decisiontree.LeafNode
+import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage
 
 class DecisionTreeToJS
 {
@@ -35,6 +38,7 @@ class DecisionTreeToJS
 
         val inputModel = new File(args.head)
         val ResourceManager rm = new ResourceManager(DecisiontreePackage.eINSTANCE,
+        	EntitydifferentiationPackage.eINSTANCE,
         	NoSQLSchemaPackage.eINSTANCE)
         rm.loadResourcesAsStrings(inputModel.getPath())
         val DecisionTrees trees = rm.resources.head.contents.head as DecisionTrees
@@ -47,9 +51,6 @@ class DecisionTreeToJS
         					+ inputModel.getPath()
         					+ " in "
         					+ outputDir.getPath())
-
-//        val NoSQLDifferences dataModelObject = M2M.getInstance().transform(modelObject)
-//
 
 		val dt_to_js = new DecisionTreeToJS()
 		val outFile = outputDir.toPath().resolve(trees.name + ".js").toFile()
@@ -74,14 +75,14 @@ class DecisionTreeToJS
 		var «dt.name» = {
 
 			name: "«dt.name»",
-			«genSpecs(dt.trees)»
+			«genCheckFunctions(dt.trees)»
 		}
 
 		module.exports = «dt.name»;
 		'''
 	}
 
-	def genSpecs(List<DecisionTreeForEntity> list) '''
+	def genCheckFunctions(List<DecisionTreeForEntity> list) '''
 		«FOR DecisionTreeForEntity dte : list SEPARATOR ','»
 			«genCheckFunction(dte)»
 		«ENDFOR»
@@ -96,15 +97,26 @@ class DecisionTreeToJS
 			name: "«entityName»",
 			entityVersionForObject: function (obj)
 			{
-				«generateCheckTree(dte.root)»
+				«generateCheckTree(dte, dte.root)»
 			}
-		}'''
+		}
+		'''
 	}
 
-	def generateCheckTree(DecisionTreeNode root) '''
-		b = b && genProp(p);
-	'''
+	def dispatch generateCheckTree(DecisionTreeForEntity dte, IntermediateNode root) '''
+		if («genProp(root.checkedProperty)»)
+		{
+			«generateCheckTree(dte,root.yesBranch)»
+		} else {
+			«generateCheckTree(dte,root.noBranch)»
+		}
+	''' 
 
+	
+	def dispatch generateCheckTree(DecisionTreeForEntity dte, LeafNode node) '''
+		return "«dte.entity.name + "_" + node.identifiedVersion.versionId»";
+	'''
+	
     def genProp(PropertySpec2 p)
     {
 		if (p.needsTypeCheck)
@@ -112,9 +124,6 @@ class DecisionTreeToJS
 		else
 			'''("«p.property.name»" in obj)'''
 	}
-
-    def genNotPropForPropName(String p)
-		'''!("«p»" in obj)'''
 
 	def dispatch genTypeCheck(Property p) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
