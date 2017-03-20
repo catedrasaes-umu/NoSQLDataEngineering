@@ -12,8 +12,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="identifiedVersion" lowerBound="1"
         eType="ecore:EClass ../../es.um.nosql.schemainference/model/nosqlschema.ecore#//EntityVersion"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="IntermediateNode" abstract="true" eSuperTypes="#//DecisionTreeNode">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="property" lowerBound="1"
+  <eClassifiers xsi:type="ecore:EClass" name="IntermediateNode" eSuperTypes="#//DecisionTreeNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="checkedProperty" lowerBound="1"
         eType="#//PropertySpec2" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DecisionTreeForEntity">
@@ -33,6 +33,4 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="property" lowerBound="1"
         eType="ecore:EClass ../../es.um.nosql.schemainference/model/nosqlschema.ecore#//Property"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="HasProperty" eSuperTypes="#//IntermediateNode"/>
-  <eClassifiers xsi:type="ecore:EClass" name="HasNotProperty" eSuperTypes="#//IntermediateNode"/>
 </ecore:EPackage>

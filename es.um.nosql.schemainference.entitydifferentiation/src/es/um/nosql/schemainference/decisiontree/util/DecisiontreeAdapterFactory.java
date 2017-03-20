@@ -92,14 +92,6 @@ public class DecisiontreeAdapterFactory extends AdapterFactoryImpl {
 				return createPropertySpec2Adapter();
 			}
 			@Override
-			public Adapter caseHasProperty(HasProperty object) {
-				return createHasPropertyAdapter();
-			}
-			@Override
-			public Adapter caseHasNotProperty(HasNotProperty object) {
-				return createHasNotPropertyAdapter();
-			}
-			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -200,34 +192,6 @@ public class DecisiontreeAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPropertySpec2Adapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.decisiontree.HasProperty <em>Has Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see es.um.nosql.schemainference.decisiontree.HasProperty
-	 * @generated
-	 */
-	public Adapter createHasPropertyAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.decisiontree.HasNotProperty <em>Has Not Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see es.um.nosql.schemainference.decisiontree.HasNotProperty
-	 * @generated
-	 */
-	public Adapter createHasNotPropertyAdapter() {
 		return null;
 	}
 

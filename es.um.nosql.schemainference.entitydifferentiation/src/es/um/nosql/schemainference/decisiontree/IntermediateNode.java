@@ -11,38 +11,38 @@ package es.um.nosql.schemainference.decisiontree;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getProperty <em>Property</em>}</li>
+ *   <li>{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckedProperty <em>Checked Property</em>}</li>
  * </ul>
  *
  * @see es.um.nosql.schemainference.decisiontree.DecisiontreePackage#getIntermediateNode()
- * @model abstract="true"
+ * @model
  * @generated
  */
 public interface IntermediateNode extends DecisionTreeNode {
 	/**
-	 * Returns the value of the '<em><b>Property</b></em>' containment reference.
+	 * Returns the value of the '<em><b>Checked Property</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <p>
-	 * If the meaning of the '<em>Property</em>' reference isn't clear,
+	 * If the meaning of the '<em>Checked Property</em>' containment reference isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Property</em>' containment reference.
-	 * @see #setProperty(PropertySpec2)
-	 * @see es.um.nosql.schemainference.decisiontree.DecisiontreePackage#getIntermediateNode_Property()
+	 * @return the value of the '<em>Checked Property</em>' containment reference.
+	 * @see #setCheckedProperty(PropertySpec2)
+	 * @see es.um.nosql.schemainference.decisiontree.DecisiontreePackage#getIntermediateNode_CheckedProperty()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
-	PropertySpec2 getProperty();
+	PropertySpec2 getCheckedProperty();
 
 	/**
-	 * Sets the value of the '{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getProperty <em>Property</em>}' containment reference.
+	 * Sets the value of the '{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckedProperty <em>Checked Property</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Property</em>' containment reference.
-	 * @see #getProperty()
+	 * @param value the new value of the '<em>Checked Property</em>' containment reference.
+	 * @see #getCheckedProperty()
 	 * @generated
 	 */
-	void setProperty(PropertySpec2 value);
+	void setCheckedProperty(PropertySpec2 value);
 
 } // IntermediateNode

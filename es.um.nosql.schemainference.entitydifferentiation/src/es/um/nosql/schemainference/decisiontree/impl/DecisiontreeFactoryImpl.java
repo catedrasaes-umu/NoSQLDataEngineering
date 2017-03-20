@@ -57,11 +57,10 @@ public class DecisiontreeFactoryImpl extends EFactoryImpl implements Decisiontre
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
 			case DecisiontreePackage.LEAF_NODE: return createLeafNode();
+			case DecisiontreePackage.INTERMEDIATE_NODE: return createIntermediateNode();
 			case DecisiontreePackage.DECISION_TREE_FOR_ENTITY: return createDecisionTreeForEntity();
 			case DecisiontreePackage.DECISION_TREES: return createDecisionTrees();
 			case DecisiontreePackage.PROPERTY_SPEC2: return createPropertySpec2();
-			case DecisiontreePackage.HAS_PROPERTY: return createHasProperty();
-			case DecisiontreePackage.HAS_NOT_PROPERTY: return createHasNotProperty();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -75,6 +74,16 @@ public class DecisiontreeFactoryImpl extends EFactoryImpl implements Decisiontre
 	public LeafNode createLeafNode() {
 		LeafNodeImpl leafNode = new LeafNodeImpl();
 		return leafNode;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public IntermediateNode createIntermediateNode() {
+		IntermediateNodeImpl intermediateNode = new IntermediateNodeImpl();
+		return intermediateNode;
 	}
 
 	/**
@@ -105,26 +114,6 @@ public class DecisiontreeFactoryImpl extends EFactoryImpl implements Decisiontre
 	public PropertySpec2 createPropertySpec2() {
 		PropertySpec2Impl propertySpec2 = new PropertySpec2Impl();
 		return propertySpec2;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HasProperty createHasProperty() {
-		HasPropertyImpl hasProperty = new HasPropertyImpl();
-		return hasProperty;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public HasNotProperty createHasNotProperty() {
-		HasNotPropertyImpl hasNotProperty = new HasNotPropertyImpl();
-		return hasNotProperty;
 	}
 
 	/**

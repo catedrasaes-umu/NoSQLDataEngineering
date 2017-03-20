@@ -186,13 +186,13 @@ public interface DecisiontreePackage extends EPackage {
 	int INTERMEDIATE_NODE__NO_BRANCH = DECISION_TREE_NODE__NO_BRANCH;
 
 	/**
-	 * The feature id for the '<em><b>Property</b></em>' containment reference.
+	 * The feature id for the '<em><b>Checked Property</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int INTERMEDIATE_NODE__PROPERTY = DECISION_TREE_NODE_FEATURE_COUNT + 0;
+	int INTERMEDIATE_NODE__CHECKED_PROPERTY = DECISION_TREE_NODE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Intermediate Node</em>' class.
@@ -353,117 +353,6 @@ public interface DecisiontreePackage extends EPackage {
 
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.schemainference.decisiontree.impl.HasPropertyImpl <em>Has Property</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.schemainference.decisiontree.impl.HasPropertyImpl
-	 * @see es.um.nosql.schemainference.decisiontree.impl.DecisiontreePackageImpl#getHasProperty()
-	 * @generated
-	 */
-	int HAS_PROPERTY = 6;
-
-	/**
-	 * The feature id for the '<em><b>Yes Branch</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HAS_PROPERTY__YES_BRANCH = INTERMEDIATE_NODE__YES_BRANCH;
-
-	/**
-	 * The feature id for the '<em><b>No Branch</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HAS_PROPERTY__NO_BRANCH = INTERMEDIATE_NODE__NO_BRANCH;
-
-	/**
-	 * The feature id for the '<em><b>Property</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HAS_PROPERTY__PROPERTY = INTERMEDIATE_NODE__PROPERTY;
-
-	/**
-	 * The number of structural features of the '<em>Has Property</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HAS_PROPERTY_FEATURE_COUNT = INTERMEDIATE_NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Has Property</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HAS_PROPERTY_OPERATION_COUNT = INTERMEDIATE_NODE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link es.um.nosql.schemainference.decisiontree.impl.HasNotPropertyImpl <em>Has Not Property</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.schemainference.decisiontree.impl.HasNotPropertyImpl
-	 * @see es.um.nosql.schemainference.decisiontree.impl.DecisiontreePackageImpl#getHasNotProperty()
-	 * @generated
-	 */
-	int HAS_NOT_PROPERTY = 7;
-
-	/**
-	 * The feature id for the '<em><b>Yes Branch</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HAS_NOT_PROPERTY__YES_BRANCH = INTERMEDIATE_NODE__YES_BRANCH;
-
-	/**
-	 * The feature id for the '<em><b>No Branch</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HAS_NOT_PROPERTY__NO_BRANCH = INTERMEDIATE_NODE__NO_BRANCH;
-
-	/**
-	 * The feature id for the '<em><b>Property</b></em>' containment reference.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HAS_NOT_PROPERTY__PROPERTY = INTERMEDIATE_NODE__PROPERTY;
-
-	/**
-	 * The number of structural features of the '<em>Has Not Property</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HAS_NOT_PROPERTY_FEATURE_COUNT = INTERMEDIATE_NODE_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of operations of the '<em>Has Not Property</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int HAS_NOT_PROPERTY_OPERATION_COUNT = INTERMEDIATE_NODE_OPERATION_COUNT + 0;
-
-
-	/**
 	 * Returns the meta object for class '{@link es.um.nosql.schemainference.decisiontree.DecisionTreeNode <em>Decision Tree Node</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -527,15 +416,15 @@ public interface DecisiontreePackage extends EPackage {
 	EClass getIntermediateNode();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getProperty <em>Property</em>}'.
+	 * Returns the meta object for the containment reference '{@link es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckedProperty <em>Checked Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference '<em>Property</em>'.
-	 * @see es.um.nosql.schemainference.decisiontree.IntermediateNode#getProperty()
+	 * @return the meta object for the containment reference '<em>Checked Property</em>'.
+	 * @see es.um.nosql.schemainference.decisiontree.IntermediateNode#getCheckedProperty()
 	 * @see #getIntermediateNode()
 	 * @generated
 	 */
-	EReference getIntermediateNode_Property();
+	EReference getIntermediateNode_CheckedProperty();
 
 	/**
 	 * Returns the meta object for class '{@link es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity <em>Decision Tree For Entity</em>}'.
@@ -634,26 +523,6 @@ public interface DecisiontreePackage extends EPackage {
 	EReference getPropertySpec2_Property();
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.schemainference.decisiontree.HasProperty <em>Has Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Has Property</em>'.
-	 * @see es.um.nosql.schemainference.decisiontree.HasProperty
-	 * @generated
-	 */
-	EClass getHasProperty();
-
-	/**
-	 * Returns the meta object for class '{@link es.um.nosql.schemainference.decisiontree.HasNotProperty <em>Has Not Property</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Has Not Property</em>'.
-	 * @see es.um.nosql.schemainference.decisiontree.HasNotProperty
-	 * @generated
-	 */
-	EClass getHasNotProperty();
-
-	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -731,12 +600,12 @@ public interface DecisiontreePackage extends EPackage {
 		EClass INTERMEDIATE_NODE = eINSTANCE.getIntermediateNode();
 
 		/**
-		 * The meta object literal for the '<em><b>Property</b></em>' containment reference feature.
+		 * The meta object literal for the '<em><b>Checked Property</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference INTERMEDIATE_NODE__PROPERTY = eINSTANCE.getIntermediateNode_Property();
+		EReference INTERMEDIATE_NODE__CHECKED_PROPERTY = eINSTANCE.getIntermediateNode_CheckedProperty();
 
 		/**
 		 * The meta object literal for the '{@link es.um.nosql.schemainference.decisiontree.impl.DecisionTreeForEntityImpl <em>Decision Tree For Entity</em>}' class.
@@ -815,26 +684,6 @@ public interface DecisiontreePackage extends EPackage {
 		 * @generated
 		 */
 		EReference PROPERTY_SPEC2__PROPERTY = eINSTANCE.getPropertySpec2_Property();
-
-		/**
-		 * The meta object literal for the '{@link es.um.nosql.schemainference.decisiontree.impl.HasPropertyImpl <em>Has Property</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.schemainference.decisiontree.impl.HasPropertyImpl
-		 * @see es.um.nosql.schemainference.decisiontree.impl.DecisiontreePackageImpl#getHasProperty()
-		 * @generated
-		 */
-		EClass HAS_PROPERTY = eINSTANCE.getHasProperty();
-
-		/**
-		 * The meta object literal for the '{@link es.um.nosql.schemainference.decisiontree.impl.HasNotPropertyImpl <em>Has Not Property</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.schemainference.decisiontree.impl.HasNotPropertyImpl
-		 * @see es.um.nosql.schemainference.decisiontree.impl.DecisiontreePackageImpl#getHasNotProperty()
-		 * @generated
-		 */
-		EClass HAS_NOT_PROPERTY = eINSTANCE.getHasNotProperty();
 
 	}
 

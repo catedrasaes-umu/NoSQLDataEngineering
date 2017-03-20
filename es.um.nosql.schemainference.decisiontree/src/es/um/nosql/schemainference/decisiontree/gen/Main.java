@@ -181,19 +181,25 @@ public class Main
 		}
 		else
 		{
-			IntermediateNode in = root.isCheckNot() ?
-					  DecisiontreeFactory.eINSTANCE.createHasNotProperty()
-					: DecisiontreeFactory.eINSTANCE.createHasProperty();
-			
-			in.setYesBranch(decisionTreeForEntity(root.getNodePresent()));					
-			in.setNoBranch(decisionTreeForEntity(root.getNodeAbsent()));
+			IntermediateNode in = 
+					DecisiontreeFactory.eINSTANCE.createIntermediateNode();
+
+			if (root.isCheckNot())
+			{
+				in.setNoBranch(decisionTreeForEntity(root.getNodePresent()));
+				in.setYesBranch(decisionTreeForEntity(root.getNodeAbsent()));
+			} else
+			{
+				in.setYesBranch(decisionTreeForEntity(root.getNodePresent()));
+				in.setNoBranch(decisionTreeForEntity(root.getNodeAbsent()));				
+			}
 			
 			// Create PropertySpec2 from PropertySpec
 			PropertySpec2 ps2 = DecisiontreeFactory.eINSTANCE.createPropertySpec2();
 			ps2.setProperty(root.getProperty().getProperty());
 			ps2.setNeedsTypeCheck(root.getProperty().isNeedsTypeCheck());
 			
-			in.setProperty(ps2);
+			in.setCheckedProperty(ps2);
 			
 			return in;
 		}
