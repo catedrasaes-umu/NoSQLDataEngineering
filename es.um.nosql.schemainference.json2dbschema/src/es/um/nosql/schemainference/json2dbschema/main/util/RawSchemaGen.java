@@ -14,9 +14,6 @@ import org.codehaus.jackson.node.DoubleNode;
 import org.codehaus.jackson.node.IntNode;
 import org.codehaus.jackson.node.NullNode;
 import org.codehaus.jackson.node.ObjectNode;
-
-import com.google.common.collect.Iterators;
-
 import es.um.nosql.schemainference.json2dbschema.intermediate.raw.ArraySC;
 import es.um.nosql.schemainference.json2dbschema.intermediate.raw.BooleanSC;
 import es.um.nosql.schemainference.json2dbschema.intermediate.raw.NullSC;
@@ -58,7 +55,7 @@ public class RawSchemaGen
 		ObjectSC schema = new ObjectSC();
 		
 		SortedSet<String> fields = new TreeSet<String>();
-		Iterators.addAll(fields, o.getFieldNames());
+		o.getFieldNames().forEachRemaining(fields::add);
 		fields.forEach(f -> schema.add(Pair.of(f, deSchema(f, o.get(f)))));
 		
 		return schema;

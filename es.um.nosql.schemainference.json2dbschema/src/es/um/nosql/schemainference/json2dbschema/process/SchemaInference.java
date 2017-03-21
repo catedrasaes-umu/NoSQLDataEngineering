@@ -17,7 +17,6 @@ import es.um.nosql.schemainference.json2dbschema.intermediate.raw.ObjectSC;
 import es.um.nosql.schemainference.json2dbschema.intermediate.raw.SchemaComponent;
 import es.um.nosql.schemainference.json2dbschema.intermediate.raw.StringSC;
 import es.um.nosql.schemainference.json2dbschema.intermediate.raw.util.SchemaPrinter;
-import es.um.nosql.schemainference.json2dbschema.process.util.ReferenceMatcher;
 import es.um.nosql.schemainference.json2dbschema.util.abstractjson.IAJArray;
 import es.um.nosql.schemainference.json2dbschema.util.abstractjson.IAJBoolean;
 import es.um.nosql.schemainference.json2dbschema.util.abstractjson.IAJElement;
@@ -26,9 +25,7 @@ import es.um.nosql.schemainference.json2dbschema.util.abstractjson.IAJNull;
 import es.um.nosql.schemainference.json2dbschema.util.abstractjson.IAJObject;
 import es.um.nosql.schemainference.json2dbschema.util.abstractjson.IAJTextual;
 import es.um.nosql.schemainference.json2dbschema.util.inflector.Inflector;
-
 import org.apache.commons.lang3.tuple.Pair;
-import com.google.common.collect.Iterators;
 
 /**
  * @author dsevilla
@@ -232,7 +229,7 @@ public class SchemaInference
 
 		// It is important this is a sorted set
 		SortedSet<String> fields = new TreeSet<String>();
-		Iterators.addAll(fields, n.getFieldNames());
+		n.getFieldNames().forEachRemaining(fields::add);
 
 		// Recursive phase
 		schema.addAll(fields.stream()

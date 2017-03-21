@@ -1,6 +1,6 @@
 package es.um.nosql.schemainference.json2dbschema.intermediate.firsto;
 
-import com.google.common.collect.Range;
+import org.apache.commons.lang3.Range;
 
 /**
  * @author dsevilla
