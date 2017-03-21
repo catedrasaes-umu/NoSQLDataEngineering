@@ -17,7 +17,6 @@ import es.um.nosql.schemainference.decisiontree.DecisiontreePackage
 import es.um.nosql.schemainference.decisiontree.DecisionTrees
 import es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity
 import es.um.nosql.schemainference.decisiontree.PropertySpec2
-import es.um.nosql.schemainference.decisiontree.DecisionTreeNode
 import es.um.nosql.schemainference.decisiontree.IntermediateNode
 import es.um.nosql.schemainference.decisiontree.LeafNode
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage
@@ -103,7 +102,7 @@ class DecisionTreeToJS
 		'''
 	}
 
-	def dispatch generateCheckTree(DecisionTreeForEntity dte, IntermediateNode root) '''
+	def dispatch String generateCheckTree(DecisionTreeForEntity dte, IntermediateNode root) '''
 		if («genProp(root.checkedProperty)»)
 		{
 			«generateCheckTree(dte,root.yesBranch)»
