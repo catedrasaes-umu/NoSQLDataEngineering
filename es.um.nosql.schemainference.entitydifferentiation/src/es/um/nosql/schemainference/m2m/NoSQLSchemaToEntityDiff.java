@@ -14,9 +14,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.util.Collections;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -61,7 +59,6 @@ public class NoSQLSchemaToEntityDiff
 
 	private Map<Entity, Set<Property>> commonEntityProperties;
 	private Map<EntityVersion, Set<Property>> evOwnProperties;
-//	private Map<Entity, List<EntityVersion>> rootEVbyEntity;
 	private Map<EntityVersion, EntityVersionProp> evPropsByEv;
 	private PropertyHashingStrategy propertyHashing = new PropertyHashingStrategy();
 
@@ -132,9 +129,6 @@ public class NoSQLSchemaToEntityDiff
 		// Generate entity References
 		for (Entity e: schema.getEntities())
 			transformEntity(e, diff);
-
-		// Generate decision tree
-		//genDecisionTree(schema, diff);
 	}
 
 	/**
@@ -145,189 +139,14 @@ public class NoSQLSchemaToEntityDiff
 		commonEntityProperties = schema.getEntities().stream()
 				.collect(toMap(identity(), this::calcCommonProperties));
 
-//		nameDifferenceProperties = new HashMap<EntityVersion, Map<Boolean, List<Property>>>();
-//		schema.getEntities().forEach(e -> e.getEntityversions()
-//				.forEach(ev -> nameDifferenceProperties.put(ev, splitOwnProperties(e, commonEntityProperties.get(e), ev))));
-
 		evOwnProperties = schema.getEntities().stream()
 				.flatMap(e -> e.getEntityversions().stream().map(ev -> Tuples.pair(ev,
 						ev.getProperties().stream().filter(p -> !commonEntityProperties.get(e).contains(p))
 							.collect(toCollection(() -> new UnifiedSetWithHashingStrategy<>(propertyHashing))))))
 				.collect(toMap(Pair::getOne, Pair::getTwo));
 
-//		rootEVbyEntity = schema.getEntities().stream()
-//				.flatMap(e -> e.getEntityversions().stream())
-//				.filter(EntityVersion::isRoot)
-//				.collect(groupingBy(ev -> (Entity)(ev.eContainer())));
-
 		evPropsByEv = new HashMap<>();
 	}
-
-//	private void genDecisionTree(NoSQLSchema schema, EntityDifferentiation diff)
-//	{
-//		// Entities with any of their versions as root
-//		diff.getDecisionTrees().addAll(
-//				rootEVbyEntity.keySet().stream()
-//				.map(this::decisionTreeForRootEntity)
-//				.collect(toList()));
-//	}
-
-//	DecisionTree decisionTreeForRootEntity(Entity e)
-//	{
-//		DecisionTree t = EntitydifferentiationFactory.eINSTANCE.createDecisionTree();
-//
-//		BinaryDecisionNode root = populateDecisionTree(e);
-//
-//		// Set the root node
-//		t.setBinaryDecisionNodeRoot(root);
-//		return t;
-//	}
-//
-//	// Order by the lengths
-//	private static class PropSpecSetComparator implements Comparator<Pair<EntityVersion, List<PropertySpec>>>
-//	{
-//		@Override
-//		public int compare(Pair<EntityVersion, List<PropertySpec>> o1, Pair<EntityVersion, List<PropertySpec>> o2) {
-//			int r = o1.getTwo().size() - o2.getTwo().size();
-//			return r == 0 ? -1 : r;
-//		}
-//	}
-
-//	private BinaryDecisionNode populateDecisionTree(Entity e)
-//	{
-//		// Preparation for the decision tree
-//		// 1. Build a list of all the tests for all the EVs
-//		// 2. Order the list of tests by the least tests to reach an EV goal node
-//		// 3. Select one of the attributes of the smaller (first) list
-//		// 4. Remove this attribute from all the lists of all the EVs
-//		// 5. If the list of one EV is empty, this is the goal node of the tree
-//		// 6. Repeat the process with the remaining EVs.
-//		SortedSet<Pair<EntityVersion, List<PropertySpec>>> propSpecsSorted =
-//				rootEVbyEntity.get(e).stream()
-//				.map(ev -> Tuples.<EntityVersion,List<PropertySpec>>pair(ev, evPropsByEv.get(ev).getPropertySpecs()))
-//				.collect(toCollection(() ->
-//				new TreeSortedSet<Pair<EntityVersion, List<PropertySpec>>>(new PropSpecSetComparator())));
-//
-//		return populateDTRec(propSpecsSorted);
-//	}
-//
-//	private BinaryDecisionNode populateDTRec(
-//			SortedSet<Pair<EntityVersion, List<PropertySpec>>> propSpecsSorted)
-//	{
-//		Pair<EntityVersion, List<PropertySpec>>	 check = propSpecsSorted.first();
-//		final PropertySpec checkedProperty;
-//
-//		if (check.getTwo().isEmpty())
-//		{
-//			// TODO: Generate a tree to the yes...
-//			// Generate a Goal node with the EV and return
-//			GoalNode n = EntitydifferentiationFactory.eINSTANCE.createGoalNode();
-//			n.setEntityVersion(check.getOne());
-//			return n;
-//		}
-//		else
-//			checkedProperty = check.getTwo().remove(0);
-//
-//		// Build two lists, one containing the elements that could be reached
-//		// by the "left" (yes) branch, and others by the "right" (no) branch
-//		Map<Boolean, SortedSet<Pair<EntityVersion, List<PropertySpec>>>> propSpecsSortedYesNo =
-//				propSpecsSorted.stream()
-//				.collect(partitioningBy(p -> canBeReached(checkedProperty, p.getTwo()),
-//						toCollection(
-//								() -> new TreeSortedSet<Pair<EntityVersion, List<PropertySpec>>>(new PropSpecSetComparator()))));
-//
-//
-//		IntermediateNode current = EntitydifferentiationFactory.eINSTANCE.createIntermediateNode();
-//
-//		//		IntermediateNode root = current;
-//		//
-//		//		for (EntityVersion ev : rootEVbyEntity.get(e))
-//		//		{
-//		//			// For this EV, we recorded the checks in the diffSpecs variable,
-//		//			// excluding the "type" check, because this decision tree is made exclusively for this
-//		//			// entity type.
-//		//			EntityVersionProp diffSpec = diffSpecs.get(ev);
-//		//			current.getCheck().addAll(diffSpec.getProperties());
-//		//
-//		//			IntermediateNode next = EntitydifferentiationFactory.eINSTANCE.createIntermediateNode();
-//		//
-//		//			current.setYes(subTreeForEntityVersion(ev));
-//		//			current.setNo(next);
-//		//
-//		//			current = next;
-//		//		};
-//
-//		return current;
-//	}
-
-//	private boolean canBeReached(PropertySpec p, List<PropertySpec> psl)
-//	{
-//		Predicate<? super PropertySpec> predicate = null;
-//
-//		if (p instanceof HasPropertyNamed)
-//		{
-//			predicate =
-//					(prop) -> !((prop instanceof HasNotPropertyNamed)
-//							&& prop.getProperty().getName().equals(p.getProperty().getName()));
-//		}
-//		else if (p instanceof HasNotPropertyNamed)
-//		{
-//			predicate = (prop) -> !((prop instanceof HasPropertyNamed)
-//					&& prop.getProperty().getName().equals(p.getProperty().getName()));
-//		}
-//		else if (p instanceof HasPropertyTyped)
-//		{
-//			predicate = (prop) -> true;
-//		}
-//
-//		return psl.stream().anyMatch(predicate);
-//	}
-
-//	private BinaryDecisionNode subTreeForEntityVersion(EntityVersion ev)
-//	{
-//		// The rationale here is to check a property in the set of properties
-//		// that are exclusively of this entityVersion (either just by name or
-//		// having to check also the type). This is enough to separate each entity
-//		// version
-//		Optional<Map<Boolean, List<Property>>> toTypeOrNot =
-//				Optional.ofNullable(nameDifferenceProperties.get(ev));
-//
-//		return toTypeOrNot.map(m -> {
-//			List<Property> properties = m.get(false);
-//
-//			// The property that will discriminate
-//			PropertySpec disc;
-//
-//			if(properties.size() == 0)
-//			{
-//				// Try then with the type properties
-//				properties = m.get(true);
-//
-//				disc = EntitydifferentiationFactory.eINSTANCE.createHasPropertyTyped();
-//			}
-//			else
-//			{
-//				// Name properties
-//				disc = EntitydifferentiationFactory.eINSTANCE.createHasPropertyNamed();
-//			}
-//			disc.setProperty(properties.get(0));
-//
-//			IntermediateNode current = EntitydifferentiationFactory.eINSTANCE.createIntermediateNode();
-//			current.getCheck().add(disc);
-//
-//			GoalNode n = EntitydifferentiationFactory.eINSTANCE.createGoalNode();
-//			n.setEntityVersion(ev);
-//
-//			// Add the goal node
-//			current.setYes(n);
-//
-//			return (BinaryDecisionNode)current;
-//		}).orElseGet(() -> { // Only one EntityVersion in this Entity
-//			GoalNode n = EntitydifferentiationFactory.eINSTANCE.createGoalNode();
-//			n.setEntityVersion(ev);
-//			return n;
-//		});
-//	}
 
 	private void transformEntity(Entity e, EntityDifferentiation diff)
 	{

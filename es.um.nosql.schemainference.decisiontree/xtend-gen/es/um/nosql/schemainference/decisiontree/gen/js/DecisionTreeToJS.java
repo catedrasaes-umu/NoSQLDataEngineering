@@ -11,11 +11,14 @@ import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.NoSQLSchema.Reference;
 import es.um.nosql.schemainference.NoSQLSchema.Tuple;
 import es.um.nosql.schemainference.NoSQLSchema.Type;
+import es.um.nosql.schemainference.decisiontree.DecisionTreeForEntity;
+import es.um.nosql.schemainference.decisiontree.DecisionTreeNode;
 import es.um.nosql.schemainference.decisiontree.DecisionTrees;
 import es.um.nosql.schemainference.decisiontree.DecisiontreePackage;
-import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec;
-import es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp;
-import es.um.nosql.schemainference.entitydifferentiation.PropertySpec;
+import es.um.nosql.schemainference.decisiontree.IntermediateNode;
+import es.um.nosql.schemainference.decisiontree.LeafNode;
+import es.um.nosql.schemainference.decisiontree.PropertySpec2;
+import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage;
 import es.um.nosql.schemainference.util.emf.ResourceManager;
 import java.io.File;
 import java.io.PrintStream;
@@ -31,6 +34,7 @@ import org.eclipse.xtext.xbase.lib.CollectionLiterals;
 import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Exceptions;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.StringExtensions;
 
 @SuppressWarnings("all")
 public class DecisionTreeToJS {
@@ -49,6 +53,7 @@ public class DecisionTreeToJS {
       String _head = IterableExtensions.<String>head(((Iterable<String>)Conversions.doWrapArray(args)));
       final File inputModel = new File(_head);
       final ResourceManager rm = new ResourceManager(DecisiontreePackage.eINSTANCE, 
+        EntitydifferentiationPackage.eINSTANCE, 
         NoSQLSchemaPackage.eINSTANCE);
       String _path = inputModel.getPath();
       rm.loadResourcesAsStrings(_path);
@@ -97,60 +102,141 @@ public class DecisionTreeToJS {
    * Method used to generate an Inclusive/Exclusive differences file for a NoSQLDifferences object.
    */
   public CharSequence generate(final DecisionTrees dt) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field diff is undefined"
-      + "\nentityDiffSpecs cannot be resolved");
+    CharSequence _xblockexpression = null;
+    {
+      String _name = dt.getName();
+      this.modelName = _name;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("\'use strict\'");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("var ");
+      String _name_1 = dt.getName();
+      _builder.append(_name_1, "");
+      _builder.append(" = {");
+      _builder.newLineIfNotEmpty();
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("name: \"");
+      String _name_2 = dt.getName();
+      _builder.append(_name_2, "\t");
+      _builder.append("\",");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      EList<DecisionTreeForEntity> _trees = dt.getTrees();
+      CharSequence _genCheckFunctions = this.genCheckFunctions(_trees);
+      _builder.append(_genCheckFunctions, "\t");
+      _builder.newLineIfNotEmpty();
+      _builder.append("}");
+      _builder.newLine();
+      _builder.newLine();
+      _builder.append("module.exports = ");
+      String _name_3 = dt.getName();
+      _builder.append(_name_3, "");
+      _builder.append(";");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
   }
   
-  public CharSequence genSpecs(final List<EntityDiffSpec> list) {
+  public CharSequence genCheckFunctions(final List<DecisionTreeForEntity> list) {
     StringConcatenation _builder = new StringConcatenation();
     {
       boolean _hasElements = false;
-      for(final EntityDiffSpec de : list) {
+      for(final DecisionTreeForEntity dte : list) {
         if (!_hasElements) {
           _hasElements = true;
         } else {
           _builder.appendImmediate(",", "");
         }
-        CharSequence _genEntityDiffs = this.genEntityDiffs(de);
-        _builder.append(_genEntityDiffs, "");
+        CharSequence _genCheckFunction = this.genCheckFunction(dte);
+        _builder.append(_genCheckFunction, "");
         _builder.newLineIfNotEmpty();
       }
     }
     return _builder;
   }
   
-  public CharSequence genEntityDiffs(final EntityDiffSpec spec) {
-    StringConcatenation _builder = new StringConcatenation();
+  public CharSequence genCheckFunction(final DecisionTreeForEntity dte) {
+    CharSequence _xblockexpression = null;
     {
-      EList<EntityVersionProp> _entityVersionProps = spec.getEntityVersionProps();
-      boolean _hasElements = false;
-      for(final EntityVersionProp evp : _entityVersionProps) {
-        if (!_hasElements) {
-          _hasElements = true;
-        } else {
-          _builder.appendImmediate(",", "");
-        }
-        CharSequence _genEntityVersionDiff = this.genEntityVersionDiff(evp, spec);
-        _builder.append(_genEntityVersionDiff, "");
-        _builder.newLineIfNotEmpty();
-      }
+      Entity _entity = dte.getEntity();
+      String _name = _entity.getName();
+      final String entityName = StringExtensions.toFirstUpper(_name);
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(entityName, "");
+      _builder.append(": {");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      _builder.append("name: \"");
+      _builder.append(entityName, "\t");
+      _builder.append("\",");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      _builder.append("entityVersionForObject: function (obj)");
+      _builder.newLine();
+      _builder.append("\t");
+      _builder.append("{");
+      _builder.newLine();
+      _builder.append("\t\t");
+      DecisionTreeNode _root = dte.getRoot();
+      CharSequence _generateCheckTree = this.generateCheckTree(dte, _root);
+      _builder.append(_generateCheckTree, "\t\t");
+      _builder.newLineIfNotEmpty();
+      _builder.append("\t");
+      _builder.append("}");
+      _builder.newLine();
+      _builder.append("}");
+      _builder.newLine();
+      _xblockexpression = _builder;
     }
+    return _xblockexpression;
+  }
+  
+  protected String _generateCheckTree(final DecisionTreeForEntity dte, final IntermediateNode root) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("if (");
+    PropertySpec2 _checkedProperty = root.getCheckedProperty();
+    CharSequence _genProp = this.genProp(_checkedProperty);
+    _builder.append(_genProp, "");
+    _builder.append(")");
+    _builder.newLineIfNotEmpty();
+    _builder.append("{");
+    _builder.newLine();
+    _builder.append("\t");
+    DecisionTreeNode _yesBranch = root.getYesBranch();
+    CharSequence _generateCheckTree = this.generateCheckTree(dte, _yesBranch);
+    _builder.append(_generateCheckTree, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("} else {");
+    _builder.newLine();
+    _builder.append("\t");
+    DecisionTreeNode _noBranch = root.getNoBranch();
+    CharSequence _generateCheckTree_1 = this.generateCheckTree(dte, _noBranch);
+    _builder.append(_generateCheckTree_1, "\t");
+    _builder.newLineIfNotEmpty();
+    _builder.append("}");
+    _builder.newLine();
+    return _builder.toString();
+  }
+  
+  protected CharSequence _generateCheckTree(final DecisionTreeForEntity dte, final LeafNode node) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("return \"");
+    Entity _entity = dte.getEntity();
+    String _name = _entity.getName();
+    String _plus = (_name + "_");
+    EntityVersion _identifiedVersion = node.getIdentifiedVersion();
+    int _versionId = _identifiedVersion.getVersionId();
+    String _plus_1 = (_plus + Integer.valueOf(_versionId));
+    _builder.append(_plus_1, "");
+    _builder.append("\";");
+    _builder.newLineIfNotEmpty();
     return _builder;
   }
   
-  public CharSequence genEntityVersionDiff(final EntityVersionProp evp, final EntityDiffSpec spec) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field DUCK_TYPE is undefined");
-  }
-  
-  public CharSequence generateHints(final EntityVersionProp evp, final EntityDiffSpec spec, final boolean exact) {
-    throw new Error("Unresolved compilation problems:"
-      + "\nThe method or field p is undefined"
-      + "\nThe method or field p is undefined");
-  }
-  
-  public CharSequence genProp(final PropertySpec p) {
+  public CharSequence genProp(final PropertySpec2 p) {
     CharSequence _xifexpression = null;
     boolean _isNeedsTypeCheck = p.isNeedsTypeCheck();
     if (_isNeedsTypeCheck) {
@@ -174,14 +260,6 @@ public class DecisionTreeToJS {
       _xifexpression = _builder_1;
     }
     return _xifexpression;
-  }
-  
-  public CharSequence genNotPropForPropName(final String p) {
-    StringConcatenation _builder = new StringConcatenation();
-    _builder.append("!(\"");
-    _builder.append(p, "");
-    _builder.append("\" in obj)");
-    return _builder;
   }
   
   protected CharSequence _genTypeCheck(final Property p) {
@@ -437,6 +515,17 @@ public class DecisionTreeToJS {
       }
     }
     return _builder;
+  }
+  
+  public CharSequence generateCheckTree(final DecisionTreeForEntity dte, final DecisionTreeNode root) {
+    if (root instanceof IntermediateNode) {
+      return _generateCheckTree(dte, (IntermediateNode)root);
+    } else if (root instanceof LeafNode) {
+      return _generateCheckTree(dte, (LeafNode)root);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(dte, root).toString());
+    }
   }
   
   public CharSequence genTypeCheck(final Property a) {
