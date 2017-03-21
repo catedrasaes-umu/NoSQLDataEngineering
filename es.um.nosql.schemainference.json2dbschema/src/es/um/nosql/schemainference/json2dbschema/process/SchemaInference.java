@@ -2,10 +2,12 @@ package es.um.nosql.schemainference.json2dbschema.process;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -35,6 +37,7 @@ public class SchemaInference
 {
 	private Map<String, List<SchemaComponent>> rawEntities;
 	private IAJArray theArray;
+	private Set<String> innerSchemaNames;
 
 	private static final boolean ROOT_OBJECT = true;
 	private static final boolean NON_ROOT_OBJECT = false;
@@ -42,6 +45,7 @@ public class SchemaInference
 	public SchemaInference(IAJArray rows)
 	{
 		rawEntities = new HashMap<String, List<SchemaComponent>>();
+		innerSchemaNames = new HashSet<String>();
 		this.theArray = rows;
 	}
 
@@ -49,6 +53,8 @@ public class SchemaInference
 	{
 		theArray.forEach(n -> infer(n, Optional.<String>empty(), ROOT_OBJECT));
 
+		joinAggregations();
+		
 		mergeEquivalentEVs();
 
 		// Print entities and entity versions
@@ -64,6 +70,12 @@ public class SchemaInference
 		});
 
 		return rawEntities;
+	}
+
+	private void joinAggregations() 
+	{
+		// Remember the names of the entity versions that came from 
+		
 	}
 
 	private void mergeEquivalentEVs()
@@ -253,6 +265,9 @@ public class SchemaInference
 			List<SchemaComponent> ll = new ArrayList<SchemaComponent>(10);
 			ll.add(schema);
 			rawEntities.put(schema.entityName, ll);
+			
+			// Add the name of this entity to the list of afterward checking for already existing entities 
+			innerSchemaNames.add(schema.entityName);
 		}
 
 		return retSchema;
@@ -262,7 +277,7 @@ public class SchemaInference
 	{
 		ArraySC schema = new ArraySC();
 
-		//TODO: At this point we should use the ReferenceMatcher to test verbs such as has or Id.
+		// TODO: At this point we should use the ReferenceMatcher to test verbs such as has or Id.
 		// If the name for this array can be made singular, do it.
 		String singularName = Inflector.getInstance().singularize(elementName);
 
