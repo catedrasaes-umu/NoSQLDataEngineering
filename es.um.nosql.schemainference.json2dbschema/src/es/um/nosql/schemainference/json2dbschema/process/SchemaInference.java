@@ -8,6 +8,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.SortedSet;
 import java.util.TreeSet;
+
 import es.um.nosql.schemainference.json2dbschema.intermediate.raw.ArraySC;
 import es.um.nosql.schemainference.json2dbschema.intermediate.raw.BooleanSC;
 import es.um.nosql.schemainference.json2dbschema.intermediate.raw.NullSC;
@@ -16,6 +17,7 @@ import es.um.nosql.schemainference.json2dbschema.intermediate.raw.ObjectSC;
 import es.um.nosql.schemainference.json2dbschema.intermediate.raw.SchemaComponent;
 import es.um.nosql.schemainference.json2dbschema.intermediate.raw.StringSC;
 import es.um.nosql.schemainference.json2dbschema.intermediate.raw.util.SchemaPrinter;
+import es.um.nosql.schemainference.json2dbschema.process.util.ReferenceMatcher;
 import es.um.nosql.schemainference.json2dbschema.util.abstractjson.IAJArray;
 import es.um.nosql.schemainference.json2dbschema.util.abstractjson.IAJBoolean;
 import es.um.nosql.schemainference.json2dbschema.util.abstractjson.IAJElement;
@@ -239,6 +241,7 @@ public class SchemaInference
 		// Now that we have the complete schema, try to compare it with any of the versions in the map
 		List<SchemaComponent> entityVersions = rawEntities.get(schema.entityName);
 		SchemaComponent retSchema = schema;
+
 		if (entityVersions != null)
 		{
 			Optional<SchemaComponent> foundSchema =
@@ -262,11 +265,14 @@ public class SchemaInference
 	{
 		ArraySC schema = new ArraySC();
 
+		//TODO: At this point we should use the ReferenceMatcher to test verbs such as has or Id.
 		// If the name for this array can be made singular, do it.
 		String singularName = Inflector.getInstance().singularize(elementName);
+
 		final Optional<String> name = Optional.of(singularName);
 
 		n.forEach(e -> schema.add(infer(e, name, NON_ROOT_OBJECT)));
+
 		return schema;
 	}
 

@@ -97,6 +97,26 @@ public class NoSQLSchemaServices
 				});*/
 	}
 
+	/**
+	 * Method used for the Entity Union Schema viewpoint to gather entities related to
+	 * any EVersion root.
+	 * @param entity The entity of which the union is being performed
+	 * @return A list of Entities
+	 */
+	public List<Entity> getEntitiesFromEntityUnion(Entity entity)
+	{
+		List<Entity> result = new ArrayList<Entity>();
+
+		entity.getEntityversions().stream().filter(ev -> ev.isRoot()).forEach(ev -> result.addAll(getEntitiesFromSchema(ev)));
+
+		return result;
+	}
+
+	/**
+	 * Method used to gather all the entities related to a EVersion root in any way.
+	 * @param root The EVersion of which we want to collect all the entities
+	 * @return A list of Entities
+	 */
 	public List<Entity> getEntitiesFromSchema(EntityVersion root)
 	{
 		List<Entity> result = SchemaCollector.getEntitiesFromSchema(root);
@@ -107,6 +127,21 @@ public class NoSQLSchemaServices
 				return e0.getName().compareTo(e1.getName());
 			}
 		});
+
+		return result;
+	}
+
+	/**
+	 * Method used for the Entity Union Schema viewpoint to gather EVersions related to
+	 * any EVersion root.
+	 * @param entity The entity of which the union is being performed
+	 * @return A list of EVersions
+	 */
+	public List<EntityVersion> getEVersionsFromEntityUnion(Entity entity)
+	{
+		List<EntityVersion> result = new ArrayList<EntityVersion>();
+
+		entity.getEntityversions().stream().filter(ev -> ev.isRoot()).forEach(ev -> result.addAll(getReducedEVersionsFromSchema(ev)));
 
 		return result;
 	}

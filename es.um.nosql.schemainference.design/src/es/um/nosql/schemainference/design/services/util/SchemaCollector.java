@@ -29,6 +29,14 @@ public class SchemaCollector
 		return result;
 	}
 
+	/**
+	 * Method used to get a list of reduced EntityVersions.
+	 * This list will gather each EntityVersion and then remove those EntityVersions
+	 * added because their Entities were referenced. In other words, this method
+	 * will only get versions explicitly aggregated by the process.
+	 * @param root The version to which we want to get the reduced EntityVersions list.
+	 * @return An EntityVersion list
+	 */
 	public static List<EntityVersion> getReducedEVersionsFromSchema(EntityVersion root)
 	{
 		List<EntityVersion> result = new ArrayList<EntityVersion>();
@@ -36,7 +44,7 @@ public class SchemaCollector
 
 		for (Entity entity : elementList.getRight())
 			for (EntityVersion eVersion : entity.getEntityversions())
-			elementList.getLeft().remove(eVersion);
+				elementList.getLeft().remove(eVersion);
 
 		result.addAll(elementList.getLeft());
 

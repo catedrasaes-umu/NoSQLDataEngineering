@@ -24,13 +24,19 @@ public class ReferenceMatcher<T>
 	private static List<String> StopChars =
 			Arrays.asList("_", ".", "-", "");
 
+	//TODO: Forbidden words should indicate that the name is NOT a reference
+	//TODO: Also, maybe we should consider that a name CANNOT a reference to itself.
+	// So for example, a Post** field in a Entity Post will never be a reference to itself.
+	// That way we can filter cases such as a TagName field in a Tags entity.
+	private static List<String> ForbiddenWords = Arrays.asList("count");
+
 	private List<Pair<String,T>> idRegexps;
-		
+
 	public ReferenceMatcher(Stream<Pair<String, T>> stream)
 	{		
 		// Build the regexp that will allow checking if a field may be a reference
 		// to another entity
-		
+
 		idRegexps = stream.flatMap(entry ->
 			Affixes.stream().flatMap(affix ->
 				Stream.concat(
@@ -44,7 +50,7 @@ public class ReferenceMatcher<T>
 			)
 		).collect(Collectors.toList());
 	}
-	
+
 	public Optional<T> maybeMatch(String id)
 	{
 		return idRegexps.stream()

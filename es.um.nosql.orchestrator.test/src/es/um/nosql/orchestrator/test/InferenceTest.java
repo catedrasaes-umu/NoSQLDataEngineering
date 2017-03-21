@@ -15,7 +15,7 @@ public class InferenceTest
 	private static final String COUCHDB_IP = "localhost";
 	private static final String MONGODB_IP = "localhost";
 	private static final String MODELS_FOLDER = "models/";
-	private static final String TABLENAME = "FoodRedux";
+	private static final String TABLENAME = "AggregateRedux";
 	private static final String MODEL_FILE = MODELS_FOLDER + TABLENAME + ".nosqlschema";
 	private static final String COUCHDB_OUTPUT_MODEL = MODELS_FOLDER + TABLENAME + "_COUCHDB.xmi";
 	private static final String MONGODB_OUTPUT_MODEL = MODELS_FOLDER + TABLENAME + "_MONGODB.xmi";
@@ -48,8 +48,8 @@ public class InferenceTest
 		int minInstances = 5;
 		int maxInstances = 10;
 
-//		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
-//		controller.model2Db(MODEL_FILE, minInstances, maxInstances);
+		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
+		controller.model2Db(MODEL_FILE, minInstances, maxInstances);
 
 		System.out.println("Starting inference...");
 		MongoDBSchemaInference inferrer = new MongoDBSchemaInference();
