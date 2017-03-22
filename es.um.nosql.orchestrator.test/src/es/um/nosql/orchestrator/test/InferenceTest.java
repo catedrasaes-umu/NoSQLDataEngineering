@@ -15,8 +15,8 @@ public class InferenceTest
 	private static final String COUCHDB_IP = "localhost";
 	private static final String MONGODB_IP = "localhost";
 	private static final String MODELS_FOLDER = "models/";
-	private static final String TABLENAME = "AggregateRedux";
-	private static final String MODEL_FILE = MODELS_FOLDER + TABLENAME + ".nosqlschema";
+	private static final String TABLENAME = "mongoMovies3";
+	private static final String MODEL_FILE = MODELS_FOLDER + TABLENAME + ".xmi";
 	private static final String COUCHDB_OUTPUT_MODEL = MODELS_FOLDER + TABLENAME + "_COUCHDB.xmi";
 	private static final String MONGODB_OUTPUT_MODEL = MODELS_FOLDER + TABLENAME + "_MONGODB.xmi";
 	private static final String COUCHDB_MAPREDUCE_FOLDER = "mapreduce/couchdb/v1";
@@ -25,8 +25,8 @@ public class InferenceTest
 	public static void prepareCouchDBExample()
 	{
 		long startTime = System.currentTimeMillis();
-		int minInstances = 5;
-		int maxInstances = 10;
+		int minInstances = 2;
+		int maxInstances = 5;
 
 		DbController controller = new DbController(DbType.COUCHDB, COUCHDB_IP);
 		controller.model2Db(MODEL_FILE, minInstances, maxInstances);

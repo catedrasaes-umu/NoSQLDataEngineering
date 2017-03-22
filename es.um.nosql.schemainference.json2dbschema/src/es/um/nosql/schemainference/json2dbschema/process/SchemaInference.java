@@ -162,6 +162,9 @@ public class SchemaInference
 
 	private void updateReferences(SchemaComponent old, SchemaComponent neew, ArraySC sc) 
 	{
+		if (sc.getInners().isEmpty())
+			return;
+
 		if (sc.isHomogeneous())
 		{
 			if (sc.getInners().get(0) == old)
