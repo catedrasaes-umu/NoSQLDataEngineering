@@ -73,10 +73,11 @@ public class SchemaInference
 		return rawEntities;
 	}
 
-	static List<String> AggregateHintWords = Arrays.asList(new String[]{"has", 
-			"with", "set", "list",
-			"setof", "listof", "array",
-			"collection"});
+	static List<String> AggregateHintWords = 
+		Arrays.asList(new String[]{
+				"has","with", "set", "list",
+				"setof", "listof", "array", "arrayof",
+				"collection","collectionof"});
 	
 	private void joinAggregatedEntities() 
 	{
