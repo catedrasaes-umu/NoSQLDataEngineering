@@ -162,24 +162,11 @@ public class SchemaInference
 
 	private void updateReferences(SchemaComponent old, SchemaComponent neew, ArraySC sc) 
 	{
-		if (sc.getInners().isEmpty())
-			return;
-
-		if (sc.isHomogeneous())
-		{
-			if (sc.getInners().get(0) == old)
-				sc.getInners().replaceAll(_sc -> neew);
-			else
-				updateReferences(old,neew, sc.getInners().get(0));
-		}
-		else
-		{
-			sc.getInners().replaceAll(_sc -> _sc == old ? neew : _sc);
-			sc.getInners().forEach(_sc -> {
-				if (_sc != neew) // Already changed?
-					updateReferences(old, neew, _sc);
-			});
-		}
+		sc.getInners().replaceAll(_sc -> _sc == old ? neew : _sc);
+		sc.getInners().forEach(_sc -> {
+			if (_sc != neew) // Already changed?
+				updateReferences(old, neew, _sc);
+		});
 	}
 	
 	// Check & merge both schema components into the first.
