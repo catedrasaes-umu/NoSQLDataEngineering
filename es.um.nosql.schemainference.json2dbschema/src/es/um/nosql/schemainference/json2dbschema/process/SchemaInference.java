@@ -91,7 +91,6 @@ public class SchemaInference
 					// Change the name of the Entity Name for the
 					// new entities that are in turn old entities with
 					// slightly different name
-					System.out.println("Merging: " + v + " with " + name);
 					rawEntities.get(name).forEach(sc ->
 						((ObjectSC)sc).entityName = v);
 						
