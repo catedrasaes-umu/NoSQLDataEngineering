@@ -1,6 +1,7 @@
 package es.um.nosql.schemainference.json2dbschema.process;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -53,7 +54,7 @@ public class SchemaInference
 	{
 		theArray.forEach(n -> infer(n, Optional.<String>empty(), ROOT_OBJECT));
 
-		joinAggregations();
+		joinAggregatedEntities();
 		
 		mergeEquivalentEVs();
 
@@ -72,10 +73,33 @@ public class SchemaInference
 		return rawEntities;
 	}
 
-	private void joinAggregations() 
+	static List<String> AggregateHintWords = Arrays.asList(new String[]{"has", 
+			"with", "set", "list",
+			"setof", "listof", "array",
+			"collection"});
+	
+	private void joinAggregatedEntities() 
 	{
-		// Remember the names of the entity versions that came from 
-		
+		innerSchemaNames.forEach(name -> {
+			rawEntities.keySet().stream()
+				.filter(e -> 
+					AggregateHintWords.stream().anyMatch(w ->
+			    		(w + e).equalsIgnoreCase(name)
+			    		|| (e + w).equalsIgnoreCase(name)))
+				.findFirst()
+				.ifPresent(v -> {
+					// Change the name of the Entity Name for the
+					// new entities that are in turn old entities with
+					// slightly different name
+					System.out.println("Merging: " + v + " with " + name);
+					rawEntities.get(name).forEach(sc ->
+						((ObjectSC)sc).entityName = v);
+						
+					// And all them at the end of the found entity
+					rawEntities.get(v).addAll(rawEntities.get(name));
+					rawEntities.remove(name);
+				});
+			});
 	}
 
 	private void mergeEquivalentEVs()
@@ -95,6 +119,9 @@ public class SchemaInference
 					{
 						if (sc != toConsider && mergeEquivalentEVs(toConsider, sc))
 						{
+							// Update references to the old SchemaComponent
+							updateReferences(toConsider, sc);
+							
 							// remove toConsider
 							it.remove();
 
@@ -108,6 +135,50 @@ public class SchemaInference
 		});
 	}
 
+	private void updateReferences(SchemaComponent old, SchemaComponent neew)
+	{
+		rawEntities.forEach((n,l) ->
+			l.forEach(sc -> updateReferences(old,neew, sc)));
+	}
+
+	private void updateReferences(SchemaComponent old, SchemaComponent neew, SchemaComponent sc) 
+	{
+		if (sc instanceof ObjectSC)
+			updateReferences(old, neew, (ObjectSC)sc);
+
+		if (sc instanceof ArraySC)
+			updateReferences(old, neew, (ArraySC)sc);
+	}
+
+	private void updateReferences(SchemaComponent old, SchemaComponent neew, ObjectSC sc) 
+	{
+		sc.getInners().forEach(p -> {
+			if (p.getValue() == old)
+				p.setValue(neew);
+			else
+				updateReferences(old,neew,p.getValue());
+		});
+	}
+
+	private void updateReferences(SchemaComponent old, SchemaComponent neew, ArraySC sc) 
+	{
+		if (sc.isHomogeneous())
+		{
+			if (sc.getInners().get(0) == old)
+				sc.getInners().replaceAll(_sc -> neew);
+			else
+				updateReferences(old,neew, sc.getInners().get(0));
+		}
+		else
+		{
+			sc.getInners().replaceAll(_sc -> _sc == old ? neew : _sc);
+			sc.getInners().forEach(_sc -> {
+				if (_sc != neew) // Already changed?
+					updateReferences(old, neew, _sc);
+			});
+		}
+	}
+	
 	// Check & merge both schema components into the first.
 	private boolean mergeEquivalentEVs(SchemaComponent toConsider, SchemaComponent sc)
 	{
@@ -267,7 +338,8 @@ public class SchemaInference
 			rawEntities.put(schema.entityName, ll);
 			
 			// Add the name of this entity to the list of afterward checking for already existing entities 
-			innerSchemaNames.add(schema.entityName);
+			if (!isRoot)
+				innerSchemaNames.add(schema.entityName);
 		}
 
 		return retSchema;
@@ -290,19 +362,19 @@ public class SchemaInference
 
 	private SchemaComponent infer(IAJBoolean n, String elementName)
 	{
-		BooleanSC schema  = new BooleanSC();
+		BooleanSC schema = new BooleanSC();
 		return schema;
 	}
 
 	private SchemaComponent infer(IAJNumber n, String elementName)
 	{
-		NumberSC schema  = new NumberSC();
+		NumberSC schema = new NumberSC();
 		return schema;
 	}
 
 	private SchemaComponent infer(IAJNull n, String elementName)
 	{
-		NullSC schema  = new NullSC();
+		NullSC schema = new NullSC();
 		return schema;
 	}
 

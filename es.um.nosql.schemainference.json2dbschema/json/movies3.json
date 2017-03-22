@@ -61,7 +61,13 @@
       "year": 1975, 
       "director_id": "928672", 
       "genre": "Adventures",
-      "_id": "2"
+      "_id": "2",
+      "hasCriticisms": [         {
+         "journalist": "Richard Brody",
+         "media": "The New Yorker",
+         "color": "green"
+        }
+      ]
     },
     {
       "_id": "3",
