@@ -28,7 +28,7 @@ public class ReferenceMatcher<T>
 	//TODO: Also, maybe we should consider that a name CANNOT a reference to itself.
 	// So for example, a Post** field in a Entity Post will never be a reference to itself.
 	// That way we can filter cases such as a TagName field in a Tags entity.
-	private static List<String> ForbiddenWords = Arrays.asList("count");
+	private static List<String> UnlikelyWords = Arrays.asList("count");
 
 	private List<Pair<String,T>> idRegexps;
 
@@ -36,7 +36,6 @@ public class ReferenceMatcher<T>
 	{		
 		// Build the regexp that will allow checking if a field may be a reference
 		// to another entity
-
 		idRegexps = stream.flatMap(entry ->
 			Affixes.stream().flatMap(affix ->
 				Stream.concat(
@@ -53,6 +52,9 @@ public class ReferenceMatcher<T>
 
 	public Optional<T> maybeMatch(String id)
 	{
+		if (UnlikelyWords.stream().anyMatch(w -> id.toLowerCase().contains(w)))
+			return Optional.<T>empty();
+		
 		return idRegexps.stream()
 			.filter(pair -> id.toLowerCase().matches(pair.getKey())).findFirst()
 			.map(Pair::getValue);
