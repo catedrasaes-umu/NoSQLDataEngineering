@@ -43,7 +43,7 @@ public class ReferenceMatcher<T>
 							Pair.of(("^" + affix + c + entry.getKey() + ".*$").toLowerCase(), entry.getValue())),
 						// postfix
 						Stream.concat(StopChars.stream().filter(c -> !c.isEmpty() || !affix.isEmpty()).map(c ->
-								Pair.of(("^" + entry.getKey() + c + affix + ".*$").toLowerCase(), entry.getValue())),								
+								Pair.of(("^.*?" + entry.getKey() + c + affix + "$").toLowerCase(), entry.getValue())),								
 									StopChars.stream().filter(c -> !c.isEmpty() || !affix.isEmpty()).map(c ->
 										Pair.of(("^.*?" + affix + c + entry.getKey() + "$").toLowerCase(), entry.getValue()))))
 				)
