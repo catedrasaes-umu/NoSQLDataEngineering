@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -39,9 +40,13 @@ public class ReferenceMatcher<T>
 					// prefix
 					StopChars.stream().map(c ->
 						Pair.of(("^" + entry.getKey() + c + affix + ".*$").toLowerCase(), entry.getValue())),
-					// postfix
-					StopChars.stream().filter(c -> !c.isEmpty() || !affix.isEmpty()).map(c ->
-						Pair.of(("^.*?" + affix + c + entry.getKey() + "$").toLowerCase(), entry.getValue()))
+					Stream.concat(StopChars.stream().map(c ->
+							Pair.of(("^" + affix + c + entry.getKey() + ".*$").toLowerCase(), entry.getValue())),
+						// postfix
+						Stream.concat(StopChars.stream().filter(c -> !c.isEmpty() || !affix.isEmpty()).map(c ->
+								Pair.of(("^" + entry.getKey() + c + affix + ".*$").toLowerCase(), entry.getValue())),								
+									StopChars.stream().filter(c -> !c.isEmpty() || !affix.isEmpty()).map(c ->
+										Pair.of(("^.*?" + affix + c + entry.getKey() + "$").toLowerCase(), entry.getValue()))))
 				)
 			)
 		).collect(Collectors.toList());
