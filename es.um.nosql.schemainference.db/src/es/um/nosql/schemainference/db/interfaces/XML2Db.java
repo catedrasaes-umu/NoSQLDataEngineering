@@ -13,6 +13,7 @@ import es.um.nosql.schemainference.db.adapters.DbClient;
 
 public class XML2Db
 {
+	private int MAX_OBJECTS = 2500000;
 	private int MAX_LINES_BEFORE_STORE = 25000;
 
 	private DbClient client;
@@ -28,6 +29,7 @@ public class XML2Db
 		{
 			ArrayNode jsonArray = new ObjectMapper().createArrayNode();
 			int numLines = 0;
+			int totalLines = 0;
 			reader.readLine();	// XML header line
 			String collectionName = reader.readLine(); // <collectionName> line
 
@@ -46,7 +48,7 @@ public class XML2Db
 
 			String previousLine = reader.readLine();
 
-			for (String line; (line = reader.readLine()) != null;)
+			for (String line; (line = reader.readLine()) != null;totalLines++)
 			{
 				jsonArray.add(adaptXMLLine(previousLine));
 
@@ -58,6 +60,8 @@ public class XML2Db
 					jsonArray.removeAll();
 					numLines = 0;
 				}
+				if (totalLines > MAX_OBJECTS)
+					break;
 			}
 
 			if (jsonArray.size() > 0)

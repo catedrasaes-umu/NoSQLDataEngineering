@@ -45,8 +45,8 @@ public class InferenceTest
 	public static void prepareMongoDBExample()
 	{
 		long startTime = System.currentTimeMillis();
-		int minInstances = 5;
-		int maxInstances = 10;
+		int minInstances = 2;
+		int maxInstances = 5;
 
 		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
 		controller.model2Db(MODEL_FILE, minInstances, maxInstances);
@@ -84,7 +84,7 @@ public class InferenceTest
 	public static void main(String[] args) throws IOException
 	{
 //		prepareCouchDBExample();
-		prepareMongoDBExample();
-//		prepareMongoDBSOFExample();
+//		prepareMongoDBExample();
+		prepareMongoDBSOFExample();
 	}
 }
