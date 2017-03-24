@@ -81,10 +81,30 @@ public class InferenceTest
 		System.out.println("BuildNoSQLSchema created: " + stackOverflowModel + " in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
 
+	public static void prepareMongoDBEPolExample()
+	{
+		long startTime = System.currentTimeMillis();
+
+		String ePolTable = "everypolitician";
+		String ePolModel = MODELS_FOLDER + ePolTable + ".xmi";
+
+		System.out.println("Starting inference...");
+		MongoDBSchemaInference inferrer = new MongoDBSchemaInference();
+		JsonArray jArray = inferrer.mapRed2Array(MONGODB_IP, ePolTable, MONGODB_MAPREDUCE_FOLDER);
+		System.out.println("Inference finished.");
+
+		System.out.println("Starting BuildNoSQLSchema...");
+		BuildNoSQLSchema builder = new BuildNoSQLSchema();
+		builder.buildFromGsonArray(ePolTable, jArray, ePolModel);
+
+		System.out.println("BuildNoSQLSchema created: " + ePolModel + " in " + (System.currentTimeMillis() - startTime) + " ms");
+	}
+
 	public static void main(String[] args) throws IOException
 	{
 //		prepareCouchDBExample();
 //		prepareMongoDBExample();
-		prepareMongoDBSOFExample();
+//		prepareMongoDBSOFExample();
+		prepareMongoDBEPolExample();
 	}
 }

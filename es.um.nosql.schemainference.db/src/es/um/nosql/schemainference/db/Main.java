@@ -82,11 +82,23 @@ public class Main
 		controller.xml2Db(BADGES_FILE, DBNAME);
 	}
 
+	public static void prepareEPol2Mongo()
+	{
+		String BASE_DIR = "json/everyPolitician/";
+		String DBNAME = "everypolitician";
+
+		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
+
+		for (File countryFile : new File(BASE_DIR).listFiles())
+			controller.ePol2Db(countryFile.toString(), DBNAME);
+	}
+
 	public static void main(String[] args)
 	{
 //		prepareModel2Couch();
 //		prepareModel2Mongo();
-		prepareXML2Mongo();
+//		prepareXML2Mongo();
 //		prepareXML2Couch();
+		prepareEPol2Mongo();
 	}
 }
