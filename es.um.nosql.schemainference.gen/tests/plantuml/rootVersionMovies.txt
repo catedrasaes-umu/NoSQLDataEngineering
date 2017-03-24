@@ -297,7 +297,7 @@ Class Movietheater2<<(R,Turquoise)>>{
 	<b> String city
 	<b> String country
 	<b> String name
-	<b> int roomNumbers
+	<b> int noOfRooms
 	<b> String type
 }
 @enduml

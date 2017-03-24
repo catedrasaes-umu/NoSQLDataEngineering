@@ -140,7 +140,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="roomNumbers">
+      <properties xsi:type="NoSQLSchema:Attribute" name="noOfRooms">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="type">

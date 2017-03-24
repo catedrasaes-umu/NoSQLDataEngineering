@@ -1120,18 +1120,18 @@ class Movietheater1{
 //add required for Movietheater1 entity version
 
 // Not Common Properties 
-	private int roomNumbers;
+	private int noOfRooms;
 
 public Movietheater1{
 }
 
-public Movietheater1(String _id,String name,String type,String city,String country,Number roomNumbers,){
+public Movietheater1(String _id,String name,String type,String city,String country,Number noOfRooms,){
 	this._id=_id;
 	this.name=name;
 	this.type=type;
 	this.city=city;
 	this.country=country;
-	this.roomNumbers=roomNumbers;
+	this.noOfRooms=noOfRooms;
 }
 
 //Root Entity Code
@@ -1182,11 +1182,11 @@ public Movietheater1(String _id,String name,String type,String city,String count
 // Not Common Properties 
 
 	public int getRoomNumbers(){
-	  return roomNumbers;
+	  return noOfRooms;
 	}
 
-	public void setRoomNumbers(int roomNumbers){
-      this.roomNumbers = roomNumbers;
+	public void setRoomNumbers(int noOfRooms){
+      this.noOfRooms = noOfRooms;
 	}
 }//end Class
 
@@ -1234,20 +1234,20 @@ class Movietheater2{
 	private String country;
 
 //add required for Movietheater2 entity version
-	private int roomNumbers;
+	private int noOfRooms;
 
 // Not Common Properties 
 
 public Movietheater2{
 }
 
-public Movietheater2(String _id,String name,String type,String city,String country,int roomNumbers,){
+public Movietheater2(String _id,String name,String type,String city,String country,int noOfRooms,){
 	this._id=_id;
 	this.name=name;
 	this.type=type;
 	this.city=city;
 	this.country=country;
-	this.roomNumbers=roomNumbers;
+	this.noOfRooms=noOfRooms;
 }
 
 //Root Entity Code
@@ -1296,11 +1296,11 @@ public Movietheater2(String _id,String name,String type,String city,String count
 // add required for Movietheater2 entity version
 
 	public int getRoomNumbers(){
-	  return roomNumbers;
+	  return noOfRooms;
 	}
  
-  	public void setRoomNumbers(int roomNumbers){
-      this.roomNumbers = roomNumbers;
+  	public void setRoomNumbers(int noOfRooms){
+      this.noOfRooms = noOfRooms;
   	}
 
 // Not Common Properties 

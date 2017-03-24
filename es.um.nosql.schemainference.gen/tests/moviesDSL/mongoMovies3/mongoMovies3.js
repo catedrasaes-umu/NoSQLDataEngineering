@@ -330,7 +330,7 @@ var movietheaterSchema = new mongoose.Schema({
 // add required for Movietheater1 entity version
 
 // Not Common Properties 
-	roomNumbers:	Number,
+	noOfRooms:	Number,
 },{collection:'movietheater'});
 
 var Movietheater = mongoose.model('Movietheater',movietheaterSchema);
@@ -358,7 +358,7 @@ var movietheaterSchema = new mongoose.Schema({
   	country:	{type: String, required: true},
   
 // add required for Movietheater2 entity version
-  	roomNumbers:	{type: Number, required: true},
+  	noOfRooms:	{type: Number, required: true},
 
 // Not Common Properties 
 },{collection:'movietheater'});

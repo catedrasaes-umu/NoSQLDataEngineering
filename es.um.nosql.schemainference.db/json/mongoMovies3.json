@@ -299,14 +299,14 @@
   "city" : "value_68077",
   "country" : "value_123260",
   "name" : "value_99826",
-  "roomNumbers" : 514254,
+  "noOfRooms" : 514254,
   "type" : "Movietheater"
 }, {
   "_id" : "024",
   "city" : "value_574665",
   "country" : "value_341652",
   "name" : "value_302536",
-  "roomNumbers" : 967322,
+  "noOfRooms" : 967322,
   "type" : "Movietheater"
 }, {
   "_id" : "025",

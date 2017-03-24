@@ -59,7 +59,7 @@ Class Movietheater<<(R,Tomato)>>{
 	<b> String country
 	<b> String name
 	<b> String type
-	<b> int roomNumbers
+	<b> int noOfRooms
 }  
 
 

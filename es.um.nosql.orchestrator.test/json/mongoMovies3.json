@@ -691,42 +691,42 @@
   "city" : "value_940077",
   "country" : "value_494658",
   "name" : "value_861077",
-  "roomNumbers" : 83013,
+  "noOfRooms" : 83013,
   "type" : "Movietheater"
 }, {
   "_id" : "050",
   "city" : "value_123656",
   "country" : "value_952652",
   "name" : "value_549040",
-  "roomNumbers" : 384228,
+  "noOfRooms" : 384228,
   "type" : "Movietheater"
 }, {
   "_id" : "051",
   "city" : "value_522408",
   "country" : "value_999993",
   "name" : "value_560657",
-  "roomNumbers" : 840927,
+  "noOfRooms" : 840927,
   "type" : "Movietheater"
 }, {
   "_id" : "052",
   "city" : "value_374606",
   "country" : "value_705928",
   "name" : "value_644351",
-  "roomNumbers" : 227251,
+  "noOfRooms" : 227251,
   "type" : "Movietheater"
 }, {
   "_id" : "053",
   "city" : "value_370184",
   "country" : "value_241735",
   "name" : "value_896337",
-  "roomNumbers" : 765696,
+  "noOfRooms" : 765696,
   "type" : "Movietheater"
 }, {
   "_id" : "054",
   "city" : "value_467378",
   "country" : "value_927500",
   "name" : "value_938034",
-  "roomNumbers" : 529400,
+  "noOfRooms" : 529400,
   "type" : "Movietheater"
 }, {
   "_id" : "055",

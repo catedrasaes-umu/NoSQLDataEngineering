@@ -162,7 +162,7 @@
         "name": "Kinepolis",
         "city": "Madrid",
         "country": "Spain",
-        "roomNumbers": 25
+        "noOfRooms": 25
       }
   ]
 }

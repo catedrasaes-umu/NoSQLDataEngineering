@@ -42,7 +42,7 @@ var mongoMovies3 = {
 		name: "Movietheater",
 		entityVersionForObject: function (obj)
 		{
-			if (("roomNumbers" in obj))
+			if (("noOfRooms" in obj))
 			{
 				return "Movietheater_2";
 			} else {
