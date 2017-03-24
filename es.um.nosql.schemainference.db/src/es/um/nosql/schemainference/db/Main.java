@@ -70,7 +70,7 @@ public class Main
 		String TAGS_FILE = BASE_DIR + "Tags.xml";
 		String POSTLINKS_FILE = BASE_DIR + "PostLinks.xml";
 		String BADGES_FILE = BASE_DIR + "Badges.xml";
-		String DBNAME = "stackoverflow";
+		String DBNAME = "stackoverflow550000";
 
 		DbController controller = new DbController(DbType.COUCHDB, COUCHDB_IP);
 		controller.xml2Db(USER_FILE, DBNAME);
