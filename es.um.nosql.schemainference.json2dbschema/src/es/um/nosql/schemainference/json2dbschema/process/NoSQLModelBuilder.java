@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -132,14 +133,13 @@ public class NoSQLModelBuilder
 	private ReferenceMatcher<Entity> createReferenceMatcher() 
 	{
 		return 
-			new ReferenceMatcher<Entity>(mEntities.stream()
+			new ReferenceMatcher<>(mEntities.stream()
 				.filter(e -> e.getEntityversions().stream().anyMatch(EntityVersion::isRoot))
 				.map(e -> 
-					Pair.of(Arrays.stream(new String[]{
+					Pair.of(new HashSet<String>(Arrays.asList(
 								e.getName(),
 								Inflector.getInstance().pluralize(e.getName()),
-								Inflector.getInstance().singularize(e.getName())})
-								.collect(Collectors.toSet())
+								Inflector.getInstance().singularize(e.getName())))
 							,e))
 				.flatMap(p -> p.getKey().stream().map(s -> Pair.of(s,p.getValue()))));
 	}
