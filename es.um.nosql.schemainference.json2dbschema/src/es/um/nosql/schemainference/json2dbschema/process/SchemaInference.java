@@ -293,9 +293,10 @@ public class SchemaInference
 		//TODO: This won't work with the "spainRedux.json" example!! More info soon
 
 		// Entity names are by convention capitalized
-		Optional<String> typeName =
-				Optional.ofNullable(n.get("type")).map(_n -> Inflector.getInstance().capitalize(_n.asString()));
-		//TODO:
+		Optional<String> typeName = Optional.empty();
+		if (isRoot)
+			typeName = Optional.ofNullable(n.get("type"))
+							.map(_n -> Inflector.getInstance().capitalize(_n.asString()));
 
 		ObjectSC schema = new ObjectSC();
 		schema.isRoot = isRoot;
