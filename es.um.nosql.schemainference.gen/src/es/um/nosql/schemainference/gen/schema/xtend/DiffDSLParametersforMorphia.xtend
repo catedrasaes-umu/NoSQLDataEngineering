@@ -613,7 +613,7 @@ public «ent.entity.name.toFirstUpper»«contVer3»{
 «var Aggregate Ag = aA.getValue()»
 «var String numberOnly= nameAg.replaceAll("[^0-9]", "")»
 «var Entity eAg=Ag.refTo.get(0).eContainer as Entity»
-
+«var String withList»
 	«IF Ag.upperBound==-1»
 	public List<«eAg.name.toFirstUpper»«numberOnly»> get«Ag.name.toFirstUpper»«numberOnly»() {
 	  return «Ag.name»«numberOnly»;
@@ -622,6 +622,7 @@ public «ent.entity.name.toFirstUpper»«contVer3»{
 	public void set«Ag.name.toFirstUpper»«numberOnly»(List<«eAg.name.toFirstUpper»«numberOnly»> «Ag.name»«numberOnly») {
       this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
 	}
+	«withList="List"»
 	«ELSE»
 	public «eAg.name.toFirstUpper»«numberOnly» get«Ag.name.toFirstUpper»«numberOnly»() {
       return «Ag.name»«numberOnly»;
@@ -630,12 +631,24 @@ public «ent.entity.name.toFirstUpper»«contVer3»{
 	public void set«Ag.name.toFirstUpper»«numberOnly»(«eAg.name.toFirstUpper»«numberOnly» «Ag.name»«numberOnly») {
       this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
 	}
+	«withList=""»
+	«entityProps+=withList+r.refTo.name+" "+r.name+","»
+    «thisEntityProps+= "\tthis."+r.name+"="+r.name+";\n"»
   «ENDIF»
 
   «ENDFOR»
 }//end Class
 
 «ENDIF»
+
+if(r.upperBound==-1)
+  withList="List"
+else{
+   withList=""
+   r.name=r.name.replace("_id","").replace("id","")
+   } 
+entityProps+=withList+r.refTo.name+" "+r.name+","
+thisEntityProps+= "\tthis."+r.name+"="+r.name+";\n"
 
 // Update
 

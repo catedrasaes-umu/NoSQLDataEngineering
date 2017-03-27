@@ -41,7 +41,7 @@ public class GlobalSchemaGen {
 			outputDir.mkdirs();
 
 			// FIXME: Cambiar "salida.uml" por el fichero de salida
-			File outFile = outputDir.toPath().resolve("globalSchema.txt").toFile();
+			File outFile = outputDir.toPath().resolve("stackoverflow_15KK.txt").toFile();
 			outFileWriter = new PrintStream(outFile);
 		}
 

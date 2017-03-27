@@ -1,0 +1,123 @@
+@startuml
+skinparam backgroundColor transparent 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+
+Class Badges<<(R,Tomato)>>{
+	<b> String Class
+	<b> String Date
+	<b> String Name
+	<b> String _id
+	<b> String type
+}  
+
+Badges --> "[1..1] TagBased" Tags
+
+Badges --> "[1..1] UserId" Users
+
+
+Class Comments<<(R,Tomato)>>{
+	<b> String CreationDate
+	<b> String Score
+	<b> String Text
+	<b> String _id
+	<b> String type
+}  
+
+Comments --> "[1..1] PostId" Posts
+
+Comments --> "[1..1] UserDisplayName" Users
+
+Comments --> "[1..1] UserId" Users
+
+
+Class Posts<<(R,Tomato)>>{
+	<b> String AcceptedAnswerId
+	<b> String AnswerCount
+	<b> String Body
+	<b> String ClosedDate
+	<b> String CommentCount
+	<b> String CommunityOwnedDate
+	<b> String CreationDate
+	<b> String FavoriteCount
+	<b> String LastActivityDate
+	<b> String LastEditDate
+	<b> String LastEditorDisplayName
+	<b> String LastEditorUserId
+	<b> String OwnerDisplayName
+	<b> String OwnerUserId
+	<b> String Score
+	<b> String Title
+	<b> String ViewCount
+	<b> String _id
+	<b> String type
+	<b> String ParentId
+}  
+
+Posts --> "[1..1] PostTypeId" Posts
+
+Posts --> "[1..1] Tags" Tags
+
+
+Class Votes<<(R,Tomato)>>{
+	<b> String BountyAmount
+	<b> String CreationDate
+	<b> String _id
+	<b> String type
+}  
+
+Votes --> "[1..1] PostId" Posts
+
+Votes --> "[1..1] UserId" Users
+
+Votes --> "[1..1] VoteTypeId" Votes
+
+
+Class Users<<(R,Tomato)>>{
+	<b> String AboutMe
+	<b> String AccountId
+	<b> String Age
+	<b> String CreationDate
+	<b> String DisplayName
+	<b> String LastAccessDate
+	<b> String Location
+	<b> String ProfileImageUrl
+	<b> String Reputation
+	<b> String Views
+	<b> String WebsiteUrl
+	<b> String _id
+	<b> String type
+}  
+
+Users --> "[1..1] DownVotes" Votes
+
+Users --> "[1..1] UpVotes" Votes
+
+
+Class Postlinks<<(R,Tomato)>>{
+	<b> String CreationDate
+	<b> String LinkTypeId
+	<b> String RelatedPostId
+	<b> String _id
+	<b> String type
+}  
+
+Postlinks --> "[1..1] PostId" Posts
+
+
+Class Tags<<(R,Tomato)>>{
+	<b> String Count
+	<b> String ExcerptPostId
+	<b> String WikiPostId
+	<b> String _id
+	<b> String type
+}  
+
+Tags --> "[1..1] TagName" Tags
+
+@enduml
