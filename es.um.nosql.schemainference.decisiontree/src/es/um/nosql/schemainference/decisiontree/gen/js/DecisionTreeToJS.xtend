@@ -20,6 +20,12 @@ import es.um.nosql.schemainference.decisiontree.PropertySpec2
 import es.um.nosql.schemainference.decisiontree.IntermediateNode
 import es.um.nosql.schemainference.decisiontree.LeafNode
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage
+import es.um.nosql.schemainference.NoSQLSchema.EntityVersion
+import java.util.Deque
+import java.util.LinkedList
+import java.util.HashMap
+import java.util.Map
+import es.um.nosql.schemainference.decisiontree.DecisionTreeNode
 
 class DecisionTreeToJS
 {
@@ -83,7 +89,7 @@ class DecisionTreeToJS
 
 	def genCheckFunctions(List<DecisionTreeForEntity> list) '''
 		«FOR DecisionTreeForEntity dte : list SEPARATOR ','»
-			«genCheckFunction(dte)»
+			«genCheckFunction(dte)»,
 		«ENDFOR»
 	'''
 
@@ -91,6 +97,8 @@ class DecisionTreeToJS
 	{
 		val entityName = dte.entity.name.toFirstUpper
 
+		val paths = calcPaths(dte)
+		
 		'''
 		«entityName»: {
 			name: "«entityName»",
@@ -98,9 +106,61 @@ class DecisionTreeToJS
 			{
 				«generateCheckTree(dte, dte.root)»
 			}
+			«FOR EntityVersion ev : dte.entity.entityversions SEPARATOR ','»
+				«generateSpecificCheck(dte, ev, paths.get(ev))»
+			«ENDFOR»
 		}
 		'''
+	}	
+	
+	@Data static class PropertyAndBranch
+	{
+		PropertySpec2 prop
+		boolean branch
 	}
+	
+	def calcPaths(DecisionTreeForEntity dte) 
+	{
+		var paths = new HashMap<EntityVersion, Deque<PropertyAndBranch>>
+		calcPaths(paths, newLinkedList(), dte.root)
+		return paths
+	}
+
+	def void calcPaths(Map<EntityVersion, Deque<PropertyAndBranch>> paths,
+		Deque<PropertyAndBranch> checks,
+		DecisionTreeNode node)
+	{
+		switch node
+		{
+			LeafNode : paths.put(node.identifiedVersion, newLinkedList(checks.clone))
+			IntermediateNode : {
+				// yes
+				checks.add(new PropertyAndBranch(node.checkedProperty, true))
+				calcPaths(paths, checks, node.yesBranch)
+				checks.removeLast
+				
+				// no
+				checks.add(new PropertyAndBranch(node.checkedProperty, false))
+				calcPaths(paths, checks, node.noBranch)
+				checks.removeLast
+			}
+		}
+	}
+
+	def generateSpecificCheck(DecisionTreeForEntity dte, 
+		EntityVersion version, Deque<PropertyAndBranch> checks)
+	'''
+		checkEV_«dte.entity.name»_«version.versionId»: function (obj)
+		{
+		«FOR PropertyAndBranch branch : checks»
+««« Note that we change the branches to generate the correct check
+			if («if (branch.branch) genPropNot(branch.prop) else genProp(branch.prop) »)
+				return false;
+		«ENDFOR»
+		
+			return true;
+		}
+	'''
 
 	def dispatch String generateCheckTree(DecisionTreeForEntity dte, IntermediateNode root) '''
 		if («genProp(root.checkedProperty)»)
@@ -110,7 +170,6 @@ class DecisionTreeToJS
 			«generateCheckTree(dte,root.noBranch)»
 		}
 	''' 
-
 	
 	def dispatch generateCheckTree(DecisionTreeForEntity dte, LeafNode node) '''
 		return "«dte.entity.name + "_" + node.identifiedVersion.versionId»";
@@ -119,10 +178,19 @@ class DecisionTreeToJS
     def genProp(PropertySpec2 p)
     {
 		if (p.needsTypeCheck)
-			'''("«p.property.name»" in obj) && «genTypeCheck(p.property)»'''
+			'''(("«p.property.name»" in obj) && «genTypeCheck(p.property)»)'''
 		else
 			'''("«p.property.name»" in obj)'''
 	}
+
+    def genPropNot(PropertySpec2 p)
+    {
+		if (p.needsTypeCheck)
+			'''(!("«p.property.name»" in obj) || !(«genTypeCheck(p.property)»))'''
+		else
+			'''(!("«p.property.name»" in obj))'''
+	}
+
 
 	def dispatch genTypeCheck(Property p) {
 		throw new UnsupportedOperationException("TODO: auto-generated method stub")
