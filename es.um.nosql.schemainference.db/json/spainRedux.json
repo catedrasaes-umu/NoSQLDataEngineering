@@ -1,0 +1,16 @@
+{
+  "persons": [
+      {
+      "contact_details": [
+        {
+          "type": "email",
+          "value": "palegria@congreso.es"
+        },
+        {
+          "type": "twitter",
+          "value": "PAlegria2011"
+        }
+      ]
+    }
+  ]
+}

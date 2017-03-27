@@ -6,6 +6,7 @@ import java.io.IOException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import es.um.nosql.schemainference.db.adapters.DbClient;
 
@@ -28,7 +29,17 @@ public class EPol2Db
 				if (!fieldName.equals("meta"))
 				{
 					JsonNode collection = rootObj.get(fieldName);
-					if (collection.size() > 0)
+					// Not really sure yet if this is the correct approach...
+/*
+					for (JsonNode obj : collection)
+					{
+						if (obj.get("id") != null)
+						{
+							((ObjectNode)obj).put("_id", obj.get("id").asText());
+							((ObjectNode)obj).remove("id");
+						}
+					}
+*/					if (collection.size() > 0)
 						client.insert(dbName, fieldName, collection.toString());
 				}
 			});
