@@ -84,7 +84,7 @@ public class Main
 
 	public static void prepareEPol2Mongo()
 	{
-		String BASE_DIR = "json/everyPolitician/";
+		String BASE_DIR = "json/everyPolitician/countries/";
 		String DBNAME = "everypolitician";
 
 		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
