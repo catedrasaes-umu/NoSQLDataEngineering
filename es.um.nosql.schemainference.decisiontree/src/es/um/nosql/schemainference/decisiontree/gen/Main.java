@@ -311,6 +311,8 @@ public class Main
 						+ tree.classifyInstance(dataset.get(i)));
 			}
 
+			System.out.println(dataset);
+			
 			ModelNode modelTree =
 					getModelTree(root,
 							classNameToEvp.entrySet().stream()
