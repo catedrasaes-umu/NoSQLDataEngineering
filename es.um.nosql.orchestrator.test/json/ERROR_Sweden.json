@@ -1,0 +1,228 @@
+{
+  "persons": [
+  {
+      "id": "335e38e5-b8f8-41d5-bc10-24ca5078d505",
+      "identifiers": [
+        {
+          "identifier": "28124",
+          "scheme": "europarlmep"
+        },
+        {
+          "identifier": "/m/054v_1",
+          "scheme": "freebase"
+        },
+        {
+          "identifier": "1100328777",
+          "scheme": "gnd"
+        }
+      ],
+      "name": "Gunnar Hökmark",
+      "other_names": [
+        {
+          "lang": "da",
+          "name": "Gunnar Hökmark",
+          "note": "multilingual"
+        },
+        {
+          "lang": "de",
+          "name": "Gunnar Hökmark",
+          "note": "multilingual"
+        },
+        {
+          "lang": "en",
+          "name": "Gunnar Hökmark",
+          "note": "multilingual"
+        }
+      ],
+      "sort_name": "Gunnar"
+    },
+    {
+      "id": "33e93bba-2ae3-4d93-b725-d6e0f693e071",
+      "identifiers": [
+        {
+          "identifier": "0857394544302",
+          "scheme": "riksdagen"
+        },
+        {
+          "identifier": "17194870",
+          "scheme": "viaf"
+        },
+        {
+          "identifier": "Q5716511",
+          "scheme": "wikidata"
+        }
+      ],
+      "name": "Henrik S Järrel",
+      "other_names": [
+        {
+          "name": "Henrik S. Järrel",
+          "note": "alternate"
+        },
+        {
+          "lang": "en",
+          "name": "Henrik S. Järrel",
+          "note": "multilingual"
+        },
+        {
+          "lang": "es",
+          "name": "Henrik S. Järrel",
+          "note": "multilingual"
+        }
+      ],
+      "sort_name": "Henrik S"
+    },
+    {
+      "id": "342f1cdc-8074-4877-bc96-3478dce7fcbf",
+      "identifiers": [
+        {
+          "identifier": "0882262949208",
+          "scheme": "riksdagen"
+        },
+        {
+          "identifier": "Q6196690",
+          "scheme": "wikidata"
+        }
+      ],
+      "name": "Sten-Ove Sundström",
+      "other_names": [
+        {
+          "lang": "en",
+          "name": "Sten-Ove Sundström",
+          "note": "multilingual"
+        },
+        {
+          "lang": "fi",
+          "name": "Sten-Ove Sundström",
+          "note": "multilingual"
+        }
+      ],
+      "sort_name": "Sten-Ove"
+    },
+    {
+      "id": "31ff75ba-dfa2-4e1f-aed8-83f075404b7a",
+      "identifiers": [
+        {
+          "identifier": "0116084827614",
+          "scheme": "riksdagen"
+        },
+        {
+          "identifier": "Q4822657",
+          "scheme": "wikidata"
+        }
+      ],
+      "name": "Mehmet Kaplan",
+      "other_names": [
+        {
+          "lang": "ar",
+          "name": "محمد قبلان",
+          "note": "multilingual"
+        },
+        {
+          "lang": "de",
+          "name": "Mehmet Kaplan",
+          "note": "multilingual"
+        },
+        {
+          "lang": "en",
+          "name": "Mehmet Kaplan",
+          "note": "multilingual"
+        }
+      ],
+      "sort_name": "Mehmet"
+    },
+    {
+      "id": "3207df4a-7622-4d49-b201-46e02e7df7a7",
+      "identifiers": [
+        {
+          "identifier": "085018966209",
+          "scheme": "riksdagen"
+        },
+        {
+          "identifier": "Q6196170",
+          "scheme": "wikidata"
+        }
+      ],
+      "name": "Lars Sundin",
+      "other_names": [
+        {
+          "lang": "en",
+          "name": "Lars Sundin",
+          "note": "multilingual"
+        }
+      ],
+      "sort_name": "Lars"
+    },
+    {
+      "id": "3211984e-2521-4146-a335-011b866a079d",
+      "identifiers": [
+        {
+          "identifier": "0000 0000 5259 9925",
+          "scheme": "isni"
+        }
+      ],
+      "name": "Bertil Fiskesjö",
+      "other_names": [
+        {
+          "lang": "de",
+          "name": "Bertil Fiskesjö",
+          "note": "multilingual"
+        },
+        {
+          "lang": "en",
+          "name": "Bertil Fiskesjö",
+          "note": "multilingual"
+        },
+        {
+          "lang": "fi",
+          "name": "Bertil Fiskesjö",
+          "note": "multilingual"
+        }
+      ],
+      "sort_name": "Bertil"
+    },
+    {
+      "id": "32288e2a-302e-45af-95f9-40b2ff8854fa",
+      "identifiers": [
+        {
+          "identifier": "0597915398712",
+          "scheme": "riksdagen"
+        }
+      ],
+      "name": "Mona Jönsson",
+      "other_names": [
+        {
+          "lang": "de",
+          "name": "Mona Jönsson",
+          "note": "multilingual"
+        }
+      ],
+      "sort_name": "Mona"
+    },
+    {
+      "id": "32ac565b-9ac3-4977-a43a-3bc3cfa9075d",
+      "identifiers": [
+        {
+          "identifier": "0661583406713",
+          "scheme": "riksdagen"
+        },
+        {
+          "identifier": "Q4970111",
+          "scheme": "wikidata"
+        }
+      ],
+      "name": "Eva Persson Sellin",
+      "other_names": [
+        {
+          "name": "Eva Nordmark",
+          "note": "alternate"
+        },
+        {
+          "lang": "en",
+          "name": "Eva Nordmark",
+          "note": "multilingual"
+        }
+      ],
+      "sort_name": "Eva"
+    }
+  ]
+}

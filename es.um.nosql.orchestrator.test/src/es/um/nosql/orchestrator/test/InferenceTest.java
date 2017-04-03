@@ -1,5 +1,6 @@
 package es.um.nosql.orchestrator.test;
 
+import java.io.File;
 import java.io.IOException;
 
 import com.google.gson.JsonArray;
@@ -100,11 +101,38 @@ public class InferenceTest
 		System.out.println("BuildNoSQLSchema created: " + ePolModel + " in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
 
+	public static void prepareErrorEPolExample()
+	{
+		long startTime = System.currentTimeMillis();
+
+		String ERROR_FILE = "json/ERROR_Sweden.json";
+		String DBNAME = "everypolitician";
+		String ePolModel = MODELS_FOLDER + DBNAME + ".xmi";
+
+		System.out.println("Use with caution");
+		System.out.println("This is a test method used to analyze some kind of error on the inference process.");
+
+		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
+		controller.ePol2Db(ERROR_FILE, DBNAME);
+
+		System.out.println("Starting inference...");
+		MongoDBSchemaInference inferrer = new MongoDBSchemaInference();
+		JsonArray jArray = inferrer.mapRed2Array(MONGODB_IP, DBNAME, MONGODB_MAPREDUCE_FOLDER);
+		System.out.println("Inference finished.");
+
+		System.out.println("Starting BuildNoSQLSchema...");
+		BuildNoSQLSchema builder = new BuildNoSQLSchema();
+		builder.buildFromGsonArray(DBNAME, jArray, ePolModel);
+
+		System.out.println("BuildNoSQLSchema created: " + ePolModel + " in " + (System.currentTimeMillis() - startTime) + " ms");
+	}
+
 	public static void main(String[] args) throws IOException
 	{
 //		prepareCouchDBExample();
 //		prepareMongoDBExample();
 //		prepareMongoDBSOFExample();
-		prepareMongoDBEPolExample();
+//		prepareMongoDBEPolExample();
+		prepareErrorEPolExample();
 	}
 }
