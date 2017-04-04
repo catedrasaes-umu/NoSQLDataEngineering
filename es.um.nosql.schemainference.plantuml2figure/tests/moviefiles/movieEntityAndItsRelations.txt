@@ -1,0 +1,66 @@
+@startuml
+skinparam backgroundColor transparent 
+skinparam class { 
+  BackgroundColor PaleGreen \n
+  ArrowColor Blue 
+  BorderColor SeaGreen \n
+  FontSize 18 \n
+  FontName Courier \n
+}
+
+Class Movie<<(R,Tomato)>>{
+	<b> String _id
+	<b> String genre
+	<b> String title
+	<b> String type
+	<b> int year
+	<b> int running_time
+	<b> String[] genres
+	<b> String[] writers
+}  
+
+Movie --> "[1..1] director" Director
+
+Movie *--> "[1..*] criticisms" Criticism
+
+Movie *--> "[1..*] prizes" Prize
+
+Movie *--> "[1..1] rating" Rating
+
+Class Criticism<<(A,BurlyWood)>> {
+	<b> String color
+	<b> String journalist
+	<b> String media
+}
+
+Criticism *--> "[1..1] media" Media
+
+Class Media<<(A,BurlyWood)>> {
+	<b> String name
+	<b> String url
+}
+
+Class Prize<<(A,BurlyWood)>> {
+	<b> String event
+	<b> String[] names
+	<b> int year
+	<b> String name
+}
+
+Class Rating<<(A,BurlyWood)>> {
+	<b> int score
+	<b> int voters
+}
+
+
+Class Director<<(R,Tomato)>>{
+	<b> String _id
+	<b> String name
+	<b> String type
+}  
+
+Director --> "[1..*] actor_movies" Movie
+
+Director --> "[1..*] directed_movies" Movie
+
+@enduml
