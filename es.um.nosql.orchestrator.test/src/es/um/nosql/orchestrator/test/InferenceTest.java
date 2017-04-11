@@ -51,14 +51,7 @@ public class InferenceTest
 		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
 		controller.model2Db(MODEL_FILE, minInstances, maxInstances);
 
-		System.out.println("Starting inference...");
-		MongoDBSchemaInference inferrer = new MongoDBSchemaInference();
-		JsonArray jArray = inferrer.mapRed2Array(MONGODB_IP, TABLENAME, MONGODB_MAPREDUCE_FOLDER);
-		System.out.println("Inference finished.");
-
-		System.out.println("Starting BuildNoSQLSchema...");
-		BuildNoSQLSchema builder = new BuildNoSQLSchema();
-		builder.buildFromGsonArray(TABLENAME, jArray, MONGODB_OUTPUT_MODEL);
+		mongoDbExtract(MODEL_FILE, MONGODB_OUTPUT_MODEL);
 		System.out.println("BuildNoSQLSchema created: " + MONGODB_OUTPUT_MODEL + " in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
 
@@ -69,15 +62,7 @@ public class InferenceTest
 		String stackOverflowTable = "stackoverflow";
 		String stackOverflowModel = MODELS_FOLDER + stackOverflowTable + "_SOF.xmi";
 
-		System.out.println("Starting inference...");
-		MongoDBSchemaInference inferrer = new MongoDBSchemaInference();
-		JsonArray jArray = inferrer.mapRed2Array(MONGODB_IP, stackOverflowTable, MONGODB_MAPREDUCE_FOLDER);
-		System.out.println("Inference finished.");
-
-		System.out.println("Starting BuildNoSQLSchema...");
-		BuildNoSQLSchema builder = new BuildNoSQLSchema();
-		builder.buildFromGsonArray(stackOverflowTable, jArray, stackOverflowModel);
-
+		mongoDbExtract(stackOverflowTable, stackOverflowModel);
 		System.out.println("BuildNoSQLSchema created: " + stackOverflowModel + " in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
 
@@ -88,15 +73,7 @@ public class InferenceTest
 		String ePolTable = "everypolitician";
 		String ePolModel = MODELS_FOLDER + ePolTable + ".xmi";
 
-		System.out.println("Starting inference...");
-		MongoDBSchemaInference inferrer = new MongoDBSchemaInference();
-		JsonArray jArray = inferrer.mapRed2Array(MONGODB_IP, ePolTable, MONGODB_MAPREDUCE_FOLDER);
-		System.out.println("Inference finished.");
-
-		System.out.println("Starting BuildNoSQLSchema...");
-		BuildNoSQLSchema builder = new BuildNoSQLSchema();
-		builder.buildFromGsonArray(ePolTable, jArray, ePolModel);
-
+		mongoDbExtract(ePolTable, ePolModel);
 		System.out.println("BuildNoSQLSchema created: " + ePolModel + " in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
 
@@ -114,15 +91,7 @@ public class InferenceTest
 		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
 		controller.ePol2Db(ERROR_FILE, DBNAME);
 
-		System.out.println("Starting inference...");
-		MongoDBSchemaInference inferrer = new MongoDBSchemaInference();
-		JsonArray jArray = inferrer.mapRed2Array(MONGODB_IP, DBNAME, MONGODB_MAPREDUCE_FOLDER);
-		System.out.println("Inference finished.");
-
-		System.out.println("Starting BuildNoSQLSchema...");
-		BuildNoSQLSchema builder = new BuildNoSQLSchema();
-		builder.buildFromGsonArray(DBNAME, jArray, ePolModel);
-
+		mongoDbExtract(DBNAME, ePolModel);
 		System.out.println("BuildNoSQLSchema created: " + ePolModel + " in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
 
@@ -138,15 +107,36 @@ public class InferenceTest
 		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
 		controller.json2Db(jsonFile, DBNAME);
 
+		mongoDbExtract(DBNAME, jsonModel);
+		System.out.println("BuildNoSQLSchema created: " + DBNAME + " in " + (System.currentTimeMillis() - startTime) + " ms");
+	}
+/*
+	public static void prepareUrbanExample()
+	{
+		long startTime = System.currentTimeMillis();
+
+		String DBNAME = "urban";
+		String jsonFile = "/media/alberto/braxis/urban/words.json";
+		String jsonModel = MODELS_FOLDER + DBNAME + ".xmi";
+
+		System.out.println("Inserting the JSON file...");
+		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
+		controller.json2Db(jsonFile, DBNAME);
+
+		mongoDbExtract(DBNAME, jsonModel);
+		System.out.println("BuildNoSQLSchema created: " + DBNAME + " in " + (System.currentTimeMillis() - startTime) + " ms");
+	}
+*/
+	private static void mongoDbExtract(String dbName, String model)
+	{
 		System.out.println("Starting inference...");
 		MongoDBSchemaInference inferrer = new MongoDBSchemaInference();
-		JsonArray jArray = inferrer.mapRed2Array(MONGODB_IP, DBNAME, MONGODB_MAPREDUCE_FOLDER);
+		JsonArray jArray = inferrer.mapRed2Array(MONGODB_IP, dbName, MONGODB_MAPREDUCE_FOLDER);
 		System.out.println("Inference finished.");
 
 		System.out.println("Starting BuildNoSQLSchema...");
 		BuildNoSQLSchema builder = new BuildNoSQLSchema();
-		builder.buildFromGsonArray(DBNAME, jArray, jsonModel);
-		System.out.println("BuildNoSQLSchema created: " + DBNAME + " in " + (System.currentTimeMillis() - startTime) + " ms");
+		builder.buildFromGsonArray(dbName, jArray, model);
 	}
 
 	public static void main(String[] args) throws IOException
@@ -157,5 +147,6 @@ public class InferenceTest
 //		prepareMongoDBEPolExample();
 		prepareErrorEPolExample();
 //		prepareJsonMongoExample();
+//		prepareUrbanExample();
 	}
 }
