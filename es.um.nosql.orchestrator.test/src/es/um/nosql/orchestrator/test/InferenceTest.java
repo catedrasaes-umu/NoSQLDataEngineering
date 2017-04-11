@@ -1,6 +1,5 @@
 package es.um.nosql.orchestrator.test;
 
-import java.io.File;
 import java.io.IOException;
 
 import com.google.gson.JsonArray;
@@ -127,6 +126,29 @@ public class InferenceTest
 		System.out.println("BuildNoSQLSchema created: " + ePolModel + " in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
 
+	public static void prepareJsonMongoExample()
+	{
+		long startTime = System.currentTimeMillis();
+
+		String DBNAME = "mongoMovies4";
+		String jsonFile = "json/mongoMovies4.json";
+		String jsonModel = MODELS_FOLDER + DBNAME + ".xmi";
+
+		System.out.println("Inserting the JSON file...");
+		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
+		controller.json2Db(jsonFile, DBNAME);
+
+		System.out.println("Starting inference...");
+		MongoDBSchemaInference inferrer = new MongoDBSchemaInference();
+		JsonArray jArray = inferrer.mapRed2Array(MONGODB_IP, DBNAME, MONGODB_MAPREDUCE_FOLDER);
+		System.out.println("Inference finished.");
+
+		System.out.println("Starting BuildNoSQLSchema...");
+		BuildNoSQLSchema builder = new BuildNoSQLSchema();
+		builder.buildFromGsonArray(DBNAME, jArray, jsonModel);
+		System.out.println("BuildNoSQLSchema created: " + DBNAME + " in " + (System.currentTimeMillis() - startTime) + " ms");
+	}
+
 	public static void main(String[] args) throws IOException
 	{
 //		prepareCouchDBExample();
@@ -134,5 +156,6 @@ public class InferenceTest
 //		prepareMongoDBSOFExample();
 //		prepareMongoDBEPolExample();
 		prepareErrorEPolExample();
+//		prepareJsonMongoExample();
 	}
 }

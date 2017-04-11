@@ -7,6 +7,7 @@ import es.um.nosql.schemainference.db.adapters.DbClient;
 import es.um.nosql.schemainference.db.adapters.couchdb.CouchDbAdapter;
 import es.um.nosql.schemainference.db.adapters.mongodb.MongoDbAdapter;
 import es.um.nosql.schemainference.db.interfaces.EPol2Db;
+import es.um.nosql.schemainference.db.interfaces.Json2Db;
 import es.um.nosql.schemainference.db.interfaces.Model2Db;
 import es.um.nosql.schemainference.db.interfaces.XML2Db;
 import es.um.nosql.schemainference.db.utils.DbType;
@@ -60,6 +61,18 @@ public class DbController
 
 		System.out.println("Reading json file " + jsonRoute + "...");
 		EPol2Db loader = new EPol2Db(client);
+
+		loader.storeJSONContent(jsonRoute, dbName);
+
+		System.out.println(dbName + ":" + Paths.get(jsonRoute).getFileName() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
+	}
+
+	public void json2Db(String jsonRoute, String dbName)
+	{
+		long startTime = System.currentTimeMillis();
+
+		System.out.println("Reading json file " + jsonRoute + "...");
+		Json2Db loader = new Json2Db(client);
 
 		loader.storeJSONContent(jsonRoute, dbName);
 

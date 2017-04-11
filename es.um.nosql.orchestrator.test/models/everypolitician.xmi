@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.schemainference/model/nosqlschema.ecore" name="everypolitician">
+  <entities name="Identifier">
+    <entityversions versionId="1">
+      <properties xsi:type="NoSQLSchema:Attribute" name="identifier">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="scheme">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+  </entities>
+  <entities name="Persons">
+    <entityversions versionId="1" root="true">
+      <properties xsi:type="NoSQLSchema:Aggregate" name="_id" lowerBound="1" upperBound="1" refTo="//@entities.3/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="identifiers" upperBound="1" refTo="//@entities.0/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="other_names" upperBound="1" refTo="//@entities.2/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="sort_name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+    <entityversions versionId="2" root="true">
+      <properties xsi:type="NoSQLSchema:Aggregate" name="_id" lowerBound="1" upperBound="1" refTo="//@entities.3/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="identifiers" upperBound="1" refTo="//@entities.0/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="other_names" upperBound="-1" refTo="//@entities.2/@entityversions.1 //@entities.2/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="sort_name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+    <entityversions versionId="3" root="true">
+      <properties xsi:type="NoSQLSchema:Aggregate" name="_id" lowerBound="1" upperBound="1" refTo="//@entities.3/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="identifiers" upperBound="1" refTo="//@entities.0/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="other_names" upperBound="-1" refTo="//@entities.2/@entityversions.1 //@entities.2/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="sort_name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+  </entities>
+  <entities name="Other_name">
+    <entityversions versionId="1">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lang">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="note">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+    <entityversions versionId="2">
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="note">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </entityversions>
+  </entities>
+  <entities name="_id">
+    <entityversions versionId="1"/>
+  </entities>
+</NoSQLSchema:NoSQLSchema>
