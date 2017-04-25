@@ -18,20 +18,20 @@ NoSQL Data Engineering
 
 ***
 
-## Inference process
+# Inference process
 
 ***
 
-## NoSQL Schema metamodel
+# NoSQL Schema metamodel
 
 The projects involved in the NoSQL Schema metamodel definition are the following ones:
 
-    * `es.um.nosql.schemainference`: This projects stores the metamodel definition in an ecore file, stored in model/nosqlschema.ecore. It also contains the generated java classes for this metamodel, as well as some utilities such as a Model loader used to load model definitions in a XMI file.
-    * `es.um.nosql.schemainference.edit` and `es.um.nosql.schemainference.editor`: These projects are used to define a generated editor in order to manipulate NoSQL schema models with the Ecore interface.
+* `es.um.nosql.schemainference`: This projects stores the metamodel definition in an ecore file, stored in model/nosqlschema.ecore. It also contains the generated java classes for this metamodel, as well as some utilities such as a Model loader used to load model definitions in a XMI file.
+* `es.um.nosql.schemainference.edit` and `es.um.nosql.schemainference.editor`: These projects are used to define a generated editor in order to manipulate NoSQL schema models with the Ecore interface.
 
 The most important elements of this projects are, apart from the metamodel definition, the Model loader, which will be used in several other projects to start some processes from a model file located somewhere in the file system. It also contains a PrettyPrinter class which can take a NoSQL schema model and print it to the standard input in a human-readable way.
 
-# The NoSQL schema metamodel
+## The NoSQL schema metamodel
 
 <figure>
     <img src="figures/nosqlschema_metamodel.png" align="center"/>
@@ -60,48 +60,48 @@ In the image above there is an example of a NoSQLSchema model based on a 'Movies
 
 A NoSQLSchema model may be obtained by aplying the inference process described here(#inference-process). Once a NoSQLSchema model is obtained, it may be used for several things:
 
-* It can be visualized by using the NoSQL Schema visualization tool (link(#nosql-schema-visualization))
-* It can be used to generate a Decision tree to effectively classify objects of this database. Projects related are 'Entity Differentiation'(link(#entity-differentiation)) and 'Decision tree'(link(#decision-tree))
+* It can be visualized by using the NoSQL Schema visualization tool ([link](#nosql-schema-visualization))
+* It can be used to generate a Decision tree to effectively classify objects of this database. Projects related are 'Entity Differentiation'([link](#entity-differentiation)) and 'Decision tree'([link](#decision-tree))
 * ...
 
 ***
 
-## Database import
+# Database import
 
 ***
 
-## NoSQL import
+# NoSQL import
 
 ***
 
-## Json to DBSchema
+# Json to DBSchema
 
 ***
 
-## NoSQL Schema visualization
+# NoSQL Schema visualization
 
 ***
 
-## Data visualization
+# Data visualization
 
 ***
 
-## Entity differentiation
+# Entity differentiation
 
 ***
 
-## Decision tree
+# Decision tree
 
 ***
 
-## DSL for Mongoose
+# DSL for Mongoose
 
 ***
 
-## DSL Parameter
+# DSL Parameter
 
 ***
 
-## PlantUML
+# PlantUML
 
 ***
