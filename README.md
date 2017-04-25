@@ -11,14 +11,16 @@ A NoSQL schema is a schema used to define which data and in which format is bein
 - [Database import](#database-import)
 - [NoSQL import](#nosql-import)
 - [Json to DBSchema](#json-to-dbschema)
+***
 - [NoSQL Schema visualization](#nosql-schema-visualization)
 - [Data visualization](#data-visualization)
+***
 - [Entity differentiation](#entity-differentiation)
 - [Decision tree](#decision-tree)
+***
 - [DSL4Mongoose](#dsl-for-mongoose)
 - [DSLParameter](#dsl-parameter)
 - [PlantUML](#plantuml)
-
 ***
 
 # Inference process
