@@ -179,15 +179,15 @@ def dispatch printType(PrimitiveType primT, String name){
 def dispatch printType(Tuple tuple, String name){
   if (tuple.elements.size>1){
     var el=tuple.elements.get(0) as PrimitiveType
-    '''	attr «el.name»[+] «name»'''
+    '''	attr «el.name»[+] «name»;'''
   }
   else
     if(tuple.elements.size==1){
       var el2=tuple.elements.get(0) as PrimitiveType
-      '''	attr «el2.name»[1] «name»'''
+      '''	attr «el2.name»[1] «name»;'''
     }
   else
-	'''	attr [] «name»'''
+	'''	attr [] «name»;'''
 }
 
 def dispatch analyzeAggregate(Aggregate ag, String name, List<Aggregate> AgL, String name3) {
