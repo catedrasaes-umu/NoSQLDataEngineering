@@ -632,10 +632,10 @@ public «ent.entity.name.toFirstUpper»«contVer3»{
       this.«Ag.name»«numberOnly» = «Ag.name»«numberOnly»;
 	}
 	«withList=""»
-	«entityProps+=withList+r.refTo.name+" "+r.name+","»
-    «thisEntityProps+= "\tthis."+r.name+"="+r.name+";\n"»
   «ENDIF»
-
+	«entityProps+=withList+r.refTo.name+" "+r.name+","»
+	«thisEntityProps+= "\tthis."+r.name+"="+r.name+";\n"»
+	
   «ENDFOR»
 }//end Class
 

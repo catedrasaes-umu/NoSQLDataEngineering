@@ -1,0 +1,68 @@
+@namespace(uri="http://www.modelum.es/schema", prefix="dbnosql")
+package noSQLSchema;
+
+Class Movie {
+	attr String _id;
+	attr String genre;
+	attr String title;
+	attr String type;
+	attr int year;
+	attr int running_time;
+	attr String[+] genres
+	attr String[+] writers
+}  
+
+ref Director[1] director; 
+
+val Criticism[+] criticisms;
+
+val Prize[+] prizes;
+
+val Rating[1] rating; 
+
+Class Criticism {
+	attr String color;
+	attr String journalist;
+	attr String media;
+}
+
+val Media[1] media; 
+
+Class Media {
+	attr String name;
+	attr String url;
+}
+
+Class Prize {
+	attr String event;
+	attr String[+] names
+	attr int year;
+	attr String name;
+}
+
+Class Rating {
+	attr int score;
+	attr int voters;
+}
+
+
+Class Movietheater {
+	attr String _id;
+	attr String city;
+	attr String country;
+	attr String name;
+	attr String type;
+	attr int noOfRooms;
+}  
+
+
+Class Director {
+	attr String _id;
+	attr String name;
+	attr String type;
+}  
+
+ref Movie[+] actor_movies; 
+
+ref Movie[+] directed_movies; 
+

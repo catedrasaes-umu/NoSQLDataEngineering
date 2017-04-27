@@ -1,4 +1,4 @@
-package es.um.nosql.schemainference.gen.plantuml.main;
+package es.um.nosql.schemainference.gen.emf.main;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -41,7 +41,7 @@ public class EntityUnionSchemaGen {
 			outputDir.mkdirs();
 
 			// FIXME: Cambiar "salida.uml" por el fichero de salida
-			File outFile = outputDir.toPath().resolve("stackoverflow_15KK.txt").toFile();
+			File outFile = outputDir.toPath().resolve("movieSchema.emf").toFile();
 			outFileWriter = new PrintStream(outFile);
 		}
 

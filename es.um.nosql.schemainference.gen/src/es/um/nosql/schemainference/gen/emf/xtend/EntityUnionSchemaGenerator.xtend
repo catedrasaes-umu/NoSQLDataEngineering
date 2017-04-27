@@ -1,4 +1,4 @@
-package es.um.nosql.schemainference.gen.plantuml.xtend
+package es.um.nosql.schemainference.gen.emf.xtend
 import es.um.nosql.schemainference.NoSQLSchema.Entity
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion
 import es.um.nosql.schemainference.NoSQLSchema.Attribute
@@ -33,19 +33,11 @@ def generate (NoSQLSchema nosqlschema)
   	}
   }
   '''
-  @startuml
-  skinparam backgroundColor transparent 
-  skinparam class { 
-    BackgroundColor PaleGreen \n
-    ArrowColor Blue 
-    BorderColor SeaGreen \n
-    FontSize 18 \n
-    FontName Courier \n
-  }
+  @namespace(uri="http://www.modelum.es/schema", prefix="dbnosql")
+  package noSQLSchema;
   «FOR entL: entsList»
   «analyzeEnt(entL)»
   «ENDFOR»
-  @enduml
   '''
 }	
 	
@@ -77,11 +69,10 @@ def analyzeEnt(Entity ent2)'''
        «ENDFOR»
     «ENDFOR»
 
-    Class «ent2.name.toFirstUpper»<<(R,Tomato)>>{
+    Class «ent2.name.toFirstUpper» {
     «FOR Attribute at2: at»
     	«analyzeAttribute(at2.type,at2.name,primsL,tuplesL,prims,tuples)»
     «ENDFOR»
-    }  
     «FOR Reference rf2: ref»
       «analyzeReference2(rf2,rf2.name,refs,ent2.name)»
     «ENDFOR»
@@ -94,16 +85,15 @@ def analyzeEnt(Entity ent2)'''
     «FOR Aggregate a4: ags»
        «checkAggr(a4)»
     «ENDFOR»
-    
+    }
 '''
 
 def printAgg(Aggregate ag3, String name)'''
-
   «var Entity entAg=ag3.refTo.get(0).eContainer as Entity»
   «IF ag3.upperBound==-1»
-   «name.toFirstUpper» *--> "[1..*] «ag3.name.toLowerCase»" «entAg.name.toFirstUpper»
+   val «entAg.name.toFirstUpper»[+] «ag3.name.toLowerCase»;
   «ELSE»
-  	«name.toFirstUpper» *--> "[1..1] «ag3.name.toLowerCase»" «entAg.name.toFirstUpper»
+  	val «entAg.name.toFirstUpper»[1] «ag3.name.toLowerCase»; 
   «ENDIF»
 '''
 
@@ -120,9 +110,9 @@ r.name=r.name.replace("_id","").replace("id","")
 '''
 
    «IF r.upperBound==1»
-   «name» --> "[1..1] «r.name»" «r.refTo.name»
+   ref «r.refTo.name»[1] «r.name»; 
   «ELSE»
-   «name» --> "[1..*] «r.name»" «r.refTo.name»
+   ref «r.refTo.name»[+] «r.name»; 
   «ENDIF»
 '''
 }
@@ -156,17 +146,17 @@ def checkAggregate(List <EntityVersion> agL, String nameAg, Entity entAg)'''
      «ENDFOR»
   «ENDFOR»
 
-  Class «entAg.name.toFirstUpper»<<(A,BurlyWood)>> {
+  Class «entAg.name.toFirstUpper» {
   «FOR Attribute at2: at»
   	«analyzeAttribute(at2.type,at2.name,primsL,tuplesL,prims,tuples)»
   «ENDFOR»
-  }
   «FOR Aggregate ag: aggr»
       «analyzeAggregate(ag,ag.name,ags,entAg.name)»
   «ENDFOR»
   «FOR Aggregate a4: ags»
     «checkAggr(a4)»
   «ENDFOR»
+  }
 '''
 
 def printAttribute(Attribute a, String name)'''
@@ -180,19 +170,24 @@ def dispatch printType(Type at2, String name) {
 def dispatch printType(PrimitiveType primT, String name){
   if (primT.name=="Number"){
     var t="int"
-    '''	<b> «t» «name»'''
+    '''	attr «t» «name»[1];'''
   }  
   else
-	'''	<b> «primT.name» «name»'''
+	'''	attr «primT.name» «name»[1];'''
 }
 
 def dispatch printType(Tuple tuple, String name){
-  if (tuple.elements.size>0){
+  if (tuple.elements.size>1){
     var el=tuple.elements.get(0) as PrimitiveType
-    '''	<b> «el.name»[] «name»'''
-  }  
+    '''	attr «el.name»[+] «name»'''
+  }
   else
-	'''	<b> [] «name»'''
+    if(tuple.elements.size==1){
+      var el2=tuple.elements.get(0) as PrimitiveType
+      '''	attr «el2.name»[1] «name»'''
+    }
+  else
+	'''	attr [] «name»'''
 }
 
 def dispatch analyzeAggregate(Aggregate ag, String name, List<Aggregate> AgL, String name3) {
@@ -283,10 +278,10 @@ def dispatch analyzeAttribute(PrimitiveType primT, String name, List<PrimitiveTy
    	pL.add(pL.size,name)
    	if (primT.name=="Number"){
       var tS="int"
-      '''	<b> «tS» «name»'''
+      '''	attr «tS» «name»;'''
     }  
     else
-      '''	<b> «primT.name» «name»'''
+      '''	attr «primT.name» «name»;'''
     }
 }
 	
@@ -308,12 +303,17 @@ def dispatch analyzeAttribute(Tuple tuple, String name, List<PrimitiveType> PrL,
    {
    	t.add(t.size,name)
    	TuL.add(TuL.size,tuple)
-   	if (tuple.elements.size>0){
-      var el=tuple.elements.get(0) as PrimitiveType
-      '''	<b> «el.name»[] «name»'''
-    }  
-    else
-     '''	<b> [] «name»'''
+  if (tuple.elements.size>1){
+    var el=tuple.elements.get(0) as PrimitiveType
+    '''	attr «el.name»[+] «name»'''
+  }
+  else
+    if(tuple.elements.size==1){
+      var el2=tuple.elements.get(0) as PrimitiveType
+      '''	attr «el2.name»[1] «name»'''
+    }
+  else
+	'''	attr [] «name»'''
 	}
 }
 	
