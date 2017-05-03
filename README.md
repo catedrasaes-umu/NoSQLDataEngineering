@@ -121,11 +121,56 @@ The projects involved in this visualization tool are the following ones:
 * `es.um.nosql.schemainference.design`: The Sirius workbench project in which the viewpoints are defined.
 * `es.um.nosql.schemainference.visualization.sdk`: The feature project in which the Sirius visualization plugin is stored.
 
-**However**: Please keep in mind this section was developed a year ago from a M.Sc.Thesis (found [here](https://github.com/Soltari/NoSQLVisualizationTools/)) and since then several changes have been performed on the inference process. Because of that we have been wanting to redefine all the viewpoints available, since we now think the available viewpoints are not fully efficient on showing the information we want. For example, the viewpoints do not satisfy us when we use as an input really big models (hundreds of **EntityVersions**). That's why we will be redefining the implemented viewpoints and you should expect drastic changes on the viewpoints available soon(**tm**). 
+**However**: Please keep in mind this section was developed in 2016 for a M.Sc.Thesis (found [here](https://github.com/Soltari/NoSQLVisualizationTools/)) and since then several changes have been performed on the inference process. Because of that we have been wanting to redefine all the viewpoints available, since we now think the available viewpoints are not fully efficient on showing the information we want. For example, the viewpoints do not satisfy us when we use as an input really big models (hundreds of **EntityVersions**). That's why we will be redefining the implemented viewpoints and you should expect drastic changes on the viewpoints available soon(**tm**). 
 
 ***
 
 # Data visualization
+
+<figure>
+    <img src="figures/dataprocess.png" align="center">
+</figure>
+<br/>
+
+<a href="https://www.youtube.com/watch?v=933V5AiwAgM"><img src="https://img.youtube.com/vi/933V5AiwAgM/maxresdefault.jpg" width="250"></a>
+
+https://www.youtube.com/watch?v=933V5AiwAgM
+
+This visualization tool is designed to draw different graphics representing the data classification of a NoSQL database using D3.js (https://d3js.org/). D3.js is a JavaScript library for manipulating documents based on data. As a result of the inference process described above ([link](#inference-process)) a NoSQL\_Schema model is given, and HTML5/CSS3/JavaScript code is generated as an output of the visualization process.
+
+Once the code is generated the user just needs to provide a JSON file with the database objects, and make sure that these objects have a defined id field of some kind as well as a "type" attribute indicating its type (the entity it belongs to).
+
+<figure>
+    <img src="figures/versiondiff.png" align="center">
+</figure>
+<br/>
+
+The NoSQL\_Schema model will then be transformed by a m2m transformation into a Version\_Diff model which defines, for each version entity (and each JSON object) a collection of HasField and HasNotField defining how the version is composed, by which properties and with which types. Now a m2t transformation can be executed which in the end will generate JavaScript.
+
+<figure>
+    <img src="figures/versiondiffexample.png" align="center">
+</figure>
+<br/>
+
+Once the m2t transformation is finished a HTML5/JS project is created with an index.html. Giving a proper JSON object collection file it is possible to classify this collection into its entities and versions and represent the results with D3.js graphics.
+
+<figure>
+    <img src="figures/d3donuts.png" align="center">
+</figure>
+<br/>
+
+<figure>
+    <img src="figures/d3tree.png" align="center">
+</figure>
+<br/>
+
+The project involved in this visualization tool is the following one:
+
+* `es.um.nosql.schemainference.datavisualization`: Project with the Version\_Diff metamodel definition. It also contains all the m2m and m2t transformations, and references the NoSQLSchema project.
+
+Also in the NoSQLDataIndex project several examples can be found. Each example is contained in a folder with the JavaScript code already generated. To visualize each example, just open the index.html file in a web browser.
+
+**Please** keep in mind this section was developed in 2016 for a M.Sc.Thesis (found [here](https://github.com/Soltari/NoSQLVisualizationTools/)), and so it will become obsolete and need some refinements at some point.
 
 ***
 
