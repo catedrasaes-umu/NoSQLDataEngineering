@@ -77,6 +77,33 @@ A NoSQLSchema model may be obtained by aplying the inference process described h
 
 # Database import
 
+This Java project is used to fill a database with raw data from a file. It may be not necessary if the input for the inference process is an already filled database, but in some cases the user will have just a JSON, XML or CSV file, and so this project might come handy to import the relevant files into a database.
+
+As an example of the usage the user may check the **Main** class. The process goes as follow:
+
+* A **DbController** object is created with a certain **DbType** as a parameter. This way the controller will create a client for the specified database.
+* An input method is selected by calling to a certain method of the **DbController**: __model2Db__, __xml2Db__ or __json2Db__ methods are given as examples.
+  - The __model2Db__ method expects a NoSQLSchema model and then it will generate random JSON information according to the given model. Then it will proceed to insert the JSON data on the database. More details may be checked on the **Model2Db** and **JsonGenerator** classes.
+  - The __xml2Db__ method makes use of the **XML2Db** class and expects a XML file with the following format:
+    <?xml version="1.0" encoding="utf-8"?>
+    <collectionName>
+        <row <parameter 1>=<value 1> <parameter 2>=<value 2> ... ... <parameter N>=<value N>/>
+        <row <parameter 1>=<value 1> <parameter 2>=<value 2> ... ... <parameter N>=<value N>/>
+        <row <parameter 1>=<value 1> <parameter 2>=<value 2> ... ... <parameter N>=<value N>/>
+    </collectionName>
+  - The __json2Db__ method makes use of the **Json2Db** class and expects a route to a JSON file as well as a database name. It will insert the content found into the database with an appropiate collection name.
+  - The user will probably need to create its own interface class if the implemented ones are not enough for its requirements, but the implementation shouldn't be too difficult.
+* Now the controller will apply the input method with the given client, filling the database.
+
+<figure>
+    <img src="figures/dbimport.png" align="center"/>
+</figure>
+<br/>
+
+The project involved in the Database import project is the following one:
+
+* `es.um.nosql.schemainference.db`: This project contains a definition of a database controller able to fill **MongoDB** and **CouchDB** databases given a certain XML, JSON or model file. It is also possible to implement classes to process data files into the database, if needed.
+
 ***
 
 # NoSQL import
@@ -89,7 +116,7 @@ A NoSQLSchema model may be obtained by aplying the inference process described h
 
 # NoSQL Schema visualization
 
-This tool is designed to represent schemas and schema versions in a friendly way using Sirius (https://eclipse.org/sirius/). Sirius is a modeling tool used to generate graphical DSLs in an easy way, but also to define a suitable representation for a given model. As a result of the inference process described above ([link](#inference-process)) a NoSQL\_Schema model is given, and this model is the input for the visualization process.
+This tool is designed to represent schemas and schema versions in a friendly way using Sirius (https://eclipse.org/sirius/). Sirius is a modeling tool used to generate graphical DSLs in an easy way, but also to define a suitable representation for a given model. As a result of the inference process described above ([link](#inference-process)) a NoSQLSchema model is given, and this model is the input for the visualization process.
 
 At the moment there are defined the following viewpoints:
 
