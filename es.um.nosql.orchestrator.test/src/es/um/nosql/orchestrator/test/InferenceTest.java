@@ -7,8 +7,8 @@ import com.google.gson.JsonArray;
 import es.um.nosql.schemainference.db.DbController;
 import es.um.nosql.schemainference.db.utils.DbType;
 import es.um.nosql.schemainference.json2dbschema.main.BuildNoSQLSchema;
-import es.um.nosql.schemainference.nosqlimport.db.couchdb.CouchDBSchemaInference;
-import es.um.nosql.schemainference.nosqlimport.db.mongodb.MongoDBSchemaInference;
+import es.um.nosql.schemainference.nosqlimport.db.couchdb.CouchDBImport;
+import es.um.nosql.schemainference.nosqlimport.db.mongodb.MongoDBImport;
 
 public class InferenceTest
 {
@@ -32,7 +32,7 @@ public class InferenceTest
 		controller.model2Db(MODEL_FILE, minInstances, maxInstances);
 
 		System.out.println("Starting inference...");
-		CouchDBSchemaInference inferrer = new CouchDBSchemaInference();
+		CouchDBImport inferrer = new CouchDBImport();
 		JsonArray jArray = inferrer.mapRed2Array(COUCHDB_IP, TABLENAME, COUCHDB_MAPREDUCE_FOLDER);
 		System.out.println("Inference finished.");
 
@@ -130,7 +130,7 @@ public class InferenceTest
 	private static void mongoDbExtract(String dbName, String model)
 	{
 		System.out.println("Starting inference...");
-		MongoDBSchemaInference inferrer = new MongoDBSchemaInference();
+		MongoDBImport inferrer = new MongoDBImport();
 		JsonArray jArray = inferrer.mapRed2Array(MONGODB_IP, dbName, MONGODB_MAPREDUCE_FOLDER);
 		System.out.println("Inference finished.");
 

@@ -67,9 +67,10 @@ In the image above there is an example of a NoSQLSchema model based on a 'Movies
 * Entity _Rating_: With just one entity version and a couple of string **Attributes**.
 * Entity _Prize_: With another entity version, and a couple **Attributes**, being one of them a **Tuple**.
 
-A NoSQLSchema model may be obtained by aplying the inference process described here(#inference-process). Once a NoSQLSchema model is obtained, it may be used for several things:
+A NoSQLSchema model may be obtained by aplying the inference process described [here](#inference-process). Once a NoSQLSchema model is obtained, it may be used for several things:
 
 * It can be visualized by using the NoSQL Schema visualization tool ([link](#nosql-schema-visualization))
+* It can be used to generate a differentiation model used to classify objects and visualize them in D3.js ([link](#data-visualization))
 * It can be used to generate a Decision tree to effectively classify objects of this database. Projects related are 'Entity Differentiation'([link](#entity-differentiation)) and 'Decision tree'([link](#decision-tree))
 * ...
 
@@ -77,7 +78,7 @@ A NoSQLSchema model may be obtained by aplying the inference process described h
 
 # Database import
 
-This Java project is used to fill a database with raw data from a file. It may be not necessary if the input for the inference process is an already filled database, but in some cases the user will have just a JSON, XML or CSV file, and so this project might come handy to import the relevant files into a database.
+This project is used to fill a database with raw data from a file. It may be not necessary if the input for the inference process is an already filled database, but in some cases the user will have just a JSON, XML or CSV file, and so this project might come handy to import the relevant files into a database.
 
 As an example of the usage the user may check the **Main** class. The process goes as follow:
 
@@ -86,11 +87,13 @@ As an example of the usage the user may check the **Main** class. The process go
   - The __model2Db__ method expects a NoSQLSchema model and then it will generate random JSON information according to the given model. Then it will proceed to insert the JSON data on the database. More details may be checked on the **Model2Db** and **JsonGenerator** classes.
   - The __xml2Db__ method makes use of the **XML2Db** class and expects a XML file with the following format:
     <?xml version="1.0" encoding="utf-8"?>
+    ```
     <collectionName>
         <row <parameter 1>=<value 1> <parameter 2>=<value 2> ... ... <parameter N>=<value N>/>
         <row <parameter 1>=<value 1> <parameter 2>=<value 2> ... ... <parameter N>=<value N>/>
         <row <parameter 1>=<value 1> <parameter 2>=<value 2> ... ... <parameter N>=<value N>/>
     </collectionName>
+    ```
   - The __json2Db__ method makes use of the **Json2Db** class and expects a route to a JSON file as well as a database name. It will insert the content found into the database with an appropiate collection name.
   - The user will probably need to create its own interface class if the implemented ones are not enough for its requirements, but the implementation shouldn't be too difficult.
 * Now the controller will apply the input method with the given client, filling the database.
@@ -100,13 +103,24 @@ As an example of the usage the user may check the **Main** class. The process go
 </figure>
 <br/>
 
-The project involved in the Database import project is the following one:
+The Java project involved in the Database import project is the following one:
 
 * `es.um.nosql.schemainference.db`: This project contains a definition of a database controller able to fill **MongoDB** and **CouchDB** databases given a certain XML, JSON or model file. It is also possible to implement classes to process data files into the database, if needed.
 
 ***
 
 # NoSQL import
+
+This project is aimed to import JSON data from a NoSQL database. It is provided with a MapReduce process and applies this process to the given database. As a result of the MapReduce process it obtains a subset of representative database objects which describes all the entities and versions found on that database. It supports **MongoDB** and **CouchDB** databases, but this list will be updated on the near future with more document based databases. As an input for this project to work the user needs to provide the following inputs:
+
+* A fully working **MongoDB** or **CouchDB** database with some data on it.
+* A database name to which the process will infer representative JSON objects and apply the MapReduce process.
+* A MapReduce folder containing a **map.js** file and a **reduce.js** file. These files contain JavaScript code, they may be found on the corresponding folder and are not likely to change.
+
+<figure>
+    <img src="figures/nosqlimport.png" align="center"/>
+</figure>
+<br/>
 
 ***
 
