@@ -86,8 +86,8 @@ As an example of the usage the user may check the **Main** class. The process go
 * An input method is selected by calling to a certain method of the **DbController**: __model2Db__, __xml2Db__ or __json2Db__ methods are given as examples.
   - The __model2Db__ method expects a NoSQLSchema model and then it will generate random JSON information according to the given model. Then it will proceed to insert the JSON data on the database. More details may be checked on the **Model2Db** and **JsonGenerator** classes.
   - The __xml2Db__ method makes use of the **XML2Db** class and expects a XML file with the following format:
-    <?xml version="1.0" encoding="utf-8"?>
     ```
+    <?xml version="1.0" encoding="utf-8"?>
     <collectionName>
         <row <parameter 1>=<value 1> <parameter 2>=<value 2> ... ... <parameter N>=<value N>/>
         <row <parameter 1>=<value 1> <parameter 2>=<value 2> ... ... <parameter N>=<value N>/>
@@ -103,7 +103,7 @@ As an example of the usage the user may check the **Main** class. The process go
 </figure>
 <br/>
 
-The Java project involved in the Database import project is the following one:
+The Java project involved in the __Database import__ project is the following one:
 
 * `es.um.nosql.schemainference.db`: This project contains a definition of a database controller able to fill **MongoDB** and **CouchDB** databases given a certain XML, JSON or model file. It is also possible to implement classes to process data files into the database, if needed.
 
@@ -122,6 +122,17 @@ This project is aimed to import JSON data from a NoSQL database. It is provided 
 </figure>
 <br/>
 
+An example of its usage is just based on the creation of a __MongoDB/CouchDBImport__ object and an execution of a suitable method. The process goes as follow:
+
+* A **MongoDB/CouchDBImport** object is created and there are a couple of **map.js** and **reduce.js** on a folder.
+* The created object will apply the **MapReduce** files to a given database and extract a minimum representation of the Json objects stored on the database.
+* The object now will apply an homogeneization to to each object in order to remove unnecessary attributes (such as ___rev__, ___id_, etc).
+* The object will finally apply the desired output format and return the result to the client.
+
+The Java project involved in the __NoSQL import__ project is the following one:
+
+* `es.um.nosql.schemainference.nosqlimport`: This project contains a definition of two database importers able to interact with **MongoDB** and **CouchDB**. It also contains some helper classes in order to return a suitable output as a __Stream<JsonObject>__, __JsonArray__ or a Json file which will be used on the schema extraction process (see [here](#json-to-dbschema)). As more databases are supported new classes will be added to this project.
+
 ***
 
 # Json to DBSchema
@@ -130,7 +141,7 @@ This project is aimed to import JSON data from a NoSQL database. It is provided 
 
 # NoSQL Schema visualization
 
-This tool is designed to represent schemas and schema versions in a friendly way using Sirius (https://eclipse.org/sirius/). Sirius is a modeling tool used to generate graphical DSLs in an easy way, but also to define a suitable representation for a given model. As a result of the inference process described above ([link](#inference-process)) a NoSQLSchema model is given, and this model is the input for the visualization process.
+This tool is designed to represent schemas and schema versions in a friendly way using Sirius (https://eclipse.org/sirius/). Sirius is a modeling tool used to generate graphical DSLs in an easy way, but also to define a suitable representation for a given model. As a result of the inference process described above ([link](#inference-process)) a NoSQLSchema model is given, and that model is the input for the visualization process.
 
 At the moment there are defined the following viewpoints:
 
