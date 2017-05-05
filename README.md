@@ -27,7 +27,31 @@ A NoSQL schema is a schema used to define which data and in which format is bein
 
 The inference process assumes the following initial scenario:
 
-* An aggregate-oriented NoSQL database is running. At the moment supported databases are **MongoDB** and **CouchDB**. A database must be running, containing some information
+* A document-based NoSQL database is running. At the moment supported databases are **MongoDB** and **CouchDB**. If this requirement is not met or your data is in another format, maybe [this](#database-import) will help you.
+* The database must be divided into several tables or collections or each object must contain a _type_ attribute indicating its collection. Each object must also contain a unique __id_ attribute.
+* The user has installed the **Eclipse Modeling Framework** (EMF, http://www.eclipse.org/modeling/emf/)
+
+The following projects are needed to execute the inference process:
+* [NoSQL Schema metamodel](#nosql-schema-metamodel): `es.um.nosql.schemainference`, `es.um.nosql.schemainference.edit` and `es.um.nosql.schemainference.editor`.
+* [NoSQL import](#nosql-import): `es.um.nosql.schemainference.nosqlimport`.
+* [Json to DBSchema](#json-to-dbschema): `es.um.nosql.schemainference.json2dbschema`.
+
+Some examples of the inference process may be found on the `es.um.nosql.orchestrator.test` project. The process is resumed as follows:
+* First of all the **NoSQL import** project is used and a database importer is created. Then a convenient method is used to infer from the database a minimum set of objects describing the existing versions:
+    ```
+    System.out.println("Starting inference...");
+    MongoDBImport inferrer = new MongoDBImport();
+    JsonArray jArray = inferrer.mapRed2Array(MONGODB_IP, TABLENAME, MONGODB_MAPREDUCE_FOLDER);
+    System.out.println("Inference finished.");
+    ```
+* Then the **Json2DBSchema** project is used, and the result of the last step is supplied as an input. In our case we will commonly use a JsonArray with the minimum objects from the last step as an input:
+    ```
+    System.out.println("Starting BuildNoSQLSchema...");
+    BuildNoSQLSchema builder = new BuildNoSQLSchema();
+    builder.buildFromGsonArray(TABLENAME, jArray, OUTPUT_MODEL_NAME);
+    ```
+* The result of the inference process will be a NoSQLSchema saved in the _OUTPUT\_MODEL\_NAME_ route.
+* Now this model may be visualized or used to generate some code using any other project from this repository.
 
 ***
 
