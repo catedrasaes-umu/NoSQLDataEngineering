@@ -126,12 +126,12 @@ An example of its usage is just based on the creation of a __MongoDB/CouchDBImpo
 
 * A **MongoDB/CouchDBImport** object is created and there are a couple of **map.js** and **reduce.js** on a folder.
 * The created object will apply the **MapReduce** files to a given database and extract a minimum representation of the Json objects stored on the database.
-* The object now will apply an homogeneization to to each object in order to remove unnecessary attributes (such as ___rev__, ___id_, etc).
+* The object now will apply an homogeneization to to each object in order to remove unnecessary attributes (such as __rev_, __id_, etc).
 * The object will finally apply the desired output format and return the result to the client.
 
 The Java project involved in the __NoSQL import__ project is the following one:
 
-* `es.um.nosql.schemainference.nosqlimport`: This project contains a definition of two database importers able to interact with **MongoDB** and **CouchDB**. It also contains some helper classes in order to return a suitable output as a __Stream<JsonObject>__, __JsonArray__ or a Json file which will be used on the schema extraction process (see [here](#json-to-dbschema)). As more databases are supported new classes will be added to this project.
+* `es.um.nosql.schemainference.nosqlimport`: This project contains a definition of two database importers able to interact with **MongoDB** and **CouchDB**. It also contains some helper classes in order to return a suitable output as a _Stream\<JsonObject\>_, _JsonArray_ or a Json file which will be used on the schema extraction process (see [here](#json-to-dbschema)). As more databases are supported new classes will be added to this project.
 
 ***
 
