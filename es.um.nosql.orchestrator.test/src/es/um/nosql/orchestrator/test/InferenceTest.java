@@ -1,7 +1,10 @@
 package es.um.nosql.orchestrator.test;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 
 import es.um.nosql.schemainference.db.DbController;
@@ -144,8 +147,8 @@ public class InferenceTest
 //		prepareCouchDBExample();
 //		prepareMongoDBExample();
 //		prepareMongoDBSOFExample();
-//		prepareMongoDBEPolExample();
-		prepareErrorEPolExample();
+		prepareMongoDBEPolExample();
+//		prepareErrorEPolExample();
 //		prepareJsonMongoExample();
 //		prepareUrbanExample();
 	}

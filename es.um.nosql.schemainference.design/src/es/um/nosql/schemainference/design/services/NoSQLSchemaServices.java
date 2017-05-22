@@ -7,11 +7,9 @@ import java.util.List;
 import org.eclipse.emf.common.util.ECollections;
 
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate;
-import es.um.nosql.schemainference.NoSQLSchema.Attribute;
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
-import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType;
 import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.NoSQLSchema.Reference;
 import es.um.nosql.schemainference.design.services.util.SchemaCollector;
@@ -196,40 +194,5 @@ public class NoSQLSchemaServices
 					result.add(evInEntity);
 
 		return result;
-	}
-
-	public List<Attribute> getAttributeSet(Entity entity)
-	{
-		List<Attribute> result = new ArrayList<Attribute>();
-
-		for (EntityVersion eVersion : entity.getEntityversions())
-			eVersion.getProperties().stream().filter(prop -> prop instanceof Attribute).forEach(
-					prop ->
-					{
-						for (Attribute attr : result)
-							if (attr.getName().equals(prop.getName()))
-								return;
-
-						result.add((Attribute)prop);
-					});
-
-		return result;
-	}
-
-	public String getAttributeCounter(Attribute attr)
-	{
-		String result = attr.getName() + ": " + ((PrimitiveType)attr.getType()).getName() + ": ";
-		Entity container = (Entity)attr.eContainer().eContainer();
-		int totalVersions = container.getEntityversions().size();
-
-		int counter = (int) container.getEntityversions().stream()
-			.filter(ev ->
-			{
-				for (Property prop : ev.getProperties())
-					if (prop.getName().equals(attr.getName()))
-						return true;
-				return false;
-			}).count();
-		return result + counter + "/" + totalVersions;
 	}
 }
