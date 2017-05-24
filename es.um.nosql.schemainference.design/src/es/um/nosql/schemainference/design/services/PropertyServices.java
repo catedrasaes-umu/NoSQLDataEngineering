@@ -81,6 +81,7 @@ public class PropertyServices
 							// Please note that we don't really care about the cardinality of the Aggregation. Otherwise we would need to adjust that...
 							Aggregate aggr2 = (Aggregate)result.stream().filter(any -> any instanceof Aggregate && aggr.getName().equals(any.getName())).findFirst().get();
 							aggr2.getRefTo().addAll(aggr.getRefTo());
+							aggr2.setUpperBound(-1);
 						}
 					}
 				}
