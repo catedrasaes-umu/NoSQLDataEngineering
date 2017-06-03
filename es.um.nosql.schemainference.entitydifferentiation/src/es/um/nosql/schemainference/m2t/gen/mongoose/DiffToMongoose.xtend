@@ -21,6 +21,7 @@ import es.um.nosql.schemainference.NoSQLSchema.Aggregate
 import es.um.nosql.schemainference.NoSQLSchema.Entity
 import java.util.Collections
 import java.util.HashMap
+import java.util.Set
 
 class DiffToMongoose
 {
@@ -34,7 +35,7 @@ class DiffToMongoose
 	// list of entities
 	List<Entity> entities
 	
-	HashMap<Entity, List<Entity>> entityDeps
+	HashMap<Entity, Set<Entity>> entityDeps
 
 	def static void main(String[] args)
     {
@@ -99,10 +100,22 @@ class DiffToMongoose
 	{
 		entities = diff.entityDiffSpecs.map[entity]
 		
-		entityDeps = newHashMap(entities.map[ e | e -> depListFor(e) ])
+		entityDeps = newHashMap(entities.map[e | e -> depListFor(e)])
 	}
 	
-	def List<Entity> depListFor(Entity entity)
+	// Get the first level of dependencies for an Entity
+	def Set<Entity> depListFor(Entity entity)
+	{
+		newHashSet(entity.entityversions.map[ev | 
+			ev.properties.filter[p |
+				p instanceof Aggregate
+			].map[p | 
+				(p as Aggregate).refTo.map[ev2 | ev2.eContainer as Entity]
+			]
+		])
+	}
+
+	def Set<Entity> depListRec(Entity entity, Set<Entity> seen)
 	{
 		
 	}
