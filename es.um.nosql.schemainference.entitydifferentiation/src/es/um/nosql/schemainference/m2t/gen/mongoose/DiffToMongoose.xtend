@@ -36,12 +36,13 @@ class DiffToMongoose
 	List<Entity> entities
 	
 	HashMap<Entity, Set<Entity>> entityDeps
+	HashMap<Entity, Set<Entity>> inverseEntityDeps
 
 	def static void main(String[] args)
     {
 		if (args.length < 1)
 		{
-			System.out.println("Usage: DiffToJS model [outdir]")
+			System.out.println("Usage: DiffToMongoose model [outdir]")
 			System.exit(-1)
 		}
 
@@ -60,14 +61,11 @@ class DiffToMongoose
         					+ " in "
         					+ outputDir.getPath())
 
-//        val NoSQLDifferences dataModelObject = M2M.getInstance().transform(modelObject)
-//
-
-		val diff_to_js = new DiffToMongoose()
+		val diff_to_mongoose = new DiffToMongoose()
 		val outFile = outputDir.toPath().resolve(td.name + ".js").toFile()
 		val outFileWriter = new PrintStream(outFile)
 
-        outFileWriter.println(diff_to_js.generate(td))
+        outFileWriter.println(diff_to_mongoose.generate(td))
         outFileWriter.close()
 
         System.exit(0)
@@ -99,25 +97,63 @@ class DiffToMongoose
 	def calcDeps(EntityDifferentiation diff) 
 	{
 		entities = diff.entityDiffSpecs.map[entity]
-		
+
 		entityDeps = newHashMap(entities.map[e | e -> depListFor(e)])
+		inverseEntityDeps = newHashMap(entities.map[e | 
+			e -> entities.filter[e2 | entityDeps.get(e2).contains(e)].toSet
+		])
+		
+		// Implement a topological order, Khan's algorithm
+		// https://en.wikipedia.org/wiki/Topological_sorting#Kahn.27s_algorithm
+		var order = topOrder()
+		
+		order.forEach[e | System.out.println(e.name)]
 	}
 	
 	// Get the first level of dependencies for an Entity
 	def Set<Entity> depListFor(Entity entity)
 	{
-		newHashSet(entity.entityversions.map[ev | 
+		entity.entityversions.map[ev | 
 			ev.properties.filter[p |
 				p instanceof Aggregate
 			].map[p | 
 				(p as Aggregate).refTo.map[ev2 | ev2.eContainer as Entity]
-			]
-		])
+			].flatten
+		].flatten.toSet
 	}
 
-	def Set<Entity> depListRec(Entity entity, Set<Entity> seen)
+	def List<Entity> topOrder()
 	{
-		
+		depListRec(
+			entityDeps.filter[k, v| v.empty].keySet,
+			newLinkedList(),
+			newHashSet()
+		)
+	}
+
+	def List<Entity> depListRec(Set<Entity> to_consider, List<Entity> top_order, Set<Entity> seen)
+	{
+		// End condition
+		if (to_consider.isEmpty)
+			top_order
+		else
+		{
+			// Recursive
+			val e = to_consider.head
+			val to_consider_ = to_consider.tail.toSet
+			
+			// Add current node (no dependencies to cover)
+			top_order.add(e)
+			seen.add(e)
+			
+			val dependent = inverseEntityDeps.get(e)
+			to_consider_.addAll(
+				dependent.filter[ d | 
+					seen.containsAll(entityDeps.get(d))
+				])			
+			
+			depListRec(to_consider_, top_order, seen)
+		}
 	}
 
 	def genSpecs(List<EntityDiffSpec> list) '''
