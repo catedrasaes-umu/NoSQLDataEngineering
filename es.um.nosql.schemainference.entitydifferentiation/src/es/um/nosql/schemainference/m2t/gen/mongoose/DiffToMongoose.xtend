@@ -37,6 +37,9 @@ class DiffToMongoose
 	
 	HashMap<Entity, Set<Entity>> entityDeps
 	HashMap<Entity, Set<Entity>> inverseEntityDeps
+	HashMap<Entity, EntityDiffSpec> diffByEntity
+	
+	static File outputDir
 
 	def static void main(String[] args)
     {
@@ -52,7 +55,7 @@ class DiffToMongoose
         rm.loadResourcesAsStrings(inputModel.getPath())
         val EntityDifferentiation td = rm.resources.head.contents.head as EntityDifferentiation
 
-		val outputDir = new File(if (args.length > 1) args.get(1) else ".")
+		outputDir = new File(if (args.length > 1) args.get(1) else ".")
 								.toPath().resolve(td.name).toFile()
 		// Create destination directory if it does not exist
 		outputDir.mkdirs()
@@ -62,14 +65,18 @@ class DiffToMongoose
         					+ outputDir.getPath())
 
 		val diff_to_mongoose = new DiffToMongoose()
-		val outFile = outputDir.toPath().resolve(td.name + ".js").toFile()
-		val outFileWriter = new PrintStream(outFile)
-
-        outFileWriter.println(diff_to_mongoose.generate(td))
-        outFileWriter.close()
-
+		writeToFile(td.name+".js", diff_to_mongoose.generate(td))
+		
         System.exit(0)
     }
+
+	def static void writeToFile(String filename, CharSequence toWrite)
+	{
+		val outFile = outputDir.toPath().resolve(filename).toFile()
+		val outFileWriter = new PrintStream(outFile)
+        outFileWriter.print(toWrite)
+        outFileWriter.close()
+	}
 
 	/**
 	 * Method used to generate an Inclusive/Exclusive differences file for a NoSQLDifferences object.
@@ -77,10 +84,13 @@ class DiffToMongoose
 	def generate(EntityDifferentiation diff)
 	{
 		modelName = diff.name;
+		diffByEntity = newHashMap(diff.entityDiffSpecs.map[ed | ed.entity -> ed])
 
 		// Calc dependencies between entities
-		calcDeps(diff)
+		val order = calcDeps(diff)
 
+		order.forEach[e | writeToFile(schemaFileName(e), generateSchema(e)) ]
+	
 		'''
 		'use strict'
 
@@ -93,7 +103,16 @@ class DiffToMongoose
 		module.exports = «diff.name»;
 		'''
 	}
+
+	def generateSchema(Entity e) {
+		''''''
+	}
+
+	def schemaFileName(Entity e) {
+		e.name + "-schema.js"
+	}
 	
+		
 	def calcDeps(EntityDifferentiation diff) 
 	{
 		entities = diff.entityDiffSpecs.map[entity]
@@ -108,6 +127,7 @@ class DiffToMongoose
 		var order = topOrder()
 		
 		order.forEach[e | System.out.println(e.name)]
+		order
 	}
 	
 	// Get the first level of dependencies for an Entity
