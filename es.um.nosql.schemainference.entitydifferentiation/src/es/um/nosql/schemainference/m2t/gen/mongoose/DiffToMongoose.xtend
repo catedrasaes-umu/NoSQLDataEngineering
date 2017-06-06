@@ -179,26 +179,34 @@ class DiffToMongoose
 	}
 
 	def genSpecs(EntityDiffSpec spec) '''
+	«FOR s : spec.commonProps SEPARATOR ','»
+	«s.property.name» : { type: «genType(s)», required: true}
+	«ENDFOR»
 	'''
+	
+	def genType(PropertySpec ps) {
+		genTypeForProperty(ps.property)
+	}
+	
+	def dispatch genTypeForProperty(Property property) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
 
-//	def dispatch genTypeCheck(Property p) {
-//		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-//	}
-
+	def dispatch CharSequence genTypeForProperty(PrimitiveType type) {
+		switch typeName : type.name.toLowerCase {
+			case "string" : '''String'''
+			case typeName.isInt : '''Number'''
+			case typeName.isFloat :  '''Number'''
+			case typeName.isBoolean : '''Boolean'''
+			default: ''''''
+		}
+	}
 
 	private def isInt(String type) { #["int", "integer", "number"].contains(type) }
 	private def isFloat(String type) { #["float", "double"].contains(type) }
 	private def isBoolean(String type) { #["boolean", "bool"].contains(type) }
 
-//	def dispatch CharSequence genTypeCheckLowLevel(PrimitiveType type, String name) {
-//		switch typeName : type.name.toLowerCase {
-//			case "string" : '''(typeof «name» === "string")'''
-//			case typeName.isInt : '''(typeof «name» === "number") && («name» % 1 === 0)'''
-//			case typeName.isFloat :  '''(typeof «name» === "number") && !(«name» % 1 === 0)'''
-//			case typeName.isBoolean : '''(typeof «name» === "boolean")'''
-//			default: ''''''
-//		}
-//	}
+
 
 //	def dispatch CharSequence genTypeCheckLowLevel(Tuple type, String name) {
 //	    '''(«name».constructor === Array) && («name».length === «type.elements.size»)
