@@ -22,6 +22,8 @@ import es.um.nosql.schemainference.NoSQLSchema.Entity
 import java.util.Collections
 import java.util.HashMap
 import java.util.Set
+import java.util.Map
+import com.google.gson.Gson
 
 class DiffToMongoose
 {
@@ -31,6 +33,8 @@ class DiffToMongoose
 	final val DUCK_TYPE = !EXACT_TYPE
 
 	final val SPECIAL_TYPE_IDENTIFIER = "type"
+	
+	final val Gson gson = new Gson()
 	
 	// list of entities
 	List<Entity> entities
@@ -180,9 +184,17 @@ class DiffToMongoose
 
 	def genSpecs(EntityDiffSpec spec) '''
 	«FOR s : spec.commonProps SEPARATOR ','»
-	«s.property.name» : { type: «genType(s)», required: true}
+	«s.property.name» : «jsonRep(mongooseOptionsForPropertySpec(s))»
 	«ENDFOR»
 	'''
+	
+	def jsonRep(Map<String,Object> m) {
+		gson.toJson(m)
+	}
+	
+	def mongooseOptionsForPropertySpec(PropertySpec spec) {
+		newHashMap("t" -> new Object());
+	}
 	
 	def genType(PropertySpec ps) {
 		genTypeForProperty(ps.property)
