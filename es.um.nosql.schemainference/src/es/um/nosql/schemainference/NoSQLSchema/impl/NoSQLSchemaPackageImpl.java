@@ -389,6 +389,15 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EAttribute getReference_OriginalType() {
+		return (EAttribute)referenceEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public EClass getAggregate() {
 		return aggregateEClass;
 	}
@@ -480,6 +489,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 		referenceEClass = createEClass(REFERENCE);
 		createEReference(referenceEClass, REFERENCE__OPPOSITE);
 		createEReference(referenceEClass, REFERENCE__REF_TO);
+		createEAttribute(referenceEClass, REFERENCE__ORIGINAL_TYPE);
 
 		aggregateEClass = createEClass(AGGREGATE);
 		createEReference(aggregateEClass, AGGREGATE__REF_TO);
@@ -556,6 +566,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 		initEClass(referenceEClass, Reference.class, "Reference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getReference_Opposite(), this.getReference(), null, "opposite", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getReference_RefTo(), this.getEntity(), null, "refTo", null, 1, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getReference_OriginalType(), ecorePackage.getEString(), "originalType", null, 0, 1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(aggregateEClass, Aggregate.class, "Aggregate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAggregate_RefTo(), this.getEntityVersion(), null, "refTo", null, 1, -1, Aggregate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

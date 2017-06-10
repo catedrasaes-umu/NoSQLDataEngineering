@@ -38,6 +38,7 @@
     <genClasses ecoreClass="nosqlschema.ecore#//Reference">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Reference/opposite"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Reference/refTo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//Reference/originalType"/>
     </genClasses>
     <genClasses ecoreClass="nosqlschema.ecore#//Aggregate">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Aggregate/refTo"/>

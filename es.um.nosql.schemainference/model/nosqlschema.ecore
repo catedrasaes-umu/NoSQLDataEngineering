@@ -42,6 +42,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Reference" eSuperTypes="#//Association">
     <eStructuralFeatures xsi:type="ecore:EReference" name="opposite" eType="#//Reference"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="refTo" lowerBound="1" eType="#//Entity"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="originalType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Aggregate" eSuperTypes="#//Association">
     <eStructuralFeatures xsi:type="ecore:EReference" name="refTo" unique="false" lowerBound="1"

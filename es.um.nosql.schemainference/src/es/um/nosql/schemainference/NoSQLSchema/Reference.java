@@ -14,6 +14,7 @@ package es.um.nosql.schemainference.NoSQLSchema;
  * <ul>
  *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.Reference#getOpposite <em>Opposite</em>}</li>
  *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.Reference#getRefTo <em>Ref To</em>}</li>
+ *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.Reference#getOriginalType <em>Original Type</em>}</li>
  * </ul>
  *
  * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getReference()
@@ -72,5 +73,31 @@ public interface Reference extends Association {
 	 * @generated
 	 */
 	void setRefTo(Entity value);
+
+	/**
+	 * Returns the value of the '<em><b>Original Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Original Type</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Original Type</em>' attribute.
+	 * @see #setOriginalType(String)
+	 * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getReference_OriginalType()
+	 * @model
+	 * @generated
+	 */
+	String getOriginalType();
+
+	/**
+	 * Sets the value of the '{@link es.um.nosql.schemainference.NoSQLSchema.Reference#getOriginalType <em>Original Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Original Type</em>' attribute.
+	 * @see #getOriginalType()
+	 * @generated
+	 */
+	void setOriginalType(String value);
 
 } // Reference

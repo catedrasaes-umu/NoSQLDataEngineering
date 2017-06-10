@@ -471,13 +471,22 @@ public interface NoSQLSchemaPackage extends EPackage {
 	int REFERENCE__REF_TO = ASSOCIATION_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Original Type</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERENCE__ORIGINAL_TYPE = ASSOCIATION_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int REFERENCE_FEATURE_COUNT = ASSOCIATION_FEATURE_COUNT + 2;
+	int REFERENCE_FEATURE_COUNT = ASSOCIATION_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Reference</em>' class.
@@ -846,6 +855,17 @@ public interface NoSQLSchemaPackage extends EPackage {
 	EReference getReference_RefTo();
 
 	/**
+	 * Returns the meta object for the attribute '{@link es.um.nosql.schemainference.NoSQLSchema.Reference#getOriginalType <em>Original Type</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Original Type</em>'.
+	 * @see es.um.nosql.schemainference.NoSQLSchema.Reference#getOriginalType()
+	 * @see #getReference()
+	 * @generated
+	 */
+	EAttribute getReference_OriginalType();
+
+	/**
 	 * Returns the meta object for class '{@link es.um.nosql.schemainference.NoSQLSchema.Aggregate <em>Aggregate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1119,6 +1139,14 @@ public interface NoSQLSchemaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference REFERENCE__REF_TO = eINSTANCE.getReference_RefTo();
+
+		/**
+		 * The meta object literal for the '<em><b>Original Type</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute REFERENCE__ORIGINAL_TYPE = eINSTANCE.getReference_OriginalType();
 
 		/**
 		 * The meta object literal for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.AggregateImpl <em>Aggregate</em>}' class.

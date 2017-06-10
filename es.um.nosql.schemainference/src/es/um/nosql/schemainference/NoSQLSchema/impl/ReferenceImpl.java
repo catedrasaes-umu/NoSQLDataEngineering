@@ -23,6 +23,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.impl.ReferenceImpl#getOpposite <em>Opposite</em>}</li>
  *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.impl.ReferenceImpl#getRefTo <em>Ref To</em>}</li>
+ *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.impl.ReferenceImpl#getOriginalType <em>Original Type</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,6 +48,26 @@ public class ReferenceImpl extends AssociationImpl implements Reference {
 	 * @ordered
 	 */
 	protected Entity refTo;
+
+	/**
+	 * The default value of the '{@link #getOriginalType() <em>Original Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOriginalType()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ORIGINAL_TYPE_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getOriginalType() <em>Original Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getOriginalType()
+	 * @generated
+	 * @ordered
+	 */
+	protected String originalType = ORIGINAL_TYPE_EDEFAULT;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -148,6 +169,27 @@ public class ReferenceImpl extends AssociationImpl implements Reference {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public String getOriginalType() {
+		return originalType;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setOriginalType(String newOriginalType) {
+		String oldOriginalType = originalType;
+		originalType = newOriginalType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.REFERENCE__ORIGINAL_TYPE, oldOriginalType, originalType));
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -157,6 +199,8 @@ public class ReferenceImpl extends AssociationImpl implements Reference {
 			case NoSQLSchemaPackage.REFERENCE__REF_TO:
 				if (resolve) return getRefTo();
 				return basicGetRefTo();
+			case NoSQLSchemaPackage.REFERENCE__ORIGINAL_TYPE:
+				return getOriginalType();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -174,6 +218,9 @@ public class ReferenceImpl extends AssociationImpl implements Reference {
 				return;
 			case NoSQLSchemaPackage.REFERENCE__REF_TO:
 				setRefTo((Entity)newValue);
+				return;
+			case NoSQLSchemaPackage.REFERENCE__ORIGINAL_TYPE:
+				setOriginalType((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -193,6 +240,9 @@ public class ReferenceImpl extends AssociationImpl implements Reference {
 			case NoSQLSchemaPackage.REFERENCE__REF_TO:
 				setRefTo((Entity)null);
 				return;
+			case NoSQLSchemaPackage.REFERENCE__ORIGINAL_TYPE:
+				setOriginalType(ORIGINAL_TYPE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -209,8 +259,26 @@ public class ReferenceImpl extends AssociationImpl implements Reference {
 				return opposite != null;
 			case NoSQLSchemaPackage.REFERENCE__REF_TO:
 				return refTo != null;
+			case NoSQLSchemaPackage.REFERENCE__ORIGINAL_TYPE:
+				return ORIGINAL_TYPE_EDEFAULT == null ? originalType != null : !ORIGINAL_TYPE_EDEFAULT.equals(originalType);
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String toString() {
+		if (eIsProxy()) return super.toString();
+
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (originalType: ");
+		result.append(originalType);
+		result.append(')');
+		return result.toString();
 	}
 
 } //ReferenceImpl
