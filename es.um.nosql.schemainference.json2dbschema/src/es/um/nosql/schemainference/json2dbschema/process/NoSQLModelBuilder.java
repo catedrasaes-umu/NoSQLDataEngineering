@@ -198,16 +198,16 @@ public class NoSQLModelBuilder
 		{
 			// If it is empty or it is NOT an Object (it is a simple type),
 			// then it may be a reference
-			if (sc.size() == 0 || !(sc.getInners().get(0) instanceof ObjectSC))
+			SchemaComponent inner = sc.getInners().get(0);
+			if (sc.size() == 0 || !(inner instanceof ObjectSC))
 			{
 				return maybeReference(Inflector.getInstance().singularize(en), sc).map(p -> {
 					Reference ref = (Reference)p;
 					ref.setName(en);
 					// All arrays that come from a real array are signaled by a 0 lower bound
-					//ref.setLowerBound(sc.getLowerBounds() == 1 ? 0 : sc.getLowerBounds());
-					//ref.setUpperBound(sc.getUpperBounds() > 1 ? -1 : sc.getUpperBounds());
 					ref.setLowerBound(0);
 					ref.setUpperBound(-1);
+					ref.setOriginalType(schemaComponentToPrimitiveType(inner));
 					return p;
 				}).orElseGet(() -> {
 					// Or else  build a tuple with the correct types
@@ -224,7 +224,7 @@ public class NoSQLModelBuilder
 				a.setName(en);
 				a.setLowerBound(sc.getLowerBounds() == 1 ? 0 : sc.getLowerBounds());
 				a.setUpperBound(sc.getUpperBounds() > 1 ? -1 : sc.getUpperBounds());
-				a.getRefTo().add(mEntityVersions.get(sc.getInners().get(0)));
+				a.getRefTo().add(mEntityVersions.get(inner));
 				return a;
 			}
 		}
@@ -277,19 +277,9 @@ public class NoSQLModelBuilder
 					if (_sc instanceof ArraySC)
 						return tupleForArray((ArraySC)_sc);
 
-					String primType = "";
-
 					// TODO: Consider Objects?
-
-					if (_sc instanceof BooleanSC)
-						primType = "Boolean";
-
-					if (_sc instanceof NumberSC)
-						primType = "Number";
-
-					if (_sc instanceof StringSC)
-						primType = "String";
-
+					String primType = schemaComponentToPrimitiveType(_sc);
+					
 					PrimitiveType pt = factory.createPrimitiveType();
 					pt.setName(primType);
 
@@ -299,6 +289,20 @@ public class NoSQLModelBuilder
 		return t;
 	}
 
+	private String schemaComponentToPrimitiveType(SchemaComponent sc)
+	{
+		if (sc instanceof BooleanSC)
+			return "Boolean";
+
+		if (sc instanceof NumberSC)
+			return "Number";
+
+		if (sc instanceof StringSC)
+			return "String";	
+
+		return "";
+	}
+	
 	private Property propertyFromSchemaComponent(String en, NullSC sc)
 	{
 		return propertyFromPrimitive(en, sc, "Null");
@@ -327,6 +331,7 @@ public class NoSQLModelBuilder
 			r.setRefTo(e);
 			r.setLowerBound(1);
 			r.setUpperBound(1);
+			r.setOriginalType(schemaComponentToPrimitiveType(sc));
 			return r;
 		});
 	}
