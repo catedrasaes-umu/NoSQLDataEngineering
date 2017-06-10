@@ -116,7 +116,7 @@ class DiffToMongoose
 	'''
 	
 	def schemaFileName(Entity e) {
-		e.name + "-schema.js"
+		e.name + "Schema.js"
 	}
 		
 	def calcDeps(EntityDifferentiation diff) 
@@ -184,7 +184,7 @@ class DiffToMongoose
 
 	def genSpecs(EntityDiffSpec spec) '''
 	«FOR s : spec.commonProps SEPARATOR ','»
-	«s.property.name» : «jsonRep(mongooseOptionsForPropertySpec(s))»
+	«s.property.name» : «jsonRep(mongooseOptionsForCommonPropertySpec(s))»
 	«ENDFOR»
 	'''
 	
@@ -192,8 +192,20 @@ class DiffToMongoose
 		gson.toJson(m)
 	}
 	
-	def mongooseOptionsForPropertySpec(PropertySpec spec) {
-		newHashMap("t" -> new Object());
+	def mongooseOptionsForCommonPropertySpec(PropertySpec spec)
+	{
+		#{ "type" -> genType(spec).toString,
+		   "required" -> true
+		};
+	}
+	
+	def mongooseOptionsForSpecificPropertySpec(PropertySpec spec)
+	{
+		#{
+			"type" -> if (spec.needsTypeCheck) 
+							"mongoose.Schema.Types.Mixed"
+					  	else genType(spec).toString	
+		}	
 	}
 	
 	def genType(PropertySpec ps) {
@@ -201,10 +213,21 @@ class DiffToMongoose
 	}
 	
 	def dispatch genTypeForProperty(Property property) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		'''!empty!'''
+		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 
-	def dispatch CharSequence genTypeForProperty(PrimitiveType type) {
+	def dispatch genTypeForProperty(Aggregate property) {
+		'''!aggregate!'''
+		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+
+	def dispatch genTypeForProperty(Reference property) {
+		'''!reference!'''
+		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	}
+
+	def dispatch genTypeForProperty(PrimitiveType type) {
 		switch typeName : type.name.toLowerCase {
 			case "string" : '''String'''
 			case typeName.isInt : '''Number'''
@@ -217,17 +240,4 @@ class DiffToMongoose
 	private def isInt(String type) { #["int", "integer", "number"].contains(type) }
 	private def isFloat(String type) { #["float", "double"].contains(type) }
 	private def isBoolean(String type) { #["boolean", "bool"].contains(type) }
-
-
-
-//	def dispatch CharSequence genTypeCheckLowLevel(Tuple type, String name) {
-//	    '''(«name».constructor === Array) && («name».length === «type.elements.size»)
-//	    «IF type.elements.size != 0»
-//	    &&
-//	    «var i = 0»
-//	    «FOR t : type.elements SEPARATOR " && "»
-//	    «genTypeCheckLowLevel(t, name + '[' + i++ + ']')»
-//	    «ENDFOR»
-//	    «ENDIF»'''
-//	}
 }
