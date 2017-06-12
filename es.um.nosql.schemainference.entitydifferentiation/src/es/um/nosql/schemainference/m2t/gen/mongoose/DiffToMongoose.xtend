@@ -10,7 +10,6 @@ import java.util.List
 import es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp
 import java.io.PrintStream
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec
-import org.eclipse.xtext.xbase.lib.Functions.Function1
 import es.um.nosql.schemainference.NoSQLSchema.Property
 import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType
 import es.um.nosql.schemainference.NoSQLSchema.Attribute
@@ -19,11 +18,11 @@ import es.um.nosql.schemainference.NoSQLSchema.Tuple
 import es.um.nosql.schemainference.NoSQLSchema.Reference
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate
 import es.um.nosql.schemainference.NoSQLSchema.Entity
-import java.util.Collections
 import java.util.HashMap
 import java.util.Set
 import java.util.Map
 import com.google.gson.Gson
+import java.util.regex.Pattern
 
 class DiffToMongoose
 {
@@ -194,41 +193,71 @@ class DiffToMongoose
 	
 	def mongooseOptionsForCommonPropertySpec(PropertySpec spec)
 	{
-		#{ "type" -> genType(spec).toString,
-		   "required" -> true
-		};
+		val props = <String,Object>newHashMap()
+
+		props.putAll(genType(spec))
+		props.put('required', true)
+		props
 	}
 	
 	def mongooseOptionsForSpecificPropertySpec(PropertySpec spec)
 	{
-		#{
-			"type" -> if (spec.needsTypeCheck) 
-							"mongoose.Schema.Types.Mixed"
-					  	else genType(spec).toString	
-		}	
+		val props = <String,Object>newHashMap()
+
+		props.putAll(genType(spec))
+		props.put('required', true)
+		props
 	}
 	
 	def genType(PropertySpec ps) {
-		genTypeForProperty(ps.property)
+		if (ps.needsTypeCheck)
+			#{ "type" -> "mongoose.Schema.Types.Mixed" }
+		else
+			genTypeForProperty(ps.property)
 	}
 	
 	def dispatch genTypeForProperty(Property property) {
-		'''!empty!'''
-		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		#{'type' -> '''!empty!''' }
 	}
 
 	def dispatch genTypeForProperty(Aggregate property) {
-		'''!aggregate!'''
-		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
+		#{ 'type' -> '''!aggregate!''' }
 	}
 
-	def dispatch genTypeForProperty(Reference property) {
-		'''!reference!'''
-		//throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	def dispatch genTypeForProperty(Reference ref) {
+		// If originalType is empty, suppose String
+		if (ref.originalType == null || ref.originalType.empty)
+			return #{ 'type' -> 'String'}
+		
+		val refComps = expandRef(ref)
+		
+		// DBRef
+		if (refComps.length == 2)
+			#{	'type' -> genTypeForPrimitive(refComps.get(1)),
+			  	'ref' -> ref.refTo.name
+			}
+		else
+			#{ 'type' -> genTypeForPrimitive(ref.originalType) }
+	}
+	
+	val pat = Pattern.compile("DBRef\\((.+?)\\)")
+	
+	def expandRef(Reference reference) 
+	{
+		val m = pat.matcher(reference.originalType)
+		if (m.matches)
+			#["dbref", m.group(0)]
+		else
+			#[reference.originalType]
 	}
 
-	def dispatch genTypeForProperty(PrimitiveType type) {
-		switch typeName : type.name.toLowerCase {
+	def genTypeForPrimitive(PrimitiveType type)
+	{
+		genTypeForPrimitive(type.name)
+	}
+	
+	def genTypeForPrimitive(String type) {
+		switch typeName : type.toLowerCase {
 			case "string" : '''String'''
 			case typeName.isInt : '''Number'''
 			case typeName.isFloat :  '''Number'''
