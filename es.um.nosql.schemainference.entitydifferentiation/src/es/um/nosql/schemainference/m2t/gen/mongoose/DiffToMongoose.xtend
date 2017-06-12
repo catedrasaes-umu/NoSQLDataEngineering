@@ -233,6 +233,7 @@ class DiffToMongoose
 			case typeName.isInt : '''Number'''
 			case typeName.isFloat :  '''Number'''
 			case typeName.isBoolean : '''Boolean'''
+			case typeName.isObjectId : '''mongoose.Schema.Types.ObjectId'''
 			default: ''''''
 		}
 	}
@@ -240,4 +241,5 @@ class DiffToMongoose
 	private def isInt(String type) { #["int", "integer", "number"].contains(type) }
 	private def isFloat(String type) { #["float", "double"].contains(type) }
 	private def isBoolean(String type) { #["boolean", "bool"].contains(type) }
+	private def isObjectId(String type) { #["objectid"].contains(type) }
 }
