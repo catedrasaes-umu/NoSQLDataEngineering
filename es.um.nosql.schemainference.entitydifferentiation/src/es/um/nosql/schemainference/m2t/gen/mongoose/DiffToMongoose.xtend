@@ -191,7 +191,7 @@ class DiffToMongoose
 	{
 		spec.entityVersionProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
 			[result, neew |
-				val names = newHashSet(result.map[p | p.property.name])  
+				val names = newHashSet(result.map[p | p.property.name])
 				result.addAll(neew.filter[p | !names.contains(p.property.name)])
 				result
 			])
