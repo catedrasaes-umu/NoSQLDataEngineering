@@ -182,25 +182,26 @@ class DiffToMongoose
 	}
 
 	def genSpecs(EntityDiffSpec spec) '''
-	«FOR s : spec.commonProps SEPARATOR ','»
-	«s.property.name» : «jsonRep(mongooseOptionsForCommonPropertySpec(s))»
-	«ENDFOR»
+	«FOR s : spec.commonProps + spec.specificProps SEPARATOR ','»
+	«s.property.name» : «jsonRep(mongooseOptionsForPropertySpec(s))»
+	«ENDFOR»	
 	'''
+	
+	def specificProps(EntityDiffSpec spec)
+	{
+		spec.entityVersionProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
+			[result, neew |
+				val names = newHashSet(result.map[p | p.property.name])  
+				result.addAll(neew.filter[p | !names.contains(p.property.name)])
+				result
+			])
+	}
 	
 	def jsonRep(Map<String,Object> m) {
 		gson.toJson(m)
 	}
 	
-	def mongooseOptionsForCommonPropertySpec(PropertySpec spec)
-	{
-		val props = <String,Object>newHashMap()
-
-		props.putAll(genType(spec))
-		props.put('required', true)
-		props
-	}
-	
-	def mongooseOptionsForSpecificPropertySpec(PropertySpec spec)
+	def mongooseOptionsForPropertySpec(PropertySpec spec)
 	{
 		val props = <String,Object>newHashMap()
 
