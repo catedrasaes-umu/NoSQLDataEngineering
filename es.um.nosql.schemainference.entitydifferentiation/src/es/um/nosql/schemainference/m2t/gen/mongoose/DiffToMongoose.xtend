@@ -20,20 +20,29 @@ import es.um.nosql.schemainference.NoSQLSchema.Aggregate
 import es.um.nosql.schemainference.NoSQLSchema.Entity
 import java.util.HashMap
 import java.util.Set
-import java.util.Map
-import com.google.gson.Gson
 import java.util.regex.Pattern
 
 class DiffToMongoose
 {
+	static class Label
+	{
+		var label = ""
+
+		new(String l) {
+			label = l
+		}
+
+		override toString() {
+			label
+		}
+	}
+	
 	var modelName = "";
 
 	final val EXACT_TYPE = true
 	final val DUCK_TYPE = !EXACT_TYPE
 
 	final val SPECIAL_TYPE_IDENTIFIER = "type"
-	
-	final val Gson gson = new Gson()
 	
 	// list of entities
 	List<Entity> entities
@@ -183,8 +192,8 @@ class DiffToMongoose
 
 	def genSpecs(EntityDiffSpec spec) '''
 	«FOR s : spec.commonProps + spec.specificProps SEPARATOR ','»
-	«s.property.name» : «jsonRep(mongooseOptionsForPropertySpec(s))»
-	«ENDFOR»	
+	«s.property.name» : «mongooseOptionsForPropertySpec(s)»
+	«ENDFOR»
 	'''
 	
 	def specificProps(EntityDiffSpec spec)
@@ -195,10 +204,6 @@ class DiffToMongoose
 				result.addAll(neew.filter[p | !names.contains(p.property.name)])
 				result
 			])
-	}
-	
-	def jsonRep(Map<String,Object> m) {
-		gson.toJson(m)
 	}
 	
 	def mongooseOptionsForPropertySpec(PropertySpec spec)
