@@ -215,9 +215,14 @@ class DiffToMongoose
 		props
 	}
 	
+	private def label(String s)
+	{
+		new Label(s)
+	}
+	
 	def genType(PropertySpec ps) {
 		if (ps.needsTypeCheck)
-			#{ "type" -> "mongoose.Schema.Types.Mixed" }
+			#{ "type" -> label("mongoose.Schema.Types.Mixed") }
 		else
 			genTypeForProperty(ps.property)
 	}
@@ -230,17 +235,19 @@ class DiffToMongoose
 		#{ 'type' -> '''!aggregate!''' }
 	}
 
+
+
 	def dispatch genTypeForProperty(Reference ref) {
 		// If originalType is empty, suppose String
 		if (ref.originalType == null || ref.originalType.empty)
-			return #{ 'type' -> 'String'}
+			return #{ 'type' -> label('String')}
 		
 		val refComps = expandRef(ref)
 		
 		// DBRef
 		if (refComps.length == 2)
 			#{	'type' -> genTypeForPrimitive(refComps.get(1)),
-			  	'ref' -> ref.refTo.name
+			  	'ref' -> label(ref.refTo.name)
 			}
 		else
 			#{ 'type' -> genTypeForPrimitive(ref.originalType) }
@@ -263,14 +270,16 @@ class DiffToMongoose
 	}
 	
 	def genTypeForPrimitive(String type) {
-		switch typeName : type.toLowerCase {
-			case "string" : '''String'''
-			case typeName.isInt : '''Number'''
-			case typeName.isFloat :  '''Number'''
-			case typeName.isBoolean : '''Boolean'''
-			case typeName.isObjectId : '''mongoose.Schema.Types.ObjectId'''
-			default: ''''''
-		}
+		label(
+			switch typeName : type.toLowerCase {
+				case "string" : "String"
+				case typeName.isInt : 'Number'
+				case typeName.isFloat :  'Number'
+				case typeName.isBoolean : 'Boolean'
+				case typeName.isObjectId : 'mongoose.Schema.Types.ObjectId'
+				default: ''
+			}
+		)
 	}
 
 	private def isInt(String type) { #["int", "integer", "number"].contains(type) }
