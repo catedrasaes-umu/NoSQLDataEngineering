@@ -21,6 +21,7 @@ import es.um.nosql.schemainference.NoSQLSchema.Entity
 import java.util.HashMap
 import java.util.Set
 import java.util.regex.Pattern
+import java.util.Map
 
 class DiffToMongoose
 {
@@ -192,7 +193,7 @@ class DiffToMongoose
 
 	def genSpecs(EntityDiffSpec spec) '''
 	«FOR s : spec.commonProps + spec.specificProps SEPARATOR ','»
-	«s.property.name» : «mongooseOptionsForPropertySpec(s)»
+	«s.property.name» : «toJSONString(mongooseOptionsForPropertySpec(s))»
 	«ENDFOR»
 	'''
 	
@@ -214,6 +215,19 @@ class DiffToMongoose
 		props.put('required', true)
 		props
 	}
+	
+	def toJSONString(Object o)
+	{
+		switch o {
+			Map<String, Object>: 
+				'''{«FOR k : o.keySet SEPARATOR ','»«k»: «toJSONString(o.get(k))»«ENDFOR»	}'''.toString()
+			String: stringify(o)
+			default: o 
+		}
+	}
+	
+	private def stringify(String string)
+		'''"«string.replace("\"", "\\\"")»"'''
 	
 	private def label(String s)
 	{
@@ -250,7 +264,7 @@ class DiffToMongoose
 			  	'ref' -> label(ref.refTo.name)
 			}
 		else
-			#{ 'type' -> genTypeForPrimitive(ref.originalType) }
+			#{ 'type' -> genTypeForPrimitive(ref.originalType)}
 	}
 	
 	val pat = Pattern.compile("DBRef\\((.+?)\\)")
