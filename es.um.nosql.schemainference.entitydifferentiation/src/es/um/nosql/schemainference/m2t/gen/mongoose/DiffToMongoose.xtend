@@ -218,7 +218,8 @@ class DiffToMongoose
 	{
 		switch o {
 			Map<String, Object>: 
-				'''{«FOR k : o.keySet SEPARATOR ', '»«k»: «toJSONString(o.get(k))»«ENDFOR»	}'''
+				'''{«FOR k : o.keySet SEPARATOR ', '»«k»: «toJSONString(o.get(k))»«ENDFOR»}'''
+				'''{«FOR k : o.keySet SEPARATOR ','»«k»: «toJSONString(o.get(k))»«ENDFOR»}'''.toString()
 			String: stringify(o)
 			default: o.toString
 		}
