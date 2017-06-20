@@ -190,7 +190,7 @@ class DiffToMongoose
 
 	def genSpecs(EntityDiffSpec spec) '''
 	«FOR s : spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false] SEPARATOR ','»
-	«s.key.property.name» : «toJSONString(mongooseOptionsForPropertySpec(s.key, s.value))»
+	«s.key.property.name»: «toJSONString(mongooseOptionsForPropertySpec(s.key, s.value))»
 	«ENDFOR»
 	'''
 	
@@ -214,12 +214,20 @@ class DiffToMongoose
 		props
 	}
 	
+	// Maybe simplify output when the map has only one element (the type)
+	def toJSONMaybeSimplified(Map<String, Object> m)
+	{
+		val keySet = m.keySet;
+		if (keySet.length == 1 && keySet.get(0).equals("type"))
+			toJSONString(m.values.get(0))
+		else
+			'''{«FOR k : keySet SEPARATOR ', '»«k»: «toJSONString(m.get(k))»«ENDFOR»}'''
+	}
+	
 	def CharSequence toJSONString(Object o)
 	{
 		switch o {
-			Map<String, Object>: 
-				'''{«FOR k : o.keySet SEPARATOR ', '»«k»: «toJSONString(o.get(k))»«ENDFOR»}'''
-				'''{«FOR k : o.keySet SEPARATOR ','»«k»: «toJSONString(o.get(k))»«ENDFOR»}'''.toString()
+			Map<String, Object>: toJSONMaybeSimplified(o)
 			String: stringify(o)
 			default: o.toString
 		}
