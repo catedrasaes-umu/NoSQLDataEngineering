@@ -7,13 +7,10 @@ import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage
 import java.io.File
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec
 import java.util.List
-import es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp
 import java.io.PrintStream
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec
-import es.um.nosql.schemainference.NoSQLSchema.Property
 import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType
 import es.um.nosql.schemainference.NoSQLSchema.Attribute
-import es.um.nosql.schemainference.NoSQLSchema.Type
 import es.um.nosql.schemainference.NoSQLSchema.Tuple
 import es.um.nosql.schemainference.NoSQLSchema.Reference
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate
@@ -211,7 +208,7 @@ class DiffToMongoose
 	{
 		val props = <String,Object>newHashMap()
 
-		props.putAll(genType(spec))
+		props.putAll(genTypeForPropertySpec(spec))
 		if (required)
 			props.put('required', true)
 		props
@@ -221,7 +218,7 @@ class DiffToMongoose
 	{
 		switch o {
 			Map<String, Object>: 
-				'''{«FOR k : o.keySet SEPARATOR ','»«k»: «toJSONString(o.get(k))»«ENDFOR»	}'''
+				'''{«FOR k : o.keySet SEPARATOR ', '»«k»: «toJSONString(o.get(k))»«ENDFOR»	}'''
 			String: stringify(o)
 			default: o.toString
 		}
@@ -235,19 +232,31 @@ class DiffToMongoose
 		new Label(s)
 	}
 	
-	def genType(PropertySpec ps) {
+	def genTypeForPropertySpec(PropertySpec ps) {
 		if (ps.needsTypeCheck)
 			#{ "type" -> label("mongoose.Schema.Types.Mixed") }
 		else
 			genTypeForProperty(ps.property)
 	}
 	
-	def dispatch genTypeForProperty(Property property) {
-		#{'type' -> '''!empty!''' }
+	def aggregateType(Aggregate agg)
+	{
+		val entityName = (agg.refTo.get(0).eContainer as Entity).name
+		
+		if (agg.lowerBound == 1 && agg.upperBound == 1)
+			'''«entityName»Schema'''
+		else
+			'''[«entityName»Schema]'''
+	}
+	
+	def dispatch genTypeForProperty(Aggregate agg) 
+	{
+		#{ 'type' -> aggregateType(agg) }
 	}
 
-	def dispatch genTypeForProperty(Aggregate property) {
-		#{ 'type' -> '''!aggregate!''' }
+	def dispatch genTypeForProperty(Attribute att) 
+	{
+		genAttributeType(att.type)
 	}
 
 	def dispatch genTypeForProperty(Reference ref) {
@@ -259,11 +268,11 @@ class DiffToMongoose
 		
 		// DBRef
 		if (refComps.length == 2)
-			#{	'type' -> genTypeForPrimitive(refComps.get(1)),
+			#{	'type' -> genTypeForPrimitiveString(refComps.get(1)),
 			  	'ref' -> label(ref.refTo.name)
 			}
 		else
-			#{ 'type' -> genTypeForPrimitive(ref.originalType)}
+			#{ 'type' -> genTypeForPrimitiveString(ref.originalType)}
 	}
 	
 	val pat = Pattern.compile("DBRef\\((.+?)\\)")
@@ -277,12 +286,27 @@ class DiffToMongoose
 			#[reference.originalType]
 	}
 
-	def genTypeForPrimitive(PrimitiveType type)
+	def dispatch genAttributeType(Tuple type)
 	{
-		genTypeForPrimitive(type.name)
+		#{'type' -> genType(type)}
 	}
 	
-	def genTypeForPrimitive(String type) {
+	def dispatch Object genType(Tuple tuple)
+		// Generate only the first type
+		'''[«genType(tuple.elements.get(0))»]'''
+		//'''[«FOR t : tuple.elements SEPARATOR ', '»«genType(t)»«ENDFOR»]'''
+
+	def dispatch genType(PrimitiveType type)
+	{
+		genTypeForPrimitiveString(type.name)
+	}
+
+	def dispatch genAttributeType(PrimitiveType type)
+	{
+		#{'type' -> genTypeForPrimitiveString(type.name)}
+	}
+	
+	def genTypeForPrimitiveString(String type) {
 		label(
 			switch typeName : type.toLowerCase {
 				case "string" : "String"
