@@ -192,8 +192,8 @@ class DiffToMongoose
 	}
 
 	def genSpecs(EntityDiffSpec spec) '''
-	«FOR s : spec.commonProps + spec.specificProps SEPARATOR ','»
-	«s.property.name» : «toJSONString(mongooseOptionsForPropertySpec(s))»
+	«FOR s : spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false] SEPARATOR ','»
+	«s.key.property.name» : «toJSONString(mongooseOptionsForPropertySpec(s.key, s.value))»
 	«ENDFOR»
 	'''
 	
@@ -201,28 +201,29 @@ class DiffToMongoose
 	{
 		spec.entityVersionProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
 			[result, neew |
-				val names = newHashSet(result.map[p | p.property.name])
+				val names = result.map[p | p.property.name].toSet
 				result.addAll(neew.filter[p | !names.contains(p.property.name)])
 				result
 			])
 	}
 	
-	def mongooseOptionsForPropertySpec(PropertySpec spec)
+	def mongooseOptionsForPropertySpec(PropertySpec spec, boolean required)
 	{
 		val props = <String,Object>newHashMap()
 
 		props.putAll(genType(spec))
-		props.put('required', true)
+		if (required)
+			props.put('required', true)
 		props
 	}
 	
-	def toJSONString(Object o)
+	def CharSequence toJSONString(Object o)
 	{
 		switch o {
 			Map<String, Object>: 
-				'''{«FOR k : o.keySet SEPARATOR ','»«k»: «toJSONString(o.get(k))»«ENDFOR»	}'''.toString()
+				'''{«FOR k : o.keySet SEPARATOR ','»«k»: «toJSONString(o.get(k))»«ENDFOR»	}'''
 			String: stringify(o)
-			default: o 
+			default: o.toString
 		}
 	}
 	
@@ -248,8 +249,6 @@ class DiffToMongoose
 	def dispatch genTypeForProperty(Aggregate property) {
 		#{ 'type' -> '''!aggregate!''' }
 	}
-
-
 
 	def dispatch genTypeForProperty(Reference ref) {
 		// If originalType is empty, suppose String
