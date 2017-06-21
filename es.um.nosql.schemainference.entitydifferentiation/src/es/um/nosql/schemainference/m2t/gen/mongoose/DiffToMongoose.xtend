@@ -99,7 +99,17 @@ class DiffToMongoose
 		// Calc dependencies between entities
 		val order = calcDeps(diff)
 
+		fillTypeCompatibilityMatrix(diff)
+	
 		order.forEach[e | writeToFile(schemaFileName(e), generateSchema(e))]
+	}
+	
+	// Fill, for each property of each entity that appear in more than 
+	// one entity version *with different type* (those that hold the needsTypeCheck
+	// boolean attribute), the set of types, to check possible type folding in
+	// a latter pass
+	def fillTypeCompatibilityMatrix(EntityDifferentiation differentiation) {
+		throw new UnsupportedOperationException("TODO: auto-generated method stub")
 	}
 
 	def generateSchema(Entity e) '''
@@ -136,10 +146,7 @@ class DiffToMongoose
 		
 		// Implement a topological order, Khan's algorithm
 		// https://en.wikipedia.org/wiki/Topological_sorting#Kahn.27s_algorithm
-		var order = topOrder()
-		
-		//order.forEach[e | System.out.println(e.name)]
-		order
+		topOrder()
 	}
 	
 	// Get the first level of dependencies for an Entity
