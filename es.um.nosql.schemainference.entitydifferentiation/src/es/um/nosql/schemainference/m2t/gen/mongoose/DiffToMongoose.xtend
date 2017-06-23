@@ -19,7 +19,6 @@ import java.util.HashMap
 import java.util.Set
 import java.util.regex.Pattern
 import java.util.Map
-import org.eclipse.collections.impl.block.factory.Comparators
 import java.util.Comparator
 
 class DiffToMongoose
@@ -102,7 +101,7 @@ class DiffToMongoose
 		// Calc dependencies between entities
 		topOrderEntities = calcDeps(diff)
 
-		fillTypeCompatibilityMatrix(diff)
+		fillTypeSetMatrix(diff)
 	
 		topOrderEntities.forEach[e | writeToFile(schemaFileName(e), generateSchema(e))]
 	}
@@ -111,8 +110,9 @@ class DiffToMongoose
 	// one entity version *with different type* (those that hold the needsTypeCheck
 	// boolean attribute), the set of types, to check possible type folding in
 	// a latter pass
-	def fillTypeCompatibilityMatrix(EntityDifferentiation differentiation)
+	def fillTypeSetMatrix(EntityDifferentiation differentiation)
 	{
+		
 	}
 
 	def generateSchema(Entity e) '''
