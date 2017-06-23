@@ -19,6 +19,8 @@ import java.util.HashMap
 import java.util.Set
 import java.util.regex.Pattern
 import java.util.Map
+import org.eclipse.collections.impl.block.factory.Comparators
+import java.util.Comparator
 
 class DiffToMongoose
 {
@@ -44,6 +46,7 @@ class DiffToMongoose
 	
 	// list of entities
 	List<Entity> entities
+	List<Entity> topOrderEntities
 	
 	HashMap<Entity, Set<Entity>> entityDeps
 	HashMap<Entity, Set<Entity>> inverseEntityDeps
@@ -97,19 +100,19 @@ class DiffToMongoose
 		diffByEntity = newHashMap(diff.entityDiffSpecs.map[ed | ed.entity -> ed])
 
 		// Calc dependencies between entities
-		val order = calcDeps(diff)
+		topOrderEntities = calcDeps(diff)
 
 		fillTypeCompatibilityMatrix(diff)
 	
-		order.forEach[e | writeToFile(schemaFileName(e), generateSchema(e))]
+		topOrderEntities.forEach[e | writeToFile(schemaFileName(e), generateSchema(e))]
 	}
 	
 	// Fill, for each property of each entity that appear in more than 
 	// one entity version *with different type* (those that hold the needsTypeCheck
 	// boolean attribute), the set of types, to check possible type folding in
 	// a latter pass
-	def fillTypeCompatibilityMatrix(EntityDifferentiation differentiation) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
+	def fillTypeCompatibilityMatrix(EntityDifferentiation differentiation)
+	{
 	}
 
 	def generateSchema(Entity e) '''
@@ -126,7 +129,7 @@ class DiffToMongoose
 	'''
 	
 	def genIncludes(Entity entity) '''
-		«FOR e : entityDeps.get(entity)»
+		«FOR e : entityDeps.get(entity).sortWith(Comparator.comparing[e | topOrderEntities.indexOf(e)])»
 			var «e.name»Schema = require('./«schemaFileName(e)»');
 		«ENDFOR»
 	'''
