@@ -15,7 +15,6 @@ import es.um.nosql.schemainference.NoSQLSchema.Tuple
 import es.um.nosql.schemainference.NoSQLSchema.Reference
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate
 import es.um.nosql.schemainference.NoSQLSchema.Entity
-import java.util.HashMap
 import java.util.Set
 import java.util.regex.Pattern
 import java.util.Map
@@ -47,9 +46,10 @@ class DiffToMongoose
 	List<Entity> entities
 	List<Entity> topOrderEntities
 	
-	HashMap<Entity, Set<Entity>> entityDeps
-	HashMap<Entity, Set<Entity>> inverseEntityDeps
-	HashMap<Entity, EntityDiffSpec> diffByEntity
+	Map<Entity, Set<Entity>> entityDeps
+	Map<Entity, Set<Entity>> inverseEntityDeps
+	Map<Entity, EntityDiffSpec> diffByEntity
+	Map<Entity, Map<String, List<PropertySpec>>> typeListByProperty
 	
 	static File outputDir
 
@@ -97,22 +97,25 @@ class DiffToMongoose
 	{
 		modelName = diff.name;
 		diffByEntity = newHashMap(diff.entityDiffSpecs.map[ed | ed.entity -> ed])
+		val entities = diff.entityDiffSpecs.map[entity]
 
 		// Calc dependencies between entities
-		topOrderEntities = calcDeps(diff)
+		topOrderEntities = calcDeps(entities)
 
-		fillTypeSetMatrix(diff)
-	
+		typeListByProperty = fillTypeListMatrix(entities)
 		topOrderEntities.forEach[e | writeToFile(schemaFileName(e), generateSchema(e))]
 	}
 	
 	// Fill, for each property of each entity that appear in more than 
 	// one entity version *with different type* (those that hold the needsTypeCheck
-	// boolean attribute), the set of types, to check possible type folding in
+	// boolean attribute), the list of types, to check possible type folding in
 	// a latter pass
-	def fillTypeSetMatrix(EntityDifferentiation differentiation)
+	def fillTypeListMatrix(List<Entity> entities)
 	{
-		
+		entities.toInvertedMap[e |
+			diffByEntity.get(e).entityVersionProps.map[propertySpecs].flatten
+ 					.filter[needsTypeCheck].groupBy[property.name]
+		]
 	}
 
 	def generateSchema(Entity e) '''
@@ -138,10 +141,8 @@ class DiffToMongoose
 		e.name + "Schema.js"
 	}
 		
-	def calcDeps(EntityDifferentiation diff) 
-	{
-		entities = diff.entityDiffSpecs.map[entity]
-
+	def calcDeps(List<Entity> entities) 
+	{ 
 		entityDeps = newHashMap(entities.map[e | e -> depListFor(e)])
 		inverseEntityDeps = newHashMap(entities.map[e | 
 			e -> entities.filter[e2 | entityDeps.get(e2).contains(e)].toSet
