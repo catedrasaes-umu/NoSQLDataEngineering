@@ -19,6 +19,7 @@ import java.util.Set
 import java.util.regex.Pattern
 import java.util.Map
 import java.util.Comparator
+import es.um.nosql.schemainference.NoSQLSchema.Property
 
 class DiffToMongoose
 {
@@ -49,7 +50,7 @@ class DiffToMongoose
 	Map<Entity, Set<Entity>> entityDeps
 	Map<Entity, Set<Entity>> inverseEntityDeps
 	Map<Entity, EntityDiffSpec> diffByEntity
-	Map<Entity, Map<String, List<PropertySpec>>> typeListByProperty
+	Map<Entity, Map<String, List<PropertySpec>>> typeListByPropertyName
 	
 	static File outputDir
 
@@ -102,7 +103,7 @@ class DiffToMongoose
 		// Calc dependencies between entities
 		topOrderEntities = calcDeps(entities)
 
-		typeListByProperty = fillTypeListMatrix(entities)
+		typeListByPropertyName = calcTypeListMatrix(entities)
 		topOrderEntities.forEach[e | writeToFile(schemaFileName(e), generateSchema(e))]
 	}
 	
@@ -110,7 +111,7 @@ class DiffToMongoose
 	// one entity version *with different type* (those that hold the needsTypeCheck
 	// boolean attribute), the list of types, to check possible type folding in
 	// a latter pass
-	def fillTypeListMatrix(List<Entity> entities)
+	def calcTypeListMatrix(List<Entity> entities)
 	{
 		entities.toInvertedMap[e |
 			diffByEntity.get(e).entityVersionProps.map[propertySpecs].flatten
@@ -125,7 +126,7 @@ class DiffToMongoose
 		«genIncludes(e)»
 
 		var «e.name»Schema = new mongoose.Schema({
-			«genSpecs(diffByEntity.get(e))»
+			«genSpecs(e, diffByEntity.get(e))»
 		});
 
 		module.exports = «e.name»Schema;
@@ -199,9 +200,9 @@ class DiffToMongoose
 		}
 	}
 
-	def genSpecs(EntityDiffSpec spec) '''
+	def genSpecs(Entity e, EntityDiffSpec spec) '''
 	«FOR s : spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false] SEPARATOR ','»
-	«s.key.property.name»: «toJSONString(mongooseOptionsForPropertySpec(s.key, s.value))»
+	«s.key.property.name»: «toJSONString(mongooseOptionsForPropertySpec(e,s.key, s.value))»
 	«ENDFOR»
 	'''
 	
@@ -215,11 +216,11 @@ class DiffToMongoose
 			])
 	}
 	
-	def mongooseOptionsForPropertySpec(PropertySpec spec, boolean required)
+	def mongooseOptionsForPropertySpec(Entity e, PropertySpec spec, boolean required)
 	{
 		val props = <String,Object>newHashMap()
 
-		props.putAll(genTypeForPropertySpec(spec))
+		props.putAll(genTypeForPropertySpec(e, spec))
 		if (required)
 			props.put('required', true)
 		props
@@ -252,11 +253,30 @@ class DiffToMongoose
 		new Label(s)
 	}
 	
-	def genTypeForPropertySpec(PropertySpec ps) {
+	def genTypeForPropertySpec(Entity e, PropertySpec ps) {
 		if (ps.needsTypeCheck)
-			#{ "type" -> label("mongoose.Schema.Types.Mixed") }
+			genTypeForTypeCheckProperty(e, ps.property)
 		else
 			genTypeForProperty(ps.property)
+	}
+	
+	// As it is a type check property, it occurs in the 
+	def genTypeForTypeCheckProperty(Entity e, Property property)
+	{
+		// TODO: First version, Mixed type. In the future, explore
+		// complex types for Mongoose:
+		// http://mongoosejs.com/docs/customschematypes.html
+		// We have to register and generate all these types beforehand
+		// so maybe this function should be performed before, when
+		// the typeListByPropertyName variable is created
+		
+		// If any property type is a primitive, we always produce Mixed
+		// (see the TODO above)
+		val typeList = typeListByPropertyName.get(e).get(property.name)
+		if (typeList.forall[ps | (ps.property as Attribute)?.type instanceof PrimitiveType ])
+			#{ "type" -> label("mongoose.Schema.Types.Mixed") }
+		else
+			#{ "type" -> label("mongoose.Schema.Types.Mixed") }
 	}
 	
 	def aggregateType(Aggregate agg)
