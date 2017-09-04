@@ -2,7 +2,7 @@ package es.um.nosql.schemainference.design.services;
 
 import java.util.ArrayList;
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate;
 import es.um.nosql.schemainference.NoSQLSchema.Association;
@@ -10,6 +10,7 @@ import es.um.nosql.schemainference.NoSQLSchema.Attribute;
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
 import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType;
+import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.NoSQLSchema.Reference;
 import es.um.nosql.schemainference.NoSQLSchema.Tuple;
 
@@ -88,6 +89,37 @@ public class PropertyServices
 			);
 		}
 		result.sort((assoc1, assoc2) -> assoc1.getName().compareTo(assoc2.getName()));
+
+		return result;
+	}
+
+	public List<Attribute> getCommonAttributeList(Entity entity)
+	{
+		List<Attribute> result = new ArrayList<Attribute>();
+
+		if (entity.getEntityversions().isEmpty())
+			return result;
+
+		EntityVersion eVersion = entity.getEntityversions().get(0);
+
+		for (Property prop : eVersion.getProperties())
+		  if (prop instanceof Attribute)
+		    result.add((Attribute)prop);
+
+		// TODO: Check for common properties of each entity version.
+		// TODO: Also provide methods for getting specific attributes of each version...
+/*		result = result.stream().filter(attr ->
+		{
+		  for (int i = 1; i < entity.getEntityversions().size(); i++)
+		    if (entity.getEntityversions().get(i).getProperties().stream().anyMatch(predicate))
+		      continue;
+		    else
+		      return false;
+
+		  return true;
+		}).collect(Collectors.toList());
+*/
+		result.sort((attr1, attr2) -> attr1.getName().compareTo(attr2.getName()));
 
 		return result;
 	}
