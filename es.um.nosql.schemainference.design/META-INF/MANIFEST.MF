@@ -14,4 +14,13 @@ Require-Bundle: org.eclipse.ui,
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName
-Bundle-ClassPath: .
+Bundle-ClassPath: .,
+ lib/caffeine-2.5.5.jar
+Import-Package: com.github.benmanes.caffeine,
+ com.github.benmanes.caffeine.base,
+ com.github.benmanes.caffeine.cache,
+ com.github.benmanes.caffeine.cache.stats
+Export-Package: com.github.benmanes.caffeine,
+ com.github.benmanes.caffeine.base,
+ com.github.benmanes.caffeine.cache,
+ com.github.benmanes.caffeine.cache.stats

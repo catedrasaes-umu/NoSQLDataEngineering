@@ -2,7 +2,9 @@ package es.um.nosql.schemainference.design.services;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
+
+import com.github.benmanes.caffeine.cache.Cache;
+import com.github.benmanes.caffeine.cache.Caffeine;
 
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate;
 import es.um.nosql.schemainference.NoSQLSchema.Association;
@@ -16,6 +18,11 @@ import es.um.nosql.schemainference.NoSQLSchema.Tuple;
 
 public class PropertyServices
 {
+	Cache<Entity, List<Attribute>> entityAllAttributesCache = Caffeine.newBuilder().build();
+	Cache<Entity, List<Attribute>> entityAllAssociationsCache = Caffeine.newBuilder().build();
+	Cache<Entity, List<Attribute>> entityCommonAttributesCache = Caffeine.newBuilder().build();
+	Cache<Entity, List<Association>> entityCommonAssociationsCache = Caffeine.newBuilder().build();
+
 	public List<Attribute> getAttributeList(Entity entity)
 	{
 		List<Attribute> result = new ArrayList<Attribute>();
