@@ -21,12 +21,6 @@ import es.um.nosql.schemainference.util.emf.ResourceManager;
  */
 public class EntityDiffModelPrinter
 {
-	//private static final String MODEL_ROUTE = "tests/mongoMovies3.xmi";
-	//private static final String SPECIAL_TYPE_IDENTIFIER = "type";
-
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args)
 	{		
 		EntitydifferentiationPackage tdp = EntitydifferentiationPackage.eINSTANCE;
@@ -34,8 +28,7 @@ public class EntityDiffModelPrinter
 
 		// Load the origin model.
 		File sourceRes = new File(args[0]);
-		rm.loadResourcesAsStrings("file://" + sourceRes.getAbsolutePath());
-		//rm.loadResourcesAsStrings(args[0]);
+		rm.loadResourcesAsStrings(sourceRes.getAbsolutePath());
 
 		Iterable<Resource> resources = rm.getResources();
 		EntityDifferentiation diff = EntitydifferentiationFactory.eINSTANCE.createEntityDifferentiation();

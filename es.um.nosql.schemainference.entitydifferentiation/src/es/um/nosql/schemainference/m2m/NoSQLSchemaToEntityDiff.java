@@ -45,9 +45,6 @@ import es.um.nosql.schemainference.util.emf.ResourceManager;
  */
 public class NoSQLSchemaToEntityDiff
 {
-	//private static final String MODEL_ROUTE = "tests/mongoMovies3.xmi";
-	//private static final String SPECIAL_TYPE_IDENTIFIER = "type";
-
 	public static void main(String[] args)
 	{		
 		(new NoSQLSchemaToEntityDiff()).run(args);
@@ -60,8 +57,14 @@ public class NoSQLSchemaToEntityDiff
 
 	private void run(String[] args)
   {
-	  File INPUT_MODEL = new File("MyTests/mongoMovies3.xmi");
-	  File OUTPUT_MODEL = new File("MyTests/mongoMovies3_Diff.xmi");
+	  if (args.length < 2)
+	  {
+	    System.err.println("Usage: NoSQLSchemaToEntityDiff input_model output_model");
+	    System.exit(-1);
+	  }
+
+	  File INPUT_MODEL = new File(args[0]);
+    File OUTPUT_MODEL = new File(args[1]);
 
     NoSQLSchemaPackage nosqlschemaPackage = NoSQLSchemaPackage.eINSTANCE;
     EntitydifferentiationPackage entitydiffPackage = EntitydifferentiationPackage.eINSTANCE;
@@ -93,46 +96,6 @@ public class NoSQLSchemaToEntityDiff
       e.printStackTrace();
     }
   }
-
-/*
-	private void run(String[] args)
-	{
-		NoSQLSchemaPackage dbsp = NoSQLSchemaPackage.eINSTANCE;
-		EntitydifferentiationPackage tdp = EntitydifferentiationPackage.eINSTANCE;
-		ResourceManager rm = new ResourceManager(dbsp, tdp);
-
-		// Load the origin model.
-		File sourceRes = new File(args[0]);
-		rm.loadResourcesAsStrings("file://" + sourceRes.getAbsolutePath());
-		//rm.loadResourcesAsStrings(args[0]);
-
-		Iterable<Resource> resources = rm.getResources();
-		EntityDifferentiation diff = EntitydifferentiationFactory.eINSTANCE.createEntityDifferentiation();
-
-		doTransform((NoSQLSchema)resources.iterator().next().getContents().get(0), diff);
-
-		File outResource = new File(args[1]);
-		Resource outputRes = rm.getResourceSet().createResource(URI.createFileURI("file://" + outResource.getAbsolutePath()));
-		//Resource outputRes = rm.getResourceSet().createResource(URI.createFileURI(args[1]));
-		outputRes.getContents().add(diff);
-
-		// Configure output
-		tdp.eResource().setURI(
-				URI.createPlatformResourceURI("es.um.nosql.schemainference.entitydifferentiation/model/entitydifferentiation.ecore", true));
-		dbsp.eResource().setURI(
-				URI.createPlatformResourceURI("es.um.nosql.schemainference/model/nosqlschema.ecore", true));
-		Map<Object,Object> options = new HashMap<Object,Object>();
-		options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
-		options.put(XMIResource.OPTION_ENCODING, "UTF-8");
-
-		try {
-			OutputStream os = new FileOutputStream(outResource);
-			outputRes.save(os, options);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
-*/
 
 	/*
 	 * The following code takes some assumptions.
