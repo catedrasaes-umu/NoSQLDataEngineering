@@ -57,7 +57,7 @@ public class ResourceManager
 	public void loadResourcesAsStrings(String... args)
 	{
 		for(String model: args)
-			resourceSet.getResource(URI.createURI(model), true);
+			resourceSet.getResource(URI.createFileURI(model), true);
 	}
 
 	public Iterable<Resource> getResources()

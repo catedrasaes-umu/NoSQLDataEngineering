@@ -11,7 +11,6 @@ import static java.util.stream.Collectors.toMap;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.OutputStream;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -49,9 +48,6 @@ public class NoSQLSchemaToEntityDiff
 	//private static final String MODEL_ROUTE = "tests/mongoMovies3.xmi";
 	//private static final String SPECIAL_TYPE_IDENTIFIER = "type";
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args)
 	{		
 		(new NoSQLSchemaToEntityDiff()).run(args);
@@ -62,6 +58,43 @@ public class NoSQLSchemaToEntityDiff
 	private Map<EntityVersion, EntityVersionProp> evPropsByEv;
 	private PropertyHashingStrategy propertyHashing = new PropertyHashingStrategy();
 
+	private void run(String[] args)
+  {
+	  File INPUT_MODEL = new File("MyTests/mongoMovies3.xmi");
+	  File OUTPUT_MODEL = new File("MyTests/mongoMovies3_Diff.xmi");
+
+    NoSQLSchemaPackage nosqlschemaPackage = NoSQLSchemaPackage.eINSTANCE;
+    EntitydifferentiationPackage entitydiffPackage = EntitydifferentiationPackage.eINSTANCE;
+    ResourceManager resManager = new ResourceManager(nosqlschemaPackage, entitydiffPackage);
+
+//    String relativePath = Paths.get(OUTPUT_MODEL.getAbsolutePath()).relativize(Paths.get(INPUT_MODEL.getAbsolutePath())).toString().substring(3);
+
+    // Load the origin model.
+    resManager.loadResourcesAsStrings(INPUT_MODEL.getAbsolutePath());
+    NoSQLSchema schema = (NoSQLSchema)resManager.getResources().iterator().next().getContents().get(0);
+
+    EntityDifferentiation differentiation = doTransform(schema);
+
+    Resource outputRes = resManager.getResourceSet().createResource(URI.createFileURI(OUTPUT_MODEL.getAbsolutePath()));
+    outputRes.getContents().add(differentiation);
+
+    // Configure output
+    nosqlschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.schemainference/model/nosqlschema.ecore", true));
+    entitydiffPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.schemainference.entitydifferentiation/model/entitydifferentiation.ecore", true));
+    Map<Object,Object> options = new HashMap<Object,Object>();
+    options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
+    options.put(XMIResource.OPTION_ENCODING, "UTF-8");
+
+    try
+    {
+      outputRes.save(new FileOutputStream(OUTPUT_MODEL), options);
+    } catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+/*
 	private void run(String[] args)
 	{
 		NoSQLSchemaPackage dbsp = NoSQLSchemaPackage.eINSTANCE;
@@ -99,6 +132,7 @@ public class NoSQLSchemaToEntityDiff
 			e.printStackTrace();
 		}
 	}
+*/
 
 	/*
 	 * The following code takes some assumptions.
@@ -119,16 +153,20 @@ public class NoSQLSchemaToEntityDiff
 	 *    those with properties that exist in any other of the EVs. For those, we will
 	 *    have to check for the type.
 	 */
-	private void doTransform(NoSQLSchema schema, EntityDifferentiation diff)
+	private EntityDifferentiation doTransform(NoSQLSchema schema)
 	{
-		diff.setName(schema.getName());
-		diff.setSchema(schema);
+    EntityDifferentiation differentiation = EntitydifferentiationFactory.eINSTANCE.createEntityDifferentiation();
+
+    differentiation.setName(schema.getName());
+    differentiation.setSchema(schema);
 		
 		initCalculations(schema);
 
 		// Generate entity References
 		for (Entity e: schema.getEntities())
-			transformEntity(e, diff);
+			transformEntity(e, differentiation);
+
+		return differentiation;
 	}
 
 	/**
