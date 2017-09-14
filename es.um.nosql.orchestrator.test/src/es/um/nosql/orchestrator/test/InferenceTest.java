@@ -7,7 +7,7 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonArray;
 
-import es.um.nosql.schemainference.db.DbController;
+import es.um.nosql.schemainference.db.interfaces.Urban2Db;
 import es.um.nosql.schemainference.db.utils.DbType;
 import es.um.nosql.schemainference.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.schemainference.nosqlimport.db.couchdb.CouchDBImport;
@@ -24,7 +24,7 @@ public class InferenceTest
 	private static final String MONGODB_OUTPUT_MODEL = MODELS_FOLDER + TABLENAME + "_MONGODB.xmi";
 	private static final String COUCHDB_MAPREDUCE_FOLDER = "mapreduce/couchdb/v1";
 	private static final String MONGODB_MAPREDUCE_FOLDER = "mapreduce/mongodb/v1";
-
+/*
 	public static void prepareCouchDBExample()
 	{
 		long startTime = System.currentTimeMillis();
@@ -113,23 +113,23 @@ public class InferenceTest
 		mongoDbExtract(DBNAME, jsonModel);
 		System.out.println("BuildNoSQLSchema created: " + DBNAME + " in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
-/*
+*/
 	public static void prepareUrbanExample()
 	{
 		long startTime = System.currentTimeMillis();
 
-		String DBNAME = "urban";
+		String DBNAME = "urbanDictionary";
 		String jsonFile = "/media/alberto/braxis/urban/words.json";
 		String jsonModel = MODELS_FOLDER + DBNAME + ".xmi";
-
+/*
 		System.out.println("Inserting the JSON file...");
-		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
-		controller.json2Db(jsonFile, DBNAME);
-
+		Urban2Db controller = new Urban2Db(DbType.MONGODB, MONGODB_IP);
+		controller.run(jsonFile, DBNAME);
+*/
 		mongoDbExtract(DBNAME, jsonModel);
 		System.out.println("BuildNoSQLSchema created: " + DBNAME + " in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
-*/
+
 	private static void mongoDbExtract(String dbName, String model)
 	{
 		System.out.println("Starting inference...");
@@ -147,7 +147,7 @@ public class InferenceTest
 //		prepareCouchDBExample();
 //		prepareMongoDBExample();
 //		prepareMongoDBSOFExample();
-		prepareMongoDBEPolExample();
+//		prepareMongoDBEPolExample();
 //		prepareErrorEPolExample();
 //		prepareJsonMongoExample();
 //		prepareUrbanExample();

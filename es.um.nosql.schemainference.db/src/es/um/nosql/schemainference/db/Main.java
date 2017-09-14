@@ -4,6 +4,7 @@ import java.io.File;
 
 import es.um.nosql.schemainference.db.interfaces.EPol2Db;
 import es.um.nosql.schemainference.db.interfaces.Model2Db;
+import es.um.nosql.schemainference.db.interfaces.Urban2Db;
 import es.um.nosql.schemainference.db.utils.DbType;
 
 public class Main
@@ -19,9 +20,10 @@ public class Main
 //	   prepareModel2Db(DbType.COUCHDB, COUCHDB_IP);
 //     prepareModel2Db(DbType.MONGODB, MONGODB_IP);
 //	    prepareXML2Mongo();
-//	    prepareXML2Couch();
-//	    prepareEPol2Db(DbType.MONGODB, MONGODB_IP);
+//	   prepareXML2Couch();
+//	   prepareEPol2Db(DbType.MONGODB, MONGODB_IP);
 //      prepareEPol2Db(DbType.COUCHDB, COUCHDB_IP);
+	   prepareUrban2Db(DbType.MONGODB, MONGODB_IP);
 	 }
 
 	public static void prepareModel2Db(DbType type, String ip)
@@ -46,7 +48,21 @@ public class Main
 
 	  for (File countryFile : new File(BASE_DIR).listFiles())
 	    controller.run(countryFile.toString(), DBNAME);
+
+	  controller.shutdown();
 	}
+
+	public static void prepareUrban2Db(DbType type, String ip)
+	{
+    String BASE_FILE = "json/words.json";
+    String DBNAME = "urbanDictionary";
+
+    Urban2Db controller = new Urban2Db(type, ip);
+    controller.run(BASE_FILE, DBNAME);
+
+    controller.shutdown();
+	}
+
 /*
 	public static void prepareXML2Mongo()
 	{

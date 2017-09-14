@@ -67,6 +67,7 @@ public class MongoDbClient extends MongoClient implements DbClient
 		{
 			ObjectMapper mapper = new ObjectMapper();
 			JsonNode jsonItems = mapper.readTree(jsonContent);
+
 			jsonItems.forEach(jsonElement ->
 			{
 				docList.add(Document.parse(jsonElement.toString()));
