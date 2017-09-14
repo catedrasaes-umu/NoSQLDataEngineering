@@ -1,23 +1,31 @@
 package es.um.nosql.schemainference.db.interfaces;
 
 import java.io.File;
+import java.nio.file.Paths;
 
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.schemainference.db.adapters.DbClient;
-import es.um.nosql.schemainference.db.generator.JsonGenerator;
+import es.um.nosql.schemainference.db.utils.DbType;
+import es.um.nosql.schemainference.db.utils.generator.JsonGenerator;
 import es.um.nosql.schemainference.util.emf.ModelLoader;
 
-public class Model2Db
+public class Model2Db extends Source2Db
 {
-	private DbClient client;
-
-	public Model2Db(DbClient client)
+	public Model2Db(DbType db, String ip)
 	{
-		this.client = client;
+	  super(db, ip);
+  }
+
+	public void run(String modelRoute, int minInstances, int maxInstances)
+	{
+	  long startTime = System.currentTimeMillis();
+
+	  System.out.println("Reading input model " + modelRoute + "...");
+	  storeJSONContent(modelRoute, minInstances, maxInstances);
+	  System.out.println(Paths.get(modelRoute).getFileName() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
 
-	public void storeJSONContent(String modelRoute, int minInstances, int maxInstances)
+  private void storeJSONContent(String modelRoute, int minInstances, int maxInstances)
 	{
 		ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
 		JsonGenerator generator = new JsonGenerator();
@@ -33,7 +41,7 @@ public class Model2Db
 			e.printStackTrace();
 		}
 
-		client.cleanDb(schema.getName());
-		client.insert(schema.getName(), jsonContent);
+		getClient().cleanDb(schema.getName());
+		getClient().insert(schema.getName(), jsonContent);
 	}
 }

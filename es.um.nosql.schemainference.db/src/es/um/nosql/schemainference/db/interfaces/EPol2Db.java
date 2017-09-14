@@ -2,23 +2,31 @@ package es.um.nosql.schemainference.db.interfaces;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import es.um.nosql.schemainference.db.adapters.DbClient;
+import es.um.nosql.schemainference.db.utils.DbType;
 
-public class EPol2Db
+public class EPol2Db extends Source2Db
 {
-	private DbClient client;
+  public EPol2Db(DbType db, String ip)
+  {
+    super(db, ip);
+  }
 
-	public EPol2Db(DbClient client)
-	{
-		this.client = client;
-	}
+  public void run(String jsonRoute, String dbName)
+  {
+    long startTime = System.currentTimeMillis();
 
-	public void storeJSONContent(String jsonRoute, String dbName)
+    System.out.println("Reading json file " + jsonRoute + "...");
+    storeJSONContent(jsonRoute, dbName);
+    System.out.println(dbName + ":" + Paths.get(jsonRoute).getFileName() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
+  }
+
+	private void storeJSONContent(String jsonRoute, String dbName)
 	{
 		try
 		{
@@ -29,7 +37,7 @@ public class EPol2Db
 				{
 					JsonNode collection = rootObj.get(fieldName);
 					if (collection.size() > 0)
-						client.insert(dbName, fieldName, collection.toString());
+						getClient().insert(dbName, fieldName, collection.toString());
 				}
 			});
 		} catch (JsonProcessingException e)

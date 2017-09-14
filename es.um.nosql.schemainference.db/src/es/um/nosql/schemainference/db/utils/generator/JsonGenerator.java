@@ -1,4 +1,4 @@
-package es.um.nosql.schemainference.db.generator;
+package es.um.nosql.schemainference.db.utils.generator;
 
 import java.util.ArrayList;
 import java.util.HashMap;

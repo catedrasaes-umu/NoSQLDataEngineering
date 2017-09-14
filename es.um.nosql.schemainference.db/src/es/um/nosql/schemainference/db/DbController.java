@@ -31,18 +31,6 @@ public class DbController
 		return client.shutdown();
 	}
 
-	public void model2Db(String modelRoute, int minInstances, int maxInstances)
-	{
-		long startTime = System.currentTimeMillis();
-
-		System.out.println("Reading input model " + modelRoute + "...");
-		Model2Db loader = new Model2Db(client);
-
-		loader.storeJSONContent(modelRoute, minInstances, maxInstances);
-
-		System.out.println(Paths.get(modelRoute).getFileName() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
-	}
-
 	public void xml2Db(String xmlRoute, String dbName)
 	{
 		long startTime = System.currentTimeMillis();
@@ -53,18 +41,6 @@ public class DbController
 		loader.storeXMLContent(xmlRoute, dbName);
 
 		System.out.println(dbName + ":" + Paths.get(xmlRoute).getFileName() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
-	}
-
-	public void ePol2Db(String jsonRoute, String dbName)
-	{
-		long startTime = System.currentTimeMillis();
-
-		System.out.println("Reading json file " + jsonRoute + "...");
-		EPol2Db loader = new EPol2Db(client);
-
-		loader.storeJSONContent(jsonRoute, dbName);
-
-		System.out.println(dbName + ":" + Paths.get(jsonRoute).getFileName() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
 
 	public void json2Db(String jsonRoute, String dbName)

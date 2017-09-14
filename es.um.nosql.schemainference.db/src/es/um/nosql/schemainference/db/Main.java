@@ -2,6 +2,8 @@ package es.um.nosql.schemainference.db;
 
 import java.io.File;
 
+import es.um.nosql.schemainference.db.interfaces.EPol2Db;
+import es.um.nosql.schemainference.db.interfaces.Model2Db;
 import es.um.nosql.schemainference.db.utils.DbType;
 
 public class Main
@@ -12,32 +14,40 @@ public class Main
 
 	private static final String INPUT_FOLDER = "models/";
 
-	public static void prepareModel2Couch()
-	{
-		int minInstances = 2;
-		int maxInstances = 5;
+	 public static void main(String[] args)
+	 {
+//	   prepareModel2Db(DbType.COUCHDB, COUCHDB_IP);
+//     prepareModel2Db(DbType.MONGODB, MONGODB_IP);
+//	    prepareXML2Mongo();
+//	    prepareXML2Couch();
+//	    prepareEPol2Db(DbType.MONGODB, MONGODB_IP);
+//      prepareEPol2Db(DbType.COUCHDB, COUCHDB_IP);
+	 }
 
-		DbController controller = new DbController(DbType.COUCHDB, COUCHDB_IP);
+	public static void prepareModel2Db(DbType type, String ip)
+	{
+		int minInstances = 20;
+		int maxInstances = 50;
+
+		Model2Db controller = new Model2Db(type, ip);
 
 		for (String fileRoute : new File(INPUT_FOLDER).list())
-			controller.model2Db(INPUT_FOLDER + fileRoute, minInstances, maxInstances);
+			controller.run(INPUT_FOLDER + fileRoute, minInstances, maxInstances);
 
 		controller.shutdown();
 	}
 
-	public static void prepareModel2Mongo()
+	public static void prepareEPol2Db(DbType type, String ip)
 	{
-		int minInstances = 2;
-		int maxInstances = 5;
+	  String BASE_DIR = "json/everyPolitician/countries/";
+	  String DBNAME = "everypolitician";
 
-		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
+	  EPol2Db controller = new EPol2Db(type, ip);
 
-		for (String fileRoute : new File(INPUT_FOLDER).list())
-			controller.model2Db(INPUT_FOLDER + fileRoute, minInstances, maxInstances);
-
-		controller.shutdown();
+	  for (File countryFile : new File(BASE_DIR).listFiles())
+	    controller.run(countryFile.toString(), DBNAME);
 	}
-
+/*
 	public static void prepareXML2Mongo()
 	{
 		String BASE_DIR = "/media/alberto/braxis/StackOverFlow/";
@@ -81,24 +91,5 @@ public class Main
 		controller.xml2Db(POSTLINKS_FILE, DBNAME);
 		controller.xml2Db(BADGES_FILE, DBNAME);
 	}
-
-	public static void prepareEPol2Mongo()
-	{
-		String BASE_DIR = "json/everyPolitician/countries/";
-		String DBNAME = "everypolitician";
-
-		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
-
-		for (File countryFile : new File(BASE_DIR).listFiles())
-			controller.ePol2Db(countryFile.toString(), DBNAME);
-	}
-
-	public static void main(String[] args)
-	{
-//		prepareModel2Couch();
-//		prepareModel2Mongo();
-//		prepareXML2Mongo();
-//		prepareXML2Couch();
-		prepareEPol2Mongo();
-	}
+*/
 }
