@@ -4,6 +4,7 @@ import java.io.File;
 
 import es.um.nosql.schemainference.db.interfaces.EPol2Db;
 import es.um.nosql.schemainference.db.interfaces.Model2Db;
+import es.um.nosql.schemainference.db.interfaces.SOF2Db;
 import es.um.nosql.schemainference.db.interfaces.Urban2Db;
 import es.um.nosql.schemainference.db.utils.DbType;
 
@@ -15,97 +16,90 @@ public class Main
 
 	private static final String INPUT_FOLDER = "models/";
 
-	 public static void main(String[] args)
-	 {
-//	   prepareModel2Db(DbType.COUCHDB, COUCHDB_IP);
-//     prepareModel2Db(DbType.MONGODB, MONGODB_IP);
-//	    prepareXML2Mongo();
-//	   prepareXML2Couch();
-//	   prepareEPol2Db(DbType.MONGODB, MONGODB_IP);
-//      prepareEPol2Db(DbType.COUCHDB, COUCHDB_IP);
-	   prepareUrban2Db(DbType.MONGODB, MONGODB_IP);
-	 }
+  private static String EPOL_BASE_DIR = "json/everyPolitician/countries/";
 
-	public static void prepareModel2Db(DbType type, String ip)
+  private static String URBAN_BASE_FILE = "/media/alberto/braxis/datasets/urban/error_words.json";
+
+  private static String SOF_BASE_DIR = "/media/alberto/braxis/datasets/stackoverflow/";
+
+	public static void main(String[] args)
+	{
+//	  PREPARE_MODEL2DB(DbType.COUCHDB, COUCHDB_IP, INPUT_FOLDER);
+//	  PREPARE_MODEL2DB(DbType.MONGODB, MONGODB_IP, INPUT_FOLDER);
+//	  PREPARE_SOF2DB(DbType.COUCHDB, COUCHDB_IP, SOF_BASE_DIR);
+//	  PREPARE_SOF2DB(DbType.MONGODB, MONGODB_IP, SOF_BASE_DIR);
+	  PREPARE_EPOL2DB(DbType.MONGODB, MONGODB_IP, EPOL_BASE_DIR);
+//	  PREPARE_EPOL2DB(DbType.COUCHDB, COUCHDB_IP, EPOL_BASE_DIR);
+//	  PREPARE_URBAN2DB(DbType.MONGODB, MONGODB_IP, URBAN_BASE_FILE);
+	}
+
+	public static void PREPARE_MODEL2DB(DbType type, String ip, String source)
 	{
 		int minInstances = 20;
 		int maxInstances = 50;
 
 		Model2Db controller = new Model2Db(type, ip);
 
-		for (String fileRoute : new File(INPUT_FOLDER).list())
-			controller.run(INPUT_FOLDER + fileRoute, minInstances, maxInstances);
-
+		File theFile = new File(source);
+		if (theFile.isDirectory())
+		{
+		  for (String fileRoute : theFile.list())
+	      controller.run(INPUT_FOLDER + fileRoute, minInstances, maxInstances);
+		}
+		else
+		  controller.run(INPUT_FOLDER + source, minInstances, maxInstances);
+		
 		controller.shutdown();
 	}
 
-	public static void prepareEPol2Db(DbType type, String ip)
+	public static void PREPARE_EPOL2DB(DbType type, String ip, String source)
 	{
-	  String BASE_DIR = "json/everyPolitician/countries/";
 	  String DBNAME = "everypolitician";
 
 	  EPol2Db controller = new EPol2Db(type, ip);
 
-	  for (File countryFile : new File(BASE_DIR).listFiles())
-	    controller.run(countryFile.toString(), DBNAME);
+	  File theFile = new File(source);
+	  if (theFile.isDirectory())
+	  {
+	    for (String countryRoute : theFile.list())
+	      controller.run(source + countryRoute, DBNAME);
+	  }
+	  else
+	    controller.run(source, DBNAME);
 
 	  controller.shutdown();
 	}
 
-	public static void prepareUrban2Db(DbType type, String ip)
+	public static void PREPARE_URBAN2DB(DbType type, String ip, String sourceFile)
 	{
-    String BASE_FILE = "json/words.json";
     String DBNAME = "urbanDictionary";
 
     Urban2Db controller = new Urban2Db(type, ip);
-    controller.run(BASE_FILE, DBNAME);
+    controller.run(sourceFile, DBNAME);
 
     controller.shutdown();
 	}
 
-/*
-	public static void prepareXML2Mongo()
+	public static void PREPARE_SOF2DB(DbType type, String ip, String sourceDir)
 	{
-		String BASE_DIR = "/media/alberto/braxis/StackOverFlow/";
-		String USER_FILE = BASE_DIR + "Users.xml";
-		String VOTES_FILE = BASE_DIR + "Votes.xml";
-		String COMMENTS_FILE = BASE_DIR + "Comments.xml";
-		String POSTS_FILE = BASE_DIR + "Posts.xml";
-		String TAGS_FILE = BASE_DIR + "Tags.xml";
-		String POSTLINKS_FILE = BASE_DIR + "PostLinks.xml";
-		String BADGES_FILE = BASE_DIR + "Badges.xml";
-		String DBNAME = "stackoverflow";
+    String USER_FILE = sourceDir + "Users.xml";
+    String VOTES_FILE = sourceDir + "Votes.xml";
+    String COMMENTS_FILE = sourceDir + "Comments.xml";
+    String POSTS_FILE = sourceDir + "Posts.xml";
+    String TAGS_FILE = sourceDir + "Tags.xml";
+    String POSTLINKS_FILE = sourceDir + "PostLinks.xml";
+    String BADGES_FILE = sourceDir + "Badges.xml";
+    String DBNAME = "stackoverflow";
 
-		DbController controller = new DbController(DbType.MONGODB, MONGODB_IP);
-		controller.xml2Db(USER_FILE, DBNAME);//6438660 filas => 38 minutos
-		controller.xml2Db(VOTES_FILE, DBNAME);//116720227 filas => 10 horas
-		controller.xml2Db(COMMENTS_FILE, DBNAME);//53566720 filas => 5 horas
-		controller.xml2Db(POSTS_FILE, DBNAME);
-		controller.xml2Db(TAGS_FILE, DBNAME);//48375 filas
-		controller.xml2Db(POSTLINKS_FILE, DBNAME);//3993518 filas
-		controller.xml2Db(BADGES_FILE, DBNAME);//21882069 filas
+    SOF2Db controller = new SOF2Db(type, ip);
+    controller.run(USER_FILE,  DBNAME);//6438660 filas => 38 minutos
+    controller.run(VOTES_FILE,  DBNAME);//116720227 filas => 10 horas
+    controller.run(COMMENTS_FILE,  DBNAME);//53566720 filas => 5 horas
+    controller.run(POSTS_FILE,  DBNAME);
+    controller.run(TAGS_FILE,  DBNAME);//48375 filas
+    controller.run(POSTLINKS_FILE,  DBNAME);//3993518 filas
+    controller.run(BADGES_FILE,  DBNAME);//21882069 filas
+
+    controller.shutdown();
 	}
-
-	public static void prepareXML2Couch()
-	{
-		String BASE_DIR = "/media/alberto/braxis/StackOverFlow/";
-		String USER_FILE = BASE_DIR + "Users.xml";
-		String VOTES_FILE = BASE_DIR + "Votes.xml";
-		String COMMENTS_FILE = BASE_DIR + "Comments.xml";
-		String POSTS_FILE = BASE_DIR + "Posts.xml";
-		String TAGS_FILE = BASE_DIR + "Tags.xml";
-		String POSTLINKS_FILE = BASE_DIR + "PostLinks.xml";
-		String BADGES_FILE = BASE_DIR + "Badges.xml";
-		String DBNAME = "stackoverflow";
-
-		DbController controller = new DbController(DbType.COUCHDB, COUCHDB_IP);
-		controller.xml2Db(USER_FILE, DBNAME);
-		controller.xml2Db(VOTES_FILE, DBNAME);
-		controller.xml2Db(COMMENTS_FILE, DBNAME);
-		controller.xml2Db(POSTS_FILE, DBNAME);
-		controller.xml2Db(TAGS_FILE, DBNAME);
-		controller.xml2Db(POSTLINKS_FILE, DBNAME);
-		controller.xml2Db(BADGES_FILE, DBNAME);
-	}
-*/
 }
