@@ -22,11 +22,11 @@ public class InferenceTest
 
 	 public static void main(String[] args) throws IOException
 	 {
-	   prepareCouchDBExample();
-	   prepareMongoDBExample();
-	   prepareMongoDBSOFExample();
-	   prepareMongoDBEPolExample();
-	   prepareUrbanExample();
+	   //prepareCouchDBExample();
+	   //prepareMongoDBExample();
+	   //prepareMongoDBSOFExample();
+	   //prepareMongoDBEPolExample();
+	   //prepareUrbanExample();
 	 }
 
 	public static void prepareCouchDBExample()

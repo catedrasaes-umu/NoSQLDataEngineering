@@ -17,9 +17,9 @@ public class EPolTest
 {
   private static final String DATABASE_IP = "localhost";
   private static final String MONGODB_MAPREDUCE_FOLDER = "mapreduce/mongodb/v1";
-  private static String ERROR_FILE = "testSources/ERROR_Sweden.json";
-  private static String DBNAME = "debug_everypolitician";
-  private static String OUTPUT_MODEL = "models" + DBNAME + ".xmi";
+  private static String INPUT_FILE = "testSources/ERROR_Sweden.json";
+  private static String DBNAME = "DEBUG_everypolitician";
+  private static String OUTPUT_MODEL = "models/" + DBNAME + ".xmi";
 
   private EPol2Db controller;
 
@@ -32,14 +32,14 @@ public class EPolTest
   @After
   public void tearDown() throws Exception
   {
+    controller.getClient().cleanDb(DBNAME);
     controller.shutdown();
   }
 
   @Test
   public void test()
   {
-    EPol2Db controller = new EPol2Db(DbType.MONGODB, DATABASE_IP);
-    controller.run(ERROR_FILE, DBNAME);
+    controller.run(INPUT_FILE, DBNAME);
 
     System.out.println("Starting inference...");
     MongoDBImport inferrer = new MongoDBImport();
@@ -51,5 +51,7 @@ public class EPolTest
     builder.buildFromGsonArray(DBNAME, jArray, OUTPUT_MODEL);
 
     System.out.println("BuildNoSQLSchema created: " + OUTPUT_MODEL);
+    //TODO: Actually fail on exception...
+    //TODO: Check model integrity
   }
 }
