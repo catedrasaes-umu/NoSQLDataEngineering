@@ -2,8 +2,6 @@ package es.um.nosql.orchestrator.test.errortests;
 
 import static org.junit.Assert.*;
 
-import java.io.FileNotFoundException;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -19,9 +17,9 @@ public class UrbanTest
 {
   private static final String DATABASE_IP = "localhost";
   private static final String MONGODB_MAPREDUCE_FOLDER = "mapreduce/mongodb/v1";
-  private static String INPUT_FILE = "testSources/ERROR_Urban.json";
+  private static String INPUT_FILE = "testSources/ERROR_words.json";
   private static String DBNAME = "DEBUG_urban";
-  private static String OUTPUT_MODEL = "models" + DBNAME + ".xmi";
+  private static String OUTPUT_MODEL = "models/" + DBNAME + ".xmi";
 
   private Urban2Db controller;
 
@@ -51,7 +49,11 @@ public class UrbanTest
     System.out.println("Starting BuildNoSQLSchema...");
     BuildNoSQLSchema builder = new BuildNoSQLSchema();
     builder.buildFromGsonArray(DBNAME, jArray, OUTPUT_MODEL);
+
+    System.out.println("BuildNoSQLSchema created: " + OUTPUT_MODEL);
     //TODO: Actually fail on exception...
     //TODO: Check model integrity
+    // There should be an entity Id of some kind with a string attribute
+    // Also some words..
   }
 }
