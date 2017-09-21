@@ -1,0 +1,4 @@
+{ "_id" : { "$oid" : "572f02b412bfe10f2ceeeaa7" }, "definition" : "Another", "urban_word" : "Word2", "thumbs_down" : 0, "lowercase_urban_word" : "word2" }
+{ "_id" : { "$oid" : "572f02b512bfe10f2ceeeaa9" }, "definition" : "Third", "urban_word" : "Word 3", "thumbs_down" : 0, "lowercase_urban_word" : "word 3" }
+{ "_id" : { "$oid" : "572f02b1032adf1105f67d34" }, "definition" : "Fourth", "urban_word" : "Word4", "thumbs_down" : 3, "lowercase_urban_word" : "word4" }
+{ "_id" : { "$oid" : "572f02af032adf1105f67d2f" }, "definition" : "Final", "urban_word" : "Word5", "thumbs_down" : 13, "lowercase_urban_word" : "word5" }

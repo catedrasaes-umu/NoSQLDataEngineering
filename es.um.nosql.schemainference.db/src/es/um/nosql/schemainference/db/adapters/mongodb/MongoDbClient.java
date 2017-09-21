@@ -38,6 +38,7 @@ public class MongoDbClient extends MongoClient implements DbClient
 
 			for (JsonNode item : jsonItems)
 			{
+			  normalizeId(item);
 				String type = item.get("type").asText();
 				if (!collections.containsKey(type))
 					collections.put(type, new ArrayList<Document>());
@@ -70,6 +71,7 @@ public class MongoDbClient extends MongoClient implements DbClient
 
 			jsonItems.forEach(jsonElement ->
 			{
+			  normalizeId(jsonElement);
 				docList.add(Document.parse(jsonElement.toString()));
 			});
 
@@ -114,5 +116,16 @@ public class MongoDbClient extends MongoClient implements DbClient
 	{
 		close();
 		return true;
+	}
+
+	private void normalizeId(JsonNode element)
+	{
+	  JsonNode id = element.get("_id");
+
+	  if (id != null && id.isObject())
+	  {
+	    String newId = id.get("$oid").asText();
+	    ((ObjectNode)element).put("_id", newId);
+	  }
 	}
 }

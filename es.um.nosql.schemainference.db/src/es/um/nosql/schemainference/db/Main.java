@@ -2,6 +2,7 @@ package es.um.nosql.schemainference.db;
 
 import java.io.File;
 
+import es.um.nosql.schemainference.db.interfaces.Comp2Db;
 import es.um.nosql.schemainference.db.interfaces.EPol2Db;
 import es.um.nosql.schemainference.db.interfaces.Model2Db;
 import es.um.nosql.schemainference.db.interfaces.SOF2Db;
@@ -18,9 +19,11 @@ public class Main
 
   private static String EPOL_BASE_DIR = "json/everyPolitician/countries/";
 
-  private static String URBAN_BASE_FILE = "/media/alberto/braxis/datasets/urban/error_words.json";
+  private static String URBAN_BASE_FILE = "/media/alberto/tarsonis/datasets/urban/words.json";
 
-  private static String SOF_BASE_DIR = "/media/alberto/braxis/datasets/stackoverflow/";
+  private static String SOF_BASE_DIR = "/media/alberto/tarsonis/datasets/stackoverflow/";
+
+  private static String COMP_BASE_DIR = "/media/alberto/tarsonis/datasets/companies/companies.json";
 
 	public static void main(String[] args)
 	{
@@ -28,9 +31,10 @@ public class Main
 //	  PREPARE_MODEL2DB(DbType.MONGODB, MONGODB_IP, INPUT_FOLDER);
 //	  PREPARE_SOF2DB(DbType.COUCHDB, COUCHDB_IP, SOF_BASE_DIR);
 //	  PREPARE_SOF2DB(DbType.MONGODB, MONGODB_IP, SOF_BASE_DIR);
-	  PREPARE_EPOL2DB(DbType.MONGODB, MONGODB_IP, EPOL_BASE_DIR);
+//	  PREPARE_EPOL2DB(DbType.MONGODB, MONGODB_IP, EPOL_BASE_DIR);
 //	  PREPARE_EPOL2DB(DbType.COUCHDB, COUCHDB_IP, EPOL_BASE_DIR);
-//	  PREPARE_URBAN2DB(DbType.MONGODB, MONGODB_IP, URBAN_BASE_FILE);
+//	  PREPARE_URBAN2DB(DbType.COUCHDB, COUCHDB_IP, URBAN_BASE_FILE);
+	  PREPARE_COMP2DB(DbType.COUCHDB, COUCHDB_IP, COMP_BASE_DIR);
 	}
 
 	public static void PREPARE_MODEL2DB(DbType type, String ip, String source)
@@ -72,7 +76,7 @@ public class Main
 
 	public static void PREPARE_URBAN2DB(DbType type, String ip, String sourceFile)
 	{
-    String DBNAME = "urbanDictionary";
+    String DBNAME = "urban";
 
     Urban2Db controller = new Urban2Db(type, ip);
     controller.run(sourceFile, DBNAME);
@@ -101,5 +105,15 @@ public class Main
     controller.run(BADGES_FILE,  DBNAME);//21882069 filas
 
     controller.shutdown();
+	}
+
+	public static void PREPARE_COMP2DB(DbType type, String ip, String sourceFile)
+	{
+	  String DBNAME = "companies";
+
+	  Comp2Db controller = new Comp2Db(type, ip);
+	  controller.run(sourceFile, DBNAME);
+
+	  controller.shutdown();
 	}
 }

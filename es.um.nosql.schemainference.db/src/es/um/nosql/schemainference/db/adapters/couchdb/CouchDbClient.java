@@ -35,7 +35,10 @@ public class CouchDbClient extends StdCouchDbInstance implements DbClient
 
 			if (jsonItems.isArray())
 				for (JsonNode item : jsonItems)
+				{
+				  normalizeId(item);
 					itemList.add(item);
+				}
 
 			connector.executeBulk(itemList);
 		} catch(Exception e)
@@ -53,9 +56,11 @@ public class CouchDbClient extends StdCouchDbInstance implements DbClient
 		try
 		{
 			arrayNode = (ArrayNode)mapper.readTree(jsonContent);
+
 			arrayNode.forEach(jsonElement ->
 			{
-				((ObjectNode)jsonElement).put("type", collectionName);
+				normalizeId(jsonElement);
+        normalizeType(jsonElement, collectionName);
 			});
 
 			insert(dbName, arrayNode.toString());
@@ -89,5 +94,21 @@ public class CouchDbClient extends StdCouchDbInstance implements DbClient
 	public boolean shutdown()
 	{
 		return true;
+	}
+
+	private void normalizeId(JsonNode element)
+	{
+	  JsonNode id = element.get("_id");
+
+	  if (id != null && id.isObject())
+	  {
+	    String newId = id.get("$oid").asText();
+	    ((ObjectNode)element).put("_id", newId);
+	  }
+	}
+
+	private void normalizeType(JsonNode element, String collectionName)
+	{
+	  ((ObjectNode)element).put("type", collectionName);
 	}
 }

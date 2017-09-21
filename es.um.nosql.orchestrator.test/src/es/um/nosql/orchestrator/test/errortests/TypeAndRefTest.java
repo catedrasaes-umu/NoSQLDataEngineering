@@ -1,7 +1,5 @@
 package es.um.nosql.orchestrator.test.errortests;
 
-import static org.junit.Assert.*;
-
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -13,12 +11,12 @@ import es.um.nosql.schemainference.db.utils.DbType;
 import es.um.nosql.schemainference.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.schemainference.nosqlimport.db.mongodb.MongoDBImport;
 
-public class UrbanTest
+public class TypeAndRefTest
 {
   private static final String DATABASE_IP = "localhost";
   private static final String MONGODB_MAPREDUCE_FOLDER = "mapreduce/mongodb/v1";
-  private static String INPUT_FILE = "testSources/ERROR_words.json";
-  private static String DBNAME = "DEBUG_urban";
+  private static String INPUT_FILE = "testSources/ERROR_TypeAndRef.json";
+  private static String DBNAME = "DEBUG_TypeAndRef";
   private static String OUTPUT_MODEL = "testOutput/" + DBNAME + ".xmi";
 
   private Urban2Db controller;
@@ -40,6 +38,7 @@ public class UrbanTest
   public void test()
   {
     controller.run(INPUT_FILE, DBNAME);
+
     System.out.println("Starting inference...");
     MongoDBImport inferrer = new MongoDBImport();
     JsonArray jArray = inferrer.mapRed2Array(DATABASE_IP, DBNAME, MONGODB_MAPREDUCE_FOLDER);
@@ -51,10 +50,8 @@ public class UrbanTest
     builder.buildFromGsonArray(DBNAME, jArray, OUTPUT_MODEL);
 
     System.out.println("BuildNoSQLSchema created: " + OUTPUT_MODEL);
-    //TODO: Actually fail on exception...
-    // It fails if an attribute has a NULL value...
-    //TODO: Check model integrity
-    // There should be an entity Id of some kind with a string attribute
-    // Also some words..
+    // TODO: Something wrong happens when the type of an object (or the name of the collection, in MongoDB) is equals to an object field.
+    // For example: {_id: 1, type: "word", "word": "yodawg", "lowercase_word": "yodawg"}.
+    // This results in "word" and "lowercase_word" being detected as references instead of simple strings.
   }
 }

@@ -19,7 +19,7 @@ public class EPolTest
   private static final String MONGODB_MAPREDUCE_FOLDER = "mapreduce/mongodb/v1";
   private static String INPUT_FILE = "testSources/ERROR_Sweden.json";
   private static String DBNAME = "DEBUG_everypolitician";
-  private static String OUTPUT_MODEL = "models/" + DBNAME + ".xmi";
+  private static String OUTPUT_MODEL = "testOutput/" + DBNAME + ".xmi";
 
   private EPol2Db controller;
 
