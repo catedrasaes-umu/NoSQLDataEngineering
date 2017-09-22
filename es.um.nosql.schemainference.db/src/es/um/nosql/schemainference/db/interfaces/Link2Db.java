@@ -10,11 +10,11 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import es.um.nosql.schemainference.db.utils.DbType;
 
-public class Comp2Db extends Source2Db
+public class Link2Db extends Source2Db
 {
-  private int MAX_LINES_BEFORE_STORE = 2000;
+  private int MAX_LINES_BEFORE_STORE = 5000;
 
-  public Comp2Db(DbType db, String ip)
+  public Link2Db(DbType db, String ip)
   {
     super(db, ip);
   }
@@ -34,7 +34,7 @@ public class Comp2Db extends Source2Db
     {
       ObjectMapper mapper = new ObjectMapper();
       ArrayNode jsonArray = mapper.createArrayNode();
-      String collectionName = "company";
+      String collectionName = "link";
       int numLines = 0;
       int totalLines = 1;
       System.out.println("Storing each " + MAX_LINES_BEFORE_STORE);

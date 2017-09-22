@@ -16,6 +16,7 @@ public class CouchDBStreamAdapter extends AbstractStreamAdapter
 		{
 			JsonObject result = (JsonObject)parser.parse(jsonObject.get("key").getAsString());
 			result.remove("_rev");
+			result.remove("_id");
 
 			return result;
 		});

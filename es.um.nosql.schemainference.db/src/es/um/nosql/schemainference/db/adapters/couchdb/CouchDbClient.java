@@ -100,11 +100,18 @@ public class CouchDbClient extends StdCouchDbInstance implements DbClient
 	{
 	  JsonNode id = element.get("_id");
 
-	  if (id != null && id.isObject())
-	  {
-	    String newId = id.get("$oid").asText();
-	    ((ObjectNode)element).put("_id", newId);
-	  }
+    if (id != null && id.isObject())
+    {
+      String newId = "";
+      // The common way to store an id object is by the tag "$oid".
+      // So we check that attribute first.
+      if (id.has("$oid"))
+        newId = id.get("$oid").asText();
+      else
+        // If it doesnt exist we just take the first field of the id object.
+        newId = id.fields().next().getValue().asText();
+      ((ObjectNode)element).put("_id", newId);
+    }
 	}
 
 	private void normalizeType(JsonNode element, String collectionName)
