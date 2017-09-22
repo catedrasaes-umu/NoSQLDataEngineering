@@ -42,7 +42,7 @@ public class InferenceTest
 //	  prepareEPolExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_EPOL);
 //	  prepareUrbanExample(DbType.MONGODB, FILL_ONLY, FILE_URBAN);
 //	  prepareCompanyExample(DbType.COUCHDB, FILL_ONLY, FILE_COMPANY);
-	  prepareLinkExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_LINK);
+//	  prepareLinkExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_LINK);
 	}
 
 	public static void prepareModelExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
