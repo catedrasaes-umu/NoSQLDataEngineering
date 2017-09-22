@@ -7,6 +7,7 @@ import com.google.gson.JsonArray;
 
 import es.um.nosql.schemainference.db.interfaces.Comp2Db;
 import es.um.nosql.schemainference.db.interfaces.EPol2Db;
+import es.um.nosql.schemainference.db.interfaces.Harvard2Db;
 import es.um.nosql.schemainference.db.interfaces.Link2Db;
 import es.um.nosql.schemainference.db.interfaces.Model2Db;
 import es.um.nosql.schemainference.db.interfaces.SOF2Db;
@@ -26,14 +27,13 @@ public class InferenceTest
 	private static final boolean FILL_ONLY = true;
 	private static final boolean FILL_AND_INFER = false;
 
-
 	private static final String FILE_MODEL = "models/mongoMovies3.xmi";
 	private static final String FOLDER_SOF = "/media/alberto/tarsonis/datasets/stackoverflow/";
 	private static final String FOLDER_EPOL = "/media/alberto/tarsonis/datasets/everypolitician/countries/";
 	private static final String FILE_URBAN = "/media/alberto/tarsonis/datasets/urban/words.json";
 	private static final String FILE_COMPANY = "/media/alberto/tarsonis/datasets/companies/companies.json";
 	private static final String FOLDER_LINK = "/media/alberto/tarsonis/datasets/givealink/";
-	
+	private static final String FILE_HARVARD = "F:\\Informatica\\datasets\\harvard\\HMXPC13_DI_v2_5-14-14.csv";
 
 	public static void main(String[] args) throws IOException
 	{
@@ -43,6 +43,7 @@ public class InferenceTest
 //	  prepareUrbanExample(DbType.MONGODB, FILL_ONLY, FILE_URBAN);
 //	  prepareCompanyExample(DbType.COUCHDB, FILL_ONLY, FILE_COMPANY);
 //	  prepareLinkExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_LINK);
+	  prepareHarvardExample(DbType.MONGODB, FILL_ONLY, FILE_HARVARD);
 	}
 
 	public static void prepareModelExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
@@ -186,6 +187,26 @@ public class InferenceTest
     else
       controller.run(source, dbName);
 
+    controller.shutdown();
+
+    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+
+    if (FILL_ONLY)
+      return;
+    else
+      performInference(dbType, dbName, outputModel);
+	}
+
+	public static void prepareHarvardExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
+	{
+	  String dbName = "harvard";
+	  String outputModel = MODELS_FOLDER + dbName + ".xmi";
+
+	  long startTime = System.currentTimeMillis();
+
+    System.out.println("Filling the " + dbType.toString() + " database...");
+    Harvard2Db controller = new Harvard2Db(dbType, DATABASE_IP);
+    controller.run(sourceFile, dbName);
     controller.shutdown();
 
     System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
