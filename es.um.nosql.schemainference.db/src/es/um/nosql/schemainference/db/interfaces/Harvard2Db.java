@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationContext;
@@ -86,12 +87,12 @@ public class Harvard2Db extends Source2Db
         .setSkipFirstDataRow(true)
         .build();
 
-    CsvMapper csvMapper = new CsvMapper();
-    MappingIterator<HarvardPOJO> mappingIterator;
-    ObjectMapper oMapper = new ObjectMapper();
-    ArrayNode jsonArray = oMapper.createArrayNode();
     int numLines = 0;
     int totalLines = 1;
+    CsvMapper csvMapper = new CsvMapper();
+    MappingIterator<HarvardPOJO> mappingIterator;
+    ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);
+    ArrayNode jsonArray = oMapper.createArrayNode();
     String collectionName = "harvard_course";
 
     SimpleModule module = new SimpleModule();
@@ -101,7 +102,6 @@ public class Harvard2Db extends Source2Db
 
     try
     {
-      //TODO: It actually inserts null values on the database ...need some.
       mappingIterator = csvMapper.reader(HarvardPOJO.class).with(schema).readValues(new File(csvRoute));
 
       while (mappingIterator.hasNext())
@@ -119,12 +119,12 @@ public class Harvard2Db extends Source2Db
 
         totalLines++;
       }
-/*
+
       if (jsonArray.size() > 0)
       {
         System.out.println("Storing remaining files...");
         getClient().insert(dbName, collectionName, jsonArray.toString());
-      }*/
+      }
     } catch (Exception e)
     {
       e.printStackTrace();

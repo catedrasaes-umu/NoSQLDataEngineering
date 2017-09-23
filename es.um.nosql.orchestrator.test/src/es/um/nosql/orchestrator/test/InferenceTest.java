@@ -33,17 +33,18 @@ public class InferenceTest
 	private static final String FILE_URBAN = "/media/alberto/tarsonis/datasets/urban/words.json";
 	private static final String FILE_COMPANY = "/media/alberto/tarsonis/datasets/companies/companies.json";
 	private static final String FOLDER_LINK = "/media/alberto/tarsonis/datasets/givealink/";
-	private static final String FILE_HARVARD = "F:\\Informatica\\datasets\\harvard\\HMXPC13_DI_v2_5-14-14.csv";
+//	private static final String FILE_HARVARD = "/media/alberto/tarsonis/datasets/harvard/HMXPC13_DI_v2_5-14-14.csv";
 
 	public static void main(String[] args) throws IOException
-	{
+	{//TODO: BEFORE CHECKING MORE DATASETS, WE NEED TO MAKE SURE "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
+	  // IS IN EACH INTERFACE...
 //	  prepareModelExample(DbType.MONGODB, FILL_AND_INFER, FILE_MODEL);
 //	  prepareSOFExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_SOF);  //TODO: Not tested yet
 //	  prepareEPolExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_EPOL);
 //	  prepareUrbanExample(DbType.MONGODB, FILL_ONLY, FILE_URBAN);
 //	  prepareCompanyExample(DbType.COUCHDB, FILL_ONLY, FILE_COMPANY);
 //	  prepareLinkExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_LINK);
-	  prepareHarvardExample(DbType.MONGODB, FILL_ONLY, FILE_HARVARD);
+//	  prepareHarvardExample(DbType.MONGODB, FILL_AND_INFER, FILE_HARVARD);
 	}
 
 	public static void prepareModelExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
