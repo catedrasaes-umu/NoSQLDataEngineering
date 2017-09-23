@@ -1,10 +1,16 @@
 package es.um.nosql.schemainference.db.interfaces;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.file.Paths;
 
+import com.fasterxml.jackson.core.JsonParser;
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationContext;
+import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
@@ -14,6 +20,30 @@ import es.um.nosql.schemainference.db.utils.DbType;
 
 public class Harvard2Db extends Source2Db
 {
+  public static class DoubleToNumberDeserializer extends JsonDeserializer<Integer>
+  {
+    @Override
+    public Integer deserialize(JsonParser parser, DeserializationContext context) throws IOException, JsonProcessingException
+    {
+      if (parser.getText().isEmpty())
+        return null;
+      else
+        return parser.getValueAsInt();
+    }
+  }
+
+  public static class StringToStringDeserializer extends JsonDeserializer<String>
+  {
+    @Override
+    public String deserialize(JsonParser parser, DeserializationContext context) throws IOException, JsonProcessingException
+    {
+      if (parser.getText().isEmpty())
+        return null;
+      else
+        return parser.getValueAsString();
+    }
+  }
+
   private int MAX_LINES_BEFORE_STORE = 25000;
 
   public Harvard2Db(DbType db, String ip)
@@ -64,14 +94,20 @@ public class Harvard2Db extends Source2Db
     int totalLines = 1;
     String collectionName = "harvard_course";
 
+    SimpleModule module = new SimpleModule();
+    module.addDeserializer(Integer.class, new DoubleToNumberDeserializer());
+    module.addDeserializer(String.class, new StringToStringDeserializer());
+    csvMapper.registerModule(module);
+
     try
     {
-      //TODO: It actually inserts null strings and null integers considering them "" and 0, respectively...need some work : /.
+      //TODO: It actually inserts null values on the database ...need some.
       mappingIterator = csvMapper.reader(HarvardPOJO.class).with(schema).readValues(new File(csvRoute));
 
       while (mappingIterator.hasNext())
       {
-        jsonArray.add(oMapper.readTree(oMapper.writeValueAsString(mappingIterator.next())));
+        HarvardPOJO pojo = mappingIterator.next();
+        jsonArray.add(oMapper.readTree(oMapper.writeValueAsString(pojo)));
 
         if (++numLines == MAX_LINES_BEFORE_STORE)
         {
@@ -83,12 +119,12 @@ public class Harvard2Db extends Source2Db
 
         totalLines++;
       }
-
+/*
       if (jsonArray.size() > 0)
       {
         System.out.println("Storing remaining files...");
         getClient().insert(dbName, collectionName, jsonArray.toString());
-      }
+      }*/
     } catch (Exception e)
     {
       e.printStackTrace();
