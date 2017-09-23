@@ -1,12 +1,11 @@
-package es.um.nosql.schemainference.db.pojo;
-
+package es.um.nosql.schemainference.db.pojo.harvard;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonPropertyOrder({"course_id", "userid_DI", "registered", "viewed", "explored", "certified", "final_cc_cname_DI", "LoE_DI", "YoB", "gender",
   "grade", "start_time_DI", "last_event_DI", "nevents", "ndays_act", "nplay_video", "nchapters", "nforum_posts", "roles", "incomplete_flag"})
-public class HarvardPOJO
+public class HarvardCourse
 {
   private String course_id;
 

@@ -16,11 +16,11 @@ import es.um.nosql.schemainference.db.utils.DbType;
 import es.um.nosql.schemainference.db.utils.deserializer.NumberToNumberDeserializer;
 import es.um.nosql.schemainference.db.utils.deserializer.StringToStringDeserializer;
 
-public class Harvard2Db extends Source2Db
+public class Facebook2Db extends Source2Db
 {
   private int MAX_LINES_BEFORE_STORE = 25000;
 
-  public Harvard2Db(DbType db, String ip)
+  public Facebook2Db(DbType db, String ip)
   {
     super(db, ip);
   }
@@ -31,32 +31,15 @@ public class Harvard2Db extends Source2Db
 
     System.out.println("Reading csv file " + csvRoute + "...");
     storeCSVContent(csvRoute, dbName);
+    //TODO: Soon
     System.out.println(dbName + ":" + Paths.get(csvRoute).getFileName() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
   }
-
+/*
   private void storeCSVContent(String csvRoute, String dbName)
   {
-    CsvSchema schema = CsvSchema.builder()
-        .addColumn("course_id", CsvSchema.ColumnType.STRING)
-        .addColumn("userid_DI", CsvSchema.ColumnType.STRING)
-        .addColumn("registered", CsvSchema.ColumnType.NUMBER)
-        .addColumn("viewed", CsvSchema.ColumnType.NUMBER)
-        .addColumn("explored", CsvSchema.ColumnType.NUMBER)
-        .addColumn("certified", CsvSchema.ColumnType.NUMBER)
-        .addColumn("final_cc_cname_DI", CsvSchema.ColumnType.STRING)
-        .addColumn("LoE_DI", CsvSchema.ColumnType.STRING)
-        .addColumn("YoB", CsvSchema.ColumnType.STRING)
-        .addColumn("gender", CsvSchema.ColumnType.STRING)
-        .addColumn("grade", CsvSchema.ColumnType.STRING)
-        .addColumn("start_time_DI", CsvSchema.ColumnType.STRING)
-        .addColumn("last_event_DI", CsvSchema.ColumnType.STRING)
-        .addColumn("nevents", CsvSchema.ColumnType.NUMBER)
-        .addColumn("ndays_act", CsvSchema.ColumnType.NUMBER)
-        .addColumn("nplay_video", CsvSchema.ColumnType.NUMBER)
-        .addColumn("nchapters", CsvSchema.ColumnType.NUMBER)
-        .addColumn("nforum_posts", CsvSchema.ColumnType.NUMBER)
-        .addColumn("roles", CsvSchema.ColumnType.STRING)
-        .addColumn("incomplete_flag", CsvSchema.ColumnType.NUMBER)
+    CsvSchema pagenameSchema = CsvSchema.builder()
+        .addColumn("page_name", CsvSchema.ColumnType.STRING)
+        .addColumn("page_id", CsvSchema.ColumnType.NUMBER)
         .setSkipFirstDataRow(true)
         .build();
 
@@ -66,7 +49,7 @@ public class Harvard2Db extends Source2Db
     MappingIterator<HarvardCourse> mappingIterator;
     ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);
     ArrayNode jsonArray = oMapper.createArrayNode();
-    String collectionName = "harvard_course";
+    String collectionName = "PageNames";
 
     SimpleModule module = new SimpleModule();
     module.addDeserializer(Integer.class, new NumberToNumberDeserializer());
@@ -75,7 +58,7 @@ public class Harvard2Db extends Source2Db
 
     try
     {
-      mappingIterator = csvMapper.reader(HarvardCourse.class).with(schema).readValues(new File(csvRoute));
+      mappingIterator = csvMapper.reader(HarvardCourse.class).with(pagenameSchema).readValues(new File(csvRoute));
 
       while (mappingIterator.hasNext())
       {
@@ -102,5 +85,5 @@ public class Harvard2Db extends Source2Db
     {
       e.printStackTrace();
     }
-  }
+  }*/
 }

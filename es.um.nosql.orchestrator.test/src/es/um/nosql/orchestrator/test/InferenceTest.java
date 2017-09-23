@@ -7,6 +7,7 @@ import com.google.gson.JsonArray;
 
 import es.um.nosql.schemainference.db.interfaces.Comp2Db;
 import es.um.nosql.schemainference.db.interfaces.EPol2Db;
+import es.um.nosql.schemainference.db.interfaces.Facebook2Db;
 import es.um.nosql.schemainference.db.interfaces.Harvard2Db;
 import es.um.nosql.schemainference.db.interfaces.Link2Db;
 import es.um.nosql.schemainference.db.interfaces.Model2Db;
@@ -33,7 +34,8 @@ public class InferenceTest
 	private static final String FILE_URBAN = "/media/alberto/tarsonis/datasets/urban/words.json";
 	private static final String FILE_COMPANY = "/media/alberto/tarsonis/datasets/companies/companies.json";
 	private static final String FOLDER_LINK = "/media/alberto/tarsonis/datasets/givealink/";
-//	private static final String FILE_HARVARD = "/media/alberto/tarsonis/datasets/harvard/HMXPC13_DI_v2_5-14-14.csv";
+	private static final String FILE_HARVARD = "/media/alberto/tarsonis/datasets/harvard/HMXPC13_DI_v2_5-14-14.csv";
+	private static final String FOLDER_FACEBOOK = "F:/Informatica/datasets/facebook/";
 
 	public static void main(String[] args) throws IOException
 	{//TODO: BEFORE CHECKING MORE DATASETS, WE NEED TO MAKE SURE "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
@@ -45,6 +47,7 @@ public class InferenceTest
 //	  prepareCompanyExample(DbType.COUCHDB, FILL_ONLY, FILE_COMPANY);
 //	  prepareLinkExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_LINK);
 //	  prepareHarvardExample(DbType.MONGODB, FILL_AND_INFER, FILE_HARVARD);
+	  prepareFacebookExample(DbType.MONGODB, FILL_ONLY, FOLDER_FACEBOOK);
 	}
 
 	public static void prepareModelExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
@@ -217,6 +220,29 @@ public class InferenceTest
     else
       performInference(dbType, dbName, outputModel);
 	}
+
+	 public static void prepareFacebookExample(DbType dbType, boolean FILL_ONLY, String source)
+	  {
+	    String dbName = "harvard";
+	    String outputModel = MODELS_FOLDER + dbName + ".xmi";
+
+	    long startTime = System.currentTimeMillis();
+      System.out.println("Filling the " + dbType.toString() + " database...");
+	    String[] files = new String[]{"fb_news_pagenames.csv", "fb_news_posts_20K.csv", "fb_news_comments_1000K.csv"};
+
+	    Facebook2Db controller = new Facebook2Db(dbType, DATABASE_IP);
+	    for (String fileName : files)
+	      controller.run(source + fileName, dbName);
+
+	    controller.shutdown();
+
+	    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+
+	    if (FILL_ONLY)
+	      return;
+	    else
+	      performInference(dbType, dbName, outputModel);
+	  }
 
 	private static void performInference(DbType dbType, String dbName, String outputModel)
 	{

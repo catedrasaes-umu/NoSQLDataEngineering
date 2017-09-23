@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.nio.file.Paths;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
@@ -32,7 +33,7 @@ public class Comp2Db extends Source2Db
   {
     try (BufferedReader reader = new BufferedReader(new FileReader(new File(jsonRoute))))
     {
-      ObjectMapper mapper = new ObjectMapper();
+      ObjectMapper mapper = new ObjectMapper().setSerializationInclusion(Include.NON_EMPTY);
       ArrayNode jsonArray = mapper.createArrayNode();
       String collectionName = "company";
       int numLines = 0;
