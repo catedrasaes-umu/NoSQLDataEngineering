@@ -11,7 +11,9 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
-import es.um.nosql.schemainference.db.pojo.harvard.HarvardCourse;
+import es.um.nosql.schemainference.db.pojo.facebook.Comment;
+import es.um.nosql.schemainference.db.pojo.facebook.Page;
+import es.um.nosql.schemainference.db.pojo.facebook.Post;
 import es.um.nosql.schemainference.db.utils.DbType;
 import es.um.nosql.schemainference.db.utils.deserializer.NumberToNumberDeserializer;
 import es.um.nosql.schemainference.db.utils.deserializer.StringToStringDeserializer;
@@ -36,46 +38,11 @@ public class Facebook2Db extends Source2Db
 
   private void storeCSVContent(String csvRoute, String dbName)
   {
-    CsvSchema pagenameSchema = CsvSchema.builder()
-        .addColumn("page_name", CsvSchema.ColumnType.STRING)
-        .addColumn("page_id", CsvSchema.ColumnType.NUMBER)
-        .setSkipFirstDataRow(true)
-        .build();
-
-    CsvSchema postSchema = CsvSchema.builder()
-        .addColumn("created_time", CsvSchema.ColumnType.STRING)
-        .addColumn("description", CsvSchema.ColumnType.STRING)
-        .addColumn("link", CsvSchema.ColumnType.STRING)
-        .addColumn("message", CsvSchema.ColumnType.STRING)
-        .addColumn("page_id", CsvSchema.ColumnType.STRING)
-        .addColumn("post_id", CsvSchema.ColumnType.STRING)
-        .addColumn("react_angry", CsvSchema.ColumnType.NUMBER)
-        .addColumn("react_haha", CsvSchema.ColumnType.NUMBER)
-        .addColumn("react_like", CsvSchema.ColumnType.NUMBER)
-        .addColumn("react_love", CsvSchema.ColumnType.NUMBER)
-        .addColumn("react_sad", CsvSchema.ColumnType.NUMBER)
-        .addColumn("react_wow", CsvSchema.ColumnType.NUMBER)
-        .addColumn("scrape_time", CsvSchema.ColumnType.STRING)
-        .addColumn("shares", CsvSchema.ColumnType.NUMBER)
-        .setSkipFirstDataRow(true)
-        .build();
-
-    CsvSchema commentSchema = CsvSchema.builder()
-        .addColumn("created_time", CsvSchema.ColumnType.STRING)
-        .addColumn("from_id", CsvSchema.ColumnType.STRING)
-        .addColumn("from_name", CsvSchema.ColumnType.STRING)
-        .addColumn("message", CsvSchema.ColumnType.STRING)
-        .addColumn("post_id", CsvSchema.ColumnType.STRING)
-        .setSkipFirstDataRow(true)
-        .build();
-/*
-    int numLines = 0;
-    int totalLines = 1;
+    File csvFile = new File(csvRoute);
     CsvMapper csvMapper = new CsvMapper();
-    MappingIterator<HarvardCourse> mappingIterator;
+    MappingIterator<?> mappingIterator = null;
     ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);
-    ArrayNode jsonArray = oMapper.createArrayNode();
-    String collectionName = "PageNames";
+    String collectionName = null;
 
     SimpleModule module = new SimpleModule();
     module.addDeserializer(Integer.class, new NumberToNumberDeserializer());
@@ -84,32 +51,50 @@ public class Facebook2Db extends Source2Db
 
     try
     {
-      mappingIterator = csvMapper.reader(HarvardCourse.class).with(pagenameSchema).readValues(new File(csvRoute));
-
-      while (mappingIterator.hasNext())
+      if (csvFile.getName().contains("post"))
       {
-        HarvardCourse pojo = mappingIterator.next();
-        jsonArray.add(oMapper.readTree(oMapper.writeValueAsString(pojo)));
+        mappingIterator = csvMapper.reader(Post.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
+        collectionName = "Posts";
+      }
+      else if (csvFile.getName().contains("pagename"))
+      {
+        mappingIterator = csvMapper.reader(Page.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
+        collectionName = "Pages";
+      }
+      else if (csvFile.getName().contains("comment"))
+      {
+        mappingIterator = csvMapper.reader(Comment.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
+        collectionName = "Comments";
+      }
 
-        if (++numLines == MAX_LINES_BEFORE_STORE)
+      int numLines = 0;
+      int totalLines = 1;
+      ArrayNode jsonArray = oMapper.createArrayNode();
+
+        while (mappingIterator.hasNext())
         {
-          getClient().insert(dbName, collectionName, jsonArray.toString());
-          jsonArray.removeAll();
-          numLines = 0;
-          System.out.println("Line count: " + totalLines);
+          jsonArray.add(oMapper.readTree(oMapper.writeValueAsString(mappingIterator.next())));
+
+          if (++numLines == MAX_LINES_BEFORE_STORE)
+          {
+            getClient().insert(dbName, collectionName, jsonArray.toString());
+            jsonArray.removeAll();
+            numLines = 0;
+            System.out.println("Line count: " + totalLines);
+          }
+
+          totalLines++;
         }
 
-        totalLines++;
-      }
+        if (jsonArray.size() > 0)
+        {
+          System.out.println("Storing remaining files...");
+          getClient().insert(dbName, collectionName, jsonArray.toString());
+        }
 
-      if (jsonArray.size() > 0)
-      {
-        System.out.println("Storing remaining files...");
-        getClient().insert(dbName, collectionName, jsonArray.toString());
-      }
     } catch (Exception e)
     {
       e.printStackTrace();
-    }*/
+    }
   }
 }

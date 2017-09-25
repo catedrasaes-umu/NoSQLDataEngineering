@@ -47,7 +47,7 @@ public class InferenceTest
 //	  prepareCompanyExample(DbType.COUCHDB, FILL_ONLY, FILE_COMPANY);
 //	  prepareLinkExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_LINK);
 //	  prepareHarvardExample(DbType.MONGODB, FILL_AND_INFER, FILE_HARVARD);
-	  prepareFacebookExample(DbType.MONGODB, FILL_ONLY, FOLDER_FACEBOOK);
+//	  prepareFacebookExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_FACEBOOK);
 	}
 
 	public static void prepareModelExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
@@ -233,6 +233,7 @@ public class InferenceTest
 	  Facebook2Db controller = new Facebook2Db(dbType, DATABASE_IP);
 	  for (String fileName : files)
 	    controller.run(source + fileName, dbName);
+	  controller.run(source + files[1], dbName);
 
 	  controller.shutdown();
 

@@ -36,37 +36,13 @@ public class Harvard2Db extends Source2Db
 
   private void storeCSVContent(String csvRoute, String dbName)
   {
-    CsvSchema schema = CsvSchema.builder()
-        .addColumn("course_id", CsvSchema.ColumnType.STRING)
-        .addColumn("userid_DI", CsvSchema.ColumnType.STRING)
-        .addColumn("registered", CsvSchema.ColumnType.NUMBER)
-        .addColumn("viewed", CsvSchema.ColumnType.NUMBER)
-        .addColumn("explored", CsvSchema.ColumnType.NUMBER)
-        .addColumn("certified", CsvSchema.ColumnType.NUMBER)
-        .addColumn("final_cc_cname_DI", CsvSchema.ColumnType.STRING)
-        .addColumn("LoE_DI", CsvSchema.ColumnType.STRING)
-        .addColumn("YoB", CsvSchema.ColumnType.STRING)
-        .addColumn("gender", CsvSchema.ColumnType.STRING)
-        .addColumn("grade", CsvSchema.ColumnType.STRING)
-        .addColumn("start_time_DI", CsvSchema.ColumnType.STRING)
-        .addColumn("last_event_DI", CsvSchema.ColumnType.STRING)
-        .addColumn("nevents", CsvSchema.ColumnType.NUMBER)
-        .addColumn("ndays_act", CsvSchema.ColumnType.NUMBER)
-        .addColumn("nplay_video", CsvSchema.ColumnType.NUMBER)
-        .addColumn("nchapters", CsvSchema.ColumnType.NUMBER)
-        .addColumn("nforum_posts", CsvSchema.ColumnType.NUMBER)
-        .addColumn("roles", CsvSchema.ColumnType.STRING)
-        .addColumn("incomplete_flag", CsvSchema.ColumnType.NUMBER)
-        .setSkipFirstDataRow(true)
-        .build();
-
     int numLines = 0;
     int totalLines = 1;
     CsvMapper csvMapper = new CsvMapper();
     MappingIterator<HarvardCourse> mappingIterator;
     ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);
     ArrayNode jsonArray = oMapper.createArrayNode();
-    String collectionName = "harvard_course";
+    String collectionName = "Harvard_courses";
 
     SimpleModule module = new SimpleModule();
     module.addDeserializer(Integer.class, new NumberToNumberDeserializer());
@@ -75,7 +51,7 @@ public class Harvard2Db extends Source2Db
 
     try
     {
-      mappingIterator = csvMapper.reader(HarvardCourse.class).with(schema).readValues(new File(csvRoute));
+      mappingIterator = csvMapper.reader(HarvardCourse.class).with(CsvSchema.emptySchema().withHeader()).readValues(new File(csvRoute));
 
       while (mappingIterator.hasNext())
       {

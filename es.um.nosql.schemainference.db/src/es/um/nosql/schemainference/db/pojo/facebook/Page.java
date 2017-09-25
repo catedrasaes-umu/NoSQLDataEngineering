@@ -4,11 +4,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonPropertyOrder({"page_name", "page_id"})
-public class PageName
+public class Page
 {
   private String page_name;
 
-  private Integer page_id;
+  private String page_id;
 
   @JsonProperty("page_name")
   public String getPage_name() {
@@ -20,11 +20,11 @@ public class PageName
   }
 
   @JsonProperty("page_id")
-  public Integer getPage_id() {
+  public String getPage_id() {
     return page_id;
   }
 
-  public void setPage_id(Integer page_id) {
+  public void setPage_id(String page_id) {
     this.page_id = page_id;
   }
 }
