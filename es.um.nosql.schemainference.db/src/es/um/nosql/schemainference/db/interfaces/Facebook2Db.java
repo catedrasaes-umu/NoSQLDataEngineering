@@ -31,10 +31,9 @@ public class Facebook2Db extends Source2Db
 
     System.out.println("Reading csv file " + csvRoute + "...");
     storeCSVContent(csvRoute, dbName);
-    //TODO: Soon
     System.out.println(dbName + ":" + Paths.get(csvRoute).getFileName() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
   }
-/*
+
   private void storeCSVContent(String csvRoute, String dbName)
   {
     CsvSchema pagenameSchema = CsvSchema.builder()
@@ -43,6 +42,33 @@ public class Facebook2Db extends Source2Db
         .setSkipFirstDataRow(true)
         .build();
 
+    CsvSchema postSchema = CsvSchema.builder()
+        .addColumn("created_time", CsvSchema.ColumnType.STRING)
+        .addColumn("description", CsvSchema.ColumnType.STRING)
+        .addColumn("link", CsvSchema.ColumnType.STRING)
+        .addColumn("message", CsvSchema.ColumnType.STRING)
+        .addColumn("page_id", CsvSchema.ColumnType.STRING)
+        .addColumn("post_id", CsvSchema.ColumnType.STRING)
+        .addColumn("react_angry", CsvSchema.ColumnType.NUMBER)
+        .addColumn("react_haha", CsvSchema.ColumnType.NUMBER)
+        .addColumn("react_like", CsvSchema.ColumnType.NUMBER)
+        .addColumn("react_love", CsvSchema.ColumnType.NUMBER)
+        .addColumn("react_sad", CsvSchema.ColumnType.NUMBER)
+        .addColumn("react_wow", CsvSchema.ColumnType.NUMBER)
+        .addColumn("scrape_time", CsvSchema.ColumnType.STRING)
+        .addColumn("shares", CsvSchema.ColumnType.NUMBER)
+        .setSkipFirstDataRow(true)
+        .build();
+
+    CsvSchema commentSchema = CsvSchema.builder()
+        .addColumn("created_time", CsvSchema.ColumnType.STRING)
+        .addColumn("from_id", CsvSchema.ColumnType.STRING)
+        .addColumn("from_name", CsvSchema.ColumnType.STRING)
+        .addColumn("message", CsvSchema.ColumnType.STRING)
+        .addColumn("post_id", CsvSchema.ColumnType.STRING)
+        .setSkipFirstDataRow(true)
+        .build();
+/*
     int numLines = 0;
     int totalLines = 1;
     CsvMapper csvMapper = new CsvMapper();
@@ -84,6 +110,6 @@ public class Facebook2Db extends Source2Db
     } catch (Exception e)
     {
       e.printStackTrace();
-    }
-  }*/
+    }*/
+  }
 }

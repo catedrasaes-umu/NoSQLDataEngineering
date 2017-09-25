@@ -35,7 +35,7 @@ public class InferenceTest
 	private static final String FILE_COMPANY = "/media/alberto/tarsonis/datasets/companies/companies.json";
 	private static final String FOLDER_LINK = "/media/alberto/tarsonis/datasets/givealink/";
 	private static final String FILE_HARVARD = "/media/alberto/tarsonis/datasets/harvard/HMXPC13_DI_v2_5-14-14.csv";
-	private static final String FOLDER_FACEBOOK = "F:/Informatica/datasets/facebook/";
+	private static final String FOLDER_FACEBOOK = "/media/alberto/tarsonis/datasets/facebook/";
 
 	public static void main(String[] args) throws IOException
 	{//TODO: BEFORE CHECKING MORE DATASETS, WE NEED TO MAKE SURE "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
@@ -221,28 +221,28 @@ public class InferenceTest
       performInference(dbType, dbName, outputModel);
 	}
 
-	 public static void prepareFacebookExample(DbType dbType, boolean FILL_ONLY, String source)
-	  {
-	    String dbName = "harvard";
-	    String outputModel = MODELS_FOLDER + dbName + ".xmi";
+	public static void prepareFacebookExample(DbType dbType, boolean FILL_ONLY, String source)
+	{
+	  String dbName = "facebook";
+	  String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-	    long startTime = System.currentTimeMillis();
-      System.out.println("Filling the " + dbType.toString() + " database...");
-	    String[] files = new String[]{"fb_news_pagenames.csv", "fb_news_posts_20K.csv", "fb_news_comments_1000K.csv"};
+	  long startTime = System.currentTimeMillis();
+    System.out.println("Filling the " + dbType.toString() + " database...");
+	  String[] files = new String[]{"fb_news_pagenames.csv", "fb_news_posts_20K.csv", "fb_news_comments_1000K.csv"};
 
-	    Facebook2Db controller = new Facebook2Db(dbType, DATABASE_IP);
-	    for (String fileName : files)
-	      controller.run(source + fileName, dbName);
+	  Facebook2Db controller = new Facebook2Db(dbType, DATABASE_IP);
+	  for (String fileName : files)
+	    controller.run(source + fileName, dbName);
 
-	    controller.shutdown();
+	  controller.shutdown();
 
-	    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+	  System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
 
-	    if (FILL_ONLY)
-	      return;
-	    else
-	      performInference(dbType, dbName, outputModel);
-	  }
+	  if (FILL_ONLY)
+	    return;
+	  else
+	    performInference(dbType, dbName, outputModel);
+	}
 
 	private static void performInference(DbType dbType, String dbName, String outputModel)
 	{
