@@ -9,8 +9,6 @@ import static java.util.stream.Collectors.toList;
 import static java.util.stream.Collectors.toMap;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,8 +19,6 @@ import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.set.strategy.mutable.UnifiedSetWithHashingStrategy;
 import org.eclipse.collections.impl.tuple.Tuples;
 import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.xmi.XMIResource;
 
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
@@ -39,97 +35,77 @@ import es.um.nosql.schemainference.m2m.util.PropertyHashingStrategy;
 import es.um.nosql.schemainference.m2m.util.PropertyJustNameHashingStrategy;
 import es.um.nosql.schemainference.util.emf.ResourceManager;
 
-/**
- * @author dsevilla
- *
- */
 public class NoSQLSchemaToEntityDiff
 {
-	public static void main(String[] args)
-	{		
-		(new NoSQLSchemaToEntityDiff()).run(args);
-	}
-
 	private Map<Entity, Set<Property>> commonEntityProperties;
 	private Map<EntityVersion, Set<Property>> evOwnProperties;
 	private Map<EntityVersion, EntityVersionProp> evPropsByEv;
-	private PropertyHashingStrategy propertyHashing = new PropertyHashingStrategy();
+	private PropertyHashingStrategy propertyHashing;
 
-	private void run(String[] args)
-  {
-	  if (args.length < 2)
-	  {
-	    System.err.println("Usage: NoSQLSchemaToEntityDiff input_model output_model");
-	    System.exit(-1);
-	  }
+	private NoSQLSchemaPackage nosqlschemaPackage;
+  private EntitydifferentiationPackage entitydiffPackage;
+  private ResourceManager resManager;
 
-	  File INPUT_MODEL = new File(args[0]);
-    File OUTPUT_MODEL = new File(args[1]);
+	public NoSQLSchemaToEntityDiff()
+	{
+    propertyHashing = new PropertyHashingStrategy();
 
-    NoSQLSchemaPackage nosqlschemaPackage = NoSQLSchemaPackage.eINSTANCE;
-    EntitydifferentiationPackage entitydiffPackage = EntitydifferentiationPackage.eINSTANCE;
-    ResourceManager resManager = new ResourceManager(nosqlschemaPackage, entitydiffPackage);
+	  nosqlschemaPackage = NoSQLSchemaPackage.eINSTANCE;
+	  entitydiffPackage = EntitydifferentiationPackage.eINSTANCE;
+	  resManager = new ResourceManager(nosqlschemaPackage, entitydiffPackage);
 
-//    String relativePath = Paths.get(OUTPUT_MODEL.getAbsolutePath()).relativize(Paths.get(INPUT_MODEL.getAbsolutePath())).toString().substring(3);
-
-    // Load the origin model.
-    resManager.loadResourcesAsStrings(INPUT_MODEL.getAbsolutePath());
-    NoSQLSchema schema = (NoSQLSchema)resManager.getResources().iterator().next().getContents().get(0);
-
-    EntityDifferentiation differentiation = doTransform(schema);
-
-    Resource outputRes = resManager.getResourceSet().createResource(URI.createFileURI(OUTPUT_MODEL.getAbsolutePath()));
-    outputRes.getContents().add(differentiation);
-
-    // Configure output
-    nosqlschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.schemainference/model/nosqlschema.ecore", true));
+	  nosqlschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.schemainference/model/nosqlschema.ecore", true));
     entitydiffPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.schemainference.entitydifferentiation/model/entitydifferentiation.ecore", true));
-    Map<Object,Object> options = new HashMap<Object,Object>();
-    options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
-    options.put(XMIResource.OPTION_ENCODING, "UTF-8");
+	}
 
-    try
-    {
-      outputRes.save(new FileOutputStream(OUTPUT_MODEL), options);
-    } catch (IOException e)
-    {
-      e.printStackTrace();
-    }
-  }
+	public ResourceManager getResourceManager()
+	{
+	  return resManager;
+	}
 
 	/*
-	 * The following code takes some assumptions.
-	 *
-	 * - All the objects are represented, so just storing their differences
-	 *   at the level of attributes contained or not contained is enough
-	 *   to discern them
-	 * - In cases of same name attributes with different types between entity versions,
-	 *   more complete type enabled tests are output
-	 *
-	 * So what we do is:
-	 *
-	 * 1. For each Entity, check all the common properties of all the EntityVersions
-	 *    (name and type). This will generate simple checks against property names.
-	 * 2. For each EntityVersion, record the specific properties of that entity. There
-	 *    will be two types: Those with properties that don't appear in any other EVs
-	 *    (we have to check just the existence of the property with its name), and
-	 *    those with properties that exist in any other of the EVs. For those, we will
-	 *    have to check for the type.
-	 */
-	private EntityDifferentiation doTransform(NoSQLSchema schema)
+   * The following code takes some assumptions.
+   *
+   * - All the objects are represented, so just storing their differences
+   *   at the level of attributes contained or not contained is enough
+   *   to discern them
+   * - In cases of same name attributes with different types between entity versions,
+   *   more complete type enabled tests are output
+   *
+   * So what we do is:
+   *
+   * 1. For each Entity, check all the common properties of all the EntityVersions
+   *    (name and type). This will generate simple checks against property names.
+   * 2. For each EntityVersion, record the specific properties of that entity. There
+   *    will be two types: Those with properties that don't appear in any other EVs
+   *    (we have to check just the existence of the property with its name), and
+   *    those with properties that exist in any other of the EVs. For those, we will
+   *    have to check for the type.
+   */
+
+	public EntityDifferentiation m2m(File modelFile)
+	{
+	  // Load the model...
+	  resManager.loadResourcesAsStrings(modelFile.getAbsolutePath());
+	  NoSQLSchema schema = (NoSQLSchema)resManager.getResources().iterator().next().getContents().get(0);
+
+	  return m2m(schema);
+	}
+
+	public EntityDifferentiation m2m(NoSQLSchema schema)
 	{
     EntityDifferentiation differentiation = EntitydifferentiationFactory.eINSTANCE.createEntityDifferentiation();
 
     differentiation.setName(schema.getName());
     differentiation.setSchema(schema);
-		
-		initCalculations(schema);
+    
+    initCalculations(schema);
 
-		// Generate entity References
-		for (Entity e: schema.getEntities())
-			transformEntity(e, differentiation);
+    // Generate entity References
+    for (Entity e: schema.getEntities())
+      transformEntity(e, differentiation);
 
-		return differentiation;
+    return differentiation;
 	}
 
 	/**

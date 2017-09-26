@@ -54,35 +54,6 @@ class DiffToMongoose
 	
 	static File outputDir
 
-	def static void main(String[] args)
-    {
-		if (args.length < 1)
-		{
-			System.out.println("Usage: DiffToMongoose model [outdir]")
-			System.exit(-1)
-		}
-
-        val inputModel = new File(args.head)
-        val ResourceManager rm = new ResourceManager(EntitydifferentiationPackage.eINSTANCE,
-        	NoSQLSchemaPackage.eINSTANCE)
-        rm.loadResourcesAsStrings(inputModel.getPath())
-        val EntityDifferentiation td = rm.resources.head.contents.head as EntityDifferentiation
-
-		outputDir = new File(if (args.length > 1) args.get(1) else ".")
-								.toPath().resolve(td.name).toFile()
-		// Create destination directory if it does not exist
-		outputDir.mkdirs()
-        System.out.println("Generating Javascript for "
-        					+ inputModel.getPath()
-        					+ " in "
-        					+ outputDir.getPath())
-
-		val diff_to_mongoose = new DiffToMongoose()
-		diff_to_mongoose.generate(td)
-		
-        System.exit(0)
-    }
-
 	def static void writeToFile(String filename, CharSequence toWrite)
 	{
 		val outFile = outputDir.toPath().resolve(filename).toFile()

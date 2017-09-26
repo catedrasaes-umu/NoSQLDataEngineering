@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<graphdesc:GVFigureDescription xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:graphdesc="http://org.emftools.emf2gv.graphdesc/1.1.0">
+  <ePackages href="../model/entitydifferentiation.ecore#/"/>
+  <classFigures headerBackgroundColor="#D0BCFE" bodyBackgroundColor="#EFE8FE">
+    <eClass href="../model/entitydifferentiation.ecore#//EntityDifferentiation"/>
+    <labelEAttribute href="../model/entitydifferentiation.ecore#//EntityDifferentiation/name"/>
+    <referenceFigures xsi:type="graphdesc:ReferenceFigure" sourceArrowType="diamond">
+      <eReference href="../model/entitydifferentiation.ecore#//EntityDifferentiation/entityDiffSpecs"/>
+    </referenceFigures>
+  </classFigures>
+  <classFigures bodyBackgroundColor="#DEE9FD">
+    <eClass href="../model/entitydifferentiation.ecore#//EntityDiffSpec"/>
+    <referenceFigures xsi:type="graphdesc:ReferenceFigure" sourceArrowType="diamond">
+      <eReference href="../model/entitydifferentiation.ecore#//EntityDiffSpec/entityVersionProps"/>
+    </referenceFigures>
+    <referenceFigures xsi:type="graphdesc:ReferenceFigure" sourceArrowType="diamond">
+      <eReference href="../model/entitydifferentiation.ecore#//EntityDiffSpec/commonProps"/>
+    </referenceFigures>
+  </classFigures>
+  <classFigures headerBackgroundColor="#98FB98" bodyBackgroundColor="#DCFDDC">
+    <eClass href="../model/entitydifferentiation.ecore#//PropertySpec"/>
+    <attributeFigures xsi:type="graphdesc:AttributeFigure">
+      <eAttribute href="../model/entitydifferentiation.ecore#//PropertySpec/needsTypeCheck"/>
+    </attributeFigures>
+  </classFigures>
+  <classFigures headerBackgroundColor="#FFF575" bodyBackgroundColor="#FFFBD1">
+    <eClass href="../model/entitydifferentiation.ecore#//EntityVersionProp"/>
+    <referenceFigures xsi:type="graphdesc:ReferenceFigure" sourceArrowType="diamond">
+      <eReference href="../model/entitydifferentiation.ecore#//EntityVersionProp/propertySpecs"/>
+    </referenceFigures>
+  </classFigures>
+</graphdesc:GVFigureDescription>
