@@ -1,4 +1,4 @@
-package es.um.nosql.schemainference.m2t.gen.js
+package es.um.nosql.schemainference.m2t.js
 
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation
 import es.um.nosql.schemainference.util.emf.ResourceManager

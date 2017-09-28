@@ -10,13 +10,18 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 
+import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation;
+import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage;
 import es.um.nosql.schemainference.m2m.NoSQLSchemaToEntityDiff;
+import es.um.nosql.schemainference.m2t.mongoose.DiffToMongoose;
+import es.um.nosql.schemainference.util.emf.ResourceManager;
 
 public class Main
 {
   public static String INPUT_FOLDER = "testSources/";
   public static String OUTPUT_FOLDER = "testOutput/";
+  public static String OUTPUT_GEN_FOLDER = OUTPUT_FOLDER + "gen/";
 
   public static void main(String[] args)
   {
@@ -24,17 +29,27 @@ public class Main
     String inputFile = INPUT_FOLDER + input_model + ".xmi";
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
     prepareM2MExample(inputFile, outputFile);
+    prepareM2TExample(outputFile, OUTPUT_GEN_FOLDER);
   }
 
-  private static void prepareM2MExample(String inputFile, String outputFile)
+  public static void prepareM2MExample(String inputFile, String outputFile)
   {
     File INPUT_MODEL = new File(inputFile);
     File OUTPUT_MODEL = new File(outputFile);
 
+    System.out.println("Generating EntityDiff model for " + INPUT_MODEL.getName() + " in " + OUTPUT_MODEL.getPath());
+
     NoSQLSchemaToEntityDiff transformer = new NoSQLSchemaToEntityDiff();
     EntityDifferentiation diffModel = transformer.m2m(INPUT_MODEL);
 
-    Resource outputRes = transformer.getResourceManager().getResourceSet().createResource(URI.createFileURI(OUTPUT_MODEL.getAbsolutePath()));
+    NoSQLSchemaPackage nosqlschemaPackage = NoSQLSchemaPackage.eINSTANCE;
+    EntitydifferentiationPackage entitydiffPackage = EntitydifferentiationPackage.eINSTANCE;
+    ResourceManager resManager = new ResourceManager(nosqlschemaPackage, entitydiffPackage);
+
+    nosqlschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.schemainference/model/nosqlschema.ecore", true));
+    entitydiffPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.schemainference.entitydifferentiation/model/entitydifferentiation.ecore", true));
+
+    Resource outputRes = resManager.getResourceSet().createResource(URI.createFileURI(OUTPUT_MODEL.getAbsolutePath()));
     outputRes.getContents().add(diffModel);
 
     // Configure output
@@ -49,40 +64,23 @@ public class Main
     {
       e.printStackTrace();
     }
+
+    System.out.println("Transformation model finished");
   }
-/*
-  private static void prepareM2TExample(String inputFile, String outputFolder)
+
+  public static void prepareM2TExample(String inputFile, String outputFolder)
   {
-    DiffToMongoose diff2Mongoose = new DiffToMongoose
+    File INPUT_MODEL = new File(inputFile);
+    File OUTPUT_M2T_FOLDER = new File(outputFolder);
+
+    System.out.println("Generating Mongoose code for " + INPUT_MODEL.getName() + " in " + OUTPUT_M2T_FOLDER.getPath());
+
+    if (!OUTPUT_M2T_FOLDER.exists())
+      OUTPUT_M2T_FOLDER.mkdirs();
+
+    DiffToMongoose diff2Mongoose = new DiffToMongoose();
+    diff2Mongoose.m2t(INPUT_MODEL, OUTPUT_M2T_FOLDER);
+
+    System.out.println("Code generation finished");
   }
-*/
-/*
-  def static void main(String[] args)
-  {
-    if (args.length < 1)
-    {
-      System.out.println("Usage: DiffToMongoose model [outdir]")
-      System.exit(-1)
-    }
-
-        val inputModel = new File(args.head)
-        val ResourceManager rm = new ResourceManager(EntitydifferentiationPackage.eINSTANCE,
-          NoSQLSchemaPackage.eINSTANCE)
-        rm.loadResourcesAsStrings(inputModel.getPath())
-        val EntityDifferentiation td = rm.resources.head.contents.head as EntityDifferentiation
-
-    outputDir = new File(if (args.length > 1) args.get(1) else ".")
-                .toPath().resolve(td.name).toFile()
-    // Create destination directory if it does not exist
-    outputDir.mkdirs()
-        System.out.println("Generating Javascript for "
-                  + inputModel.getPath()
-                  + " in "
-                  + outputDir.getPath())
-
-    val diff_to_mongoose = new DiffToMongoose()
-    diff_to_mongoose.generate(td)
-    
-        System.exit(0)
-    }*/
 }

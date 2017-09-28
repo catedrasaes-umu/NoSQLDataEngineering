@@ -1,6 +1,3 @@
-/**
- *
- */
 package es.um.nosql.schemainference.m2m;
 
 import static java.util.function.Function.identity;
@@ -18,22 +15,20 @@ import java.util.stream.Collectors;
 import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.set.strategy.mutable.UnifiedSetWithHashingStrategy;
 import org.eclipse.collections.impl.tuple.Tuples;
-import org.eclipse.emf.common.util.URI;
 
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
 import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
+import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation;
 import es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp;
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationFactory;
-import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage;
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec;
 import es.um.nosql.schemainference.m2m.util.PropertyHashingStrategy;
 import es.um.nosql.schemainference.m2m.util.PropertyJustNameHashingStrategy;
-import es.um.nosql.schemainference.util.emf.ResourceManager;
+import es.um.nosql.schemainference.util.emf.ModelLoader;
 
 public class NoSQLSchemaToEntityDiff
 {
@@ -42,26 +37,18 @@ public class NoSQLSchemaToEntityDiff
 	private Map<EntityVersion, EntityVersionProp> evPropsByEv;
 	private PropertyHashingStrategy propertyHashing;
 
-	private NoSQLSchemaPackage nosqlschemaPackage;
-  private EntitydifferentiationPackage entitydiffPackage;
-  private ResourceManager resManager;
-
 	public NoSQLSchemaToEntityDiff()
 	{
     propertyHashing = new PropertyHashingStrategy();
-
-	  nosqlschemaPackage = NoSQLSchemaPackage.eINSTANCE;
-	  entitydiffPackage = EntitydifferentiationPackage.eINSTANCE;
-	  resManager = new ResourceManager(nosqlschemaPackage, entitydiffPackage);
-
-	  nosqlschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.schemainference/model/nosqlschema.ecore", true));
-    entitydiffPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.schemainference.entitydifferentiation/model/entitydifferentiation.ecore", true));
 	}
 
-	public ResourceManager getResourceManager()
-	{
-	  return resManager;
-	}
+  public EntityDifferentiation m2m(File modelFile)
+  {
+    ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
+    NoSQLSchema schema = loader.load(modelFile, NoSQLSchema.class);
+
+    return m2m(schema);
+  }
 
 	/*
    * The following code takes some assumptions.
@@ -82,16 +69,6 @@ public class NoSQLSchemaToEntityDiff
    *    those with properties that exist in any other of the EVs. For those, we will
    *    have to check for the type.
    */
-
-	public EntityDifferentiation m2m(File modelFile)
-	{
-	  // Load the model...
-	  resManager.loadResourcesAsStrings(modelFile.getAbsolutePath());
-	  NoSQLSchema schema = (NoSQLSchema)resManager.getResources().iterator().next().getContents().get(0);
-
-	  return m2m(schema);
-	}
-
 	public EntityDifferentiation m2m(NoSQLSchema schema)
 	{
     EntityDifferentiation differentiation = EntitydifferentiationFactory.eINSTANCE.createEntityDifferentiation();
@@ -179,9 +156,9 @@ public class NoSQLSchemaToEntityDiff
 					evp.getPropertySpecs().add(pe);
 				});
 			}
-			
+
 			// Calc notProps
-			
+
 			// For each entity version, for each property appearing in the rest 
 			// of entityVersions but not in this one, add a "notProp"
 			for (EntityVersionProp evp: de.getEntityVersionProps())
@@ -189,7 +166,7 @@ public class NoSQLSchemaToEntityDiff
 				Set<String> ownPropNames =
 						evp.getPropertySpecs().stream().map(pe -> pe.getProperty().getName())
 						.collect(Collectors.toSet());
-				
+
 				Map<String, PropertySpec> otherPropsByName = 
 					de.getEntityVersionProps().stream()
 					.filter(_evp -> _evp != evp)
@@ -199,7 +176,7 @@ public class NoSQLSchemaToEntityDiff
 								_ps -> _ps.getProperty().getName(),
 								Collectors.reducing(null,(l,r) -> r)
 							));
-				
+
 				otherPropsByName.entrySet().stream().forEach(_e ->
 					evp.getNotProps().add(genPropertySpecNamed(_e.getValue().getProperty()))
 				);
@@ -210,10 +187,6 @@ public class NoSQLSchemaToEntityDiff
 		diff.getEntityDiffSpecs().add(de);
 	}
 
-	/**
-	 * @param e
-	 * @return
-	 */
 	private Set<Property> calcCommonProperties(Entity e)
 	{
 		Map<EntityVersion, Set<Property>> allProperties =
@@ -231,13 +204,15 @@ public class NoSQLSchemaToEntityDiff
 		return commonProperties;
 	}
 
-	private PropertySpec genPropertySpecNamed(Property p) {
+	private PropertySpec genPropertySpecNamed(Property p)
+	{
 		PropertySpec ps = EntitydifferentiationFactory.eINSTANCE.createPropertySpec();
 		ps.setProperty(p);
 		return ps;
 	}
 
-	private PropertySpec genPropertySpecTyped(Property p) {
+	private PropertySpec genPropertySpecTyped(Property p)
+	{
 		PropertySpec ps = EntitydifferentiationFactory.eINSTANCE.createPropertySpec();
 		ps.setNeedsTypeCheck(true);
 		ps.setProperty(p);

@@ -1,9 +1,6 @@
-package es.um.nosql.schemainference.m2t.gen.mongoose
+package es.um.nosql.schemainference.m2t.mongoose
 
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation
-import es.um.nosql.schemainference.util.emf.ResourceManager
-import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage
 import java.io.File
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec
 import java.util.List
@@ -20,6 +17,8 @@ import java.util.regex.Pattern
 import java.util.Map
 import java.util.Comparator
 import es.um.nosql.schemainference.NoSQLSchema.Property
+import es.um.nosql.schemainference.util.emf.ModelLoader
+import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage
 
 class DiffToMongoose
 {
@@ -27,11 +26,13 @@ class DiffToMongoose
 	{
 		var label = ""
 
-		new(String l) {
+		new(String l)
+		{
 			label = l
 		}
 
-		override toString() {
+		override toString()
+		{
 			label
 		}
 	}
@@ -40,18 +41,17 @@ class DiffToMongoose
 
 	final val EXACT_TYPE = true
 	final val DUCK_TYPE = !EXACT_TYPE
-
 	final val SPECIAL_TYPE_IDENTIFIER = "type"
-	
+
 	// list of entities
 	List<Entity> entities
 	List<Entity> topOrderEntities
-	
+
 	Map<Entity, Set<Entity>> entityDeps
 	Map<Entity, Set<Entity>> inverseEntityDeps
 	Map<Entity, EntityDiffSpec> diffByEntity
 	Map<Entity, Map<String, List<PropertySpec>>> typeListByPropertyName
-	
+
 	static File outputDir
 
 	def static void writeToFile(String filename, CharSequence toWrite)
@@ -62,11 +62,21 @@ class DiffToMongoose
         outFileWriter.close()
 	}
 
+  def void m2t(File modelFile, File outputFolder)
+  {
+    val loader = new ModelLoader(EntitydifferentiationPackage.eINSTANCE);
+    val diff = loader.load(modelFile, EntityDifferentiation);
+
+    m2t(diff, outputFolder);
+  }
+
 	/**
 	 * Method used to generate an Inclusive/Exclusive differences file for a NoSQLDifferences object.
 	 */
-	def generate(EntityDifferentiation diff)
+	def void m2t(EntityDifferentiation diff, File outputFolder)
 	{
+	  outputDir = outputFolder;
+
 		modelName = diff.name;
 		diffByEntity = newHashMap(diff.entityDiffSpecs.map[ed | ed.entity -> ed])
 		val entities = diff.entityDiffSpecs.map[entity]
