@@ -25,11 +25,15 @@ public class Main
 
   public static void main(String[] args)
   {
-    String input_model = "mongoMovies3";
+    // Caso de test 1. Falla en genTypeForTypeCheckProperty, cuando no puede castear Aggregate a Attribute.
+    // String input_model = "test1_aggr";
+
+    String input_model = "everypolitician_sweden";
     String inputFile = INPUT_FOLDER + input_model + ".xmi";
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
     prepareM2MExample(inputFile, outputFile);
     prepareM2TExample(outputFile, OUTPUT_GEN_FOLDER);
+
   }
 
   public static void prepareM2MExample(String inputFile, String outputFile)

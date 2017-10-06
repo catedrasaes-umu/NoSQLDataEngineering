@@ -158,191 +158,197 @@ class DiffToMongoose
   }
 
   def List<Entity> depListRec(Set<Entity> to_consider, List<Entity> top_order, Set<Entity> seen)
-	{
-		// End condition
-		if (to_consider.isEmpty)
-			top_order
-		else
-		{
-			// Recursive
-			val e = to_consider.head
-			val to_consider_ = to_consider.tail.toSet
-			
-			// Add current node (no dependencies to cover)
-			top_order.add(e)
-			seen.add(e)
-			
-			val dependent = inverseEntityDeps.get(e)
-			to_consider_.addAll(
-				dependent.filter[ d | 
-					seen.containsAll(entityDeps.get(d))
-				])			
-			
-			depListRec(to_consider_, top_order, seen)
-		}
-	}
+  {
+    // End condition
+    if (to_consider.isEmpty)
+      top_order
+    else
+    {
+      // Recursive
+      val e = to_consider.head
+      val to_consider_ = to_consider.tail.toSet
 
-	def genSpecs(Entity e, EntityDiffSpec spec) '''
-	«FOR s : spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false] SEPARATOR ','»
-	«s.key.property.name»: «toJSONString(mongooseOptionsForPropertySpec(e,s.key, s.value))»
-	«ENDFOR»
-	'''
-	
-	def specificProps(EntityDiffSpec spec)
-	{
-		spec.entityVersionProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
-			[result, neew |
-				val names = result.map[p | p.property.name].toSet
-				result.addAll(neew.filter[p | !names.contains(p.property.name)])
-				result
-			])
-	}
-	
-	def mongooseOptionsForPropertySpec(Entity e, PropertySpec spec, boolean required)
-	{
-		val props = <String,Object>newHashMap()
+      // Add current node (no dependencies to cover)
+      top_order.add(e)
+      seen.add(e)
 
-		props.putAll(genTypeForPropertySpec(e, spec))
-		if (required)
-			props.put('required', true)
-		props
-	}
-	
-	// Maybe simplify output when the map has only one element (the type)
-	def toJSONMaybeSimplified(Map<String, Object> m)
-	{
-		val keySet = m.keySet;
-		if (keySet.length == 1 && keySet.get(0).equals("type"))
-			toJSONString(m.values.get(0))
-		else
-			'''{«FOR k : keySet SEPARATOR ', '»«k»: «toJSONString(m.get(k))»«ENDFOR»}'''
-	}
-	
-	def CharSequence toJSONString(Object o)
-	{
-		switch o {
-			Map<String, Object>: toJSONMaybeSimplified(o)
-			String: stringify(o)
-			default: o.toString
-		}
-	}
-	
-	private def stringify(String string)
-		'''"«string.replace("\"", "\\\"")»"'''
-	
-	private def label(String s)
-	{
-		new Label(s)
-	}
-	
-	def genTypeForPropertySpec(Entity e, PropertySpec ps) {
-		if (ps.needsTypeCheck)
-			genTypeForTypeCheckProperty(e, ps.property)
-		else
-			genTypeForProperty(ps.property)
-	}
-	
-	// As it is a type check property, it occurs in the 
-	def genTypeForTypeCheckProperty(Entity e, Property property)
-	{
-		// TODO: First version, Mixed type. In the future, explore
-		// complex types for Mongoose:
-		// http://mongoosejs.com/docs/customschematypes.html
-		// We have to register and generate all these types beforehand
-		// so maybe this function should be performed before, when
-		// the typeListByPropertyName variable is created
-		
-		// If any property type is a primitive, we always produce Mixed
-		// (see the TODO above)
-		val typeList = typeListByPropertyName.get(e).get(property.name)
-		if (typeList.forall[ps | (ps.property as Attribute)?.type instanceof PrimitiveType ])
-			#{ "type" -> label("mongoose.Schema.Types.Mixed") }
-		else
-			#{ "type" -> label("mongoose.Schema.Types.Mixed") }
-	}
-	
-	def aggregateType(Aggregate agg)
-	{
-		val entityName = (agg.refTo.get(0).eContainer as Entity).name
-		
-		if (agg.lowerBound == 1 && agg.upperBound == 1)
-			'''«entityName»Schema'''
-		else
-			'''[«entityName»Schema]'''
-	}
-	
-	def dispatch genTypeForProperty(Aggregate agg) 
-	{
-		#{ 'type' -> aggregateType(agg) }
-	}
+      val dependent = inverseEntityDeps.get(e)
+      to_consider_.addAll(
+      	dependent.filter[ d | seen.containsAll(entityDeps.get(d))
+      ])
 
-	def dispatch genTypeForProperty(Attribute att) 
-	{
-		genAttributeType(att.type)
-	}
+      depListRec(to_consider_, top_order, seen)
+    }
+  }
 
-	def dispatch genTypeForProperty(Reference ref) {
-		// If originalType is empty, suppose String
-		if (ref.originalType == null || ref.originalType.empty)
-			return #{ 'type' -> label('String')}
-		
-		val refComps = expandRef(ref)
-		
-		// DBRef
-		if (refComps.length == 2)
-			#{	'type' -> genTypeForPrimitiveString(refComps.get(1)),
-			  	'ref' -> label(ref.refTo.name)
-			}
-		else
-			#{ 'type' -> genTypeForPrimitiveString(ref.originalType)}
-	}
-	
-	val pat = Pattern.compile("DBRef\\((.+?)\\)")
-	
-	def expandRef(Reference reference) 
-	{
-		val m = pat.matcher(reference.originalType)
-		if (m.matches)
-			#["dbref", m.group(0)]
-		else
-			#[reference.originalType]
-	}
+  def genSpecs(Entity e, EntityDiffSpec spec) '''
+  «FOR s : spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false] SEPARATOR ','»
+  «s.key.property.name»: «toJSONString(mongooseOptionsForPropertySpec(e,s.key, s.value))»
+  «ENDFOR»
+  '''
 
-	def dispatch genAttributeType(Tuple type)
-	{
-		#{'type' -> genType(type)}
-	}
-	
-	def dispatch Object genType(Tuple tuple)
-		// Generate only the first type
-		'''[«genType(tuple.elements.get(0))»]'''
-		//'''[«FOR t : tuple.elements SEPARATOR ', '»«genType(t)»«ENDFOR»]'''
+  def specificProps(EntityDiffSpec spec)
+  {
+    spec.entityVersionProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
+      [result, neew |
+        val names = result.map[p | p.property.name].toSet
+        result.addAll(neew.filter[p | !names.contains(p.property.name)])
+        result
+      ])
+  }
 
-	def dispatch genType(PrimitiveType type)
-	{
-		genTypeForPrimitiveString(type.name)
-	}
+  def mongooseOptionsForPropertySpec(Entity e, PropertySpec spec, boolean required)
+  {
+    val props = <String,Object>newHashMap()
 
-	def dispatch genAttributeType(PrimitiveType type)
-	{
-		#{'type' -> genTypeForPrimitiveString(type.name)}
-	}
-	
-	def genTypeForPrimitiveString(String type) {
-		label(
-			switch typeName : type.toLowerCase {
-				case "string" : "String"
-				case typeName.isInt : 'Number'
-				case typeName.isFloat :  'Number'
-				case typeName.isBoolean : 'Boolean'
-				case typeName.isObjectId : 'mongoose.Schema.Types.ObjectId'
-				default: ''
-			}
-		)
-	}
+    props.putAll(genTypeForPropertySpec(e, spec))
+    if (required)
+      props.put('required', true)
+    props
+  }
 
-	private def isInt(String type) { #["int", "integer", "number"].contains(type) }
-	private def isFloat(String type) { #["float", "double"].contains(type) }
-	private def isBoolean(String type) { #["boolean", "bool"].contains(type) }
-	private def isObjectId(String type) { #["objectid"].contains(type) }
+  // Maybe simplify output when the map has only one element (the type)
+  def toJSONMaybeSimplified(Map<String, Object> m)
+  {
+    val keySet = m.keySet;
+    if (keySet.length == 1 && keySet.get(0).equals("type"))
+      toJSONString(m.values.get(0))
+    else
+      '''{«FOR k : keySet SEPARATOR ', '»«k»: «toJSONString(m.get(k))»«ENDFOR»}'''
+  }
+
+  def CharSequence toJSONString(Object o)
+  {
+    switch o
+    {
+      Map<String, Object>: toJSONMaybeSimplified(o)
+      String: stringify(o)
+      default: o.toString
+    }
+  }
+
+  private def stringify(String string)
+    '''"«string.replace("\"", "\\\"")»"'''
+
+  private def label(String s)
+  {
+    new Label(s)
+  }
+
+  def genTypeForPropertySpec(Entity e, PropertySpec ps)
+  {
+  	if (ps.needsTypeCheck)
+      genTypeForTypeCheckProperty(e, ps.property)
+    else
+      genTypeForProperty(ps.property)
+  }
+
+  // As it is a type check property, it occurs in the 
+  def genTypeForTypeCheckProperty(Entity e, Property property)
+  {
+    // TODO: First version, Mixed type. In the future, explore
+    // complex types for Mongoose:
+    // http://mongoosejs.com/docs/customschematypes.html
+    // We have to register and generate all these types beforehand
+    // so maybe this function should be performed before, when
+    // the typeListByPropertyName variable is created
+
+    // If any property type is a primitive, we always produce Mixed
+    // (see the TODO above)
+
+    // TODO: The ps.property instanceof Attribute is TENTATIVE. It will crash if not compared.
+    val typeList = typeListByPropertyName.get(e).get(property.name)
+    if (typeList.forall[ps | (ps.property instanceof Attribute) && (ps.property as Attribute)?.type instanceof PrimitiveType ])
+      #{ "type" -> label("mongoose.Schema.Types.Mixed") }
+    else
+      #{ "type" -> label("mongoose.Schema.Types.Mixed") }
+  }
+
+  def aggregateType(Aggregate agg)
+  {
+    val entityName = (agg.refTo.get(0).eContainer as Entity).name
+
+    if (agg.lowerBound == 1 && agg.upperBound == 1)
+      '''«entityName»Schema'''
+    else
+      '''[«entityName»Schema]'''
+  }
+
+  def dispatch genTypeForProperty(Aggregate agg) 
+  {
+    #{ 'type' -> aggregateType(agg) }
+  }
+
+  def dispatch genTypeForProperty(Attribute att) 
+  {
+    genAttributeType(att.type)
+  }
+
+  def dispatch genTypeForProperty(Reference ref)
+  {
+  	// If originalType is empty, suppose String
+  	if (ref.originalType == null || ref.originalType.empty)
+      return #{ 'type' -> label('String')}
+
+    val refComps = expandRef(ref)
+
+    // DBRef
+    if (refComps.length == 2)
+      #{	'type' -> genTypeForPrimitiveString(refComps.get(1)),
+        'ref' -> label(ref.refTo.name)
+      }
+    else
+      #{ 'type' -> genTypeForPrimitiveString(ref.originalType)}
+  }
+
+  val pat = Pattern.compile("DBRef\\((.+?)\\)")
+
+  def expandRef(Reference reference) 
+  {
+    val m = pat.matcher(reference.originalType)
+    if (m.matches)
+      #["dbref", m.group(0)]
+    else
+      #[reference.originalType]
+  }
+
+  def dispatch genAttributeType(Tuple type)
+  {
+    #{'type' -> genType(type)}
+  }
+
+  def dispatch Object genType(Tuple tuple)
+    // Generate only the first type
+    '''[«genType(tuple.elements.get(0))»]'''
+    //'''[«FOR t : tuple.elements SEPARATOR ', '»«genType(t)»«ENDFOR»]'''
+
+  def dispatch genType(PrimitiveType type)
+  {
+    genTypeForPrimitiveString(type.name)
+  }
+
+  def dispatch genAttributeType(PrimitiveType type)
+  {
+    #{'type' -> genTypeForPrimitiveString(type.name)}
+  }
+
+  def genTypeForPrimitiveString(String type)
+  {
+  	label(
+      switch typeName : type.toLowerCase
+      {
+        case "string" : "String"
+        case typeName.isInt : 'Number'
+        case typeName.isFloat :  'Number'
+        case typeName.isBoolean : 'Boolean'
+        case typeName.isObjectId : 'mongoose.Schema.Types.ObjectId'
+        default: ''
+      }
+    )
+  }
+
+  private def isInt(String type) { #["int", "integer", "number"].contains(type)}
+  private def isFloat(String type) { #["float", "double"].contains(type)}
+  private def isBoolean(String type) { #["boolean", "bool"].contains(type)}
+  private def isObjectId(String type) { #["objectid"].contains(type)}
 }
