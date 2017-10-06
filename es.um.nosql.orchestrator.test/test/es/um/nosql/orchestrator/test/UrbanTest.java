@@ -51,6 +51,7 @@ public class UrbanTest
     builder.buildFromGsonArray(DBNAME, jArray, OUTPUT_MODEL);
 
     System.out.println("BuildNoSQLSchema created: " + OUTPUT_MODEL);
+
     //TODO: Actually fail on exception...
     // It fails if an attribute has a NULL value...
     //TODO: Check model integrity

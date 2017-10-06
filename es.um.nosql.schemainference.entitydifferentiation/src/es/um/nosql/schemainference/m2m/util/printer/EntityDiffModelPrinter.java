@@ -1,6 +1,3 @@
-/**
- *
- */
 package es.um.nosql.schemainference.m2m.util.printer;
 
 
@@ -10,7 +7,6 @@ import org.eclipse.emf.ecore.resource.Resource;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation;
 import es.um.nosql.schemainference.entitydifferentiation.EntityVersionProp;
-import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationFactory;
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage;
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec;
 import es.um.nosql.schemainference.util.emf.ResourceManager;
@@ -31,7 +27,6 @@ public class EntityDiffModelPrinter
 		rm.loadResourcesAsStrings(sourceRes.getAbsolutePath());
 
 		Iterable<Resource> resources = rm.getResources();
-		EntityDifferentiation diff = EntitydifferentiationFactory.eINSTANCE.createEntityDifferentiation();
 
 		printModel((EntityDifferentiation)resources.iterator().next().getContents().get(0));
 	}

@@ -22,45 +22,45 @@ import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPa
 
 class DiffToMongoose
 {
-	static class Label
-	{
-		var label = ""
+  static class Label
+  {
+    var label = ""
 
-		new(String l)
-		{
-			label = l
-		}
+    new(String l)
+    {
+      label = l
+    }
 
-		override toString()
-		{
-			label
-		}
-	}
-	
-	var modelName = "";
+    override toString()
+    {
+      label
+    }
+  }
 
-	final val EXACT_TYPE = true
-	final val DUCK_TYPE = !EXACT_TYPE
-	final val SPECIAL_TYPE_IDENTIFIER = "type"
+  var modelName = "";
 
-	// list of entities
-	List<Entity> entities
-	List<Entity> topOrderEntities
+  final val EXACT_TYPE = true
+  final val DUCK_TYPE = !EXACT_TYPE
+  final val SPECIAL_TYPE_IDENTIFIER = "type"
 
-	Map<Entity, Set<Entity>> entityDeps
-	Map<Entity, Set<Entity>> inverseEntityDeps
-	Map<Entity, EntityDiffSpec> diffByEntity
-	Map<Entity, Map<String, List<PropertySpec>>> typeListByPropertyName
+  // list of entities
+  List<Entity> entities
+  List<Entity> topOrderEntities
 
-	static File outputDir
+  Map<Entity, Set<Entity>> entityDeps
+  Map<Entity, Set<Entity>> inverseEntityDeps
+  Map<Entity, EntityDiffSpec> diffByEntity
+  Map<Entity, Map<String, List<PropertySpec>>> typeListByPropertyName
 
-	def static void writeToFile(String filename, CharSequence toWrite)
-	{
-		val outFile = outputDir.toPath().resolve(filename).toFile()
-		val outFileWriter = new PrintStream(outFile)
-        outFileWriter.print(toWrite)
-        outFileWriter.close()
-	}
+  static File outputDir
+
+  def static void writeToFile(String filename, CharSequence toWrite)
+  {
+    val outFile = outputDir.toPath().resolve(filename).toFile()
+    val outFileWriter = new PrintStream(outFile)
+    outFileWriter.print(toWrite)
+    outFileWriter.close()
+  }
 
   def void m2t(File modelFile, File outputFolder)
   {
@@ -71,92 +71,93 @@ class DiffToMongoose
   }
 
 	/**
-	 * Method used to generate an Inclusive/Exclusive differences file for a NoSQLDifferences object.
-	 */
-	def void m2t(EntityDifferentiation diff, File outputFolder)
-	{
-	  outputDir = outputFolder;
+   * Method used to generate an Inclusive/Exclusive differences file for a NoSQLDifferences object.
+   */
+  def void m2t(EntityDifferentiation diff, File outputFolder)
+  {
+    outputDir = outputFolder;
 
-		modelName = diff.name;
-		diffByEntity = newHashMap(diff.entityDiffSpecs.map[ed | ed.entity -> ed])
-		val entities = diff.entityDiffSpecs.map[entity]
+    modelName = diff.name;
+    diffByEntity = newHashMap(diff.entityDiffSpecs.map[ed | ed.entity -> ed])
+    val entities = diff.entityDiffSpecs.map[entity]
 
-		// Calc dependencies between entities
-		topOrderEntities = calcDeps(entities)
+    // Calc dependencies between entities
+    topOrderEntities = calcDeps(entities)
 
-		typeListByPropertyName = calcTypeListMatrix(entities)
-		topOrderEntities.forEach[e | writeToFile(schemaFileName(e), generateSchema(e))]
-	}
-	
-	// Fill, for each property of each entity that appear in more than 
-	// one entity version *with different type* (those that hold the needsTypeCheck
-	// boolean attribute), the list of types, to check possible type folding in
-	// a latter pass
-	def calcTypeListMatrix(List<Entity> entities)
-	{
-		entities.toInvertedMap[e |
-			diffByEntity.get(e).entityVersionProps.map[propertySpecs].flatten
- 					.filter[needsTypeCheck].groupBy[property.name]
-		]
-	}
+    typeListByPropertyName = calcTypeListMatrix(entities)
+    topOrderEntities.forEach[e | writeToFile(schemaFileName(e), generateSchema(e))]
+  }
 
-	def generateSchema(Entity e) '''
-		'use strict'
+  // Fill, for each property of each entity that appear in more than 
+  // one entity version *with different type* (those that hold the needsTypeCheck
+  // boolean attribute), the list of types, to check possible type folding in
+  // a latter pass
+  def calcTypeListMatrix(List<Entity> entities)
+  {
+    entities.toInvertedMap[e |
+    	diffByEntity.get(e).entityVersionProps
+        .map[propertySpecs]
+        .flatten
+        .filter[needsTypeCheck].groupBy[property.name]
+    ]
+  }
 
-		var mongoose = require('mongoose');
-		«genIncludes(e)»
+  def generateSchema(Entity e) '''
+    'use strict'
 
-		var «e.name»Schema = new mongoose.Schema({
-			«genSpecs(e, diffByEntity.get(e))»
-		});
+    var mongoose = require('mongoose');
+    «genIncludes(e)»
 
-		module.exports = «e.name»Schema;
-	'''
-	
-	def genIncludes(Entity entity) '''
-		«FOR e : entityDeps.get(entity).sortWith(Comparator.comparing[e | topOrderEntities.indexOf(e)])»
-			var «e.name»Schema = require('./«schemaFileName(e)»');
-		«ENDFOR»
-	'''
-	
-	def schemaFileName(Entity e) {
-		e.name + "Schema.js"
-	}
-		
-	def calcDeps(List<Entity> entities) 
-	{ 
-		entityDeps = newHashMap(entities.map[e | e -> depListFor(e)])
-		inverseEntityDeps = newHashMap(entities.map[e | 
-			e -> entities.filter[e2 | entityDeps.get(e2).contains(e)].toSet
-		])
-		
-		// Implement a topological order, Khan's algorithm
-		// https://en.wikipedia.org/wiki/Topological_sorting#Kahn.27s_algorithm
-		topOrder()
-	}
-	
-	// Get the first level of dependencies for an Entity
-	def depListFor(Entity entity)
-	{
-		entity.entityversions.map[ev | 
-			ev.properties.filter[p |
-				p instanceof Aggregate
-			].map[p | 
-				(p as Aggregate).refTo.map[ev2 | ev2.eContainer as Entity]
-			].flatten
-		].flatten.toSet
-	}
+    var «e.name»Schema = new mongoose.Schema({
+      «genSpecs(e, diffByEntity.get(e))»
+    });
 
-	def List<Entity> topOrder()
-	{
-		depListRec(
-			entityDeps.filter[k, v| v.empty].keySet,
-			newLinkedList(),
-			newHashSet()
-		)
-	}
+    module.exports = «e.name»Schema;
+  '''
 
-	def List<Entity> depListRec(Set<Entity> to_consider, List<Entity> top_order, Set<Entity> seen)
+  def genIncludes(Entity entity) '''
+    «FOR e : entityDeps.get(entity).sortWith(Comparator.comparing[e | topOrderEntities.indexOf(e)])»
+      var «e.name»Schema = require('./«schemaFileName(e)»');
+    «ENDFOR»
+  '''
+
+  def schemaFileName(Entity e)
+  {
+    e.name + "Schema.js"
+  }
+
+  def calcDeps(List<Entity> entities) 
+  { 
+    entityDeps = newHashMap(entities.map[e | e -> depListFor(e)])
+    inverseEntityDeps = newHashMap(entities.map[e | 
+      e -> entities.filter[e2 | entityDeps.get(e2).contains(e)].toSet
+    ])
+
+    // Implement a topological order, Khan's algorithm
+    // https://en.wikipedia.org/wiki/Topological_sorting#Kahn.27s_algorithm
+    topOrder()
+  }
+
+  // Get the first level of dependencies for an Entity
+  def depListFor(Entity entity)
+  {
+    entity.entityversions.map[ev | 
+      ev.properties.filter[p | p instanceof Aggregate]
+      .map[p | (p as Aggregate).refTo.map[ev2 | ev2.eContainer as Entity]]
+      .flatten
+    ].flatten.toSet
+  }
+
+  def List<Entity> topOrder()
+  {
+    depListRec(
+      entityDeps.filter[k, v| v.empty].keySet,
+      newLinkedList(),
+      newHashSet()
+    )
+  }
+
+  def List<Entity> depListRec(Set<Entity> to_consider, List<Entity> top_order, Set<Entity> seen)
 	{
 		// End condition
 		if (to_consider.isEmpty)

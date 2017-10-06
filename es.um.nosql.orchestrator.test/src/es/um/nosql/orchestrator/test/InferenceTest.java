@@ -38,8 +38,9 @@ public class InferenceTest
 	private static final String FOLDER_FACEBOOK = "/media/alberto/tarsonis/datasets/facebook/";
 
 	public static void main(String[] args) throws IOException
-	{//TODO: BEFORE CHECKING MORE DATASETS, WE NEED TO MAKE SURE "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
-	  // IS IN EACH INTERFACE...
+	{//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
+	  // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.
+	  // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
 //	  prepareModelExample(DbType.MONGODB, FILL_AND_INFER, FILE_MODEL);
 //	  prepareSOFExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_SOF);  //TODO: Not tested yet
 //	  prepareEPolExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_EPOL);
