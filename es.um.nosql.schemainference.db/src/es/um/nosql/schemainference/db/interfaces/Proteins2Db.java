@@ -11,18 +11,16 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
-import es.um.nosql.schemainference.db.pojo.facebook.Comment;
-import es.um.nosql.schemainference.db.pojo.facebook.Page;
-import es.um.nosql.schemainference.db.pojo.facebook.Post;
+import es.um.nosql.schemainference.db.pojo.protein.Protein;
 import es.um.nosql.schemainference.db.utils.DbType;
 import es.um.nosql.schemainference.db.utils.deserializer.NumberToNumberDeserializer;
 import es.um.nosql.schemainference.db.utils.deserializer.StringToStringDeserializer;
 
-public class Facebook2Db extends Source2Db
+public class Proteins2Db extends Source2Db
 {
   private int MAX_LINES_BEFORE_STORE = 25000;
 
-  public Facebook2Db(DbType db, String ip)
+  public Proteins2Db(DbType db, String ip)
   {
     super(db, ip);
   }
@@ -51,21 +49,8 @@ public class Facebook2Db extends Source2Db
 
     try
     {
-      if (csvFile.getName().contains("post"))
-      {
-        mappingIterator = csvMapper.reader(Post.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
-        collectionName = "Posts";
-      }
-      else if (csvFile.getName().contains("pagename"))
-      {
-        mappingIterator = csvMapper.reader(Page.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
-        collectionName = "Pages";
-      }
-      else if (csvFile.getName().contains("comment"))
-      {
-        mappingIterator = csvMapper.reader(Comment.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
-        collectionName = "Comments";
-      }
+      mappingIterator = csvMapper.reader(Protein.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
+      collectionName = "Proteins";
 
       int numLines = 0;
       int totalLines = 1;
@@ -91,6 +76,7 @@ public class Facebook2Db extends Source2Db
           System.out.println("Storing remaining files...");
           getClient().insert(dbName, collectionName, jsonArray.toString());
         }
+
     } catch (Exception e)
     {
       e.printStackTrace();

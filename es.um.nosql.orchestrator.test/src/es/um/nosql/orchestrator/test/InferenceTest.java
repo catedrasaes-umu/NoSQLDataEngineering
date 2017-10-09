@@ -11,6 +11,7 @@ import es.um.nosql.schemainference.db.interfaces.Facebook2Db;
 import es.um.nosql.schemainference.db.interfaces.Harvard2Db;
 import es.um.nosql.schemainference.db.interfaces.Link2Db;
 import es.um.nosql.schemainference.db.interfaces.Model2Db;
+import es.um.nosql.schemainference.db.interfaces.Proteins2Db;
 import es.um.nosql.schemainference.db.interfaces.SOF2Db;
 import es.um.nosql.schemainference.db.interfaces.Urban2Db;
 import es.um.nosql.schemainference.db.utils.DbType;
@@ -36,6 +37,7 @@ public class InferenceTest
 	private static final String FOLDER_LINK = "/media/alberto/tarsonis/datasets/givealink/";
 	private static final String FILE_HARVARD = "/media/alberto/tarsonis/datasets/harvard/HMXPC13_DI_v2_5-14-14.csv";
 	private static final String FOLDER_FACEBOOK = "/media/alberto/tarsonis/datasets/facebook/";
+	private static final String FOLDER_PROTEIN = "/media/alberto/tarsonis/datasets/proteins/";
 
 	public static void main(String[] args) throws IOException
 	{//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
@@ -49,6 +51,7 @@ public class InferenceTest
 //	  prepareLinkExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_LINK);
 //	  prepareHarvardExample(DbType.MONGODB, FILL_AND_INFER, FILE_HARVARD);
 //	  prepareFacebookExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_FACEBOOK);
+//	  prepareProteinExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_PROTEIN);
 	}
 
 	public static void prepareModelExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
@@ -229,12 +232,34 @@ public class InferenceTest
 
 	  long startTime = System.currentTimeMillis();
     System.out.println("Filling the " + dbType.toString() + " database...");
-	  String[] files = new String[]{"fb_news_pagenames.csv", "fb_news_posts_20K.csv", "fb_news_comments_1000K.csv"};
 
 	  Facebook2Db controller = new Facebook2Db(dbType, DATABASE_IP);
-	  for (String fileName : files)
-	    controller.run(source + fileName, dbName);
-	  controller.run(source + files[1], dbName);
+	  for (String fileName : new File(source).list())
+	    if (fileName.endsWith(".csv"))
+	      controller.run(source + fileName, dbName);
+
+	  controller.shutdown();
+
+	  System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+
+	  if (FILL_ONLY)
+	    return;
+	  else
+	    performInference(dbType, dbName, outputModel);
+	}
+
+	public static void prepareProteinExample(DbType dbType, boolean FILL_ONLY, String source)
+	{
+	  String dbName = "proteins";
+	  String outputModel = MODELS_FOLDER + dbName + ".xmi";
+
+	  long startTime = System.currentTimeMillis();
+	  System.out.println("Filling the " + dbType.toString() + " database...");
+
+	  Proteins2Db controller = new Proteins2Db(dbType, DATABASE_IP);
+	  for (String fileName : new File(source).list())
+	    if (fileName.endsWith(".csv"))
+	      controller.run(source + fileName, dbName);
 
 	  controller.shutdown();
 
