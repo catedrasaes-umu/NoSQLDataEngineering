@@ -31,9 +31,8 @@ public class Main
     String input_model = "everypolitician_sweden";
     String inputFile = INPUT_FOLDER + input_model + ".xmi";
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
-    prepareM2MExample(inputFile, outputFile);
+//    prepareM2MExample(inputFile, outputFile);
     prepareM2TExample(outputFile, OUTPUT_GEN_FOLDER);
-
   }
 
   public static void prepareM2MExample(String inputFile, String outputFile)

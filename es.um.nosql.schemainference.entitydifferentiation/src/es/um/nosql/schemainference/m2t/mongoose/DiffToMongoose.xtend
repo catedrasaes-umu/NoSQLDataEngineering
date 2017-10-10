@@ -20,7 +20,7 @@ import es.um.nosql.schemainference.NoSQLSchema.Property
 import es.um.nosql.schemainference.util.emf.ModelLoader
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage
 
-class DiffToMongoose
+public class DiffToMongoose
 {
   static class Label
   {
@@ -38,13 +38,12 @@ class DiffToMongoose
   }
 
   var modelName = "";
+  static File outputDir
+//  final val EXACT_TYPE = true
+//  final val DUCK_TYPE = !EXACT_TYPE
+//  final val SPECIAL_TYPE_IDENTIFIER = "type"
 
-  final val EXACT_TYPE = true
-  final val DUCK_TYPE = !EXACT_TYPE
-  final val SPECIAL_TYPE_IDENTIFIER = "type"
-
-  // list of entities
-  List<Entity> entities
+  // List of dependencies
   List<Entity> topOrderEntities
 
   Map<Entity, Set<Entity>> entityDeps
@@ -52,16 +51,9 @@ class DiffToMongoose
   Map<Entity, EntityDiffSpec> diffByEntity
   Map<Entity, Map<String, List<PropertySpec>>> typeListByPropertyName
 
-  static File outputDir
-
-  def static void writeToFile(String filename, CharSequence toWrite)
-  {
-    val outFile = outputDir.toPath().resolve(filename).toFile()
-    val outFileWriter = new PrintStream(outFile)
-    outFileWriter.print(toWrite)
-    outFileWriter.close()
-  }
-
+  /**
+   * Method used to start the generation process from a diff model file
+   */
   def void m2t(File modelFile, File outputFolder)
   {
     val loader = new ModelLoader(EntitydifferentiationPackage.eINSTANCE);
@@ -71,18 +63,18 @@ class DiffToMongoose
   }
 
 	/**
-   * Method used to generate an Inclusive/Exclusive differences file for a NoSQLDifferences object.
+   * Method used to start the generation process from an EntityDifferentiation object
    */
   def void m2t(EntityDifferentiation diff, File outputFolder)
   {
     outputDir = outputFolder;
-
     modelName = diff.name;
+
     diffByEntity = newHashMap(diff.entityDiffSpecs.map[ed | ed.entity -> ed])
     val entities = diff.entityDiffSpecs.map[entity]
 
     // Calc dependencies between entities
-    topOrderEntities = calcDeps(entities)
+    topOrderEntities = calculateDeps(entities)
 
     typeListByPropertyName = calcTypeListMatrix(entities)
     topOrderEntities.forEach[e | writeToFile(schemaFileName(e), generateSchema(e))]
@@ -124,61 +116,6 @@ class DiffToMongoose
   def schemaFileName(Entity e)
   {
     e.name + "Schema.js"
-  }
-
-  def calcDeps(List<Entity> entities) 
-  { 
-    entityDeps = newHashMap(entities.map[e | e -> depListFor(e)])
-    inverseEntityDeps = newHashMap(entities.map[e | 
-      e -> entities.filter[e2 | entityDeps.get(e2).contains(e)].toSet
-    ])
-
-    // Implement a topological order, Khan's algorithm
-    // https://en.wikipedia.org/wiki/Topological_sorting#Kahn.27s_algorithm
-    topOrder()
-  }
-
-  // Get the first level of dependencies for an Entity
-  def depListFor(Entity entity)
-  {
-    entity.entityversions.map[ev | 
-      ev.properties.filter[p | p instanceof Aggregate]
-      .map[p | (p as Aggregate).refTo.map[ev2 | ev2.eContainer as Entity]]
-      .flatten
-    ].flatten.toSet
-  }
-
-  def List<Entity> topOrder()
-  {
-    depListRec(
-      entityDeps.filter[k, v| v.empty].keySet,
-      newLinkedList(),
-      newHashSet()
-    )
-  }
-
-  def List<Entity> depListRec(Set<Entity> to_consider, List<Entity> top_order, Set<Entity> seen)
-  {
-    // End condition
-    if (to_consider.isEmpty)
-      top_order
-    else
-    {
-      // Recursive
-      val e = to_consider.head
-      val to_consider_ = to_consider.tail.toSet
-
-      // Add current node (no dependencies to cover)
-      top_order.add(e)
-      seen.add(e)
-
-      val dependent = inverseEntityDeps.get(e)
-      to_consider_.addAll(
-      	dependent.filter[ d | seen.containsAll(entityDeps.get(d))
-      ])
-
-      depListRec(to_consider_, top_order, seen)
-    }
   }
 
   def genSpecs(Entity e, EntityDiffSpec spec) '''
@@ -257,6 +194,11 @@ class DiffToMongoose
     // (see the TODO above)
 
     // TODO: The ps.property instanceof Attribute is TENTATIVE. It will crash if not compared.
+    // Several cases:
+    // Two primitives types (String, Number, Boolean) => Create union type
+    // Primitive Type and tuple => Create union type
+    // Something and Aggregate => ???
+    // Reference (considering originalType may be String, Number or RefId) and Primitive Type or tuple => Create union type
     val typeList = typeListByPropertyName.get(e).get(property.name)
     if (typeList.forall[ps | (ps.property instanceof Attribute) && (ps.property as Attribute)?.type instanceof PrimitiveType ])
       #{ "type" -> label("mongoose.Schema.Types.Mixed") }
@@ -351,4 +293,73 @@ class DiffToMongoose
   private def isFloat(String type) { #["float", "double"].contains(type)}
   private def isBoolean(String type) { #["boolean", "bool"].contains(type)}
   private def isObjectId(String type) { #["objectid"].contains(type)}
+
+  /**
+   * Method used to write a generated CharSequence to a file
+   */
+  private def writeToFile(String filename, CharSequence toWrite)
+  {
+    val outFile = outputDir.toPath().resolve(filename).toFile()
+    val outFileWriter = new PrintStream(outFile)
+    outFileWriter.print(toWrite)
+    outFileWriter.close()
+  }
+
+  /**
+   * Method used to calculate the dependencies between entities, and reorder them in the correct order
+   */
+  private def calculateDeps(List<Entity> entities) 
+  { 
+    entityDeps = newHashMap(entities.map[e | e -> getDepsFor(e)])
+    inverseEntityDeps = newHashMap(entities.map[e | 
+      e -> entities.filter[e2 | entityDeps.get(e2).contains(e)].toSet
+    ])
+
+    // Implement a topological order, Khan's algorithm
+    // https://en.wikipedia.org/wiki/Topological_sorting#Kahn.27s_algorithm
+    topologicalOrder()
+  }
+
+  // Get the first level of dependencies for an Entity
+  private def getDepsFor(Entity entity)
+  {
+    entity.entityversions.map[ev | 
+      ev.properties.filter[p | p instanceof Aggregate]
+      .map[p | (p as Aggregate).refTo.map[ev2 | ev2.eContainer as Entity]]
+      .flatten
+    ].flatten.toSet
+  }
+
+  private def List<Entity> topologicalOrder()
+  {
+    depListRec(
+      entityDeps.filter[k, v| v.empty].keySet,
+      newLinkedList(),
+      newHashSet()
+    )
+  }
+
+  private def List<Entity> depListRec(Set<Entity> to_consider, List<Entity> top_order, Set<Entity> seen)
+  {
+    // End condition
+    if (to_consider.isEmpty)
+      top_order
+    else
+    {
+      // Recursive
+      val e = to_consider.head
+      val to_consider_ = to_consider.tail.toSet
+
+      // Add current node (no dependencies to cover)
+      top_order.add(e)
+      seen.add(e)
+
+      val dependent = inverseEntityDeps.get(e)
+      to_consider_.addAll(
+        dependent.filter[ d | seen.containsAll(entityDeps.get(d))
+      ])
+
+      depListRec(to_consider_, top_order, seen)
+    }
+  }
 }
