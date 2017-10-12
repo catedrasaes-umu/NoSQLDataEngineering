@@ -14,6 +14,7 @@ import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation;
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage;
 import es.um.nosql.schemainference.m2m.NoSQLSchemaToEntityDiff;
+import es.um.nosql.schemainference.m2t.mongoose.DiffBaseGen;
 import es.um.nosql.schemainference.m2t.mongoose.DiffToMongoose;
 import es.um.nosql.schemainference.util.emf.ResourceManager;
 
@@ -21,18 +22,19 @@ public class Main
 {
   public static String INPUT_FOLDER = "testSources/";
   public static String OUTPUT_FOLDER = "testOutput/";
-  public static String OUTPUT_GEN_FOLDER = OUTPUT_FOLDER + "gen/";
+  public static String OUTPUT_GEN_BASE_FOLDER = OUTPUT_FOLDER + "gen/";
+  public static boolean GENERATE_BASE_FILES = true;
 
   public static void main(String[] args)
   {
     // Caso de test 1. Falla en genTypeForTypeCheckProperty, cuando no puede castear Aggregate a Attribute.
     // String input_model = "test1_aggr";
 
-    String input_model = "everypolitician_sweden";
+    String input_model = "mongoMovies3";
     String inputFile = INPUT_FOLDER + input_model + ".xmi";
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
 //    prepareM2MExample(inputFile, outputFile);
-    prepareM2TExample(outputFile, OUTPUT_GEN_FOLDER);
+    prepareM2TExample(outputFile, OUTPUT_GEN_BASE_FOLDER);
   }
 
   public static void prepareM2MExample(String inputFile, String outputFile)
@@ -80,6 +82,12 @@ public class Main
 
     if (!OUTPUT_M2T_FOLDER.exists())
       OUTPUT_M2T_FOLDER.mkdirs();
+
+    if (GENERATE_BASE_FILES)
+    {
+      DiffBaseGen baseGen = new DiffBaseGen();
+      baseGen.m2t(INPUT_MODEL, OUTPUT_M2T_FOLDER);
+    }
 
     DiffToMongoose diff2Mongoose = new DiffToMongoose();
     diff2Mongoose.m2t(INPUT_MODEL, OUTPUT_M2T_FOLDER);

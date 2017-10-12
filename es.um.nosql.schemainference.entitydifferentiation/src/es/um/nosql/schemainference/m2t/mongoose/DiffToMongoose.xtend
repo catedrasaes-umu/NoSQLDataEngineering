@@ -67,7 +67,11 @@ public class DiffToMongoose
    */
   def void m2t(EntityDifferentiation diff, File outputFolder)
   {
-    outputDir = outputFolder;
+    if (outputFolder.toPath.resolve("app/models/").toFile.exists)
+      outputDir = outputFolder.toPath.resolve("app/models/").toFile
+    else
+      outputDir = outputFolder
+
     modelName = diff.name;
 
     diffByEntity = newHashMap(diff.entityDiffSpecs.map[ed | ed.entity -> ed])
@@ -102,7 +106,7 @@ public class DiffToMongoose
 
     var «e.name»Schema = new mongoose.Schema({
       «genSpecs(e, diffByEntity.get(e))»
-    });
+    }«genCollectionName(e)»);
 
     module.exports = «e.name»Schema;
   '''
@@ -118,6 +122,10 @@ public class DiffToMongoose
     e.name + "Schema.js"
   }
 
+  def genCollectionName(Entity e) '''
+    «IF (e.entityversions.exists[ev | ev.isRoot])», {collection: '«e.name»'}«ENDIF»'''
+
+  //TODO: Something's wrong with this. Some attributes are "required: true" when they shouldn't be. But I cannot really understand anything of this loop. Need to check this out.
   def genSpecs(Entity e, EntityDiffSpec spec) '''
   «FOR s : spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false] SEPARATOR ','»
   «s.key.property.name»: «toJSONString(mongooseOptionsForPropertySpec(e,s.key, s.value))»
@@ -139,7 +147,9 @@ public class DiffToMongoose
     val props = <String,Object>newHashMap()
 
     props.putAll(genTypeForPropertySpec(e, spec))
-    if (required)
+    //TODO: A type should never be a required property. Since we are working w Mongoose,
+    // a mongoDB object won't usually have a type, since its type is the collection name.
+    if (required && !spec.property.name.equals("type"))
       props.put('required', true)
     props
   }
@@ -174,6 +184,10 @@ public class DiffToMongoose
 
   def genTypeForPropertySpec(Entity e, PropertySpec ps)
   {
+    if (e.name.equals("Director"))
+    {
+    println(ps.property.name + " " + ps.needsTypeCheck)      
+    }
   	if (ps.needsTypeCheck)
       genTypeForTypeCheckProperty(e, ps.property)
     else
