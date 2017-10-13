@@ -9,6 +9,7 @@ import es.um.nosql.schemainference.db.interfaces.Comp2Db;
 import es.um.nosql.schemainference.db.interfaces.EPol2Db;
 import es.um.nosql.schemainference.db.interfaces.Facebook2Db;
 import es.um.nosql.schemainference.db.interfaces.Harvard2Db;
+import es.um.nosql.schemainference.db.interfaces.Publications2Db;
 import es.um.nosql.schemainference.db.interfaces.Link2Db;
 import es.um.nosql.schemainference.db.interfaces.Model2Db;
 import es.um.nosql.schemainference.db.interfaces.Proteins2Db;
@@ -38,6 +39,7 @@ public class InferenceTest
 	private static final String FILE_HARVARD = "/media/alberto/tarsonis/datasets/harvard/HMXPC13_DI_v2_5-14-14.csv";
 	private static final String FOLDER_FACEBOOK = "/media/alberto/tarsonis/datasets/facebook/";
 	private static final String FOLDER_PROTEIN = "/media/alberto/tarsonis/datasets/proteins/";
+	private static final String FILE_PUBLICATIONS = "/media/alberto/tarsonis/datasets/publications/publications-nov-20132.csv";
 
 	public static void main(String[] args) throws IOException
 	{//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
@@ -52,6 +54,7 @@ public class InferenceTest
 //	  prepareHarvardExample(DbType.MONGODB, FILL_AND_INFER, FILE_HARVARD);
 //	  prepareFacebookExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_FACEBOOK);
 //	  prepareProteinExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_PROTEIN);
+//	  preparePublicationsExample(DbType.MONGODB, FILL_AND_INFER, FILE_PUBLICATIONS);
 	}
 
 	public static void prepareModelExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
@@ -261,6 +264,26 @@ public class InferenceTest
 	    if (fileName.endsWith(".csv"))
 	      controller.run(source + fileName, dbName);
 
+	  controller.shutdown();
+
+	  System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+
+	  if (FILL_ONLY)
+	    return;
+	  else
+	    performInference(dbType, dbName, outputModel);
+	}
+
+	public static void preparePublicationsExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
+	{
+	  String dbName = "publications";
+	  String outputModel = MODELS_FOLDER + dbName + ".xmi";
+
+	  long startTime = System.currentTimeMillis();
+
+	  System.out.println("Filling the " + dbType.toString() + " database...");
+	  Publications2Db controller = new Publications2Db(dbType, DATABASE_IP);
+	  controller.run(sourceFile, dbName);
 	  controller.shutdown();
 
 	  System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
