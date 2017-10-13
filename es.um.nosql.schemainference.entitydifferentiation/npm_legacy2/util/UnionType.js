@@ -18,6 +18,4 @@ function make_union_type(name, type1, type2)
     mongoose.Schema.Types[capitalized_name] = typefn;
 }
 
-
-
 module.exports = make_union_type;

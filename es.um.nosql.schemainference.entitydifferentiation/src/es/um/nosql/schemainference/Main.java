@@ -33,7 +33,7 @@ public class Main
     String input_model = "mongoMovies3";
     String inputFile = INPUT_FOLDER + input_model + ".xmi";
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
-//    prepareM2MExample(inputFile, outputFile);
+    prepareM2MExample(inputFile, outputFile);
     prepareM2TExample(outputFile, OUTPUT_GEN_BASE_FOLDER);
   }
 

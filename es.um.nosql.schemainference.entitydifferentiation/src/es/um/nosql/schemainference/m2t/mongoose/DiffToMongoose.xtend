@@ -19,6 +19,7 @@ import java.util.Comparator
 import es.um.nosql.schemainference.NoSQLSchema.Property
 import es.um.nosql.schemainference.util.emf.ModelLoader
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage
+import es.um.nosql.schemainference.NoSQLSchema.Association
 
 public class DiffToMongoose
 {
@@ -125,7 +126,6 @@ public class DiffToMongoose
   def genCollectionName(Entity e) '''
     «IF (e.entityversions.exists[ev | ev.isRoot])», {collection: '«e.name»'}«ENDIF»'''
 
-  //TODO: Something's wrong with this. Some attributes are "required: true" when they shouldn't be. But I cannot really understand anything of this loop. Need to check this out.
   def genSpecs(Entity e, EntityDiffSpec spec) '''
   «FOR s : spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false] SEPARATOR ','»
   «s.key.property.name»: «toJSONString(mongooseOptionsForPropertySpec(e,s.key, s.value))»
@@ -147,9 +147,11 @@ public class DiffToMongoose
     val props = <String,Object>newHashMap()
 
     props.putAll(genTypeForPropertySpec(e, spec))
-    //TODO: A type should never be a required property. Since we are working w Mongoose,
-    // a mongoDB object won't usually have a type, since its type is the collection name.
-    if (required && !spec.property.name.equals("type"))
+    // A type should never be a 'required' property. Since we are working w mongoDB, objects won't usually have a type, because its type is the collection name.
+    // Also: The 'required' clause on mongoose requires a field to exist and also, if it is an array, to NOT be empty
+    // This may cause problems when an association has a lowerBound = 0. To shortcut this, for the moment we wont add the required option to a field
+    // if it is an association w lowerBound == 0. Proof: https://stackoverflow.com/questions/27268172/mongoose-schema-to-require-array-that-can-be-empty
+    if (required && (!spec.property.name.equals("type") && (!(spec.property instanceof Association) || (spec.property as Association).lowerBound != 0)))
       props.put('required', true)
     props
   }
