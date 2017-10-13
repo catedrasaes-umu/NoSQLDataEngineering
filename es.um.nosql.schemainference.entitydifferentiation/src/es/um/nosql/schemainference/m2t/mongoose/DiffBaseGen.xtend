@@ -30,7 +30,7 @@ class DiffBaseGen
 
     outputDir.toPath.resolve("app").resolve("models").toFile.mkdirs;
     writeToFile("package.json", generatePackageFile());
-    writeToFile("main.js", generateMainFile(diff.name, diff.entityDiffSpecs.filter[ed | ed.entity.entityversions.exists[ev | ev.isRoot]].map[ed | ed.entity]))
+    writeToFile("checkDbConsistency.js", generateMainFile(diff.name, diff.entityDiffSpecs.filter[ed | ed.entity.entityversions.exists[ev | ev.isRoot]].map[ed | ed.entity]))
   }
 
   def generatePackageFile()
@@ -50,36 +50,49 @@ class DiffBaseGen
   '''
   var mongoose   = require('mongoose');
   mongoose.Promise = require('bluebird');
-  «FOR e : rootEntities»
-    var «e.name» = mongoose.model('«e.name»', require('./app/models/«e.name»Schema'));
-  «ENDFOR»
-
-  mongoose.connect('mongodb://127.0.0.1/«modelName»', function(err)
+  mongoose.connect('mongodb://127.0.0.1/«modelName»',
+  {
+    useMongoClient: true
+  }, function(err)
   {
     if (err)
       console.log(err);
     else
       console.log('Connected to 127.0.0.1/«modelName»');
   });
-
   mongoose.set('debug', true);
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error: '));
 
+  «FOR e : rootEntities»
+    var «e.name» = mongoose.model('«e.name»', require('./app/models/«e.name»Schema'));
+  «ENDFOR»
+
   db.once('open', function()
   {
     «FOR e : rootEntities»
-      «e.name».find(function(err, result)
+      «e.name».find({}, '-_id', function(err, result)
       {
         if (err)
           return console.error(err);
+
+        console.log("Checking consistency of the \"«e.name»\" table");
+        var errorNumber = 0;
 
         result.forEach(function(«e.name.toLowerCase»)
         {
           var validation = «e.name.toLowerCase».validateSync();
           if (typeof validation !== "undefined")
+          {
             console.log(validation);
+            errorNumber++;
+          }
         });
+
+        if (errorNumber)
+          console.log("\"«e.name»\" table: " + errorNumber + " errors found");
+        else
+          console.log("\"«e.name»\" table: No errors found!");
       });
 
     «ENDFOR»

@@ -184,10 +184,6 @@ public class DiffToMongoose
 
   def genTypeForPropertySpec(Entity e, PropertySpec ps)
   {
-    if (e.name.equals("Director"))
-    {
-    println(ps.property.name + " " + ps.needsTypeCheck)      
-    }
   	if (ps.needsTypeCheck)
       genTypeForTypeCheckProperty(e, ps.property)
     else
@@ -254,13 +250,20 @@ public class DiffToMongoose
         'ref' -> label(ref.refTo.name)
       }
     else
-      #{ 'type' -> genTypeForPrimitiveString(ref.originalType)}
+      #{ 'type' -> referenceType(ref)}
   }
 
-  val pat = Pattern.compile("DBRef\\((.+?)\\)")
+  def referenceType(Reference reference)
+  {
+    if (reference.lowerBound != 1 || reference.upperBound != 1)
+      '''[«genTypeForPrimitiveString(reference.originalType)»]'''
+    else
+      '''«genTypeForPrimitiveString(reference.originalType)»'''    
+  }
 
   def expandRef(Reference reference) 
   {
+    val pat = Pattern.compile("DBRef\\((.+?)\\)")
     val m = pat.matcher(reference.originalType)
     if (m.matches)
       #["dbref", m.group(0)]
