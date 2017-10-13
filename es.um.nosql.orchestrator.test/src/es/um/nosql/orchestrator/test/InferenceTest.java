@@ -50,14 +50,14 @@ public class InferenceTest
 //	  prepareModelExample(DbType.MONGODB, FILL_AND_INFER, FILE_MODEL);
 //	  prepareSOFExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_SOF);  //TODO: Not tested yet
 //	  prepareEPolExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_EPOL);
-//	  prepareUrbanExample(DbType.MONGODB, FILL_ONLY, FILE_URBAN);
+//	  prepareUrbanExample(DbType.MONGODB, FILL_AND_INFER, FILE_URBAN);                  //POJO
 //	  prepareCompanyExample(DbType.COUCHDB, FILL_ONLY, FILE_COMPANY);
-//	  prepareLinkExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_LINK);
-//	  prepareHarvardExample(DbType.MONGODB, FILL_AND_INFER, FILE_HARVARD);
-//	  prepareFacebookExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_FACEBOOK);
-//	  prepareProteinExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_PROTEIN);
-//	  preparePublicationsExample(DbType.MONGODB, FILL_AND_INFER, FILE_PUBLICATIONS);
-//	  prepareWebclickExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_WEBCLICKS);
+//	  prepareLinkExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_LINK);                  //POJO
+//	  prepareHarvardExample(DbType.MONGODB, FILL_AND_INFER, FILE_HARVARD);              //POJO
+//	  prepareFacebookExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_FACEBOOK);          //POJO
+//	  prepareProteinExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_PROTEIN);            //POJO
+//	  preparePublicationsExample(DbType.MONGODB, FILL_AND_INFER, FILE_PUBLICATIONS);    //POJO
+//	  prepareWebclickExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_WEBCLICKS);         //POJO
 	}
 
 	public static void prepareModelExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
