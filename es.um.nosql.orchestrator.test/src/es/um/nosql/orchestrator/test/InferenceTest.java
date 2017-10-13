@@ -15,6 +15,7 @@ import es.um.nosql.schemainference.db.interfaces.Model2Db;
 import es.um.nosql.schemainference.db.interfaces.Proteins2Db;
 import es.um.nosql.schemainference.db.interfaces.SOF2Db;
 import es.um.nosql.schemainference.db.interfaces.Urban2Db;
+import es.um.nosql.schemainference.db.interfaces.Webclick2Db;
 import es.um.nosql.schemainference.db.utils.DbType;
 import es.um.nosql.schemainference.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.schemainference.nosqlimport.db.couchdb.CouchDBImport;
@@ -40,6 +41,7 @@ public class InferenceTest
 	private static final String FOLDER_FACEBOOK = "/media/alberto/tarsonis/datasets/facebook/";
 	private static final String FOLDER_PROTEIN = "/media/alberto/tarsonis/datasets/proteins/";
 	private static final String FILE_PUBLICATIONS = "/media/alberto/tarsonis/datasets/publications/publications-nov-20132.csv";
+	private static final String FOLDER_WEBCLICKS = "/media/alberto/tarsonis/datasets/webclicks/";
 
 	public static void main(String[] args) throws IOException
 	{//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
@@ -55,6 +57,7 @@ public class InferenceTest
 //	  prepareFacebookExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_FACEBOOK);
 //	  prepareProteinExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_PROTEIN);
 //	  preparePublicationsExample(DbType.MONGODB, FILL_AND_INFER, FILE_PUBLICATIONS);
+//	  prepareWebclickExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_WEBCLICKS);
 	}
 
 	public static void prepareModelExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
@@ -284,6 +287,34 @@ public class InferenceTest
 	  System.out.println("Filling the " + dbType.toString() + " database...");
 	  Publications2Db controller = new Publications2Db(dbType, DATABASE_IP);
 	  controller.run(sourceFile, dbName);
+	  controller.shutdown();
+
+	  System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+
+	  if (FILL_ONLY)
+	    return;
+	  else
+	    performInference(dbType, dbName, outputModel);
+	}
+
+	public static void prepareWebclickExample(DbType dbType, boolean FILL_ONLY, String source)
+	{
+	  String dbName = "webclicks";
+	  String outputModel = MODELS_FOLDER + dbName + ".xmi";
+
+	  long startTime = System.currentTimeMillis();
+
+	  System.out.println("Filling the " + dbType.toString() + " database...");
+	  Webclick2Db controller = new Webclick2Db(dbType, DATABASE_IP);
+	  File theFile = new File(source);
+	  if (theFile.isDirectory())
+	  {
+	    for (String countryRoute : theFile.list())
+	      controller.run(source + countryRoute, dbName);
+	  }
+	  else
+	    controller.run(source, dbName);
+
 	  controller.shutdown();
 
 	  System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");

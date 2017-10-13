@@ -34,7 +34,7 @@ public class Urban2Db extends Source2Db
     {
       ObjectMapper mapper = new ObjectMapper();
       ArrayNode jsonArray = mapper.createArrayNode();
-      String collectionName = "urban_word";
+      String collectionName = "urban_words";
       int numLines = 0;
       int totalLines = 1;
       System.out.println("Storing each " + MAX_LINES_BEFORE_STORE);

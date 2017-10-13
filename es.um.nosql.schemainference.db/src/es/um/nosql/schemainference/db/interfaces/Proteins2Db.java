@@ -39,7 +39,7 @@ public class Proteins2Db extends Source2Db
     File csvFile = new File(csvRoute);
     CsvMapper csvMapper = new CsvMapper();
     MappingIterator<?> mappingIterator = null;
-    ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);
+    ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_EMPTY);
     String collectionName = null;
 
     SimpleModule module = new SimpleModule();
@@ -50,33 +50,32 @@ public class Proteins2Db extends Source2Db
     try
     {
       mappingIterator = csvMapper.reader(Protein.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
-      collectionName = "Proteins";
+      collectionName = "proteins";
 
       int numLines = 0;
       int totalLines = 1;
       ArrayNode jsonArray = oMapper.createArrayNode();
 
-        while (mappingIterator.hasNext())
+      while (mappingIterator.hasNext())
+      {
+        jsonArray.add(oMapper.readTree(oMapper.writeValueAsString(mappingIterator.next())));
+
+        if (++numLines == MAX_LINES_BEFORE_STORE)
         {
-          jsonArray.add(oMapper.readTree(oMapper.writeValueAsString(mappingIterator.next())));
-
-          if (++numLines == MAX_LINES_BEFORE_STORE)
-          {
-            getClient().insert(dbName, collectionName, jsonArray.toString());
-            jsonArray.removeAll();
-            numLines = 0;
-            System.out.println("Line count: " + totalLines);
-          }
-
-          totalLines++;
-        }
-
-        if (jsonArray.size() > 0)
-        {
-          System.out.println("Storing remaining files...");
           getClient().insert(dbName, collectionName, jsonArray.toString());
+          jsonArray.removeAll();
+          numLines = 0;
+          System.out.println("Line count: " + totalLines);
         }
 
+        totalLines++;
+      }
+
+      if (jsonArray.size() > 0)
+      {
+        System.out.println("Storing remaining files...");
+        getClient().insert(dbName, collectionName, jsonArray.toString());
+      }
     } catch (Exception e)
     {
       e.printStackTrace();

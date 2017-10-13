@@ -1,21 +1,24 @@
 package es.um.nosql.schemainference.db.interfaces;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
 import java.nio.file.Paths;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
+import es.um.nosql.schemainference.db.pojo.webclick.Webclick;
 import es.um.nosql.schemainference.db.utils.DbType;
+import es.um.nosql.schemainference.db.utils.deserializer.NumberToNumberDeserializer;
+import es.um.nosql.schemainference.db.utils.deserializer.StringToStringDeserializer;
 
-public class Comp2Db extends Source2Db
+public class Webclick2Db extends Source2Db
 {
-  private int MAX_LINES_BEFORE_STORE = 2000;
+  private int MAX_LINES_BEFORE_STORE = 5000;
 
-  public Comp2Db(DbType db, String ip)
+  public Webclick2Db(DbType db, String ip)
   {
     super(db, ip);
   }
@@ -31,18 +34,28 @@ public class Comp2Db extends Source2Db
 
   private void storeJSONContent(String jsonRoute, String dbName)
   {
-    try (BufferedReader reader = new BufferedReader(new FileReader(new File(jsonRoute))))
+    File jsonFile = new File(jsonRoute);
+    MappingIterator<?> mappingIterator = null;
+    ObjectMapper mapper = new ObjectMapper().setSerializationInclusion(Include.NON_EMPTY);
+    String collectionName = null;
+
+    SimpleModule module = new SimpleModule();
+    module.addDeserializer(Integer.class, new NumberToNumberDeserializer());
+    module.addDeserializer(String.class, new StringToStringDeserializer());
+    mapper.registerModule(module);
+
+    try
     {
-      ObjectMapper mapper = new ObjectMapper().setSerializationInclusion(Include.NON_EMPTY);
-      ArrayNode jsonArray = mapper.createArrayNode();
-      String collectionName = "companies";
+      mappingIterator = mapper.reader(Webclick.class).readValues(jsonFile);
+      collectionName = "webclicks";
+
       int numLines = 0;
       int totalLines = 1;
-      System.out.println("Storing each " + MAX_LINES_BEFORE_STORE);
+      ArrayNode jsonArray = mapper.createArrayNode();
 
-      for (String line; (line = reader.readLine()) != null; totalLines++)
+      while (mappingIterator.hasNext())
       {
-        jsonArray.add(mapper.readTree(line));
+        jsonArray.add(mapper.readTree(mapper.writeValueAsString(mappingIterator.next())));
 
         if (++numLines == MAX_LINES_BEFORE_STORE)
         {
@@ -51,6 +64,8 @@ public class Comp2Db extends Source2Db
           numLines = 0;
           System.out.println("Line count: " + totalLines);
         }
+
+        totalLines++;
       }
 
       if (jsonArray.size() > 0)
@@ -58,7 +73,7 @@ public class Comp2Db extends Source2Db
         System.out.println("Storing remaining files...");
         getClient().insert(dbName, collectionName, jsonArray.toString());
       }
-    } catch(Exception e)
+    } catch (Exception e)
     {
       e.printStackTrace();
     }

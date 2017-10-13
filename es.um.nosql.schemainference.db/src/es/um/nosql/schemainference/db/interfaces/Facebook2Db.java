@@ -41,7 +41,7 @@ public class Facebook2Db extends Source2Db
     File csvFile = new File(csvRoute);
     CsvMapper csvMapper = new CsvMapper();
     MappingIterator<?> mappingIterator = null;
-    ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);
+    ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_EMPTY);
     String collectionName = null;
 
     SimpleModule module = new SimpleModule();
@@ -54,17 +54,17 @@ public class Facebook2Db extends Source2Db
       if (csvFile.getName().contains("post"))
       {
         mappingIterator = csvMapper.reader(Post.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
-        collectionName = "Posts";
+        collectionName = "posts";
       }
       else if (csvFile.getName().contains("pagename"))
       {
         mappingIterator = csvMapper.reader(Page.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
-        collectionName = "Pages";
+        collectionName = "pages";
       }
       else if (csvFile.getName().contains("comment"))
       {
         mappingIterator = csvMapper.reader(Comment.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
-        collectionName = "Comments";
+        collectionName = "comments";
       }
 
       int numLines = 0;

@@ -40,9 +40,9 @@ public class Publications2Db extends Source2Db
     int totalLines = 1;
     CsvMapper csvMapper = new CsvMapper();
     MappingIterator<Publication> mappingIterator;
-    ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);
+    ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_EMPTY);
     ArrayNode jsonArray = oMapper.createArrayNode();
-    String collectionName = "Publications";
+    String collectionName = "publications";
 
     SimpleModule module = new SimpleModule();
     module.addDeserializer(Integer.class, new NumberToNumberDeserializer());
