@@ -70,6 +70,7 @@ class DiffBaseGen
 
   module.exports = make_union_type;
   '''
+
   def generateMainFile(String modelName, Iterable<Entity> rootEntities)
   '''
   var mongoose   = require('mongoose');
