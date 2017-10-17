@@ -22,8 +22,8 @@ public class Main
 {
   public static String INPUT_FOLDER = "testSources/";
   public static String OUTPUT_FOLDER = "testOutput/";
-  public static String OUTPUT_GEN_BASE_FOLDER = OUTPUT_FOLDER + "gen/";
-  public static boolean GENERATE_BASE_FILES = true;
+  public static String OUTPUT_GEN_BASE_FOLDER = OUTPUT_FOLDER + "gen2/";
+  public static boolean GENERATE_BASE_FILES = false;
 
   public static void main(String[] args)
   {
