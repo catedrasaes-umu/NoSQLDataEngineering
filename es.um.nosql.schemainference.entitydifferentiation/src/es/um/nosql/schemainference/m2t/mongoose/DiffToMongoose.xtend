@@ -152,7 +152,7 @@ public class DiffToMongoose
     // This may cause problems when an association has a lowerBound = 0. To shortcut this, for the moment we wont add the required option to a field
     // if it is an association w lowerBound == 0. Proof: https://stackoverflow.com/questions/27268172/mongoose-schema-to-require-array-that-can-be-empty
     // TODO: No solution still
-    if (required && (!spec.property.name.equals("type")/* && (!(spec.property instanceof Association) || (spec.property as Association).lowerBound != 0)*/))
+    if (required && (!spec.property.name.equals("type") && (!(spec.property instanceof Association) || (spec.property as Association).lowerBound != 0)))
       props.put('required', true)
     props
   }

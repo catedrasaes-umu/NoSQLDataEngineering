@@ -33,8 +33,8 @@ public class Main
     String input_model = "mongoMovies3";
     String inputFile = INPUT_FOLDER + input_model + ".xmi";
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
-    prepareM2MExample(inputFile, outputFile);
-    prepareM2TExample(outputFile, OUTPUT_GEN_BASE_FOLDER);
+//    prepareM2MExample(inputFile, outputFile);
+    prepareM2MongooseExample(outputFile, OUTPUT_GEN_BASE_FOLDER);
   }
 
   public static void prepareM2MExample(String inputFile, String outputFile)
@@ -73,7 +73,7 @@ public class Main
     System.out.println("Transformation model finished");
   }
 
-  public static void prepareM2TExample(String inputFile, String outputFolder)
+  public static void prepareM2MongooseExample(String inputFile, String outputFolder)
   {
     File INPUT_MODEL = new File(inputFile);
     File OUTPUT_M2T_FOLDER = new File(outputFolder);
