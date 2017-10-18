@@ -5,19 +5,26 @@ var mongoose = require('mongoose');
 function makeUnionType(name, type1, type2)
 {
   var capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
-  var typeFunction = new Function("key", "options", "mongoose.SchemaType.call(this, key, options, '" + capitalizedName + "');");
+  var typeFunction = function(key, options) {
+	mongoose.SchemaType.call(this, key, options, capitalizedName);
+  }
   typeFunction.prototype = Object.create(mongoose.SchemaType.prototype);
   typeFunction.prototype.cast = function(val)
   {
-    try {mongoose.Schema.Types[type1].prototype.cast(val)} catch (firstTypeError)
+    var val2 = val;
+    try {
+	val2 = mongoose.Schema.Types[type1].prototype.cast(val)
+    } catch (firstTypeError)
     {
-      try {mongoose.Schema.Types[type2].prototype.cast(val)} catch (secondTypeError)
+      try {
+	  val2 = mongoose.Schema.Types[type2].prototype.cast(val)
+      } catch (secondTypeError)
       {
         throw new Error(capitalizedName + ': ' + val + ' couldn\'t be cast');
       }
     }
 
-    return val;
+    return val2;
   }
 ///////////
   // Since anonymous functions don't seem to work, this line will name it.
@@ -28,9 +35,9 @@ function makeUnionType(name, type1, type2)
 */
 ///////////
   mongoose.Schema.Types[capitalizedName] = typeFunction;
+  return typeFunction;
 }
 
-module.exports = makeUnionType;
 
 // If we hardcode a union NumberOrString, this will actually work.
 // It is actually usable and there is no problem with its type. Validation is also performed with the cast method.
@@ -50,3 +57,5 @@ NumberOrString.prototype.cast = function(val)
 };
 
 mongoose.Schema.Types.NumberOrString = NumberOrString;
+
+module.exports = makeUnionType;
