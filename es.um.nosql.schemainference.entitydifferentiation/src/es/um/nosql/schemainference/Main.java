@@ -22,18 +22,18 @@ public class Main
 {
   public static String INPUT_FOLDER = "testSources/";
   public static String OUTPUT_FOLDER = "testOutput/";
-  public static String OUTPUT_GEN_BASE_FOLDER = OUTPUT_FOLDER + "gen2/";
-  public static boolean GENERATE_BASE_FILES = false;
+  public static String OUTPUT_GEN_BASE_FOLDER = OUTPUT_FOLDER + "gen/";
+  public static boolean GENERATE_BASE_FILES = true;
 
   public static void main(String[] args)
   {
     // Caso de test 1. Falla en genTypeForTypeCheckProperty, cuando no puede castear Aggregate a Attribute.
     // String input_model = "test1_aggr";
 
-    String input_model = "mongoMovies3";
+    String input_model = "test3";
     String inputFile = INPUT_FOLDER + input_model + ".xmi";
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
-//    prepareM2MExample(inputFile, outputFile);
+    prepareM2MExample(inputFile, outputFile);
     prepareM2MongooseExample(outputFile, OUTPUT_GEN_BASE_FOLDER);
   }
 

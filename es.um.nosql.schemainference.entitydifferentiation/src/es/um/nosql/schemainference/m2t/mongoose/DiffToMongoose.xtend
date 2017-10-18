@@ -20,6 +20,7 @@ import es.um.nosql.schemainference.NoSQLSchema.Property
 import es.um.nosql.schemainference.util.emf.ModelLoader
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage
 import es.um.nosql.schemainference.NoSQLSchema.Association
+import java.util.ArrayList
 
 public class DiffToMongoose
 {
@@ -196,27 +197,85 @@ public class DiffToMongoose
   // As it is a type check property, it occurs in the 
   def genTypeForTypeCheckProperty(Entity e, Property property)
   {
-    // TODO: First version, Mixed type. In the future, explore
-    // complex types for Mongoose:
-    // http://mongoosejs.com/docs/customschematypes.html
-    // We have to register and generate all these types beforehand
-    // so maybe this function should be performed before, when
-    // the typeListByPropertyName variable is created
-
-    // If any property type is a primitive, we always produce Mixed
-    // (see the TODO above)
-
-    // TODO: The ps.property instanceof Attribute is TENTATIVE. It will crash if not compared.
-    // Several cases:
-    // Two primitives types (String, Number, Boolean) => Create union type
-    // Primitive Type and tuple => Create union type
-    // Something and Aggregate => ???
-    // Reference (considering originalType may be String, Number or RefId) and Primitive Type or tuple => Create union type
     val typeList = typeListByPropertyName.get(e).get(property.name)
-    if (typeList.forall[ps | (ps.property instanceof Attribute) && (ps.property as Attribute)?.type instanceof PrimitiveType ])
-      #{ "type" -> label("mongoose.Schema.Types.Mixed") }
+    // On uniqueTypeList we removed duplicated property types, such as a String PrimitiveType and a Reference w originalType String.
+    val uniqueTypeList = new ArrayList<Property>();
+    // Just a shortcut list so we don't have to access every time to the type field of a property (and all its casts...)
+    val typeShortcutList = new ArrayList<String>();
+
+    println(e.name + " : " + property.name);
+    for (PropertySpec ps : typeList)
+    {
+      if (ps.property instanceof Aggregate)
+      {
+        val typeAggr = ((ps.property as Aggregate).refTo.get(0).eContainer as Entity).name;
+        if (!typeShortcutList.exists[type | type.equals(typeAggr)])
+        {
+          uniqueTypeList.add(ps.property as Aggregate);
+          typeShortcutList.add(typeAggr);
+        }
+      }
+      if (ps.property instanceof Reference)
+      {
+        val typeRef = (ps.property as Reference).originalType;
+        if (!typeShortcutList.exists[type | type.equals(typeRef)])
+        {
+          uniqueTypeList.add(ps.property as Reference);
+          typeShortcutList.add(typeRef);
+        }
+      }
+      if (ps.property instanceof Attribute)
+      {
+        if ((ps.property as Attribute).type instanceof PrimitiveType)
+        {
+          val typePrimitive = ((ps.property as Attribute).type as PrimitiveType).name;
+          if (!typeShortcutList.exists[type | type.equals(typePrimitive)])
+          {
+            uniqueTypeList.add(ps.property as Attribute);
+            typeShortcutList.add(typePrimitive);
+          }
+        }
+      }// TODO: If things mess up, we should just use Mixed...
+/*        if ((ps.property as Attribute).type instanceof Tuple)
+        else
+        {
+          print((ps.property as Attribute).type as Tuple);
+          }
+      }*/
+    }
+
+    for (String str : typeShortcutList)
+      print(str + " ");
+    println();
+
+    if (uniqueTypeList.size == 1)
+    {
+      genTypeForProperty(uniqueTypeList.get(0));
+    }
     else
-      #{ "type" -> label("mongoose.Schema.Types.Mixed") }
+    {
+      #{ "type" -> label(generateUnion(uniqueTypeList))}
+/*      if (typeList.forall[ps | (ps.property instanceof Attribute) && (ps.property as Attribute)?.type instanceof PrimitiveType ])
+          {
+            #{ "type" -> label("mongoose.Schema.Types.Mixed") }
+          }
+          else
+            #{ "type" -> label("mongoose.Schema.Types.Mixed") } */
+    }
+  }
+
+// TODO: What do we do with tuples? Soon...
+  def String generateUnion(Iterable<Property> list)
+  {
+    // Get the type for the first property.
+    val type1 = genTypeForProperty(list.head).values.get(0);
+    // Get the type for the second property or, if there is more than one, a concatenation of their types.
+    val type2 = list.tail.map[p | genTypeForProperty(p).values.get(0)].join('_');
+    // Now concatenate everything to name the union.
+    val unionName = "U_" + type1 + "_" + type2;
+
+    // Straightforward. If there are only two properties, we make a union. If there are more, we will recursively add unions inside unions.
+    '''UnionType("«unionName»", "«type1»", «IF (list.size == 2)»"«type2»"«ELSE»«generateUnion(list.tail)».name«ENDIF»)'''
   }
 
   def aggregateType(Aggregate agg)

@@ -12,6 +12,10 @@ class DiffBaseGen
   var modelName = "";
   static File outputDir;
 
+  // For the base generation we need three items:
+  // - The folder to output the generation
+  // - The model name to name the files and variables
+  // - The root entities (entities with at least one root version), so we can include some variables and generate base validators.
   def m2t(File modelFile, File outputFolder)
   {
     val loader = new ModelLoader(EntitydifferentiationPackage.eINSTANCE);
@@ -28,10 +32,9 @@ class DiffBaseGen
     outputDir = outputFolder;
     modelName = diff.name;
 
-    outputDir.toPath.resolve("app").resolve("models").toFile.mkdirs;
-    outputDir.toPath.resolve("util").toFile.mkdirs;
+    outputDir.toPath.resolve("app").resolve("models").resolve("util").toFile.mkdirs;
     writeToFile("package.json", generatePackageFile());
-    writeToFile("util/UnionType.js", generateUnionTypeFile());
+    writeToFile("app/models/util/UnionType.js", generateUnionTypeFile());
     writeToFile("checkDbConsistency.js", generateMainFile(diff.name, diff.entityDiffSpecs.filter[ed | ed.entity.entityversions.exists[ev | ev.isRoot]].map[ed | ed.entity]))
   }
 
@@ -51,24 +54,36 @@ class DiffBaseGen
   def generateUnionTypeFile()
   '''
   'use strict'
-
+  
   var mongoose = require('mongoose');
-
-  function make_union_type(name, type1, type2)
+  
+  function makeUnionType(name, type1, type2)
   {
-      var capitalized_name = name.charAt(0).toUpperCase() + name.slice(1);
-      var typefn =
-          new Function(key, options,
-                       "mongoose.SchemaType.call(this, key, options, '"
-                       + capitalized_name
-                       + "');");
-      typefn.prototype = Object.create(mongoose.SchemaType.prototype);
-
-      // Add to mongoose registry
-      mongoose.Schema.Types[capitalized_name] = typefn;
+    var capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
+    var typeFunction = function(key, options) {mongoose.SchemaType.call(this, key, options, capitalizedName);}
+    typeFunction.prototype = Object.create(mongoose.SchemaType.prototype);
+    typeFunction.prototype.cast = function(val)
+    {
+      var returnVal = val;
+  
+      try {returnVal = mongoose.Schema.Types[type1].prototype.cast(val);} catch (firstTypeError)
+      {
+        try {returnVal = mongoose.Schema.Types[type2].prototype.cast(val);} catch (secondTypeError)
+        {
+          throw new Error(capitalizedName + ': ' + val + ' couldn\'t be cast to ' + type1 + " or " + type2);
+        }
+      }
+  
+      return returnVal;
+    }
+  
+    Object.defineProperty(typeFunction, "name", { value: capitalizedName });
+    mongoose.Schema.Types[capitalizedName] = typeFunction;
+  
+    return typeFunction;
   }
-
-  module.exports = make_union_type;
+  
+  module.exports = makeUnionType;
   '''
 
   def generateMainFile(String modelName, Iterable<Entity> rootEntities)
@@ -124,10 +139,6 @@ class DiffBaseGen
   });
   '''
 
-  // For the base generation we need three items:
-  // - The folder to output the generation
-  // - The model name to name the files and variables
-  // - The root entities (entities with at least one root version), so we can include some variables and generate base validators.
   /**
    * Method used to write a generated CharSequence to a file
    */
