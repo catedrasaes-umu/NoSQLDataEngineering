@@ -9,11 +9,16 @@ function makeUnionType(name, type1, type2)
   typeFunction.prototype = Object.create(mongoose.SchemaType.prototype);
   typeFunction.prototype.cast = function(val)
   {
+    var funcCheckMongooseType = function (type) {return mongoose.Schema.Types[type].prototype.cast;};
+    var funcCheckMongooseSchema = function (type) {return function(value){if (value.constructor.modelName === type) return val; else throw new Error();}};
+    var castFunction1 = type1 in mongoose.Schema.Types ? funcCheckMongooseType(type1) : funcCheckMongooseSchema(type1);
+    var castFunction2 = type2 in mongoose.Schema.Types ? funcCheckMongooseType(type2) : funcCheckMongooseSchema(type2);
+
     var returnVal = val;
 
-    try {returnVal = mongoose.Schema.Types[type1].prototype.cast(val);} catch (firstTypeError)
+    try {returnVal = castFunction1(val);} catch (firstTypeError)
     {
-      try {returnVal = mongoose.Schema.Types[type2].prototype.cast(val);} catch (secondTypeError)
+      try {returnVal = castFunction2(val);} catch (secondTypeError)
       {
         throw new Error(capitalizedName + ': ' + val + ' couldn\'t be cast to ' + type1 + " or " + type2);
       }

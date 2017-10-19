@@ -5,7 +5,6 @@ import es.um.nosql.schemainference.util.emf.ModelLoader
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation
 import java.io.PrintStream
-import es.um.nosql.schemainference.NoSQLSchema.Entity
 
 class DiffBaseGen
 {
@@ -35,7 +34,7 @@ class DiffBaseGen
     outputDir.toPath.resolve("app").resolve("models").resolve("util").toFile.mkdirs;
     writeToFile("package.json", generatePackageFile());
     writeToFile("app/models/util/UnionType.js", generateUnionTypeFile());
-    writeToFile("checkDbConsistency.js", generateMainFile(diff.name, diff.entityDiffSpecs.filter[ed | ed.entity.entityversions.exists[ev | ev.isRoot]].map[ed | ed.entity]))
+    writeToFile("checkDbConsistency.js", generateMainFile(diff));
   }
 
   def generatePackageFile()
@@ -64,11 +63,16 @@ class DiffBaseGen
     typeFunction.prototype = Object.create(mongoose.SchemaType.prototype);
     typeFunction.prototype.cast = function(val)
     {
+      var funcCheckMongooseType = function (type) {return mongoose.Schema.Types[type].prototype.cast;};
+      var funcCheckMongooseSchema = function (type) {return function(value){if (value.constructor.modelName === type) return val; else throw new Error();}};
+      var castFunction1 = type1 in mongoose.Schema.Types ? funcCheckMongooseType(type1) : funcCheckMongooseSchema(type1);
+      var castFunction2 = type2 in mongoose.Schema.Types ? funcCheckMongooseType(type2) : funcCheckMongooseSchema(type2);
+
       var returnVal = val;
   
-      try {returnVal = mongoose.Schema.Types[type1].prototype.cast(val);} catch (firstTypeError)
+      try {returnVal = castFunction1(val);} catch (firstTypeError)
       {
-        try {returnVal = mongoose.Schema.Types[type2].prototype.cast(val);} catch (secondTypeError)
+        try {returnVal = castFunction2(val);} catch (secondTypeError)
         {
           throw new Error(capitalizedName + ': ' + val + ' couldn\'t be cast to ' + type1 + " or " + type2);
         }
@@ -86,9 +90,9 @@ class DiffBaseGen
   module.exports = makeUnionType;
   '''
 
-  def generateMainFile(String modelName, Iterable<Entity> rootEntities)
+  def generateMainFile(EntityDifferentiation diff)
   '''
-  var mongoose   = require('mongoose');
+  var mongoose = require('mongoose');
   mongoose.Promise = require('bluebird');
   mongoose.connect('mongodb://127.0.0.1/«modelName»',
   {
@@ -104,13 +108,13 @@ class DiffBaseGen
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error: '));
 
-  «FOR e : rootEntities»
-    var «e.name» = mongoose.model('«e.name»', require('./app/models/«e.name»Schema'));
+  «FOR e : diff.entityDiffSpecs.map[ed | ed.entity]»
+    var «e.name» = require('./app/models/«e.name»Schema');
   «ENDFOR»
 
   db.once('open', function()
   {
-    «FOR e : rootEntities»
+    «FOR e : diff.entityDiffSpecs.filter[ed | ed.entity.entityversions.exists[ev | ev.isRoot]].map[ed | ed.entity]»
       «e.name».find({}, '-_id', function(err, result)
       {
         if (err)

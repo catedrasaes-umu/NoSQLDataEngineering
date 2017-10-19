@@ -1,4 +1,4 @@
-var mongoose   = require('mongoose');
+var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://127.0.0.1/test3',
 {
@@ -14,32 +14,33 @@ mongoose.set('debug', true);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 
-var Persons = mongoose.model('Persons', require('./app/models/PersonsSchema'));
+var Persons = require('./app/models/PersonsSchema');
+var CustomDate1 = require('./app/models/CustomDate1Schema');
+var CustomDate2 = require('./app/models/CustomDate2Schema');
+var CustomDate3 = require('./app/models/CustomDate3Schema');
+var PersonalData = require('./app/models/PersonalDataSchema');
 
-db.once('open', function()
-{
-  Persons.find({}, '-_id', function(err, result)
-  {
-    if (err)
-      return console.error(err);
+var p = new PersonalData({Name:"yodawg", Age: 33});
+var err = p.validateSync();
+if (err !== undefined)
+  console.log(err);
 
-    console.log("Checking consistency of the \"Persons\" table");
-    var errorNumber = 0;
+var cDate1 = new CustomDate1({date1: 33})
+err = cDate1.validateSync();
+if (err !== undefined)
+  console.log(err);
 
-    result.forEach(function(persons)
-    {
-      var validation = persons.validateSync();
-      if (typeof validation !== "undefined")
-      {
-        console.log(validation);
-        errorNumber++;
-      }
-    });
+var cDate2 = new CustomDate2({date2: false})
+err = cDate2.validateSync();
+if (err !== undefined)
+  console.log(err);
 
-    if (errorNumber)
-      console.log("\"Persons\" table: " + errorNumber + " errors found");
-    else
-      console.log("\"Persons\" table: No errors found!");
-  });
+var cDate3 = new CustomDate3({date3: false})
+err = cDate3.validateSync();
+if (err !== undefined)
+  console.log(err);
 
-});
+var person = new Persons({data: p, dates: cDate3});
+err = person.validateSync();
+if (err !== undefined)
+  console.log(err);

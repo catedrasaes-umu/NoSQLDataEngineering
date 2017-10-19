@@ -110,13 +110,14 @@ public class DiffToMongoose
       «genSpecs(e, diffByEntity.get(e))»
     }«genCollectionName(e)»);
 
-    module.exports = «e.name»Schema;
+    module.exports = mongoose.model('«e.name»', «e.name»Schema);
   '''
 
   def genIncludes(Entity entity) '''
     «FOR e : entityDeps.get(entity).sortWith(Comparator.comparing[e | topOrderEntities.indexOf(e)])»
       var «e.name»Schema = require('./«schemaFileName(e)»');
     «ENDFOR»
+    var UnionType = require('./util/UnionType.js');
   '''
 
   def schemaFileName(Entity e)
@@ -203,7 +204,6 @@ public class DiffToMongoose
     // Just a shortcut list so we don't have to access every time to the type field of a property (and all its casts...)
     val typeShortcutList = new ArrayList<String>();
 
-    println(e.name + " : " + property.name);
     for (PropertySpec ps : typeList)
     {
       if (ps.property instanceof Aggregate)
@@ -244,10 +244,6 @@ public class DiffToMongoose
       }*/
     }
 
-    for (String str : typeShortcutList)
-      print(str + " ");
-    println();
-
     if (uniqueTypeList.size == 1)
     {
       genTypeForProperty(uniqueTypeList.get(0));
@@ -268,9 +264,11 @@ public class DiffToMongoose
   def String generateUnion(Iterable<Property> list)
   {
     // Get the type for the first property.
-    val type1 = genTypeForProperty(list.head).values.get(0);
+    var type1 = genTypeForProperty(list.head).values.get(0);
+    if (type1.toString.endsWith("Schema.schema"))
+      type1 = type1.toString.substring(0, type1.toString.indexOf("Schema.schema"));
     // Get the type for the second property or, if there is more than one, a concatenation of their types.
-    val type2 = list.tail.map[p | genTypeForProperty(p).values.get(0)].join('_');
+    val type2 = list.tail.map[p | genTypeForProperty(p).values.get(0)].map[o | if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema")) else o].join('_');
     // Now concatenate everything to name the union.
     val unionName = "U_" + type1 + "_" + type2;
 
@@ -283,9 +281,9 @@ public class DiffToMongoose
     val entityName = (agg.refTo.get(0).eContainer as Entity).name
 
     if (agg.lowerBound == 1 && agg.upperBound == 1)
-      '''«entityName»Schema'''
+      '''«entityName»Schema.schema'''
     else
-      '''[«entityName»Schema]'''
+      '''[«entityName»Schema.schema]'''
   }
 
   def dispatch genTypeForProperty(Aggregate agg) 
