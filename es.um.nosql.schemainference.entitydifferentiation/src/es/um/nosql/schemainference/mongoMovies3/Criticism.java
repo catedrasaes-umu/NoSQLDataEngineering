@@ -1,12 +1,12 @@
 package es.um.nosql.schemainference.mongoMovies3;
 
-import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
 
 import es.um.nosql.schemainference.mongoMovies3.Medium;
 
-@Entity(noClassnameStored = true)
+@Embedded
 public class Criticism
 {
   @Property("color")

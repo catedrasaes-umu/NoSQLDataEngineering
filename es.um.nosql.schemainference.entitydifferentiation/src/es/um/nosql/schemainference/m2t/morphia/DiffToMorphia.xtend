@@ -52,7 +52,7 @@ class DiffToMorphia
     outputDir.mkdirs;
     if (outputDir.toString.contains("src"))
     {
-      importRoute = outputDir.toString.substring(outputDir.toString.lastIndexOf("src") + 4).replace("/", ".");
+      importRoute = outputDir.toString.substring(outputDir.toString.lastIndexOf("src") + 4).replace(File.separatorChar, ".");
     }
     else
     {
@@ -79,7 +79,7 @@ class DiffToMorphia
 
     «generateIncludes(e)»
 
-    @Entity(noClassnameStored = true)
+    «IF (e.entityversions.exists[ev | ev.isRoot])»@Entity(noClassnameStored = true)«ELSE»@Embedded«ENDIF»
     public class «e.name»
     {
       «generateSpecs(e, diffByEntity.get(e))»
@@ -87,8 +87,9 @@ class DiffToMorphia
   '''
 
   def generateIncludes(Entity entity) '''
-    import org.mongodb.morphia.annotations.Entity;
-    import org.mongodb.morphia.annotations.Property;
+    «IF (entity.entityversions.exists[ev | ev.isRoot])»import org.mongodb.morphia.annotations.Entity;«ENDIF»
+    «IF (entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Aggregate]])»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
+    «IF (entity.entityversions.exists[ev | !ev.properties.empty])»import org.mongodb.morphia.annotations.Property;«ENDIF»
     import javax.validation.constraints.NotNull;
 
     «FOR e : entityDeps.get(entity).sortWith(Comparator.comparing[e | topOrderEntities.indexOf(e)])»
@@ -107,6 +108,10 @@ class DiffToMorphia
     if (ps.needsTypeCheck)
     {
       // TODO: Welcome to dreamland...genTypeForTypeCheckProperty(e, ps.property, required)
+      // What if we try to Object[] everything and let the morphia serializer deal with it....dinamically? Worth a try
+      //TODO
+// http://lambda-the-ultimate.org/node/2694
+// This will be helpful for the union types.
     }
     else
     {
@@ -116,12 +121,21 @@ class DiffToMorphia
 
   def dispatch generateTypeForProperty(Aggregate aggr, boolean required)
   {
-    
+    var entityName = (aggr.refTo.get(0).eContainer as Entity).name;
+    if (aggr.lowerBound != 1 || aggr.upperBound != 1)
+      entityName = entityName + "[]";
+    '''
+    @Embedded
+    «IF required»@NotNull(message = "«aggr.name» can't be null")«ENDIF»
+    private «entityName» «aggr.name»;
+    public «entityName» get«aggr.name.toFirstUpper»() {return this.«aggr.name»;}
+    public void set«aggr.name.toFirstUpper»(«entityName» «aggr.name») {this.«aggr.name» = «aggr.name»;}
+    '''
   }
 
   def dispatch generateTypeForProperty(Reference ref, boolean required)
   {
-    
+    //TODO: References pending...
   }
 
   def dispatch generateTypeForProperty(Attribute a, boolean required)
@@ -146,11 +160,13 @@ class DiffToMorphia
     }
   }
 
-  def dispatch generateAttributeType(Tuple type)
+  def dispatch generateAttributeType(Tuple tuple)
   {
-//TODO
-// http://lambda-the-ultimate.org/node/2694
-// This will be helpful for the union types.
+    if (tuple.elements.size == 1)
+      '''«generateAttributeType(tuple.elements.get(0))»[]'''
+    else
+      //TODO: Heterogeneous arrays. Too complex for now...
+      '''Object[]'''
   }
 
   private def isInt(String type) { #["int", "integer", "number"].contains(type)}

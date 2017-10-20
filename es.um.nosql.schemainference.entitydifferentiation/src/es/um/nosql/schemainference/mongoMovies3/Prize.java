@@ -1,11 +1,10 @@
 package es.um.nosql.schemainference.mongoMovies3;
 
-import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
 
 
-@Entity(noClassnameStored = true)
+@Embedded
 public class Prize
 {
   @Property("event")
@@ -21,9 +20,9 @@ public class Prize
   public void setYear(Integer year) {this.year = year;}
   
   @Property("names")
-  private  names;
-  public  getNames() {return this.names;}
-  public void setNames( names) {this.names = names;}
+  private String[] names;
+  public String[] getNames() {return this.names;}
+  public void setNames(String[] names) {this.names = names;}
   
   @Property("name")
   private String name;
