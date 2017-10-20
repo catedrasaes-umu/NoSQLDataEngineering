@@ -14,15 +14,17 @@ import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation;
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage;
 import es.um.nosql.schemainference.m2m.NoSQLSchemaToEntityDiff;
-import es.um.nosql.schemainference.m2t.mongoose.DiffBaseGen;
+import es.um.nosql.schemainference.m2t.mongoose.DiffMongooseBaseGen;
 import es.um.nosql.schemainference.m2t.mongoose.DiffToMongoose;
+import es.um.nosql.schemainference.m2t.morphia.DiffToMorphia;
 import es.um.nosql.schemainference.util.emf.ResourceManager;
 
 public class Main
 {
   public static String INPUT_FOLDER = "testSources/";
   public static String OUTPUT_FOLDER = "testOutput/";
-  public static String OUTPUT_GEN_BASE_FOLDER = OUTPUT_FOLDER + "gen/";
+  public static String MONGOOSE_OUTPUT_GEN_BASE_FOLDER = OUTPUT_FOLDER + "gen/";
+  public static String MORPHIA_OUTPUT_GEN_BASE_FOLDER = "src/es/um/nosql/schemainference/";
   public static boolean GENERATE_BASE_FILES = true;
 
   public static void main(String[] args)
@@ -30,11 +32,12 @@ public class Main
     // Caso de test 1. Falla en genTypeForTypeCheckProperty, cuando no puede castear Aggregate a Attribute.
     // String input_model = "test1_aggr";
 
-    String input_model = "test2";
+    String input_model = "mongoMovies3";
     String inputFile = INPUT_FOLDER + input_model + ".xmi";
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
-    prepareM2MExample(inputFile, outputFile);
-    prepareM2MongooseExample(outputFile, OUTPUT_GEN_BASE_FOLDER);
+//    prepareM2MExample(inputFile, outputFile);
+//    prepareM2MongooseExample(outputFile, MONGOOSE_OUTPUT_GEN_BASE_FOLDER);
+    prepareM2MorphiaExample(outputFile, MORPHIA_OUTPUT_GEN_BASE_FOLDER);
   }
 
   public static void prepareM2MExample(String inputFile, String outputFile)
@@ -85,12 +88,35 @@ public class Main
 
     if (GENERATE_BASE_FILES)
     {
-      DiffBaseGen baseGen = new DiffBaseGen();
+      DiffMongooseBaseGen baseGen = new DiffMongooseBaseGen();
       baseGen.m2t(INPUT_MODEL, OUTPUT_M2T_FOLDER);
     }
 
     DiffToMongoose diff2Mongoose = new DiffToMongoose();
     diff2Mongoose.m2t(INPUT_MODEL, OUTPUT_M2T_FOLDER);
+
+    System.out.println("Code generation finished");
+  }
+
+  public static void prepareM2MorphiaExample(String inputFile, String outputFolder)
+  {
+    File INPUT_MODEL = new File(inputFile);
+    File OUTPUT_M2T_FOLDER = new File(outputFolder);
+
+    System.out.println("Generating Morphia code for " + INPUT_MODEL.getName() + " in " + OUTPUT_M2T_FOLDER.getPath());
+
+    if (!OUTPUT_M2T_FOLDER.exists())
+      OUTPUT_M2T_FOLDER.mkdirs();
+/*
+    // UnionType and some Main stuff..
+    if (GENERATE_BASE_FILES)
+    {
+      DiffMongooseBaseGen baseGen = new DiffMongooseBaseGen();
+      baseGen.m2t(INPUT_MODEL, OUTPUT_M2T_FOLDER);
+    }
+*/
+    DiffToMorphia diff2Morphia = new DiffToMorphia();
+    diff2Morphia.m2t(INPUT_MODEL, OUTPUT_M2T_FOLDER);
 
     System.out.println("Code generation finished");
   }

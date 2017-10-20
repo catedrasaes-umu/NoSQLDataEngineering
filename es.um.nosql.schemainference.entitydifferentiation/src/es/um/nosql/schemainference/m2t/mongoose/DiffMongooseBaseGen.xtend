@@ -6,7 +6,7 @@ import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPa
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation
 import java.io.PrintStream
 
-class DiffBaseGen
+class DiffMongooseBaseGen
 {
   var modelName = "";
   static File outputDir;
