@@ -153,7 +153,8 @@ public class DiffToMongoose
     // Also: The 'required' clause on mongoose requires a field to exist and also, if it is an array, to NOT be empty
     // This may cause problems when an association has a lowerBound = 0. To shortcut this, for the moment we wont add the required option to a field
     // if it is an association w lowerBound == 0. Proof: https://stackoverflow.com/questions/27268172/mongoose-schema-to-require-array-that-can-be-empty
-    // TODO: No solution still
+    // TODO: No solution still.
+    // Please check out the metamodel. Does it make sense to have lowerBound/upperBound in Association instead of in Aggregate?
     if (required && (!spec.property.name.equals("type") && (!(spec.property instanceof Association) || (spec.property as Association).lowerBound != 0)))
       props.put('required', true)
     props
@@ -234,14 +235,18 @@ public class DiffToMongoose
             uniqueTypeList.add(ps.property as Attribute);
             typeShortcutList.add(typePrimitive);
           }
-        }
-      }// TODO: If things mess up, we should just use Mixed...
-/*        if ((ps.property as Attribute).type instanceof Tuple)
-        else
+        }/*
+        if ((ps.property as Attribute).type instanceof Tuple)
         {
-          print((ps.property as Attribute).type as Tuple);
+          val typeTuple = ((ps.property as Attribute).type as Tuple).elements;
+          if (!typeShortcutList.exists[type | type.equals((typeTuple.get(0) as PrimitiveType).name)])
+          {
+            uniqueTypeList.add(ps.property as Attribute);
+            typeShortcutList.add((typeTuple.get(0) as PrimitiveType).name);
           }
-      }*/
+        }
+*/
+      }// TODO: If things mess up, we should just use Mixed...
     }
 
     if (uniqueTypeList.size == 1)
@@ -260,15 +265,18 @@ public class DiffToMongoose
     }
   }
 
-// TODO: What do we do with tuples? Soon...
+//TODO: Need to make up some kind of comparison when there are types like [Number], since those types won't map well against the mongoose types nor our unions.
+// Oh well we always have Mixed types for these...
   def String generateUnion(Iterable<Property> list)
   {
     // Get the type for the first property.
-    var type1 = genTypeForProperty(list.head).values.get(0);
-    if (type1.toString.endsWith("Schema.schema"))
+    var type1 = genTypeForProperty(list.head).values.get(0).toString;
+//    type1 = type1.replace("[", "").replace("]", "");
+    if (type1.endsWith("Schema.schema"))
       type1 = type1.toString.substring(0, type1.toString.indexOf("Schema.schema"));
     // Get the type for the second property or, if there is more than one, a concatenation of their types.
-    val type2 = list.tail.map[p | genTypeForProperty(p).values.get(0)].map[o | if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema")) else o].join('_');
+    var type2 = list.tail.map[p | genTypeForProperty(p).values.get(0)].map[o | if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema")) else o].join('_');
+//    type2 = type2.replace("[", "").replace("]", "");
     // Now concatenate everything to name the union.
     val unionName = "U_" + type1 + "_" + type2;
 
@@ -337,9 +345,14 @@ public class DiffToMongoose
   }
 
   def dispatch Object genType(Tuple tuple)
-    // Generate only the first type
-    '''[«genType(tuple.elements.get(0))»]'''
-    //'''[«FOR t : tuple.elements SEPARATOR ', '»«genType(t)»«ENDFOR»]'''
+  {
+    if (tuple.elements.size == 1)
+      '''[«genType(tuple.elements.get(0))»]'''
+    else
+      //TODO: Heterogeneous arrays. Too complex for now...
+      //Idea: '''[«FOR t : tuple.elements SEPARATOR ', '»«genType(t)»«ENDFOR»]'''
+      '''[«genType(tuple.elements.get(0))»]'''
+  }
 
   def dispatch genType(PrimitiveType type)
   {

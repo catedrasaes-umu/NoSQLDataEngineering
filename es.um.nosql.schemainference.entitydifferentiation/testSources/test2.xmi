@@ -5,7 +5,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema"
     xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../../es.um.nosql.schemainference/model/nosqlschema.ecore"
-    name="test1">
+    name="test2">
   <entities
       name="Persons">
     <entityversions
@@ -13,18 +13,17 @@
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="dates">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
+      <properties
+          xsi:type="NoSQLSchema:Aggregate"
+          name="dates"
+          lowerBound="1"
+          upperBound="-1"
+          refTo="//@entities.1/@entityversions.0"/>
     </entityversions>
     <entityversions
         versionId="2"
@@ -33,14 +32,8 @@
           xsi:type="NoSQLSchema:Attribute"
           name="dates">
         <type
-            xsi:type="NoSQLSchema:Tuple">
-          <elements
-              xsi:type="NoSQLSchema:PrimitiveType"
-              name="String"/>
-          <elements
-              xsi:type="NoSQLSchema:PrimitiveType"
-              name="Number"/>
-        </type>
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -49,34 +42,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="3"
-        root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="dates">
-        <type
-            xsi:type="NoSQLSchema:Tuple">
-          <elements
-              xsi:type="NoSQLSchema:PrimitiveType"
-              name="String"/>
-        </type>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="id">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-    </entityversions>
-    <entityversions
-        versionId="4"
-        root="true">
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="dates">
+          name="strange">
         <type
             xsi:type="NoSQLSchema:Tuple">
           <elements
@@ -84,12 +52,25 @@
               name="Number"/>
         </type>
       </properties>
+    </entityversions>
+  </entities>
+  <entities
+      name="PersonData">
+    <entityversions
+        versionId="9">
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="id">
+          name="val1">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="val2">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Boolean"/>
       </properties>
     </entityversions>
   </entities>

@@ -9,6 +9,8 @@ function makeUnionType(name, type1, type2)
   typeFunction.prototype = Object.create(mongoose.SchemaType.prototype);
   typeFunction.prototype.cast = function(val)
   {
+    console.log(val);
+    console.log(mongoose.Schema.Types);
     var funcCheckMongooseType = function (type) {return mongoose.Schema.Types[type].prototype.cast;};
     var funcCheckMongooseSchema = function (type) {return function(value){if (value.constructor.modelName === type) return val; else throw new Error();}};
     var castFunction1 = type1 in mongoose.Schema.Types ? funcCheckMongooseType(type1) : funcCheckMongooseSchema(type1);

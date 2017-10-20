@@ -9,6 +9,9 @@
       <propertySpecs needsTypeCheck="true">
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test3.xmi#//@entities.0/@entityversions.0/@properties.0"/>
       </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test3.xmi#//@entities.0/@entityversions.0/@properties.3"/>
+      </propertySpecs>
       <entityVersion href="../testSources/test3.xmi#//@entities.0/@entityversions.0"/>
     </entityVersionProps>
     <entityVersionProps>
@@ -19,6 +22,9 @@
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test3.xmi#//@entities.0/@entityversions.1/@properties.0"/>
       </propertySpecs>
       <entityVersion href="../testSources/test3.xmi#//@entities.0/@entityversions.1"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test3.xmi#//@entities.0/@entityversions.0/@properties.3"/>
+      </notProps>
     </entityVersionProps>
     <entityVersionProps>
       <propertySpecs needsTypeCheck="true">
@@ -28,6 +34,9 @@
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test3.xmi#//@entities.0/@entityversions.2/@properties.0"/>
       </propertySpecs>
       <entityVersion href="../testSources/test3.xmi#//@entities.0/@entityversions.2"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test3.xmi#//@entities.0/@entityversions.0/@properties.3"/>
+      </notProps>
     </entityVersionProps>
     <commonProps>
       <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/test3.xmi#//@entities.0/@entityversions.1/@properties.2"/>
