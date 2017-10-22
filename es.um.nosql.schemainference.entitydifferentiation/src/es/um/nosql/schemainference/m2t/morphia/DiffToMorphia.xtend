@@ -88,7 +88,7 @@ class DiffToMorphia
 
   def generateIncludes(Entity entity) '''
     «IF (entity.entityversions.exists[ev | ev.isRoot])»import org.mongodb.morphia.annotations.Entity;«ENDIF»
-    «IF (entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Aggregate]])»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
+    «IF (entity.entityversions.exists[ev | !ev.isRoot || ev.properties.exists[p | p instanceof Aggregate]])»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
     «IF (entity.entityversions.exists[ev | !ev.properties.empty])»import org.mongodb.morphia.annotations.Property;«ENDIF»
     import javax.validation.constraints.NotNull;
 
@@ -112,6 +112,7 @@ class DiffToMorphia
       //TODO
 // http://lambda-the-ultimate.org/node/2694
 // This will be helpful for the union types.
+      //Another idea: @PreSave with a custom validator...
     }
     else
     {
@@ -141,13 +142,13 @@ class DiffToMorphia
   def dispatch generateTypeForProperty(Attribute a, boolean required)
   '''
     @Property("«a.name»")
-    «IF required»@NotNull(message = "«a.name» can't be null")«ENDIF»
+    «IF required && !a.name.equals("type")»@NotNull(message = "«a.name» can't be null")«ENDIF»
     private «generateAttributeType(a.type)» «a.name»;
     public «generateAttributeType(a.type)» get«a.name.toFirstUpper»() {return this.«a.name»;}
     public void set«a.name.toFirstUpper»(«generateAttributeType(a.type)» «a.name») {this.«a.name» = «a.name»;}
   '''
 
-  def dispatch generateAttributeType(PrimitiveType type)
+  def dispatch Object generateAttributeType(PrimitiveType type)
   {
     switch typeName : type.name.toLowerCase
     {
