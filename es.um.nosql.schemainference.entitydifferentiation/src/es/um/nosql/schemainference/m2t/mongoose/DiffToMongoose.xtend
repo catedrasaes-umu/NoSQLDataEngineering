@@ -27,27 +27,15 @@ public class DiffToMongoose
   static class Label
   {
     var label = ""
-
-    new(String l)
-    {
-      label = l
-    }
-
-    override toString()
-    {
-      label
-    }
+    new(String l) {label = l}
+    override toString() {label}
   }
 
   var modelName = "";
   static File outputDir
-//  final val EXACT_TYPE = true
-//  final val DUCK_TYPE = !EXACT_TYPE
-//  final val SPECIAL_TYPE_IDENTIFIER = "type"
 
   // List of dependencies
   List<Entity> topOrderEntities
-
   Map<Entity, Set<Entity>> entityDeps
   Map<Entity, Set<Entity>> inverseEntityDeps
   Map<Entity, EntityDiffSpec> diffByEntity
@@ -104,7 +92,7 @@ public class DiffToMongoose
     'use strict'
 
     var mongoose = require('mongoose');
-    «genIncludes(e)»
+    «genIncludes(e, diffByEntity.get(e))»
 
     var «e.name»Schema = new mongoose.Schema({
       «genSpecs(e, diffByEntity.get(e))»
@@ -113,11 +101,11 @@ public class DiffToMongoose
     module.exports = mongoose.model('«e.name»', «e.name»Schema);
   '''
 
-  def genIncludes(Entity entity) '''
+  def genIncludes(Entity entity, EntityDiffSpec spec) '''
     «FOR e : entityDeps.get(entity).sortWith(Comparator.comparing[e | topOrderEntities.indexOf(e)])»
       var «e.name»Schema = require('./«schemaFileName(e)»');
     «ENDFOR»
-    var UnionType = require('./util/UnionType.js');
+    «IF spec.commonProps.exists[cp | cp.needsTypeCheck] || spec.entityVersionProps.exists[ev | ev.propertySpecs.exists[ps | ps.needsTypeCheck]]»var UnionType = require('./util/UnionType.js');«ENDIF»
   '''
 
   def schemaFileName(Entity e)
@@ -234,20 +222,23 @@ public class DiffToMongoose
             uniqueTypeList.add(ps.property as Attribute);
             typeShortcutList.add(typePrimitive);
           }
-        }/*
+        }
         if ((ps.property as Attribute).type instanceof Tuple)
         {
           val typeTuple = ((ps.property as Attribute).type as Tuple).elements;
-          if (!typeShortcutList.exists[type | type.equals((typeTuple.get(0) as PrimitiveType).name)])
+          if (typeTuple.size == 1)
           {
             uniqueTypeList.add(ps.property as Attribute);
             typeShortcutList.add((typeTuple.get(0) as PrimitiveType).name);
           }
+          else if (typeTuple.size > 1 && !typeShortcutList.exists[type | type.equals("[Mixed]")])
+          {
+            uniqueTypeList.add(ps.property as Attribute);
+            typeShortcutList.add("[Mixed]");
+          }
         }
-*/
-      }// TODO: If things mess up, we should just use Mixed...
+      }
     }
-
     if (uniqueTypeList.size == 1)
     {
       genTypeForProperty(uniqueTypeList.get(0));
@@ -255,12 +246,6 @@ public class DiffToMongoose
     else
     {
       #{ "type" -> label(generateUnion(uniqueTypeList))}
-/*      if (typeList.forall[ps | (ps.property instanceof Attribute) && (ps.property as Attribute)?.type instanceof PrimitiveType ])
-          {
-            #{ "type" -> label("mongoose.Schema.Types.Mixed") }
-          }
-          else
-            #{ "type" -> label("mongoose.Schema.Types.Mixed") } */
     }
   }
 
@@ -301,10 +286,6 @@ public class DiffToMongoose
 
   def dispatch genTypeForProperty(Reference ref)
   {
-  	// If originalType is empty, suppose String
-  	if (ref.originalType == null || ref.originalType.empty)
-      return #{ 'type' -> label('String')}
-
     val refComps = expandRef(ref)
 
     // DBRef
@@ -318,10 +299,21 @@ public class DiffToMongoose
 
   def referenceType(Reference reference)
   {
-    if (reference.lowerBound != 1 || reference.upperBound != 1)
-      '''[«genTypeForPrimitiveString(reference.originalType)»]'''
+    // If originalType is empty, suppose String
+    var theType = "";
+    if (reference.originalType == null || reference.originalType.empty)
+    {
+      theType = "String";
+    }
     else
-      '''«genTypeForPrimitiveString(reference.originalType)»'''    
+    {
+      theType = reference.originalType;
+    }
+
+    if (reference.lowerBound != 1 || reference.upperBound != 1)
+      '''[«genTypeForPrimitiveString(theType)»]'''
+    else
+      '''«genTypeForPrimitiveString(theType)»'''    
   }
 
   def expandRef(Reference reference) 
@@ -344,9 +336,10 @@ public class DiffToMongoose
     if (tuple.elements.size == 1)
       '''[«genType(tuple.elements.get(0))»]'''
     else
-      //TODO: Heterogeneous arrays. Too complex for now...
-      //Idea: '''[«FOR t : tuple.elements SEPARATOR ', '»«genType(t)»«ENDFOR»]'''
-      '''[«genType(tuple.elements.get(0))»]'''
+      // Heterogeneous arrays. Too complex for now...
+      // Ideas: '''[«FOR t : tuple.elements SEPARATOR ', '»«genType(t)»«ENDFOR»]'''
+      //'''[«genType(tuple.elements.get(0))»]'''
+      '''[Mixed]'''
   }
 
   def dispatch genType(PrimitiveType type)
@@ -369,7 +362,7 @@ public class DiffToMongoose
         case typeName.isInt : 'Number'
         case typeName.isFloat :  'Number'
         case typeName.isBoolean : 'Boolean'
-        case typeName.isObjectId : 'mongoose.Schema.Types.ObjectId'
+        case typeName.isObjectId : 'ObjectId'
         default: ''
       }
     )

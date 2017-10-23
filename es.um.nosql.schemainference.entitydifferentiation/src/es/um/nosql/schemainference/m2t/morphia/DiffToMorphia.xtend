@@ -148,16 +148,16 @@ class DiffToMorphia
     public void set«a.name.toFirstUpper»(«generateAttributeType(a.type)» «a.name») {this.«a.name» = «a.name»;}
   '''
 
-  def dispatch Object generateAttributeType(PrimitiveType type)
+  def dispatch generateAttributeType(PrimitiveType type)
   {
     switch typeName : type.name.toLowerCase
     {
       case "string" : "String"
-      case typeName.isInt : 'Integer'
-      case typeName.isFloat :  'Float'
-      case typeName.isBoolean : 'Boolean'
-      case typeName.isObjectId : 'mongoose.Schema.Types.ObjectId'
-      default: ''
+      case typeName.isInt : "Integer"
+      case typeName.isFloat :  "Float"
+      case typeName.isBoolean : "Boolean"
+      case typeName.isObjectId : "ObjectId"
+      default: ""
     }
   }
 

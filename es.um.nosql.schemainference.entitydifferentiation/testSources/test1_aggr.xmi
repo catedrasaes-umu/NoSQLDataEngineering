@@ -12,38 +12,19 @@
         versionId="1"
         root="true">
       <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="birth_date">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Aggregate"
-          name="contact_details"
-          upperBound="1"
-          refTo="//@entities.1/@entityversions.0"/>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="email">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
+          xsi:type="NoSQLSchema:Reference"
+          name="refContact"
+          lowerBound="1"
+          upperBound="-1"
+          refTo="Contact_detail"
+          originalType=""/>
     </entityversions>
     <entityversions
         versionId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="birth_date">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="contact_details">
+          name="refContact">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>

@@ -99,25 +99,25 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician.xmi#//@entities.0/@entityversions.2/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician.xmi#//@entities.0/@entityversions.3/@properties.4"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.0/@entityversions.2/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.0/@entityversions.3/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician.xmi#//@entities.0/@entityversions.2/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician.xmi#//@entities.0/@entityversions.3/@properties.3"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.0/@entityversions.2/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.0/@entityversions.3/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.0/@entityversions.2/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.0/@entityversions.3/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.0/@entityversions.2/@properties.8"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.0/@entityversions.3/@properties.7"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician.xmi#//@entities.0/@entityversions.2/@properties.6"/>
+      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician.xmi#//@entities.0/@entityversions.3/@properties.6"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
@@ -606,37 +606,37 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.12/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.9/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.12/@properties.6"/>
+      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.9/@properties.7"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.12/@properties.7"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.9/@properties.8"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.12/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.9/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.12/@properties.13"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.9/@properties.14"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.12/@properties.12"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.9/@properties.13"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.12/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.9/@properties.6"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.12/@properties.10"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.9/@properties.11"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.12/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.9/@properties.3"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.12/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.9/@properties.4"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.12/@properties.8"/>
+      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician.xmi#//@entities.3/@entityversions.9/@properties.9"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
