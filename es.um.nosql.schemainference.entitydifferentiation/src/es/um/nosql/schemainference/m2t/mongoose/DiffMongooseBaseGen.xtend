@@ -34,7 +34,8 @@ class DiffMongooseBaseGen
     outputDir.toPath.resolve("app").resolve("models").resolve("util").toFile.mkdirs;
     writeToFile("package.json", generatePackageFile());
     writeToFile("app/models/util/UnionType.js", generateUnionTypeFile());
-    writeToFile("checkDbConsistency.js", generateMainFile(diff));
+    writeToFile("checkDbConsistency.js", generateCheckDbFile(diff));
+    writeToFile("addDbObjects.js", generateAddDbFile(diff));
   }
 
   def generatePackageFile()
@@ -58,15 +59,53 @@ class DiffMongooseBaseGen
   
   function makeUnionType(name, type1, type2)
   {
+    function isArray(type) { return type.match(new RegExp("^\\[")) && type.match(new RegExp("\\]$"));}
+
     var capitalizedName = name.charAt(0).toUpperCase() + name.slice(1);
     var typeFunction = function(key, options) {mongoose.SchemaType.call(this, key, options, capitalizedName);}
     typeFunction.prototype = Object.create(mongoose.SchemaType.prototype);
     typeFunction.prototype.cast = function(val)
     {
-      var funcCheckMongooseType = function (type) {return mongoose.Schema.Types[type].prototype.cast;};
-      var funcCheckMongooseSchema = function (type) {return function(value){if (value.constructor.modelName === type) return val; else throw new Error();}};
-      var castFunction1 = type1 in mongoose.Schema.Types ? funcCheckMongooseType(type1) : funcCheckMongooseSchema(type1);
-      var castFunction2 = type2 in mongoose.Schema.Types ? funcCheckMongooseType(type2) : funcCheckMongooseSchema(type2);
+      var funcCheckMongooseType = function(type)
+      {
+        return function (value)
+        {
+          // If the type is kind of [mongooseType]...
+          if (isArray(type))
+             // Remember to remove the [type] brackets...
+             // Maybe we should each the type of EACH value in array?
+            return [mongoose.Schema.Types[type.slice(1, -1)].prototype.cast(value[0])];
+          else
+          // Else the type was just mongooseType
+            return mongoose.Schema.Types[type].prototype.cast(value);
+        }
+      };
+
+      var funcCheckMongooseSchema = function (type)
+      {
+        return function (value)
+        {
+          if (isArray(type))
+          {
+            // Remember to remove the [type] brackets...
+            // Maybe we should each the type of EACH value in array?
+            if (value[0].constructor.modelName === type.slice(1, -1))
+              return value;
+            else
+              throw new Error();
+          }
+          else
+            if (value.constructor.modelName === type)
+              return value;
+            else
+              throw new Error();
+        }
+      };
+
+      var castFunction1 = (type1 in mongoose.Schema.Types || (isArray(type1) && type1.slice(1, -1) in mongoose.Schema.Types))?
+        funcCheckMongooseType(type1) : funcCheckMongooseSchema(type1);
+      var castFunction2 = (type2 in mongoose.Schema.Types || (isArray(type2) && type2.slice(1, -1) in mongoose.Schema.Types))?
+        funcCheckMongooseType(type2) : funcCheckMongooseSchema(type2);
 
       var returnVal = val;
   
@@ -90,7 +129,7 @@ class DiffMongooseBaseGen
   module.exports = makeUnionType;
   '''
 
-  def generateMainFile(EntityDifferentiation diff)
+  def generateCheckDbFile(EntityDifferentiation diff)
   '''
   var mongoose = require('mongoose');
   mongoose.Promise = require('bluebird');
@@ -141,6 +180,37 @@ class DiffMongooseBaseGen
 
     «ENDFOR»
   });
+  '''
+
+  def generateAddDbFile(EntityDifferentiation diff)
+  '''
+  var mongoose = require('mongoose');
+  mongoose.Promise = require('bluebird');
+  mongoose.connect('mongodb://127.0.0.1/«modelName»',
+  {
+    useMongoClient: true
+  }, function(err)
+  {
+    if (err)
+      console.log(err);
+    else
+      console.log('Connected to 127.0.0.1/«modelName»');
+  });
+  mongoose.set('debug', true);
+  var db = mongoose.connection;
+  db.on('error', console.error.bind(console, 'connection error: '));
+
+  «FOR e : diff.entityDiffSpecs.map[ed | ed.entity]»
+    var «e.name» = require('./app/models/«e.name»Schema');
+  «ENDFOR»
+
+  var err;
+  «FOR e : diff.entityDiffSpecs.map[ed | ed.entity] SEPARATOR '\n'»
+    var «e.name.toLowerCase» = new «e.name»({});
+    err = «e.name.toLowerCase».validateSync();
+    if (err !== undefined)
+      console.log(err);
+  «ENDFOR»
   '''
 
   /**
