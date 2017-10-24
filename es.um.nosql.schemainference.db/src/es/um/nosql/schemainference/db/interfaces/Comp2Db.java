@@ -33,7 +33,7 @@ public class Comp2Db extends Source2Db
     storeJSONContent(jsonRoute, dbName);
     System.out.println(dbName + ":" + Paths.get(jsonRoute).getFileName() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
   }
-
+/*
   private void storeJSONContent(String jsonRoute, String dbName)
   {
     File jsonFile = new File(jsonRoute);
@@ -49,7 +49,7 @@ public class Comp2Db extends Source2Db
     try
     {
       mappingIterator = mapper.reader(Company.class).readValues(jsonFile);
-      collectionName = "companies2";
+      collectionName = "companies";
 
       int numLines = 0;
       int totalLines = 1;
@@ -80,12 +80,12 @@ public class Comp2Db extends Source2Db
       e.printStackTrace();
     }
   }
-/*
+*/
   private void storeJSONContent(String jsonRoute, String dbName)
   {
     try (BufferedReader reader = new BufferedReader(new FileReader(new File(jsonRoute))))
     {
-      ObjectMapper mapper = new ObjectMapper().setSerializationInclusion(Include.NON_EMPTY);
+      ObjectMapper mapper = new ObjectMapper();
       ArrayNode jsonArray = mapper.createArrayNode();
       String collectionName = "companies";
       int numLines = 0;
@@ -114,5 +114,5 @@ public class Comp2Db extends Source2Db
     {
       e.printStackTrace();
     }
-  }*/
+  }
 }

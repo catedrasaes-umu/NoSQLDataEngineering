@@ -1,9 +1,7 @@
 package es.um.nosql.schemainference.db.pojo.companies;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonPropertyOrder({"attribution", "available_sizes"})
 public class Image
 {
   private String attribution;

@@ -35,7 +35,7 @@ public class InferenceTest
 	private static final String FOLDER_SOF = "/media/alberto/tarsonis/datasets/stackoverflow/";
 	private static final String FOLDER_EPOL = "/media/alberto/tarsonis/datasets/everypolitician/countries/";
 	private static final String FILE_URBAN = "/media/alberto/tarsonis/datasets/urban/words.json";
-	private static final String FILE_COMPANY = "/media/alberto/tarsonis/datasets/companies/companies.json";
+  private static final String FILE_COMPANY = "F:\\Informatica\\datasets\\companies\\companies.json";
 	private static final String FOLDER_LINK = "/media/alberto/tarsonis/datasets/givealink/";
 	private static final String FILE_HARVARD = "/media/alberto/tarsonis/datasets/harvard/HMXPC13_DI_v2_5-14-14.csv";
 	private static final String FOLDER_FACEBOOK = "/media/alberto/tarsonis/datasets/facebook/";
@@ -51,7 +51,11 @@ public class InferenceTest
 //	  prepareSOFExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_SOF);  //TODO: Not tested yet
 //	  prepareEPolExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_EPOL);
 //	  prepareUrbanExample(DbType.MONGODB, FILL_AND_INFER, FILE_URBAN);                  //POJO
-	  prepareCompanyExample(DbType.MONGODB, FILL_AND_INFER, FILE_COMPANY);
+	  // Problem with this dataset is that it contains A LOT of aggregated objects and null values.
+	  // Aggregated objects tend to make mongodb run out of memory during the reduce process.
+	  // Null values tend to abort the inference process. Until the inference process is fixed (TODO(tm)),
+	  // we will make use of POJO objects and ignore problematic fields. Thing is, then we have a lot of options...
+//	  prepareCompanyExample(DbType.MONGODB, FILL_AND_INFER, FILE_COMPANY);              //POJO
 //	  prepareLinkExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_LINK);                  //POJO
 //	  prepareHarvardExample(DbType.MONGODB, FILL_AND_INFER, FILE_HARVARD);              //POJO
 //	  prepareFacebookExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_FACEBOOK);          //POJO
@@ -165,7 +169,7 @@ public class InferenceTest
 
 	public static void prepareCompanyExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
 	{
-		String dbName = "companies2";
+		String dbName = "companies";
 		String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
 		long startTime = System.currentTimeMillis();

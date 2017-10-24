@@ -3,7 +3,6 @@ package es.um.nosql.schemainference.db.interfaces;
 import java.io.File;
 import java.nio.file.Paths;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
@@ -39,7 +38,7 @@ public class Proteins2Db extends Source2Db
     File csvFile = new File(csvRoute);
     CsvMapper csvMapper = new CsvMapper();
     MappingIterator<?> mappingIterator = null;
-    ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);
+    ObjectMapper oMapper = new ObjectMapper();//.setSerializationInclusion(Include.NON_NULL);
     String collectionName = null;
 
     SimpleModule module = new SimpleModule();

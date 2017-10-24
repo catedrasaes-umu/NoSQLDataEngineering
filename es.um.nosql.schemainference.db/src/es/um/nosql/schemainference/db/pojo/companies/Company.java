@@ -38,14 +38,22 @@ public class Company
   private String updated_at;
   private String overview;
   private Image image;
-  private Product[] products;
-  private Object[] relationships;
-  private Object[] competitions;
-  private Object[] providerships;
+  private NamePermalink[] products;
+//  private Relationship[] relationships;
+  private Competition[] competitions;
+  private Providership[] providerships;
   private String total_money_raised;
-  private Object[] funding_rounds;
-  private Object[] investments;
-  private Object acquisition;
+//  private Funding_round[] funding_rounds;
+//  private Object[] investments;
+  private Acquisition acquisition;
+//  private Acquisition2[] acquisitions;
+  private Office[] offices;
+//  private Object[] milestones;
+//  private Ipo[] ipo;
+  private Video[] video_embeds;
+  private Image[] screenshots;
+  private External_link[] external_links;
+  private Partner[] partners;
 
   @JsonProperty("_id")
   public ObjectId get_id() {
@@ -282,38 +290,38 @@ public class Company
   }
 
   @JsonProperty("products")
-  public Product[] getProducts() {
+  public NamePermalink[] getProducts() {
     return products;
   }
 
-  public void setProducts(Product[] products) {
+  public void setProducts(NamePermalink[] products) {
     this.products = products;
   }
-
+/*
   @JsonProperty("relationships")
   public Object[] getRelationships() {
     return relationships;
   }
 
-  public void setRelationships(Object[] relationships) {
+  public void setRelationships(Relationship[] relationships) {
     this.relationships = relationships;
   }
-
+*/
   @JsonProperty("competitions")
-  public Object[] getCompetitions() {
+  public Competition[] getCompetitions() {
     return competitions;
   }
 
-  public void setCompetitions(Object[] competitions) {
+  public void setCompetitions(Competition[] competitions) {
     this.competitions = competitions;
   }
 
   @JsonProperty("providerships")
-  public Object[] getProviderships() {
+  public Providership[] getProviderships() {
     return providerships;
   }
 
-  public void setProviderships(Object[] providerships) {
+  public void setProviderships(Providership[] providerships) {
     this.providerships = providerships;
   }
 
@@ -325,13 +333,13 @@ public class Company
   public void setTotal_money_raised(String total_money_raised) {
     this.total_money_raised = total_money_raised;
   }
-
+/*
   @JsonProperty("funding_rounds")
-  public Object[] getFunding_rounds() {
+  public Funding_round[] getFunding_rounds() {
     return funding_rounds;
   }
 
-  public void setFunding_rounds(Object[] funding_rounds) {
+  public void setFunding_rounds(Funding_round[] funding_rounds) {
     this.funding_rounds = funding_rounds;
   }
 
@@ -343,13 +351,85 @@ public class Company
   public void setInvestments(Object[] investments) {
     this.investments = investments;
   }
-
+*/
   @JsonProperty("acquisition")
-  public Object getAcquisition() {
+  public Acquisition getAcquisition() {
     return acquisition;
   }
 
-  public void setAcquisition(Object acquisition) {
+  public void setAcquisition(Acquisition acquisition) {
     this.acquisition = acquisition;
+  }
+/*
+  @JsonProperty("acquisitions")
+  public Acquisition2[] getAcquisitions() {
+    return acquisitions;
+  }
+
+  public void setAcquisitions(Acquisition2[] acquisitions) {
+    this.acquisitions = acquisitions;
+  }
+*/
+  @JsonProperty("offices")
+  public Office[] getOffices() {
+    return offices;
+  }
+
+  public void setOffices(Office[] offices) {
+    this.offices = offices;
+  }
+/*
+  @JsonProperty("milestones")
+  public Object[] getMilestones() {
+    return milestones;
+  }
+
+  public void setMilestones(Object[] milestones) {
+    this.milestones = milestones;
+  }
+
+  @JsonProperty("ipo")
+  public Ipo[] getIpo() {
+    return ipo;
+  }
+
+  public void setIpo(Ipo[] ipo) {
+    this.ipo = ipo;
+  }
+*/
+  @JsonProperty("video_embeds")
+  public Video[] getVideo_embeds() {
+    return video_embeds;
+  }
+
+  public void setVideo_embeds(Video[] video_embeds) {
+    this.video_embeds = video_embeds;
+  }
+
+  @JsonProperty("screenshots")
+  public Image[] getScreenshots() {
+    return screenshots;
+  }
+
+  public void setScreenshots(Image[] screenshots) {
+    this.screenshots = screenshots;
+  }
+
+  @JsonProperty("external_links")
+  public External_link[] getExternal_links() {
+    return external_links;
+  }
+
+  public void setExternal_links(External_link[] external_links) {
+    this.external_links = external_links;
+  }
+
+  @JsonProperty("partners")
+  public Partner[] getPartners() {
+    return partners;
+  }
+
+  public void setPartners(Partner[] partners) {
+    this.partners = partners;
   }
 }
