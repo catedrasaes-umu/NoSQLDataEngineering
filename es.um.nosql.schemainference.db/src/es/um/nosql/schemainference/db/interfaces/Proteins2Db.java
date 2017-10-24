@@ -39,7 +39,7 @@ public class Proteins2Db extends Source2Db
     File csvFile = new File(csvRoute);
     CsvMapper csvMapper = new CsvMapper();
     MappingIterator<?> mappingIterator = null;
-    ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_EMPTY);
+    ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);
     String collectionName = null;
 
     SimpleModule module = new SimpleModule();

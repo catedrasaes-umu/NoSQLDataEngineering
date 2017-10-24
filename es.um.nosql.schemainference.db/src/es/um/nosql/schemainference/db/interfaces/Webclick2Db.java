@@ -36,7 +36,7 @@ public class Webclick2Db extends Source2Db
   {
     File jsonFile = new File(jsonRoute);
     MappingIterator<?> mappingIterator = null;
-    ObjectMapper mapper = new ObjectMapper().setSerializationInclusion(Include.NON_EMPTY);
+    ObjectMapper mapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);
     String collectionName = null;
 
     SimpleModule module = new SimpleModule();

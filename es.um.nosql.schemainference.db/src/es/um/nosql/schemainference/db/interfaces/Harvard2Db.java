@@ -40,7 +40,7 @@ public class Harvard2Db extends Source2Db
     int totalLines = 1;
     CsvMapper csvMapper = new CsvMapper();
     MappingIterator<HarvardCourse> mappingIterator;
-    ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_EMPTY);
+    ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);
     ArrayNode jsonArray = oMapper.createArrayNode();
     String collectionName = "harvard_courses";
 

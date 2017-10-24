@@ -51,7 +51,7 @@ public class InferenceTest
 //	  prepareSOFExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_SOF);  //TODO: Not tested yet
 //	  prepareEPolExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_EPOL);
 //	  prepareUrbanExample(DbType.MONGODB, FILL_AND_INFER, FILE_URBAN);                  //POJO
-//	  prepareCompanyExample(DbType.COUCHDB, FILL_ONLY, FILE_COMPANY);
+	  prepareCompanyExample(DbType.MONGODB, FILL_AND_INFER, FILE_COMPANY);
 //	  prepareLinkExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_LINK);                  //POJO
 //	  prepareHarvardExample(DbType.MONGODB, FILL_AND_INFER, FILE_HARVARD);              //POJO
 //	  prepareFacebookExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_FACEBOOK);          //POJO
@@ -165,7 +165,7 @@ public class InferenceTest
 
 	public static void prepareCompanyExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
 	{
-		String dbName = "companies";
+		String dbName = "companies2";
 		String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
 		long startTime = System.currentTimeMillis();
