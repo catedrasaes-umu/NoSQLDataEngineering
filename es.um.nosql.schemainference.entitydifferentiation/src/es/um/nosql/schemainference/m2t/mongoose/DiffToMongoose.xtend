@@ -192,6 +192,7 @@ public class DiffToMongoose
     // Just a shortcut list so we don't have to access every time to the type field of a property (and all its casts...)
     val typeShortcutList = new ArrayList<String>();
 
+    // This has to be optimized with collections operations..
     for (PropertySpec ps : typeList)
     {
       if (ps.property instanceof Aggregate)
@@ -241,7 +242,7 @@ public class DiffToMongoose
     }
     if (uniqueTypeList.size == 1)
     {
-      genTypeForProperty(uniqueTypeList.get(0));
+      genTypeForProperty(uniqueTypeList.head);
     }
     else
     {
@@ -268,9 +269,11 @@ public class DiffToMongoose
   {
     val entityName = (agg.refTo.get(0).eContainer as Entity).name
 
-    if (agg.lowerBound == 1 && agg.upperBound == 1)
+    // Lower bound might be 0 or 1. In any of those cases we only need a value, not an array
+    if (agg.upperBound == 1)
       '''«entityName»Schema.schema'''
     else
+    // Upper bound might be 2, 3, 4...-1. We need an array.
       '''[«entityName»Schema.schema]'''
   }
 
@@ -310,10 +313,10 @@ public class DiffToMongoose
       theType = reference.originalType;
     }
 
-    if (reference.lowerBound != 1 || reference.upperBound != 1)
-      '''[«genTypeForPrimitiveString(theType)»]'''
+    if (reference.upperBound == 1)
+      '''«genTypeForPrimitiveString(theType)»'''
     else
-      '''«genTypeForPrimitiveString(theType)»'''    
+      '''[«genTypeForPrimitiveString(theType)»]'''
   }
 
   def expandRef(Reference reference) 

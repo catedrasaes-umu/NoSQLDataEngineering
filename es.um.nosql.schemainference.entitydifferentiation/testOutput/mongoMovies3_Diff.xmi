@@ -123,16 +123,16 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="../testSources/mongoMovies3.xmi#//@entities.0/@entityversions.0/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/mongoMovies3.xmi#//@entities.0/@entityversions.3/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/mongoMovies3.xmi#//@entities.0/@entityversions.0/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/mongoMovies3.xmi#//@entities.0/@entityversions.3/@properties.3"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/mongoMovies3.xmi#//@entities.0/@entityversions.0/@properties.6"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/mongoMovies3.xmi#//@entities.0/@entityversions.3/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/mongoMovies3.xmi#//@entities.0/@entityversions.0/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/mongoMovies3.xmi#//@entities.0/@entityversions.3/@properties.4"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>

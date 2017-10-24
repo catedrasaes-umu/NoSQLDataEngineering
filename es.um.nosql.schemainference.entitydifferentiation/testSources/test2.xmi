@@ -20,38 +20,32 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
-          name="dates"
+          name="dates01"
+          upperBound="1"
+          refTo="//@entities.1/@entityversions.0"/>
+      <properties
+          xsi:type="NoSQLSchema:Aggregate"
+          name="dates0-1"
+          upperBound="-1"
+          refTo="//@entities.1/@entityversions.0"/>
+      <properties
+          xsi:type="NoSQLSchema:Aggregate"
+          name="dates11"
+          lowerBound="1"
+          upperBound="1"
+          refTo="//@entities.1/@entityversions.0"/>
+      <properties
+          xsi:type="NoSQLSchema:Aggregate"
+          name="dates1-1"
           lowerBound="1"
           upperBound="-1"
           refTo="//@entities.1/@entityversions.0"/>
-    </entityversions>
-    <entityversions
-        versionId="2"
-        root="true">
       <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="dates">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="id">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="strange">
-        <type
-            xsi:type="NoSQLSchema:Tuple">
-          <elements
-              xsi:type="NoSQLSchema:PrimitiveType"
-              name="Number"/>
-        </type>
-      </properties>
+          xsi:type="NoSQLSchema:Aggregate"
+          name="dates-1-1"
+          lowerBound="-1"
+          upperBound="-1"
+          refTo="//@entities.1/@entityversions.0"/>
     </entityversions>
   </entities>
   <entities

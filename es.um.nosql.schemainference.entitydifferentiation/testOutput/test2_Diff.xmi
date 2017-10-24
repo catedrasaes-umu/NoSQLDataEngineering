@@ -3,25 +3,25 @@
   <entityDiffSpecs>
     <entity href="../testSources/test2.xmi#Persons"/>
     <entityVersionProps>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/test2.xmi#//@entities.0/@entityversions.0/@properties.1"/>
-      </propertySpecs>
       <entityVersion href="../testSources/test2.xmi#//@entities.0/@entityversions.0"/>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test2.xmi#//@entities.0/@entityversions.1/@properties.2"/>
-      </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test2.xmi#//@entities.0/@entityversions.1/@properties.0"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test2.xmi#//@entities.0/@entityversions.1/@properties.2"/>
-      </propertySpecs>
-      <entityVersion href="../testSources/test2.xmi#//@entities.0/@entityversions.1"/>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test2.xmi#//@entities.0/@entityversions.1/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test2.xmi#//@entities.0/@entityversions.0/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/test2.xmi#//@entities.0/@entityversions.0/@properties.1"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/test2.xmi#//@entities.0/@entityversions.0/@properties.3"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/test2.xmi#//@entities.0/@entityversions.0/@properties.2"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/test2.xmi#//@entities.0/@entityversions.0/@properties.5"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/test2.xmi#//@entities.0/@entityversions.0/@properties.4"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
