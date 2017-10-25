@@ -12,6 +12,7 @@ import es.um.nosql.schemainference.db.interfaces.Harvard2Db;
 import es.um.nosql.schemainference.db.interfaces.Publications2Db;
 import es.um.nosql.schemainference.db.interfaces.Link2Db;
 import es.um.nosql.schemainference.db.interfaces.Model2Db;
+import es.um.nosql.schemainference.db.interfaces.OSanctions2Db;
 import es.um.nosql.schemainference.db.interfaces.Proteins2Db;
 import es.um.nosql.schemainference.db.interfaces.SOF2Db;
 import es.um.nosql.schemainference.db.interfaces.Urban2Db;
@@ -42,6 +43,7 @@ public class InferenceTest
 	private static final String FOLDER_PROTEIN = "/media/alberto/tarsonis/datasets/proteins/";
 	private static final String FILE_PUBLICATIONS = "/media/alberto/tarsonis/datasets/publications/publications-nov-20132.csv";
 	private static final String FOLDER_WEBCLICKS = "/media/alberto/tarsonis/datasets/webclicks/";
+	private static final String FILE_SANCTIONS = "/media/alberto/tarsonis/datasets/opensanctions/master.ijson";
 
 	public static void main(String[] args) throws IOException
 	{//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
@@ -50,7 +52,7 @@ public class InferenceTest
 //	  prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
 //	  prepareSOFExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_SOF);  //TODO: Not tested yet
 //	  prepareEPolExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_EPOL);
-//	  prepareUrbanExample(DbType.MONGODB, FILL_AND_INFER, FILE_URBAN);                  //POJO
+//	  prepareUrbanExample(DbType.MONGODB, FILL_AND_INFER, FI LE_URBAN);                  //POJO
 	  // Problem with this dataset is that it contains A LOT of aggregated objects and null values.
 	  // Aggregated objects tend to make mongodb run out of memory during the reduce process.
 	  // Null values tend to abort the inference process. Until the inference process is fixed (TODO(tm)),
@@ -62,6 +64,7 @@ public class InferenceTest
 //	  prepareProteinExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_PROTEIN);            //POJO
 //	  preparePublicationsExample(DbType.MONGODB, FILL_AND_INFER, FILE_PUBLICATIONS);    //POJO
 //	  prepareWebclickExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_WEBCLICKS);         //POJO
+//	  prepareSanctionsExample(DbType.MONGODB, FILL_AND_INFER, FILE_SANCTIONS);
 	}
 
 	public static void prepareModelExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
@@ -327,6 +330,26 @@ public class InferenceTest
 			return;
 		else
 			performInference(dbType, dbName, outputModel);
+	}
+
+	public static void prepareSanctionsExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
+	{
+    String dbName = "opensanctions";
+    String outputModel = MODELS_FOLDER + dbName + ".xmi";
+
+    long startTime = System.currentTimeMillis();
+
+    System.out.println("Filling the " + dbType.toString() + " database...");
+    OSanctions2Db controller = new OSanctions2Db(dbType, DATABASE_IP);
+    controller.run(sourceFile, dbName);
+    controller.shutdown();
+
+    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+
+    if (FILL_ONLY)
+      return;
+    else
+      performInference(dbType, dbName, outputModel);
 	}
 
 	private static void performInference(DbType dbType, String dbName, String outputModel)
