@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://127.0.0.1/mongoMovies3',
+mongoose.connect('mongodb://127.0.0.1/everypolitician',
 {
   useMongoClient: true
 }, function(err)
@@ -8,33 +8,37 @@ mongoose.connect('mongodb://127.0.0.1/mongoMovies3',
   if (err)
     console.log(err);
   else
-    console.log('Connected to 127.0.0.1/mongoMovies3');
+    console.log('Connected to 127.0.0.1/everypolitician');
 });
 mongoose.set('debug', true);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 
-var Movie = require('./app/models/MovieSchema');
-var Movietheater = require('./app/models/MovietheaterSchema');
-var Medium = require('./app/models/MediumSchema');
-var Rating = require('./app/models/RatingSchema');
-var Director = require('./app/models/DirectorSchema');
-var Criticism = require('./app/models/CriticismSchema');
-var Prize = require('./app/models/PrizeSchema');
+var Memberships = require('./app/models/MembershipsSchema');
+var Identifier = require('./app/models/IdentifierSchema');
+var Events = require('./app/models/EventsSchema');
+var Persons = require('./app/models/PersonsSchema');
+var Organizations = require('./app/models/OrganizationsSchema');
+var Other_name = require('./app/models/Other_nameSchema');
+var Image = require('./app/models/ImageSchema');
+var Contact_detail = require('./app/models/Contact_detailSchema');
+var Link = require('./app/models/LinkSchema');
+var Source = require('./app/models/SourceSchema');
+var Areas = require('./app/models/AreasSchema');
 
 db.once('open', function()
 {
-  Movie.find({}, '-_id', function(err, result)
+  Memberships.find({}, '-_id', function(err, result)
   {
     if (err)
       return console.error(err);
 
-    console.log("Checking consistency of the \"Movie\" table");
+    console.log("Checking consistency of the \"Memberships\" table");
     var errorNumber = 0;
 
-    result.forEach(function(movie)
+    result.forEach(function(memberships)
     {
-      var validation = movie.validateSync();
+      var validation = memberships.validateSync();
       if (typeof validation !== "undefined")
       {
         console.log(validation);
@@ -43,22 +47,22 @@ db.once('open', function()
     });
 
     if (errorNumber)
-      console.log("\"Movie\" table: " + errorNumber + " errors found");
+      console.log("\"Memberships\" table: " + errorNumber + " errors found");
     else
-      console.log("\"Movie\" table: No errors found!");
+      console.log("\"Memberships\" table: No errors found!");
   });
 
-  Movietheater.find({}, '-_id', function(err, result)
+  Events.find({}, '-_id', function(err, result)
   {
     if (err)
       return console.error(err);
 
-    console.log("Checking consistency of the \"Movietheater\" table");
+    console.log("Checking consistency of the \"Events\" table");
     var errorNumber = 0;
 
-    result.forEach(function(movietheater)
+    result.forEach(function(events)
     {
-      var validation = movietheater.validateSync();
+      var validation = events.validateSync();
       if (typeof validation !== "undefined")
       {
         console.log(validation);
@@ -67,22 +71,22 @@ db.once('open', function()
     });
 
     if (errorNumber)
-      console.log("\"Movietheater\" table: " + errorNumber + " errors found");
+      console.log("\"Events\" table: " + errorNumber + " errors found");
     else
-      console.log("\"Movietheater\" table: No errors found!");
+      console.log("\"Events\" table: No errors found!");
   });
 
-  Director.find({}, '-_id', function(err, result)
+  Persons.find({}, '-_id', function(err, result)
   {
     if (err)
       return console.error(err);
 
-    console.log("Checking consistency of the \"Director\" table");
+    console.log("Checking consistency of the \"Persons\" table");
     var errorNumber = 0;
 
-    result.forEach(function(director)
+    result.forEach(function(persons)
     {
-      var validation = director.validateSync();
+      var validation = persons.validateSync();
       if (typeof validation !== "undefined")
       {
         console.log(validation);
@@ -91,9 +95,57 @@ db.once('open', function()
     });
 
     if (errorNumber)
-      console.log("\"Director\" table: " + errorNumber + " errors found");
+      console.log("\"Persons\" table: " + errorNumber + " errors found");
     else
-      console.log("\"Director\" table: No errors found!");
+      console.log("\"Persons\" table: No errors found!");
+  });
+
+  Organizations.find({}, '-_id', function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    console.log("Checking consistency of the \"Organizations\" table");
+    var errorNumber = 0;
+
+    result.forEach(function(organizations)
+    {
+      var validation = organizations.validateSync();
+      if (typeof validation !== "undefined")
+      {
+        console.log(validation);
+        errorNumber++;
+      }
+    });
+
+    if (errorNumber)
+      console.log("\"Organizations\" table: " + errorNumber + " errors found");
+    else
+      console.log("\"Organizations\" table: No errors found!");
+  });
+
+  Areas.find({}, '-_id', function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    console.log("Checking consistency of the \"Areas\" table");
+    var errorNumber = 0;
+
+    result.forEach(function(areas)
+    {
+      var validation = areas.validateSync();
+      if (typeof validation !== "undefined")
+      {
+        console.log(validation);
+        errorNumber++;
+      }
+    });
+
+    if (errorNumber)
+      console.log("\"Areas\" table: " + errorNumber + " errors found");
+    else
+      console.log("\"Areas\" table: No errors found!");
   });
 
 });
