@@ -50,7 +50,7 @@ public class InferenceTest
 	  // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.
 	  // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
 //	  prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
-//	  prepareSOFExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_SOF);  //TODO: Not tested yet
+//	  prepareSOFExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_SOF);
 //	  prepareEPolExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_EPOL);
 //	  prepareUrbanExample(DbType.MONGODB, FILL_AND_INFER, FI LE_URBAN);                  //POJO
 	  // Problem with this dataset is that it contains A LOT of aggregated objects and null values.

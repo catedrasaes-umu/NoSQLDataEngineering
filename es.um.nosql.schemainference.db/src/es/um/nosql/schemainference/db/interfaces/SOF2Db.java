@@ -15,7 +15,7 @@ import es.um.nosql.schemainference.db.utils.DbType;
 public class SOF2Db extends Source2Db
 {
   private int MAX_OBJECTS = 2500000;
-  private int MAX_LINES_BEFORE_STORE = 25000;
+  private int MAX_LINES_BEFORE_STORE = 10000;
 
   public SOF2Db(DbType db, String ip)
   {
@@ -67,6 +67,7 @@ public class SOF2Db extends Source2Db
           getClient().insert(dbName, collectionName, jsonArray.toString());
           jsonArray.removeAll();
           numLines = 0;
+          System.out.println("Line count: " + totalLines);
         }
         if (totalLines > MAX_OBJECTS)
           break;
