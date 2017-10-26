@@ -1,7 +1,17 @@
 package es.um.nosql.schemainference.design.services;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import static java.util.function.Function.identity;
+import static java.util.stream.Collectors.toCollection;
+import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.toMap;
 
 import com.github.benmanes.caffeine.cache.Cache;
 import com.github.benmanes.caffeine.cache.Caffeine;
@@ -18,10 +28,10 @@ import es.um.nosql.schemainference.NoSQLSchema.Tuple;
 
 public class PropertyServices
 {
-	Cache<Entity, List<Attribute>> entityAllAttributesCache = Caffeine.newBuilder().build();
-	Cache<Entity, List<Attribute>> entityAllAssociationsCache = Caffeine.newBuilder().build();
-	Cache<Entity, List<Attribute>> entityCommonAttributesCache = Caffeine.newBuilder().build();
-	Cache<Entity, List<Association>> entityCommonAssociationsCache = Caffeine.newBuilder().build();
+//	Cache<Entity, List<Attribute>> entityAllAttributesCache = Caffeine.newBuilder().build();
+//	Cache<Entity, List<Attribute>> entityAllAssociationsCache = Caffeine.newBuilder().build();
+//	Cache<Entity, List<Attribute>> entityCommonAttributesCache = Caffeine.newBuilder().build();
+//	Cache<Entity, List<Association>> entityCommonAssociationsCache = Caffeine.newBuilder().build();
 
 	public List<Attribute> getAttributeList(Entity entity)
 	{
@@ -113,20 +123,61 @@ public class PropertyServices
 		  if (prop instanceof Attribute)
 		    result.add((Attribute)prop);
 
+		if (entity.getEntityversions().size() == 1)
+			return result;
+
 		// TODO: Check for common properties of each entity version.
 		// TODO: Also provide methods for getting specific attributes of each version...
-/*		result = result.stream().filter(attr ->
+		result = result.stream().filter(attr ->
 		{
 		  for (int i = 1; i < entity.getEntityversions().size(); i++)
-		    if (entity.getEntityversions().get(i).getProperties().stream().anyMatch(predicate))
-		      continue;
-		    else
-		      return false;
-
-		  return true;
+			  for (Property p : entity.getEntityversions().get(i).getProperties())
+				  if (p instanceof Attribute)
+				  {
+					  Attribute at = (Attribute)p;
+					  if (at.getType() instanceof PrimitiveType && at.getName().equals(attr.getName()) && ((PrimitiveType)at.getType()).getName().equals(((PrimitiveType)attr.getType()).getName()))
+						  return true;
+				  }
+		  return false;
 		}).collect(Collectors.toList());
-*/
+		// Need to compare tuples as well...
 		result.sort((attr1, attr2) -> attr1.getName().compareTo(attr2.getName()));
+
+		return result;
+	}
+
+	public List<Association> getCommonAssociationList(Entity entity)
+	{
+		List<Association> result = new ArrayList<Association>();
+
+		if (entity.getEntityversions().isEmpty())
+			return result;
+
+		EntityVersion eVersion = entity.getEntityversions().get(0);
+
+		for (Property prop : eVersion.getProperties())
+		  if (prop instanceof Association)
+		    result.add((Association)prop);
+
+		if (entity.getEntityversions().size() == 1)
+			return result;
+
+		// TODO: Check for common properties of each entity version.
+		// TODO: Also provide methods for getting specific attributes of each version...
+		/*		result = result.stream().filter(attr ->
+		{
+		  for (int i = 1; i < entity.getEntityversions().size(); i++)
+			  for (Property p : entity.getEntityversions().get(i).getProperties())
+				  if (p instanceof Attribute)
+				  {
+					  Attribute at = (Attribute)p;
+					  if (at.getType() instanceof PrimitiveType && at.getName().equals(attr.getName()) && ((PrimitiveType)at.getType()).getName().equals(((PrimitiveType)attr.getType()).getName()))
+						  return true;
+				  }
+		  return false;
+			//TODO: Dubidubidubah
+		}).collect(Collectors.toList());*/
+		result.sort((assc1, assc2) -> assc1.getName().compareTo(assc2.getName()));
 
 		return result;
 	}

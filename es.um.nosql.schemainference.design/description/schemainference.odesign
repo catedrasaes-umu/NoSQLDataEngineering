@@ -191,7 +191,7 @@
             </endLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="O Entity" label="O Entity" semanticCandidatesExpression="aql: self.entities" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Database%20schema']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity']" domainClass="NoSQLSchema.Entity" childrenPresentation="HorizontalStack">
+        <containerMappings name="O Entity" label="O Entity" semanticCandidatesExpression="aql: self.entities" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Database%20schema']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity']" domainClass="NoSQLSchema.Entity">
           <subContainerMappings name="OE EntityVersion" label="OE EntityVersion" semanticCandidatesExpression="aql: self.entityversions" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Database%20schema']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20version']" domainClass="NoSQLSchema.EntityVersion" childrenPresentation="List">
             <subNodeMappings name="OEEV Attribute" label="OEEV Attribute" semanticCandidatesExpression="aql: self.properties" domainClass="NoSQLSchema.Attribute">
               <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.schemainference.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="O Unexpected type">
@@ -941,7 +941,7 @@
               </style>
             </conditionnalStyles>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="aql: self.name + ' entity'" iconPath="/es.um.nosql.schemainference.design/images/icons/EntityIcon24.png" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-1']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-1']">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" labelSize="10" labelExpression="aql: self.name + ' entity'" iconPath="/es.um.nosql.schemainference.design/images/icons/EntityIcon24.png" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-2']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-2']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelFormat>bold</labelFormat>
             <labelFormat>italic</labelFormat>
@@ -962,9 +962,25 @@
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="(Test) Database schema" label="(Test) Database schema" titleExpression="aql: '(Test) Database schema for ' + self.name + ' nosqlschema'" initialisation="true" domainClass="NoSQLSchema.NoSQLSchema">
       <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
       <defaultLayer name="DS Default" label="DS Default">
+        <edgeMappings name="O Reference" label="O Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='(Test)%20Database%20schema']/@defaultLayer/@containerMappings[name='O%20Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='(Test)%20Database%20schema']/@defaultLayer/@containerMappings[name='O%20Entity']" targetFinderExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference).refTo">
+          <style routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + ref.lowerBound + '..' + ref.upperBound + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.schemainference.design/images/icons/Ref16.png">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="O Aggregate" label="O Aggregate" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='(Test)%20Database%20schema']/@defaultLayer/@containerMappings[name='O%20Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='(Test)%20Database%20schema']/@defaultLayer/@containerMappings[name='O%20Entity']" targetFinderExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Aggregate).refTo.eContainer()">
+          <style sourceArrow="FillDiamond" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription labelExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Aggregate)->select(aggr | aggr.refTo.eContainer()->includes(view.targetNode.target))->asSet()->collect(aggr | '[' + aggr.lowerBound + '..' + aggr.upperBound + ']' + aggr.name)->sep(', ')->toString()" iconPath="/es.um.nosql.schemainference.design/images/icons/Aggr16.png">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
         <containerMappings name="O Entity" label="O Entity" semanticCandidatesExpression="aql: self.entities" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='(Test)%20Database%20schema']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity']" domainClass="NoSQLSchema.Entity" childrenPresentation="VerticalStack">
           <subContainerMappings name="Common properties" label="Common properties" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.Entity" childrenPresentation="List">
-            <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getAttributeList" domainClass="NoSQLSchema.Attribute">
+            <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getCommonAttributeList" domainClass="NoSQLSchema.Attribute">
               <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.schemainference.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="O Unexpected type">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -982,7 +998,25 @@
                 </style>
               </conditionnalStyles>
             </subNodeMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'Common properties'" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-2']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-2']">
+            <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getCommonAssociationList" domainClass="NoSQLSchema.Association">
+              <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.schemainference.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="O Unexpected type">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+              <conditionnalStyles predicateExpression="aql: self.oclIsTypeOf(NoSQLSchema::Reference)">
+                <style xsi:type="style:CustomStyleDescription" labelExpression="aql: self.name + ': [' + if (self.lowerBound&lt;>-1) then self.lowerBound else '*' endif + '..' + self.upperBound + '] ' + self.refTo.name" iconPath="/es.um.nosql.schemainference.design/images/icons/Ref16.png" labelPosition="node" resizeKind="NSEW" id="O RefStyle">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+              <conditionnalStyles predicateExpression="aql: self.oclIsTypeOf(NoSQLSchema::Aggregate)">
+                <style xsi:type="style:CustomStyleDescription" labelExpression="aql: self.name + ': [' + if (self.lowerBound&lt;>-1) then self.lowerBound else '*' endif + '..' + if (self.upperBound&lt;>-1) then self.upperBound else '*' endif + '] ' + self.refTo.ancestors()->filter(NoSQLSchema::Entity)->first().name + ' v_(' + self.refTo->sortedBy(ev | ev.versionId).versionId->sep(',') + ')'" iconPath="/es.um.nosql.schemainference.design/images/icons/Aggr16.png" labelPosition="node" resizeKind="NSEW" id="O AggrStyle">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'Common properties'" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-3']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-3']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1032,7 +1066,7 @@
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subContainerMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'Entity versions'" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-2']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-2']">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'Entity versions'" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-3']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-3']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1070,5 +1104,6 @@
     <entries xsi:type="description:UserFixedColor" red="247" green="246" blue="208" name="Yellow-2"/>
     <entries xsi:type="description:UserFixedColor" red="188" green="189" blue="220" name="Purple-1"/>
     <entries xsi:type="description:UserFixedColor" red="218" green="218" blue="255" name="Purple-2"/>
+    <entries xsi:type="description:UserFixedColor" red="233" green="233" blue="255" name="Purple-3"/>
   </userColorsPalettes>
 </description:Group>
