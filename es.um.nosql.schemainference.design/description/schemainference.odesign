@@ -186,7 +186,7 @@
         <edgeMappings name="Reference" label="Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetFinderExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference).refTo">
           <style routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <endLabelStyleDescription labelExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + ref.lowerBound + '..' + ref.upperBound + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.schemainference.design/images/icons/Ref16.png">
+            <endLabelStyleDescription labelExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + if (ref.lowerBound&lt;>-1) then ref.lowerBound else '*' endif + '..' + if (ref.upperBound&lt;>-1) then ref.upperBound else '*' endif + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.schemainference.design/images/icons/Ref16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
           </style>
@@ -585,7 +585,7 @@
         <edgeMappings name="Reference" label="Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Database%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Database%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetFinderExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference).refTo">
           <style routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription labelExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + ref.lowerBound + '..' + ref.upperBound + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.schemainference.design/images/icons/Ref16.png">
+            <centerLabelStyleDescription labelExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + if (ref.lowerBound&lt;>-1) then ref.lowerBound else '*' endif + '..' + if (ref.upperBound&lt;>-1) then ref.upperBound else '*' endif + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.schemainference.design/images/icons/Ref16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -593,7 +593,7 @@
         <edgeMappings name="Aggregate" label="Aggregate" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Database%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Database%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetFinderExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Aggregate).refTo.eContainer()">
           <style sourceArrow="FillDiamond" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription labelExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Aggregate)->select(aggr | aggr.refTo.eContainer()->includes(view.targetNode.target))->asSet()->collect(aggr | '[' + aggr.lowerBound + '..' + aggr.upperBound + ']' + aggr.name)->sep(', ')->toString()" iconPath="/es.um.nosql.schemainference.design/images/icons/Aggr16.png">
+            <centerLabelStyleDescription labelExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Aggregate)->select(aggr | aggr.refTo.eContainer()->includes(view.targetNode.target))->asSet()->collect(aggr | '[' + if (aggr.lowerBound&lt;>-1) then aggr.lowerBound else '*' endif + '..' + if (aggr.upperBound&lt;>-1) then aggr.upperBound else '*' endif + ']' + aggr.name)->sep(', ')->toString()" iconPath="/es.um.nosql.schemainference.design/images/icons/Aggr16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -659,7 +659,7 @@
         <edgeMappings name="Reference" label="Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='(Test)%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='(Test)%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetFinderExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference).refTo">
           <style routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription labelExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + ref.lowerBound + '..' + ref.upperBound + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.schemainference.design/images/icons/Ref16.png">
+            <centerLabelStyleDescription labelExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + if (ref.lowerBound&lt;>-1) then ref.lowerBound else '*' endif + '..' + if (ref.upperBound&lt;>-1) then ref.upperBound else '*' endif + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.schemainference.design/images/icons/Ref16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>

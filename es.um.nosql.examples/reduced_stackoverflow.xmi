@@ -385,7 +385,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="Tags"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
           refTo="Tags"/>
       <properties
@@ -528,7 +528,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="Tags"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
           refTo="Tags"/>
       <properties
@@ -670,7 +670,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="Tags"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
           refTo="Tags"/>
       <properties
@@ -813,7 +813,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="Tags"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
           refTo="Tags"/>
       <properties
@@ -950,7 +950,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="Tags"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
           refTo="Tags"/>
       <properties
@@ -1086,7 +1086,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="Tags"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
           refTo="Tags"/>
       <properties
@@ -1228,7 +1228,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="Tags"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
           refTo="Tags"/>
       <properties
@@ -1364,7 +1364,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="Tags"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
           refTo="Tags"/>
       <properties
@@ -1499,7 +1499,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="Tags"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
           refTo="Tags"/>
       <properties
@@ -1628,7 +1628,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="Tags"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
           refTo="Tags"/>
       <properties
@@ -1751,7 +1751,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="Tags"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
           refTo="Tags"/>
       <properties
@@ -1873,7 +1873,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="Tags"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
           refTo="Tags"/>
       <properties
@@ -2015,7 +2015,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="Tags"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
           refTo="Tags"/>
       <properties
@@ -2151,7 +2151,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="Tags"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
           refTo="Tags"/>
       <properties
@@ -2281,7 +2281,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="Tags"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
           refTo="Tags"/>
       <properties
@@ -3355,13 +3355,6 @@
           refTo="Posts"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
-          name="TagName"
-          lowerBound="1"
-          upperBound="1"
-          opposite="//@entities.6/@entityversions.0/@properties.2"
-          refTo="Tags"/>
-      <properties
-          xsi:type="NoSQLSchema:Reference"
           name="WikiPostId"
           lowerBound="1"
           upperBound="1"
@@ -3381,6 +3374,13 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="TagName">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
     </entityversions>
     <entityversions
         versionId="2"
@@ -3393,13 +3393,6 @@
             name="String"/>
       </properties>
       <properties
-          xsi:type="NoSQLSchema:Reference"
-          name="TagName"
-          lowerBound="1"
-          upperBound="1"
-          opposite="//@entities.6/@entityversions.0/@properties.2"
-          refTo="Tags"/>
-      <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
@@ -3409,6 +3402,13 @@
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="TagName">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
