@@ -3310,7 +3310,8 @@
           name="PostId"
           lowerBound="1"
           upperBound="1"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="RelatedPostId"

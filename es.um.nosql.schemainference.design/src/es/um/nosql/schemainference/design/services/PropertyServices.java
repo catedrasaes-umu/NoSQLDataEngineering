@@ -1,20 +1,8 @@
 package es.um.nosql.schemainference.design.services;
 
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 import java.util.stream.Collectors;
-
-import static java.util.function.Function.identity;
-import static java.util.stream.Collectors.toCollection;
-import static java.util.stream.Collectors.toList;
-import static java.util.stream.Collectors.toMap;
-
-import com.github.benmanes.caffeine.cache.Cache;
-import com.github.benmanes.caffeine.cache.Caffeine;
 
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate;
 import es.um.nosql.schemainference.NoSQLSchema.Association;
@@ -126,24 +114,40 @@ public class PropertyServices
 		if (entity.getEntityversions().size() == 1)
 			return result;
 
-		// TODO: Check for common properties of each entity version.
-		// TODO: Also provide methods for getting specific attributes of each version...
-		result = result.stream().filter(attr ->
+		result = result.stream().filter(attr1 ->
 		{
-		  for (int i = 1; i < entity.getEntityversions().size(); i++)
-			  for (Property p : entity.getEntityversions().get(i).getProperties())
-				  if (p instanceof Attribute)
-				  {
-					  Attribute at = (Attribute)p;
-					  if (at.getType() instanceof PrimitiveType && at.getName().equals(attr.getName()) && ((PrimitiveType)at.getType()).getName().equals(((PrimitiveType)attr.getType()).getName()))
-						  return true;
-				  }
-		  return false;
+		  return entity.getEntityversions().stream().skip(1).allMatch(ev ->
+		  {
+		    for (Property p : ev.getProperties())
+          if (p instanceof Attribute && checkAttributesEqual(attr1, (Attribute)p))
+            return true;
+
+        return false;
+		  });
 		}).collect(Collectors.toList());
-		// Need to compare tuples as well...
+
 		result.sort((attr1, attr2) -> attr1.getName().compareTo(attr2.getName()));
 
 		return result;
+	}
+
+	public List<Attribute> getParticularAttributeList(EntityVersion eVersion)
+	{
+	  List<Attribute> result = new ArrayList<Attribute>();
+	  List<Attribute> commonAttrs = getCommonAttributeList((Entity)eVersion.eContainer());
+
+	  for (Property prop : eVersion.getProperties())
+      if (prop instanceof Attribute)
+        result.add((Attribute)prop);
+
+	  result = result.stream().filter(attr1 ->
+	  {
+	    return !commonAttrs.stream().anyMatch(attr2 -> { return checkAttributesEqual(attr1, attr2);});
+	  }).collect(Collectors.toList());
+
+	  result.sort((attr1, attr2) -> attr1.getName().compareTo(attr2.getName()));
+
+	  return result;
 	}
 
 	public List<Association> getCommonAssociationList(Entity entity)
@@ -162,23 +166,91 @@ public class PropertyServices
 		if (entity.getEntityversions().size() == 1)
 			return result;
 
-		// TODO: Check for common properties of each entity version.
-		// TODO: Also provide methods for getting specific attributes of each version...
-		/*		result = result.stream().filter(attr ->
-		{
-		  for (int i = 1; i < entity.getEntityversions().size(); i++)
-			  for (Property p : entity.getEntityversions().get(i).getProperties())
-				  if (p instanceof Attribute)
-				  {
-					  Attribute at = (Attribute)p;
-					  if (at.getType() instanceof PrimitiveType && at.getName().equals(attr.getName()) && ((PrimitiveType)at.getType()).getName().equals(((PrimitiveType)attr.getType()).getName()))
-						  return true;
-				  }
-		  return false;
-			//TODO: Dubidubidubah
-		}).collect(Collectors.toList());*/
+    result = result.stream().filter(assc ->
+    {
+      return entity.getEntityversions().stream().skip(1).allMatch(ev ->
+      {
+        for (Property p : ev.getProperties())
+          if (p instanceof Association && checkAssociationsEqual(assc, (Association) p))
+            return true;
+
+        return false;
+      });
+    }).collect(Collectors.toList());
+
 		result.sort((assc1, assc2) -> assc1.getName().compareTo(assc2.getName()));
 
 		return result;
 	}
+
+	public List<Association> getParticularAssociationList(EntityVersion eVersion)
+	{
+	  List<Association> result = new ArrayList<Association>();
+    List<Association> commonAssc = getCommonAssociationList((Entity)eVersion.eContainer());
+
+    for (Property prop : eVersion.getProperties())
+      if (prop instanceof Association)
+        result.add((Association)prop);
+
+    result = result.stream().filter(assc1 ->
+    {
+      return !commonAssc.stream().anyMatch(assc2 -> { return checkAssociationsEqual(assc1, assc2);});
+    }).collect(Collectors.toList());
+
+    result.sort((assc1, assc2) -> assc1.getName().compareTo(assc2.getName()));
+
+    return result;
+	}
+
+  private static boolean checkAttributesEqual(Attribute attr1, Attribute attr2)
+  {
+    if (attr1.getType() instanceof PrimitiveType && attr2.getType() instanceof PrimitiveType)
+    {
+      PrimitiveType atType1 = (PrimitiveType)attr1.getType();
+      PrimitiveType atType2 = (PrimitiveType)attr2.getType();
+
+      // Check the primitive attributes have the same name and the same type.
+      if (attr1.getName().equals(attr2.getName()) && atType1.getName().equals(atType2.getName()))
+        return true;
+    }
+    else if (attr1.getType() instanceof Tuple && attr2.getType() instanceof Tuple)
+    {
+      Tuple atType1 = (Tuple)attr1.getType();
+      Tuple atType2 = (Tuple)attr2.getType();
+
+      //TODO: We will forget about heterogeneous arrays for the moment...
+      // Check tuples have the same name, the same size and the same first type.
+      if (attr1.getName().equals(attr2.getName()) && atType1.getElements().size() == atType2.getElements().size()
+          && ((PrimitiveType)atType1.getElements().get(0)).getName().equals(((PrimitiveType)atType2.getElements().get(0)).getName()))
+        return true;
+    }
+
+    return false;
+  }
+
+  private static boolean checkAssociationsEqual(Association assc1, Association assc2)
+  {
+    if (assc1 instanceof Reference && assc2 instanceof Reference)
+    {
+      Reference ref1 = (Reference)assc1;
+      Reference ref2 = (Reference)assc2;
+
+      // Check the references have the same name, the same original type and are pointing to the same entity.
+      if (ref1.getName().equals(ref2.getName())
+          && (ref1.getOriginalType() == null || ref2.getOriginalType() == null || ref1.getOriginalType().equals(ref2.getOriginalType()))
+          && ref1.getRefTo() == ref2.getRefTo())
+        return true;
+    }
+    else if (assc1 instanceof Aggregate && assc2 instanceof Aggregate)
+    {
+      Aggregate aggr1 = (Aggregate)assc1;
+      Aggregate aggr2 = (Aggregate)assc2;
+
+      // Check the aggregates have the same name, and the refTo points to versions of the same entity
+      if (aggr1.getName().equals(aggr2.getName()) && aggr1.getRefTo().get(0).eContainer() == aggr2.getRefTo().get(0).eContainer())
+        return true;
+    }
+
+    return false;
+  }
 }
