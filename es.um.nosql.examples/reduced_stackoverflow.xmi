@@ -15,7 +15,7 @@
           name="Class">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -33,16 +33,11 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
-          name="TagBased"
-          lowerBound="1"
-          upperBound="1"
-          refTo="Tags"/>
-      <properties
-          xsi:type="NoSQLSchema:Reference"
           name="UserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -56,6 +51,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="TagBased">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Boolean"/>
       </properties>
     </entityversions>
   </entities>
@@ -76,13 +78,14 @@
           name="PostId"
           lowerBound="1"
           upperBound="1"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -93,16 +96,11 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
-          name="UserDisplayName"
-          lowerBound="1"
-          upperBound="1"
-          refTo="Users"/>
-      <properties
-          xsi:type="NoSQLSchema:Reference"
           name="UserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -113,6 +111,13 @@
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="UserDisplayName">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -133,13 +138,14 @@
           name="PostId"
           lowerBound="1"
           upperBound="1"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -148,12 +154,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Reference"
-          name="UserDisplayName"
-          lowerBound="1"
-          upperBound="1"
-          refTo="Users"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -164,6 +164,13 @@
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="UserDisplayName">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -184,13 +191,14 @@
           name="PostId"
           lowerBound="1"
           upperBound="1"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -204,7 +212,8 @@
           name="UserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -235,13 +244,14 @@
           name="PostId"
           lowerBound="1"
           upperBound="1"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -283,7 +293,7 @@
           name="AnswerCount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -353,7 +363,8 @@
           name="LastEditorUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="OwnerDisplayName">
@@ -366,20 +377,22 @@
           name="OwnerUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="PostTypeId"
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.14"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -387,7 +400,8 @@
           lowerBound="1"
           upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
-          refTo="Tags"/>
+          refTo="Tags"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Title">
@@ -432,7 +446,7 @@
           name="AnswerCount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -502,7 +516,8 @@
           name="LastEditorUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="OwnerDisplayName">
@@ -516,13 +531,14 @@
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.14"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -530,7 +546,8 @@
           lowerBound="1"
           upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
-          refTo="Tags"/>
+          refTo="Tags"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Title">
@@ -575,7 +592,7 @@
           name="AnswerCount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -645,26 +662,29 @@
           name="LastEditorUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="OwnerUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="PostTypeId"
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.14"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -672,7 +692,8 @@
           lowerBound="1"
           upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
-          refTo="Tags"/>
+          refTo="Tags"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Title">
@@ -717,7 +738,7 @@
           name="AnswerCount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -794,20 +815,22 @@
           name="OwnerUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="PostTypeId"
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.14"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -815,7 +838,8 @@
           lowerBound="1"
           upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
-          refTo="Tags"/>
+          refTo="Tags"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Title">
@@ -860,7 +884,7 @@
           name="AnswerCount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -938,13 +962,14 @@
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.14"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -952,7 +977,8 @@
           lowerBound="1"
           upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
-          refTo="Tags"/>
+          refTo="Tags"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Title">
@@ -997,7 +1023,7 @@
           name="AnswerCount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1067,20 +1093,22 @@
           name="OwnerUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="PostTypeId"
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.14"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -1088,7 +1116,8 @@
           lowerBound="1"
           upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
-          refTo="Tags"/>
+          refTo="Tags"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Title">
@@ -1133,7 +1162,7 @@
           name="AnswerCount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1196,7 +1225,8 @@
           name="LastEditorUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="OwnerDisplayName">
@@ -1209,20 +1239,22 @@
           name="OwnerUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="PostTypeId"
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.14"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -1230,7 +1262,8 @@
           lowerBound="1"
           upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
-          refTo="Tags"/>
+          refTo="Tags"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Title">
@@ -1275,7 +1308,7 @@
           name="AnswerCount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1338,7 +1371,8 @@
           name="LastEditorUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="OwnerDisplayName">
@@ -1352,13 +1386,14 @@
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.14"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -1366,7 +1401,8 @@
           lowerBound="1"
           upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
-          refTo="Tags"/>
+          refTo="Tags"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Title">
@@ -1411,7 +1447,7 @@
           name="AnswerCount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1474,26 +1510,29 @@
           name="LastEditorUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="OwnerUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="PostTypeId"
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.14"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -1501,7 +1540,8 @@
           lowerBound="1"
           upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
-          refTo="Tags"/>
+          refTo="Tags"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Title">
@@ -1546,7 +1586,7 @@
           name="AnswerCount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1609,20 +1649,22 @@
           name="OwnerUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="PostTypeId"
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.14"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -1630,7 +1672,8 @@
           lowerBound="1"
           upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
-          refTo="Tags"/>
+          refTo="Tags"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Title">
@@ -1675,7 +1718,7 @@
           name="AnswerCount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1739,13 +1782,14 @@
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.14"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -1753,7 +1797,8 @@
           lowerBound="1"
           upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
-          refTo="Tags"/>
+          refTo="Tags"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Title">
@@ -1798,7 +1843,7 @@
           name="AnswerCount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1854,20 +1899,22 @@
           name="OwnerUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="PostTypeId"
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.14"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -1875,7 +1922,8 @@
           lowerBound="1"
           upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
-          refTo="Tags"/>
+          refTo="Tags"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Title">
@@ -1920,7 +1968,7 @@
           name="AnswerCount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1983,7 +2031,8 @@
           name="LastEditorUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="OwnerDisplayName">
@@ -1996,20 +2045,22 @@
           name="OwnerUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="PostTypeId"
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.14"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -2017,7 +2068,8 @@
           lowerBound="1"
           upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
-          refTo="Tags"/>
+          refTo="Tags"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Title">
@@ -2062,7 +2114,7 @@
           name="AnswerCount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -2125,7 +2177,8 @@
           name="LastEditorUserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="OwnerDisplayName">
@@ -2139,13 +2192,14 @@
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.14"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -2153,7 +2207,8 @@
           lowerBound="1"
           upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
-          refTo="Tags"/>
+          refTo="Tags"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Title">
@@ -2198,7 +2253,7 @@
           name="AnswerCount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -2269,13 +2324,14 @@
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.14"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Score">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -2283,7 +2339,8 @@
           lowerBound="1"
           upperBound="-1"
           opposite="//@entities.6/@entityversions.0/@properties.1"
-          refTo="Tags"/>
+          refTo="Tags"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Title">
@@ -2324,7 +2381,7 @@
           name="BountyAmount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -2338,20 +2395,23 @@
           name="PostId"
           lowerBound="1"
           upperBound="1"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="UserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="VoteTypeId"
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.3/@entityversions.0/@properties.4"
-          refTo="Votes"/>
+          refTo="Votes"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -2375,7 +2435,7 @@
           name="BountyAmount">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -2389,14 +2449,16 @@
           name="PostId"
           lowerBound="1"
           upperBound="1"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="VoteTypeId"
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.3/@entityversions.0/@properties.4"
-          refTo="Votes"/>
+          refTo="Votes"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -2427,20 +2489,23 @@
           name="PostId"
           lowerBound="1"
           upperBound="1"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="UserId"
           lowerBound="1"
           upperBound="1"
-          refTo="Users"/>
+          refTo="Users"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="VoteTypeId"
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.3/@entityversions.0/@properties.4"
-          refTo="Votes"/>
+          refTo="Votes"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -2471,14 +2536,16 @@
           name="PostId"
           lowerBound="1"
           upperBound="1"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="VoteTypeId"
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.3/@entityversions.0/@properties.4"
-          refTo="Votes"/>
+          refTo="Votes"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -2512,14 +2579,14 @@
           name="AccountId">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Age">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -2561,7 +2628,7 @@
           name="Reputation">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -2596,14 +2663,14 @@
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="DownVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
     </entityversions>
     <entityversions
@@ -2621,14 +2688,14 @@
           name="AccountId">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Age">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -2670,7 +2737,7 @@
           name="Reputation">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -2698,14 +2765,14 @@
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="DownVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
     </entityversions>
     <entityversions
@@ -2723,14 +2790,14 @@
           name="AccountId">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Age">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -2765,7 +2832,7 @@
           name="Reputation">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -2800,14 +2867,14 @@
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="DownVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
     </entityversions>
     <entityversions
@@ -2825,14 +2892,14 @@
           name="AccountId">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Age">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -2867,7 +2934,7 @@
           name="Reputation">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -2895,14 +2962,14 @@
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="DownVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
     </entityversions>
     <entityversions
@@ -2920,14 +2987,14 @@
           name="AccountId">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Age">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -2962,7 +3029,7 @@
           name="Reputation">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -2997,14 +3064,14 @@
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="DownVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
     </entityversions>
     <entityversions
@@ -3022,14 +3089,14 @@
           name="AccountId">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Age">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -3064,7 +3131,7 @@
           name="Reputation">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -3092,14 +3159,14 @@
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="DownVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
     </entityversions>
     <entityversions
@@ -3117,14 +3184,14 @@
           name="AccountId">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Age">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -3152,7 +3219,7 @@
           name="Reputation">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -3187,14 +3254,14 @@
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="DownVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
     </entityversions>
     <entityversions
@@ -3212,14 +3279,14 @@
           name="AccountId">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Age">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -3247,7 +3314,7 @@
           name="Reputation">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -3275,14 +3342,14 @@
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="DownVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
     </entityversions>
   </entities>
@@ -3303,7 +3370,7 @@
           name="LinkTypeId">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -3311,13 +3378,14 @@
           lowerBound="1"
           upperBound="1"
           refTo="Posts"
-          originalType="String"/>
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="RelatedPostId"
           lowerBound="1"
           upperBound="1"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -3344,7 +3412,7 @@
           name="Count">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -3352,14 +3420,16 @@
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.16"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="WikiPostId"
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.2/@entityversions.0/@properties.16"
-          refTo="Posts"/>
+          refTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -3390,7 +3460,7 @@
           name="Count">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
