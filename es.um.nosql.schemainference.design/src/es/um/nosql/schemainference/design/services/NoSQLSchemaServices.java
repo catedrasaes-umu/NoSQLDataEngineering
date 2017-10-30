@@ -80,21 +80,6 @@ public class NoSQLSchemaServices
 		});
 
 		return result;
-/*
-		Cache<EntityVersion, List<EntityVersion>> rootsCache = Caffeine.newBuilder().build();
-		return rootsCache.get(root,
-				ev ->
-				{
-					List<EntityVersion> result = SchemaCollector.getEVersionsFromSchema(ev);
-					result.sort(new Comparator<EntityVersion>()
-					{
-						public int compare(EntityVersion ev0, EntityVersion ev1)
-						{
-							return ev0.getVersionId() > ev1.getVersionId() ? 1 : -1;
-						}
-					});
-					return result;
-				});*/
 	}
 
 	/**
