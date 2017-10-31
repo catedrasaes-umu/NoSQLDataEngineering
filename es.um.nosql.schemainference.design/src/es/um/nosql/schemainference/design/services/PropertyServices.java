@@ -247,7 +247,7 @@ public class PropertyServices
       Aggregate aggr2 = (Aggregate)assc2;
 
       // Check the aggregates have the same name, and the refTo points to versions of the same entity
-      if (aggr1.getName().equals(aggr2.getName()) && aggr1.getRefTo().get(0).eContainer() == aggr2.getRefTo().get(0).eContainer())
+      if (aggr1.getName().equals(aggr2.getName()) && aggr1.getRefTo().get(0).eContainer() == aggr2.getRefTo().get(0).eContainer() && aggr1.getRefTo().size() == aggr2.getRefTo().size())
         return true;
     }
 

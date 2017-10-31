@@ -189,17 +189,17 @@
         </edges>
         <edges xmi:type="notation:Edge" xmi:id="_RjfpoCaZEeaCVLabc7FRZA" type="4001" element="_RirxUCaZEeaCVLabc7FRZA" source="_RjMusCaZEeaCVLabc7FRZA" target="_RjN80CaZEeaCVLabc7FRZA">
           <children xmi:type="notation:Node" xmi:id="_RjfppCaZEeaCVLabc7FRZA" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RjfppSaZEeaCVLabc7FRZA" x="52" y="54"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RjfppSaZEeaCVLabc7FRZA" x="-54" y="57"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_RjgQsCaZEeaCVLabc7FRZA" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RjgQsSaZEeaCVLabc7FRZA" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RjgQsSaZEeaCVLabc7FRZA" x="1" y="10"/>
           </children>
           <children xmi:type="notation:Node" xmi:id="_RjgQsiaZEeaCVLabc7FRZA" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RjgQsyaZEeaCVLabc7FRZA" y="10"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_RjgQsyaZEeaCVLabc7FRZA" x="-1" y="10"/>
           </children>
           <styles xmi:type="notation:ConnectorStyle" xmi:id="_RjfpoSaZEeaCVLabc7FRZA" routing="Rectilinear" jumpLinkStatus="Above"/>
           <styles xmi:type="notation:FontStyle" xmi:id="_RjfpoiaZEeaCVLabc7FRZA" fontColor="7490599" fontName="Ubuntu" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RjfpoyaZEeaCVLabc7FRZA" points="[0, 0, 89, 60]$[-89, -60, 0, 0]"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_RjfpoyaZEeaCVLabc7FRZA" points="[9, 0, 0, 144]$[9, -144, 0, 0]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RjgQtCaZEeaCVLabc7FRZA" id="(0.5,0.0)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_RjgQtSaZEeaCVLabc7FRZA" id="(0.49640287769784175,1.0)"/>
         </edges>
