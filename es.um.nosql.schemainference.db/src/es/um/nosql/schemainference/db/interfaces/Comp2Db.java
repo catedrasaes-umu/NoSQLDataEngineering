@@ -5,16 +5,10 @@ import java.io.File;
 import java.io.FileReader;
 import java.nio.file.Paths;
 
-import com.fasterxml.jackson.annotation.JsonInclude.Include;
-import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
-import es.um.nosql.schemainference.db.pojo.companies.Company;
 import es.um.nosql.schemainference.db.utils.DbType;
-import es.um.nosql.schemainference.db.utils.deserializer.NumberToNumberDeserializer;
-import es.um.nosql.schemainference.db.utils.deserializer.StringToStringDeserializer;
 
 public class Comp2Db extends Source2Db
 {

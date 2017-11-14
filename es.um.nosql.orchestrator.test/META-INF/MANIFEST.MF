@@ -5,3 +5,4 @@ Bundle-SymbolicName: es.um.nosql.orchestrator.test
 Bundle-Version: 1.0.0.qualifier
 Export-Package: es.um.nosql.orchestrator.test
 Require-Bundle: org.eclipse.emf.ecore
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

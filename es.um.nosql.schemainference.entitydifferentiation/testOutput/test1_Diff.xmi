@@ -1,31 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <entitydifferentiation:EntityDifferentiation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xmlns:entitydifferentiation="http://www.modelum.es/entitydifferentiation" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.schemainference/model/nosqlschema.ecore http://www.modelum.es/entitydifferentiation platform:/resource/es.um.nosql.schemainference.entitydifferentiation/model/entitydifferentiation.ecore" name="test1">
   <entityDiffSpecs>
-    <entity href="../testSources/test1_aggr.xmi#Persons"/>
+    <entity href="../testSources/test1.xmi#Persons"/>
     <entityVersionProps>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/test1_aggr.xmi#//@entities.0/@entityversions.0/@properties.0"/>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/test1.xmi#//@entities.0/@entityversions.0/@properties.0"/>
       </propertySpecs>
-      <entityVersion href="../testSources/test1_aggr.xmi#//@entities.0/@entityversions.0"/>
+      <entityVersion href="../testSources/test1.xmi#//@entities.0/@entityversions.0"/>
     </entityVersionProps>
     <entityVersionProps>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test1_aggr.xmi#//@entities.0/@entityversions.1/@properties.0"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test1.xmi#//@entities.0/@entityversions.1/@properties.0"/>
       </propertySpecs>
-      <entityVersion href="../testSources/test1_aggr.xmi#//@entities.0/@entityversions.1"/>
+      <entityVersion href="../testSources/test1.xmi#//@entities.0/@entityversions.1"/>
     </entityVersionProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
-    <entity href="../testSources/test1_aggr.xmi#Contact_detail"/>
+    <entity href="../testSources/test1.xmi#Contact_detail"/>
     <entityVersionProps>
-      <entityVersion href="../testSources/test1_aggr.xmi#//@entities.1/@entityversions.0"/>
+      <entityVersion href="../testSources/test1.xmi#//@entities.1/@entityversions.0"/>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test1_aggr.xmi#//@entities.1/@entityversions.0/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test1.xmi#//@entities.1/@entityversions.0/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test1_aggr.xmi#//@entities.1/@entityversions.0/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test1.xmi#//@entities.1/@entityversions.0/@properties.0"/>
     </commonProps>
   </entityDiffSpecs>
-  <schema href="../testSources/test1_aggr.xmi#test1"/>
+  <schema href="../testSources/test1.xmi#test1"/>
 </entitydifferentiation:EntityDifferentiation>

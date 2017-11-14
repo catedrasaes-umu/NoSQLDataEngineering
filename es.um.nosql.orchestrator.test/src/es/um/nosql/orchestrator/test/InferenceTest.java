@@ -23,6 +23,7 @@ import es.um.nosql.schemainference.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.schemainference.nosqlimport.db.couchdb.CouchDBImport;
 import es.um.nosql.schemainference.nosqlimport.db.mongodb.MongoDBImport;
 
+@SuppressWarnings("unused")
 public class InferenceTest
 {
   private static final String DATABASE_IP = "localhost";
