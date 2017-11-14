@@ -11,9 +11,9 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import es.um.nosql.schemainference.db.utils.DbType;
 
-public class Pleidades2Db extends Source2Db
+public class Pleiades2Db extends Source2Db
 {
-  public Pleidades2Db(DbType db, String ip)
+  public Pleiades2Db(DbType db, String ip)
   {
     super(db, ip);
   }
@@ -31,35 +31,34 @@ public class Pleidades2Db extends Source2Db
   {
     try
     {
-      JsonNode rootObj = new ObjectMapper().readTree(new File(jsonRoute));
-      ArrayNode collection = (ArrayNode)rootObj.get("@graph");
+      ObjectMapper mapper = new ObjectMapper();
+      JsonNode rootObj = mapper.readTree(new File(jsonRoute));
+      ArrayNode collection = (ArrayNode) rootObj.get("@graph");
+      ArrayNode partCollection = mapper.createArrayNode();
+      int MAX_OBJECTS_TO_COMMIT = 1000;
+      int countObjects = 0;
+      int totalObjects = 0;
 
       for (JsonNode obj : collection)
       {
-        System.out.println(obj);
-        System.exit(-1);
-      }
+        partCollection.add(obj);
 
-//      collection..fieldNames().forEachRemaining(f -> System.out.println(f));
-/*      for (String s : collection.fieldNames().)
-      {
-        System.out.println(s);
-      }
-//      System.out.println(collection.size());/*.forEach( obj ->
-      {
-        getClient().insert(dbName, "@graph", obj.toString());
-        System.exit(-1);
-      });*/
-
-/*      rootObj.fieldNames().forEachRemaining( fieldName ->
-      {
-        if (!fieldName.equals("@context"))
+        if (++countObjects == MAX_OBJECTS_TO_COMMIT)
         {
-          JsonNode collection = rootObj.get(fieldName);
-          if (collection.size() > 0)
-            getClient().insert(dbName, fieldName, collection.toString());
+          getClient().insert(dbName, "@graph", partCollection.toString());
+          partCollection.removeAll();
+          countObjects = 0;
+          System.out.println("Object count: " + totalObjects);
         }
-      });*/
+
+        totalObjects++;
+      }
+
+      if (partCollection.size() > 0)
+      {
+        System.out.println("Storing remaining objects...");
+        getClient().insert(dbName, "@graph", partCollection.toString());
+      }
     } catch (JsonProcessingException e)
     {
       e.printStackTrace();
