@@ -2,6 +2,9 @@ package es.um.nosql.schemainference.m2m.util.printer;
 
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.eclipse.emf.ecore.resource.Resource;
 
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec;
@@ -19,12 +22,15 @@ public class EntityDiffModelPrinter
     ResourceManager rm = new ResourceManager(tdp);
 
     // Load the origin model.
-    File sourceRes = new File("testOutput/test1_Diff.xmi");
-    rm.loadResourcesAsStrings(sourceRes.getAbsolutePath());
+    rm.loadResourcesAsStrings(new File("testOutput/mongoMovies3_Diff.xmi").getAbsolutePath());
+    List<Resource> ediffList = new ArrayList<Resource>();
+    ediffList.addAll(rm.getResourceSet().getResources());
 
-    Iterable<Resource> resources = rm.getResources();
-
-    printModel((EntityDifferentiation)resources.iterator().next().getContents().get(0));
+    for (Resource resource : ediffList)
+    {
+      EntityDifferentiation diff = (EntityDifferentiation)resource.getContents().get(0);
+      printModel(diff);
+    }
   }
 
   private static void printModel(EntityDifferentiation entityDifferentiation)
@@ -49,7 +55,6 @@ public class EntityDiffModelPrinter
         for (PropertySpec ps: evp.getNotProps())
           System.out.println(" * " + ps.getProperty().getName() + (ps.isNeedsTypeCheck() ? "*" :""));
       }
-
       System.out.println("======================");
     }
   }

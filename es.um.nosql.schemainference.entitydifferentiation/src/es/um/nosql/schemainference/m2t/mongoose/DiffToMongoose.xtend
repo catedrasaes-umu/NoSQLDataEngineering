@@ -74,10 +74,8 @@ public class DiffToMongoose
     topOrderEntities.forEach[e | writeToFile(schemaFileName(e), generateSchema(e))]
   }
 
-  // Fill, for each property of each entity that appear in more than 
-  // one entity version *with different type* (those that hold the needsTypeCheck
-  // boolean attribute), the list of types, to check possible type folding in
-  // a latter pass
+  // Fill, for each property of each entity that appear in more than one entity version *with different type* (those that hold the needsTypeCheck
+  // boolean attribute), the list of types, to check possible type folding in a latter pass
   def calcTypeListMatrix(List<Entity> entities)
   {
     entities.toInvertedMap[e |
@@ -137,11 +135,8 @@ public class DiffToMongoose
     val props = <String,Object>newHashMap()
 
     props.putAll(genTypeForPropertySpec(e, spec))
-    // A type should never be a 'required' property. Since we are working w mongoDB, objects won't usually have a type, because its type is the collection name.
-    // Also: The 'required' clause on mongoose requires a field to exist and also, if it is an array, to NOT be empty
-    // This may cause problems when an association has a lowerBound = 0. To shortcut this, for the moment we wont add the required option to a field
-    // if it is an association w lowerBound == 0. Proof: https://stackoverflow.com/questions/27268172/mongoose-schema-to-require-array-that-can-be-empty
-    // Please check out the metamodel. Does it make sense to have lowerBound/upperBound in Association instead of in Aggregate?
+
+	// Careful with this....see Test1.java
     if (required && (!spec.property.name.equals("type") && (!(spec.property instanceof Association) || (spec.property as Association).lowerBound != 0)))
       props.put('required', true)
     props
@@ -304,7 +299,7 @@ public class DiffToMongoose
   {
     // If originalType is empty, suppose String
     var theType = "";
-    if (reference.originalType == null || reference.originalType.empty)
+    if (reference.originalType === null || reference.originalType.empty)
     {
       theType = "String";
     }
