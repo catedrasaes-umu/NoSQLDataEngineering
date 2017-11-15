@@ -21,11 +21,11 @@ var PersonalData = require('./app/models/PersonalDataSchema');
 var CustomDate3 = require('./app/models/CustomDate3Schema');
 
 var err;
-var persons = new Persons({});
+var persons = new Persons({dates: [33, "33", false]});
 err = persons.validateSync();
 if (err !== undefined)
   console.log(err);
-
+/*
 var customdate1 = new CustomDate1({});
 err = customdate1.validateSync();
 if (err !== undefined)
@@ -45,3 +45,4 @@ var customdate3 = new CustomDate3({});
 err = customdate3.validateSync();
 if (err !== undefined)
   console.log(err);
+*/

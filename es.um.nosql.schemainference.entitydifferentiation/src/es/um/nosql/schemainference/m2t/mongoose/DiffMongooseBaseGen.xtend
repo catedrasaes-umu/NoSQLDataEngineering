@@ -57,7 +57,7 @@ class DiffMongooseBaseGen
   
   var mongoose = require('mongoose');
   
-  function makeUnionType(name, type1, type2)
+  function makeUnionType(name, ...types)
   {
     function isArray(type) { return type.match(new RegExp("^\\[")) && type.match(new RegExp("\\]$"));}
 
@@ -73,12 +73,16 @@ class DiffMongooseBaseGen
           // If the type is kind of [mongooseType]...
           if (isArray(type))
           {
+            if (value.constructor !== Array)
+              throw new Error();
+
             // Remember to remove the [type] brackets...
             // We should cast each value in the array to the given type (no heterogeneous types)
             var arrResult = [];
-            for (var i = 0; i < value.length; i++)
-              arrResult.push([mongoose.Schema.Types[type.slice(1, -1)].prototype.cast(value[i])]);
-            
+
+            for (var i of value)
+              arrResult.push(mongoose.Schema.Types[type.slice(1, -1)].prototype.cast(i));
+
             return arrResult;
           }
           else
@@ -93,13 +97,14 @@ class DiffMongooseBaseGen
         {
           if (isArray(type))
           {
+            if (value.constructor !== Array)
+              throw new Error();
+
             // Remember to remove the [type] brackets...
             // We should check each object constructor...
-            value.foreach(function(element)
-            {
-              if (element.constructor.modelName !== type.slice(1, -1))
+            for (var singleElement of value)
+              if (singleElement.constructor.modelName !== type.slice(1, -1))
                 throw new Error();
-            });
 
             return value;
           }
@@ -111,30 +116,40 @@ class DiffMongooseBaseGen
         }
       };
 
-      var castFunction1 = (type1 in mongoose.Schema.Types || (isArray(type1) && type1.slice(1, -1) in mongoose.Schema.Types))?
-        funcCheckMongooseType(type1) : funcCheckMongooseSchema(type1);
-      var castFunction2 = (type2 in mongoose.Schema.Types || (isArray(type2) && type2.slice(1, -1) in mongoose.Schema.Types))?
-        funcCheckMongooseType(type2) : funcCheckMongooseSchema(type2);
-
+      var castFunctions = [];
       var returnVal = val;
-  
-      try {returnVal = castFunction1(val);} catch (firstTypeError)
+
+      // For each Union type we try to cast the value to that type.
+      // If for some type the cast is successful, we can return the casted value
+      // If the casting fails for each type, then the value was not compatible with the Union type.
+      for (var i = 0; i < types.length; i++)
       {
-        try {returnVal = castFunction2(val);} catch (secondTypeError)
+        castFunctions[i] = (types[i] in mongoose.Schema.Types || (isArray(types[i]) && types[i].slice(1, -1) in mongoose.Schema.Types))?
+          funcCheckMongooseType(types[i]) : funcCheckMongooseSchema(types[i]);
+
+        try
         {
-          throw new Error(capitalizedName + ': ' + val + ' couldn\'t be cast to ' + type1 + " or " + type2);
+          returnVal = castFunctions[i](val);
+        } catch (typeError)
+        {
+          if (i == types.length - 1)
+            throw new Error(capitalizedName + ': ' + val + ' couldn\'t be cast to any type of ' + types);
+          else
+            continue;
         }
+
+        break;
       }
-  
+
       return returnVal;
     }
-  
+
     Object.defineProperty(typeFunction, "name", { value: capitalizedName });
     mongoose.Schema.Types[capitalizedName] = typeFunction;
   
     return typeFunction;
   }
-  
+
   module.exports = makeUnionType;
   '''
 

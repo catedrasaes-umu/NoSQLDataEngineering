@@ -247,17 +247,15 @@ public class DiffToMongoose
 
   def String generateUnion(Iterable<Property> list)
   {
-    // Get the type for the first property.
-    var type1 = genTypeForProperty(list.head).values.get(0).toString;
-    if (type1.endsWith("Schema.schema"))
-      type1 = type1.toString.substring(0, type1.toString.indexOf("Schema.schema"));
-    // Get the type for the second property or, if there is more than one, a concatenation of their types.
-    var type2 = list.tail.map[p | genTypeForProperty(p).values.get(0)].map[o | if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema")) else o].join('_');
-    // Now concatenate everything to name the union.
-    val unionName = "U_" + type1 + "_" + type2;
+    // Concatenate each type of the union removing the Schema.schema from the name if neccesary
+    val unionName = "U_" + list.map[p | genTypeForProperty(p).values.get(0)]
+                                .map[o | if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema")) else o]
+                                .join('_');
 
-    // Straightforward. If there are only two properties, we make a union. If there are more, we will recursively add unions inside unions.
-    '''UnionType("«unionName»", "«type1»", «IF (list.size == 2)»"«type2»"«ELSE»«generateUnion(list.tail)».name«ENDIF»)'''
+    // Now, for the Union itself, concatenate each type of the union but with quotation marks and a different join character.
+    '''UnionType("«unionName»", «list.map[p | genTypeForProperty(p).values.get(0)]
+                                      .map[o | "\"" + (if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema")) else o) + "\""]
+                                      .join(', ')»)'''
   }
 
   def aggregateType(Aggregate agg)
