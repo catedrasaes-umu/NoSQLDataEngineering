@@ -73,20 +73,20 @@ class DiffMongooseBaseGen
           // If the type is kind of [mongooseType]...
           if (isArray(type))
           {
-            if (value.constructor !== Array)
-              throw new Error();
-
             // Remember to remove the [type] brackets...
             // We should cast each value in the array to the given type (no heterogeneous types)
             var arrResult = [];
 
-            for (var i of value)
-              arrResult.push(mongoose.Schema.Types[type.slice(1, -1)].prototype.cast(i));
+            if (value.constructor !== Array)
+              arrResult.push(mongoose.Schema.Types[type.slice(1, -1)].prototype.cast(value));
+            else
+              for (var i of value)
+                arrResult.push(mongoose.Schema.Types[type.slice(1, -1)].prototype.cast(i));
 
             return arrResult;
           }
           else
-          // Else the type was just mongooseType
+            // Else the type was just mongooseType
             return mongoose.Schema.Types[type].prototype.cast(value);
         }
       };
@@ -97,14 +97,19 @@ class DiffMongooseBaseGen
         {
           if (isArray(type))
           {
-            if (value.constructor !== Array)
-              throw new Error();
-
             // Remember to remove the [type] brackets...
             // We should check each object constructor...
-            for (var singleElement of value)
-              if (singleElement.constructor.modelName !== type.slice(1, -1))
+            if (value.constructor !== Array)
+            {
+              if (value.constructor.modelName !== type.slice(1, -1))
                 throw new Error();
+              else
+                return [value];
+            }
+            else
+              for (var singleElement of value)
+                if (singleElement.constructor.modelName !== type.slice(1, -1))
+                  throw new Error();
 
             return value;
           }

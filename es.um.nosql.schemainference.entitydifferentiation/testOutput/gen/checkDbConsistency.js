@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://127.0.0.1/test3',
+mongoose.connect('mongodb://127.0.0.1/mongoMovies3',
 {
   useMongoClient: true
 }, function(err)
@@ -8,31 +8,33 @@ mongoose.connect('mongodb://127.0.0.1/test3',
   if (err)
     console.log(err);
   else
-    console.log('Connected to 127.0.0.1/test3');
+    console.log('Connected to 127.0.0.1/mongoMovies3');
 });
 mongoose.set('debug', true);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 
-var Persons = require('./app/models/PersonsSchema');
-var CustomDate1 = require('./app/models/CustomDate1Schema');
-var CustomDate2 = require('./app/models/CustomDate2Schema');
-var PersonalData = require('./app/models/PersonalDataSchema');
-var CustomDate3 = require('./app/models/CustomDate3Schema');
+var Movie = require('./app/models/MovieSchema');
+var Movietheater = require('./app/models/MovietheaterSchema');
+var Medium = require('./app/models/MediumSchema');
+var Rating = require('./app/models/RatingSchema');
+var Director = require('./app/models/DirectorSchema');
+var Criticism = require('./app/models/CriticismSchema');
+var Prize = require('./app/models/PrizeSchema');
 
 db.once('open', function()
 {
-  Persons.find({}, '-_id', function(err, result)
+  Movie.find({}, '-_id', function(err, result)
   {
     if (err)
       return console.error(err);
 
-    console.log("Checking consistency of the \"Persons\" table");
+    console.log("Checking consistency of the \"Movie\" table");
     var errorNumber = 0;
 
-    result.forEach(function(persons)
+    result.forEach(function(movie)
     {
-      var validation = persons.validateSync();
+      var validation = movie.validateSync();
       if (typeof validation !== "undefined")
       {
         console.log(validation);
@@ -41,9 +43,57 @@ db.once('open', function()
     });
 
     if (errorNumber)
-      console.log("\"Persons\" table: " + errorNumber + " errors found");
+      console.log("\"Movie\" table: " + errorNumber + " errors found");
     else
-      console.log("\"Persons\" table: No errors found!");
+      console.log("\"Movie\" table: No errors found!");
+  });
+
+  Movietheater.find({}, '-_id', function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    console.log("Checking consistency of the \"Movietheater\" table");
+    var errorNumber = 0;
+
+    result.forEach(function(movietheater)
+    {
+      var validation = movietheater.validateSync();
+      if (typeof validation !== "undefined")
+      {
+        console.log(validation);
+        errorNumber++;
+      }
+    });
+
+    if (errorNumber)
+      console.log("\"Movietheater\" table: " + errorNumber + " errors found");
+    else
+      console.log("\"Movietheater\" table: No errors found!");
+  });
+
+  Director.find({}, '-_id', function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    console.log("Checking consistency of the \"Director\" table");
+    var errorNumber = 0;
+
+    result.forEach(function(director)
+    {
+      var validation = director.validateSync();
+      if (typeof validation !== "undefined")
+      {
+        console.log(validation);
+        errorNumber++;
+      }
+    });
+
+    if (errorNumber)
+      console.log("\"Director\" table: " + errorNumber + " errors found");
+    else
+      console.log("\"Director\" table: No errors found!");
   });
 
 });

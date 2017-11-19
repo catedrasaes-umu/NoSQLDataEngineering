@@ -1,6 +1,6 @@
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
-mongoose.connect('mongodb://127.0.0.1/test3',
+mongoose.connect('mongodb://127.0.0.1/mongoMovies3',
 {
   useMongoClient: true
 }, function(err)
@@ -8,41 +8,52 @@ mongoose.connect('mongodb://127.0.0.1/test3',
   if (err)
     console.log(err);
   else
-    console.log('Connected to 127.0.0.1/test3');
+    console.log('Connected to 127.0.0.1/mongoMovies3');
 });
 mongoose.set('debug', true);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 
-var Persons = require('./app/models/PersonsSchema');
-var CustomDate1 = require('./app/models/CustomDate1Schema');
-var CustomDate2 = require('./app/models/CustomDate2Schema');
-var PersonalData = require('./app/models/PersonalDataSchema');
-var CustomDate3 = require('./app/models/CustomDate3Schema');
+var Movie = require('./app/models/MovieSchema');
+var Movietheater = require('./app/models/MovietheaterSchema');
+var Medium = require('./app/models/MediumSchema');
+var Rating = require('./app/models/RatingSchema');
+var Director = require('./app/models/DirectorSchema');
+var Criticism = require('./app/models/CriticismSchema');
+var Prize = require('./app/models/PrizeSchema');
 
 var err;
-var persons = new Persons({dates: [33, "33", false]});
-err = persons.validateSync();
-if (err !== undefined)
-  console.log(err);
-/*
-var customdate1 = new CustomDate1({});
-err = customdate1.validateSync();
+var movie = new Movie({});
+err = movie.validateSync();
 if (err !== undefined)
   console.log(err);
 
-var customdate2 = new CustomDate2({});
-err = customdate2.validateSync();
+var movietheater = new Movietheater({});
+err = movietheater.validateSync();
 if (err !== undefined)
   console.log(err);
 
-var personaldata = new PersonalData({});
-err = personaldata.validateSync();
+var medium = new Medium({});
+err = medium.validateSync();
 if (err !== undefined)
   console.log(err);
 
-var customdate3 = new CustomDate3({});
-err = customdate3.validateSync();
+var rating = new Rating({});
+err = rating.validateSync();
 if (err !== undefined)
   console.log(err);
-*/
+
+var director = new Director({});
+err = director.validateSync();
+if (err !== undefined)
+  console.log(err);
+
+var criticism = new Criticism({});
+err = criticism.validateSync();
+if (err !== undefined)
+  console.log(err);
+
+var prize = new Prize({});
+err = prize.validateSync();
+if (err !== undefined)
+  console.log(err);

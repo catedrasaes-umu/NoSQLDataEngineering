@@ -29,12 +29,12 @@ public class Main
 
   public static void main(String[] args)
   {
-    String input_model = "test1";
+    String input_model = "mongoMovies3";
     String inputFile = INPUT_FOLDER + input_model + ".xmi";
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
     prepareM2MExample(inputFile, outputFile);
-    prepareM2MongooseExample(outputFile, MONGOOSE_OUTPUT_GEN_BASE_FOLDER);
-//    prepareM2MorphiaExample(outputFile, MORPHIA_OUTPUT_GEN_BASE_FOLDER);
+//    prepareM2MongooseExample(outputFile, MONGOOSE_OUTPUT_GEN_BASE_FOLDER);
+    prepareM2MorphiaExample(outputFile, MORPHIA_OUTPUT_GEN_BASE_FOLDER);
   }
 
   public static void prepareM2MExample(String inputFile, String outputFile)

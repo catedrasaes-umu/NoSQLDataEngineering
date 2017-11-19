@@ -31,6 +31,11 @@ public class DiffToMongoose
     override toString() {label}
   }
 
+  static class LambdaNullFunction
+  {
+    override toString() {"() => undefined"}
+  }
+
   var modelName = "";
   static File outputDir
 
@@ -136,9 +141,14 @@ public class DiffToMongoose
 
     props.putAll(genTypeForPropertySpec(e, spec))
 
-	// Careful with this....see Test1.java
+    // Careful with this....see Test1.java
     if (required && (!spec.property.name.equals("type") && (!(spec.property instanceof Association) || (spec.property as Association).lowerBound != 0)))
       props.put('required', true)
+    else if ((spec.property instanceof Attribute && (spec.property as Attribute).type instanceof Tuple) || spec.property instanceof Aggregate)
+      props.put('default', new LambdaNullFunction())
+    // This last condition is used because empty optional arrays are stored in Mongoose. This shouldn't be a thing.
+    // If the user doesnt want to store an optional array field, that field wont appear on the object.
+    // To prevent this, when an array field is not required, it will be labeled as default: () => undefined.
     props
   }
 
