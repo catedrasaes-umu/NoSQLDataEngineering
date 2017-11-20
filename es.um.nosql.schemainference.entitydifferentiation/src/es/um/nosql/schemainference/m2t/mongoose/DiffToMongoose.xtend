@@ -4,7 +4,6 @@ import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation
 import java.io.File
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec
 import java.util.List
-import java.io.PrintStream
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec
 import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType
 import es.um.nosql.schemainference.NoSQLSchema.Attribute
@@ -21,6 +20,7 @@ import es.um.nosql.schemainference.util.emf.ModelLoader
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage
 import es.um.nosql.schemainference.NoSQLSchema.Association
 import java.util.ArrayList
+import java.io.PrintStream
 
 public class DiffToMongoose
 {
@@ -144,7 +144,8 @@ public class DiffToMongoose
     // Careful with this....see Test1.java
     if (required && (!spec.property.name.equals("type") && (!(spec.property instanceof Association) || (spec.property as Association).lowerBound != 0)))
       props.put('required', true)
-    else if ((spec.property instanceof Attribute && (spec.property as Attribute).type instanceof Tuple) || spec.property instanceof Aggregate)
+    else if ((spec.property instanceof Attribute && (spec.property as Attribute).type instanceof Tuple) ||
+      (spec.property instanceof Association && (spec.property as Association).upperBound !== 1))
       props.put('default', new LambdaNullFunction())
     // This last condition is used because empty optional arrays are stored in Mongoose. This shouldn't be a thing.
     // If the user doesnt want to store an optional array field, that field wont appear on the object.
@@ -365,11 +366,11 @@ public class DiffToMongoose
       switch typeName : type.toLowerCase
       {
         case "string" : "String"
-        case typeName.isInt : 'Number'
-        case typeName.isFloat :  'Number'
-        case typeName.isBoolean : 'Boolean'
-        case typeName.isObjectId : 'ObjectId'
-        default: ''
+        case typeName.isInt : "Number"
+        case typeName.isFloat :  "Number"
+        case typeName.isBoolean : "Boolean"
+        case typeName.isObjectId : "ObjectId"
+        default: ""
       }
     )
   }
@@ -378,17 +379,6 @@ public class DiffToMongoose
   private def isFloat(String type) { #["float", "double"].contains(type)}
   private def isBoolean(String type) { #["boolean", "bool"].contains(type)}
   private def isObjectId(String type) { #["objectid"].contains(type)}
-
-  /**
-   * Method used to write a generated CharSequence to a file
-   */
-  private def writeToFile(String filename, CharSequence toWrite)
-  {
-    val outFile = outputDir.toPath().resolve(filename).toFile()
-    val outFileWriter = new PrintStream(outFile)
-    outFileWriter.print(toWrite)
-    outFileWriter.close()
-  }
 
   /**
    * Method used to calculate the dependencies between entities, and reorder them in the correct order
@@ -446,5 +436,16 @@ public class DiffToMongoose
 
       depListRec(to_consider_, top_order, seen)
     }
+  }
+
+  /**
+   * Method used to write a generated CharSequence to a file
+   */
+  public def static void writeToFile(String filename, CharSequence toWrite)
+  {
+    val outFile = outputDir.toPath().resolve(filename).toFile()
+    val outFileWriter = new PrintStream(outFile)
+    outFileWriter.print(toWrite)
+    outFileWriter.close()
   }
 }

@@ -15,8 +15,9 @@ import java.io.PrintStream
 import java.util.Comparator
 import es.um.nosql.schemainference.NoSQLSchema.Attribute
 import es.um.nosql.schemainference.NoSQLSchema.Reference
-import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType
 import es.um.nosql.schemainference.NoSQLSchema.Tuple
+import java.util.regex.Pattern
+import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType
 
 class DiffToMorphia
 {
@@ -90,6 +91,7 @@ class DiffToMorphia
     «IF (entity.entityversions.exists[ev | ev.isRoot])»import org.mongodb.morphia.annotations.Entity;«ENDIF»
     «IF (entity.entityversions.exists[ev | !ev.isRoot || ev.properties.exists[p | p instanceof Aggregate]])»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
     «IF (entity.entityversions.exists[ev | !ev.properties.empty])»import org.mongodb.morphia.annotations.Property;«ENDIF»
+    «IF (entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Reference]])»import org.mongodb.morphia.annotations.Reference;«ENDIF»
     import javax.validation.constraints.NotNull;
 
     «FOR e : entityDeps.get(entity).sortWith(Comparator.comparing[e | topOrderEntities.indexOf(e)])»
@@ -123,7 +125,7 @@ class DiffToMorphia
   def dispatch generateTypeForProperty(Aggregate aggr, boolean required)
   {
     var entityName = (aggr.refTo.get(0).eContainer as Entity).name;
-    if (aggr.lowerBound != 1 || aggr.upperBound != 1)
+    if (aggr.upperBound !== 1)
       entityName = entityName + "[]";
     '''
     @Embedded
@@ -136,7 +138,36 @@ class DiffToMorphia
 
   def dispatch generateTypeForProperty(Reference ref, boolean required)
   {
-    //TODO: References pending...
+    val refComps = expandRef(ref);
+
+    if (refComps.length == 2)
+    ''''''
+      /*#{  'type' -> genTypeForPrimitiveString(refComps.get(1)),
+        'ref' -> label(ref.refTo.name)
+      }*/
+    else
+    {
+      var entityName = ref.refTo.name;
+      if (ref.upperBound !== 1)
+        entityName = entityName + "[]";
+    '''
+    @Reference
+    «IF required»@NotNull(message = "«ref.name» can't be null")«ENDIF»
+    private «entityName» «ref.name»;
+    public «entityName» get«ref.name.toFirstUpper»() {return this.«ref.name»;}
+    public void set«ref.name.toFirstUpper»(«entityName» «ref.name») {this.«ref.name» = «ref.name»;}
+    '''
+    }
+  }
+
+  def expandRef(Reference reference) 
+  {
+    val pat = Pattern.compile("DBRef\\((.+?)\\)")
+    val m = pat.matcher(reference.originalType)
+    if (m.matches)
+      #["dbref", m.group(0)]
+    else
+      #[reference.originalType]
   }
 
   def dispatch generateTypeForProperty(Attribute a, boolean required)
@@ -200,17 +231,6 @@ class DiffToMorphia
   }
 
   /**
-   * Method used to write a generated CharSequence to a file
-   */
-  private def writeToFile(String filename, CharSequence toWrite)
-  {
-    val outFile = outputDir.toPath().resolve(filename).toFile()
-    val outFileWriter = new PrintStream(outFile)
-    outFileWriter.print(toWrite)
-    outFileWriter.close()
-  }
-
-  /**
    * Method used to calculate the dependencies between entities, and reorder them in the correct order
    */
   private def calculateDeps(List<Entity> entities) 
@@ -266,5 +286,16 @@ class DiffToMorphia
 
       depListRec(to_consider_, top_order, seen)
     }
+  }
+
+  /**
+   * Method used to write a generated CharSequence to a file
+   */
+  public def static void writeToFile(String filename, CharSequence toWrite)
+  {
+    val outFile = outputDir.toPath().resolve(filename).toFile()
+    val outFileWriter = new PrintStream(outFile)
+    outFileWriter.print(toWrite)
+    outFileWriter.close()
   }
 }

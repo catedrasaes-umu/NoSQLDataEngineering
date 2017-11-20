@@ -25,6 +25,5 @@ public class Test1
     // if it is an association w lowerBound == 0. Proof: https://stackoverflow.com/questions/27268172/mongoose-schema-to-require-array-that-can-be-empty
 
     // Comprobar lo de las propiedades comunes con needsTypeCheck si aparece en todas...solo hay que cambiar la estrategia de hashing
-    
   }
 }
