@@ -6,6 +6,7 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
+import org.bson.types.ObjectId;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -49,6 +50,47 @@ public class MorphiaTest
     client = MongoDbAdapter.getMongoDbClient("localhost");
     datastore = morphia.createDatastore(client, dbName);
     validator = Validation.buildDefaultValidatorFactory().getValidator();
+
+    mtheater = new Movietheater();
+    mtheater.setName("name");
+    mtheater.setCity("city");
+    mtheater.setCountry("country");
+    mtheater.setNoOfRooms(33); //Optional
+
+    prize = new Prize();
+    prize.setEvent("event");
+    prize.setYear(33);
+    prize.setNames(new String[] {"names"});
+    prize.setName("name"); //Optional
+
+    rating = new Rating();
+    rating.setScore(33);
+    rating.setVoters(22);
+
+    medium = new Medium();
+    medium.setName("name");
+    medium.setUrl("url");
+
+    criticism = new Criticism();
+    criticism.setColor("color");
+    criticism.setJournalist("journalist");
+//    criticism.setMedium(medium); // Optional. Media is a UnionType(medium, string)
+
+    movie = new Movie();
+    movie.setTitle("title");
+    movie.setYear(133);
+    movie.setRating(rating);
+    movie.setCriticisms(new Criticism[] {criticism});
+
+    movie.setObjectId(new ObjectId());
+
+    director = new Director();
+    director.setObjectId(new ObjectId());
+    director.setName("name");
+    director.setDirected_movies(new String[] {"MovieId"}); // Optional
+    movie.setDirector_id("director_id");
+//    director.setActor_movies(new String[] {"act1", "act2"});  // Optional
+
   }
 
   @After
@@ -60,12 +102,6 @@ public class MorphiaTest
   @Test
   public void testMovieTheater()
   {
-    mtheater = new Movietheater();
-    mtheater.setName("name");
-    mtheater.setCity("city");
-    mtheater.setCountry("country");
-    mtheater.setNoOfRooms(33); //Optional
-
     Set<ConstraintViolation<Movietheater>> violations = validator.validate(mtheater);
 
     for (ConstraintViolation<Movietheater> violation : violations)
@@ -77,12 +113,6 @@ public class MorphiaTest
   @Test
   public void testPrize()
   {
-    prize = new Prize();
-    prize.setEvent("event");
-    prize.setYear(33);
-    prize.setNames(new String[] {"names"});
-    prize.setName("name"); //Optional
-
     Set<ConstraintViolation<Prize>> violations = validator.validate(prize);
 
     for (ConstraintViolation<Prize> violation : violations)
@@ -94,10 +124,6 @@ public class MorphiaTest
   @Test
   public void testRating()
   {
-    rating = new Rating();
-    rating.setScore(33);
-    rating.setVoters(22);
-
     Set<ConstraintViolation<Rating>> violations = validator.validate(rating);
 
     for (ConstraintViolation<Rating> violation : violations)
@@ -105,15 +131,10 @@ public class MorphiaTest
 
     Assert.assertEquals(0, violations.size());
   }
-/*
+
   @Test
   public void testCriticism()
   {
-    criticism = new Criticism();
-    criticism.setColor("color");
-    criticism.setJournalist("journalist");
-    criticism.setMedia("medium"); // Optional. Media is a UnionType(medium, string)
-
     Set<ConstraintViolation<Criticism>> violations = validator.validate(criticism);
 
     for (ConstraintViolation<Criticism> violation : violations)
@@ -121,14 +142,10 @@ public class MorphiaTest
 
     Assert.assertEquals(0, violations.size());
   }
-*/
+
   @Test
   public void testMedium()
   {
-    medium = new Medium();
-    medium.setName("name");
-    medium.setUrl("url");
-
     Set<ConstraintViolation<Medium>> violations = validator.validate(medium);
 
     for (ConstraintViolation<Medium> violation : violations)
@@ -140,27 +157,14 @@ public class MorphiaTest
   @Test
   public void testDirector()
   {
-    movie = new Movie();
-    movie.setTitle("title");
-    movie.setYear(133);
     datastore.save(movie);
-
-    director = new Director();
-    director.setDirected_movies(new Movie[] {movie}); // Optional
-    director.setName("name");
-//    director.setActor_movies(new String[] {"act1", "act2"});  // Optional
     Set<ConstraintViolation<Director>> violations = validator.validate(director);
 
     for (ConstraintViolation<Director> violation : violations)
       System.out.println(violation.getMessage());
 
-//    Assert.assertEquals(0, violations.size());
-//    datastore.save(director);
+    Assert.assertEquals(0, violations.size());
+    datastore.save(director);
   }
 
-  @Test
-  public void testMovie()
-  {
-    
-  }
 }

@@ -83,15 +83,26 @@ class DiffToMorphia
     «IF (e.entityversions.exists[ev | ev.isRoot])»@Entity(noClassnameStored = true)«ELSE»@Embedded«ENDIF»
     public class «e.name»
     {
+      «IF (e.entityversions.exists[ev | ev.isRoot])»
+      @Id
+      private ObjectId _id;
+      public ObjectId getObjectId() {return this._id;}
+      public void setObjectId(ObjectId _id) {this._id = _id;}
+
+      «ENDIF»
       «generateSpecs(e, diffByEntity.get(e))»
     }
   '''
 
   def generateIncludes(Entity entity) '''
-    «IF (entity.entityversions.exists[ev | ev.isRoot])»import org.mongodb.morphia.annotations.Entity;«ENDIF»
+    «IF (entity.entityversions.exists[ev | ev.isRoot])»
+    import org.mongodb.morphia.annotations.Entity;
+    import org.mongodb.morphia.annotations.Id;
+    import org.bson.types.ObjectId;
+    «ENDIF»
     «IF (entity.entityversions.exists[ev | !ev.isRoot || ev.properties.exists[p | p instanceof Aggregate]])»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
     «IF (entity.entityversions.exists[ev | !ev.properties.empty])»import org.mongodb.morphia.annotations.Property;«ENDIF»
-    «IF (entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Reference]])»import org.mongodb.morphia.annotations.Reference;«ENDIF»
+    «IF (entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Reference && expandRef(p as Reference).length == 2]])»import org.mongodb.morphia.annotations.Reference;«ENDIF»
     import javax.validation.constraints.NotNull;
 
     «FOR e : entityDeps.get(entity).sortWith(Comparator.comparing[e | topOrderEntities.indexOf(e)])»
@@ -140,23 +151,42 @@ class DiffToMorphia
   {
     val refComps = expandRef(ref);
 
+    // References as DBRef as stored as @Reference private ObjectReferences([])?
     if (refComps.length == 2)
-    ''''''
-      /*#{  'type' -> genTypeForPrimitiveString(refComps.get(1)),
-        'ref' -> label(ref.refTo.name)
-      }*/
-    else
     {
       var entityName = ref.refTo.name;
       if (ref.upperBound !== 1)
         entityName = entityName + "[]";
-    '''
-    @Reference
-    «IF required»@NotNull(message = "«ref.name» can't be null")«ENDIF»
-    private «entityName» «ref.name»;
-    public «entityName» get«ref.name.toFirstUpper»() {return this.«ref.name»;}
-    public void set«ref.name.toFirstUpper»(«entityName» «ref.name») {this.«ref.name» = «ref.name»;}
-    '''
+      '''
+      @Reference
+      «IF required»@NotNull(message = "«ref.name» can't be null")«ENDIF»
+      private «entityName» «ref.name»;
+      public «entityName» get«ref.name.toFirstUpper»() {return this.«ref.name»;}
+      public void set«ref.name.toFirstUpper»(«entityName» «ref.name») {this.«ref.name» = «ref.name»;}
+      '''
+    }
+    // References as Strings or Integers are just stored as @Property private String|Integer([])?, just as usual attributes
+    else
+    {
+      var theType = "";
+      if (ref.originalType === null || ref.originalType.empty)
+      {
+        theType = "String";
+      }
+      else
+      {
+        theType = ref.originalType;
+      }
+      theType = generateAttributeType(theType).toString;
+      if (ref.upperBound !== 1)
+        theType = theType + "[]";
+      '''
+      @Property("«ref.name»")
+      «IF required»@NotNull(message = "«ref.name» can't be null")«ENDIF»
+      private «theType» «ref.name»;
+      public «theType» get«ref.name.toFirstUpper»() {return this.«ref.name»;}
+      public void set«ref.name.toFirstUpper»(«theType» «ref.name») {this.«ref.name» = «ref.name»;}
+      '''
     }
   }
 
@@ -179,9 +209,14 @@ class DiffToMorphia
     public void set«a.name.toFirstUpper»(«generateAttributeType(a.type)» «a.name») {this.«a.name» = «a.name»;}
   '''
 
-  def dispatch generateAttributeType(PrimitiveType type)
+  def dispatch CharSequence generateAttributeType(PrimitiveType type)
   {
-    switch typeName : type.name.toLowerCase
+    return generateAttributeType(type.name)
+  }
+
+  def dispatch CharSequence generateAttributeType(String type)
+  {
+    switch typeName : type.toLowerCase
     {
       case "string" : "String"
       case typeName.isInt : "Integer"
@@ -192,12 +227,12 @@ class DiffToMorphia
     }
   }
 
-  def dispatch generateAttributeType(Tuple tuple)
+  def dispatch CharSequence generateAttributeType(Tuple tuple)
   {
     if (tuple.elements.size == 1)
       '''«generateAttributeType(tuple.elements.get(0))»[]'''
     else
-      //TODO: Heterogeneous arrays. Too complex for now...
+      // Heterogeneous arrays. Too complex for now...
       '''Object[]'''
   }
 
