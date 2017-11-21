@@ -18,6 +18,8 @@ import es.um.nosql.schemainference.NoSQLSchema.Reference
 import es.um.nosql.schemainference.NoSQLSchema.Tuple
 import java.util.regex.Pattern
 import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType
+import es.um.nosql.schemainference.NoSQLSchema.Property
+import java.util.ArrayList
 
 class DiffToMorphia
 {
@@ -118,20 +120,97 @@ class DiffToMorphia
 
   def generatePropSpec(Entity e, PropertySpec ps, boolean required)
   {
+    // TODO: Welcome to dreamland...genTypeForTypeCheckProperty(e, ps.property, required)
+    // What if we try to Object[] everything and let the morphia serializer deal with it....dinamically? Worth a try
+    // http://lambda-the-ultimate.org/node/2694
+    // Another idea: @PreSave with a custom validator...
     if (ps.needsTypeCheck)
+      genTypeForTypeCheckProperty(e, ps.property, required)
+    else
+      generateTypeForProperty(ps.property, required);
+  }
+
+  // As it is a type check property, it occurs in the 
+  def genTypeForTypeCheckProperty(Entity e, Property property, boolean required)
+  {
+    val typeList = typeListByPropertyName.get(e).get(property.name)
+    // On uniqueTypeList we removed duplicated property types, such as a String PrimitiveType and a Reference w originalType String.
+    val uniqueTypeList = new ArrayList<Property>();
+    // Just a shortcut list so we don't have to access every time to the type field of a property (and all its casts...)
+    val typeShortcutList = new ArrayList<String>();
+
+    // This has to be optimized with collections operations..
+    for (PropertySpec ps : typeList)
     {
-      // TODO: Welcome to dreamland...genTypeForTypeCheckProperty(e, ps.property, required)
-      // What if we try to Object[] everything and let the morphia serializer deal with it....dinamically? Worth a try
-      //TODO
-// http://lambda-the-ultimate.org/node/2694
-// This will be helpful for the union types.
-      //Another idea: @PreSave with a custom validator...
+      if (ps.property instanceof Aggregate)
+      {
+        val typeAggr = ((ps.property as Aggregate).refTo.get(0).eContainer as Entity).name;
+        if (!typeShortcutList.exists[type | type.equals(typeAggr)])
+        {
+          uniqueTypeList.add(ps.property as Aggregate);
+          typeShortcutList.add(typeAggr);
+        }
+      }
+      if (ps.property instanceof Reference)
+      {
+        val typeRef = (ps.property as Reference).originalType;
+        if (!typeShortcutList.exists[type | type.equals(typeRef)])
+        {
+          uniqueTypeList.add(ps.property as Reference);
+          typeShortcutList.add(typeRef);
+        }
+      }
+      if (ps.property instanceof Attribute)
+      {
+        if ((ps.property as Attribute).type instanceof PrimitiveType)
+        {
+          val typePrimitive = ((ps.property as Attribute).type as PrimitiveType).name;
+          if (!typeShortcutList.exists[type | type.equals(typePrimitive)])
+          {
+            uniqueTypeList.add(ps.property as Attribute);
+            typeShortcutList.add(typePrimitive);
+          }
+        }
+        if ((ps.property as Attribute).type instanceof Tuple)
+        {
+          val typeTuple = ((ps.property as Attribute).type as Tuple).elements;
+          if (typeTuple.size == 1)
+          {
+            uniqueTypeList.add(ps.property as Attribute);
+            typeShortcutList.add((typeTuple.get(0) as PrimitiveType).name);
+          }
+          else if (typeTuple.size > 1 && !typeShortcutList.exists[type | type.equals("[Mixed]")])
+          {
+            uniqueTypeList.add(ps.property as Attribute);
+            typeShortcutList.add("[Mixed]");
+          }
+        }
+      }
+    }
+    if (uniqueTypeList.size == 1)
+    {
+      generateTypeForProperty(uniqueTypeList.head, required);
     }
     else
     {
-      generateTypeForProperty(ps.property, required);
+      generateUnion(uniqueTypeList, required);
     }
   }
+
+  def String generateUnion(Iterable<Property> list, boolean required)
+  {
+    '''// @Union_«list.map[p | generateTypeForProperty(p, required)].join('_')»
+    '''
+/*    // Concatenate each type of the union removing the Schema.schema from the name if neccesary
+    val unionName = "U_" + list.map[p | generateTypeForProperty(p).values.get(0)]
+                                .map[o | if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema")) else o]
+                                .join('_');
+
+    // Now, for the Union itself, concatenate each type of the union but with quotation marks and a different join character.
+    '''UnionType("«unionName»", «list.map[p | generateTypeForProperty(p).values.get(0)]
+                                      .map[o | "\"" + (if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema")) else o) + "\""]
+                                      .join(', ')»)'''
+*/  }
 
   def dispatch generateTypeForProperty(Aggregate aggr, boolean required)
   {
@@ -181,7 +260,7 @@ class DiffToMorphia
       if (ref.upperBound !== 1)
         theType = theType + "[]";
       '''
-      @Property("«ref.name»")
+      @Property
       «IF required»@NotNull(message = "«ref.name» can't be null")«ENDIF»
       private «theType» «ref.name»;
       public «theType» get«ref.name.toFirstUpper»() {return this.«ref.name»;}
@@ -202,7 +281,7 @@ class DiffToMorphia
 
   def dispatch generateTypeForProperty(Attribute a, boolean required)
   '''
-    @Property("«a.name»")
+    @Property
     «IF required && !a.name.equals("type")»@NotNull(message = "«a.name» can't be null")«ENDIF»
     private «generateAttributeType(a.type)» «a.name»;
     public «generateAttributeType(a.type)» get«a.name.toFirstUpper»() {return this.«a.name»;}

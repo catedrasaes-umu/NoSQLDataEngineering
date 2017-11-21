@@ -35,7 +35,8 @@ public class MorphiaTest
   private Movietheater mtheater;
   private Prize prize;
   private Rating rating;
-  private Criticism criticism;
+  private Criticism criticism1;
+  private Criticism criticism2;
   private Medium medium;
   private Director director;
   private Movie movie;
@@ -44,7 +45,7 @@ public class MorphiaTest
   public void setUp() throws Exception
   {
     Morphia morphia = new Morphia();
-//    morphia.mapPackage("es.um.nosql.schemainference.mongoMovies3");
+    morphia.mapPackage("es.um.nosql.schemainference.mongoMovies3");
     new ValidationExtension(morphia);
     dbName = "mongoMovies3";
     client = MongoDbAdapter.getMongoDbClient("localhost");
@@ -71,24 +72,29 @@ public class MorphiaTest
     medium.setName("name");
     medium.setUrl("url");
 
-    criticism = new Criticism();
-    criticism.setColor("color");
-    criticism.setJournalist("journalist");
-//    criticism.setMedium(medium); // Optional. Media is a UnionType(medium, string)
+    criticism1 = new Criticism();
+    criticism1.setColor("color");
+    criticism1.setJournalist("journalist");
+    criticism1.setMedia(medium); // Optional. Media is a UnionType(medium, string)
+
+    criticism2 = new Criticism();
+    criticism2.setColor("color2");
+    criticism2.setJournalist("journalist2");
+    criticism2.setMedia("a medium as a string"); // Optional. Media is a UnionType(medium, string)
 
     movie = new Movie();
     movie.setTitle("title");
     movie.setYear(133);
     movie.setRating(rating);
-    movie.setCriticisms(new Criticism[] {criticism});
+    movie.setCriticisms(new Criticism[] {criticism1, criticism2});
 
     movie.setObjectId(new ObjectId());
 
     director = new Director();
     director.setObjectId(new ObjectId());
     director.setName("name");
-    director.setDirected_movies(new String[] {"MovieId"}); // Optional
-    movie.setDirector_id("director_id");
+    director.setDirected_movies(new String[] {movie.getObjectId().toString()}); // Optional
+    movie.setDirector_id(director.getObjectId().toString());
 //    director.setActor_movies(new String[] {"act1", "act2"});  // Optional
 
   }
@@ -135,7 +141,14 @@ public class MorphiaTest
   @Test
   public void testCriticism()
   {
-    Set<ConstraintViolation<Criticism>> violations = validator.validate(criticism);
+    Set<ConstraintViolation<Criticism>> violations = validator.validate(criticism1);
+
+    for (ConstraintViolation<Criticism> violation : violations)
+      System.out.println(violation.getMessage());
+
+    Assert.assertEquals(0, violations.size());
+
+    violations = validator.validate(criticism2);
 
     for (ConstraintViolation<Criticism> violation : violations)
       System.out.println(violation.getMessage());
