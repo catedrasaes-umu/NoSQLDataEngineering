@@ -1,11 +1,8 @@
 package es.um.nosql.schemainference.mongoMovies3;
 
+import es.um.nosql.schemainference.mongoMovies3.commons.Commons;
 import org.mongodb.morphia.annotations.Embedded;
-import org.mongodb.morphia.annotations.PreLoad;
 import org.mongodb.morphia.annotations.Property;
-
-import com.mongodb.DBObject;
-
 import javax.validation.constraints.NotNull;
 
 import es.um.nosql.schemainference.mongoMovies3.Medium;
@@ -25,32 +22,15 @@ public class Criticism
   public String getJournalist() {return this.journalist;}
   public void setJournalist(String journalist) {this.journalist = journalist;}
   
-//@UnionMediumString
-@Embedded
-private Object media;
-public Object getMedia() {return this.media;}
-public void setMedia(Object media) throws ClassCastException
-{
-  if (media instanceof Medium || media instanceof String)
-    this.media = media;
-  else
-    throw new ClassCastException("Type must be Medium or String");
-}
-
-  @PreLoad
-  private void preloadProcess(DBObject dbobj)
+  // Union_Medium_String
+  @Embedded
+  private Object media;
+  public Object getMedia() {return this.media;}
+  public void setMedia(Object media)
   {
-    if (dbobj.containsField("media"))
-    {
-      System.out.println(dbobj.get("media"));
-      System.out.println(dbobj.get("media") instanceof Medium);
-      System.out.println(dbobj.get("media") instanceof String);
-      if (dbobj.get("media") instanceof es.um.nosql.schemainference.mongoMovies3.Medium)
-        this.media = (Medium)dbobj.get("media");
-      if (dbobj.get("media") instanceof String)
-        this.media = (String)dbobj.get("media");
-      dbobj.removeField("media");
-    }
+    if (media instanceof Medium || media instanceof String)
+      this.media = media;
+    else
+      throw new ClassCastException("media must be of type Medium or String");
   }
 }
-

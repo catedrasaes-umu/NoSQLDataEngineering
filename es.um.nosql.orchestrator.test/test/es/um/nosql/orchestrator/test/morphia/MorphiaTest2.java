@@ -18,7 +18,7 @@ import org.mongodb.morphia.query.Query;
 
 import es.um.nosql.schemainference.db.adapters.mongodb.MongoDbAdapter;
 import es.um.nosql.schemainference.db.adapters.mongodb.MongoDbClient;
-import es.um.nosql.schemainference.mongoMovies3.Criticism;
+import es.um.nosql.schemainference.mongoMovies3.CriticismBASE;
 import es.um.nosql.schemainference.mongoMovies3.Director;
 import es.um.nosql.schemainference.mongoMovies3.Medium;
 import es.um.nosql.schemainference.mongoMovies3.Movie;
@@ -40,7 +40,7 @@ public class MorphiaTest2
   public void setUp() throws Exception
   {
     Morphia morphia = new Morphia();
-    morphia.mapPackage("es.um.nosql.schemainference.mongoMovies3");
+    morphia = morphia.mapPackage("es.um.nosql.schemainference.mongoMovies3");
     new ValidationExtension(morphia);
     dbName = "mongoMovies3";
     client = MongoDbAdapter.getMongoDbClient("localhost");
@@ -72,14 +72,13 @@ public class MorphiaTest2
     Query<Movie> query2 = datastore.createQuery(Movie.class);
     for (Movie mov : query2)
     {
-      System.out.println(mov);
       System.out.println(mov.getDirector_id());
       System.out.println(mov.getTitle());
       System.out.println(mov.getYear());
       Rating rat = mov.getRating();
       System.out.println(" > " + rat.getScore());
       System.out.println(" > " + rat.getVoters());
-      for (Criticism c : mov.getCriticisms())
+      for (CriticismBASE c : mov.getCriticisms())
       {
         System.out.println(" >> " + c.getColor());
         System.out.println(" >> " + c.getJournalist());

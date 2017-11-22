@@ -16,6 +16,7 @@ import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPa
 import es.um.nosql.schemainference.m2m.NoSQLSchemaToEntityDiff;
 import es.um.nosql.schemainference.m2t.mongoose.DiffMongooseBaseGen;
 import es.um.nosql.schemainference.m2t.mongoose.DiffToMongoose;
+import es.um.nosql.schemainference.m2t.morphia.DiffMorphiaBaseGen;
 import es.um.nosql.schemainference.m2t.morphia.DiffToMorphia;
 import es.um.nosql.schemainference.util.emf.ResourceManager;
 
@@ -104,14 +105,14 @@ public class Main
 
     if (!OUTPUT_M2T_FOLDER.exists())
       OUTPUT_M2T_FOLDER.mkdirs();
-/*
-    // UnionType and some Main stuff..
+
+    // Morphia instance and static cast method
     if (GENERATE_BASE_FILES)
     {
-      DiffMongooseBaseGen baseGen = new DiffMongooseBaseGen();
+      DiffMorphiaBaseGen baseGen = new DiffMorphiaBaseGen();
       baseGen.m2t(INPUT_MODEL, OUTPUT_M2T_FOLDER);
     }
-*/
+
     DiffToMorphia diff2Morphia = new DiffToMorphia();
     diff2Morphia.m2t(INPUT_MODEL, OUTPUT_M2T_FOLDER);
 
