@@ -69,7 +69,7 @@ class DiffToMorphia
     topOrderEntities = calculateDeps(entities)
 
     typeListByPropertyName = calcTypeListMatrix(entities)
-    topOrderEntities.forEach[e | writeToFile(schemaFileName(e), generateSchema(e))]
+    topOrderEntities.forEach[e | writeToFile(schemaFileName(e), genSchema(e))]
   }
 
   def schemaFileName(Entity e)
@@ -77,10 +77,10 @@ class DiffToMorphia
     e.name + ".java"
   }
 
-  def generateSchema(Entity e) '''
+  def genSchema(Entity e) '''
     package «importRoute»;
 
-    «generateIncludes(e)»
+    «genIncludes(e)»
 
     «IF (e.entityversions.exists[ev | ev.isRoot])»@Entity(noClassnameStored = true)«ELSE»@Embedded«ENDIF»
     public class «e.name»
@@ -92,42 +92,46 @@ class DiffToMorphia
       public void setObjectId(ObjectId _id) {this._id = _id;}
 
       «ENDIF»
-      «generateSpecs(e, diffByEntity.get(e))»
+      «genSpecs(e, diffByEntity.get(e))»
     }
   '''
 
-  // Actually, Commons should not be imported if there is a Union which is reduced on a single element. O'well...doesnt seem easy to bypass these cases at this point
-  // Since unions are analyzed later on.
-  def generateIncludes(Entity entity) '''
+  // Actually, Commons should not be imported if there is a Union which is reduced on a single element.
+  // Doesnt seem easy to bypass these cases at this point, since unions are analyzed later on.
+  def genIncludes(Entity entity) '''
     «IF (entity.entityversions.exists[ev | ev.isRoot])»
-    import org.mongodb.morphia.annotations.Entity;
-    import org.mongodb.morphia.annotations.Id;
-    import org.bson.types.ObjectId;
+      import org.mongodb.morphia.annotations.Entity;
+      import org.mongodb.morphia.annotations.Id;
+      import org.bson.types.ObjectId;
     «ENDIF»
-    «IF (typeListByPropertyName.get(entity).values.exists[l | !l.isEmpty])»import «importRoute».commons.Commons;«ENDIF»
+    «IF (typeListByPropertyName.get(entity).values.exists[l | !l.isEmpty])»
+      import «importRoute».commons.Commons;
+      import org.mongodb.morphia.annotations.PreLoad;
+      import com.mongodb.DBObject;
+    «ENDIF»
     «IF (entity.entityversions.exists[ev | !ev.isRoot || ev.properties.exists[p | p instanceof Aggregate]])»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
     «IF (entity.entityversions.exists[ev | !ev.properties.empty])»import org.mongodb.morphia.annotations.Property;«ENDIF»
     «IF (entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Reference && expandRef(p as Reference).length == 2]])»import org.mongodb.morphia.annotations.Reference;«ENDIF»
     import javax.validation.constraints.NotNull;
 
-    «FOR e : entityDeps.get(entity).sortWith(Comparator.comparing[e | topOrderEntities.indexOf(e)])»
+    «FOR Entity e : entityDeps.get(entity).sortWith(Comparator.comparing[e | topOrderEntities.indexOf(e)])»
       import «importRoute».«e.name»;
     «ENDFOR»
   '''
 
-  def generateSpecs(Entity e, EntityDiffSpec spec) '''
+  def genSpecs(Entity e, EntityDiffSpec spec) '''
   «FOR s : spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false] SEPARATOR '\n'»
-    «generatePropSpec(e, s.key, s.value)»
+    «genPropSpec(e, s.key, s.value)»
   «ENDFOR»
   '''
 
-  def generatePropSpec(Entity e, PropertySpec ps, boolean required)
+  def genPropSpec(Entity e, PropertySpec ps, boolean required)
   {
     // http://lambda-the-ultimate.org/node/2694
     if (ps.needsTypeCheck)
       genCodeForTypeCheckProperty(e, ps.property, required)
     else
-      generateCodeForProperty(ps.property, required);
+      genCodeForProperty(ps.property, required);
   }
 
   // As it is a type check property, it occurs in the 
@@ -190,49 +194,86 @@ class DiffToMorphia
     // We reduced the union to a single type!
     if (uniqueTypeList.size == 1)
     {
-      generateCodeForProperty(uniqueTypeList.head, required);
+      genCodeForProperty(uniqueTypeList.head, required);
     }
     else
     {
-      generateUnion(uniqueTypeList, required);
+      genUnion(uniqueTypeList, required);
     }
   }
 
-  def String generateUnion(Iterable<Property> list, boolean required)
-  '''
-  // Union_«list.map[p | generateTypeForProperty(p)].join('_')»
-  «IF list.exists[p | p instanceof Aggregate]»@Embedded«ELSE»@Property«ENDIF»
-  private Object «list.head.name»;
-  public Object get«list.head.name.toFirstUpper»() {return this.«list.head.name»;}
-  public void set«list.head.name.toFirstUpper»(Object «list.head.name»)
+  def String genUnion(Iterable<Property> list, boolean required)
   {
-    if («list.map[p | p.name + " instanceof " + generateTypeForProperty(p)].join(' || ')»)
-      this.«list.head.name» = «list.head.name»;
+    val theTypes = list.map[p | genTypeForProperty(p)];
+    val theName = list.head.name;
+
+  '''
+  // @Union_«theTypes.join('_')»
+  «IF list.exists[p | p instanceof Aggregate]»@Embedded«ELSE»@Property«ENDIF»
+  «IF required»@NotNull(message = "«theName» can't be null")«ENDIF»
+  private Object «theName»;
+  public Object get«theName.toFirstUpper»() {return this.«theName»;}
+  public void set«theName.toFirstUpper»(Object «theName»)
+  {
+    if («list.map[p | p.name + " instanceof " + genTypeForProperty(p)].join(' || ')»)
+      this.«theName» = «theName»;
     else
-      throw new ClassCastException("«list.head.name» must be of type «list.map[p | generateTypeForProperty(p)].join(' or ')»");
+      throw new ClassCastException("«theName» must be of type «theTypes.join(' or ')»");
+  }
+
+  @PreLoad
+  private void processUnion_«theTypes.join('_')»(DBObject dbObj)
+  {
+    if (!dbObj.containsField("«theName»"))
+      return;
+
+    Object fieldObj = dbObj.get("«theName»");
+
+    «FOR Property prop : list SEPARATOR '\nelse '»
+      «genUnionFor(prop)»
+    «ENDFOR»
+
+    dbObj.removeField("«theName»");
   }
   '''
-//TODO: ADD THE PRELOAD FUNCTION!
-/*    // Concatenate each type of the union removing the Schema.schema from the name if neccesary
-    val unionName = "U_" + list.map[p | generateTypeForProperty(p).values.get(0)]
-                                .map[o | if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema")) else o]
-                                .join('_');
+  }
 
-    // Now, for the Union itself, concatenate each type of the union but with quotation marks and a different join character.
-    '''UnionType("«unionName»", «list.map[p | generateTypeForProperty(p).values.get(0)]
-                                      .map[o | "\"" + (if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema")) else o) + "\""]
-                                      .join(', ')»)'''
-*/
-  def dispatch generateCodeForProperty(Aggregate aggr, boolean required)
+  def dispatch genUnionFor(Aggregate aggr)
+  '''
+    if (fieldObj instanceof DBObject && ((DBObject)fieldObj).get("className").equals(«(aggr.refTo.head.eContainer as Entity).name».class.getCanonicalName()))
+      this.«aggr.name» = Commons.CAST(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj);
+  '''
+
+  def dispatch genUnionFor(Reference ref)
+  {
+    val typeRef = genTypeForProperty(ref);
+    '''
+    «IF expandRef(ref).length == 2»
+      if (fieldObj instanceof DBObject && ((DBObject)fieldObj).get("$ref").equals("«ref.refTo.name»"))
+        this.«ref.name» = ((DBObject)fieldObj).get("$id");
+    «ELSE»
+      if (fieldObj instanceof «typeRef»)
+        this.«ref.name» = («typeRef»)fieldObj;
+    «ENDIF»
+    '''
+  }
+
+  def dispatch genUnionFor(Attribute attr)
+  '''
+    if (fieldObj instanceof «genAttributeType(attr.type)»)
+      this.«attr.name» = («genAttributeType(attr.type)»)fieldObj;
+  '''
+
+  def dispatch genCodeForProperty(Aggregate aggr, boolean required)
   '''
     @Embedded
     «IF required»@NotNull(message = "«aggr.name» can't be null")«ENDIF»
-    private «generateTypeForProperty(aggr)» «aggr.name»;
-    public «generateTypeForProperty(aggr)» get«aggr.name.toFirstUpper»() {return this.«aggr.name»;}
-    public void set«aggr.name.toFirstUpper»(«generateTypeForProperty(aggr)» «aggr.name») {this.«aggr.name» = «aggr.name»;}
+    private «genTypeForProperty(aggr)» «aggr.name»;
+    public «genTypeForProperty(aggr)» get«aggr.name.toFirstUpper»() {return this.«aggr.name»;}
+    public void set«aggr.name.toFirstUpper»(«genTypeForProperty(aggr)» «aggr.name») {this.«aggr.name» = «aggr.name»;}
   '''
 
-  def dispatch generateTypeForProperty(Aggregate aggr)
+  def dispatch genTypeForProperty(Aggregate aggr)
   {
     var entityName = (aggr.refTo.get(0).eContainer as Entity).name;
     if (aggr.upperBound !== 1)
@@ -241,16 +282,16 @@ class DiffToMorphia
     entityName;
   }
 
-  def dispatch generateCodeForProperty(Reference ref, boolean required)
+  def dispatch genCodeForProperty(Reference ref, boolean required)
   '''
     «IF expandRef(ref).length == 2»@Reference«ELSE»@Property«ENDIF»
     «IF required»@NotNull(message = "«ref.name» can't be null")«ENDIF»
-    private «generateTypeForProperty(ref)» «ref.name»;
-    public «generateTypeForProperty(ref)» get«ref.name.toFirstUpper»() {return this.«ref.name»;}
-    public void set«ref.name.toFirstUpper»(«generateTypeForProperty(ref)» «ref.name») {this.«ref.name» = «ref.name»;}
+    private «genTypeForProperty(ref)» «ref.name»;
+    public «genTypeForProperty(ref)» get«ref.name.toFirstUpper»() {return this.«ref.name»;}
+    public void set«ref.name.toFirstUpper»(«genTypeForProperty(ref)» «ref.name») {this.«ref.name» = «ref.name»;}
   '''
 
-  def dispatch generateTypeForProperty(Reference ref)
+  def dispatch genTypeForProperty(Reference ref)
   {
     val refComps = expandRef(ref);
     var returnValue = "";
@@ -271,7 +312,7 @@ class DiffToMorphia
       {
         returnValue = ref.originalType;
       }
-      returnValue = generateAttributeType(returnValue).toString;
+      returnValue = genAttributeType(returnValue).toString;
     }
 
     if (ref.upperBound !== 1)
@@ -290,35 +331,35 @@ class DiffToMorphia
       #[reference.originalType]
   }
 
-  def dispatch generateCodeForProperty(Attribute a, boolean required)
+  def dispatch genCodeForProperty(Attribute a, boolean required)
   '''
     @Property
     «IF required && !a.name.equals("type")»@NotNull(message = "«a.name» can't be null")«ENDIF»
-    private «generateTypeForProperty(a)» «a.name»;
-    public «generateTypeForProperty(a)» get«a.name.toFirstUpper»() {return this.«a.name»;}
-    public void set«a.name.toFirstUpper»(«generateTypeForProperty(a)» «a.name») {this.«a.name» = «a.name»;}
+    private «genTypeForProperty(a)» «a.name»;
+    public «genTypeForProperty(a)» get«a.name.toFirstUpper»() {return this.«a.name»;}
+    public void set«a.name.toFirstUpper»(«genTypeForProperty(a)» «a.name») {this.«a.name» = «a.name»;}
   '''
 
-  def dispatch generateTypeForProperty(Attribute a)
+  def dispatch genTypeForProperty(Attribute a)
   {
-    generateAttributeType(a.type)
+    genAttributeType(a.type)
   }
 
-  def dispatch CharSequence generateAttributeType(PrimitiveType type)
+  def dispatch CharSequence genAttributeType(PrimitiveType type)
   {
-    generateAttributeType(type.name)
+    genAttributeType(type.name)
   }
 
-  def dispatch CharSequence generateAttributeType(Tuple tuple)
+  def dispatch CharSequence genAttributeType(Tuple tuple)
   {
     if (tuple.elements.size == 1)
-      '''«generateAttributeType(tuple.elements.get(0))»[]'''
+      '''«genAttributeType(tuple.elements.get(0))»[]'''
     else
       // Heterogeneous arrays. Too complex for now...
       '''Object[]'''
   }
 
-  def dispatch CharSequence generateAttributeType(String type)
+  def dispatch CharSequence genAttributeType(String type)
   {
     switch typeName : type.toLowerCase
     {

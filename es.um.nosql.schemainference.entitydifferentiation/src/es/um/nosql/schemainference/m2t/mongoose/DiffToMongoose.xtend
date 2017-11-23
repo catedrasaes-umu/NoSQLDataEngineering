@@ -76,7 +76,7 @@ public class DiffToMongoose
     topOrderEntities = calculateDeps(entities)
 
     typeListByPropertyName = calcTypeListMatrix(entities)
-    topOrderEntities.forEach[e | writeToFile(schemaFileName(e), generateSchema(e))]
+    topOrderEntities.forEach[e | writeToFile(schemaFileName(e), genSchema(e))]
   }
 
   // Fill, for each property of each entity that appear in more than one entity version *with different type* (those that hold the needsTypeCheck
@@ -91,7 +91,7 @@ public class DiffToMongoose
     ]
   }
 
-  def generateSchema(Entity e) '''
+  def genSchema(Entity e) '''
     'use strict'
 
     var mongoose = require('mongoose');
@@ -252,11 +252,11 @@ public class DiffToMongoose
     }
     else
     {
-      #{ "type" -> label(generateUnion(uniqueTypeList))}
+      #{ "type" -> label(genUnion(uniqueTypeList))}
     }
   }
 
-  def String generateUnion(Iterable<Property> list)
+  def String genUnion(Iterable<Property> list)
   {
     // Concatenate each type of the union removing the Schema.schema from the name if neccesary
     val unionName = "U_" + list.map[p | genTypeForProperty(p).values.get(0)]

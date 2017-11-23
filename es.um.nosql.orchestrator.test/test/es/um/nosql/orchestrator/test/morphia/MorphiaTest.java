@@ -17,7 +17,7 @@ import org.mongodb.morphia.ValidationExtension;
 
 import es.um.nosql.schemainference.db.adapters.mongodb.MongoDbAdapter;
 import es.um.nosql.schemainference.db.adapters.mongodb.MongoDbClient;
-import es.um.nosql.schemainference.mongoMovies3.CriticismBASE;
+import es.um.nosql.schemainference.mongoMovies3.Criticism;
 import es.um.nosql.schemainference.mongoMovies3.Director;
 import es.um.nosql.schemainference.mongoMovies3.Medium;
 import es.um.nosql.schemainference.mongoMovies3.Movie;
@@ -35,8 +35,8 @@ public class MorphiaTest
   private Movietheater mtheater;
   private Prize prize;
   private Rating rating;
-  private CriticismBASE criticism1;
-  private CriticismBASE criticism2;
+  private Criticism criticism1;
+  private Criticism criticism2;
   private Medium medium;
   private Director director;
   private Movie movie;
@@ -72,12 +72,12 @@ public class MorphiaTest
     medium.setName("name");
     medium.setUrl("url");
 
-    criticism1 = new CriticismBASE();
+    criticism1 = new Criticism();
     criticism1.setColor("color");
     criticism1.setJournalist("journalist");
     criticism1.setMedia(medium); // Optional. Media is a UnionType(medium, string)
 
-    criticism2 = new CriticismBASE();
+    criticism2 = new Criticism();
     criticism2.setColor("color2");
     criticism2.setJournalist("journalist2");
     criticism2.setMedia("a medium as a string"); // Optional. Media is a UnionType(medium, string)
@@ -86,7 +86,7 @@ public class MorphiaTest
     movie.setTitle("title");
     movie.setYear(133);
     movie.setRating(rating);
-    movie.setCriticisms(new CriticismBASE[] {criticism1, criticism2});
+    movie.setCriticisms(new Criticism[] {criticism1, criticism2});
 
     movie.setObjectId(new ObjectId());
 
@@ -141,16 +141,16 @@ public class MorphiaTest
   @Test
   public void testCriticism()
   {
-    Set<ConstraintViolation<CriticismBASE>> violations = validator.validate(criticism1);
+    Set<ConstraintViolation<Criticism>> violations = validator.validate(criticism1);
 
-    for (ConstraintViolation<CriticismBASE> violation : violations)
+    for (ConstraintViolation<Criticism> violation : violations)
       System.out.println(violation.getMessage());
 
     Assert.assertEquals(0, violations.size());
 
     violations = validator.validate(criticism2);
 
-    for (ConstraintViolation<CriticismBASE> violation : violations)
+    for (ConstraintViolation<Criticism> violation : violations)
       System.out.println(violation.getMessage());
 
     Assert.assertEquals(0, violations.size());

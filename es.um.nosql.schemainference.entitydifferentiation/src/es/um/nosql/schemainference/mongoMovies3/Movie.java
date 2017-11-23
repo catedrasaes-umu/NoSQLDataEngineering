@@ -3,7 +3,6 @@ package es.um.nosql.schemainference.mongoMovies3;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.bson.types.ObjectId;
-import es.um.nosql.schemainference.mongoMovies3.commons.Commons;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
@@ -44,29 +43,14 @@ public class Movie
   public void setType(String type) {this.type = type;}
   
   @Property
+  private String genre;
+  public String getGenre() {return this.genre;}
+  public void setGenre(String genre) {this.genre = genre;}
+  
+  @Property
   private String[] writers;
   public String[] getWriters() {return this.writers;}
   public void setWriters(String[] writers) {this.writers = writers;}
-  
-  @Embedded
-  private Prize[] prizes;
-  public Prize[] getPrizes() {return this.prizes;}
-  public void setPrizes(Prize[] prizes) {this.prizes = prizes;}
-  
-  @Property
-  private String[] genres;
-  public String[] getGenres() {return this.genres;}
-  public void setGenres(String[] genres) {this.genres = genres;}
-  
-  @Embedded
-  private Criticism[] criticisms;
-  public Criticism[] getCriticisms() {return this.criticisms;}
-  public void setCriticisms(Criticism[] criticisms) {this.criticisms = criticisms;}
-  
-  @Property
-  private Integer running_time;
-  public Integer getRunning_time() {return this.running_time;}
-  public void setRunning_time(Integer running_time) {this.running_time = running_time;}
   
   @Embedded
   private Rating rating;
@@ -74,7 +58,22 @@ public class Movie
   public void setRating(Rating rating) {this.rating = rating;}
   
   @Property
-  private String genre;
-  public String getGenre() {return this.genre;}
-  public void setGenre(String genre) {this.genre = genre;}
+  private String[] genres;
+  public String[] getGenres() {return this.genres;}
+  public void setGenres(String[] genres) {this.genres = genres;}
+  
+  @Property
+  private Integer running_time;
+  public Integer getRunning_time() {return this.running_time;}
+  public void setRunning_time(Integer running_time) {this.running_time = running_time;}
+  
+  @Embedded
+  private Prize[] prizes;
+  public Prize[] getPrizes() {return this.prizes;}
+  public void setPrizes(Prize[] prizes) {this.prizes = prizes;}
+  
+  @Embedded
+  private Criticism[] criticisms;
+  public Criticism[] getCriticisms() {return this.criticisms;}
+  public void setCriticisms(Criticism[] criticisms) {this.criticisms = criticisms;}
 }

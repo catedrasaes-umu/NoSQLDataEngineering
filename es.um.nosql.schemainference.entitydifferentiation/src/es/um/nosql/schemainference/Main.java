@@ -30,7 +30,7 @@ public class Main
 
   public static void main(String[] args)
   {
-    String input_model = "mongoMovies3";
+    String input_model = "everyPolitician";
     String inputFile = INPUT_FOLDER + input_model + ".xmi";
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
 //    prepareM2MExample(inputFile, outputFile);
