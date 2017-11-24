@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<entitydifferentiation:EntityDifferentiation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xmlns:entitydifferentiation="http://www.modelum.es/entitydifferentiation" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.schemainference/model/nosqlschema.ecore http://www.modelum.es/entitydifferentiation platform:/resource/es.um.nosql.schemainference.entitydifferentiation/model/entitydifferentiation.ecore" name="test3">
+<entitydifferentiation:EntityDifferentiation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xmlns:entitydifferentiation="http://www.modelum.es/entitydifferentiation" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.schemainference/model/nosqlschema.ecore http://www.modelum.es/entitydifferentiation platform:/resource/es.um.nosql.schemainference.entitydifferentiation/model/entitydifferentiation.ecore" name="test1">
   <entityDiffSpecs>
     <entity href="../testSources/test1.xmi#Persons"/>
     <entityVersionProps>
@@ -78,5 +78,5 @@
       <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test1.xmi#//@entities.4/@entityversions.0/@properties.0"/>
     </commonProps>
   </entityDiffSpecs>
-  <schema href="../testSources/test1.xmi#test3"/>
+  <schema href="../testSources/test1.xmi#test1"/>
 </entitydifferentiation:EntityDifferentiation>

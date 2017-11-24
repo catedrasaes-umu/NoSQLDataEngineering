@@ -11,13 +11,13 @@ var MovieSchema = new mongoose.Schema({
   title: {type: String, required: true},
   year: {type: Number, required: true},
   type: String,
+  writers: {type: [String], default: () => undefined},
+  prizes: {type: [PrizeSchema.schema], default: () => undefined},
+  genres: {type: [String], default: () => undefined},
+  genre: String,
   running_time: Number,
   criticisms: {type: [CriticismSchema.schema], default: () => undefined},
-  prizes: {type: [PrizeSchema.schema], default: () => undefined},
-  rating: RatingSchema.schema,
-  genre: String,
-  writers: {type: [String], default: () => undefined},
-  genres: {type: [String], default: () => undefined}
+  rating: RatingSchema.schema
 }, {collection: 'Movie'});
 
 module.exports = mongoose.model('Movie', MovieSchema);

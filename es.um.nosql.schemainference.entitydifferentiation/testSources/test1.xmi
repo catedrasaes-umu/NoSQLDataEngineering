@@ -5,7 +5,7 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema"
     xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../../es.um.nosql.schemainference/model/nosqlschema.ecore"
-    name="test3">
+    name="test1">
   <entities
       name="Persons">
     <entityversions

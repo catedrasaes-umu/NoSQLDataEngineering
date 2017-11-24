@@ -21,6 +21,7 @@ import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPa
 import es.um.nosql.schemainference.NoSQLSchema.Association
 import java.util.ArrayList
 import java.io.PrintStream
+import es.um.nosql.schemainference.m2t.commons.Commons
 
 public class DiffToMongoose
 {
@@ -57,7 +58,7 @@ public class DiffToMongoose
     m2t(diff, outputFolder);
   }
 
-	/**
+  /**
    * Method used to start the generation process from an EntityDifferentiation object
    */
   def void m2t(EntityDifferentiation diff, File outputFolder)
@@ -76,7 +77,7 @@ public class DiffToMongoose
     topOrderEntities = calculateDeps(entities)
 
     typeListByPropertyName = calcTypeListMatrix(entities)
-    topOrderEntities.forEach[e | writeToFile(schemaFileName(e), genSchema(e))]
+    topOrderEntities.forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
   }
 
   // Fill, for each property of each entity that appear in more than one entity version *with different type* (those that hold the needsTypeCheck
@@ -84,7 +85,7 @@ public class DiffToMongoose
   def calcTypeListMatrix(List<Entity> entities)
   {
     entities.toInvertedMap[e |
-    	diffByEntity.get(e).entityVersionProps
+      diffByEntity.get(e).entityVersionProps
         .map[propertySpecs]
         .flatten
         .filter[needsTypeCheck].groupBy[property.name]
@@ -183,7 +184,7 @@ public class DiffToMongoose
 
   def genTypeForPropertySpec(Entity e, PropertySpec ps)
   {
-  	if (ps.needsTypeCheck)
+    if (ps.needsTypeCheck)
       genTypeForTypeCheckProperty(e, ps.property)
     else
       genTypeForProperty(ps.property)
@@ -198,54 +199,11 @@ public class DiffToMongoose
     // Just a shortcut list so we don't have to access every time to the type field of a property (and all its casts...)
     val typeShortcutList = new ArrayList<String>();
 
-    // This has to be optimized with collections operations..
+    // We try to reduce Unions. For example, a Union of type Reference.String and a PrimitiveType.String should be reduced to a String field.
     for (PropertySpec ps : typeList)
-    {
-      if (ps.property instanceof Aggregate)
-      {
-        val typeAggr = ((ps.property as Aggregate).refTo.get(0).eContainer as Entity).name;
-        if (!typeShortcutList.exists[type | type.equals(typeAggr)])
-        {
-          uniqueTypeList.add(ps.property as Aggregate);
-          typeShortcutList.add(typeAggr);
-        }
-      }
-      if (ps.property instanceof Reference)
-      {
-        val typeRef = (ps.property as Reference).originalType;
-        if (!typeShortcutList.exists[type | type.equals(typeRef)])
-        {
-          uniqueTypeList.add(ps.property as Reference);
-          typeShortcutList.add(typeRef);
-        }
-      }
-      if (ps.property instanceof Attribute)
-      {
-        if ((ps.property as Attribute).type instanceof PrimitiveType)
-        {
-          val typePrimitive = ((ps.property as Attribute).type as PrimitiveType).name;
-          if (!typeShortcutList.exists[type | type.equals(typePrimitive)])
-          {
-            uniqueTypeList.add(ps.property as Attribute);
-            typeShortcutList.add(typePrimitive);
-          }
-        }
-        if ((ps.property as Attribute).type instanceof Tuple)
-        {
-          val typeTuple = ((ps.property as Attribute).type as Tuple).elements;
-          if (typeTuple.size == 1)
-          {
-            uniqueTypeList.add(ps.property as Attribute);
-            typeShortcutList.add((typeTuple.get(0) as PrimitiveType).name);
-          }
-          else if (typeTuple.size > 1 && !typeShortcutList.exists[type | type.equals("[Mixed]")])
-          {
-            uniqueTypeList.add(ps.property as Attribute);
-            typeShortcutList.add("[Mixed]");
-          }
-        }
-      }
-    }
+      reduceUnionProperty(ps.property, uniqueTypeList, typeShortcutList)
+
+    // We reduced the union to a single type!
     if (uniqueTypeList.size == 1)
     {
       genTypeForProperty(uniqueTypeList.head);
@@ -253,6 +211,42 @@ public class DiffToMongoose
     else
     {
       #{ "type" -> label(genUnion(uniqueTypeList))}
+    }
+  }
+
+  def dispatch reduceUnionProperty(Aggregate aggr, List<Property> uniqueTypeList, List<String> typeShortcutList)
+  {
+    addToReduceLists(aggr, (aggr.refTo.get(0).eContainer as Entity).name, uniqueTypeList, typeShortcutList);
+  }
+
+  def dispatch reduceUnionProperty(Reference ref, List<Property> uniqueTypeList, List<String> typeShortcutList)
+  {
+    addToReduceLists(ref, ref.originalType, uniqueTypeList, typeShortcutList);
+  }
+
+  def dispatch reduceUnionProperty(Attribute attr, List<Property> uniqueTypeList, List<String> typeShortcutList)
+  {
+    if (attr.type instanceof PrimitiveType)
+      addToReduceLists(attr, (attr.type as PrimitiveType).name, uniqueTypeList, typeShortcutList);
+    if (attr.type instanceof Tuple)
+    {
+      val typeTuple = (attr.type as Tuple).elements;
+      if (typeTuple.size == 1)
+      {
+        uniqueTypeList.add(attr);
+        typeShortcutList.add((typeTuple.get(0) as PrimitiveType).name);
+      }
+      else if (typeTuple.size > 1)
+        addToReduceLists(attr, "[Mixed]", uniqueTypeList, typeShortcutList);
+    }
+  }
+
+  def addToReduceLists(Property p, String name, List<Property> uniqueTypeList, List<String> typeShortcutList)
+  {
+    if (!typeShortcutList.exists[type | type.equals(name)])
+    {
+      uniqueTypeList.add(p);
+      typeShortcutList.add(name);
     }
   }
 
@@ -297,7 +291,7 @@ public class DiffToMongoose
 
     // DBRef
     if (refComps.length == 2)
-      #{	'type' -> genTypeForPrimitiveString(refComps.get(1)),
+      #{  'type' -> genTypeForPrimitiveString(refComps.get(1)),
         'ref' -> label(ref.refTo.name)
       }
     else
@@ -344,8 +338,6 @@ public class DiffToMongoose
       '''[«genType(tuple.elements.get(0))»]'''
     else
       // Heterogeneous arrays. Too complex for now...
-      // Ideas: '''[«FOR t : tuple.elements SEPARATOR ', '»«genType(t)»«ENDFOR»]'''
-      //'''[«genType(tuple.elements.get(0))»]'''
       '''[Mixed]'''
   }
 
@@ -361,8 +353,8 @@ public class DiffToMongoose
 
   def genTypeForPrimitiveString(String type)
   {
-  	label
-  	(
+    label
+    (
       switch typeName : type.toLowerCase
       {
         case "string" : "String"
@@ -436,16 +428,5 @@ public class DiffToMongoose
 
       depListRec(to_consider_, top_order, seen)
     }
-  }
-
-  /**
-   * Method used to write a generated CharSequence to a file
-   */
-  public def static void writeToFile(String filename, CharSequence toWrite)
-  {
-    val outFile = outputDir.toPath().resolve(filename).toFile()
-    val outFileWriter = new PrintStream(outFile)
-    outFileWriter.print(toWrite)
-    outFileWriter.close()
   }
 }

@@ -3,15 +3,12 @@ package es.um.nosql.schemainference.m2t.morphia
 import java.io.File
 import es.um.nosql.schemainference.NoSQLSchema.Entity
 import java.util.List
-import java.util.Map
-import java.util.Set
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec
 import es.um.nosql.schemainference.entitydifferentiation.PropertySpec
 import es.um.nosql.schemainference.util.emf.ModelLoader
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate
-import java.io.PrintStream
 import java.util.Comparator
 import es.um.nosql.schemainference.NoSQLSchema.Attribute
 import es.um.nosql.schemainference.NoSQLSchema.Reference
@@ -20,6 +17,8 @@ import java.util.regex.Pattern
 import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType
 import es.um.nosql.schemainference.NoSQLSchema.Property
 import java.util.ArrayList
+import es.um.nosql.schemainference.m2t.commons.Commons
+import es.um.nosql.schemainference.m2t.commons.DependencyAnalyzer
 
 class DiffToMorphia
 {
@@ -27,12 +26,7 @@ class DiffToMorphia
   var importRoute = "";
   static File outputDir;
 
-  // List of dependencies
-  List<Entity> topOrderEntities
-  Map<Entity, Set<Entity>> entityDeps
-  Map<Entity, Set<Entity>> inverseEntityDeps
-  Map<Entity, EntityDiffSpec> diffByEntity
-  Map<Entity, Map<String, List<PropertySpec>>> typeListByPropertyName
+  DependencyAnalyzer analyzer;
 
   /**
    * Method used to start the generation process from a diff model file
@@ -62,14 +56,10 @@ class DiffToMorphia
       importRoute = outputDir.toString;
     }
 
-    diffByEntity = newHashMap(diff.entityDiffSpecs.map[ed | ed.entity -> ed])
-    val entities = diff.entityDiffSpecs.map[entity]
-
     // Calc dependencies between entities
-    topOrderEntities = calculateDeps(entities)
-
-    typeListByPropertyName = calcTypeListMatrix(entities)
-    topOrderEntities.forEach[e | writeToFile(schemaFileName(e), genSchema(e))]
+    analyzer = new DependencyAnalyzer();
+    analyzer.performAnalysis(diff);
+    analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
   }
 
   def schemaFileName(Entity e)
@@ -77,7 +67,11 @@ class DiffToMorphia
     e.name + ".java"
   }
 
-  def genSchema(Entity e) '''
+  /**
+   * This method generates the basic structure of the Java class.
+   */
+  def genSchema(Entity e)
+  '''
     package «importRoute»;
 
     «genIncludes(e)»
@@ -92,19 +86,20 @@ class DiffToMorphia
       public void setObjectId(ObjectId _id) {this._id = _id;}
 
       «ENDIF»
-      «genSpecs(e, diffByEntity.get(e))»
+      «genSpecs(e, analyzer.getDiffByEntity().get(e))»
     }
   '''
 
   // Actually, Commons should not be imported if there is a Union which is reduced on a single element.
   // Doesnt seem easy to bypass these cases at this point, since unions are analyzed later on.
-  def genIncludes(Entity entity) '''
+  def genIncludes(Entity entity)
+  '''
     «IF (entity.entityversions.exists[ev | ev.isRoot])»
       import org.mongodb.morphia.annotations.Entity;
       import org.mongodb.morphia.annotations.Id;
       import org.bson.types.ObjectId;
     «ENDIF»
-    «IF (typeListByPropertyName.get(entity).values.exists[l | !l.isEmpty])»
+    «IF (analyzer.getTypeListByPropertyName.get(entity).values.exists[l | !l.isEmpty])»
       import «importRoute».commons.Commons;
       import org.mongodb.morphia.annotations.PreLoad;
       import com.mongodb.DBObject;
@@ -114,83 +109,48 @@ class DiffToMorphia
     «IF (entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Reference && expandRef(p as Reference).length == 2]])»import org.mongodb.morphia.annotations.Reference;«ENDIF»
     import javax.validation.constraints.NotNull;
 
-    «FOR Entity e : entityDeps.get(entity).sortWith(Comparator.comparing[e | topOrderEntities.indexOf(e)])»
+    «FOR Entity e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
       import «importRoute».«e.name»;
     «ENDFOR»
   '''
 
-  def genSpecs(Entity e, EntityDiffSpec spec) '''
+  def genSpecs(Entity e, EntityDiffSpec spec)
+  '''
   «FOR s : spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false] SEPARATOR '\n'»
     «genPropSpec(e, s.key, s.value)»
   «ENDFOR»
   '''
 
+  def specificProps(EntityDiffSpec spec)
+  {
+    spec.entityVersionProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
+      [result, neew |
+        val names = result.map[p | p.property.name].toSet
+        result.addAll(neew.filter[p | !names.contains(p.property.name)])
+        result
+      ])
+  }
+
   def genPropSpec(Entity e, PropertySpec ps, boolean required)
   {
-    // http://lambda-the-ultimate.org/node/2694
     if (ps.needsTypeCheck)
       genCodeForTypeCheckProperty(e, ps.property, required)
     else
       genCodeForProperty(ps.property, required);
   }
 
-  // As it is a type check property, it occurs in the 
   def genCodeForTypeCheckProperty(Entity e, Property property, boolean required)
   {
-    val typeList = typeListByPropertyName.get(e).get(property.name)
+    val typeList = analyzer.getTypeListByPropertyName().get(e).get(property.name)
     // On uniqueTypeList we removed duplicated property types, such as a String PrimitiveType and a Reference w originalType String.
     val uniqueTypeList = new ArrayList<Property>();
     // Just a shortcut list so we don't have to access every time to the type field of a property (and all its casts...)
     val typeShortcutList = new ArrayList<String>();
 
-    // This has to be optimized with collections operations..
+    // We try to reduce Unions. For example, a Union of type Reference.String and a PrimitiveType.String should be reduced to a String field.
     for (PropertySpec ps : typeList)
-    {
-      if (ps.property instanceof Aggregate)
-      {
-        val typeAggr = ((ps.property as Aggregate).refTo.get(0).eContainer as Entity).name;
-        if (!typeShortcutList.exists[type | type.equals(typeAggr)])
-        {
-          uniqueTypeList.add(ps.property as Aggregate);
-          typeShortcutList.add(typeAggr);
-        }
-      }
-      if (ps.property instanceof Reference)
-      {
-        val typeRef = (ps.property as Reference).originalType;
-        if (!typeShortcutList.exists[type | type.equals(typeRef)])
-        {
-          uniqueTypeList.add(ps.property as Reference);
-          typeShortcutList.add(typeRef);
-        }
-      }
-      if (ps.property instanceof Attribute)
-      {
-        if ((ps.property as Attribute).type instanceof PrimitiveType)
-        {
-          val typePrimitive = ((ps.property as Attribute).type as PrimitiveType).name;
-          if (!typeShortcutList.exists[type | type.equals(typePrimitive)])
-          {
-            uniqueTypeList.add(ps.property as Attribute);
-            typeShortcutList.add(typePrimitive);
-          }
-        }
-        if ((ps.property as Attribute).type instanceof Tuple)
-        {
-          val typeTuple = ((ps.property as Attribute).type as Tuple).elements;
-          if (typeTuple.size == 1)
-          {
-            uniqueTypeList.add(ps.property as Attribute);
-            typeShortcutList.add((typeTuple.get(0) as PrimitiveType).name);
-          }
-          else if (typeTuple.size > 1 && !typeShortcutList.exists[type | type.equals("Object[]")])
-          {
-            uniqueTypeList.add(ps.property as Attribute);
-            typeShortcutList.add("Object[]");
-          }
-        }
-      }
-    }
+      reduceUnionProperty(ps.property, uniqueTypeList, typeShortcutList)
+
     // We reduced the union to a single type!
     if (uniqueTypeList.size == 1)
     {
@@ -199,6 +159,42 @@ class DiffToMorphia
     else
     {
       genUnion(uniqueTypeList, required);
+    }
+  }
+
+  def dispatch reduceUnionProperty(Aggregate aggr, List<Property> uniqueTypeList, List<String> typeShortcutList)
+  {
+    addToReduceLists(aggr, (aggr.refTo.get(0).eContainer as Entity).name, uniqueTypeList, typeShortcutList);
+  }
+
+  def dispatch reduceUnionProperty(Reference ref, List<Property> uniqueTypeList, List<String> typeShortcutList)
+  {
+    addToReduceLists(ref, ref.originalType, uniqueTypeList, typeShortcutList);
+  }
+
+  def dispatch reduceUnionProperty(Attribute attr, List<Property> uniqueTypeList, List<String> typeShortcutList)
+  {
+    if (attr.type instanceof PrimitiveType)
+      addToReduceLists(attr, (attr.type as PrimitiveType).name, uniqueTypeList, typeShortcutList);
+    if (attr.type instanceof Tuple)
+    {
+      val typeTuple = (attr.type as Tuple).elements;
+      if (typeTuple.size == 1)
+      {
+        uniqueTypeList.add(attr);
+        typeShortcutList.add((typeTuple.get(0) as PrimitiveType).name);
+      }
+      else if (typeTuple.size > 1)
+        addToReduceLists(attr, "Object[]", uniqueTypeList, typeShortcutList);
+    }
+  }
+
+  def addToReduceLists(Property p, String name, List<Property> uniqueTypeList, List<String> typeShortcutList)
+  {
+    if (!typeShortcutList.exists[type | type.equals(name)])
+    {
+      uniqueTypeList.add(p);
+      typeShortcutList.add(name);
     }
   }
 
@@ -224,8 +220,10 @@ class DiffToMorphia
   @PreLoad
   private void processUnion_«theTypes.join('_')»(DBObject dbObj)
   {
+    «IF !required»
     if (!dbObj.containsField("«theName»"))
       return;
+    «ENDIF»
 
     Object fieldObj = dbObj.get("«theName»");
 
@@ -376,97 +374,4 @@ class DiffToMorphia
   private def isFloat(String type) { #["float", "double"].contains(type)}
   private def isBoolean(String type) { #["boolean", "bool"].contains(type)}
   private def isObjectId(String type) { #["objectid"].contains(type)}
-
-  def specificProps(EntityDiffSpec spec)
-  {
-    spec.entityVersionProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
-      [result, neew |
-        val names = result.map[p | p.property.name].toSet
-        result.addAll(neew.filter[p | !names.contains(p.property.name)])
-        result
-      ])
-  }
-
-  // Fill, for each property of each entity that appear in more than 
-  // one entity version *with different type* (those that hold the needsTypeCheck
-  // boolean attribute), the list of types, to check possible type folding in
-  // a latter pass
-  def calcTypeListMatrix(List<Entity> entities)
-  {
-    entities.toInvertedMap[e |
-      diffByEntity.get(e).entityVersionProps
-        .map[propertySpecs]
-        .flatten
-        .filter[needsTypeCheck].groupBy[property.name]
-    ]
-  }
-
-  /**
-   * Method used to calculate the dependencies between entities, and reorder them in the correct order
-   */
-  private def calculateDeps(List<Entity> entities) 
-  { 
-    entityDeps = newHashMap(entities.map[e | e -> getDepsFor(e)])
-    inverseEntityDeps = newHashMap(entities.map[e | 
-      e -> entities.filter[e2 | entityDeps.get(e2).contains(e)].toSet
-    ])
-
-    // Implement a topological order, Khan's algorithm
-    // https://en.wikipedia.org/wiki/Topological_sorting#Kahn.27s_algorithm
-    topologicalOrder()
-  }
-
-  // Get the first level of dependencies for an Entity
-  private def getDepsFor(Entity entity)
-  {
-    entity.entityversions.map[ev | 
-      ev.properties.filter[p | p instanceof Aggregate]
-      .map[p | (p as Aggregate).refTo.map[ev2 | ev2.eContainer as Entity]]
-      .flatten
-    ].flatten.toSet
-  }
-
-  private def List<Entity> topologicalOrder()
-  {
-    depListRec(
-      entityDeps.filter[k, v| v.empty].keySet,
-      newLinkedList(),
-      newHashSet()
-    )
-  }
-
-  private def List<Entity> depListRec(Set<Entity> to_consider, List<Entity> top_order, Set<Entity> seen)
-  {
-    // End condition
-    if (to_consider.isEmpty)
-      top_order
-    else
-    {
-      // Recursive
-      val e = to_consider.head
-      val to_consider_ = to_consider.tail.toSet
-
-      // Add current node (no dependencies to cover)
-      top_order.add(e)
-      seen.add(e)
-
-      val dependent = inverseEntityDeps.get(e)
-      to_consider_.addAll(
-        dependent.filter[ d | seen.containsAll(entityDeps.get(d))
-      ])
-
-      depListRec(to_consider_, top_order, seen)
-    }
-  }
-
-  /**
-   * Method used to write a generated CharSequence to a file
-   */
-  public def static void writeToFile(String filename, CharSequence toWrite)
-  {
-    val outFile = outputDir.toPath().resolve(filename).toFile()
-    val outFileWriter = new PrintStream(outFile)
-    outFileWriter.print(toWrite)
-    outFileWriter.close()
-  }
 }
