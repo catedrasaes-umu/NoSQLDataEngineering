@@ -13,17 +13,27 @@ import java.util.Comparator
 import es.um.nosql.schemainference.NoSQLSchema.Attribute
 import es.um.nosql.schemainference.NoSQLSchema.Reference
 import es.um.nosql.schemainference.NoSQLSchema.Tuple
-import java.util.regex.Pattern
 import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType
 import es.um.nosql.schemainference.NoSQLSchema.Property
 import java.util.ArrayList
 import es.um.nosql.schemainference.m2t.commons.Commons
 import es.um.nosql.schemainference.m2t.commons.DependencyAnalyzer
 
+/**
+ * Class designed to perform the Morphia code generation: Java
+ */
 class DiffToMorphia
 {
+  /**
+   * The name of the model, directly extracted from the EntityDifferentiation object.
+   */
   var modelName = "";
+
+  /**
+   * This route stores the import routes between objects.
+   */
   var importRoute = "";
+
   static File outputDir;
 
   DependencyAnalyzer analyzer;
@@ -40,7 +50,7 @@ class DiffToMorphia
   }
 
   /**
-   * Method used to start the generation process from an EntityDifferentiation object
+   * Method used to start the generation process from an EntityDifferentiation object.
    */
   def void m2t(EntityDifferentiation diff, File outputFolder)
   {
@@ -90,6 +100,9 @@ class DiffToMorphia
     }
   '''
 
+  /**
+   * To generate imports, we just check the conditions in which these imports will be used.
+   */
   // Actually, Commons should not be imported if there is a Union which is reduced on a single element.
   // Doesnt seem easy to bypass these cases at this point, since unions are analyzed later on.
   def genIncludes(Entity entity)
@@ -106,7 +119,7 @@ class DiffToMorphia
     «ENDIF»
     «IF (entity.entityversions.exists[ev | !ev.isRoot || ev.properties.exists[p | p instanceof Aggregate]])»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
     «IF (entity.entityversions.exists[ev | !ev.properties.empty])»import org.mongodb.morphia.annotations.Property;«ENDIF»
-    «IF (entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Reference && expandRef(p as Reference).length == 2]])»import org.mongodb.morphia.annotations.Reference;«ENDIF»
+    «IF (entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Reference && Commons.EXPAND_REF(p as Reference).length == 2]])»import org.mongodb.morphia.annotations.Reference;«ENDIF»
     import javax.validation.constraints.NotNull;
 
     «FOR Entity e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
@@ -114,11 +127,21 @@ class DiffToMorphia
     «ENDFOR»
   '''
 
+  /**
+   * For each property of any version of an entity, generate code.
+   * Two methods are called depending on if there is a need for the type check.
+   * s.key stores a PropertySpec
+   * s.value stores "required" or not
+   */
   def genSpecs(Entity e, EntityDiffSpec spec)
   '''
-  «FOR s : spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false] SEPARATOR '\n'»
-    «genPropSpec(e, s.key, s.value)»
-  «ENDFOR»
+    «FOR s : spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false] SEPARATOR '\n'»
+      «IF s.key.needsTypeCheck»
+        «genCodeForTypeCheckProperty(e, s.key.property, s.value)»
+      «ELSE»
+        «genCodeForProperty(s.key.property, s.value)»
+      «ENDIF»
+    «ENDFOR»
   '''
 
   def specificProps(EntityDiffSpec spec)
@@ -131,14 +154,12 @@ class DiffToMorphia
       ])
   }
 
-  def genPropSpec(Entity e, PropertySpec ps, boolean required)
-  {
-    if (ps.needsTypeCheck)
-      genCodeForTypeCheckProperty(e, ps.property, required)
-    else
-      genCodeForProperty(ps.property, required);
-  }
-
+  /**
+   * Method used to try to reduce a Property Union to a single property.
+   * This is sometimes possible, for example when a Union is composed of a Reference String[] and a Tuple String[].
+   * If the reduction is possible, we generate the property as any other.
+   * If not, a Union is generated.
+   */
   def genCodeForTypeCheckProperty(Entity e, Property property, boolean required)
   {
     val typeList = analyzer.getTypeListByPropertyName().get(e).get(property.name)
@@ -197,7 +218,13 @@ class DiffToMorphia
       typeShortcutList.add(name);
     }
   }
+  /** End of the Union reduction process */
 
+  /**
+   * Method used to generate Union code. In Java this is performed by creating an Object attribute
+   * and some restrictions when setting that attribute.
+   * It is also neccesary to create a @Preload method in order to identify the Union during the loading process.
+   */
   def String genUnion(Iterable<Property> list, boolean required)
   {
     val theTypes = list.map[p | genTypeForProperty(p)];
@@ -246,7 +273,7 @@ class DiffToMorphia
   {
     val typeRef = genTypeForProperty(ref);
     '''
-    «IF expandRef(ref).length == 2»
+    «IF Commons.EXPAND_REF(ref).length == 2»
       if (fieldObj instanceof DBObject && ((DBObject)fieldObj).get("$ref").equals("«ref.refTo.name»"))
         this.«ref.name» = ((DBObject)fieldObj).get("$id");
     «ELSE»
@@ -262,6 +289,10 @@ class DiffToMorphia
       this.«attr.name» = («genAttributeType(attr.type)»)fieldObj;
   '''
 
+  /**
+   * Generate code method for Aggregation
+   * It generates a private attribute, and Get/Set methods.
+   */
   def dispatch genCodeForProperty(Aggregate aggr, boolean required)
   '''
     @Embedded
@@ -271,6 +302,9 @@ class DiffToMorphia
     public void set«aggr.name.toFirstUpper»(«genTypeForProperty(aggr)» «aggr.name») {this.«aggr.name» = «aggr.name»;}
   '''
 
+  /**
+   * Shortcut method to generate an Aggregate type.
+   */
   def dispatch genTypeForProperty(Aggregate aggr)
   {
     var entityName = (aggr.refTo.get(0).eContainer as Entity).name;
@@ -280,18 +314,25 @@ class DiffToMorphia
     entityName;
   }
 
+  /**
+   * Generate code method for Reference
+   * It generates a private attribute, and Get/Set methods.
+   */
   def dispatch genCodeForProperty(Reference ref, boolean required)
   '''
-    «IF expandRef(ref).length == 2»@Reference«ELSE»@Property«ENDIF»
+    «IF Commons.EXPAND_REF(ref).length == 2»@Reference«ELSE»@Property«ENDIF»
     «IF required»@NotNull(message = "«ref.name» can't be null")«ENDIF»
     private «genTypeForProperty(ref)» «ref.name»;
     public «genTypeForProperty(ref)» get«ref.name.toFirstUpper»() {return this.«ref.name»;}
     public void set«ref.name.toFirstUpper»(«genTypeForProperty(ref)» «ref.name») {this.«ref.name» = «ref.name»;}
   '''
 
+  /**
+   * Shortcut method to generate a Reference type.
+   */
   def dispatch genTypeForProperty(Reference ref)
   {
-    val refComps = expandRef(ref);
+    val refComps = Commons.EXPAND_REF(ref);
     var returnValue = "";
 
     // References as DBRef as stored as @Reference private ObjectReferences([])?
@@ -319,16 +360,10 @@ class DiffToMorphia
     returnValue;
   }
 
-  def expandRef(Reference reference) 
-  {
-    val pat = Pattern.compile("DBRef\\((.+?)\\)")
-    val m = pat.matcher(reference.originalType)
-    if (m.matches)
-      #["dbref", m.group(0)]
-    else
-      #[reference.originalType]
-  }
-
+  /**
+   * Generate code method for Attribute
+   * It generates a private attribute, and Get/Set methods.
+   */
   def dispatch genCodeForProperty(Attribute a, boolean required)
   '''
     @Property
@@ -338,16 +373,25 @@ class DiffToMorphia
     public void set«a.name.toFirstUpper»(«genTypeForProperty(a)» «a.name») {this.«a.name» = «a.name»;}
   '''
 
+  /**
+   * Shortcut method to generate an Attribute type.
+   */
   def dispatch genTypeForProperty(Attribute a)
   {
     genAttributeType(a.type)
   }
 
+  /**
+   * Shortcut method to generate a PrimitiveType type.
+   */
   def dispatch CharSequence genAttributeType(PrimitiveType type)
   {
     genAttributeType(type.name)
   }
 
+  /**
+   * Shortcut method to generate a Tuple type.
+   */
   def dispatch CharSequence genAttributeType(Tuple tuple)
   {
     if (tuple.elements.size == 1)
@@ -362,16 +406,11 @@ class DiffToMorphia
     switch typeName : type.toLowerCase
     {
       case "string" : "String"
-      case typeName.isInt : "Integer"
-      case typeName.isFloat :  "Float"
-      case typeName.isBoolean : "Boolean"
-      case typeName.isObjectId : "ObjectId"
+      case Commons.IS_INT(typeName) : "Integer"
+      case Commons.IS_FLOAT(typeName) :  "Float"
+      case Commons.IS_BOOLEAN(typeName) : "Boolean"
+      case Commons.IS_OBJECTID(typeName) : "ObjectId"
       default: ""
     }
   }
-
-  private def isInt(String type) { #["int", "integer", "number"].contains(type)}
-  private def isFloat(String type) { #["float", "double"].contains(type)}
-  private def isBoolean(String type) { #["boolean", "bool"].contains(type)}
-  private def isObjectId(String type) { #["objectid"].contains(type)}
 }

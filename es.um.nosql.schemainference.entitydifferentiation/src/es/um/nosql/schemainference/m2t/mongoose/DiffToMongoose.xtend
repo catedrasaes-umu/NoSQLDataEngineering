@@ -11,8 +11,6 @@ import es.um.nosql.schemainference.NoSQLSchema.Tuple
 import es.um.nosql.schemainference.NoSQLSchema.Reference
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate
 import es.um.nosql.schemainference.NoSQLSchema.Entity
-import java.util.Set
-import java.util.regex.Pattern
 import java.util.Map
 import java.util.Comparator
 import es.um.nosql.schemainference.NoSQLSchema.Property
@@ -20,9 +18,12 @@ import es.um.nosql.schemainference.util.emf.ModelLoader
 import es.um.nosql.schemainference.entitydifferentiation.EntitydifferentiationPackage
 import es.um.nosql.schemainference.NoSQLSchema.Association
 import java.util.ArrayList
-import java.io.PrintStream
 import es.um.nosql.schemainference.m2t.commons.Commons
+import es.um.nosql.schemainference.m2t.commons.DependencyAnalyzer
 
+/**
+ * Class designed to perform the Mongoose code generation: Javascript
+ */
 public class DiffToMongoose
 {
   static class Label
@@ -32,20 +33,24 @@ public class DiffToMongoose
     override toString() {label}
   }
 
+  /**
+   * This class is a shortcut to map empty arrays to undefined.
+   * Mongoose stores empty arrays to the database, and sometimes
+   * we just don't want that, in case the attribute was optional.
+   */
   static class LambdaNullFunction
   {
     override toString() {"() => undefined"}
   }
 
+  /**
+   * The name of the model, directly extracted from the EntityDifferentiation object.
+   */
   var modelName = "";
-  static File outputDir
 
-  // List of dependencies
-  List<Entity> topOrderEntities
-  Map<Entity, Set<Entity>> entityDeps
-  Map<Entity, Set<Entity>> inverseEntityDeps
-  Map<Entity, EntityDiffSpec> diffByEntity
-  Map<Entity, Map<String, List<PropertySpec>>> typeListByPropertyName
+  static File outputDir;
+
+  DependencyAnalyzer analyzer;
 
   /**
    * Method used to start the generation process from a diff model file
@@ -70,46 +75,38 @@ public class DiffToMongoose
 
     modelName = diff.name;
 
-    diffByEntity = newHashMap(diff.entityDiffSpecs.map[ed | ed.entity -> ed])
-    val entities = diff.entityDiffSpecs.map[entity]
-
     // Calc dependencies between entities
-    topOrderEntities = calculateDeps(entities)
-
-    typeListByPropertyName = calcTypeListMatrix(entities)
-    topOrderEntities.forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
+    analyzer = new DependencyAnalyzer();
+    analyzer.performAnalysis(diff);
+    analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
   }
 
-  // Fill, for each property of each entity that appear in more than one entity version *with different type* (those that hold the needsTypeCheck
-  // boolean attribute), the list of types, to check possible type folding in a latter pass
-  def calcTypeListMatrix(List<Entity> entities)
-  {
-    entities.toInvertedMap[e |
-      diffByEntity.get(e).entityVersionProps
-        .map[propertySpecs]
-        .flatten
-        .filter[needsTypeCheck].groupBy[property.name]
-    ]
-  }
-
+  /**
+   * This method generates the basic structure of the Javascript class.
+   */
   def genSchema(Entity e) '''
     'use strict'
 
     var mongoose = require('mongoose');
-    «genIncludes(e, diffByEntity.get(e))»
+    «genIncludes(e, analyzer.getDiffByEntity().get(e))»
 
     var «e.name»Schema = new mongoose.Schema({
-      «genSpecs(e, diffByEntity.get(e))»
+      «genSpecs(e, analyzer.getDiffByEntity().get(e))»
     }«genCollectionName(e)»);
 
     module.exports = mongoose.model('«e.name»', «e.name»Schema);
   '''
 
+  /**
+   * To generate imports, we just recreate the routes of the imports to be used.
+   */
   def genIncludes(Entity entity, EntityDiffSpec spec) '''
-    «FOR e : entityDeps.get(entity).sortWith(Comparator.comparing[e | topOrderEntities.indexOf(e)])»
+    «FOR e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
       var «e.name»Schema = require('./«schemaFileName(e)»');
     «ENDFOR»
-    «IF spec.commonProps.exists[cp | cp.needsTypeCheck] || spec.entityVersionProps.exists[ev | ev.propertySpecs.exists[ps | ps.needsTypeCheck]]»var UnionType = require('./util/UnionType.js');«ENDIF»
+    «IF spec.commonProps.exists[cp | cp.needsTypeCheck] || spec.entityVersionProps.exists[ev | ev.propertySpecs.exists[ps | ps.needsTypeCheck]]»
+      var UnionType = require('./util/UnionType.js');
+    «ENDIF»
   '''
 
   def schemaFileName(Entity e)
@@ -117,13 +114,27 @@ public class DiffToMongoose
     e.name + "Schema.js"
   }
 
-  def genCollectionName(Entity e) '''
-    «IF (e.entityversions.exists[ev | ev.isRoot])», {collection: '«e.name»'}«ENDIF»'''
+  /**
+   * This method is a shortcut to generate the collection name, since this attribute is
+   * neccesary for the root Entities to be stored on the correct collection.
+   */
+  def genCollectionName(Entity e)
+  '''
+    «IF (e.entityversions.exists[ev | ev.isRoot])»
+      , {collection: '«e.name»'}
+    «ENDIF»
+  '''
 
-  def genSpecs(Entity e, EntityDiffSpec spec) '''
-  «FOR s : spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false] SEPARATOR ','»
-  «s.key.property.name»: «toJSONString(mongooseOptionsForPropertySpec(e,s.key, s.value))»
-  «ENDFOR»
+  /**
+   * For each property of any version of an entity, generate code.
+   * s.key stores a PropertySpec
+   * s.value stores "required" or not
+   */
+  def genSpecs(Entity e, EntityDiffSpec spec)
+  '''
+    «FOR s : spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false] SEPARATOR ','»
+      «s.key.property.name»: «toJSONString(mongooseOptionsForPropertySpec(e,s.key, s.value))»
+    «ENDFOR»
   '''
 
   def specificProps(EntityDiffSpec spec)
@@ -140,7 +151,7 @@ public class DiffToMongoose
   {
     val props = <String,Object>newHashMap()
 
-    props.putAll(genTypeForPropertySpec(e, spec))
+    props.putAll(genPropSpec(e, spec))
 
     // Careful with this....see Test1.java
     if (required && (!spec.property.name.equals("type") && (!(spec.property instanceof Association) || (spec.property as Association).lowerBound != 0)))
@@ -154,16 +165,6 @@ public class DiffToMongoose
     props
   }
 
-  // Maybe simplify output when the map has only one element (the type)
-  def toJSONMaybeSimplified(Map<String, Object> m)
-  {
-    val keySet = m.keySet;
-    if (keySet.length == 1 && keySet.get(0).equals("type"))
-      toJSONString(m.values.get(0))
-    else
-      '''{«FOR k : keySet SEPARATOR ', '»«k»: «toJSONString(m.get(k))»«ENDFOR»}'''
-  }
-
   def CharSequence toJSONString(Object o)
   {
     switch o
@@ -174,26 +175,46 @@ public class DiffToMongoose
     }
   }
 
+  // Maybe simplify output when the map has only one element (the type)
+  def toJSONMaybeSimplified(Map<String, Object> m)
+  {
+    val keySet = m.keySet;
+    if (keySet.length == 1 && keySet.get(0).equals("type"))
+      toJSONString(m.values.get(0))
+    else
+      '''{«FOR k : keySet SEPARATOR ', '»«k»: «toJSONString(m.get(k))»«ENDFOR»}'''
+  }
+
   private def stringify(String string)
-    '''"«string.replace("\"", "\\\"")»"'''
+  '''
+    "«string.replace("\"", "\\\"")»"
+  '''
 
   private def label(String s)
   {
     new Label(s)
   }
 
-  def genTypeForPropertySpec(Entity e, PropertySpec ps)
+  /**
+   * Method used to check if a property needs type check, and call the neccesary method.
+   */
+  def genPropSpec(Entity e, PropertySpec ps)
   {
     if (ps.needsTypeCheck)
-      genTypeForTypeCheckProperty(e, ps.property)
+      genCodeForTypeCheckProperty(e, ps.property)
     else
-      genTypeForProperty(ps.property)
+      genCodeForProperty(ps.property)
   }
 
-  // As it is a type check property, it occurs in the 
-  def genTypeForTypeCheckProperty(Entity e, Property property)
+  /**
+   * Method used to try to reduce a Property Union to a single property.
+   * This is sometimes possible, for example when a Union is composed of a Reference [String] and a Tuple [String].
+   * If the reduction is possible, we generate the property as any other.
+   * If not, a Union is generated.
+   */
+  def genCodeForTypeCheckProperty(Entity e, Property property)
   {
-    val typeList = typeListByPropertyName.get(e).get(property.name)
+    val typeList = analyzer.getTypeListByPropertyName().get(e).get(property.name)
     // On uniqueTypeList we removed duplicated property types, such as a String PrimitiveType and a Reference w originalType String.
     val uniqueTypeList = new ArrayList<Property>();
     // Just a shortcut list so we don't have to access every time to the type field of a property (and all its casts...)
@@ -206,7 +227,7 @@ public class DiffToMongoose
     // We reduced the union to a single type!
     if (uniqueTypeList.size == 1)
     {
-      genTypeForProperty(uniqueTypeList.head);
+      genCodeForProperty(uniqueTypeList.head);
     }
     else
     {
@@ -249,20 +270,37 @@ public class DiffToMongoose
       typeShortcutList.add(name);
     }
   }
+  /** End of the Union reduction process */
 
+  /**
+   * Method used to generate Union code. In Javascript this is performed by creating a new Union object
+   * using a function generated in the Mongoose.Commons part.
+   * The attribute type will look like "U_Type1_Type2...TypeN"
+   */
   def String genUnion(Iterable<Property> list)
   {
     // Concatenate each type of the union removing the Schema.schema from the name if neccesary
-    val unionName = "U_" + list.map[p | genTypeForProperty(p).values.get(0)]
+    val unionName = "U_" + list.map[p | genCodeForProperty(p).values.get(0)]
                                 .map[o | if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema")) else o]
                                 .join('_');
 
     // Now, for the Union itself, concatenate each type of the union but with quotation marks and a different join character.
-    '''UnionType("«unionName»", «list.map[p | genTypeForProperty(p).values.get(0)]
+    '''UnionType("«unionName»", «list.map[p | genCodeForProperty(p).values.get(0)]
                                       .map[o | "\"" + (if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema")) else o) + "\""]
                                       .join(', ')»)'''
   }
 
+  /**
+   * Generate code attribute for Aggregation
+   */
+  def dispatch genCodeForProperty(Aggregate agg) 
+  {
+    #{ 'type' -> aggregateType(agg) }
+  }
+
+  /**
+   * Shortcut method to generate an Aggregate type.
+   */
   def aggregateType(Aggregate agg)
   {
     val entityName = (agg.refTo.get(0).eContainer as Entity).name
@@ -275,19 +313,12 @@ public class DiffToMongoose
       '''[«entityName»Schema.schema]'''
   }
 
-  def dispatch genTypeForProperty(Aggregate agg) 
+  /**
+   * Generate code attribute for Reference
+   */
+  def dispatch genCodeForProperty(Reference ref)
   {
-    #{ 'type' -> aggregateType(agg) }
-  }
-
-  def dispatch genTypeForProperty(Attribute att) 
-  {
-    genAttributeType(att.type)
-  }
-
-  def dispatch genTypeForProperty(Reference ref)
-  {
-    val refComps = expandRef(ref)
+    val refComps = Commons.EXPAND_REF(ref)
 
     // DBRef
     if (refComps.length == 2)
@@ -298,6 +329,9 @@ public class DiffToMongoose
       #{ 'type' -> referenceType(ref)}
   }
 
+  /**
+   * Shortcut method to generate a Reference type.
+   */
   def referenceType(Reference reference)
   {
     // If originalType is empty, suppose String
@@ -317,21 +351,41 @@ public class DiffToMongoose
       '''[«genTypeForPrimitiveString(theType)»]'''
   }
 
-  def expandRef(Reference reference) 
+  /**
+   * Generate code attribute for Attribute
+   */
+  def dispatch genCodeForProperty(Attribute att) 
   {
-    val pat = Pattern.compile("DBRef\\((.+?)\\)")
-    val m = pat.matcher(reference.originalType)
-    if (m.matches)
-      #["dbref", m.group(0)]
-    else
-      #[reference.originalType]
+    genAttributeType(att.type)
   }
 
+  /**
+   * Generate code attribute for a Tuple Attribute
+   */
   def dispatch genAttributeType(Tuple type)
   {
     #{'type' -> genType(type)}
   }
 
+  /**
+   * Generate code attribute for PrimitiveType Attribute
+   */
+  def dispatch genAttributeType(PrimitiveType type)
+  {
+    #{'type' -> genTypeForPrimitiveString(type.name)}
+  }
+
+  /**
+   * Shortcut method to generate a Primitive type.
+   */
+  def dispatch genType(PrimitiveType type)
+  {
+    genTypeForPrimitiveString(type.name)
+  }
+
+  /**
+   * Shortcut method to generate a Tuple type.
+   */
   def dispatch Object genType(Tuple tuple)
   {
     if (tuple.elements.size == 1)
@@ -341,16 +395,6 @@ public class DiffToMongoose
       '''[Mixed]'''
   }
 
-  def dispatch genType(PrimitiveType type)
-  {
-    genTypeForPrimitiveString(type.name)
-  }
-
-  def dispatch genAttributeType(PrimitiveType type)
-  {
-    #{'type' -> genTypeForPrimitiveString(type.name)}
-  }
-
   def genTypeForPrimitiveString(String type)
   {
     label
@@ -358,75 +402,12 @@ public class DiffToMongoose
       switch typeName : type.toLowerCase
       {
         case "string" : "String"
-        case typeName.isInt : "Number"
-        case typeName.isFloat :  "Number"
-        case typeName.isBoolean : "Boolean"
-        case typeName.isObjectId : "ObjectId"
+        case Commons.IS_INT(typeName) : "Number"
+        case Commons.IS_FLOAT(typeName) :  "Number"
+        case Commons.IS_BOOLEAN(typeName) : "Boolean"
+        case Commons.IS_OBJECTID(typeName) : "ObjectId"
         default: ""
       }
     )
-  }
-
-  private def isInt(String type) { #["int", "integer", "number"].contains(type)}
-  private def isFloat(String type) { #["float", "double"].contains(type)}
-  private def isBoolean(String type) { #["boolean", "bool"].contains(type)}
-  private def isObjectId(String type) { #["objectid"].contains(type)}
-
-  /**
-   * Method used to calculate the dependencies between entities, and reorder them in the correct order
-   */
-  private def calculateDeps(List<Entity> entities) 
-  { 
-    entityDeps = newHashMap(entities.map[e | e -> getDepsFor(e)])
-    inverseEntityDeps = newHashMap(entities.map[e | 
-      e -> entities.filter[e2 | entityDeps.get(e2).contains(e)].toSet
-    ])
-
-    // Implement a topological order, Khan's algorithm
-    // https://en.wikipedia.org/wiki/Topological_sorting#Kahn.27s_algorithm
-    topologicalOrder()
-  }
-
-  // Get the first level of dependencies for an Entity
-  private def getDepsFor(Entity entity)
-  {
-    entity.entityversions.map[ev | 
-      ev.properties.filter[p | p instanceof Aggregate]
-      .map[p | (p as Aggregate).refTo.map[ev2 | ev2.eContainer as Entity]]
-      .flatten
-    ].flatten.toSet
-  }
-
-  private def List<Entity> topologicalOrder()
-  {
-    depListRec(
-      entityDeps.filter[k, v| v.empty].keySet,
-      newLinkedList(),
-      newHashSet()
-    )
-  }
-
-  private def List<Entity> depListRec(Set<Entity> to_consider, List<Entity> top_order, Set<Entity> seen)
-  {
-    // End condition
-    if (to_consider.isEmpty)
-      top_order
-    else
-    {
-      // Recursive
-      val e = to_consider.head
-      val to_consider_ = to_consider.tail.toSet
-
-      // Add current node (no dependencies to cover)
-      top_order.add(e)
-      seen.add(e)
-
-      val dependent = inverseEntityDeps.get(e)
-      to_consider_.addAll(
-        dependent.filter[ d | seen.containsAll(entityDeps.get(d))
-      ])
-
-      depListRec(to_consider_, top_order, seen)
-    }
   }
 }

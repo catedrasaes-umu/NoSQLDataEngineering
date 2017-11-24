@@ -8,6 +8,7 @@ var MovietheaterSchema = new mongoose.Schema({
   city: {type: String, required: true},
   country: {type: String, required: true},
   noOfRooms: Number
-}, {collection: 'Movietheater'});
+}, {collection: 'Movietheater'}
+);
 
 module.exports = mongoose.model('Movietheater', MovietheaterSchema);

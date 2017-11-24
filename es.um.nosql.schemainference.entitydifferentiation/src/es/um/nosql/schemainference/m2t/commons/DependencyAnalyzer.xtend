@@ -9,6 +9,11 @@ import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation
 
+/**
+ * This class is designed to analyze the EntityDifferentiation model and
+ * fill some collections useful for the generation process, such as dependencies
+ * between entities or union attributes.
+ */
 class DependencyAnalyzer
 {
   List<Entity> topOrderEntities
