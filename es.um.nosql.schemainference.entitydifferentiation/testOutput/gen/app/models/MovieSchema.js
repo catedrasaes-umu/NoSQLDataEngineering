@@ -1,8 +1,8 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var PrizeSchema = require('./PrizeSchema.js');
 var RatingSchema = require('./RatingSchema.js');
+var PrizeSchema = require('./PrizeSchema.js');
 var CriticismSchema = require('./CriticismSchema.js');
 var UnionType = require('./util/UnionType.js');
 
@@ -11,13 +11,13 @@ var MovieSchema = new mongoose.Schema({
   title: {type: String, required: true},
   year: {type: Number, required: true},
   type: String,
-  writers: {type: [String], default: () => undefined},
   genres: {type: [String], default: () => undefined},
+  writers: {type: [String], default: () => undefined},
   running_time: Number,
+  prizes: {type: [PrizeSchema.schema], default: () => undefined},
+  rating: [RatingSchema.schema],
   genre: String,
-  rating: RatingSchema.schema,
-  criticisms: {type: [CriticismSchema.schema], default: () => undefined},
-  prizes: {type: [PrizeSchema.schema], default: () => undefined}
+  criticisms: {type: [CriticismSchema.schema], default: () => undefined}
 }, {collection: 'Movie'}
 );
 

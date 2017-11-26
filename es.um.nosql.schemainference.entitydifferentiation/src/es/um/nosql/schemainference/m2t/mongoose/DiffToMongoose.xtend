@@ -153,7 +153,10 @@ public class DiffToMongoose
 
     props.putAll(genPropSpec(e, spec))
 
-    // Careful with this....see Test1.java
+    // A type should never be a 'required' property. Since we are working w mongoDB, objects won't usually have a type, because its type is the collection name.
+    // Also: The 'required' clause on mongoose requires a field to exist and also, if it is an array, to NOT be empty
+    // This may cause problems when an association has a lowerBound = 0. To shortcut this, for the moment we wont add the required option to a field
+    // if it is an association w lowerBound == 0. Proof: https://stackoverflow.com/questions/27268172/mongoose-schema-to-require-array-that-can-be-empty
     if (required && (!spec.property.name.equals("type") && (!(spec.property instanceof Association) || (spec.property as Association).lowerBound != 0)))
       props.put('required', true)
     else if ((spec.property instanceof Attribute && (spec.property as Attribute).type instanceof Tuple) ||
@@ -293,20 +296,20 @@ public class DiffToMongoose
   /**
    * Generate code attribute for Aggregation
    */
-  def dispatch genCodeForProperty(Aggregate agg) 
+  def dispatch genCodeForProperty(Aggregate aggr) 
   {
-    #{ 'type' -> aggregateType(agg) }
+    #{ 'type' -> aggregateType(aggr) }
   }
 
   /**
    * Shortcut method to generate an Aggregate type.
    */
-  def aggregateType(Aggregate agg)
+  def aggregateType(Aggregate aggr)
   {
-    val entityName = (agg.refTo.get(0).eContainer as Entity).name
+    val entityName = (aggr.refTo.get(0).eContainer as Entity).name
 
     // Lower bound might be 0 or 1. In any of those cases we only need a value, not an array
-    if (agg.upperBound == 1)
+    if (aggr.upperBound == 1 && aggr.lowerBound == 1)
       '''«entityName»Schema.schema'''
     else
     // Upper bound might be 2, 3, 4...-1. We need an array.
@@ -332,20 +335,20 @@ public class DiffToMongoose
   /**
    * Shortcut method to generate a Reference type.
    */
-  def referenceType(Reference reference)
+  def referenceType(Reference ref)
   {
     // If originalType is empty, suppose String
     var theType = "";
-    if (reference.originalType === null || reference.originalType.empty)
+    if (ref.originalType === null || ref.originalType.empty)
     {
       theType = "String";
     }
     else
     {
-      theType = reference.originalType;
+      theType = ref.originalType;
     }
 
-    if (reference.upperBound == 1)
+    if (ref.upperBound == 1 && ref.lowerBound == 1)
       '''«genTypeForPrimitiveString(theType)»'''
     else
       '''[«genTypeForPrimitiveString(theType)»]'''

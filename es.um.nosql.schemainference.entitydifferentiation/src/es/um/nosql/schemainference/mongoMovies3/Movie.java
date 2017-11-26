@@ -10,8 +10,8 @@ import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
 
-import es.um.nosql.schemainference.mongoMovies3.Prize;
 import es.um.nosql.schemainference.mongoMovies3.Rating;
+import es.um.nosql.schemainference.mongoMovies3.Prize;
 import es.um.nosql.schemainference.mongoMovies3.Criticism;
 
 @Entity(noClassnameStored = true)
@@ -51,19 +51,14 @@ public class Movie
   public void setGenre(String genre) {this.genre = genre;}
   
   @Property
-  private String[] writers;
-  public String[] getWriters() {return this.writers;}
-  public void setWriters(String[] writers) {this.writers = writers;}
-  
-  @Embedded
-  private Rating rating;
-  public Rating getRating() {return this.rating;}
-  public void setRating(Rating rating) {this.rating = rating;}
-  
-  @Property
   private String[] genres;
   public String[] getGenres() {return this.genres;}
   public void setGenres(String[] genres) {this.genres = genres;}
+  
+  @Property
+  private String[] writers;
+  public String[] getWriters() {return this.writers;}
+  public void setWriters(String[] writers) {this.writers = writers;}
   
   @Property
   private Integer running_time;
@@ -71,12 +66,17 @@ public class Movie
   public void setRunning_time(Integer running_time) {this.running_time = running_time;}
   
   @Embedded
+  private Criticism[] criticisms;
+  public Criticism[] getCriticisms() {return this.criticisms;}
+  public void setCriticisms(Criticism[] criticisms) {this.criticisms = criticisms;}
+  
+  @Embedded
   private Prize[] prizes;
   public Prize[] getPrizes() {return this.prizes;}
   public void setPrizes(Prize[] prizes) {this.prizes = prizes;}
   
   @Embedded
-  private Criticism[] criticisms;
-  public Criticism[] getCriticisms() {return this.criticisms;}
-  public void setCriticisms(Criticism[] criticisms) {this.criticisms = criticisms;}
+  private Rating[] rating;
+  public Rating[] getRating() {return this.rating;}
+  public void setRating(Rating[] rating) {this.rating = rating;}
 }

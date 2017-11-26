@@ -40,6 +40,10 @@ public class NoSQLSchemaToEntityDiff
 
   public NoSQLSchemaToEntityDiff()
   {
+    // Sometimes a property seems like not required, but actually it is.
+    // This might happen if 50% of the objects have a String field, and the other 50% have it as a Number
+    // Then there should be a needsTypeCheck Union of some kind..too complex for now.
+    // Maybe it is worth trying to use another hashing strategy
     propertyHashing = new PropertyHashingStrategy();
   }
 

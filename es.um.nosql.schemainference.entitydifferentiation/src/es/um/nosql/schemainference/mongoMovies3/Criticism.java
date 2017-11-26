@@ -24,20 +24,20 @@ public class Criticism
   public String getJournalist() {return this.journalist;}
   public void setJournalist(String journalist) {this.journalist = journalist;}
   
-  // @Union_Medium_String
+  // @Union_Medium[]_String
   @Embedded
   private Object media;
   public Object getMedia() {return this.media;}
   public void setMedia(Object media)
   {
-    if (media instanceof Medium || media instanceof String)
+    if (media instanceof Medium[] || media instanceof String)
       this.media = media;
     else
-      throw new ClassCastException("media must be of type Medium or String");
+      throw new ClassCastException("media must be of type Medium[] or String");
   }
   
   @PreLoad
-  private void processUnion_Medium_String(DBObject dbObj)
+  private void processUnion_Medium[]_String(DBObject dbObj)
   {
     if (!dbObj.containsField("media"))
       return;

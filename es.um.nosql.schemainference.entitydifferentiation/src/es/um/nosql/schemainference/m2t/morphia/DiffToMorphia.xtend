@@ -308,7 +308,7 @@ class DiffToMorphia
   def dispatch genTypeForProperty(Aggregate aggr)
   {
     var entityName = (aggr.refTo.get(0).eContainer as Entity).name;
-    if (aggr.upperBound !== 1)
+    if (aggr.lowerBound !== 1 || aggr.upperBound !== 1)
       entityName = entityName + "[]";
 
     entityName;
@@ -354,7 +354,7 @@ class DiffToMorphia
       returnValue = genAttributeType(returnValue).toString;
     }
 
-    if (ref.upperBound !== 1)
+    if (ref.lowerBound !== 1 || ref.upperBound !== 1)
       returnValue = returnValue + "[]";
 
     returnValue;
