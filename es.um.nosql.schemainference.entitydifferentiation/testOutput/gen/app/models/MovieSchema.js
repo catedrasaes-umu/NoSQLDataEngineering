@@ -15,7 +15,7 @@ var MovieSchema = new mongoose.Schema({
   writers: {type: [String], default: () => undefined},
   running_time: Number,
   prizes: {type: [PrizeSchema.schema], default: () => undefined},
-  rating: [RatingSchema.schema],
+  rating: {type: [RatingSchema.schema], default: () => undefined},
   genre: String,
   criticisms: {type: [CriticismSchema.schema], default: () => undefined}
 }, {collection: 'Movie'}

@@ -245,7 +245,7 @@ class DiffToMorphia
   }
 
   @PreLoad
-  private void processUnion_«theTypes.join('_')»(DBObject dbObj)
+  private void processUnion_«theTypes.join('_').replace("[]", "")»(DBObject dbObj)
   {
     «IF !required»
     if (!dbObj.containsField("«theName»"))

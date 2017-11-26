@@ -7,7 +7,7 @@ var UnionType = require('./util/UnionType.js');
 var CriticismSchema = new mongoose.Schema({
   color: {type: String, required: true},
   journalist: {type: String, required: true},
-  media: UnionType("U_[MediumSchema.schema]_String", "[MediumSchema.schema]", "String")
+  media: {type: UnionType("U_[MediumSchema.schema]_String", "[MediumSchema.schema]", "String"), default: () => undefined}
 });
 
 module.exports = mongoose.model('Criticism', CriticismSchema);

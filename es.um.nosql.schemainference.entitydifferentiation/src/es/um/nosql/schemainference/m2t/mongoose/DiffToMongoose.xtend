@@ -160,7 +160,7 @@ public class DiffToMongoose
     if (required && (!spec.property.name.equals("type") && (!(spec.property instanceof Association) || (spec.property as Association).lowerBound != 0)))
       props.put('required', true)
     else if ((spec.property instanceof Attribute && (spec.property as Attribute).type instanceof Tuple) ||
-      (spec.property instanceof Association && (spec.property as Association).upperBound !== 1))
+      (spec.property instanceof Association && ((spec.property as Association).upperBound !== 1 || (spec.property as Association).lowerBound !== 1)))
       props.put('default', new LambdaNullFunction())
     // This last condition is used because empty optional arrays are stored in Mongoose. This shouldn't be a thing.
     // If the user doesnt want to store an optional array field, that field wont appear on the object.

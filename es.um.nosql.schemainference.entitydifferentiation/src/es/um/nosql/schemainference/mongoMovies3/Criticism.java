@@ -37,7 +37,7 @@ public class Criticism
   }
   
   @PreLoad
-  private void processUnion_Medium[]_String(DBObject dbObj)
+  private void processUnion_Medium_String(DBObject dbObj)
   {
     if (!dbObj.containsField("media"))
       return;
