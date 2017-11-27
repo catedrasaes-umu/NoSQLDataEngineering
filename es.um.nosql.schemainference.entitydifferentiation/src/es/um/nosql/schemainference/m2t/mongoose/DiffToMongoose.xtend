@@ -40,7 +40,7 @@ public class DiffToMongoose
    */
   static class LambdaNullFunction
   {
-    override toString() {"() => undefined"}
+    override toString() {"undefined"}
   }
 
   /**
@@ -91,8 +91,11 @@ public class DiffToMongoose
     «genIncludes(e, analyzer.getDiffByEntity().get(e))»
 
     var «e.name»Schema = new mongoose.Schema({
+      «IF (e.entityversions.exists[ev | ev.isRoot])»
+        _id: mongoose.Schema.Types.ObjectId,
+      «ENDIF»
       «genSpecs(e, analyzer.getDiffByEntity().get(e))»
-    }«genCollectionName(e)»);
+    }, { versionKey: false, «IF (e.entityversions.exists[ev | ev.isRoot])»collection: '«e.name»'«ELSE»_id : false«ENDIF»});
 
     module.exports = mongoose.model('«e.name»', «e.name»Schema);
   '''
@@ -113,17 +116,6 @@ public class DiffToMongoose
   {
     e.name + "Schema.js"
   }
-
-  /**
-   * This method is a shortcut to generate the collection name, since this attribute is
-   * neccesary for the root Entities to be stored on the correct collection.
-   */
-  def genCollectionName(Entity e)
-  '''
-    «IF (e.entityversions.exists[ev | ev.isRoot])»
-      , {collection: '«e.name»'}
-    «ENDIF»
-  '''
 
   /**
    * For each property of any version of an entity, generate code.
