@@ -84,6 +84,7 @@ public class DiffToMongoose
   /**
    * This method generates the basic structure of the Javascript class.
    */
+  //TODO: We should do something when the attribute _id is already existing on the entity...
   def genSchema(Entity e) '''
     'use strict'
 

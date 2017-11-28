@@ -80,6 +80,7 @@ class DiffToMorphia
   /**
    * This method generates the basic structure of the Java class.
    */
+  //TODO: We should do something when the attribute _id is already existing on the entity...
   def genSchema(Entity e)
   '''
     package «importRoute»;
