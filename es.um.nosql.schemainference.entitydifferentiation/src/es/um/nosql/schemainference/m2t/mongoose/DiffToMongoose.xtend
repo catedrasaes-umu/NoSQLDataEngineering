@@ -95,7 +95,7 @@ public class DiffToMongoose
         _id: mongoose.Schema.Types.ObjectId,
       «ENDIF»
       «genSpecs(e, analyzer.getDiffByEntity().get(e))»
-    }, { versionKey: false, «IF (e.entityversions.exists[ev | ev.isRoot])»collection: '«e.name»'«ELSE»_id : false«ENDIF»});
+    }, { versionKey: false, «IF (e.entityversions.exists[ev | ev.isRoot])»collection: '«e.name.toFirstLower»'«ELSE»_id : false«ENDIF»});
 
     module.exports = mongoose.model('«e.name»', «e.name»Schema);
   '''

@@ -86,7 +86,7 @@ class DiffToMorphia
 
     «genIncludes(e)»
 
-    «IF (e.entityversions.exists[ev | ev.isRoot])»@Entity(noClassnameStored = true)«ELSE»@Embedded«ENDIF»
+    «IF (e.entityversions.exists[ev | ev.isRoot])»@Entity(value = "«e.name.toFirstLower»", noClassnameStored = true)«ELSE»@Embedded«ENDIF»
     public class «e.name»
     {
       «IF (e.entityversions.exists[ev | ev.isRoot])»
