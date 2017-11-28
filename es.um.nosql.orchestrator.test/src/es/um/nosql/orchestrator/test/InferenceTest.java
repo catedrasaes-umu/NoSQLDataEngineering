@@ -45,7 +45,7 @@ public class InferenceTest
   private static final String FOLDER_PROTEIN = "/media/alberto/tarsonis/datasets/proteins/";
   private static final String FILE_PUBLICATIONS = "/media/alberto/tarsonis/datasets/publications/publications-nov-20132.csv";
   private static final String FOLDER_WEBCLICKS = "/media/alberto/tarsonis/datasets/webclicks/";
-  private static final String FILE_SANCTIONS = "/media/alberto/tarsonis/datasets/opensanctions/master.ijson";
+  private static final String FILE_SANCTIONS = "F:\\Informatica\\datasets\\opensanctions\\master.ijson";
   private static final String FILE_PLEIDADES = "/media/alberto/tarsonis/datasets/pleiades/pleiades-places.json";
 
   public static void main(String[] args) throws IOException
@@ -67,7 +67,7 @@ public class InferenceTest
     //  prepareProteinExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_PROTEIN);            //POJO
     //  preparePublicationsExample(DbType.MONGODB, FILL_AND_INFER, FILE_PUBLICATIONS);    //POJO
     //  prepareWebclickExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_WEBCLICKS);         //POJO
-    //  prepareSanctionsExample(DbType.MONGODB, FILL_AND_INFER, FILE_SANCTIONS);
+      prepareSanctionsExample(DbType.MONGODB, FILL_AND_INFER, FILE_SANCTIONS);
     //  preparePleiadesExample(DbType.MONGODB, FILL_AND_INFER, FILE_PLEIDADES);
   }
 
