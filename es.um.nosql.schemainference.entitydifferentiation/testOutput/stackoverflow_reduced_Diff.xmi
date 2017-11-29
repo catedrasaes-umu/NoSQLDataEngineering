@@ -1,0 +1,748 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entitydifferentiation:EntityDifferentiation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xmlns:entitydifferentiation="http://www.modelum.es/entitydifferentiation" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.schemainference/model/nosqlschema.ecore http://www.modelum.es/entitydifferentiation platform:/resource/es.um.nosql.schemainference.entitydifferentiation/model/entitydifferentiation.ecore" name="stackoverflow_reduced">
+  <entityDiffSpecs>
+    <entity href="../testSources/stackoverflow_reduced.xmi#Badges"/>
+    <entityVersionProps>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.0/@entityversions.0"/>
+    </entityVersionProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.0/@entityversions.0/@properties.2"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.0/@entityversions.0/@properties.4"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.0/@entityversions.0/@properties.1"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.0/@entityversions.0/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.0/@entityversions.0/@properties.3"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.0/@entityversions.0/@properties.5"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.0/@entityversions.0/@properties.6"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <entityDiffSpecs>
+    <entity href="../testSources/stackoverflow_reduced.xmi#Comments"/>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.0/@properties.4"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.0/@properties.7"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.0"/>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.1/@properties.6"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.1"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.2/@properties.4"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.2/@properties.4"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.2"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.1/@properties.6"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.3"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.2/@properties.4"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.1/@properties.6"/>
+      </notProps>
+    </entityVersionProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.3/@properties.3"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.3/@properties.4"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.3/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.3/@properties.1"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.3/@properties.5"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.3/@properties.2"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <entityDiffSpecs>
+    <entity href="../testSources/stackoverflow_reduced.xmi#Posts"/>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.0/@properties.13"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.0/@properties.7"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.0/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.0/@properties.12"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.0/@properties.9"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.0/@properties.14"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.0/@properties.10"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.0"/>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.1/@properties.7"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.1/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.1/@properties.12"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.1/@properties.9"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.1/@properties.13"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.1/@properties.10"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.1"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.12"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.2/@properties.12"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.2/@properties.7"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.2/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.2/@properties.9"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.2/@properties.13"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.2/@properties.10"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.2"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.10"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.3/@properties.12"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.3/@properties.7"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.3/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.3/@properties.9"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.3/@properties.13"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.3/@properties.10"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.3"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.13/@properties.10"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.4/@properties.7"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.4/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.4/@properties.9"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.4/@properties.12"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.4/@properties.10"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.4"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.12"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.13/@properties.10"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.5/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.5/@properties.7"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.5/@properties.9"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.5/@properties.12"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.5/@properties.10"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.5"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.13/@properties.10"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.10"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.6/@properties.12"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.6/@properties.7"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.6/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.6/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.6/@properties.9"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.6/@properties.13"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.6"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.9"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.7"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.9"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.12"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.12"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.9"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.8/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.8/@properties.7"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.8/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.8/@properties.9"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.8/@properties.12"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.8"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.9"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.10"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.9/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.9/@properties.7"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.9/@properties.9"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.9/@properties.11"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.9"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.13/@properties.10"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.9"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.8"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.10/@properties.7"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.10/@properties.9"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.10/@properties.10"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.10"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.12"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.13/@properties.10"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.9"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.8"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.11/@properties.9"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.11/@properties.7"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.11/@properties.10"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.11"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.13/@properties.10"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.9"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.8"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.10"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.12"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.8"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.13"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.9"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.11/@properties.7"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.13/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.13/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.13/@properties.8"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.13/@properties.12"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.13/@properties.9"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.13"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.12"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.11/@properties.7"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.8"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14/@properties.9"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.14"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.12"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.11/@properties.7"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.13/@properties.10"/>
+      </notProps>
+    </entityVersionProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.2"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.3"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.5"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.6"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.19"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.16"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.7"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.15"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.18"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.17"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.1"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.14"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.4"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <entityDiffSpecs>
+    <entity href="../testSources/stackoverflow_reduced.xmi#Votes"/>
+    <entityVersionProps>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.0/@properties.4"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.0/@properties.3"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.0/@properties.0"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.0"/>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.1/@properties.3"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.1/@properties.0"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.1"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.2/@properties.2"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.2/@properties.3"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.2/@properties.2"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.2"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.1/@properties.0"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.3/@properties.2"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.3"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.2/@properties.2"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.1/@properties.0"/>
+      </notProps>
+    </entityVersionProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.2/@properties.4"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.2/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.2/@properties.1"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.2/@properties.5"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <entityDiffSpecs>
+    <entity href="../testSources/stackoverflow_reduced.xmi#Users"/>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0/@properties.7"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0/@properties.6"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0"/>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.1/@properties.7"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.1/@properties.6"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.1"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.6/@properties.8"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.2/@properties.9"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.2/@properties.6"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.2"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.5/@properties.6"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.3/@properties.6"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.3"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.6/@properties.8"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.5/@properties.6"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.4/@properties.9"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.4/@properties.6"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.4"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.3/@properties.6"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.5/@properties.6"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.5"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.6/@properties.8"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.3/@properties.6"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.6/@properties.8"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.6"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.5/@properties.6"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.3/@properties.6"/>
+      </notProps>
+    </entityVersionProps>
+    <entityVersionProps>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.6/@properties.8"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.5/@properties.6"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.3/@properties.6"/>
+      </notProps>
+    </entityVersionProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.2"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.1"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.8"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.10"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.7"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.11"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.5"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.6"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.3"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.4"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.9"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.0"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <entityDiffSpecs>
+    <entity href="../testSources/stackoverflow_reduced.xmi#Postlinks"/>
+    <entityVersionProps>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.5/@entityversions.0"/>
+    </entityVersionProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.5/@entityversions.0/@properties.1"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.5/@entityversions.0/@properties.3"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.5/@entityversions.0/@properties.4"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.5/@entityversions.0/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.5/@entityversions.0/@properties.2"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.5/@entityversions.0/@properties.5"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <entityDiffSpecs>
+    <entity href="../testSources/stackoverflow_reduced.xmi#Tags"/>
+    <entityVersionProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.6/@entityversions.0/@properties.2"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.6/@entityversions.0/@properties.1"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.6/@entityversions.0"/>
+    </entityVersionProps>
+    <entityVersionProps>
+      <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.6/@entityversions.1"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.6/@entityversions.0/@properties.2"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.6/@entityversions.0/@properties.1"/>
+      </notProps>
+    </entityVersionProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.6/@entityversions.1/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.6/@entityversions.1/@properties.1"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.6/@entityversions.1/@properties.2"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.6/@entityversions.1/@properties.3"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <schema href="../testSources/stackoverflow_reduced.xmi#stackoverflow_reduced"/>
+</entitydifferentiation:EntityDifferentiation>
