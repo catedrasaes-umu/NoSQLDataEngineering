@@ -9,13 +9,13 @@ import javax.validation.constraints.NotNull;
 public class Contact_detail
 {
   @Property
+  private String type;
+  public String getType() {return this.type;}
+  public void setType(String type) {this.type = type;}
+  
+  @Property
   @NotNull(message = "value can't be null")
   private String value;
   public String getValue() {return this.value;}
   public void setValue(String value) {this.value = value;}
-  
-  @Property
-  private String type;
-  public String getType() {return this.type;}
-  public void setType(String type) {this.type = type;}
 }

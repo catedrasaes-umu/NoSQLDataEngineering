@@ -9,6 +9,11 @@ import javax.validation.constraints.NotNull;
 public class Other_name
 {
   @Property
+  private String lang;
+  public String getLang() {return this.lang;}
+  public void setLang(String lang) {this.lang = lang;}
+  
+  @Property
   @NotNull(message = "name can't be null")
   private String name;
   public String getName() {return this.name;}
@@ -19,9 +24,4 @@ public class Other_name
   private String note;
   public String getNote() {return this.note;}
   public void setNote(String note) {this.note = note;}
-  
-  @Property
-  private String lang;
-  public String getLang() {return this.lang;}
-  public void setLang(String lang) {this.lang = lang;}
 }

@@ -2,7 +2,6 @@ package es.um.nosql.schemainference.opensanctions;
 
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
-import javax.validation.constraints.NotNull;
 
 
 @Embedded

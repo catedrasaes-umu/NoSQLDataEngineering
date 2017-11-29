@@ -111,7 +111,7 @@ public class MorphiaEveryPolCloneTest
     }
 
     Query<Events> qEvents = newDatastore.createQuery(Events.class);
-    Assert.assertEquals(62, qEvents.count());
+    Assert.assertEquals(59, qEvents.count());
 
     for (Events event : qEvents)
     {

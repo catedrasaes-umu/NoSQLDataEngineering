@@ -96,7 +96,7 @@ public class MorphiaEveryPolValidationTest
   public void testRetrieveEvents()
   {
     Query<Events> qEvents = datastore.createQuery(Events.class);
-    Assert.assertEquals(62, qEvents.count());
+    Assert.assertEquals(59, qEvents.count());
 
     for (Events event : qEvents)
     {

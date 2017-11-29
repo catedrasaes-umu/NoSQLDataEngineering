@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 public class Areas
 {
   @Id
+  @NotNull(message = "_id can't be null")
   private ObjectId _id;
   public ObjectId getObjectId() {return this._id;}
   public void setObjectId(ObjectId _id) {this._id = _id;}

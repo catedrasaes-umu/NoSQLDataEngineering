@@ -34,16 +34,6 @@ public class DiffToMongoose
   }
 
   /**
-   * This class is a shortcut to map empty arrays to undefined.
-   * Mongoose stores empty arrays to the database, and sometimes
-   * we just don't want that, in case the attribute was optional.
-   */
-  static class LambdaNullFunction
-  {
-    override toString() {"undefined"}
-  }
-
-  /**
    * The name of the model, directly extracted from the EntityDifferentiation object.
    */
   var modelName = "";
@@ -84,7 +74,6 @@ public class DiffToMongoose
   /**
    * This method generates the basic structure of the Javascript class.
    */
-  //TODO: We should do something when the attribute _id is already existing on the entity...
   def genSchema(Entity e) '''
     'use strict'
 
@@ -92,8 +81,8 @@ public class DiffToMongoose
     «genIncludes(e, analyzer.getDiffByEntity().get(e))»
 
     var «e.name»Schema = new mongoose.Schema({
-      «IF (e.entityversions.exists[ev | ev.isRoot])»
-        _id: mongoose.Schema.Types.ObjectId,
+      «IF analyzer.needToGenerateId(e)»
+        _id: {type: mongoose.Schema.Types.ObjectId, required: true},
       «ENDIF»
       «genSpecs(e, analyzer.getDiffByEntity().get(e))»
     }, { versionKey: false, «IF (e.entityversions.exists[ev | ev.isRoot])»collection: '«e.name.toFirstLower»'«ELSE»_id : false«ENDIF»});
@@ -125,7 +114,7 @@ public class DiffToMongoose
    */
   def genSpecs(Entity e, EntityDiffSpec spec)
   '''
-    «FOR s : spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false] SEPARATOR ','»
+    «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false]).sortBy[p | p.key.property.name] SEPARATOR ','»
       «s.key.property.name»: «toJSONString(mongooseOptionsForPropertySpec(e,s.key, s.value))»
     «ENDFOR»
   '''
@@ -154,7 +143,7 @@ public class DiffToMongoose
       props.put('required', true)
     else if ((spec.property instanceof Attribute && (spec.property as Attribute).type instanceof Tuple) ||
       (spec.property instanceof Association && ((spec.property as Association).upperBound !== 1 || (spec.property as Association).lowerBound !== 1)))
-      props.put('default', new LambdaNullFunction())
+      props.put('default', label("undefined"))
     // This last condition is used because empty optional arrays are stored in Mongoose. This shouldn't be a thing.
     // If the user doesnt want to store an optional array field, that field wont appear on the object.
     // To prevent this, when an array field is not required, it will be labeled as default: () => undefined.
@@ -350,9 +339,20 @@ public class DiffToMongoose
   /**
    * Generate code attribute for Attribute
    */
-  def dispatch genCodeForProperty(Attribute att) 
+  def dispatch genCodeForProperty(Attribute a) 
   {
-    genAttributeType(att.type)
+    if (a.name.toLowerCase.equals("_id"))
+      genCodeForId()
+    else
+      genAttributeType(a.type)
+  }
+
+  /**
+   * Special method to generate _id ObjectId attributes
+   */
+  def genCodeForId()
+  {
+    #{'type' -> genTypeForPrimitiveString("ObjectId")}
   }
 
   /**
@@ -401,7 +401,7 @@ public class DiffToMongoose
         case Commons.IS_INT(typeName) : "Number"
         case Commons.IS_FLOAT(typeName) :  "Number"
         case Commons.IS_BOOLEAN(typeName) : "Boolean"
-        case Commons.IS_OBJECTID(typeName) : "ObjectId"
+        case Commons.IS_OBJECTID(typeName) : "mongoose.Schema.Types.ObjectId"
         default: ""
       }
     )

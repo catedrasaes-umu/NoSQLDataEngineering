@@ -1,31 +1,31 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var Other_nameSchema = require('./Other_nameSchema.js');
-var IdentifierSchema = require('./IdentifierSchema.js');
-var Contact_detailSchema = require('./Contact_detailSchema.js');
 var ImageSchema = require('./ImageSchema.js');
+var Other_nameSchema = require('./Other_nameSchema.js');
+var Contact_detailSchema = require('./Contact_detailSchema.js');
 var LinkSchema = require('./LinkSchema.js');
+var IdentifierSchema = require('./IdentifierSchema.js');
 var UnionType = require('./util/UnionType.js');
 
 var PersonsSchema = new mongoose.Schema({
-  _id: mongoose.Schema.Types.ObjectId,
-  id: {type: String, required: true},
+  _id: {type: mongoose.Schema.Types.ObjectId, required: true},
   birth_date: {type: String, required: true},
-  identifiers: {type: [IdentifierSchema.schema], default: undefined},
-  name: {type: String, required: true},
+  contact_details: {type: [Contact_detailSchema.schema], default: undefined},
+  death_date: String,
+  email: String,
   family_name: {type: String, required: true},
   gender: {type: String, required: true},
+  given_name: {type: String, required: true},
+  id: {type: String, required: true},
+  identifiers: {type: [IdentifierSchema.schema], default: undefined},
   image: {type: String, required: true},
   images: {type: [ImageSchema.schema], default: undefined},
-  given_name: {type: String, required: true},
-  type: String,
-  sort_name: {type: String, required: true},
-  death_date: String,
-  contact_details: {type: [Contact_detailSchema.schema], default: undefined},
   links: {type: [LinkSchema.schema], default: undefined},
+  name: {type: String, required: true},
   other_names: {type: [Other_nameSchema.schema], default: undefined},
-  email: String
+  sort_name: {type: String, required: true},
+  type: String
 }, { versionKey: false, collection: 'persons'});
 
 module.exports = mongoose.model('Persons', PersonsSchema);

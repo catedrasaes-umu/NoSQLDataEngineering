@@ -13,15 +13,16 @@ import es.um.nosql.schemainference.everypolitician.Identifier;
 public class Events
 {
   @Id
+  @NotNull(message = "_id can't be null")
   private ObjectId _id;
   public ObjectId getObjectId() {return this._id;}
   public void setObjectId(ObjectId _id) {this._id = _id;}
 
   @Property
-  @NotNull(message = "id can't be null")
-  private String id;
-  public String getId() {return this.id;}
-  public void setId(String id) {this.id = id;}
+  @NotNull(message = "classification can't be null")
+  private String classification;
+  public String getClassification() {return this.classification;}
+  public void setClassification(String classification) {this.classification = classification;}
   
   @Property
   @NotNull(message = "end_date can't be null")
@@ -30,10 +31,15 @@ public class Events
   public void setEnd_date(String end_date) {this.end_date = end_date;}
   
   @Property
-  @NotNull(message = "classification can't be null")
-  private String classification;
-  public String getClassification() {return this.classification;}
-  public void setClassification(String classification) {this.classification = classification;}
+  @NotNull(message = "id can't be null")
+  private String id;
+  public String getId() {return this.id;}
+  public void setId(String id) {this.id = id;}
+  
+  @Embedded
+  private Identifier[] identifiers;
+  public Identifier[] getIdentifiers() {return this.identifiers;}
+  public void setIdentifiers(Identifier[] identifiers) {this.identifiers = identifiers;}
   
   @Property
   @NotNull(message = "name can't be null")
@@ -42,9 +48,9 @@ public class Events
   public void setName(String name) {this.name = name;}
   
   @Property
-  private String type;
-  public String getType() {return this.type;}
-  public void setType(String type) {this.type = type;}
+  private String organization_id;
+  public String getOrganization_id() {return this.organization_id;}
+  public void setOrganization_id(String organization_id) {this.organization_id = organization_id;}
   
   @Property
   @NotNull(message = "start_date can't be null")
@@ -52,13 +58,8 @@ public class Events
   public String getStart_date() {return this.start_date;}
   public void setStart_date(String start_date) {this.start_date = start_date;}
   
-  @Embedded
-  private Identifier[] identifiers;
-  public Identifier[] getIdentifiers() {return this.identifiers;}
-  public void setIdentifiers(Identifier[] identifiers) {this.identifiers = identifiers;}
-  
   @Property
-  private String organization_id;
-  public String getOrganization_id() {return this.organization_id;}
-  public void setOrganization_id(String organization_id) {this.organization_id = organization_id;}
+  private String type;
+  public String getType() {return this.type;}
+  public void setType(String type) {this.type = type;}
 }

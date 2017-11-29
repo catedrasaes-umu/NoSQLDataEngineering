@@ -80,21 +80,17 @@ class DiffToMorphia
   /**
    * This method generates the basic structure of the Java class.
    */
-  //TODO: We should do something when the attribute _id is already existing on the entity...
   def genSchema(Entity e)
   '''
     package «importRoute»;
 
     «genIncludes(e)»
 
-    «IF (e.entityversions.exists[ev | ev.isRoot])»@Entity(value = "«e.name.toFirstLower»", noClassnameStored = true)«ELSE»@Embedded«ENDIF»
+    «IF e.entityversions.exists[ev | ev.isRoot]»@Entity(value = "«e.name.toFirstLower»", noClassnameStored = true)«ELSE»@Embedded«ENDIF»
     public class «e.name»
     {
-      «IF (e.entityversions.exists[ev | ev.isRoot])»
-      @Id
-      private ObjectId _id;
-      public ObjectId getObjectId() {return this._id;}
-      public void setObjectId(ObjectId _id) {this._id = _id;}
+      «IF analyzer.needToGenerateId(e)»
+        «genCodeForId("_id", true)»
 
       «ENDIF»
       «genSpecs(e, analyzer.getDiffByEntity().get(e))»
@@ -108,20 +104,20 @@ class DiffToMorphia
   // Doesnt seem easy to bypass these cases at this point, since unions are analyzed later on.
   def genIncludes(Entity entity)
   '''
-    «IF (entity.entityversions.exists[ev | ev.isRoot])»
+    «IF entity.entityversions.exists[ev | ev.isRoot]»
       import org.mongodb.morphia.annotations.Entity;
       import org.mongodb.morphia.annotations.Id;
       import org.bson.types.ObjectId;
     «ENDIF»
-    «IF (analyzer.getTypeListByPropertyName.get(entity).values.exists[l | !l.isEmpty])»
+    «IF analyzer.getTypeListByPropertyName.get(entity).values.exists[l | !l.isEmpty]»
       import «importRoute».commons.Commons;
       import org.mongodb.morphia.annotations.PreLoad;
       import com.mongodb.DBObject;
     «ENDIF»
-    «IF (entity.entityversions.exists[ev | !ev.isRoot || ev.properties.exists[p | p instanceof Aggregate]])»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
-    «IF (entity.entityversions.exists[ev | !ev.properties.empty])»import org.mongodb.morphia.annotations.Property;«ENDIF»
-    «IF (entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Reference && Commons.EXPAND_REF(p as Reference).length == 2]])»import org.mongodb.morphia.annotations.Reference;«ENDIF»
-    import javax.validation.constraints.NotNull;
+    «IF entity.entityversions.exists[ev | !ev.isRoot || ev.properties.exists[p | p instanceof Aggregate]]»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
+    «IF entity.entityversions.exists[ev | !ev.properties.empty]»import org.mongodb.morphia.annotations.Property;«ENDIF»
+    «IF entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Reference && Commons.IS_DBREF(p as Reference)]]»import org.mongodb.morphia.annotations.Reference;«ENDIF»
+    «IF !analyzer.getDiffByEntity().get(entity).commonProps.isEmpty»import javax.validation.constraints.NotNull;«ENDIF»
 
     «FOR Entity e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
       import «importRoute».«e.name»;
@@ -136,7 +132,7 @@ class DiffToMorphia
    */
   def genSpecs(Entity e, EntityDiffSpec spec)
   '''
-    «FOR s : spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false] SEPARATOR '\n'»
+    «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false]).sortBy[p | p.key.property.name] SEPARATOR '\n'»
       «IF s.key.needsTypeCheck»
         «genCodeForTypeCheckProperty(e, s.key.property, s.value)»
       «ELSE»
@@ -274,7 +270,7 @@ class DiffToMorphia
   {
     val typeRef = genTypeForProperty(ref);
     '''
-    «IF Commons.EXPAND_REF(ref).length == 2»
+    «IF Commons.IS_DBREF(ref)»
       if (fieldObj instanceof DBObject && ((DBObject)fieldObj).get("$ref").equals("«ref.refTo.name»"))
         this.«ref.name» = ((DBObject)fieldObj).get("$id");
     «ELSE»
@@ -321,7 +317,7 @@ class DiffToMorphia
    */
   def dispatch genCodeForProperty(Reference ref, boolean required)
   '''
-    «IF Commons.EXPAND_REF(ref).length == 2»@Reference«ELSE»@Property«ENDIF»
+    «IF Commons.IS_DBREF(ref)»@Reference«ELSE»@Property«ENDIF»
     «IF required»@NotNull(message = "«ref.name» can't be null")«ENDIF»
     private «genTypeForProperty(ref)» «ref.name»;
     public «genTypeForProperty(ref)» get«ref.name.toFirstUpper»() {return this.«ref.name»;}
@@ -333,11 +329,10 @@ class DiffToMorphia
    */
   def dispatch genTypeForProperty(Reference ref)
   {
-    val refComps = Commons.EXPAND_REF(ref);
     var returnValue = "";
 
     // References as DBRef as stored as @Reference private ObjectReferences([])?
-    if (refComps.length == 2)
+    if (Commons.IS_DBREF(ref))
     {
       returnValue = ref.refTo.name;
     }
@@ -366,12 +361,28 @@ class DiffToMorphia
    * It generates a private attribute, and Get/Set methods.
    */
   def dispatch genCodeForProperty(Attribute a, boolean required)
+  {
+    if (a.name.toLowerCase.equals("_id"))
+      genCodeForId("_id", required)
+    else
+    {
+    '''
+      @Property
+      «IF required && !a.name.equals("type")»@NotNull(message = "«a.name» can't be null")«ENDIF»
+      private «genTypeForProperty(a)» «a.name»;
+      public «genTypeForProperty(a)» get«a.name.toFirstUpper»() {return this.«a.name»;}
+      public void set«a.name.toFirstUpper»(«genTypeForProperty(a)» «a.name») {this.«a.name» = «a.name»;}
+    '''
+    }
+  }
+
+  def genCodeForId(String idName, boolean required)
   '''
-    @Property
-    «IF required && !a.name.equals("type")»@NotNull(message = "«a.name» can't be null")«ENDIF»
-    private «genTypeForProperty(a)» «a.name»;
-    public «genTypeForProperty(a)» get«a.name.toFirstUpper»() {return this.«a.name»;}
-    public void set«a.name.toFirstUpper»(«genTypeForProperty(a)» «a.name») {this.«a.name» = «a.name»;}
+    @Id
+    «IF required»@NotNull(message = "«idName» can't be null")«ENDIF»
+    private ObjectId «idName»;
+    public ObjectId getObjectId() {return this.«idName»;}
+    public void setObjectId(ObjectId «idName») {this.«idName» = «idName»;}
   '''
 
   /**

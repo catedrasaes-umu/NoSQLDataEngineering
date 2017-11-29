@@ -13,15 +13,20 @@ import es.um.nosql.schemainference.everypolitician.Source;
 public class Memberships
 {
   @Id
+  @NotNull(message = "_id can't be null")
   private ObjectId _id;
   public ObjectId getObjectId() {return this._id;}
   public void setObjectId(ObjectId _id) {this._id = _id;}
 
   @Property
-  @NotNull(message = "person_id can't be null")
-  private String person_id;
-  public String getPerson_id() {return this.person_id;}
-  public void setPerson_id(String person_id) {this.person_id = person_id;}
+  private String area_id;
+  public String getArea_id() {return this.area_id;}
+  public void setArea_id(String area_id) {this.area_id = area_id;}
+  
+  @Property
+  private String end_date;
+  public String getEnd_date() {return this.end_date;}
+  public void setEnd_date(String end_date) {this.end_date = end_date;}
   
   @Property
   @NotNull(message = "legislative_period_id can't be null")
@@ -30,27 +35,28 @@ public class Memberships
   public void setLegislative_period_id(String legislative_period_id) {this.legislative_period_id = legislative_period_id;}
   
   @Property
-  @NotNull(message = "organization_id can't be null")
-  private String organization_id;
-  public String getOrganization_id() {return this.organization_id;}
-  public void setOrganization_id(String organization_id) {this.organization_id = organization_id;}
-  
-  @Property
-  @NotNull(message = "role can't be null")
-  private String role;
-  public String getRole() {return this.role;}
-  public void setRole(String role) {this.role = role;}
-  
-  @Property
   @NotNull(message = "on_behalf_of_id can't be null")
   private String on_behalf_of_id;
   public String getOn_behalf_of_id() {return this.on_behalf_of_id;}
   public void setOn_behalf_of_id(String on_behalf_of_id) {this.on_behalf_of_id = on_behalf_of_id;}
   
   @Property
-  private String type;
-  public String getType() {return this.type;}
-  public void setType(String type) {this.type = type;}
+  @NotNull(message = "organization_id can't be null")
+  private String organization_id;
+  public String getOrganization_id() {return this.organization_id;}
+  public void setOrganization_id(String organization_id) {this.organization_id = organization_id;}
+  
+  @Property
+  @NotNull(message = "person_id can't be null")
+  private String person_id;
+  public String getPerson_id() {return this.person_id;}
+  public void setPerson_id(String person_id) {this.person_id = person_id;}
+  
+  @Property
+  @NotNull(message = "role can't be null")
+  private String role;
+  public String getRole() {return this.role;}
+  public void setRole(String role) {this.role = role;}
   
   @Embedded
   @NotNull(message = "sources can't be null")
@@ -64,12 +70,7 @@ public class Memberships
   public void setStart_date(String start_date) {this.start_date = start_date;}
   
   @Property
-  private String end_date;
-  public String getEnd_date() {return this.end_date;}
-  public void setEnd_date(String end_date) {this.end_date = end_date;}
-  
-  @Property
-  private String area_id;
-  public String getArea_id() {return this.area_id;}
-  public void setArea_id(String area_id) {this.area_id = area_id;}
+  private String type;
+  public String getType() {return this.type;}
+  public void setType(String type) {this.type = type;}
 }

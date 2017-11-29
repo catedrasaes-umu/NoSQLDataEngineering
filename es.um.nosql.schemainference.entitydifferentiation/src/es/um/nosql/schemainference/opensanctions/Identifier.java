@@ -2,31 +2,15 @@ package es.um.nosql.schemainference.opensanctions;
 
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
-import javax.validation.constraints.NotNull;
 
 
 @Embedded
 public class Identifier
 {
   @Property
-  private String number;
-  public String getNumber() {return this.number;}
-  public void setNumber(String number) {this.number = number;}
-  
-  @Property
-  private String type;
-  public String getType() {return this.type;}
-  public void setType(String type) {this.type = type;}
-  
-  @Property
   private String country;
   public String getCountry() {return this.country;}
   public void setCountry(String country) {this.country = country;}
-  
-  @Property
-  private String issued_at;
-  public String getIssued_at() {return this.issued_at;}
-  public void setIssued_at(String issued_at) {this.issued_at = issued_at;}
   
   @Property
   private String country_code;
@@ -37,4 +21,19 @@ public class Identifier
   private String description;
   public String getDescription() {return this.description;}
   public void setDescription(String description) {this.description = description;}
+  
+  @Property
+  private String issued_at;
+  public String getIssued_at() {return this.issued_at;}
+  public void setIssued_at(String issued_at) {this.issued_at = issued_at;}
+  
+  @Property
+  private String number;
+  public String getNumber() {return this.number;}
+  public void setNumber(String number) {this.number = number;}
+  
+  @Property
+  private String type;
+  public String getType() {return this.type;}
+  public void setType(String type) {this.type = type;}
 }

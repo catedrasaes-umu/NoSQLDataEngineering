@@ -35,6 +35,11 @@ class Commons
       #[reference.originalType]
   }
 
+  public static def IS_DBREF(Reference reference)
+  {
+    return EXPAND_REF(reference).length == 2
+  }
+
   public static def IS_INT(String type) { #["int", "integer", "number"].contains(type)}
   public static def IS_FLOAT(String type) { #["float", "double"].contains(type)}
   public static def IS_BOOLEAN(String type) { #["boolean", "bool"].contains(type)}
