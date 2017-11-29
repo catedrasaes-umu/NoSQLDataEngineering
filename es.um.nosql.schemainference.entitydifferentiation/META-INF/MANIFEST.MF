@@ -24,5 +24,4 @@ Export-Package: es.um.nosql.schemainference.decisiontree,
  es.um.nosql.schemainference.entitydifferentiation.impl,
  es.um.nosql.schemainference.entitydifferentiation.util,
  es.um.nosql.schemainference.everypolitician,
- es.um.nosql.schemainference.mongoMovies3,
  es.um.nosql.schemainference.opensanctions
