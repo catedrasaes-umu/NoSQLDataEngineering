@@ -31,7 +31,7 @@ import es.um.nosql.schemainference.everypolitician.Source;
 
 /**
  * Class used to validate the Morphia code generation for the EveryPolitician(Sweden) schema.
- * @author Alberto Hernández Chillón
+ * @author Alberto Hernï¿½ndez Chillï¿½n
  */
 public class MorphiaEveryPolValidationTest
 {
@@ -96,7 +96,7 @@ public class MorphiaEveryPolValidationTest
   public void testRetrieveEvents()
   {
     Query<Events> qEvents = datastore.createQuery(Events.class);
-    Assert.assertEquals(59, qEvents.count());
+    Assert.assertEquals(62, qEvents.count());
 
     for (Events event : qEvents)
     {

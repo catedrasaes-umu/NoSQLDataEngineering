@@ -36,7 +36,7 @@ public class InferenceTest
 
   private static final String FILE_MODEL = "models/mongoMovies3.xmi";
   private static final String FOLDER_SOF = "F:\\Informatica\\datasets\\stackoverflow\\";
-  private static final String FOLDER_EPOL = "/media/alberto/tarsonis/datasets/everypolitician/countries/";
+  private static final String FOLDER_EPOL = "/home/lab/Descargas/everypolitician/";
   private static final String FILE_URBAN = "/media/alberto/tarsonis/datasets/urban/words.json";
   private static final String FILE_COMPANY = "F:\\Informatica\\datasets\\companies\\companies.json";
   private static final String FOLDER_LINK = "/media/alberto/tarsonis/datasets/givealink/";
@@ -45,7 +45,7 @@ public class InferenceTest
   private static final String FOLDER_PROTEIN = "/media/alberto/tarsonis/datasets/proteins/";
   private static final String FILE_PUBLICATIONS = "/media/alberto/tarsonis/datasets/publications/publications-nov-20132.csv";
   private static final String FOLDER_WEBCLICKS = "/media/alberto/tarsonis/datasets/webclicks/";
-  private static final String FILE_SANCTIONS = "F:\\Informatica\\datasets\\opensanctions\\master.ijson";
+  private static final String FILE_SANCTIONS = "/home/lab/Descargas/opensanctions/master.ijson";
   private static final String FILE_PLEIDADES = "/media/alberto/tarsonis/datasets/pleiades/pleiades-places.json";
 
   public static void main(String[] args) throws IOException
@@ -54,7 +54,7 @@ public class InferenceTest
     // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
     // prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
     // prepareSOFExample(DbType.MONGODB, FILL_ONLY, FOLDER_SOF);
-    // prepareEPolExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_EPOL);
+     prepareEPolExample(DbType.MONGODB, FILL_ONLY, FOLDER_EPOL);
     // prepareUrbanExample(DbType.MONGODB, FILL_AND_INFER, FI LE_URBAN);                  //POJO
     // Problem with this dataset is that it contains A LOT of aggregated objects and null values.
     // Aggregated objects tend to make mongodb run out of memory during the reduce process.
@@ -63,11 +63,11 @@ public class InferenceTest
     //  prepareCompanyExample(DbType.MONGODB, FILL_AND_INFER, FILE_COMPANY);              //POJO
     //  prepareLinkExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_LINK);                  //POJO
     //  prepareHarvardExample(DbType.MONGODB, FILL_AND_INFER, FILE_HARVARD);              //POJO
-      prepareFacebookExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_FACEBOOK);          //POJO
+    //  prepareFacebookExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_FACEBOOK);          //POJO
     //  prepareProteinExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_PROTEIN);            //POJO
     //  preparePublicationsExample(DbType.MONGODB, FILL_AND_INFER, FILE_PUBLICATIONS);    //POJO
     //  prepareWebclickExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_WEBCLICKS);         //POJO
-    //  prepareSanctionsExample(DbType.MONGODB, FILL_AND_INFER, FILE_SANCTIONS);
+      prepareSanctionsExample(DbType.MONGODB, FILL_ONLY, FILE_SANCTIONS);
     //  preparePleiadesExample(DbType.MONGODB, FILL_AND_INFER, FILE_PLEIDADES);
   }
 
