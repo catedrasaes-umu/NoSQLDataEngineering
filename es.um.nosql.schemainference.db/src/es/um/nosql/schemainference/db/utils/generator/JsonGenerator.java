@@ -7,6 +7,8 @@ import java.util.Map;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
 
+import org.bson.types.ObjectId;
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
@@ -28,9 +30,6 @@ public class JsonGenerator
     private int MIN_INSTANCES_VERSION;
     private int MAX_INSTANCES_VERSION;
 
-    private int zeroFactor;
-    private int currentId;
-
     private Map<EntityVersion, List<ObjectNode>> evMap;
     private Map<String, List<String>> entityIdMap;
     private ArrayNode lStorage;
@@ -41,25 +40,6 @@ public class JsonGenerator
     {
         MIN_INSTANCES_VERSION = 3;
         MAX_INSTANCES_VERSION = 10;
-
-        zeroFactor = 0;
-        currentId = 0;
-    }
-
-    private void setIdGeneratorFactor(NoSQLSchema schema)
-    {
-        int maxObjects = schema.getEntities().size();
-
-        for (Entity entity : schema.getEntities())
-            maxObjects += entity.getEntityversions().size();
-
-        maxObjects *= MAX_INSTANCES_VERSION;
-        zeroFactor = Integer.toString(maxObjects).length();
-    }
-
-    private String getId()
-    {
-        return String.format("%0" + zeroFactor + "d", ++currentId);
     }
 
     public String generate(NoSQLSchema schema, int minInstances, int maxInstances) throws Exception
@@ -77,46 +57,43 @@ public class JsonGenerator
 
         lStorage = factory.arrayNode();
 
-        setIdGeneratorFactor(schema);
-        currentId = 0;
-
         // First run to generate all the primitive types and tuples.
         for (Entity entity : schema.getEntities())
         {
         	entityIdMap.put(entity.getName(), new ArrayList<String>());
-            for (EntityVersion eVersion : entity.getEntityversions())
+        	for (EntityVersion eVersion : entity.getEntityversions())
+          {
+        	  evMap.put(eVersion, new ArrayList<ObjectNode>());
+            int countInstances = getRandomBetween(MIN_INSTANCES_VERSION, MAX_INSTANCES_VERSION);
+
+            for (int i = 0; i < countInstances; i++)
             {
-            	evMap.put(eVersion, new ArrayList<ObjectNode>());
-            	int countInstances = getRandomBetween(MIN_INSTANCES_VERSION, MAX_INSTANCES_VERSION);
+              ObjectNode strObj = factory.objectNode();
 
-                for (int i = 0; i < countInstances; i++)
+              for (Property property : eVersion.getProperties())
+              {
+                if (property instanceof Attribute)
                 {
-                    ObjectNode strObj = factory.objectNode();
-
-                    for (Property property : eVersion.getProperties())
-                    {
-                        if (property instanceof Attribute)
-                        {
-                            Attribute attr = (Attribute)property;
-                            if (attr.getType() instanceof PrimitiveType)
-                                generatePrimitiveType(strObj, attr.getName(), ((PrimitiveType)attr.getType()).getName());
-                            else if (attr.getType() instanceof Tuple)
-                                generateTuple(strObj, attr.getName(), ((Tuple)attr.getType()).getElements());
-                        }
-                    }
-
-                    // We will override the _id and the type parameters...
-                    if (eVersion.isRoot())
-                    {
-                        strObj.put("_id", getId());
-                    	strObj.put("type", entity.getName());
-                        lStorage.add(strObj);
-                        entityIdMap.get(entity.getName()).add(strObj.get("_id").asText());
-                    }
-
-                    evMap.get(eVersion).add(strObj);
+                  Attribute attr = (Attribute)property;
+                  if (attr.getType() instanceof PrimitiveType)
+                    generatePrimitiveType(strObj, attr.getName(), ((PrimitiveType)attr.getType()).getName());
+                  else if (attr.getType() instanceof Tuple)
+                    generateTuple(strObj, attr.getName(), ((Tuple)attr.getType()).getElements());
                 }
+              }
+
+              // We will override the _id and the type parameters...
+              if (eVersion.isRoot())
+              {
+                strObj.put("_id", new ObjectId().toString());
+                strObj.put("type", entity.getName());
+                lStorage.add(strObj);
+                entityIdMap.get(entity.getName()).add(strObj.get("_id").asText());
+              }
+
+              evMap.get(eVersion).add(strObj);
             }
+          }
         }
 
         // Second run to generate the references and aggregates since now all the versions and instances exist.

@@ -15,10 +15,9 @@ public class Prize
   public void setEvent(String event) {this.event = event;}
   
   @Property
-  @NotNull(message = "year can't be null")
-  private Integer year;
-  public Integer getYear() {return this.year;}
-  public void setYear(Integer year) {this.year = year;}
+  private String name;
+  public String getName() {return this.name;}
+  public void setName(String name) {this.name = name;}
   
   @Property
   private String[] names;
@@ -26,7 +25,8 @@ public class Prize
   public void setNames(String[] names) {this.names = names;}
   
   @Property
-  private String name;
-  public String getName() {return this.name;}
-  public void setName(String name) {this.name = name;}
+  @NotNull(message = "year can't be null")
+  private Integer year;
+  public Integer getYear() {return this.year;}
+  public void setYear(Integer year) {this.year = year;}
 }

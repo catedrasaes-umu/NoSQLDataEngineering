@@ -7,25 +7,15 @@ import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
 
 
-@Entity(noClassnameStored = true)
+@Entity(value = "movietheater", noClassnameStored = true)
 public class Movietheater
 {
   @Id
+  @NotNull(message = "_id can't be null")
   private ObjectId _id;
   public ObjectId getObjectId() {return this._id;}
   public void setObjectId(ObjectId _id) {this._id = _id;}
 
-  @Property
-  @NotNull(message = "name can't be null")
-  private String name;
-  public String getName() {return this.name;}
-  public void setName(String name) {this.name = name;}
-  
-  @Property
-  private String type;
-  public String getType() {return this.type;}
-  public void setType(String type) {this.type = type;}
-  
   @Property
   @NotNull(message = "city can't be null")
   private String city;
@@ -39,7 +29,18 @@ public class Movietheater
   public void setCountry(String country) {this.country = country;}
   
   @Property
+  @NotNull(message = "name can't be null")
+  private String name;
+  public String getName() {return this.name;}
+  public void setName(String name) {this.name = name;}
+  
+  @Property
   private Integer noOfRooms;
   public Integer getNoOfRooms() {return this.noOfRooms;}
   public void setNoOfRooms(Integer noOfRooms) {this.noOfRooms = noOfRooms;}
+  
+  @Property
+  private String type;
+  public String getType() {return this.type;}
+  public void setType(String type) {this.type = type;}
 }

@@ -1,6 +1,8 @@
 package es.um.nosql.schemainference.mongoMovies3.commons;
 
 import org.mongodb.morphia.Morphia;
+import org.mongodb.morphia.mapping.MappingException;
+import com.mongodb.BasicDBList;
 import com.mongodb.DBObject;
 
 public class Commons
@@ -21,5 +23,37 @@ public class Commons
   public static Object CAST(Class<?> className, Object obj)
   {
     return GET_MORPHIA().fromDBObject(null, className, (DBObject)obj);
+  }
+
+  public static Object CAST_ARRAY(Class<?> className, Object[] obj)
+  {
+    Object[] result = new Object[obj.length];
+    for (int i = 0; i < obj.length; i++)
+      result[i] = CAST(className, obj[i]);
+  
+    return result;
+  }
+
+  public static boolean IS_CASTABLE(Class<?> className, Object obj)
+  {
+    try
+    {
+      CAST(className, obj);
+    } catch(MappingException e)
+    {
+      return false;
+    }
+
+    return true;
+  }
+
+  public static boolean IS_CASTABLE_ARRAY(Class<?> className, BasicDBList fieldObj)
+  {
+    boolean result = true;
+  
+    for (Object obj : fieldObj)
+      result = IS_CASTABLE(className, obj);
+
+    return result;
   }
 }

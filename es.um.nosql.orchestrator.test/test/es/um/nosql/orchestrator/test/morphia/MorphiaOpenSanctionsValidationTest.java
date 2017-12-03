@@ -25,10 +25,6 @@ import es.um.nosql.schemainference.opensanctions.Identifier;
 import es.um.nosql.schemainference.opensanctions.Nationality;
 import es.um.nosql.schemainference.opensanctions.Sanctions;
 
-/**
- * Class used to validate the Morphia code generation for the OpenSanctions schema.
- * @author Alberto Hernández Chillón
- */
 public class MorphiaOpenSanctionsValidationTest
 {
   private Datastore datastore;

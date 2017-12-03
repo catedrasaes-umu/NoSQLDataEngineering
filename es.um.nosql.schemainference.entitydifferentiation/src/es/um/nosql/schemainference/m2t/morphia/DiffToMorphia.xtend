@@ -102,6 +102,10 @@ class DiffToMorphia
    */
   // TODO:Actually, Commons should not be imported if there is a Union which is reduced on a single element.
   // Doesnt seem easy to bypass these cases at this point, since unions are analyzed later on.
+  // TODO: Cambiar las referencias por Reference(idOnly = true). Estas referencias matchean a _id
+  // por tanto hay que traspasar el id a _id como objectid.
+  // Las referencias cambian a ser del nombre del objeto que se referencia.
+  // Por otro lado los SET pueden devolver this, pero no tengo a mano el nombre del tipo a devolver. Entity_name
   def genIncludes(Entity entity)
   '''
     «IF entity.entityversions.exists[ev | ev.isRoot]»
@@ -113,6 +117,7 @@ class DiffToMorphia
       import «importRoute».commons.Commons;
       import org.mongodb.morphia.annotations.PreLoad;
       import com.mongodb.DBObject;
+      import com.mongodb.BasicDBList;
     «ENDIF»
     «IF entity.entityversions.exists[ev | !ev.isRoot || ev.properties.exists[p | p instanceof Aggregate]]»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
     «IF entity.entityversions.exists[ev | !ev.properties.empty]»import org.mongodb.morphia.annotations.Property;«ENDIF»
@@ -261,11 +266,20 @@ class DiffToMorphia
   }
 
   def dispatch genUnionFor(Aggregate aggr)
-  '''
-    if (fieldObj instanceof DBObject && ((DBObject)fieldObj).get("className").equals(«(aggr.refTo.head.eContainer as Entity).name».class.getCanonicalName()))
-      this.«aggr.name» = Commons.CAST(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj);
-  '''
+  {
+    val typeAggr = genTypeForProperty(aggr);
+    '''
+    «IF typeAggr.toString.endsWith("[]")»
+      if (fieldObj instanceof BasicDBList && Commons.IS_CASTABLE_ARRAY(«(aggr.refTo.head.eContainer as Entity).name».class, (BasicDBList)fieldObj))
+        this.«aggr.name» = Commons.CAST_ARRAY(«(aggr.refTo.head.eContainer as Entity).name».class, ((BasicDBList)fieldObj).toArray());
+    «ELSE»
+      if (fieldObj instanceof DBObject && Commons.IS_CASTABLE(«(aggr.refTo.head.eContainer as Entity).name».class, (DBObject)fieldObj))
+        this.«aggr.name» = Commons.CAST(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj);
+    «ENDIF»
+    '''
+  }
 
+  // TODO: This will need some repairing as soon as we set up the reference mechanism!
   def dispatch genUnionFor(Reference ref)
   {
     val typeRef = genTypeForProperty(ref);

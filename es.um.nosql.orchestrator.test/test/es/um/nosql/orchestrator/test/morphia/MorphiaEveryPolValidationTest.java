@@ -29,10 +29,6 @@ import es.um.nosql.schemainference.everypolitician.Other_name;
 import es.um.nosql.schemainference.everypolitician.Persons;
 import es.um.nosql.schemainference.everypolitician.Source;
 
-/**
- * Class used to validate the Morphia code generation for the EveryPolitician(Sweden) schema.
- * @author Alberto Hern�ndez Chill�n
- */
 public class MorphiaEveryPolValidationTest
 {
   private Datastore datastore;

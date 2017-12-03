@@ -7,14 +7,20 @@ import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
 
 
-@Entity(noClassnameStored = true)
+@Entity(value = "director", noClassnameStored = true)
 public class Director
 {
   @Id
+  @NotNull(message = "_id can't be null")
   private ObjectId _id;
   public ObjectId getObjectId() {return this._id;}
   public void setObjectId(ObjectId _id) {this._id = _id;}
 
+  @Property
+  private String[] actor_movies;
+  public String[] getActor_movies() {return this.actor_movies;}
+  public void setActor_movies(String[] actor_movies) {this.actor_movies = actor_movies;}
+  
   @Property
   @NotNull(message = "directed_movies can't be null")
   private String[] directed_movies;
@@ -31,9 +37,4 @@ public class Director
   private String type;
   public String getType() {return this.type;}
   public void setType(String type) {this.type = type;}
-  
-  @Property
-  private String[] actor_movies;
-  public String[] getActor_movies() {return this.actor_movies;}
-  public void setActor_movies(String[] actor_movies) {this.actor_movies = actor_movies;}
 }

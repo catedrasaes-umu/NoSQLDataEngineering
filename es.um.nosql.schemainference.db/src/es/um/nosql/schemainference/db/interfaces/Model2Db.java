@@ -41,7 +41,7 @@ public class Model2Db extends Source2Db
 			e.printStackTrace();
 		}
 
-		getClient().cleanDb(schema.getName());
-		getClient().insert(schema.getName(), jsonContent);
+		getClient().cleanDb(schema.getName().toLowerCase());
+		getClient().insert(schema.getName().toLowerCase(), jsonContent);
 	}
 }

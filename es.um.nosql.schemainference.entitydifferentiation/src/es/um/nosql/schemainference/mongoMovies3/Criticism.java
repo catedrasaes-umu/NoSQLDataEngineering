@@ -3,6 +3,7 @@ package es.um.nosql.schemainference.mongoMovies3;
 import es.um.nosql.schemainference.mongoMovies3.commons.Commons;
 import org.mongodb.morphia.annotations.PreLoad;
 import com.mongodb.DBObject;
+import com.mongodb.BasicDBList;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
@@ -44,8 +45,8 @@ public class Criticism
   
     Object fieldObj = dbObj.get("media");
   
-    if (fieldObj instanceof DBObject && ((DBObject)fieldObj).get("className").equals(Medium.class.getCanonicalName()))
-      this.media = Commons.CAST(Medium.class, fieldObj);
+    if (fieldObj instanceof BasicDBList && Commons.IS_CASTABLE_ARRAY(Medium.class, (BasicDBList)fieldObj))
+      this.media = Commons.CAST_ARRAY(Medium.class, ((BasicDBList)fieldObj).toArray());
     else 
     if (fieldObj instanceof String)
       this.media = (String)fieldObj;
