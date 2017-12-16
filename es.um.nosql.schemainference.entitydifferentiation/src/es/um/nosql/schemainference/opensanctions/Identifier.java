@@ -1,5 +1,9 @@
 package es.um.nosql.schemainference.opensanctions;
 
+import es.um.nosql.schemainference.opensanctions.commons.Commons;
+import org.mongodb.morphia.annotations.PreLoad;
+import com.mongodb.DBObject;
+import com.mongodb.BasicDBList;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 
@@ -27,10 +31,34 @@ public class Identifier
   public String getIssued_at() {return this.issued_at;}
   public void setIssued_at(String issued_at) {this.issued_at = issued_at;}
   
+  // @Union_String_Integer
   @Property
-  private String number;
-  public String getNumber() {return this.number;}
-  public void setNumber(String number) {this.number = number;}
+  private Object number;
+  public Object getNumber() {return this.number;}
+  public void setNumber(Object number)
+  {
+    if (number instanceof String || number instanceof Integer)
+      this.number = number;
+    else
+      throw new ClassCastException("number must be of type String or Integer");
+  }
+  
+  @PreLoad
+  private void processUnion_String_Integer(DBObject dbObj)
+  {
+    if (!dbObj.containsField("number"))
+      return;
+  
+    Object fieldObj = dbObj.get("number");
+  
+    if (fieldObj instanceof String)
+      this.number = (String)fieldObj;
+    else 
+    if (fieldObj instanceof Integer)
+      this.number = (Integer)fieldObj;
+  
+    dbObj.removeField("number");
+  }
   
   @Property
   private String type;

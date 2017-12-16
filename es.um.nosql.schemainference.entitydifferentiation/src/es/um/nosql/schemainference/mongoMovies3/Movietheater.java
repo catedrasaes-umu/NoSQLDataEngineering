@@ -1,8 +1,7 @@
 package es.um.nosql.schemainference.mongoMovies3;
 
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Id;
-import org.bson.types.ObjectId;
+  import org.mongodb.morphia.annotations.Entity;
+  import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
 
@@ -12,10 +11,10 @@ public class Movietheater
 {
   @Id
   @NotNull(message = "_id can't be null")
-  private ObjectId _id;
-  public ObjectId getObjectId() {return this._id;}
-  public void setObjectId(ObjectId _id) {this._id = _id;}
-
+  private String _id;
+  public String get_id() {return this._id;}
+  public void set_id(String _id) {this._id = _id;}
+  
   @Property
   @NotNull(message = "city can't be null")
   private String city;

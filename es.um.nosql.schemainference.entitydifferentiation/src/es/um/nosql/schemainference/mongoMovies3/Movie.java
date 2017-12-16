@@ -1,8 +1,7 @@
 package es.um.nosql.schemainference.mongoMovies3;
 
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Id;
-import org.bson.types.ObjectId;
+  import org.mongodb.morphia.annotations.Entity;
+  import org.mongodb.morphia.annotations.Id;
 import es.um.nosql.schemainference.mongoMovies3.commons.Commons;
 import org.mongodb.morphia.annotations.PreLoad;
 import com.mongodb.DBObject;
@@ -11,8 +10,8 @@ import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
 
-import es.um.nosql.schemainference.mongoMovies3.Rating;
 import es.um.nosql.schemainference.mongoMovies3.Prize;
+import es.um.nosql.schemainference.mongoMovies3.Rating;
 import es.um.nosql.schemainference.mongoMovies3.Criticism;
 
 @Entity(value = "movie", noClassnameStored = true)
@@ -20,10 +19,10 @@ public class Movie
 {
   @Id
   @NotNull(message = "_id can't be null")
-  private ObjectId _id;
-  public ObjectId getObjectId() {return this._id;}
-  public void setObjectId(ObjectId _id) {this._id = _id;}
-
+  private String _id;
+  public String get_id() {return this._id;}
+  public void set_id(String _id) {this._id = _id;}
+  
   @Embedded
   private Criticism[] criticisms;
   public Criticism[] getCriticisms() {return this.criticisms;}
@@ -41,9 +40,9 @@ public class Movie
   public void setGenre(String genre) {this.genre = genre;}
   
   @Property
-  private String[] genres;
-  public String[] getGenres() {return this.genres;}
-  public void setGenres(String[] genres) {this.genres = genres;}
+  private Object[] genres;
+  public Object[] getGenres() {return this.genres;}
+  public void setGenres(Object[] genres) {this.genres = genres;}
   
   @Embedded
   private Prize[] prizes;
@@ -51,9 +50,9 @@ public class Movie
   public void setPrizes(Prize[] prizes) {this.prizes = prizes;}
   
   @Embedded
-  private Rating[] rating;
-  public Rating[] getRating() {return this.rating;}
-  public void setRating(Rating[] rating) {this.rating = rating;}
+  private Rating rating;
+  public Rating getRating() {return this.rating;}
+  public void setRating(Rating rating) {this.rating = rating;}
   
   @Property
   private Integer running_time;
@@ -72,9 +71,9 @@ public class Movie
   public void setType(String type) {this.type = type;}
   
   @Property
-  private String[] writers;
-  public String[] getWriters() {return this.writers;}
-  public void setWriters(String[] writers) {this.writers = writers;}
+  private Object[] writers;
+  public Object[] getWriters() {return this.writers;}
+  public void setWriters(Object[] writers) {this.writers = writers;}
   
   @Property
   @NotNull(message = "year can't be null")

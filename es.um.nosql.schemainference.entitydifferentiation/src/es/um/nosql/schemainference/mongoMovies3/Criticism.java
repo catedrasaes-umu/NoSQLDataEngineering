@@ -8,7 +8,7 @@ import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
 
-import es.um.nosql.schemainference.mongoMovies3.Medium;
+import es.um.nosql.schemainference.mongoMovies3.Media;
 
 @Embedded
 public class Criticism
@@ -25,28 +25,28 @@ public class Criticism
   public String getJournalist() {return this.journalist;}
   public void setJournalist(String journalist) {this.journalist = journalist;}
   
-  // @Union_Medium[]_String
+  // @Union_Media_String
   @Embedded
   private Object media;
   public Object getMedia() {return this.media;}
   public void setMedia(Object media)
   {
-    if (media instanceof Medium[] || media instanceof String)
+    if (media instanceof Media || media instanceof String)
       this.media = media;
     else
-      throw new ClassCastException("media must be of type Medium[] or String");
+      throw new ClassCastException("media must be of type Media or String");
   }
   
   @PreLoad
-  private void processUnion_Medium_String(DBObject dbObj)
+  private void processUnion_Media_String(DBObject dbObj)
   {
     if (!dbObj.containsField("media"))
       return;
   
     Object fieldObj = dbObj.get("media");
   
-    if (fieldObj instanceof BasicDBList && Commons.IS_CASTABLE_ARRAY(Medium.class, (BasicDBList)fieldObj))
-      this.media = Commons.CAST_ARRAY(Medium.class, ((BasicDBList)fieldObj).toArray());
+    if (fieldObj instanceof DBObject && Commons.IS_CASTABLE(Media.class, (DBObject)fieldObj))
+      this.media = Commons.CAST(Media.class, fieldObj);
     else 
     if (fieldObj instanceof String)
       this.media = (String)fieldObj;

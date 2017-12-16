@@ -20,9 +20,9 @@ public class Prize
   public void setName(String name) {this.name = name;}
   
   @Property
-  private String[] names;
-  public String[] getNames() {return this.names;}
-  public void setNames(String[] names) {this.names = names;}
+  private Object[] names;
+  public Object[] getNames() {return this.names;}
+  public void setNames(Object[] names) {this.names = names;}
   
   @Property
   @NotNull(message = "year can't be null")

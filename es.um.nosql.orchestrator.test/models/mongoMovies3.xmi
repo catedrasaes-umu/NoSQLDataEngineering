@@ -29,7 +29,8 @@
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.4/@entityversions.0/@properties.1"
-          refTo="Director"/>
+          refTo="Director"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="genre">
@@ -51,7 +52,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
+          name="type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -80,7 +81,8 @@
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.4/@entityversions.0/@properties.1"
-          refTo="Director"/>
+          refTo="Director"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="genre">
@@ -104,7 +106,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
+          name="type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -133,7 +135,8 @@
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.4/@entityversions.0/@properties.1"
-          refTo="Director"/>
+          refTo="Director"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="genre">
@@ -155,7 +158,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
+          name="type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -189,7 +192,8 @@
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.4/@entityversions.0/@properties.1"
-          refTo="Director"/>
+          refTo="Director"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="genre">
@@ -212,7 +216,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
+          name="type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -241,7 +245,8 @@
           lowerBound="1"
           upperBound="1"
           opposite="//@entities.4/@entityversions.0/@properties.1"
-          refTo="Director"/>
+          refTo="Director"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="genres">
@@ -264,7 +269,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
+          name="type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -326,7 +331,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
+          name="type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -372,7 +377,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
+          name="type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -436,13 +441,15 @@
           name="actor_movies"
           upperBound="-1"
           opposite="//@entities.0/@entityversions.0/@properties.2"
-          refTo="Movie"/>
+          refTo="Movie"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="directed_movies"
           upperBound="-1"
           opposite="//@entities.0/@entityversions.0/@properties.2"
-          refTo="Movie"/>
+          refTo="Movie"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="name">
@@ -452,7 +459,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
+          name="type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -473,7 +480,8 @@
           name="directed_movies"
           upperBound="-1"
           opposite="//@entities.0/@entityversions.0/@properties.2"
-          refTo="Movie"/>
+          refTo="Movie"
+          originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="name">
@@ -483,7 +491,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
+          name="type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>

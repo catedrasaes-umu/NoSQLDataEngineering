@@ -1,30 +1,36 @@
 package es.um.nosql.schemainference.everypolitician;
 
-import org.mongodb.morphia.annotations.Entity;
-import org.mongodb.morphia.annotations.Id;
-import org.bson.types.ObjectId;
+  import org.mongodb.morphia.annotations.Entity;
+  import org.mongodb.morphia.annotations.Id;
 import es.um.nosql.schemainference.everypolitician.commons.Commons;
 import org.mongodb.morphia.annotations.PreLoad;
 import com.mongodb.DBObject;
+import com.mongodb.BasicDBList;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
 
 import es.um.nosql.schemainference.everypolitician.Identifier;
-import es.um.nosql.schemainference.everypolitician.Link;
-import es.um.nosql.schemainference.everypolitician.Image;
 import es.um.nosql.schemainference.everypolitician.Contact_detail;
+import es.um.nosql.schemainference.everypolitician.Image;
 import es.um.nosql.schemainference.everypolitician.Other_name;
+import es.um.nosql.schemainference.everypolitician.Link;
 
 @Entity(value = "persons", noClassnameStored = true)
 public class Persons
 {
   @Id
   @NotNull(message = "_id can't be null")
-  private ObjectId _id;
-  public ObjectId getObjectId() {return this._id;}
-  public void setObjectId(ObjectId _id) {this._id = _id;}
-
+  private String _id;
+  public String get_id() {return this._id;}
+  public void set_id(String _id) {this._id = _id;}
+  
+  @Property
+  @NotNull(message = "_type can't be null")
+  private String _type;
+  public String get_type() {return this._type;}
+  public void set_type(String _type) {this._type = _type;}
+  
   @Property
   @NotNull(message = "birth_date can't be null")
   private String birth_date;
@@ -63,12 +69,6 @@ public class Persons
   private String given_name;
   public String getGiven_name() {return this.given_name;}
   public void setGiven_name(String given_name) {this.given_name = given_name;}
-  
-  @Property
-  @NotNull(message = "id can't be null")
-  private String id;
-  public String getId() {return this.id;}
-  public void setId(String id) {this.id = id;}
   
   @Embedded
   @NotNull(message = "identifiers can't be null")
@@ -109,9 +109,4 @@ public class Persons
   private String sort_name;
   public String getSort_name() {return this.sort_name;}
   public void setSort_name(String sort_name) {this.sort_name = sort_name;}
-  
-  @Property
-  private String type;
-  public String getType() {return this.type;}
-  public void setType(String type) {this.type = type;}
 }

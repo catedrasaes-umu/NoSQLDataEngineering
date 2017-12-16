@@ -89,10 +89,6 @@ class DiffToMorphia
     «IF e.entityversions.exists[ev | ev.isRoot]»@Entity(value = "«e.name.toFirstLower»", noClassnameStored = true)«ELSE»@Embedded«ENDIF»
     public class «e.name»
     {
-      «IF analyzer.needToGenerateId(e)»
-        «genCodeForId("_id", true)»
-
-      «ENDIF»
       «genSpecs(e, analyzer.getDiffByEntity().get(e))»
     }
   '''
@@ -103,7 +99,6 @@ class DiffToMorphia
   // TODO:Actually, Commons should not be imported if there is a Union which is reduced on a single element.
   // Doesnt seem easy to bypass these cases at this point, since unions are analyzed later on.
   // TODO: Cambiar las referencias por Reference(idOnly = true). Estas referencias matchean a _id
-  // por tanto hay que traspasar el id a _id como objectid.
   // Las referencias cambian a ser del nombre del objeto que se referencia.
   // Por otro lado los SET pueden devolver this, pero no tengo a mano el nombre del tipo a devolver. Entity_name
   def genIncludes(Entity entity)
@@ -111,7 +106,10 @@ class DiffToMorphia
     «IF entity.entityversions.exists[ev | ev.isRoot]»
       import org.mongodb.morphia.annotations.Entity;
       import org.mongodb.morphia.annotations.Id;
+    «IF entity.entityversions.exists[ev | ev.isRoot && ev.properties.exists[p | p.name.equals("_id") &&
+      p instanceof Attribute && (p as Attribute).type instanceof PrimitiveType && ((p as Attribute).type as PrimitiveType).name.equals("ObjectId")]]»
       import org.bson.types.ObjectId;
+    «ENDIF»
     «ENDIF»
     «IF analyzer.getTypeListByPropertyName.get(entity).values.exists[l | !l.isEmpty]»
       import «importRoute».commons.Commons;
@@ -376,28 +374,14 @@ class DiffToMorphia
    */
   def dispatch genCodeForProperty(Attribute a, boolean required)
   {
-    if (a.name.toLowerCase.equals("_id"))
-      genCodeForId("_id", required)
-    else
-    {
     '''
-      @Property
+      «IF a.name.toLowerCase.equals("_id")»@Id«ELSE»@Property«ENDIF»
       «IF required && !a.name.equals("type")»@NotNull(message = "«a.name» can't be null")«ENDIF»
       private «genTypeForProperty(a)» «a.name»;
       public «genTypeForProperty(a)» get«a.name.toFirstUpper»() {return this.«a.name»;}
       public void set«a.name.toFirstUpper»(«genTypeForProperty(a)» «a.name») {this.«a.name» = «a.name»;}
     '''
-    }
   }
-
-  def genCodeForId(String idName, boolean required)
-  '''
-    @Id
-    «IF required»@NotNull(message = "«idName» can't be null")«ENDIF»
-    private ObjectId «idName»;
-    public ObjectId getObjectId() {return this.«idName»;}
-    public void setObjectId(ObjectId «idName») {this.«idName» = «idName»;}
-  '''
 
   /**
    * Shortcut method to generate an Attribute type.

@@ -34,7 +34,7 @@ public class Main
     String inputFile = INPUT_FOLDER + input_model + ".xmi";
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
     prepareM2MExample(inputFile, outputFile);
-    prepareM2MongooseExample(outputFile, MONGOOSE_OUTPUT_GEN_BASE_FOLDER);
+//    prepareM2MongooseExample(outputFile, MONGOOSE_OUTPUT_GEN_BASE_FOLDER);
     prepareM2MorphiaExample(outputFile, MORPHIA_OUTPUT_GEN_BASE_FOLDER);
   }
 
