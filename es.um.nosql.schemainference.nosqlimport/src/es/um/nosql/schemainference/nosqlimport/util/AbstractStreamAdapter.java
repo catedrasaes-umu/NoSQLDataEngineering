@@ -9,40 +9,40 @@ import com.google.gson.JsonObject;
 
 public abstract class AbstractStreamAdapter
 {
-	public void printStream(Stream<JsonObject> stream)
-	{
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
+  public void printStream(Stream<JsonObject> stream)
+  {
+    Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
-		stream.forEach(jsonObject ->
-		{
-			System.out.println(gson.toJson(jsonObject));
-		});
-	}
+    stream.forEach(jsonObject ->
+    {
+      System.out.println(gson.toJson(jsonObject));
+    });
+  }
 
-	public JsonObject stream2JsonObject(Stream<JsonObject> stream)
-	{
-		JsonObject result = new JsonObject();
-		JsonArray array = new JsonArray();
+  public JsonObject stream2JsonObject(Stream<JsonObject> stream)
+  {
+    JsonObject result = new JsonObject();
+    JsonArray array = new JsonArray();
 
-		try (Stream<JsonObject> copyOfAStream = stream)
-		{
-			copyOfAStream.forEach(elem -> array.add(elem));
-		}
+    try (Stream<JsonObject> copyOfAStream = stream)
+    {
+      copyOfAStream.forEach(elem -> array.add(elem));
+    }
 
-		result.add("rows", array);
+    result.add("rows", array);
 
-		return result;
-	}
+    return result;
+  }
 
-	public JsonArray stream2JsonArray(Stream<JsonObject> stream)
-	{
-		JsonArray result = new JsonArray();
+  public JsonArray stream2JsonArray(Stream<JsonObject> stream)
+  {
+    JsonArray result = new JsonArray();
 
-		try (Stream<JsonObject> copyOfAStream = stream)
-		{
-			copyOfAStream.forEach(elem -> result.add(elem));
-		};
+    try (Stream<JsonObject> copyOfAStream = stream)
+    {
+      copyOfAStream.forEach(elem -> result.add(elem));
+    };
 
-		return result;
-	}
+    return result;
+  }
 }

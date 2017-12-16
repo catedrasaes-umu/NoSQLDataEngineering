@@ -1,35 +1,96 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.schemainference/model/nosqlschema.ecore" name="webclicks">
-  <entities name="Webclicks">
-    <entityversions versionId="1" root="true">
-      <properties xsi:type="NoSQLSchema:Attribute" name="count">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+<NoSQLSchema:NoSQLSchema
+    xmi:version="2.0"
+    xmlns:xmi="http://www.omg.org/XMI"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema"
+    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../../es.um.nosql.schemainference/model/nosqlschema.ecore"
+    name="webclicks">
+  <entities
+      name="Webclicks">
+    <entityversions
+        versionId="1"
+        root="true">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="from">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="timestamp">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="count">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="to">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="from">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="timestamp">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="to">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
       </properties>
     </entityversions>
-    <entityversions versionId="2" root="true">
-      <properties xsi:type="NoSQLSchema:Attribute" name="count">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+    <entityversions
+        versionId="2"
+        root="true">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="timestamp">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="to">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="count">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="timestamp">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="to">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
       </properties>
     </entityversions>
   </entities>

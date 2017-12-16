@@ -36,26 +36,26 @@ public class InferenceTest
 
   private static final String FILE_MODEL = "models/mongoMovies3.xmi";
   private static final String FOLDER_SOF = "F:\\Informatica\\datasets\\stackoverflow\\";
-  private static final String FOLDER_EPOL = "/home/lab/Descargas/everypolitician/";
-  private static final String FILE_URBAN = "/media/alberto/tarsonis/datasets/urban/words.json";
+  private static final String FOLDER_EPOL = "F:\\Informatica\\datasets\\everypolitician\\";
+  private static final String FILE_URBAN = "F:\\Informatica\\datasets\\urban\\words.json";
   private static final String FILE_COMPANY = "F:\\Informatica\\datasets\\companies\\companies.json";
   private static final String FOLDER_LINK = "/media/alberto/tarsonis/datasets/givealink/";
   private static final String FILE_HARVARD = "F:\\Informatica\\datasets\\harvard\\HMXPC13_DI_v2_5-14-14.csv";
   private static final String FOLDER_FACEBOOK = "F:\\Informatica\\datasets\\facebook\\";
-  private static final String FOLDER_PROTEIN = "/media/alberto/tarsonis/datasets/proteins/";
+  private static final String FOLDER_PROTEIN = "F:\\Informatica\\datasets\\proteins\\";
   private static final String FILE_PUBLICATIONS = "/media/alberto/tarsonis/datasets/publications/publications-nov-20132.csv";
-  private static final String FOLDER_WEBCLICKS = "/media/alberto/tarsonis/datasets/webclicks/";
-  private static final String FILE_SANCTIONS = "/home/lab/Descargas/opensanctions/master.ijson";
+  private static final String FOLDER_WEBCLICKS = "F:\\Informatica\\datasets\\webclicks\\";
+  private static final String FILE_SANCTIONS = "F:\\Informatica\\datasets\\opensanctions\\master.ijson";
   private static final String FILE_PLEIDADES = "/media/alberto/tarsonis/datasets/pleiades/pleiades-places.json";
 
   public static void main(String[] args) throws IOException
   {//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
     // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.
     // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
-     prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
+    // prepareModelExample(DbType.MONGODB, FILL_AND_INFER, FILE_MODEL);
     // prepareSOFExample(DbType.MONGODB, FILL_ONLY, FOLDER_SOF);
-    //  prepareEPolExample(DbType.MONGODB, FILL_ONLY, FOLDER_EPOL);
-    // prepareUrbanExample(DbType.MONGODB, FILL_AND_INFER, FI LE_URBAN);                  //POJO
+    // prepareEPolExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_EPOL);
+     prepareUrbanExample(DbType.MONGODB, FILL_AND_INFER, FILE_URBAN);                  //POJO
     // Problem with this dataset is that it contains A LOT of aggregated objects and null values.
     // Aggregated objects tend to make mongodb run out of memory during the reduce process.
     // Null values tend to abort the inference process. Until the inference process is fixed (TODO(tm)),
@@ -67,7 +67,7 @@ public class InferenceTest
     //  prepareProteinExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_PROTEIN);            //POJO
     //  preparePublicationsExample(DbType.MONGODB, FILL_AND_INFER, FILE_PUBLICATIONS);    //POJO
     //  prepareWebclickExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_WEBCLICKS);         //POJO
-    //  prepareSanctionsExample(DbType.MONGODB, FILL_ONLY, FILE_SANCTIONS);
+    //  prepareSanctionsExample(DbType.MONGODB, FILL_AND_INFER, FILE_SANCTIONS);
     //  preparePleiadesExample(DbType.MONGODB, FILL_AND_INFER, FILE_PLEIDADES);
   }
 
@@ -92,7 +92,7 @@ public class InferenceTest
     if (FILL_ONLY)
       return;
     else
-      performInference(dbType, dbName, outputModel);
+      performInference(dbType, dbName.toLowerCase(), outputModel);
   }
 
   public static void prepareSOFExample(DbType dbType, boolean FILL_ONLY, String source)

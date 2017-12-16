@@ -7,6 +7,7 @@ import java.nio.file.Paths;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import es.um.nosql.schemainference.db.utils.DbType;
 
@@ -41,7 +42,7 @@ public class OSanctions2Db extends Source2Db
 
       for (String line; (line = reader.readLine()) != null; totalLines++)
       {
-        jsonArray.add(mapper.readTree(line));
+        jsonArray.add(transformObject((ObjectNode)mapper.readTree(line)));
 
         if (++numLines == MAX_LINES_BEFORE_STORE)
         {
@@ -61,5 +62,28 @@ public class OSanctions2Db extends Source2Db
     {
       e.printStackTrace();
     }
+  }
+
+  private ObjectNode transformObject(ObjectNode obj)
+  {
+    if (obj.has("id"))
+    {
+      obj.put("_id", obj.get("id").asText());
+      obj.remove("id");
+    }
+    if (obj.has("identifiers"))
+    {
+      ArrayNode identifiers = (ArrayNode)obj.get("identifiers");
+      identifiers.forEach(id ->
+      {
+        if (id.has("number") && id.get("number").asInt() != 0)
+        {
+          ObjectNode objId = (ObjectNode)id;
+          objId.put("number", objId.get("number").asInt());
+        }
+      });
+    }
+
+    return obj;
   }
 }

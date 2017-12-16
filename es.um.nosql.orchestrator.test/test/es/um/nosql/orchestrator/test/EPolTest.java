@@ -1,15 +1,24 @@
 package es.um.nosql.orchestrator.test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
+import java.io.File;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.google.gson.JsonArray;
 
+import es.um.nosql.schemainference.NoSQLSchema.Entity;
+import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
+import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.schemainference.db.interfaces.EPol2Db;
 import es.um.nosql.schemainference.db.utils.DbType;
 import es.um.nosql.schemainference.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.schemainference.nosqlimport.db.mongodb.MongoDBImport;
+import es.um.nosql.schemainference.util.emf.ModelLoader;
 
 public class EPolTest
 {

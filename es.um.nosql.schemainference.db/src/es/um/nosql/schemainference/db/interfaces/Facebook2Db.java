@@ -2,12 +2,17 @@ package es.um.nosql.schemainference.db.interfaces;
 
 import java.io.File;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.MappingIterator;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
@@ -21,6 +26,8 @@ import es.um.nosql.schemainference.db.utils.deserializer.StringToStringDeseriali
 public class Facebook2Db extends Source2Db
 {
   private int MAX_LINES_BEFORE_STORE = 25000;
+
+  private HashMap<String, List<String>> uniqueKeys;
 
   public Facebook2Db(DbType db, String ip)
   {
@@ -38,6 +45,7 @@ public class Facebook2Db extends Source2Db
 
   private void storeCSVContent(String csvRoute, String dbName)
   {
+    uniqueKeys = new HashMap<String, List<String>>();
     File csvFile = new File(csvRoute);
     CsvMapper csvMapper = new CsvMapper();
     MappingIterator<?> mappingIterator = null;
@@ -53,11 +61,13 @@ public class Facebook2Db extends Source2Db
     {
       if (csvFile.getName().contains("post"))
       {
+        uniqueKeys.put("posts", new ArrayList<String>());
         mappingIterator = csvMapper.reader(Post.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
         collectionName = "posts";
       }
       else if (csvFile.getName().contains("pagename"))
       {
+        uniqueKeys.put("pages", new ArrayList<String>());
         mappingIterator = csvMapper.reader(Page.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
         collectionName = "pages";
       }
@@ -73,7 +83,9 @@ public class Facebook2Db extends Source2Db
 
         while (mappingIterator.hasNext())
         {
-          jsonArray.add(oMapper.readTree(oMapper.writeValueAsString(mappingIterator.next())));
+          JsonNode objectToInsert = oMapper.readTree(oMapper.writeValueAsString(mappingIterator.next()));
+          if (transformObject(collectionName, (ObjectNode)objectToInsert))
+            jsonArray.add(objectToInsert);
 
           if (++numLines == MAX_LINES_BEFORE_STORE)
           {
@@ -94,6 +106,37 @@ public class Facebook2Db extends Source2Db
     } catch (Exception e)
     {
       e.printStackTrace();
+    }
+  }
+
+  private boolean transformObject(String collectionName, ObjectNode obj)
+  {
+    switch (collectionName)
+    {
+      case "posts":
+      {
+        obj.put("_id", obj.get("post_id").asText());
+        obj.remove("post_id");
+        break;
+      }
+      case "pages":
+      {
+        obj.put("_id", obj.get("page_id").asText());
+        obj.remove("page_id");
+        break;
+      }
+      default:
+      {
+        return true;
+      }
+    }
+
+    if (uniqueKeys.get(collectionName).stream().anyMatch(id -> id.equals(obj.get("_id").asText())))
+      return false;
+    else
+    {
+      uniqueKeys.get(collectionName).add(obj.get("_id").asText());
+      return true;
     }
   }
 }

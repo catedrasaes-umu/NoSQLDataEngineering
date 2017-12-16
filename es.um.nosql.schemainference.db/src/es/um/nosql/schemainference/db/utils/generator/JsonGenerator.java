@@ -86,7 +86,7 @@ public class JsonGenerator
               if (eVersion.isRoot())
               {
                 strObj.put("_id", new ObjectId().toString());
-                strObj.put("type", entity.getName());
+                strObj.put("_type", entity.getName());
                 lStorage.add(strObj);
                 entityIdMap.get(entity.getName()).add(strObj.get("_id").asText());
               }

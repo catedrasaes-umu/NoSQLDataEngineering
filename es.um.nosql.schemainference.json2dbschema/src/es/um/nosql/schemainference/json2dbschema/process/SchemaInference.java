@@ -290,12 +290,10 @@ public class SchemaInference
 
 	private SchemaComponent infer(IAJObject n, Optional<String> elementName, boolean isRoot)
 	{
-		//TODO: This won't work with the "spainRedux.json" example!! More info soon
-
 		// Entity names are by convention capitalized
 		Optional<String> typeName = Optional.empty();
 		if (isRoot)
-			typeName = Optional.ofNullable(n.get("type"))
+			typeName = Optional.ofNullable(n.get("_type"))
 							.map(_n -> Inflector.getInstance().capitalize(_n.asString()));
 
 		ObjectSC schema = new ObjectSC();

@@ -38,12 +38,12 @@ public class MongoDbClient extends MongoClient implements DbClient
 
 			for (JsonNode item : jsonItems)
 			{
-				String type = item.get("type").asText();
+				String type = item.get("_type").asText();
 				if (!collections.containsKey(type))
 					collections.put(type, new ArrayList<Document>());
 
 				ObjectNode object = (ObjectNode)item;
-				object.remove("type");
+				object.remove("_type");
 
 				collections.get(type).add(Document.parse(object.toString()));
 			}
