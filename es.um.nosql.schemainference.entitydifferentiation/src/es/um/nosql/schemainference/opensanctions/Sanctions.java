@@ -1,7 +1,7 @@
 package es.um.nosql.schemainference.opensanctions;
 
-  import org.mongodb.morphia.annotations.Entity;
-  import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 import es.um.nosql.schemainference.opensanctions.commons.Commons;
 import org.mongodb.morphia.annotations.PreLoad;
 import com.mongodb.DBObject;
@@ -11,11 +11,11 @@ import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
 
 import es.um.nosql.schemainference.opensanctions.Address;
+import es.um.nosql.schemainference.opensanctions.Alias;
+import es.um.nosql.schemainference.opensanctions.Birth_place;
+import es.um.nosql.schemainference.opensanctions.Birth_date;
 import es.um.nosql.schemainference.opensanctions.Nationality;
 import es.um.nosql.schemainference.opensanctions.Identifier;
-import es.um.nosql.schemainference.opensanctions.Birth_date;
-import es.um.nosql.schemainference.opensanctions.Birth_place;
-import es.um.nosql.schemainference.opensanctions.Alias;
 
 @Entity(value = "sanctions", noClassnameStored = true)
 public class Sanctions
@@ -25,12 +25,6 @@ public class Sanctions
   private String _id;
   public String get_id() {return this._id;}
   public void set_id(String _id) {this._id = _id;}
-  
-  @Property
-  @NotNull(message = "_type can't be null")
-  private String _type;
-  public String get_type() {return this._type;}
-  public void set_type(String _type) {this._type = _type;}
   
   @Embedded
   private Address[] addresses;

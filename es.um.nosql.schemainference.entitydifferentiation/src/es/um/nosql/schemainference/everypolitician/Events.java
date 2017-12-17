@@ -1,9 +1,10 @@
 package es.um.nosql.schemainference.everypolitician;
 
-  import org.mongodb.morphia.annotations.Entity;
-  import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
+import org.mongodb.morphia.annotations.Reference;
 import javax.validation.constraints.NotNull;
 
 import es.um.nosql.schemainference.everypolitician.Identifier;
@@ -16,12 +17,6 @@ public class Events
   private String _id;
   public String get_id() {return this._id;}
   public void set_id(String _id) {this._id = _id;}
-  
-  @Property
-  @NotNull(message = "_type can't be null")
-  private String _type;
-  public String get_type() {return this._type;}
-  public void set_type(String _type) {this._type = _type;}
   
   @Property
   @NotNull(message = "classification can't be null")
@@ -46,10 +41,10 @@ public class Events
   public String getName() {return this.name;}
   public void setName(String name) {this.name = name;}
   
-  @Property
-  private String organization_id;
-  public String getOrganization_id() {return this.organization_id;}
-  public void setOrganization_id(String organization_id) {this.organization_id = organization_id;}
+  @Reference(idOnly = true)
+  private Organizations organization_id;
+  public Organizations getOrganization_id() {return this.organization_id;}
+  public void setOrganization_id(Organizations organization_id) {this.organization_id = organization_id;}
   
   @Property
   @NotNull(message = "start_date can't be null")

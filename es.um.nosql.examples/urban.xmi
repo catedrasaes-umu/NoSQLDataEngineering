@@ -4,7 +4,7 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema"
-    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../../es.um.nosql.schemainference/model/nosqlschema.ecore"
+    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../es.um.nosql.schemainference/model/nosqlschema.ecore"
     name="urban">
   <entities
       name="Urban_words">
@@ -101,6 +101,13 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
+      </properties>
     </entityversions>
     <entityversions
         versionId="2"
@@ -184,6 +191,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
       </properties>
     </entityversions>
     <entityversions
@@ -269,6 +283,13 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
+      </properties>
     </entityversions>
     <entityversions
         versionId="4"
@@ -343,6 +364,13 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
+      </properties>
     </entityversions>
     <entityversions
         versionId="5"
@@ -412,6 +440,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
       </properties>
     </entityversions>
     <entityversions
@@ -500,6 +535,13 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
+      </properties>
     </entityversions>
     <entityversions
         versionId="7"
@@ -576,6 +618,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
       </properties>
     </entityversions>
     <entityversions
@@ -654,6 +703,13 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
+      </properties>
     </entityversions>
     <entityversions
         versionId="9"
@@ -720,6 +776,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
       </properties>
     </entityversions>
     <entityversions
@@ -808,6 +871,13 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
+      </properties>
     </entityversions>
     <entityversions
         versionId="11"
@@ -885,6 +955,13 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
+      </properties>
     </entityversions>
     <entityversions
         versionId="12"
@@ -951,6 +1028,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1028,6 +1112,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1116,6 +1207,13 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
+      </properties>
     </entityversions>
     <entityversions
         versionId="15"
@@ -1192,6 +1290,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1270,6 +1375,13 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
+      </properties>
     </entityversions>
     <entityversions
         versionId="17"
@@ -1336,6 +1448,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
       </properties>
     </entityversions>
   </entities>

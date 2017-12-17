@@ -1,10 +1,11 @@
 package es.um.nosql.schemainference.everypolitician;
 
-  import org.mongodb.morphia.annotations.Entity;
-  import org.mongodb.morphia.annotations.Id;
+import org.mongodb.morphia.annotations.Entity;
+import org.mongodb.morphia.annotations.Id;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
+import org.mongodb.morphia.annotations.Reference;
 import javax.validation.constraints.NotNull;
 
 import es.um.nosql.schemainference.everypolitician.Source;
@@ -18,16 +19,10 @@ public class Memberships
   public ObjectId get_id() {return this._id;}
   public void set_id(ObjectId _id) {this._id = _id;}
   
-  @Property
-  @NotNull(message = "_type can't be null")
-  private String _type;
-  public String get_type() {return this._type;}
-  public void set_type(String _type) {this._type = _type;}
-  
-  @Property
-  private String area_id;
-  public String getArea_id() {return this.area_id;}
-  public void setArea_id(String area_id) {this.area_id = area_id;}
+  @Reference(idOnly = true)
+  private Areas area_id;
+  public Areas getArea_id() {return this.area_id;}
+  public void setArea_id(Areas area_id) {this.area_id = area_id;}
   
   @Property
   private String end_date;
@@ -46,17 +41,17 @@ public class Memberships
   public String getOn_behalf_of_id() {return this.on_behalf_of_id;}
   public void setOn_behalf_of_id(String on_behalf_of_id) {this.on_behalf_of_id = on_behalf_of_id;}
   
-  @Property
+  @Reference(idOnly = true)
   @NotNull(message = "organization_id can't be null")
-  private String organization_id;
-  public String getOrganization_id() {return this.organization_id;}
-  public void setOrganization_id(String organization_id) {this.organization_id = organization_id;}
+  private Organizations organization_id;
+  public Organizations getOrganization_id() {return this.organization_id;}
+  public void setOrganization_id(Organizations organization_id) {this.organization_id = organization_id;}
   
-  @Property
+  @Reference(idOnly = true)
   @NotNull(message = "person_id can't be null")
-  private String person_id;
-  public String getPerson_id() {return this.person_id;}
-  public void setPerson_id(String person_id) {this.person_id = person_id;}
+  private Persons person_id;
+  public Persons getPerson_id() {return this.person_id;}
+  public void setPerson_id(Persons person_id) {this.person_id = person_id;}
   
   @Property
   @NotNull(message = "role can't be null")

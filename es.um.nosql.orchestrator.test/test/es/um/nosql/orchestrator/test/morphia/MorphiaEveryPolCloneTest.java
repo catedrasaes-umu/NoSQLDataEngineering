@@ -111,7 +111,7 @@ public class MorphiaEveryPolCloneTest
     }
 
     Query<Events> qEvents = newDatastore.createQuery(Events.class);
-    Assert.assertEquals(59, qEvents.count());
+    Assert.assertEquals(62, qEvents.count());
 
     for (Events event : qEvents)
     {
@@ -122,7 +122,7 @@ public class MorphiaEveryPolCloneTest
 
       // Dont have to check if the Organization is valid, since we just validated it on the previous method...
       if (event.getOrganization_id() != null)
-        Assert.assertEquals(1, newDatastore.createQuery(Organizations.class).filter("id =", event.getOrganization_id()).count());
+        Assert.assertEquals(1, newDatastore.createQuery(Organizations.class).filter("_id =", event.getOrganization_id().get_id()).count());
     }
 
     Query<Persons> qPersons = newDatastore.createQuery(Persons.class);
@@ -152,14 +152,14 @@ public class MorphiaEveryPolCloneTest
 
       // Dont have to check if the references are valid themselves, since we just validated them on the previous method...
       if (membership.getArea_id() != null)
-        Assert.assertEquals(1, newDatastore.createQuery(Areas.class).filter("id =", membership.getArea_id()).count());
+        Assert.assertEquals(1, newDatastore.createQuery(Areas.class).filter("_id =", membership.getArea_id().get_id()).count());
 
       // Dont panic it this runs for several seconds. It does about 5000 queries...
       if (membership.getPerson_id() != null)
-        Assert.assertEquals(1, newDatastore.createQuery(Persons.class).filter("id =", membership.getPerson_id()).count());
+        Assert.assertEquals(1, newDatastore.createQuery(Persons.class).filter("_id =", membership.getPerson_id().get_id()).count());
 
       if (membership.getOrganization_id() != null)
-        Assert.assertEquals(1, newDatastore.createQuery(Organizations.class).filter("id =", membership.getOrganization_id()).count());
+        Assert.assertEquals(1, newDatastore.createQuery(Organizations.class).filter("_id =", membership.getOrganization_id().get_id()).count());
     }
   }
 

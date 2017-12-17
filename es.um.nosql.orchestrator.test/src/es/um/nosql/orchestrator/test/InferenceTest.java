@@ -54,8 +54,8 @@ public class InferenceTest
     // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
     // prepareModelExample(DbType.MONGODB, FILL_AND_INFER, FILE_MODEL);
     // prepareSOFExample(DbType.MONGODB, FILL_ONLY, FOLDER_SOF);
-    // prepareEPolExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_EPOL);
-     prepareUrbanExample(DbType.MONGODB, FILL_AND_INFER, FILE_URBAN);                  //POJO
+     prepareEPolExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_EPOL);
+    // prepareUrbanExample(DbType.MONGODB, FILL_AND_INFER, FILE_URBAN);                  //POJO
     // Problem with this dataset is that it contains A LOT of aggregated objects and null values.
     // Aggregated objects tend to make mongodb run out of memory during the reduce process.
     // Null values tend to abort the inference process. Until the inference process is fixed (TODO(tm)),
@@ -132,7 +132,7 @@ public class InferenceTest
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
     long startTime = System.currentTimeMillis();
-
+/*
     System.out.println("Filling the " + dbType.toString() + " database...");
     EPol2Db controller = new EPol2Db(dbType, DATABASE_IP);
     File theFile = new File(source);
@@ -145,7 +145,7 @@ public class InferenceTest
       controller.run(source, dbName);
 
     controller.shutdown();
-
+*/
     System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
 
     if (FILL_ONLY)

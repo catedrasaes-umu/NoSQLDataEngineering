@@ -9,6 +9,7 @@ import javax.validation.constraints.NotNull;
 public class Contact_detail
 {
   @Property
+  @NotNull(message = "type can't be null")
   private String type;
   public String getType() {return this.type;}
   public void setType(String type) {this.type = type;}
