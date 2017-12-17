@@ -14,7 +14,7 @@ public class Commons
     if (MORPHIA_INSTANCE == null)
     {
       MORPHIA_INSTANCE = new Morphia();
-      MORPHIA_INSTANCE = MORPHIA_INSTANCE.mapPackage("es.um.nosql.schemainference.mongoMovies3");
+      MORPHIA_INSTANCE = MORPHIA_INSTANCE.mapPackage("es.um.nosql.schemainference.everypolitician");
     }
 
     return MORPHIA_INSTANCE;

@@ -8,4 +8,5 @@ Require-Bundle: org.eclipse.emf.ecore
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: es.um.nosql.schemainference.everypolitician,
  es.um.nosql.schemainference.mongoMovies3,
- es.um.nosql.schemainference.opensanctions
+ es.um.nosql.schemainference.opensanctions,
+ es.um.nosql.schemainference.test1

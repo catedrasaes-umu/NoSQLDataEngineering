@@ -22,7 +22,6 @@ import es.um.nosql.schemainference.mongoMovies3.Director;
 import es.um.nosql.schemainference.mongoMovies3.Movie;
 import es.um.nosql.schemainference.mongoMovies3.Movietheater;
 import es.um.nosql.schemainference.mongoMovies3.Prize;
-import es.um.nosql.schemainference.mongoMovies3.Rating;
 
 public class MorphiaMoviesValidationTest
 {
@@ -73,9 +72,9 @@ public class MorphiaMoviesValidationTest
       Set<ConstraintViolation<Movie>> violations = validator.validate(movie);
       Assert.assertEquals(0, violations.size());
 
+//??//      testCollection(movie.getRating(), Rating.class);
       testCollection(movie.getCriticisms(), Criticism.class);
       testCollection(movie.getPrizes(), Prize.class);
-      testCollection(movie.getRating(), Rating.class);
     }
   }
 

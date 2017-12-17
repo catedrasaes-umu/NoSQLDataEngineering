@@ -10,9 +10,9 @@ import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
 
+import es.um.nosql.schemainference.everypolitician.Link;
 import es.um.nosql.schemainference.everypolitician.Identifier;
 import es.um.nosql.schemainference.everypolitician.Other_name;
-import es.um.nosql.schemainference.everypolitician.Link;
 
 @Entity(value = "organizations", noClassnameStored = true)
 public class Organizations

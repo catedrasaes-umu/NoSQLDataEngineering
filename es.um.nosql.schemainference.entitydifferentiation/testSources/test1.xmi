@@ -13,10 +13,10 @@
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="id">
+          name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
+            name="String"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
@@ -36,7 +36,7 @@
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="id">
+          name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -59,7 +59,7 @@
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="id">
+          name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -78,6 +78,23 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
+    </entityversions>
+    <entityversions
+        versionId="4"
+        root="true">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Reference"
+          name="dates"
+          upperBound="1"
+          refTo="CustomDate4"
+          originalType="String"/>
     </entityversions>
   </entities>
   <entities
@@ -133,6 +150,27 @@
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="date3">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+    </entityversions>
+  </entities>
+  <entities
+      name="CustomDate4">
+    <entityversions
+        versionId="199"
+        root="true">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="date4">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>

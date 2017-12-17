@@ -13,10 +13,10 @@
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="id">
+          name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="ObjectId"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
@@ -25,7 +25,7 @@
           refTo="//@entities.1/@entityversions.0"/>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
-          name="dates0-1"
+          name="dates0_1"
           upperBound="-1"
           refTo="//@entities.1/@entityversions.0"/>
       <properties
@@ -36,13 +36,13 @@
           refTo="//@entities.1/@entityversions.0"/>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
-          name="dates1-1"
+          name="dates1_1"
           lowerBound="1"
           upperBound="-1"
           refTo="//@entities.1/@entityversions.0"/>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
-          name="dates-1-1"
+          name="dates_1_1"
           lowerBound="-1"
           upperBound="-1"
           refTo="//@entities.1/@entityversions.0"/>

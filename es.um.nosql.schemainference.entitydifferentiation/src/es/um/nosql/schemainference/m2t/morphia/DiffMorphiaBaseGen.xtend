@@ -65,7 +65,7 @@ class DiffMorphiaBaseGen
       if (MORPHIA_INSTANCE == null)
       {
         MORPHIA_INSTANCE = new Morphia();
-        MORPHIA_INSTANCE = MORPHIA_INSTANCE.mapPackage("es.um.nosql.schemainference.mongoMovies3");
+        MORPHIA_INSTANCE = MORPHIA_INSTANCE.mapPackage("«importRoute.subSequence(0, importRoute.indexOf(".commons"))»");
       }
 
       return MORPHIA_INSTANCE;
