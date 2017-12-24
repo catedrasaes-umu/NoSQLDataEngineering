@@ -45,18 +45,18 @@ public class DiffToMongoose
   /**
    * Method used to start the generation process from a diff model file
    */
-  def void m2t(File modelFile, File outputFolder)
+  def void m2t(File modelFile, File configFile, File outputFolder)
   {
     val loader = new ModelLoader(EntitydifferentiationPackage.eINSTANCE);
     val diff = loader.load(modelFile, EntityDifferentiation);
 
-    m2t(diff, outputFolder);
+    m2t(diff, configFile, outputFolder);
   }
 
   /**
    * Method used to start the generation process from an EntityDifferentiation object
    */
-  def void m2t(EntityDifferentiation diff, File outputFolder)
+  def void m2t(EntityDifferentiation diff, File configFile, File outputFolder)
   {
     if (outputFolder.toPath.resolve("app/models/").toFile.exists)
       outputDir = outputFolder.toPath.resolve("app/models/").toFile

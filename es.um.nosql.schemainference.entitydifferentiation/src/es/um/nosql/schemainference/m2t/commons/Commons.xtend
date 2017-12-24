@@ -4,6 +4,8 @@ import java.io.PrintStream
 import java.io.File
 import es.um.nosql.schemainference.NoSQLSchema.Reference
 import java.util.regex.Pattern
+import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
+import com.fasterxml.jackson.databind.ObjectMapper
 
 /**
  * This class factors out some common methods to the Morphia and Mongoose generators.
@@ -45,4 +47,12 @@ class Commons
   public static def IS_FLOAT(String type) { #["float", "double"].contains(type)}
   public static def IS_BOOLEAN(String type) { #["boolean", "bool"].contains(type)}
   public static def IS_OBJECTID(String type) { #["objectid"].contains(type)}
+  
+  def static <T extends Object> T PARSE_CONFIG_FILE(Class<T> className, File configFile)
+  {
+    val mapper = new ObjectMapper(new YAMLFactory());
+    var config = mapper.readValue(configFile, className);
+
+    return config;
+  }
 }
