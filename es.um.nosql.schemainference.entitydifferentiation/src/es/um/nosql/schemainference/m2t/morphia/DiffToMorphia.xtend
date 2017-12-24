@@ -18,7 +18,7 @@ import es.um.nosql.schemainference.NoSQLSchema.Property
 import java.util.ArrayList
 import es.um.nosql.schemainference.m2t.commons.Commons
 import es.um.nosql.schemainference.m2t.commons.DependencyAnalyzer
-import es.um.nosql.schemainference.m2t.config.MorphiaYAMLConfig
+import es.um.nosql.schemainference.m2t.config.MorphiaConfig
 
 /**
  * Class designed to perform the Morphia code generation: Java
@@ -39,7 +39,7 @@ class DiffToMorphia
 
   DependencyAnalyzer analyzer;
 
-  MorphiaYAMLConfig config;
+  MorphiaConfig config;
 
   /**
    * Method used to start the generation process from a diff model file
@@ -70,12 +70,13 @@ class DiffToMorphia
     }
 
     // Process the configuration file
-    config = Commons.PARSE_CONFIG_FILE(MorphiaYAMLConfig, configFile)
+    config = Commons.PARSE_CONFIG_FILE(MorphiaConfig, configFile)
+    println(config);
 
     // Calc dependencies between entities
     analyzer = new DependencyAnalyzer();
     analyzer.performAnalysis(diff);
-//    analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
+    analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
   }
 
   def schemaFileName(Entity e)
