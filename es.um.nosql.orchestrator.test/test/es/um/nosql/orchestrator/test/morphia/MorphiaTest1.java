@@ -20,16 +20,9 @@ import org.mongodb.morphia.query.Query;
 
 import es.um.nosql.schemainference.db.adapters.mongodb.MongoDbAdapter;
 import es.um.nosql.schemainference.db.adapters.mongodb.MongoDbClient;
-import es.um.nosql.schemainference.everypolitician.Areas;
-import es.um.nosql.schemainference.mongoMovies3.Criticism;
-import es.um.nosql.schemainference.mongoMovies3.Director;
-import es.um.nosql.schemainference.mongoMovies3.Movie;
-import es.um.nosql.schemainference.mongoMovies3.Movietheater;
-import es.um.nosql.schemainference.mongoMovies3.Prize;
-import es.um.nosql.schemainference.mongoMovies3.Rating;
 import es.um.nosql.schemainference.test1.CustomDate1;
 import es.um.nosql.schemainference.test1.CustomDate2;
-import es.um.nosql.schemainference.test1.CustomDate4;
+import es.um.nosql.schemainference.test1.CustomDate3;
 import es.um.nosql.schemainference.test1.PersonalData;
 import es.um.nosql.schemainference.test1.Persons;
 
@@ -61,46 +54,41 @@ public class MorphiaTest1
   @Test
   public void testCreateObjects()
   {
-/*    CustomDate4 cd1 = new CustomDate4();
-    CustomDate4 cd2 = new CustomDate4();
-    CustomDate4 cd3 = new CustomDate4();
-    CustomDate4 cd4 = new CustomDate4();
-    cd1.setDate4("date4_1");
-    cd1.set_id(new ObjectId().toString());
-    cd2.setDate4("date4_2");
-    cd2.set_id(new ObjectId().toString());
-    cd3.setDate4("date4_3");
-    cd3.set_id(new ObjectId().toString());
-    cd4.setDate4("date4_4");
-    cd4.set_id(new ObjectId().toString());
+/*    CustomDate3 cd31 = new CustomDate3();
+    CustomDate3 cd32 = new CustomDate3();
+    CustomDate3 cd33 = new CustomDate3();
+    cd31.setDate3("date3_1"); cd31.set_id(new ObjectId().toString());
+    cd32.setDate3("date3_2"); cd32.set_id(new ObjectId().toString());
+    cd33.setDate3("date3_3"); cd33.set_id(new ObjectId().toString());
 
-    List<CustomDate4> list = new ArrayList<CustomDate4>();
-    list.add(cd1); list.add(cd2); list.add(cd3); list.add(cd4);
+    List<CustomDate3> list = new ArrayList<CustomDate3>();
+    list.add(cd31); list.add(cd32); list.add(cd33);
     datastore.save(list);
 */
-    CustomDate1 cd1 = new CustomDate1();
-    cd1.setDate1(1);
+    CustomDate1 cd11 = new CustomDate1();
+    cd11.setDate1(11);
 
-    CustomDate2 cd2 = new CustomDate2();
-    cd2.setDate2(true);
+    CustomDate2 cd21 = new CustomDate2();
+    cd21.setDate2(true);
 
     PersonalData pData1 = new PersonalData();
-    pData1.setAge(11);
-    pData1.setName("pData1");
+    pData1.setAge(1); pData1.setName("pData1");
 
     PersonalData pData2 = new PersonalData();
-    pData2.setAge(2);
-    pData2.setName("pData2");
+    pData2.setAge(2); pData2.setName("pData2");
 
-    Persons p1 = new Persons(); p1.set_id(new ObjectId().toString()); p1.setData(pData1); p1.setDates(cd1);
-    Persons p2 = new Persons(); p2.set_id(new ObjectId().toString()); p2.setData(pData2); p2.setDates(cd2);
+    // p1: v1
+    // p2: v2
+    // p3: v3
+    Persons p1 = new Persons(); p1.set_id(new ObjectId().toString()); p1.setDates(cd11); p1.setData(pData1);
+    Persons p2 = new Persons(); p2.set_id(new ObjectId().toString()); p2.setDates(cd21); p2.setData(pData2);
     Persons p3 = new Persons(); p3.set_id(new ObjectId().toString()); p3.setData("data_raw");
 
-    Query<CustomDate4> qCustomDate = datastore.createQuery(CustomDate4.class);
+    Query<CustomDate3> qCustomDate = datastore.createQuery(CustomDate3.class);
     p3.setDates(qCustomDate.asList().get(0));
-    //TODO: Error. Cuando se agrega una referencia en una unión, el objeto referenciado se agrega como embebido.
-    //Estrategia: Cuando una referencia está en una unión, si la referencia era de tipo string | number, se debe tratar en un preSave como string o number, y olvidarnos del objeto...
-    //¿Cómo comprobamos todo esto? Quizá sea más sencillo en mongoose...
+    //TODO: Error. Cuando se agrega una referencia en una union, el objeto referenciado se agrega como embebido.
+    //Estrategia: Cuando una referencia esta en una union, si la referencia era de tipo string | number, se debe tratar en un preSave como string o number, y olvidarnos del objeto...
+    //Â¿Como comprobamos todo esto? Quiza sea mas sencillo en mongoose...
 
     List<Persons> lPersons = new ArrayList<Persons>();
     lPersons.add(p1); lPersons.add(p2); lPersons.add(p3);
@@ -110,14 +98,13 @@ public class MorphiaTest1
   @Test
   public void testRetrieveObjects()
   {
-    Query<CustomDate4> qCustomDate = datastore.createQuery(CustomDate4.class);
-    Assert.assertEquals(4, qCustomDate.count());
+    Query<CustomDate3> qCustomDate = datastore.createQuery(CustomDate3.class);
+    Assert.assertEquals(3, qCustomDate.count());
 
-    for (CustomDate4 cd : qCustomDate)
+    for (CustomDate3 cd : qCustomDate)
     {
-      Set<ConstraintViolation<CustomDate4>> violations = validator.validate(cd);
+      Set<ConstraintViolation<CustomDate3>> violations = validator.validate(cd);
       Assert.assertEquals(0, violations.size());
-      System.out.println(cd.get_id() + ": " + cd.getDate4());
     }
 
     Query<Persons> qPersons = datastore.createQuery(Persons.class);

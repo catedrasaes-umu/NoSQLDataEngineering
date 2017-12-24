@@ -3,17 +3,17 @@ package es.um.nosql.schemainference.test1;
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import es.um.nosql.schemainference.test1.commons.Commons;
+import org.mongodb.morphia.annotations.PrePersist;
 import org.mongodb.morphia.annotations.PreLoad;
 import com.mongodb.DBObject;
-import com.mongodb.BasicDBList;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
 import javax.validation.constraints.NotNull;
 
 import es.um.nosql.schemainference.test1.CustomDate1;
-import es.um.nosql.schemainference.test1.PersonalData;
 import es.um.nosql.schemainference.test1.CustomDate2;
+import es.um.nosql.schemainference.test1.PersonalData;
 
 @Entity(value = "persons", noClassnameStored = true)
 public class Persons
@@ -37,7 +37,7 @@ public class Persons
   }
   
   @PreLoad
-  private void processUnion_PersonalData_String(DBObject dbObj)
+  private void preLoadUnion_PersonalData_String(DBObject dbObj)
   {
     if (!dbObj.containsField("data"))
       return;
@@ -49,24 +49,33 @@ public class Persons
     else 
     if (fieldObj instanceof String)
       this.data = (String)fieldObj;
+    else
+      throw new ClassCastException("data must be of type PersonalData or String");
   
     dbObj.removeField("data");
   }
   
-  // @Union_CustomDate1_CustomDate2_String
+  // @Union_CustomDate1_CustomDate2_CustomDate3
   @Embedded
   private Object dates;
   public Object getDates() {return this.dates;}
   public void setDates(Object dates)
   {
-    if (dates instanceof CustomDate1 || dates instanceof CustomDate2 || dates instanceof CustomDate4)
+    if (dates instanceof CustomDate1 || dates instanceof CustomDate2 || dates instanceof CustomDate3)
       this.dates = dates;
     else
-      throw new ClassCastException("dates must be of type CustomDate1 or CustomDate2 or CustomDate4");
+      throw new ClassCastException("dates must be of type CustomDate1 or CustomDate2 or CustomDate3");
+  }
+  
+  @PrePersist
+  private void prePersistUnion_CustomDate1_CustomDate2_CustomDate3()
+  {
+    if (dates instanceof CustomDate3)
+      dates = ((CustomDate3)dates).get_id();
   }
   
   @PreLoad
-  private void processUnion_CustomDate1_CustomDate2_String(DBObject dbObj)
+  private void preLoadUnion_CustomDate1_CustomDate2_CustomDate3(DBObject dbObj)
   {
     if (!dbObj.containsField("dates"))
       return;
@@ -81,6 +90,8 @@ public class Persons
     else 
     if (fieldObj instanceof String)
       this.dates = (String)fieldObj;
+    else
+      throw new ClassCastException("dates must be of type CustomDate1 or CustomDate2 or CustomDate3");
   
     dbObj.removeField("dates");
   }

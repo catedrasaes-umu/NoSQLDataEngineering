@@ -100,30 +100,42 @@ class DiffToMorphia
   // Doesnt seem easy to bypass these cases at this point, since unions are analyzed later on.
   // Por otro lado los SET pueden devolver this, pero no tengo a mano el nombre del tipo a devolver. Entity_name
   def genIncludes(Entity entity)
-  '''
-    «IF entity.entityversions.exists[ev | ev.isRoot]»
+  {
+    val isEntityRoot = entity.entityversions.exists[ev | ev.isRoot];
+    val collListUnionProperties = analyzer.getTypeListByPropertyName.get(entity).values;
+    '''
+    «IF isEntityRoot»
     import org.mongodb.morphia.annotations.Entity;
     import org.mongodb.morphia.annotations.Id;
-    «IF entity.entityversions.exists[ev | ev.isRoot && ev.properties.exists[p | p.name.equals("_id") &&
+    «IF isEntityRoot && entity.entityversions.exists[ev | ev.properties.exists[p | p.name.equals("_id") &&
       p instanceof Attribute && (p as Attribute).type instanceof PrimitiveType && ((p as Attribute).type as PrimitiveType).name.equals("ObjectId")]]»
     import org.bson.types.ObjectId;
     «ENDIF»
     «ENDIF»
-    «IF analyzer.getTypeListByPropertyName.get(entity).values.exists[l | !l.isEmpty]»
+    «IF collListUnionProperties.exists[l | !l.isEmpty]»
+      «IF collListUnionProperties.exists[l | l.exists[ps | ps.property instanceof Aggregate]]»
       import «importRoute».commons.Commons;
+      «ENDIF»
+      «IF collListUnionProperties.exists[l | l.exists[ps | ps.property instanceof Reference]]»
+      import org.mongodb.morphia.annotations.PrePersist;
+      «ENDIF»
       import org.mongodb.morphia.annotations.PreLoad;
       import com.mongodb.DBObject;
+      «IF collListUnionProperties.exists[l | l.exists[ps | ps.property instanceof Aggregate
+        && (ps.property as Aggregate).lowerBound !== 1 && (ps.property as Aggregate).upperBound !== 1]]»
       import com.mongodb.BasicDBList;
+      «ENDIF»
     «ENDIF»
     «IF entity.entityversions.exists[ev | !ev.isRoot || ev.properties.exists[p | p instanceof Aggregate]]»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
-    «IF entity.entityversions.exists[ev | !ev.properties.empty]»import org.mongodb.morphia.annotations.Property;«ENDIF»
+    «IF entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Attribute]]»import org.mongodb.morphia.annotations.Property;«ENDIF»
     «IF entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Reference]]»import org.mongodb.morphia.annotations.Reference;«ENDIF»
     «IF !analyzer.getDiffByEntity().get(entity).commonProps.isEmpty»import javax.validation.constraints.NotNull;«ENDIF»
 
     «FOR Entity e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
       import «importRoute».«e.name»;
     «ENDFOR»
-  '''
+    '''
+  }
 
   /**
    * For each property of any version of an entity, generate code.
@@ -243,9 +255,20 @@ class DiffToMorphia
     else
       throw new ClassCastException("«theName» must be of type «theTypes.join(' or ')»");
   }
+  «IF list.exists[p | p instanceof Reference]»
+
+  @PrePersist
+  private void prePersistUnion_«theTypes.join('_').replace("[]", "")»()
+  {
+    «FOR Property p : list.filter[p | p instanceof Reference] SEPARATOR '\nelse '»
+      if («p.name» instanceof «genTypeForProperty(p as Reference)»)
+        «p.name» = ((«genTypeForProperty(p as Reference)»)«p.name»).get_id();
+    «ENDFOR»
+  }
+  «ENDIF»  
 
   @PreLoad
-  private void processUnion_«theTypes.join('_').replace("[]", "")»(DBObject dbObj)
+  private void preLoadUnion_«theTypes.join('_').replace("[]", "")»(DBObject dbObj)
   {
     «IF !required»
     if (!dbObj.containsField("«theName»"))
@@ -257,6 +280,8 @@ class DiffToMorphia
     «FOR Property prop : list SEPARATOR '\nelse '»
       «genUnionFor(prop)»
     «ENDFOR»
+    else
+      throw new ClassCastException("«theName» must be of type «theTypes.join(' or ')»");
 
     dbObj.removeField("«theName»");
   }
@@ -277,10 +302,18 @@ class DiffToMorphia
     '''
   }
 
-  // TODO: This will need some repairing as soon as we set up the reference mechanism!
+  // TODO: Conflictive point.
+  // It is impossible to resolve references once an _id field is queried, since we do not have access to the Datastore
+  // So we will have to let the user resolve the reference as he wishes. Remember the field is of Object type,
+  // so the user can still query the references manually.
+  // This also evades the problem of having unions of different references, because a priori we do not know against which
+  // collection should we query the _id attribute.
   def dispatch genUnionFor(Reference ref)
   {
-    val typeRef = genTypeForProperty(ref);
+    var typeRef = genAttributeType(ref.originalType);
+    if (typeRef == "")
+      typeRef = "String";
+
     '''
     «IF Commons.IS_DBREF(ref)»
       if (fieldObj instanceof DBObject && ((DBObject)fieldObj).get("$ref").equals("«ref.refTo.name»"))
@@ -394,7 +427,7 @@ class DiffToMorphia
   {
     switch typeName : type.toLowerCase
     {
-      case "string" : "String"
+      case Commons.IS_STRING(typeName) : "String"
       case Commons.IS_INT(typeName) : "Integer"
       case Commons.IS_FLOAT(typeName) :  "Float"
       case Commons.IS_BOOLEAN(typeName) : "Boolean"

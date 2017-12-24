@@ -10,11 +10,11 @@ import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
 
+import es.um.nosql.schemainference.opensanctions.Birth_date;
+import es.um.nosql.schemainference.opensanctions.Birth_place;
+import es.um.nosql.schemainference.opensanctions.Nationality;
 import es.um.nosql.schemainference.opensanctions.Address;
 import es.um.nosql.schemainference.opensanctions.Alias;
-import es.um.nosql.schemainference.opensanctions.Birth_place;
-import es.um.nosql.schemainference.opensanctions.Birth_date;
-import es.um.nosql.schemainference.opensanctions.Nationality;
 import es.um.nosql.schemainference.opensanctions.Identifier;
 
 @Entity(value = "sanctions", noClassnameStored = true)

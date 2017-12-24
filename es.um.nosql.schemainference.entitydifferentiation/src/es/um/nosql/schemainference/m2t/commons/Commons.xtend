@@ -40,6 +40,7 @@ class Commons
     return EXPAND_REF(reference).length == 2
   }
 
+  public static def IS_STRING(String type) { #["string"].contains(type)}
   public static def IS_INT(String type) { #["int", "integer", "number"].contains(type)}
   public static def IS_FLOAT(String type) { #["float", "double"].contains(type)}
   public static def IS_BOOLEAN(String type) { #["boolean", "bool"].contains(type)}

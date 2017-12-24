@@ -1,9 +1,7 @@
 package es.um.nosql.schemainference.opensanctions;
 
-import es.um.nosql.schemainference.opensanctions.commons.Commons;
 import org.mongodb.morphia.annotations.PreLoad;
 import com.mongodb.DBObject;
-import com.mongodb.BasicDBList;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 
@@ -44,7 +42,7 @@ public class Identifier
   }
   
   @PreLoad
-  private void processUnion_String_Integer(DBObject dbObj)
+  private void preLoadUnion_String_Integer(DBObject dbObj)
   {
     if (!dbObj.containsField("number"))
       return;
@@ -56,6 +54,8 @@ public class Identifier
     else 
     if (fieldObj instanceof Integer)
       this.number = (Integer)fieldObj;
+    else
+      throw new ClassCastException("number must be of type String or Integer");
   
     dbObj.removeField("number");
   }

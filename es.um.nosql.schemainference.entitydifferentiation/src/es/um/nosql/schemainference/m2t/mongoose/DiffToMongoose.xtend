@@ -397,7 +397,7 @@ public class DiffToMongoose
     (
       switch typeName : type.toLowerCase
       {
-        case "string" : "String"
+        case Commons.IS_STRING(typeName) : "String"
         case Commons.IS_INT(typeName) : "Number"
         case Commons.IS_FLOAT(typeName) :  "Number"
         case Commons.IS_BOOLEAN(typeName) : "Boolean"

@@ -5,14 +5,13 @@ import org.mongodb.morphia.annotations.Id;
 import es.um.nosql.schemainference.everypolitician.commons.Commons;
 import org.mongodb.morphia.annotations.PreLoad;
 import com.mongodb.DBObject;
-import com.mongodb.BasicDBList;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
 
+import es.um.nosql.schemainference.everypolitician.Other_name;
 import es.um.nosql.schemainference.everypolitician.Link;
 import es.um.nosql.schemainference.everypolitician.Identifier;
-import es.um.nosql.schemainference.everypolitician.Other_name;
 
 @Entity(value = "organizations", noClassnameStored = true)
 public class Organizations

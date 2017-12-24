@@ -36,38 +36,38 @@ public class InferenceTest
 
   private static final String FILE_MODEL = "models/mongoMovies3.xmi";
   private static final String FOLDER_SOF = "F:\\Informatica\\datasets\\stackoverflow\\";
-  private static final String FOLDER_EPOL = "F:\\Informatica\\datasets\\everypolitician\\";
-  private static final String FILE_URBAN = "F:\\Informatica\\datasets\\urban\\words.json";
+  private static final String FOLDER_EPOL = "/home/lab/datasets/everypolitician/";
+  private static final String FILE_URBAN = "/home/lab/datasets/urban/words.json";
   private static final String FILE_COMPANY = "F:\\Informatica\\datasets\\companies\\companies.json";
-  private static final String FOLDER_LINK = "/media/alberto/tarsonis/datasets/givealink/";
+  private static final String FOLDER_LINK = "/home/lab/datasets/givealink/";
   private static final String FILE_HARVARD = "F:\\Informatica\\datasets\\harvard\\HMXPC13_DI_v2_5-14-14.csv";
-  private static final String FOLDER_FACEBOOK = "F:\\Informatica\\datasets\\facebook\\";
-  private static final String FOLDER_PROTEIN = "F:\\Informatica\\datasets\\proteins\\";
+  private static final String FOLDER_FACEBOOK = "/home/lab/datasets/facebook/";
+  private static final String FOLDER_PROTEIN = "/media/alberto/tarsonis/datasets/proteins/";
   private static final String FILE_PUBLICATIONS = "/media/alberto/tarsonis/datasets/publications/publications-nov-20132.csv";
-  private static final String FOLDER_WEBCLICKS = "F:\\Informatica\\datasets\\webclicks\\";
-  private static final String FILE_SANCTIONS = "F:\\Informatica\\datasets\\opensanctions\\master.ijson";
+  private static final String FOLDER_WEBCLICKS = "/home/lab/datasets/webclicks/";
+  private static final String FILE_SANCTIONS = "/home/lab/datasets/opensanctions/master.ijson";
   private static final String FILE_PLEIDADES = "/media/alberto/tarsonis/datasets/pleiades/pleiades-places.json";
 
   public static void main(String[] args) throws IOException
   {//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
     // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.
     // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
-    // prepareModelExample(DbType.MONGODB, FILL_AND_INFER, FILE_MODEL);
+    prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
     // prepareSOFExample(DbType.MONGODB, FILL_ONLY, FOLDER_SOF);
-     prepareEPolExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_EPOL);
-    // prepareUrbanExample(DbType.MONGODB, FILL_AND_INFER, FILE_URBAN);                  //POJO
+    prepareEPolExample(DbType.MONGODB, FILL_ONLY, FOLDER_EPOL);
+    prepareUrbanExample(DbType.MONGODB, FILL_ONLY, FILE_URBAN);                  //POJO
     // Problem with this dataset is that it contains A LOT of aggregated objects and null values.
     // Aggregated objects tend to make mongodb run out of memory during the reduce process.
     // Null values tend to abort the inference process. Until the inference process is fixed (TODO(tm)),
     // we will make use of POJO objects and ignore problematic fields. Thing is, then we have a lot of options...
     //  prepareCompanyExample(DbType.MONGODB, FILL_AND_INFER, FILE_COMPANY);              //POJO
-    //  prepareLinkExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_LINK);                  //POJO
+    prepareLinkExample(DbType.MONGODB, FILL_ONLY, FOLDER_LINK);                  //POJO
     //  prepareHarvardExample(DbType.MONGODB, FILL_AND_INFER, FILE_HARVARD);              //POJO
-    //  prepareFacebookExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_FACEBOOK);          //POJO
+    prepareFacebookExample(DbType.MONGODB, FILL_ONLY, FOLDER_FACEBOOK);          //POJO
     //  prepareProteinExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_PROTEIN);            //POJO
     //  preparePublicationsExample(DbType.MONGODB, FILL_AND_INFER, FILE_PUBLICATIONS);    //POJO
-    //  prepareWebclickExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_WEBCLICKS);         //POJO
-    //  prepareSanctionsExample(DbType.MONGODB, FILL_AND_INFER, FILE_SANCTIONS);
+    prepareWebclickExample(DbType.MONGODB, FILL_ONLY, FOLDER_WEBCLICKS);         //POJO
+    prepareSanctionsExample(DbType.MONGODB, FILL_ONLY, FILE_SANCTIONS);
     //  preparePleiadesExample(DbType.MONGODB, FILL_AND_INFER, FILE_PLEIDADES);
   }
 
@@ -92,7 +92,7 @@ public class InferenceTest
     if (FILL_ONLY)
       return;
     else
-      performInference(dbType, dbName.toLowerCase(), outputModel);
+      performInference(dbType, dbName, outputModel);
   }
 
   public static void prepareSOFExample(DbType dbType, boolean FILL_ONLY, String source)
@@ -104,13 +104,13 @@ public class InferenceTest
 
     System.out.println("Filling the " + dbType.toString() + " database...");
     String[] files = new String[]{"Users.xml", "Votes.xml", "Comments.xml", /*"Posts.xml", "Tags.xml", "PostLinks.xml", "Badges.xml"*/};
-		// Users.xml: 6438660 filas => 38 minutos
-		// Votes.xml: 116720227 filas => 10 horas
-		// Comments.xml: 53566720 filas => 5 horas
-		// Posts.xml: ???
-		// Tags.xml: 48375 filas
-		// PostLinks.xml: 3993518 filas
-		// Badges.xml: 21882069 filas
+    // Users.xml: 6438660 filas => 38 minutos
+    // Votes.xml: 116720227 filas => 10 horas
+    // Comments.xml: 53566720 filas => 5 horas
+    // Posts.xml: ???
+    // Tags.xml: 48375 filas
+    // PostLinks.xml: 3993518 filas
+    // Badges.xml: 21882069 filas
 
     SOF2Db controller = new SOF2Db(dbType, DATABASE_IP);
     for (String fileName : files)
@@ -132,7 +132,7 @@ public class InferenceTest
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
     long startTime = System.currentTimeMillis();
-/*
+
     System.out.println("Filling the " + dbType.toString() + " database...");
     EPol2Db controller = new EPol2Db(dbType, DATABASE_IP);
     File theFile = new File(source);
@@ -145,7 +145,7 @@ public class InferenceTest
       controller.run(source, dbName);
 
     controller.shutdown();
-*/
+
     System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
 
     if (FILL_ONLY)
