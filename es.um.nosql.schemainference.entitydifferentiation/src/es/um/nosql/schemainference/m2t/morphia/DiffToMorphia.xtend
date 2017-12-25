@@ -44,18 +44,18 @@ class DiffToMorphia
   /**
    * Method used to start the generation process from a diff model file
    */
-  def void m2t(File modelFile, File configFile, File outputFolder)
+  def void m2t(File modelFile, File outputFolder, File configFile)
   {
     val loader = new ModelLoader(EntitydifferentiationPackage.eINSTANCE);
     val diff = loader.load(modelFile, EntityDifferentiation);
 
-    m2t(diff, configFile, outputFolder);
+    m2t(diff, outputFolder, configFile);
   }
 
   /**
    * Method used to start the generation process from an EntityDifferentiation object.
    */
-  def void m2t(EntityDifferentiation diff, File configFile, File outputFolder)
+  def void m2t(EntityDifferentiation diff, File outputFolder, File configFile)
   {
     modelName = diff.name;
     outputDir = outputFolder.toPath.resolve(modelName).toFile;
@@ -70,13 +70,12 @@ class DiffToMorphia
     }
 
     // Process the configuration file
-    config = Commons.PARSE_CONFIG_FILE(MorphiaConfig, configFile)
-    println(config);
+    config = Commons.PARSE_CONFIG_FILE(MorphiaConfig, configFile, diff)
 
     // Calc dependencies between entities
     analyzer = new DependencyAnalyzer();
     analyzer.performAnalysis(diff);
-    analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
+    //analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
   }
 
   def schemaFileName(Entity e)

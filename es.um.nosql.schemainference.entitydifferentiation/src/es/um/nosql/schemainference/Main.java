@@ -36,8 +36,8 @@ public class Main
     String configFile = INPUT_FOLDER + YAML_CONFIG_ROUTE;
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
     // prepareM2MExample(inputFile, outputFile);
-    // prepareM2MongooseExample(outputFile, configFile, MONGOOSE_OUTPUT_GEN_BASE_FOLDER);
-    prepareM2MorphiaExample(outputFile, configFile, MORPHIA_OUTPUT_GEN_BASE_FOLDER);
+    // prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER), null);
+    // prepareM2MorphiaExample(new File(outputFile), new File(MORPHIA_OUTPUT_GEN_BASE_FOLDER), null);
   }
 
   public static void prepareM2MExample(String inputFile, String outputFile)
@@ -76,49 +76,41 @@ public class Main
     System.out.println("Transformation model finished");
   }
 
-  public static void prepareM2MongooseExample(String inputFile, String configRoute, String outputFolder)
+  public static void prepareM2MongooseExample(File inputFile, File outputFolder, File configFile)
   {
-    File inputModel = new File(inputFile);
-    File configFile = new File(configRoute);
-    File outputM2TFolder = new File(outputFolder);
+    System.out.println("Generating Mongoose code for " + inputFile.getName() + " in " + outputFolder.getPath());
 
-    System.out.println("Generating Mongoose code for " + inputModel.getName() + " in " + outputM2TFolder.getPath());
-
-    if (!outputM2TFolder.exists())
-      outputM2TFolder.mkdirs();
+    if (!outputFolder.exists())
+      outputFolder.mkdirs();
 
     if (GENERATE_BASE_FILES)
     {
       DiffMongooseBaseGen baseGen = new DiffMongooseBaseGen();
-      baseGen.m2t(inputModel, outputM2TFolder);
+      baseGen.m2t(inputFile, outputFolder);
     }
 
     DiffToMongoose diff2Mongoose = new DiffToMongoose();
-    diff2Mongoose.m2t(inputModel, configFile, outputM2TFolder);
+    diff2Mongoose.m2t(inputFile, outputFolder, configFile);
 
     System.out.println("Code generation finished");
   }
 
-  public static void prepareM2MorphiaExample(String inputFile, String configRoute, String outputFolder)
+  public static void prepareM2MorphiaExample(File inputFile, File outputFolder, File configFile)
   {
-    File inputModel = new File(inputFile);
-    File configFile = new File(configRoute);
-    File outputM2TFolder = new File(outputFolder);
+    System.out.println("Generating Morphia code for " + inputFile.getName() + " in " + outputFolder.getPath());
 
-    System.out.println("Generating Morphia code for " + inputModel.getName() + " in " + outputM2TFolder.getPath());
-
-    if (!outputM2TFolder.exists())
-      outputM2TFolder.mkdirs();
+    if (!outputFolder.exists())
+      outputFolder.mkdirs();
 
     // Morphia instance and static cast method
     if (GENERATE_BASE_FILES)
     {
       DiffMorphiaBaseGen baseGen = new DiffMorphiaBaseGen();
-      baseGen.m2t(inputModel, outputM2TFolder);
+      baseGen.m2t(inputFile, outputFolder);
     }
 
     DiffToMorphia diff2Morphia = new DiffToMorphia();
-    diff2Morphia.m2t(inputModel, configFile, outputM2TFolder);
+    diff2Morphia.m2t(inputFile, outputFolder, configFile);
 
     System.out.println("Code generation finished");
   }

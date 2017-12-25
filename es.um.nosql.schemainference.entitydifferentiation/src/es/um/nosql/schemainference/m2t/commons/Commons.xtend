@@ -6,6 +6,8 @@ import es.um.nosql.schemainference.NoSQLSchema.Reference
 import java.util.regex.Pattern
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.databind.ObjectMapper
+import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation
+import es.um.nosql.schemainference.m2t.config.BaseConfig
 
 /**
  * This class factors out some common methods to the Morphia and Mongoose generators.
@@ -47,11 +49,19 @@ class Commons
   public static def IS_FLOAT(String type) { #["float", "double"].contains(type)}
   public static def IS_BOOLEAN(String type) { #["boolean", "bool"].contains(type)}
   public static def IS_OBJECTID(String type) { #["objectid"].contains(type)}
-  
-  def static <T extends Object> T PARSE_CONFIG_FILE(Class<T> className, File configFile)
+
+  def static <T extends BaseConfig> T PARSE_CONFIG_FILE(Class<T> className, File configFile, EntityDifferentiation diff)
   {
+    if (configFile === null)
+    {
+      println("Config file is null!");
+      return null;
+    }
+
     val mapper = new ObjectMapper(new YAMLFactory());
     var config = mapper.readValue(configFile, className);
+    config.doCheck(diff);
+    println("Config file read and validated!");
 
     return config;
   }

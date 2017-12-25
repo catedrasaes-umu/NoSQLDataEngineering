@@ -12,21 +12,21 @@ entities:
     updates: ['genre', 'title']
     indexes:
       - attr: _id
-        type: kind:Hash
+        type: Hashed
       - attr: year
-        type: kind:Sorted
+        type: Sorted
   - name: Director
     uniques: ['name']
     updates: ['name']
     indexes:
       - attr: _id
-        type: kind:Hash
-      - attr: year
-        type: kind:Sorted
+        type: Hashed
+      - attr: name
+        type: Sorted
   - name: Criticism
     validators:
       - attr: color
         type: enum
         value: ['green', 'red', 'yellow']
     uniques: ['journalist']
-discriminator: Entity MovieTheater
+discriminator: Movietheater
