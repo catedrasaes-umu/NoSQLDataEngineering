@@ -71,7 +71,7 @@ public class DiffToMongoose
     // Calc dependencies between entities
     analyzer = new DependencyAnalyzer();
     analyzer.performAnalysis(diff);
-    //analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
+    analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
   }
 
   /**
@@ -84,9 +84,6 @@ public class DiffToMongoose
     «genIncludes(e, analyzer.getDiffByEntity().get(e))»
 
     var «e.name»Schema = new mongoose.Schema({
-      «IF analyzer.needToGenerateId(e)»
-        _id: {type: mongoose.Schema.Types.ObjectId, required: true},
-      «ENDIF»
       «genSpecs(e, analyzer.getDiffByEntity().get(e))»
     }, { versionKey: false, «IF (e.entityversions.exists[ev | ev.isRoot])»collection: '«e.name.toFirstLower»'«ELSE»_id : false«ENDIF»});
 

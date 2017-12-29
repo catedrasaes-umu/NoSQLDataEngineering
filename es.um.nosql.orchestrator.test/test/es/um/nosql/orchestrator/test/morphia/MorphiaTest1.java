@@ -54,7 +54,7 @@ public class MorphiaTest1
   @Test
   public void testCreateObjects()
   {
-/*    CustomDate3 cd31 = new CustomDate3();
+    CustomDate3 cd31 = new CustomDate3();
     CustomDate3 cd32 = new CustomDate3();
     CustomDate3 cd33 = new CustomDate3();
     cd31.setDate3("date3_1"); cd31.set_id(new ObjectId().toString());
@@ -64,7 +64,7 @@ public class MorphiaTest1
     List<CustomDate3> list = new ArrayList<CustomDate3>();
     list.add(cd31); list.add(cd32); list.add(cd33);
     datastore.save(list);
-*/
+
     CustomDate1 cd11 = new CustomDate1();
     cd11.setDate1(11);
 
@@ -88,7 +88,7 @@ public class MorphiaTest1
     p3.setDates(qCustomDate.asList().get(0));
     //TODO: Error. Cuando se agrega una referencia en una union, el objeto referenciado se agrega como embebido.
     //Estrategia: Cuando una referencia esta en una union, si la referencia era de tipo string | number, se debe tratar en un preSave como string o number, y olvidarnos del objeto...
-    //Â¿Como comprobamos todo esto? Quiza sea mas sencillo en mongoose...
+    //¿Como comprobamos todo esto? Quiza sea mas sencillo en mongoose...
 
     List<Persons> lPersons = new ArrayList<Persons>();
     lPersons.add(p1); lPersons.add(p2); lPersons.add(p3);

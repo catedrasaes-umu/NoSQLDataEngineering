@@ -8,7 +8,6 @@ import es.um.nosql.schemainference.entitydifferentiation.PropertySpec
 import es.um.nosql.schemainference.entitydifferentiation.EntityDiffSpec
 import es.um.nosql.schemainference.NoSQLSchema.Aggregate
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation
-import es.um.nosql.schemainference.NoSQLSchema.Attribute
 
 /**
  * This class is designed to analyze the EntityDifferentiation model and
@@ -122,11 +121,5 @@ class DependencyAnalyzer
   def Map<Entity, EntityDiffSpec> getDiffByEntity()
   {
     return diffByEntity;
-  }
-
-  def boolean needToGenerateId(Entity e)
-  {
-    return e.entityversions.exists[ev | ev.isRoot]
-      && !e.entityversions.exists[ev | ev.properties.exists[p | p instanceof Attribute && (p as Attribute).name.toLowerCase.equals("_id")]]
   }
 }

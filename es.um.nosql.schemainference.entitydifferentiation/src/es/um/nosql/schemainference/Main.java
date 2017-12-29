@@ -31,12 +31,12 @@ public class Main
 
   public static void main(String[] args)
   {
-    String input_model = "everypolitician";
+    String input_model = "test1";
     String inputFile = INPUT_FOLDER + input_model + ".xmi";
     String configFile = INPUT_FOLDER + YAML_CONFIG_ROUTE;
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
     // prepareM2MExample(inputFile, outputFile);
-    // prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER), null);
+    prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER), null);
     // prepareM2MorphiaExample(new File(outputFile), new File(MORPHIA_OUTPUT_GEN_BASE_FOLDER), null);
   }
 

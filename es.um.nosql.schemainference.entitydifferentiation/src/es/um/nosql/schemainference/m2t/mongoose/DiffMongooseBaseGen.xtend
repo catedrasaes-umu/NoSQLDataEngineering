@@ -183,7 +183,7 @@ class DiffMongooseBaseGen
   db.once('open', function()
   {
     «FOR e : diff.entityDiffSpecs.filter[ed | ed.entity.entityversions.exists[ev | ev.isRoot]].map[ed | ed.entity]»
-      «e.name».find({}, '-_id', function(err, result)
+      «e.name».find(function(err, result)
       {
         if (err)
           return console.error(err);
