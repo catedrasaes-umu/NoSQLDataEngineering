@@ -30,7 +30,7 @@
       <entityVersion href="../testSources/test1.xmi#//@entities.0/@entityversions.2"/>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test1.xmi#//@entities.0/@entityversions.1/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test1.xmi#//@entities.0/@entityversions.0/@properties.0"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>

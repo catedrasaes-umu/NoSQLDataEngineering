@@ -135,11 +135,10 @@ public class DiffToMongoose
 
     props.putAll(genPropSpec(e, spec))
 
-    // A type should never be a 'required' property. Since we are working w mongoDB, objects won't usually have a type, because its type is the collection name.
     // Also: The 'required' clause on mongoose requires a field to exist and also, if it is an array, to NOT be empty
     // This may cause problems when an association has a lowerBound = 0. To shortcut this, for the moment we wont add the required option to a field
     // if it is an association w lowerBound == 0. Proof: https://stackoverflow.com/questions/27268172/mongoose-schema-to-require-array-that-can-be-empty
-    if (required && (!spec.property.name.equals("type") && (!(spec.property instanceof Association) || (spec.property as Association).lowerBound != 0)))
+    if (required && (!(spec.property instanceof Association) || (spec.property as Association).lowerBound != 0))
       props.put('required', true)
     else if ((spec.property instanceof Attribute && (spec.property as Attribute).type instanceof Tuple) ||
       (spec.property instanceof Association && ((spec.property as Association).upperBound !== 1 || (spec.property as Association).lowerBound !== 1)))
@@ -266,12 +265,14 @@ public class DiffToMongoose
   {
     // Concatenate each type of the union removing the Schema.schema from the name if neccesary
     val unionName = "U_" + list.map[p | genCodeForProperty(p).values.get(0)]
-                                .map[o | if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema")) else o]
+                                .map[o | if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema"))
+                                  else (if (o.toString.equals("mongoose.Schema.Types.ObjectId")) "ObjectId" else o)]
                                 .join('_');
 
     // Now, for the Union itself, concatenate each type of the union but with quotation marks and a different join character.
     '''UnionType("«unionName»", «list.map[p | genCodeForProperty(p).values.get(0)]
-                                      .map[o | "\"" + (if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema")) else o) + "\""]
+                                      .map[o | "\"" + (if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema"))
+                                        else (if (o.toString.equals("mongoose.Schema.Types.ObjectId")) "ObjectId" else o)) + "\""]
                                       .join(', ')»)'''
   }
 
@@ -307,11 +308,9 @@ public class DiffToMongoose
 
     // DBRef
     if (refComps.length == 2)
-      #{  'type' -> genTypeForPrimitiveString(refComps.get(1)),
-        'ref' -> label(ref.refTo.name)
-      }
+      #{ 'type' -> genTypeForPrimitiveString(refComps.get(1)), 'ref' -> label(ref.refTo.name)}
     else
-      #{ 'type' -> referenceType(ref)}
+      #{ 'type' -> referenceType(ref), 'ref' -> label("\"" + ref.refTo.name + "\"")}
   }
 
   /**
@@ -341,18 +340,7 @@ public class DiffToMongoose
    */
   def dispatch genCodeForProperty(Attribute a) 
   {
-    if (a.name.toLowerCase.equals("_id"))
-      genCodeForId()
-    else
-      genAttributeType(a.type)
-  }
-
-  /**
-   * Special method to generate _id ObjectId attributes
-   */
-  def genCodeForId()
-  {
-    #{'type' -> genTypeForPrimitiveString("ObjectId")}
+    genAttributeType(a.type)
   }
 
   /**

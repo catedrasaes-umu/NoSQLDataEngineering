@@ -73,8 +73,7 @@ class DiffMongooseBaseGen
           // If the type is kind of [mongooseType]...
           if (isArray(type))
           {
-            // Remember to remove the [type] brackets...
-            // We should cast each value in the array to the given type (no heterogeneous types)
+            // Remember to remove the [type] brackets...we should cast each value in the array to the given type (no heterogeneous types)
             var arrResult = [];
 
             if (value.constructor !== Array)
@@ -97,27 +96,54 @@ class DiffMongooseBaseGen
         {
           if (isArray(type))
           {
-            // Remember to remove the [type] brackets...
-            // We should check each object constructor...
+            // Remember to remove the [type] brackets...we should check each object constructor...
             if (value.constructor !== Array)
             {
-              if (value.constructor.modelName !== type.slice(1, -1))
-                throw new Error();
-              else
+              if (value.constructor.modelName === type.slice(1, -1))
                 return [value];
+              else
+              {
+                var returnValue = mongoose.models[type.slice(1, -1)].hydrate(value);
+                if (returnValue.validateSync() !== undefined)
+                  throw new Error();
+                else
+                  return [returnValue];
+              }
             }
             else
+            {
+              var returnValue = [];
               for (var singleElement of value)
+              {
                 if (singleElement.constructor.modelName !== type.slice(1, -1))
-                  throw new Error();
-
-            return value;
+                  returnValue.push(singleElement);
+                else
+                {
+                  var elemValue = mongoose.models[type.slice(1, -1)].hydrate(singleElement);
+                  if (elemValue.validateSync() !== undefined)
+                    throw new Error();
+                  else
+                    returnValue.push(elemValue);
+                }
+              }
+              return returnValue;
+            }
           }
           else
+          {
+            // When a model object is created...
             if (value.constructor.modelName === type)
               return value;
             else
-              throw new Error();
+            {
+              // When a model object is loaded...cast and validate
+              var returnValue = mongoose.models[type].hydrate(value);
+              if (returnValue.validateSync() !== undefined)
+                throw new Error();
+              else
+                return returnValue;
+            }
+          }
         }
       };
 
