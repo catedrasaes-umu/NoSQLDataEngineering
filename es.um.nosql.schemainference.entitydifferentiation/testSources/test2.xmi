@@ -19,52 +19,46 @@
             name="ObjectId"/>
       </properties>
       <properties
-          xsi:type="NoSQLSchema:Aggregate"
-          name="dates01"
-          upperBound="1"
-          refTo="//@entities.1/@entityversions.0"/>
-      <properties
-          xsi:type="NoSQLSchema:Aggregate"
-          name="dates0_1"
-          upperBound="-1"
-          refTo="//@entities.1/@entityversions.0"/>
-      <properties
-          xsi:type="NoSQLSchema:Aggregate"
-          name="dates11"
-          lowerBound="1"
-          upperBound="1"
-          refTo="//@entities.1/@entityversions.0"/>
-      <properties
-          xsi:type="NoSQLSchema:Aggregate"
-          name="dates1_1"
-          lowerBound="1"
-          upperBound="-1"
-          refTo="//@entities.1/@entityversions.0"/>
-      <properties
-          xsi:type="NoSQLSchema:Aggregate"
-          name="dates_1_1"
-          lowerBound="-1"
-          upperBound="-1"
-          refTo="//@entities.1/@entityversions.0"/>
-    </entityversions>
-  </entities>
-  <entities
-      name="PersonData">
-    <entityversions
-        versionId="9">
-      <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="val1">
+          name="name">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="number"/>
+            name="String"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="val2">
+          name="surname">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="age">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="isEmployed">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Boolean"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="isMarried">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Boolean"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="status">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
       </properties>
     </entityversions>
   </entities>

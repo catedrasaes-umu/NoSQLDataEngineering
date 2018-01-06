@@ -11,18 +11,18 @@ entities:
     uniques: ['title']
     updates: ['genre', 'title']
     indexes:
-      - attr: _id
+      - attr: ['_id']
         type: Hashed
-      - attr: year
-        type: Sorted
+      - attr: ['year']
+        type: text
   - name: Director
     uniques: ['name']
     updates: ['name']
     indexes:
-      - attr: _id
+      - attr: ['_id']
         type: Hashed
-      - attr: name
-        type: Sorted
+      - attr: ['name']
+        type: text
   - name: Criticism
     validators:
       - attr: color

@@ -1,4 +1,4 @@
-package es.um.nosql.schemainference.test1.commons;
+package es.um.nosql.schemainference.test2.commons;
 
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.mapping.MappingException;
@@ -14,7 +14,7 @@ public class Commons
     if (MORPHIA_INSTANCE == null)
     {
       MORPHIA_INSTANCE = new Morphia();
-      MORPHIA_INSTANCE = MORPHIA_INSTANCE.mapPackage("es.um.nosql.schemainference.test1");
+      MORPHIA_INSTANCE = MORPHIA_INSTANCE.mapPackage("es.um.nosql.schemainference.test2");
     }
 
     return MORPHIA_INSTANCE;

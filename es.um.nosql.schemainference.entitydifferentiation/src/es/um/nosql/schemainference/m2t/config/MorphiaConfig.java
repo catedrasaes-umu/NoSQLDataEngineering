@@ -34,6 +34,21 @@ public class MorphiaConfig extends BaseConfig
 
   public Entity[] getEntities() {return this.entities;}
 
+  public boolean needToGenerateIndexes()
+  {
+    if (entities == null)
+      return false;
+    return Arrays.stream(getEntities()).anyMatch(e -> e.getUniques() != null || e.getIndexes() != null);
+    //TODO: Maybe we have to add e.getUpdates != null
+  }
+
+  public boolean needToGenerateValidators()
+  {
+    if (entities == null)
+      return false;
+    return Arrays.stream(getEntities()).anyMatch(e -> e.getValidators() != null);
+  }
+
   public String toString()
   {
     StringBuilder result = new StringBuilder();
@@ -48,7 +63,7 @@ public class MorphiaConfig extends BaseConfig
   @Override
   public boolean doCheck(EntityDifferentiation diff)
   {
-    if (!mapper.toLowerCase().equals("morphia"))
+/*    if (!mapper.toLowerCase().equals("morphia"))
       throw new IllegalArgumentException("The config file is not suitable for Morphia generation.\nNeeds: \"mapper: Morphia\"");
 
     System.out.println(diff.getSchema().getEntities());
@@ -80,17 +95,21 @@ public class MorphiaConfig extends BaseConfig
           && !Arrays.stream(configEntity.getUpdates()).allMatch(propName -> modelProperties.stream().anyMatch(mp -> mp.getName().equals(propName))))
         throw new IllegalArgumentException("Update values in Entity " + configEntity.getName() + " must be properties of the Entity model");
 
-      // For each Index, check if the property being Indexed exists on the model, and also if the index is a well known type.
-      if (configEntity.getIndexes() != null
-          && !Arrays.stream(configEntity.getIndexes()).allMatch(index -> modelProperties.stream().anyMatch(mp -> mp.getName().equals(index.getAttr()))))
-        throw new IllegalArgumentException("Index values in Entity " + configEntity.getName() + " must be properties of the Entity model");
+      // For each Index, check if the properties being Indexed exists on the model, and also if the index is a well known type.
+//      if (configEntity.getIndexes() != null
+//          && !Arrays.stream(configEntity.getIndexes()).allMatch(index -> modelProperties.stream().anyMatch(mp -> mp.getName().equals(index.getAttr()))))
+//        throw new IllegalArgumentException("Index values in Entity " + configEntity.getName() + " must be properties of the Entity model");
 
       if (configEntity.getIndexes() != null &&
-          !Arrays.stream(configEntity.getIndexes()).allMatch(index -> index.getType().equals("Sorted") || index.getType().equals("Hashed")
-          || index.getType().equals("ASC") || index.getType().equals("DESC") || index.getType().equals("GEO2D") || index.getType().equals("GEO2DSPHERE")))
+          !Arrays.stream(configEntity.getIndexes()).allMatch(
+              index ->
+              {
+                String type = index.getType().toLowerCase();
+                return type.equals("text") || type.equals("hashed") || type.equals("asc") || type.equals("desc") || type.equals("geo2d") || type.equals("geo2dsphere");
+              }))
         throw new IllegalArgumentException("Index types in Entity " + configEntity.getName() + " must be of type Sorted, Hashed, ASC, DESC, GEO2D or GEO2DSPHERE");
     }
-
+*/
     return true;
   }
 }

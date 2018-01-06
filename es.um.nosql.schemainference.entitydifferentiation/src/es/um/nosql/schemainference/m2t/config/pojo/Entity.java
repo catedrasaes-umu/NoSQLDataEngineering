@@ -14,11 +14,11 @@ public class Entity
 
   public String getName() {return this.name;}
 
-  private Option[] validators;
+  private Validator[] validators;
 
-  public void setValidators(Option[] validators) {this.validators = validators;}
+  public void setValidators(Validator[] validators) {this.validators = validators;}
 
-  public Option[] getValidators() {return this.validators;}
+  public Validator[] getValidators() {return this.validators;}
 
   private String[] uniques;
 
@@ -32,11 +32,32 @@ public class Entity
 
   public String[] getUpdates() {return this.updates;}
 
-  private Option[] indexes;
+  private Index[] indexes;
 
-  public void setIndexes(Option[] indexes) {this.indexes = indexes;}
+  public void setIndexes(Index[] indexes) {this.indexes = indexes;}
 
-  public Option[] getIndexes() {return this.indexes;}
+  public Index[] getIndexes() {return this.indexes;}
+
+  public Validator getValidatorFor(String field)
+  {
+    if (validators == null)
+      return null;
+    return Arrays.stream(validators).filter(o -> o.getAttr().equals(field)).findFirst().orElse(null);
+  }
+
+  public boolean isFieldUnique(String field)
+  {
+    if (uniques == null)
+      return false;
+    return Arrays.asList(uniques).contains(field);
+  }
+
+  public boolean isFieldUpdate(String field)
+  {
+    if (updates == null)
+      return false;
+    return Arrays.asList(updates).contains(field);
+  }
 
   public String toString()
   {

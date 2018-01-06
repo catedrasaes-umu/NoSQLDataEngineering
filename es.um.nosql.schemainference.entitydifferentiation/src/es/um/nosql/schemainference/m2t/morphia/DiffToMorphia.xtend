@@ -19,6 +19,7 @@ import java.util.ArrayList
 import es.um.nosql.schemainference.m2t.commons.Commons
 import es.um.nosql.schemainference.m2t.commons.DependencyAnalyzer
 import es.um.nosql.schemainference.m2t.config.MorphiaConfig
+import es.um.nosql.schemainference.m2t.config.pojo.Index
 
 /**
  * Class designed to perform the Morphia code generation: Java
@@ -72,10 +73,32 @@ class DiffToMorphia
     // Process the configuration file
     config = Commons.PARSE_CONFIG_FILE(MorphiaConfig, configFile, diff)
 
+    println(genIndexes(config));
     // Calc dependencies between entities
-    analyzer = new DependencyAnalyzer();
-    analyzer.performAnalysis(diff);
-    //analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
+//    analyzer = new DependencyAnalyzer();
+//    analyzer.performAnalysis(diff);
+//    analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
+  }
+
+  def genIndexes(MorphiaConfig config)
+  {
+    if (!config.needToGenerateIndexes)
+    {
+      ''''''
+    }
+    else
+    {
+    '''
+      «FOR es.um.nosql.schemainference.m2t.config.pojo.Entity e : config.entities»
+        @Indexes({
+          «FOR Index i : e.indexes SEPARATOR ','»
+          @Index(fields = @Field(value = "«i.attr»", type = «i.type.toUpperCase»)
+          «ENDFOR»//TODO: Concatenar los campos attr
+        })
+
+      «ENDFOR»
+    '''
+    }
   }
 
   def schemaFileName(Entity e)

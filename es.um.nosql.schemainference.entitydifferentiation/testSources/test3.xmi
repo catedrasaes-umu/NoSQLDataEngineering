@@ -50,11 +50,12 @@
           upperBound="1"
           refTo="//@entities.3/@entityversions.0"/>
       <properties
-          xsi:type="NoSQLSchema:Aggregate"
+          xsi:type="NoSQLSchema:Reference"
           name="dates"
           lowerBound="1"
           upperBound="1"
-          refTo="//@entities.2/@entityversions.0"/>
+          refTo="CustomDate1"
+          originalType="ObjectId"/>
     </entityversions>
   </entities>
   <entities
