@@ -31,7 +31,7 @@ public class Main
 
   public static void main(String[] args)
   {
-    String input_model = "test2";
+    String input_model = "mongoMovies3";
     String inputFile = INPUT_FOLDER + input_model + ".xmi";
     String configFile = INPUT_FOLDER + YAML_CONFIG_ROUTE;
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";

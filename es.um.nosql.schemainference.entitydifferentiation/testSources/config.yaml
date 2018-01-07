@@ -8,25 +8,28 @@ entities:
       - attr: title
         type:  comparison
         value: ['length < 40']
-    uniques: ['title']
     updates: ['genre', 'title']
     indexes:
       - attr: ['_id']
         type: Hashed
       - attr: ['year']
         type: text
+      - attr: ['title']
+        unique: True
   - name: Director
-    uniques: ['name']
     updates: ['name']
     indexes:
       - attr: ['_id']
         type: Hashed
       - attr: ['name']
         type: text
+        unique: True
   - name: Criticism
     validators:
       - attr: color
         type: enum
         value: ['green', 'red', 'yellow']
-    uniques: ['journalist']
+    indexes:
+      - attr: ['journalist']
+        unique: True
 discriminator: Movietheater
