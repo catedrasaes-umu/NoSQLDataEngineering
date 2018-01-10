@@ -15,10 +15,10 @@
       <entityVersion href="../testSources/test3.xmi#//@entities.0/@entityversions.1"/>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test3.xmi#//@entities.0/@entityversions.0/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/test3.xmi#//@entities.0/@entityversions.1/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="../testSources/test3.xmi#//@entities.0/@entityversions.0/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/test3.xmi#//@entities.0/@entityversions.1/@properties.2"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>

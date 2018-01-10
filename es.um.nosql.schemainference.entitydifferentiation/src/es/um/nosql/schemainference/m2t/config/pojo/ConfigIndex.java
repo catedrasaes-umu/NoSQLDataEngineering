@@ -35,6 +35,12 @@ public class ConfigIndex
 
   public Boolean getBackground() {return this.background;}
 
+  private Boolean disableValidation;
+
+  public void setDisableValidation(Boolean disableValidation) {this.disableValidation = disableValidation;}
+
+  public Boolean getDisableValidation() {return this.disableValidation;}
+
   private Boolean sparse;
 
   public void setSparse(Boolean sparse) {this.sparse = sparse;}
@@ -47,11 +53,11 @@ public class ConfigIndex
 
   public String getName() {return this.name;}
 
-  private String partialFilterExpression;
+  private String partialFilter;
 
-  public void setPartialFilterExpression(String partialFilterExpression) {this.partialFilterExpression = partialFilterExpression;}
+  public void setPartialFilterExpression(String partialFilter) {this.partialFilter = partialFilter;}
 
-  public String getPartialFilterExpression() {return this.partialFilterExpression;}
+  public String getPartialFilter() {return this.partialFilter;}
 
   private Integer expireAfterSeconds;
 
@@ -71,16 +77,17 @@ public class ConfigIndex
 
   private String default_language;
 
-  public void setDefault_Language(String default_language) {this.default_language = default_language;}
+  public void setDefault_language(String default_language) {this.default_language = default_language;}
 
-  public String getDefault_Language() {return this.default_language;}
+  public String getDefault_language() {return this.default_language;}
 
   private String language_override;
 
-  public void setLanguage_Override(String language_override) {this.language_override = language_override;}
+  public void setLanguage_override(String language_override) {this.language_override = language_override;}
 
-  public String getLanguage_Override() {return this.language_override;}
-
+  public String getLanguage_override() {return this.language_override;}
+  //TODO We have to remove geo2d index options until we learn where to put them on generation
+/*
   private Integer textIndexVersion;
 
   public void setTextIndexVersion(Integer textIndexVersion) {this.textIndexVersion = textIndexVersion;}
@@ -118,7 +125,7 @@ public class ConfigIndex
   public void setMax(Double max) {this.max = max;}
 
   public Double getMax() {return this.max;}
-
+*/
   public String toString()
   {
     StringBuilder result = new StringBuilder();
@@ -131,22 +138,24 @@ public class ConfigIndex
       result.append(" Unique: " + this.getUnique());
     if (this.getBackground() != null)
       result.append(" Background: " + this.getBackground());
+    if (this.getDisableValidation() != null)
+      result.append(" DisableValidation: " + this.getDisableValidation());
     if (this.getSparse() != null)
       result.append(" Sparse: " + this.getSparse());
     if (this.getName() != null)
       result.append(" Name: " + this.getName());
-    if (this.getPartialFilterExpression() != null)
-      result.append(" PartialFilterExpression: " + this.getPartialFilterExpression());
+    if (this.getPartialFilter() != null)
+      result.append(" PartialFilter: " + this.getPartialFilter());
     if (this.getExpireAfterSeconds() != null)
       result.append(" ExpireAfterSeconds: " + this.getExpireAfterSeconds());
 
     if (this.getWeight() != null)
       result.append(" Weight: " + this.getWeight());
-    if (this.getDefault_Language() != null)
-      result.append(" Default_language: " + this.getDefault_Language());
-    if (this.getLanguage_Override() != null)
-      result.append(" Language_override: " + this.getLanguage_Override());
-    if (this.getTextIndexVersion() != null)
+    if (this.getDefault_language() != null)
+      result.append(" Default_language: " + this.getDefault_language());
+    if (this.getLanguage_override() != null)
+      result.append(" Language_override: " + this.getLanguage_override());
+/*    if (this.getTextIndexVersion() != null)
       result.append(" TextIndexVersion: " + this.getTextIndexVersion());
 
     if (this.getGeo2dsphereIndexVersion() != null)
@@ -158,7 +167,7 @@ public class ConfigIndex
       result.append(" Min: " + this.getMin());
     if (this.getMax() != null)
       result.append(" Max: " + this.getMax());
-
+*/
     result.append("\n");
 
     return result.toString();
@@ -173,8 +182,11 @@ public class ConfigIndex
       throw new IllegalArgumentException("Index type [" + String.join(", ", this.getAttr()) + "] must be of type Text, Hashed, ASC, DESC, GEO2D or GEO2DSPHERE");
 
     if (this.getWeight() != null && (this.getWeight() < 1 || this.getWeight() > 99999))
-      throw new IllegalArgumentException("Index [\" + String.join(\", \", this.getAttr()) + \"] weight must be between 1 and 99.999");
+      throw new IllegalArgumentException("Index [" + String.join(", ", this.getAttr()) + "] weight must be between 1 and 99.999");
 
+    if (this.getType() != null && this.getWeight() != null && !this.getType().toLowerCase().equals("text"))
+      throw new IllegalArgumentException("Index [" + String.join(", ", this.getAttr()) + "] weight attribute only makes sense on TEXT indexes");
+/*
     if (this.getTextIndexVersion() != null && this.getTextIndexVersion() != 1 && this.getTextIndexVersion() != 2)
       throw new IllegalArgumentException("Index [\" + String.join(\", \", this.getAttr()) + \"] TextIndexVersion must have one of the following values: 1 or 2");
 
@@ -183,7 +195,7 @@ public class ConfigIndex
 
     if (this.getBits() != null && (this.getBits() < 1 || this.getBits() > 32))
       throw new IllegalArgumentException("Index [\" + String.join(\", \", this.getAttr()) + \"] Bits must be between 1 and 32");
-
+*/
     return true;
   }
 }

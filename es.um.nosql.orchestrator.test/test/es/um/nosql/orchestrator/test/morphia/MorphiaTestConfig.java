@@ -1,14 +1,12 @@
 package es.um.nosql.orchestrator.test.morphia;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
-import javax.validation.metadata.BeanDescriptor;
 
 import org.bson.types.ObjectId;
 import org.junit.After;

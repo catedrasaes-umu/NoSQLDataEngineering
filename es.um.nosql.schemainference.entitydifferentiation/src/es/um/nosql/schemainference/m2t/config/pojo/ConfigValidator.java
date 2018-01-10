@@ -28,7 +28,7 @@ public class ConfigValidator
     StringBuilder result = new StringBuilder();
 
     if (this.getAttr() != null)
-      result.append("    -Attr: [" + String.join(", ", this.getAttr()) + "] ");
+      result.append("    -Attr: " + this.getAttr());
     if (this.getType() != null)
       result.append(" Type: " + this.getType());
     if (this.getValue() != null)

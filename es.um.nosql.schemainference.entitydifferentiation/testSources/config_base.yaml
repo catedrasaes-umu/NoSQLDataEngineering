@@ -1,0 +1,35 @@
+mapper: Morphia
+entities:
+  - name: Movie
+    validators:
+      - attr: genre
+        type: enum
+        value: ['drama', 'comedy', 'children']
+      - attr: title
+        type:  comparison
+        value: ['length < 40']
+    updates: ['genre', 'title']
+    indexes:
+      - attr: ['_id']
+        type: Hashed
+      - attr: ['year']
+        type: text
+      - attr: ['title']
+        unique: True
+  - name: Director
+    updates: ['name']
+    indexes:
+      - attr: ['_id']
+        type: Hashed
+      - attr: ['name']
+        type: text
+        unique: True
+  - name: Criticism
+    validators:
+      - attr: color
+        type: enum
+        value: ['green', 'red', 'yellow']
+    indexes:
+      - attr: ['journalist']
+        unique: True
+discriminator: Movietheater

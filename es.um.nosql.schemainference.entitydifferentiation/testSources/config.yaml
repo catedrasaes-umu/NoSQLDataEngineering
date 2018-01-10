@@ -1,35 +1,23 @@
 mapper: Morphia
 entities:
-  - name: Movie
-    validators:
-      - attr: genre
-        type: enum
-        value: ['drama', 'comedy', 'children']
-      - attr: title
-        type:  comparison
-        value: ['length < 40']
-    updates: ['genre', 'title']
+  - name: Persons
     indexes:
-      - attr: ['_id']
-        type: Hashed
-      - attr: ['year']
-        type: text
-      - attr: ['title']
-        unique: True
-  - name: Director
-    updates: ['name']
-    indexes:
-      - attr: ['_id']
-        type: Hashed
       - attr: ['name']
+        type: Hashed
+      - attr: ['surname']
         type: text
-        unique: True
-  - name: Criticism
-    validators:
-      - attr: color
-        type: enum
-        value: ['green', 'red', 'yellow']
-    indexes:
-      - attr: ['journalist']
-        unique: True
-discriminator: Movietheater
+      - attr: ['age']
+        type: asc
+      - attr: ['isEmployed']
+        type: desc
+        sparse: True
+        background: True
+        disableValidation: True
+        name: "YODAWG_Index"
+        default_language: "english"
+        language_override: "spanish"
+        expireAfterSeconds: 330
+      - attr: ['isMarried']
+        type: Hashed
+      - attr: ['status']
+        type: hashed

@@ -70,6 +70,10 @@ public class ConfigEntity
       }
 
     if (this.getIndexes() != null)
+    {
+      if (Arrays.stream(this.getIndexes()).filter(i -> i.getType() != null && i.getType().toLowerCase().equals("text")).count() != 1)
+        throw new IllegalArgumentException("Index types are not correct. There cannot be more than one index of type \"text\"");
+
       for (ConfigIndex index : this.getIndexes())
       {
         if (!eProperties.stream().anyMatch(p -> Arrays.asList(index.getAttr()).contains(p.getName())))
@@ -77,6 +81,7 @@ public class ConfigEntity
 
         index.doCheck();
       }
+    }
     return true;
   }
 }

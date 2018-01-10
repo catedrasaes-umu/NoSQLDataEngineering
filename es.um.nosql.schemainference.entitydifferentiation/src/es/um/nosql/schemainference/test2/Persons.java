@@ -2,24 +2,25 @@ package es.um.nosql.schemainference.test2;
 
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.Index;
-import org.mongodb.morphia.annotations.IndexOptions;
-import org.mongodb.morphia.annotations.Indexes;
-import org.mongodb.morphia.annotations.Field;
-import static org.mongodb.morphia.utils.IndexType.DESC;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Property;
-import org.mongodb.morphia.annotations.Validation;
-
 import javax.validation.constraints.NotNull;
+import org.mongodb.morphia.annotations.Indexes;
+import org.mongodb.morphia.annotations.Index;
+import org.mongodb.morphia.annotations.Field;
+import org.mongodb.morphia.utils.IndexType;
+import org.mongodb.morphia.annotations.IndexOptions;
 
 
 @Entity(value = "persons", noClassnameStored = true)
 @Indexes({
-  @Index(fields = @Field(value = "age", type = DESC)),
-  @Index(fields = @Field(value = "isEmployed"), options = @IndexOptions(name = "indexing_test"))
+  @Index(fields = @Field(value = "name", type = IndexType.HASHED)),
+  @Index(fields = @Field(value = "surname", type = IndexType.TEXT)),
+  @Index(fields = @Field(value = "age", type = IndexType.ASC)),
+  @Index(fields = @Field(value = "isEmployed", type = IndexType.DESC), options = @IndexOptions(expireAfterSeconds = 330, languageOverride = "spanish", sparse = true, background = true, disableValidation = true, name = "YODAWG_Index", language = "english")),
+  @Index(fields = @Field(value = "isMarried", type = IndexType.HASHED)),
+  @Index(fields = @Field(value = "status", type = IndexType.HASHED))
 })
-//@Validation("{ age : { $gt : 10 } }")
 public class Persons
 {
   @Id

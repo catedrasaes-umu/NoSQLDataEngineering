@@ -19,8 +19,6 @@ import java.util.ArrayList
 import es.um.nosql.schemainference.m2t.commons.Commons
 import es.um.nosql.schemainference.m2t.commons.DependencyAnalyzer
 import es.um.nosql.schemainference.m2t.config.ConfigMorphia
-import es.um.nosql.schemainference.m2t.config.pojo.ConfigEntity
-import es.um.nosql.schemainference.m2t.config.pojo.ConfigIndex
 
 /**
  * Class designed to perform the Morphia code generation: Java
@@ -41,7 +39,7 @@ class DiffToMorphia
 
   DependencyAnalyzer analyzer;
 
-  ConfigMorphia config;
+  MorphiaIndexGen indexGen;
 
   /**
    * Method used to start the generation process from a diff model file
@@ -72,43 +70,33 @@ class DiffToMorphia
     }
 
     // Process the configuration file
-    config = Commons.PARSE_CONFIG_FILE(ConfigMorphia, configFile, diff)
-    println(genIndexes(config));
+    indexGen = new MorphiaIndexGen(Commons.PARSE_CONFIG_FILE(ConfigMorphia, configFile, diff));
+
     // Calc dependencies between entities
-//    analyzer = new DependencyAnalyzer();
-//    analyzer.performAnalysis(diff);
-//    analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
+    analyzer = new DependencyAnalyzer();
+    analyzer.performAnalysis(diff);
+    analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
   }
 
-  def genIndexes(ConfigMorphia config)
-  '''
-  «FOR ConfigEntity e : config.entities.filter[e | config.needToGenerateIndexesFor(e.getName)]»
-    @Indexes({
-    «FOR ConfigIndex i : e.getIndexes SEPARATOR ','»
-      @Index(fields = @Field(value = "«i.attr»", type = «i.type»)
-    «ENDFOR»//TODO: Concatenar los campos attr
-    })
-  «ENDFOR»
-  '''
-
-  def schemaFileName(Entity e)
+  def schemaFileName(Entity entity)
   {
-    e.name + ".java"
+    entity.name + ".java"
   }
 
   /**
    * This method generates the basic structure of the Java class.
    */
-  def genSchema(Entity e)
+  def genSchema(Entity entity)
   '''
     package «importRoute»;
 
-    «genIncludes(e)»
+    «genIncludes(entity)»
 
-    «IF e.entityversions.exists[ev | ev.isRoot]»@Entity(value = "«e.name.toFirstLower»", noClassnameStored = true)«ELSE»@Embedded«ENDIF»
-    public class «e.name»
+    «IF entity.entityversions.exists[ev | ev.isRoot]»@Entity(value = "«entity.name.toFirstLower»", noClassnameStored = true)«ELSE»@Embedded«ENDIF»
+    «indexGen.genIndexesForEntity(entity)»
+    public class «entity.name»
     {
-      «genSpecs(e, analyzer.getDiffByEntity().get(e))»
+      «genSpecs(entity, analyzer.getDiffByEntity().get(entity))»
     }
   '''
 
@@ -149,6 +137,7 @@ class DiffToMorphia
     «IF entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Attribute]]»import org.mongodb.morphia.annotations.Property;«ENDIF»
     «IF entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Reference]]»import org.mongodb.morphia.annotations.Reference;«ENDIF»
     «IF !analyzer.getDiffByEntity().get(entity).commonProps.isEmpty»import javax.validation.constraints.NotNull;«ENDIF»
+    «indexGen.genIncludesForEntity(entity)»
 
     «FOR Entity e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
       import «importRoute».«e.name»;
@@ -162,13 +151,13 @@ class DiffToMorphia
    * s.key stores a PropertySpec
    * s.value stores "required" or not
    */
-  def genSpecs(Entity e, EntityDiffSpec spec)
+  def genSpecs(Entity entity, EntityDiffSpec spec)
   '''
     «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false])
       .reject[p | p.key.property.name.startsWith("_") && !p.key.property.name.equals("_id")]
       .sortBy[p | p.key.property.name] SEPARATOR '\n'»
       «IF s.key.needsTypeCheck»
-        «genCodeForTypeCheckProperty(e, s.key.property, s.value)»
+        «genCodeForTypeCheckProperty(entity, s.key.property, s.value)»
       «ELSE»
         «genCodeForProperty(s.key.property, s.value)»
       «ENDIF»
@@ -191,9 +180,9 @@ class DiffToMorphia
    * If the reduction is possible, we generate the property as any other.
    * If not, a Union is generated.
    */
-  def genCodeForTypeCheckProperty(Entity e, Property property, boolean required)
+  def genCodeForTypeCheckProperty(Entity entity, Property property, boolean required)
   {
-    val typeList = analyzer.getTypeListByPropertyName().get(e).get(property.name)
+    val typeList = analyzer.getTypeListByPropertyName().get(entity).get(property.name)
     // On uniqueTypeList we removed duplicated property types, such as a String PrimitiveType and a Reference w originalType String.
     val uniqueTypeList = new ArrayList<Property>();
     // Just a shortcut list so we don't have to access every time to the type field of a property (and all its casts...)
