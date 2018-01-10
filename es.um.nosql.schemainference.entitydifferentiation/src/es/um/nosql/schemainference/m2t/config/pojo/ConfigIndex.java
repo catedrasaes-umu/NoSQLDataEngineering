@@ -17,11 +17,11 @@ public class ConfigIndex
 
   public String[] getAttr() {return this.attr;}
 
-  private String type;
+  private String[] type;
 
-  public void setType(String type) {this.type = type;}
+  public void setType(String[] type) {this.type = type;}
 
-  public String getType() {return this.type;}
+  public String[] getType() {return this.type;}
 
   private Boolean unique;
 
@@ -133,7 +133,7 @@ public class ConfigIndex
     if (this.getAttr() != null)
       result.append("    -Attr: [" + String.join(", ", this.getAttr()) + "] ");
     if (this.getType() != null)
-      result.append(" Type: " + this.getType());
+      result.append(" Type: [" + String.join(", ", this.getType()) + "] ");
     if (this.getUnique() != null)
       result.append(" Unique: " + this.getUnique());
     if (this.getBackground() != null)
@@ -178,13 +178,19 @@ public class ConfigIndex
     if (this.getAttr() == null)
       throw new IllegalArgumentException("Index must have an \"attr\" list of fields to be indexed");
 
-    if (this.getType() != null && !Arrays.asList("text", "hashed", "asc", "desc", "geo2d", "geo2dsphere").contains(this.getType().toLowerCase()))
+    if (this.getType() != null && !Arrays.stream(this.getType()).allMatch(t -> Arrays.asList("text", "hashed", "asc", "desc", "geo2d", "geo2dsphere").contains(t.toLowerCase())))
       throw new IllegalArgumentException("Index type [" + String.join(", ", this.getAttr()) + "] must be of type Text, Hashed, ASC, DESC, GEO2D or GEO2DSPHERE");
+
+    if (this.getAttr().length > 1 && this.getType() != null && this.getAttr().length != this.getType().length)
+      throw new IllegalArgumentException("Composed index type [" + String.join(", ", this.getAttr()) + "] must declare the same number of types as number of attributes");
+
+    if (this.getAttr().length > 1 && this.getType() != null && !Arrays.stream(this.getType()).allMatch(t -> Arrays.asList("asc", "desc").contains(t.toLowerCase())))
+      throw new IllegalArgumentException("Composed index type [" + String.join(", ", this.getAttr()) + "] must be exclusively of types [ASC, DESC]");
 
     if (this.getWeight() != null && (this.getWeight() < 1 || this.getWeight() > 99999))
       throw new IllegalArgumentException("Index [" + String.join(", ", this.getAttr()) + "] weight must be between 1 and 99.999");
 
-    if (this.getType() != null && this.getWeight() != null && !this.getType().toLowerCase().equals("text"))
+    if (this.getType() != null && this.getWeight() != null && !this.getType()[0].toLowerCase().equals("text"))
       throw new IllegalArgumentException("Index [" + String.join(", ", this.getAttr()) + "] weight attribute only makes sense on TEXT indexes");
 /*
     if (this.getTextIndexVersion() != null && this.getTextIndexVersion() != 1 && this.getTextIndexVersion() != 2)

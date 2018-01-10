@@ -3,21 +3,5 @@ entities:
   - name: Persons
     indexes:
       - attr: ['name']
-        type: Hashed
-      - attr: ['surname']
-        type: text
-      - attr: ['age']
-        type: asc
-      - attr: ['isEmployed']
-        type: desc
-        sparse: True
-        background: True
-        disableValidation: True
-        name: "YODAWG_Index"
-        default_language: "english"
-        language_override: "spanish"
-        expireAfterSeconds: 330
-      - attr: ['isMarried']
-        type: Hashed
-      - attr: ['status']
-        type: hashed
+        type: ['text']
+        unique: True

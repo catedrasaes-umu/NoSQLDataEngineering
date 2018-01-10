@@ -4,23 +4,16 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.bson.types.ObjectId;
 import org.mongodb.morphia.annotations.Property;
+import org.mongodb.morphia.annotations.Validation;
+
+import com.mongodb.client.model.ValidationAction;
+import com.mongodb.client.model.ValidationLevel;
+
 import javax.validation.constraints.NotNull;
-import org.mongodb.morphia.annotations.Indexes;
-import org.mongodb.morphia.annotations.Index;
-import org.mongodb.morphia.annotations.Field;
-import org.mongodb.morphia.utils.IndexType;
-import org.mongodb.morphia.annotations.IndexOptions;
 
 
 @Entity(value = "persons", noClassnameStored = true)
-@Indexes({
-  @Index(fields = @Field(value = "name", type = IndexType.HASHED)),
-  @Index(fields = @Field(value = "surname", type = IndexType.TEXT)),
-  @Index(fields = @Field(value = "age", type = IndexType.ASC)),
-  @Index(fields = @Field(value = "isEmployed", type = IndexType.DESC), options = @IndexOptions(expireAfterSeconds = 330, languageOverride = "spanish", sparse = true, background = true, disableValidation = true, name = "YODAWG_Index", language = "english")),
-  @Index(fields = @Field(value = "isMarried", type = IndexType.HASHED)),
-  @Index(fields = @Field(value = "status", type = IndexType.HASHED))
-})
+@Validation(level = ValidationLevel.STRICT, action = ValidationAction.ERROR, value = "{ age : { $gt : 10 } }")
 public class Persons
 {
   @Id

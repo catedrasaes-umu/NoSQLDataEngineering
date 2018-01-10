@@ -13,43 +13,6 @@ class MorphiaIndexGen
   new(ConfigMorphia config)
   {
     this.config = config;
-    //println(TEST_AllIndexes());
-  }
-
-  //TODO: Multifield indexes coming soon...//TODO: Concatenar los campos attr
-  def TEST_AllIndexes()
-  '''
-  «FOR ConfigEntity e : config.entities.filter[e | config.needToGenerateIndexesFor(e.getName)]»
-    @Indexes({
-      «FOR ConfigIndex i : e.indexes SEPARATOR ','»
-        «genIndex(i)»
-      «ENDFOR»
-    })
-  «ENDFOR»
-  '''
-
-  def genIndex(ConfigIndex i)
-  '''
-  @Index(fields = @Field(value = "«i.attr.get(0)»"«IF i.type !== null», type = IndexType.«i.type.toUpperCase»«ENDIF»«IF i.weight !== null», weight = «i.weight»«ENDIF»)«genIndexOptions(i)»)
-  '''
-
-  def genIndexOptions(ConfigIndex i)
-  {
-    val indexOptions = new HashMap<String, String>();
-    if (i.unique !== null) indexOptions.put("unique", i.unique.toString);
-    if (i.background !== null) indexOptions.put("background", i.background.toString);
-    if (i.disableValidation !== null) indexOptions.put("disableValidation", i.disableValidation.toString);
-    if (i.sparse !== null) indexOptions.put("sparse", i.sparse.toString);
-    if (i.name !== null) indexOptions.put("name", "\"" + i.name + "\"");
-    if (i.partialFilter !== null) indexOptions.put("partialFilter", "\"" + i.partialFilter + "\"");
-    if (i.default_language !== null) indexOptions.put("language", "\"" + i.default_language + "\"");
-    if (i.language_override !== null) indexOptions.put("languageOverride", "\"" + i.language_override + "\"");
-    if (i.expireAfterSeconds !== null) indexOptions.put("expireAfterSeconds", i.expireAfterSeconds.toString);
-
-    if (indexOptions.isEmpty)
-    ''''''
-    else
-    ''', options = @IndexOptions(«FOR String option : indexOptions.keySet SEPARATOR ", "»«option» = «indexOptions.get(option)»«ENDFOR»)'''
   }
 
   def genIncludesForEntity(Entity e)
@@ -80,6 +43,31 @@ class MorphiaIndexGen
       «ENDFOR»
     })
     '''
+  }
+
+  def genIndex(ConfigIndex index)
+  '''
+  «var count = 0»
+  @Index(fields = {«FOR String attr : index.attr SEPARATOR ', '»@Field(value = "«attr»"«IF index.type !== null», type = IndexType.«index.type.get(count++).toUpperCase»«ENDIF»«IF index.weight !== null», weight = «index.weight»«ENDIF»)«ENDFOR»}«genIndexOptions(index)»)
+  '''
+
+  def genIndexOptions(ConfigIndex i)
+  {
+    val indexOptions = new HashMap<String, String>();
+    if (i.unique !== null) indexOptions.put("unique", i.unique.toString);
+    if (i.background !== null) indexOptions.put("background", i.background.toString);
+    if (i.disableValidation !== null) indexOptions.put("disableValidation", i.disableValidation.toString);
+    if (i.sparse !== null) indexOptions.put("sparse", i.sparse.toString);
+    if (i.name !== null) indexOptions.put("name", "\"" + i.name + "\"");
+    if (i.partialFilter !== null) indexOptions.put("partialFilter", "\"" + i.partialFilter + "\"");
+    if (i.default_language !== null) indexOptions.put("language", "\"" + i.default_language + "\"");
+    if (i.language_override !== null) indexOptions.put("languageOverride", "\"" + i.language_override + "\"");
+    if (i.expireAfterSeconds !== null) indexOptions.put("expireAfterSeconds", i.expireAfterSeconds.toString);
+
+    if (indexOptions.isEmpty)
+    ''''''
+    else
+    ''', options = @IndexOptions(«FOR String option : indexOptions.keySet SEPARATOR ", "»«option» = «indexOptions.get(option)»«ENDFOR»)'''
   }
 
   private def boolean hasIndexTypesDefined(ConfigEntity e)
