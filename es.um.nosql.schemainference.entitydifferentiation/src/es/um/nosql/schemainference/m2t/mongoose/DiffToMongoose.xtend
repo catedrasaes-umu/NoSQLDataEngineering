@@ -20,6 +20,7 @@ import es.um.nosql.schemainference.NoSQLSchema.Association
 import java.util.ArrayList
 import es.um.nosql.schemainference.m2t.commons.Commons
 import es.um.nosql.schemainference.m2t.commons.DependencyAnalyzer
+import es.um.nosql.schemainference.m2t.config.ConfigMongoose
 
 /**
  * Class designed to perform the Mongoose code generation: Javascript
@@ -41,6 +42,8 @@ public class DiffToMongoose
   static File outputDir;
 
   DependencyAnalyzer analyzer;
+
+  MongooseIndexGen indexGen;
 
   /**
    * Method used to start the generation process from a diff model file
@@ -66,7 +69,7 @@ public class DiffToMongoose
     modelName = diff.name;
 
     // Process the configuration file
-    //config = Commons.PARSE_CONFIG_FILE(MongooseConfig, configFile, diff)
+    indexGen = new MongooseIndexGen(Commons.PARSE_CONFIG_FILE(ConfigMongoose, configFile, diff))
 
     // Calc dependencies between entities
     analyzer = new DependencyAnalyzer();
@@ -86,6 +89,8 @@ public class DiffToMongoose
     var «e.name»Schema = new mongoose.Schema({
       «genSpecs(e, analyzer.getDiffByEntity().get(e))»
     }, { versionKey: false, «IF (e.entityversions.exists[ev | ev.isRoot])»collection: '«e.name.toFirstLower»'«ELSE»_id : false«ENDIF»});
+
+    «indexGen.genIndexesForEntity(e)»
 
     module.exports = mongoose.model('«e.name»', «e.name»Schema);
   '''

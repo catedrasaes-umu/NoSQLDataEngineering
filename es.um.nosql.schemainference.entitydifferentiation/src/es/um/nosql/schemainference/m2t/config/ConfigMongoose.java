@@ -11,7 +11,7 @@ import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation;
 import es.um.nosql.schemainference.m2t.config.pojo.ConfigEntity;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class ConfigMorphia extends BaseConfig
+public class ConfigMongoose extends BaseConfig
 {
   private String mapper;
 
@@ -59,8 +59,8 @@ public class ConfigMorphia extends BaseConfig
   @Override
   public boolean doCheck(EntityDifferentiation diff)
   {
-    if (!mapper.toLowerCase().equals("morphia"))
-      throw new IllegalArgumentException("The config file is not suitable for Morphia generation.\nNeeds: \"mapper: Morphia\"");
+    if (!mapper.toLowerCase().equals("mongoose"))
+      throw new IllegalArgumentException("The config file is not suitable for Mongoose generation.\nNeeds: \"mapper: Mongoose\"");
 
 // TODO: For the moment, we wont check discriminator until we learn what is its utility...
 //    if (!diff.getSchema().getEntities().stream().anyMatch(e -> e.getName().equals(discriminator)))

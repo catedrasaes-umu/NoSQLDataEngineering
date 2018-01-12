@@ -1,4 +1,4 @@
-mapper: Morphia
+mapper: Mongoose
 entities:
   - name: Persons
     indexes:

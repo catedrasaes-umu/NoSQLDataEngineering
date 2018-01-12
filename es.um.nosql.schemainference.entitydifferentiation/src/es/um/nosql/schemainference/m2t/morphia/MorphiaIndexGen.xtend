@@ -45,13 +45,13 @@ class MorphiaIndexGen
     '''
   }
 
-  def genIndex(ConfigIndex index)
+  private def genIndex(ConfigIndex index)
   '''
   «var count = 0»
   @Index(fields = {«FOR String attr : index.attr SEPARATOR ', '»@Field(value = "«attr»"«IF index.type !== null», type = IndexType.«index.type.get(count++).toUpperCase»«ENDIF»«IF index.weight !== null», weight = «index.weight»«ENDIF»)«ENDFOR»}«genIndexOptions(index)»)
   '''
 
-  def genIndexOptions(ConfigIndex i)
+  private def genIndexOptions(ConfigIndex i)
   {
     val indexOptions = new HashMap<String, String>();
     if (i.unique !== null) indexOptions.put("unique", i.unique.toString);
