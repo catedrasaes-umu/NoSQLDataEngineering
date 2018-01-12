@@ -3,5 +3,15 @@ entities:
   - name: Persons
     indexes:
       - attr: ['name']
-        type: ['text']
-        unique: True
+        type: [asc]
+      - attr: ['surname']
+        type: [desc]
+      - attr: ['age']
+        type: [hashed]
+      - attr: ['isEmployed', 'isMarried']
+        type: [text, text]
+        weight: [1, 2]
+        default_language: "german"
+        language_override: "french"
+        expireAfterSeconds: 33
+        partialFilter: "{rating: { $gt: 5 }}"

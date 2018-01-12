@@ -27,7 +27,7 @@ public class Main
   public static String MONGOOSE_OUTPUT_GEN_BASE_FOLDER = OUTPUT_FOLDER + "gen/";
   public static String MORPHIA_OUTPUT_GEN_BASE_FOLDER = "src/es/um/nosql/schemainference/";
   private static String YAML_CONFIG_ROUTE = "config.yaml";
-  public static boolean GENERATE_BASE_FILES = true;
+  public static boolean GENERATE_BASE_FILES = false;
 
   public static void main(String[] args)
   {
@@ -35,8 +35,8 @@ public class Main
     String inputFile = INPUT_FOLDER + input_model + ".xmi";
     String configFile = INPUT_FOLDER + YAML_CONFIG_ROUTE;
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
-    prepareM2MExample(inputFile, outputFile);
-    prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER), new File(configFile));
+    //prepareM2MExample(inputFile, outputFile);
+    //prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER), new File(configFile));
     //prepareM2MorphiaExample(new File(outputFile), new File(MORPHIA_OUTPUT_GEN_BASE_FOLDER), new File(configFile));
   }
 

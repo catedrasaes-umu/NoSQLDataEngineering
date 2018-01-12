@@ -48,7 +48,7 @@ class MorphiaIndexGen
   private def genIndex(ConfigIndex index)
   '''
   «var count = 0»
-  @Index(fields = {«FOR String attr : index.attr SEPARATOR ', '»@Field(value = "«attr»"«IF index.type !== null», type = IndexType.«index.type.get(count++).toUpperCase»«ENDIF»«IF index.weight !== null», weight = «index.weight»«ENDIF»)«ENDFOR»}«genIndexOptions(index)»)
+  @Index(fields = {«FOR String attr : index.attr SEPARATOR ', '»@Field(value = "«attr»", type = IndexType.«index.type.get(count).toUpperCase»«IF index.weight !== null», weight = «index.weight.get(count++)»«ENDIF»)«ENDFOR»}«genIndexOptions(index)»)
   '''
 
   private def genIndexOptions(ConfigIndex i)
@@ -83,7 +83,7 @@ class MorphiaIndexGen
   private def boolean hasOptionsDefined(ConfigIndex i)
   {
     return i.unique !== null || i.background !== null || i.sparse !== null || i.name !== null || i.disableValidation !== null
-      || i.partialFilter !== null || i.expireAfterSeconds !== null || i.weight !== null || i.default_language !== null || i.language_override !== null
+      || i.partialFilter !== null || i.expireAfterSeconds !== null || i.default_language !== null || i.language_override !== null
       /*|| i.textIndexVersion !== null || i.geo2dsphereIndexVersion !== null || i.bits !== null || i.min !== null || i.max !== null*/;
       //TODO We have to remove geo2d index options until we learn where to put them on generation
   }

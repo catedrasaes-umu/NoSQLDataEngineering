@@ -69,11 +69,11 @@ public class ConfigIndex
   //// IndexType.TEXT Indexes                                             ////
   ////////////////////////////////////////////////////////////////////////////
 
-  private Integer weight;
+  private Integer[] weight;
 
-  public void setWeight(Integer weight) {this.weight = weight;}
+  public void setWeight(Integer[] weight) {this.weight = weight;}
 
-  public Integer getWeight() {return this.weight;}
+  public Integer[] getWeight() {return this.weight;}
 
   private String default_language;
 
@@ -86,46 +86,7 @@ public class ConfigIndex
   public void setLanguage_override(String language_override) {this.language_override = language_override;}
 
   public String getLanguage_override() {return this.language_override;}
-  //TODO We have to remove geo2d index options until we learn where to put them on generation
-/*
-  private Integer textIndexVersion;
 
-  public void setTextIndexVersion(Integer textIndexVersion) {this.textIndexVersion = textIndexVersion;}
-
-  public Integer getTextIndexVersion() {return this.textIndexVersion;}
-
-  ////////////////////////////////////////////////////////////////////////////
-  //// IndexType.2DSPHERE Indexes                                         ////
-  ////////////////////////////////////////////////////////////////////////////
-
-  private Integer geo2dsphereIndexVersion;
-
-  public void setGeo2dsphereIndexVersion(Integer geo2dsphereIndexVersion) {this.geo2dsphereIndexVersion = geo2dsphereIndexVersion;}
-
-  public Integer getGeo2dsphereIndexVersion() {return this.geo2dsphereIndexVersion;}
-
-  ////////////////////////////////////////////////////////////////////////////
-  //// IndexType.2D Indexes                                               ////
-  ////////////////////////////////////////////////////////////////////////////
-
-  private Integer bits;
-
-  public void setBits(Integer bits) {this.bits = bits;}
-
-  public Integer getBits() {return this.bits;}
-
-  private Double min;
-
-  public void setMin(Double min) {this.min = min;}
-
-  public Double getMin() {return this.min;}
-
-  private Double max;
-
-  public void setMax(Double max) {this.max = max;}
-
-  public Double getMax() {return this.max;}
-*/
   public String toString()
   {
     StringBuilder result = new StringBuilder();
@@ -150,24 +111,12 @@ public class ConfigIndex
       result.append(" ExpireAfterSeconds: " + this.getExpireAfterSeconds());
 
     if (this.getWeight() != null)
-      result.append(" Weight: " + this.getWeight());
+      result.append(" Weight: " + Arrays.toString(this.getWeight()));
     if (this.getDefault_language() != null)
       result.append(" Default_language: " + this.getDefault_language());
     if (this.getLanguage_override() != null)
       result.append(" Language_override: " + this.getLanguage_override());
-/*    if (this.getTextIndexVersion() != null)
-      result.append(" TextIndexVersion: " + this.getTextIndexVersion());
 
-    if (this.getGeo2dsphereIndexVersion() != null)
-      result.append(" Geo2dsphereIndexVersion: " + this.getGeo2dsphereIndexVersion());
-
-    if (this.getBits() != null)
-      result.append(" Bits: " + this.getBits());
-    if (this.getMin() != null)
-      result.append(" Min: " + this.getMin());
-    if (this.getMax() != null)
-      result.append(" Max: " + this.getMax());
-*/
     result.append("\n");
 
     return result.toString();
@@ -175,33 +124,28 @@ public class ConfigIndex
 
   public boolean doCheck()
   {
-    if (this.getAttr() == null)
-      throw new IllegalArgumentException("Index must have an \"attr\" list of fields to be indexed");
+    if (this.getAttr() == null || this.getType() == null)
+      throw new IllegalArgumentException("Index must have an \"attr\" list of fields to be indexed and a \"type\" list of index types");
 
-    if (this.getType() != null && !Arrays.stream(this.getType()).allMatch(t -> Arrays.asList("text", "hashed", "asc", "desc", "geo2d", "geo2dsphere").contains(t.toLowerCase())))
+    if (!Arrays.stream(this.getType()).allMatch(t -> Arrays.asList("text", "hashed", "asc", "desc", "geo2d", "geo2dsphere").contains(t.toLowerCase())))
       throw new IllegalArgumentException("Index type [" + String.join(", ", this.getAttr()) + "] must be of type Text, Hashed, ASC, DESC, GEO2D or GEO2DSPHERE");
 
-    if (this.getAttr().length > 1 && this.getType() != null && this.getAttr().length != this.getType().length)
+    if (this.getAttr().length > 1 && this.getAttr().length != this.getType().length)
       throw new IllegalArgumentException("Composed index type [" + String.join(", ", this.getAttr()) + "] must declare the same number of types as number of attributes");
 
-    if (this.getAttr().length > 1 && this.getType() != null && !Arrays.stream(this.getType()).allMatch(t -> Arrays.asList("asc", "desc").contains(t.toLowerCase())))
-      throw new IllegalArgumentException("Composed index type [" + String.join(", ", this.getAttr()) + "] must be exclusively of types [ASC, DESC]");
+    if (this.getAttr().length > 1 && !Arrays.stream(this.getType()).allMatch(t -> Arrays.asList("asc", "desc").contains(t.toLowerCase()))
+        && !Arrays.stream(this.getType()).allMatch(t -> t.toLowerCase().equals("text")))
+      throw new IllegalArgumentException("Composed index type [" + String.join(", ", this.getAttr()) + "] must be exclusively of types [ASC*, DESC*], or [TEXT]");
 
-    if (this.getWeight() != null && (this.getWeight() < 1 || this.getWeight() > 99999))
-      throw new IllegalArgumentException("Index [" + String.join(", ", this.getAttr()) + "] weight must be between 1 and 99.999");
+    if (this.getAttr().length > 1 && this.getWeight() != null && Arrays.stream(this.getType()).allMatch(t -> t.toLowerCase().equals("text")) && this.getWeight().length != this.getType().length)
+      throw new IllegalArgumentException("Composed index type [" + String.join(", ", this.getAttr()) + "] of type [TEXT] must have the same number of types as weights, or not define weights at all");
 
-    if (this.getType() != null && this.getWeight() != null && !this.getType()[0].toLowerCase().equals("text"))
+    if (this.getWeight() != null && !this.getType()[0].toLowerCase().equals("text"))
       throw new IllegalArgumentException("Index [" + String.join(", ", this.getAttr()) + "] weight attribute only makes sense on TEXT indexes");
-/*
-    if (this.getTextIndexVersion() != null && this.getTextIndexVersion() != 1 && this.getTextIndexVersion() != 2)
-      throw new IllegalArgumentException("Index [\" + String.join(\", \", this.getAttr()) + \"] TextIndexVersion must have one of the following values: 1 or 2");
 
-    if (this.getGeo2dsphereIndexVersion() != null && this.getGeo2dsphereIndexVersion() != 1 && this.getGeo2dsphereIndexVersion() != 2)
-      throw new IllegalArgumentException("Index [\" + String.join(\", \", this.getAttr()) + \"] Geo2DSphereIndexVersion must have one of the following values: 1 or 2");
+    if (this.getWeight() != null && !Arrays.stream(this.getWeight()).allMatch(w -> w >= 1 || w <= 99999))
+      throw new IllegalArgumentException("Index [" + String.join(", ", this.getAttr()) + "] weights must be between 1 and 99.999");
 
-    if (this.getBits() != null && (this.getBits() < 1 || this.getBits() > 32))
-      throw new IllegalArgumentException("Index [\" + String.join(\", \", this.getAttr()) + \"] Bits must be between 1 and 32");
-*/
     return true;
   }
 }

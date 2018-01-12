@@ -77,7 +77,7 @@ public class ConfigEntity
       for (ConfigIndex index : this.getIndexes())
       {
         if (!eProperties.stream().anyMatch(p -> Arrays.asList(index.getAttr()).contains(p.getName())))
-          throw new IllegalArgumentException("Index value " + index.getAttr() + " must exist in the model Entity " + this.getName());
+          throw new IllegalArgumentException("Index value " + String.join(", ", index.getAttr()) + " must exist in the model Entity " + this.getName());
 
         index.doCheck();
       }
