@@ -82,4 +82,11 @@ public class MorphiaTestConfig
       System.out.println("    Status: " + p.getStatus());
     }
   }
+
+  @SuppressWarnings("unused")
+  private void printValidations(Set<ConstraintViolation<Persons>> violations)
+  {
+    for (ConstraintViolation<Persons> violation : violations)
+      System.out.println(violation);
+  }
 }

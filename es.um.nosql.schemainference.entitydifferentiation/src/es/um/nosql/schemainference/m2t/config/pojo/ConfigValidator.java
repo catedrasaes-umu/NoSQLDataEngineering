@@ -102,8 +102,8 @@ public class ConfigValidator
     if (this.getMinLength() != null && this.getMaxLength() != null && this.getMinLength() > this.getMaxLength())
       throw new IllegalArgumentException("The validator for " + this.getAttr() + " MininumLength value must be less or equals than MaximumLength value");
 
-    if (this.getCustom() != null && this.getMessage() != null)
-      throw new IllegalArgumentException("The custom validator for " + this.getAttr() + " can't define a message. Please define the message inside the custom expression");
+    if (this.getEnumValues() != null && this.getMatch() != null)
+      throw new IllegalArgumentException("The validator for " + this.getAttr() + " can't define a range of values and also a pattern at the same time");
 
     return true;
   }

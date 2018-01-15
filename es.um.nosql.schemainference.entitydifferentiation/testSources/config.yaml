@@ -1,19 +1,14 @@
 mapper: Morphia
 entities:
   - name: Persons
-    indexes:
-      - attr: ['name']
-        type: [asc]
-        unique: true
-        background: false
-      - attr: ['surname']
-        type: [desc]
-        name: "Custom NombreIndice"
-        disableValidation: false
     validators:
-      - attr: name
-        match: "/name[0-4]/"
-        minLength: 2
-        maxLength: 4
+      - attr: age
+        min: 0
+        max: 60
+      - attr: status
+        minLength: 3
       - attr: surname
-        custom: "{validator: function(v) { return /surname[0-9]/.test(v);}, message: \"error\"}"
+        maxLength: 10
+      - attr: name
+        minLength: 3
+        maxLength: 10

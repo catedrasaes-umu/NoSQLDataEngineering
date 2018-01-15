@@ -254,6 +254,7 @@ class DiffToMorphia
   // @Union_«theTypes.join('_')»
   «IF list.exists[p | p instanceof Aggregate]»@Embedded«ELSE»@Property«ENDIF»
   «IF required»@NotNull(message = "«theName» can't be null")«ENDIF»
+  «indexValGen.genValidatorsForField(list.head.eContainer.eContainer as Entity, theName)»
   private Object «theName»;
   public Object get«theName.toFirstUpper»() {return this.«theName»;}
   public void set«theName.toFirstUpper»(Object «theName»)
@@ -347,6 +348,7 @@ class DiffToMorphia
   '''
     @Embedded
     «IF required»@NotNull(message = "«aggr.name» can't be null")«ENDIF»
+    «indexValGen.genValidatorsForField(aggr.eContainer.eContainer as Entity, aggr.name)»
     private «genTypeForProperty(aggr)» «aggr.name»;
     public «genTypeForProperty(aggr)» get«aggr.name.toFirstUpper»() {return this.«aggr.name»;}
     public void set«aggr.name.toFirstUpper»(«genTypeForProperty(aggr)» «aggr.name») {this.«aggr.name» = «aggr.name»;}
@@ -372,6 +374,7 @@ class DiffToMorphia
   '''
     @Reference«IF !Commons.IS_DBREF(ref)»(idOnly = true)«ENDIF»
     «IF required»@NotNull(message = "«ref.name» can't be null")«ENDIF»
+    «indexValGen.genValidatorsForField(ref.eContainer.eContainer as Entity, ref.name)»
     private «genTypeForProperty(ref)» «ref.name»;
     public «genTypeForProperty(ref)» get«ref.name.toFirstUpper»() {return this.«ref.name»;}
     public void set«ref.name.toFirstUpper»(«genTypeForProperty(ref)» «ref.name») {this.«ref.name» = «ref.name»;}
@@ -398,6 +401,7 @@ class DiffToMorphia
   '''
     «IF a.name.toLowerCase.equals("_id")»@Id«ELSE»@Property«ENDIF»
     «IF required»@NotNull(message = "«a.name» can't be null")«ENDIF»
+    «indexValGen.genValidatorsForField(a.eContainer.eContainer as Entity, a.name)»
     private «genTypeForProperty(a)» «a.name»;
     public «genTypeForProperty(a)» get«a.name.toFirstUpper»() {return this.«a.name»;}
     public void set«a.name.toFirstUpper»(«genTypeForProperty(a)» «a.name») {this.«a.name» = «a.name»;}
