@@ -37,7 +37,7 @@ public class Main
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
     //prepareM2MExample(inputFile, outputFile);
     //prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER), new File(configFile));
-    //prepareM2MorphiaExample(new File(outputFile), new File(MORPHIA_OUTPUT_GEN_BASE_FOLDER), new File(configFile));
+    prepareM2MorphiaExample(new File(outputFile), new File(MORPHIA_OUTPUT_GEN_BASE_FOLDER), new File(configFile));
   }
 
   public static void prepareM2MExample(String inputFile, String outputFile)

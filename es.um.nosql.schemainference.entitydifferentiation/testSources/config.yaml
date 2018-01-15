@@ -1,4 +1,4 @@
-mapper: Mongoose
+mapper: Morphia
 entities:
   - name: Persons
     indexes:
@@ -8,17 +8,8 @@ entities:
         background: false
       - attr: ['surname']
         type: [desc]
-        sparse: true
         name: "Custom NombreIndice"
-      - attr: ['age']
-        type: [hashed]
-        expireAfterSeconds: 11
-      - attr: ['isEmployed', 'isMarried']
-        type: [text, text]
-        weight: [1, 2]
-        default_language: "german"
-        language_override: "french"
-        expireAfterSeconds: 33
+        disableValidation: false
     validators:
       - attr: name
         match: "/name[0-4]/"
