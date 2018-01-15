@@ -27,7 +27,7 @@ public class Main
   public static String MONGOOSE_OUTPUT_GEN_BASE_FOLDER = OUTPUT_FOLDER + "gen/";
   public static String MORPHIA_OUTPUT_GEN_BASE_FOLDER = "src/es/um/nosql/schemainference/";
   private static String YAML_CONFIG_ROUTE = "config.yaml";
-  public static boolean GENERATE_BASE_FILES = false;
+  public static boolean GENERATE_BASE_FILES = true;
 
   public static void main(String[] args)
   {

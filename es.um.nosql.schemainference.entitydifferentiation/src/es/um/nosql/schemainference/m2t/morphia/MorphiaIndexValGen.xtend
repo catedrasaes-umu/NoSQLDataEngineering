@@ -6,7 +6,7 @@ import es.um.nosql.schemainference.m2t.config.pojo.ConfigIndex
 import es.um.nosql.schemainference.m2t.config.pojo.ConfigEntity
 import java.util.HashMap
 
-class MorphiaIndexGen
+class MorphiaIndexValGen
 {
   ConfigMorphia config;
 
@@ -83,8 +83,6 @@ class MorphiaIndexGen
   private def boolean hasOptionsDefined(ConfigIndex i)
   {
     return i.unique !== null || i.background !== null || i.sparse !== null || i.name !== null || i.disableValidation !== null
-      || i.partialFilter !== null || i.expireAfterSeconds !== null || i.default_language !== null || i.language_override !== null
-      /*|| i.textIndexVersion !== null || i.geo2dsphereIndexVersion !== null || i.bits !== null || i.min !== null || i.max !== null*/;
-      //TODO We have to remove geo2d index options until we learn where to put them on generation
+      || i.partialFilter !== null || i.expireAfterSeconds !== null || i.default_language !== null || i.language_override !== null;
   }
 }

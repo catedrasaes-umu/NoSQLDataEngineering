@@ -3,9 +3,12 @@ package es.um.nosql.schemainference.m2t.mongoose
 import es.um.nosql.schemainference.m2t.config.ConfigMongoose
 import es.um.nosql.schemainference.NoSQLSchema.Entity
 import es.um.nosql.schemainference.m2t.config.pojo.ConfigIndex
+import java.util.ArrayList
+import java.util.List
 import java.util.HashMap
+import es.um.nosql.schemainference.m2t.config.pojo.ConfigValidator
 
-class MongooseIndexGen
+class MongooseIndexValGen
 {
   ConfigMongoose config;
 
@@ -21,6 +24,31 @@ class MongooseIndexGen
     ''''''
     else
     '''«FOR ConfigIndex i : cEntity.indexes SEPARATOR '\n'»«e.name»Schema.index(«genIndex(i)»);«ENDFOR»'''
+  }
+
+  def List<Pair<String, String>> genValidatorsForField(Entity e, String field)
+  {
+    val result = new ArrayList<Pair<String, String>>();
+    for (ConfigValidator v : config.entities.findFirst[ce | ce.name == e.name].getValidatorsFor(field))
+    {
+      if (v.min !== null) result.add(new Pair("min", genValidatorValue(v.min.toString, v.message)));
+      if (v.max !== null) result.add(new Pair("max", genValidatorValue(v.max.toString, v.message)));
+      if (v.enumValues !== null) result.add(new Pair("enum", genValidatorValue("[" + String.join(", ", v.enumValues.map[value | "'" + value + "'"]) + "]", v.message)));
+      if (v.match !== null) result.add(new Pair("match", genValidatorValue(v.match, v.message)));
+      if (v.minLength !== null) result.add(new Pair("minlength", genValidatorValue(v.minLength.toString, v.message)));
+      if (v.maxLength !== null) result.add(new Pair("maxlength", genValidatorValue(v.maxLength.toString, v.message)));
+      if (v.custom !== null) result.add(new Pair("validate", genValidatorValue(v.custom, null)))
+    }
+
+    return result;
+  }
+
+  def genValidatorValue(String value, String message)
+  {
+    if (message === null)
+      value
+    else
+      "[" + value + ", \"" + message + "\"]"
   }
 
   private def genIndex(ConfigIndex index)
@@ -57,7 +85,6 @@ class MongooseIndexGen
       indexOptions.put("weights", concWeight);
     }
     if (i.background !== null) indexOptions.put("background", i.background.toString);
-    //if (i.disableValidation !== null) indexOptions.put("disableValidation", i.disableValidation.toString); // Seems like Mongoose does not have this option available...
     if (i.sparse !== null) indexOptions.put("sparse", i.sparse.toString);
     if (i.name !== null) indexOptions.put("name", "\"" + i.name + "\"");
     if (i.partialFilter !== null) indexOptions.put("partialFilterExpression", i.partialFilter);

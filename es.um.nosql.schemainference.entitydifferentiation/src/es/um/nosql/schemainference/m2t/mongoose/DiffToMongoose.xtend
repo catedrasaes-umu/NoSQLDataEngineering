@@ -21,6 +21,7 @@ import java.util.ArrayList
 import es.um.nosql.schemainference.m2t.commons.Commons
 import es.um.nosql.schemainference.m2t.commons.DependencyAnalyzer
 import es.um.nosql.schemainference.m2t.config.ConfigMongoose
+import java.util.HashMap
 
 /**
  * Class designed to perform the Mongoose code generation: Javascript
@@ -43,7 +44,7 @@ public class DiffToMongoose
 
   DependencyAnalyzer analyzer;
 
-  MongooseIndexGen indexGen;
+  MongooseIndexValGen indexValGen;
 
   /**
    * Method used to start the generation process from a diff model file
@@ -69,7 +70,7 @@ public class DiffToMongoose
     modelName = diff.name;
 
     // Process the configuration file
-    indexGen = new MongooseIndexGen(Commons.PARSE_CONFIG_FILE(ConfigMongoose, configFile, diff))
+    indexValGen = new MongooseIndexValGen(Commons.PARSE_CONFIG_FILE(ConfigMongoose, configFile, diff))
 
     // Calc dependencies between entities
     analyzer = new DependencyAnalyzer();
@@ -90,7 +91,7 @@ public class DiffToMongoose
       «genSpecs(e, analyzer.getDiffByEntity().get(e))»
     }, { versionKey: false, «IF (e.entityversions.exists[ev | ev.isRoot])»collection: '«e.name.toFirstLower»'«ELSE»_id : false«ENDIF»});
 
-    «indexGen.genIndexesForEntity(e)»
+    «indexValGen.genIndexesForEntity(e)»
 
     module.exports = mongoose.model('«e.name»', «e.name»Schema);
   '''
@@ -136,7 +137,7 @@ public class DiffToMongoose
 
   def mongooseOptionsForPropertySpec(Entity e, PropertySpec spec, boolean required)
   {
-    val props = <String,Object>newHashMap()
+    val props = new HashMap<String,Object>()
 
     props.putAll(genPropSpec(e, spec))
 
@@ -151,6 +152,8 @@ public class DiffToMongoose
     // This last condition is used because empty optional arrays are stored in Mongoose. This shouldn't be a thing.
     // If the user doesnt want to store an optional array field, that field wont appear on the object.
     // To prevent this, when an array field is not required, it will be labeled as default: () => undefined.
+    for (Pair<String, String> p : indexValGen.genValidatorsForField(e, spec.property.name))
+      props.put(p.key, label(p.value))
     props
   }
 

@@ -39,7 +39,7 @@ class DiffToMorphia
 
   DependencyAnalyzer analyzer;
 
-  MorphiaIndexGen indexGen;
+  MorphiaIndexValGen indexValGen;
 
   /**
    * Method used to start the generation process from a diff model file
@@ -70,7 +70,7 @@ class DiffToMorphia
     }
 
     // Process the configuration file
-    indexGen = new MorphiaIndexGen(Commons.PARSE_CONFIG_FILE(ConfigMorphia, configFile, diff));
+    indexValGen = new MorphiaIndexValGen(Commons.PARSE_CONFIG_FILE(ConfigMorphia, configFile, diff));
 
     // Calc dependencies between entities
     analyzer = new DependencyAnalyzer();
@@ -93,7 +93,7 @@ class DiffToMorphia
     «genIncludes(entity)»
 
     «IF entity.entityversions.exists[ev | ev.isRoot]»@Entity(value = "«entity.name.toFirstLower»", noClassnameStored = true)«ELSE»@Embedded«ENDIF»
-    «indexGen.genIndexesForEntity(entity)»
+    «indexValGen.genIndexesForEntity(entity)»
     public class «entity.name»
     {
       «genSpecs(entity, analyzer.getDiffByEntity().get(entity))»
@@ -137,7 +137,7 @@ class DiffToMorphia
     «IF entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Attribute]]»import org.mongodb.morphia.annotations.Property;«ENDIF»
     «IF entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Reference]]»import org.mongodb.morphia.annotations.Reference;«ENDIF»
     «IF !analyzer.getDiffByEntity().get(entity).commonProps.isEmpty»import javax.validation.constraints.NotNull;«ENDIF»
-    «indexGen.genIncludesForEntity(entity)»
+    «indexValGen.genIncludesForEntity(entity)»
 
     «FOR Entity e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
       import «importRoute».«e.name»;

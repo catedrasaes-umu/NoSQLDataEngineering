@@ -4,14 +4,25 @@ entities:
     indexes:
       - attr: ['name']
         type: [asc]
+        unique: true
+        background: false
       - attr: ['surname']
         type: [desc]
+        sparse: true
+        name: "Custom NombreIndice"
       - attr: ['age']
         type: [hashed]
+        expireAfterSeconds: 11
       - attr: ['isEmployed', 'isMarried']
         type: [text, text]
         weight: [1, 2]
         default_language: "german"
         language_override: "french"
         expireAfterSeconds: 33
-        partialFilter: "{rating: { $gt: 5 }}"
+    validators:
+      - attr: name
+        match: "/name[0-4]/"
+        minLength: 2
+        maxLength: 4
+      - attr: surname
+        custom: "{validator: function(v) { return /surname[0-9]/.test(v);}, message: \"error\"}"

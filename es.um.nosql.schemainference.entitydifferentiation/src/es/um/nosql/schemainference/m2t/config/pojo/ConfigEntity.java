@@ -30,11 +30,11 @@ public class ConfigEntity
 
   public ConfigIndex[] getIndexes() {return this.indexes;}
 
-  public ConfigValidator getValidatorFor(String field)
+  public ConfigValidator[] getValidatorsFor(String field)
   {
     if (this.getValidators() == null)
-      return null;
-    return Arrays.stream(this.getValidators()).filter(o -> o.getAttr().equals(field)).findFirst().orElse(null);
+      return new ConfigValidator[0];
+    return Arrays.stream(this.getValidators()).filter(v -> v.getAttr().equals(field)).toArray(ConfigValidator[]::new);
   }
 
   public ConfigIndex[] getIndexesFor(String field)
