@@ -2,7 +2,7 @@ using %(mapper): Morphia
 entities:
   - name: Persons
     indexes:
-      - attribute: [age]
+      - attr: ["age"]
         type: ["asc"]
       - attr: ["name", "surname"]
         type: ["asc", "desc"]
