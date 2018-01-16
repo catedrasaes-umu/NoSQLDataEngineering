@@ -52,20 +52,21 @@ public class MorphiaTestConfig
   @Test
   public void testStorePersons()
   {
-    Persons p1 = new Persons();p1.set_id(new ObjectId());p1.setAge(1);p1.setName("name1");p1.setSurname("surname1");p1.setIsEmployed(false);p1.setIsMarried(false);p1.setStatus("status1");
-    Persons p2 = new Persons();p2.set_id(new ObjectId());p2.setAge(2);p2.setName("name2");p2.setSurname("surname2");p2.setIsEmployed(false);p2.setIsMarried(true);p2.setStatus("status2");
-    Persons p3 = new Persons();p3.set_id(new ObjectId());p3.setAge(3);p3.setName("name3");p3.setSurname("surname3");p3.setIsEmployed(true);p3.setIsMarried(false);p3.setStatus("status3");
-    Persons p4 = new Persons();p4.set_id(new ObjectId());p4.setAge(4);p4.setName("name4");p4.setSurname("surname4");p4.setIsEmployed(true);p4.setIsMarried(true); p4.setStatus("status4");
-    Persons p5 = new Persons();p5.set_id(new ObjectId());p5.setAge(15);p5.setName("name5");p5.setSurname("surname5");p5.setIsEmployed(false);p5.setIsMarried(false); p5.setStatus("status5");
+    Persons p1 = new Persons();p1.set_id(new ObjectId());p1.setAge(18);p1.setName("name1");p1.setSurname("surname1");p1.setIsEmployed(false);p1.setIsMarried(false);p1.setStatus("status1");
+    Persons p2 = new Persons();p2.set_id(new ObjectId());p2.setAge(28);p2.setName("name2");p2.setSurname("surname2");p2.setIsEmployed(false);p2.setIsMarried(true);p2.setStatus("status2");
+    Persons p3 = new Persons();p3.set_id(new ObjectId());p3.setAge(38);p3.setName("name3");p3.setSurname("surname3");p3.setIsEmployed(true);p3.setIsMarried(false);p3.setStatus("status3");
+    Persons p4 = new Persons();p4.set_id(new ObjectId());p4.setAge(48);p4.setName("name4");p4.setSurname("surname4");p4.setIsEmployed(true);p4.setIsMarried(true); p4.setStatus("status4");
+    Persons p5 = new Persons();p5.set_id(new ObjectId());p5.setAge(58);p5.setName("name5");p5.setSurname("surname5");p5.setIsEmployed(false);p5.setIsMarried(false); p5.setStatus("status5");
 
     List<Persons> list = new ArrayList<Persons>();
     list.add(p1); list.add(p2); list.add(p3); list.add(p4); list.add(p5);
 
-    Set<ConstraintViolation<Persons>> violations = validator.validate(p1); Assert.assertEquals(0, violations.size());
-    violations = validator.validate(p2); Assert.assertEquals(0, violations.size());
-    violations = validator.validate(p3); Assert.assertEquals(0, violations.size());
-    violations = validator.validate(p4); Assert.assertEquals(0, violations.size());
-    violations = validator.validate(p5); Assert.assertEquals(0, violations.size());
+    Set<ConstraintViolation<Persons>> violations;
+    violations = validator.validate(p1); printViolations(violations); Assert.assertEquals(0, violations.size());
+    violations = validator.validate(p2); printViolations(violations); Assert.assertEquals(0, violations.size());
+    violations = validator.validate(p3); printViolations(violations); Assert.assertEquals(0, violations.size());
+    violations = validator.validate(p4); printViolations(violations); Assert.assertEquals(0, violations.size());
+    violations = validator.validate(p5); printViolations(violations); Assert.assertEquals(0, violations.size());
 
     datastore.save(list);
 
@@ -84,7 +85,7 @@ public class MorphiaTestConfig
   }
 
   @SuppressWarnings("unused")
-  private void printValidations(Set<ConstraintViolation<Persons>> violations)
+  private void printViolations(Set<ConstraintViolation<Persons>> violations)
   {
     for (ConstraintViolation<Persons> violation : violations)
       System.out.println(violation);

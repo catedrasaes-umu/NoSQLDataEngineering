@@ -3,14 +3,10 @@ package es.um.nosql.schemainference.m2t.config;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.entitydifferentiation.EntityDifferentiation;
 import es.um.nosql.schemainference.m2t.config.pojo.ConfigEntity;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class ConfigMongoose extends BaseConfig
 {
   private String mapper;

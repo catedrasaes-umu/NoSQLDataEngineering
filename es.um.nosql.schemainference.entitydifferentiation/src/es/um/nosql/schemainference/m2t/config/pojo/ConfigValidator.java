@@ -1,8 +1,5 @@
 package es.um.nosql.schemainference.m2t.config.pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class ConfigValidator
 {
   private String attr;

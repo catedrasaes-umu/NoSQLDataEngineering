@@ -1,14 +1,33 @@
-mapper: Morphia
+using %(mapper): Morphia
 entities:
   - name: Persons
+    indexes:
+      - attribute: [age]
+        type: ["asc"]
+      - attr: ["name", "surname"]
+        type: ["asc", "desc"]
+        unique: true
+        sparse: true
+        background: false
+      - attr: ["status"]
+        type: ["text"]
+        weight: [25]
+        name: "custom_index_name"
+        expireAfterSeconds: 330
+      - attr: ["isEmployed"]
+        type: ["hashed"]
     validators:
       - attr: age
-        min: 0
-        max: 60
+        min: 18
+        max: 100
+        message: "age must be > 18 && < 100"
       - attr: status
-        minLength: 3
-      - attr: surname
-        maxLength: 10
+        match: "/status[0-9]/"
       - attr: name
         minLength: 3
         maxLength: 10
+        message: "name must have a length > 3 && < 10"
+      - attr: surname
+        enumValues: ["surname1", "surname2", "surname3", "surname4", "surname5"]
+        # custom: "{ validator: function(v) { return /surname[0-9]/.test(v); }, message: 'Surname: surname[0-9]'}
+    #ignoreUnknown: true

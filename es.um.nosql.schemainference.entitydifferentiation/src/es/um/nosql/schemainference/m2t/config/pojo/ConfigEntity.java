@@ -4,12 +4,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 import es.um.nosql.schemainference.NoSQLSchema.Entity;
 import es.um.nosql.schemainference.NoSQLSchema.Property;
 
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class ConfigEntity
 {
   private String name;
@@ -29,6 +26,12 @@ public class ConfigEntity
   public void setIndexes(ConfigIndex[] indexes) {this.indexes = indexes;}
 
   public ConfigIndex[] getIndexes() {return this.indexes;}
+
+  private String ignoreUnknown;
+
+  public void setIgnoreUnknown(String ignoreUnknown) {this.ignoreUnknown = ignoreUnknown;}
+
+  public String getIgnoreUnknown() {return this.ignoreUnknown;}
 
   public ConfigValidator[] getValidatorsFor(String field)
   {
@@ -63,10 +66,10 @@ public class ConfigEntity
     if (this.getValidators() != null)
       for (ConfigValidator validator : this.getValidators())
       {
+        validator.doCheck();
+
         if (!eProperties.stream().anyMatch(p -> p.getName().equals(validator.getAttr())))
           throw new IllegalArgumentException("Validator value " + validator.getAttr() + " must exist in the model Entity " + this.getName());
-
-        validator.doCheck();
       }
 
     if (this.getIndexes() != null)
@@ -76,10 +79,11 @@ public class ConfigEntity
 
       for (ConfigIndex index : this.getIndexes())
       {
+        index.doCheck();
+
         if (!eProperties.stream().anyMatch(p -> Arrays.asList(index.getAttr()).contains(p.getName())))
           throw new IllegalArgumentException("Index value " + String.join(", ", index.getAttr()) + " must exist in the model Entity " + this.getName());
 
-        index.doCheck();
       }
     }
     return true;

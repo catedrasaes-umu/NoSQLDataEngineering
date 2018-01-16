@@ -2,9 +2,6 @@ package es.um.nosql.schemainference.m2t.config.pojo;
 
 import java.util.Arrays;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
-@JsonIgnoreProperties(ignoreUnknown = true)
 public class ConfigIndex
 {
   ////////////////////////////////////////////////////////////////////////////
