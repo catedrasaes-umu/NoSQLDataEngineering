@@ -58,10 +58,6 @@ public class ConfigMorphia extends BaseConfig
     if (!mapper.toLowerCase().equals("morphia"))
       throw new IllegalArgumentException("The config file is not suitable for Morphia generation.\nNeeds: \"mapper: Morphia\"");
 
-// TODO: For the moment, we wont check discriminator until we learn what is its utility...
-//    if (!diff.getSchema().getEntities().stream().anyMatch(e -> e.getName().equals(discriminator)))
-//      throw new IllegalArgumentException("Discriminator " + discriminator + " doesn't exist on the Entity model");
-
     for (ConfigEntity e : getEntities())
     {
       Entity schemaE = diff.getSchema().getEntities().stream().filter(innerE -> innerE.getName().equals(e.getName())).findFirst().orElse(null);

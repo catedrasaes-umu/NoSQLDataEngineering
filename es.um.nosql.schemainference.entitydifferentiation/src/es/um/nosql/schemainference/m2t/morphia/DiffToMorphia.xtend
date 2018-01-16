@@ -103,9 +103,6 @@ class DiffToMorphia
   /**
    * To generate imports, we just check the conditions in which these imports will be used.
    */
-  // TODO:Actually, Commons should not be imported if there is a Union which is reduced on a single element.
-  // Doesnt seem easy to bypass these cases at this point, since unions are analyzed later on.
-  // Por otro lado los SET pueden devolver this, pero no tengo a mano el nombre del tipo a devolver. Entity_name
   def genIncludes(Entity entity)
   {
     val isEntityRoot = entity.entityversions.exists[ev | ev.isRoot];
@@ -311,12 +308,6 @@ class DiffToMorphia
     '''
   }
 
-  // TODO: Conflictive point.
-  // It is impossible to resolve references once an _id field is queried, since we do not have access to the Datastore
-  // So we will have to let the user resolve the reference as he wishes. Remember the field is of Object type,
-  // so the user can still query the references manually.
-  // This also evades the problem of having unions of different references, because a priori we do not know against which
-  // collection should we query the _id attribute.
   def dispatch genUnionFor(Reference ref)
   {
     var typeRef = genAttributeType(ref.originalType);
