@@ -9,6 +9,7 @@ import es.um.nosql.schemainference.db.interfaces.Comp2Db;
 import es.um.nosql.schemainference.db.interfaces.EPol2Db;
 import es.um.nosql.schemainference.db.interfaces.Facebook2Db;
 import es.um.nosql.schemainference.db.interfaces.Harvard2Db;
+import es.um.nosql.schemainference.db.interfaces.Json2Db;
 import es.um.nosql.schemainference.db.interfaces.Publications2Db;
 import es.um.nosql.schemainference.db.interfaces.Link2Db;
 import es.um.nosql.schemainference.db.interfaces.Model2Db;
@@ -34,6 +35,7 @@ public class InferenceTest
   private static final boolean FILL_ONLY = true;
   private static final boolean FILL_AND_INFER = false;
 
+  private static final String FILE_JSON = "json/tfg.json";
   private static final String FILE_MODEL = "models/mongoMovies3.xmi";
   private static final String FOLDER_SOF = "F:\\Informatica\\datasets\\stackoverflow\\";
   private static final String FOLDER_EPOL = "/home/lab/datasets/everypolitician/";
@@ -52,23 +54,24 @@ public class InferenceTest
   {//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
     // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.
     // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
-    prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
+    // prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
     // prepareSOFExample(DbType.MONGODB, FILL_ONLY, FOLDER_SOF);
-    prepareEPolExample(DbType.MONGODB, FILL_ONLY, FOLDER_EPOL);
-    prepareUrbanExample(DbType.MONGODB, FILL_ONLY, FILE_URBAN);                  //POJO
+    // prepareEPolExample(DbType.MONGODB, FILL_ONLY, FOLDER_EPOL);
+    // prepareUrbanExample(DbType.MONGODB, FILL_ONLY, FILE_URBAN);                  //POJO
     // Problem with this dataset is that it contains A LOT of aggregated objects and null values.
     // Aggregated objects tend to make mongodb run out of memory during the reduce process.
     // Null values tend to abort the inference process. Until the inference process is fixed (TODO(tm)),
     // we will make use of POJO objects and ignore problematic fields. Thing is, then we have a lot of options...
-    //  prepareCompanyExample(DbType.MONGODB, FILL_AND_INFER, FILE_COMPANY);              //POJO
-    prepareLinkExample(DbType.MONGODB, FILL_ONLY, FOLDER_LINK);                  //POJO
-    //  prepareHarvardExample(DbType.MONGODB, FILL_AND_INFER, FILE_HARVARD);              //POJO
-    prepareFacebookExample(DbType.MONGODB, FILL_ONLY, FOLDER_FACEBOOK);          //POJO
-    //  prepareProteinExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_PROTEIN);            //POJO
-    //  preparePublicationsExample(DbType.MONGODB, FILL_AND_INFER, FILE_PUBLICATIONS);    //POJO
-    prepareWebclickExample(DbType.MONGODB, FILL_ONLY, FOLDER_WEBCLICKS);         //POJO
-    prepareSanctionsExample(DbType.MONGODB, FILL_ONLY, FILE_SANCTIONS);
-    //  preparePleiadesExample(DbType.MONGODB, FILL_AND_INFER, FILE_PLEIDADES);
+    // prepareCompanyExample(DbType.MONGODB, FILL_AND_INFER, FILE_COMPANY);              //POJO
+    // prepareLinkExample(DbType.MONGODB, FILL_ONLY, FOLDER_LINK);                  //POJO
+    // prepareHarvardExample(DbType.MONGODB, FILL_AND_INFER, FILE_HARVARD);              //POJO
+    // prepareFacebookExample(DbType.MONGODB, FILL_ONLY, FOLDER_FACEBOOK);          //POJO
+    // prepareProteinExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_PROTEIN);            //POJO
+    // preparePublicationsExample(DbType.MONGODB, FILL_AND_INFER, FILE_PUBLICATIONS);    //POJO
+    // prepareWebclickExample(DbType.MONGODB, FILL_ONLY, FOLDER_WEBCLICKS);         //POJO
+    // prepareSanctionsExample(DbType.MONGODB, FILL_ONLY, FILE_SANCTIONS);
+    // preparePleiadesExample(DbType.MONGODB, FILL_AND_INFER, FILE_PLEIDADES);
+    prepareJsonExample(DbType.MONGODB, FILL_AND_INFER, FILE_JSON);
   }
 
   public static void prepareModelExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
@@ -85,6 +88,28 @@ public class InferenceTest
 
     Model2Db controller = new Model2Db(dbType, DATABASE_IP);
     controller.run(sourceFile, minInstances, maxInstances);
+    controller.shutdown();
+
+    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+
+    if (FILL_ONLY)
+      return;
+    else
+      performInference(dbType, dbName, outputModel);
+  }
+
+  public static void prepareJsonExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
+  {
+    File source = new File(sourceFile);
+    String dbName = source.getName().substring(0, source.getName().indexOf("."));
+    String outputModel = MODELS_FOLDER + dbName + "_RESULT.xmi";
+
+    long startTime = System.currentTimeMillis();
+
+    System.out.println("Filling the " + dbType.toString() + " database...");
+
+    Json2Db controller = new Json2Db(dbType, DATABASE_IP);
+    controller.run(sourceFile, dbName);
     controller.shutdown();
 
     System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
