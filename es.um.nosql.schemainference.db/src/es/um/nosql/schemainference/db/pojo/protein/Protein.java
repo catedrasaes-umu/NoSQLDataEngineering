@@ -3,8 +3,8 @@ package es.um.nosql.schemainference.db.pojo.protein;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
-@JsonPropertyOrder({"PDB id", "PDB chain", "Cluster Number", "Identifier_for_representative_protein(chain)", "Variant in PDB", "Alternate format for PDB variant", "ddG",
-  "UniProt Id", "Mapped Variant in UniProt", "Alternate format for UniProt variant", "Gene Symbol", "Entrez Gene ID", "Link to PDB", "Link to UniProt", "Link to Entrez Gene", "Comments"})
+@JsonPropertyOrder({"PDB_id", "PDB_chain", "Cluster_Number", "Identifier_for_representative_protein_chain", "Variant_in_PDB", "Alternate_format_for_PDB_variant", "ddG",
+  "UniProt_Id", "Mapped_Variant_in_UniProt", "Alternate_format_for_UniProt_variant", "Gene_Symbol", "Entrez_Gene_ID", "Link_to_PDB", "Link_to_UniProt", "Link_to_Entrez_Gene", "Comments"})
 public class Protein
 {
   private String PDB_id;
@@ -39,7 +39,7 @@ public class Protein
 
   private String Comments;
 
-  @JsonProperty("PDB id")
+  @JsonProperty("PDB_id")
   public String getPDB_id() {
     return PDB_id;
   }
@@ -48,7 +48,7 @@ public class Protein
     PDB_id = pDB_id;
   }
 
-  @JsonProperty("PDB chain")
+  @JsonProperty("PDB_chain")
   public String getPDB_chain() {
     return PDB_chain;
   }
@@ -57,7 +57,7 @@ public class Protein
     PDB_chain = pDB_chain;
   }
 
-  @JsonProperty("Cluster Number")
+  @JsonProperty("Cluster_Number")
   public String getCluster_Number() {
     return Cluster_Number;
   }
@@ -66,7 +66,7 @@ public class Protein
     Cluster_Number = cluster_Number;
   }
 
-  @JsonProperty("Identifier_for_representative_protein(chain)")
+  @JsonProperty("Identifier_for_representative_protein_chain")
   public String getIdentifier_for_representative_protein_chain() {
     return Identifier_for_representative_protein_chain;
   }
@@ -75,7 +75,7 @@ public class Protein
     Identifier_for_representative_protein_chain = identifier_for_representative_protein_chain;
   }
 
-  @JsonProperty("Variant in PDB")
+  @JsonProperty("Variant_in_PDB")
   public String getVariant_in_PDB() {
     return Variant_in_PDB;
   }
@@ -84,7 +84,7 @@ public class Protein
     Variant_in_PDB = variant_in_PDB;
   }
 
-  @JsonProperty("Alternate format for PDB variant")
+  @JsonProperty("Alternate_format_for_PDB_variant")
   public String getAlternate_format_for_PDB_variant() {
     return Alternate_format_for_PDB_variant;
   }
@@ -102,7 +102,7 @@ public class Protein
     this.ddG = ddG;
   }
 
-  @JsonProperty("UniProt Id")
+  @JsonProperty("UniProt_Id")
   public String getUniProt_Id() {
     return UniProt_Id;
   }
@@ -111,7 +111,7 @@ public class Protein
     UniProt_Id = uniProt_Id;
   }
 
-  @JsonProperty("Mapped Variant in UniProt")
+  @JsonProperty("Mapped_Variant_in_UniProt")
   public String getMapped_Variant_in_UniProt() {
     return Mapped_Variant_in_UniProt;
   }
@@ -120,7 +120,7 @@ public class Protein
     Mapped_Variant_in_UniProt = mapped_Variant_in_UniProt;
   }
 
-  @JsonProperty("Alternate format for UniProt variant")
+  @JsonProperty("Alternate_format_for_UniProt_variant")
   public String getAlternate_format_for_UniProt_variant() {
     return Alternate_format_for_UniProt_variant;
   }
@@ -129,7 +129,7 @@ public class Protein
     Alternate_format_for_UniProt_variant = alternate_format_for_UniProt_variant;
   }
 
-  @JsonProperty("Gene Symbol")
+  @JsonProperty("Gene_Symbol")
   public String getGene_Symbol() {
     return Gene_Symbol;
   }
@@ -138,7 +138,7 @@ public class Protein
     Gene_Symbol = gene_Symbol;
   }
 
-  @JsonProperty("Entrez Gene ID")
+  @JsonProperty("Entrez_Gene_ID")
   public Integer getEntrez_Gene_ID() {
     return Entrez_Gene_ID;
   }
@@ -147,7 +147,7 @@ public class Protein
     Entrez_Gene_ID = entrez_Gene_ID;
   }
 
-  @JsonProperty("Link to PDB")
+  @JsonProperty("Link_to_PDB")
   public String getLink_to_PDB() {
     return Link_to_PDB;
   }
@@ -156,7 +156,7 @@ public class Protein
     Link_to_PDB = link_to_PDB;
   }
 
-  @JsonProperty("Link to UniProt")
+  @JsonProperty("Link_to_UniProt")
   public String getLink_to_UniProt() {
     return Link_to_UniProt;
   }
@@ -165,7 +165,7 @@ public class Protein
     Link_to_UniProt = link_to_UniProt;
   }
 
-  @JsonProperty("Link to Entrez Gene")
+  @JsonProperty("Link_to_Entrez_Gene")
   public String getLink_to_Entrez_Gene() {
     return Link_to_Entrez_Gene;
   }

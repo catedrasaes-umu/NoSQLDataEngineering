@@ -29,15 +29,19 @@ class MongooseIndexValGen
   def List<Pair<String, String>> genValidatorsForField(Entity e, String field)
   {
     val result = new ArrayList<Pair<String, String>>();
-    for (ConfigValidator v : config.entities.findFirst[ce | ce.name == e.name].getValidatorsFor(field))
+    val cEntity = config.entities.findFirst[ce | ce.name.equals(e.name)];
+    if (cEntity !== null)
     {
-      if (v.min !== null) result.add(new Pair("min", genValidatorValue(v.min.toString, v.message)));
-      if (v.max !== null) result.add(new Pair("max", genValidatorValue(v.max.toString, v.message)));
-      if (v.enumValues !== null) result.add(new Pair("enum", genValidatorValue("[" + String.join(", ", v.enumValues.map[value | "'" + value + "'"]) + "]", v.message)));
-      if (v.match !== null) result.add(new Pair("match", genValidatorValue(v.match, v.message)));
-      if (v.minLength !== null) result.add(new Pair("minlength", genValidatorValue(v.minLength.toString, v.message)));
-      if (v.maxLength !== null) result.add(new Pair("maxlength", genValidatorValue(v.maxLength.toString, v.message)));
-      if (v.custom !== null) result.add(new Pair("validate", genValidatorValue(v.custom, null)))
+      for (ConfigValidator v : cEntity.getValidatorsFor(field))
+      {
+        if (v.min !== null) result.add(new Pair("min", genValidatorValue(v.min.toString, v.message)));
+        if (v.max !== null) result.add(new Pair("max", genValidatorValue(v.max.toString, v.message)));
+        if (v.enumValues !== null) result.add(new Pair("enum", genValidatorValue("[" + String.join(", ", v.enumValues.map[value | "'" + value + "'"]) + "]", v.message)));
+        if (v.match !== null) result.add(new Pair("match", genValidatorValue(v.match, v.message)));
+        if (v.minLength !== null) result.add(new Pair("minlength", genValidatorValue(v.minLength.toString, v.message)));
+        if (v.maxLength !== null) result.add(new Pair("maxlength", genValidatorValue(v.maxLength.toString, v.message)));
+        if (v.custom !== null) result.add(new Pair("validate", genValidatorValue(v.custom, null)))
+      }
     }
 
     return result;

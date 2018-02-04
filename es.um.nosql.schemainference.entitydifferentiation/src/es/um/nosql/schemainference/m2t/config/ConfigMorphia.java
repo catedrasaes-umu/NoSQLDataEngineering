@@ -25,7 +25,13 @@ public class ConfigMorphia extends BaseConfig
 
   public void setEntities(ConfigEntity[] entities) {this.entities = entities;}
 
-  public ConfigEntity[] getEntities() {return this.entities;}
+  public ConfigEntity[] getEntities()
+  {
+    if (this.entities == null)
+      return new ConfigEntity[0];
+    else
+      return this.entities;
+  }
 
   public boolean needToGenerateIndexesFor(String entityName)
   {

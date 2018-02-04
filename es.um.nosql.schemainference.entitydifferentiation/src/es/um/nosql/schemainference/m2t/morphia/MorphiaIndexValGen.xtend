@@ -38,17 +38,23 @@ class MorphiaIndexValGen
   }
 
   def genValidatorsForField(Entity e, String field)
-  '''
-  «FOR ConfigValidator v : config.entities.findFirst[ce | ce.name == e.name].getValidatorsFor(field)»
-    «IF v.max !== null»@Max(value = «v.max»«genMsg(v)»)«ENDIF»
-    «IF v.min !== null»@Min(value = «v.min»«genMsg(v)»)«ENDIF»
-    «IF v.enumValues !== null»@Pattern(regexp = "«v.enumValues.join("|")»", flags = Pattern.Flag.CASE_INSENSITIVE«genMsg(v)»)«ENDIF»
-    «IF v.match !== null»@Pattern(regexp = "«v.match»"«genMsg(v)»)«ENDIF»
-    «IF v.custom !== null»@Pattern(regexp = "«v.custom»"«genMsg(v)»)«ENDIF»
-    «IF v.minLength !== null && v.maxLength !== null»@Size(min = «v.minLength», max = «v.maxLength»«genMsg(v)»)
-    «ELSEIF v.minLength !== null || v.maxLength !== null»@Size(«IF v.minLength !== null»min = «v.minLength»«ELSE»max = «v.maxLength»«ENDIF»«genMsg(v)»)
-    «ENDIF»
-  «ENDFOR»'''
+  {
+    val cEntity = config.entities.findFirst[ce | ce.name.equals(e.name)];
+    if (cEntity === null)
+    ''''''
+    else
+    '''
+    «FOR ConfigValidator v : cEntity.getValidatorsFor(field)»
+      «IF v.max !== null»@Max(value = «v.max»«genMsg(v)»)«ENDIF»
+      «IF v.min !== null»@Min(value = «v.min»«genMsg(v)»)«ENDIF»
+      «IF v.enumValues !== null»@Pattern(regexp = "«v.enumValues.join("|")»", flags = Pattern.Flag.CASE_INSENSITIVE«genMsg(v)»)«ENDIF»
+      «IF v.match !== null»@Pattern(regexp = "«v.match»"«genMsg(v)»)«ENDIF»
+      «IF v.custom !== null»@Pattern(regexp = "«v.custom»"«genMsg(v)»)«ENDIF»
+      «IF v.minLength !== null && v.maxLength !== null»@Size(min = «v.minLength», max = «v.maxLength»«genMsg(v)»)
+      «ELSEIF v.minLength !== null || v.maxLength !== null»@Size(«IF v.minLength !== null»min = «v.minLength»«ELSE»max = «v.maxLength»«ENDIF»«genMsg(v)»)
+      «ENDIF»
+    «ENDFOR»'''
+  }
 
   private def genMsg(ConfigValidator v)
   '''«IF v.message !== null», message = "«v.message»"«ENDIF»'''
