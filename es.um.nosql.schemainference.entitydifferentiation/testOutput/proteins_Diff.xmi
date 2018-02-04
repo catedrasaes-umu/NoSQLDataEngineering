@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entitydifferentiation:EntityDifferentiation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xmlns:entitydifferentiation="http://www.modelum.es/entitydifferentiation" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.schemainference/model/nosqlschema.ecore http://www.modelum.es/entitydifferentiation platform:/resource/es.um.nosql.schemainference.entitydifferentiation/model/entitydifferentiation.ecore" name="proteins">
+  <entityDiffSpecs>
+    <entity href="../testSources/proteins.xmi#Proteins"/>
+    <entityVersionProps>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.0/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.0/@properties.5"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.0/@properties.4"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.0/@properties.14"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.0/@properties.6"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.0/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.0/@properties.2"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.0/@properties.8"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/proteins.xmi#//@entities.0/@entityversions.0"/>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.5"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.4"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.14"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.6"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.2"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.8"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/proteins.xmi#//@entities.0/@entityversions.1"/>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.5"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.4"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.14"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.6"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.2"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.8"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/proteins.xmi#//@entities.0/@entityversions.2"/>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.5"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.4"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.14"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.6"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.2"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.8"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/proteins.xmi#//@entities.0/@entityversions.3"/>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.4/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.4/@properties.5"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.4/@properties.4"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.4/@properties.14"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.4/@properties.6"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.4/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.4/@properties.2"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.4/@properties.8"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/proteins.xmi#//@entities.0/@entityversions.4"/>
+    </entityVersionProps>
+    <entityVersionProps>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.5/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.5/@properties.5"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.5/@properties.4"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.5/@properties.14"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.5/@properties.6"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.5/@properties.11"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.5/@properties.2"/>
+      </propertySpecs>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.5/@properties.8"/>
+      </propertySpecs>
+      <entityVersion href="../testSources/proteins.xmi#//@entities.0/@entityversions.5"/>
+    </entityVersionProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.1"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.9"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.17"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.7"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.13"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.16"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.12"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.15"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.1/@properties.3"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <schema href="../testSources/proteins.xmi#proteins"/>
+</entitydifferentiation:EntityDifferentiation>

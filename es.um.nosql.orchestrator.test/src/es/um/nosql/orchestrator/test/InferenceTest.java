@@ -1,10 +1,26 @@
 package es.um.nosql.orchestrator.test;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.xmi.XMIResource;
 
 import com.google.gson.JsonArray;
 
+import es.um.nosql.schemainference.NoSQLSchema.Aggregate;
+import es.um.nosql.schemainference.NoSQLSchema.Attribute;
+import es.um.nosql.schemainference.NoSQLSchema.Entity;
+import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
+import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
+import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaFactory;
+import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType;
+import es.um.nosql.schemainference.NoSQLSchema.Property;
 import es.um.nosql.schemainference.db.interfaces.Comp2Db;
 import es.um.nosql.schemainference.db.interfaces.EPol2Db;
 import es.um.nosql.schemainference.db.interfaces.Facebook2Db;
@@ -20,9 +36,12 @@ import es.um.nosql.schemainference.db.interfaces.SOF2Db;
 import es.um.nosql.schemainference.db.interfaces.Urban2Db;
 import es.um.nosql.schemainference.db.interfaces.Webclick2Db;
 import es.um.nosql.schemainference.db.utils.DbType;
+import es.um.nosql.schemainference.db.utils.generator.JsonGenerator;
 import es.um.nosql.schemainference.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.schemainference.nosqlimport.db.couchdb.CouchDBImport;
 import es.um.nosql.schemainference.nosqlimport.db.mongodb.MongoDBImport;
+import es.um.nosql.schemainference.util.emf.ModelLoader;
+import es.um.nosql.schemainference.util.emf.ResourceManager;
 
 @SuppressWarnings("unused")
 public class InferenceTest
@@ -38,40 +57,40 @@ public class InferenceTest
   private static final String FILE_JSON = "json/tfg.json";
   private static final String FILE_MODEL = "models/mongoMovies3.xmi";
   private static final String FOLDER_SOF = "F:\\Informatica\\datasets\\stackoverflow\\";
-  private static final String FOLDER_EPOL = "/home/lab/datasets/everypolitician/";
+  private static final String FOLDER_EPOL = "F:\\Informatica\\datasets\\everypolitician\\";
   private static final String FILE_URBAN = "/home/lab/datasets/urban/words.json";
   private static final String FILE_COMPANY = "F:\\Informatica\\datasets\\companies\\companies.json";
-  private static final String FOLDER_LINK = "/home/lab/datasets/givealink/";
+  private static final String FOLDER_LINK = "F:\\Informatica\\datasets\\givealink\\";
   private static final String FILE_HARVARD = "F:\\Informatica\\datasets\\harvard\\HMXPC13_DI_v2_5-14-14.csv";
-  private static final String FOLDER_FACEBOOK = "/home/lab/datasets/facebook/";
-  private static final String FOLDER_PROTEIN = "/media/alberto/tarsonis/datasets/proteins/";
-  private static final String FILE_PUBLICATIONS = "/media/alberto/tarsonis/datasets/publications/publications-nov-20132.csv";
+  private static final String FOLDER_FACEBOOK = "F:\\Informatica\\datasets\\facebook\\";
+  private static final String FOLDER_PROTEIN = "F:\\Informatica\\datasets\\proteins\\";
+  private static final String FILE_PUBLICATIONS = "F:\\Informatica\\datasets\\publications\\publications-nov-20132.csv";
   private static final String FOLDER_WEBCLICKS = "/home/lab/datasets/webclicks/";
-  private static final String FILE_SANCTIONS = "/home/lab/datasets/opensanctions/master.ijson";
+  private static final String FILE_SANCTIONS = "F:\\Informatica\\datasets\\opensanctions\\master.ijson";
   private static final String FILE_PLEIDADES = "/media/alberto/tarsonis/datasets/pleiades/pleiades-places.json";
 
   public static void main(String[] args) throws IOException
   {//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
     // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.
     // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
-    // prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
-    // prepareSOFExample(DbType.MONGODB, FILL_ONLY, FOLDER_SOF);
-    // prepareEPolExample(DbType.MONGODB, FILL_ONLY, FOLDER_EPOL);
-    // prepareUrbanExample(DbType.MONGODB, FILL_ONLY, FILE_URBAN);                  //POJO
+    //prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
+    //prepareSOFExample(DbType.MONGODB, FILL_ONLY, FOLDER_SOF);
+    //prepareEPolExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_EPOL);
+    //prepareUrbanExample(DbType.MONGODB, FILL_ONLY, FILE_URBAN);                  //POJO
     // Problem with this dataset is that it contains A LOT of aggregated objects and null values.
     // Aggregated objects tend to make mongodb run out of memory during the reduce process.
     // Null values tend to abort the inference process. Until the inference process is fixed (TODO(tm)),
     // we will make use of POJO objects and ignore problematic fields. Thing is, then we have a lot of options...
-    // prepareCompanyExample(DbType.MONGODB, FILL_AND_INFER, FILE_COMPANY);              //POJO
-    // prepareLinkExample(DbType.MONGODB, FILL_ONLY, FOLDER_LINK);                  //POJO
-    // prepareHarvardExample(DbType.MONGODB, FILL_AND_INFER, FILE_HARVARD);              //POJO
-    // prepareFacebookExample(DbType.MONGODB, FILL_ONLY, FOLDER_FACEBOOK);          //POJO
-    // prepareProteinExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_PROTEIN);            //POJO
-    // preparePublicationsExample(DbType.MONGODB, FILL_AND_INFER, FILE_PUBLICATIONS);    //POJO
-    // prepareWebclickExample(DbType.MONGODB, FILL_ONLY, FOLDER_WEBCLICKS);         //POJO
-    // prepareSanctionsExample(DbType.MONGODB, FILL_ONLY, FILE_SANCTIONS);
-    // preparePleiadesExample(DbType.MONGODB, FILL_AND_INFER, FILE_PLEIDADES);
-    prepareJsonExample(DbType.MONGODB, FILL_AND_INFER, FILE_JSON);
+    //prepareCompanyExample(DbType.MONGODB, FILL_AND_INFER, FILE_COMPANY);              //POJO
+    //prepareLinkExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_LINK);                  //POJO
+    //prepareHarvardExample(DbType.MONGODB, FILL_AND_INFER, FILE_HARVARD);              //POJO
+    //prepareFacebookExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_FACEBOOK);          //POJO
+    //prepareProteinExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_PROTEIN);            //POJO
+    //preparePublicationsExample(DbType.MONGODB, FILL_AND_INFER, FILE_PUBLICATIONS);    //POJO
+    //prepareWebclickExample(DbType.MONGODB, FILL_ONLY, FOLDER_WEBCLICKS);         //POJO
+    //prepareSanctionsExample(DbType.MONGODB, FILL_AND_INFER, FILE_SANCTIONS);
+    //preparePleiadesExample(DbType.MONGODB, FILL_AND_INFER, FILE_PLEIDADES);
+    //prepareJsonExample(DbType.MONGODB, FILL_AND_INFER, FILE_JSON);
   }
 
   public static void prepareModelExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
@@ -128,7 +147,7 @@ public class InferenceTest
     long startTime = System.currentTimeMillis();
 
     System.out.println("Filling the " + dbType.toString() + " database...");
-    String[] files = new String[]{"Users.xml", "Votes.xml", "Comments.xml", /*"Posts.xml", "Tags.xml", "PostLinks.xml", "Badges.xml"*/};
+    String[] files = new String[]{"Users.xml", "Votes.xml", "Comments.xml", "Posts.xml", "Tags.xml", "PostLinks.xml", "Badges.xml"};
     // Users.xml: 6438660 filas => 38 minutos
     // Votes.xml: 116720227 filas => 10 horas
     // Comments.xml: 53566720 filas => 5 horas
@@ -429,5 +448,75 @@ public class InferenceTest
     builder.buildFromGsonArray(dbName, jArray, outputModel);
 
     System.out.println("BuildNoSQLSchema created: " + outputModel + " in " + (System.currentTimeMillis() - startTime) + " ms");
+  }
+
+  /**
+   * Temporal method used to patch all these inference errors until we actually fix them on the inference process.
+   * First, it will set correctly the _type attribute on each version.
+   * Second, if an _id is inferred as an Aggregate instead of an ObjectId, it will fix it.
+   * TODO: I swear we will fix these problems!
+   */
+  private static void PATCH_INFERENCE_ERRORS(String outputModel)
+  {
+    File outputFile = new File(outputModel);
+    ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
+    JsonGenerator generator = new JsonGenerator();
+
+    // 
+    NoSQLSchema schema = loader.load(outputFile, NoSQLSchema.class);
+    Entity idToDelete = null;
+    for (Entity e : schema.getEntities())
+    {
+      if (e.getName().equals("_id"))
+      {
+        idToDelete = e;
+        continue;
+      }
+      for (EntityVersion ev : e.getEntityversions())
+      {
+        Property malformedId = null;
+        for (Property p : ev.getProperties())
+        {
+          if (p.getName().equals("_type"))
+            ((PrimitiveType)((Attribute)p).getType()).setName(e.getName());
+          if (p.getName().equals("_id") && p instanceof Aggregate)
+            malformedId = p;
+        }
+        if (malformedId != null)
+        {
+          Attribute newId = NoSQLSchemaFactory.eINSTANCE.createAttribute();
+          PrimitiveType newIdType = NoSQLSchemaFactory.eINSTANCE.createPrimitiveType();
+          newId.setName("_id");
+          newIdType.setName("ObjectId");
+          newId.setType(newIdType);    
+
+          ev.getProperties().remove(malformedId);
+          ev.getProperties().add(0, newId);
+        }
+      }
+    }
+    if (idToDelete != null)
+      schema.getEntities().remove(idToDelete);
+
+    NoSQLSchemaPackage nosqlschemaPackage = NoSQLSchemaPackage.eINSTANCE;
+    ResourceManager resManager = new ResourceManager(nosqlschemaPackage);
+
+    nosqlschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.schemainference/model/nosqlschema.ecore", true));
+
+    Resource outputRes = resManager.getResourceSet().createResource(URI.createFileURI(outputFile.getAbsolutePath()));
+    outputRes.getContents().add(schema);
+
+    // Configure output
+    Map<Object,Object> options = new HashMap<Object,Object>();
+    options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
+    options.put(XMIResource.OPTION_ENCODING, "UTF-8"); 
+
+    try
+    {
+      outputRes.save(new FileOutputStream(outputFile), options);
+    } catch (IOException e)
+    {
+      e.printStackTrace();
+    }
   }
 }

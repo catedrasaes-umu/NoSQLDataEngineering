@@ -23,7 +23,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Pages"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -51,7 +51,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Comments"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -104,7 +104,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Comments"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -150,7 +150,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Comments"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -196,7 +196,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Comments"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -242,7 +242,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Comments"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -274,7 +274,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Comments"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -299,7 +299,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Comments"/>
       </properties>
     </entityversions>
   </entities>
@@ -320,7 +320,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -429,7 +429,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -531,7 +531,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -633,7 +633,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -728,7 +728,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -823,7 +823,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"

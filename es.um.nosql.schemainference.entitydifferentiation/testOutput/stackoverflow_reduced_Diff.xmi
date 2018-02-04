@@ -9,6 +9,9 @@
       <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.0/@entityversions.0/@properties.2"/>
     </commonProps>
     <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.0/@entityversions.0/@properties.5"/>
+    </commonProps>
+    <commonProps>
       <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.0/@entityversions.0/@properties.4"/>
     </commonProps>
     <commonProps>
@@ -19,9 +22,6 @@
     </commonProps>
     <commonProps>
       <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.0/@entityversions.0/@properties.3"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.0/@entityversions.0/@properties.5"/>
     </commonProps>
     <commonProps>
       <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.0/@entityversions.0/@properties.6"/>
@@ -40,7 +40,7 @@
     </entityVersionProps>
     <entityVersionProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.1/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.1/@properties.5"/>
       </propertySpecs>
       <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.1"/>
       <notProps>
@@ -53,7 +53,7 @@
       </propertySpecs>
       <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.2"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.1/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.1/@properties.5"/>
       </notProps>
     </entityVersionProps>
     <entityVersionProps>
@@ -62,26 +62,26 @@
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.2/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.1/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.1/@properties.5"/>
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.3/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.0/@properties.3"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.3/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.0/@properties.6"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.3/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.0/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.3/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.0/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.3/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.0/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.3/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.1/@entityversions.0/@properties.2"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
@@ -447,46 +447,46 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.3"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.6"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.6"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.19"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.15"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.16"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.8"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.7"/>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.14"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.15"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.18"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.18"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.17"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.17"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.16"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.14"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.13"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.12/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.2/@entityversions.7/@properties.4"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
@@ -540,16 +540,16 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.2/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.1/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.2/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.1/@properties.4"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.2/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.1/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.2/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.3/@entityversions.1/@properties.2"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
@@ -651,40 +651,40 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0/@properties.13"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.8"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0/@properties.3"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.10"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0/@properties.4"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.7"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0/@properties.14"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.11"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0/@properties.11"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.6"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0/@properties.12"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0/@properties.9"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.9"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0/@properties.8"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.7/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.4/@entityversions.0/@properties.0"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
@@ -692,6 +692,9 @@
     <entityVersionProps>
       <entityVersion href="../testSources/stackoverflow_reduced.xmi#//@entities.5/@entityversions.0"/>
     </entityVersionProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.5/@entityversions.0/@properties.5"/>
+    </commonProps>
     <commonProps>
       <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.5/@entityversions.0/@properties.1"/>
     </commonProps>
@@ -706,9 +709,6 @@
     </commonProps>
     <commonProps>
       <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow_reduced.xmi#//@entities.5/@entityversions.0/@properties.2"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.5/@entityversions.0/@properties.5"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
@@ -732,13 +732,13 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.6/@entityversions.1/@properties.2"/>
+    </commonProps>
+    <commonProps>
       <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.6/@entityversions.1/@properties.0"/>
     </commonProps>
     <commonProps>
       <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.6/@entityversions.1/@properties.1"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.6/@entityversions.1/@properties.2"/>
     </commonProps>
     <commonProps>
       <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow_reduced.xmi#//@entities.6/@entityversions.1/@properties.3"/>

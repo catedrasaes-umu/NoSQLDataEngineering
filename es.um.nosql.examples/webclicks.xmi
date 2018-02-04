@@ -4,7 +4,7 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema"
-    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../../es.um.nosql.schemainference/model/nosqlschema.ecore"
+    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../es.um.nosql.schemainference/model/nosqlschema.ecore"
     name="webclicks">
   <entities
       name="Webclicks">
@@ -23,7 +23,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Webclicks"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -69,7 +69,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Webclicks"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"

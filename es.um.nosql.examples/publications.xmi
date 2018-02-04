@@ -23,7 +23,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Publications"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -69,7 +69,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Publications"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -108,7 +108,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Publications"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -147,7 +147,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Publications"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"

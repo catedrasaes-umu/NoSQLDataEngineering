@@ -99,7 +99,7 @@
           name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Urban_words"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -187,17 +187,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
     <entityversions
@@ -278,17 +278,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
     <entityversions
@@ -359,17 +359,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
     <entityversions
@@ -436,17 +436,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
     <entityversions
@@ -530,17 +530,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
     <entityversions
@@ -614,17 +614,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
     <entityversions
@@ -698,17 +698,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
     <entityversions
@@ -772,17 +772,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
     <entityversions
@@ -866,17 +866,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
     <entityversions
@@ -950,17 +950,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1024,17 +1024,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1108,17 +1108,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1202,17 +1202,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1286,17 +1286,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1370,17 +1370,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1437,13 +1437,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="word">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -1455,6 +1448,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Urban_words"/>
       </properties>
     </entityversions>
   </entities>

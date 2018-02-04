@@ -47,10 +47,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Badges"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -110,10 +110,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Comments"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -163,17 +163,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="UserDisplayName">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="UserDisplayName">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Comments"/>
       </properties>
     </entityversions>
     <entityversions
@@ -223,10 +223,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Comments"/>
       </properties>
     </entityversions>
     <entityversions
@@ -269,10 +269,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Comments"/>
       </properties>
     </entityversions>
   </entities>
@@ -425,10 +425,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
     </entityversions>
     <entityversions
@@ -571,10 +571,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
     </entityversions>
     <entityversions
@@ -717,10 +717,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
     </entityversions>
     <entityversions
@@ -863,10 +863,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1002,10 +1002,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1141,10 +1141,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1287,10 +1287,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1426,10 +1426,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1565,10 +1565,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1697,10 +1697,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1822,10 +1822,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
     </entityversions>
     <entityversions
@@ -1947,10 +1947,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
     </entityversions>
     <entityversions
@@ -2093,10 +2093,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
     </entityversions>
     <entityversions
@@ -2232,10 +2232,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
     </entityversions>
     <entityversions
@@ -2364,10 +2364,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Posts"/>
       </properties>
     </entityversions>
   </entities>
@@ -2421,10 +2421,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Votes"/>
       </properties>
     </entityversions>
     <entityversions
@@ -2468,10 +2468,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Votes"/>
       </properties>
     </entityversions>
     <entityversions
@@ -2515,10 +2515,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Votes"/>
       </properties>
     </entityversions>
     <entityversions
@@ -2555,10 +2555,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Votes"/>
       </properties>
     </entityversions>
   </entities>
@@ -2653,13 +2653,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -2671,6 +2664,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Users"/>
       </properties>
     </entityversions>
     <entityversions
@@ -2755,13 +2755,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -2773,6 +2766,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Users"/>
       </properties>
     </entityversions>
     <entityversions
@@ -2857,13 +2857,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -2875,6 +2868,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Users"/>
       </properties>
     </entityversions>
     <entityversions
@@ -2952,13 +2952,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -2970,6 +2963,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Users"/>
       </properties>
     </entityversions>
     <entityversions
@@ -3054,13 +3054,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -3072,6 +3065,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Users"/>
       </properties>
     </entityversions>
     <entityversions
@@ -3149,13 +3149,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -3167,6 +3160,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Users"/>
       </properties>
     </entityversions>
     <entityversions
@@ -3244,13 +3244,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -3262,6 +3255,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Users"/>
       </properties>
     </entityversions>
     <entityversions
@@ -3332,13 +3332,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="UpVotes">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -3350,6 +3343,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Users"/>
       </properties>
     </entityversions>
   </entities>
@@ -3395,10 +3395,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Postlinks"/>
       </properties>
     </entityversions>
   </entities>
@@ -3439,10 +3439,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Tags"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -3471,10 +3471,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Tags"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"

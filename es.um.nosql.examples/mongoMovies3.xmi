@@ -4,7 +4,7 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema"
-    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../../es.um.nosql.schemainference/model/nosqlschema.ecore"
+    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../es.um.nosql.schemainference/model/nosqlschema.ecore"
     name="mongoMovies3">
   <entities
       name="Movie">
@@ -52,10 +52,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Movie"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -106,17 +106,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="year">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Movie"/>
       </properties>
     </entityversions>
     <entityversions
@@ -158,17 +158,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="year">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Movie"/>
       </properties>
     </entityversions>
     <entityversions
@@ -216,17 +216,17 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="year">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Movie"/>
       </properties>
     </entityversions>
     <entityversions
@@ -269,13 +269,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="writers">
         <type
             xsi:type="NoSQLSchema:Tuple">
@@ -293,6 +286,13 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Movie"/>
       </properties>
     </entityversions>
   </entities>
@@ -331,10 +331,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Movietheater"/>
       </properties>
     </entityversions>
     <entityversions
@@ -377,10 +377,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Movietheater"/>
       </properties>
     </entityversions>
   </entities>
@@ -459,10 +459,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Director"/>
       </properties>
     </entityversions>
     <entityversions
@@ -491,10 +491,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Director"/>
       </properties>
     </entityversions>
   </entities>
