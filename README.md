@@ -32,9 +32,9 @@ The inference process assumes the following initial scenario:
 * The user has installed the **Eclipse Modeling Framework** (EMF, http://www.eclipse.org/modeling/emf/)
 
 The following projects are needed to execute the inference process:
-* [NoSQL Schema metamodel](#nosql-schema-metamodel): `es.um.nosql.schemainference`, `es.um.nosql.schemainference.edit` and `es.um.nosql.schemainference.editor`.
-* [NoSQL import](#nosql-import): `es.um.nosql.schemainference.nosqlimport`.
-* [Json to DBSchema](#json-to-dbschema): `es.um.nosql.schemainference.json2dbschema`.
+* [NoSQL Schema metamodel](#nosql-schema-metamodel): `es.um.nosql.s13e`, `es.um.nosql.s13e.edit` and `es.um.nosql.s13e.editor`.
+* [NoSQL import](#nosql-import): `es.um.nosql.s13e.nosqlimport`.
+* [Json to DBSchema](#json-to-dbschema): `es.um.nosql.s13e.json2dbschema`.
 
 Some examples of the inference process may be found on the `es.um.nosql.orchestrator.test` project. The process is resumed as follows:
 * First of all the **NoSQL import** project is used and a database importer is created. Then a convenient method is used to infer from the database a minimum set of objects describing the existing versions:
@@ -59,8 +59,8 @@ Some examples of the inference process may be found on the `es.um.nosql.orchestr
 
 The projects involved in the NoSQL Schema metamodel definition are the following ones:
 
-* `es.um.nosql.schemainference`: This projects stores the metamodel definition in an ecore file, stored in model/nosqlschema.ecore. It also contains the generated java classes for this metamodel, as well as some utilities such as a **Model loader** used to load model definitions in a XMI file.
-* `es.um.nosql.schemainference.edit` and `es.um.nosql.schemainference.editor`: These projects are used to define a generated editor in order to manipulate NoSQL schema models with the Ecore interface.
+* `es.um.nosql.s13e`: This projects stores the metamodel definition in an ecore file, stored in model/nosqlschema.ecore. It also contains the generated java classes for this metamodel, as well as some utilities such as a **Model loader** used to load model definitions in a XMI file.
+* `es.um.nosql.s13e.edit` and `es.um.nosql.s13e.editor`: These projects are used to define a generated editor in order to manipulate NoSQL schema models with the Ecore interface.
 
 The most important elements of this projects are, apart from the metamodel definition, the Model loader, which will be used in several other projects to start some processes from a model file located somewhere in the file system. It also contains a PrettyPrinter class which can take a NoSQL schema model and print it to the standard input in a human-readable way.
 
@@ -129,7 +129,7 @@ As an example of the usage the user may check the **Main** class. The process go
 
 The Java project involved in the __Database import__ project is the following one:
 
-* `es.um.nosql.schemainference.db`: This project contains a definition of a database controller able to fill **MongoDB** and **CouchDB** databases given a certain XML, JSON or model file. It is also possible to implement classes to process data files into the database, if needed.
+* `es.um.nosql.s13e.db`: This project contains a definition of a database controller able to fill **MongoDB** and **CouchDB** databases given a certain XML, JSON or model file. It is also possible to implement classes to process data files into the database, if needed.
 
 ***
 
@@ -155,7 +155,7 @@ An example of its usage is just based on the creation of a __MongoDB/CouchDBImpo
 
 The Java project involved in the __NoSQL import__ project is the following one:
 
-* `es.um.nosql.schemainference.nosqlimport`: This project contains a definition of two database importers able to interact with **MongoDB** and **CouchDB**. It also contains some helper classes in order to return a suitable output as a _Stream\<JsonObject\>_, _JsonArray_ or a Json file which will be used on the schema extraction process (see [here](#json-to-dbschema)). As more databases are supported new classes will be added to this project.
+* `es.um.nosql.s13e.nosqlimport`: This project contains a definition of two database importers able to interact with **MongoDB** and **CouchDB**. It also contains some helper classes in order to return a suitable output as a _Stream\<JsonObject\>_, _JsonArray_ or a Json file which will be used on the schema extraction process (see [here](#json-to-dbschema)). As more databases are supported new classes will be added to this project.
 
 ***
 
@@ -194,8 +194,8 @@ At the moment there are defined the following viewpoints:
 
 The projects involved in this visualization tool are the following ones:
 
-* `es.um.nosql.schemainference.design`: The Sirius workbench project in which the viewpoints are defined.
-* `es.um.nosql.schemainference.visualization.sdk`: The feature project in which the Sirius visualization plugin is stored.
+* `es.um.nosql.s13e.design`: The Sirius workbench project in which the viewpoints are defined.
+* `es.um.nosql.s13e.visualization.sdk`: The feature project in which the Sirius visualization plugin is stored.
 
 **However**: Please keep in mind this section was developed in 2016 for a M.Sc.Thesis (found [here](https://github.com/Soltari/NoSQLVisualizationTools/)) and since then several changes have been performed on the inference process. Because of that we have been wanting to redefine all the viewpoints available, since we now think the available viewpoints are not fully efficient on showing the information we want. For example, the viewpoints do not satisfy us when we use as an input really big models (hundreds of **EntityVersions**). That's why we will be redefining the implemented viewpoints and you should expect drastic changes on the viewpoints available soon(**tm**). 
 
@@ -242,7 +242,7 @@ Once the m2t transformation is finished a HTML5/JS project is created with an in
 
 The project involved in this visualization tool is the following one:
 
-* `es.um.nosql.schemainference.datavisualization`: Project with the Version\_Diff metamodel definition. It also contains all the m2m and m2t transformations, and references the NoSQLSchema project.
+* `es.um.nosql.s13e.datavisualization`: Project with the Version\_Diff metamodel definition. It also contains all the m2m and m2t transformations, and references the NoSQLSchema project.
 
 Also in the NoSQLDataIndex project several examples can be found. Each example is contained in a folder with the JavaScript code already generated. To visualize each example, just open the index.html file in a web browser.
 
