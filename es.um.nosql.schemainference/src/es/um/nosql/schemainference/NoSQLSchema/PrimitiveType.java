@@ -1,6 +1,6 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema;
+package es.um.nosql.s13e.NoSQLSchema;
 
 
 /**
@@ -12,10 +12,10 @@ package es.um.nosql.schemainference.NoSQLSchema;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.PrimitiveType#getName <em>Name</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.PrimitiveType#getName <em>Name</em>}</li>
  * </ul>
  *
- * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getPrimitiveType()
+ * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getPrimitiveType()
  * @model
  * @generated
  */
@@ -30,14 +30,14 @@ public interface PrimitiveType extends Type {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getPrimitiveType_Name()
+	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getPrimitiveType_Name()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link es.um.nosql.schemainference.NoSQLSchema.PrimitiveType#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.PrimitiveType#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.

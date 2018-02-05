@@ -1,9 +1,9 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema.impl;
+package es.um.nosql.s13e.NoSQLSchema.impl;
 
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.impl.PrimitiveTypeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.PrimitiveTypeImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated

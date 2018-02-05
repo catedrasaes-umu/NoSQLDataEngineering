@@ -1,7 +1,7 @@
-package es.um.nosql.schemainference.util.emf.compare;
+package es.um.nosql.s13e.util.emf.compare;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
-import es.um.nosql.schemainference.NoSQLSchema.Attribute;
+import es.um.nosql.s13e.NoSQLSchema.Attribute;
 
 public class CompareAttribute extends CompareProperty<Attribute>
 {

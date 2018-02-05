@@ -1,0 +1,8 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Json2dbschema
+Bundle-SymbolicName: es.um.nosql.s13e.json2dbschema
+Bundle-Version: 1.0.0.qualifier
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Require-Bundle: es.um.nosql.s13e;bundle-version="1.0.0",
+ org.eclipse.emf.ecore.xmi

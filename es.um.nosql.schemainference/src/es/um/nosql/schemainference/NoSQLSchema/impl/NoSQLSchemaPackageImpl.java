@@ -1,20 +1,20 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema.impl;
+package es.um.nosql.s13e.NoSQLSchema.impl;
 
-import es.um.nosql.schemainference.NoSQLSchema.Aggregate;
-import es.um.nosql.schemainference.NoSQLSchema.Association;
-import es.um.nosql.schemainference.NoSQLSchema.Attribute;
-import es.um.nosql.schemainference.NoSQLSchema.Entity;
-import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaFactory;
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType;
-import es.um.nosql.schemainference.NoSQLSchema.Property;
-import es.um.nosql.schemainference.NoSQLSchema.Reference;
-import es.um.nosql.schemainference.NoSQLSchema.Tuple;
-import es.um.nosql.schemainference.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.Aggregate;
+import es.um.nosql.s13e.NoSQLSchema.Association;
+import es.um.nosql.s13e.NoSQLSchema.Attribute;
+import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
+import es.um.nosql.s13e.NoSQLSchema.Property;
+import es.um.nosql.s13e.NoSQLSchema.Reference;
+import es.um.nosql.s13e.NoSQLSchema.Tuple;
+import es.um.nosql.s13e.NoSQLSchema.Type;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -118,7 +118,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @see org.eclipse.emf.ecore.EPackage.Registry
-	 * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#eNS_URI
+	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#eNS_URI
 	 * @see #init()
 	 * @generated
 	 */

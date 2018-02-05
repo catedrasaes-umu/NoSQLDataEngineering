@@ -1,9 +1,9 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema.impl;
+package es.um.nosql.s13e.NoSQLSchema.impl;
 
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.schemainference.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.NoSQLSchema.Type;
 
 import org.eclipse.emf.ecore.EClass;
 

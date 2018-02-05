@@ -1,10 +1,10 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema.impl;
+package es.um.nosql.s13e.NoSQLSchema.impl;
 
-import es.um.nosql.schemainference.NoSQLSchema.Entity;
-import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 
 import java.util.Collection;
 
@@ -30,8 +30,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.impl.EntityImpl#getName <em>Name</em>}</li>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.impl.EntityImpl#getEntityversions <em>Entityversions</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityImpl#getName <em>Name</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityImpl#getEntityversions <em>Entityversions</em>}</li>
  * </ul>
  *
  * @generated

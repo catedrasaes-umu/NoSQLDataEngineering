@@ -1,6 +1,6 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema;
+package es.um.nosql.s13e.NoSQLSchema;
 
 
 /**
@@ -12,10 +12,10 @@ package es.um.nosql.schemainference.NoSQLSchema;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.Attribute#getType <em>Type</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Attribute#getType <em>Type</em>}</li>
  * </ul>
  *
- * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getAttribute()
+ * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getAttribute()
  * @model
  * @generated
  */
@@ -30,14 +30,14 @@ public interface Attribute extends Property {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Type</em>' containment reference.
 	 * @see #setType(Type)
-	 * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getAttribute_Type()
+	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getAttribute_Type()
 	 * @model containment="true" required="true"
 	 * @generated
 	 */
 	Type getType();
 
 	/**
-	 * Sets the value of the '{@link es.um.nosql.schemainference.NoSQLSchema.Attribute#getType <em>Type</em>}' containment reference.
+	 * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.Attribute#getType <em>Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Type</em>' containment reference.

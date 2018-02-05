@@ -1,8 +1,8 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema.util;
+package es.um.nosql.s13e.NoSQLSchema.util;
 
-import es.um.nosql.schemainference.NoSQLSchema.*;
+import es.um.nosql.s13e.NoSQLSchema.*;
 
 import org.eclipse.emf.common.notify.Adapter;
 import org.eclipse.emf.common.notify.Notifier;
@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * The <b>Adapter Factory</b> for the model.
  * It provides an adapter <code>createXXX</code> method for each class of the model.
  * <!-- end-user-doc -->
- * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage
+ * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage
  * @generated
  */
 public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
@@ -132,13 +132,13 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 
 
 	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema <em>No SQL Schema</em>}'.
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.NoSQLSchema <em>No SQL Schema</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema
+	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchema
 	 * @generated
 	 */
 	public Adapter createNoSQLSchemaAdapter() {
@@ -146,13 +146,13 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.NoSQLSchema.Entity <em>Entity</em>}'.
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.Entity <em>Entity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Entity
+	 * @see es.um.nosql.s13e.NoSQLSchema.Entity
 	 * @generated
 	 */
 	public Adapter createEntityAdapter() {
@@ -160,13 +160,13 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.NoSQLSchema.EntityVersion <em>Entity Version</em>}'.
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion <em>Entity Version</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.EntityVersion
+	 * @see es.um.nosql.s13e.NoSQLSchema.EntityVersion
 	 * @generated
 	 */
 	public Adapter createEntityVersionAdapter() {
@@ -174,13 +174,13 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.NoSQLSchema.Property <em>Property</em>}'.
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.Property <em>Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Property
+	 * @see es.um.nosql.s13e.NoSQLSchema.Property
 	 * @generated
 	 */
 	public Adapter createPropertyAdapter() {
@@ -188,13 +188,13 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.NoSQLSchema.Attribute <em>Attribute</em>}'.
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.Attribute <em>Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Attribute
+	 * @see es.um.nosql.s13e.NoSQLSchema.Attribute
 	 * @generated
 	 */
 	public Adapter createAttributeAdapter() {
@@ -202,13 +202,13 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.NoSQLSchema.Type <em>Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.Type <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Type
+	 * @see es.um.nosql.s13e.NoSQLSchema.Type
 	 * @generated
 	 */
 	public Adapter createTypeAdapter() {
@@ -216,13 +216,13 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.NoSQLSchema.Tuple <em>Tuple</em>}'.
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.Tuple <em>Tuple</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Tuple
+	 * @see es.um.nosql.s13e.NoSQLSchema.Tuple
 	 * @generated
 	 */
 	public Adapter createTupleAdapter() {
@@ -230,13 +230,13 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.NoSQLSchema.Association <em>Association</em>}'.
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.Association <em>Association</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Association
+	 * @see es.um.nosql.s13e.NoSQLSchema.Association
 	 * @generated
 	 */
 	public Adapter createAssociationAdapter() {
@@ -244,13 +244,13 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.NoSQLSchema.Reference <em>Reference</em>}'.
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.Reference <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Reference
+	 * @see es.um.nosql.s13e.NoSQLSchema.Reference
 	 * @generated
 	 */
 	public Adapter createReferenceAdapter() {
@@ -258,13 +258,13 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.NoSQLSchema.Aggregate <em>Aggregate</em>}'.
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.Aggregate <em>Aggregate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Aggregate
+	 * @see es.um.nosql.s13e.NoSQLSchema.Aggregate
 	 * @generated
 	 */
 	public Adapter createAggregateAdapter() {
@@ -272,13 +272,13 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.schemainference.NoSQLSchema.PrimitiveType <em>Primitive Type</em>}'.
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.PrimitiveType <em>Primitive Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.PrimitiveType
+	 * @see es.um.nosql.s13e.NoSQLSchema.PrimitiveType
 	 * @generated
 	 */
 	public Adapter createPrimitiveTypeAdapter() {

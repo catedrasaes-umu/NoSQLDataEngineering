@@ -10,7 +10,7 @@
       <!-- @generated nosqlschema -->
       <package
             uri="http://www.modelum.es/NoSQLSchema"
-            class="es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage"
+            class="es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage"
             genModel="model/nosqlschema.genmodel"/>
    </extension>
 

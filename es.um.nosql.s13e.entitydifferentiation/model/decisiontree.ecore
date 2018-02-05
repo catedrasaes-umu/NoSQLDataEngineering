@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="decisiontree" nsURI="urn:es.um.nosql.s13e.decisiontree"
+    nsPrefix="decisiontree">
+  <eClassifiers xsi:type="ecore:EClass" name="DecisionTreeNode" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="yesBranch" eType="#//DecisionTreeNode"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="noBranch" eType="#//DecisionTreeNode"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="LeafNode" eSuperTypes="#//DecisionTreeNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="identifiedVersion" lowerBound="1"
+        eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//EntityVersion"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IntermediateNode" eSuperTypes="#//DecisionTreeNode">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="checkedProperty" lowerBound="1"
+        eType="#//PropertySpec2" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DecisionTreeForEntity">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//DecisionTreeNode"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entity" lowerBound="1"
+        eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//Entity"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DecisionTrees">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="trees" upperBound="-1"
+        eType="#//DecisionTreeForEntity" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertySpec2">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="needsTypeCheck" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="property" lowerBound="1"
+        eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//Property"/>
+  </eClassifiers>
+</ecore:EPackage>

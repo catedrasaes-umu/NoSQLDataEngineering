@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.ui.newWizards">
+      <!-- @generated nosqlschema -->
+      <category
+            id="org.eclipse.emf.ecore.Wizard.category.ID"
+            name="%_UI_Wizard_category"/>
+      <wizard
+            id="es.um.nosql.s13e.NoSQLSchema.presentation.NoSQLSchemaModelWizardID"
+            name="%_UI_NoSQLSchemaModelWizard_label"
+            class="es.um.nosql.s13e.NoSQLSchema.presentation.NoSQLSchemaModelWizard"
+            category="org.eclipse.emf.ecore.Wizard.category.ID"
+            icon="icons/full/obj16/NoSQLSchemaModelFile.gif">
+         <description>%_UI_NoSQLSchemaModelWizard_description</description>
+         <selection class="org.eclipse.core.resources.IResource"/>
+      </wizard>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <!-- @generated nosqlschema -->
+      <editor
+            id="es.um.nosql.s13e.NoSQLSchema.presentation.NoSQLSchemaEditorID"
+            name="%_UI_NoSQLSchemaEditor_label"
+            icon="icons/full/obj16/NoSQLSchemaModelFile.gif"
+            extensions="nosqlschema"
+            class="es.um.nosql.s13e.NoSQLSchema.presentation.NoSQLSchemaEditor"
+            contributorClass="es.um.nosql.s13e.NoSQLSchema.presentation.NoSQLSchemaActionBarContributor">
+      </editor>
+   </extension>
+
+</plugin>

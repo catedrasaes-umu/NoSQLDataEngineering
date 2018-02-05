@@ -1,10 +1,10 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema.impl;
+package es.um.nosql.s13e.NoSQLSchema.impl;
 
-import es.um.nosql.schemainference.NoSQLSchema.Attribute;
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.schemainference.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.Attribute;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.NoSQLSchema.Type;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -22,7 +22,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.impl.AttributeImpl#getType <em>Type</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.AttributeImpl#getType <em>Type</em>}</li>
  * </ul>
  *
  * @generated

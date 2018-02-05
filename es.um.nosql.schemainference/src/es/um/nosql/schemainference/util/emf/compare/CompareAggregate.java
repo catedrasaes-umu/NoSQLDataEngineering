@@ -1,6 +1,6 @@
-package es.um.nosql.schemainference.util.emf.compare;
+package es.um.nosql.s13e.util.emf.compare;
 
-import es.um.nosql.schemainference.NoSQLSchema.Aggregate;
+import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 
 public class CompareAggregate extends CompareAssociation<Aggregate>
 {

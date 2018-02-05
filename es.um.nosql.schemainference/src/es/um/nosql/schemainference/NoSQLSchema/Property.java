@@ -1,6 +1,6 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema;
+package es.um.nosql.s13e.NoSQLSchema;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -13,10 +13,10 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.Property#getName <em>Name</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Property#getName <em>Name</em>}</li>
  * </ul>
  *
- * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getProperty()
+ * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getProperty()
  * @model abstract="true"
  * @generated
  */
@@ -31,14 +31,14 @@ public interface Property extends EObject {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Name</em>' attribute.
 	 * @see #setName(String)
-	 * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getProperty_Name()
+	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getProperty_Name()
 	 * @model required="true"
 	 * @generated
 	 */
 	String getName();
 
 	/**
-	 * Sets the value of the '{@link es.um.nosql.schemainference.NoSQLSchema.Property#getName <em>Name</em>}' attribute.
+	 * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.Property#getName <em>Name</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Name</em>' attribute.

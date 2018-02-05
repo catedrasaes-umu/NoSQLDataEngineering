@@ -1,16 +1,16 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
-Bundle-SymbolicName: es.um.nosql.schemainference;singleton:=true
+Bundle-SymbolicName: es.um.nosql.s13e;singleton:=true
 Bundle-Version: 1.0.0
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: es.um.nosql.schemainference.util.emf,
- es.um.nosql.schemainference.NoSQLSchema,
- es.um.nosql.schemainference.NoSQLSchema.impl,
- es.um.nosql.schemainference.NoSQLSchema.util
+Export-Package: es.um.nosql.s13e.util.emf,
+ es.um.nosql.s13e.NoSQLSchema,
+ es.um.nosql.s13e.NoSQLSchema.impl,
+ es.um.nosql.s13e.NoSQLSchema.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy

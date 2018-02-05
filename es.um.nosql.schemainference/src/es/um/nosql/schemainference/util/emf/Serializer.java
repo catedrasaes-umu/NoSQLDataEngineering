@@ -1,18 +1,18 @@
-package es.um.nosql.schemainference.util.emf;
+package es.um.nosql.s13e.util.emf;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
-import es.um.nosql.schemainference.NoSQLSchema.Aggregate;
-import es.um.nosql.schemainference.NoSQLSchema.Association;
-import es.um.nosql.schemainference.NoSQLSchema.Attribute;
-import es.um.nosql.schemainference.NoSQLSchema.Entity;
-import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
-import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType;
-import es.um.nosql.schemainference.NoSQLSchema.Property;
-import es.um.nosql.schemainference.NoSQLSchema.Reference;
-import es.um.nosql.schemainference.NoSQLSchema.Tuple;
-import es.um.nosql.schemainference.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.Aggregate;
+import es.um.nosql.s13e.NoSQLSchema.Association;
+import es.um.nosql.s13e.NoSQLSchema.Attribute;
+import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
+import es.um.nosql.s13e.NoSQLSchema.Property;
+import es.um.nosql.s13e.NoSQLSchema.Reference;
+import es.um.nosql.s13e.NoSQLSchema.Tuple;
+import es.um.nosql.s13e.NoSQLSchema.Type;
 
 public class Serializer
 {

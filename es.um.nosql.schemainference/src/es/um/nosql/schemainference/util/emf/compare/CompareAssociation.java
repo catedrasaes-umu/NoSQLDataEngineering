@@ -1,6 +1,6 @@
-package es.um.nosql.schemainference.util.emf.compare;
+package es.um.nosql.s13e.util.emf.compare;
 
-import es.um.nosql.schemainference.NoSQLSchema.Association;
+import es.um.nosql.s13e.NoSQLSchema.Association;
 
 public class CompareAssociation<Q extends Association> extends Comparator<Q>
 {

@@ -6,10 +6,10 @@ import org.junit.Test;
 
 import com.google.gson.JsonArray;
 
-import es.um.nosql.schemainference.db.interfaces.Urban2Db;
-import es.um.nosql.schemainference.db.utils.DbType;
-import es.um.nosql.schemainference.json2dbschema.main.BuildNoSQLSchema;
-import es.um.nosql.schemainference.nosqlimport.db.mongodb.MongoDBImport;
+import es.um.nosql.s13e.db.interfaces.Urban2Db;
+import es.um.nosql.s13e.db.utils.DbType;
+import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
+import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
 
 public class UrbanTest
 {

@@ -1,6 +1,6 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema;
+package es.um.nosql.s13e.NoSQLSchema;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -10,7 +10,7 @@ import org.eclipse.emf.ecore.EObject;
  * <!-- end-user-doc -->
  *
  *
- * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getType()
+ * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getType()
  * @model abstract="true"
  * @generated
  */

@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: Decisiontree
+Bundle-SymbolicName: es.um.nosql.s13e.decisiontree
+Bundle-Version: 1.0.0.qualifier
+Export-Package: es.um.nosql.s13e.decisiontree.utils
+Import-Package: org.eclipse.emf.common.util
+Require-Bundle: es.um.nosql.s13e;bundle-version="1.0.0",
+ org.eclipse.emf.ecore.xmi,
+ es.um.nosql.s13e.entitydifferentiation;bundle-version="0.1.0",
+ com.google.guava,
+ org.eclipse.xtext.xbase.lib,
+ org.eclipse.xtend.lib,
+ org.eclipse.xtend.lib.macro
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8

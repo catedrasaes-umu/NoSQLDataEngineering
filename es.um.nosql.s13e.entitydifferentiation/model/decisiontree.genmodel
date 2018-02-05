@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.um.nosql.s13e.entitydifferentiation/src"
+    modelPluginID="es.um.nosql.s13e.entitydifferentiation" modelName="Decisiontree"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="8.0" copyrightFields="false" usedGenPackages="../../es.um.nosql.s13e/model/nosqlschema.genmodel#//NoSQLSchema"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>decisiontree.ecore</foreignModel>
+  <genPackages prefix="Decisiontree" basePackage="es.um.nosql.s13e" disposableProviderFactory="true"
+      ecorePackage="decisiontree.ecore#/">
+    <genClasses image="false" ecoreClass="decisiontree.ecore#//DecisionTreeNode">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference decisiontree.ecore#//DecisionTreeNode/yesBranch"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference decisiontree.ecore#//DecisionTreeNode/noBranch"/>
+    </genClasses>
+    <genClasses ecoreClass="decisiontree.ecore#//LeafNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference decisiontree.ecore#//LeafNode/identifiedVersion"/>
+    </genClasses>
+    <genClasses ecoreClass="decisiontree.ecore#//IntermediateNode">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference decisiontree.ecore#//IntermediateNode/checkedProperty"/>
+    </genClasses>
+    <genClasses ecoreClass="decisiontree.ecore#//DecisonTreeForEntity">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference decisiontree.ecore#//DecisonTreeForEntity/root"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference decisiontree.ecore#//DecisonTreeForEntity/entity"/>
+    </genClasses>
+    <genClasses ecoreClass="decisiontree.ecore#//DecisionTrees">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference decisiontree.ecore#//DecisionTrees/trees"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,10 +1,10 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema.impl;
+package es.um.nosql.s13e.NoSQLSchema.impl;
 
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.schemainference.NoSQLSchema.Tuple;
-import es.um.nosql.schemainference.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.NoSQLSchema.Tuple;
+import es.um.nosql.s13e.NoSQLSchema.Type;
 
 import java.util.Collection;
 
@@ -26,7 +26,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.impl.TupleImpl#getElements <em>Elements</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.TupleImpl#getElements <em>Elements</em>}</li>
  * </ul>
  *
  * @generated

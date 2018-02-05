@@ -1,10 +1,10 @@
-package es.um.nosql.schemainference.util.emf;
+package es.um.nosql.s13e.util.emf;
 
 import java.util.stream.Collectors;
 
-import es.um.nosql.schemainference.NoSQLSchema.Entity;
-import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
+import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 
 public class PrettyPrinter
 {

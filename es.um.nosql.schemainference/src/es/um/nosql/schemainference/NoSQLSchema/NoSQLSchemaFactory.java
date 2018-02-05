@@ -1,6 +1,6 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema;
+package es.um.nosql.s13e.NoSQLSchema;
 
 import org.eclipse.emf.ecore.EFactory;
 
@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.EFactory;
  * The <b>Factory</b> for the model.
  * It provides a create method for each non-abstract class of the model.
  * <!-- end-user-doc -->
- * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage
+ * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage
  * @generated
  */
 public interface NoSQLSchemaFactory extends EFactory {
@@ -19,7 +19,7 @@ public interface NoSQLSchemaFactory extends EFactory {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	NoSQLSchemaFactory eINSTANCE = es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaFactoryImpl.init();
+	NoSQLSchemaFactory eINSTANCE = es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaFactoryImpl.init();
 
 	/**
 	 * Returns a new object of class '<em>No SQL Schema</em>'.

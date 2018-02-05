@@ -1,9 +1,0 @@
-Manifest-Version: 1.0
-Bundle-ManifestVersion: 2
-Bundle-Name: Dbgenerator
-Bundle-SymbolicName: es.um.nosql.schemainference.db
-Bundle-Version: 1.0.0.qualifier
-Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Require-Bundle: es.um.nosql.schemainference;bundle-version="1.0.0",
- org.eclipse.emf.ecore.xmi;bundle-version="2.11.1"
-Import-Package: org.apache.commons.lang3.tuple

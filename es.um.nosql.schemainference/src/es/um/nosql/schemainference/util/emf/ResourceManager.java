@@ -1,4 +1,4 @@
-package es.um.nosql.schemainference.util.emf;
+package es.um.nosql.s13e.util.emf;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EPackage;

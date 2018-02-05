@@ -1,10 +1,10 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema.impl;
+package es.um.nosql.s13e.NoSQLSchema.impl;
 
-import es.um.nosql.schemainference.NoSQLSchema.Entity;
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.schemainference.NoSQLSchema.Reference;
+import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.NoSQLSchema.Reference;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -21,9 +21,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.impl.ReferenceImpl#getOpposite <em>Opposite</em>}</li>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.impl.ReferenceImpl#getRefTo <em>Ref To</em>}</li>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.impl.ReferenceImpl#getOriginalType <em>Original Type</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.ReferenceImpl#getOpposite <em>Opposite</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.ReferenceImpl#getRefTo <em>Ref To</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.ReferenceImpl#getOriginalType <em>Original Type</em>}</li>
  * </ul>
  *
  * @generated

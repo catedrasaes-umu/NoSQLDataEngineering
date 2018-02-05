@@ -1,6 +1,6 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema;
+package es.um.nosql.s13e.NoSQLSchema;
 
 
 /**
@@ -12,12 +12,12 @@ package es.um.nosql.schemainference.NoSQLSchema;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.Reference#getOpposite <em>Opposite</em>}</li>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.Reference#getRefTo <em>Ref To</em>}</li>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.Reference#getOriginalType <em>Original Type</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Reference#getOpposite <em>Opposite</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Reference#getRefTo <em>Ref To</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Reference#getOriginalType <em>Original Type</em>}</li>
  * </ul>
  *
- * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getReference()
+ * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getReference()
  * @model
  * @generated
  */
@@ -32,14 +32,14 @@ public interface Reference extends Association {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Opposite</em>' reference.
 	 * @see #setOpposite(Reference)
-	 * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getReference_Opposite()
+	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getReference_Opposite()
 	 * @model
 	 * @generated
 	 */
 	Reference getOpposite();
 
 	/**
-	 * Sets the value of the '{@link es.um.nosql.schemainference.NoSQLSchema.Reference#getOpposite <em>Opposite</em>}' reference.
+	 * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.Reference#getOpposite <em>Opposite</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Opposite</em>' reference.
@@ -58,14 +58,14 @@ public interface Reference extends Association {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Ref To</em>' reference.
 	 * @see #setRefTo(Entity)
-	 * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getReference_RefTo()
+	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getReference_RefTo()
 	 * @model required="true"
 	 * @generated
 	 */
 	Entity getRefTo();
 
 	/**
-	 * Sets the value of the '{@link es.um.nosql.schemainference.NoSQLSchema.Reference#getRefTo <em>Ref To</em>}' reference.
+	 * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.Reference#getRefTo <em>Ref To</em>}' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Ref To</em>' reference.
@@ -84,14 +84,14 @@ public interface Reference extends Association {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Original Type</em>' attribute.
 	 * @see #setOriginalType(String)
-	 * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getReference_OriginalType()
+	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getReference_OriginalType()
 	 * @model
 	 * @generated
 	 */
 	String getOriginalType();
 
 	/**
-	 * Sets the value of the '{@link es.um.nosql.schemainference.NoSQLSchema.Reference#getOriginalType <em>Original Type</em>}' attribute.
+	 * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.Reference#getOriginalType <em>Original Type</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Original Type</em>' attribute.

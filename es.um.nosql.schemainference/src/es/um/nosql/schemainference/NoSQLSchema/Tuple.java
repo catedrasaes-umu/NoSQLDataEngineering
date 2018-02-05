@@ -1,6 +1,6 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema;
+package es.um.nosql.s13e.NoSQLSchema;
 
 import org.eclipse.emf.common.util.EList;
 
@@ -13,17 +13,17 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.Tuple#getElements <em>Elements</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Tuple#getElements <em>Elements</em>}</li>
  * </ul>
  *
- * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getTuple()
+ * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getTuple()
  * @model
  * @generated
  */
 public interface Tuple extends Type {
 	/**
 	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
-	 * The list contents are of type {@link es.um.nosql.schemainference.NoSQLSchema.Type}.
+	 * The list contents are of type {@link es.um.nosql.s13e.NoSQLSchema.Type}.
 	 * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Elements</em>' containment reference list isn't clear,
@@ -31,7 +31,7 @@ public interface Tuple extends Type {
 	 * </p>
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Elements</em>' containment reference list.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getTuple_Elements()
+	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getTuple_Elements()
 	 * @model containment="true"
 	 * @generated
 	 */

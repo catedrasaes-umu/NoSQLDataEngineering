@@ -1,4 +1,4 @@
-package es.um.nosql.schemainference.util.emf.compare;
+package es.um.nosql.s13e.util.emf.compare;
 
 public interface IComparator<T>
 {

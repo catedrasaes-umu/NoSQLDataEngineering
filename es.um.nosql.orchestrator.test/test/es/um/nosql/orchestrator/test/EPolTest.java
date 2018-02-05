@@ -11,14 +11,14 @@ import org.junit.Test;
 
 import com.google.gson.JsonArray;
 
-import es.um.nosql.schemainference.NoSQLSchema.Entity;
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.schemainference.db.interfaces.EPol2Db;
-import es.um.nosql.schemainference.db.utils.DbType;
-import es.um.nosql.schemainference.json2dbschema.main.BuildNoSQLSchema;
-import es.um.nosql.schemainference.nosqlimport.db.mongodb.MongoDBImport;
-import es.um.nosql.schemainference.util.emf.ModelLoader;
+import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.db.interfaces.EPol2Db;
+import es.um.nosql.s13e.db.utils.DbType;
+import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
+import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
+import es.um.nosql.s13e.util.emf.ModelLoader;
 
 public class EPolTest
 {

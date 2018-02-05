@@ -12,36 +12,36 @@ import org.eclipse.emf.ecore.xmi.XMIResource;
 
 import com.google.gson.JsonArray;
 
-import es.um.nosql.schemainference.NoSQLSchema.Aggregate;
-import es.um.nosql.schemainference.NoSQLSchema.Attribute;
-import es.um.nosql.schemainference.NoSQLSchema.Entity;
-import es.um.nosql.schemainference.NoSQLSchema.EntityVersion;
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema;
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaFactory;
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.schemainference.NoSQLSchema.PrimitiveType;
-import es.um.nosql.schemainference.NoSQLSchema.Property;
-import es.um.nosql.schemainference.db.interfaces.Comp2Db;
-import es.um.nosql.schemainference.db.interfaces.EPol2Db;
-import es.um.nosql.schemainference.db.interfaces.Facebook2Db;
-import es.um.nosql.schemainference.db.interfaces.Harvard2Db;
-import es.um.nosql.schemainference.db.interfaces.Json2Db;
-import es.um.nosql.schemainference.db.interfaces.Publications2Db;
-import es.um.nosql.schemainference.db.interfaces.Link2Db;
-import es.um.nosql.schemainference.db.interfaces.Model2Db;
-import es.um.nosql.schemainference.db.interfaces.OSanctions2Db;
-import es.um.nosql.schemainference.db.interfaces.Pleiades2Db;
-import es.um.nosql.schemainference.db.interfaces.Proteins2Db;
-import es.um.nosql.schemainference.db.interfaces.SOF2Db;
-import es.um.nosql.schemainference.db.interfaces.Urban2Db;
-import es.um.nosql.schemainference.db.interfaces.Webclick2Db;
-import es.um.nosql.schemainference.db.utils.DbType;
-import es.um.nosql.schemainference.db.utils.generator.JsonGenerator;
-import es.um.nosql.schemainference.json2dbschema.main.BuildNoSQLSchema;
-import es.um.nosql.schemainference.nosqlimport.db.couchdb.CouchDBImport;
-import es.um.nosql.schemainference.nosqlimport.db.mongodb.MongoDBImport;
-import es.um.nosql.schemainference.util.emf.ModelLoader;
-import es.um.nosql.schemainference.util.emf.ResourceManager;
+import es.um.nosql.s13e.NoSQLSchema.Aggregate;
+import es.um.nosql.s13e.NoSQLSchema.Attribute;
+import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
+import es.um.nosql.s13e.NoSQLSchema.Property;
+import es.um.nosql.s13e.db.interfaces.Comp2Db;
+import es.um.nosql.s13e.db.interfaces.EPol2Db;
+import es.um.nosql.s13e.db.interfaces.Facebook2Db;
+import es.um.nosql.s13e.db.interfaces.Harvard2Db;
+import es.um.nosql.s13e.db.interfaces.Json2Db;
+import es.um.nosql.s13e.db.interfaces.Publications2Db;
+import es.um.nosql.s13e.db.interfaces.Link2Db;
+import es.um.nosql.s13e.db.interfaces.Model2Db;
+import es.um.nosql.s13e.db.interfaces.OSanctions2Db;
+import es.um.nosql.s13e.db.interfaces.Pleiades2Db;
+import es.um.nosql.s13e.db.interfaces.Proteins2Db;
+import es.um.nosql.s13e.db.interfaces.SOF2Db;
+import es.um.nosql.s13e.db.interfaces.Urban2Db;
+import es.um.nosql.s13e.db.interfaces.Webclick2Db;
+import es.um.nosql.s13e.db.utils.DbType;
+import es.um.nosql.s13e.db.utils.generator.JsonGenerator;
+import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
+import es.um.nosql.s13e.nosqlimport.db.couchdb.CouchDBImport;
+import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
+import es.um.nosql.s13e.util.emf.ModelLoader;
+import es.um.nosql.s13e.util.emf.ResourceManager;
 
 @SuppressWarnings("unused")
 public class InferenceTest
@@ -501,7 +501,7 @@ public class InferenceTest
     NoSQLSchemaPackage nosqlschemaPackage = NoSQLSchemaPackage.eINSTANCE;
     ResourceManager resManager = new ResourceManager(nosqlschemaPackage);
 
-    nosqlschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.schemainference/model/nosqlschema.ecore", true));
+    nosqlschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e/model/nosqlschema.ecore", true));
 
     Resource outputRes = resManager.getResourceSet().createResource(URI.createFileURI(outputFile.getAbsolutePath()));
     outputRes.getContents().add(schema);

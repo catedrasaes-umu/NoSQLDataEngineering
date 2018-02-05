@@ -1,6 +1,6 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema;
+package es.um.nosql.s13e.NoSQLSchema;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaFactory
+ * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory
  * @model kind="package"
  * @generated
  */
@@ -54,14 +54,14 @@ public interface NoSQLSchemaPackage extends EPackage {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	NoSQLSchemaPackage eINSTANCE = es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl.init();
+	NoSQLSchemaPackage eINSTANCE = es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaImpl <em>No SQL Schema</em>}' class.
+	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaImpl <em>No SQL Schema</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaImpl
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getNoSQLSchema()
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaImpl
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getNoSQLSchema()
 	 * @generated
 	 */
 	int NO_SQL_SCHEMA = 0;
@@ -103,11 +103,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 	int NO_SQL_SCHEMA_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.EntityImpl <em>Entity</em>}' class.
+	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityImpl <em>Entity</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.EntityImpl
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getEntity()
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.EntityImpl
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getEntity()
 	 * @generated
 	 */
 	int ENTITY = 1;
@@ -149,11 +149,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 	int ENTITY_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.EntityVersionImpl <em>Entity Version</em>}' class.
+	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVersionImpl <em>Entity Version</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.EntityVersionImpl
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getEntityVersion()
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.EntityVersionImpl
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getEntityVersion()
 	 * @generated
 	 */
 	int ENTITY_VERSION = 2;
@@ -213,11 +213,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 	int ENTITY_VERSION_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.PropertyImpl <em>Property</em>}' class.
+	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.PropertyImpl <em>Property</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.PropertyImpl
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getProperty()
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.PropertyImpl
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getProperty()
 	 * @generated
 	 */
 	int PROPERTY = 3;
@@ -250,11 +250,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 	int PROPERTY_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.AttributeImpl <em>Attribute</em>}' class.
+	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.AttributeImpl <em>Attribute</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.AttributeImpl
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getAttribute()
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.AttributeImpl
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getAttribute()
 	 * @generated
 	 */
 	int ATTRIBUTE = 4;
@@ -296,11 +296,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 	int ATTRIBUTE_OPERATION_COUNT = PROPERTY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.TypeImpl <em>Type</em>}' class.
+	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.TypeImpl <em>Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.TypeImpl
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getType()
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.TypeImpl
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getType()
 	 * @generated
 	 */
 	int TYPE = 5;
@@ -324,11 +324,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 	int TYPE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.TupleImpl <em>Tuple</em>}' class.
+	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.TupleImpl <em>Tuple</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.TupleImpl
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getTuple()
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.TupleImpl
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getTuple()
 	 * @generated
 	 */
 	int TUPLE = 6;
@@ -361,11 +361,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 	int TUPLE_OPERATION_COUNT = TYPE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.AssociationImpl <em>Association</em>}' class.
+	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.AssociationImpl <em>Association</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.AssociationImpl
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getAssociation()
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.AssociationImpl
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getAssociation()
 	 * @generated
 	 */
 	int ASSOCIATION = 7;
@@ -416,11 +416,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 	int ASSOCIATION_OPERATION_COUNT = PROPERTY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.ReferenceImpl <em>Reference</em>}' class.
+	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.ReferenceImpl <em>Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.ReferenceImpl
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getReference()
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.ReferenceImpl
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getReference()
 	 * @generated
 	 */
 	int REFERENCE = 8;
@@ -498,11 +498,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 	int REFERENCE_OPERATION_COUNT = ASSOCIATION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.AggregateImpl <em>Aggregate</em>}' class.
+	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.AggregateImpl <em>Aggregate</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.AggregateImpl
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getAggregate()
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.AggregateImpl
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getAggregate()
 	 * @generated
 	 */
 	int AGGREGATE = 9;
@@ -562,11 +562,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 	int AGGREGATE_OPERATION_COUNT = ASSOCIATION_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.PrimitiveTypeImpl <em>Primitive Type</em>}' class.
+	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.PrimitiveTypeImpl <em>Primitive Type</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.PrimitiveTypeImpl
-	 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getPrimitiveType()
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.PrimitiveTypeImpl
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getPrimitiveType()
 	 * @generated
 	 */
 	int PRIMITIVE_TYPE = 10;
@@ -600,308 +600,308 @@ public interface NoSQLSchemaPackage extends EPackage {
 
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema <em>No SQL Schema</em>}'.
+	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.NoSQLSchema <em>No SQL Schema</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>No SQL Schema</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema
+	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchema
 	 * @generated
 	 */
 	EClass getNoSQLSchema();
 
 	/**
-	 * Returns the meta object for the attribute '{@link es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.NoSQLSchema#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema#getName()
+	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchema#getName()
 	 * @see #getNoSQLSchema()
 	 * @generated
 	 */
 	EAttribute getNoSQLSchema_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema#getEntities <em>Entities</em>}'.
+	 * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.NoSQLSchema.NoSQLSchema#getEntities <em>Entities</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Entities</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchema#getEntities()
+	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchema#getEntities()
 	 * @see #getNoSQLSchema()
 	 * @generated
 	 */
 	EReference getNoSQLSchema_Entities();
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.schemainference.NoSQLSchema.Entity <em>Entity</em>}'.
+	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.Entity <em>Entity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Entity</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Entity
+	 * @see es.um.nosql.s13e.NoSQLSchema.Entity
 	 * @generated
 	 */
 	EClass getEntity();
 
 	/**
-	 * Returns the meta object for the attribute '{@link es.um.nosql.schemainference.NoSQLSchema.Entity#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.Entity#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Entity#getName()
+	 * @see es.um.nosql.s13e.NoSQLSchema.Entity#getName()
 	 * @see #getEntity()
 	 * @generated
 	 */
 	EAttribute getEntity_Name();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link es.um.nosql.schemainference.NoSQLSchema.Entity#getEntityversions <em>Entityversions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.NoSQLSchema.Entity#getEntityversions <em>Entityversions</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Entityversions</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Entity#getEntityversions()
+	 * @see es.um.nosql.s13e.NoSQLSchema.Entity#getEntityversions()
 	 * @see #getEntity()
 	 * @generated
 	 */
 	EReference getEntity_Entityversions();
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.schemainference.NoSQLSchema.EntityVersion <em>Entity Version</em>}'.
+	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion <em>Entity Version</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Entity Version</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.EntityVersion
+	 * @see es.um.nosql.s13e.NoSQLSchema.EntityVersion
 	 * @generated
 	 */
 	EClass getEntityVersion();
 
 	/**
-	 * Returns the meta object for the attribute '{@link es.um.nosql.schemainference.NoSQLSchema.EntityVersion#getVersionId <em>Version Id</em>}'.
+	 * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#getVersionId <em>Version Id</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Version Id</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.EntityVersion#getVersionId()
+	 * @see es.um.nosql.s13e.NoSQLSchema.EntityVersion#getVersionId()
 	 * @see #getEntityVersion()
 	 * @generated
 	 */
 	EAttribute getEntityVersion_VersionId();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link es.um.nosql.schemainference.NoSQLSchema.EntityVersion#getProperties <em>Properties</em>}'.
+	 * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#getProperties <em>Properties</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Properties</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.EntityVersion#getProperties()
+	 * @see es.um.nosql.s13e.NoSQLSchema.EntityVersion#getProperties()
 	 * @see #getEntityVersion()
 	 * @generated
 	 */
 	EReference getEntityVersion_Properties();
 
 	/**
-	 * Returns the meta object for the attribute '{@link es.um.nosql.schemainference.NoSQLSchema.EntityVersion#getCount <em>Count</em>}'.
+	 * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#getCount <em>Count</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Count</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.EntityVersion#getCount()
+	 * @see es.um.nosql.s13e.NoSQLSchema.EntityVersion#getCount()
 	 * @see #getEntityVersion()
 	 * @generated
 	 */
 	EAttribute getEntityVersion_Count();
 
 	/**
-	 * Returns the meta object for the attribute '{@link es.um.nosql.schemainference.NoSQLSchema.EntityVersion#isRoot <em>Root</em>}'.
+	 * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#isRoot <em>Root</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Root</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.EntityVersion#isRoot()
+	 * @see es.um.nosql.s13e.NoSQLSchema.EntityVersion#isRoot()
 	 * @see #getEntityVersion()
 	 * @generated
 	 */
 	EAttribute getEntityVersion_Root();
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.schemainference.NoSQLSchema.Property <em>Property</em>}'.
+	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.Property <em>Property</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Property</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Property
+	 * @see es.um.nosql.s13e.NoSQLSchema.Property
 	 * @generated
 	 */
 	EClass getProperty();
 
 	/**
-	 * Returns the meta object for the attribute '{@link es.um.nosql.schemainference.NoSQLSchema.Property#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.Property#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Property#getName()
+	 * @see es.um.nosql.s13e.NoSQLSchema.Property#getName()
 	 * @see #getProperty()
 	 * @generated
 	 */
 	EAttribute getProperty_Name();
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.schemainference.NoSQLSchema.Attribute <em>Attribute</em>}'.
+	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.Attribute <em>Attribute</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Attribute</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Attribute
+	 * @see es.um.nosql.s13e.NoSQLSchema.Attribute
 	 * @generated
 	 */
 	EClass getAttribute();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link es.um.nosql.schemainference.NoSQLSchema.Attribute#getType <em>Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link es.um.nosql.s13e.NoSQLSchema.Attribute#getType <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Type</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Attribute#getType()
+	 * @see es.um.nosql.s13e.NoSQLSchema.Attribute#getType()
 	 * @see #getAttribute()
 	 * @generated
 	 */
 	EReference getAttribute_Type();
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.schemainference.NoSQLSchema.Type <em>Type</em>}'.
+	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.Type <em>Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Type</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Type
+	 * @see es.um.nosql.s13e.NoSQLSchema.Type
 	 * @generated
 	 */
 	EClass getType();
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.schemainference.NoSQLSchema.Tuple <em>Tuple</em>}'.
+	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.Tuple <em>Tuple</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Tuple</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Tuple
+	 * @see es.um.nosql.s13e.NoSQLSchema.Tuple
 	 * @generated
 	 */
 	EClass getTuple();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link es.um.nosql.schemainference.NoSQLSchema.Tuple#getElements <em>Elements</em>}'.
+	 * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.NoSQLSchema.Tuple#getElements <em>Elements</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Elements</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Tuple#getElements()
+	 * @see es.um.nosql.s13e.NoSQLSchema.Tuple#getElements()
 	 * @see #getTuple()
 	 * @generated
 	 */
 	EReference getTuple_Elements();
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.schemainference.NoSQLSchema.Association <em>Association</em>}'.
+	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.Association <em>Association</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Association</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Association
+	 * @see es.um.nosql.s13e.NoSQLSchema.Association
 	 * @generated
 	 */
 	EClass getAssociation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link es.um.nosql.schemainference.NoSQLSchema.Association#getLowerBound <em>Lower Bound</em>}'.
+	 * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.Association#getLowerBound <em>Lower Bound</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Lower Bound</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Association#getLowerBound()
+	 * @see es.um.nosql.s13e.NoSQLSchema.Association#getLowerBound()
 	 * @see #getAssociation()
 	 * @generated
 	 */
 	EAttribute getAssociation_LowerBound();
 
 	/**
-	 * Returns the meta object for the attribute '{@link es.um.nosql.schemainference.NoSQLSchema.Association#getUpperBound <em>Upper Bound</em>}'.
+	 * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.Association#getUpperBound <em>Upper Bound</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Upper Bound</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Association#getUpperBound()
+	 * @see es.um.nosql.s13e.NoSQLSchema.Association#getUpperBound()
 	 * @see #getAssociation()
 	 * @generated
 	 */
 	EAttribute getAssociation_UpperBound();
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.schemainference.NoSQLSchema.Reference <em>Reference</em>}'.
+	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.Reference <em>Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Reference</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Reference
+	 * @see es.um.nosql.s13e.NoSQLSchema.Reference
 	 * @generated
 	 */
 	EClass getReference();
 
 	/**
-	 * Returns the meta object for the reference '{@link es.um.nosql.schemainference.NoSQLSchema.Reference#getOpposite <em>Opposite</em>}'.
+	 * Returns the meta object for the reference '{@link es.um.nosql.s13e.NoSQLSchema.Reference#getOpposite <em>Opposite</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Opposite</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Reference#getOpposite()
+	 * @see es.um.nosql.s13e.NoSQLSchema.Reference#getOpposite()
 	 * @see #getReference()
 	 * @generated
 	 */
 	EReference getReference_Opposite();
 
 	/**
-	 * Returns the meta object for the reference '{@link es.um.nosql.schemainference.NoSQLSchema.Reference#getRefTo <em>Ref To</em>}'.
+	 * Returns the meta object for the reference '{@link es.um.nosql.s13e.NoSQLSchema.Reference#getRefTo <em>Ref To</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference '<em>Ref To</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Reference#getRefTo()
+	 * @see es.um.nosql.s13e.NoSQLSchema.Reference#getRefTo()
 	 * @see #getReference()
 	 * @generated
 	 */
 	EReference getReference_RefTo();
 
 	/**
-	 * Returns the meta object for the attribute '{@link es.um.nosql.schemainference.NoSQLSchema.Reference#getOriginalType <em>Original Type</em>}'.
+	 * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.Reference#getOriginalType <em>Original Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Original Type</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Reference#getOriginalType()
+	 * @see es.um.nosql.s13e.NoSQLSchema.Reference#getOriginalType()
 	 * @see #getReference()
 	 * @generated
 	 */
 	EAttribute getReference_OriginalType();
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.schemainference.NoSQLSchema.Aggregate <em>Aggregate</em>}'.
+	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.Aggregate <em>Aggregate</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Aggregate</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Aggregate
+	 * @see es.um.nosql.s13e.NoSQLSchema.Aggregate
 	 * @generated
 	 */
 	EClass getAggregate();
 
 	/**
-	 * Returns the meta object for the reference list '{@link es.um.nosql.schemainference.NoSQLSchema.Aggregate#getRefTo <em>Ref To</em>}'.
+	 * Returns the meta object for the reference list '{@link es.um.nosql.s13e.NoSQLSchema.Aggregate#getRefTo <em>Ref To</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the reference list '<em>Ref To</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.Aggregate#getRefTo()
+	 * @see es.um.nosql.s13e.NoSQLSchema.Aggregate#getRefTo()
 	 * @see #getAggregate()
 	 * @generated
 	 */
 	EReference getAggregate_RefTo();
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.schemainference.NoSQLSchema.PrimitiveType <em>Primitive Type</em>}'.
+	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.PrimitiveType <em>Primitive Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for class '<em>Primitive Type</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.PrimitiveType
+	 * @see es.um.nosql.s13e.NoSQLSchema.PrimitiveType
 	 * @generated
 	 */
 	EClass getPrimitiveType();
 
 	/**
-	 * Returns the meta object for the attribute '{@link es.um.nosql.schemainference.NoSQLSchema.PrimitiveType#getName <em>Name</em>}'.
+	 * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.PrimitiveType#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see es.um.nosql.schemainference.NoSQLSchema.PrimitiveType#getName()
+	 * @see es.um.nosql.s13e.NoSQLSchema.PrimitiveType#getName()
 	 * @see #getPrimitiveType()
 	 * @generated
 	 */
@@ -931,11 +931,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
-		 * The meta object literal for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaImpl <em>No SQL Schema</em>}' class.
+		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaImpl <em>No SQL Schema</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaImpl
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getNoSQLSchema()
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaImpl
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getNoSQLSchema()
 		 * @generated
 		 */
 		EClass NO_SQL_SCHEMA = eINSTANCE.getNoSQLSchema();
@@ -957,11 +957,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 		EReference NO_SQL_SCHEMA__ENTITIES = eINSTANCE.getNoSQLSchema_Entities();
 
 		/**
-		 * The meta object literal for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.EntityImpl <em>Entity</em>}' class.
+		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityImpl <em>Entity</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.EntityImpl
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getEntity()
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.EntityImpl
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getEntity()
 		 * @generated
 		 */
 		EClass ENTITY = eINSTANCE.getEntity();
@@ -983,11 +983,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 		EReference ENTITY__ENTITYVERSIONS = eINSTANCE.getEntity_Entityversions();
 
 		/**
-		 * The meta object literal for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.EntityVersionImpl <em>Entity Version</em>}' class.
+		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVersionImpl <em>Entity Version</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.EntityVersionImpl
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getEntityVersion()
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.EntityVersionImpl
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getEntityVersion()
 		 * @generated
 		 */
 		EClass ENTITY_VERSION = eINSTANCE.getEntityVersion();
@@ -1025,11 +1025,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 		EAttribute ENTITY_VERSION__ROOT = eINSTANCE.getEntityVersion_Root();
 
 		/**
-		 * The meta object literal for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.PropertyImpl <em>Property</em>}' class.
+		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.PropertyImpl <em>Property</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.PropertyImpl
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getProperty()
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.PropertyImpl
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getProperty()
 		 * @generated
 		 */
 		EClass PROPERTY = eINSTANCE.getProperty();
@@ -1043,11 +1043,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 		EAttribute PROPERTY__NAME = eINSTANCE.getProperty_Name();
 
 		/**
-		 * The meta object literal for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.AttributeImpl <em>Attribute</em>}' class.
+		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.AttributeImpl <em>Attribute</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.AttributeImpl
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getAttribute()
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.AttributeImpl
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getAttribute()
 		 * @generated
 		 */
 		EClass ATTRIBUTE = eINSTANCE.getAttribute();
@@ -1061,21 +1061,21 @@ public interface NoSQLSchemaPackage extends EPackage {
 		EReference ATTRIBUTE__TYPE = eINSTANCE.getAttribute_Type();
 
 		/**
-		 * The meta object literal for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.TypeImpl <em>Type</em>}' class.
+		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.TypeImpl <em>Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.TypeImpl
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getType()
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.TypeImpl
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getType()
 		 * @generated
 		 */
 		EClass TYPE = eINSTANCE.getType();
 
 		/**
-		 * The meta object literal for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.TupleImpl <em>Tuple</em>}' class.
+		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.TupleImpl <em>Tuple</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.TupleImpl
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getTuple()
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.TupleImpl
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getTuple()
 		 * @generated
 		 */
 		EClass TUPLE = eINSTANCE.getTuple();
@@ -1089,11 +1089,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 		EReference TUPLE__ELEMENTS = eINSTANCE.getTuple_Elements();
 
 		/**
-		 * The meta object literal for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.AssociationImpl <em>Association</em>}' class.
+		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.AssociationImpl <em>Association</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.AssociationImpl
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getAssociation()
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.AssociationImpl
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getAssociation()
 		 * @generated
 		 */
 		EClass ASSOCIATION = eINSTANCE.getAssociation();
@@ -1115,11 +1115,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 		EAttribute ASSOCIATION__UPPER_BOUND = eINSTANCE.getAssociation_UpperBound();
 
 		/**
-		 * The meta object literal for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.ReferenceImpl <em>Reference</em>}' class.
+		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.ReferenceImpl <em>Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.ReferenceImpl
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getReference()
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.ReferenceImpl
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getReference()
 		 * @generated
 		 */
 		EClass REFERENCE = eINSTANCE.getReference();
@@ -1149,11 +1149,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 		EAttribute REFERENCE__ORIGINAL_TYPE = eINSTANCE.getReference_OriginalType();
 
 		/**
-		 * The meta object literal for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.AggregateImpl <em>Aggregate</em>}' class.
+		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.AggregateImpl <em>Aggregate</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.AggregateImpl
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getAggregate()
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.AggregateImpl
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getAggregate()
 		 * @generated
 		 */
 		EClass AGGREGATE = eINSTANCE.getAggregate();
@@ -1167,11 +1167,11 @@ public interface NoSQLSchemaPackage extends EPackage {
 		EReference AGGREGATE__REF_TO = eINSTANCE.getAggregate_RefTo();
 
 		/**
-		 * The meta object literal for the '{@link es.um.nosql.schemainference.NoSQLSchema.impl.PrimitiveTypeImpl <em>Primitive Type</em>}' class.
+		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.PrimitiveTypeImpl <em>Primitive Type</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.PrimitiveTypeImpl
-		 * @see es.um.nosql.schemainference.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getPrimitiveType()
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.PrimitiveTypeImpl
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getPrimitiveType()
 		 * @generated
 		 */
 		EClass PRIMITIVE_TYPE = eINSTANCE.getPrimitiveType();

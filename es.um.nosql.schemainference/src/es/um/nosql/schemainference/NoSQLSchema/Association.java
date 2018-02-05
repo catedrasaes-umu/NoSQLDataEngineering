@@ -1,6 +1,6 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema;
+package es.um.nosql.s13e.NoSQLSchema;
 
 
 /**
@@ -12,11 +12,11 @@ package es.um.nosql.schemainference.NoSQLSchema;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.Association#getLowerBound <em>Lower Bound</em>}</li>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.Association#getUpperBound <em>Upper Bound</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Association#getLowerBound <em>Lower Bound</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Association#getUpperBound <em>Upper Bound</em>}</li>
  * </ul>
  *
- * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getAssociation()
+ * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getAssociation()
  * @model abstract="true"
  * @generated
  */
@@ -31,14 +31,14 @@ public interface Association extends Property {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Lower Bound</em>' attribute.
 	 * @see #setLowerBound(int)
-	 * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getAssociation_LowerBound()
+	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getAssociation_LowerBound()
 	 * @model
 	 * @generated
 	 */
 	int getLowerBound();
 
 	/**
-	 * Sets the value of the '{@link es.um.nosql.schemainference.NoSQLSchema.Association#getLowerBound <em>Lower Bound</em>}' attribute.
+	 * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.Association#getLowerBound <em>Lower Bound</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Lower Bound</em>' attribute.
@@ -57,14 +57,14 @@ public interface Association extends Property {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Upper Bound</em>' attribute.
 	 * @see #setUpperBound(int)
-	 * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage#getAssociation_UpperBound()
+	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getAssociation_UpperBound()
 	 * @model
 	 * @generated
 	 */
 	int getUpperBound();
 
 	/**
-	 * Sets the value of the '{@link es.um.nosql.schemainference.NoSQLSchema.Association#getUpperBound <em>Upper Bound</em>}' attribute.
+	 * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.Association#getUpperBound <em>Upper Bound</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @param value the new value of the '<em>Upper Bound</em>' attribute.

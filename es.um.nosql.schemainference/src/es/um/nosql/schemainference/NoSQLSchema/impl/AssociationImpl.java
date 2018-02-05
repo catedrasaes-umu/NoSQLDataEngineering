@@ -1,9 +1,9 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema.impl;
+package es.um.nosql.s13e.NoSQLSchema.impl;
 
-import es.um.nosql.schemainference.NoSQLSchema.Association;
-import es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.NoSQLSchema.Association;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -19,8 +19,8 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.impl.AssociationImpl#getLowerBound <em>Lower Bound</em>}</li>
- *   <li>{@link es.um.nosql.schemainference.NoSQLSchema.impl.AssociationImpl#getUpperBound <em>Upper Bound</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.AssociationImpl#getLowerBound <em>Lower Bound</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.AssociationImpl#getUpperBound <em>Upper Bound</em>}</li>
  * </ul>
  *
  * @generated

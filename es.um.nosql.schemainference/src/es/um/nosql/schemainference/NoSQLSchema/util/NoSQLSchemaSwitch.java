@@ -1,8 +1,8 @@
 /**
  */
-package es.um.nosql.schemainference.NoSQLSchema.util;
+package es.um.nosql.s13e.NoSQLSchema.util;
 
-import es.um.nosql.schemainference.NoSQLSchema.*;
+import es.um.nosql.s13e.NoSQLSchema.*;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
@@ -19,7 +19,7 @@ import org.eclipse.emf.ecore.util.Switch;
  * until a non-null result is returned,
  * which is the result of the switch.
  * <!-- end-user-doc -->
- * @see es.um.nosql.schemainference.NoSQLSchema.NoSQLSchemaPackage
+ * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage
  * @generated
  */
 public class NoSQLSchemaSwitch<T> extends Switch<T> {
