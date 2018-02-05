@@ -77,7 +77,7 @@ public class EveryPoliticianTest
   @Test
   public void testDuplicateBdAndCheck()
   {
-    String newDbName = "everypolitician_test_1";
+    String newDbName = dbName + "_test_1";
     Datastore newDatastore = morphia.createDatastore(client,  newDbName);
 
     List<Areas> lAreas = new ArrayList<Areas>();
@@ -107,7 +107,7 @@ public class EveryPoliticianTest
   @Test
   public void testAddErrorAndCheck()
   {
-    String newDbName = "everypolitician_test_2";
+    String newDbName = dbName + "_test_2";
     Datastore newDatastore = morphia.createDatastore(client,  newDbName);
 
     List<Areas> lAreas = new ArrayList<Areas>();
