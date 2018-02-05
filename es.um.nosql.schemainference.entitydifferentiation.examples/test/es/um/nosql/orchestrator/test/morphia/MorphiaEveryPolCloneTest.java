@@ -150,7 +150,7 @@ public class MorphiaEveryPolCloneTest
 
       testCollection(membership.getSources(), Source.class);
 
-      // Dont have to check if the references are valid themselves, since we just validated them on the previous method...
+      // Dont have to check if the references are valid themselves, since we just validated them on the previous step...
       if (membership.getArea_id() != null)
         Assert.assertEquals(1, newDatastore.createQuery(Areas.class).filter("_id =", membership.getArea_id().get_id()).count());
 
