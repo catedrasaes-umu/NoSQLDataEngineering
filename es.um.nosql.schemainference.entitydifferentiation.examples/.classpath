@@ -18,19 +18,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="/es.um.nosql.schemainference.db"/>
-	<classpathentry kind="lib" path="C:/eclipse/plugins/org.junit_4.12.0.v201504281640/junit.jar" sourcepath="C:/eclipse/plugins/org.junit.source_4.12.0.v201504281640.jar">
-		<attributes>
-			<attribute name="javadoc_location" value="http://junit.org/junit4/javadoc/latest/"/>
-		</attributes>
-	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Alberto/.m2/repository/org/mongodb/morphia/morphia-validation/1.3.2/morphia-validation-1.3.2.jar">
-		<attributes>
-			<attribute name="maven.pomderived" value="true"/>
-			<attribute name="maven.groupId" value="org.mongodb.morphia"/>
-			<attribute name="maven.artifactId" value="morphia-validation"/>
-			<attribute name="maven.version" value="1.3.2"/>
-			<attribute name="maven.scope" value="compile"/>
-		</attributes>
-	</classpathentry>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

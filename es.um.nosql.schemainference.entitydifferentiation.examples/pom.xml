@@ -27,5 +27,10 @@
   		<artifactId>hibernate-validator</artifactId>
   		<version>4.3.2.Final</version>
   	</dependency>
+  	<dependency>
+  		<groupId>org.mongodb.morphia</groupId>
+  		<artifactId>morphia-validation</artifactId>
+  		<version>1.3.2</version>
+  	</dependency>
   </dependencies>
 </project>
