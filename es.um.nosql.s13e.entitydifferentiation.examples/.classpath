@@ -18,6 +18,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="src" path="/es.um.nosql.s13e.db"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/5"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

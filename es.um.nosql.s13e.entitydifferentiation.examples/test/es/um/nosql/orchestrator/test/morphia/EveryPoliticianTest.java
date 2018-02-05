@@ -1,18 +1,24 @@
 package es.um.nosql.orchestrator.test.morphia;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
+import org.bson.types.ObjectId;
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.ValidationExtension;
+import org.mongodb.morphia.VerboseJSR303ConstraintViolationException;
 import org.mongodb.morphia.query.Query;
 
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbAdapter;
@@ -43,18 +49,16 @@ public class EveryPoliticianTest
   private String dbName;
   private Validator validator;
 
-  private Datastore newDatastore;
-  private String newDbName;
-
   @Before
   public void setUp() throws Exception
   {
     morphia = new Morphia();
-    morphia = morphia.mapPackage("es.um.nosql.s13e.everypolitician");
+    morphia = morphia.mapPackage("es.um.nosql.schemainference.everypolitician");
     new ValidationExtension(morphia);
     dbName = "everypolitician";
     client = MongoDbAdapter.getMongoDbClient("localhost");
     datastore = morphia.createDatastore(client, dbName);
+    datastore.ensureIndexes();
     validator = Validation.buildDefaultValidatorFactory().getValidator();
   }
 
@@ -67,13 +71,89 @@ public class EveryPoliticianTest
   @Test
   public void testCheckConsistency()
   {
-    Query<Areas> qAreas = datastore.createQuery(Areas.class);
-    Assert.assertEquals(N_AREAS, qAreas.count());
+    checkEveryPoliticianDb(datastore);
+  }
+
+  @Test
+  public void testDuplicateBdAndCheck()
+  {
+    String newDbName = "everypolitician_test_1";
+    Datastore newDatastore = morphia.createDatastore(client,  newDbName);
+
+    List<Areas> lAreas = new ArrayList<Areas>();
+    lAreas.addAll(datastore.createQuery(Areas.class).asList());
+    newDatastore.save(lAreas);
+
+    List<Organizations> lOrganizations = new ArrayList<Organizations>();
+    lOrganizations.addAll(datastore.createQuery(Organizations.class).asList());
+    newDatastore.save(lOrganizations);
+
+    List<Events> lEvents = new ArrayList<Events>();
+    lEvents.addAll(datastore.createQuery(Events.class).asList());
+    newDatastore.save(lEvents);
+
+    List<Persons> lPersons = new ArrayList<Persons>();
+    lPersons.addAll(datastore.createQuery(Persons.class).asList());
+    newDatastore.save(lPersons);
+
+    List<Memberships> lMemberships = new ArrayList<Memberships>();
+    lMemberships.addAll(datastore.createQuery(Memberships.class).asList());
+    newDatastore.save(lMemberships);
+
+    checkEveryPoliticianDb(newDatastore);
+    newDatastore.getDB().dropDatabase();
+  }
+
+  @Test
+  public void testAddErrorAndCheck()
+  {
+    String newDbName = "everypolitician_test_2";
+    Datastore newDatastore = morphia.createDatastore(client,  newDbName);
+
+    List<Areas> lAreas = new ArrayList<Areas>();
+    lAreas.addAll(datastore.createQuery(Areas.class).asList());
+    newDatastore.save(lAreas);
+
+    Areas area1 = new Areas(); area1.set_id(new ObjectId().toString()); area1.setName("area_name"); // Type is missing, and it is defined as required on the schema.
+    Areas area2 = new Areas(); area2.set_id(new ObjectId().toString()); area2.setType("area_type"); // Name is missing, and it is defined as required on the schema.
+
+    assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(area1);});
+    assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(area2);});
+
+    Query<Areas> qAreas = newDatastore.createQuery(Areas.class);
+    assertEquals(N_AREAS, qAreas.count());
+    testCollection(qAreas.asList().toArray(new Areas[0]), Areas.class);
+
+    List<Organizations> lOrganizations = new ArrayList<Organizations>();
+    lOrganizations.addAll(datastore.createQuery(Organizations.class).asList());
+    newDatastore.save(lOrganizations);
+
+    Organizations org1 = new Organizations(); org1.set_id(new ObjectId().toString()); org1.setClassification("org_classification"); org1.setName("org_name");
+    Organizations org2 = new Organizations(); org2.set_id(new ObjectId().toString()); org2.setClassification("org_classification");
+
+    newDatastore.save(org1);
+    assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(org2);});
+    Query<Organizations> qOrganizations = newDatastore.createQuery(Organizations.class);
+    assertEquals(N_ORGANIZATIONS + 1, qOrganizations.count());
+
+    for (Organizations org : qOrganizations)
+    {
+      Set<ConstraintViolation<Organizations>> violations = validator.validate(org);
+      assertEquals(0, violations.size());
+    }
+
+    newDatastore.getDB().dropDatabase();
+  }
+
+  private void checkEveryPoliticianDb(Datastore theDatastore)
+  {
+    Query<Areas> qAreas = theDatastore.createQuery(Areas.class);
+    assertEquals(N_AREAS, qAreas.count());
     testCollection(qAreas.asList().toArray(new Areas[0]), Areas.class);
 
     // We actually detected here a bug. When an aggregate/reference cardinality is 0..1, it may actually be an array.
-    Query<Organizations> qOrganizations = datastore.createQuery(Organizations.class);
-    Assert.assertEquals(N_ORGANIZATIONS, qOrganizations.count());
+    Query<Organizations> qOrganizations = theDatastore.createQuery(Organizations.class);
+    assertEquals(N_ORGANIZATIONS, qOrganizations.count());
     testCollection(qOrganizations.asList().toArray(new Organizations[0]), Organizations.class);
 
     for (Organizations organization : qOrganizations)
@@ -83,8 +163,8 @@ public class EveryPoliticianTest
       testCollection(organization.getLinks(), Link.class);
     }
 
-    Query<Events> qEvents = datastore.createQuery(Events.class);
-    Assert.assertEquals(N_EVENTS, qEvents.count());
+    Query<Events> qEvents = theDatastore.createQuery(Events.class);
+    assertEquals(N_EVENTS, qEvents.count());
     testCollection(qEvents.asList().toArray(new Events[0]), Events.class);
 
     for (Events event : qEvents)
@@ -93,11 +173,11 @@ public class EveryPoliticianTest
 
       // Dont have to check if the Organization is valid, since we just validated it on the previous step...
       if (event.getOrganization_id() != null)
-        Assert.assertEquals(1, datastore.createQuery(Organizations.class).filter("_id =", event.getOrganization_id().get_id()).count());
+        assertEquals(1, theDatastore.createQuery(Organizations.class).filter("_id =", event.getOrganization_id().get_id()).count());
     }
 
-    Query<Persons> qPersons = datastore.createQuery(Persons.class);
-    Assert.assertEquals(N_PERSONS, qPersons.count());
+    Query<Persons> qPersons = theDatastore.createQuery(Persons.class);
+    assertEquals(N_PERSONS, qPersons.count());
     testCollection(qPersons.asList().toArray(new Persons[0]), Persons.class);
 
     for (Persons person : qPersons)
@@ -109,8 +189,8 @@ public class EveryPoliticianTest
       testCollection(person.getImages(), Image.class);
     }
 
-    Query<Memberships> qMemberships = datastore.createQuery(Memberships.class);
-    Assert.assertEquals(N_MEMBERSHIPS, qMemberships.count());
+    Query<Memberships> qMemberships = theDatastore.createQuery(Memberships.class);
+    assertEquals(N_MEMBERSHIPS, qMemberships.count());
     testCollection(qMemberships.asList().toArray(new Memberships[0]), Memberships.class);
 
     for (Memberships membership : qMemberships)
@@ -119,27 +199,15 @@ public class EveryPoliticianTest
 
       // Dont have to check if the references are valid themselves, since we just validated them on the previous method...
       if (membership.getArea_id() != null)
-        Assert.assertEquals(1, datastore.createQuery(Areas.class).filter("_id =", membership.getArea_id().get_id()).count());
+        assertEquals(1, theDatastore.createQuery(Areas.class).filter("_id =", membership.getArea_id().get_id()).count());
 
       // Dont panic it this runs for several seconds. It does about 5000 queries...
       if (membership.getPerson_id() != null)
-        Assert.assertEquals(1, datastore.createQuery(Persons.class).filter("_id =", membership.getPerson_id().get_id()).count());
+        assertEquals(1, theDatastore.createQuery(Persons.class).filter("_id =", membership.getPerson_id().get_id()).count());
 
       if (membership.getOrganization_id() != null)
-        Assert.assertEquals(1, datastore.createQuery(Organizations.class).filter("_id =", membership.getOrganization_id().get_id()).count());
+        assertEquals(1, theDatastore.createQuery(Organizations.class).filter("_id =", membership.getOrganization_id().get_id()).count());
     }
-  }
-
-  @Test
-  public void testDuplicateBdAndCheck()
-  {
-    newDbName = "neweverypolitician";
-    newDatastore = morphia.createDatastore(client,  newDbName);
-  }
-
-  @Test
-  public void testAddErrorAndCheck()
-  {
   }
 
   private <T> void testCollection(T[] collection, Class<T> className)
@@ -154,7 +222,7 @@ public class EveryPoliticianTest
       for (ConstraintViolation<T> cVio : violations)
         System.out.println(cVio.getMessage());
 
-      Assert.assertEquals(0, violations.size());
+      assertEquals(0, violations.size());
     }
   }
 }
