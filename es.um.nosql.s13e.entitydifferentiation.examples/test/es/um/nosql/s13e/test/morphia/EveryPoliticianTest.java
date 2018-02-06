@@ -52,10 +52,10 @@ public class EveryPoliticianTest
   @Before
   public void setUp() throws Exception
   {
-    morphia = new Morphia();
-    morphia = morphia.mapPackage("es.um.nosql.schemainference.everypolitician");
-    new ValidationExtension(morphia);
     dbName = "everypolitician";
+    morphia = new Morphia();
+    morphia = morphia.mapPackage("es.um.nosql.s13e." + dbName);
+    new ValidationExtension(morphia);
     client = MongoDbAdapter.getMongoDbClient("localhost");
     datastore = morphia.createDatastore(client, dbName);
     datastore.ensureIndexes();

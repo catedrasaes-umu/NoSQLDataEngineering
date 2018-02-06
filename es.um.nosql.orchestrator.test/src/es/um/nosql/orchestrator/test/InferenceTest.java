@@ -55,7 +55,7 @@ public class InferenceTest
   private static final boolean FILL_AND_INFER = false;
 
   private static final String FILE_JSON = "json/tfg.json";
-  private static final String FILE_MODEL = "models/mongoMovies.xmi";
+  private static final String FILE_MODEL = "models/mongomovies.xmi";
   private static final String FOLDER_SOF = "/media/alberto/tarsonis/datasets/stackoverflow/";
   private static final String FOLDER_EPOL = "/media/alberto/tarsonis/datasets/everypolitician/countries/Sweden_Riksdag.json";
   private static final String FILE_URBAN = "/media/alberto/tarsonis/datasets/urban/words.json";
@@ -73,7 +73,7 @@ public class InferenceTest
   {//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
     // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.
     // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
-    //prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
+    prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
     //prepareSOFExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_SOF);
     //prepareEPolExample(DbType.MONGODB, FILL_ONLY, FOLDER_EPOL);
     //prepareUrbanExample(DbType.MONGODB, FILL_ONLY, FILE_URBAN);                  //POJO
@@ -98,8 +98,8 @@ public class InferenceTest
     File source = new File(sourceFile);
     String dbName = source.getName().substring(0, source.getName().indexOf("."));
     String outputModel = MODELS_FOLDER + dbName + "_RESULT.xmi";
-    int minInstances = 20;
-    int maxInstances = 50;
+    int minInstances = 20000;
+    int maxInstances = 20000;
 
     long startTime = System.currentTimeMillis();
 

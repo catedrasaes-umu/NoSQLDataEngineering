@@ -60,7 +60,7 @@ public class JsonGenerator
         // First run to generate all the primitive types and tuples.
         for (Entity entity : schema.getEntities())
         {
-        	entityIdMap.put(entity.getName(), new ArrayList<String>());
+        	entityIdMap.put(entity.getName().toLowerCase(), new ArrayList<String>());
         	for (EntityVersion eVersion : entity.getEntityversions())
           {
         	  evMap.put(eVersion, new ArrayList<ObjectNode>());
@@ -88,7 +88,7 @@ public class JsonGenerator
                 strObj.put("_id", new ObjectId().toString());
                 strObj.put("_type", entity.getName());
                 lStorage.add(strObj);
-                entityIdMap.get(entity.getName()).add(strObj.get("_id").asText());
+                entityIdMap.get(entity.getName().toLowerCase()).add(strObj.get("_id").asText());
               }
 
               evMap.get(eVersion).add(strObj);
@@ -130,7 +130,7 @@ public class JsonGenerator
                             for (EntityVersion aggrEV : aggr.getRefTo())
                             {
                             	ObjectNode aggrNode = getRandomAggr(aggrEV);
-                                array.add(aggrNode);
+                            	array.add(aggrNode);
                             }
                         }
                     }

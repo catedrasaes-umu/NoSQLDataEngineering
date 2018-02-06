@@ -126,7 +126,7 @@ class DiffToMorphia
       import org.mongodb.morphia.annotations.PreLoad;
       import com.mongodb.DBObject;
       «IF collListUnionProperties.exists[l | l.exists[ps | ps.property instanceof Aggregate
-        && (ps.property as Aggregate).lowerBound !== 1 && (ps.property as Aggregate).upperBound !== 1]]»
+        && ((ps.property as Aggregate).lowerBound !== 1 || (ps.property as Aggregate).upperBound !== 1)]]»
       import com.mongodb.BasicDBList;
       «ENDIF»
     «ENDIF»
