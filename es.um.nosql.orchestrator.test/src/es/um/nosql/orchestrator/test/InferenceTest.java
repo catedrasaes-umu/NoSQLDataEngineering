@@ -55,18 +55,18 @@ public class InferenceTest
   private static final boolean FILL_AND_INFER = false;
 
   private static final String FILE_JSON = "json/tfg.json";
-  private static final String FILE_MODEL = "models/mongoMovies3.xmi";
-  private static final String FOLDER_SOF = "F:\\Informatica\\datasets\\stackoverflow\\";
-  private static final String FOLDER_EPOL = "F:\\Informatica\\datasets\\everypolitician\\";
-  private static final String FILE_URBAN = "F:\\Informatica\\datasets\\urban\\words.json";
+  private static final String FILE_MODEL = "models/mongoMovies.xmi";
+  private static final String FOLDER_SOF = "/media/alberto/tarsonis/datasets/stackoverflow/";
+  private static final String FOLDER_EPOL = "/media/alberto/tarsonis/datasets/everypolitician/countries/Sweden_Riksdag.json";
+  private static final String FILE_URBAN = "/media/alberto/tarsonis/datasets/urban/words.json";
   private static final String FILE_COMPANY = "F:\\Informatica\\datasets\\companies\\companies.json";
-  private static final String FOLDER_LINK = "F:\\Informatica\\datasets\\givealink\\";
-  private static final String FILE_HARVARD = "F:\\Informatica\\datasets\\harvard\\HMXPC13_DI_v2_5-14-14.csv";
-  private static final String FOLDER_FACEBOOK = "F:\\Informatica\\datasets\\facebook\\";
-  private static final String FOLDER_PROTEIN = "F:\\Informatica\\datasets\\proteins\\";
-  private static final String FILE_PUBLICATIONS = "F:\\Informatica\\datasets\\publications\\publications-nov-2013.csv";
-  private static final String FOLDER_WEBCLICKS = "F:\\Informatica\\datasets\\webclicks\\";
-  private static final String FILE_SANCTIONS = "F:\\Informatica\\datasets\\opensanctions\\master.ijson";
+  private static final String FOLDER_LINK = "/media/alberto/tarsonis/datasets/givealink/";
+  private static final String FILE_HARVARD = "/media/alberto/tarsonis/datasets/harvard/HMXPC13_DI_v2_5-14-14.csv";
+  private static final String FOLDER_FACEBOOK = "/media/alberto/tarsonis/datasets/facebook/";
+  private static final String FOLDER_PROTEIN = "/media/alberto/tarsonis/datasets/proteins/";
+  private static final String FILE_PUBLICATIONS = "/media/alberto/tarsonis/datasets/publications/publications-nov-2013.csv";
+  private static final String FOLDER_WEBCLICKS = "/media/alberto/tarsonis/datasets/webclicks/";
+  private static final String FILE_SANCTIONS = "/media/alberto/tarsonis/datasets/opensanctions/master.ijson";
   private static final String FILE_PLEIDADES = "/media/alberto/tarsonis/datasets/pleiades/pleiades-places.json";
 
   public static void main(String[] args) throws IOException
@@ -74,7 +74,7 @@ public class InferenceTest
     // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.
     // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
     //prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
-    //prepareSOFExample(DbType.MONGODB, FILL_ONLY, FOLDER_SOF);
+    //prepareSOFExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_SOF);
     //prepareEPolExample(DbType.MONGODB, FILL_ONLY, FOLDER_EPOL);
     //prepareUrbanExample(DbType.MONGODB, FILL_ONLY, FILE_URBAN);                  //POJO
     // Problem with this dataset is that it contains A LOT of aggregated objects and null values.
@@ -460,9 +460,7 @@ public class InferenceTest
   {
     File outputFile = new File(outputModel);
     ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
-    JsonGenerator generator = new JsonGenerator();
 
-    // 
     NoSQLSchema schema = loader.load(outputFile, NoSQLSchema.class);
     Entity idToDelete = null;
     for (Entity e : schema.getEntities())

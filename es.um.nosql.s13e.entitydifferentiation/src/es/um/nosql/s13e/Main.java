@@ -31,7 +31,7 @@ public class Main
 
   public static void main(String[] args)
   {
-    String input_model = "input_model";
+    String input_model = "stackoverflow";
     String inputFile = INPUT_FOLDER + input_model + ".xmi";
     String configFile = INPUT_FOLDER + YAML_CONFIG_ROUTE;
     String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
