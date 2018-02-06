@@ -65,7 +65,7 @@ public class OpenSanctionsTest
   }
 
   @Test
-  public void testDuplicateBdAndCheck()
+  public void testDuplicateDbAndCheck()
   {
     String newDbName = dbName + "_test_1";
     Datastore newDatastore = morphia.createDatastore(client,  newDbName);

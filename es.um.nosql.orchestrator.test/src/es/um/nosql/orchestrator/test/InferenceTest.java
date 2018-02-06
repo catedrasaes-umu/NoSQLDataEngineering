@@ -56,7 +56,7 @@ public class InferenceTest
 
   private static final String FILE_JSON = "json/tfg.json";
   private static final String FILE_MODEL = "models/mongomovies.xmi";
-  private static final String FOLDER_SOF = "/media/alberto/tarsonis/datasets/stackoverflow/";
+  private static final String FOLDER_SOF = "F:\\Informatica\\datasets\\stackoverflow\\";
   private static final String FOLDER_EPOL = "/media/alberto/tarsonis/datasets/everypolitician/countries/Sweden_Riksdag.json";
   private static final String FILE_URBAN = "/media/alberto/tarsonis/datasets/urban/words.json";
   private static final String FILE_COMPANY = "F:\\Informatica\\datasets\\companies\\companies.json";
@@ -73,8 +73,8 @@ public class InferenceTest
   {//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
     // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.
     // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
-    prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
-    //prepareSOFExample(DbType.MONGODB, FILL_AND_INFER, FOLDER_SOF);
+    //prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
+    //prepareSOFExample(DbType.MONGODB, FILL_ONLY, FOLDER_SOF);
     //prepareEPolExample(DbType.MONGODB, FILL_ONLY, FOLDER_EPOL);
     //prepareUrbanExample(DbType.MONGODB, FILL_ONLY, FILE_URBAN);                  //POJO
     // Problem with this dataset is that it contains A LOT of aggregated objects and null values.
@@ -98,8 +98,8 @@ public class InferenceTest
     File source = new File(sourceFile);
     String dbName = source.getName().substring(0, source.getName().indexOf("."));
     String outputModel = MODELS_FOLDER + dbName + "_RESULT.xmi";
-    int minInstances = 20000;
-    int maxInstances = 20000;
+    int minInstances = 1000;
+    int maxInstances = 1000;
 
     long startTime = System.currentTimeMillis();
 
@@ -147,7 +147,7 @@ public class InferenceTest
     long startTime = System.currentTimeMillis();
 
     System.out.println("Filling the " + dbType.toString() + " database...");
-    String[] files = new String[]{"Users.xml", "Votes.xml", "Comments.xml", "Posts.xml", "Tags.xml", "PostLinks.xml", "Badges.xml"};
+    String[] files = new String[]{"Users.xml", "Votes.xml", "Comments.xml", "Tags.xml", "PostLinks.xml", "Badges.xml"};
     // Users.xml: 6438660 filas => 38 minutos
     // Votes.xml: 116720227 filas => 10 horas
     // Comments.xml: 53566720 filas => 5 horas

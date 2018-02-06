@@ -22,16 +22,17 @@ import org.mongodb.morphia.query.Query;
 
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbAdapter;
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbClient;
-import es.um.nosql.s13e.everypolitician.Organizations;
+import es.um.nosql.s13e.mongomovies.Criticism;
 import es.um.nosql.s13e.mongomovies.Director;
 import es.um.nosql.s13e.mongomovies.Movie;
 import es.um.nosql.s13e.mongomovies.Movietheater;
+import es.um.nosql.s13e.mongomovies.Prize;
 
 public class MongoMoviesTest
 {
-  private final static int N_MOVIES = 100000;
-  private final static int N_MOVIETHEATER = 40000;
-  private final static int N_DIRECTORS = 40000;
+  private final static int N_MOVIES = 5000;
+  private final static int N_MOVIETHEATER = 2000;
+  private final static int N_DIRECTORS = 2000;
 
   private Morphia morphia;
   private MongoDbClient client;
@@ -65,8 +66,7 @@ public class MongoMoviesTest
   }
 
   @Test
-  @Ignore
-  public void testDuplicateBdAndCheck()
+  public void testDuplicateDbAndCheck()
   {
     String newDbName = dbName + "_test_1";
     Datastore newDatastore = morphia.createDatastore(client,  newDbName);
@@ -106,21 +106,25 @@ public class MongoMoviesTest
 
     for (Director director : qDirectors)
     {
-      testCollection(director.getActor_movies(), Movie.class);
-      testCollection(director.getDirected_movies(), Movie.class);
+      for (Movie actor_movie : director.getActor_movies())
+        assertEquals(1, datastore.createQuery(Movie.class).filter("_id =", actor_movie.get_id()).count());
+      for (Movie directed_movie : director.getDirected_movies())
+        assertEquals(1, datastore.createQuery(Movie.class).filter("_id =", directed_movie.get_id()).count());
     }
 
     Query<Movie> qMovies = datastore.createQuery(Movie.class);
-    assertEquals(N_MOVIES, qDirectors.count());
+    assertEquals(N_MOVIES, qMovies.count());
     testCollection(qMovies.asList().toArray(new Movie[0]), Movie.class);
-/*
+
     for (Movie movie : qMovies)
     {
       testCollection(movie.getCriticisms(), Criticism.class);
-      testCollection(movie.getDirector_id(), Director.class);
-      testCollection(movie.get.getDirector_id(), Director.class);
-      
-    }*/
+      assertEquals(1, datastore.createQuery(Director.class).filter("_id =", movie.getDirector_id().get_id()).count());
+      testCollection(movie.getPrizes(), Prize.class);
+
+      if (movie.getRating() != null)
+        assertEquals(0, validator.validate(movie.getRating()).size());
+    }
   }
 
   private <T> void testCollection(T[] collection, Class<T> className)

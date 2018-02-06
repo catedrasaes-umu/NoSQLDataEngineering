@@ -29,7 +29,7 @@ public class Movie
   public Criticism[] getCriticisms() {return this.criticisms;}
   public void setCriticisms(Criticism[] criticisms) {this.criticisms = criticisms;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)//Circular references....:(
   @NotNull(message = "director_id can't be null")
   private Director director_id;
   public Director getDirector_id() {return this.director_id;}
@@ -41,9 +41,9 @@ public class Movie
   public void setGenre(String genre) {this.genre = genre;}
   
   @Property
-  private Object[] genres;
-  public Object[] getGenres() {return this.genres;}
-  public void setGenres(Object[] genres) {this.genres = genres;}
+  private String[] genres;
+  public String[] getGenres() {return this.genres;}
+  public void setGenres(String[] genres) {this.genres = genres;}
   
   @Embedded
   private Prize[] prizes;
@@ -67,9 +67,9 @@ public class Movie
   public void setTitle(String title) {this.title = title;}
   
   @Property
-  private Object[] writers;
-  public Object[] getWriters() {return this.writers;}
-  public void setWriters(Object[] writers) {this.writers = writers;}
+  private String[] writers;
+  public String[] getWriters() {return this.writers;}
+  public void setWriters(String[] writers) {this.writers = writers;}
   
   @Property
   @NotNull(message = "year can't be null")
