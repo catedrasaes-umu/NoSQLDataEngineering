@@ -1,7 +1,7 @@
 package es.um.nosql.s13e.test.morphia;
 
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,19 +11,21 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
+import org.bson.types.ObjectId;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.ValidationExtension;
+import org.mongodb.morphia.VerboseJSR303ConstraintViolationException;
 import org.mongodb.morphia.query.Query;
 
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbAdapter;
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbClient;
 import es.um.nosql.s13e.mongomovies.Criticism;
 import es.um.nosql.s13e.mongomovies.Director;
+import es.um.nosql.s13e.mongomovies.Media;
 import es.um.nosql.s13e.mongomovies.Movie;
 import es.um.nosql.s13e.mongomovies.Movietheater;
 import es.um.nosql.s13e.mongomovies.Prize;
@@ -88,10 +90,34 @@ public class MongoMoviesTest
   }
 
   @Test
-  @Ignore
   public void testAddErrorAndCheck()
   {
-    fail("Not implemented yet.");
+    String newDbName = dbName + "_test_2";
+    Datastore newDatastore = morphia.createDatastore(client,  newDbName);
+
+    Movietheater mt1 = new Movietheater();
+    Movietheater mt2 = new Movietheater(); mt2.set_id(new ObjectId().toString()); mt2.setCity("city"); mt2.setCountry("country"); mt2.setName("name");
+
+    assertEquals(4, validator.validate(mt1).size());
+    assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(mt1);});
+
+    Media m1 = new Media(); m1.setName("name1"); m1.setUrl("url1");
+    Media m2 = new Media(); m2.setName("name2"); m2.setUrl("url2");
+    assertEquals(0, validator.validate(m1).size());
+    assertEquals(0, validator.validate(m2).size());
+
+    Criticism c1 = new Criticism(); c1.setColor("color1"); c1.setJournalist("journalist1"); c1.setMedia(new Media[] {m1, m2});
+    Criticism c2 = new Criticism(); c2.setColor("color2"); c2.setJournalist("journalist2"); c2.setMedia("media2");
+    Criticism c3 = new Criticism(); c3.setColor("color3");
+    assertThrows(ClassCastException.class, () -> {c3.setMedia(false);});
+    assertThrows(ClassCastException.class, () -> {c3.setMedia(m1);});
+
+    assertEquals(0, validator.validate(c1).size());
+    assertEquals(0, validator.validate(c2).size());
+    assertEquals(1, validator.validate(c3).size());
+    assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(c3);});
+
+    newDatastore.getDB().dropDatabase();
   }
 
   private void checkMongomoviesDb(Datastore theDatastore)

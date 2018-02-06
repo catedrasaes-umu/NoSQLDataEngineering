@@ -110,37 +110,21 @@ public class EveryPoliticianTest
     String newDbName = dbName + "_test_2";
     Datastore newDatastore = morphia.createDatastore(client,  newDbName);
 
-    List<Areas> lAreas = new ArrayList<Areas>();
-    lAreas.addAll(datastore.createQuery(Areas.class).asList());
-    newDatastore.save(lAreas);
-
     Areas area1 = new Areas(); area1.set_id(new ObjectId().toString()); area1.setName("area_name"); // Type is missing, and it is defined as required on the schema.
     Areas area2 = new Areas(); area2.set_id(new ObjectId().toString()); area2.setType("area_type"); // Name is missing, and it is defined as required on the schema.
+
+    assertEquals(1, validator.validate(area1).size());
+    assertEquals(1, validator.validate(area2).size());
 
     assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(area1);});
     assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(area2);});
 
-    Query<Areas> qAreas = newDatastore.createQuery(Areas.class);
-    assertEquals(N_AREAS, qAreas.count());
-    testCollection(qAreas.asList().toArray(new Areas[0]), Areas.class);
-
-    List<Organizations> lOrganizations = new ArrayList<Organizations>();
-    lOrganizations.addAll(datastore.createQuery(Organizations.class).asList());
-    newDatastore.save(lOrganizations);
-
     Organizations org1 = new Organizations(); org1.set_id(new ObjectId().toString()); org1.setClassification("org_classification"); org1.setName("org_name");
     Organizations org2 = new Organizations(); org2.set_id(new ObjectId().toString()); org2.setClassification("org_classification");
 
-    newDatastore.save(org1);
+    assertEquals(0, validator.validate(org1).size());
+    assertEquals(1, validator.validate(org2).size());
     assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(org2);});
-    Query<Organizations> qOrganizations = newDatastore.createQuery(Organizations.class);
-    assertEquals(N_ORGANIZATIONS + 1, qOrganizations.count());
-
-    for (Organizations org : qOrganizations)
-    {
-      Set<ConstraintViolation<Organizations>> violations = validator.validate(org);
-      assertEquals(0, violations.size());
-    }
 
     newDatastore.getDB().dropDatabase();
   }

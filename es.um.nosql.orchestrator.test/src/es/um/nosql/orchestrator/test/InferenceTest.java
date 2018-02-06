@@ -147,7 +147,7 @@ public class InferenceTest
     long startTime = System.currentTimeMillis();
 
     System.out.println("Filling the " + dbType.toString() + " database...");
-    String[] files = new String[]{"Users.xml", "Votes.xml", "Comments.xml", "Tags.xml", "PostLinks.xml", "Badges.xml"};
+    String[] files = new String[]{"Users.xml", "Votes.xml", "Comments.xml", "Posts.xml", "Tags.xml", "PostLinks.xml", "Badges.xml"};
     // Users.xml: 6438660 filas => 38 minutos
     // Votes.xml: 116720227 filas => 10 horas
     // Comments.xml: 53566720 filas => 5 horas

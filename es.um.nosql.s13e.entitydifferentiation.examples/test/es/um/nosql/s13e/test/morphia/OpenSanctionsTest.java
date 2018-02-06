@@ -1,7 +1,7 @@
 package es.um.nosql.s13e.test.morphia;
 
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,12 +11,14 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
+import org.bson.types.ObjectId;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.ValidationExtension;
+import org.mongodb.morphia.VerboseJSR303ConstraintViolationException;
 import org.mongodb.morphia.query.Query;
 
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbAdapter;
@@ -81,7 +83,31 @@ public class OpenSanctionsTest
   @Test
   public void testAddErrorAndCheck()
   {
-    fail("Not implemented yet.");
+    String newDbName = dbName + "_test_2";
+    Datastore newDatastore = morphia.createDatastore(client,  newDbName);
+
+    Identifier i1 = new Identifier(); i1.setNumber("aNumber");
+    Identifier i2 = new Identifier(); i2.setNumber(33);
+    Identifier i3 = new Identifier();
+    assertThrows(ClassCastException.class, () -> {i3.setNumber(false);});
+    assertThrows(ClassCastException.class, () -> {i3.setNumber(null);});
+    assertEquals(0, validator.validate(i1).size());
+    assertEquals(0, validator.validate(i2).size());
+
+    Sanctions s1 = new Sanctions(); s1.set_id(new ObjectId().toString());
+    Sanctions s2 = new Sanctions(); s2.set_id(new ObjectId().toString()); s2.setSource("source2");
+    Sanctions s3 = new Sanctions(); s3.set_id(new ObjectId().toString()); s3.setTimestamp("timestamp3");
+    Sanctions s4 = new Sanctions(); s4.set_id(new ObjectId().toString()); s4.setSource("source4"); s4.setTimestamp("timestamp4");
+
+    assertEquals(2, validator.validate(s1).size());
+    assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(s1);});
+    assertEquals(1, validator.validate(s2).size());
+    assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(s2);});
+    assertEquals(1, validator.validate(s3).size());
+    assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(s3);});
+    assertEquals(0, validator.validate(s4).size());
+
+    newDatastore.getDB().dropDatabase();
   }
 
   private void checkOpenSanctionsDb(Datastore theDatastore)
