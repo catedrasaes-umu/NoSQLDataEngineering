@@ -228,6 +228,7 @@ hs_err_pid*
 
 .metadata
 bin/
+xtend-gen/
 tmp/
 *.tmp
 *.bak
