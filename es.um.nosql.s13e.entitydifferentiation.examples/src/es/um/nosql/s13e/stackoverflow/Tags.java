@@ -16,7 +16,7 @@ public class Tags
   public Integer getCount() {return this.Count;}
   public void setCount(Integer Count) {this.Count = Count;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   private Posts ExcerptPostId;
   public Posts getExcerptPostId() {return this.ExcerptPostId;}
   public void setExcerptPostId(Posts ExcerptPostId) {this.ExcerptPostId = ExcerptPostId;}
@@ -27,7 +27,7 @@ public class Tags
   public String getTagName() {return this.TagName;}
   public void setTagName(String TagName) {this.TagName = TagName;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   private Posts WikiPostId;
   public Posts getWikiPostId() {return this.WikiPostId;}
   public void setWikiPostId(Posts WikiPostId) {this.WikiPostId = WikiPostId;}

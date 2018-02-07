@@ -24,18 +24,18 @@ public class Votes
   public String getCreationDate() {return this.CreationDate;}
   public void setCreationDate(String CreationDate) {this.CreationDate = CreationDate;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   @NotNull(message = "PostId can't be null")
   private Posts PostId;
   public Posts getPostId() {return this.PostId;}
   public void setPostId(Posts PostId) {this.PostId = PostId;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   private Users UserId;
   public Users getUserId() {return this.UserId;}
   public void setUserId(Users UserId) {this.UserId = UserId;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   private Votes VoteTypeId;
   public Votes getVoteTypeId() {return this.VoteTypeId;}
   public void setVoteTypeId(Votes VoteTypeId) {this.VoteTypeId = VoteTypeId;}

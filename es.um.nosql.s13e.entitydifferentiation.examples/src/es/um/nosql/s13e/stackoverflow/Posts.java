@@ -72,7 +72,7 @@ public class Posts
   public String getLastEditorDisplayName() {return this.LastEditorDisplayName;}
   public void setLastEditorDisplayName(String LastEditorDisplayName) {this.LastEditorDisplayName = LastEditorDisplayName;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   private Users LastEditorUserId;
   public Users getLastEditorUserId() {return this.LastEditorUserId;}
   public void setLastEditorUserId(Users LastEditorUserId) {this.LastEditorUserId = LastEditorUserId;}
@@ -82,7 +82,7 @@ public class Posts
   public String getOwnerDisplayName() {return this.OwnerDisplayName;}
   public void setOwnerDisplayName(String OwnerDisplayName) {this.OwnerDisplayName = OwnerDisplayName;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   private Users OwnerUserId;
   public Users getOwnerUserId() {return this.OwnerUserId;}
   public void setOwnerUserId(Users OwnerUserId) {this.OwnerUserId = OwnerUserId;}
@@ -92,7 +92,7 @@ public class Posts
   public String getParentId() {return this.ParentId;}
   public void setParentId(String ParentId) {this.ParentId = ParentId;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   private Posts PostTypeId;
   public Posts getPostTypeId() {return this.PostTypeId;}
   public void setPostTypeId(Posts PostTypeId) {this.PostTypeId = PostTypeId;}
@@ -103,7 +103,7 @@ public class Posts
   public Integer getScore() {return this.Score;}
   public void setScore(Integer Score) {this.Score = Score;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   private Tags Tags;
   public Tags getTags() {return this.Tags;}
   public void setTags(Tags Tags) {this.Tags = Tags;}

@@ -11,8 +11,8 @@ import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
 import javax.validation.constraints.NotNull;
 
-import es.um.nosql.s13e.mongomovies.Rating;
 import es.um.nosql.s13e.mongomovies.Prize;
+import es.um.nosql.s13e.mongomovies.Rating;
 import es.um.nosql.s13e.mongomovies.Criticism;
 
 @Entity(value = "movie", noClassnameStored = true)
@@ -29,7 +29,7 @@ public class Movie
   public Criticism[] getCriticisms() {return this.criticisms;}
   public void setCriticisms(Criticism[] criticisms) {this.criticisms = criticisms;}
   
-  @Reference(idOnly = true, lazy = true)//Circular references....:(
+  @Reference(idOnly = true, lazy = true)
   @NotNull(message = "director_id can't be null")
   private Director director_id;
   public Director getDirector_id() {return this.director_id;}

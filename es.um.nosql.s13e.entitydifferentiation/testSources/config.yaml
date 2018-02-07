@@ -39,3 +39,5 @@ entities:
         enumValues: [surname1, surname2, surname3, surname4, surname5]
         # custom: "{ validator: function(v) { return /surname[0-9]/.test(v); }, message: 'Surname: surname[0-9]'}
     #ignoreUnknown: true
+
+    populateReferences: [ref1, ref2]

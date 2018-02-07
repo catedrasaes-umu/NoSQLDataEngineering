@@ -363,7 +363,7 @@ class DiffToMorphia
    */
   def dispatch genCodeForProperty(Reference ref, boolean required)
   '''
-    @Reference«IF !Commons.IS_DBREF(ref)»(idOnly = true)«ENDIF»
+    @Reference«IF !Commons.IS_DBREF(ref)»(idOnly = true«indexValGen.genPopulateReferences(ref.eContainer.eContainer as Entity, ref.name)»)«ENDIF»
     «IF required»@NotNull(message = "«ref.name» can't be null")«ENDIF»
     «indexValGen.genValidatorsForField(ref.eContainer.eContainer as Entity, ref.name)»
     private «genTypeForProperty(ref)» «ref.name»;

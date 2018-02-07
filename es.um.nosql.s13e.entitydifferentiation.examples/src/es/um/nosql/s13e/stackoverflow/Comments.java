@@ -16,7 +16,7 @@ public class Comments
   public String getCreationDate() {return this.CreationDate;}
   public void setCreationDate(String CreationDate) {this.CreationDate = CreationDate;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   @NotNull(message = "PostId can't be null")
   private Posts PostId;
   public Posts getPostId() {return this.PostId;}
@@ -39,7 +39,7 @@ public class Comments
   public String getUserDisplayName() {return this.UserDisplayName;}
   public void setUserDisplayName(String UserDisplayName) {this.UserDisplayName = UserDisplayName;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   private Users UserId;
   public Users getUserId() {return this.UserId;}
   public void setUserId(Users UserId) {this.UserId = UserId;}

@@ -10,11 +10,11 @@ import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
 
-import es.um.nosql.s13e.everypolitician.Contact_detail;
+import es.um.nosql.s13e.everypolitician.Link;
 import es.um.nosql.s13e.everypolitician.Identifier;
+import es.um.nosql.s13e.everypolitician.Contact_detail;
 import es.um.nosql.s13e.everypolitician.Image;
 import es.um.nosql.s13e.everypolitician.Other_name;
-import es.um.nosql.s13e.everypolitician.Link;
 
 @Entity(value = "persons", noClassnameStored = true)
 public class Persons

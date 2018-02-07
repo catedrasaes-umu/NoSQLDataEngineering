@@ -33,7 +33,7 @@ import es.um.nosql.s13e.opensanctions.Sanctions;
 
 public class OpenSanctionsTest
 {
-  private final static int N_SANCTIONS = 32040;
+  private final static int N_SANCTIONS = 30381;
 
   private Morphia morphia;
   private MongoDbClient client;

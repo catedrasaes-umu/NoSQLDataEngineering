@@ -16,12 +16,12 @@ public class Director
   public String get_id() {return this._id;}
   public void set_id(String _id) {this._id = _id;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   private Movie[] actor_movies;
   public Movie[] getActor_movies() {return this.actor_movies;}
   public void setActor_movies(Movie[] actor_movies) {this.actor_movies = actor_movies;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   @NotNull(message = "directed_movies can't be null")
   private Movie[] directed_movies;
   public Movie[] getDirected_movies() {return this.directed_movies;}

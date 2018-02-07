@@ -52,17 +52,24 @@ class Commons
 
   def static <T extends BaseConfig> T PARSE_CONFIG_FILE(Class<T> className, File configFile, EntityDifferentiation diff)
   {
-    if (configFile === null)
+    if (configFile === null || !configFile.exists)
     {
-      println("Config file is null!");
+      System.err.println("Config file is null or does not exist! Ignoring...");
       return null;
     }
 
     val mapper = new ObjectMapper(new YAMLFactory());
-    var config = mapper.readValue(configFile, className);
-    config.doCheck(diff);
-    println("Config file read and validated!");
+    try
+    {
+      var config = mapper.readValue(configFile, className);
+      config.doCheck(diff);
+      println("Config file read and validated!");
 
-    return config;
+      return config;
+    } catch (Exception e)
+    {
+      System.err.println("Errors detected in config file: " + e.message + ". Ignoring...")
+      return null;
+    }
   }
 }

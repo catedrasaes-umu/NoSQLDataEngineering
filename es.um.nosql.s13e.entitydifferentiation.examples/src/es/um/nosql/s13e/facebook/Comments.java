@@ -37,7 +37,7 @@ public class Comments
   public String getMessage() {return this.message;}
   public void setMessage(String message) {this.message = message;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   private Posts post_id;
   public Posts getPost_id() {return this.post_id;}
   public void setPost_id(Posts post_id) {this.post_id = post_id;}

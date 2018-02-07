@@ -19,16 +19,24 @@ class MongooseIndexValGen
 
   def genIndexesForEntity(Entity e)
   {
-    val cEntity = config.entities.findFirst[ce | ce.name.equals(e.name)];
-    if (cEntity === null || cEntity.indexes === null)
+    if (config === null)
     ''''''
     else
-    '''«FOR ConfigIndex i : cEntity.indexes SEPARATOR '\n'»«e.name»Schema.index(«genIndex(i)»);«ENDFOR»'''
+    {
+      val cEntity = config.entities.findFirst[ce | ce.name.equals(e.name)];
+      if (cEntity === null || cEntity.indexes === null)
+      ''''''
+      else
+      '''«FOR ConfigIndex i : cEntity.indexes SEPARATOR '\n'»«e.name»Schema.index(«genIndex(i)»);«ENDFOR»'''      
+    }
   }
 
   def List<Pair<String, String>> genValidatorsForField(Entity e, String field)
   {
     val result = new ArrayList<Pair<String, String>>();
+    if (config === null)
+      return result;
+
     val cEntity = config.entities.findFirst[ce | ce.name.equals(e.name)];
     if (cEntity !== null)
     {

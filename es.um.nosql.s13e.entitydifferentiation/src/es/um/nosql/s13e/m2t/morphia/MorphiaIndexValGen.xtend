@@ -17,43 +17,65 @@ class MorphiaIndexValGen
 
   def genIncludesForEntity(Entity e)
   {
-    val cEntity = config.entities.findFirst[ce | ce.name.equals(e.name)];
-    if (cEntity === null)
+    if (config === null)
     ''''''
     else
-    '''
-    «IF cEntity.indexes !== null»
-    import org.mongodb.morphia.annotations.Indexes;
-    import org.mongodb.morphia.annotations.Index;
-    import org.mongodb.morphia.annotations.Field;
-    «IF cEntity.indexes.exists[i | i.type !== null]»import org.mongodb.morphia.utils.IndexType;«ENDIF»
-    «IF cEntity.indexes.exists[i | hasOptionsDefined(i)]»import org.mongodb.morphia.annotations.IndexOptions;«ENDIF»
-    «ENDIF»
-    «IF cEntity.validators !== null»
-      «IF cEntity.validators.exists[v | v.max !== null]»import javax.validation.constraints.Max;«ENDIF»
-      «IF cEntity.validators.exists[v | v.min !== null]»import javax.validation.constraints.Min;«ENDIF»
-      «IF cEntity.validators.exists[v | v.minLength !== null || v.maxLength !== null]»import javax.validation.constraints.Size;«ENDIF»
-      «IF cEntity.validators.exists[v | v.enumValues !== null || v.match !== null || v.custom !== null]»import javax.validation.constraints.Pattern;«ENDIF»
-    «ENDIF»'''
+    {
+      val cEntity = config.entities.findFirst[ce | ce.name.equals(e.name)];
+      if (cEntity === null)
+      ''''''
+      else
+      '''
+      «IF cEntity.indexes !== null»
+      import org.mongodb.morphia.annotations.Indexes;
+      import org.mongodb.morphia.annotations.Index;
+      import org.mongodb.morphia.annotations.Field;
+      «IF cEntity.indexes.exists[i | i.type !== null]»import org.mongodb.morphia.utils.IndexType;«ENDIF»
+      «IF cEntity.indexes.exists[i | hasOptionsDefined(i)]»import org.mongodb.morphia.annotations.IndexOptions;«ENDIF»
+      «ENDIF»
+      «IF cEntity.validators !== null»
+        «IF cEntity.validators.exists[v | v.max !== null]»import javax.validation.constraints.Max;«ENDIF»
+        «IF cEntity.validators.exists[v | v.min !== null]»import javax.validation.constraints.Min;«ENDIF»
+        «IF cEntity.validators.exists[v | v.minLength !== null || v.maxLength !== null]»import javax.validation.constraints.Size;«ENDIF»
+        «IF cEntity.validators.exists[v | v.enumValues !== null || v.match !== null || v.custom !== null]»import javax.validation.constraints.Pattern;«ENDIF»
+      «ENDIF»'''
+    }
   }
 
   def genValidatorsForField(Entity e, String field)
   {
-    val cEntity = config.entities.findFirst[ce | ce.name.equals(e.name)];
-    if (cEntity === null)
+    if (config === null)
     ''''''
     else
-    '''
-    «FOR ConfigValidator v : cEntity.getValidatorsFor(field)»
-      «IF v.max !== null»@Max(value = «v.max»«genMsg(v)»)«ENDIF»
-      «IF v.min !== null»@Min(value = «v.min»«genMsg(v)»)«ENDIF»
-      «IF v.enumValues !== null»@Pattern(regexp = "«v.enumValues.join("|")»", flags = Pattern.Flag.CASE_INSENSITIVE«genMsg(v)»)«ENDIF»
-      «IF v.match !== null»@Pattern(regexp = "«v.match»"«genMsg(v)»)«ENDIF»
-      «IF v.custom !== null»@Pattern(regexp = "«v.custom»"«genMsg(v)»)«ENDIF»
-      «IF v.minLength !== null && v.maxLength !== null»@Size(min = «v.minLength», max = «v.maxLength»«genMsg(v)»)
-      «ELSEIF v.minLength !== null || v.maxLength !== null»@Size(«IF v.minLength !== null»min = «v.minLength»«ELSE»max = «v.maxLength»«ENDIF»«genMsg(v)»)
-      «ENDIF»
-    «ENDFOR»'''
+    {
+      val cEntity = config.entities.findFirst[ce | ce.name.equals(e.name)];
+      if (cEntity === null)
+      ''''''
+      else
+      '''
+      «FOR ConfigValidator v : cEntity.getValidatorsFor(field)»
+        «IF v.max !== null»@Max(value = «v.max»«genMsg(v)»)«ENDIF»
+        «IF v.min !== null»@Min(value = «v.min»«genMsg(v)»)«ENDIF»
+        «IF v.enumValues !== null»@Pattern(regexp = "«v.enumValues.join("|")»", flags = Pattern.Flag.CASE_INSENSITIVE«genMsg(v)»)«ENDIF»
+        «IF v.match !== null»@Pattern(regexp = "«v.match»"«genMsg(v)»)«ENDIF»
+        «IF v.custom !== null»@Pattern(regexp = "«v.custom»"«genMsg(v)»)«ENDIF»
+        «IF v.minLength !== null && v.maxLength !== null»@Size(min = «v.minLength», max = «v.maxLength»«genMsg(v)»)
+        «ELSEIF v.minLength !== null || v.maxLength !== null»@Size(«IF v.minLength !== null»min = «v.minLength»«ELSE»max = «v.maxLength»«ENDIF»«genMsg(v)»)
+        «ENDIF»
+      «ENDFOR»'''      
+    }
+  }
+
+  def genPopulateReferences(Entity e, String field)
+  {
+    if (config === null)
+    ''', lazy = true'''
+    else
+    {
+      val cEntity = config.entities.findFirst[ce | ce.name.equals(e.name)];
+      if (cEntity === null || !cEntity.getPopulateReferencesFor(field))
+      ''', lazy = true'''
+    }
   }
 
   private def genMsg(ConfigValidator v)
@@ -61,17 +83,22 @@ class MorphiaIndexValGen
 
   def genIndexesForEntity(Entity e)
   {
-    val cEntity = config.entities.findFirst[ce | ce.name.equals(e.name)];
-    if (cEntity === null || cEntity.indexes === null)
+    if (config === null)
     ''''''
     else
-    '''
-    @Indexes({
-      «FOR ConfigIndex i : cEntity.indexes SEPARATOR ','»
-        «genIndex(i)»
-      «ENDFOR»
-    })
-    '''
+    {
+      val cEntity = config.entities.findFirst[ce | ce.name.equals(e.name)];
+      if (cEntity === null || cEntity.indexes === null)
+      ''''''
+      else
+      '''
+      @Indexes({
+        «FOR ConfigIndex i : cEntity.indexes SEPARATOR ','»
+          «genIndex(i)»
+        «ENDFOR»
+      })
+      '''
+    }
   }
 
   private def genIndex(ConfigIndex index)

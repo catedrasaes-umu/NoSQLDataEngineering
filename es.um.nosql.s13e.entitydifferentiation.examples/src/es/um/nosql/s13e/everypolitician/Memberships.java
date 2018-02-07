@@ -19,7 +19,7 @@ public class Memberships
   public ObjectId get_id() {return this._id;}
   public void set_id(ObjectId _id) {this._id = _id;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   private Areas area_id;
   public Areas getArea_id() {return this.area_id;}
   public void setArea_id(Areas area_id) {this.area_id = area_id;}
@@ -41,13 +41,13 @@ public class Memberships
   public String getOn_behalf_of_id() {return this.on_behalf_of_id;}
   public void setOn_behalf_of_id(String on_behalf_of_id) {this.on_behalf_of_id = on_behalf_of_id;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   @NotNull(message = "organization_id can't be null")
   private Organizations organization_id;
   public Organizations getOrganization_id() {return this.organization_id;}
   public void setOrganization_id(Organizations organization_id) {this.organization_id = organization_id;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   @NotNull(message = "person_id can't be null")
   private Persons person_id;
   public Persons getPerson_id() {return this.person_id;}

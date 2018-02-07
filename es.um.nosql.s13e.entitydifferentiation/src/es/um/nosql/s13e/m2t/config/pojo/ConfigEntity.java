@@ -33,6 +33,12 @@ public class ConfigEntity
 
   public String getIgnoreUnknown() {return this.ignoreUnknown;}
 
+  private String[] populateReferences;
+
+  public void setPopulateReferences(String[] populateReferences) {this.populateReferences = populateReferences;}
+
+  public String[] getPopulateReferences() {return this.populateReferences;}
+
   public ConfigValidator[] getValidatorsFor(String field)
   {
     if (this.getValidators() == null)
@@ -45,6 +51,13 @@ public class ConfigEntity
     if (this.getIndexes() == null)
       return new ConfigIndex[0];
     return Arrays.stream(this.getIndexes()).filter(i -> Arrays.asList(i.getAttr()).contains(field)).toArray(ConfigIndex[]::new);
+  }
+
+  public boolean getPopulateReferencesFor(String field)
+  {
+    if (this.getPopulateReferences() == null)
+      return false;
+    return Arrays.stream(this.getPopulateReferences()).anyMatch(i -> i.equals(field));
   }
 
   public String toString()

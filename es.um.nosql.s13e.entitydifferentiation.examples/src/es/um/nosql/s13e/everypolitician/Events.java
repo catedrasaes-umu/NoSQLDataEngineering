@@ -41,7 +41,7 @@ public class Events
   public String getName() {return this.name;}
   public void setName(String name) {this.name = name;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   private Organizations organization_id;
   public Organizations getOrganization_id() {return this.organization_id;}
   public void setOrganization_id(Organizations organization_id) {this.organization_id = organization_id;}

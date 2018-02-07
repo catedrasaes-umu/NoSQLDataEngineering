@@ -34,7 +34,7 @@ public class Badges
   public Boolean getTagBased() {return this.TagBased;}
   public void setTagBased(Boolean TagBased) {this.TagBased = TagBased;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   @NotNull(message = "UserId can't be null")
   private Users UserId;
   public Users getUserId() {return this.UserId;}

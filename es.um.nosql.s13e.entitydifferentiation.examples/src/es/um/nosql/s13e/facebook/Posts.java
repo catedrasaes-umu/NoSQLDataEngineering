@@ -37,7 +37,7 @@ public class Posts
   public String getMessage() {return this.message;}
   public void setMessage(String message) {this.message = message;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   @NotNull(message = "page_id can't be null")
   private Pages page_id;
   public Pages getPage_id() {return this.page_id;}

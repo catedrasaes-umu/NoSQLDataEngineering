@@ -22,13 +22,13 @@ public class Postlinks
   public Integer getLinkTypeId() {return this.LinkTypeId;}
   public void setLinkTypeId(Integer LinkTypeId) {this.LinkTypeId = LinkTypeId;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   @NotNull(message = "PostId can't be null")
   private Posts PostId;
   public Posts getPostId() {return this.PostId;}
   public void setPostId(Posts PostId) {this.PostId = PostId;}
   
-  @Reference(idOnly = true)
+  @Reference(idOnly = true, lazy = true)
   @NotNull(message = "RelatedPostId can't be null")
   private Posts RelatedPostId;
   public Posts getRelatedPostId() {return this.RelatedPostId;}
