@@ -560,9 +560,6 @@
           <elements
               xsi:type="NoSQLSchema:PrimitiveType"
               name="String"/>
-          <elements
-              xsi:type="NoSQLSchema:PrimitiveType"
-              name="String"/>
         </type>
       </properties>
       <properties

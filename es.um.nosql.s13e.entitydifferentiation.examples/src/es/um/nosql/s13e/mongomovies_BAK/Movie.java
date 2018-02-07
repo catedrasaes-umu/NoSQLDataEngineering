@@ -1,19 +1,23 @@
-package es.um.nosql.s13e.mongomovies;
+package es.um.nosql.s13e.mongomovies_BAK;
 
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
-import es.um.nosql.s13e.mongomovies.commons.Commons;
+
+import es.um.nosql.s13e.mongomovies_BAK.Criticism;
+import es.um.nosql.s13e.mongomovies_BAK.Prize;
+import es.um.nosql.s13e.mongomovies_BAK.Rating;
+import es.um.nosql.s13e.mongomovies_BAK.commons.Commons;
+
 import org.mongodb.morphia.annotations.PreLoad;
 import com.mongodb.DBObject;
 import com.mongodb.BasicDBList;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
-import javax.validation.constraints.NotNull;
 
-import es.um.nosql.s13e.mongomovies.Rating;
-import es.um.nosql.s13e.mongomovies.Prize;
-import es.um.nosql.s13e.mongomovies.Criticism;
+import java.util.List;
+
+import javax.validation.constraints.NotNull;
 
 @Entity(value = "movie", noClassnameStored = true)
 public class Movie
@@ -25,9 +29,9 @@ public class Movie
   public void set_id(String _id) {this._id = _id;}
   
   @Embedded
-  private Criticism[] criticisms;
-  public Criticism[] getCriticisms() {return this.criticisms;}
-  public void setCriticisms(Criticism[] criticisms) {this.criticisms = criticisms;}
+  private List<Criticism> criticisms;
+  public List<Criticism> getCriticisms() {return this.criticisms;}
+  public void setCriticisms(List<Criticism> criticisms) {this.criticisms = criticisms;}
   
   @Reference(idOnly = true, lazy = true)
   @NotNull(message = "director_id can't be null")
@@ -41,14 +45,14 @@ public class Movie
   public void setGenre(String genre) {this.genre = genre;}
   
   @Property
-  private String[] genres;
-  public String[] getGenres() {return this.genres;}
-  public void setGenres(String[] genres) {this.genres = genres;}
+  private List<String> genres;
+  public List<String> getGenres() {return this.genres;}
+  public void setGenres(List<String> genres) {this.genres = genres;}
   
   @Embedded
-  private Prize[] prizes;
-  public Prize[] getPrizes() {return this.prizes;}
-  public void setPrizes(Prize[] prizes) {this.prizes = prizes;}
+  private List<Prize> prizes;
+  public List<Prize> getPrizes() {return this.prizes;}
+  public void setPrizes(List<Prize> prizes) {this.prizes = prizes;}
   
   @Embedded
   private Rating rating;
@@ -67,9 +71,9 @@ public class Movie
   public void setTitle(String title) {this.title = title;}
   
   @Property
-  private String[] writers;
-  public String[] getWriters() {return this.writers;}
-  public void setWriters(String[] writers) {this.writers = writers;}
+  private List<String> writers;
+  public List<String> getWriters() {return this.writers;}
+  public void setWriters(List<String> writers) {this.writers = writers;}
   
   @Property
   @NotNull(message = "year can't be null")

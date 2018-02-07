@@ -1,4 +1,7 @@
-package es.um.nosql.s13e.mongomovies.commons;
+package es.um.nosql.s13e.mongomovies_BAK.commons;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.mapping.MappingException;
@@ -25,12 +28,13 @@ public class Commons
     return GET_MORPHIA().fromDBObject(null, className, (DBObject)obj);
   }
 
-  public static Object[] CAST_ARRAY(Class<?> className, Object[] obj)
+  public static Object CAST_LIST(Class<?> className, List<Object> obj)
   {
-    Object[] result = new Object[obj.length];
-    for (int i = 0; i < obj.length; i++)
-      result[i] = CAST(className, obj[i]);
-  
+    List<Object> result = new ArrayList<Object>(obj.size());
+
+    for (Object o : obj)
+      result.add(CAST(className, o));
+
     return result;
   }
 
@@ -55,5 +59,17 @@ public class Commons
       result = IS_CASTABLE(className, obj);
 
     return result;
+  }
+
+  public static boolean IS_CASTABLE_LIST(Class<?> className, Object object)
+  {
+    if (!(object instanceof List))
+      return false;
+
+    for (Object o : (List<?>)object)
+      if (!className.isInstance(o))
+        return false;
+
+    return true;
   }
 }

@@ -1,14 +1,19 @@
-package es.um.nosql.s13e.mongomovies;
+package es.um.nosql.s13e.mongomovies_BAK;
 
-import es.um.nosql.s13e.mongomovies.commons.Commons;
+import es.um.nosql.s13e.mongomovies_BAK.Media;
+import es.um.nosql.s13e.mongomovies_BAK.commons.Commons;
+
 import org.mongodb.morphia.annotations.PreLoad;
+import org.mongodb.morphia.annotations.PrePersist;
+
 import com.mongodb.DBObject;
 import com.mongodb.BasicDBList;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
-import javax.validation.constraints.NotNull;
 
-import es.um.nosql.s13e.mongomovies.Media;
+import java.util.List;
+
+import javax.validation.constraints.NotNull;
 
 @Embedded
 public class Criticism
@@ -25,34 +30,23 @@ public class Criticism
   public String getJournalist() {return this.journalist;}
   public void setJournalist(String journalist) {this.journalist = journalist;}
   
-  // @Union_Media[]_String
-  private Media[] media_1;
-  private String media_2;
-
+  // @Union_MediaList_String
+  @Embedded
+  private Object media;
+  public Object getMedia() {return this.media;}
   public void setMedia(Object media)
   {
-    if (media instanceof Media[])
-    {
-      media_1 = (Media[])media;
-      media_2 = null;
-    }
-    if (media instanceof String)
-    {
-      media_2 = (String)media;
-      media_1 = null;
-    }
-
-    throw new ClassCastException("media must be of type Media[] or String");
+    if (Commons.IS_CASTABLE_LIST(Media.class, media) || media instanceof String)
+      this.media = media;
+    else
+      throw new ClassCastException("media must be of type Media[] or String");
   }
 
-  public Object getMedia()
+  @PrePersist
+  private void prePersistUnion_Media_String()
   {
-    if (media_1 != null)
-      return media_1;
-    if (media_2 != null)
-      return media_2;
-
-    return null;
+    if (this.media != null && Commons.IS_CASTABLE_LIST(Media.class, media))
+      this.media = ((List<?>)media).toArray(new Media[0]);
   }
 
   @PreLoad
@@ -64,10 +58,10 @@ public class Criticism
     Object fieldObj = dbObj.get("media");
   
     if (fieldObj instanceof BasicDBList && Commons.IS_CASTABLE_ARRAY(Media.class, (BasicDBList)fieldObj))
-      this.media_1 = (Media[])Commons.CAST_ARRAY(Media.class, ((BasicDBList)fieldObj).toArray());
+      this.media = Commons.CAST_LIST(Media.class, ((BasicDBList)fieldObj));
     else 
     if (fieldObj instanceof String)
-      this.media_2 = (String)fieldObj;
+      this.media = (String)fieldObj;
     else
       throw new ClassCastException("media must be of type Media[] or String");
   

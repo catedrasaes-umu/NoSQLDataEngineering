@@ -4,7 +4,7 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema"
-    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../../es.um.nosql.s13e/model/nosqlschema.ecore"
+    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../es.um.nosql.s13e/model/nosqlschema.ecore"
     name="mongomovies">
   <entities
       name="Movie">
@@ -563,9 +563,6 @@
           name="names">
         <type
             xsi:type="NoSQLSchema:Tuple">
-          <elements
-              xsi:type="NoSQLSchema:PrimitiveType"
-              name="String"/>
           <elements
               xsi:type="NoSQLSchema:PrimitiveType"
               name="String"/>
