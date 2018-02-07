@@ -11,8 +11,8 @@ import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
 import javax.validation.constraints.NotNull;
 
-import es.um.nosql.s13e.mongomovies.Rating;
 import es.um.nosql.s13e.mongomovies.Prize;
+import es.um.nosql.s13e.mongomovies.Rating;
 import es.um.nosql.s13e.mongomovies.Criticism;
 
 @Entity(value = "movie", noClassnameStored = true)

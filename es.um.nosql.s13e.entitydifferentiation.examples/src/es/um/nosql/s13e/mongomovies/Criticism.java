@@ -26,35 +26,17 @@ public class Criticism
   public void setJournalist(String journalist) {this.journalist = journalist;}
   
   // @Union_Media[]_String
-  private Media[] media_1;
-  private String media_2;
-
+  @Embedded
+  private Object media;
+  public Object getMedia() {return this.media;}
   public void setMedia(Object media)
   {
-    if (media instanceof Media[])
-    {
-      media_1 = (Media[])media;
-      media_2 = null;
-    }
-    if (media instanceof String)
-    {
-      media_2 = (String)media;
-      media_1 = null;
-    }
-
-    throw new ClassCastException("media must be of type Media[] or String");
+    if (media instanceof Media[] || media instanceof String)
+      this.media = media;
+    else
+      throw new ClassCastException("media must be of type Media[] or String");
   }
-
-  public Object getMedia()
-  {
-    if (media_1 != null)
-      return media_1;
-    if (media_2 != null)
-      return media_2;
-
-    return null;
-  }
-
+  
   @PreLoad
   private void preLoadUnion_Media_String(DBObject dbObj)
   {
@@ -64,10 +46,10 @@ public class Criticism
     Object fieldObj = dbObj.get("media");
   
     if (fieldObj instanceof BasicDBList && Commons.IS_CASTABLE_ARRAY(Media.class, (BasicDBList)fieldObj))
-      this.media_1 = (Media[])Commons.CAST_ARRAY(Media.class, ((BasicDBList)fieldObj).toArray());
+      this.media = Commons.CAST_ARRAY(Media.class, ((BasicDBList)fieldObj).toArray());
     else 
     if (fieldObj instanceof String)
-      this.media_2 = (String)fieldObj;
+      this.media = (String)fieldObj;
     else
       throw new ClassCastException("media must be of type Media[] or String");
   

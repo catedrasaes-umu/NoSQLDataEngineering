@@ -23,27 +23,27 @@ public class Commons
     return MORPHIA_INSTANCE;
   }
 
-  public static Object CAST(Class<?> className, Object obj)
+  public static <T extends Object> T CAST(Class<T> className, Object obj)
   {
     return GET_MORPHIA().fromDBObject(null, className, (DBObject)obj);
   }
 
-  public static Object CAST_LIST(Class<?> className, List<Object> obj)
+  public static <T extends Object> List<T> CAST_LIST(Class<T> className, List<T> obj)
   {
-    List<Object> result = new ArrayList<Object>(obj.size());
+    List<T> result = new ArrayList<T>(obj.size());
 
-    for (Object o : obj)
+    for (T o : obj)
       result.add(CAST(className, o));
 
     return result;
   }
 
-  public static boolean IS_CASTABLE(Class<?> className, Object obj)
+  public static <T extends Object> boolean IS_CASTABLE(Class<T> className, Object obj)
   {
     try
     {
       CAST(className, obj);
-    } catch(MappingException e)
+    } catch (Exception e)
     {
       return false;
     }
@@ -61,15 +61,15 @@ public class Commons
     return result;
   }
 
-  public static boolean IS_CASTABLE_LIST(Class<?> className, Object object)
+  public static boolean IS_CASTABLE_LIST(Class<?> className, BasicDBList fieldObj)
   {
-    if (!(object instanceof List))
-      return false;
+    boolean result = true;
 
-    for (Object o : (List<?>)object)
-      if (!className.isInstance(o))
-        return false;
+    for (Object obj : fieldObj)
+    {
+      result = IS_CASTABLE(className, obj);
+    }
 
-    return true;
+    return result;
   }
 }

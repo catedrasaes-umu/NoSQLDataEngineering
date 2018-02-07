@@ -4,9 +4,6 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
-
-import java.util.List;
-
 import javax.validation.constraints.NotNull;
 
 
@@ -20,15 +17,15 @@ public class Director
   public void set_id(String _id) {this._id = _id;}
   
   @Reference(idOnly = true, lazy = true)
-  private List<Movie> actor_movies;
-  public List<Movie> getActor_movies() {return this.actor_movies;}
-  public void setActor_movies(List<Movie> actor_movies) {this.actor_movies = actor_movies;}
+  private Movie[] actor_movies;
+  public Movie[] getActor_movies() {return this.actor_movies;}
+  public void setActor_movies(Movie[] actor_movies) {this.actor_movies = actor_movies;}
   
   @Reference(idOnly = true, lazy = true)
   @NotNull(message = "directed_movies can't be null")
-  private List<Movie> directed_movies;
-  public List<Movie> getDirected_movies() {return this.directed_movies;}
-  public void setDirected_movies(List<Movie> directed_movies) {this.directed_movies = directed_movies;}
+  private Movie[] directed_movies;
+  public Movie[] getDirected_movies() {return this.directed_movies;}
+  public void setDirected_movies(Movie[] directed_movies) {this.directed_movies = directed_movies;}
   
   @Property
   @NotNull(message = "name can't be null")

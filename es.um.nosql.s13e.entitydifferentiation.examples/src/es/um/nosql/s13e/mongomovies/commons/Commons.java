@@ -25,7 +25,7 @@ public class Commons
     return GET_MORPHIA().fromDBObject(null, className, (DBObject)obj);
   }
 
-  public static Object[] CAST_ARRAY(Class<?> className, Object[] obj)
+  public static Object CAST_ARRAY(Class<?> className, Object[] obj)
   {
     Object[] result = new Object[obj.length];
     for (int i = 0; i < obj.length; i++)

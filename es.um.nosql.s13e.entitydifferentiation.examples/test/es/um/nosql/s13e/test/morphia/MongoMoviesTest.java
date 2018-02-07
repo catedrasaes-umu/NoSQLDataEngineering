@@ -91,7 +91,6 @@ public class MongoMoviesTest
   }
 
   @Test
-  @Ignore
   public void testAddErrorAndCheck()
   {
     String newDbName = dbName + "_test_2";
