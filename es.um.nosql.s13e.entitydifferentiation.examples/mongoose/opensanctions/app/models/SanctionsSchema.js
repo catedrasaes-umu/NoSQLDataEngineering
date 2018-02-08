@@ -1,17 +1,16 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var IdentifierSchema = require('./IdentifierSchema.js');
-var AddressSchema = require('./AddressSchema.js');
-var AliasSchema = require('./AliasSchema.js');
 var NationalitySchema = require('./NationalitySchema.js');
+var IdentifierSchema = require('./IdentifierSchema.js');
 var Birth_placeSchema = require('./Birth_placeSchema.js');
 var Birth_dateSchema = require('./Birth_dateSchema.js');
+var AliasSchema = require('./AliasSchema.js');
+var AddressSchema = require('./AddressSchema.js');
 var UnionType = require('./util/UnionType.js');
 
 var SanctionsSchema = new mongoose.Schema({
   _id: {type: String, required: true},
-  _type: {type: , required: true},
   addresses: {type: [AddressSchema.schema], default: undefined},
   aliases: {type: [AliasSchema.schema], default: undefined},
   birth_dates: {type: [Birth_dateSchema.schema], default: undefined},

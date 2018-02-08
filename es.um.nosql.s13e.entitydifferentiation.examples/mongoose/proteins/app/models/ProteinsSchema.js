@@ -19,7 +19,6 @@ var ProteinsSchema = new mongoose.Schema({
   UniProt_Id: String,
   Variant_in_PDB: {type: String, required: true},
   _id: {type: mongoose.Schema.Types.ObjectId, required: true},
-  _type: {type: , required: true},
   ddG: {type: String, required: true}
 }, { versionKey: false, collection: 'proteins'});
 

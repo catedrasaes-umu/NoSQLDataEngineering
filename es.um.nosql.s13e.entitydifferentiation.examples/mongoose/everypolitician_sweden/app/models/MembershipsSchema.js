@@ -5,7 +5,6 @@ var SourceSchema = require('./SourceSchema.js');
 
 var MembershipsSchema = new mongoose.Schema({
   _id: {type: mongoose.Schema.Types.ObjectId, required: true},
-  _type: {type: , required: true},
   area_id: {type: String, ref: "Areas"},
   end_date: String,
   legislative_period_id: {type: String, required: true},

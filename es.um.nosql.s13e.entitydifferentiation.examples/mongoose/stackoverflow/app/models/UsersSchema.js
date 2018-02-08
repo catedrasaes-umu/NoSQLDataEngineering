@@ -16,8 +16,7 @@ var UsersSchema = new mongoose.Schema({
   UpVotes: {type: Number, required: true},
   Views: {type: String, required: true},
   WebsiteUrl: String,
-  _id: {type: String, required: true},
-  _type: {type: , required: true}
+  _id: {type: String, required: true}
 }, { versionKey: false, collection: 'users'});
 
 

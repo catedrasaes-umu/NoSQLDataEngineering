@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 
 var Urban_wordsSchema = new mongoose.Schema({
   _id: {type: mongoose.Schema.Types.ObjectId, required: true},
-  _type: {type: , required: true},
   author: String,
   defid: Number,
   definition: String,

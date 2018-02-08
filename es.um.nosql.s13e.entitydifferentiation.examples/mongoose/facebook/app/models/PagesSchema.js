@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 
 var PagesSchema = new mongoose.Schema({
   _id: {type: String, required: true},
-  _type: {type: , required: true},
   page_name: {type: String, required: true}
 }, { versionKey: false, collection: 'pages'});
 

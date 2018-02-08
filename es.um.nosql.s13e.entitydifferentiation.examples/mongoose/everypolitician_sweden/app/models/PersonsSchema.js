@@ -4,13 +4,12 @@ var mongoose = require('mongoose');
 var IdentifierSchema = require('./IdentifierSchema.js');
 var Other_nameSchema = require('./Other_nameSchema.js');
 var ImageSchema = require('./ImageSchema.js');
-var LinkSchema = require('./LinkSchema.js');
 var Contact_detailSchema = require('./Contact_detailSchema.js');
+var LinkSchema = require('./LinkSchema.js');
 var UnionType = require('./util/UnionType.js');
 
 var PersonsSchema = new mongoose.Schema({
   _id: {type: String, required: true},
-  _type: {type: , required: true},
   birth_date: {type: String, required: true},
   contact_details: {type: [Contact_detailSchema.schema], default: undefined},
   death_date: String,

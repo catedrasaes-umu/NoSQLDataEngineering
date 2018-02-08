@@ -8,8 +8,7 @@ var BadgesSchema = new mongoose.Schema({
   Name: {type: String, required: true},
   TagBased: {type: Boolean, required: true},
   UserId: {type: Number, ref: "Users", required: true},
-  _id: {type: String, required: true},
-  _type: {type: , required: true}
+  _id: {type: String, required: true}
 }, { versionKey: false, collection: 'badges'});
 
 

@@ -34,8 +34,7 @@ class DiffMongooseBaseGen
     outputDir.toPath.resolve("app").resolve("models").resolve("util").toFile.mkdirs;
     writeToFile("package.json", generatePackageFile());
     writeToFile("app/models/util/UnionType.js", generateUnionTypeFile());
-    writeToFile("checkDbConsistency.js", generateCheckDbFile(diff));
-    writeToFile("addDbObjects.js", generateAddDbFile(diff));
+    writeToFile("appBaseDb.js", generateCheckDbFile(diff));
   }
 
   def generatePackageFile()
@@ -188,10 +187,7 @@ class DiffMongooseBaseGen
   '''
   var mongoose = require('mongoose');
   mongoose.Promise = require('bluebird');
-  mongoose.connect('mongodb://127.0.0.1/«modelName»',
-  {
-    useMongoClient: true
-  }, function(err)
+  mongoose.connect('mongodb://127.0.0.1/«modelName»', function(err)
   {
     if (err)
       console.log(err);
@@ -206,65 +202,31 @@ class DiffMongooseBaseGen
     var «e.name» = require('./app/models/«e.name»Schema');
   «ENDFOR»
 
-  db.once('open', function()
-  {
-    «FOR e : diff.entityDiffSpecs.filter[ed | ed.entity.entityversions.exists[ev | ev.isRoot]].map[ed | ed.entity]»
-      «e.name».find(function(err, result)
+  «FOR e : diff.entityDiffSpecs.filter[ed | ed.entity.entityversions.exists[ev | ev.isRoot]].map[ed | ed.entity]»
+    «e.name».find(function(err, result)
+    {
+      if (err)
+        return console.error(err);
+
+      console.log("Checking consistency of the \"«e.name»\" table");
+      var errorNumber = 0;
+
+      result.forEach(function(«e.name.toLowerCase»)
       {
-        if (err)
-          return console.error(err);
-
-        console.log("Checking consistency of the \"«e.name»\" table");
-        var errorNumber = 0;
-
-        result.forEach(function(«e.name.toLowerCase»)
+        var validation = «e.name.toLowerCase».validateSync();
+        if (typeof validation !== "undefined")
         {
-          var validation = «e.name.toLowerCase».validateSync();
-          if (typeof validation !== "undefined")
-          {
-            console.log(validation);
-            errorNumber++;
-          }
-        });
-
-        if (errorNumber)
-          console.log("\"«e.name»\" table: " + errorNumber + " errors found");
-        else
-          console.log("\"«e.name»\" table: No errors found!");
+          console.log(validation);
+          errorNumber++;
+        }
       });
 
-    «ENDFOR»
-  });
-  '''
+      if (errorNumber)
+        console.log("\"«e.name»\" table: " + errorNumber + " errors found");
+      else
+        console.log("\"«e.name»\" table: No errors found!");
+    });
 
-  def generateAddDbFile(EntityDifferentiation diff)
-  '''
-  var mongoose = require('mongoose');
-  mongoose.Promise = require('bluebird');
-  mongoose.connect('mongodb://127.0.0.1/«modelName»',
-  {
-    useMongoClient: true
-  }, function(err)
-  {
-    if (err)
-      console.log(err);
-    else
-      console.log('Connected to 127.0.0.1/«modelName»');
-  });
-  mongoose.set('debug', true);
-  var db = mongoose.connection;
-  db.on('error', console.error.bind(console, 'connection error: '));
-
-  «FOR e : diff.entityDiffSpecs.map[ed | ed.entity]»
-    var «e.name» = require('./app/models/«e.name»Schema');
-  «ENDFOR»
-
-  var err;
-  «FOR e : diff.entityDiffSpecs.map[ed | ed.entity] SEPARATOR '\n'»
-    var «e.name.toLowerCase» = new «e.name»({});
-    err = «e.name.toLowerCase».validateSync();
-    if (err !== undefined)
-      console.log(err);
   «ENDFOR»
   '''
 

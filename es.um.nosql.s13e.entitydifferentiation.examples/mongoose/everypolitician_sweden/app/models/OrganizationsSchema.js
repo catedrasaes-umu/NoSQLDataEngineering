@@ -8,7 +8,6 @@ var UnionType = require('./util/UnionType.js');
 
 var OrganizationsSchema = new mongoose.Schema({
   _id: {type: String, required: true},
-  _type: {type: , required: true},
   classification: {type: String, required: true},
   identifiers: {type: [IdentifierSchema.schema], default: undefined},
   image: String,

@@ -24,8 +24,7 @@ var PostsSchema = new mongoose.Schema({
   Tags: {type: String, ref: "Tags"},
   Title: String,
   ViewCount: String,
-  _id: {type: String, required: true},
-  _type: {type: , required: true}
+  _id: {type: String, required: true}
 }, { versionKey: false, collection: 'posts'});
 
 

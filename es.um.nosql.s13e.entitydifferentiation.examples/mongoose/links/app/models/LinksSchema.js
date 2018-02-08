@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 
 var LinksSchema = new mongoose.Schema({
   _id: {type: mongoose.Schema.Types.ObjectId, required: true},
-  _type: {type: , required: true},
   tags: {type: [String], required: true},
   timestamp: {type: Number, required: true},
   url: {type: String, required: true}

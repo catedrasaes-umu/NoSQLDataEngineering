@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 
 var CommentsSchema = new mongoose.Schema({
   _id: {type: mongoose.Schema.Types.ObjectId, required: true},
-  _type: {type: , required: true},
   created_time: String,
   from_id: String,
   from_name: String,

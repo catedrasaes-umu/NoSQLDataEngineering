@@ -6,7 +6,6 @@ var Harvard_coursesSchema = new mongoose.Schema({
   LoE_DI: String,
   YoB: String,
   _id: {type: mongoose.Schema.Types.ObjectId, required: true},
-  _type: {type: , required: true},
   certified: {type: Number, required: true},
   course_id: {type: String, required: true},
   explored: {type: Number, required: true},

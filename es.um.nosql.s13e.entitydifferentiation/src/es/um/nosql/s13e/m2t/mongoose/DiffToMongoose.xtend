@@ -120,7 +120,9 @@ public class DiffToMongoose
    */
   def genSpecs(Entity e, EntityDiffSpec spec)
   '''
-    «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false]).sortBy[p | p.key.property.name] SEPARATOR ','»
+    «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false])
+      .reject[p | p.key.property.name.startsWith("_") && !p.key.property.name.equals("_id")]
+      .sortBy[p | p.key.property.name] SEPARATOR ','»
       «s.key.property.name»: «toJSONString(mongooseOptionsForPropertySpec(e,s.key, s.value))»
     «ENDFOR»
   '''

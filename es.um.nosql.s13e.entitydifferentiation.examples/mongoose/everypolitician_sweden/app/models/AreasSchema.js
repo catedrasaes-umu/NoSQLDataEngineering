@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 
 var AreasSchema = new mongoose.Schema({
   _id: {type: String, required: true},
-  _type: {type: , required: true},
   name: {type: String, required: true},
   type: {type: String, required: true}
 }, { versionKey: false, collection: 'areas'});

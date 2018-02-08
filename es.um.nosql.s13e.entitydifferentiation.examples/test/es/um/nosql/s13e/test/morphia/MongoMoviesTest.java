@@ -33,9 +33,9 @@ import es.um.nosql.s13e.mongomovies.Prize;
 
 public class MongoMoviesTest
 {
-  private final static int N_MOVIES = 5000;
+  private final static int N_MOVIE = 5000;
   private final static int N_MOVIETHEATER = 2000;
-  private final static int N_DIRECTORS = 2000;
+  private final static int N_DIRECTOR = 2000;
 
   private Morphia morphia;
   private MongoDbClient client;
@@ -128,7 +128,7 @@ public class MongoMoviesTest
     testCollection(qMovietheaters.asList().toArray(new Movietheater[0]), Movietheater.class);
 
     Query<Director> qDirectors = datastore.createQuery(Director.class);
-    assertEquals(N_DIRECTORS, qDirectors.count());
+    assertEquals(N_DIRECTOR, qDirectors.count());
     testCollection(qDirectors.asList().toArray(new Director[0]), Director.class);
 
     for (Director director : qDirectors)
@@ -140,7 +140,7 @@ public class MongoMoviesTest
     }
 
     Query<Movie> qMovies = datastore.createQuery(Movie.class);
-    assertEquals(N_MOVIES, qMovies.count());
+    assertEquals(N_MOVIE, qMovies.count());
     testCollection(qMovies.asList().toArray(new Movie[0]), Movie.class);
 
     for (Movie movie : qMovies)

@@ -9,8 +9,7 @@ var CommentsSchema = new mongoose.Schema({
   Text: {type: String, required: true},
   UserDisplayName: String,
   UserId: {type: Number, ref: "Users"},
-  _id: {type: String, required: true},
-  _type: {type: , required: true}
+  _id: {type: String, required: true}
 }, { versionKey: false, collection: 'comments'});
 
 

@@ -5,7 +5,7 @@ var mongoose = require('mongoose');
 var PrizeSchema = new mongoose.Schema({
   event: {type: String, required: true},
   name: String,
-  names: {type: [Mixed], default: undefined},
+  names: {type: [String], default: undefined},
   year: {type: Number, required: true}
 }, { versionKey: false, _id : false});
 

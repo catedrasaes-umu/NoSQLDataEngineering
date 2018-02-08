@@ -5,7 +5,6 @@ var IdentifierSchema = require('./IdentifierSchema.js');
 
 var EventsSchema = new mongoose.Schema({
   _id: {type: String, required: true},
-  _type: {type: , required: true},
   classification: {type: String, required: true},
   end_date: {type: String, required: true},
   identifiers: {type: [IdentifierSchema.schema], default: undefined},

@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 
 var WebclicksSchema = new mongoose.Schema({
   _id: {type: mongoose.Schema.Types.ObjectId, required: true},
-  _type: {type: , required: true},
   count: {type: Number, required: true},
   from: String,
   timestamp: {type: Number, required: true},

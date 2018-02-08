@@ -7,8 +7,7 @@ var PostlinksSchema = new mongoose.Schema({
   LinkTypeId: {type: Number, required: true},
   PostId: {type: Number, ref: "Posts", required: true},
   RelatedPostId: {type: Number, ref: "Posts", required: true},
-  _id: {type: String, required: true},
-  _type: {type: , required: true}
+  _id: {type: String, required: true}
 }, { versionKey: false, collection: 'postlinks'});
 
 

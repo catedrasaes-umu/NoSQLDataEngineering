@@ -9,8 +9,7 @@ var VotesSchema = new mongoose.Schema({
   PostId: {type: Number, ref: "Posts", required: true},
   UserId: {type: Number, ref: "Users"},
   VoteTypeId: {type: Number, ref: "Votes"},
-  _id: {type: String, required: true},
-  _type: {type: , required: true}
+  _id: {type: String, required: true}
 }, { versionKey: false, collection: 'votes'});
 
 

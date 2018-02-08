@@ -4,7 +4,6 @@ var mongoose = require('mongoose');
 
 var PostsSchema = new mongoose.Schema({
   _id: {type: String, required: true},
-  _type: {type: , required: true},
   created_time: {type: String, required: true},
   description: String,
   link: String,
