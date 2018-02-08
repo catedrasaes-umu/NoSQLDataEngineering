@@ -35,7 +35,7 @@ public class StackoverflowTest
   private final static int N_BADGES = 2500002;
   private final static int N_COMMENTS = 2500002;
   private final static int N_POSTLINKS = 2500002;
-  private final static int N_TAGS = 50000;
+  private final static int N_TAGS = 48373;
   private final static int N_POSTS = 2500002;
   private final static int N_USERS = 2500002;
   private final static int N_VOTES = 2500002;
@@ -125,7 +125,7 @@ public class StackoverflowTest
 
   private void checkStackOverflowDb(Datastore theDatastore)
   {
-    Query<Badges> qBadges = datastore.createQuery(Badges.class).batchSize(50000);
+    Query<Badges> qBadges = datastore.createQuery(Badges.class);
     assertEquals(N_BADGES, qBadges.count());
     testCollection(qBadges.asList().toArray(new Badges[0]), Badges.class);
 

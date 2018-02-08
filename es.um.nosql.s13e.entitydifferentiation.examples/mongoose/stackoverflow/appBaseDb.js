@@ -19,171 +19,223 @@ var Users = require('./app/models/UsersSchema');
 var Postlinks = require('./app/models/PostlinksSchema');
 var Tags = require('./app/models/TagsSchema');
 
-Badges.find(function(err, result)
-{
-  if (err)
-    return console.error(err);
+var N_BADGES = 25000;
+var N_COMMENTS = 25000;
+var N_POSTLINKS = 25000;
+var N_TAGS = 48373;
+var N_POSTS = 25000;
+var N_USERS = 25000;
+var N_VOTES = 25000;
 
-  console.log("Checking consistency of the \"Badges\" table");
+testCheckConsistency();
+//testDuplicateDb();
+testAddErrorAndCheck();
+
+function testCheckConsistency()
+{
+  Badges.find(function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    if (result.length !== N_BADGES)
+      console.error("Error: There should be " + N_BADGES + " Badges instances, but there are " + result.length + ".");
+
+    testCollection(result, "Badges");
+  }).limit(N_BADGES);
+
+  Comments.find(function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    if (result.length !== N_COMMENTS)
+      console.error("Error: There should be " + N_COMMENTS + " Comments instances, but there are " + result.length + ".");
+
+    testCollection(result, "Comments");
+  }).limit(N_COMMENTS);
+
+  Postlinks.find(function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    if (result.length !== N_POSTLINKS)
+      console.error("Error: There should be " + N_POSTLINKS + " Postlinks instances, but there are " + result.length + ".");
+
+    testCollection(result, "Postlinks");
+  }).limit(N_POSTLINKS);
+
+  Posts.find(function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    if (result.length !== N_POSTS)
+      console.error("Error: There should be " + N_POSTS + " Posts instances, but there are " + result.length + ".");
+
+    testCollection(result, "Posts");
+  }).limit(N_POSTS);
+
+  Users.find(function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    if (result.length !== N_USERS)
+      console.error("Error: There should be " + N_USERS + " Users instances, but there are " + result.length + ".");
+
+    testCollection(result, "Users");
+  }).limit(N_USERS);
+
+  Tags.find(function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    if (result.length !== N_TAGS)
+      console.error("Error: There should be " + N_TAGS + " Tags instances, but there are " + result.length + ".");
+
+    testCollection(result, "Tags");
+  }).limit(N_TAGS);
+
+  Votes.find(function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    if (result.length !== N_VOTES)
+      console.error("Error: There should be " + N_VOTES + " Votes instances, but there are " + result.length + ".");
+
+    testCollection(result, "Votes");
+  }).limit(N_VOTES);
+}
+
+function testDuplicateDb()
+{
+  Badges.find(function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    result.forEach(function(item)
+    {
+      var newB = new Badges(); newB._id = item._id + "_TEST"; newB.Class = item.Class; newB.Date = item.Date; newB.Name = item.Name;
+      newB.TagBased = item.TagBased; newB.UserId = item.UserId;
+      newS.save();
+    });
+  }).limit(N_BADGES);
+
+  Comments.find(function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    result.forEach(function(item)
+    {
+      var newC = new Comments(); newC._id = item._id + "_TEST"; newC.CreationDate = item.CreationDate; newC.PostId = item.PostId; newC.Score = item.Score;
+      newC.Text = item.Text; newC.UserDisplayName = item.UserDisplayName; newC.UserId = item.UserId;
+      newS.save();
+    });
+  }).limit(N_COMMENTS);
+
+  Postlinks.find(function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    result.forEach(function(item)
+    {
+      var newPl = new Postlinks(); newPl._id = item._id + "_TEST"; newPl.CreationDate = item.CreationDate; newPl.LinkTypeId = item.LinkTypeId; newPl.PostId = item.PostId;
+      newPl.RelatedPostId = item.RelatedPostId;
+      newPl.save();
+    });
+  }).limit(N_POSTLINKS);
+
+  Posts.find(function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    result.forEach(function(item)
+    {
+      var newP = new Posts(); newP._id = item._id + "_TEST"; newP.AcceptedAnswerId = item.AcceptedAnswerId; newP.AnswerCount = item.AnswerCount; newP.Body = item.Body;
+      newP.ClosedDate = item.ClosedDate; newP.CommentCount = item.CommentCount; newP.CommunityOwnedDate = item.CommunityOwnedDate; newP.CreationDate = item.CreationDate;
+      newP.FavoriteCount = item.FavoriteCount; newP.LastActivityDate = item.LastActivityDate; newP.LastEditDate = item.LastEditDate; newP.LastEditorDisplayName = item.LastEditorDisplayName;
+      newP.LastEditorUserId = item.LastEditorUserId; newP.OwnerDisplayName = item.OwnerDisplayName; newP.OwnerUserId = item.OwnerUserId; newP.ParentId = item.ParentId;
+      newP.PostTypeId = item.PostTypeId; newP.Score = item.Score; newP.Tags = item.Tags; newP.Title = item.Title; newP.ViewCount = item.ViewCount;
+      newP.save();
+    });
+  }).limit(N_POSTS);
+
+  Users.find(function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    result.forEach(function(item)
+    {
+      var newU = new Users(); newU._id = item._id + "_TEST"; newU.AboutMe = item.AboutMe; newU.AccountId = item.AccountId; newU.Age = item.Age;
+      newU.CreationDate = item.CreationDate; newU.DisplayName = item.DisplayName; newU.DownVotes = item.DownVotes; newU.LastAccessDate = item.LastAccessDate;
+      newU.Location = item.Location; newU.ProfileImageUrl = item.ProfileImageUrl; newU.Reputation = item.Reputation; newU.UpVotes = item.UpVotes;
+      newU.Views = item.Views; newU.WebsiteUrl = item.WebsiteUrl;
+      newU.save();
+    });
+  }).limit(N_USERS);
+
+  Tags.find(function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    result.forEach(function(item)
+    {
+      var newT = new Tags(); newT._id = item._id + "_TEST"; newT.Count = item.Count; newT.ExcerptPostId = item.ExcerptPostId; newT.TagName = item.TagName;
+      newT.WikiPostId = item.WikiPostId;
+      newT.save();
+    });
+  }).limit(N_TAGS);
+
+  Votes.find(function(err, result)
+  {
+    if (err)
+      return console.error(err);
+
+    result.forEach(function(item)
+    {
+      var newV = new Votes(); newV._id = item._id + "_TEST"; newV.BountyAmount = item.BountyAmount; newV.CreationDate = item.CreationDate; newV.PostId = item.PostId;
+      newV.UserId = item.UserId; newV.VoteTypeId = item.VoteTypeId;
+      newV.save();
+    });
+  }).limit(N_VOTES);
+}
+
+function testAddErrorAndCheck()
+{
+  console.log("Starting TestAddErrorAndCheck...");
+  console.log("TestAddErrorAndCheck finished.");
+}
+
+function testCollection(collection, tableName)
+{
+  if (collection === null || collection.length === 0)
+    return;
+
+  console.log("Checking consistency of the \"" + tableName + "\" collection");
   var errorNumber = 0;
 
-  result.forEach(function(badges)
+  collection.forEach(function(obj)
   {
-    var validation = badges.validateSync();
+    var validation = obj.validateSync();
     if (typeof validation !== "undefined")
     {
-      console.log(validation);
+      console.error(validation);
       errorNumber++;
     }
   });
 
   if (errorNumber)
-    console.log("\"Badges\" table: " + errorNumber + " errors found");
+    console.error("-->\"" + tableName + "\" collection: " + errorNumber + " errors found");
   else
-    console.log("\"Badges\" table: No errors found!");
-});
-
-Comments.find(function(err, result)
-{
-  if (err)
-    return console.error(err);
-
-  console.log("Checking consistency of the \"Comments\" table");
-  var errorNumber = 0;
-
-  result.forEach(function(comments)
-  {
-    var validation = comments.validateSync();
-    if (typeof validation !== "undefined")
-    {
-      console.log(validation);
-      errorNumber++;
-    }
-  });
-
-  if (errorNumber)
-    console.log("\"Comments\" table: " + errorNumber + " errors found");
-  else
-    console.log("\"Comments\" table: No errors found!");
-});
-
-Posts.find(function(err, result)
-{
-  if (err)
-    return console.error(err);
-
-  console.log("Checking consistency of the \"Posts\" table");
-  var errorNumber = 0;
-
-  result.forEach(function(posts)
-  {
-    var validation = posts.validateSync();
-    if (typeof validation !== "undefined")
-    {
-      console.log(validation);
-      errorNumber++;
-    }
-  });
-
-  if (errorNumber)
-    console.log("\"Posts\" table: " + errorNumber + " errors found");
-  else
-    console.log("\"Posts\" table: No errors found!");
-});
-
-Votes.find(function(err, result)
-{
-  if (err)
-    return console.error(err);
-
-  console.log("Checking consistency of the \"Votes\" table");
-  var errorNumber = 0;
-
-  result.forEach(function(votes)
-  {
-    var validation = votes.validateSync();
-    if (typeof validation !== "undefined")
-    {
-      console.log(validation);
-      errorNumber++;
-    }
-  });
-
-  if (errorNumber)
-    console.log("\"Votes\" table: " + errorNumber + " errors found");
-  else
-    console.log("\"Votes\" table: No errors found!");
-});
-
-Users.find(function(err, result)
-{
-  if (err)
-    return console.error(err);
-
-  console.log("Checking consistency of the \"Users\" table");
-  var errorNumber = 0;
-
-  result.forEach(function(users)
-  {
-    var validation = users.validateSync();
-    if (typeof validation !== "undefined")
-    {
-      console.log(validation);
-      errorNumber++;
-    }
-  });
-
-  if (errorNumber)
-    console.log("\"Users\" table: " + errorNumber + " errors found");
-  else
-    console.log("\"Users\" table: No errors found!");
-});
-
-Postlinks.find(function(err, result)
-{
-  if (err)
-    return console.error(err);
-
-  console.log("Checking consistency of the \"Postlinks\" table");
-  var errorNumber = 0;
-
-  result.forEach(function(postlinks)
-  {
-    var validation = postlinks.validateSync();
-    if (typeof validation !== "undefined")
-    {
-      console.log(validation);
-      errorNumber++;
-    }
-  });
-
-  if (errorNumber)
-    console.log("\"Postlinks\" table: " + errorNumber + " errors found");
-  else
-    console.log("\"Postlinks\" table: No errors found!");
-});
-
-Tags.find(function(err, result)
-{
-  if (err)
-    return console.error(err);
-
-  console.log("Checking consistency of the \"Tags\" table");
-  var errorNumber = 0;
-
-  result.forEach(function(tags)
-  {
-    var validation = tags.validateSync();
-    if (typeof validation !== "undefined")
-    {
-      console.log(validation);
-      errorNumber++;
-    }
-  });
-
-  if (errorNumber)
-    console.log("\"Tags\" table: " + errorNumber + " errors found");
-  else
-    console.log("\"Tags\" table: No errors found!");
-});
-
+    console.log("-->\"" + tableName + "\" collection: No errors found!");
+}

@@ -150,6 +150,8 @@ function testDuplicateDb()
 
 function testAddErrorAndCheck()
 {
+  console.log("Starting TestAddErrorAndCheck...");
+
   var area1 = new Areas(); area1._id = (new mongoose.Types.ObjectId).toString(); area1.name = "area_name"; // Type is missing, and it is defined as required on the schema.
   var area2 = new Areas(); area2._id = (new mongoose.Types.ObjectId).toString(); area2.type = "area_type"; // Name is missing, and it is defined as required on the schema.
 
@@ -165,6 +167,8 @@ function testAddErrorAndCheck()
     console.error("Error: org1 was not correctly validated.");
   if (org2.validateSync() === undefined || Object.values(org2.validateSync().errors).length !== 1)
     console.error("Error: org2 was not correctly validated.");
+
+  console.log("TestAddErrorAndCheck finished.");
 }
 
 function testCollection(collection, tableName)

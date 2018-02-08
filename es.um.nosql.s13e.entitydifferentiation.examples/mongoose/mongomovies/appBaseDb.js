@@ -108,6 +108,8 @@ function testDuplicateDb()
 
 function testAddErrorAndCheck()
 {
+  console.log("Starting TestAddErrorAndCheck...");
+
   var mt1 = new Movietheater();
   var mt2 = new Movietheater(); mt2._id = (new mongoose.Types.ObjectId).toString(); mt2.city = "city"; mt2.country = "country"; mt2.name = "name";
 
@@ -134,6 +136,8 @@ function testAddErrorAndCheck()
     console.error("Error: criticism2 was not correctly validated.");
   if (c3.validateSync() === undefined || Object.values(c3.validateSync().errors).length !== 2)
     console.error("Error: criticism3 was not correctly validated.");
+
+  console.log("TestAddErrorAndCheck finished.");
 }
 
 function testCollection(collection, tableName)

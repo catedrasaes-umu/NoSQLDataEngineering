@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @Entity(value = "badges", noClassnameStored = true)
 public class Badges
 {
-  @Property(value = "Class")
+  @Property
   @NotNull(message = "Class can't be null")
   private Integer theClass;
   public Integer getTheClass() {return this.theClass;}
@@ -30,9 +30,9 @@ public class Badges
   
   @Property
   @NotNull(message = "TagBased can't be null")
-  private Boolean TagBased;
-  public Boolean getTagBased() {return this.TagBased;}
-  public void setTagBased(Boolean TagBased) {this.TagBased = TagBased;}
+  private String TagBased;
+  public String getTagBased() {return this.TagBased;}
+  public void setTagBased(String TagBased) {this.TagBased = TagBased;}
   
   @Reference(idOnly = true, lazy = true)
   @NotNull(message = "UserId can't be null")
