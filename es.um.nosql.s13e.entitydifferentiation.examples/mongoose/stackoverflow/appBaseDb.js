@@ -27,7 +27,7 @@ var N_POSTS = 25000;
 var N_USERS = 25000;
 var N_VOTES = 25000;
 
-testCheckConsistency();
+//testCheckConsistency();
 //testDuplicateDb();
 testAddErrorAndCheck();
 
@@ -122,7 +122,7 @@ function testDuplicateDb()
     {
       var newB = new Badges(); newB._id = item._id + "_TEST"; newB.Class = item.Class; newB.Date = item.Date; newB.Name = item.Name;
       newB.TagBased = item.TagBased; newB.UserId = item.UserId;
-      newS.save();
+      newB.save();
     });
   }).limit(N_BADGES);
 
@@ -135,7 +135,7 @@ function testDuplicateDb()
     {
       var newC = new Comments(); newC._id = item._id + "_TEST"; newC.CreationDate = item.CreationDate; newC.PostId = item.PostId; newC.Score = item.Score;
       newC.Text = item.Text; newC.UserDisplayName = item.UserDisplayName; newC.UserId = item.UserId;
-      newS.save();
+      newC.save();
     });
   }).limit(N_COMMENTS);
 
