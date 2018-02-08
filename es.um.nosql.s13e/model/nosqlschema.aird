@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:description_1="http://www.eclipse.org/sirius/diagram/description/1.1.0" xmlns:diagram="http://www.eclipse.org/sirius/diagram/1.1.0" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:style="http://www.eclipse.org/sirius/diagram/description/style/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description http://www.eclipse.org/sirius/diagram/description/style/1.1.0 http://www.eclipse.org/sirius/diagram/1.1.0#//description/style">
-  <viewpoint:DAnalysis xmi:id="_cYJUcCaYEeaCVLabc7FRZA" selectedViews="_gqLKUCaYEeaCVLabc7FRZA" version="11.1.0.201608251200">
+  <viewpoint:DAnalysis xmi:id="_cYJUcCaYEeaCVLabc7FRZA" selectedViews="_gqLKUCaYEeaCVLabc7FRZA" version="12.1.0.201708031200">
     <semanticResources>nosqlschema.ecore</semanticResources>
     <semanticResources>http://www.eclipse.org/emf/2002/Ecore</semanticResources>
     <semanticResources>nosqlschema.genmodel</semanticResources>
     <ownedViews xmi:type="viewpoint:DView" xmi:id="_gqLKUCaYEeaCVLabc7FRZA">
       <viewpoint xmi:type="description:Viewpoint" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']"/>
-      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_5qB9cAghEeeuuIyWhsLyzQ" name="NoSQLSchema class diagram" representation="_g6gsYCaYEeaCVLabc7FRZA">
+      <ownedRepresentationDescriptors xmi:type="viewpoint:DRepresentationDescriptor" xmi:id="_5qB9cAghEeeuuIyWhsLyzQ" name="NoSQLSchema class diagram" repPath="#_Y700YAy4EeiEq8DULVx4EA">
         <description xmi:type="description_1:DiagramDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']"/>
         <target xmi:type="ecore:EPackage" href="nosqlschema.ecore#/"/>
       </ownedRepresentationDescriptors>
     </ownedViews>
   </viewpoint:DAnalysis>
-  <diagram:DSemanticDiagram xmi:id="_g6gsYCaYEeaCVLabc7FRZA" name="NoSQLSchema class diagram">
+  <diagram:DSemanticDiagram xmi:id="_g6gsYCaYEeaCVLabc7FRZA" name="NoSQLSchema class diagram" uid="_Y700YAy4EeiEq8DULVx4EA">
     <ownedAnnotationEntries xmi:type="description:AnnotationEntry" xmi:id="_g7WZ4CaYEeaCVLabc7FRZA" source="GMF_DIAGRAMS">
       <data xmi:type="notation:Diagram" xmi:id="_g7WZ4SaYEeaCVLabc7FRZA" type="Sirius" element="_g6gsYCaYEeaCVLabc7FRZA" measurementUnit="Pixel">
         <children xmi:type="notation:Node" xmi:id="_RjJrYCaZEeaCVLabc7FRZA" type="2003" element="_RhdpUCaZEeaCVLabc7FRZA">
@@ -736,7 +736,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Ri5MsCaZEeaCVLabc7FRZA" sourceNode="_RhdpUCaZEeaCVLabc7FRZA" targetNode="_RhjI4CaZEeaCVLabc7FRZA">
       <target xmi:type="ecore:EClass" href="nosqlschema.ecore#//Aggregate"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="nosqlschema.ecore#//Aggregate/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="nosqlschema.ecore#//Aggregate"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Ri6a0CaZEeaCVLabc7FRZA" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_Ri6a0iaZEeaCVLabc7FRZA" showIcon="false">
@@ -748,7 +748,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Ri7B4CaZEeaCVLabc7FRZA" sourceNode="_RhjI4CaZEeaCVLabc7FRZA" targetNode="_RhyZcCaZEeaCVLabc7FRZA">
       <target xmi:type="ecore:EClass" href="nosqlschema.ecore#//Association"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="nosqlschema.ecore#//Association/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="nosqlschema.ecore#//Association"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Ri7o8CaZEeaCVLabc7FRZA" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_Ri7o8iaZEeaCVLabc7FRZA" showIcon="false">
@@ -760,7 +760,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Ri83ECaZEeaCVLabc7FRZA" sourceNode="_RhnaUCaZEeaCVLabc7FRZA" targetNode="_RhyZcCaZEeaCVLabc7FRZA">
       <target xmi:type="ecore:EClass" href="nosqlschema.ecore#//Attribute"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="nosqlschema.ecore#//Attribute/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="nosqlschema.ecore#//Attribute"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Ri9eICaZEeaCVLabc7FRZA" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_Ri9eIiaZEeaCVLabc7FRZA" showIcon="false">
@@ -772,7 +772,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Ri-FMCaZEeaCVLabc7FRZA" sourceNode="_RhxLUCaZEeaCVLabc7FRZA" targetNode="_Rh4gECaZEeaCVLabc7FRZA">
       <target xmi:type="ecore:EClass" href="nosqlschema.ecore#//PrimitiveType"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="nosqlschema.ecore#//PrimitiveType/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="nosqlschema.ecore#//PrimitiveType"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_Ri_TUCaZEeaCVLabc7FRZA" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_Ri_TUiaZEeaCVLabc7FRZA" showIcon="false">
@@ -784,7 +784,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_Ri_6YCaZEeaCVLabc7FRZA" sourceNode="_Rh0OoCaZEeaCVLabc7FRZA" targetNode="_RhjI4CaZEeaCVLabc7FRZA">
       <target xmi:type="ecore:EClass" href="nosqlschema.ecore#//Reference"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="nosqlschema.ecore#//Reference/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="nosqlschema.ecore#//Reference"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_23cLAE4zEeeE6o3bw7zSwg" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_23cLAU4zEeeE6o3bw7zSwg" showIcon="false">
@@ -796,7 +796,7 @@
     </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_RjBIgCaZEeaCVLabc7FRZA" sourceNode="_Rh3R8CaZEeaCVLabc7FRZA" targetNode="_Rh4gECaZEeaCVLabc7FRZA">
       <target xmi:type="ecore:EClass" href="nosqlschema.ecore#//Tuple"/>
-      <semanticElements xmi:type="ecore:EGenericType" href="nosqlschema.ecore#//Tuple/@eGenericSuperTypes.0"/>
+      <semanticElements xmi:type="ecore:EClass" href="nosqlschema.ecore#//Tuple"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_RjBvkCaZEeaCVLabc7FRZA" targetArrow="InputClosedArrow" routingStyle="tree">
         <description xmi:type="style:EdgeStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']/@style"/>
         <beginLabelStyle xmi:type="diagram:BeginLabelStyle" xmi:id="_RjBvkiaZEeaCVLabc7FRZA" showIcon="false">
