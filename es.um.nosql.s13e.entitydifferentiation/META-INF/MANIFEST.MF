@@ -23,3 +23,4 @@ Export-Package: es.um.nosql.s13e.decisiontree,
  es.um.nosql.s13e.entitydifferentiation,
  es.um.nosql.s13e.entitydifferentiation.impl,
  es.um.nosql.s13e.entitydifferentiation.util
+Import-Package: es.um.nosql.s13e.db.adapters.mongodb
