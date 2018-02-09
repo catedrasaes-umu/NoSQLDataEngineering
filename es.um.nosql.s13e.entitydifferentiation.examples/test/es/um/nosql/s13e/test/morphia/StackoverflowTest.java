@@ -1,7 +1,7 @@
 package es.um.nosql.s13e.test.morphia;
 
-import static org.junit.Assert.fail;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -11,14 +11,15 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
+import org.bson.types.ObjectId;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.ValidationExtension;
-import org.mongodb.morphia.query.Query;
+import org.mongodb.morphia.VerboseJSR303ConstraintViolationException;
+import org.mongodb.morphia.query.FindOptions;
 
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbAdapter;
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbClient;
@@ -32,13 +33,13 @@ import es.um.nosql.s13e.stackoverflow.Votes;
 
 public class StackoverflowTest
 {
-  private final static int N_BADGES = 2500002;
-  private final static int N_COMMENTS = 2500002;
-  private final static int N_POSTLINKS = 2500002;
+  private final static int N_BADGES = 25000;
+  private final static int N_COMMENTS = 25000;
+  private final static int N_POSTLINKS = 25000;
   private final static int N_TAGS = 48373;
-  private final static int N_POSTS = 2500002;
-  private final static int N_USERS = 2500002;
-  private final static int N_VOTES = 2500002;
+  private final static int N_POSTS = 25000;
+  private final static int N_USERS = 25000;
+  private final static int N_VOTES = 25000;
 
   private Morphia morphia;
   private MongoDbClient client;
@@ -72,132 +73,122 @@ public class StackoverflowTest
   }
 
   @Test
-  @Ignore
   public void testDuplicateDbAndCheck()
   {
     String newDbName = dbName + "_test_1";
     Datastore newDatastore = morphia.createDatastore(client,  newDbName);
 
     List<Badges> lBadges = new ArrayList<Badges>();
-    lBadges.addAll(datastore.createQuery(Badges.class).asList());
+    lBadges.addAll(datastore.createQuery(Badges.class).asList(new FindOptions().limit(N_BADGES)));
     newDatastore.save(lBadges);
+    lBadges.clear();
 
     List<Comments> lComments = new ArrayList<Comments>();
-    lComments.addAll(datastore.createQuery(Comments.class).asList());
+    lComments.addAll(datastore.createQuery(Comments.class).asList(new FindOptions().limit(N_COMMENTS)));
     newDatastore.save(lComments);
+    lBadges.clear();
 
     List<Postlinks> lPostlinks = new ArrayList<Postlinks>();
-    lPostlinks.addAll(datastore.createQuery(Postlinks.class).asList());
+    lPostlinks.addAll(datastore.createQuery(Postlinks.class).asList(new FindOptions().limit(N_POSTLINKS)));
     newDatastore.save(lPostlinks);
+    lBadges.clear();
 
     List<Posts> lPosts = new ArrayList<Posts>();
-    lPosts.addAll(datastore.createQuery(Posts.class).asList());
+    lPosts.addAll(datastore.createQuery(Posts.class).asList(new FindOptions().limit(N_POSTS)));
     newDatastore.save(lPosts);
+    lPosts.clear();
 
     List<Tags> lTags = new ArrayList<Tags>();
-    lTags.addAll(datastore.createQuery(Tags.class).asList());
+    lTags.addAll(datastore.createQuery(Tags.class).asList(new FindOptions().limit(N_TAGS)));
     newDatastore.save(lTags);
+    lTags.clear();
 
     List<Users> lUsers = new ArrayList<Users>();
-    lUsers.addAll(datastore.createQuery(Users.class).asList());
+    lUsers.addAll(datastore.createQuery(Users.class).asList(new FindOptions().limit(N_USERS)));
     newDatastore.save(lUsers);
+    lUsers.clear();
 
     List<Votes> lVotes = new ArrayList<Votes>();
-    lVotes.addAll(datastore.createQuery(Votes.class).asList());
+    lVotes.addAll(datastore.createQuery(Votes.class).asList(new FindOptions().limit(N_VOTES)));
     newDatastore.save(lVotes);
+    lVotes.clear();
 
     checkStackOverflowDb(newDatastore);
     newDatastore.getDB().dropDatabase();
   }
 
   @Test
-  @Ignore
   public void testAddErrorAndCheck()
   {
-    fail("Not implemented yet");
     String newDbName = dbName + "_test_2";
     Datastore newDatastore = morphia.createDatastore(client,  newDbName);
 
-    // CODE
+    Users user1 = new Users(); user1.set_id((new ObjectId()).toString()); user1.setCreationDate("date1"); user1.setDisplayName("display1");
+    user1.setDownVotes(1); user1.setLastAccessDate("accessdate1"); user1.setReputation(1); user1.setUpVotes(1); user1.setViews("views1");
+
+    assertEquals(0, validator.validate(user1).size());
+
+    Badges badge1 = new Badges(); badge1.set_id((new ObjectId()).toString());
+    Badges badge2 = new Badges(); badge2.set_id((new ObjectId()).toString()); badge2.setTheClass(2);
+    Badges badge3 = new Badges(); badge3.set_id((new ObjectId()).toString()); badge3.setTheClass(3); badge3.setDate("date3");
+    Badges badge4 = new Badges(); badge4.set_id((new ObjectId()).toString()); badge4.setTheClass(4); badge4.setDate("date4"); badge4.setName("name4");
+    Badges badge5 = new Badges(); badge5.set_id((new ObjectId()).toString()); badge5.setTheClass(5);
+    badge5.setDate("date5"); badge5.setName("name5"); badge5.setTagBased("tagbased5");
+    Badges badge6 = new Badges(); badge6.set_id((new ObjectId()).toString()); badge6.setTheClass(6);
+    badge6.setDate("date6"); badge6.setName("name6"); badge6.setTagBased("tagbased6"); badge6.setUserId(user1);
+
+    assertEquals(5, validator.validate(badge1).size());
+    assertEquals(4, validator.validate(badge2).size());
+    assertEquals(3, validator.validate(badge3).size());
+    assertEquals(2, validator.validate(badge4).size());
+    assertEquals(1, validator.validate(badge5).size());
+    assertEquals(0, validator.validate(badge6).size());
+
+    assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(badge1);});
+    assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(badge2);});
+    assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(badge3);});
+    assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(badge4);});
+    assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(badge5);});
 
     newDatastore.getDB().dropDatabase();
   }
 
   private void checkStackOverflowDb(Datastore theDatastore)
   {
-    Query<Badges> qBadges = datastore.createQuery(Badges.class);
-    assertEquals(N_BADGES, qBadges.count());
-    testCollection(qBadges.asList().toArray(new Badges[0]), Badges.class);
+    List<Badges> lBadges = datastore.createQuery(Badges.class).asList(new FindOptions().limit(N_BADGES));
+    assertEquals(N_BADGES, lBadges.size());
+    testCollection(lBadges.toArray(new Badges[0]), Badges.class);
+    lBadges.clear();
 
-//    for (Badges badge : qBadges)
-//      assertEquals(1, datastore.createQuery(Users.class).filter("_id =", badge.getUserId()).count());
-/*
-    Query<Comments> qComments = datastore.createQuery(Comments.class);
-    assertEquals(N_COMMENTS, qComments.count());
-    testCollection(qComments.asList().toArray(new Comments[0]), Comments.class);
-*/
-/*
-    for (Comments comment : qComments)
-    {
-      assertEquals(1, datastore.createQuery(Posts.class).filter("_id =", comment.getPostId()).count());
-      assertEquals(1, datastore.createQuery(Users.class).filter("_id =", comment.getUserId()).count());
-    }
-*/
-/*
-    Query<Postlinks> qPostlinks = datastore.createQuery(Postlinks.class);
-    assertEquals(N_POSTLINKS, qPostlinks.count());
-    testCollection(qPostlinks.asList().toArray(new Postlinks[0]), Postlinks.class);
-*/
-/*
-    for (Postlinks postlink : qPostlinks)
-    {
-      assertEquals(1, datastore.createQuery(Posts.class).filter("_id =", postlink.getPostId()).count());
-      assertEquals(1, datastore.createQuery(Posts.class).filter("_id =", postlink.getRelatedPostId()).count());
-    }
-*/
-/*
-    Query<Posts> qPosts = datastore.createQuery(Posts.class);
-    assertEquals(N_POSTS, qPosts.count());
-    testCollection(qPosts.asList().toArray(new Posts[0]), Posts.class);
-*/
-/*
-    for (Posts post : qPosts)
-    {
-      assertEquals(1, datastore.createQuery(Users.class).filter("_id =", post.getLastEditorUserId()).count());
-      assertEquals(1, datastore.createQuery(Users.class).filter("_id =", post.getOwnerUserId()).count());
-      assertEquals(1, datastore.createQuery(Posts.class).filter("_id =", post.getPostTypeId()).count()); //TODO: Will fail, since this is a reference to an external table, right?
-      assertEquals(1, datastore.createQuery(Tags.class).filter("_id =", post.getTags()).count());
-    }
-*/
-/*
-    Query<Tags> qTags = datastore.createQuery(Tags.class);
-    assertEquals(N_TAGS, qTags.count());
-    testCollection(qTags.asList().toArray(new Tags[0]), Tags.class);
-*/
-/*
-    for (Tags tags : qTags)
-    {
-      assertEquals(1, datastore.createQuery(Posts.class).filter("_id =", tags.getExcerptPostId()).count());
-      assertEquals(1, datastore.createQuery(Posts.class).filter("_id =", tags.getWikiPostId()).count());
-    }
-*/
-/*
-    Query<Users> qUsers = datastore.createQuery(Users.class);
-    assertEquals(N_USERS, qUsers.count());
-    testCollection(qUsers.asList().toArray(new Users[0]), Users.class);
+    List<Comments> lComments = datastore.createQuery(Comments.class).asList(new FindOptions().limit(N_COMMENTS));
+    assertEquals(N_COMMENTS, lComments.size());
+    testCollection(lComments.toArray(new Comments[0]), Comments.class);
+    lComments.clear();
 
-    Query<Votes> qVotes = datastore.createQuery(Votes.class);
-    assertEquals(N_VOTES, qVotes.count());
-    testCollection(qVotes.asList().toArray(new Votes[0]), Votes.class);
-*/
-/*
-    for (Votes vote : qVotes)
-    {
-      assertEquals(1, datastore.createQuery(Posts.class).filter("_id =", vote.getPostId()).count());
-      assertEquals(1, datastore.createQuery(Users.class).filter("_id =", vote.getUserId()).count());
-      assertEquals(1, datastore.createQuery(Votes.class).filter("_id =", vote.getVoteTypeId()).count());
-    }
-*/
+    List<Postlinks> lPostlinks = datastore.createQuery(Postlinks.class).asList(new FindOptions().limit(N_POSTLINKS));
+    assertEquals(N_POSTLINKS, lPostlinks.size());
+    testCollection(lPostlinks.toArray(new Postlinks[0]), Postlinks.class);
+    lPostlinks.clear();
+
+    List<Posts> lPosts = datastore.createQuery(Posts.class).asList(new FindOptions().limit(N_POSTS));
+    assertEquals(N_POSTS, lPosts.size());
+    testCollection(lPosts.toArray(new Posts[0]), Posts.class);
+    lPosts.clear();
+
+    List<Tags> lTags = datastore.createQuery(Tags.class).asList(new FindOptions().limit(N_TAGS));
+    assertEquals(N_TAGS, lTags.size());
+    testCollection(lTags.toArray(new Tags[0]), Tags.class);
+    lTags.clear();
+
+    List<Users> lUsers = datastore.createQuery(Users.class).asList(new FindOptions().limit(N_USERS));
+    assertEquals(N_USERS, lUsers.size());
+    testCollection(lUsers.toArray(new Users[0]), Users.class);
+    lUsers.clear();
+
+    List<Votes> lVotes = datastore.createQuery(Votes.class).asList(new FindOptions().limit(N_VOTES));
+    assertEquals(N_VOTES, lVotes.size());
+    testCollection(lVotes.toArray(new Votes[0]), Votes.class);
+    lVotes.clear();
   }
 
   private <T> void testCollection(T[] collection, Class<T> className)

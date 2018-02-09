@@ -83,22 +83,27 @@ public class EveryPoliticianTest
     List<Areas> lAreas = new ArrayList<Areas>();
     lAreas.addAll(datastore.createQuery(Areas.class).asList());
     newDatastore.save(lAreas);
+    lAreas.clear();
 
     List<Organizations> lOrganizations = new ArrayList<Organizations>();
     lOrganizations.addAll(datastore.createQuery(Organizations.class).asList());
     newDatastore.save(lOrganizations);
+    lOrganizations.clear();
 
     List<Events> lEvents = new ArrayList<Events>();
     lEvents.addAll(datastore.createQuery(Events.class).asList());
     newDatastore.save(lEvents);
+    lEvents.clear();
 
     List<Persons> lPersons = new ArrayList<Persons>();
     lPersons.addAll(datastore.createQuery(Persons.class).asList());
     newDatastore.save(lPersons);
+    lPersons.clear();
 
     List<Memberships> lMemberships = new ArrayList<Memberships>();
     lMemberships.addAll(datastore.createQuery(Memberships.class).asList());
     newDatastore.save(lMemberships);
+    lMemberships.clear();
 
     checkEveryPoliticianDb(newDatastore);
     newDatastore.getDB().dropDatabase();
@@ -147,6 +152,8 @@ public class EveryPoliticianTest
       testCollection(organization.getLinks(), Link.class);
     }
 
+    qOrganizations = null;
+
     Query<Events> qEvents = theDatastore.createQuery(Events.class);
     assertEquals(N_EVENTS, qEvents.count());
     testCollection(qEvents.asList().toArray(new Events[0]), Events.class);
@@ -160,6 +167,8 @@ public class EveryPoliticianTest
         assertEquals(1, theDatastore.createQuery(Organizations.class).filter("_id =", event.getOrganization_id().get_id()).count());
     }
 
+    qEvents = null;
+
     Query<Persons> qPersons = theDatastore.createQuery(Persons.class);
     assertEquals(N_PERSONS, qPersons.count());
     testCollection(qPersons.asList().toArray(new Persons[0]), Persons.class);
@@ -172,6 +181,8 @@ public class EveryPoliticianTest
       testCollection(person.getContact_details(), Contact_detail.class);
       testCollection(person.getImages(), Image.class);
     }
+
+    qPersons = null;
 
     Query<Memberships> qMemberships = theDatastore.createQuery(Memberships.class);
     assertEquals(N_MEMBERSHIPS, qMemberships.count());
@@ -192,6 +203,8 @@ public class EveryPoliticianTest
       if (membership.getOrganization_id() != null)
         assertEquals(1, theDatastore.createQuery(Organizations.class).filter("_id =", membership.getOrganization_id().get_id()).count());
     }
+
+    qMemberships = null;
   }
 
   private <T> void testCollection(T[] collection, Class<T> className)

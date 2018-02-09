@@ -75,6 +75,7 @@ public class OpenSanctionsTest
     List<Sanctions> lSanctions = new ArrayList<Sanctions>();
     lSanctions.addAll(datastore.createQuery(Sanctions.class).asList());
     newDatastore.save(lSanctions);
+    lSanctions.clear();
 
     checkOpenSanctionsDb(newDatastore);
     newDatastore.getDB().dropDatabase();

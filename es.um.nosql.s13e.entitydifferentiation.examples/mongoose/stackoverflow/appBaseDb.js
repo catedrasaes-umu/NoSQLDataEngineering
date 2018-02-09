@@ -213,6 +213,34 @@ function testDuplicateDb()
 function testAddErrorAndCheck()
 {
   console.log("Starting TestAddErrorAndCheck...");
+
+  var user1 = new Users(); user1._id = (new mongoose.Types.ObjectId).toString(); user1.CreationDate = "date1"; user1.DisplayName = "display1";
+  user1.DownVotes = 1; user1.LastAccessDate = "accessdate1"; user1.Reputation = 1; user1.UpVotes = 1; user1.Views = "views1";
+
+  if (user1.validateSync() !== undefined)
+    console.error("Error: user1 was not correctly validated.");
+
+  var badge1 = new Badges(); badge1._id = (new mongoose.Types.ObjectId).toString();
+  var badge2 = new Badges(); badge2._id = (new mongoose.Types.ObjectId).toString(); badge2.Class = 2;
+  var badge3 = new Badges(); badge3._id = (new mongoose.Types.ObjectId).toString(); badge3.Class = 3; badge3.Date = "date3";
+  var badge4 = new Badges(); badge4._id = (new mongoose.Types.ObjectId).toString(); badge4.Class = 4; badge4.Date = "date4"; badge4.Name = "name4";
+  var badge5 = new Badges(); badge5._id = (new mongoose.Types.ObjectId).toString(); badge5.Class = 5; badge5.Date = "date5"; badge5.Name = "name5"; badge5.TagBased = "tagbased5";
+  var badge6 = new Badges(); badge6._id = (new mongoose.Types.ObjectId).toString();
+  badge6.Class = 6; badge6.Date = "date6"; badge6.Name = "name6"; badge6.TagBased = "tagbased6"; badge6.UserId = user1;
+
+  if (badge1.validateSync() === undefined || Object.values(badge1.validateSync().errors).length !== 5)
+    console.error("Error: badge1 was not correctly validated.");
+  if (badge2.validateSync() === undefined || Object.values(badge2.validateSync().errors).length !== 4)
+    console.error("Error: badge2 was not correctly validated.");
+  if (badge3.validateSync() === undefined || Object.values(badge3.validateSync().errors).length !== 3)
+    console.error("Error: badge3 was not correctly validated.");
+  if (badge4.validateSync() === undefined || Object.values(badge4.validateSync().errors).length !== 2)
+    console.error("Error: badge4 was not correctly validated.");
+  if (badge5.validateSync() === undefined || Object.values(badge5.validateSync().errors).length !== 1)
+    console.error("Error: badge5 was not correctly validated.");
+  if (badge6.validateSync() !== undefined)
+    console.error("Error: badge6 was not correctly validated.");
+
   console.log("TestAddErrorAndCheck finished.");
 }
 

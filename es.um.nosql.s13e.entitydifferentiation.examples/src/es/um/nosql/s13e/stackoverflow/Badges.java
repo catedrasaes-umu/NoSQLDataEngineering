@@ -10,7 +10,7 @@ import javax.validation.constraints.NotNull;
 @Entity(value = "badges", noClassnameStored = true)
 public class Badges
 {
-  @Property
+  @Property(value = "Class")
   @NotNull(message = "Class can't be null")
   private Integer theClass;
   public Integer getTheClass() {return this.theClass;}
