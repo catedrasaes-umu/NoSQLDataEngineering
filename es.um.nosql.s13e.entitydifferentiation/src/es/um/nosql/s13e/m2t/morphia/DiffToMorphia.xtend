@@ -19,6 +19,7 @@ import java.util.ArrayList
 import es.um.nosql.s13e.m2t.commons.Commons
 import es.um.nosql.s13e.m2t.commons.DependencyAnalyzer
 import es.um.nosql.s13e.m2t.config.ConfigMorphia
+import es.um.nosql.s13e.NoSQLSchema.Association
 
 /**
  * Class designed to perform the Morphia code generation: Java
@@ -125,15 +126,15 @@ class DiffToMorphia
       «ENDIF»
       import org.mongodb.morphia.annotations.PreLoad;
       import com.mongodb.DBObject;
-      «IF collListUnionProperties.exists[l | l.exists[ps | ps.property instanceof Aggregate
-        && ((ps.property as Aggregate).lowerBound !== 1 || (ps.property as Aggregate).upperBound !== 1)]]»
-      import com.mongodb.BasicDBList;
-      «ENDIF»
     «ENDIF»
     «IF entity.entityversions.exists[ev | !ev.isRoot || ev.properties.exists[p | p instanceof Aggregate]]»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
     «IF entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Attribute]]»import org.mongodb.morphia.annotations.Property;«ENDIF»
     «IF entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Reference]]»import org.mongodb.morphia.annotations.Reference;«ENDIF»
     «IF !analyzer.getDiffByEntity().get(entity).commonProps.isEmpty»import javax.validation.constraints.NotNull;«ENDIF»
+    «IF entity.entityversions.exists[ev | ev.properties.exists[p | (p instanceof Association &&
+      ((p as Association).lowerBound !== 1 || (p as Association).upperBound !== 1)) || (p instanceof Attribute && (p as Attribute).type instanceof Tuple)]]»
+    import java.util.List;
+    «ENDIF»
     «indexValGen.genIncludesForEntity(entity)»
 
     «FOR Entity e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
@@ -223,7 +224,7 @@ class DiffToMorphia
         typeShortcutList.add((typeTuple.get(0) as PrimitiveType).name);
       }
       else if (typeTuple.size > 1)
-        addToReduceLists(attr, "Object[]", uniqueTypeList, typeShortcutList);
+        addToReduceLists(attr, "List<Object>", uniqueTypeList, typeShortcutList);
     }
   }
 
@@ -243,9 +244,10 @@ class DiffToMorphia
    * It is also neccesary to create a @Preload method in order to identify the Union during the loading process.
    */
   def String genUnion(Iterable<Property> list, boolean required)
-  {
+  {//TODO: ?? PREPERSIST? If it is a list, we have to actually translate objects to ids. If it is a single element, just cast it.
     val theTypes = list.map[p | genTypeForProperty(p)];
     val theName = list.head.name;
+    val theSignature = theTypes.join('_').replace("<", "").replace(">", "");
 
   '''
   // @Union_«theTypes.join('_')»
@@ -256,7 +258,7 @@ class DiffToMorphia
   public Object get«theName.toFirstUpper»() {return this.«theName»;}
   public void set«theName.toFirstUpper»(Object «theName»)
   {
-    if («list.map[p | p.name + " instanceof " + genTypeForProperty(p)].join(' || ')»)
+    if («list.map[p | genUnionSetMethod(p)].join(' || ')»)
       this.«theName» = «theName»;
     else
       throw new ClassCastException("«theName» must be of type «theTypes.join(' or ')»");
@@ -264,17 +266,17 @@ class DiffToMorphia
   «IF list.exists[p | p instanceof Reference]»
 
   @PrePersist
-  private void prePersistUnion_«theTypes.join('_').replace("[]", "")»()
+  private void prePersistUnion_«theSignature»()
   {
     «FOR Property p : list.filter[p | p instanceof Reference] SEPARATOR '\nelse '»
-      if («p.name» instanceof «genTypeForProperty(p as Reference)»)
-        «p.name» = ((«genTypeForProperty(p as Reference)»)«p.name»).get_id();
+      if («genUnionSetMethod(p)»)
+        «p.name» = ((«genTypeForProperty(p as Reference)»)«p.name»).get_id();<========
     «ENDFOR»
   }
   «ENDIF»  
 
   @PreLoad
-  private void preLoadUnion_«theTypes.join('_').replace("[]", "")»(DBObject dbObj)
+  private void preLoadUnion_«theSignature»(DBObject dbObj)
   {
     «IF !required»
     if (!dbObj.containsField("«theName»"))
@@ -294,19 +296,26 @@ class DiffToMorphia
   '''
   }
 
+  def genUnionSetMethod(Property p)
+  '''«IF ((p instanceof Attribute && (p as Attribute).type instanceof PrimitiveType) ||
+    (p instanceof Association && (p as Association).lowerBound === 1 && (p as Association).upperBound === 1))»
+    «p.name» instanceof «genTypeForProperty(p)»
+  «ELSEIF ((p instanceof Attribute && (p as Attribute).type instanceof Tuple) ||
+    (p instanceof Association && (p as Association).lowerBound !== 1 || (p as Association).upperBound !== 1))»
+    Commons.IS_CASTABLE_LIST(«genTypeForProperty(p).toString.replace("List<", "").replace(">", "")».class, «p.name»)
+  «ENDIF»
+  '''
+
   def dispatch genUnionFor(Aggregate aggr)
-  {
-    val typeAggr = genTypeForProperty(aggr);
-    '''
-    «IF typeAggr.toString.endsWith("[]")»
-      if (fieldObj instanceof BasicDBList && Commons.IS_CASTABLE_ARRAY(«(aggr.refTo.head.eContainer as Entity).name».class, (BasicDBList)fieldObj))
-        this.«aggr.name» = Commons.CAST_ARRAY(«(aggr.refTo.head.eContainer as Entity).name».class, ((BasicDBList)fieldObj).toArray());
-    «ELSE»
-      if (fieldObj instanceof DBObject && Commons.IS_CASTABLE(«(aggr.refTo.head.eContainer as Entity).name».class, (DBObject)fieldObj))
-        this.«aggr.name» = Commons.CAST(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj);
-    «ENDIF»
-    '''
-  }
+  '''
+  «IF aggr.lowerBound !== 1 || aggr.upperBound !== 1»
+    if (Commons.IS_CASTABLE_LIST_OBJDB(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj))
+      this.«aggr.name» = Commons.CAST_LIST(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj);
+  «ELSE»
+    if (Commons.IS_CASTABLE_OBJDB(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj))
+      this.«aggr.name» = Commons.CAST(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj);
+  «ENDIF»
+  '''
 
   def dispatch genUnionFor(Reference ref)
   {
@@ -318,6 +327,9 @@ class DiffToMorphia
     «IF Commons.IS_DBREF(ref)»
       if (fieldObj instanceof DBObject && ((DBObject)fieldObj).get("$ref").equals("«ref.refTo.name»"))
         this.«ref.name» = ((DBObject)fieldObj).get("$id");
+    «ELSEIF ref.lowerBound !== 1 || ref.upperBound !== 1»
+      if (Commons.IS_CASTABLE_LIST_OBJDB(«typeRef».class, fieldObj))
+        this.«ref.name» = Commons.CAST_LIST(«typeRef».class, fieldObj);
     «ELSE»
       if (fieldObj instanceof «typeRef»)
         this.«ref.name» = («typeRef»)fieldObj;
@@ -352,7 +364,7 @@ class DiffToMorphia
   {
     var entityName = (aggr.refTo.get(0).eContainer as Entity).name;
     if (aggr.lowerBound !== 1 || aggr.upperBound !== 1)
-      entityName = entityName + "[]";
+      entityName = "List<" + entityName + ">";
 
     entityName;
   }
@@ -379,7 +391,7 @@ class DiffToMorphia
     var returnValue = ref.refTo.name;
 
     if (ref.lowerBound !== 1 || ref.upperBound !== 1)
-      returnValue = returnValue + "[]";
+      returnValue = "List<" + returnValue + ">";
 
     returnValue;
   }
@@ -420,10 +432,10 @@ class DiffToMorphia
   def dispatch CharSequence genAttributeType(Tuple tuple)
   {
     if (tuple.elements.size == 1)
-      '''«genAttributeType(tuple.elements.get(0))»[]'''
+      '''List<«genAttributeType(tuple.elements.get(0))»>'''
     else
       // Heterogeneous arrays. Too complex for now...
-      '''Object[]'''
+      '''List<Object>'''
   }
 
   def dispatch CharSequence genAttributeType(String type)

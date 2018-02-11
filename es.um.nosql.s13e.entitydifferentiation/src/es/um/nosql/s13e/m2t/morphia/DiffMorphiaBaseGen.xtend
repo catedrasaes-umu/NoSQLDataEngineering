@@ -51,6 +51,9 @@ class DiffMorphiaBaseGen
   '''
   package «importRoute»;
 
+  import java.util.ArrayList;
+  import java.util.List;
+
   import org.mongodb.morphia.Morphia;
   import org.mongodb.morphia.mapping.MappingException;
   import com.mongodb.BasicDBList;
@@ -71,22 +74,26 @@ class DiffMorphiaBaseGen
       return MORPHIA_INSTANCE;
     }
 
-    public static Object CAST(Class<?> className, Object obj)
+    public static <T extends Object> T CAST(Class<T> className, Object obj)
     {
       return GET_MORPHIA().fromDBObject(null, className, (DBObject)obj);
     }
-  
-    public static Object CAST_ARRAY(Class<?> className, Object[] obj)
+    
+    public static <T extends Object> Object CAST_LIST(Class<T> className, Object obj)
     {
-      Object[] result = new Object[obj.length];
-      for (int i = 0; i < obj.length; i++)
-        result[i] = CAST(className, obj[i]);
+      List<T> result = new ArrayList<T>();
+    
+      for (Object o : (BasicDBList)obj)
+        result.add(CAST(className, o));
     
       return result;
     }
-  
-    public static boolean IS_CASTABLE(Class<?> className, Object obj)
+
+    public static boolean IS_CASTABLE_OBJDB(Class<?> className, Object obj)
     {
+      if (!(obj instanceof DBObject))
+        return false;
+
       try
       {
         CAST(className, obj);
@@ -97,15 +104,29 @@ class DiffMorphiaBaseGen
   
       return true;
     }
-  
-    public static boolean IS_CASTABLE_ARRAY(Class<?> className, BasicDBList fieldObj)
+
+    public static boolean IS_CASTABLE_LIST_OBJDB(Class<?> className, Object fieldObj)
     {
-      boolean result = true;
-    
-      for (Object obj : fieldObj)
-        result = IS_CASTABLE(className, obj);
-  
-      return result;
+      if (!(fieldObj instanceof BasicDBList))
+        return false;
+
+      for (Object obj : (BasicDBList)fieldObj)
+        if (!IS_CASTABLE_OBJDB(className, obj))
+          return false;
+
+      return true;
+    }
+
+    public static boolean IS_CASTABLE_LIST(Class<?> className, Object obj)
+    {
+      if (!(obj instanceof List))
+        return false;
+
+      for (Object o : (List<?>)obj)
+        if (!className.isInstance(o))
+          return false;
+
+      return true;
     }
   }
   '''
