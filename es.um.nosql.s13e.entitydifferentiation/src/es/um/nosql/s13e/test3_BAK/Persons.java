@@ -88,17 +88,17 @@ public class Persons
   }
 
   @PreSave
-  private void preSave(DBObject obj)
+  private void preSaveUnion_String_ListPersonalData(DBObject dbObj)
   {
     if (__field1 != null)
     {
-      obj.put("field", obj.get("__field1"));
-      obj.removeField("__field1");
+      dbObj.put("field", dbObj.get("__field1"));
+      dbObj.removeField("__field1");
     }
-    else if (__field2 != null)
+    else  if (__field2 != null)
     {
-      obj.put("field", obj.get("__field2"));
-      obj.removeField("__field2");
+      dbObj.put("field", dbObj.get("__field2"));
+      dbObj.removeField("__field2");
     }
   }
 
