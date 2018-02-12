@@ -243,7 +243,7 @@ class DiffToMorphia
    * It is also neccesary to create a @Preload method in order to identify the Union during the loading process.
    */
   def String genUnion(Iterable<Property> list, boolean required)
-  {//TODO: ?? PREPERSIST? If it is a list, we have to actually translate objects to ids. If it is a single element, just cast it.
+  {
     val theTypes = list.map[p | genTypeForProperty(p)];
     val theName = list.head.name;
     val theSignature = theTypes.join('_').replace("<", "").replace(">", "");
@@ -270,9 +270,9 @@ class DiffToMorphia
   public void set«theName.toFirstUpper»(Object «theName»)
   {
     «FOR int iterator : numProperties SEPARATOR "\nelse"»
-    if («genUnionCompareMethod(list.get(iterator))»)
+    if («genUnionCompareMethod(list.get(iterator), list.get(iterator).name, false)»)
     {
-      this.__«theName»«iterator + 1» = «genUnionAssignMethod(list.get(iterator))»;
+      this.__«theName»«iterator + 1» = «genUnionAssignMethod(list.get(iterator), list.get(iterator).name, false)»;
       «FOR int iterator2 : numProperties»
         «IF (iterator !== iterator2)»
           this.__«theName»«iterator2 + 1» = null;
@@ -283,17 +283,6 @@ class DiffToMorphia
     else
       throw new ClassCastException("«theName» must be of type «theTypes.join(' or ')»");
   }
-  «IF list.exists[p | p instanceof Reference]»
-
-  @PrePersist
-  private void prePersistUnion_«theSignature»()
-  {
-    «FOR Property p : list.filter[p | p instanceof Reference] SEPARATOR '\nelse '»
-      if («genUnionCompareMethod(p)»)
-        «p.name» = ((«genTypeForProperty(p as Reference)»)«p.name»).get_id();<========
-    «ENDFOR»
-  }
-  «ENDIF»  
 
   @PreLoad
   private void preLoadUnion_«theSignature»(DBObject dbObj)
@@ -305,7 +294,10 @@ class DiffToMorphia
 
     Object fieldObj = dbObj.get("«theName»");
 
-    «FOR int iterator : numProperties SEPARATOR "\nelse "»«genUnionPreloadFor(list.get(iterator), "__" + list.get(iterator).name + (iterator + 1))»«ENDFOR»
+    «FOR int iterator : numProperties SEPARATOR "\nelse "»
+    if («genUnionCompareMethod(list.get(iterator), "fieldObj", true)»)
+      this.__«list.get(iterator).name»«iterator + 1» = «genUnionAssignMethod(list.get(iterator), "fieldObj", true)»;
+    «ENDFOR»
     else
       throw new ClassCastException("«theName» must be of type «theTypes.join(' or ')»");
 
@@ -325,62 +317,31 @@ class DiffToMorphia
   '''
   }
 
-  def genUnionCompareMethod(Property p)
+//TODO: This might be useful to fix Reference objectIds..
+/*  «IF list.exists[p | p instanceof Reference]»
+
+  @PrePersist
+  private void prePersistUnion_«theSignature»()
+  {
+    «FOR Property p : list.filter[p | p instanceof Reference] SEPARATOR '\nelse '»
+      if («genUnionCompareMethod(p, p.name, false)»)
+        «p.name» = ((«genTypeForProperty(p as Reference)»)«p.name»).get_id();<========
+    «ENDFOR»
+  }
+  «ENDIF»*/
+  def genUnionCompareMethod(Property p, String name, boolean preload)
   '''«IF ((p instanceof Attribute && (p as Attribute).type instanceof PrimitiveType) ||
     (p instanceof Association && (p as Association).lowerBound === 1 && (p as Association).upperBound === 1))»
-    «p.name» instanceof «genTypeForProperty(p)»«ELSEIF ((p instanceof Attribute && (p as Attribute).type instanceof Tuple) ||
+    «name» instanceof «genTypeForProperty(p)»«ELSEIF ((p instanceof Attribute && (p as Attribute).type instanceof Tuple) ||
     (p instanceof Association && (p as Association).lowerBound !== 1 || (p as Association).upperBound !== 1))»
-    Commons.IS_CASTABLE_LIST(«genTypeForProperty(p).toString.replace("List<", "").replace(">", "")».class, «p.name»)«ENDIF»'''
+    Commons.IS_CASTABLE_LIST«IF preload»_OBJDB«ENDIF»(«genTypeForProperty(p).toString.replace("List<", "").replace(">", "")».class, «name»)«ENDIF»'''
 
-  def genUnionAssignMethod(Property p)
+  def genUnionAssignMethod(Property p, String name, boolean preload)
   '''«IF ((p instanceof Attribute && (p as Attribute).type instanceof PrimitiveType) ||
       (p instanceof Association && (p as Association).lowerBound === 1 && (p as Association).upperBound === 1))»
-      («genTypeForProperty(p)»)«p.name»«ELSEIF ((p instanceof Attribute && (p as Attribute).type instanceof Tuple) ||
+      («genTypeForProperty(p)»)«name»«ELSEIF ((p instanceof Attribute && (p as Attribute).type instanceof Tuple) ||
       (p instanceof Association && (p as Association).lowerBound !== 1 || (p as Association).upperBound !== 1))»
-      Commons.CAST_LIST(«genTypeForProperty(p).toString.replace("List<", "").replace(">", "")».class, «p.name»)«ENDIF»'''
-
-  def dispatch genUnionPreloadFor(Aggregate aggr, String name)
-  '''«IF aggr.lowerBound !== 1 || aggr.upperBound !== 1»
-    if (Commons.IS_CASTABLE_LIST_OBJDB(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj))
-      this.«name» = Commons.CAST_LIST_OBJDB(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj);
-  «ELSE»
-    if (Commons.IS_CASTABLE_OBJDB(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj))
-      this.«name» = Commons.CAST_OBJDB(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj);«ENDIF»'''
-
-  def dispatch genUnionPreloadFor(Reference ref, String name)
-  {
-    var typeRef = genAttributeType(ref.originalType);
-    if (typeRef == "")
-      typeRef = "String";
-
-    '''
-    «IF Commons.IS_DBREF(ref)»
-      if (fieldObj instanceof DBObject && ((DBObject)fieldObj).get("$ref").equals("«ref.refTo.name»"))
-        this.«name» = ((DBObject)fieldObj).get("$id");
-    «ELSEIF ref.lowerBound !== 1 || ref.upperBound !== 1»
-      if (Commons.IS_CASTABLE_LIST_OBJDB(«typeRef».class, fieldObj))
-        this.«name» = Commons.CAST_LIST_OBJDB(«typeRef».class, fieldObj);
-    «ELSE»
-      if (fieldObj instanceof «typeRef»)
-        this.«name» = («typeRef»)fieldObj;
-    «ENDIF»
-    '''
-  }
-
-  def dispatch genUnionPreloadFor(Attribute attr, String name)
-  {
-    genUnionPreloadForAttribute(attr.name, attr.type, name)
-  }
-
-  def dispatch genUnionPreloadForAttribute(String attrName, Tuple tuple, String name)
-  '''
-    if (Commons.IS_CASTABLE_LIST(«(tuple.elements.findFirst[e | e instanceof PrimitiveType] as PrimitiveType).name».class, «attrName»))
-      this.«name» = Commons.CAST_LIST(«(tuple.elements.findFirst[e | e instanceof PrimitiveType] as PrimitiveType).name».class, fieldObj);'''
-
-  def dispatch genUnionPreloadForAttribute(String attrName, PrimitiveType type, String name)
-  '''
-    if (fieldObj instanceof «genAttributeType(type)»)
-      this.«name» = («genAttributeType(type)»)fieldObj;'''
+      Commons.CAST_LIST«IF preload»_OBJDB«ENDIF»(«genTypeForProperty(p).toString.replace("List<", "").replace(">", "")».class, «name»)«ENDIF»'''
 
   /**
    * Generate code method for Aggregation

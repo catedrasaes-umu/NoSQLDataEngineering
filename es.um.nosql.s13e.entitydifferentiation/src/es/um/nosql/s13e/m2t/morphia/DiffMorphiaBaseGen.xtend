@@ -74,12 +74,12 @@ class DiffMorphiaBaseGen
       return MORPHIA_INSTANCE;
     }
 
-    public static <T extends Object> T CAST_OBJDB(Class<T> className, Object obj)
+    public static <T> T CAST_OBJDB(Class<T> className, Object obj)
     {
       return GET_MORPHIA().fromDBObject(null, className, (DBObject)obj);
     }
     
-    public static <T extends Object> List<T> CAST_LIST_OBJDB(Class<T> className, Object obj)
+    public static <T> List<T> CAST_LIST_OBJDB(Class<T> className, Object obj)
     {
       List<T> result = new ArrayList<T>();
     
@@ -129,7 +129,7 @@ class DiffMorphiaBaseGen
       return true;
     }
 
-    public static <T extends Object> List<T> CAST_LIST(Class<T> className, Object obj)
+    public static <T> List<T> CAST_LIST(Class<T> className, Object obj)
     {
       List<T> result = new ArrayList<T>();
   

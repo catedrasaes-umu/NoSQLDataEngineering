@@ -4,15 +4,16 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import es.um.nosql.s13e.everypolitician.commons.Commons;
 import org.mongodb.morphia.annotations.PreLoad;
+import org.mongodb.morphia.annotations.PreSave;
 import com.mongodb.DBObject;
-import com.mongodb.BasicDBList;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
-import es.um.nosql.s13e.everypolitician.Link;
-import es.um.nosql.s13e.everypolitician.Identifier;
 import es.um.nosql.s13e.everypolitician.Other_name;
+import es.um.nosql.s13e.everypolitician.Identifier;
+import es.um.nosql.s13e.everypolitician.Link;
 
 @Entity(value = "organizations", noClassnameStored = true)
 public class Organizations
@@ -30,9 +31,9 @@ public class Organizations
   public void setClassification(String classification) {this.classification = classification;}
   
   @Embedded
-  private Identifier[] identifiers;
-  public Identifier[] getIdentifiers() {return this.identifiers;}
-  public void setIdentifiers(Identifier[] identifiers) {this.identifiers = identifiers;}
+  private List<Identifier> identifiers;
+  public List<Identifier> getIdentifiers() {return this.identifiers;}
+  public void setIdentifiers(List<Identifier> identifiers) {this.identifiers = identifiers;}
   
   @Property
   private String image;
@@ -40,9 +41,9 @@ public class Organizations
   public void setImage(String image) {this.image = image;}
   
   @Embedded
-  private Link[] links;
-  public Link[] getLinks() {return this.links;}
-  public void setLinks(Link[] links) {this.links = links;}
+  private List<Link> links;
+  public List<Link> getLinks() {return this.links;}
+  public void setLinks(List<Link> links) {this.links = links;}
   
   @Property
   @NotNull(message = "name can't be null")
@@ -51,9 +52,9 @@ public class Organizations
   public void setName(String name) {this.name = name;}
   
   @Embedded
-  private Other_name[] other_names;
-  public Other_name[] getOther_names() {return this.other_names;}
-  public void setOther_names(Other_name[] other_names) {this.other_names = other_names;}
+  private List<Other_name> other_names;
+  public List<Other_name> getOther_names() {return this.other_names;}
+  public void setOther_names(List<Other_name> other_names) {this.other_names = other_names;}
   
   @Property
   private Integer seats;

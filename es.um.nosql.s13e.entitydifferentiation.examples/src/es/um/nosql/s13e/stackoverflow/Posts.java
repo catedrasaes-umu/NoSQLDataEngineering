@@ -2,8 +2,8 @@ package es.um.nosql.s13e.stackoverflow;
 
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.PrePersist;
 import org.mongodb.morphia.annotations.PreLoad;
+import org.mongodb.morphia.annotations.PreSave;
 import com.mongodb.DBObject;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;

@@ -138,12 +138,12 @@ public class EveryPoliticianTest
   {
     Query<Areas> qAreas = theDatastore.createQuery(Areas.class);
     assertEquals(N_AREAS, qAreas.count());
-    testCollection(qAreas.asList().toArray(new Areas[0]), Areas.class);
+    testCollection(qAreas.asList(), Areas.class);
 
     // We actually detected here a bug. When an aggregate/reference cardinality is 0..1, it may actually be an array.
     Query<Organizations> qOrganizations = theDatastore.createQuery(Organizations.class);
     assertEquals(N_ORGANIZATIONS, qOrganizations.count());
-    testCollection(qOrganizations.asList().toArray(new Organizations[0]), Organizations.class);
+    testCollection(qOrganizations.asList(), Organizations.class);
 
     for (Organizations organization : qOrganizations)
     {
@@ -156,7 +156,7 @@ public class EveryPoliticianTest
 
     Query<Events> qEvents = theDatastore.createQuery(Events.class);
     assertEquals(N_EVENTS, qEvents.count());
-    testCollection(qEvents.asList().toArray(new Events[0]), Events.class);
+    testCollection(qEvents.asList(), Events.class);
 
     for (Events event : qEvents)
     {
@@ -171,7 +171,7 @@ public class EveryPoliticianTest
 
     Query<Persons> qPersons = theDatastore.createQuery(Persons.class);
     assertEquals(N_PERSONS, qPersons.count());
-    testCollection(qPersons.asList().toArray(new Persons[0]), Persons.class);
+    testCollection(qPersons.asList(), Persons.class);
 
     for (Persons person : qPersons)
     {
@@ -186,7 +186,7 @@ public class EveryPoliticianTest
 
     Query<Memberships> qMemberships = theDatastore.createQuery(Memberships.class);
     assertEquals(N_MEMBERSHIPS, qMemberships.count());
-    testCollection(qMemberships.asList().toArray(new Memberships[0]), Memberships.class);
+    testCollection(qMemberships.asList(), Memberships.class);
 
     for (Memberships membership : qMemberships)
     {
@@ -207,9 +207,9 @@ public class EveryPoliticianTest
     qMemberships = null;
   }
 
-  private <T> void testCollection(T[] collection, Class<T> className)
+  private <T> void testCollection(List<T> collection, Class<T> className)
   {
-    if (collection == null || collection.length == 0)
+    if (collection == null || collection.size() == 0)
       return;
 
     for (T t : collection)
