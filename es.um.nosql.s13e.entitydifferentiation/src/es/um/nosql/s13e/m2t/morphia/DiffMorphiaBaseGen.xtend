@@ -129,14 +129,10 @@ class DiffMorphiaBaseGen
       return true;
     }
 
+    @SuppressWarnings("unchecked")
     public static <T> List<T> CAST_LIST(Class<T> className, Object obj)
     {
-      List<T> result = new ArrayList<T>();
-  
-      for (Object o : (List<?>)obj)
-        result.add(className.cast(o));
-  
-      return result;
+      return (List<T>)obj;
     }
   }
   '''
