@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.test3.commons;
+package es.um.nosql.s13e.test3_BAK.commons;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -17,23 +17,23 @@ public class Commons
     if (MORPHIA_INSTANCE == null)
     {
       MORPHIA_INSTANCE = new Morphia();
-      MORPHIA_INSTANCE = MORPHIA_INSTANCE.mapPackage("es.um.nosql.s13e.test3");
+      MORPHIA_INSTANCE = MORPHIA_INSTANCE.mapPackage("es.um.nosql.s13e.test3_BAK");
     }
 
     return MORPHIA_INSTANCE;
   }
 
-  public static <T extends Object> T CAST(Class<T> className, Object obj)
+  public static <T extends Object> T CAST_OBJDB(Class<T> className, Object obj)
   {
     return GET_MORPHIA().fromDBObject(null, className, (DBObject)obj);
   }
   
-  public static <T extends Object> Object CAST_LIST(Class<T> className, Object obj)
+  public static <T extends Object> List<T> CAST_LIST_OBJDB(Class<T> className, Object obj)
   {
     List<T> result = new ArrayList<T>();
   
     for (Object o : (BasicDBList)obj)
-      result.add(CAST(className, o));
+      result.add(CAST_OBJDB(className, o));
   
     return result;
   }
@@ -45,7 +45,7 @@ public class Commons
 
     try
     {
-      CAST(className, obj);
+      CAST_OBJDB(className, obj);
     } catch(MappingException e)
     {
       return false;
@@ -76,5 +76,15 @@ public class Commons
         return false;
 
     return true;
+  }
+
+  public static <T extends Object> List<T> CAST_LIST(Class<T> className, Object obj)
+  {
+    List<T> result = new ArrayList<T>();
+
+    for (Object o : (List<?>)obj)
+      result.add(className.cast(o));
+
+    return result;
   }
 }

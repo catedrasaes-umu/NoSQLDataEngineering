@@ -74,17 +74,17 @@ class DiffMorphiaBaseGen
       return MORPHIA_INSTANCE;
     }
 
-    public static <T extends Object> T CAST(Class<T> className, Object obj)
+    public static <T extends Object> T CAST_OBJDB(Class<T> className, Object obj)
     {
       return GET_MORPHIA().fromDBObject(null, className, (DBObject)obj);
     }
     
-    public static <T extends Object> Object CAST_LIST(Class<T> className, Object obj)
+    public static <T extends Object> List<T> CAST_LIST_OBJDB(Class<T> className, Object obj)
     {
       List<T> result = new ArrayList<T>();
     
       for (Object o : (BasicDBList)obj)
-        result.add(CAST(className, o));
+        result.add(CAST_OBJDB(className, o));
     
       return result;
     }
@@ -96,7 +96,7 @@ class DiffMorphiaBaseGen
 
       try
       {
-        CAST(className, obj);
+        CAST_OBJDB(className, obj);
       } catch(MappingException e)
       {
         return false;
@@ -127,6 +127,16 @@ class DiffMorphiaBaseGen
           return false;
 
       return true;
+    }
+
+    public static <T extends Object> List<T> CAST_LIST(Class<T> className, Object obj)
+    {
+      List<T> result = new ArrayList<T>();
+  
+      for (Object o : (List<?>)obj)
+        result.add(className.cast(o));
+  
+      return result;
     }
   }
   '''

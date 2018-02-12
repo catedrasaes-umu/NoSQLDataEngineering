@@ -20,6 +20,7 @@ import es.um.nosql.s13e.m2t.commons.Commons
 import es.um.nosql.s13e.m2t.commons.DependencyAnalyzer
 import es.um.nosql.s13e.m2t.config.ConfigMorphia
 import es.um.nosql.s13e.NoSQLSchema.Association
+import java.util.stream.IntStream
 
 /**
  * Class designed to perform the Morphia code generation: Java
@@ -121,10 +122,8 @@ class DiffToMorphia
       «IF collListUnionProperties.exists[l | l.exists[ps | ps.property instanceof Aggregate]]»
       import «importRoute».commons.Commons;
       «ENDIF»
-      «IF collListUnionProperties.exists[l | l.exists[ps | ps.property instanceof Reference]]»
-      import org.mongodb.morphia.annotations.PrePersist;
-      «ENDIF»
       import org.mongodb.morphia.annotations.PreLoad;
+      import org.mongodb.morphia.annotations.PreSave;
       import com.mongodb.DBObject;
     «ENDIF»
     «IF entity.entityversions.exists[ev | !ev.isRoot || ev.properties.exists[p | p instanceof Aggregate]]»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
@@ -239,7 +238,7 @@ class DiffToMorphia
   /** End of the Union reduction process */
 
   /**
-   * Method used to generate Union code. In Java this is performed by creating an Object attribute
+   * Method used to generate Union code. In Java this is performed by creating several private attributesan Object attribute
    * and some restrictions when setting that attribute.
    * It is also neccesary to create a @Preload method in order to identify the Union during the loading process.
    */
@@ -248,18 +247,39 @@ class DiffToMorphia
     val theTypes = list.map[p | genTypeForProperty(p)];
     val theName = list.head.name;
     val theSignature = theTypes.join('_').replace("<", "").replace(">", "");
+    var numProperties = IntStream.range(0, list.length).toArray;
 
   '''
+  «FOR int iterator : numProperties»
+  private «genTypeForProperty(list.get(iterator))» __«list.get(iterator).name»«iterator + 1»;
+  «ENDFOR»
+
   // @Union_«theTypes.join('_')»
-  «IF list.exists[p | p instanceof Aggregate]»@Embedded«ELSE»@Property«ENDIF»
   «IF required»@NotNull(message = "«theName» can't be null")«ENDIF»
   «indexValGen.genValidatorsForField(list.head.eContainer.eContainer as Entity, theName)»
   private Object «theName»;
-  public Object get«theName.toFirstUpper»() {return this.«theName»;}
+  public Object get«theName.toFirstUpper»()
+  {
+    «FOR int iterator : numProperties»
+    if (__«list.get(iterator).name»«iterator + 1» != null) return __«list.get(iterator).name»«iterator + 1»;
+    «ENDFOR»
+    return null;
+  }
+
   public void set«theName.toFirstUpper»(Object «theName»)
   {
-    if («list.map[p | genUnionSetMethod(p)].join(' || ')»)
+    «FOR int iterator : numProperties»
+    if («genUnionSetMethod(list.get(iterator))»)
+    {
+      this.__«theName»«iterator + 1» = «theName»;
+      «FOR int iterator2 : numProperties»
+        «IF (iterator !== iterator2)»
+          this.__«theName»«iterator2 + 1» = null;
+        «ENDIF»
+      «ENDFOR»
       this.«theName» = «theName»;
+    }
+    «ENDFOR»
     else
       throw new ClassCastException("«theName» must be of type «theTypes.join(' or ')»");
   }
@@ -307,15 +327,12 @@ class DiffToMorphia
   '''
 
   def dispatch genUnionFor(Aggregate aggr)
-  '''
-  «IF aggr.lowerBound !== 1 || aggr.upperBound !== 1»
+  '''«IF aggr.lowerBound !== 1 || aggr.upperBound !== 1»
     if (Commons.IS_CASTABLE_LIST_OBJDB(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj))
       this.«aggr.name» = Commons.CAST_LIST(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj);
   «ELSE»
     if (Commons.IS_CASTABLE_OBJDB(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj))
-      this.«aggr.name» = Commons.CAST(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj);
-  «ENDIF»
-  '''
+      this.«aggr.name» = Commons.CAST(«(aggr.refTo.head.eContainer as Entity).name».class, fieldObj);«ENDIF»'''
 
   def dispatch genUnionFor(Reference ref)
   {
