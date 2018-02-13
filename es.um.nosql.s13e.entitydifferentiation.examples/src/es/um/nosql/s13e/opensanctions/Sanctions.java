@@ -12,11 +12,11 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 import es.um.nosql.s13e.opensanctions.Nationality;
+import es.um.nosql.s13e.opensanctions.Birth_place;
 import es.um.nosql.s13e.opensanctions.Identifier;
 import es.um.nosql.s13e.opensanctions.Birth_date;
-import es.um.nosql.s13e.opensanctions.Address;
 import es.um.nosql.s13e.opensanctions.Alias;
-import es.um.nosql.s13e.opensanctions.Birth_place;
+import es.um.nosql.s13e.opensanctions.Address;
 
 @Entity(value = "sanctions", noClassnameStored = true)
 public class Sanctions

@@ -165,34 +165,34 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.16"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.15"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.6"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.6"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.12"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.11"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.15"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.14"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.11"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.10"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.8"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.8"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.14"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.13"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.2/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/proteins.xmi#//@entities.0/@entityversions.3/@properties.1"/>
     </commonProps>
   </entityDiffSpecs>
   <schema href="../testSources/proteins.xmi#proteins"/>

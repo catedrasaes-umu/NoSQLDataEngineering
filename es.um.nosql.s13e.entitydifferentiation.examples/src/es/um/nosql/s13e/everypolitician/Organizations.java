@@ -11,9 +11,9 @@ import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
 import java.util.List;
 
-import es.um.nosql.s13e.everypolitician.Other_name;
 import es.um.nosql.s13e.everypolitician.Identifier;
 import es.um.nosql.s13e.everypolitician.Link;
+import es.um.nosql.s13e.everypolitician.Other_name;
 
 @Entity(value = "organizations", noClassnameStored = true)
 public class Organizations

@@ -39,16 +39,16 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityversions.3/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityversions.1/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityversions.3/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityversions.1/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityversions.3/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityversions.1/@properties.4"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityversions.3/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityversions.1/@properties.0"/>
     </commonProps>
   </entityDiffSpecs>
   <schema href="../testSources/publications.xmi#publications"/>
