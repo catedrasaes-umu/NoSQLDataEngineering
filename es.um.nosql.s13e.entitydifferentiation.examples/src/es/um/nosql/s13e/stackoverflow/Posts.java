@@ -2,9 +2,6 @@ package es.um.nosql.s13e.stackoverflow;
 
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.PreLoad;
-import org.mongodb.morphia.annotations.PreSave;
-import com.mongodb.DBObject;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
 import javax.validation.constraints.NotNull;
@@ -92,10 +89,11 @@ public class Posts
   public String getParentId() {return this.ParentId;}
   public void setParentId(String ParentId) {this.ParentId = ParentId;}
   
-  @Reference(idOnly = true, lazy = true)
-  private Posts PostTypeId;
-  public Posts getPostTypeId() {return this.PostTypeId;}
-  public void setPostTypeId(Posts PostTypeId) {this.PostTypeId = PostTypeId;}
+  @Property
+  @NotNull(message = "PostTypeId can't be null")
+  private Integer PostTypeId;
+  public Integer getPostTypeId() {return this.PostTypeId;}
+  public void setPostTypeId(Integer PostTypeId) {this.PostTypeId = PostTypeId;}
   
   @Property
   @NotNull(message = "Score can't be null")

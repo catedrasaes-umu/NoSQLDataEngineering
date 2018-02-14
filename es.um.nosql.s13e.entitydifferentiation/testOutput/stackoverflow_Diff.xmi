@@ -66,22 +66,22 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.1/@entityversions.2/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.1/@entityversions.3/@properties.3"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.1/@entityversions.2/@properties.6"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.1/@entityversions.3/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.1/@entityversions.2/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.1/@entityversions.3/@properties.4"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.1/@entityversions.2/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.1/@entityversions.3/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.1/@entityversions.2/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.1/@entityversions.3/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.1/@entityversions.2/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.1/@entityversions.3/@properties.2"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
@@ -120,9 +120,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.0/@properties.9"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.0/@properties.14"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.0/@properties.0"/>
       </propertySpecs>
@@ -139,25 +136,22 @@
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.5"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.16"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.17"/>
       </propertySpecs>
       <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.16"/>
+      </propertySpecs>
+      <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.12"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.10"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.1"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.12"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.3"/>
@@ -165,8 +159,8 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.9"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.13"/>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.1/@properties.0"/>
@@ -184,25 +178,22 @@
     </entityVersionProps>
     <entityVersionProps>
       <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.2/@properties.12"/>
+      </propertySpecs>
+      <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.2/@properties.5"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.2/@properties.16"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.2/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.2/@properties.17"/>
       </propertySpecs>
       <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.2/@properties.16"/>
+      </propertySpecs>
+      <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.2/@properties.11"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.2/@properties.10"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.2/@properties.12"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.2/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.2/@properties.1"/>
@@ -213,8 +204,8 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.2/@properties.9"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.2/@properties.13"/>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.2/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.2/@properties.0"/>
@@ -232,28 +223,25 @@
     </entityVersionProps>
     <entityVersionProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.16"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.17"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.11"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.10"/>
-      </propertySpecs>
-      <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.12"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.5"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.17"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.16"/>
+      </propertySpecs>
+      <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.1"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.3"/>
@@ -261,8 +249,8 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.9"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.13"/>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.3/@properties.0"/>
@@ -302,9 +290,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.4/@properties.9"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.4/@properties.12"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.4/@properties.10"/>
@@ -351,9 +336,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.5/@properties.9"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.5/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.5/@properties.10"/>
       </propertySpecs>
@@ -376,37 +358,34 @@
     </entityVersionProps>
     <entityVersionProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.16"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.17"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.10"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.11"/>
-      </propertySpecs>
-      <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.12"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.5"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.17"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.16"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.1"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.9"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.13"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.6/@properties.0"/>
@@ -449,9 +428,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.7/@properties.9"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.7/@properties.12"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.7/@properties.0"/>
@@ -498,9 +474,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.8/@properties.9"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.8/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.8/@properties.0"/>
       </propertySpecs>
@@ -543,9 +516,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.9/@properties.3"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.9/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.9/@properties.0"/>
       </propertySpecs>
@@ -587,9 +557,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.10/@properties.3"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.10/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.10/@properties.0"/>
@@ -636,9 +603,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.11/@properties.3"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.11/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.11/@properties.0"/>
       </propertySpecs>
@@ -664,28 +628,25 @@
     </entityVersionProps>
     <entityVersionProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.5"/>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.12"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.16"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.5"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.17"/>
       </propertySpecs>
       <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.16"/>
+      </propertySpecs>
+      <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.11"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.9"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.12"/>
-      </propertySpecs>
-      <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.1"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.3"/>
@@ -693,8 +654,8 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.13"/>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.12/@properties.0"/>
@@ -734,9 +695,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.13/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.13/@properties.12"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.13/@properties.9"/>
@@ -779,9 +737,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.14/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.14/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.14/@properties.9"/>
@@ -834,9 +789,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.15/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.15/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.15/@properties.0"/>
       </propertySpecs>
@@ -878,9 +830,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.16/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.16/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.16/@properties.0"/>
@@ -924,9 +873,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.17/@properties.3"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.17/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.17/@properties.0"/>
       </propertySpecs>
@@ -968,9 +914,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.18/@properties.3"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.18/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.18/@properties.0"/>
@@ -1017,9 +960,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.19/@properties.3"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.19/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.19/@properties.0"/>
       </propertySpecs>
@@ -1048,28 +988,25 @@
     </entityVersionProps>
     <entityVersionProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.16"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.17"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.10"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.11"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.9"/>
-      </propertySpecs>
-      <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.12"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.6"/>
       </propertySpecs>
       <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.17"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.16"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.1"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.3"/>
@@ -1077,8 +1014,8 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.13"/>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.20/@properties.0"/>
@@ -1118,9 +1055,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.21/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.21/@properties.12"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.21/@properties.9"/>
@@ -1167,9 +1101,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.22/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.22/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.22/@properties.9"/>
       </propertySpecs>
@@ -1215,9 +1146,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.23/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.23/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.23/@properties.9"/>
       </propertySpecs>
@@ -1259,9 +1187,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.24/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.24/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.24/@properties.9"/>
@@ -1308,9 +1233,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.25/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.25/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.25/@properties.9"/>
       </propertySpecs>
@@ -1352,9 +1274,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.26/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.26/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.26/@properties.9"/>
@@ -1410,9 +1329,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.27/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.27/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.27/@properties.0"/>
       </propertySpecs>
@@ -1454,9 +1370,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.28/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.28/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.28/@properties.0"/>
@@ -1503,9 +1416,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.29/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.29/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.29/@properties.0"/>
       </propertySpecs>
@@ -1547,9 +1457,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.30/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.30/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.30/@properties.0"/>
@@ -1596,9 +1503,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.31/@properties.3"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.31/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.31/@properties.0"/>
       </propertySpecs>
@@ -1640,9 +1544,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.32/@properties.3"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.32/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.32/@properties.0"/>
@@ -1688,9 +1589,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.33/@properties.3"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.33/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.33/@properties.0"/>
@@ -1743,9 +1641,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.34/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.34/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.34/@properties.8"/>
       </propertySpecs>
@@ -1787,9 +1682,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.35/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.35/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.35/@properties.8"/>
@@ -1836,9 +1728,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.36/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.36/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.36/@properties.8"/>
       </propertySpecs>
@@ -1880,9 +1769,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.37/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.37/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.37/@properties.8"/>
@@ -1932,9 +1818,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.38/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.38/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.38/@properties.8"/>
       </propertySpecs>
@@ -1976,9 +1859,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.39/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.39/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.39/@properties.8"/>
@@ -2024,9 +1904,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.40/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.40/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.40/@properties.8"/>
@@ -2079,9 +1956,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.41/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.41/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.41/@properties.0"/>
       </propertySpecs>
@@ -2123,9 +1997,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.42/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.42/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.42/@properties.0"/>
@@ -2172,9 +2043,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.43/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.43/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.43/@properties.0"/>
       </propertySpecs>
@@ -2217,9 +2085,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.44/@properties.3"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.44/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.44/@properties.0"/>
       </propertySpecs>
@@ -2261,9 +2126,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.45/@properties.3"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.45/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.45/@properties.0"/>
@@ -2310,9 +2172,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.46/@properties.3"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.46/@properties.8"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.46/@properties.0"/>
       </propertySpecs>
@@ -2355,9 +2214,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.47/@properties.3"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.47/@properties.7"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.47/@properties.0"/>
       </propertySpecs>
@@ -2392,37 +2248,34 @@
     </entityVersionProps>
     <entityVersionProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.4"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.16"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.17"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.10"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.11"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.9"/>
-      </propertySpecs>
-      <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.12"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.4"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.6"/>
       </propertySpecs>
       <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.17"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.16"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.1"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.13"/>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.48/@properties.0"/>
@@ -2462,9 +2315,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.49/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.49/@properties.12"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.49/@properties.9"/>
@@ -2511,9 +2361,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.50/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.50/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.50/@properties.9"/>
       </propertySpecs>
@@ -2559,9 +2406,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.51/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.51/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.51/@properties.9"/>
       </propertySpecs>
@@ -2603,9 +2447,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.52/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.52/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.52/@properties.9"/>
@@ -2651,9 +2492,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.53/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.53/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.53/@properties.9"/>
@@ -2706,9 +2544,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.54/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.54/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.54/@properties.0"/>
       </propertySpecs>
@@ -2750,9 +2585,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.55/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.55/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.55/@properties.0"/>
@@ -2799,9 +2631,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.56/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.56/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.56/@properties.0"/>
       </propertySpecs>
@@ -2844,9 +2673,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.57/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.57/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.57/@properties.0"/>
       </propertySpecs>
@@ -2888,9 +2714,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.58/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.58/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.58/@properties.0"/>
@@ -2936,9 +2759,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.59/@properties.1"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.59/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.59/@properties.0"/>
@@ -2991,9 +2811,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.60/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.60/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.60/@properties.8"/>
       </propertySpecs>
@@ -3035,9 +2852,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.61/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.61/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.61/@properties.8"/>
@@ -3084,9 +2898,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.62/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.62/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.62/@properties.8"/>
       </propertySpecs>
@@ -3132,9 +2943,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.63/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.63/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.63/@properties.8"/>
       </propertySpecs>
@@ -3176,9 +2984,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.64/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.64/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.64/@properties.8"/>
@@ -3224,9 +3029,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.65/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.65/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.65/@properties.8"/>
@@ -3279,9 +3081,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.66/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.66/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.66/@properties.0"/>
       </propertySpecs>
@@ -3323,9 +3122,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.67/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.67/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.67/@properties.0"/>
@@ -3372,9 +3168,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.68/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.68/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.68/@properties.0"/>
       </propertySpecs>
@@ -3416,9 +3209,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.69/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.69/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.69/@properties.0"/>
@@ -3465,9 +3255,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.70/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.70/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.70/@properties.0"/>
       </propertySpecs>
@@ -3509,9 +3296,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.71/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.71/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.71/@properties.0"/>
@@ -3557,9 +3341,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.72/@properties.1"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.72/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.72/@properties.0"/>
@@ -3615,9 +3396,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.73/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.73/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.73/@properties.8"/>
       </propertySpecs>
@@ -3659,9 +3437,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.74/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.74/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.74/@properties.8"/>
@@ -3708,9 +3483,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.75/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.75/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.75/@properties.8"/>
       </propertySpecs>
@@ -3752,9 +3524,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.76/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.76/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.76/@properties.8"/>
@@ -3804,9 +3573,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.77/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.77/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.77/@properties.8"/>
       </propertySpecs>
@@ -3848,9 +3614,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.78/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.78/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.78/@properties.8"/>
@@ -3897,9 +3660,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.79/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.79/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.79/@properties.8"/>
       </propertySpecs>
@@ -3941,9 +3701,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.80/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.80/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.80/@properties.8"/>
@@ -3999,9 +3756,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.81/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.81/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.81/@properties.0"/>
       </propertySpecs>
@@ -4043,9 +3797,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.82/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.82/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.82/@properties.0"/>
@@ -4092,9 +3843,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.83/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.83/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.83/@properties.0"/>
       </propertySpecs>
@@ -4137,9 +3885,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.84/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.84/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.84/@properties.0"/>
       </propertySpecs>
@@ -4181,9 +3926,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.85/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.85/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.85/@properties.0"/>
@@ -4233,9 +3975,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.86/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.86/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.86/@properties.0"/>
       </propertySpecs>
@@ -4277,9 +4016,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.87/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.87/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.87/@properties.0"/>
@@ -4326,9 +4062,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.88/@properties.1"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.88/@properties.8"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.88/@properties.0"/>
       </propertySpecs>
@@ -4370,9 +4103,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.89/@properties.1"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.89/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.89/@properties.0"/>
@@ -4428,9 +4158,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.90/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.90/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.90/@properties.7"/>
       </propertySpecs>
@@ -4472,9 +4199,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.91/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.91/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.91/@properties.7"/>
@@ -4521,9 +4245,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.92/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.92/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.92/@properties.7"/>
       </propertySpecs>
@@ -4565,9 +4286,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.93/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.93/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.93/@properties.7"/>
@@ -4617,9 +4335,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.94/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.94/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.94/@properties.7"/>
       </propertySpecs>
@@ -4661,9 +4376,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.95/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.95/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.95/@properties.7"/>
@@ -4709,9 +4421,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.96/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.96/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.96/@properties.7"/>
@@ -4764,9 +4473,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.97/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.97/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.97/@properties.0"/>
       </propertySpecs>
@@ -4808,9 +4514,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.98/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.98/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.98/@properties.0"/>
@@ -4857,9 +4560,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.99/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.99/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.99/@properties.0"/>
       </propertySpecs>
@@ -4902,9 +4602,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.100/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.100/@properties.8"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.100/@properties.0"/>
       </propertySpecs>
@@ -4946,9 +4643,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.101/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.101/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.101/@properties.0"/>
@@ -5001,9 +4695,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.102/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.102/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.102/@properties.0"/>
       </propertySpecs>
@@ -5046,9 +4737,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.103/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.103/@properties.8"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.103/@properties.0"/>
       </propertySpecs>
@@ -5090,9 +4778,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.104/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.104/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.104/@properties.0"/>
@@ -5139,9 +4824,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.105/@properties.1"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.105/@properties.7"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.105/@properties.0"/>
       </propertySpecs>
@@ -5184,9 +4866,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.106/@properties.1"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.106/@properties.6"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.106/@properties.0"/>
       </propertySpecs>
@@ -5224,31 +4903,28 @@
     </entityVersionProps>
     <entityVersionProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.4"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.16"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.17"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.10"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.11"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.9"/>
-      </propertySpecs>
-      <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.12"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.4"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.6"/>
       </propertySpecs>
       <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.17"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.16"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.10"/>
+      </propertySpecs>
+      <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.0"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.2"/>
@@ -5256,8 +4932,8 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.13"/>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.107/@properties.15"/>
@@ -5297,9 +4973,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.108/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.108/@properties.12"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.108/@properties.9"/>
@@ -5346,9 +5019,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.109/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.109/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.109/@properties.9"/>
       </propertySpecs>
@@ -5394,9 +5064,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.110/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.110/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.110/@properties.9"/>
       </propertySpecs>
@@ -5438,9 +5105,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.111/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.111/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.111/@properties.9"/>
@@ -5486,9 +5150,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.112/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.112/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.112/@properties.9"/>
@@ -5541,9 +5202,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.113/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.113/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.113/@properties.14"/>
       </propertySpecs>
@@ -5585,9 +5243,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.114/@properties.8"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.114/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.114/@properties.13"/>
@@ -5634,9 +5289,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.115/@properties.8"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.115/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.115/@properties.13"/>
       </propertySpecs>
@@ -5679,9 +5331,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.116/@properties.2"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.116/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.116/@properties.12"/>
       </propertySpecs>
@@ -5723,9 +5372,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.117/@properties.2"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.117/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.117/@properties.11"/>
@@ -5771,9 +5417,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.118/@properties.2"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.118/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.118/@properties.11"/>
@@ -5826,9 +5469,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.119/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.119/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.119/@properties.8"/>
       </propertySpecs>
@@ -5870,9 +5510,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.120/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.120/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.120/@properties.8"/>
@@ -5919,9 +5556,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.121/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.121/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.121/@properties.8"/>
       </propertySpecs>
@@ -5963,9 +5597,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.122/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.122/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.122/@properties.8"/>
@@ -6018,9 +5649,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.123/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.123/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.123/@properties.13"/>
       </propertySpecs>
@@ -6062,9 +5690,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.124/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.124/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.124/@properties.12"/>
@@ -6111,9 +5736,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.125/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.125/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.125/@properties.12"/>
       </propertySpecs>
@@ -6156,9 +5778,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.126/@properties.2"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.126/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.126/@properties.11"/>
       </propertySpecs>
@@ -6200,9 +5819,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.127/@properties.2"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.127/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.127/@properties.10"/>
@@ -6248,9 +5864,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.128/@properties.2"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.128/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.128/@properties.10"/>
@@ -6306,9 +5919,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.129/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.129/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.129/@properties.8"/>
       </propertySpecs>
@@ -6350,9 +5960,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.130/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.130/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.130/@properties.8"/>
@@ -6399,9 +6006,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.131/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.131/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.131/@properties.8"/>
       </propertySpecs>
@@ -6443,9 +6047,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.132/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.132/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.132/@properties.8"/>
@@ -6495,9 +6096,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.133/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.133/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.133/@properties.8"/>
       </propertySpecs>
@@ -6539,9 +6137,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.134/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.134/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.134/@properties.8"/>
@@ -6587,9 +6182,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.135/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.135/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.135/@properties.8"/>
@@ -6642,9 +6234,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.136/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.136/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.136/@properties.13"/>
       </propertySpecs>
@@ -6686,9 +6275,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.137/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.137/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.137/@properties.12"/>
@@ -6735,9 +6321,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.138/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.138/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.138/@properties.12"/>
       </propertySpecs>
@@ -6779,9 +6362,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.139/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.139/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.139/@properties.11"/>
@@ -6828,9 +6408,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.140/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.140/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.140/@properties.11"/>
       </propertySpecs>
@@ -6876,9 +6453,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.141/@properties.2"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.141/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.141/@properties.11"/>
       </propertySpecs>
@@ -6920,9 +6494,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.142/@properties.2"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.142/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.142/@properties.10"/>
@@ -6969,9 +6540,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.143/@properties.2"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.143/@properties.8"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.143/@properties.10"/>
       </propertySpecs>
@@ -7013,9 +6581,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.144/@properties.2"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.144/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.144/@properties.9"/>
@@ -7071,9 +6636,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.145/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.145/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.145/@properties.7"/>
       </propertySpecs>
@@ -7115,9 +6677,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.146/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.146/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.146/@properties.7"/>
@@ -7164,9 +6723,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.147/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.147/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.147/@properties.7"/>
       </propertySpecs>
@@ -7212,9 +6768,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.148/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.148/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.148/@properties.7"/>
       </propertySpecs>
@@ -7256,9 +6809,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.149/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.149/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.149/@properties.7"/>
@@ -7304,9 +6854,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.150/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.150/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.150/@properties.7"/>
@@ -7359,9 +6906,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.151/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.151/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.151/@properties.12"/>
       </propertySpecs>
@@ -7403,9 +6947,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.152/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.152/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.152/@properties.11"/>
@@ -7452,9 +6993,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.153/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.153/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.153/@properties.11"/>
       </propertySpecs>
@@ -7496,9 +7034,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.154/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.154/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.154/@properties.10"/>
@@ -7545,9 +7080,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.155/@properties.2"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.155/@properties.8"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.155/@properties.10"/>
       </propertySpecs>
@@ -7589,9 +7121,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.156/@properties.2"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.156/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.156/@properties.9"/>
@@ -7638,9 +7167,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.157/@properties.2"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.157/@properties.7"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.157/@properties.9"/>
       </propertySpecs>
@@ -7682,9 +7208,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.158/@properties.2"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.158/@properties.6"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.158/@properties.8"/>
@@ -7746,9 +7269,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.159/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.159/@properties.12"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.159/@properties.8"/>
       </propertySpecs>
@@ -7790,9 +7310,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.160/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.160/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.160/@properties.8"/>
@@ -7839,9 +7356,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.161/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.161/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.161/@properties.8"/>
       </propertySpecs>
@@ -7883,9 +7397,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.162/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.162/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.162/@properties.8"/>
@@ -7935,9 +7446,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.163/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.163/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.163/@properties.8"/>
       </propertySpecs>
@@ -7979,9 +7487,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.164/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.164/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.164/@properties.8"/>
@@ -8027,9 +7532,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.165/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.165/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.165/@properties.8"/>
@@ -8082,9 +7584,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.166/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.166/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.166/@properties.13"/>
       </propertySpecs>
@@ -8126,9 +7625,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.167/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.167/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.167/@properties.12"/>
@@ -8175,9 +7671,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.168/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.168/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.168/@properties.12"/>
       </propertySpecs>
@@ -8220,9 +7713,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.169/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.169/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.169/@properties.11"/>
       </propertySpecs>
@@ -8264,9 +7754,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.170/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.170/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.170/@properties.10"/>
@@ -8316,9 +7803,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.171/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.171/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.171/@properties.11"/>
       </propertySpecs>
@@ -8360,9 +7844,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.172/@properties.7"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.172/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.172/@properties.10"/>
@@ -8409,9 +7890,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.173/@properties.0"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.173/@properties.8"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.173/@properties.10"/>
       </propertySpecs>
@@ -8453,9 +7931,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.174/@properties.0"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.174/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.174/@properties.9"/>
@@ -8511,9 +7986,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.175/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.175/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.175/@properties.7"/>
       </propertySpecs>
@@ -8555,9 +8027,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.176/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.176/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.176/@properties.7"/>
@@ -8604,9 +8073,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.177/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.177/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.177/@properties.7"/>
       </propertySpecs>
@@ -8648,9 +8114,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.178/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.178/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.178/@properties.7"/>
@@ -8697,9 +8160,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.179/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.179/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.179/@properties.7"/>
       </propertySpecs>
@@ -8744,9 +8204,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.180/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.180/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.180/@properties.7"/>
@@ -8799,9 +8256,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.181/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.181/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.181/@properties.12"/>
       </propertySpecs>
@@ -8843,9 +8297,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.182/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.182/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.182/@properties.11"/>
@@ -8892,9 +8343,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.183/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.183/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.183/@properties.11"/>
       </propertySpecs>
@@ -8937,9 +8385,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.184/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.184/@properties.8"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.184/@properties.10"/>
       </propertySpecs>
@@ -8981,9 +8426,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.185/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.185/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.185/@properties.9"/>
@@ -9033,9 +8475,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.186/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.186/@properties.8"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.186/@properties.10"/>
       </propertySpecs>
@@ -9077,9 +8516,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.187/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.187/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.187/@properties.9"/>
@@ -9126,9 +8562,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.188/@properties.0"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.188/@properties.7"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.188/@properties.9"/>
       </propertySpecs>
@@ -9170,9 +8603,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.189/@properties.0"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.189/@properties.6"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.189/@properties.8"/>
@@ -9231,9 +8661,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.190/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.190/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.190/@properties.7"/>
       </propertySpecs>
@@ -9275,9 +8702,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.191/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.191/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.191/@properties.7"/>
@@ -9324,9 +8748,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.192/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.192/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.192/@properties.7"/>
       </propertySpecs>
@@ -9368,9 +8789,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.193/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.193/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.193/@properties.7"/>
@@ -9420,9 +8838,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.194/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.194/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.194/@properties.7"/>
       </propertySpecs>
@@ -9464,9 +8879,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.195/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.195/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.195/@properties.7"/>
@@ -9513,9 +8925,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.196/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.196/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.196/@properties.7"/>
       </propertySpecs>
@@ -9557,9 +8966,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.197/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.197/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.197/@properties.7"/>
@@ -9615,9 +9021,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.198/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.198/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.198/@properties.12"/>
       </propertySpecs>
@@ -9659,9 +9062,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.199/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.199/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.199/@properties.11"/>
@@ -9708,9 +9108,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.200/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.200/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.200/@properties.11"/>
       </propertySpecs>
@@ -9753,9 +9150,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.201/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.201/@properties.8"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.201/@properties.10"/>
       </propertySpecs>
@@ -9797,9 +9191,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.202/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.202/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.202/@properties.9"/>
@@ -9852,9 +9243,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.203/@properties.7"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.203/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.203/@properties.11"/>
       </propertySpecs>
@@ -9897,9 +9285,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.204/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.204/@properties.8"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.204/@properties.10"/>
       </propertySpecs>
@@ -9941,9 +9326,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.205/@properties.6"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.205/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.205/@properties.9"/>
@@ -9990,9 +9372,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.206/@properties.0"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.206/@properties.7"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.206/@properties.9"/>
       </propertySpecs>
@@ -10034,9 +9413,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.207/@properties.0"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.207/@properties.6"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.207/@properties.8"/>
@@ -10092,9 +9468,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.208/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.208/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.208/@properties.6"/>
       </propertySpecs>
@@ -10136,9 +9509,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.209/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.209/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.209/@properties.6"/>
@@ -10185,9 +9555,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.210/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.210/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.210/@properties.6"/>
       </propertySpecs>
@@ -10229,9 +9596,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.211/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.211/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.211/@properties.6"/>
@@ -10281,9 +9645,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.212/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.212/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.212/@properties.6"/>
       </propertySpecs>
@@ -10325,9 +9686,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.213/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.213/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.213/@properties.6"/>
@@ -10374,9 +9732,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.214/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.214/@properties.8"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.214/@properties.6"/>
       </propertySpecs>
@@ -10418,9 +9773,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.215/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.215/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.215/@properties.6"/>
@@ -10476,9 +9828,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.216/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.216/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.216/@properties.11"/>
       </propertySpecs>
@@ -10520,9 +9869,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.217/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.217/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.217/@properties.10"/>
@@ -10569,9 +9915,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.218/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.218/@properties.8"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.218/@properties.10"/>
       </propertySpecs>
@@ -10614,9 +9957,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.219/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.219/@properties.7"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.219/@properties.9"/>
       </propertySpecs>
@@ -10658,9 +9998,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.220/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.220/@properties.6"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.220/@properties.8"/>
@@ -10713,9 +10050,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.221/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.221/@properties.8"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.221/@properties.10"/>
       </propertySpecs>
@@ -10758,9 +10092,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.222/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.222/@properties.7"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.222/@properties.9"/>
       </propertySpecs>
@@ -10802,9 +10133,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.223/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.223/@properties.6"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.223/@properties.8"/>
@@ -10851,9 +10179,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.224/@properties.0"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.224/@properties.6"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.224/@properties.8"/>
       </propertySpecs>
@@ -10895,9 +10220,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.225/@properties.0"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.225/@properties.5"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.225/@properties.7"/>
@@ -10953,9 +10275,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.226/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.226/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.226/@properties.6"/>
       </propertySpecs>
@@ -11001,9 +10320,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.227/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.227/@properties.11"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.227/@properties.6"/>
       </propertySpecs>
@@ -11045,9 +10361,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.228/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.228/@properties.10"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.228/@properties.6"/>
@@ -11094,9 +10407,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.229/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.229/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.229/@properties.6"/>
       </propertySpecs>
@@ -11138,9 +10448,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.230/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.230/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.230/@properties.6"/>
@@ -11190,9 +10497,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.231/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.231/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.231/@properties.6"/>
       </propertySpecs>
@@ -11234,9 +10538,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.232/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.232/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.232/@properties.6"/>
@@ -11283,9 +10584,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.233/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.233/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.233/@properties.6"/>
       </propertySpecs>
@@ -11327,9 +10625,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.234/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.234/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.234/@properties.6"/>
@@ -11385,9 +10680,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.235/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.235/@properties.10"/>
-      </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.235"/>
       <notProps>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.207/@properties.4"/>
@@ -11429,9 +10721,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.236/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.236/@properties.9"/>
       </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.236"/>
       <notProps>
@@ -11478,9 +10767,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.237/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.237/@properties.9"/>
-      </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.237"/>
       <notProps>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.207/@properties.4"/>
@@ -11523,9 +10809,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.238/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.238/@properties.8"/>
-      </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.238"/>
       <notProps>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.261/@properties.4"/>
@@ -11567,9 +10850,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.239/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.239/@properties.7"/>
       </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.239"/>
       <notProps>
@@ -11622,9 +10902,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.240/@properties.6"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.240/@properties.9"/>
-      </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.240"/>
       <notProps>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.207/@properties.4"/>
@@ -11667,9 +10944,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.241/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.241/@properties.8"/>
-      </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.241"/>
       <notProps>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.207/@properties.4"/>
@@ -11711,9 +10985,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.242/@properties.5"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.242/@properties.7"/>
       </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.242"/>
       <notProps>
@@ -11760,9 +11031,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.243/@properties.2"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.243/@properties.7"/>
-      </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.243"/>
       <notProps>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.207/@properties.4"/>
@@ -11804,9 +11072,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.244/@properties.2"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.244/@properties.6"/>
       </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.244"/>
       <notProps>
@@ -11862,9 +11127,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.245/@properties.4"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.245/@properties.10"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.245/@properties.5"/>
       </propertySpecs>
@@ -11906,9 +11168,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.246/@properties.4"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.246/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.246/@properties.5"/>
@@ -11955,9 +11214,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.247/@properties.4"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.247/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.247/@properties.5"/>
       </propertySpecs>
@@ -11999,9 +11255,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.248/@properties.4"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.248/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.248/@properties.5"/>
@@ -12051,9 +11304,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.249/@properties.4"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.249/@properties.9"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.249/@properties.5"/>
       </propertySpecs>
@@ -12095,9 +11345,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.250/@properties.4"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.250/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.250/@properties.5"/>
@@ -12143,9 +11390,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.251/@properties.4"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.251/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.251/@properties.5"/>
@@ -12198,9 +11442,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.252/@properties.4"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.252/@properties.9"/>
-      </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.252"/>
       <notProps>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.244/@properties.2"/>
@@ -12242,9 +11483,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.253/@properties.4"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.253/@properties.8"/>
       </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.253"/>
       <notProps>
@@ -12291,9 +11529,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.254/@properties.4"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.254/@properties.8"/>
-      </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.254"/>
       <notProps>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.244/@properties.2"/>
@@ -12336,9 +11571,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.255/@properties.4"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.255/@properties.7"/>
-      </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.255"/>
       <notProps>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.261/@properties.4"/>
@@ -12380,9 +11612,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.256/@properties.4"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.256/@properties.6"/>
       </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.256"/>
       <notProps>
@@ -12432,9 +11661,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.257/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.257/@properties.8"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.257/@properties.4"/>
       </propertySpecs>
@@ -12483,9 +11709,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.258/@properties.5"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.258/@properties.8"/>
-      </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.258"/>
       <notProps>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.244/@properties.2"/>
@@ -12528,9 +11751,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.259/@properties.4"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.259/@properties.7"/>
-      </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.259"/>
       <notProps>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.244/@properties.2"/>
@@ -12572,9 +11792,6 @@
       </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.260/@properties.4"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.260/@properties.6"/>
       </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.260"/>
       <notProps>
@@ -12621,9 +11838,6 @@
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.261/@properties.4"/>
       </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.261/@properties.6"/>
-      </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.261"/>
       <notProps>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.244/@properties.2"/>
@@ -12665,9 +11879,6 @@
     <entityVersionProps>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.262/@properties.4"/>
-      </propertySpecs>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.262/@properties.5"/>
       </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.262"/>
       <notProps>
@@ -12711,33 +11922,33 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.21/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.35/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.21/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.35/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.21/@properties.7"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.35/@properties.6"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.21/@properties.18"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.35/@properties.17"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.21/@properties.17"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.35/@properties.16"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.21/@properties.13"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.35/@properties.12"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.21/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.35/@properties.11"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.2/@entityversions.35/@properties.4"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
     <entity href="../testSources/stackoverflow.xmi#Votes"/>
     <entityVersionProps>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.0/@properties.4"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.0/@properties.3"/>
       </propertySpecs>
@@ -12747,9 +11958,6 @@
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.0"/>
     </entityVersionProps>
     <entityVersionProps>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.1/@properties.3"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.1/@properties.0"/>
       </propertySpecs>
@@ -12759,9 +11967,6 @@
       </notProps>
     </entityVersionProps>
     <entityVersionProps>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.2/@properties.3"/>
-      </propertySpecs>
       <propertySpecs>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.2/@properties.2"/>
       </propertySpecs>
@@ -12771,9 +11976,6 @@
       </notProps>
     </entityVersionProps>
     <entityVersionProps>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.3/@properties.2"/>
-      </propertySpecs>
       <entityVersion href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.3"/>
       <notProps>
         <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.2/@properties.2"/>
@@ -12783,16 +11985,19 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.2/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.1/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.2/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.1/@properties.4"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.2/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.1/@properties.3"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.2/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.1/@properties.1"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/stackoverflow.xmi#//@entities.3/@entityversions.1/@properties.2"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
@@ -13491,31 +12696,31 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.17/@properties.12"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.15/@properties.8"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.17/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.15/@properties.7"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.17/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.15/@properties.9"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.17/@properties.10"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.15/@properties.6"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.17/@properties.9"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.15/@properties.10"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.17/@properties.11"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.15/@properties.4"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.17/@properties.8"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.15/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.17/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.15/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.17/@properties.7"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.4/@entityversions.15/@properties.3"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
@@ -13563,16 +12768,16 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.6/@entityversions.0/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.6/@entityversions.1/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.6/@entityversions.0/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.6/@entityversions.1/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.6/@entityversions.0/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.6/@entityversions.1/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.6/@entityversions.0/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/stackoverflow.xmi#//@entities.6/@entityversions.1/@properties.3"/>
     </commonProps>
   </entityDiffSpecs>
   <schema href="../testSources/stackoverflow.xmi#stackoverflow"/>

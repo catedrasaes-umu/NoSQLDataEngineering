@@ -1,7 +1,6 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var UnionType = require('./util/UnionType.js');
 
 var PostsSchema = new mongoose.Schema({
   AcceptedAnswerId: String,
@@ -19,7 +18,7 @@ var PostsSchema = new mongoose.Schema({
   OwnerDisplayName: String,
   OwnerUserId: {type: Number, ref: "Users"},
   ParentId: String,
-  PostTypeId: {type: Number, ref: "Posts"},
+  PostTypeId: {type: Number, required: true},
   Score: {type: Number, required: true},
   Tags: {type: String, ref: "Tags"},
   Title: String,

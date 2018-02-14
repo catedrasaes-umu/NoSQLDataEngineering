@@ -1,14 +1,13 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var UnionType = require('./util/UnionType.js');
 
 var VotesSchema = new mongoose.Schema({
   BountyAmount: Number,
   CreationDate: {type: String, required: true},
   PostId: {type: Number, ref: "Posts", required: true},
   UserId: {type: Number, ref: "Users"},
-  VoteTypeId: {type: Number, ref: "Votes"},
+  VoteTypeId: {type: Number, required: true},
   _id: {type: String, required: true}
 }, { versionKey: false, collection: 'votes'});
 

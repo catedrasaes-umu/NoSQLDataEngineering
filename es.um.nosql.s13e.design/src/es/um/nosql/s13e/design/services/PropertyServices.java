@@ -44,8 +44,15 @@ public class PropertyServices
             result.add(attr);
         } else if (attr.getType() instanceof Tuple)
         {
-          // TODO: Some way of differentiating tuples...
-          result.add(attr);
+          Tuple attr1Type = (Tuple) attr.getType();
+
+          if (!result.stream()
+              .anyMatch(attr2 -> attr2.getType() instanceof Tuple
+                  && attr2.getName().equals(attr.getName())
+                  && attr1Type.getElements().size() == ((Tuple)attr2.getType()).getElements().size()
+                  && ((PrimitiveType)attr1Type.getElements().get(0)).getName().equals(((PrimitiveType)((Tuple)attr2.getType()).getElements().get(0)).getName())))
+            result.add(attr);
+
         }
       });
     }

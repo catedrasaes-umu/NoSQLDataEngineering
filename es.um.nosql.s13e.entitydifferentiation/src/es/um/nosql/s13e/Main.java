@@ -31,8 +31,8 @@ public class Main
 
   public static void main(String[] args)
   {
-    String[] input_models = new String[] {"everypolitician_sweden"/*, "facebook", "harvard", "links"*/, "mongomovies", "opensanctions",
-        /*"proteins", "publications", */"stackoverflow"/*, "urban", "webclicks"*/};
+    String[] input_models = new String[] {"everypolitician_sweden", "facebook", "harvard", "links", "mongomovies", "opensanctions",
+        "proteins", "publications", "stackoverflow", "urban", "webclicks"};
 
     for (String input_model : input_models)
     {
