@@ -48,8 +48,8 @@ import java.io.File
 
 import es.um.nosql.streaminginference.spark.utils.IO
 import es.um.nosql.streaminginference.spark.utils.EcoreHelper
-
-
+import es.um.nosql.streaminginference.spark.utils.CrossReferenceMatcher
+import es.um.nosql.streaminginference.spark.utils.CrossReferenceMatcher
 
 object Main {
   
@@ -59,10 +59,15 @@ object Main {
       
     val curState:NoSQLSchema = state.getOption().getOrElse(null)
     val curSchema:NoSQLSchema = schema.getOrElse(null)    
+    val matcher:CrossReferenceMatcher = new CrossReferenceMatcher()
+    if (curState != null && curSchema != null) {
+      // Match references between state and schema before merging
+      // to avoid the creation of unnecesary versions
+      matcher.setCrossReferences(curState, curSchema)
+    }
     val acc:NoSQLSchema = EcoreHelper.merge(curState, curSchema)
-    val output = (schemaName, acc)
     state.update(acc)
-    output
+    (schemaName, acc)
   }
     
   def createContext(inputDir:String, outputDir: String)(): StreamingContext = {
