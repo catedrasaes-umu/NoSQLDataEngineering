@@ -2,9 +2,6 @@ package es.um.nosql.s13e.stackoverflow;
 
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
-import org.mongodb.morphia.annotations.PrePersist;
-import org.mongodb.morphia.annotations.PreLoad;
-import com.mongodb.DBObject;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
 import javax.validation.constraints.NotNull;
@@ -35,10 +32,11 @@ public class Votes
   public Users getUserId() {return this.UserId;}
   public void setUserId(Users UserId) {this.UserId = UserId;}
   
-  @Reference(idOnly = true, lazy = true)
-  private Votes VoteTypeId;
-  public Votes getVoteTypeId() {return this.VoteTypeId;}
-  public void setVoteTypeId(Votes VoteTypeId) {this.VoteTypeId = VoteTypeId;}
+  @Property
+  @NotNull(message = "VoteTypeId can't be null")
+  private Integer VoteTypeId;
+  public Integer getVoteTypeId() {return this.VoteTypeId;}
+  public void setVoteTypeId(Integer VoteTypeId) {this.VoteTypeId = VoteTypeId;}
   
   @Id
   @NotNull(message = "_id can't be null")

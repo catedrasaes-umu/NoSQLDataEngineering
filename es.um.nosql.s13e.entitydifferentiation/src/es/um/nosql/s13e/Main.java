@@ -39,8 +39,8 @@ public class Main
       String inputFile = INPUT_FOLDER + input_model + ".xmi";
       String configFile = INPUT_FOLDER + YAML_CONFIG_ROUTE;
       String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
-      //prepareM2MExample(inputFile, outputFile);
-      //prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER + input_model), new File(configFile));
+      prepareM2MExample(inputFile, outputFile);
+      prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER + input_model), new File(configFile));
       prepareM2MorphiaExample(new File(outputFile), new File(MORPHIA_OUTPUT_GEN_BASE_FOLDER), new File(configFile));      
     }
   }

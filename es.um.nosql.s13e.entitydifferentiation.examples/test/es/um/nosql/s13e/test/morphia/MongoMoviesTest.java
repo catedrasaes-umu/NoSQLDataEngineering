@@ -4,6 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
 
@@ -14,7 +15,6 @@ import javax.validation.Validator;
 import org.bson.types.ObjectId;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
@@ -87,7 +87,7 @@ public class MongoMoviesTest
     newDatastore.save(lMovies);
 
     checkMongomoviesDb(newDatastore);
-    //newDatastore.getDB().dropDatabase();
+    newDatastore.getDB().dropDatabase();
   }
 
   @Test
@@ -107,7 +107,7 @@ public class MongoMoviesTest
     assertEquals(0, validator.validate(m1).size());
     assertEquals(0, validator.validate(m2).size());
 
-    Criticism c1 = new Criticism(); c1.setColor("color1"); c1.setJournalist("journalist1"); c1.setMedia(new Media[] {m1, m2});
+    Criticism c1 = new Criticism(); c1.setColor("color1"); c1.setJournalist("journalist1"); c1.setMedia(Arrays.asList(m1, m2));
     Criticism c2 = new Criticism(); c2.setColor("color2"); c2.setJournalist("journalist2"); c2.setMedia("media2");
     Criticism c3 = new Criticism(); c3.setColor("color3");
     assertThrows(ClassCastException.class, () -> {c3.setMedia(false);});
@@ -125,11 +125,11 @@ public class MongoMoviesTest
   {
     Query<Movietheater> qMovietheaters = datastore.createQuery(Movietheater.class);
     assertEquals(N_MOVIETHEATER, qMovietheaters.count());
-    testCollection(qMovietheaters.asList().toArray(new Movietheater[0]), Movietheater.class);
+    testCollection(qMovietheaters.asList(), Movietheater.class);
 
     Query<Director> qDirectors = datastore.createQuery(Director.class);
     assertEquals(N_DIRECTOR, qDirectors.count());
-    testCollection(qDirectors.asList().toArray(new Director[0]), Director.class);
+    testCollection(qDirectors.asList(), Director.class);
 
     for (Director director : qDirectors)
     {
@@ -141,7 +141,7 @@ public class MongoMoviesTest
 
     Query<Movie> qMovies = datastore.createQuery(Movie.class);
     assertEquals(N_MOVIE, qMovies.count());
-    testCollection(qMovies.asList().toArray(new Movie[0]), Movie.class);
+    testCollection(qMovies.asList(), Movie.class);
 
     for (Movie movie : qMovies)
     {
@@ -154,9 +154,9 @@ public class MongoMoviesTest
     }
   }
 
-  private <T> void testCollection(T[] collection, Class<T> className)
+  private <T> void testCollection(List<T> collection, Class<T> className)
   {
-    if (collection == null || collection.length == 0)
+    if (collection == null || collection.size() == 0)
       return;
 
     for (T t : collection)

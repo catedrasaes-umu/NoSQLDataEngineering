@@ -101,7 +101,7 @@ public class BuildNoSQLSchema
 		} catch (IOException e)
 		{
 			e.printStackTrace();
-		}		
+		}
 	}
 
 	public static void main(String[] args) throws IOException

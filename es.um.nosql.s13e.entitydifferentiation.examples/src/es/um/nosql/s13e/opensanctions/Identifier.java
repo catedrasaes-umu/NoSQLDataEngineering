@@ -1,6 +1,7 @@
 package es.um.nosql.s13e.opensanctions;
 
 import org.mongodb.morphia.annotations.PreLoad;
+import org.mongodb.morphia.annotations.PreSave;
 import com.mongodb.DBObject;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
@@ -29,14 +30,33 @@ public class Identifier
   public String getIssued_at() {return this.issued_at;}
   public void setIssued_at(String issued_at) {this.issued_at = issued_at;}
   
+  private String __number1;
+  private Integer __number2;
+  
   // @Union_String_Integer
-  @Property
+  @SuppressWarnings("unused")
   private Object number;
-  public Object getNumber() {return this.number;}
+  public Object getNumber()
+  {
+    if (__number1 != null) return __number1;
+    if (__number2 != null) return __number2;
+    return null;
+  }
+  
   public void setNumber(Object number)
   {
-    if (number instanceof String || number instanceof Integer)
+    if (number instanceof String)
+    {
+      this.__number1 = (String)number;
+      this.__number2 = null;
       this.number = number;
+    }
+    else  if (number instanceof Integer)
+    {
+      this.__number2 = (Integer)number;
+      this.__number1 = null;
+      this.number = number;
+    }
     else
       throw new ClassCastException("number must be of type String or Integer");
   }
@@ -50,14 +70,29 @@ public class Identifier
     Object fieldObj = dbObj.get("number");
   
     if (fieldObj instanceof String)
-      this.number = (String)fieldObj;
+      this.__number1 = (String)fieldObj;
     else 
     if (fieldObj instanceof Integer)
-      this.number = (Integer)fieldObj;
+      this.__number2 = (Integer)fieldObj;
     else
       throw new ClassCastException("number must be of type String or Integer");
   
     dbObj.removeField("number");
+  }
+  
+  @PreSave
+  private void preSaveUnion_String_Integer(DBObject dbObj)
+  {
+    if (__number1 != null)
+    {
+      dbObj.put("number", dbObj.get("__number1"));
+      dbObj.removeField("__number1");
+    }
+    else  if (__number2 != null)
+    {
+      dbObj.put("number", dbObj.get("__number2"));
+      dbObj.removeField("__number2");
+    }
   }
   
   @Property

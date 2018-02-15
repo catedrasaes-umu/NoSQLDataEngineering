@@ -19,17 +19,12 @@
             name="String"/>
       </properties>
       <properties
-          xsi:type="NoSQLSchema:Aggregate"
-          name="dates"
+          xsi:type="NoSQLSchema:Reference"
+          name="date"
           lowerBound="1"
           upperBound="1"
-          refTo="//@entities.1/@entityversions.0"/>
-      <properties
-          xsi:type="NoSQLSchema:Aggregate"
-          name="data"
-          lowerBound="1"
-          upperBound="1"
-          refTo="//@entities.4/@entityversions.0"/>
+          refTo="CustomDate3"
+          originalType="String"/>
     </entityversions>
     <entityversions
         versionId="2"
@@ -43,16 +38,10 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
-          name="dates"
+          name="date"
           lowerBound="1"
           upperBound="1"
-          refTo="//@entities.2/@entityversions.0"/>
-      <properties
-          xsi:type="NoSQLSchema:Aggregate"
-          name="data"
-          lowerBound="1"
-          upperBound="1"
-          refTo="//@entities.4/@entityversions.0"/>
+          refTo="//@entities.1/@entityversions.0"/>
     </entityversions>
     <entityversions
         versionId="3"
@@ -65,19 +54,33 @@
             name="String"/>
       </properties>
       <properties
+          xsi:type="NoSQLSchema:Reference"
+          name="date"
+          lowerBound="1"
+          upperBound="-1"
+          refTo="CustomDate3"
+          originalType="ObjectId"/>
+    </entityversions>
+    <entityversions
+        versionId="4"
+        root="true">
+      <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="data">
+          name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
       <properties
-          xsi:type="NoSQLSchema:Reference"
-          name="dates"
-          lowerBound="1"
-          upperBound="1"
-          refTo="CustomDate3"
-          originalType=""/>
+          xsi:type="NoSQLSchema:Attribute"
+          name="date">
+        <type
+            xsi:type="NoSQLSchema:Tuple">
+          <elements
+              xsi:type="NoSQLSchema:PrimitiveType"
+              name="String"/>
+        </type>
+      </properties>
     </entityversions>
   </entities>
   <entities
@@ -96,20 +99,7 @@
   <entities
       name="CustomDate2">
     <entityversions
-        versionId="11">
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="date2">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="boolean"/>
-      </properties>
-    </entityversions>
-  </entities>
-  <entities
-      name="CustomDate3">
-    <entityversions
-        versionId="12"
+        versionId="20"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -120,7 +110,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="date3">
+          name="date2">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -128,19 +118,20 @@
     </entityversions>
   </entities>
   <entities
-      name="PersonalData">
+      name="CustomDate3">
     <entityversions
-        versionId="20">
+        versionId="30"
+        root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="Name">
+          name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="ObjectId"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="Age">
+          name="date3">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>

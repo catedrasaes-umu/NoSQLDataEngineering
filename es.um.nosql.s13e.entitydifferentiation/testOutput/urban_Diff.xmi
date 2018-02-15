@@ -462,19 +462,19 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/urban.xmi#//@entities.0/@entityversions.10/@properties.10"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/urban.xmi#//@entities.0/@entityversions.12/@properties.10"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/urban.xmi#//@entities.0/@entityversions.10/@properties.6"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/urban.xmi#//@entities.0/@entityversions.12/@properties.6"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/urban.xmi#//@entities.0/@entityversions.10/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/urban.xmi#//@entities.0/@entityversions.12/@properties.9"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/urban.xmi#//@entities.0/@entityversions.10/@properties.9"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/urban.xmi#//@entities.0/@entityversions.12/@properties.4"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/urban.xmi#//@entities.0/@entityversions.10/@properties.7"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/urban.xmi#//@entities.0/@entityversions.12/@properties.7"/>
     </commonProps>
   </entityDiffSpecs>
   <schema href="../testSources/urban.xmi#urban"/>

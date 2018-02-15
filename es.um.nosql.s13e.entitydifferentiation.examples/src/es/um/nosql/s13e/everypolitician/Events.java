@@ -6,6 +6,7 @@ import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 import es.um.nosql.s13e.everypolitician.Identifier;
 
@@ -31,9 +32,9 @@ public class Events
   public void setEnd_date(String end_date) {this.end_date = end_date;}
   
   @Embedded
-  private Identifier[] identifiers;
-  public Identifier[] getIdentifiers() {return this.identifiers;}
-  public void setIdentifiers(Identifier[] identifiers) {this.identifiers = identifiers;}
+  private List<Identifier> identifiers;
+  public List<Identifier> getIdentifiers() {return this.identifiers;}
+  public void setIdentifiers(List<Identifier> identifiers) {this.identifiers = identifiers;}
   
   @Property
   @NotNull(message = "name can't be null")

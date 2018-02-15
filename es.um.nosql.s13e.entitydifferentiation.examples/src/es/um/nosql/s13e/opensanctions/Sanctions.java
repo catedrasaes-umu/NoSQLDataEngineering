@@ -4,18 +4,19 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import es.um.nosql.s13e.opensanctions.commons.Commons;
 import org.mongodb.morphia.annotations.PreLoad;
+import org.mongodb.morphia.annotations.PreSave;
 import com.mongodb.DBObject;
-import com.mongodb.BasicDBList;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
-import es.um.nosql.s13e.opensanctions.Address;
 import es.um.nosql.s13e.opensanctions.Nationality;
 import es.um.nosql.s13e.opensanctions.Birth_place;
 import es.um.nosql.s13e.opensanctions.Identifier;
-import es.um.nosql.s13e.opensanctions.Alias;
 import es.um.nosql.s13e.opensanctions.Birth_date;
+import es.um.nosql.s13e.opensanctions.Alias;
+import es.um.nosql.s13e.opensanctions.Address;
 
 @Entity(value = "sanctions", noClassnameStored = true)
 public class Sanctions
@@ -27,24 +28,24 @@ public class Sanctions
   public void set_id(String _id) {this._id = _id;}
   
   @Embedded
-  private Address[] addresses;
-  public Address[] getAddresses() {return this.addresses;}
-  public void setAddresses(Address[] addresses) {this.addresses = addresses;}
+  private List<Address> addresses;
+  public List<Address> getAddresses() {return this.addresses;}
+  public void setAddresses(List<Address> addresses) {this.addresses = addresses;}
   
   @Embedded
-  private Alias[] aliases;
-  public Alias[] getAliases() {return this.aliases;}
-  public void setAliases(Alias[] aliases) {this.aliases = aliases;}
+  private List<Alias> aliases;
+  public List<Alias> getAliases() {return this.aliases;}
+  public void setAliases(List<Alias> aliases) {this.aliases = aliases;}
   
   @Embedded
-  private Birth_date[] birth_dates;
-  public Birth_date[] getBirth_dates() {return this.birth_dates;}
-  public void setBirth_dates(Birth_date[] birth_dates) {this.birth_dates = birth_dates;}
+  private List<Birth_date> birth_dates;
+  public List<Birth_date> getBirth_dates() {return this.birth_dates;}
+  public void setBirth_dates(List<Birth_date> birth_dates) {this.birth_dates = birth_dates;}
   
   @Embedded
-  private Birth_place[] birth_places;
-  public Birth_place[] getBirth_places() {return this.birth_places;}
-  public void setBirth_places(Birth_place[] birth_places) {this.birth_places = birth_places;}
+  private List<Birth_place> birth_places;
+  public List<Birth_place> getBirth_places() {return this.birth_places;}
+  public void setBirth_places(List<Birth_place> birth_places) {this.birth_places = birth_places;}
   
   @Property
   private String father_name;
@@ -67,9 +68,9 @@ public class Sanctions
   public void setGender(String gender) {this.gender = gender;}
   
   @Embedded
-  private Identifier[] identifiers;
-  public Identifier[] getIdentifiers() {return this.identifiers;}
-  public void setIdentifiers(Identifier[] identifiers) {this.identifiers = identifiers;}
+  private List<Identifier> identifiers;
+  public List<Identifier> getIdentifiers() {return this.identifiers;}
+  public void setIdentifiers(List<Identifier> identifiers) {this.identifiers = identifiers;}
   
   @Property
   private String last_name;
@@ -87,9 +88,9 @@ public class Sanctions
   public void setName(String name) {this.name = name;}
   
   @Embedded
-  private Nationality[] nationalities;
-  public Nationality[] getNationalities() {return this.nationalities;}
-  public void setNationalities(Nationality[] nationalities) {this.nationalities = nationalities;}
+  private List<Nationality> nationalities;
+  public List<Nationality> getNationalities() {return this.nationalities;}
+  public void setNationalities(List<Nationality> nationalities) {this.nationalities = nationalities;}
   
   @Property
   private String program;

@@ -144,10 +144,10 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.1/@entityversions.6/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.1/@entityversions.3/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.1/@entityversions.6/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.1/@entityversions.3/@properties.0"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
@@ -225,40 +225,40 @@
       </notProps>
     </entityVersionProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.3/@properties.7"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.5/@properties.11"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.3/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.5/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.3/@properties.6"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.5/@properties.8"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.3/@properties.11"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.5/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.3/@properties.12"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.5/@properties.9"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.3/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/facebook.xmi#//@entities.2/@entityversions.5/@properties.3"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.3/@properties.9"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.5/@properties.6"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.3/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.5/@properties.4"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.3/@properties.10"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.5/@properties.7"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="../testSources/facebook.xmi#//@entities.2/@entityversions.3/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.5/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.3/@properties.8"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.5/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.3/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/facebook.xmi#//@entities.2/@entityversions.5/@properties.10"/>
     </commonProps>
   </entityDiffSpecs>
   <schema href="../testSources/facebook.xmi#facebook"/>

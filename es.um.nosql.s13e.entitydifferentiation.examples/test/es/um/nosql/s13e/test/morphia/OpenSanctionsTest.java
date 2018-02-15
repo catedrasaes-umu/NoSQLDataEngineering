@@ -115,7 +115,7 @@ public class OpenSanctionsTest
   {
     Query<Sanctions> qSanctions = datastore.createQuery(Sanctions.class);
     assertEquals(N_SANCTIONS, qSanctions.count());
-    testCollection(qSanctions.asList().toArray(new Sanctions[0]), Sanctions.class);
+    testCollection(qSanctions.asList(), Sanctions.class);
 
     for (Sanctions sanction : qSanctions)
     {
@@ -128,9 +128,9 @@ public class OpenSanctionsTest
     }
   }
 
-  private <T> void testCollection(T[] collection, Class<T> className)
+  private <T> void testCollection(List<T> collection, Class<T> className)
   {
-    if (collection == null || collection.length == 0)
+    if (collection == null || collection.size() == 0)
       return;
 
     for (T t : collection)

@@ -157,43 +157,43 @@ public class StackoverflowTest
   {
     List<Badges> lBadges = datastore.createQuery(Badges.class).asList(new FindOptions().limit(N_BADGES));
     assertEquals(N_BADGES, lBadges.size());
-    testCollection(lBadges.toArray(new Badges[0]), Badges.class);
+    testCollection(lBadges, Badges.class);
     lBadges.clear();
 
     List<Comments> lComments = datastore.createQuery(Comments.class).asList(new FindOptions().limit(N_COMMENTS));
     assertEquals(N_COMMENTS, lComments.size());
-    testCollection(lComments.toArray(new Comments[0]), Comments.class);
+    testCollection(lComments, Comments.class);
     lComments.clear();
 
     List<Postlinks> lPostlinks = datastore.createQuery(Postlinks.class).asList(new FindOptions().limit(N_POSTLINKS));
     assertEquals(N_POSTLINKS, lPostlinks.size());
-    testCollection(lPostlinks.toArray(new Postlinks[0]), Postlinks.class);
+    testCollection(lPostlinks, Postlinks.class);
     lPostlinks.clear();
 
     List<Posts> lPosts = datastore.createQuery(Posts.class).asList(new FindOptions().limit(N_POSTS));
     assertEquals(N_POSTS, lPosts.size());
-    testCollection(lPosts.toArray(new Posts[0]), Posts.class);
+    testCollection(lPosts, Posts.class);
     lPosts.clear();
 
     List<Tags> lTags = datastore.createQuery(Tags.class).asList(new FindOptions().limit(N_TAGS));
     assertEquals(N_TAGS, lTags.size());
-    testCollection(lTags.toArray(new Tags[0]), Tags.class);
+    testCollection(lTags, Tags.class);
     lTags.clear();
 
     List<Users> lUsers = datastore.createQuery(Users.class).asList(new FindOptions().limit(N_USERS));
     assertEquals(N_USERS, lUsers.size());
-    testCollection(lUsers.toArray(new Users[0]), Users.class);
+    testCollection(lUsers, Users.class);
     lUsers.clear();
 
     List<Votes> lVotes = datastore.createQuery(Votes.class).asList(new FindOptions().limit(N_VOTES));
     assertEquals(N_VOTES, lVotes.size());
-    testCollection(lVotes.toArray(new Votes[0]), Votes.class);
+    testCollection(lVotes, Votes.class);
     lVotes.clear();
   }
 
-  private <T> void testCollection(T[] collection, Class<T> className)
+  private <T> void testCollection(List<T> collection, Class<T> className)
   {
-    if (collection == null || collection.length == 0)
+    if (collection == null || collection.size() == 0)
       return;
 
     for (T t : collection)

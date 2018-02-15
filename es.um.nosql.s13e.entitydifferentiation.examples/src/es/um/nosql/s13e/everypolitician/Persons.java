@@ -4,16 +4,17 @@ import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
 import es.um.nosql.s13e.everypolitician.commons.Commons;
 import org.mongodb.morphia.annotations.PreLoad;
+import org.mongodb.morphia.annotations.PreSave;
 import com.mongodb.DBObject;
-import com.mongodb.BasicDBList;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
-import es.um.nosql.s13e.everypolitician.Link;
-import es.um.nosql.s13e.everypolitician.Identifier;
-import es.um.nosql.s13e.everypolitician.Contact_detail;
 import es.um.nosql.s13e.everypolitician.Image;
+import es.um.nosql.s13e.everypolitician.Contact_detail;
+import es.um.nosql.s13e.everypolitician.Identifier;
+import es.um.nosql.s13e.everypolitician.Link;
 import es.um.nosql.s13e.everypolitician.Other_name;
 
 @Entity(value = "persons", noClassnameStored = true)
@@ -32,9 +33,9 @@ public class Persons
   public void setBirth_date(String birth_date) {this.birth_date = birth_date;}
   
   @Embedded
-  private Contact_detail[] contact_details;
-  public Contact_detail[] getContact_details() {return this.contact_details;}
-  public void setContact_details(Contact_detail[] contact_details) {this.contact_details = contact_details;}
+  private List<Contact_detail> contact_details;
+  public List<Contact_detail> getContact_details() {return this.contact_details;}
+  public void setContact_details(List<Contact_detail> contact_details) {this.contact_details = contact_details;}
   
   @Property
   private String death_date;
@@ -66,9 +67,9 @@ public class Persons
   
   @Embedded
   @NotNull(message = "identifiers can't be null")
-  private Identifier[] identifiers;
-  public Identifier[] getIdentifiers() {return this.identifiers;}
-  public void setIdentifiers(Identifier[] identifiers) {this.identifiers = identifiers;}
+  private List<Identifier> identifiers;
+  public List<Identifier> getIdentifiers() {return this.identifiers;}
+  public void setIdentifiers(List<Identifier> identifiers) {this.identifiers = identifiers;}
   
   @Property
   @NotNull(message = "image can't be null")
@@ -78,14 +79,14 @@ public class Persons
   
   @Embedded
   @NotNull(message = "images can't be null")
-  private Image[] images;
-  public Image[] getImages() {return this.images;}
-  public void setImages(Image[] images) {this.images = images;}
+  private List<Image> images;
+  public List<Image> getImages() {return this.images;}
+  public void setImages(List<Image> images) {this.images = images;}
   
   @Embedded
-  private Link[] links;
-  public Link[] getLinks() {return this.links;}
-  public void setLinks(Link[] links) {this.links = links;}
+  private List<Link> links;
+  public List<Link> getLinks() {return this.links;}
+  public void setLinks(List<Link> links) {this.links = links;}
   
   @Property
   @NotNull(message = "name can't be null")
@@ -94,9 +95,9 @@ public class Persons
   public void setName(String name) {this.name = name;}
   
   @Embedded
-  private Other_name[] other_names;
-  public Other_name[] getOther_names() {return this.other_names;}
-  public void setOther_names(Other_name[] other_names) {this.other_names = other_names;}
+  private List<Other_name> other_names;
+  public List<Other_name> getOther_names() {return this.other_names;}
+  public void setOther_names(List<Other_name> other_names) {this.other_names = other_names;}
   
   @Property
   @NotNull(message = "sort_name can't be null")

@@ -7,6 +7,7 @@ import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 import es.um.nosql.s13e.everypolitician.Source;
 
@@ -61,9 +62,9 @@ public class Memberships
   
   @Embedded
   @NotNull(message = "sources can't be null")
-  private Source[] sources;
-  public Source[] getSources() {return this.sources;}
-  public void setSources(Source[] sources) {this.sources = sources;}
+  private List<Source> sources;
+  public List<Source> getSources() {return this.sources;}
+  public void setSources(List<Source> sources) {this.sources = sources;}
   
   @Property
   private String start_date;
