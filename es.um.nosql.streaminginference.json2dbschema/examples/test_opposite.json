@@ -1,0 +1,100 @@
+{
+    "rows": [
+        {
+            "content": {
+                "chapters": 33,
+                "pages": 527
+            },
+            "authors": [
+                {
+                    "company": {
+                        "country": "USA",
+                        "name": "IBM"
+                    },
+                    "name": "Grady Booch",
+                    "_id": "210"
+                },
+                {
+                    "company": {
+                        "country": "USA",
+                        "name": "IBM"
+                    },
+                    "name": "James Rumbaugh",
+                    "_id": "310"
+                },
+                {
+                    "country": "USA",
+                    "company": "Ivar Jacobson Consulting (IJC)",
+                    "name": "Ivar Jacobson",
+                    "_id": "410"
+                }],
+            "type": "book",
+            "year": 2013,
+            "publisher_id": "345679",
+            "title": "The Unified Modeling Language",
+            "_id": "1"
+        },
+        {
+            "discipline": "software engineering",
+            "issn": [
+                "0098-5589",
+                "1939-3520"
+            ],
+            "name": "IEEE Trans. on Software Engineering",
+            "type": "journal",
+            "_id": "11",
+            "publisher_id": "1"
+        },
+        {
+            "name": "Automated Software Engineering",
+            "issn": [
+                "0928-8910",
+                "1573-7535"
+            ],
+            "discipline": "software engineering",
+            "type": "journal",
+            "_id": "12",
+            "number":10515
+        },
+        {
+            "city": "Barcelona",
+            "name": "Omega",
+            "type": "publisher",
+            "_id": "123451"
+        },
+        {
+            "city": "Newton",
+            "name": "O'Reilly Media",
+            "type": "publisher",
+            "_id": "928672"
+        },
+        {
+            "type": "book",
+            "author": {
+                "_id": "101",
+                "name": "Bradley Holt",
+                "company": {
+                    "country": "USA",
+                    "name": "IBM Cloudant"
+                }
+            },
+            "title": "Writing  and Querying MapReduce Views in CouchDB",
+            "publisher_id": "928672",
+            "_id": "2"
+        },
+        {
+            "name": "Addison-Wesley",
+            "type": "publisher",
+            "_id": "345679"
+        },
+        {
+            "type": "publisher",
+            "journals": [
+                "11",
+                "12"
+            ],
+            "name": "IEEE Publications",
+            "_id": "907863"
+        }
+    ]
+}

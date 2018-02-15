@@ -1,0 +1,13 @@
+{
+    "rows": [
+        {
+            "_type": "publisher",
+            "journals": [
+                "11",
+                "12"
+            ],
+            "name": "IEEE Publications",
+            "_id": "907863"
+        }
+    ]
+}
