@@ -1,0 +1,15 @@
+input:
+  model: ../es.um.nosql.examples/mongomovies.xmi
+
+configure:
+  minInstancesVersion: 3
+  maxInstancesVersion: 10
+  strict: true
+  allowNulls: true
+  includeType: false
+  primitiveTypes: [string, int]
+
+output:
+  file: output/output.json
+  console: true
+  database: localhost
