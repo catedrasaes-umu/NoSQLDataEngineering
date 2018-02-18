@@ -8,8 +8,23 @@ configure:
   allowNulls: true
   includeType: false
   primitiveTypes: [string, int]
+  minTupleElements: 1
+  maxTupleElements: 10
+  minIntAllowed: 3
+  maxIntAllowed: 4
+  minDoubleAllowed: 333
+  maxDoubleAllowed: 3333
+  minDoubleDecimalAllowed: 0
+  maxDoubleDecimalAllowed: 4
+  stringType: word
+  stringNamesFile: config/names.txt
+  stringSurnamesFile: config/surnames.txt
+  stringWordsFile: config/words.txt
 
 output:
   file: output/output.json
   console: true
   database: localhost
+
+
+# Generate images?

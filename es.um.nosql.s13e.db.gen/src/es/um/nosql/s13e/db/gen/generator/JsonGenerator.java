@@ -5,9 +5,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Random;
-import java.util.concurrent.ThreadLocalRandom;
-
-import org.bson.types.ObjectId;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -30,6 +27,7 @@ public class JsonGenerator
   private int MIN_INSTANCES_VERSION;
   private int MAX_INSTANCES_VERSION;
 
+  private PrimitiveTypeGen pTypeGen;
   private Map<EntityVersion, List<ObjectNode>> evMap;
   private Map<String, List<String>> entityIdMap;
   private ArrayNode lStorage;
@@ -40,6 +38,8 @@ public class JsonGenerator
   {
     MIN_INSTANCES_VERSION = 3;
     MAX_INSTANCES_VERSION = 10;
+
+    pTypeGen = new PrimitiveTypeGen();
   }
 
   public String generate(NoSQLSchema schema, int minInstances, int maxInstances) throws Exception
@@ -85,7 +85,7 @@ public class JsonGenerator
           // We will override the _id and the type parameters...
           if (eVersion.isRoot())
           {
-            strObj.put("_id", new ObjectId().toString());
+            strObj.put("_id", pTypeGen.genRandomObjectId().toString());
             strObj.put("_type", entity.getName());
             lStorage.add(strObj);
             entityIdMap.get(entity.getName().toLowerCase()).add(strObj.get("_id").asText());
@@ -164,31 +164,6 @@ public class JsonGenerator
     return (new Random()).nextInt(maxValue + 1 - minValue) + minValue;
   }
 
-  private float getRandomFloat()
-  {
-    double d = Math.round(ThreadLocalRandom.current().nextFloat() * 100 * 100d) / 100d;
-
-    if (d == Math.floor(d))
-      d += 0.01;
-
-    return (float) d;
-  }
-
-  private String getRandomString()
-  {
-    return "value_" + getRandomInt();
-  }
-
-  private int getRandomInt()
-  {
-    return ThreadLocalRandom.current().nextInt(0, 1000000);
-  }
-
-  private boolean getRandomBoolean()
-  {
-    return ThreadLocalRandom.current().nextBoolean();
-  }
-
   /**
    * Method used to generate a primitive type and insert it in a JsonObject.
    * @param strObj The JsonObject in which the type is being inserted.
@@ -199,10 +174,10 @@ public class JsonGenerator
   {
     switch (type)
     {
-    case "String": case "string": {strObj.put(name, getRandomString()); break;}
-    case "Int": case "int": case "Number": case "number": {strObj.put(name, getRandomInt()); break;}
-    case "Double": case "double": case "float": case "Float": {strObj.put(name, getRandomFloat()); break;}
-    case "Bool": case "bool": case "Boolean": case "boolean": {strObj.put(name, getRandomBoolean()); break;}
+    case "String": case "string": {strObj.put(name, pTypeGen.genRandomString()); break;}
+    case "Int": case "int": case "Number": case "number": {strObj.put(name, pTypeGen.genRandomInt()); break;}
+    case "Double": case "double": case "float": case "Float": {strObj.put(name, pTypeGen.genRandomDouble()); break;}
+    case "Bool": case "bool": case "Boolean": case "boolean": {strObj.put(name, pTypeGen.genRandomBoolean()); break;}
     }
   }
 
@@ -215,10 +190,10 @@ public class JsonGenerator
   {
     switch (type)
     {
-    case "String": case "string": {arrayObj.add(getRandomString()); break;}
-    case "Int": case "int": case "Number": case "number": {arrayObj.add(getRandomInt()); break;}
-    case "Double": case "double": case "float": case "Float": {arrayObj.add(getRandomFloat()); break;}
-    case "Bool": case "bool": case "Boolean": case "boolean": {arrayObj.add(getRandomBoolean()); break;}
+    case "String": case "string": {arrayObj.add(pTypeGen.genRandomString()); break;}
+    case "Int": case "int": case "Number": case "number": {arrayObj.add(pTypeGen.genRandomInt()); break;}
+    case "Double": case "double": case "float": case "Float": {arrayObj.add(pTypeGen.genRandomDouble()); break;}
+    case "Bool": case "bool": case "Boolean": case "boolean": {arrayObj.add(pTypeGen.genRandomBoolean()); break;}
     }
   }
 
