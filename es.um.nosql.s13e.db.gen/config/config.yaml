@@ -1,25 +1,30 @@
 input:
   model: ../es.um.nosql.examples/mongomovies.xmi
 
+attributes:
+  primitiveTypes:
+    strangeTypesProbability: 0.3
+    nullProbability: 0
+    stringType: word
+    minIntAllowed: -10000
+    maxIntAllowed: 10000
+    minDoubleAllowed: -10000
+    maxDoubleAllowed: 10000
+    doubleDecimalsAllowed: 2
+    stringNamesFile: config/names.txt
+    stringSurnamesFile: config/surnames.txt
+    stringWordsFile: config/words.txt
+  tuples:
+    minTupleElements: 1
+    maxTupleElements: 10
+    strangeTypesProbability: 0
+    nullProbability: 0
+    tuplesInTuplesProbability: 0
+
 configure:
   minInstancesVersion: 3
   maxInstancesVersion: 10
-  strict: true
-  allowNulls: true
   includeType: false
-  primitiveTypes: [string, int]
-  minTupleElements: 1
-  maxTupleElements: 10
-  minIntAllowed: 3
-  maxIntAllowed: 4
-  minDoubleAllowed: 333
-  maxDoubleAllowed: 3333
-  minDoubleDecimalAllowed: 0
-  maxDoubleDecimalAllowed: 4
-  stringType: word
-  stringNamesFile: config/names.txt
-  stringSurnamesFile: config/surnames.txt
-  stringWordsFile: config/words.txt
 
 output:
   file: output/output.json

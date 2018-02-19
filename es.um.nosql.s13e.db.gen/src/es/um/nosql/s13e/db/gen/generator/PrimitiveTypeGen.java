@@ -1,33 +1,65 @@
 package es.um.nosql.s13e.db.gen.generator;
 
-import java.util.concurrent.ThreadLocalRandom;
-
 import org.bson.types.ObjectId;
 
-import es.um.nosql.s13e.db.gen.constants.Constants;
-import es.um.nosql.s13e.db.gen.utils.StringGenerator;
+import com.fasterxml.jackson.databind.node.ArrayNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
+
+import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.generator.primitivetypes.BooleanGen;
+import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
+import es.um.nosql.s13e.db.gen.generator.primitivetypes.ObjectGen;
+import es.um.nosql.s13e.db.gen.generator.primitivetypes.StringGen;
 
 public class PrimitiveTypeGen
 {
-  private StringGenerator strGenerator;
+  private StringGen strGen;
+  private NumberGen numGen;
+  private BooleanGen boolGen;
+  private ObjectGen objGen;
 
   public PrimitiveTypeGen()
   {
-    strGenerator = StringGenerator.GET_INSTANCE();
+    strGen  = StringGen.GET_INSTANCE();
+    numGen  = NumberGen.GET_INSTANCE();
+    boolGen = BooleanGen.GET_INSTANCE();
+    objGen  = ObjectGen.GET_INSTANCE();
+  }
+
+  public void generatePrimitiveType(ObjectNode strObj, String name, String type)
+  {
+    switch (type.toLowerCase())
+    {
+      case "string": {strObj.put(name, this.genRandomString()); break;}
+      case "int": case "number": {strObj.put(name, this.genRandomInt()); break;}
+      case "double": case "float": {strObj.put(name, this.genRandomDouble()); break;}
+      case "bool": case "boolean": {strObj.put(name, this.genRandomBoolean()); break;}
+    }
+  }
+
+  public void generatePrimitiveType(ArrayNode arrayObj, String type)
+  {
+    switch (type.toLowerCase())
+    {
+      case "string": {arrayObj.add(this.genRandomString()); break;}
+      case "int": case "number": {arrayObj.add(this.genRandomInt()); break;}
+      case "double": case "float": {arrayObj.add(this.genRandomDouble()); break;}
+      case "bool": case "boolean": {arrayObj.add(this.genRandomBoolean()); break;}
+    }
   }
 
   public String genRandomString()
   {
-    switch (Constants.GET_CONFIGURE_STRING_TYPE())
+    switch (Constants.GET_PRIMITIVE_TYPES_STRING_TYPE())
     {
-      case "random": return strGenerator.getRandomString();
-      case "large": return strGenerator.getRandomLargeString();
-      case "word": return strGenerator.getRandomWord();
-      case "phrase": return strGenerator.getRandomPhrase();
-      case "word_number": return strGenerator.getRandomWordNumber();
-      case "nonsense": return strGenerator.getRandomNonsense();
-      case "name": return strGenerator.getRandomName();
-      case "name_surname": return strGenerator.getRandomFullname();
+      case "random":        return strGen.getRandomString();
+      case "large":         return strGen.getRandomLargeString();
+      case "word":          return strGen.getRandomWord();
+      case "phrase":        return strGen.getRandomPhrase();
+      case "word_number":   return strGen.getRandomWordNumber();
+      case "nonsense":      return strGen.getRandomNonsense();
+      case "name":          return strGen.getRandomName();
+      case "name_surname":  return strGen.getRandomFullname();
     };
 
     return null;
@@ -35,26 +67,26 @@ public class PrimitiveTypeGen
 
   public boolean genRandomBoolean()
   {
-    return ThreadLocalRandom.current().nextBoolean();
+    return boolGen.getRandomBoolean();
   }
 
   public int genRandomInt()
   {
-    return ThreadLocalRandom.current().nextInt(Constants.GET_CONFIGURE_MIN_INT_ALLOWED(), Constants.GET_CONFIGURE_MAX_INT_ALLOWED());
+    return numGen.getRandomInteger();
   }
 
   public double genRandomDouble()
   {
-    return ThreadLocalRandom.current().nextDouble(Constants.GET_CONFIGURE_MIN_DOUBLE_ALLOWED(), Constants.GET_CONFIGURE_MAX_DOUBLE_ALLOWED());
+    return numGen.getRandomDouble();
   }
 
   public ObjectId genRandomObjectId()
   {
-    return new ObjectId();
+    return objGen.getRandomObjectId();
   }
 
   public Object genNull()
   {
-    return null;
+    return objGen.getNull();
   }
 }

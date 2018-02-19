@@ -28,6 +28,7 @@ public class JsonGenerator
   private int MAX_INSTANCES_VERSION;
 
   private PrimitiveTypeGen pTypeGen;
+  private TupleGen tupleGen;
   private Map<EntityVersion, List<ObjectNode>> evMap;
   private Map<String, List<String>> entityIdMap;
   private ArrayNode lStorage;
@@ -76,9 +77,9 @@ public class JsonGenerator
             {
               Attribute attr = (Attribute)property;
               if (attr.getType() instanceof PrimitiveType)
-                generatePrimitiveType(strObj, attr.getName(), ((PrimitiveType)attr.getType()).getName());
+                pTypeGen.generatePrimitiveType(strObj, attr.getName(), ((PrimitiveType)attr.getType()).getName());
               else if (attr.getType() instanceof Tuple)
-                generateTuple(strObj, attr.getName(), ((Tuple)attr.getType()).getElements());
+                tupleGen.generateTuple(strObj, attr.getName(), ((Tuple)attr.getType()).getElements());
             }
           }
 
@@ -162,82 +163,5 @@ public class JsonGenerator
   private int getRandomBetween(int minValue, int maxValue)
   {
     return (new Random()).nextInt(maxValue + 1 - minValue) + minValue;
-  }
-
-  /**
-   * Method used to generate a primitive type and insert it in a JsonObject.
-   * @param strObj The JsonObject in which the type is being inserted.
-   * @param name The type key.
-   * @param type The type to generate.
-   */
-  private void generatePrimitiveType(ObjectNode strObj, String name, String type)
-  {
-    switch (type)
-    {
-    case "String": case "string": {strObj.put(name, pTypeGen.genRandomString()); break;}
-    case "Int": case "int": case "Number": case "number": {strObj.put(name, pTypeGen.genRandomInt()); break;}
-    case "Double": case "double": case "float": case "Float": {strObj.put(name, pTypeGen.genRandomDouble()); break;}
-    case "Bool": case "bool": case "Boolean": case "boolean": {strObj.put(name, pTypeGen.genRandomBoolean()); break;}
-    }
-  }
-
-  /**
-   * Method used to generate a primitive type and insert it in a JsonArray.
-   * @param arrayObj The JsonArray in which the type is being stored.
-   * @param type The type to generate.
-   */
-  private void generatePrimitiveType(ArrayNode arrayObj, String type)
-  {
-    switch (type)
-    {
-    case "String": case "string": {arrayObj.add(pTypeGen.genRandomString()); break;}
-    case "Int": case "int": case "Number": case "number": {arrayObj.add(pTypeGen.genRandomInt()); break;}
-    case "Double": case "double": case "float": case "Float": {arrayObj.add(pTypeGen.genRandomDouble()); break;}
-    case "Bool": case "bool": case "Boolean": case "boolean": {arrayObj.add(pTypeGen.genRandomBoolean()); break;}
-    }
-  }
-
-  /**
-   * Method used to generate a tuple type and insert it in a JsonObject.
-   * @param strObj The JsonObject in which the type is being inserted.
-   * @param name The tuple key.
-   * @param elements The tuple to generate.
-   */
-  private void generateTuple(ObjectNode strObj, String name, List<Type> elements)
-  {
-    ArrayNode array = factory.arrayNode();
-    strObj.put(name, array);
-
-    for (Type type : elements)
-    {
-      if (type instanceof PrimitiveType)
-        generatePrimitiveType(array, ((PrimitiveType)type).getName());
-      else if (type instanceof Tuple)
-      {
-        ArrayNode innerArray = factory.arrayNode();
-        array.add(innerArray);
-        generateTuple(innerArray, ((Tuple)type).getElements());
-      }
-    }
-  }
-
-  /**
-   * Method used to generate a tuple type and insert it in a JsonArray.
-   * @param arrayObj The JsonArray in which the type is being inserted.
-   * @param elements The tuple to generate.
-   */
-  private void generateTuple(ArrayNode arrayObj, List<Type> elements)
-  {
-    for (Type type : elements)
-    {
-      if (type instanceof PrimitiveType)
-        generatePrimitiveType(arrayObj, ((PrimitiveType)type).getName());
-      else if (type instanceof Tuple)
-      {
-        ArrayNode innerArray = factory.arrayNode();
-        arrayObj.add(innerArray);
-        generateTuple(innerArray, ((Tuple)type).getElements());
-      }
-    }
   }
 }

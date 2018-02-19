@@ -3,21 +3,19 @@ package es.um.nosql.s13e.db.gen.config.pojo;
 public class DbGenOptions
 {
   private ConfigureOptions configure;
-
   public void setConfigure(ConfigureOptions configure) {this.configure = configure;}
+  public ConfigureOptions getConfigure() {return this.configure;}
 
-  public ConfigureOptions getConfigure() {return configure;}
+  private AttributeOptions attributes;
+  public void setAttributes(AttributeOptions attributes) {this.attributes = attributes;}
+  public AttributeOptions getAttributes() {return this.attributes;}
 
   private InputOptions input;
-
   public void setInput(InputOptions input) {this.input = input;}
-
   public InputOptions getInput() {return this.input;}
 
   private OutputOptions output;
-
   public void setOutput(OutputOptions output) {this.output = output;}
-
   public OutputOptions getOutput() {return this.output;}
 
   public String toString()
