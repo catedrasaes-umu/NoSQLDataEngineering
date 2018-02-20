@@ -41,7 +41,7 @@ public class StringGen
 
   public String getRandomString()
   {
-    switch (NumberGen.GET_INSTANCE().getRandomInteger(0, RANDOM_FUNCTIONS_COUNT))
+    switch (NumberGen.GET_INSTANCE().getExclusiveRandom(0, RANDOM_FUNCTIONS_COUNT))
     {
       case 0: return this.getRandomName();
       case 1: return this.getRandomSurname();
@@ -68,7 +68,7 @@ public class StringGen
       }
     }
 
-    return names.get(NumberGen.GET_INSTANCE().getRandomInteger(0, names.size()));
+    return names.get(NumberGen.GET_INSTANCE().getExclusiveRandom(0, names.size()));
   }
 
   public String getRandomSurname()
@@ -84,7 +84,7 @@ public class StringGen
       }
     }
 
-    return surnames.get(NumberGen.GET_INSTANCE().getRandomInteger(0, surnames.size()));
+    return surnames.get(NumberGen.GET_INSTANCE().getExclusiveRandom(0, surnames.size()));
   }
 
   public String getRandomFullname()
@@ -105,14 +105,14 @@ public class StringGen
       }
     }
 
-    return words.get(NumberGen.GET_INSTANCE().getRandomInteger(0, words.size()));
+    return words.get(NumberGen.GET_INSTANCE().getExclusiveRandom(0, words.size()));
   }
 
   public String getRandomPhrase()
   {
     StringBuilder result = new StringBuilder();
 
-    for (int i = 0; i < NumberGen.GET_INSTANCE().getRandomInteger(MIN_WORDS_IN_PHRASE, MAX_WORDS_IN_PHRASE); i++)
+    for (int i = 0; i < NumberGen.GET_INSTANCE().getInclusiveRandom(MIN_WORDS_IN_PHRASE, MAX_WORDS_IN_PHRASE); i++)
       result.append(this.getRandomWord() + " ");
 
     return result.toString();
@@ -120,15 +120,15 @@ public class StringGen
 
   public String getRandomWordNumber()
   {
-    return this.getRandomWord() + "_" + NumberGen.GET_INSTANCE().getRandomInteger(0, Constants.GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED());
+    return this.getRandomWord() + "_" + NumberGen.GET_INSTANCE().getExclusiveRandom(0, Constants.GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED());
   }
 
   public String getRandomNonsense()
   {
     StringBuilder result = new StringBuilder();
 
-    for (int i = 0; i < NumberGen.GET_INSTANCE().getRandomInteger(MIN_NONSENSE_CHARS, MAX_NONSENSE_CHARS); i++)
-      result.append(this.nonsense[NumberGen.GET_INSTANCE().getRandomInteger(0, nonsense.length)]);
+    for (int i = 0; i < NumberGen.GET_INSTANCE().getInclusiveRandom(MIN_NONSENSE_CHARS, MAX_NONSENSE_CHARS); i++)
+      result.append(this.nonsense[NumberGen.GET_INSTANCE().getExclusiveRandom(0, nonsense.length)]);
 
     return result.toString();
   }

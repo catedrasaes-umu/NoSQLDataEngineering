@@ -29,7 +29,6 @@ public final class Constants
   private static final int ATTRIBUTES_TUPLE_MAX_TUPLE_ELEMENTS                      = 10;
   private static final double ATTRIBUTES_TUPLE_STRANGE_TYPES_PROBABILITY            = 0;
   private static final double ATTRIBUTES_TUPLE_NULL_PROBABILITY                     = 0;
-  private static final double ATTRIBUTES_TUPLE_TUPLES_IN_TUPLES_PROBABILITY         = 0;
   private static final int CONFIGURE_MIN_INSTANCES_VERSION                          = 10;
   private static final int CONFIGURE_MAX_INSTANCES_VERSION                          = 20;
   private static final boolean CONFIGURE_INCLUDE_TYPE                               = false;
@@ -163,14 +162,6 @@ public final class Constants
       return options.getAttributes().getTuples().getNullProbability();
     else
       return ATTRIBUTES_TUPLE_NULL_PROBABILITY;
-  }
-
-  public static double GET_TUPLE_TUPLES_IN_TUPLES_PROBABILITY()
-  {
-    if (options.getAttributes() != null && options.getAttributes().getTuples() != null && options.getAttributes().getTuples().getTuplesInTuplesProbability() != null)
-      return options.getAttributes().getTuples().getTuplesInTuplesProbability();
-    else
-      return ATTRIBUTES_TUPLE_TUPLES_IN_TUPLES_PROBABILITY;
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////

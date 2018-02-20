@@ -1,9 +1,12 @@
 package es.um.nosql.s13e.db.gen.generator;
 
+import java.util.Arrays;
+import java.util.List;
+
 import org.bson.types.ObjectId;
 
-import com.fasterxml.jackson.databind.node.ArrayNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 
 import es.um.nosql.s13e.db.gen.utils.Constants;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.BooleanGen;
@@ -17,34 +20,42 @@ public class PrimitiveTypeGen
   private NumberGen numGen;
   private BooleanGen boolGen;
   private ObjectGen objGen;
+  private JsonNodeFactory jsonFactory;
+  private List<String> definedTypes;
 
   public PrimitiveTypeGen()
   {
-    strGen  = StringGen.GET_INSTANCE();
-    numGen  = NumberGen.GET_INSTANCE();
-    boolGen = BooleanGen.GET_INSTANCE();
-    objGen  = ObjectGen.GET_INSTANCE();
+    strGen        = StringGen.GET_INSTANCE();
+    numGen        = NumberGen.GET_INSTANCE();
+    boolGen       = BooleanGen.GET_INSTANCE();
+    objGen        = ObjectGen.GET_INSTANCE();
+    jsonFactory   = JsonNodeFactory.instance;
+    definedTypes  = Arrays.asList("string", "int", "double", "bool", "objectid");
   }
 
-  public void generatePrimitiveType(ObjectNode strObj, String name, String type)
+  public JsonNode genPrimitiveType(String type)
+  {
+    String theType = type;
+
+    if (boolGen.thisHappens(Constants.GET_PRIMITIVE_TYPES_NULL_PROBABILITY()))
+      theType = "null";
+
+    if (boolGen.thisHappens(Constants.GET_PRIMITIVE_TYPES_STRANGE_TYPES_PROBABILITY()))
+      theType = definedTypes.get(numGen.getExclusiveRandom(0, definedTypes.size()));
+
+    return genTrustedPrimitiveType(theType);
+  }
+
+  public JsonNode genTrustedPrimitiveType(String type)
   {
     switch (type.toLowerCase())
     {
-      case "string": {strObj.put(name, this.genRandomString()); break;}
-      case "int": case "number": {strObj.put(name, this.genRandomInt()); break;}
-      case "double": case "float": {strObj.put(name, this.genRandomDouble()); break;}
-      case "bool": case "boolean": {strObj.put(name, this.genRandomBoolean()); break;}
-    }
-  }
-
-  public void generatePrimitiveType(ArrayNode arrayObj, String type)
-  {
-    switch (type.toLowerCase())
-    {
-      case "string": {arrayObj.add(this.genRandomString()); break;}
-      case "int": case "number": {arrayObj.add(this.genRandomInt()); break;}
-      case "double": case "float": {arrayObj.add(this.genRandomDouble()); break;}
-      case "bool": case "boolean": {arrayObj.add(this.genRandomBoolean()); break;}
+      case "string":                return jsonFactory.textNode(this.genRandomString());
+      case "int": case "number":    return jsonFactory.numberNode(this.genRandomInt());
+      case "double": case "float":  return jsonFactory.numberNode(this.genRandomDouble());
+      case "bool": case "boolean":  return jsonFactory.booleanNode(this.genRandomBoolean());
+      case "objectid":              return jsonFactory.objectNode().put("$oid", this.genRandomObjectId().toString());
+      default:                      return jsonFactory.nullNode();
     }
   }
 
@@ -82,6 +93,7 @@ public class PrimitiveTypeGen
 
   public ObjectId genRandomObjectId()
   {
+    
     return objGen.getRandomObjectId();
   }
 

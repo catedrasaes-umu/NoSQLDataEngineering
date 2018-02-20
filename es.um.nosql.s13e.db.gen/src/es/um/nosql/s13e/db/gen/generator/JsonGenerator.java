@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Random;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -20,15 +19,14 @@ import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.Tuple;
-import es.um.nosql.s13e.NoSQLSchema.Type;
+import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
+import es.um.nosql.s13e.db.gen.utils.Constants;
 
 public class JsonGenerator
 {
-  private int MIN_INSTANCES_VERSION;
-  private int MAX_INSTANCES_VERSION;
-
   private PrimitiveTypeGen pTypeGen;
   private TupleGen tupleGen;
+  private NumberGen numGen;
   private Map<EntityVersion, List<ObjectNode>> evMap;
   private Map<String, List<String>> entityIdMap;
   private ArrayNode lStorage;
@@ -37,18 +35,9 @@ public class JsonGenerator
 
   public JsonGenerator()
   {
-    MIN_INSTANCES_VERSION = 3;
-    MAX_INSTANCES_VERSION = 10;
-
     pTypeGen = new PrimitiveTypeGen();
-  }
-
-  public String generate(NoSQLSchema schema, int minInstances, int maxInstances) throws Exception
-  {
-    MIN_INSTANCES_VERSION = minInstances;
-    MAX_INSTANCES_VERSION = maxInstances;
-
-    return generate(schema);
+    tupleGen = new TupleGen();
+    numGen = NumberGen.GET_INSTANCE();
   }
 
   public String generate(NoSQLSchema schema) throws Exception
@@ -65,34 +54,24 @@ public class JsonGenerator
       for (EntityVersion eVersion : entity.getEntityversions())
       {
         evMap.put(eVersion, new ArrayList<ObjectNode>());
-        int countInstances = getRandomBetween(MIN_INSTANCES_VERSION, MAX_INSTANCES_VERSION);
+        int countInstances = numGen.getInclusiveRandom(Constants.GET_MIN_INSTANCES_VERSION(), Constants.GET_MAX_INSTANCES_VERSION());
 
         for (int i = 0; i < countInstances; i++)
         {
-          ObjectNode strObj = factory.objectNode();
+          ObjectNode oNode = factory.objectNode();
 
-          for (Property property : eVersion.getProperties())
-          {
-            if (property instanceof Attribute)
-            {
-              Attribute attr = (Attribute)property;
-              if (attr.getType() instanceof PrimitiveType)
-                pTypeGen.generatePrimitiveType(strObj, attr.getName(), ((PrimitiveType)attr.getType()).getName());
-              else if (attr.getType() instanceof Tuple)
-                tupleGen.generateTuple(strObj, attr.getName(), ((Tuple)attr.getType()).getElements());
-            }
-          }
+          eVersion.getProperties().stream().filter(p -> p instanceof Attribute).forEach(p -> this.generateAttribute(oNode, (Attribute)p));
 
           // We will override the _id and the type parameters...
           if (eVersion.isRoot())
           {
-            strObj.put("_id", pTypeGen.genRandomObjectId().toString());
-            strObj.put("_type", entity.getName());
-            lStorage.add(strObj);
-            entityIdMap.get(entity.getName().toLowerCase()).add(strObj.get("_id").asText());
+            oNode.put("_id", pTypeGen.genTrustedPrimitiveType("objectid"));
+            oNode.put("_type", entity.getName());
+            lStorage.add(oNode);
+            entityIdMap.get(entity.getName().toLowerCase()).add(oNode.get("_id").asText());
           }
 
-          evMap.get(eVersion).add(strObj);
+          evMap.get(eVersion).add(oNode);
         }
       }
     }
@@ -118,7 +97,7 @@ public class JsonGenerator
                 ArrayNode refArray = factory.arrayNode();
                 strObj.put(ref.getName(), refArray);
 
-                for (int j = 0; j < getRandomBetween(lBound, uBound); j++)
+                for (int j = 0; j < numGen.getInclusiveRandom(lBound, uBound); j++)
                   refArray.add(getRandomRefId(ref.getName()));
               }
             }
@@ -150,18 +129,21 @@ public class JsonGenerator
   {
     for (String eName : entityIdMap.keySet())
       if (eName.toLowerCase().contains(name.toLowerCase()) || name.toLowerCase().contains(eName.toLowerCase()))
-        return entityIdMap.get(eName).get(getRandomBetween(0, entityIdMap.get(eName).size() - 1));
+        return entityIdMap.get(eName).get(numGen.getExclusiveRandom(0, entityIdMap.get(eName).size()));
 
     throw new Exception("Reference not found: " + name);
   }
 
   private ObjectNode getRandomAggr(EntityVersion eVersion)
   {
-    return evMap.get(eVersion).get(getRandomBetween(0, evMap.get(eVersion).size() - 1));
+    return evMap.get(eVersion).get(numGen.getExclusiveRandom(0, evMap.get(eVersion).size()));
   }
 
-  private int getRandomBetween(int minValue, int maxValue)
+  private void generateAttribute(ObjectNode oNode, Attribute attr)
   {
-    return (new Random()).nextInt(maxValue + 1 - minValue) + minValue;
+    if (attr.getType() instanceof PrimitiveType)
+      oNode.put(attr.getName(), pTypeGen.genPrimitiveType(((PrimitiveType)attr.getType()).getName()));
+    else if (attr.getType() instanceof Tuple)
+      oNode.put(attr.getName(), tupleGen.genTuple(((Tuple)attr.getType()).getElements()));
   }
 }

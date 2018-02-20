@@ -18,10 +18,6 @@ public class TuplesOptions
   public void setNullProbability(Double nullProbability) {this.nullProbability = nullProbability;}
   public Double getNullProbability() {return this.nullProbability;}
 
-  private Double tuplesInTuplesProbability;
-  public void setTuplesInTuplesProbability(Double tuplesInTuplesProbability) {this.tuplesInTuplesProbability = tuplesInTuplesProbability;}
-  public Double getTuplesInTuplesProbability() {return this.tuplesInTuplesProbability;}
-
   public String toString()
   {
     StringBuilder result = new StringBuilder();
@@ -30,7 +26,6 @@ public class TuplesOptions
     if (this.getMaxTupleElements() != null)           result.append("  -Max tuple elements: " + this.getMaxTupleElements() + "\n");
     if (this.getStrangeTypesProbability() != null)    result.append("  -Strange types probability: " + this.getStrangeTypesProbability() + "\n");
     if (this.getNullProbability() != null)            result.append("  -Null probability: " + this.getNullProbability() + "\n");
-    if (this.getTuplesInTuplesProbability() != null)  result.append("  -Tuples in tuples probability: " + this.getTuplesInTuplesProbability() + "\n");
 
     return result.toString();
   }
@@ -48,9 +43,6 @@ public class TuplesOptions
 
     if (this.getStrangeTypesProbability() != null && (this.getStrangeTypesProbability() < 0.0 || this.getStrangeTypesProbability() >= 1.0))
       throw new IllegalArgumentException("The \"StrangeTypesProbability\" double must be equal or greater than 0.0 and less than 1.0.");
-
-    if (this.getTuplesInTuplesProbability() != null && (this.getTuplesInTuplesProbability() < 0.0 || this.getTuplesInTuplesProbability() >= 1.0))
-      throw new IllegalArgumentException("The \"TuplesInTuplesProbability\" double must be equal or greater than 0.0 and less than 1.0.");
 
     if (this.getNullProbability() != null && (this.getNullProbability() < 0.0 || this.getNullProbability() >= 1.0))
       throw new IllegalArgumentException("The \"NullProbability\" double must be equal or greater than 0.0 and less than 1.0.");

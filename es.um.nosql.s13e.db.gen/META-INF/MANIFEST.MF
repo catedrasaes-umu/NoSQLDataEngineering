@@ -20,3 +20,4 @@ Require-Bundle: es.um.nosql.s13e;bundle-version="1.0.0",
  org.hamcrest.core,
  org.opentest4j,
  org.apiguardian
+Import-Package: es.um.nosql.s13e.db.adapters.mongodb

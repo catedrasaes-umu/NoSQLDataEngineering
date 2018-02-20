@@ -22,10 +22,15 @@ public class NumberGen
 
   public int getRandomInteger()
   {
-    return ThreadLocalRandom.current().nextInt(Constants.GET_PRIMITIVE_TYPES_MIN_INT_ALLOWED(), Constants.GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED());
+    return this.getInclusiveRandom(Constants.GET_PRIMITIVE_TYPES_MIN_INT_ALLOWED(), Constants.GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED());
   }
 
-  public int getRandomInteger(int min, int max)
+  public int getInclusiveRandom(int min, int max)
+  {
+    return ThreadLocalRandom.current().nextInt(min, max + 1);
+  }
+
+  public int getExclusiveRandom(int min, int max)
   {
     return ThreadLocalRandom.current().nextInt(min, max);
   }

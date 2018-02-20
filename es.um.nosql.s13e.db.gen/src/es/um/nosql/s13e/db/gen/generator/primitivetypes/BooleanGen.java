@@ -20,4 +20,9 @@ public class BooleanGen
   {
     return ThreadLocalRandom.current().nextBoolean();
   }
+
+  public boolean thisHappens(double probability)
+  {
+    return (ThreadLocalRandom.current().nextDouble() - probability) < 0;
+  }
 }

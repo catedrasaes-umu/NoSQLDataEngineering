@@ -46,13 +46,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Null"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="TypeStrange">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Strange"/>
-      </properties>
     </entityversions>
     <entityversions
         versionId="2"
@@ -61,116 +54,64 @@
           xsi:type="NoSQLSchema:Attribute"
           name="TypeTupleString">
         <type
-            xsi:type="NoSQLSchema:Tuple"/>
+            xsi:type="NoSQLSchema:Tuple">
+          <elements
+              xsi:type="NoSQLSchema:PrimitiveType"
+              name="String"/>
+        </type>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="TypeTupleNumber">
         <type
-            xsi:type="NoSQLSchema:Tuple"/>
+            xsi:type="NoSQLSchema:Tuple">
+          <elements
+              xsi:type="NoSQLSchema:PrimitiveType"
+              name="Number"/>
+        </type>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="TypeTupleBoolean">
         <type
-            xsi:type="NoSQLSchema:Tuple"/>
+            xsi:type="NoSQLSchema:Tuple">
+          <elements
+              xsi:type="NoSQLSchema:PrimitiveType"
+              name="Boolean"/>
+        </type>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="TypeTupleObjectId">
         <type
-            xsi:type="NoSQLSchema:Tuple"/>
+            xsi:type="NoSQLSchema:Tuple">
+          <elements
+              xsi:type="NoSQLSchema:PrimitiveType"
+              name="ObjectId"/>
+        </type>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="TypeTupleNull">
         <type
-            xsi:type="NoSQLSchema:Tuple"/>
+            xsi:type="NoSQLSchema:Tuple">
+          <elements
+              xsi:type="NoSQLSchema:PrimitiveType"
+              name="Null"/>
+        </type>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="TypeTupleStrange">
+          name="TypeTupleTupleString">
         <type
-            xsi:type="NoSQLSchema:Tuple"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="TypeTupleString">
-        <type
-            xsi:type="NoSQLSchema:Tuple"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="TypeTupleString">
-        <type
-            xsi:type="NoSQLSchema:Tuple"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="TypeTupleString">
-        <type
-            xsi:type="NoSQLSchema:Tuple"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="TypeTupleString">
-        <type
-            xsi:type="NoSQLSchema:Tuple"/>
-      </properties>
-    </entityversions>
-  </entities>
-  <entities
-      name="EntityTwo">
-    <entityversions
-        versionId="1"
-        root="true">
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="Class">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="Date">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="Name">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="TagBased">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Reference"
-          name="UserId"
-          lowerBound="1"
-          upperBound="1"
-          originalType="Number"/>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_id">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Badges"/>
+            xsi:type="NoSQLSchema:Tuple">
+          <elements
+              xsi:type="NoSQLSchema:Tuple">
+            <elements
+                xsi:type="NoSQLSchema:PrimitiveType"
+                name="String"/>
+          </elements>
+        </type>
       </properties>
     </entityversions>
   </entities>

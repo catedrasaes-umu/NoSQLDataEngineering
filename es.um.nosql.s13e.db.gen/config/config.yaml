@@ -3,27 +3,26 @@ input:
 
 attributes:
   primitiveTypes:
-    strangeTypesProbability: 0.3
+    strangeTypesProbability: 0
     nullProbability: 0
     stringType: word
-    minIntAllowed: -10000
-    maxIntAllowed: 10000
-    minDoubleAllowed: -10000
-    maxDoubleAllowed: 10000
-    doubleDecimalsAllowed: 2
+    minIntAllowed: 9
+    maxIntAllowed: 9
+    minDoubleAllowed: 3
+    maxDoubleAllowed: 3.0000001
+    doubleDecimalsAllowed: 0
     stringNamesFile: config/names.txt
     stringSurnamesFile: config/surnames.txt
     stringWordsFile: config/words.txt
   tuples:
     minTupleElements: 1
-    maxTupleElements: 10
+    maxTupleElements: 1
     strangeTypesProbability: 0
     nullProbability: 0
-    tuplesInTuplesProbability: 0
 
 configure:
-  minInstancesVersion: 3
-  maxInstancesVersion: 10
+  minInstancesVersion: 1
+  maxInstancesVersion: 1
   includeType: false
 
 output:
