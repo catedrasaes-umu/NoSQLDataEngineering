@@ -55,5 +55,10 @@
 	  <version>2.2.4</version>
 	  <scope>test</scope>
 	</dependency>
+	<dependency>
+	    <groupId>org.mongodb.scala</groupId>
+	    <artifactId>mongo-scala-driver_2.11</artifactId>
+	    <version>2.2.0</version>
+	</dependency>
   </dependencies>
 </project>

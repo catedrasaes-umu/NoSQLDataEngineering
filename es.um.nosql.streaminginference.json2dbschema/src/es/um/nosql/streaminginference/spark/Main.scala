@@ -1,55 +1,22 @@
 package es.um.nosql.streaminginference.spark
 
-import org.apache.spark._
-import org.apache.spark.streaming._
-import org.apache.hadoop.io.Text
-import org.apache.hadoop.mapreduce.lib.input.TextInputFormat
-
-import es.um.nosql.streaminginference.json2dbschema
-import es.um.nosql.streaminginference.NoSQLSchema.NoSQLSchema
-import es.um.nosql.streaminginference.NoSQLSchema.NoSQLSchemaPackage
-import es.um.nosql.streaminginference.spark.input.WholeTextInputFormat
-import es.um.nosql.streaminginference.json2dbschema.main.util.JSON2Schema
-import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.impl.jackson.JacksonAdapter
-import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.IAJAdapter
-import org.codehaus.jackson.JsonNode
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.emf.ecore.xmi.XMIResource
-import org.eclipse.emf.ecore.xmi.XMLResource
-import es.um.nosql.streaminginference.util.emf.ResourceManager
-import org.eclipse.emf.common.util.URI;
-import java.util.HashMap
-import java.util.Map
-import java.io.FileOutputStream
-import java.nio.file.Paths
-import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import scala.collection.concurrent.Debug
-import es.um.nosql.streaminginference.NoSQLSchema.impl.ReferenceImpl
-import es.um.nosql.streaminginference.NoSQLSchema.Entity
-import org.eclipse.emf.common.util.EList
-import scala.collection.JavaConversions._
-import es.um.nosql.streaminginference.NoSQLSchema.EntityVersion
-import es.um.nosql.streaminginference.NoSQLSchema.Property
-import es.um.nosql.streaminginference.json2dbschema.intermediate.raw.ArraySC
-import es.um.nosql.streaminginference.json2dbschema.intermediate.raw.ObjectSC
-import es.um.nosql.streaminginference.NoSQLSchema.Association
-import es.um.nosql.streaminginference.NoSQLSchema.Attribute
-import es.um.nosql.streaminginference.NoSQLSchema.PrimitiveType
-import es.um.nosql.streaminginference.NoSQLSchema.Tuple
-import es.um.nosql.streaminginference.NoSQLSchema.Aggregate
-import es.um.nosql.streaminginference.NoSQLSchema.Reference
-import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.emf.ecore.util.EcoreUtil.Copier
-import org.eclipse.emf.ecore.EObject
-import es.um.nosql.streaminginference.json2dbschema.main.BuildNoSQLSchema
-import java.io.FileInputStream
 import java.io.File
 
-import es.um.nosql.streaminginference.spark.utils.IO
+import scala.collection.immutable.HashMap
+
+import org.apache.spark.SparkConf
+import org.apache.spark.streaming.Seconds
+import org.apache.spark.streaming.State
+import org.apache.spark.streaming.StateSpec
+import org.apache.spark.streaming.StreamingContext
+
+import es.um.nosql.streaminginference.NoSQLSchema.NoSQLSchema
+import es.um.nosql.streaminginference.spark.input.CustomDSFactory
+import es.um.nosql.streaminginference.spark.utils.CrossReferenceMatcher
 import es.um.nosql.streaminginference.spark.utils.EcoreHelper
-import es.um.nosql.streaminginference.spark.utils.CrossReferenceMatcher
-import es.um.nosql.streaminginference.spark.utils.CrossReferenceMatcher
+import es.um.nosql.streaminginference.spark.utils.IO
+
+
 
 object Main {
   
@@ -69,26 +36,57 @@ object Main {
     state.update(acc)
     (schemaName, acc)
   }
+  
+  def printHelp() {
     
-  def createContext(inputDir:String, outputDir: String)(): StreamingContext = {
+    println("Usage:")
+    println("\t --mode mongo --database [databasename] --host [hostname] --port [portnumber] --output [outputDir]")
+    println("\t --mode file --input [inputDir] --output [outputDir]")
+    println("-------")
+    println("--mode: mongo|file -> Sets how spark will read input streams")
+    println("\t mongo -> Read data through mongo change streams")
+    println("\t file -> Read data through hdfs files")
+    println("-------")
+    println("--database: (mongo only) sets database to watch")
+    println("--host: (mongo only) sets host to connect")
+    println("--input: (file only) sets input directory to watch")
+    println("--output: sets output directory to write results")
+    println("--port: (mongo only) sets port to connect") 
+  }
+  
+  def parseOptions(args: Array[String]): HashMap[String, String] = {
+    
+    var options:HashMap[String, String] = HashMap()
+    args
+      .zipWithIndex
+      .foreach { 
+      case (arg, index) => {
+        if (arg.startsWith("--") && args.size > index + 1)
+          options += arg.substring(2) -> args(index+1) 
+      }
+    }
+    options
+  }
+  
+    
+  def createContext(args: Array[String])(): StreamingContext = {
 
     val conf = new SparkConf().setMaster("local[*]").setAppName("StreamingInference")
     val ssc = new StreamingContext(conf, Seconds(15))
-    ssc
-      // Based on: https://halfvim.github.io/2016/06/28/FileInputDStream-in-Spark-Streaming/
-      .fileStream[Text, Text, WholeTextInputFormat](inputDir)
-      .map { case (filePath, content) => 
-              (Paths.get(filePath.toString).getFileName.toString.split("\\_")(0), content.toString) }
+    val options = parseOptions(args)
+    val outputDir = options("output")
+    val inputDS = CustomDSFactory.create(ssc, options)
+    inputDS
       .map { case (schemaName, content) => 
               (schemaName, IO.fromJSONString(schemaName, content)) }
-      // Merge current state with previous state
       .mapWithState(StateSpec.function(updateExistingSchema))
       // Output XMI schema
       .foreachRDD(rdd => 
         rdd
           .collect()
           .map {
-            case (schemaName, schema) => IO.toXMI(schema, outputDir + "/" + schemaName + ".xmi")
+            case (schemaName, schema) => 
+              IO.toXMI(schema, outputDir + "/" + schemaName + ".xmi")
           }
       )
 
@@ -97,7 +95,7 @@ object Main {
     
   }
   
-  def clean(inputDirectory: String, outputDirectory: String, checkPointDirectory: String) = {
+  def clean(directories: String*) = {
     
     def recursiveClean(file: File): Unit = {
       if (file.isDirectory) 
@@ -105,35 +103,30 @@ object Main {
       file.delete
     }
     
-    val input:File = new File(inputDirectory)
-    val output:File = new File(outputDirectory)
-    val checkpoint:File = new File(checkPointDirectory)
-    if (input.isDirectory)
-      input.listFiles.foreach(recursiveClean(_))
-    if (output.isDirectory)
-      output.listFiles.foreach(recursiveClean(_))
-    if (checkpoint.isDirectory)
-      checkpoint.listFiles.foreach(recursiveClean(_)) 
+    directories.foreach(directory => {
+      val folder:File = new File(directory)
+      if (folder.isDirectory)
+        folder.listFiles.foreach(recursiveClean(_))
+    })
   }
   
   def main(args: Array[String]) = {
     
-    args match {
-      case Array(arg1: String, arg2:String) => 
-        clean(inputDirectory = arg1,outputDirectory = arg2, checkPointDirectory = CheckpointDir) // Deletes all previous content in directories
-        val context = StreamingContext.getOrCreate(CheckpointDir, createContext(arg1, arg2))
-        context.start()             // Start the computation
-        context.awaitTermination()  // Wait for the computation to terminate
+    try {
+      
+      clean(CheckpointDir)
+      val context = StreamingContext.getOrCreate(CheckpointDir, createContext(args))
+      context.start()             // Start the computation
+      context.awaitTermination()  // Wait for the computation to terminate
     
+    } catch {
+      case e: Exception => printHelp
+    }
+
 //        BuildNoSQLSchema.main(Array("books.json", "out/books.xmi"))
 //        val source = scala.io.Source.fromFile("books.json")
 //        val lines = try source.mkString finally source.close()
 //        IO.toXMI(IO.fromJSONString("books", lines), "out/books.xmi")
-
-      case _ => 
-        Console.err.println("At least the JSON file must be specified.");
-			  Console.err.println("Usage: BuildNoSQLSchema JSONfile [outputXMIfile]");
-    }
     
   }
   

@@ -1,19 +1,22 @@
 package es.um.nosql.streaminginference.spark.utils
 
+import java.io.FileOutputStream
+import java.util.HashMap
+import java.util.Map
+
+import org.codehaus.jackson.JsonNode
+import org.eclipse.emf.common.util.URI
+import org.eclipse.emf.ecore.EObject
+import org.eclipse.emf.ecore.resource.Resource
+import org.eclipse.emf.ecore.util.EcoreUtil.Copier
+import org.eclipse.emf.ecore.xmi.XMLResource
+
 import es.um.nosql.streaminginference.NoSQLSchema.NoSQLSchema
 import es.um.nosql.streaminginference.NoSQLSchema.NoSQLSchemaPackage
 import es.um.nosql.streaminginference.json2dbschema.main.util.JSON2Schema
-import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.impl.jackson.JacksonAdapter
-import org.codehaus.jackson.JsonNode
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.IAJAdapter
-import org.eclipse.emf.ecore.resource.Resource
+import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.impl.jackson.JacksonAdapter
 import es.um.nosql.streaminginference.util.emf.ResourceManager
-import org.eclipse.emf.ecore.util.EcoreUtil.Copier
-import org.eclipse.emf.ecore.EObject
-import java.util.{Map, HashMap}
-import java.io.FileOutputStream
-import org.eclipse.emf.common.util.URI
-import org.eclipse.emf.ecore.xmi.XMLResource
 
 object IO {
   

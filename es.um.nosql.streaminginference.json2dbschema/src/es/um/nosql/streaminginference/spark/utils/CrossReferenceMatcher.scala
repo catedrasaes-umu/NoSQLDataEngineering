@@ -1,22 +1,23 @@
 package es.um.nosql.streaminginference.spark.utils
 
-import es.um.nosql.streaminginference.json2dbschema.process.util.ReferenceMatcher
 import java.util.stream.Stream
-import es.um.nosql.streaminginference.NoSQLSchema.NoSQLSchema
-import es.um.nosql.streaminginference.NoSQLSchema.Entity
-import scala.collection.JavaConversions._
-import org.eclipse.emf.common.util.EList
-import es.um.nosql.streaminginference.json2dbschema.util.inflector.Inflector
-import scala.collection.mutable.Buffer
 
+import scala.collection.JavaConversions.asScalaBuffer
+import scala.collection.JavaConversions.seqAsJavaList
 
 import org.apache.commons.lang3.tuple.Pair
-import es.um.nosql.streaminginference.NoSQLSchema.Reference
-import es.um.nosql.streaminginference.NoSQLSchema.EntityVersion
+import org.eclipse.emf.common.util.EList
+
 import es.um.nosql.streaminginference.NoSQLSchema.Attribute
+import es.um.nosql.streaminginference.NoSQLSchema.Entity
+import es.um.nosql.streaminginference.NoSQLSchema.EntityVersion
+import es.um.nosql.streaminginference.NoSQLSchema.NoSQLSchema
 import es.um.nosql.streaminginference.NoSQLSchema.NoSQLSchemaPackage
-import es.um.nosql.streaminginference.NoSQLSchema.Tuple
 import es.um.nosql.streaminginference.NoSQLSchema.PrimitiveType
+import es.um.nosql.streaminginference.NoSQLSchema.Reference
+import es.um.nosql.streaminginference.NoSQLSchema.Tuple
+import es.um.nosql.streaminginference.json2dbschema.process.util.ReferenceMatcher
+import es.um.nosql.streaminginference.json2dbschema.util.inflector.Inflector
 
 
 class CrossReferenceMatcher {

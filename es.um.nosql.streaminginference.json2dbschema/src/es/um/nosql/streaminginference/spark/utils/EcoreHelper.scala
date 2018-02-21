@@ -1,46 +1,22 @@
 package es.um.nosql.streaminginference.spark.utils
 
 
-import es.um.nosql.streaminginference.json2dbschema
-import es.um.nosql.streaminginference.NoSQLSchema.NoSQLSchema
-import es.um.nosql.streaminginference.NoSQLSchema.NoSQLSchemaPackage
-import es.um.nosql.streaminginference.spark.input.WholeTextInputFormat
-import es.um.nosql.streaminginference.json2dbschema.main.util.JSON2Schema
-import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.impl.jackson.JacksonAdapter
-import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.IAJAdapter
-import org.codehaus.jackson.JsonNode
-import org.eclipse.emf.ecore.resource.Resource
-import org.eclipse.emf.ecore.xmi.XMIResource
-import org.eclipse.emf.ecore.xmi.XMLResource
-import es.um.nosql.streaminginference.util.emf.ResourceManager
-import org.eclipse.emf.common.util.URI;
-import java.util.HashMap
-import java.util.Map
-import java.io.FileOutputStream
-import java.nio.file.Paths
-import org.eclipse.emf.ecore.resource.ResourceSet
-import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl
-import scala.collection.concurrent.Debug
-import es.um.nosql.streaminginference.NoSQLSchema.impl.ReferenceImpl
-import es.um.nosql.streaminginference.NoSQLSchema.Entity
+import scala.collection.JavaConversions.asScalaBuffer
+import scala.collection.JavaConversions.seqAsJavaList
+
 import org.eclipse.emf.common.util.EList
-import scala.collection.JavaConversions._
-import es.um.nosql.streaminginference.NoSQLSchema.EntityVersion
-import es.um.nosql.streaminginference.NoSQLSchema.Property
-import es.um.nosql.streaminginference.json2dbschema.intermediate.raw.ArraySC
-import es.um.nosql.streaminginference.json2dbschema.intermediate.raw.ObjectSC
+
+import es.um.nosql.streaminginference.NoSQLSchema.Aggregate
 import es.um.nosql.streaminginference.NoSQLSchema.Association
 import es.um.nosql.streaminginference.NoSQLSchema.Attribute
+import es.um.nosql.streaminginference.NoSQLSchema.Entity
+import es.um.nosql.streaminginference.NoSQLSchema.EntityVersion
+import es.um.nosql.streaminginference.NoSQLSchema.NoSQLSchema
+import es.um.nosql.streaminginference.NoSQLSchema.NoSQLSchemaPackage
 import es.um.nosql.streaminginference.NoSQLSchema.PrimitiveType
-import es.um.nosql.streaminginference.NoSQLSchema.Tuple
-import es.um.nosql.streaminginference.NoSQLSchema.Aggregate
+import es.um.nosql.streaminginference.NoSQLSchema.Property
 import es.um.nosql.streaminginference.NoSQLSchema.Reference
-import org.eclipse.emf.ecore.util.EcoreUtil
-import org.eclipse.emf.ecore.util.EcoreUtil.Copier
-import org.eclipse.emf.ecore.EObject
-import es.um.nosql.streaminginference.json2dbschema.main.BuildNoSQLSchema
-import java.io.FileInputStream
-import java.io.File
+import es.um.nosql.streaminginference.NoSQLSchema.Tuple
 import es.um.nosql.streaminginference.NoSQLSchema.Type
 
 object EcoreHelper {
