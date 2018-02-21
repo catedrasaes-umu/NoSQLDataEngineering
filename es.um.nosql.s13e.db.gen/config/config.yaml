@@ -32,3 +32,4 @@ output:
 
 
 # Generate images?
+# Introduce a timeout between operations and between insertions in database. Check the ObjectIds() created.
