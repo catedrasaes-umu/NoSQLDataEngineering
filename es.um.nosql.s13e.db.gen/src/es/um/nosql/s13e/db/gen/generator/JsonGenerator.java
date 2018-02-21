@@ -11,12 +11,12 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
+import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
 import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
-import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.Tuple;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
@@ -26,6 +26,8 @@ public class JsonGenerator
 {
   private PrimitiveTypeGen pTypeGen;
   private TupleGen tupleGen;
+  private ReferenceGen refGen;
+  private AggregateGen aggrGen;
   private NumberGen numGen;
   private Map<EntityVersion, List<ObjectNode>> evMap;
   private Map<String, List<String>> entityIdMap;
@@ -37,6 +39,8 @@ public class JsonGenerator
   {
     pTypeGen = new PrimitiveTypeGen();
     tupleGen = new TupleGen();
+    refGen = new ReferenceGen();
+    aggrGen = new AggregateGen();
     numGen = NumberGen.GET_INSTANCE();
   }
 
@@ -80,63 +84,9 @@ public class JsonGenerator
     for (Entity entity : schema.getEntities())
       for (EntityVersion eVersion : entity.getEntityversions())
         for (ObjectNode strObj : evMap.get(eVersion))
-        {
-          for (Property property : eVersion.getProperties())
-          {
-            if (property instanceof Reference)
-            {
-              Reference ref = (Reference)property;
-
-              int lBound = ref.getLowerBound() > 0 ? ref.getLowerBound() : 0;
-              int uBound = ref.getUpperBound() > 0 ? ref.getUpperBound() : 5;
-
-              if (lBound == 1 && uBound == 1)
-                strObj.put(ref.getName(), getRandomRefId(ref.getName()));
-              else
-              {
-                ArrayNode refArray = factory.arrayNode();
-                strObj.put(ref.getName(), refArray);
-
-                for (int j = 0; j < numGen.getInclusiveRandom(lBound, uBound); j++)
-                  refArray.add(getRandomRefId(ref.getName()));
-              }
-            }
-            if (property instanceof Aggregate)
-            {
-              Aggregate aggr = (Aggregate)property;
-
-              if (aggr.getLowerBound() == 1 && aggr.getUpperBound() == 1)
-                strObj.put(aggr.getName(), getRandomAggr(aggr.getRefTo().get(0)));
-              else
-              {
-                ArrayNode array = factory.arrayNode();
-                strObj.put(aggr.getName(), array);
-                // We keep all the aggregated versions in a banned list because we won't add them to the database as standalone objects.
-                for (EntityVersion aggrEV : aggr.getRefTo())
-                {
-                  ObjectNode aggrNode = getRandomAggr(aggrEV);
-                  array.add(aggrNode);
-                }
-              }
-            }
-          }
-        }
+          eVersion.getProperties().stream().filter(p -> p instanceof Association).forEach(p -> this.generateAssociation(strObj, (Association)p));
 
     return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(lStorage);
-  }
-
-  private String getRandomRefId(String name) throws Exception
-  {
-    for (String eName : entityIdMap.keySet())
-      if (eName.toLowerCase().contains(name.toLowerCase()) || name.toLowerCase().contains(eName.toLowerCase()))
-        return entityIdMap.get(eName).get(numGen.getExclusiveRandom(0, entityIdMap.get(eName).size()));
-
-    throw new Exception("Reference not found: " + name);
-  }
-
-  private ObjectNode getRandomAggr(EntityVersion eVersion)
-  {
-    return evMap.get(eVersion).get(numGen.getExclusiveRandom(0, evMap.get(eVersion).size()));
   }
 
   private void generateAttribute(ObjectNode oNode, Attribute attr)
@@ -145,5 +95,13 @@ public class JsonGenerator
       oNode.put(attr.getName(), pTypeGen.genPrimitiveType(((PrimitiveType)attr.getType()).getName()));
     else if (attr.getType() instanceof Tuple)
       oNode.put(attr.getName(), tupleGen.genTuple(((Tuple)attr.getType()).getElements()));
+  }
+
+  private void generateAssociation(ObjectNode oNode, Association assc)
+  {
+      if (assc instanceof Reference)
+        oNode.put(assc.getName(), refGen.genReference((Reference)assc, entityIdMap));
+      if (assc instanceof Aggregate)
+        oNode.put(assc.getName(), aggrGen.genAggregate((Aggregate)assc, evMap));
   }
 }
