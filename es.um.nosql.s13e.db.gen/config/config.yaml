@@ -1,6 +1,12 @@
 input:
   model: ../es.um.nosql.examples/mongomovies.xmi
 
+entities:
+  versions:
+    minInstances: 1
+    maxInstances: 1
+  includeType: false
+
 attributes:
   primitiveTypes:
     strangeTypesProbability: 0
@@ -20,10 +26,13 @@ attributes:
     strangeTypesProbability: 0
     nullProbability: 0
 
-configure:
-  minInstancesVersion: 1
-  maxInstancesVersion: 1
-  includeType: false
+associations:
+  references:
+    minReferenceAllowed: 0
+    maxReferenceAllowed: 3
+  aggregates:
+    minAggregateAllowed: 2
+    maxAggregateAllowed: 3
 
 output:
   file: output/output.json
@@ -32,4 +41,4 @@ output:
 
 
 # Generate images?
-# Introduce a timeout between operations and between insertions in database. Check the ObjectIds() created.
+# Introduce a timeout between operations and between insertions in database

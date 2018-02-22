@@ -1,6 +1,8 @@
 package es.um.nosql.s13e.db.gen.config.pojo;
 
-public class TuplesOptions
+import es.um.nosql.s13e.db.gen.utils.Constants;
+
+public class TupleOptions
 {
   private Integer minTupleElements;
   public void setMinTupleElements(Integer minTupleElements) {this.minTupleElements = minTupleElements;}
@@ -22,10 +24,10 @@ public class TuplesOptions
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getMinTupleElements() != null)           result.append("  -Min tuple elements: " + this.getMinTupleElements() + "\n");
-    if (this.getMaxTupleElements() != null)           result.append("  -Max tuple elements: " + this.getMaxTupleElements() + "\n");
-    if (this.getStrangeTypesProbability() != null)    result.append("  -Strange types probability: " + this.getStrangeTypesProbability() + "\n");
-    if (this.getNullProbability() != null)            result.append("  -Null probability: " + this.getNullProbability() + "\n");
+    if (this.getMinTupleElements() != null)         result.append(Constants.GET_TABS(this.getClass()) + "-Min tuple elements: " + this.getMinTupleElements() + "\n");
+    if (this.getMaxTupleElements() != null)         result.append(Constants.GET_TABS(this.getClass()) + "-Max tuple elements: " + this.getMaxTupleElements() + "\n");
+    if (this.getStrangeTypesProbability() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Strange types probability: " + this.getStrangeTypesProbability() + "\n");
+    if (this.getNullProbability() != null)          result.append(Constants.GET_TABS(this.getClass()) + "-Null probability: " + this.getNullProbability() + "\n");
 
     return result.toString();
   }

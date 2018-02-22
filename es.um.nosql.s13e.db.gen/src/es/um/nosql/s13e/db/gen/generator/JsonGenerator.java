@@ -58,7 +58,7 @@ public class JsonGenerator
       for (EntityVersion eVersion : entity.getEntityversions())
       {
         evMap.put(eVersion, new ArrayList<ObjectNode>());
-        int countInstances = numGen.getInclusiveRandom(Constants.GET_MIN_INSTANCES_VERSION(), Constants.GET_MAX_INSTANCES_VERSION());
+        int countInstances = numGen.getInclusiveRandom(Constants.GET_MIN_INSTANCES(), Constants.GET_MAX_INSTANCES());
 
         for (int i = 0; i < countInstances; i++)
         {

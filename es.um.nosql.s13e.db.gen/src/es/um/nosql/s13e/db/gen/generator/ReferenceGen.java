@@ -9,6 +9,7 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
+import es.um.nosql.s13e.db.gen.utils.Constants;
 
 public class ReferenceGen
 {
@@ -26,8 +27,8 @@ public class ReferenceGen
     JsonNode result = null;
     Reference ref = (Reference)assc;
 
-    int lBound = ref.getLowerBound() > 0 ? ref.getLowerBound() : 0;
-    int uBound = ref.getUpperBound() > 0 ? ref.getUpperBound() : 5;
+    int lBound = ref.getLowerBound() > 0 ? ref.getLowerBound() : Constants.GET_REFERENCE_MIN_ALLOWED();
+    int uBound = ref.getUpperBound() > 0 ? ref.getUpperBound() : Constants.GET_REFERENCE_MAX_ALLOWED();
 
     try
     {

@@ -3,6 +3,8 @@ package es.um.nosql.s13e.db.gen.config.pojo;
 import java.io.File;
 import java.util.Arrays;
 
+import es.um.nosql.s13e.db.gen.utils.Constants;
+
 public class PrimitiveTypeOptions
 {
   private Double strangeTypesProbability;
@@ -53,17 +55,17 @@ public class PrimitiveTypeOptions
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getStrangeTypesProbability() != null)  result.append("  -Strange types probability: " + this.getStrangeTypesProbability() + "\n");
-    if (this.getNullProbability() != null)          result.append("  -Null probability: " + this.getNullProbability() + "\n");
-    if (this.getStringType() != null)               result.append("  -StringType: " + this.getStringType() + "\n");
-    if (this.getMinIntAllowed() != null)            result.append("  -Min int allowed: " + this.getMinIntAllowed() + "\n");
-    if (this.getMaxIntAllowed() != null)            result.append("  -Max int allowed: " + this.getMaxIntAllowed() + "\n");
-    if (this.getMinDoubleAllowed() != null)         result.append("  -Min double allowed: " + this.getMinDoubleAllowed() + "\n");
-    if (this.getMaxDoubleAllowed() != null)         result.append("  -Max double allowed: " + this.getMaxDoubleAllowed() + "\n");
-    if (this.getDoubleDecimalsAllowed() != null)    result.append("  -Double decimals allowed: " + this.getDoubleDecimalsAllowed() + "\n");
-    if (this.getStringNamesFile() != null)          result.append("  -String names file: " + this.getStringNamesFile() + "\n");
-    if (this.getStringSurnamesFile() != null)       result.append("  -String surnames file: " + this.getStringSurnamesFile() + "\n");
-    if (this.getStringWordsFile() != null)          result.append("  -String words file: " + this.getStringWordsFile() + "\n");
+    if (this.getStrangeTypesProbability() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Strange types probability: " + this.getStrangeTypesProbability() + "\n");
+    if (this.getNullProbability() != null)          result.append(Constants.GET_TABS(this.getClass()) + "-Null probability: " + this.getNullProbability() + "\n");
+    if (this.getStringType() != null)               result.append(Constants.GET_TABS(this.getClass()) + "-StringType: " + this.getStringType() + "\n");
+    if (this.getMinIntAllowed() != null)            result.append(Constants.GET_TABS(this.getClass()) + "-Min int allowed: " + this.getMinIntAllowed() + "\n");
+    if (this.getMaxIntAllowed() != null)            result.append(Constants.GET_TABS(this.getClass()) + "-Max int allowed: " + this.getMaxIntAllowed() + "\n");
+    if (this.getMinDoubleAllowed() != null)         result.append(Constants.GET_TABS(this.getClass()) + "-Min double allowed: " + this.getMinDoubleAllowed() + "\n");
+    if (this.getMaxDoubleAllowed() != null)         result.append(Constants.GET_TABS(this.getClass()) + "-Max double allowed: " + this.getMaxDoubleAllowed() + "\n");
+    if (this.getDoubleDecimalsAllowed() != null)    result.append(Constants.GET_TABS(this.getClass()) + "-Double decimals allowed: " + this.getDoubleDecimalsAllowed() + "\n");
+    if (this.getStringNamesFile() != null)          result.append(Constants.GET_TABS(this.getClass()) + "-String names file: " + this.getStringNamesFile() + "\n");
+    if (this.getStringSurnamesFile() != null)       result.append(Constants.GET_TABS(this.getClass()) + "-String surnames file: " + this.getStringSurnamesFile() + "\n");
+    if (this.getStringWordsFile() != null)          result.append(Constants.GET_TABS(this.getClass()) + "-String words file: " + this.getStringWordsFile() + "\n");
 
     return result.toString();
   }
@@ -79,7 +81,7 @@ public class PrimitiveTypeOptions
     if (this.getStringType() != null && !Arrays.asList("word", "phrase", "word_number", "nonsense", "name", "surname", "random", "large").contains(this.getStringType()))
       throw new IllegalArgumentException("String type must be of the following types: \"random\", \"large\", \"word\", \"phrase\", \"word_number\", \"nonsense\", \"name\", \"name_surname\"");
 
-    if (this.getMinIntAllowed() != null && this.getMaxIntAllowed() != null && this.getMinIntAllowed() >= this.getMaxIntAllowed())
+    if (this.getMinIntAllowed() != null && this.getMaxIntAllowed() != null && this.getMinIntAllowed() > this.getMaxIntAllowed())
       throw new IllegalArgumentException("Maximum int allowed must be equal or greater than Minimum int allowed.");
 
     if (this.getMinDoubleAllowed() != null && this.getMaxDoubleAllowed() != null && this.getMinDoubleAllowed() >= this.getMaxDoubleAllowed())

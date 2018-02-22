@@ -29,12 +29,45 @@ public final class Constants
   private static final int ATTRIBUTES_TUPLE_MAX_TUPLE_ELEMENTS                      = 10;
   private static final double ATTRIBUTES_TUPLE_STRANGE_TYPES_PROBABILITY            = 0;
   private static final double ATTRIBUTES_TUPLE_NULL_PROBABILITY                     = 0;
-  private static final int CONFIGURE_MIN_INSTANCES_VERSION                          = 10;
-  private static final int CONFIGURE_MAX_INSTANCES_VERSION                          = 20;
-  private static final boolean CONFIGURE_INCLUDE_TYPE                               = false;
+  private static final int EVERSIONS_MIN_INSTANCES                                  = 10;
+  private static final int EVERSIONS_MAX_INSTANCES                                  = 20;
+  private static final int AGGREGATES_MIN_ALLOWED                                   = 0;
+  private static final int AGGREGATES_MAX_ALLOWED                                   = 2;
+  private static final int REFERENCES_MIN_ALLOWED                                   = 0;
+  private static final int REFERENCES_MAX_ALLOWED                                   = 2;
+  private static final boolean ENTITIES_INCLUDE_TYPE                                = false;
   private static final boolean OUTPUT_FILE                                          = false;
   private static final boolean OUTPUT_CONSOLE                                       = true;
   private static final boolean OUTPUT_DATABASE                                      = false;
+  private static final String SPACES                                                = "  ";
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////                           ENTITY OPTIONS                           ///////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+
+  public static int GET_MIN_INSTANCES()
+  {
+    if (options.getEntities() != null && options.getEntities().getVersions() != null && options.getEntities().getVersions().getMinInstances() != null)
+      return options.getEntities().getVersions().getMinInstances();
+    else
+      return EVERSIONS_MIN_INSTANCES;
+  }
+
+  public static int GET_MAX_INSTANCES()
+  {
+    if (options.getEntities() != null && options.getEntities().getVersions() != null && options.getEntities().getVersions().getMaxInstances() != null)
+      return options.getEntities().getVersions().getMaxInstances();
+    else
+      return EVERSIONS_MAX_INSTANCES;
+  }
+
+  public static boolean GET_ENTITY_INCLUDE_TYPE()
+  {
+    if (options.getEntities() != null && options.getEntities().getIncludeType() != null)
+      return options.getEntities().getIncludeType();
+    else
+      return ENTITIES_INCLUDE_TYPE;
+  }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////                      PRIMITIVE TYPE OPTIONS                        ///////////////
@@ -165,31 +198,43 @@ public final class Constants
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////                         CONFIGURE OPTIONS                          ///////////////
+  ///////////////                         REFERENCE OPTIONS                          ///////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
-  public static int GET_MIN_INSTANCES_VERSION()
+  public static int GET_REFERENCE_MIN_ALLOWED()
   {
-    if (options.getConfigure() != null && options.getConfigure().getMinInstancesVersion() != null)
-      return options.getConfigure().getMinInstancesVersion();
+    if (options.getAssociations() != null && options.getAssociations().getReferences() != null && options.getAssociations().getReferences().getMinReferenceAllowed() != null)
+      return options.getAssociations().getReferences().getMinReferenceAllowed();
     else
-      return CONFIGURE_MIN_INSTANCES_VERSION;
+      return REFERENCES_MIN_ALLOWED;
   }
 
-  public static int GET_MAX_INSTANCES_VERSION()
+  public static int GET_REFERENCE_MAX_ALLOWED()
   {
-    if (options.getConfigure() != null && options.getConfigure().getMaxInstancesVersion() != null)
-      return options.getConfigure().getMaxInstancesVersion();
+    if (options.getAssociations() != null && options.getAssociations().getReferences() != null && options.getAssociations().getReferences().getMaxReferenceAllowed() != null)
+      return options.getAssociations().getReferences().getMaxReferenceAllowed();
     else
-      return CONFIGURE_MAX_INSTANCES_VERSION;
+      return REFERENCES_MAX_ALLOWED;
   }
 
-  public static boolean GET_INCLUDE_TYPE()
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////                         AGGREGATE OPTIONS                          ///////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+
+  public static int GET_AGGREGATE_MIN_ALLOWED()
   {
-    if (options.getConfigure() != null && options.getConfigure().getIncludeType() != null)
-      return options.getConfigure().getIncludeType();
+    if (options.getAssociations() != null && options.getAssociations().getAggregates() != null && options.getAssociations().getAggregates().getMinAggregateAllowed() != null)
+      return options.getAssociations().getAggregates().getMinAggregateAllowed();
     else
-      return CONFIGURE_INCLUDE_TYPE;
+      return AGGREGATES_MIN_ALLOWED;
+  }
+
+  public static int GET_AGGREGATE_MAX_ALLOWED()
+  {
+    if (options.getAssociations() != null && options.getAssociations().getAggregates() != null && options.getAssociations().getAggregates().getMaxAggregateAllowed() != null)
+      return options.getAssociations().getAggregates().getMaxAggregateAllowed();
+    else
+      return AGGREGATES_MAX_ALLOWED;
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -234,5 +279,70 @@ public final class Constants
       return options.getOutput().getDatabase();
     else
       return null;
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+  ///////////////                               UTILS                                ///////////////
+  //////////////////////////////////////////////////////////////////////////////////////////////////
+
+  public static String GET_TABS(Class<?> className)
+  {
+    StringBuilder result = new StringBuilder();
+
+    switch (className.getSimpleName())
+    {
+      case "DbGenOptions": break;
+      case "EntityOptions": case "AttributeOptions": case "AssociationOptions": case "InputOptions": case "OutputOptions": {result.append(SPACES); break;}
+      case "VersionOptions": case "PrimitiveTypeOptions": case "TupleOptions": case "AggregateOptions": case "ReferenceOptions": {result.append(SPACES + SPACES); break;}
+      default: System.err.println("Didn't find spacing for: " + className.getSimpleName());
+    }
+
+    return result.toString();
+  }
+
+  public static String GET_OPTIONS()
+  {
+    StringBuilder result = new StringBuilder();
+
+    result.append("\n===== ENTITY OPTIONS =====\n\n");
+    result.append("GET_MIN_INSTANCES: " + Constants.GET_MIN_INSTANCES() + "\n");
+    result.append("GET_MAX_INSTANCES: " + Constants.GET_MAX_INSTANCES() + "\n");
+    result.append("GET_ENTITY_INCLUDE_TYPE: " + Constants.GET_ENTITY_INCLUDE_TYPE() + "\n");
+
+    result.append("\n===== PRIMITIVE TYPES OPTIONS =====\n\n");
+    result.append("GET_PRIMITIVE_TYPES_NAMES_FILE: " + Constants.GET_PRIMITIVE_TYPES_NAMES_FILE() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_SURNAMES_FILE: " + Constants.GET_PRIMITIVE_TYPES_SURNAMES_FILE() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_WORD_FILE: " + Constants.GET_PRIMITIVE_TYPES_WORDS_FILE() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_STRANGE_TYPES_PROBABILITY: " + Constants.GET_PRIMITIVE_TYPES_STRANGE_TYPES_PROBABILITY() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_NULL_PROBABILITY: " + Constants.GET_PRIMITIVE_TYPES_NULL_PROBABILITY() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_STRING_TYPE: " + Constants.GET_PRIMITIVE_TYPES_STRING_TYPE() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_MIN_INT_ALLOWED: " + Constants.GET_PRIMITIVE_TYPES_MIN_INT_ALLOWED() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED: " + Constants.GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_MIN_DOUBLE_ALLOWED: " + Constants.GET_PRIMITIVE_TYPES_MIN_DOUBLE_ALLOWED() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_MAX_DOUBLE_ALLOWED: " + Constants.GET_PRIMITIVE_TYPES_MAX_DOUBLE_ALLOWED() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_DOUBLE_DECIMALS_ALLOWED: " + Constants.GET_PRIMITIVE_TYPES_DOUBLE_DECIMALS_ALLOWED() + "\n");
+
+    result.append("\n===== TUPLE OPTIONS =====\n\n");
+    result.append("GET_TUPLE_MIN_TUPLE_ELEMENTS: " + Constants.GET_TUPLE_MIN_TUPLE_ELEMENTS() + "\n");
+    result.append("GET_TUPLE_MAX_TUPLE_ELEMENTS: " + Constants.GET_TUPLE_MAX_TUPLE_ELEMENTS() + "\n");
+    result.append("GET_TUPLE_STRANGE_TYPES_PROBABILITY: " + Constants.GET_TUPLE_STRANGE_TYPES_PROBABILITY() + "\n");
+    result.append("GET_TUPLE_NULL_PROBABILITY: " + Constants.GET_TUPLE_NULL_PROBABILITY() + "\n");
+
+    result.append("\n===== REFERENCE OPTIONS =====\n\n");
+    result.append("GET_REFERENCE_MIN_ALLOWED: " + Constants.GET_REFERENCE_MIN_ALLOWED() + "\n");
+    result.append("GET_REFERENCE_MAX_ALLOWED: " + Constants.GET_REFERENCE_MAX_ALLOWED() + "\n");
+
+    result.append("\n===== AGGREGATE OPTIONS =====\n\n");
+    result.append("GET_AGGREGATE_MIN_ALLOWED: " + Constants.GET_AGGREGATE_MIN_ALLOWED() + "\n");
+    result.append("GET_AGGREGATE_MAX_ALLOWED: " + Constants.GET_AGGREGATE_MAX_ALLOWED() + "\n");
+
+    result.append("\n===== OUTPUT OPTIONS =====\n\n");
+    result.append("IS_DEFINED_OUTPUT_FILE: " + Constants.IS_DEFINED_OUTPUT_FILE() + "\n");
+    result.append("IS_DEFINED_OUTPUT_CONSOLE: " + Constants.IS_DEFINED_OUTPUT_CONSOLE() + "\n");
+    result.append("IS_DEFINED_OUTPUT_DATABASE: " + Constants.IS_DEFINED_OUTPUT_DATABASE() + "\n");
+    result.append("GET_OUTPUT_FILE: " + Constants.GET_OUTPUT_FILE() + "\n");
+    result.append("GET_OUTPUT_DATABASE: " + Constants.GET_OUTPUT_DATABASE() + "\n");
+
+    return result.toString();
   }
 }

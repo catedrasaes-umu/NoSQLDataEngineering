@@ -1,14 +1,20 @@
 package es.um.nosql.s13e.db.gen.config.pojo;
 
+import es.um.nosql.s13e.db.gen.utils.Constants;
+
 public class DbGenOptions
 {
-  private ConfigureOptions configure;
-  public void setConfigure(ConfigureOptions configure) {this.configure = configure;}
-  public ConfigureOptions getConfigure() {return this.configure;}
+  private EntityOptions entities;
+  public void setEntities(EntityOptions entities) {this.entities = entities;}
+  public EntityOptions getEntities() {return this.entities;}
 
   private AttributeOptions attributes;
   public void setAttributes(AttributeOptions attributes) {this.attributes = attributes;}
   public AttributeOptions getAttributes() {return this.attributes;}
+
+  private AssociationOptions associations;
+  public void setAssociations(AssociationOptions associations) {this.associations = associations;}
+  public AssociationOptions getAssociations() {return this.associations;}
 
   private InputOptions input;
   public void setInput(InputOptions input) {this.input = input;}
@@ -22,22 +28,25 @@ public class DbGenOptions
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getConfigure() != null)
-      result.append("-Configure:\n" + this.getConfigure().toString());
-
-    if (this.getInput() != null)
-      result.append("-Input:\n" + this.getInput().toString());
-
-    if (this.getOutput() != null)
-      result.append("-Output:\n" + this.getOutput().toString());
+    if (this.getEntities() != null)   result.append(Constants.GET_TABS(this.getClass()) + "-Entities:\n" + this.getEntities().toString());
+    if (this.getAttributes() != null) result.append(Constants.GET_TABS(this.getClass()) + "-Attributes:\n" + this.getAttributes().toString());
+    if (this.getAssociations() != null) result.append(Constants.GET_TABS(this.getClass()) + "-Associations:\n" + this.getAssociations().toString());
+    if (this.getInput() != null)      result.append(Constants.GET_TABS(this.getClass()) + "-Input:\n" + this.getInput().toString());
+    if (this.getOutput() != null)     result.append(Constants.GET_TABS(this.getClass()) + "-Output:\n" + this.getOutput().toString());
 
     return result.toString();
   }
 
   public boolean doCheck()
   {
-    if (this.getConfigure() != null)
-      this.getConfigure().doCheck();
+    if (this.getEntities() != null)
+      this.getEntities().doCheck();
+
+    if (this.getAttributes() != null)
+      this.getAttributes().doCheck();
+
+    if (this.getAssociations() != null)
+      this.getAssociations().doCheck();
 
     if (this.getInput() == null)
       throw new IllegalArgumentException("An \"input\" section is required to provide a valid input XMI file.");

@@ -2,6 +2,8 @@ package es.um.nosql.s13e.db.gen.config.pojo;
 
 import java.io.File;
 
+import es.um.nosql.s13e.db.gen.utils.Constants;
+
 public class InputOptions
 {
   private String model;
@@ -14,8 +16,7 @@ public class InputOptions
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getModel() != null)
-      result.append("  -Model: " + this.getModel() + "\n");
+    if (this.getModel() != null) result.append(Constants.GET_TABS(this.getClass()) + "-Model: " + this.getModel() + "\n");
 
     return result.toString();
   }

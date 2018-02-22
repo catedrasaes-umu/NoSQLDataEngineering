@@ -1,5 +1,7 @@
 package es.um.nosql.s13e.db.gen.config.pojo;
 
+import es.um.nosql.s13e.db.gen.utils.Constants;
+
 public class OutputOptions
 {
   private String file;
@@ -24,14 +26,9 @@ public class OutputOptions
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getFile() != null)
-      result.append("  -File: " + this.getFile() + "\n");
-
-    if (this.getConsole() != null)
-      result.append("  -Console: " + this.getConsole() + "\n");
-
-    if (this.getDatabase() != null)
-      result.append("  -Database: " + this.getDatabase() + "\n");
+    if (this.getFile() != null)     result.append(Constants.GET_TABS(this.getClass()) + "-File: " + this.getFile() + "\n");
+    if (this.getConsole() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Console: " + this.getConsole() + "\n");
+    if (this.getDatabase() != null) result.append(Constants.GET_TABS(this.getClass()) + "-Database: " + this.getDatabase() + "\n");
 
     return result.toString();
   }
