@@ -5,6 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.bson.types.ObjectId;
+
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
@@ -29,8 +32,8 @@ public class JsonGenerator
   private ReferenceGen refGen;
   private AggregateGen aggrGen;
   private NumberGen numGen;
-  private Map<EntityVersion, List<ObjectNode>> evMap;
   private Map<String, List<String>> entityIdMap;
+  private Map<EntityVersion, List<ObjectNode>> evMap;
   private ArrayNode lStorage;
 
   private JsonNodeFactory factory = JsonNodeFactory.instance;
@@ -42,40 +45,37 @@ public class JsonGenerator
     refGen = new ReferenceGen();
     aggrGen = new AggregateGen();
     numGen = NumberGen.GET_INSTANCE();
+    entityIdMap = new HashMap<String, List<String>>();
+    evMap = new HashMap<EntityVersion, List<ObjectNode>>();
   }
 
   public String generate(NoSQLSchema schema) throws Exception
   {
-    evMap = new HashMap<EntityVersion, List<ObjectNode>>();
-    entityIdMap = new HashMap<String, List<String>>();
-
+    //TODO: Maybe we should try to divide the work into several splits so we don't get blocked by passing a really gigantic JSON.
     lStorage = factory.arrayNode();
 
     // First run to generate all the primitive types and tuples.
     for (Entity entity : schema.getEntities())
     {
-      entityIdMap.put(entity.getName().toLowerCase(), new ArrayList<String>());
+      entityIdMap.put(entity.getName(), new ArrayList<String>());
+
       for (EntityVersion eVersion : entity.getEntityversions())
       {
         evMap.put(eVersion, new ArrayList<ObjectNode>());
-        int countInstances = numGen.getInclusiveRandom(Constants.GET_MIN_INSTANCES(), Constants.GET_MAX_INSTANCES());
 
-        for (int i = 0; i < countInstances; i++)
+        for (int i = 0; i < numGen.getInclusiveRandom(Constants.GET_MIN_INSTANCES(), Constants.GET_MAX_INSTANCES()); i++)
         {
           ObjectNode oNode = factory.objectNode();
+          evMap.get(eVersion).add(oNode);
 
-          eVersion.getProperties().stream().filter(p -> p instanceof Attribute).forEach(p -> this.generateAttribute(oNode, (Attribute)p));
-
-          // We will override the _id and the type parameters...
           if (eVersion.isRoot())
           {
-            oNode.put("_id", pTypeGen.genTrustedPrimitiveType("objectid"));
-            oNode.put("_type", entity.getName());
             lStorage.add(oNode);
-            entityIdMap.get(entity.getName().toLowerCase()).add(oNode.get("_id").asText());
+            this.generateMetadata(entity.getName(), oNode);
           }
 
-          evMap.get(eVersion).add(oNode);
+          // Maybe it is actually a good idea to only generate objects for the eVersion roots, and leave the embedded eVersions to be generated only on demand.
+          eVersion.getProperties().stream().filter(p -> p instanceof Attribute).forEach(p -> this.generateAttribute(oNode, (Attribute)p));
         }
       }
     }
@@ -86,7 +86,20 @@ public class JsonGenerator
         for (ObjectNode strObj : evMap.get(eVersion))
           eVersion.getProperties().stream().filter(p -> p instanceof Association).forEach(p -> this.generateAssociation(strObj, (Association)p));
 
+    evMap.clear();
+    entityIdMap.clear();
+
     return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(lStorage);
+  }
+
+  private void generateMetadata(String entityName, ObjectNode oNode)
+  {
+    oNode.put("_id", pTypeGen.genTrustedPrimitiveType("objectid"));
+    //TODO: Refine this...
+    entityIdMap.get(entityName).add(oNode.get("_id").asText());
+
+    if (Constants.GET_ENTITY_INCLUDE_TYPE() && !oNode.has("_type"))
+      oNode.put("_type", entityName);
   }
 
   private void generateAttribute(ObjectNode oNode, Attribute attr)
@@ -101,7 +114,7 @@ public class JsonGenerator
   {
       if (assc instanceof Reference)
         oNode.put(assc.getName(), refGen.genReference((Reference)assc, entityIdMap));
-      if (assc instanceof Aggregate)
-        oNode.put(assc.getName(), aggrGen.genAggregate((Aggregate)assc, evMap));
+//      if (assc instanceof Aggregate)
+//        oNode.put(assc.getName(), aggrGen.genAggregate((Aggregate)assc, evMap));
   }
 }

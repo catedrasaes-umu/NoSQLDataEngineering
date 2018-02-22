@@ -22,10 +22,9 @@ public class ReferenceGen
     jsonFactory = JsonNodeFactory.instance;
   }
 
-  public JsonNode genReference(Reference assc, Map<String, List<String>> entityIdMap)
+  public JsonNode genReference(Reference ref, Map<String, List<String>> entityIdMap)
   {
     JsonNode result = null;
-    Reference ref = (Reference)assc;
 
     int lBound = ref.getLowerBound() > 0 ? ref.getLowerBound() : Constants.GET_REFERENCE_MIN_ALLOWED();
     int uBound = ref.getUpperBound() > 0 ? ref.getUpperBound() : Constants.GET_REFERENCE_MAX_ALLOWED();
@@ -33,13 +32,13 @@ public class ReferenceGen
     try
     {
       if (lBound == 1 && uBound == 1)
-        result = jsonFactory.textNode(getRandomRefId(ref.getName(), entityIdMap));
+        result = this.getRandomRefId(ref, entityIdMap);
       else
       {
         ArrayNode refArray = jsonFactory.arrayNode();
 
         for (int j = 0; j < numGen.getInclusiveRandom(lBound, uBound); j++)
-          refArray.add(getRandomRefId(ref.getName(), entityIdMap));
+          refArray.add(this.getRandomRefId(ref, entityIdMap));
 
         result = refArray;
       }
@@ -51,12 +50,24 @@ public class ReferenceGen
     return result;
   }
 
-  private String getRandomRefId(String name, Map<String, List<String>> entityIdMap) throws Exception
+  private JsonNode getRandomRefId(Reference ref, Map<String, List<String>> entityIdMap) throws Exception
   {
-    for (String eName : entityIdMap.keySet())
-      if (eName.toLowerCase().contains(name.toLowerCase()) || name.toLowerCase().contains(eName.toLowerCase()))
-        return entityIdMap.get(eName).get(numGen.getExclusiveRandom(0, entityIdMap.get(eName).size()));
+    String refEntityName = ref.getRefTo().getName();
+    String refOriginalType = ref.getOriginalType() == null ? "string" : ref.getOriginalType().toLowerCase();
 
-    throw new Exception("Reference not found: " + name);
+    if (!entityIdMap.containsKey(refEntityName))
+      throw new IllegalArgumentException("Reference not found: " + ref.getRefTo().getName());
+
+    String refResult = entityIdMap.get(refEntityName).get(numGen.getExclusiveRandom(0, entityIdMap.get(refEntityName).size()));
+//TODO: What if the ref is actually NOT a castable Number...hmm we better FILTER first.
+    switch (refOriginalType)
+    {
+      case "objectid":
+      {
+        return jsonFactory.objectNode().put("$oid", refResult);
+      }
+      case "number":          {return jsonFactory.nu}
+      case "string": default: {return jsonFactory.textNode(refResult);}
+    }
   }
 }

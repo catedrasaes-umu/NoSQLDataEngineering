@@ -30,6 +30,7 @@ associations:
   references:
     minReferenceAllowed: 0
     maxReferenceAllowed: 3
+    strangeTypesProbability: 0
   aggregates:
     minAggregateAllowed: 2
     maxAggregateAllowed: 3

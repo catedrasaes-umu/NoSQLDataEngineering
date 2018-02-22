@@ -26,7 +26,7 @@ public class AggregateGen
   public JsonNode genAggregate(Aggregate aggr, Map<EntityVersion, List<ObjectNode>> evMap)
   {
     if (aggr.getLowerBound() == 1 && aggr.getUpperBound() == 1)
-      return getRandomAggr(aggr.getRefTo().get(0), evMap);
+      return this.getRandomAggr(aggr.getRefTo().get(0), evMap);
     else
     {
       ArrayNode array = jsonFactory.arrayNode();
@@ -34,7 +34,7 @@ public class AggregateGen
       // We keep all the aggregated versions in a banned list because we won't add them to the database as standalone objects.
       for (EntityVersion aggrEV : aggr.getRefTo())
       {
-        ObjectNode aggrNode = getRandomAggr(aggrEV, evMap);
+        ObjectNode aggrNode = this.getRandomAggr(aggrEV, evMap);
         array.add(aggrNode);
       }
 

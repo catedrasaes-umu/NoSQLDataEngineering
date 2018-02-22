@@ -93,7 +93,6 @@ public class PrimitiveTypeGen
 
   public ObjectId genRandomObjectId()
   {
-    
     return objGen.getRandomObjectId();
   }
 

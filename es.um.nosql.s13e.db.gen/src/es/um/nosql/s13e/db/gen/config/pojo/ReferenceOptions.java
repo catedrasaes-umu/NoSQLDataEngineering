@@ -4,6 +4,10 @@ import es.um.nosql.s13e.db.gen.utils.Constants;
 
 public class ReferenceOptions
 {
+  private Double strangeTypesProbability;
+  public void setStrangeTypesProbability(Double strangeTypesProbability) {this.strangeTypesProbability = strangeTypesProbability;}
+  public Double getStrangeTypesProbability() {return this.strangeTypesProbability;}
+
   private Integer minReferenceAllowed;
   public void setMinAggregateAllowed(Integer minReferenceAllowed) {this.minReferenceAllowed = minReferenceAllowed;}
   public Integer getMinReferenceAllowed() { return this.minReferenceAllowed;}
@@ -16,6 +20,7 @@ public class ReferenceOptions
   {
     StringBuilder result = new StringBuilder();
 
+    if (this.getStrangeTypesProbability() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Strange types probability: " + this.getStrangeTypesProbability() + "\n");
     if (this.getMinReferenceAllowed() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Min references allowed: " + this.getMinReferenceAllowed() + "\n");
     if (this.getMaxReferenceAllowed() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Max references allowed: " + this.getMaxReferenceAllowed() + "\n");
 
@@ -24,6 +29,9 @@ public class ReferenceOptions
 
   public boolean doCheck()
   {
+    if (this.getStrangeTypesProbability() != null && (this.getStrangeTypesProbability() < 0.0 || this.getStrangeTypesProbability() >= 1.0))
+      throw new IllegalArgumentException("The \"StrangeTypesProbability\" double must be equal or greater than 0.0 and less than 1.0.");
+
     if (this.getMinReferenceAllowed() != null && this.getMinReferenceAllowed() < 0)
       throw new IllegalArgumentException("Minimum reference cardinality allowed must be equal or greater than 0.");
 
