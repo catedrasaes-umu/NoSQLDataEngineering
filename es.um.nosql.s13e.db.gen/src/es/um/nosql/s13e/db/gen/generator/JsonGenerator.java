@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import org.bson.types.ObjectId;
+import java.util.Optional;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -13,13 +12,13 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
 import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
+import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.Tuple;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
@@ -32,7 +31,7 @@ public class JsonGenerator
   private ReferenceGen refGen;
   private AggregateGen aggrGen;
   private NumberGen numGen;
-  private Map<String, List<String>> entityIdMap;
+  private Map<String, List<JsonNode>> entityIdMap;
   private Map<EntityVersion, List<ObjectNode>> evMap;
   private ArrayNode lStorage;
 
@@ -45,7 +44,7 @@ public class JsonGenerator
     refGen = new ReferenceGen();
     aggrGen = new AggregateGen();
     numGen = NumberGen.GET_INSTANCE();
-    entityIdMap = new HashMap<String, List<String>>();
+    entityIdMap = new HashMap<String, List<JsonNode>>();
     evMap = new HashMap<EntityVersion, List<ObjectNode>>();
   }
 
@@ -57,7 +56,7 @@ public class JsonGenerator
     // First run to generate all the primitive types and tuples.
     for (Entity entity : schema.getEntities())
     {
-      entityIdMap.put(entity.getName(), new ArrayList<String>());
+      entityIdMap.put(entity.getName(), new ArrayList<JsonNode>());
 
       for (EntityVersion eVersion : entity.getEntityversions())
       {
@@ -68,14 +67,15 @@ public class JsonGenerator
           ObjectNode oNode = factory.objectNode();
           evMap.get(eVersion).add(oNode);
 
+          eVersion.getProperties().stream().filter(p -> p instanceof Attribute && !p.getName().equals("_id")).forEach(p -> this.generateAttribute(oNode, (Attribute)p));
+
           if (eVersion.isRoot())
           {
             lStorage.add(oNode);
-            this.generateMetadata(entity.getName(), oNode);
+            this.generateMetadata(oNode, entity.getName(), eVersion.getProperties().stream()
+                .filter(p -> p instanceof Attribute && p.getName().equals("_id")).map(p -> (Attribute)p)
+                .findFirst());
           }
-
-          // Maybe it is actually a good idea to only generate objects for the eVersion roots, and leave the embedded eVersions to be generated only on demand.
-          eVersion.getProperties().stream().filter(p -> p instanceof Attribute).forEach(p -> this.generateAttribute(oNode, (Attribute)p));
         }
       }
     }
@@ -92,11 +92,14 @@ public class JsonGenerator
     return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(lStorage);
   }
 
-  private void generateMetadata(String entityName, ObjectNode oNode)
+  private void generateMetadata(ObjectNode oNode, String entityName, Optional<Attribute> theId)
   {
-    oNode.put("_id", pTypeGen.genTrustedPrimitiveType("objectid"));
-    //TODO: Refine this...
-    entityIdMap.get(entityName).add(oNode.get("_id").asText());
+    if (!theId.isPresent())
+      oNode.put("_id", pTypeGen.genTrustedObjectId("objectid"));
+    else
+      oNode.put("_id", pTypeGen.genTrustedObjectId(((PrimitiveType)theId.get().getType()).getName()));
+
+    entityIdMap.get(entityName).add(oNode.get("_id"));      
 
     if (Constants.GET_ENTITY_INCLUDE_TYPE() && !oNode.has("_type"))
       oNode.put("_type", entityName);

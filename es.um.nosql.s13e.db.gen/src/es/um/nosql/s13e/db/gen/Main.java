@@ -2,6 +2,8 @@ package es.um.nosql.s13e.db.gen;
 
 import java.io.File;
 
+import org.bson.types.ObjectId;
+
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbAdapter;
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbClient;

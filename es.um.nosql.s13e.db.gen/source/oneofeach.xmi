@@ -139,6 +139,31 @@
           upperBound="-1"
           refTo="//@entities.1/@entityversions.0 //@entities.1/@entityversions.1"/>
     </entityversions>
+    <entityversions
+        versionId="4"
+        root="true">
+      <properties
+          xsi:type="NoSQLSchema:Reference"
+          name="refsThree1"
+          lowerBound="1"
+          upperBound="1"
+          refTo="EntityThree"
+          originalType="ObjectId"/>
+      <properties
+          xsi:type="NoSQLSchema:Reference"
+          name="refsThree2"
+          lowerBound="1"
+          upperBound="1"
+          refTo="EntityThree"
+          originalType="String"/>
+      <properties
+          xsi:type="NoSQLSchema:Reference"
+          name="refsThree3"
+          lowerBound="1"
+          upperBound="1"
+          refTo="EntityThree"
+          originalType="Number"/>
+    </entityversions>
   </entities>
   <entities
       name="EntityTwo">
@@ -197,6 +222,42 @@
               xsi:type="NoSQLSchema:PrimitiveType"
               name="Boolean"/>
         </type>
+      </properties>
+    </entityversions>
+  </entities>
+  <entities
+      name="EntityThree">
+    <entityversions
+        versionId="1"
+        root="true">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
+      </properties>
+    </entityversions>
+    <entityversions
+        versionId="2"
+        root="true">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+    </entityversions>
+    <entityversions
+        versionId="3"
+        root="true">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
       </properties>
     </entityversions>
   </entities>

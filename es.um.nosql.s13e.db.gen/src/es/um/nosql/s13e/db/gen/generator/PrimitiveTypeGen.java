@@ -59,6 +59,17 @@ public class PrimitiveTypeGen
     }
   }
 
+  public JsonNode genTrustedObjectId(String type)
+  {
+    switch (type.toLowerCase())
+    {
+      case "string":              return jsonFactory.textNode(this.genRandomObjectId().toString());
+      case "objectid":            return jsonFactory.objectNode().put("$oid", this.genRandomObjectId().toString());
+      case "int": case "number":  return jsonFactory.numberNode(this.genRandomObjectId().getCounter());
+      default:                    return jsonFactory.nullNode();
+    }
+  }
+
   public String genRandomString()
   {
     switch (Constants.GET_PRIMITIVE_TYPES_STRING_TYPE())
@@ -71,9 +82,8 @@ public class PrimitiveTypeGen
       case "nonsense":      return strGen.getRandomNonsense();
       case "name":          return strGen.getRandomName();
       case "name_surname":  return strGen.getRandomFullname();
-    };
-
-    return null;
+      default:              return null;
+    }
   }
 
   public boolean genRandomBoolean()

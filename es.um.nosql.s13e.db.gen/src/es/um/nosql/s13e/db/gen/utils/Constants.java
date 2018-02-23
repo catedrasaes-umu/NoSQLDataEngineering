@@ -32,9 +32,9 @@ public final class Constants
   private static final int EVERSIONS_MIN_INSTANCES                                  = 10;
   private static final int EVERSIONS_MAX_INSTANCES                                  = 20;
   private static final int AGGREGATES_MIN_ALLOWED                                   = 0;
-  private static final int AGGREGATES_MAX_ALLOWED                                   = 2;
+  private static final int AGGREGATES_MAX_ALLOWED                                   = 3;
   private static final int REFERENCES_MIN_ALLOWED                                   = 0;
-  private static final int REFERENCES_MAX_ALLOWED                                   = 2;
+  private static final int REFERENCES_MAX_ALLOWED                                   = 3;
   private static final boolean ENTITIES_INCLUDE_TYPE                                = false;
   private static final boolean OUTPUT_FILE                                          = false;
   private static final boolean OUTPUT_CONSOLE                                       = true;
