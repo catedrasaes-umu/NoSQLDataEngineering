@@ -11,6 +11,7 @@ import com.fasterxml.jackson.databind.node.NumericNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.databind.node.TextNode;
 
+import es.um.nosql.s13e.NoSQLSchema.Entity;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
 import es.um.nosql.s13e.db.gen.utils.Constants;
@@ -26,7 +27,7 @@ public class ReferenceGen
     jsonFactory = JsonNodeFactory.instance;
   }
 
-  public JsonNode genReference(Reference ref, Map<String, List<JsonNode>> entityIdMap)
+  public JsonNode genReference(Reference ref, Map<Entity, List<JsonNode>> entityIdMap)
   {
     JsonNode result = null;
 
@@ -46,24 +47,22 @@ public class ReferenceGen
       result = refArray;
     }
 
-
     return result;
   }
 
-  private JsonNode getRandomRefId(Reference ref, Map<String, List<JsonNode>> entityIdMap) throws IllegalArgumentException
+  private JsonNode getRandomRefId(Reference ref, Map<Entity, List<JsonNode>> entityIdMap) throws IllegalArgumentException
   {
-    String refEntityName = ref.getRefTo().getName();
     String refOriginalType = ref.getOriginalType() != null ? ref.getOriginalType().toLowerCase() : "string";
     List<JsonNode> idsList = null;
 
-    if (!entityIdMap.containsKey(refEntityName))
+    if (!entityIdMap.containsKey(ref.getRefTo()))
       throw new IllegalArgumentException("Reference not found: " + ref.getRefTo().getName());
 
     switch (refOriginalType)
     {
-      case "string":              {idsList = entityIdMap.get(refEntityName).stream().filter(jsonNode -> jsonNode instanceof TextNode).collect(Collectors.toList()); break;}
-      case "objectid":            {idsList = entityIdMap.get(refEntityName).stream().filter(jsonNode -> jsonNode instanceof ObjectNode).collect(Collectors.toList()); break;}
-      case "int": case "number":  {idsList = entityIdMap.get(refEntityName).stream().filter(jsonNode -> jsonNode instanceof NumericNode).collect(Collectors.toList()); break;}
+      case "string":              {idsList = entityIdMap.get(ref.getRefTo()).stream().filter(jsonNode -> jsonNode instanceof TextNode).collect(Collectors.toList()); break;}
+      case "objectid":            {idsList = entityIdMap.get(ref.getRefTo()).stream().filter(jsonNode -> jsonNode instanceof ObjectNode).collect(Collectors.toList()); break;}
+      case "int": case "number":  {idsList = entityIdMap.get(ref.getRefTo()).stream().filter(jsonNode -> jsonNode instanceof NumericNode).collect(Collectors.toList()); break;}
       default: {throw new IllegalArgumentException("Reference type " + refOriginalType + " is not valid.");}
     }
 

@@ -7,56 +7,55 @@ import java.util.Map;
 import java.util.Optional;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
+import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
 import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
-import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.Tuple;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
 import es.um.nosql.s13e.db.gen.utils.Constants;
 
-public class JsonGenerator
+public class ObjectGen
 {
+  private NumberGen numGen;
   private PrimitiveTypeGen pTypeGen;
   private TupleGen tupleGen;
   private ReferenceGen refGen;
   private AggregateGen aggrGen;
-  private NumberGen numGen;
-  private Map<String, List<JsonNode>> entityIdMap;
+  private JsonNodeFactory factory;
+  private Map<Entity, List<JsonNode>> entityIdMap;
   private Map<EntityVersion, List<ObjectNode>> evMap;
-  private ArrayNode lStorage;
 
-  private JsonNodeFactory factory = JsonNodeFactory.instance;
 
-  public JsonGenerator()
+  public ObjectGen()
   {
+    numGen = NumberGen.GET_INSTANCE();
     pTypeGen = new PrimitiveTypeGen();
     tupleGen = new TupleGen();
     refGen = new ReferenceGen();
     aggrGen = new AggregateGen();
-    numGen = NumberGen.GET_INSTANCE();
-    entityIdMap = new HashMap<String, List<JsonNode>>();
+    factory = JsonNodeFactory.instance;
+    entityIdMap = new HashMap<Entity, List<JsonNode>>();
     evMap = new HashMap<EntityVersion, List<ObjectNode>>();
   }
 
-  public String generate(NoSQLSchema schema) throws Exception
+  public ArrayNode generate(NoSQLSchema schema) throws Exception
   {
     //TODO: Maybe we should try to divide the work into several splits so we don't get blocked by passing a really gigantic JSON.
-    lStorage = factory.arrayNode();
+    ArrayNode result = factory.arrayNode();
 
     // First run to generate all the primitive types and tuples.
     for (Entity entity : schema.getEntities())
     {
-      entityIdMap.put(entity.getName(), new ArrayList<JsonNode>());
+      entityIdMap.put(entity, new ArrayList<JsonNode>());
 
       for (EntityVersion eVersion : entity.getEntityversions())
       {
@@ -71,8 +70,8 @@ public class JsonGenerator
 
           if (eVersion.isRoot())
           {
-            lStorage.add(oNode);
-            this.generateMetadata(oNode, entity.getName(), eVersion.getProperties().stream()
+            result.add(oNode);
+            this.generateMetadata(oNode, entity, eVersion.getProperties().stream()
                 .filter(p -> p instanceof Attribute && p.getName().equals("_id")).map(p -> (Attribute)p)
                 .findFirst());
           }
@@ -89,20 +88,20 @@ public class JsonGenerator
     evMap.clear();
     entityIdMap.clear();
 
-    return new ObjectMapper().writerWithDefaultPrettyPrinter().writeValueAsString(lStorage);
+    return result;
   }
 
-  private void generateMetadata(ObjectNode oNode, String entityName, Optional<Attribute> theId)
+  private void generateMetadata(ObjectNode oNode, Entity entity, Optional<Attribute> theId)
   {
     if (!theId.isPresent())
       oNode.put("_id", pTypeGen.genTrustedObjectId("objectid"));
     else
       oNode.put("_id", pTypeGen.genTrustedObjectId(((PrimitiveType)theId.get().getType()).getName()));
 
-    entityIdMap.get(entityName).add(oNode.get("_id"));      
+    entityIdMap.get(entity).add(oNode.get("_id"));      
 
     if (Constants.GET_ENTITY_INCLUDE_TYPE() && !oNode.has("_type"))
-      oNode.put("_type", entityName);
+      oNode.put("_type", entity.getName());
   }
 
   private void generateAttribute(ObjectNode oNode, Attribute attr)
@@ -117,7 +116,7 @@ public class JsonGenerator
   {
       if (assc instanceof Reference)
         oNode.put(assc.getName(), refGen.genReference((Reference)assc, entityIdMap));
-//      if (assc instanceof Aggregate)
-//        oNode.put(assc.getName(), aggrGen.genAggregate((Aggregate)assc, evMap));
+      if (assc instanceof Aggregate)
+        oNode.put(assc.getName(), aggrGen.genAggregate((Aggregate)assc, evMap));
   }
 }

@@ -120,6 +120,7 @@
       <properties
           xsi:type="NoSQLSchema:Aggregate"
           name="embedded01"
+          lowerBound="1"
           upperBound="1"
           refTo="//@entities.1/@entityversions.0"/>
       <properties
@@ -131,11 +132,13 @@
       <properties
           xsi:type="NoSQLSchema:Aggregate"
           name="embedded04"
+          lowerBound="1"
           upperBound="4"
           refTo="//@entities.1/@entityversions.0 //@entities.1/@entityversions.1"/>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
           name="embedded0N"
+          lowerBound="1"
           upperBound="-1"
           refTo="//@entities.1/@entityversions.0 //@entities.1/@entityversions.1"/>
     </entityversions>

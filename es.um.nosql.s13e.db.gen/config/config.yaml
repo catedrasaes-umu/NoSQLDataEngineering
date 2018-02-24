@@ -4,8 +4,8 @@ input:
 entities:
   versions:
     minInstances: 1
-    maxInstances: 1
-  includeType: false
+    maxInstances: 10
+  includeType: true
 
 attributes:
   primitiveTypes:
@@ -28,11 +28,11 @@ attributes:
 
 associations:
   references:
-    minReferenceAllowed: 0
+    minReferenceAllowed: 1
     maxReferenceAllowed: 3
     strangeTypesProbability: 0
   aggregates:
-    minAggregateAllowed: 2
+    minAggregateAllowed: 1
     maxAggregateAllowed: 3
 
 output:

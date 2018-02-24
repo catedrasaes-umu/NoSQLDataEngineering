@@ -2,27 +2,24 @@ package es.um.nosql.s13e.db.gen;
 
 import java.io.File;
 
-import org.bson.types.ObjectId;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
-import es.um.nosql.s13e.db.adapters.mongodb.MongoDbAdapter;
-import es.um.nosql.s13e.db.adapters.mongodb.MongoDbClient;
-import es.um.nosql.s13e.db.gen.config.pojo.DbGenOptions;
-import es.um.nosql.s13e.db.gen.generator.JsonGenerator;
-import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.generator.ObjectGen;
+import es.um.nosql.s13e.db.gen.output.OutputGen;
 import es.um.nosql.s13e.db.gen.utils.IOUtils;
-
 
 public class Main
 {
+  private static final String modelName = "oneofeach";
+
   public static void main(String[] args) throws Exception
   {
-    //MongoDbClient client = MongoDbAdapter.getMongoDbClient("localhost");
-    NoSQLSchema schema = IOUtils.READ_MODEL(new File("source/oneofeach.xmi"));
-    JsonGenerator generator = new JsonGenerator();
+    NoSQLSchema schema = IOUtils.READ_MODEL(new File("source/" + modelName + ".xmi"));
+    ObjectGen generator = new ObjectGen();
+    OutputGen outputModule = new OutputGen();
 
-    String jsonContent = generator.generate(schema);
-    System.out.println(jsonContent);
-    //client.insert("test", jsonContent);
+    ArrayNode jsonContent = generator.generate(schema);
+    outputModule.genOutput(jsonContent);
   }
 }
