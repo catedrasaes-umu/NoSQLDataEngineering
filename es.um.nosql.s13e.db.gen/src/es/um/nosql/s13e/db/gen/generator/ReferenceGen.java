@@ -49,9 +49,9 @@ public class ReferenceGen
 
     return result;
   }
-
+  //TODO: Slow as hell. Need to rethink this function...
   private JsonNode getRandomRefId(Reference ref, Map<Entity, List<JsonNode>> entityIdMap) throws IllegalArgumentException
-  {
+  {//TODO Consider strangetypes...
     String refOriginalType = ref.getOriginalType() != null ? ref.getOriginalType().toLowerCase() : "string";
     List<JsonNode> idsList = null;
 

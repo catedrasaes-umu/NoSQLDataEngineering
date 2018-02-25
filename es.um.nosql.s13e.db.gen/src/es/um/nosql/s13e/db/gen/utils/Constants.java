@@ -17,10 +17,10 @@ public final class Constants
   private static final double ATTRIBUTES_PRIMITIVE_TYPES_STRANGE_TYPES_PROBABILITY  = 0;
   private static final double ATTRIBUTES_PRIMITIVE_TYPES_NULL_PROBABILITY           = 0;
   private static final String ATTRIBUTES_PRIMITIVE_TYPES_STRING_TYPE                = "random";
-  private static final int ATTRIBUTES_PRIMITIVE_TYPES_MIN_INT_ALLOWED               = Integer.MIN_VALUE;
-  private static final int ATTRIBUTES_PRIMITIVE_TYPES_MAX_INT_ALLOWED               = Integer.MAX_VALUE;
-  private static final double ATTRIBUTES_PRIMITIVE_TYPES_MIN_DOUBLE_ALLOWED         = Double.MIN_VALUE;
-  private static final double ATTRIBUTES_PRIMITIVE_TYPES_MAX_DOUBLE_ALLOWED         = Double.MAX_VALUE;
+  private static final int ATTRIBUTES_PRIMITIVE_TYPES_MIN_INT_ALLOWED               = Integer.MIN_VALUE + 1;
+  private static final int ATTRIBUTES_PRIMITIVE_TYPES_MAX_INT_ALLOWED               = Integer.MAX_VALUE - 1;
+  private static final double ATTRIBUTES_PRIMITIVE_TYPES_MIN_DOUBLE_ALLOWED         = Double.MIN_VALUE + 1;
+  private static final double ATTRIBUTES_PRIMITIVE_TYPES_MAX_DOUBLE_ALLOWED         = Double.MAX_VALUE - 1;
   private static final int ATTRIBUTES_PRIMITIVE_TYPES_DOUBLE_DECIMALS_ALLOWED       = 2;
   private static final String ATTRIBUTES_PRIMITIVE_TYPES_NAMES_FILE                 = "config/names.txt";
   private static final String ATTRIBUTES_PRIMITIVE_TYPES_SURNAMES_FILE              = "config/surnames.txt";
@@ -36,9 +36,12 @@ public final class Constants
   private static final int REFERENCES_MIN_ALLOWED                                   = 0;
   private static final int REFERENCES_MAX_ALLOWED                                   = 3;
   private static final boolean ENTITIES_INCLUDE_TYPE                                = false;
-  private static final boolean OUTPUT_FILE                                          = false;
-  private static final boolean OUTPUT_CONSOLE                                       = true;
+  private static final boolean OUTPUT_FOLDER                                        = false;
+  private static final boolean OUTPUT_CONSOLE                                       = false;
   private static final boolean OUTPUT_DATABASE                                      = false;
+  private static final String DEFAULT_FOLDER                                        = "output/";
+  private static final String DEFAULT_DATABASE                                      = "localhost";
+  private static final String DEFAULT_DATABASE_COLLECTION                           = "default_collection";
   private static final String SPACES                                                = "  ";
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -241,12 +244,12 @@ public final class Constants
   ///////////////                           OUTPUT OPTIONS                           ///////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
-  public static boolean IS_DEFINED_OUTPUT_FILE()
+  public static boolean IS_DEFINED_OUTPUT_FOLDER()
   {
     if (options.getOutput() != null)
-      return options.getOutput().getFile() != null && !options.getOutput().getFile().isEmpty();
+      return options.getOutput().getFolder() != null;
     else
-      return OUTPUT_FILE;
+      return OUTPUT_FOLDER;
   }
 
   public static boolean IS_DEFINED_OUTPUT_CONSOLE()
@@ -265,12 +268,12 @@ public final class Constants
       return OUTPUT_DATABASE;
   }
 
-  public static File GET_OUTPUT_FILE()
+  public static String GET_OUTPUT_FOLDER()
   {
-    if (IS_DEFINED_OUTPUT_FILE())
-      return new File(options.getOutput().getFile());
+    if (IS_DEFINED_OUTPUT_FOLDER())
+      return options.getOutput().getFolder();
     else
-      return null;
+      return DEFAULT_FOLDER;
   }
 
   public static String GET_OUTPUT_DATABASE()
@@ -278,12 +281,25 @@ public final class Constants
     if (IS_DEFINED_OUTPUT_DATABASE())
       return options.getOutput().getDatabase();
     else
-      return null;
+      return DEFAULT_DATABASE;
+  }
+
+  public static String GET_OUTPUT_DATABASE_COLLECTION()
+  {
+    if (options.getOutput() != null && options.getOutput().getDatabaseCollection() != null)
+      return options.getOutput().getDatabaseCollection();
+    else
+      return DEFAULT_DATABASE_COLLECTION;
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////                               UTILS                                ///////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////
+
+  public static String GET_INPUT_FILE()
+  {
+    return options.getInput().getModel();
+  }
 
   public static String GET_TABS(Class<?> className)
   {
@@ -337,10 +353,10 @@ public final class Constants
     result.append("GET_AGGREGATE_MAX_ALLOWED: " + Constants.GET_AGGREGATE_MAX_ALLOWED() + "\n");
 
     result.append("\n===== OUTPUT OPTIONS =====\n\n");
-    result.append("IS_DEFINED_OUTPUT_FILE: " + Constants.IS_DEFINED_OUTPUT_FILE() + "\n");
+    result.append("IS_DEFINED_OUTPUT_FOLDER: " + Constants.IS_DEFINED_OUTPUT_FOLDER() + "\n");
     result.append("IS_DEFINED_OUTPUT_CONSOLE: " + Constants.IS_DEFINED_OUTPUT_CONSOLE() + "\n");
     result.append("IS_DEFINED_OUTPUT_DATABASE: " + Constants.IS_DEFINED_OUTPUT_DATABASE() + "\n");
-    result.append("GET_OUTPUT_FILE: " + Constants.GET_OUTPUT_FILE() + "\n");
+    result.append("GET_OUTPUT_FOLDER: " + Constants.GET_OUTPUT_FOLDER() + "\n");
     result.append("GET_OUTPUT_DATABASE: " + Constants.GET_OUTPUT_DATABASE() + "\n");
 
     return result.toString();

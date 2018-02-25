@@ -3,8 +3,8 @@ input:
 
 entities:
   versions:
-    minInstances: 1
-    maxInstances: 10
+    minInstances: 1000
+    maxInstances: 1000
   includeType: true
 
 attributes:
@@ -12,8 +12,6 @@ attributes:
     strangeTypesProbability: 0
     nullProbability: 0
     stringType: word
-    minIntAllowed: 9
-    maxIntAllowed: 9
     minDoubleAllowed: 3
     maxDoubleAllowed: 3.0000001
     doubleDecimalsAllowed: 0
@@ -36,9 +34,7 @@ associations:
     maxAggregateAllowed: 3
 
 output:
-  file: output/output.json
-  console: true
-  database: localhost
+  folder: output
 
 
 # Generate images?

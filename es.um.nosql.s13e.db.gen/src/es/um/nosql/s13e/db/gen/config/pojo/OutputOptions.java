@@ -4,31 +4,30 @@ import es.um.nosql.s13e.db.gen.utils.Constants;
 
 public class OutputOptions
 {
-  private String file;
-
-  public void setFile(String file) {this.file = file;}
-
-  public String getFile() {return this.file;}
+  private String folder;
+  public void setFolder(String folder) {this.folder = folder;}
+  public String getFolder() {return this.folder;}
 
   private Boolean console;
-
   public void setConsole(Boolean console) {this.console = console;}
-
   public Boolean getConsole() {return this.console;}
 
   private String database;
-
   public void setDatabase(String database) {this.database = database;}
-
   public String getDatabase() {return this.database;}
+
+  private String databaseCollection;
+  public void setDatabaseCollection(String databaseCollection) {this.databaseCollection = databaseCollection;}
+  public String getDatabaseCollection() {return this.databaseCollection;}
 
   public String toString()
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getFile() != null)     result.append(Constants.GET_TABS(this.getClass()) + "-File: " + this.getFile() + "\n");
-    if (this.getConsole() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Console: " + this.getConsole() + "\n");
-    if (this.getDatabase() != null) result.append(Constants.GET_TABS(this.getClass()) + "-Database: " + this.getDatabase() + "\n");
+    if (this.getFolder() != null)             result.append(Constants.GET_TABS(this.getClass()) + "-Folder: " + this.getFolder() + "\n");
+    if (this.getConsole() != null)            result.append(Constants.GET_TABS(this.getClass()) + "-Console: " + this.getConsole() + "\n");
+    if (this.getDatabase() != null)           result.append(Constants.GET_TABS(this.getClass()) + "-Database: " + this.getDatabase() + "\n");
+    if (this.getDatabaseCollection() != null) result.append(Constants.GET_TABS(this.getClass()) + "-DatabaseCollection: " + this.getDatabase() + "\n");
 
     return result.toString();
   }

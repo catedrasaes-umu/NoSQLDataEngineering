@@ -47,14 +47,16 @@ public class ObjectGen
     evMap = new HashMap<EntityVersion, List<ObjectNode>>();
   }
 
-  public ArrayNode generate(NoSQLSchema schema) throws Exception
+  public Map<String, ArrayNode> generate(NoSQLSchema schema) throws Exception
   {
     //TODO: Maybe we should try to divide the work into several splits so we don't get blocked by passing a really gigantic JSON.
-    ArrayNode result = factory.arrayNode();
+    Map<String, ArrayNode> result = new HashMap<String, ArrayNode>();
 
     // First run to generate all the primitive types and tuples.
     for (Entity entity : schema.getEntities())
-    {
+    {System.out.println(entity);
+      ArrayNode entityObjs = factory.arrayNode();
+
       entityIdMap.put(entity, new ArrayList<JsonNode>());
 
       for (EntityVersion eVersion : entity.getEntityversions())
@@ -62,7 +64,7 @@ public class ObjectGen
         evMap.put(eVersion, new ArrayList<ObjectNode>());
 
         for (int i = 0; i < numGen.getInclusiveRandom(Constants.GET_MIN_INSTANCES(), Constants.GET_MAX_INSTANCES()); i++)
-        {
+        {          
           ObjectNode oNode = factory.objectNode();
           evMap.get(eVersion).add(oNode);
 
@@ -70,20 +72,26 @@ public class ObjectGen
 
           if (eVersion.isRoot())
           {
-            result.add(oNode);
+            entityObjs.add(oNode);
             this.generateMetadata(oNode, entity, eVersion.getProperties().stream()
                 .filter(p -> p instanceof Attribute && p.getName().equals("_id")).map(p -> (Attribute)p)
                 .findFirst());
           }
         }
       }
+
+      if (entityObjs.size() > 0)
+        result.put(entity.getName(), entityObjs);
     }
 
     // Second run to generate the references and aggregates since now all the versions and instances exist.
     for (Entity entity : schema.getEntities())
+    {System.out.println(entity);
       for (EntityVersion eVersion : entity.getEntityversions())
         for (ObjectNode strObj : evMap.get(eVersion))
           eVersion.getProperties().stream().filter(p -> p instanceof Association).forEach(p -> this.generateAssociation(strObj, (Association)p));
+      
+    }
 
     evMap.clear();
     entityIdMap.clear();
@@ -98,9 +106,9 @@ public class ObjectGen
     else
       oNode.put("_id", pTypeGen.genTrustedObjectId(((PrimitiveType)theId.get().getType()).getName()));
 
-    entityIdMap.get(entity).add(oNode.get("_id"));      
+    entityIdMap.get(entity).add(oNode.get("_id"));
 
-    if (Constants.GET_ENTITY_INCLUDE_TYPE() && !oNode.has("_type"))
+    if (Constants.GET_ENTITY_INCLUDE_TYPE())
       oNode.put("_type", entity.getName());
   }
 
