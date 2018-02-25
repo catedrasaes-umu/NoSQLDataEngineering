@@ -13,8 +13,6 @@ import es.um.nosql.s13e.db.gen.utils.IOUtils;
 
 public class Main
 {
-  private static final String modelName = "oneofeach";
-
   public static void main(String[] args) throws Exception
   {
     long startTime = System.currentTimeMillis();

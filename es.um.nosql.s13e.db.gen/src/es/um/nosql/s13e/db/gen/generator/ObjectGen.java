@@ -54,7 +54,7 @@ public class ObjectGen
 
     // First run to generate all the primitive types and tuples.
     for (Entity entity : schema.getEntities())
-    {System.out.println(entity);
+    {
       ArrayNode entityObjs = factory.arrayNode();
 
       entityIdMap.put(entity, new ArrayList<JsonNode>());
@@ -86,12 +86,9 @@ public class ObjectGen
 
     // Second run to generate the references and aggregates since now all the versions and instances exist.
     for (Entity entity : schema.getEntities())
-    {System.out.println(entity);
       for (EntityVersion eVersion : entity.getEntityversions())
         for (ObjectNode strObj : evMap.get(eVersion))
           eVersion.getProperties().stream().filter(p -> p instanceof Association).forEach(p -> this.generateAssociation(strObj, (Association)p));
-      
-    }
 
     evMap.clear();
     entityIdMap.clear();
@@ -122,9 +119,9 @@ public class ObjectGen
 
   private void generateAssociation(ObjectNode oNode, Association assc)
   {
-      if (assc instanceof Reference)
-        oNode.put(assc.getName(), refGen.genReference((Reference)assc, entityIdMap));
-      if (assc instanceof Aggregate)
-        oNode.put(assc.getName(), aggrGen.genAggregate((Aggregate)assc, evMap));
+    if (assc instanceof Reference)
+      oNode.put(assc.getName(), refGen.genReference((Reference)assc, entityIdMap));
+    if (assc instanceof Aggregate)
+      oNode.put(assc.getName(), aggrGen.genAggregate((Aggregate)assc, evMap));
   }
 }

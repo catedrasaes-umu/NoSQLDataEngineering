@@ -1,5 +1,6 @@
 package es.um.nosql.s13e.db.gen.generator;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -35,14 +36,13 @@ public class ReferenceGen
     int uBound = ref.getUpperBound() > 0 ? ref.getUpperBound() : Constants.GET_REFERENCE_MAX_ALLOWED();
 
     if (lBound == 1 && uBound == 1)
-      result = this.getRandomRefId(ref, entityIdMap);
+      result = this.getRandomRefIds(ref, entityIdMap, 1).get(0);
     else
     {
       ArrayNode refArray = jsonFactory.arrayNode();
 
       // TODO: This might reference the same object several times. It might be a problem.
-      for (int j = 0; j < numGen.getInclusiveRandom(lBound, uBound); j++)
-        refArray.add(this.getRandomRefId(ref, entityIdMap));
+      refArray.addAll(this.getRandomRefIds(ref, entityIdMap, numGen.getInclusiveRandom(lBound, uBound)));
 
       result = refArray;
     }
@@ -50,10 +50,11 @@ public class ReferenceGen
     return result;
   }
   //TODO: Slow as hell. Need to rethink this function...
-  private JsonNode getRandomRefId(Reference ref, Map<Entity, List<JsonNode>> entityIdMap) throws IllegalArgumentException
+  private List<JsonNode> getRandomRefIds(Reference ref, Map<Entity, List<JsonNode>> entityIdMap, int numElements) throws IllegalArgumentException
   {//TODO Consider strangetypes...
     String refOriginalType = ref.getOriginalType() != null ? ref.getOriginalType().toLowerCase() : "string";
     List<JsonNode> idsList = null;
+    List<JsonNode> result = new ArrayList<JsonNode>();
 
     if (!entityIdMap.containsKey(ref.getRefTo()))
       throw new IllegalArgumentException("Reference not found: " + ref.getRefTo().getName());
@@ -69,6 +70,9 @@ public class ReferenceGen
     if (idsList.isEmpty())
       throw new IllegalArgumentException("References of type " + refOriginalType + " could not be found.");
 
-    return idsList.get(numGen.getExclusiveRandom(0, idsList.size()));
+    for (int i = 0; i < numElements; i++)
+      result.add(idsList.get(numGen.getExclusiveRandom(0, idsList.size())));
+
+    return result;
   }
 }
