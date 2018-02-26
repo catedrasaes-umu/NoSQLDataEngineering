@@ -126,16 +126,16 @@ public final class Constants
 
   public static int GET_PRIMITIVE_TYPES_MIN_INT_ALLOWED()
   {
-    if (options.getAttributes() != null && options.getAttributes().getPrimitiveTypes() != null && options.getAttributes().getPrimitiveTypes().getMinIntAllowed() != null)
-      return options.getAttributes().getPrimitiveTypes().getMinIntAllowed();
+    if (options.getAttributes() != null && options.getAttributes().getPrimitiveTypes() != null && options.getAttributes().getPrimitiveTypes().getMinIntegerAllowed() != null)
+      return options.getAttributes().getPrimitiveTypes().getMinIntegerAllowed();
     else
       return ATTRIBUTES_PRIMITIVE_TYPES_MIN_INT_ALLOWED;
   }
 
   public static int GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED()
   {
-    if (options.getAttributes() != null && options.getAttributes().getPrimitiveTypes() != null && options.getAttributes().getPrimitiveTypes().getMaxIntAllowed() != null)
-      return options.getAttributes().getPrimitiveTypes().getMaxIntAllowed();
+    if (options.getAttributes() != null && options.getAttributes().getPrimitiveTypes() != null && options.getAttributes().getPrimitiveTypes().getMaxIntegerAllowed() != null)
+      return options.getAttributes().getPrimitiveTypes().getMaxIntegerAllowed();
     else
       return ATTRIBUTES_PRIMITIVE_TYPES_MAX_INT_ALLOWED;
   }

@@ -49,7 +49,7 @@ public class ReferenceGen
 
     return result;
   }
-  //TODO: Slow as hell. Need to rethink this function...
+
   private List<JsonNode> getRandomRefIds(Reference ref, Map<Entity, List<JsonNode>> entityIdMap, int numElements) throws IllegalArgumentException
   {//TODO Consider strangetypes...
     String refOriginalType = ref.getOriginalType() != null ? ref.getOriginalType().toLowerCase() : "string";
@@ -59,6 +59,7 @@ public class ReferenceGen
     if (!entityIdMap.containsKey(ref.getRefTo()))
       throw new IllegalArgumentException("Reference not found: " + ref.getRefTo().getName());
 
+    //TODO: Slow as hell. Need to rethink this switch...
     switch (refOriginalType)
     {
       case "string":              {idsList = entityIdMap.get(ref.getRefTo()).stream().filter(jsonNode -> jsonNode instanceof TextNode).collect(Collectors.toList()); break;}

@@ -3,8 +3,8 @@ input:
 
 entities:
   versions:
-    minInstances: 10000
-    maxInstances: 10000
+    minInstances: 50000
+    maxInstances: 50000
   includeType: true
 
 attributes:

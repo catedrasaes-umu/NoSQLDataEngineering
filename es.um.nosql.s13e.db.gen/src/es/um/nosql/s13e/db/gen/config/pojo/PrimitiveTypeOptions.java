@@ -31,13 +31,13 @@ public class PrimitiveTypeOptions
   public void setStringType(String stringType) {this.stringType = stringType;}
   public String getStringType() {return this.stringType;}
 
-  private Integer minIntAllowed;
-  public void setMinIntAllowed(Integer minIntAllowed) {this.minIntAllowed = minIntAllowed;}
-  public Integer getMinIntAllowed() {return this.minIntAllowed;}
+  private Integer minIntegerAllowed;
+  public void setMinIntegerAllowed(Integer minIntegerAllowed) {this.minIntegerAllowed = minIntegerAllowed;}
+  public Integer getMinIntegerAllowed() {return this.minIntegerAllowed;}
 
-  private Integer maxIntAllowed;
-  public void setMaxIntAllowed(Integer maxIntAllowed) {this.maxIntAllowed = maxIntAllowed;}
-  public Integer getMaxIntAllowed() {return this.maxIntAllowed;}
+  private Integer maxIntegerAllowed;
+  public void setMaxIntegerAllowed(Integer maxIntegerAllowed) {this.maxIntegerAllowed = maxIntegerAllowed;}
+  public Integer getMaxIntegerAllowed() {return this.maxIntegerAllowed;}
 
   private Double minDoubleAllowed;
   public void setMinDoubleAllowed(Double minDoubleAllowed) {this.minDoubleAllowed = minDoubleAllowed;}
@@ -58,8 +58,8 @@ public class PrimitiveTypeOptions
     if (this.getStrangeTypesProbability() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Strange types probability: " + this.getStrangeTypesProbability() + "\n");
     if (this.getNullProbability() != null)          result.append(Constants.GET_TABS(this.getClass()) + "-Null probability: " + this.getNullProbability() + "\n");
     if (this.getStringType() != null)               result.append(Constants.GET_TABS(this.getClass()) + "-StringType: " + this.getStringType() + "\n");
-    if (this.getMinIntAllowed() != null)            result.append(Constants.GET_TABS(this.getClass()) + "-Min int allowed: " + this.getMinIntAllowed() + "\n");
-    if (this.getMaxIntAllowed() != null)            result.append(Constants.GET_TABS(this.getClass()) + "-Max int allowed: " + this.getMaxIntAllowed() + "\n");
+    if (this.getMinIntegerAllowed() != null)            result.append(Constants.GET_TABS(this.getClass()) + "-Min integer allowed: " + this.getMinIntegerAllowed() + "\n");
+    if (this.getMaxIntegerAllowed() != null)            result.append(Constants.GET_TABS(this.getClass()) + "-Max integer allowed: " + this.getMaxIntegerAllowed() + "\n");
     if (this.getMinDoubleAllowed() != null)         result.append(Constants.GET_TABS(this.getClass()) + "-Min double allowed: " + this.getMinDoubleAllowed() + "\n");
     if (this.getMaxDoubleAllowed() != null)         result.append(Constants.GET_TABS(this.getClass()) + "-Max double allowed: " + this.getMaxDoubleAllowed() + "\n");
     if (this.getDoubleDecimalsAllowed() != null)    result.append(Constants.GET_TABS(this.getClass()) + "-Double decimals allowed: " + this.getDoubleDecimalsAllowed() + "\n");
@@ -81,7 +81,7 @@ public class PrimitiveTypeOptions
     if (this.getStringType() != null && !Arrays.asList("word", "phrase", "word_number", "nonsense", "name", "surname", "random", "large").contains(this.getStringType()))
       throw new IllegalArgumentException("String type must be of the following types: \"random\", \"large\", \"word\", \"phrase\", \"word_number\", \"nonsense\", \"name\", \"name_surname\"");
 
-    if (this.getMinIntAllowed() != null && this.getMaxIntAllowed() != null && this.getMinIntAllowed() > this.getMaxIntAllowed())
+    if (this.getMinIntegerAllowed() != null && this.getMaxIntegerAllowed() != null && this.getMinIntegerAllowed() > this.getMaxIntegerAllowed())
       throw new IllegalArgumentException("Maximum int allowed must be equal or greater than Minimum int allowed.");
 
     if (this.getMinDoubleAllowed() != null && this.getMaxDoubleAllowed() != null && this.getMinDoubleAllowed() >= this.getMaxDoubleAllowed())
