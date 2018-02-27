@@ -16,7 +16,7 @@ public class IOUtils
   {
     if (configFile == null || !configFile.exists())
     {
-      System.err.println("Config file is null or does not exist! Ignoring...");
+      DebugLog.PRINTERR("Config file is null or does not exist! Ignoring...");
       return new DbGenOptions();
     }
 
@@ -26,13 +26,13 @@ public class IOUtils
     {
       DbGenOptions config = mapper.readValue(configFile, DbGenOptions.class);
       config.doCheck();
-      System.out.println("Config file read and validated!");
+      DebugLog.PRINTOUT("Config file read and validated!");
 
       return config;
 
     } catch (Exception e)
     {
-      System.err.println("Errors detected in config file: " + e.getMessage() + " Ignoring...");
+      DebugLog.PRINTERR("Errors detected in config file: " + e.getMessage() + " Ignoring...");
       return new DbGenOptions();
     }
   }

@@ -27,18 +27,6 @@ public class EntityIdMap
     entityNumberIdMap = new HashMap<String, List<NumericNode>>();
   }
 
-  public void print()
-  {
-    System.out.println("OMap size: " + entityObjectIdMap.size());
-    System.out.println("SMap size: " + entityStringIdMap.size());
-    System.out.println("NMap size: " + entityNumberIdMap.size());
-
-    for (String key : entityObjectIdMap.keySet())
-    {
-      System.out.println("Key: " + key + ": Sizes: " + entityObjectIdMap.get(key).size() + " " + entityStringIdMap.get(key).size() + " " + entityNumberIdMap.get(key).size());
-    }
-  }
-
   public void initialize(String name)
   {
     entityObjectIdMap.put(name, new ArrayList<JsonNode>());

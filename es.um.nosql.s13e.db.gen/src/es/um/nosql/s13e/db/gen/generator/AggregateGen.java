@@ -40,6 +40,7 @@ public class AggregateGen
 
       // TODO: This might aggregate the same object several times. It might be a problem.
       // For each aggregation we have to include, we select a random aggregated version and aggregate one object according to that version.
+      // TODO: This is for sure optimisable. We should be able to shuffle versions and extract some objects of them, not only one version.
       aggrArray.addAll(this.getRandomAggrs(aggr.getRefTo().get(numGen.getExclusiveRandom(0,  aggr.getRefTo().size())), evMap, numGen.getInclusiveRandom(lBound, uBound)));
 
       result = aggrArray;

@@ -14,12 +14,17 @@ public class InputOptions
   public void setDebug(Boolean debug) {this.debug = debug;}
   public Boolean getDebug() {return this.debug;}
 
+  private Integer splits;
+  public void setSplits(Integer splits) {this.splits = splits;}
+  public Integer getSplits() {return this.splits;}
+
   public String toString()
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getModel() != null) result.append(Constants.GET_TABS(this.getClass()) + "-Model: " + this.getModel() + "\n");
-    if (this.getDebug() != null) result.append(Constants.GET_TABS(this.getClass()) + "-Debug: " + this.getDebug() + "\n");
+    if (this.getModel() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Model: " + this.getModel() + "\n");
+    if (this.getDebug() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Debug: " + this.getDebug() + "\n");
+    if (this.getSplits() != null) result.append(Constants.GET_TABS(this.getClass()) + "-Splits: " + this.getSplits() + "\n");
 
     return result.toString();
   }
@@ -29,8 +34,12 @@ public class InputOptions
     if (this.getModel() == null)
       throw new IllegalArgumentException("Input model is required to generate database content. Please provide a route to a XMI file.");
 
+    if (this.getSplits() != null && this.getSplits() < 1)
+      throw new IllegalArgumentException("Splits value must be equal or greater than 1.");
+
     if (!(new File(this.getModel()).exists()))
       throw new IllegalArgumentException(this.getModel() + " - XMI File does not exist.");
+
     return true;
   }
 }

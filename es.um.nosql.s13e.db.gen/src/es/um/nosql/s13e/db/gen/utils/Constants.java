@@ -15,6 +15,7 @@ public final class Constants
   private static final DbGenOptions options;
 
   private static final boolean DEFAULT_DEBUG                                        = true;
+  private static final int DEFAULT_SPLITS                                           = 1;
   private static final double ATTRIBUTES_PRIMITIVE_TYPES_STRANGE_TYPES_PROBABILITY  = 0;
   private static final double ATTRIBUTES_PRIMITIVE_TYPES_NULL_PROBABILITY           = 0;
   private static final String ATTRIBUTES_PRIMITIVE_TYPES_STRING_TYPE                = "random";
@@ -36,7 +37,7 @@ public final class Constants
   private static final int AGGREGATES_MAX_ALLOWED                                   = 3;
   private static final int REFERENCES_MIN_ALLOWED                                   = 0;
   private static final int REFERENCES_MAX_ALLOWED                                   = 3;
-  private static final int REFERENCES_STRANGE_TYPES_PROBABILITY                    = 0;
+  private static final int REFERENCES_STRANGE_TYPES_PROBABILITY                     = 0;
   private static final boolean ENTITIES_INCLUDE_TYPE                                = false;
   private static final boolean OUTPUT_FOLDER                                        = false;
   private static final boolean OUTPUT_CONSOLE                                       = false;
@@ -306,17 +307,25 @@ public final class Constants
   ///////////////                               UTILS                                ///////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////
 
+  public static boolean DEBUG()
+  {
+    if (options != null && options.getInput() != null && options.getInput().getDebug() != null)
+      return options.getInput().getDebug();
+    else
+      return DEFAULT_DEBUG;
+  }
+
   public static String GET_INPUT_FILE()
   {
     return options.getInput().getModel();
   }
 
-  public static boolean DEBUG()
+  public static int GET_SPLITS()
   {
-    if (options.getInput().getDebug() != null)
-      return options.getInput().getDebug();
+    if (options.getInput().getSplits() != null)
+      return options.getInput().getSplits();
     else
-      return DEFAULT_DEBUG;
+      return DEFAULT_SPLITS;
   }
 
   public static String GET_TABS(Class<?> className)

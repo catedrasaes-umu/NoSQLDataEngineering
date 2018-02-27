@@ -19,13 +19,11 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.Tuple;
-import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
 import es.um.nosql.s13e.db.gen.utils.Constants;
 import es.um.nosql.s13e.db.gen.utils.EntityIdMap;
 
 public class ObjectGen
 {
-  private NumberGen numGen;
   private PrimitiveTypeGen pTypeGen;
   private TupleGen tupleGen;
   private ReferenceGen refGen;
@@ -37,7 +35,6 @@ public class ObjectGen
 
   public ObjectGen()
   {
-    numGen = NumberGen.GET_INSTANCE();
     pTypeGen = new PrimitiveTypeGen();
     tupleGen = new TupleGen();
     refGen = new ReferenceGen();
@@ -47,9 +44,8 @@ public class ObjectGen
     evMap = new HashMap<EntityVersion, List<ObjectNode>>();
   }
 
-  public Map<String, ArrayNode> generate(NoSQLSchema schema, int objectsPerVersion)
+  public Map<String, ArrayNode> generate(NoSQLSchema schema, int objectsVersion)
   {
-    //TODO: Maybe we should try to divide the work into several splits so we don't get blocked by passing a really gigantic JSON.
     Map<String, ArrayNode> result = new HashMap<String, ArrayNode>();
 
     // First run to generate all the primitive types and tuples.
@@ -64,7 +60,7 @@ public class ObjectGen
       {
         evMap.put(eVersion, new ArrayList<ObjectNode>());
 
-        for (int i = 0; i < numGen.getInclusiveRandom(Constants.GET_MIN_INSTANCES(), Constants.GET_MAX_INSTANCES()); i++)
+        for (int i = 0; i < objectsVersion; i++)
         {
           ObjectNode oNode = factory.objectNode();
           evMap.get(eVersion).add(oNode);

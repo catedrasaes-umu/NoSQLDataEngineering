@@ -3,6 +3,7 @@ package es.um.nosql.s13e.db.gen.output;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Paths;
+import java.util.HashMap;
 import java.util.Map;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -18,10 +19,12 @@ public class OutputGen
 {
   private ObjectMapper oMapper;
   private final static String extension = ".json";
+  private Map<String, Integer> splitMap;
 
   public OutputGen()
   {
     oMapper = new ObjectMapper();
+    splitMap = new HashMap<String, Integer>();
   }
 
   public void genOutput(Map<String, ArrayNode> jsonContent)
@@ -68,10 +71,17 @@ public class OutputGen
   }
 
   private void genToFile(ArrayNode arrayNode, String collName)
-  {//TODO: APPEND SI EXISTE
+  {
     ObjectWriter writer = oMapper.writerWithDefaultPrettyPrinter();
 
-    File outputFile = Paths.get(Constants.GET_OUTPUT_FOLDER(), collName + extension).toFile();
+    if (splitMap.containsKey(collName))
+      splitMap.put(collName, splitMap.get(collName) + 1);
+    else
+      splitMap.put(collName, 0);
+
+    int splitExtension = splitMap.get(collName);
+
+    File outputFile = Paths.get(Constants.GET_OUTPUT_FOLDER(), collName + "_" + splitExtension + extension).toFile();
     outputFile.getParentFile().mkdirs();
 
     try

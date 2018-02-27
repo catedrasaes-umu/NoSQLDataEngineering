@@ -60,8 +60,8 @@ public class ReferenceGen
 
     List<JsonNode> result = new ArrayList<JsonNode>();
 
-    if (!eIdMap.containsKey(ref.getRefTo().getName(), ref.getOriginalType()))
-      throw new IllegalArgumentException("Reference " + ref.getRefTo().getName() + " with type " + ref.getOriginalType() + " not found.");
+    if (!eIdMap.containsKey(ref.getRefTo().getName(), refOriginalType))
+      throw new IllegalArgumentException("Reference " + ref.getRefTo().getName() + " with type " + refOriginalType + " not found.");
 
     for (int i = 0; i < numElements; i++)
       result.add(eIdMap.getRandomElement(ref.getRefTo().getName(), refOriginalType));
