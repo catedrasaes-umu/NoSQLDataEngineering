@@ -7,7 +7,7 @@ import com.fasterxml.jackson.dataformat.yaml.YAMLFactory;
 
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.s13e.db.gen.config.pojo.DbGenOptions;
+import es.um.nosql.s13e.db.gen.config.DbGenOptions;
 import es.um.nosql.s13e.util.emf.ModelLoader;
 
 public class IOUtils

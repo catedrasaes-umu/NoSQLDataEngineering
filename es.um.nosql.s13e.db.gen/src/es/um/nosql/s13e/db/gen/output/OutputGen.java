@@ -68,7 +68,7 @@ public class OutputGen
   }
 
   private void genToFile(ArrayNode arrayNode, String collName)
-  {
+  {//TODO: APPEND SI EXISTE
     ObjectWriter writer = oMapper.writerWithDefaultPrettyPrinter();
 
     File outputFile = Paths.get(Constants.GET_OUTPUT_FOLDER(), collName + extension).toFile();

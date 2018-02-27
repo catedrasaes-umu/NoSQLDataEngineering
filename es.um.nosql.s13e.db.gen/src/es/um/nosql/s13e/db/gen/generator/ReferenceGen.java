@@ -1,34 +1,35 @@
 package es.um.nosql.s13e.db.gen.generator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
-import com.fasterxml.jackson.databind.node.NumericNode;
-import com.fasterxml.jackson.databind.node.ObjectNode;
-import com.fasterxml.jackson.databind.node.TextNode;
 
-import es.um.nosql.s13e.NoSQLSchema.Entity;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
+import es.um.nosql.s13e.db.gen.generator.primitivetypes.BooleanGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
 import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.EntityIdMap;
 
 public class ReferenceGen
 {
   private NumberGen numGen;
+  private BooleanGen boolGen;
   private JsonNodeFactory jsonFactory;
+  private List<String> definedTypes;
 
   public ReferenceGen()
   {
     numGen = NumberGen.GET_INSTANCE();
+    boolGen = BooleanGen.GET_INSTANCE();
     jsonFactory = JsonNodeFactory.instance;
+    definedTypes  = Arrays.asList("string", "number", "objectid");
   }
 
-  public JsonNode genReference(Reference ref, Map<Entity, List<JsonNode>> entityIdMap)
+  public JsonNode genReference(Reference ref, EntityIdMap eIdMap)
   {
     JsonNode result = null;
 
@@ -36,13 +37,13 @@ public class ReferenceGen
     int uBound = ref.getUpperBound() > 0 ? ref.getUpperBound() : Constants.GET_REFERENCE_MAX_ALLOWED();
 
     if (lBound == 1 && uBound == 1)
-      result = this.getRandomRefIds(ref, entityIdMap, 1).get(0);
+      result = this.getRandomRefIds(ref, eIdMap, 1).get(0);
     else
     {
       ArrayNode refArray = jsonFactory.arrayNode();
 
       // TODO: This might reference the same object several times. It might be a problem.
-      refArray.addAll(this.getRandomRefIds(ref, entityIdMap, numGen.getInclusiveRandom(lBound, uBound)));
+      refArray.addAll(this.getRandomRefIds(ref, eIdMap, numGen.getInclusiveRandom(lBound, uBound)));
 
       result = refArray;
     }
@@ -50,30 +51,31 @@ public class ReferenceGen
     return result;
   }
 
-  private List<JsonNode> getRandomRefIds(Reference ref, Map<Entity, List<JsonNode>> entityIdMap, int numElements) throws IllegalArgumentException
-  {//TODO Consider strangetypes...
+  private List<JsonNode> getRandomRefIds(Reference ref, EntityIdMap eIdMap, int numElements) throws IllegalArgumentException
+  {
     String refOriginalType = ref.getOriginalType() != null ? ref.getOriginalType().toLowerCase() : "string";
-    List<JsonNode> idsList = null;
+
+    if (boolGen.thisHappens(Constants.GET_REFERENCE_STRANGE_TYPES_PROBABILITY()))
+      refOriginalType = getRandomTypeExcluding(refOriginalType);
+
     List<JsonNode> result = new ArrayList<JsonNode>();
 
-    if (!entityIdMap.containsKey(ref.getRefTo()))
-      throw new IllegalArgumentException("Reference not found: " + ref.getRefTo().getName());
-
-    //TODO: Slow as hell. Need to rethink this switch...
-    switch (refOriginalType)
-    {
-      case "string":              {idsList = entityIdMap.get(ref.getRefTo()).stream().filter(jsonNode -> jsonNode instanceof TextNode).collect(Collectors.toList()); break;}
-      case "objectid":            {idsList = entityIdMap.get(ref.getRefTo()).stream().filter(jsonNode -> jsonNode instanceof ObjectNode).collect(Collectors.toList()); break;}
-      case "int": case "number":  {idsList = entityIdMap.get(ref.getRefTo()).stream().filter(jsonNode -> jsonNode instanceof NumericNode).collect(Collectors.toList()); break;}
-      default: {throw new IllegalArgumentException("Reference type " + refOriginalType + " is not valid.");}
-    }
-
-    if (idsList.isEmpty())
-      throw new IllegalArgumentException("References of type " + refOriginalType + " could not be found.");
+    if (!eIdMap.containsKey(ref.getRefTo().getName(), ref.getOriginalType()))
+      throw new IllegalArgumentException("Reference " + ref.getRefTo().getName() + " with type " + ref.getOriginalType() + " not found.");
 
     for (int i = 0; i < numElements; i++)
-      result.add(idsList.get(numGen.getExclusiveRandom(0, idsList.size())));
+      result.add(eIdMap.getRandomElement(ref.getRefTo().getName(), refOriginalType));
 
     return result;
+  }
+
+  private String getRandomTypeExcluding(String type)
+  {
+    int index = numGen.getExclusiveRandom(0, definedTypes.size());
+
+    while (definedTypes.get(index).equals(type))
+      index = numGen.getExclusiveRandom(0, definedTypes.size());
+
+    return definedTypes.get(index);
   }
 }

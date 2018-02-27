@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -22,6 +21,7 @@ import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.Tuple;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
 import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.EntityIdMap;
 
 public class ObjectGen
 {
@@ -31,7 +31,7 @@ public class ObjectGen
   private ReferenceGen refGen;
   private AggregateGen aggrGen;
   private JsonNodeFactory factory;
-  private Map<Entity, List<JsonNode>> entityIdMap;
+  private EntityIdMap eIdMap;
   private Map<EntityVersion, List<ObjectNode>> evMap;
 
 
@@ -43,11 +43,11 @@ public class ObjectGen
     refGen = new ReferenceGen();
     aggrGen = new AggregateGen();
     factory = JsonNodeFactory.instance;
-    entityIdMap = new HashMap<Entity, List<JsonNode>>();
+    eIdMap = new EntityIdMap();
     evMap = new HashMap<EntityVersion, List<ObjectNode>>();
   }
 
-  public Map<String, ArrayNode> generate(NoSQLSchema schema) throws Exception
+  public Map<String, ArrayNode> generate(NoSQLSchema schema, int objectsPerVersion)
   {
     //TODO: Maybe we should try to divide the work into several splits so we don't get blocked by passing a really gigantic JSON.
     Map<String, ArrayNode> result = new HashMap<String, ArrayNode>();
@@ -57,14 +57,15 @@ public class ObjectGen
     {
       ArrayNode entityObjs = factory.arrayNode();
 
-      entityIdMap.put(entity, new ArrayList<JsonNode>());
+      if (entity.getEntityversions().stream().anyMatch(ev -> ev.isRoot()))
+        eIdMap.initialize(entity.getName());
 
       for (EntityVersion eVersion : entity.getEntityversions())
       {
         evMap.put(eVersion, new ArrayList<ObjectNode>());
 
         for (int i = 0; i < numGen.getInclusiveRandom(Constants.GET_MIN_INSTANCES(), Constants.GET_MAX_INSTANCES()); i++)
-        {          
+        {
           ObjectNode oNode = factory.objectNode();
           evMap.get(eVersion).add(oNode);
 
@@ -91,7 +92,7 @@ public class ObjectGen
           eVersion.getProperties().stream().filter(p -> p instanceof Association).forEach(p -> this.generateAssociation(strObj, (Association)p));
 
     evMap.clear();
-    entityIdMap.clear();
+    eIdMap.clear();
 
     return result;
   }
@@ -103,7 +104,7 @@ public class ObjectGen
     else
       oNode.put("_id", pTypeGen.genTrustedObjectId(((PrimitiveType)theId.get().getType()).getName()));
 
-    entityIdMap.get(entity).add(oNode.get("_id"));
+    eIdMap.add(entity.getName(), oNode.get("_id"));
 
     if (Constants.GET_ENTITY_INCLUDE_TYPE())
       oNode.put("_type", entity.getName());
@@ -120,7 +121,7 @@ public class ObjectGen
   private void generateAssociation(ObjectNode oNode, Association assc)
   {
     if (assc instanceof Reference)
-      oNode.put(assc.getName(), refGen.genReference((Reference)assc, entityIdMap));
+      oNode.put(assc.getName(), refGen.genReference((Reference)assc, eIdMap));
     if (assc instanceof Aggregate)
       oNode.put(assc.getName(), aggrGen.genAggregate((Aggregate)assc, evMap));
   }

@@ -2,16 +2,16 @@ package es.um.nosql.s13e.db.gen.generator.primitivetypes;
 
 import org.bson.types.ObjectId;
 
-public class ObjectGen
+public class ObjectIdGen
 {
-  private static ObjectGen THE_INSTANCE;
+  private static ObjectIdGen THE_INSTANCE;
 
-  private ObjectGen() {}
+  private ObjectIdGen() {}
 
-  public static ObjectGen GET_INSTANCE()
+  public static ObjectIdGen GET_INSTANCE()
   {
     if (THE_INSTANCE == null)
-      THE_INSTANCE = new ObjectGen();
+      THE_INSTANCE = new ObjectIdGen();
 
     return THE_INSTANCE;
   }

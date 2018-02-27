@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.db.gen.config.pojo;
+package es.um.nosql.s13e.db.gen.config;
 
 import es.um.nosql.s13e.db.gen.utils.Constants;
 

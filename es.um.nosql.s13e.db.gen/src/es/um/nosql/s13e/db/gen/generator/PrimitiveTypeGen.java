@@ -11,7 +11,7 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import es.um.nosql.s13e.db.gen.utils.Constants;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.BooleanGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
-import es.um.nosql.s13e.db.gen.generator.primitivetypes.ObjectGen;
+import es.um.nosql.s13e.db.gen.generator.primitivetypes.ObjectIdGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.StringGen;
 
 public class PrimitiveTypeGen
@@ -19,7 +19,7 @@ public class PrimitiveTypeGen
   private StringGen strGen;
   private NumberGen numGen;
   private BooleanGen boolGen;
-  private ObjectGen objGen;
+  private ObjectIdGen objGen;
   private JsonNodeFactory jsonFactory;
   private List<String> definedTypes;
 
@@ -28,7 +28,7 @@ public class PrimitiveTypeGen
     strGen        = StringGen.GET_INSTANCE();
     numGen        = NumberGen.GET_INSTANCE();
     boolGen       = BooleanGen.GET_INSTANCE();
-    objGen        = ObjectGen.GET_INSTANCE();
+    objGen        = ObjectIdGen.GET_INSTANCE();
     jsonFactory   = JsonNodeFactory.instance;
     definedTypes  = Arrays.asList("string", "int", "double", "bool", "objectid");
   }
@@ -41,9 +41,19 @@ public class PrimitiveTypeGen
       theType = "null";
 
     if (boolGen.thisHappens(Constants.GET_PRIMITIVE_TYPES_STRANGE_TYPES_PROBABILITY()))
-      theType = definedTypes.get(numGen.getExclusiveRandom(0, definedTypes.size()));
+      theType = getRandomTypeExcluding(theType);
 
     return genTrustedPrimitiveType(theType);
+  }
+
+  private String getRandomTypeExcluding(String type)
+  {
+    int index = numGen.getExclusiveRandom(0, definedTypes.size());
+
+    while (definedTypes.get(index).equals(type))
+      index = numGen.getExclusiveRandom(0, definedTypes.size());
+
+    return definedTypes.get(index);
   }
 
   public JsonNode genTrustedPrimitiveType(String type)

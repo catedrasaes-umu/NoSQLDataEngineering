@@ -41,7 +41,7 @@ public class TupleGen
           if (boolGen.thisHappens(Constants.GET_TUPLE_NULL_PROBABILITY()))
             theType = "null";
           else if (boolGen.thisHappens(Constants.GET_TUPLE_STRANGE_TYPES_PROBABILITY()))
-            theType = definedTypes.get(numGen.getExclusiveRandom(0, definedTypes.size()));
+            theType = getRandomTypeExcluding(theType);
 
           result.add(pTypeGen.genTrustedPrimitiveType(theType));
         }
@@ -49,5 +49,15 @@ public class TupleGen
           result.add(genTuple(((Tuple)type).getElements()));
 
     return result;
+  }
+
+  private String getRandomTypeExcluding(String type)
+  {
+    int index = numGen.getExclusiveRandom(0, definedTypes.size());
+
+    while (definedTypes.get(index).equals(type))
+      index = numGen.getExclusiveRandom(0, definedTypes.size());
+
+    return definedTypes.get(index);
   }
 }

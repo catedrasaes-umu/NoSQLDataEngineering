@@ -1,10 +1,11 @@
 input:
-  model: ../es.um.nosql.examples/mongomovies.xmi
+  model: source/everypolitician_sweden.xmi
+  debug: true
 
 entities:
   versions:
-    minInstances: 50000
-    maxInstances: 50000
+    minInstances: 10000
+    maxInstances: 10000
   includeType: true
 
 attributes:

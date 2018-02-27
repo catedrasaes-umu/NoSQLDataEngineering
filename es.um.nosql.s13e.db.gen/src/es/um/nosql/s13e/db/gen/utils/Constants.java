@@ -2,7 +2,7 @@ package es.um.nosql.s13e.db.gen.utils;
 
 import java.io.File;
 
-import es.um.nosql.s13e.db.gen.config.pojo.DbGenOptions;
+import es.um.nosql.s13e.db.gen.config.DbGenOptions;
 import es.um.nosql.s13e.db.gen.utils.IOUtils;
 
 public final class Constants
@@ -14,6 +14,7 @@ public final class Constants
 
   private static final DbGenOptions options;
 
+  private static final boolean DEFAULT_DEBUG                                        = true;
   private static final double ATTRIBUTES_PRIMITIVE_TYPES_STRANGE_TYPES_PROBABILITY  = 0;
   private static final double ATTRIBUTES_PRIMITIVE_TYPES_NULL_PROBABILITY           = 0;
   private static final String ATTRIBUTES_PRIMITIVE_TYPES_STRING_TYPE                = "random";
@@ -35,6 +36,7 @@ public final class Constants
   private static final int AGGREGATES_MAX_ALLOWED                                   = 3;
   private static final int REFERENCES_MIN_ALLOWED                                   = 0;
   private static final int REFERENCES_MAX_ALLOWED                                   = 3;
+  private static final int REFERENCES_STRANGE_TYPES_PROBABILITY                    = 0;
   private static final boolean ENTITIES_INCLUDE_TYPE                                = false;
   private static final boolean OUTPUT_FOLDER                                        = false;
   private static final boolean OUTPUT_CONSOLE                                       = false;
@@ -220,6 +222,14 @@ public final class Constants
       return REFERENCES_MAX_ALLOWED;
   }
 
+  public static double GET_REFERENCE_STRANGE_TYPES_PROBABILITY()
+  {
+    if (options.getAssociations() != null && options.getAssociations().getReferences() != null && options.getAssociations().getReferences().getStrangeTypesProbability() != null)
+      return options.getAssociations().getReferences().getStrangeTypesProbability();
+    else
+      return REFERENCES_STRANGE_TYPES_PROBABILITY;
+  }
+
   //////////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////                         AGGREGATE OPTIONS                          ///////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -299,6 +309,14 @@ public final class Constants
   public static String GET_INPUT_FILE()
   {
     return options.getInput().getModel();
+  }
+
+  public static boolean DEBUG()
+  {
+    if (options.getInput().getDebug() != null)
+      return options.getInput().getDebug();
+    else
+      return DEFAULT_DEBUG;
   }
 
   public static String GET_TABS(Class<?> className)

@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.db.gen.config.pojo;
+package es.um.nosql.s13e.db.gen.config;
 
 import es.um.nosql.s13e.db.gen.utils.Constants;
 
@@ -28,11 +28,11 @@ public class DbGenOptions
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getEntities() != null)   result.append(Constants.GET_TABS(this.getClass()) + "-Entities:\n" + this.getEntities().toString());
-    if (this.getAttributes() != null) result.append(Constants.GET_TABS(this.getClass()) + "-Attributes:\n" + this.getAttributes().toString());
+    if (this.getEntities() != null)     result.append(Constants.GET_TABS(this.getClass()) + "-Entities:\n" + this.getEntities().toString());
+    if (this.getAttributes() != null)   result.append(Constants.GET_TABS(this.getClass()) + "-Attributes:\n" + this.getAttributes().toString());
     if (this.getAssociations() != null) result.append(Constants.GET_TABS(this.getClass()) + "-Associations:\n" + this.getAssociations().toString());
-    if (this.getInput() != null)      result.append(Constants.GET_TABS(this.getClass()) + "-Input:\n" + this.getInput().toString());
-    if (this.getOutput() != null)     result.append(Constants.GET_TABS(this.getClass()) + "-Output:\n" + this.getOutput().toString());
+    if (this.getInput() != null)        result.append(Constants.GET_TABS(this.getClass()) + "-Input:\n" + this.getInput().toString());
+    if (this.getOutput() != null)       result.append(Constants.GET_TABS(this.getClass()) + "-Output:\n" + this.getOutput().toString());
 
     return result.toString();
   }
