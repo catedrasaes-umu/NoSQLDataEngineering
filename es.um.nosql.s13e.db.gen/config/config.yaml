@@ -1,12 +1,12 @@
 input:
-  model: source/mongomovies.xmi
+  model: source/everypolitician_sweden.xmi
   debug: true
   splits: 10
 
 entities:
   versions:
-    minInstances: 250000
-    maxInstances: 250000
+    minInstances: 25000
+    maxInstances: 25000
   includeType: true
 
 attributes:
