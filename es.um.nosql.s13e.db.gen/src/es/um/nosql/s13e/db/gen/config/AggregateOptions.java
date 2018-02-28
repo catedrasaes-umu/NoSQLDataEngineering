@@ -1,6 +1,6 @@
 package es.um.nosql.s13e.db.gen.config;
 
-import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
 public class AggregateOptions
 {
@@ -16,8 +16,8 @@ public class AggregateOptions
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getMinAggregateAllowed() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Min aggregates allowed: " + this.getMinAggregateAllowed() + "\n");
-    if (this.getMaxAggregateAllowed() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Max aggregates allowed: " + this.getMaxAggregateAllowed() + "\n");
+    if (this.getMinAggregateAllowed() != null)  result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Min aggregates allowed: " + this.getMinAggregateAllowed() + "\n");
+    if (this.getMaxAggregateAllowed() != null)  result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Max aggregates allowed: " + this.getMaxAggregateAllowed() + "\n");
 
     return result.toString();
   }

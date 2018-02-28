@@ -19,8 +19,8 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.Tuple;
-import es.um.nosql.s13e.db.gen.utils.Constants;
 import es.um.nosql.s13e.db.gen.utils.EntityIdMap;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
 public class ObjectGen
 {
@@ -31,7 +31,6 @@ public class ObjectGen
   private JsonNodeFactory factory;
   private EntityIdMap eIdMap;
   private Map<EntityVersion, List<ObjectNode>> evMap;
-
 
   public ObjectGen()
   {
@@ -102,7 +101,7 @@ public class ObjectGen
 
     eIdMap.add(entity.getName(), oNode.get("_id"));
 
-    if (Constants.GET_ENTITY_INCLUDE_TYPE())
+    if (ConfigConstants.GET_ENTITY_INCLUDE_TYPE())
       oNode.put("_type", entity.getName());
   }
 

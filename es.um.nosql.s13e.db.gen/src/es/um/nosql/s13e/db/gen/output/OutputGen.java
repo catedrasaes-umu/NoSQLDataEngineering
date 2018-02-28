@@ -13,12 +13,12 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbAdapter;
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbClient;
-import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
 public class OutputGen
 {
   private ObjectMapper oMapper;
-  private final static String extension = ".json";
+  private final static String FILE_EXTENSION = ".json";
   private Map<String, Integer> splitMap;
 
   public OutputGen()
@@ -31,13 +31,13 @@ public class OutputGen
   {
     for (String collName : jsonContent.keySet())
     {
-      if (Constants.IS_DEFINED_OUTPUT_CONSOLE())
+      if (ConfigConstants.IS_DEFINED_OUTPUT_CONSOLE())
         genToConsole(jsonContent.get(collName));
 
-      if (Constants.IS_DEFINED_OUTPUT_DATABASE())
+      if (ConfigConstants.IS_DEFINED_OUTPUT_DATABASE())
         genToDatabase(jsonContent.get(collName), collName);
 
-      if (Constants.IS_DEFINED_OUTPUT_FOLDER())
+      if (ConfigConstants.IS_DEFINED_OUTPUT_FOLDER())
         genToFile(jsonContent.get(collName), collName);
     }
   }
@@ -57,13 +57,13 @@ public class OutputGen
 
   private void genToDatabase(ArrayNode arrayNode, String collName)
   {
-    MongoDbClient client = MongoDbAdapter.getMongoDbClient(Constants.GET_OUTPUT_DATABASE());
+    MongoDbClient client = MongoDbAdapter.getMongoDbClient(ConfigConstants.GET_OUTPUT_DATABASE());
     ObjectWriter writer = oMapper.writerWithDefaultPrettyPrinter();
 
     try
     {
       String result = writer.writeValueAsString(arrayNode);
-      client.insert(Constants.GET_OUTPUT_DATABASE_COLLECTION(), result);      
+      client.insert(ConfigConstants.GET_OUTPUT_DATABASE_COLLECTION(), result);      
     } catch (JsonProcessingException e)
     {
       e.printStackTrace();
@@ -83,7 +83,7 @@ public class OutputGen
 
     int splitExtension = splitMap.get(collName);
 
-    File outputFile = Paths.get(Constants.GET_OUTPUT_FOLDER(), collName + "_" + splitExtension + extension).toFile();
+    File outputFile = Paths.get(ConfigConstants.GET_OUTPUT_FOLDER(), collName + "_" + splitExtension + FILE_EXTENSION).toFile();
     outputFile.getParentFile().mkdirs();
 
     try

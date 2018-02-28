@@ -3,7 +3,7 @@ package es.um.nosql.s13e.db.gen.config;
 import java.io.File;
 import java.util.Arrays;
 
-import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
 public class PrimitiveTypeOptions
 {
@@ -55,17 +55,17 @@ public class PrimitiveTypeOptions
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getStrangeTypesProbability() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Strange types probability: " + this.getStrangeTypesProbability() + "\n");
-    if (this.getNullProbability() != null)          result.append(Constants.GET_TABS(this.getClass()) + "-Null probability: " + this.getNullProbability() + "\n");
-    if (this.getStringType() != null)               result.append(Constants.GET_TABS(this.getClass()) + "-StringType: " + this.getStringType() + "\n");
-    if (this.getMinIntegerAllowed() != null)            result.append(Constants.GET_TABS(this.getClass()) + "-Min integer allowed: " + this.getMinIntegerAllowed() + "\n");
-    if (this.getMaxIntegerAllowed() != null)            result.append(Constants.GET_TABS(this.getClass()) + "-Max integer allowed: " + this.getMaxIntegerAllowed() + "\n");
-    if (this.getMinDoubleAllowed() != null)         result.append(Constants.GET_TABS(this.getClass()) + "-Min double allowed: " + this.getMinDoubleAllowed() + "\n");
-    if (this.getMaxDoubleAllowed() != null)         result.append(Constants.GET_TABS(this.getClass()) + "-Max double allowed: " + this.getMaxDoubleAllowed() + "\n");
-    if (this.getDoubleDecimalsAllowed() != null)    result.append(Constants.GET_TABS(this.getClass()) + "-Double decimals allowed: " + this.getDoubleDecimalsAllowed() + "\n");
-    if (this.getStringNamesFile() != null)          result.append(Constants.GET_TABS(this.getClass()) + "-String names file: " + this.getStringNamesFile() + "\n");
-    if (this.getStringSurnamesFile() != null)       result.append(Constants.GET_TABS(this.getClass()) + "-String surnames file: " + this.getStringSurnamesFile() + "\n");
-    if (this.getStringWordsFile() != null)          result.append(Constants.GET_TABS(this.getClass()) + "-String words file: " + this.getStringWordsFile() + "\n");
+    if (this.getStrangeTypesProbability() != null)  result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Strange types probability: " + this.getStrangeTypesProbability() + "\n");
+    if (this.getNullProbability() != null)          result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Null probability: " + this.getNullProbability() + "\n");
+    if (this.getStringType() != null)               result.append(ConfigConstants.GET_TABS(this.getClass()) + "-StringType: " + this.getStringType() + "\n");
+    if (this.getMinIntegerAllowed() != null)            result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Min integer allowed: " + this.getMinIntegerAllowed() + "\n");
+    if (this.getMaxIntegerAllowed() != null)            result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Max integer allowed: " + this.getMaxIntegerAllowed() + "\n");
+    if (this.getMinDoubleAllowed() != null)         result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Min double allowed: " + this.getMinDoubleAllowed() + "\n");
+    if (this.getMaxDoubleAllowed() != null)         result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Max double allowed: " + this.getMaxDoubleAllowed() + "\n");
+    if (this.getDoubleDecimalsAllowed() != null)    result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Double decimals allowed: " + this.getDoubleDecimalsAllowed() + "\n");
+    if (this.getStringNamesFile() != null)          result.append(ConfigConstants.GET_TABS(this.getClass()) + "-String names file: " + this.getStringNamesFile() + "\n");
+    if (this.getStringSurnamesFile() != null)       result.append(ConfigConstants.GET_TABS(this.getClass()) + "-String surnames file: " + this.getStringSurnamesFile() + "\n");
+    if (this.getStringWordsFile() != null)          result.append(ConfigConstants.GET_TABS(this.getClass()) + "-String words file: " + this.getStringWordsFile() + "\n");
 
     return result.toString();
   }

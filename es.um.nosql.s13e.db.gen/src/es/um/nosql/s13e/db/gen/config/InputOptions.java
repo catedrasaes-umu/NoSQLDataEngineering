@@ -2,7 +2,7 @@ package es.um.nosql.s13e.db.gen.config;
 
 import java.io.File;
 
-import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
 public class InputOptions
 {
@@ -22,9 +22,9 @@ public class InputOptions
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getModel() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Model: " + this.getModel() + "\n");
-    if (this.getDebug() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Debug: " + this.getDebug() + "\n");
-    if (this.getSplits() != null) result.append(Constants.GET_TABS(this.getClass()) + "-Splits: " + this.getSplits() + "\n");
+    if (this.getModel() != null)  result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Model: " + this.getModel() + "\n");
+    if (this.getDebug() != null)  result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Debug: " + this.getDebug() + "\n");
+    if (this.getSplits() != null) result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Splits: " + this.getSplits() + "\n");
 
     return result.toString();
   }

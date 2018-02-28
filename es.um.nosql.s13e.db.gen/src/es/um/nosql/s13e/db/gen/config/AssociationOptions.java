@@ -1,6 +1,6 @@
 package es.um.nosql.s13e.db.gen.config;
 
-import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
 public class AssociationOptions
 {
@@ -16,8 +16,8 @@ public class AssociationOptions
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getAggregates() != null) result.append(Constants.GET_TABS(this.getClass()) + "-Aggregates:\n" + this.getAggregates().toString());
-    if (this.getReferences() != null) result.append(Constants.GET_TABS(this.getClass()) + "-References:\n" + this.getReferences().toString());
+    if (this.getAggregates() != null) result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Aggregates:\n" + this.getAggregates().toString());
+    if (this.getReferences() != null) result.append(ConfigConstants.GET_TABS(this.getClass()) + "-References:\n" + this.getReferences().toString());
 
     return result.toString();
   }

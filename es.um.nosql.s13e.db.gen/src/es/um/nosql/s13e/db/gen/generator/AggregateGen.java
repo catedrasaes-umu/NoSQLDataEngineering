@@ -12,7 +12,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
-import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
 public class AggregateGen
 {
@@ -29,8 +29,8 @@ public class AggregateGen
   {
     JsonNode result = null;
 
-    int lBound = aggr.getLowerBound() >= 0 ? aggr.getLowerBound() : Constants.GET_AGGREGATE_MIN_ALLOWED();
-    int uBound = aggr.getUpperBound() > 0 ? aggr.getUpperBound() : Constants.GET_AGGREGATE_MAX_ALLOWED();
+    int lBound = aggr.getLowerBound() >= 0 ? aggr.getLowerBound() : ConfigConstants.GET_AGGREGATE_MIN_ALLOWED();
+    int uBound = aggr.getUpperBound() > 0 ? aggr.getUpperBound() : ConfigConstants.GET_AGGREGATE_MAX_ALLOWED();
 
     if (lBound == 1 && uBound == 1)
       result = this.getRandomAggrs(aggr.getRefTo().get(0), evMap, 1).get(0);

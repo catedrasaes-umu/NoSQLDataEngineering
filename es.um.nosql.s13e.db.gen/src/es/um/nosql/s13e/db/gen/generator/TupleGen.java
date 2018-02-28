@@ -1,6 +1,5 @@
 package es.um.nosql.s13e.db.gen.generator;
 
-import java.util.Arrays;
 import java.util.List;
 
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -11,21 +10,20 @@ import es.um.nosql.s13e.NoSQLSchema.Tuple;
 import es.um.nosql.s13e.NoSQLSchema.Type;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.BooleanGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
-import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
+import es.um.nosql.s13e.db.gen.utils.constants.Types;
 
 public class TupleGen
 {
   private PrimitiveTypeGen pTypeGen;
   private NumberGen numGen;
   private BooleanGen boolGen;
-  private List<String> definedTypes;
 
   public TupleGen()
   {
     pTypeGen = new PrimitiveTypeGen();
     numGen = NumberGen.GET_INSTANCE();
     boolGen = BooleanGen.GET_INSTANCE();
-    definedTypes  = Arrays.asList("string", "int", "double", "bool", "objectid");
   }
 
   public ArrayNode genTuple(List<Type> elements)
@@ -33,15 +31,15 @@ public class TupleGen
     ArrayNode result = JsonNodeFactory.instance.arrayNode();
 
     for (Type type : elements)
-      for (int i = 0; i < numGen.getInclusiveRandom(Constants.GET_TUPLE_MIN_TUPLE_ELEMENTS(), Constants.GET_TUPLE_MAX_TUPLE_ELEMENTS()); i++)
+      for (int i = 0; i < numGen.getInclusiveRandom(ConfigConstants.GET_TUPLE_MIN_TUPLE_ELEMENTS(), ConfigConstants.GET_TUPLE_MAX_TUPLE_ELEMENTS()); i++)
         if (type instanceof PrimitiveType)
         {
           String theType = ((PrimitiveType)type).getName();
 
-          if (boolGen.thisHappens(Constants.GET_TUPLE_NULL_PROBABILITY()))
+          if (boolGen.thisHappens(ConfigConstants.GET_TUPLE_NULL_PROBABILITY()))
             theType = "null";
-          else if (boolGen.thisHappens(Constants.GET_TUPLE_STRANGE_TYPES_PROBABILITY()))
-            theType = getRandomTypeExcluding(theType);
+          else if (boolGen.thisHappens(ConfigConstants.GET_TUPLE_STRANGE_TYPES_PROBABILITY()))
+            theType = Types.GET_RANDOM_TUPLE_TYPE_EXCLUDING(theType);
 
           result.add(pTypeGen.genTrustedPrimitiveType(theType));
         }
@@ -49,15 +47,5 @@ public class TupleGen
           result.add(genTuple(((Tuple)type).getElements()));
 
     return result;
-  }
-
-  private String getRandomTypeExcluding(String type)
-  {
-    int index = numGen.getExclusiveRandom(0, definedTypes.size());
-
-    while (definedTypes.get(index).equals(type))
-      index = numGen.getExclusiveRandom(0, definedTypes.size());
-
-    return definedTypes.get(index);
   }
 }

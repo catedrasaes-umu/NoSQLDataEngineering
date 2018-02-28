@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.concurrent.ThreadLocalRandom;
 
-import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
 public class NumberGen
 {
@@ -22,7 +22,7 @@ public class NumberGen
 
   public int getRandomInteger()
   {
-    return this.getInclusiveRandom(Constants.GET_PRIMITIVE_TYPES_MIN_INT_ALLOWED(), Constants.GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED());
+    return this.getInclusiveRandom(ConfigConstants.GET_PRIMITIVE_TYPES_MIN_INT_ALLOWED(), ConfigConstants.GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED());
   }
 
   public int getInclusiveRandom(int min, int max)
@@ -37,8 +37,8 @@ public class NumberGen
 
   public double getRandomDouble()
   {
-    BigDecimal bd = new BigDecimal(ThreadLocalRandom.current().nextDouble(Constants.GET_PRIMITIVE_TYPES_MIN_DOUBLE_ALLOWED(), Constants.GET_PRIMITIVE_TYPES_MAX_DOUBLE_ALLOWED()));
-    int decimals = Constants.GET_PRIMITIVE_TYPES_DOUBLE_DECIMALS_ALLOWED();
+    BigDecimal bd = new BigDecimal(ThreadLocalRandom.current().nextDouble(ConfigConstants.GET_PRIMITIVE_TYPES_MIN_DOUBLE_ALLOWED(), ConfigConstants.GET_PRIMITIVE_TYPES_MAX_DOUBLE_ALLOWED()));
+    int decimals = ConfigConstants.GET_PRIMITIVE_TYPES_DOUBLE_DECIMALS_ALLOWED();
     bd = bd.setScale(decimals, RoundingMode.HALF_UP);
 
     return bd.doubleValue();

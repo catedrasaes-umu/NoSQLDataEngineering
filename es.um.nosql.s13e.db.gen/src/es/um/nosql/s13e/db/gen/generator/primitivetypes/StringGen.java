@@ -6,18 +6,12 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.List;
 
-import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
+import es.um.nosql.s13e.db.gen.utils.constants.FixedConstants;
 
 public class StringGen
 {
   private static StringGen THE_INSTANCE;
-
-  private static int RANDOM_FUNCTIONS_COUNT = 8;
-  private static int LARGE_STRING_LENGTH    = 1450;
-  private static int MIN_WORDS_IN_PHRASE    = 4;
-  private static int MAX_WORDS_IN_PHRASE    = 9;
-  private static int MIN_NONSENSE_CHARS     = 5;
-  private static int MAX_NONSENSE_CHARS     = 30;
 
   private List<String> names;
   private List<String> surnames;
@@ -41,7 +35,7 @@ public class StringGen
 
   public String getRandomString()
   {
-    switch (NumberGen.GET_INSTANCE().getExclusiveRandom(0, RANDOM_FUNCTIONS_COUNT))
+    switch (NumberGen.GET_INSTANCE().getExclusiveRandom(0, FixedConstants.GET_RANDOM_FUNCTIONS_COUNT()))
     {
       case 0: return this.getRandomName();
       case 1: return this.getRandomSurname();
@@ -61,7 +55,7 @@ public class StringGen
     {
       try
       {
-        names = Files.readAllLines(new File(Constants.GET_PRIMITIVE_TYPES_NAMES_FILE()).toPath(), StandardCharsets.UTF_8);
+        names = Files.readAllLines(new File(ConfigConstants.GET_PRIMITIVE_TYPES_NAMES_FILE()).toPath(), StandardCharsets.UTF_8);
       } catch (IOException e)
       {
         e.printStackTrace();
@@ -77,7 +71,7 @@ public class StringGen
     {
       try
       {
-        surnames = Files.readAllLines(new File(Constants.GET_PRIMITIVE_TYPES_SURNAMES_FILE()).toPath(), StandardCharsets.UTF_8);
+        surnames = Files.readAllLines(new File(ConfigConstants.GET_PRIMITIVE_TYPES_SURNAMES_FILE()).toPath(), StandardCharsets.UTF_8);
       } catch (IOException e)
       {
         e.printStackTrace();
@@ -98,7 +92,7 @@ public class StringGen
     {
       try
       {
-        words = Files.readAllLines(new File(Constants.GET_PRIMITIVE_TYPES_WORDS_FILE()).toPath(), StandardCharsets.UTF_8);
+        words = Files.readAllLines(new File(ConfigConstants.GET_PRIMITIVE_TYPES_WORDS_FILE()).toPath(), StandardCharsets.UTF_8);
       } catch (IOException e)
       {
         e.printStackTrace();
@@ -112,7 +106,7 @@ public class StringGen
   {
     StringBuilder result = new StringBuilder();
 
-    for (int i = 0; i < NumberGen.GET_INSTANCE().getInclusiveRandom(MIN_WORDS_IN_PHRASE, MAX_WORDS_IN_PHRASE); i++)
+    for (int i = 0; i < NumberGen.GET_INSTANCE().getInclusiveRandom(FixedConstants.GET_MIN_WORDS_IN_PHRASE(), FixedConstants.GET_MAX_WORDS_IN_PHRASE()); i++)
       result.append(this.getRandomWord() + " ");
 
     return result.toString();
@@ -120,14 +114,14 @@ public class StringGen
 
   public String getRandomWordNumber()
   {
-    return this.getRandomWord() + "_" + NumberGen.GET_INSTANCE().getExclusiveRandom(0, Constants.GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED());
+    return this.getRandomWord() + "_" + NumberGen.GET_INSTANCE().getExclusiveRandom(0, ConfigConstants.GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED());
   }
 
   public String getRandomNonsense()
   {
     StringBuilder result = new StringBuilder();
 
-    for (int i = 0; i < NumberGen.GET_INSTANCE().getInclusiveRandom(MIN_NONSENSE_CHARS, MAX_NONSENSE_CHARS); i++)
+    for (int i = 0; i < NumberGen.GET_INSTANCE().getInclusiveRandom(FixedConstants.GET_MIN_NONSENSE_CHARS(), FixedConstants.GET_MAX_NONSENSE_CHARS()); i++)
       result.append(this.nonsense[NumberGen.GET_INSTANCE().getExclusiveRandom(0, nonsense.length)]);
 
     return result.toString();
@@ -137,7 +131,7 @@ public class StringGen
   {
     StringBuilder result = new StringBuilder();
 
-    while (result.length() < LARGE_STRING_LENGTH)
+    while (result.length() < FixedConstants.GET_LARGE_STRING_LENGTH())
       result.append(this.getRandomPhrase());
 
     return result.toString();

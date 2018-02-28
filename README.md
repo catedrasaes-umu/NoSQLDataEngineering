@@ -6,22 +6,27 @@ A NoSQL schema is a schema used to define which data and in which format is bein
 
 # Table of contents
 
+- [Schema models](#schema-models)
 - [Inference process](#inference-process)
 - [NoSQLSchema metamodel](#nosql-schema-metamodel)
-- [Database import](#database-import)
 - [NoSQL import](#nosql-import)
 - [Json to DBSchema](#json-to-dbschema)
+***
+- [Database import](#database-import)
+- [Random data generation](#random-data-generation)
+***
+- [Object Document mappers](#object-document-mappers)
 ***
 - [NoSQL Schema visualization](#nosql-schema-visualization)
 - [Data visualization](#data-visualization)
 ***
-- [Entity differentiation](#entity-differentiation)
 - [Decision tree](#decision-tree)
 ***
-- [DSL4Mongoose](#dsl-for-mongoose)
-- [DSLParameter](#dsl-parameter)
-- [PlantUML](#plantuml)
-***
+
+# Schema models
+
+Projects:   es.um.nosql.examples, es.um.nosql.orchestrator.test
+TODO...
 
 # Inference process
 
@@ -100,6 +105,38 @@ A NoSQLSchema model may be obtained by aplying the inference process described [
 
 ***
 
+# NoSQL import
+
+This project is aimed to import JSON data from a NoSQL database. It is provided with a MapReduce process and applies this process to the given database. As a result of the MapReduce process it obtains a subset of representative database objects which describes all the entities and versions found on that database. It supports **MongoDB** and **CouchDB** databases, but this list will be updated on the near future with more document based databases. As an input for this project to work the user needs to provide the following inputs:
+
+* A fully working **MongoDB** or **CouchDB** database with some data on it.
+* A database name to which the process will infer representative JSON objects and apply the MapReduce process.
+* A MapReduce folder containing a **map.js** file and a **reduce.js** file. These files contain JavaScript code, they may be found on the corresponding folder and are not likely to change.
+
+<figure>
+    <img src="figures/nosqlimport.png" align="center"/>
+</figure>
+<br/>
+
+An example of its usage is just based on the creation of a __MongoDB/CouchDBImport__ object and an execution of a suitable method. The process goes as follow:
+
+* A **MongoDB/CouchDBImport** object is created and there are a couple of **map.js** and **reduce.js** on a folder.
+* The created object will apply the **MapReduce** files to a given database and extract a minimum representation of the Json objects stored on the database.
+* The object now will apply an homogeneization to to each object in order to remove unnecessary attributes (such as __rev_, __id_, etc).
+* The object will finally apply the desired output format and return the result to the client.
+
+The Java project involved in the __NoSQL import__ project is the following one:
+
+* `es.um.nosql.s13e.nosqlimport`: This project contains a definition of two database importers able to interact with **MongoDB** and **CouchDB**. It also contains some helper classes in order to return a suitable output as a _Stream\<JsonObject\>_, _JsonArray_ or a Json file which will be used on the schema extraction process (see [here](#json-to-dbschema)). As more databases are supported new classes will be added to this project.
+
+***
+
+# Json to DBSchema
+
+TODO:
+
+***
+
 # Database import
 
 This project is used to fill a database with raw data from a file. It may be not necessary if the input for the inference process is an already filled database, but in some cases the user will have just a JSON, XML or CSV file, and so this project might come handy to import the relevant files into a database.
@@ -133,33 +170,15 @@ The Java project involved in the __Database import__ project is the following on
 
 ***
 
-# NoSQL import
+# Random data generation
 
-This project is aimed to import JSON data from a NoSQL database. It is provided with a MapReduce process and applies this process to the given database. As a result of the MapReduce process it obtains a subset of representative database objects which describes all the entities and versions found on that database. It supports **MongoDB** and **CouchDB** databases, but this list will be updated on the near future with more document based databases. As an input for this project to work the user needs to provide the following inputs:
-
-* A fully working **MongoDB** or **CouchDB** database with some data on it.
-* A database name to which the process will infer representative JSON objects and apply the MapReduce process.
-* A MapReduce folder containing a **map.js** file and a **reduce.js** file. These files contain JavaScript code, they may be found on the corresponding folder and are not likely to change.
-
-<figure>
-    <img src="figures/nosqlimport.png" align="center"/>
-</figure>
-<br/>
-
-An example of its usage is just based on the creation of a __MongoDB/CouchDBImport__ object and an execution of a suitable method. The process goes as follow:
-
-* A **MongoDB/CouchDBImport** object is created and there are a couple of **map.js** and **reduce.js** on a folder.
-* The created object will apply the **MapReduce** files to a given database and extract a minimum representation of the Json objects stored on the database.
-* The object now will apply an homogeneization to to each object in order to remove unnecessary attributes (such as __rev_, __id_, etc).
-* The object will finally apply the desired output format and return the result to the client.
-
-The Java project involved in the __NoSQL import__ project is the following one:
-
-* `es.um.nosql.s13e.nosqlimport`: This project contains a definition of two database importers able to interact with **MongoDB** and **CouchDB**. It also contains some helper classes in order to return a suitable output as a _Stream\<JsonObject\>_, _JsonArray_ or a Json file which will be used on the schema extraction process (see [here](#json-to-dbschema)). As more databases are supported new classes will be added to this project.
+TODO:
 
 ***
 
-# Json to DBSchema
+# Object document mappers
+
+TODO:
 
 ***
 
@@ -250,22 +269,6 @@ Also in the NoSQLDataIndex project several examples can be found. Each example i
 
 ***
 
-# Entity differentiation
-
-***
-
 # Decision tree
-
-***
-
-# DSL for Mongoose
-
-***
-
-# DSL Parameter
-
-***
-
-# PlantUML
 
 ***

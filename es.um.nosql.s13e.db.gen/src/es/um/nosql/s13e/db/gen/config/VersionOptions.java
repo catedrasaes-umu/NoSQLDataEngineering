@@ -1,6 +1,6 @@
 package es.um.nosql.s13e.db.gen.config;
 
-import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
 public class VersionOptions
 {
@@ -16,8 +16,8 @@ public class VersionOptions
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getMinInstances() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Min instances per Version: " + this.getMinInstances() + "\n");
-    if (this.getMaxInstances() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Max instances per Version: " + this.getMaxInstances() + "\n");
+    if (this.getMinInstances() != null)  result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Min instances per Version: " + this.getMinInstances() + "\n");
+    if (this.getMaxInstances() != null)  result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Max instances per Version: " + this.getMaxInstances() + "\n");
 
     return result.toString();
   }

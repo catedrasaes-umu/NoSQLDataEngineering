@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.BooleanGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.StringGen;
-import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
 class TestPrimitiveTypeGen
 {
@@ -40,8 +40,8 @@ class TestPrimitiveTypeGen
     for (int i = 0; i < ITERATIONS_INTS; i++)
     {
       int theInteger = numGen.getRandomInteger();
-      Assertions.assertTrue(theInteger <= Constants.GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED());
-      Assertions.assertTrue(theInteger >= Constants.GET_PRIMITIVE_TYPES_MIN_INT_ALLOWED());
+      Assertions.assertTrue(theInteger <= ConfigConstants.GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED());
+      Assertions.assertTrue(theInteger >= ConfigConstants.GET_PRIMITIVE_TYPES_MIN_INT_ALLOWED());
     }
   }
 
@@ -51,8 +51,8 @@ class TestPrimitiveTypeGen
     for (int i = 0; i < ITERATIONS_DOUBLE; i++)
     {
       double theDouble = numGen.getRandomDouble();
-      Assertions.assertTrue(theDouble <= Constants.GET_PRIMITIVE_TYPES_MAX_DOUBLE_ALLOWED());
-      Assertions.assertTrue(theDouble >= Constants.GET_PRIMITIVE_TYPES_MIN_DOUBLE_ALLOWED());
+      Assertions.assertTrue(theDouble <= ConfigConstants.GET_PRIMITIVE_TYPES_MAX_DOUBLE_ALLOWED());
+      Assertions.assertTrue(theDouble >= ConfigConstants.GET_PRIMITIVE_TYPES_MIN_DOUBLE_ALLOWED());
     }
   }
 

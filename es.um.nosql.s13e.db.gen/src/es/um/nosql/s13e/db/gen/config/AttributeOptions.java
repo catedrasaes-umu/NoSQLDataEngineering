@@ -1,6 +1,6 @@
 package es.um.nosql.s13e.db.gen.config;
 
-import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
 public class AttributeOptions
 {
@@ -16,8 +16,8 @@ public class AttributeOptions
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getPrimitiveTypes() != null) result.append(Constants.GET_TABS(this.getClass()) + "-PrimitiveTypes:\n" + this.getPrimitiveTypes().toString());
-    if (this.getTuples() != null)         result.append(Constants.GET_TABS(this.getClass()) + "-Tuples:\n" + this.getTuples().toString());
+    if (this.getPrimitiveTypes() != null) result.append(ConfigConstants.GET_TABS(this.getClass()) + "-PrimitiveTypes:\n" + this.getPrimitiveTypes().toString());
+    if (this.getTuples() != null)         result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Tuples:\n" + this.getTuples().toString());
 
     return result.toString();
   }

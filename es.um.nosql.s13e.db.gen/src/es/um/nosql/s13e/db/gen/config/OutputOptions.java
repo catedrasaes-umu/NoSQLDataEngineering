@@ -1,6 +1,6 @@
 package es.um.nosql.s13e.db.gen.config;
 
-import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
 public class OutputOptions
 {
@@ -24,10 +24,10 @@ public class OutputOptions
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getFolder() != null)             result.append(Constants.GET_TABS(this.getClass()) + "-Folder: " + this.getFolder() + "\n");
-    if (this.getConsole() != null)            result.append(Constants.GET_TABS(this.getClass()) + "-Console: " + this.getConsole() + "\n");
-    if (this.getDatabase() != null)           result.append(Constants.GET_TABS(this.getClass()) + "-Database: " + this.getDatabase() + "\n");
-    if (this.getDatabaseCollection() != null) result.append(Constants.GET_TABS(this.getClass()) + "-DatabaseCollection: " + this.getDatabase() + "\n");
+    if (this.getFolder() != null)             result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Folder: " + this.getFolder() + "\n");
+    if (this.getConsole() != null)            result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Console: " + this.getConsole() + "\n");
+    if (this.getDatabase() != null)           result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Database: " + this.getDatabase() + "\n");
+    if (this.getDatabaseCollection() != null) result.append(ConfigConstants.GET_TABS(this.getClass()) + "-DatabaseCollection: " + this.getDatabase() + "\n");
 
     return result.toString();
   }

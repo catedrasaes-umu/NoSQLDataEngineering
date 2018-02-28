@@ -1,11 +1,11 @@
-package es.um.nosql.s13e.db.gen.utils;
+package es.um.nosql.s13e.db.gen.utils.constants;
 
 import java.io.File;
 
 import es.um.nosql.s13e.db.gen.config.DbGenOptions;
 import es.um.nosql.s13e.db.gen.utils.IOUtils;
 
-public final class Constants
+public final class ConfigConstants
 {
   static
   {
@@ -348,43 +348,43 @@ public final class Constants
     StringBuilder result = new StringBuilder();
 
     result.append("\n===== ENTITY OPTIONS =====\n\n");
-    result.append("GET_MIN_INSTANCES: " + Constants.GET_MIN_INSTANCES() + "\n");
-    result.append("GET_MAX_INSTANCES: " + Constants.GET_MAX_INSTANCES() + "\n");
-    result.append("GET_ENTITY_INCLUDE_TYPE: " + Constants.GET_ENTITY_INCLUDE_TYPE() + "\n");
+    result.append("GET_MIN_INSTANCES: " + ConfigConstants.GET_MIN_INSTANCES() + "\n");
+    result.append("GET_MAX_INSTANCES: " + ConfigConstants.GET_MAX_INSTANCES() + "\n");
+    result.append("GET_ENTITY_INCLUDE_TYPE: " + ConfigConstants.GET_ENTITY_INCLUDE_TYPE() + "\n");
 
     result.append("\n===== PRIMITIVE TYPES OPTIONS =====\n\n");
-    result.append("GET_PRIMITIVE_TYPES_NAMES_FILE: " + Constants.GET_PRIMITIVE_TYPES_NAMES_FILE() + "\n");
-    result.append("GET_PRIMITIVE_TYPES_SURNAMES_FILE: " + Constants.GET_PRIMITIVE_TYPES_SURNAMES_FILE() + "\n");
-    result.append("GET_PRIMITIVE_TYPES_WORD_FILE: " + Constants.GET_PRIMITIVE_TYPES_WORDS_FILE() + "\n");
-    result.append("GET_PRIMITIVE_TYPES_STRANGE_TYPES_PROBABILITY: " + Constants.GET_PRIMITIVE_TYPES_STRANGE_TYPES_PROBABILITY() + "\n");
-    result.append("GET_PRIMITIVE_TYPES_NULL_PROBABILITY: " + Constants.GET_PRIMITIVE_TYPES_NULL_PROBABILITY() + "\n");
-    result.append("GET_PRIMITIVE_TYPES_STRING_TYPE: " + Constants.GET_PRIMITIVE_TYPES_STRING_TYPE() + "\n");
-    result.append("GET_PRIMITIVE_TYPES_MIN_INT_ALLOWED: " + Constants.GET_PRIMITIVE_TYPES_MIN_INT_ALLOWED() + "\n");
-    result.append("GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED: " + Constants.GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED() + "\n");
-    result.append("GET_PRIMITIVE_TYPES_MIN_DOUBLE_ALLOWED: " + Constants.GET_PRIMITIVE_TYPES_MIN_DOUBLE_ALLOWED() + "\n");
-    result.append("GET_PRIMITIVE_TYPES_MAX_DOUBLE_ALLOWED: " + Constants.GET_PRIMITIVE_TYPES_MAX_DOUBLE_ALLOWED() + "\n");
-    result.append("GET_PRIMITIVE_TYPES_DOUBLE_DECIMALS_ALLOWED: " + Constants.GET_PRIMITIVE_TYPES_DOUBLE_DECIMALS_ALLOWED() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_NAMES_FILE: " + ConfigConstants.GET_PRIMITIVE_TYPES_NAMES_FILE() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_SURNAMES_FILE: " + ConfigConstants.GET_PRIMITIVE_TYPES_SURNAMES_FILE() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_WORD_FILE: " + ConfigConstants.GET_PRIMITIVE_TYPES_WORDS_FILE() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_STRANGE_TYPES_PROBABILITY: " + ConfigConstants.GET_PRIMITIVE_TYPES_STRANGE_TYPES_PROBABILITY() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_NULL_PROBABILITY: " + ConfigConstants.GET_PRIMITIVE_TYPES_NULL_PROBABILITY() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_STRING_TYPE: " + ConfigConstants.GET_PRIMITIVE_TYPES_STRING_TYPE() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_MIN_INT_ALLOWED: " + ConfigConstants.GET_PRIMITIVE_TYPES_MIN_INT_ALLOWED() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED: " + ConfigConstants.GET_PRIMITIVE_TYPES_MAX_INT_ALLOWED() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_MIN_DOUBLE_ALLOWED: " + ConfigConstants.GET_PRIMITIVE_TYPES_MIN_DOUBLE_ALLOWED() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_MAX_DOUBLE_ALLOWED: " + ConfigConstants.GET_PRIMITIVE_TYPES_MAX_DOUBLE_ALLOWED() + "\n");
+    result.append("GET_PRIMITIVE_TYPES_DOUBLE_DECIMALS_ALLOWED: " + ConfigConstants.GET_PRIMITIVE_TYPES_DOUBLE_DECIMALS_ALLOWED() + "\n");
 
     result.append("\n===== TUPLE OPTIONS =====\n\n");
-    result.append("GET_TUPLE_MIN_TUPLE_ELEMENTS: " + Constants.GET_TUPLE_MIN_TUPLE_ELEMENTS() + "\n");
-    result.append("GET_TUPLE_MAX_TUPLE_ELEMENTS: " + Constants.GET_TUPLE_MAX_TUPLE_ELEMENTS() + "\n");
-    result.append("GET_TUPLE_STRANGE_TYPES_PROBABILITY: " + Constants.GET_TUPLE_STRANGE_TYPES_PROBABILITY() + "\n");
-    result.append("GET_TUPLE_NULL_PROBABILITY: " + Constants.GET_TUPLE_NULL_PROBABILITY() + "\n");
+    result.append("GET_TUPLE_MIN_TUPLE_ELEMENTS: " + ConfigConstants.GET_TUPLE_MIN_TUPLE_ELEMENTS() + "\n");
+    result.append("GET_TUPLE_MAX_TUPLE_ELEMENTS: " + ConfigConstants.GET_TUPLE_MAX_TUPLE_ELEMENTS() + "\n");
+    result.append("GET_TUPLE_STRANGE_TYPES_PROBABILITY: " + ConfigConstants.GET_TUPLE_STRANGE_TYPES_PROBABILITY() + "\n");
+    result.append("GET_TUPLE_NULL_PROBABILITY: " + ConfigConstants.GET_TUPLE_NULL_PROBABILITY() + "\n");
 
     result.append("\n===== REFERENCE OPTIONS =====\n\n");
-    result.append("GET_REFERENCE_MIN_ALLOWED: " + Constants.GET_REFERENCE_MIN_ALLOWED() + "\n");
-    result.append("GET_REFERENCE_MAX_ALLOWED: " + Constants.GET_REFERENCE_MAX_ALLOWED() + "\n");
+    result.append("GET_REFERENCE_MIN_ALLOWED: " + ConfigConstants.GET_REFERENCE_MIN_ALLOWED() + "\n");
+    result.append("GET_REFERENCE_MAX_ALLOWED: " + ConfigConstants.GET_REFERENCE_MAX_ALLOWED() + "\n");
 
     result.append("\n===== AGGREGATE OPTIONS =====\n\n");
-    result.append("GET_AGGREGATE_MIN_ALLOWED: " + Constants.GET_AGGREGATE_MIN_ALLOWED() + "\n");
-    result.append("GET_AGGREGATE_MAX_ALLOWED: " + Constants.GET_AGGREGATE_MAX_ALLOWED() + "\n");
+    result.append("GET_AGGREGATE_MIN_ALLOWED: " + ConfigConstants.GET_AGGREGATE_MIN_ALLOWED() + "\n");
+    result.append("GET_AGGREGATE_MAX_ALLOWED: " + ConfigConstants.GET_AGGREGATE_MAX_ALLOWED() + "\n");
 
     result.append("\n===== OUTPUT OPTIONS =====\n\n");
-    result.append("IS_DEFINED_OUTPUT_FOLDER: " + Constants.IS_DEFINED_OUTPUT_FOLDER() + "\n");
-    result.append("IS_DEFINED_OUTPUT_CONSOLE: " + Constants.IS_DEFINED_OUTPUT_CONSOLE() + "\n");
-    result.append("IS_DEFINED_OUTPUT_DATABASE: " + Constants.IS_DEFINED_OUTPUT_DATABASE() + "\n");
-    result.append("GET_OUTPUT_FOLDER: " + Constants.GET_OUTPUT_FOLDER() + "\n");
-    result.append("GET_OUTPUT_DATABASE: " + Constants.GET_OUTPUT_DATABASE() + "\n");
+    result.append("IS_DEFINED_OUTPUT_FOLDER: " + ConfigConstants.IS_DEFINED_OUTPUT_FOLDER() + "\n");
+    result.append("IS_DEFINED_OUTPUT_CONSOLE: " + ConfigConstants.IS_DEFINED_OUTPUT_CONSOLE() + "\n");
+    result.append("IS_DEFINED_OUTPUT_DATABASE: " + ConfigConstants.IS_DEFINED_OUTPUT_DATABASE() + "\n");
+    result.append("GET_OUTPUT_FOLDER: " + ConfigConstants.GET_OUTPUT_FOLDER() + "\n");
+    result.append("GET_OUTPUT_DATABASE: " + ConfigConstants.GET_OUTPUT_DATABASE() + "\n");
 
     return result.toString();
   }

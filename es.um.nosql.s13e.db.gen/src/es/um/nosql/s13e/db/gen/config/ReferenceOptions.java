@@ -1,6 +1,6 @@
 package es.um.nosql.s13e.db.gen.config;
 
-import es.um.nosql.s13e.db.gen.utils.Constants;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
 public class ReferenceOptions
 {
@@ -20,9 +20,9 @@ public class ReferenceOptions
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getStrangeTypesProbability() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Strange types probability: " + this.getStrangeTypesProbability() + "\n");
-    if (this.getMinReferenceAllowed() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Min references allowed: " + this.getMinReferenceAllowed() + "\n");
-    if (this.getMaxReferenceAllowed() != null)  result.append(Constants.GET_TABS(this.getClass()) + "-Max references allowed: " + this.getMaxReferenceAllowed() + "\n");
+    if (this.getStrangeTypesProbability() != null)  result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Strange types probability: " + this.getStrangeTypesProbability() + "\n");
+    if (this.getMinReferenceAllowed() != null)  result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Min references allowed: " + this.getMinReferenceAllowed() + "\n");
+    if (this.getMaxReferenceAllowed() != null)  result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Max references allowed: " + this.getMaxReferenceAllowed() + "\n");
 
     return result.toString();
   }

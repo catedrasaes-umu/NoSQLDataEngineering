@@ -1,18 +1,16 @@
 package es.um.nosql.s13e.db.gen.generator;
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.bson.types.ObjectId;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 
-import es.um.nosql.s13e.db.gen.utils.Constants;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.BooleanGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.ObjectIdGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.StringGen;
+import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
+import es.um.nosql.s13e.db.gen.utils.constants.Types;
 
 public class PrimitiveTypeGen
 {
@@ -21,7 +19,6 @@ public class PrimitiveTypeGen
   private BooleanGen boolGen;
   private ObjectIdGen objGen;
   private JsonNodeFactory jsonFactory;
-  private List<String> definedTypes;
 
   public PrimitiveTypeGen()
   {
@@ -30,30 +27,19 @@ public class PrimitiveTypeGen
     boolGen       = BooleanGen.GET_INSTANCE();
     objGen        = ObjectIdGen.GET_INSTANCE();
     jsonFactory   = JsonNodeFactory.instance;
-    definedTypes  = Arrays.asList("string", "int", "double", "bool", "objectid");
   }
 
   public JsonNode genPrimitiveType(String type)
   {
     String theType = type;
 
-    if (boolGen.thisHappens(Constants.GET_PRIMITIVE_TYPES_NULL_PROBABILITY()))
+    if (boolGen.thisHappens(ConfigConstants.GET_PRIMITIVE_TYPES_NULL_PROBABILITY()))
       theType = "null";
 
-    if (boolGen.thisHappens(Constants.GET_PRIMITIVE_TYPES_STRANGE_TYPES_PROBABILITY()))
-      theType = getRandomTypeExcluding(theType);
+    if (boolGen.thisHappens(ConfigConstants.GET_PRIMITIVE_TYPES_STRANGE_TYPES_PROBABILITY()))
+      theType = Types.GET_RANDOM_PRIMITIVE_TYPE_EXCLUDING(theType);
 
     return genTrustedPrimitiveType(theType);
-  }
-
-  private String getRandomTypeExcluding(String type)
-  {
-    int index = numGen.getExclusiveRandom(0, definedTypes.size());
-
-    while (definedTypes.get(index).equals(type))
-      index = numGen.getExclusiveRandom(0, definedTypes.size());
-
-    return definedTypes.get(index);
   }
 
   public JsonNode genTrustedPrimitiveType(String type)
@@ -82,7 +68,7 @@ public class PrimitiveTypeGen
 
   public String genRandomString()
   {
-    switch (Constants.GET_PRIMITIVE_TYPES_STRING_TYPE())
+    switch (ConfigConstants.GET_PRIMITIVE_TYPES_STRING_TYPE())
     {
       case "random":        return strGen.getRandomString();
       case "large":         return strGen.getRandomLargeString();
