@@ -29,7 +29,7 @@ public class AggregateGen
   {
     JsonNode result = null;
 
-    int lBound = aggr.getLowerBound() > 0 ? aggr.getLowerBound() : Constants.GET_AGGREGATE_MIN_ALLOWED();
+    int lBound = aggr.getLowerBound() >= 0 ? aggr.getLowerBound() : Constants.GET_AGGREGATE_MIN_ALLOWED();
     int uBound = aggr.getUpperBound() > 0 ? aggr.getUpperBound() : Constants.GET_AGGREGATE_MAX_ALLOWED();
 
     if (lBound == 1 && uBound == 1)
@@ -41,8 +41,9 @@ public class AggregateGen
       // TODO: This might aggregate the same object several times. It might be a problem.
       // For each aggregation we have to include, we select a random aggregated version and aggregate one object according to that version.
       // TODO: This is for sure optimisable. We should be able to shuffle versions and extract some objects of them, not only one version.
+      // TODO: Fix cardinalities
       for (EntityVersion ev : aggr.getRefTo())
-        aggrArray.addAll(this.getRandomAggrs(ev, evMap, 1));
+        aggrArray.addAll(this.getRandomAggrs(ev, evMap, uBound));
 
       result = aggrArray;
     }

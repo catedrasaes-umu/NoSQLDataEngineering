@@ -1,12 +1,12 @@
 input:
-  model: source/everypolitician_sweden.xmi
+  model: source/stackoverflow.xmi
   debug: true
-  splits: 10
+  splits: 100
 
 entities:
   versions:
-    minInstances: 25000
-    maxInstances: 25000
+    minInstances: 100000
+    maxInstances: 100000
   includeType: true
 
 attributes:
@@ -14,11 +14,6 @@ attributes:
     strangeTypesProbability: 0
     nullProbability: 0
     stringType: word
-    minIntegerAllowed: 0
-    maxIntegerAllowed: 1000000
-    minDoubleAllowed: 3
-    maxDoubleAllowed: 3.0000001
-    doubleDecimalsAllowed: 0
     stringNamesFile: config/names.txt
     stringSurnamesFile: config/surnames.txt
     stringWordsFile: config/words.txt
@@ -30,11 +25,11 @@ attributes:
 
 associations:
   references:
-    minReferenceAllowed: 1
+    minReferenceAllowed: 2
     maxReferenceAllowed: 3
     strangeTypesProbability: 0
   aggregates:
-    minAggregateAllowed: 1
+    minAggregateAllowed: 2
     maxAggregateAllowed: 3
 
 output:

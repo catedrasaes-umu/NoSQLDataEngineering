@@ -33,7 +33,7 @@ public class ReferenceGen
   {
     JsonNode result = null;
 
-    int lBound = ref.getLowerBound() > 0 ? ref.getLowerBound() : Constants.GET_REFERENCE_MIN_ALLOWED();
+    int lBound = ref.getLowerBound() >= 0 ? ref.getLowerBound() : Constants.GET_REFERENCE_MIN_ALLOWED();
     int uBound = ref.getUpperBound() > 0 ? ref.getUpperBound() : Constants.GET_REFERENCE_MAX_ALLOWED();
 
     if (lBound == 1 && uBound == 1)
@@ -41,10 +41,7 @@ public class ReferenceGen
     else
     {
       ArrayNode refArray = jsonFactory.arrayNode();
-
-      // TODO: This might reference the same object several times. It might be a problem.
-      refArray.addAll(this.getRandomRefIds(ref, eIdMap, numGen.getInclusiveRandom(lBound, uBound)));
-
+      refArray.addAll(this.getRandomRefIds(ref, eIdMap, uBound));
       result = refArray;
     }
 
@@ -63,6 +60,7 @@ public class ReferenceGen
     if (!eIdMap.containsKey(ref.getRefTo().getName(), refOriginalType))
       throw new IllegalArgumentException("Reference " + ref.getRefTo().getName() + " with type " + refOriginalType + " not found.");
 
+    // TODO: This might reference the same object several times. It might be a problem.
     for (int i = 0; i < numElements; i++)
       result.add(eIdMap.getRandomElement(ref.getRefTo().getName(), refOriginalType));
 

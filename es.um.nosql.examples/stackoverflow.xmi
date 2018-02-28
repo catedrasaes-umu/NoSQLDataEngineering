@@ -14,7 +14,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="TagBased">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="UserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="UserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -28,14 +28,14 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="Score">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Text">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="UserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="UserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -50,7 +50,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="Score">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -71,14 +71,14 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="Score">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Text">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="UserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="UserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -90,7 +90,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="Score">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -140,11 +140,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -199,7 +199,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -257,8 +257,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -316,7 +316,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -428,7 +428,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -480,11 +480,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -536,7 +536,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -591,8 +591,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -644,7 +644,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -744,7 +744,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -796,11 +796,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -852,7 +852,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -958,11 +958,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -1011,8 +1011,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -1061,7 +1061,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -1155,7 +1155,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -1207,11 +1207,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -1263,7 +1263,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1318,8 +1318,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -1374,7 +1374,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -1480,7 +1480,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -1580,11 +1580,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -1633,7 +1633,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1685,8 +1685,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -1735,7 +1735,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -1784,7 +1784,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -1878,7 +1878,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -1927,11 +1927,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -1980,7 +1980,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -2032,8 +2032,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -2082,7 +2082,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -2134,7 +2134,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -2234,7 +2234,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -2280,11 +2280,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -2330,7 +2330,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -2379,8 +2379,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -2426,7 +2426,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -2514,7 +2514,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -2608,11 +2608,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -2664,7 +2664,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -2719,8 +2719,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -2775,7 +2775,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -2881,7 +2881,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -2930,11 +2930,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -2983,7 +2983,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -3035,8 +3035,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -3085,7 +3085,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -3179,7 +3179,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -3228,11 +3228,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -3281,7 +3281,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -3333,8 +3333,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -3386,7 +3386,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -3486,7 +3486,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -3532,11 +3532,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -3582,7 +3582,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -3631,8 +3631,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -3678,7 +3678,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -3724,7 +3724,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -3812,7 +3812,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -3861,11 +3861,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -3914,7 +3914,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -3966,8 +3966,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -4016,7 +4016,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -4068,7 +4068,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -4168,7 +4168,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -4262,11 +4262,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -4312,7 +4312,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -4361,8 +4361,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -4408,7 +4408,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -4499,7 +4499,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -4587,7 +4587,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -4675,11 +4675,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -4725,7 +4725,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -4774,8 +4774,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -4821,7 +4821,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -4870,7 +4870,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -4964,7 +4964,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -5007,11 +5007,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -5054,7 +5054,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -5100,8 +5100,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -5144,7 +5144,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -5226,11 +5226,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -5273,7 +5273,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -5355,7 +5355,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -5446,11 +5446,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -5502,7 +5502,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -5557,8 +5557,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -5613,7 +5613,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -5719,7 +5719,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -5768,11 +5768,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -5821,7 +5821,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -5873,8 +5873,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -5923,7 +5923,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -6017,7 +6017,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -6066,11 +6066,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -6119,7 +6119,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -6171,8 +6171,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -6269,11 +6269,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -6319,7 +6319,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -6368,8 +6368,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -6415,7 +6415,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -6503,7 +6503,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -6552,11 +6552,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -6605,7 +6605,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -6657,8 +6657,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -6707,7 +6707,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -6759,7 +6759,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -6859,7 +6859,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -6905,11 +6905,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -6955,7 +6955,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -7004,8 +7004,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -7051,7 +7051,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -7097,7 +7097,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -7143,7 +7143,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -7231,7 +7231,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -7319,11 +7319,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -7369,7 +7369,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -7418,8 +7418,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -7468,7 +7468,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -7562,7 +7562,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -7605,11 +7605,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -7652,7 +7652,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -7698,8 +7698,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -7742,7 +7742,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -7785,7 +7785,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -7867,7 +7867,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -7955,11 +7955,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -8008,7 +8008,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -8060,8 +8060,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -8110,7 +8110,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -8162,7 +8162,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -8262,7 +8262,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -8308,11 +8308,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -8358,7 +8358,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -8407,8 +8407,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -8454,7 +8454,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -8545,7 +8545,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -8633,7 +8633,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -8721,11 +8721,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -8771,7 +8771,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -8820,8 +8820,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -8867,7 +8867,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -8961,7 +8961,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -9004,11 +9004,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -9051,7 +9051,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -9097,8 +9097,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -9141,7 +9141,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -9226,7 +9226,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -9308,7 +9308,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -9393,11 +9393,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -9443,7 +9443,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -9492,8 +9492,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -9539,7 +9539,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -9588,7 +9588,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -9682,7 +9682,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -9770,11 +9770,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -9817,7 +9817,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -9863,8 +9863,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -9907,7 +9907,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -9989,11 +9989,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -10036,7 +10036,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -10118,7 +10118,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -10200,11 +10200,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -10247,7 +10247,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -10293,8 +10293,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -10337,7 +10337,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -10383,7 +10383,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -10471,7 +10471,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -10553,11 +10553,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -10597,7 +10597,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -10640,8 +10640,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -10681,7 +10681,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -10757,11 +10757,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -10801,7 +10801,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -10877,7 +10877,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="PostTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -10956,11 +10956,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11000,11 +11000,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11043,7 +11043,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11085,8 +11085,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11125,7 +11125,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11167,7 +11167,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11247,7 +11247,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11321,11 +11321,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11361,7 +11361,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11400,8 +11400,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11437,7 +11437,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11505,11 +11505,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11545,7 +11545,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11613,7 +11613,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11681,11 +11681,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11721,7 +11721,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11760,8 +11760,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11797,7 +11797,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11836,7 +11836,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11910,7 +11910,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11943,11 +11943,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -11980,7 +11980,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -12016,8 +12016,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -12050,7 +12050,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -12118,7 +12118,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -12148,11 +12148,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -12185,7 +12185,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -12247,7 +12247,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="ParentId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -12302,8 +12302,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="UserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="UserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="VoteTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -12321,7 +12321,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="VoteTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -12336,8 +12336,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="UserId" lowerBound="1" upperBound="1" refTo="Users" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="UserId" lowerBound="1" upperBound="1" refTo="Users" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="VoteTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -12352,7 +12352,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="VoteTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -13670,8 +13670,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="LinkTypeId">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="RelatedPostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="RelatedPostId" lowerBound="1" upperBound="1" refTo="Posts" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -13685,8 +13685,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="Count">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="ExcerptPostId" lowerBound="1" upperBound="1" opposite="//@entities.2/@entityversions.0/@properties.16" refTo="Posts" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="WikiPostId" lowerBound="1" upperBound="1" opposite="//@entities.2/@entityversions.0/@properties.16" refTo="Posts" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="ExcerptPostId" lowerBound="1" upperBound="1" opposite="//@entities.2/@entityversions.0/@properties.16" refTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="WikiPostId" lowerBound="1" upperBound="1" opposite="//@entities.2/@entityversions.0/@properties.16" refTo="Posts" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>

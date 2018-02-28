@@ -68,6 +68,8 @@ public class OutputGen
     {
       e.printStackTrace();
     }
+
+    client.close();
   }
 
   private void genToFile(ArrayNode arrayNode, String collName)
