@@ -12,10 +12,16 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="issn">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+        <type xsi:type="NoSQLSchema:Tuple">
+          <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+          <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+        </type>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="number">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </entityversions>
     <entityversions versionId="2" root="true">
@@ -23,9 +29,6 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="discipline">
@@ -45,20 +48,17 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_type">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="date">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="discipline">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="issn">
-        <type xsi:type="NoSQLSchema:Tuple">
-          <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-          <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="number">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </entityversions>
   </entities>
@@ -95,12 +95,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_type">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="journals">
-        <type xsi:type="NoSQLSchema:Tuple">
-          <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-          <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="journals" upperBound="-1" refTo="Journal" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>

@@ -13,7 +13,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="genre">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="-1" refTo="//@entities.3/@entityversions.0 //@entities.3/@entityversions.1"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="-1" refTo="//@entities.3/@entityversions.0"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="title">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -50,7 +50,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="genre">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="-1" refTo="//@entities.3/@entityversions.1"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="-1" refTo="//@entities.3/@entityversions.0"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="title">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -116,7 +116,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="genre">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="-1" refTo="//@entities.3/@entityversions.2"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="-1" refTo="//@entities.3/@entityversions.1 //@entities.3/@entityversions.2"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="title">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -222,7 +222,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="event">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+      <properties xsi:type="NoSQLSchema:Attribute" name="names">
         <type xsi:type="NoSQLSchema:Tuple">
           <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
           <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -237,7 +237,10 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+        <type xsi:type="NoSQLSchema:Tuple">
+          <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+          <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+        </type>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="year">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -247,11 +250,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="event">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="names">
-        <type xsi:type="NoSQLSchema:Tuple">
-          <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-          <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
+      <properties xsi:type="NoSQLSchema:Attribute" name="name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="year">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>

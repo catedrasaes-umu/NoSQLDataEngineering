@@ -20,8 +20,8 @@ import es.um.nosql.streaminginference.json2dbschema.process.util.ReferenceMatche
 import es.um.nosql.streaminginference.json2dbschema.util.inflector.Inflector
 
 
-class CrossReferenceMatcher {
-  
+class CrossReferenceMatcher 
+{
   private val inflector:Inflector = Inflector.getInstance
   private val factory = NoSQLSchemaPackage.eINSTANCE.getNoSQLSchemaFactory
   private type PairEntity = Pair[String, Entity]
@@ -55,8 +55,8 @@ class CrossReferenceMatcher {
     }
   }
   
-  private def generateCandidateReferencePair(attribute: Attribute, entity: Entity): (Attribute, Reference) = {
-    
+  private def generateCandidateReferencePair(attribute: Attribute, entity: Entity): (Attribute, Reference) = 
+  {  
     val reference = factory.createReference
     val attType = attribute.getType
     reference.setRefTo(entity)
@@ -78,11 +78,11 @@ class CrossReferenceMatcher {
       reference.setUpperBound(-1)
       reference.setOriginalType(pType)
     }
-            (attribute, reference)
+    (attribute, reference)
   }
   
-  private def updateVersionReferences(version: EntityVersion, matcher: ReferenceMatcher[Entity]): Unit = {
-    
+  private def updateVersionReferences(version: EntityVersion, matcher: ReferenceMatcher[Entity]): Unit =
+  {  
     // Filter Attributes from properties
     val attributes = 
       version
@@ -121,8 +121,8 @@ class CrossReferenceMatcher {
     }
   }
   
-  private def updatePossibleReferences(schema: NoSQLSchema, matcher: ReferenceMatcher[Entity]):Unit = {
-    
+  private def updatePossibleReferences(schema: NoSQLSchema, matcher: ReferenceMatcher[Entity]):Unit = 
+  {  
     schema
       .getEntities
       .foreach(entity => 
@@ -132,8 +132,8 @@ class CrossReferenceMatcher {
               updateVersionReferences(_, matcher)))
   }
   
-  def setCrossReferences(currentState: NoSQLSchema, currentSchema:NoSQLSchema): Unit = {
-    
+  def setCrossReferences(currentState: NoSQLSchema, currentSchema:NoSQLSchema): Unit = 
+  {  
     val firstMatcher = new ReferenceMatcher(buildStream(currentState.getEntities))
     val secondMatcher = new ReferenceMatcher(buildStream(currentSchema.getEntities))
     // Cross reference update of state against schema

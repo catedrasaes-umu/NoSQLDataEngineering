@@ -9,9 +9,11 @@ import org.apache.spark.streaming.StreamingContext
 import org.apache.spark.streaming.dstream.DStream
 
 
-object CustomDSFactory {
+object CustomDSFactory
+{
     
-  private def createFileDS(ssc: StreamingContext, inputDir:String): DStream[(String, String)] = {
+  private def createFileDS(ssc: StreamingContext, inputDir:String): DStream[(String, String)] =
+  {
     ssc
       // Based on: https://halfvim.github.io/2016/06/28/FileInputDStream-in-Spark-Streaming/
       .fileStream[Text, Text, WholeTextInputFormat](inputDir)
@@ -19,7 +21,8 @@ object CustomDSFactory {
               (Paths.get(filePath.toString).getFileName.toString.split("\\_")(0), content.toString) }
   }
   
-  private def createMongoDS(ssc: StreamingContext, host:String, port: Int, database: String): DStream[(String, String)] = {
+  private def createMongoDS(ssc: StreamingContext, host:String, port: Int, database: String): DStream[(String, String)] = 
+  {
     ssc
       .receiverStream(new MongoReceiver(host, port, database))
       .groupByKey()
@@ -32,7 +35,8 @@ object CustomDSFactory {
       }
   }
   
-  def create(ssc: StreamingContext, options: HashMap[String, String]) = {
+  def create(ssc: StreamingContext, options: HashMap[String, String]) =
+  {
     options("mode") match {
       case "mongo" => createMongoDS(ssc, options("host"), options("port").toInt, options("database"))
       case "file" => createFileDS(ssc, options("input"))

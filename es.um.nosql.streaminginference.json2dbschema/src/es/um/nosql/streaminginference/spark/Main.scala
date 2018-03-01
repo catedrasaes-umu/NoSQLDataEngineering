@@ -18,12 +18,12 @@ import es.um.nosql.streaminginference.spark.utils.IO
 
 
 
-object Main {
-  
+object Main
+{  
   val CheckpointDir = "checkpoint"
 
-  val updateExistingSchema = (schemaName: String, schema: Option[NoSQLSchema], state: State[NoSQLSchema]) => {
-      
+  val updateExistingSchema = (schemaName: String, schema: Option[NoSQLSchema], state: State[NoSQLSchema]) =>
+  {    
     val curState:NoSQLSchema = state.getOption().getOrElse(null)
     val curSchema:NoSQLSchema = schema.getOrElse(null)    
     val matcher:CrossReferenceMatcher = new CrossReferenceMatcher()
@@ -54,8 +54,8 @@ object Main {
     println("--port: (mongo only) sets port to connect") 
   }
   
-  def parseOptions(args: Array[String]): HashMap[String, String] = {
-    
+  def parseOptions(args: Array[String]): HashMap[String, String] = 
+  {  
     var options:HashMap[String, String] = HashMap()
     args
       .zipWithIndex
@@ -69,8 +69,8 @@ object Main {
   }
   
     
-  def createContext(args: Array[String])(): StreamingContext = {
-
+  def createContext(args: Array[String])(): StreamingContext =
+  {
     val conf = new SparkConf().setMaster("local[*]").setAppName("StreamingInference")
     val ssc = new StreamingContext(conf, Seconds(15))
     val options = parseOptions(args)
@@ -92,7 +92,6 @@ object Main {
 
     ssc.checkpoint(CheckpointDir)
     ssc
-    
   }
   
   def clean(directories: String*) = {
