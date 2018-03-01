@@ -14,9 +14,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.pde.core.requiredPlugins"/>
-	<classpathentry kind="lib" path="/home/pablo/.p2/pool/plugins/org.eclipse.emf.ecore.xmi_2.13.0.v20170609-0707.jar"/>
-	<classpathentry kind="lib" path="/home/pablo/.p2/pool/plugins/org.eclipse.emf.ecore_2.13.0.v20170609-0707.jar"/>
-	<classpathentry kind="lib" path="/home/pablo/.p2/pool/plugins/org.eclipse.emf.common_2.13.0.v20170609-0707.jar"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.junit.JUNIT_CONTAINER/4"/>
 	<classpathentry kind="con" path="org.scala-ide.sdt.launching.SCALA_COMPILER_CONTAINER"/>
 	<classpathentry combineaccessrules="false" kind="src" path="/es.um.nosql.streaminginference"/>
