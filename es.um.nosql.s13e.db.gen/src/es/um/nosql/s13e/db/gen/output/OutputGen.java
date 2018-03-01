@@ -11,6 +11,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.ObjectWriter;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
+import es.um.nosql.s13e.db.adapters.couchdb.CouchDbAdapter;
+import es.um.nosql.s13e.db.adapters.couchdb.CouchDbClient;
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbAdapter;
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbClient;
 import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;

@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.db.gen.generator;
+package es.um.nosql.s13e.db.gen.generator.properties;
 
 import org.bson.types.ObjectId;
 

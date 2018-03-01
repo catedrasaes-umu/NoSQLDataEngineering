@@ -37,6 +37,7 @@ public class CouchDbClient extends StdCouchDbInstance implements DbClient
 				for (JsonNode item : jsonItems)
 				{
 				  normalizeId(item);
+				  normalizeType(item);
 					itemList.add(item);
 				}
 
@@ -93,6 +94,7 @@ public class CouchDbClient extends StdCouchDbInstance implements DbClient
 	@Override
 	public boolean shutdown()
 	{
+	  getConnection().shutdown();
 		return true;
 	}
 
@@ -114,8 +116,14 @@ public class CouchDbClient extends StdCouchDbInstance implements DbClient
     }
 	}
 
+	private void normalizeType(JsonNode element)
+	{
+	  normalizeType(element, element.get("_type").asText());	  
+	}
+
 	private void normalizeType(JsonNode element, String collectionName)
 	{
 	  ((ObjectNode)element).put("type", collectionName);
+	  ((ObjectNode)element).remove("_type");
 	}
 }

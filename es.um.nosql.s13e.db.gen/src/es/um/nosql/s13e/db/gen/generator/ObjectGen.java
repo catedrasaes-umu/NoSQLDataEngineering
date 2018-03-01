@@ -19,6 +19,10 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.Tuple;
+import es.um.nosql.s13e.db.gen.generator.properties.AggregateGen;
+import es.um.nosql.s13e.db.gen.generator.properties.PrimitiveTypeGen;
+import es.um.nosql.s13e.db.gen.generator.properties.ReferenceGen;
+import es.um.nosql.s13e.db.gen.generator.properties.TupleGen;
 import es.um.nosql.s13e.db.gen.utils.EntityIdMap;
 import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
