@@ -5,8 +5,8 @@ input:
 
 entities:
   versions:
-    minInstances: 100000
-    maxInstances: 100000
+    minInstances: 25000
+    maxInstances: 25000
   includeType: true
 
 attributes:
@@ -33,7 +33,7 @@ associations:
     maxAggregateAllowed: 3
 
 output:
-  database: localhost
-
+  folder: output
+ 
 # Generate images?
 # Introduce a timeout between operations and between insertions in database
