@@ -19,8 +19,8 @@ import es.um.nosql.streaminginference.NoSQLSchema.Reference
 import es.um.nosql.streaminginference.NoSQLSchema.Tuple
 import es.um.nosql.streaminginference.NoSQLSchema.Type
 
-object EcoreHelper {
-  
+object EcoreHelper 
+{  
   def isEqual(r1: Reference, r2: Reference): Boolean = 
     r1.getName == r2.getName && 
     r1.getLowerBound == r2.getLowerBound &&
@@ -30,7 +30,8 @@ object EcoreHelper {
   def isEqual(a1: Aggregate, a2: Aggregate): Boolean =
     a1.getName == a2.getName &&
     a1.getLowerBound == a2.getLowerBound &&
-    a1.getUpperBound == a2.getUpperBound && {
+    a1.getUpperBound == a2.getUpperBound && 
+    {
       val homogeneous1 = a1.getRefTo.forall(isEqual(_, a1.getRefTo.head))
       val homogeneous2 = a2.getRefTo.forall(isEqual(_, a2.getRefTo.head))
       homogeneous1 && 
@@ -49,8 +50,8 @@ object EcoreHelper {
   
   def isEqual(p1: PrimitiveType, p2: PrimitiveType): Boolean = p1.getName == p2.getName
   
-  def isEqual(t1: Tuple, t2: Tuple): Boolean = {
-    
+  def isEqual(t1: Tuple, t2: Tuple): Boolean = 
+  { 
     val homogeneous1 = t1.getElements.forall(element => isEqual(element, t1.getElements.head))
     val homogeneous2 = t2.getElements.forall(isEqual(_, t2.getElements.head))
     homogeneous1 && 
@@ -89,22 +90,23 @@ object EcoreHelper {
       entity1.getEntityversions.forall(ev1 => entity2.getEntityversions.exists(ev2 => isEqual(ev1, ev2))))
   
   
-  def merge(entity1: Entity, entity2: Entity): Entity = {
-        
+  def merge(entity1: Entity, entity2: Entity): Entity = 
+  {      
     val versions1 = entity1.getEntityversions
     val versions2 = entity2.getEntityversions
     val appendVersions = versions2.filter(version => !versions1.exists(other => isEqual(version, other)))
     val currentVersion = versions1.size + 1
-    appendVersions.zipWithIndex.foreach{ case (ev, index) => ev.setVersionId(currentVersion + index) }
+    appendVersions.zipWithIndex.foreach { case (ev, index) => ev.setVersionId(currentVersion + index) }
     versions1.addAll(seqAsJavaList(appendVersions))
     entity1
   }
   
-  def merge(entities1: EList[Entity], entities2: EList[Entity]): EList[Entity] = {
-    
+  def merge(entities1: EList[Entity], entities2: EList[Entity]): EList[Entity] = 
+  {
     val appendEntities = entities2.filter(first => entities1.forall(second => second.getName != first.getName))
     val sameEntities = entities2.diff(appendEntities)
-    val mergedEntities = entities1.map(entity => {
+    val mergedEntities = entities1.map(entity => 
+    {
       val coincidence = sameEntities.find(other => entity.getName == other.getName)
       if (coincidence.isEmpty || isEqual(entity, coincidence.get)) entity 
       else merge(entity, coincidence.get)
@@ -118,19 +120,21 @@ object EcoreHelper {
   /**
    * Merges two schemas
    */
-  def merge(schema1: NoSQLSchema, schema2: NoSQLSchema): NoSQLSchema = (schema1, schema2) match {
-      case (null, null) => null
-      case (null, schema2) => schema2
-      case (schema1, null) => schema1
-      case _ => {
+  def merge(schema1: Option[NoSQLSchema], schema2: Option[NoSQLSchema]): Option[NoSQLSchema] = 
+    (schema1, schema2) match 
+  {
+      case (None, None) => None
+      case (None, schema2) => schema2
+      case (schema1, None) => schema1
+      case (Some(schema1), Some(schema2)) => 
+      {
         val packageInstance: NoSQLSchemaPackage = NoSQLSchemaPackage.eINSTANCE
         val newSchema = packageInstance.getNoSQLSchemaFactory.createNoSQLSchema
         val mergedEntities = merge(schema1.getEntities(), schema2.getEntities())
         val name = if (!schema1.getName.isEmpty) schema1.getName else schema2.getName
         newSchema.setName(name)
         newSchema.getEntities.addAll(mergedEntities)
-        newSchema
+        Option(newSchema)
       }
   }
-  
 }

@@ -15,6 +15,8 @@ import es.um.nosql.streaminginference.spark.input.CustomDSFactory
 import es.um.nosql.streaminginference.spark.utils.CrossReferenceMatcher
 import es.um.nosql.streaminginference.spark.utils.EcoreHelper
 import es.um.nosql.streaminginference.spark.utils.IO
+import java.nio.file.Paths
+import org.apache.spark.rdd.RDD
 
 
 
@@ -24,28 +26,28 @@ object Main
 
   val updateExistingSchema = (schemaName: String, schema: Option[NoSQLSchema], state: State[NoSQLSchema]) =>
   {    
-    val curState:NoSQLSchema = state.getOption().getOrElse(null)
-    val curSchema:NoSQLSchema = schema.getOrElse(null)    
     val matcher:CrossReferenceMatcher = new CrossReferenceMatcher()
-    if (curState != null && curSchema != null) {
-      // Match references between state and schema before merging
-      // to avoid the creation of unnecesary versions
-      matcher.setCrossReferences(curState, curSchema)
-    }
-    val acc:NoSQLSchema = EcoreHelper.merge(curState, curSchema)
-    state.update(acc)
+    // Match references between state and schema before merging
+    // to avoid the creation of unnecesary versions
+    matcher.setCrossReferences(state.getOption(), schema)
+    val acc = EcoreHelper.merge(state.getOption(), schema)
+    if (acc.isDefined)
+      state.update(acc.get)
     (schemaName, acc)
   }
   
-  def printHelp() {
+  def printHelp() 
+  {
     
     println("Usage:")
-    println("\t --mode mongo --database [databasename] --host [hostname] --port [portnumber] --output [outputDir]")
-    println("\t --mode file --input [inputDir] --output [outputDir]")
+    println("\t --mode mongo --database [databasename] --host [hostname] --port [portnumber] --output [outputDir] --load [xmi file]")
+    println("\t --mode file --input [inputDir] --output [outputDir] --load [xmi file]")
     println("-------")
     println("--mode: mongo|file -> Sets how spark will read input streams")
     println("\t mongo -> Read data through mongo change streams")
     println("\t file -> Read data through hdfs files")
+    println("-------")
+    println("--load: (optional) -> Specifies comma separated list of xmi models to load as initial state [file name must match database name]")
     println("-------")
     println("--database: (mongo only) sets database to watch")
     println("--host: (mongo only) sets host to connect")
@@ -59,13 +61,15 @@ object Main
     var options:HashMap[String, String] = HashMap()
     args
       .zipWithIndex
-      .foreach { 
-      case (arg, index) => {
-        if (arg.startsWith("--") && args.size > index + 1)
-          options += arg.substring(2) -> args(index+1) 
+      .foreach 
+      { 
+        case (arg, index) => 
+        {
+          if (arg.startsWith("--") && args.size > index + 1)
+            options += arg.substring(2) -> args(index+1) 
+        }
       }
-    }
-    options
+      options
   }
   
     
@@ -76,16 +80,34 @@ object Main
     val options = parseOptions(args)
     val outputDir = options("output")
     val inputDS = CustomDSFactory.create(ssc, options)
+    
+    var initialRDD:RDD[(String, NoSQLSchema)] = ssc.sparkContext.emptyRDD
+    if (options.contains("load")) 
+    {
+      // Set xmi file as initial state
+      val path = options("load")
+      val schema = IO.fromXMIFile(path)
+      val name = Paths.get(path).getFileName.toString.split("\\.")(0)      
+      initialRDD = ssc.sparkContext.parallelize(List((name, schema))) 
+    }
+    
+    val stateSpec = StateSpec.function(updateExistingSchema)
+                             .initialState(initialRDD)
+    
     inputDS
-      .map { case (schemaName, content) => 
-              (schemaName, IO.fromJSONString(schemaName, content)) }
-      .mapWithState(StateSpec.function(updateExistingSchema))
+      .map 
+      { 
+        case (schemaName, content) => 
+              (schemaName, IO.fromJSONString(schemaName, content)) 
+      }
+      .mapWithState(stateSpec)
       // Output XMI schema
       .foreachRDD(rdd => 
         rdd
           .collect()
-          .map {
-            case (schemaName, schema) => 
+          .map 
+          {
+            case (schemaName, Some(schema)) => 
               IO.toXMI(schema, outputDir + "/" + schemaName + ".xmi")
           }
       )
@@ -94,31 +116,36 @@ object Main
     ssc
   }
   
-  def clean(directories: String*) = {
+  def clean(directories: String*) = 
+  {
     
-    def recursiveClean(file: File): Unit = {
+    def recursiveClean(file: File): Unit = 
+    {
       if (file.isDirectory) 
         file.listFiles().foreach(recursiveClean(_))
       file.delete
     }
     
-    directories.foreach(directory => {
+    directories.foreach(directory => 
+    {
       val folder:File = new File(directory)
       if (folder.isDirectory)
         folder.listFiles.foreach(recursiveClean(_))
     })
   }
   
-  def main(args: Array[String]) = {
-    
-    try {
-      
+  def main(args: Array[String]) = 
+  {
+    try 
+    {
       clean(CheckpointDir)
       val context = StreamingContext.getOrCreate(CheckpointDir, createContext(args))
       context.start()             // Start the computation
       context.awaitTermination()  // Wait for the computation to terminate
     
-    } catch {
+    } 
+    catch 
+    {
       case e: Exception => printHelp
     }
 

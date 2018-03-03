@@ -26,8 +26,8 @@ class CrossReferenceMatcher
   private val factory = NoSQLSchemaPackage.eINSTANCE.getNoSQLSchemaFactory
   private type PairEntity = Pair[String, Entity]
   
-  private def buildStream(input: EList[Entity]): Stream[PairEntity] = {
-    
+  private def buildStream(input: EList[Entity]): Stream[PairEntity] = 
+  {
     val collection = 
       input
       .filter(entity => entity.getEntityversions.exists(version => version.isRoot))
@@ -42,9 +42,11 @@ class CrossReferenceMatcher
     seqAsJavaList(collection).stream()
   }
     
-  private def isHomogeneous(tuple: Tuple): Boolean = {
+  private def isHomogeneous(tuple: Tuple): Boolean = 
+  {
     val elements = tuple.getElements
-    elements.size match {
+    elements.size match 
+    {
       case 0 => true
       // Nested tuples won't be homogeneous
       case 1 => !elements.get(0).isInstanceOf[Tuple] 
@@ -61,12 +63,15 @@ class CrossReferenceMatcher
     val attType = attribute.getType
     reference.setRefTo(entity)
     reference.setName(attribute.getName)
-    if (attType.isInstanceOf[PrimitiveType]) {
+    if (attType.isInstanceOf[PrimitiveType]) 
+    {
       val primitive = attType.asInstanceOf[PrimitiveType]
       reference.setLowerBound(1)
       reference.setUpperBound(1)
       reference.setOriginalType(primitive.getName)
-    } else { // Tuple
+    } 
+    else 
+    { // Tuple
       val tuple = attType.asInstanceOf[Tuple]
       val elements = tuple.getElements
       val pType = 
@@ -96,25 +101,30 @@ class CrossReferenceMatcher
     val candidatesWithEntities = 
       attributes
         .zip(entitiesReferenced)
-        .filter { case (attribute, entity) => entity.isPresent()}
+        .filter { case (attribute, entity) => entity.isPresent() }
         // Non homogeneous tuples are filtered
-        .filter { case (attribute, pair) => 
-            !attribute.getType.isInstanceOf[Tuple] || 
+        .filter 
+         { 
+           case (attribute, pair) => 
+             !attribute.getType.isInstanceOf[Tuple] || 
              isHomogeneous(attribute.getType.asInstanceOf[Tuple])
-        }
+         }
     
     // Get attributes paired with their references
     val candidatesWithReferences = 
       candidatesWithEntities
-        .map { 
+        .map 
+        { 
           case (attribute, entity) => 
             generateCandidateReferencePair(attribute,entity.get)
         }
     
     val properties = version.getProperties
     // Finally remove attributes from version and insert references instead    
-    candidatesWithReferences.foreach {
-      case (attribute, reference) => {
+    candidatesWithReferences.foreach 
+    {
+      case (attribute, reference) => 
+      {
         val position = properties.indexOf(attribute)
         properties.set(position, reference)
       }
@@ -132,14 +142,20 @@ class CrossReferenceMatcher
               updateVersionReferences(_, matcher)))
   }
   
-  def setCrossReferences(currentState: NoSQLSchema, currentSchema:NoSQLSchema): Unit = 
-  {  
-    val firstMatcher = new ReferenceMatcher(buildStream(currentState.getEntities))
-    val secondMatcher = new ReferenceMatcher(buildStream(currentSchema.getEntities))
-    // Cross reference update of state against schema
-    updatePossibleReferences(currentState, secondMatcher)
-    // Cross reference update of schema against state
-    updatePossibleReferences(currentSchema, firstMatcher)
-    
+  def setCrossReferences(currentState: Option[NoSQLSchema], currentSchema:Option[NoSQLSchema]): Unit = 
+  {
+    currentState.map(state =>
+      currentSchema.map(schema =>
+        {
+          val firstMatcher = new ReferenceMatcher(buildStream(state.getEntities))
+          val secondMatcher = new ReferenceMatcher(buildStream(schema.getEntities))
+          // Cross reference update of state against schema
+          updatePossibleReferences(state, secondMatcher)
+          // Cross reference update of schema against state
+          updatePossibleReferences(schema, firstMatcher)
+          
+        }
+      )
+    ) 
   }
 }

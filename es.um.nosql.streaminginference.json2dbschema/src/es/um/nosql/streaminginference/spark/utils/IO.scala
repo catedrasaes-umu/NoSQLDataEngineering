@@ -18,9 +18,10 @@ import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.IAJAdapter
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.impl.jackson.JacksonAdapter
 import es.um.nosql.streaminginference.util.emf.ResourceManager
 
-object IO {
-  
-  def fromJSONString(schemaName: String, jsonString: String): NoSQLSchema = {
+object IO 
+{
+  def fromJSONString(schemaName: String, jsonString: String): NoSQLSchema = 
+  {
     
     val packageInstance: NoSQLSchemaPackage = NoSQLSchemaPackage.eINSTANCE
     val json2schema = new JSON2Schema[JsonNode, IAJAdapter[JsonNode]](packageInstance.getNoSQLSchemaFactory, new JacksonAdapter)
@@ -28,9 +29,20 @@ object IO {
 		schema
 	}
   
+  def fromXMIFile(inputFile: String): NoSQLSchema =
+	{
+		val packageInstance: NoSQLSchemaPackage = NoSQLSchemaPackage.eINSTANCE
+		val resource:Resource = new ResourceManager(packageInstance)
+                                  .getResourceSet()
+                                  // Second argument = true forces loading of the model
+                                  .getResource(URI.createFileURI(inputFile), true)
+    val schema: NoSQLSchema = resource.getContents.get(0).asInstanceOf[NoSQLSchema]
+    schema
+  }
   
-  def toXMI(schema: NoSQLSchema, filePath: String) = {
-
+  
+  def toXMI(schema: NoSQLSchema, filePath: String) = 
+  {
     val packageInstance: NoSQLSchemaPackage = NoSQLSchemaPackage.eINSTANCE 
     // Create a new resource to serialize the ecore model
     val outputRes:Resource = new ResourceManager(packageInstance)
