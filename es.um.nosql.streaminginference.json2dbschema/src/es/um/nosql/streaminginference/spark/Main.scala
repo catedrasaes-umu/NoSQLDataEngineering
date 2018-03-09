@@ -38,22 +38,25 @@ object Main
   
   def printHelp() 
   {
-    
     println("Usage:")
-    println("\t --mode mongo --database [databasename] --host [hostname] --port [portnumber] --output [outputDir] --load [xmi file]")
+    println("\t --mode mongo --database [databasename] --host [hostname] --port [portnumber] --output [outputDir] --load [xmi file] --user [username] --password [password]")
+    println("\t --mode couch --host [hostname] --port [portnumber] --output [outputDir] --load [xmi file] --user [username] --password [password]")
     println("\t --mode file --input [inputDir] --output [outputDir] --load [xmi file]")
     println("-------")
     println("--mode: mongo|file -> Sets how spark will read input streams")
     println("\t mongo -> Read data through mongo change streams")
+    println("\t mongo -> Read data through couchdb change notifications")
     println("\t file -> Read data through hdfs files")
     println("-------")
     println("--load: (optional) -> Specifies comma separated list of xmi models to load as initial state [file name must match database name]")
     println("-------")
     println("--database: (mongo only) sets database to watch")
-    println("--host: (mongo only) sets host to connect")
+    println("--host: (mongo,couchdb only) sets host to connect")
     println("--input: (file only) sets input directory to watch")
     println("--output: sets output directory to write results")
-    println("--port: (mongo only) sets port to connect") 
+    println("--port: (mongo,couchdb only) sets port to connect") 
+    println("--user: (mongo,couchdb only, optional) sets database username") 
+    println("--password: (mongo,couchdb only, optional) sets database password") 
   }
   
   def parseOptions(args: Array[String]): HashMap[String, String] = 
@@ -109,6 +112,7 @@ object Main
           {
             case (schemaName, Some(schema)) => 
               IO.toXMI(schema, outputDir + "/" + schemaName + ".xmi")
+            case (_, None) => 
           }
       )
 
@@ -146,14 +150,12 @@ object Main
     } 
     catch 
     {
-      case e: Exception => printHelp
+      case e: Exception => 
+      {
+        printHelp
+        e.printStackTrace
+      }
     }
-
-//        BuildNoSQLSchema.main(Array("books.json", "out/books.xmi"))
-//        val source = scala.io.Source.fromFile("books.json")
-//        val lines = try source.mkString finally source.close()
-//        IO.toXMI(IO.fromJSONString("books", lines), "out/books.xmi")
-    
   }
   
 }

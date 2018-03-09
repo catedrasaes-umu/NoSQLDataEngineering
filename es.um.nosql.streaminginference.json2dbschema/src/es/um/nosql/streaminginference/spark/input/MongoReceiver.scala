@@ -13,13 +13,15 @@ import org.mongodb.scala.bson.collection.immutable.Document
 import org.mongodb.scala.documentToUntypedDocument
 import org.mongodb.scala.model.Aggregates
 import org.mongodb.scala.model.Filters
+import com.mongodb.MongoCredential._
 
 import com.mongodb.client.model.changestream.ChangeStreamDocument
 import com.mongodb.client.model.changestream.FullDocument
 
 import es.um.nosql.streaminginference.json2dbschema.util.inflector.Inflector
+import com.mongodb.MongoCredential
 
-class MongoReceiver (host: String, port: Int, database: String)
+class MongoReceiver (host: String, port: Int, database: String, username: Option[String] = None, password: Option[String] = None)
   extends Receiver[(String, String)](StorageLevel.MEMORY_AND_DISK_2) with Logging 
 {
   def onStart() 
@@ -121,7 +123,13 @@ class MongoReceiver (host: String, port: Int, database: String)
  
     try 
     {
-      val mongoClient: MongoClient = MongoClient("mongodb://"+host+":"+port)
+      var connectionStr = host+":"+port
+      if (username.isDefined && password.isDefined)
+      {
+        connectionStr = username.get + ":" + password.get + "@" + connectionStr
+      }
+      val mongoClient: MongoClient = MongoClient("mongodb://"+connectionStr)
+      
       val db:MongoDatabase = mongoClient.getDatabase(database)
       // Periodically check collections from database to see if a new collection is added or deleted
       def checkCollections() 
