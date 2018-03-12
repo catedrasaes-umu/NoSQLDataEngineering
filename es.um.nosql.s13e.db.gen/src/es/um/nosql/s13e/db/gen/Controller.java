@@ -39,13 +39,13 @@ public class Controller
       for (int i = 0; i < ConfigConstants.GET_SPLITS(); i++)
       {
         DebugLog.PRINTOUT("Iteration " + (i+1) + "/" + ConfigConstants.GET_SPLITS() + " @ " + ((System.currentTimeMillis() - startTime)/1000) + " seconds...");
-        outputModule.genOutput(oGen.generate(schema, objectsIteration));
+        outputModule.genOutput(oGen.generateBulk(schema, objectsIteration));
       }
 
     if (floor != 0)
     {
       DebugLog.PRINTOUT("Floor iteration @ " + ((System.currentTimeMillis() - startTime)/1000) + " seconds...");
-      outputModule.genOutput(oGen.generate(schema, floor));
+      outputModule.genOutput(oGen.generateBulk(schema, floor));
     }
 
     DebugLog.PRINTOUT("Elapsed time: " + ((System.currentTimeMillis() - startTime)/1000) + " seconds");

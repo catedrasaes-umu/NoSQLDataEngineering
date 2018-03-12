@@ -5,7 +5,10 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.stream.Stream;
+import java.util.stream.StreamSupport;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -47,7 +50,23 @@ public class ObjectGen
     evMap = new HashMap<EntityVersion, List<ObjectNode>>();
   }
 
-  public Map<String, ArrayNode> generate(NoSQLSchema schema, int objectsVersion)
+  public Map<String, ArrayNode> generateBulk(NoSQLSchema schema, int objectsVersion)
+  {
+    return generate(schema, objectsVersion);
+  }
+
+  public Map<String, Stream<JsonNode>> generateStream(NoSQLSchema schema, int objectsVersion)
+  {
+    Map<String, Stream<JsonNode>> result = new HashMap<String, Stream<JsonNode>>();
+    Map<String, ArrayNode> generatedResult = generate(schema, objectsVersion);
+
+    for (String key : generatedResult.keySet())
+      result.put(key, StreamSupport.stream(generatedResult.get(key).spliterator(), false));
+
+    return result;
+  }
+
+  private Map<String, ArrayNode> generate(NoSQLSchema schema, int objectsVersion)
   {
     Map<String, ArrayNode> result = new HashMap<String, ArrayNode>();
 
