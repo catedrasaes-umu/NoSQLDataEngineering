@@ -124,7 +124,7 @@ public class ObjectGen
 
     eIdMap.add(entity.getName(), oNode.get("_id"));
 
-    if (ConfigConstants.GET_ENTITY_INCLUDE_TYPE())
+    if (ConfigConstants.GET_INCLUDE_TYPE())
       oNode.put("_type", entity.getName());
   }
 

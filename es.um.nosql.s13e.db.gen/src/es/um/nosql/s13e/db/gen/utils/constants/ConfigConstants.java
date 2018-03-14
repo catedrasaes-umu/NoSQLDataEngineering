@@ -38,6 +38,8 @@ public final class ConfigConstants
   private static final int REFERENCES_MIN_ALLOWED                                   = 2;
   private static final int REFERENCES_MAX_ALLOWED                                   = 3;
   private static final int REFERENCES_STRANGE_TYPES_PROBABILITY                     = 0;
+  private static final String ENTITIES_DATEFORMAT                                   = "dd/MM/yyyy";
+  private static final String ENTITIES_TIMESTAMP                                    = "17/06/1988";
   private static final boolean ENTITIES_INCLUDE_TYPE                                = false;
   private static final boolean OUTPUT_FOLDER                                        = false;
   private static final boolean OUTPUT_CONSOLE                                       = false;
@@ -67,12 +69,28 @@ public final class ConfigConstants
       return EVERSIONS_MAX_INSTANCES;
   }
 
-  public static boolean GET_ENTITY_INCLUDE_TYPE()
+  public static boolean GET_INCLUDE_TYPE()
   {
     if (options.getEntities() != null && options.getEntities().getIncludeType() != null)
       return options.getEntities().getIncludeType();
     else
       return ENTITIES_INCLUDE_TYPE;
+  }
+
+  public static String GET_DATEFORMAT()
+  {
+    if (options.getEntities() != null && options.getEntities().getDateFormat() != null)
+      return options.getEntities().getDateFormat();
+    else
+      return ENTITIES_DATEFORMAT;
+  }
+
+  public static String GET_INITIAL_TIMESTAMP()
+  {
+    if (options.getEntities() != null && options.getEntities().getTimestamp() != null)
+      return options.getEntities().getTimestamp();
+    else
+      return ENTITIES_TIMESTAMP;
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -350,7 +368,9 @@ public final class ConfigConstants
     result.append("\n===== ENTITY OPTIONS =====\n\n");
     result.append("GET_MIN_INSTANCES: " + ConfigConstants.GET_MIN_INSTANCES() + "\n");
     result.append("GET_MAX_INSTANCES: " + ConfigConstants.GET_MAX_INSTANCES() + "\n");
-    result.append("GET_ENTITY_INCLUDE_TYPE: " + ConfigConstants.GET_ENTITY_INCLUDE_TYPE() + "\n");
+    result.append("GET_ENTITY_INCLUDE_TYPE: " + ConfigConstants.GET_INCLUDE_TYPE() + "\n");
+    result.append("GET_DATEFORMAT: " + ConfigConstants.GET_DATEFORMAT() + "\n");
+    result.append("GET_INITIAL_TIMESTAMP: " + ConfigConstants.GET_INITIAL_TIMESTAMP() + "\n");
 
     result.append("\n===== PRIMITIVE TYPES OPTIONS =====\n\n");
     result.append("GET_PRIMITIVE_TYPES_NAMES_FILE: " + ConfigConstants.GET_PRIMITIVE_TYPES_NAMES_FILE() + "\n");
