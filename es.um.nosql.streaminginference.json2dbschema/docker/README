@@ -13,3 +13,13 @@ Steps:
 ---- Delete data
 hdfs dfs -rm input/*
 hdfs dfs -rm output/*
+
+Mongo mode:
+----------
+1. Run locally start.sh
+** Logged into container **
+2. su - hadoop
+4. hdfs dfs -mkdir -p output
+5. spark-submit --master yarn --deploy-mode cluster /deployments/es.um.nosql.streaminginference.json2dbschema-0.0.1-SNAPSHOT-jar-with-dependencies.jar --mode mongo --database test --host mongo --port 27017 --output output
+6. Make changes in mongo container: docker exec -it mongodb mongo
+7. hdfs dfs -ls output

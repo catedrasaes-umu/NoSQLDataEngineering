@@ -1,5 +1,20 @@
 version: '2'
 services:
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    hostname: mongodb
+    environment:
+      - MONGO_DATA_DIR=/data/db
+      - MONGO_LOG_DIR=/dev/null
+    volumes:
+      - ./data-mongo:/data/db
+    ports:
+      - 27017:27017
+    command: 
+      - --storageEngine=wiredTiger
+      - --replSet=rs0 
+      - --logpath=/dev/null # --quiet
   hadoop-namenode:
     image: segence/hadoop
     container_name: hadoop-namenode
@@ -21,6 +36,8 @@ services:
       - ./data-master:/data
       - ./slaves-config:/config:ro
       - ./deployments:/deployments:ro
+    links:
+      - mongo
     tty: true
   hadoop-datanode1:
     image: segence/hadoop
