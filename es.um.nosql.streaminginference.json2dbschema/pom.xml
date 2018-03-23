@@ -3,7 +3,6 @@
   <groupId>es.um.nosql.streaminginference.json2dbschema</groupId>
   <artifactId>es.um.nosql.streaminginference.json2dbschema</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>es.um.nosql.streaminginference.json2dbschema</name>
   <build>
     <sourceDirectory>src</sourceDirectory>
     <plugins>
