@@ -18,6 +18,11 @@ import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.IAJAdapter
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.impl.jackson.JacksonAdapter
 import es.um.nosql.streaminginference.util.emf.ResourceManager
 
+import org.apache.hadoop.conf.Configuration
+import org.apache.hadoop.fs.FileSystem
+import org.apache.hadoop.fs.Path
+
+
 object IO 
 {
   def fromJSONString(schemaName: String, jsonString: String): NoSQLSchema = 
@@ -66,7 +71,16 @@ object IO
 		val options: Map[Object,Object] = new HashMap[Object,Object]
 		options.put(XMLResource.OPTION_SCHEMA_LOCATION, java.lang.Boolean.TRUE);
 		options.put(XMLResource.OPTION_ENCODING, "UTF-8");
-		outputRes.save(new FileOutputStream(filePath), options);
+		val outputPath:Path = new Path(filePath);
+		val conf: Configuration = new Configuration
+		val fs: FileSystem = FileSystem.get(conf)
+		// Delete previous file
+		// http://apache-spark-user-list.1001560.n3.nabble.com/How-can-I-make-Spark-1-0-saveAsTextFile-to-overwrite-existing-file-td6696.html
+		// https://community.hortonworks.com/questions/59140/apache-spark-overwrite-data-file.html
+		try { fs.delete(outputPath, true) } catch { case _ : Throwable => { } }
+		val outputStream = fs.create(outputPath)
+		outputRes.save(outputStream, options);
+		outputStream.close()
   }
   
   
