@@ -18,9 +18,12 @@ import es.um.nosql.streaminginference.spark.utils.IO
 import java.nio.file.Paths
 import org.apache.spark.rdd.RDD
 
+import org.apache.hadoop.conf.Configuration
+import org.apache.hadoop.fs.FileSystem
+import org.apache.hadoop.fs.Path
 
 
-object Main
+object Streaming
 {  
   val CheckpointDir = "checkpoint"
 
@@ -132,9 +135,13 @@ object Main
     
     directories.foreach(directory => 
     {
-      val folder:File = new File(directory)
-      if (folder.isDirectory)
-        folder.listFiles.foreach(recursiveClean(_))
+      val outputPath:Path = new Path(directory);
+      val conf: Configuration = new Configuration
+		  val fs: FileSystem = FileSystem.get(conf)
+		  try { fs.delete(outputPath, true) } catch { case _ : Throwable => { } }
+//      val folder:File = new File(directory)
+//      if (folder.isDirectory)
+//        folder.listFiles.foreach(recursiveClean(_))
     })
   }
   

@@ -1,0 +1,12 @@
+{
+    "rows": [
+        {
+            "name": "Automated Software Engineering",
+            "issn": "0928-8910",
+	    "date": "2017-01-01",
+            "discipline": "software engineering",
+            "_type": "journal",
+            "_id": "14"
+        }
+    ]
+}

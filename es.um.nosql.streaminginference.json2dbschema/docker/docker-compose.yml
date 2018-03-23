@@ -1,0 +1,72 @@
+version: '2'
+services:
+  hadoop-namenode:
+    image: segence/hadoop
+    container_name: hadoop-namenode
+    hostname: hadoop-namenode
+    ports: # HOST:CONTAINER
+      - "2222:2222"
+      - "4040:4040"
+      - "8020:8020"
+      - "8088:8088"
+      - "9001:9001"
+      - "50070:50070"
+      - "50090:50090"
+    expose:
+      - "8030-8050"
+    environment:
+      - HDFS_REPLICATION_FACTOR=1
+      - HADOOP_NAMENODE_HOST=hadoop-namenode
+    volumes:
+      - ./data-master:/data
+      - ./slaves-config:/config:ro
+      - ./deployments:/deployments:ro
+    tty: true
+  hadoop-datanode1:
+    image: segence/hadoop
+    container_name: hadoop-datanode1
+    hostname: hadoop-datanode1
+    ports:
+      - "8042"
+      - "50075"
+    environment:
+      - HDFS_REPLICATION_FACTOR=1
+      - HADOOP_NAMENODE_HOST=hadoop-namenode
+    volumes:
+      - ./data-slave1:/data
+      - ./slaves-config:/config:ro
+    links:
+      - hadoop-namenode
+    tty: true
+  hadoop-datanode2:
+    image: segence/hadoop
+    container_name: hadoop-datanode2
+    hostname: hadoop-datanode2
+    ports:
+      - "8042"
+      - "50075"
+    environment:
+      - HDFS_REPLICATION_FACTOR=1
+      - HADOOP_NAMENODE_HOST=hadoop-namenode
+    volumes:
+      - ./data-slave2:/data
+      - ./slaves-config:/config:ro
+    links:
+      - hadoop-namenode
+    tty: true
+  hadoop-datanode3:
+    image: segence/hadoop
+    container_name: hadoop-datanode3
+    hostname: hadoop-datanode3
+    ports:
+      - "8042"
+      - "50075"
+    environment:
+      - HDFS_REPLICATION_FACTOR=1
+      - HADOOP_NAMENODE_HOST=hadoop-namenode
+    volumes:
+      - ./data-slave3:/data
+      - ./slaves-config:/config:ro
+    links:
+      - hadoop-namenode
+    tty: true

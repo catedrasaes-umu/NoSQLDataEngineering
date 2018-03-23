@@ -1,0 +1,21 @@
+{
+    "rows": [
+	{
+            "name": "Automated Software Engineering",
+            "issn": [
+                "0928-8910",
+                "1573-7535"
+            ],
+            "discipline": "software engineering",
+            "_type": "journal",
+            "_id": "12",
+            "number":10515
+        },
+        {
+            "city": "Barcelona",
+            "name": "Omega",
+            "_type": "publisher",
+            "_id": "123451"
+        }
+    ]
+}

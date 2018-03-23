@@ -1,0 +1,15 @@
+Steps:
+1. Run locally start.sh
+** Logged into container **
+2. su - hadoop
+3. hdfs dfs -mkdir -p input
+4. hdfs dfs -mkdir -p output
+5. spark-submit --master yarn --deploy-mode cluster /deployments/es.um.nosql.streaminginference.json2dbschema-0.0.1-SNAPSHOT-jar-with-dependencies.jar --mode file --input input --output output
+6. hdfs dfs -put /deployments/movies_1.json input
+7. hdfs dfs -cat output/movies.xmi
+
+
+
+---- Delete data
+hdfs dfs -rm input/*
+hdfs dfs -rm output/*

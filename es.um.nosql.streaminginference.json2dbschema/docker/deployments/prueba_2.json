@@ -1,0 +1,15 @@
+{
+    "rows": [
+        {
+            "city": "Newton",
+            "name": "O'Reilly Media",
+            "_type": "publisher",
+            "_id": "928672"
+        },
+	{
+            "name": "Addison-Wesley",
+            "_type": "publisher",
+            "_id": "345679"
+        }
+    ]
+}
