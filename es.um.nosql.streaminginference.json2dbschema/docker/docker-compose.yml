@@ -1,5 +1,11 @@
 version: '2'
 services:
+  couch:
+    image: couchdb:latest
+    container_name: couchdb
+    hostname: couchdb
+    ports:
+      - "5984:5984"
   mongo:
     image: mongo:latest
     container_name: mongodb
@@ -38,6 +44,7 @@ services:
       - ./deployments:/deployments:ro
     links:
       - mongo
+      - couch
     tty: true
   hadoop-datanode1:
     image: segence/hadoop
