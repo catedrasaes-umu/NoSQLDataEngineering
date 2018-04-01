@@ -37,10 +37,7 @@ object IO
 		val schema: NoSQLSchema = json2schema.fromJSONString(schemaName, jsonString)
 		schema
 	}
-  
-  // TODO: implement this
-  def xmiToSchemaInference(inputFile: String): SchemaInference = ???
-  
+
   def xmiToNoSQLSchema(inputFile: String): NoSQLSchema =
 	{
 		val packageInstance: NoSQLSchemaPackage = NoSQLSchemaPackage.eINSTANCE
@@ -63,6 +60,10 @@ object IO
   
   def writeXMI(schema: NoSQLSchema, filePath: String): Unit = 
   {
+    // Check if file has been written recently
+    if (HDFSHelper.exists(filePath))
+      return;
+    
     val packageInstance: NoSQLSchemaPackage = NoSQLSchemaPackage.eINSTANCE 
     // Create a new resource to serialize the ecore model
     val outputRes:Resource = new ResourceManager(packageInstance)

@@ -24,7 +24,7 @@ spark-submit --master yarn --deploy-mode client /deployments/es.um.nosql.streami
 hdfs dfs -put /deployments/movies_1.json input
 hdfs dfs -touchz output/_OUTPUT # Make Spark output xmi files 
 hdfs dfs -cat output/movies.xmi
-hdfs dfs -touchz output/_OUTPUT # Finish Streaming application
+hdfs dfs -touchz output/_DONE # Finish Streaming application
 ```
 
 ### Mongo mode
@@ -37,7 +37,7 @@ spark-submit --conf spark.yarn.am.waitTime=110s --driver-memory 3G --executor-me
 # We can make changes now in mongo container: "docker exec -it mongodb mongo"
 hdfs dfs -touchz output/_OUTPUT # Make Spark output xmi files 
 hdfs dfs -ls output
-hdfs dfs -touchz output/_OUTPUT # Finish Streaming application
+hdfs dfs -touchz output/_DONE # Finish Streaming application
 ```
 
 ### Couch mode:
@@ -50,5 +50,5 @@ spark-submit --master yarn --deploy-mode client /deployments/es.um.nosql.streami
 # We can make changes now in http://127.0.0.1:5984/_utils/
 hdfs dfs -touchz output/_OUTPUT # Make Spark output xmi files 
 hdfs dfs -cat output/couch.xmi
-hdfs dfs -touchz output/_OUTPUT # Finish Streaming application
+hdfs dfs -touchz output/_DONE # Finish Streaming application
 ```
