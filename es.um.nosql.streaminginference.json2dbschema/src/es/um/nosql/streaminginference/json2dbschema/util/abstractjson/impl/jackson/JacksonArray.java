@@ -16,4 +16,8 @@ public class JacksonArray extends JacksonElement implements IAJArray
 	public JacksonArray(JsonNode val) {
 		super(val);
 	}
+	
+	public int size() {
+		return n.size();
+	}
 }

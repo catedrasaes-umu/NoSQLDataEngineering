@@ -16,4 +16,8 @@ public class GsonArray extends GsonElement implements IAJArray
 	public GsonArray(JsonElement val) {
 		super(val);
 	}
+	
+	public int size() {
+		return e.getAsJsonArray().size();
+	}
 }

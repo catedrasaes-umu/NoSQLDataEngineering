@@ -47,7 +47,7 @@ public class JacksonElement implements IAJElement
 		return new It(n.iterator());
 	}
 
-	private JsonNode n;
+	protected JsonNode n;
 
 	@Override
 	public IAJElement get(int index)

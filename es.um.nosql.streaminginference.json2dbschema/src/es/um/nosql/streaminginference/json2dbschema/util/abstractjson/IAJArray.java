@@ -9,5 +9,5 @@ package es.um.nosql.streaminginference.json2dbschema.util.abstractjson;
  */
 public interface IAJArray extends IAJElement
 {
-
+	public int size();
 }

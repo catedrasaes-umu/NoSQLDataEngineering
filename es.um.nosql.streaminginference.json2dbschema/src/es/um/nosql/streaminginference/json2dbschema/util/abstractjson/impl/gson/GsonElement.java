@@ -56,7 +56,7 @@ public class GsonElement implements IAJElement
 		return null;
 	}
 
-	private JsonElement e;
+	protected JsonElement e;
 
 	@Override
 	public IAJElement get(int index)
