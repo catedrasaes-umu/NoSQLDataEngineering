@@ -7,6 +7,7 @@ import java.io.File;
 import java.io.IOException;
 
 import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.JsonParser;
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -51,6 +52,8 @@ public class JacksonAdapter implements IAJAdapter<JsonNode>
 	public IAJElement readFromString(String content)
 	{
 		ObjectMapper m = new ObjectMapper();
+		// XXX
+		m.configure(JsonParser.Feature.ALLOW_NON_NUMERIC_NUMBERS, true);
 		try {
 			JsonNode root = m.readTree(content);
 			return wrap(root);
