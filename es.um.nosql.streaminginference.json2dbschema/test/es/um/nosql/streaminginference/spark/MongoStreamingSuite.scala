@@ -12,7 +12,6 @@ import org.apache.spark.SparkConf
 
 import org.apache.spark.streaming.Seconds
 import es.um.nosql.streaminginference.spark.input.MongoReceiver
-import es.um.nosql.streaminginference.spark.input.CustomDSFactory
 import scala.collection.immutable.HashMap
 
 @RunWith(classOf[JUnitRunner])
@@ -36,7 +35,7 @@ class MongoStreamingSuite extends MongoDBSuite
                       .receiverStream(new MongoReceiver(
                           host = MongoDB.host, 
                           port = MongoDB.port, 
-                          database = MongoDB.dbName))
+                          databases = MongoDB.dbName))
                           
         stream.foreachRDD(rdd => 
           rdd

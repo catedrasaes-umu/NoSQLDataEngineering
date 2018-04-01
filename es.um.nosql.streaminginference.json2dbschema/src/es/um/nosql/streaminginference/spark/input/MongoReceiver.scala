@@ -21,29 +21,34 @@ import com.mongodb.client.model.changestream.FullDocument
 import es.um.nosql.streaminginference.json2dbschema.util.inflector.Inflector
 import com.mongodb.MongoCredential
 
-class MongoReceiver (host: String, port: Int, database: String, username: Option[String] = None, password: Option[String] = None)
+class MongoReceiver (host: String, port: Int, databases: String, username: Option[String] = None, password: Option[String] = None)
   extends Receiver[(String, String)](StorageLevel.MEMORY_AND_DISK_2) with Logging 
 {
   def onStart() 
   {
-    new Thread("Mongo Receiver") 
-    {
-      override def run() 
-      { 
-        receive() 
+    databases.split(',').map(_.trim).foreach(db => {
+      new Thread("Mongo Receiver") 
+      {
+        private val database = db
+        override def run() 
+        { 
+          receive(db) 
+        }
       }
-    }
-    .start()
+      .start()  
+    })
+    
     
   }
   
-  private def onDocumentFound(document: Document, entity: String): Unit = 
+  def onDocumentFound(database: String, document: Document, entity: String): Unit = 
   {
+    val name = Inflector.getInstance.singularize(entity)
     val json = document
-                .append("_type", Inflector.getInstance.singularize(entity))
+                .append("_type", name)
                 .toJson
 
-    store((database, json))  // Directly send content to nodes            
+    store((database+"#"+name, json))  // Directly send content to nodes            
   }
   
   private def onCollectionsReady(collections: List[String], 
@@ -81,7 +86,7 @@ class MongoReceiver (host: String, port: Int, database: String, username: Option
                   collection.find().subscribe(new Observer[Document] 
                   {
                     override def onNext(document: Document): Unit =
-                      onDocumentFound(document, name)
+                      onDocumentFound(db.name, document, name)
                       
                     override def onError(e: Throwable): Unit = 
                       logError("Error during collection retrieval", e)              
@@ -91,7 +96,7 @@ class MongoReceiver (host: String, port: Int, database: String, username: Option
                   })
                 }
                 override def onNext(document: ChangeStreamDocument[Document]): Unit =
-                  onDocumentFound(document.getFullDocument, name)
+                  onDocumentFound(db.name, document.getFullDocument, name)
                   
                 override def onError(e: Throwable): Unit = 
                   restart("Could not get collection " + name + " changes ", e)
@@ -111,7 +116,7 @@ class MongoReceiver (host: String, port: Int, database: String, username: Option
     })
   }
   
-  private def receive() 
+  private def receive(database: String) 
   {
     val checkCollectionsInterval = 3
     var collectionsReady = true

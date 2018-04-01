@@ -77,12 +77,13 @@ class CouchDBReceiver (host: String, port: Int, username: Option[String] = None,
               val feed:ChangesFeed = db.changesFeed(cmd)
               while (feed.isAlive() && !isStopped) 
               {
+                  val entity = Inflector.getInstance.singularize(newDb)
                   val change:DocumentChange = feed.next();
                   val node = change.getDocAsNode.asInstanceOf[ObjectNode]
                   node
-                    .put("_type", Inflector.getInstance.singularize(newDb))
+                    .put("_type", entity)
                     .remove("_rev")
-                  store(("couch", node.toString))            
+                  store(("couch#"+entity, node.toString))            
               }
             }
           }.start()

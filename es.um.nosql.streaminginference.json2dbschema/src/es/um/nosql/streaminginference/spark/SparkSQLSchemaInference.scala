@@ -101,7 +101,7 @@ object SparkSQLSchemaInference
                   
     spark.sparkContext.setLogLevel("ERROR")
     val input = "output/movies.xmi"
-    val schema = IO.fromXMIFile(input)
+    val schema = IO.xmiToNoSQLSchema(input)
     schema.printSQLSchema(spark)
   }
   
@@ -110,7 +110,7 @@ object SparkSQLSchemaInference
   def printValidatedSQLSchemas(): Unit = 
   {
     val input = "output/movies.xmi"
-    val schemas = IO.fromXMIFile(input).toSparkSQLVersions()
+    val schemas = IO.xmiToNoSQLSchema(input).toSparkSQLVersions()
     // Print loaded versions
     // schemas.filter(schema => schema._1 == "Movie").foreach(schema => schema._2.foreach(version => println(version)))
     val conf = new SparkConf().setMaster("local[*]").setAppName("StreamingInference")

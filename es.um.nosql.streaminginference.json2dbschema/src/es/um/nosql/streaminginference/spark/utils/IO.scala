@@ -1,6 +1,5 @@
 package es.um.nosql.streaminginference.spark.utils
 
-import java.io.FileOutputStream
 import java.util.HashMap
 import java.util.Map
 
@@ -14,27 +13,35 @@ import org.eclipse.emf.ecore.xmi.XMLResource
 import es.um.nosql.streaminginference.NoSQLSchema.NoSQLSchema
 import es.um.nosql.streaminginference.NoSQLSchema.NoSQLSchemaPackage
 import es.um.nosql.streaminginference.json2dbschema.main.util.JSON2Schema
+import es.um.nosql.streaminginference.json2dbschema.process.NoSQLModelBuilder
+import es.um.nosql.streaminginference.json2dbschema.process.SchemaInference
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.IAJAdapter
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.impl.jackson.JacksonAdapter
-import es.um.nosql.streaminginference.util.emf.ResourceManager
-
-import org.apache.hadoop.conf.Configuration
-import org.apache.hadoop.fs.FileSystem
-import org.apache.hadoop.fs.Path
+import es.um.nosql.streaminginference.util.emf.ResourceManager;
 
 
 object IO 
 {
-  def fromJSONString(schemaName: String, jsonString: String): NoSQLSchema = 
+  
+  def toNoSQLSchema(schemaName: String, schema: SchemaInference) = 
   {
-    
+    val packageInstance: NoSQLSchemaPackage = NoSQLSchemaPackage.eINSTANCE
+		val builder:NoSQLModelBuilder = new NoSQLModelBuilder(packageInstance.getNoSQLSchemaFactory, schemaName);
+    builder.build(schema.getEntities);
+  }
+  
+  def toNoSQLSchema(schemaName: String, jsonString: String): NoSQLSchema = 
+  {
     val packageInstance: NoSQLSchemaPackage = NoSQLSchemaPackage.eINSTANCE
     val json2schema = new JSON2Schema[JsonNode, IAJAdapter[JsonNode]](packageInstance.getNoSQLSchemaFactory, new JacksonAdapter)
 		val schema: NoSQLSchema = json2schema.fromJSONString(schemaName, jsonString)
 		schema
 	}
   
-  def fromXMIFile(inputFile: String): NoSQLSchema =
+  // TODO: implement this
+  def xmiToSchemaInference(inputFile: String): SchemaInference = ???
+  
+  def xmiToNoSQLSchema(inputFile: String): NoSQLSchema =
 	{
 		val packageInstance: NoSQLSchemaPackage = NoSQLSchemaPackage.eINSTANCE
 		val resource:Resource = new ResourceManager(packageInstance)
@@ -45,23 +52,24 @@ object IO
     schema
   }
   
+  def toSchemaInference(jsonString: String): SchemaInference = 
+  {
+    val adapter = new JacksonAdapter
+    val root = adapter.readFromString(jsonString)
+    val si = new SchemaInference(root.get("rows").asArray())
+    si.infer()
+    si
+  }  
   
-  def toXMI(schema: NoSQLSchema, filePath: String) = 
+  def writeXMI(schema: NoSQLSchema, filePath: String): Unit = 
   {
     val packageInstance: NoSQLSchemaPackage = NoSQLSchemaPackage.eINSTANCE 
     // Create a new resource to serialize the ecore model
     val outputRes:Resource = new ResourceManager(packageInstance)
                                   .getResourceSet()
                                   .createResource(URI.createFileURI(filePath))
-
-    // Initialize EcoreUtil.Copier to store copies from non-contained elements
-    val copier:Copier = new Copier(true,false)
-    // Copy Attributes & contained elements
-    val copied:EObject = copier.copy(schema)
-    // Copy non-contained elements
-    copier.copyReferences()
     // Add our copied package to resource contents
-    outputRes.getContents().add(copied);
+    outputRes.getContents().add(schema);
 		//outputRes.setURI(URI.createPlatformResourceURI("es.um.nosql.streaminginference/model/nosqlschema.ecore", true))
 		// Make the actual URI to be exported in the generated models. This
 		// allows using the models without having to register them.
@@ -71,17 +79,26 @@ object IO
 		val options: Map[Object,Object] = new HashMap[Object,Object]
 		options.put(XMLResource.OPTION_SCHEMA_LOCATION, java.lang.Boolean.TRUE);
 		options.put(XMLResource.OPTION_ENCODING, "UTF-8");
-		val outputPath:Path = new Path(filePath);
-		val conf: Configuration = new Configuration
-		val fs: FileSystem = FileSystem.get(conf)
-		// Delete previous file
-		// http://apache-spark-user-list.1001560.n3.nabble.com/How-can-I-make-Spark-1-0-saveAsTextFile-to-overwrite-existing-file-td6696.html
-		// https://community.hortonworks.com/questions/59140/apache-spark-overwrite-data-file.html
-		try { fs.delete(outputPath, true) } catch { case _ : Throwable => { } }
-		val outputStream = fs.create(outputPath)
+		// HDFSHelper.delete(filePath)
+    val outputStream = HDFSHelper.getOutputStream(filePath)
 		outputRes.save(outputStream, options);
 		outputStream.close()
   }
   
+  def writeXMI(schema: SchemaInference, name: String, filePath: String): Unit = 
+  {
+    val noSqlModel = toNoSQLSchema(name, schema)
+    writeXMI(noSqlModel, filePath)
+  }
   
+  def copyAndWriteXMI(schema: NoSQLSchema, filePath: String) = 
+  {
+    // Initialize EcoreUtil.Copier to store copies from non-contained elements
+    val copier:Copier = new Copier(true,false)
+    // Copy Attributes & contained elements
+    val copied:EObject = copier.copy(schema)
+    // Copy non-contained elements
+    copier.copyReferences()
+    writeXMI(copied.asInstanceOf[NoSQLSchema], filePath)
+  }
 }
