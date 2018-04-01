@@ -7,7 +7,8 @@ services:
     ports:
       - "5984:5984"
   mongo:
-    image: mongo:latest
+#    image: mongo:latest
+    image: pablodms/mongo-benchmark:latest
     container_name: mongodb
     hostname: mongodb
     environment:
@@ -15,6 +16,7 @@ services:
       - MONGO_LOG_DIR=/dev/null
     volumes:
       - ./data-mongo:/data/db
+      - ./deployments:/deployments
     ports:
       - 27017:27017
     command: 

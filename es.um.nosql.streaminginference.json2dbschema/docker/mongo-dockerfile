@@ -1,0 +1,9 @@
+FROM mongo:latest
+MAINTAINER pablodavid.munoz@um.es
+RUN apt-get update &&\
+    apt-get install -y wget &&\
+    apt-get install -y unzip
+
+
+
+
