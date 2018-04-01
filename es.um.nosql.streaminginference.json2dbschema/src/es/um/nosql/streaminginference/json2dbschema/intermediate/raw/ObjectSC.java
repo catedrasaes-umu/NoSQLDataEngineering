@@ -3,6 +3,7 @@
  */
 package es.um.nosql.streaminginference.json2dbschema.intermediate.raw;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -13,8 +14,10 @@ import org.apache.commons.lang3.tuple.Pair;
  * @author dsevilla
  *
  */
-public class ObjectSC extends SchemaComponent
+public class ObjectSC extends SchemaComponent implements Serializable
 {
+	private static final long serialVersionUID = 581406329571280748L;
+
 	private List<Pair<String, SchemaComponent>> inners;
 
 	public boolean isRoot;
@@ -28,6 +31,9 @@ public class ObjectSC extends SchemaComponent
 	@Override
 	public boolean equals(Object other)
 	{
+		if (this == other)
+			return true;
+		
 		if (other instanceof ObjectSC)
 			return inners.equals(((ObjectSC)other).inners);
 

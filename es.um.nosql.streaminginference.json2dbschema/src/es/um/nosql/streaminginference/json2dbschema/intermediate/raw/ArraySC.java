@@ -3,6 +3,7 @@
  */
 package es.um.nosql.streaminginference.json2dbschema.intermediate.raw;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -11,8 +12,10 @@ import java.util.List;
  * @author dsevilla
  *
  */
-public class ArraySC extends SchemaComponent
+public class ArraySC extends SchemaComponent implements Serializable
 {
+	private static final long serialVersionUID = -1613686873425362794L;
+	
 	private List<SchemaComponent> inners;
 	private boolean homogeneous;
 
@@ -72,10 +75,15 @@ public class ArraySC extends SchemaComponent
 	@Override
 	public boolean equals(Object other)
 	{
+		if (this == other) 
+			return true;
+		
 		if (other instanceof ArraySC)
 		{
 			ArraySC otherA = (ArraySC)other;
-
+			// Empty arrays will be equal to any other array
+			if (this.size() == 0 || otherA.size() == 0)
+				return true;
 			if (this.homogeneous != otherA.homogeneous)
 				return false;
 
