@@ -181,7 +181,7 @@ public class NoSQLModelBuilder
 	private Property propertyFromSchemaComponent(String en, ObjectSC sc)
 	{
 		// TODO: Check for complex DBRef references
-
+		
 		// Note that at this point, there is no need to recursively explore inner objects
 		// as they have been all put at the root level in the previous phase.
 		Aggregate a = factory.createAggregate();
@@ -194,12 +194,21 @@ public class NoSQLModelBuilder
 
 	private Property propertyFromSchemaComponent(String en, ArraySC sc)
 	{
-		if (sc.isHomogeneous())
+		// XXX: consider empty array as tuple
+		// IndexOutOfBounds Exception if we get inner with size == 0
+		if (sc.size() == 0)
+		{
+			Attribute a = factory.createAttribute();
+			a.setName(en);
+			a.setType(tupleForArray(sc));
+			return a;
+		}
+		else if (sc.isHomogeneous())
 		{
 			// If it is empty or it is NOT an Object (it is a simple type),
 			// then it may be a reference
 			SchemaComponent inner = sc.getInners().get(0);
-			if (sc.size() == 0 || !(inner instanceof ObjectSC))
+			if (!(inner instanceof ObjectSC))
 			{
 				return maybeReference(Inflector.getInstance().singularize(en), sc).map(p -> {
 					Reference ref = (Reference)p;
@@ -299,6 +308,10 @@ public class NoSQLModelBuilder
 
 		if (sc instanceof StringSC)
 			return "String";	
+		
+		// TODO: provisional change
+		if (sc instanceof NullSC)
+			return "Null";	
 
 		return "";
 	}
