@@ -1,5 +1,6 @@
 package es.um.nosql.streaminginference.json2dbschema.process;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
@@ -29,26 +30,123 @@ import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.IAJObject;
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.IAJTextual;
 import es.um.nosql.streaminginference.json2dbschema.util.inflector.Inflector;
 
+import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
 /**
  * @author dsevilla
  *
  */
-public class SchemaInference
+public class SchemaInference implements Serializable
 {
+	private static final long serialVersionUID = 2885206624442781144L;
+
 	private Map<String, List<SchemaComponent>> rawEntities;
-	private IAJArray theArray;
+	
+	// These properties correspond to an intermediate state
+	// thus we will not serialize them
+	private transient IAJArray theArray;
 	private Set<String> innerSchemaNames;
 
 	private static final boolean ROOT_OBJECT = true;
 	private static final boolean NON_ROOT_OBJECT = false;
 
-	public SchemaInference(IAJArray rows)
+	public SchemaInference() 
 	{
 		rawEntities = new HashMap<String, List<SchemaComponent>>();
 		innerSchemaNames = new HashSet<String>();
+	}
+	
+	public SchemaInference(IAJArray rows)
+	{
+		this();
 		this.theArray = rows;
+	}
+	
+	public SchemaInference(SchemaInference copy) 
+	{
+		rawEntities = new HashMap<String, List<SchemaComponent>>(copy.rawEntities);
+		innerSchemaNames = new HashSet<String>(copy.innerSchemaNames);
+	}
+	
+	public Map<String, List<SchemaComponent>> getEntities() 
+	{
+		return rawEntities;
+	}
+	
+	public Set<String> getInnerSchemaNames() 
+	{
+		return innerSchemaNames;
+	}
+	
+	public boolean equals(SchemaInference other) 
+	{
+		if (this == other)
+			return true;
+		
+		if (!this.rawEntities.keySet().equals(other.getEntities().keySet()))
+			return false;
+		
+		for(Map.Entry<String, List<SchemaComponent>> entry : other.getEntities().entrySet()) 
+		{
+			if(rawEntities
+				.get(entry.getKey()).stream().anyMatch(version -> 
+					entry
+						.getValue()
+						.stream()
+						.noneMatch(otherVersion -> version.equals(otherVersion))
+				)) {
+				return false;
+			}
+		}
+		
+		return true;
+		
+	}
+
+	/**
+	 * Gets a new SchemaInference object containing entities and versions from this and other
+	 * @param other SchemaInference object to merge
+	 * @return SchemaInference merged object
+	 */
+	public SchemaInference merge(SchemaInference other) 
+	{ 
+		SchemaInference merged = new SchemaInference(this);
+		Map<String, List<SchemaComponent>> mergedEntities = merged.getEntities();
+		Map<String, List<SchemaComponent>> otherEntities = other.getEntities();
+		List<Pair<SchemaComponent,SchemaComponent>> versionsToCheck = new ArrayList<Pair<SchemaComponent,SchemaComponent>>(10);
+		
+		otherEntities.forEach((entity, versions) -> 
+		{
+			if (!rawEntities.containsKey(entity)) 
+			{
+				// Append unexisting entities
+				mergedEntities.put(entity, versions);
+			} 
+			else 
+			{
+				versions.forEach(version -> 
+				{
+					// Check the existance of an equal version
+					Optional<SchemaComponent> foundVersion = rawEntities
+															.get(entity)
+															.stream()
+															.filter(myVersion -> myVersion == version || myVersion.equals(version))
+															.findAny();
+					
+					if (foundVersion.isPresent())
+						versionsToCheck.add(Pair.of(version, foundVersion.get()));
+					else
+						mergedEntities.get(entity).add(version);
+				});
+			}
+		});
+		
+		merged.innerSchemaNames.addAll(other.innerSchemaNames);
+		merged.joinAggregatedEntities();
+		// Update references of merged entity versions
+		versionsToCheck.forEach(pair -> merged.updateReferences(pair.getLeft(), pair.getRight()));
+		return merged;
 	}
 
 	public Map<String, List<SchemaComponent>> infer()
@@ -60,16 +158,16 @@ public class SchemaInference
 		mergeEquivalentEVs();
 
 		// Print entities and entity versions
-		rawEntities.forEach((en, evl) ->
-		{
-			System.out.println("Entity: " + en);
-
-			evl.forEach(ev ->
-			{
-				System.out.print("* ");
-				System.out.println(SchemaPrinter.schemaString(ev));
-			});
-		});
+//		rawEntities.forEach((en, evl) ->
+//		{
+//			System.out.println("Entity: " + en);
+//
+//			evl.forEach(ev ->
+//			{
+//				System.out.print("* ");
+//				System.out.println(SchemaPrinter.schemaString(ev));
+//			});
+//		});
 
 		return rawEntities;
 	}
@@ -82,6 +180,8 @@ public class SchemaInference
 	
 	private void joinAggregatedEntities() 
 	{
+		Set<String> joinedEntities = new HashSet<String>();
+		
 		innerSchemaNames.forEach(name -> {
 			rawEntities.keySet().stream()
 				.filter(e -> 
@@ -99,8 +199,13 @@ public class SchemaInference
 					// And all them at the end of the found entity
 					rawEntities.get(v).addAll(rawEntities.get(name));
 					rawEntities.remove(name);
+					// Add joined entity name
+					joinedEntities.add(name);
 				});
 			});
+		
+		// Remove previously joined entities from schema names
+		innerSchemaNames.removeAll(joinedEntities);
 	}
 
 	private void mergeEquivalentEVs()
@@ -242,9 +347,10 @@ public class SchemaInference
 	private boolean homogeneousArraysMerge(String id, ArraySC toConsider, ArraySC sc)
 	{
 		// Homogeneous arrays have either zero or one element
-		// Not both of them can have zero elements, as they would have merged in the previous
-		// phase, so find if any of them has zero size.
-		if (toConsider.size() == 0 || sc.size() == 0
+		// Both of them can be empty
+		if (toConsider.size() == 0 && sc.size() == 0)
+			return true;
+		else if (toConsider.size() == 0 || sc.size() == 0
 				|| toConsider.getInners().get(0).equals(sc.getInners().get(0)))
 		{
 			int lowerBounds = Math.min(toConsider.getLowerBounds(), sc.getLowerBounds());
@@ -307,9 +413,9 @@ public class SchemaInference
 		SortedSet<String> fields = new TreeSet<String>();
 		n.getFieldNames().forEachRemaining(fields::add);
 
-		// Recursive phase
-		schema.addAll(fields.stream()
-				.map(f -> Pair.of(f, infer(n.get(f), Optional.of(f), NON_ROOT_OBJECT)))::iterator);
+		// Tuple has to be mutable in order to update references
+		for(String f : fields)
+			schema.add(new MutablePair<String, SchemaComponent>(f, infer(n.get(f), Optional.of(f), NON_ROOT_OBJECT)));
 
 		// Now that we have the complete schema, try to compare it with any of the versions in the map
 		List<SchemaComponent> entityVersions = rawEntities.get(schema.entityName);
@@ -350,6 +456,7 @@ public class SchemaInference
 
 		n.forEach(e -> schema.add(infer(e, name, NON_ROOT_OBJECT)));
 
+		// TODO: Compact ArraySC if homogeneous
 		return schema;
 	}
 
