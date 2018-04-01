@@ -8,7 +8,7 @@ sudo docker build -f mongo-dockerfile -t pablodms/mongo-benchmark:latest .
 
 ## Set up Mongo tests
 
-Edit deployments/benchmark.sh to specify the datasets to run
+Edit deployments/benchmark/benchmark.sh to specify the datasets to be run
 
 ## Building and running Schema Inference on Spark Streaming
 
