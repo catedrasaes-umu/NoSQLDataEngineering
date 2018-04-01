@@ -3,7 +3,9 @@ package es.um.nosql.streaminginference.spark.utils
 
 import scala.collection.JavaConversions.asScalaBuffer
 import scala.collection.JavaConversions.seqAsJavaList
+import scala.collection.mutable.HashMap
 
+import org.apache.commons.lang3.tuple.MutablePair
 import org.eclipse.emf.common.util.EList
 
 import es.um.nosql.streaminginference.NoSQLSchema.Aggregate
@@ -18,6 +20,13 @@ import es.um.nosql.streaminginference.NoSQLSchema.Property
 import es.um.nosql.streaminginference.NoSQLSchema.Reference
 import es.um.nosql.streaminginference.NoSQLSchema.Tuple
 import es.um.nosql.streaminginference.NoSQLSchema.Type
+import es.um.nosql.streaminginference.json2dbschema.intermediate.raw.ArraySC
+import es.um.nosql.streaminginference.json2dbschema.intermediate.raw.BooleanSC
+import es.um.nosql.streaminginference.json2dbschema.intermediate.raw.NumberSC
+import es.um.nosql.streaminginference.json2dbschema.intermediate.raw.ObjectSC
+import es.um.nosql.streaminginference.json2dbschema.intermediate.raw.SchemaComponent
+import es.um.nosql.streaminginference.json2dbschema.intermediate.raw.StringSC
+import es.um.nosql.streaminginference.json2dbschema.process.SchemaInference
 
 object EcoreHelper 
 {  
@@ -118,6 +127,7 @@ object EcoreHelper
   }
 
   /**
+   * FIXME: Correct references to entity versions when merging NoSQLSchemas
    * Merges two schemas
    */
   def merge(schema1: Option[NoSQLSchema], schema2: Option[NoSQLSchema]): Option[NoSQLSchema] = 
@@ -136,5 +146,141 @@ object EcoreHelper
         newSchema.getEntities.addAll(mergedEntities)
         Option(newSchema)
       }
+  }
+  
+  /**
+   * Casts a NoSQLSchema model to an SchemaInference state 
+   */
+  def toSchemaInferenceState(noSql: NoSQLSchema): HashMap[String, SchemaInference] = 
+  {
+    /**
+     * Casts an Entity Version to the equivalent Schema Component
+     * 
+     * We need to pass schema as parameter to update its internal state: rawEntities and innerSchemaNames
+     */
+    def fromEntityVersion(schema: SchemaInference, entity: String, version: EntityVersion): ObjectSC = 
+    {
+      val objSC = new ObjectSC
+      var content:SchemaComponent = null
+      objSC.isRoot = version.isRoot
+      objSC.entityName = entity
+      
+      version.getProperties.foreach(property => 
+      {
+        if (property.isInstanceOf[Attribute])
+        {
+          val attribute = property.asInstanceOf[Attribute]
+          if (attribute.getType.isInstanceOf[PrimitiveType])
+           content = fromPrimitiveType(attribute.getType.asInstanceOf[PrimitiveType])
+          else if (attribute.getType.isInstanceOf[Tuple])
+           content = fromTuple(attribute.getType.asInstanceOf[Tuple])
+          else 
+            throw new NotImplementedError("Unknown attribute type: " + attribute.getType)
+        }
+        else if (property.isInstanceOf[Aggregate])
+          content = fromAggregate(schema, property.getName, property.asInstanceOf[Aggregate])
+        else if (property.isInstanceOf[Reference])
+          content = fromReference(property.asInstanceOf[Reference])
+        else 
+          throw new NotImplementedError("Unknown property: " + property.toString)
+        
+        objSC.add((new MutablePair[String, SchemaComponent](property.getName, content)))
+
+      })
+
+      val collection = schema.getEntities
+      if (!collection.containsKey(entity))
+        collection.put(entity, new java.util.ArrayList(10))
+      
+      // Put entity version in list of versions if it does not exist
+      if (!collection.get(entity).exists(version => version.equals(objSC)))
+        collection.get(entity).add(objSC)
+      
+      // Add entity name to list of schema names (needed for merging)
+      schema.getInnerSchemaNames.add(entity)
+      
+      objSC
+   }
+    
+     /**
+      * Casts a PrimitiveType string to equivalent SchemaComponent
+      */
+     def fromPrimitiveTypeString(primitive: String): SchemaComponent = 
+        primitive match 
+        {
+            case "Number" => new NumberSC
+            case "String" => new StringSC
+            case "Boolean" => new BooleanSC
+            case _ => throw new NotImplementedError("Unknown primitive type: " + primitive) 
+        }
+     
+     
+     /**
+      * Casts a PrimitiveType to equivalent SchemaComponent
+      */
+     def fromPrimitiveType(primitive: PrimitiveType): SchemaComponent = 
+        fromPrimitiveTypeString(primitive.getName)
+      
+    /**
+     * Casts a Tuple to equivalent Schema Component  
+     */
+    def fromTuple(tuple: Tuple): SchemaComponent = 
+    {
+      val array = new ArraySC
+      tuple.getElements.foreach(element => {
+        if (element.isInstanceOf[PrimitiveType])
+          array.add(fromPrimitiveType(element.asInstanceOf[PrimitiveType]))
+        if (element.isInstanceOf[Tuple])
+          array.add(fromTuple(element.asInstanceOf[Tuple]))
+        else 
+          throw new NotImplementedError("Unknown type: " + element.toString)
+      })
+      array
+    }
+    
+    /**
+     * Casts a Reference to equivalent Schema Component
+     */
+    def fromReference(reference: Reference): SchemaComponent = 
+    {
+      if (reference.getUpperBound == 1 && reference.getLowerBound == 1)
+        fromPrimitiveTypeString(reference.getOriginalType)
+      else
+      {
+        val array = new ArraySC
+        array.add(fromPrimitiveTypeString(reference.getOriginalType))
+        array
+      }
+    }
+      
+    /**
+     * Casts an Aggregate to equivalent Schema Component
+     */
+    def fromAggregate(schema: SchemaInference, entity: String, aggregate: Aggregate): SchemaComponent = 
+    {
+      if (aggregate.getUpperBound == 1 && aggregate.getLowerBound == 1)
+        fromEntityVersion(schema, entity, aggregate.getRefTo.get(0))
+      else 
+      {
+        val array = new ArraySC
+        aggregate.getRefTo.foreach(version => array.add(fromEntityVersion(schema, entity, version)))
+        array
+      }
+    }
+  
+    val schemas = HashMap[String, SchemaInference]()
+    noSql
+    .getEntities
+    .foreach(entity => {
+      val versions = entity.getEntityversions.filter(_.isRoot)
+      if (!versions.isEmpty)
+      {
+        val schema = new SchemaInference
+        versions.foreach(fromEntityVersion(schema, entity.getName,_))
+        schemas.put(entity.getName, schema)
+      }
+    })
+    
+    schemas    
   }
 }
