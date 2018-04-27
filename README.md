@@ -172,7 +172,26 @@ The Java project involved in the __Database import__ project is the following on
 
 # Random data generation
 
-TODO:
+The purpose for this project is to provide the user a meaningful dataset of a certain volume to which he can execute queries and perform different data analyses, since sometimes the data available in a dataset is not sufficient to apply certain processes. Because of this, this project may be used to generate random data content using a NoSQLSchema model as an input file. A YAML configuration file may be also defined with certain parameters and conditions so the data generated meets certain criteria defined by the user.
+
+The general structure of the project is as follows:
+
+<figure>
+    <img src="figures/dbgen.png" align="center"/>
+</figure>
+<br/>
+
+First of all a NoSQLSchema model may be defined by using the Ecore editor in Eclipse, or by inferring it from a database using the inference process described [here](#inference-process).
+
+## The YAML configuration file
+
+
+
+
+
+The Java project involved in the __Random data generation__ project is the following one:
+
+* `es.um.nosql.s13e.db.gen`: This project contains several classes to be used as **POJOs** for the YAML configuration file, the **data generator** itself and the **output module** in which several output modes are defined. There is also a **main** class and a **controller** used as a running example of the project.
 
 ***
 
