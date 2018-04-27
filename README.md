@@ -188,35 +188,35 @@ First of all a NoSQLSchema model may be defined by using the Ecore editor in Ecl
 The configuration file is divided into some sections each one of them accepting several parameters:
 
 * **input** section:
-  * **model**: The input model conforming the NoSQLSchema metamodel.
-  * **debug**: Boolean value indicating if debug messages will be printed during the execution.
-  * **splits**: The iterations in which the generation will be performed. This parameter needs to be adjusted in order to not fill all the memory available.
+  - **model**: The input model conforming the NoSQLSchema metamodel.
+  - **debug**: Boolean value indicating if debug messages will be printed during the execution.
+  - **splits**: The iterations in which the generation will be performed. This parameter needs to be adjusted in order to not fill all the memory available.
 * **entities** section:
-  * **versions** section:
+  - **versions** section:
     * **minInstances** and **maxInstances**: The range of objects generated randomly for each existing version entity.
-  * **includeType**: Boolean value which tells if a **type** attribute should be inserted in each object indicating the entity it belongs.
-  * **timestamp**: The timestamp mark from where objects are being generated. Useful for evolution studies purposes.
-  * **dateFormat**: The format in which the previous timestamp is defined, such as __dd/MM/yyyy__.
+  - **includeType**: Boolean value which tells if a **type** attribute should be inserted in each object indicating the entity it belongs.
+  - **timestamp**: The timestamp mark from where objects are being generated. Useful for evolution studies purposes.
+  - **dateFormat**: The format in which the previous timestamp is defined, such as __dd/MM/yyyy__.
 * **attributes** section:
- * **primitiveTypes** section:
-   * **strangeTypesProbability**: The probability to generate another type instead of the expected type.
-   * **nullProbability**: The probability to generate a NULL value instead of the expected value.
-   * **stringType**: The type of strings being generated, which may be __name__, __name_surname__, __random__, __large__, __word__, __phrase__, __word_number__ or __nonsense__.
-   * **stringNamesFile**: The file containing the names to be randomly selected.
-   * **stringSurnamesFile**: The file containing the surnames to be randomly selected.
-   * **stringWordsFile**: The file containing the words to be randomly selected.
-   * **minIntegerAllowed** and **maxIntegerAllowed**: The range of ints to be randomly generated.
-   * **minDoubleAllowed** and **maxDoubleAllowed**: The range of doubles to be randomly generated.
-   * **doubleDecimalsAllowed**: The decimals allowed each time a double is generated.
- * **tuples** section:
-   * **minTupleElements** and **maxTupleElements**: The range of elements being generated on each tuple.
-   * **strangeTypesProbability**: The probability to generate another tuple type instead of the expected type.
-   * **nullProbability**: The probability to generate a NULL value instead of the expected tuple value.
+  - **primitiveTypes** section:
+    * **strangeTypesProbability**: The probability to generate another type instead of the expected type.
+    * **nullProbability**: The probability to generate a NULL value instead of the expected value.
+    * **stringType**: The type of strings being generated, which may be __name__, __name_surname__, __random__, __large__, __word__, __phrase__, __word_number__ or __nonsense__.
+    * **stringNamesFile**: The file containing the names to be randomly selected.
+    * **stringSurnamesFile**: The file containing the surnames to be randomly selected.
+    * **stringWordsFile**: The file containing the words to be randomly selected.
+    * **minIntegerAllowed** and **maxIntegerAllowed**: The range of ints to be randomly generated.
+    * **minDoubleAllowed** and **maxDoubleAllowed**: The range of doubles to be randomly generated.
+    * **doubleDecimalsAllowed**: The decimals allowed each time a double is generated.
+  - **tuples** section:
+    * **minTupleElements** and **maxTupleElements**: The range of elements being generated on each tuple.
+    * **strangeTypesProbability**: The probability to generate another tuple type instead of the expected type.
+    * **nullProbability**: The probability to generate a NULL value instead of the expected tuple value.
 * **associations** section:
-  * **references** section:
+  - **references** section:
     * **minReferenceAllowed** and **maxReferenceAllowed**: The range of elements referred in a single reference.
     * **strangeTypesProbability**: The probability to generate another reference type instead of the expected type.
-  * **aggregates** section:
+  - **aggregates** section:
     * **minAggregateAllowed** and **maxAggregateAllowed**: The range of elements agregated in a single aggregation.
 * **output section**:
   * **database**: The IP in which the database is running.
@@ -224,7 +224,7 @@ The configuration file is divided into some sections each one of them accepting 
   * **folder**: The folder to which the output should generate files.
   * **console**: Boolean value indicating if the output should be printed to the console.
 
-A lot of these options are just optional, only the input model and an available output are required to be defined. This subsection will be extended on the future when more options are defined on request.
+A lot of these options are just optional, only the input model and an available output are required to be defined. This subsection will be extended on the future when more options are defined on request. An example of this file can be found in `es.um.nosql.s13e.db.gen/config/config.yaml`.
 
 ## The project
 
