@@ -172,7 +172,7 @@ The Java project involved in the __Database import__ project is the following on
 
 # Random data generation
 
-The purpose for this project is to provide the user a meaningful dataset of a certain volume to which he can execute queries and perform different data analyses, since sometimes the data available in a dataset is not sufficient to apply certain processes. Because of this, this project may be used to generate random data content using a NoSQLSchema model as an input file. A YAML configuration file may be also defined with certain parameters and conditions so the data generated meets certain criteria defined by the user.
+The purpose for this project is to provide the user a meaningful dataset of a certain volume to which he can execute queries and perform different data analyses, since sometimes the data available in a dataset is not sufficient to apply certain processes. Because of this, this project may be used to generate random data content using a NoSQLSchema model as an input file. A YAML configuration file should also be defined with certain parameters and conditions so the data generated meets certain criteria defined by the user.
 
 The general structure of the project is as follows:
 
@@ -181,13 +181,61 @@ The general structure of the project is as follows:
 </figure>
 <br/>
 
-First of all a NoSQLSchema model may be defined by using the Ecore editor in Eclipse, or by inferring it from a database using the inference process described [here](#inference-process).
+First of all a NoSQLSchema model may be defined by using the Ecore editor in Eclipse, or by inferring it from a database using the inference process described [here](#inference-process). Then a YAML configuration file can be provided. This file contains several definitions and keys detailed just below:
 
 ## The YAML configuration file
 
+The configuration file is divided into some sections each one of them accepting several parameters:
 
+* **input** section:
+  * **model**: The input model conforming the NoSQLSchema metamodel.
+  * **debug**: Boolean value indicating if debug messages will be printed during the execution.
+  * **splits**: The iterations in which the generation will be performed. This parameter needs to be adjusted in order to not fill all the memory available.
+* **entities** section:
+  * **versions** section:
+    * **minInstances** and **maxInstances**: The range of objects generated randomly for each existing version entity.
+  * **includeType**: Boolean value which tells if a **type** attribute should be inserted in each object indicating the entity it belongs.
+  * **timestamp**: The timestamp mark from where objects are being generated. Useful for evolution studies purposes.
+  * **dateFormat**: The format in which the previous timestamp is defined, such as __dd/MM/yyyy__.
+* **attributes** section:
+ * **primitiveTypes** section:
+   * **strangeTypesProbability**: The probability to generate another type instead of the expected type.
+   * **nullProbability**: The probability to generate a NULL value instead of the expected value.
+   * **stringType**: The type of strings being generated, which may be __name__, __name_surname__, __random__, __large__, __word__, __phrase__, __word_number__ or __nonsense__.
+   * **stringNamesFile**: The file containing the names to be randomly selected.
+   * **stringSurnamesFile**: The file containing the surnames to be randomly selected.
+   * **stringWordsFile**: The file containing the words to be randomly selected.
+   * **minIntegerAllowed** and **maxIntegerAllowed**: The range of ints to be randomly generated.
+   * **minDoubleAllowed** and **maxDoubleAllowed**: The range of doubles to be randomly generated.
+   * **doubleDecimalsAllowed**: The decimals allowed each time a double is generated.
+ * **tuples** section:
+   * **minTupleElements** and **maxTupleElements**: The range of elements being generated on each tuple.
+   * **strangeTypesProbability**: The probability to generate another tuple type instead of the expected type.
+   * **nullProbability**: The probability to generate a NULL value instead of the expected tuple value.
+* **associations** section:
+  * **references** section:
+    * **minReferenceAllowed** and **maxReferenceAllowed**: The range of elements referred in a single reference.
+    * **strangeTypesProbability**: The probability to generate another reference type instead of the expected type.
+  * **aggregates** section:
+    * **minAggregateAllowed** and **maxAggregateAllowed**: The range of elements agregated in a single aggregation.
+* **output section**:
+  * **database**: The IP in which the database is running.
+  * **databaseCollection**: The name of the collection being inserted in the database.
+  * **folder**: The folder to which the output should generate files.
+  * **console**: Boolean value indicating if the output should be printed to the console.
 
+A lot of these options are just optional, only the input model and an available output are required to be defined. This subsection will be extended on the future when more options are defined on request.
 
+## The project
+
+The process is defined in several steps explained below:
+
+* First of all several splits are defined, and the same number of iterations are queued.
+* For each split the generation is divided into two steps:
+  * The first step generates the required objects and fills them with primitive types and tuples.
+  * The second step fills the references and aggregates with objects generated in that same split.
+* Finally the objects generated are stored in the selected outputs.
+* The data structures are flushed and a new split may begin.
 
 The Java project involved in the __Random data generation__ project is the following one:
 

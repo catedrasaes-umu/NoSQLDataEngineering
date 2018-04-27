@@ -58,8 +58,8 @@ public class PrimitiveTypeOptions
     if (this.getStrangeTypesProbability() != null)  result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Strange types probability: " + this.getStrangeTypesProbability() + "\n");
     if (this.getNullProbability() != null)          result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Null probability: " + this.getNullProbability() + "\n");
     if (this.getStringType() != null)               result.append(ConfigConstants.GET_TABS(this.getClass()) + "-StringType: " + this.getStringType() + "\n");
-    if (this.getMinIntegerAllowed() != null)            result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Min integer allowed: " + this.getMinIntegerAllowed() + "\n");
-    if (this.getMaxIntegerAllowed() != null)            result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Max integer allowed: " + this.getMaxIntegerAllowed() + "\n");
+    if (this.getMinIntegerAllowed() != null)        result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Min integer allowed: " + this.getMinIntegerAllowed() + "\n");
+    if (this.getMaxIntegerAllowed() != null)        result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Max integer allowed: " + this.getMaxIntegerAllowed() + "\n");
     if (this.getMinDoubleAllowed() != null)         result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Min double allowed: " + this.getMinDoubleAllowed() + "\n");
     if (this.getMaxDoubleAllowed() != null)         result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Max double allowed: " + this.getMaxDoubleAllowed() + "\n");
     if (this.getDoubleDecimalsAllowed() != null)    result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Double decimals allowed: " + this.getDoubleDecimalsAllowed() + "\n");

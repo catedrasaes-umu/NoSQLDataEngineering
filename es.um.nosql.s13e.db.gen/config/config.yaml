@@ -19,6 +19,11 @@ attributes:
     stringNamesFile: config/names.txt
     stringSurnamesFile: config/surnames.txt
     stringWordsFile: config/words.txt
+    minIntegerAllowed: 0
+    maxIntegerAllowed: 1000
+    minDoubleAllowed: 0.0
+    maxDoubleAllowed: 1000.0
+    doubleDecimalsAllowed: 2
   tuples:
     minTupleElements: 1
     maxTupleElements: 1
@@ -36,6 +41,9 @@ associations:
 
 output:
   database: localhost
+  databaseCollection: generated_collection
+  folder: output
+  console: false
 
 # Generate images?
 # Introduce a timeout between operations and between insertions in database
