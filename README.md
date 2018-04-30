@@ -181,16 +181,16 @@ The general structure of the project is as follows:
 </figure>
 <br/>
 
-First of all a NoSQLSchema model may be defined by using the Ecore editor in Eclipse, or by inferring it from a database using the inference process described [here](#inference-process). Then a YAML configuration file can be provided. This file contains several definitions and keys detailed just below:
+First of all a NoSQLSchema model may be defined by using the Ecore editor in Eclipse, or by inferring it from a database using the inference process described [here](#inference-process), so there is no need to start from an inferred schema, the user may define one by himself. Then a YAML configuration file should be provided. This file contains several definitions and keys detailed just below:
 
 ## The YAML configuration file
 
 The configuration file is divided into some sections each one of them accepting several parameters:
 
 * **input** section:
-  - **model**: The input model conforming the NoSQLSchema metamodel.
+  - **model** (**REQUIRED**): The input model conforming the NoSQLSchema metamodel.
   - **debug**: Boolean value indicating if debug messages will be printed during the execution.
-  - **splits**: The iterations in which the generation will be performed. This parameter needs to be adjusted in order to not fill all the memory available.
+  - **splits** (**REQUIRED**): The iterations in which the generation will be performed. This parameter needs to be adjusted in order to not fill all the memory available.
 * **entities** section:
   - **versions** section:
     * **minInstances** and **maxInstances**: The range of objects generated randomly for each existing version entity.
@@ -218,7 +218,7 @@ The configuration file is divided into some sections each one of them accepting 
     * **strangeTypesProbability**: The probability to generate another reference type instead of the expected type.
   - **aggregates** section:
     * **minAggregateAllowed** and **maxAggregateAllowed**: The range of elements agregated in a single aggregation.
-* **output section**:
+* **output section** (**AT LEAST ONE REQUIRED**):
   * **database**: The IP in which the database is running.
   * **databaseCollection**: The name of the collection being inserted in the database.
   * **folder**: The folder to which the output should generate files.
