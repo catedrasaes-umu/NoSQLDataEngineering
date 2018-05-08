@@ -1,10 +1,17 @@
 package es.um.nosql.s13e.db.gen.generator;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import org.bson.types.ObjectId;
+import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.BooleanGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
+import es.um.nosql.s13e.db.gen.generator.primitivetypes.ObjectIdGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.StringGen;
 import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
@@ -13,12 +20,14 @@ class TestPrimitiveTypeGen
   private BooleanGen boolGen    = BooleanGen.GET_INSTANCE();
   private StringGen strGen      = StringGen.GET_INSTANCE();
   private NumberGen numGen      = NumberGen.GET_INSTANCE();
+  private ObjectIdGen oidGen    = ObjectIdGen.GET_INSTANCE();
   private int ITERATIONS_BOOL   = 1000000;
   private int ITERATIONS_STRING = 1000000;
   private int ITERATIONS_INTS   = 1000000;
-  private int ITERATIONS_DOUBLE   = 1000000;
+  private int ITERATIONS_DOUBLE = 1000000;
+  private int ITERATIONS_OID    = 1000000;
 
-  @Test
+  @Ignore
   void testBooleans()
   {
     int boolTrue = 0;
@@ -34,7 +43,7 @@ class TestPrimitiveTypeGen
     System.out.println("Bools generated to FALSE: " + boolFalse);
   }
 
-  @Test
+  @Ignore
   void testIntegers()
   {
     for (int i = 0; i < ITERATIONS_INTS; i++)
@@ -45,7 +54,7 @@ class TestPrimitiveTypeGen
     }
   }
 
-  @Test
+  @Ignore
   void testDoubles()
   {
     for (int i = 0; i < ITERATIONS_DOUBLE; i++)
@@ -56,7 +65,7 @@ class TestPrimitiveTypeGen
     }
   }
 
-  @Test
+  @Ignore
   void testStrings()
   {
     for (int i = 0; i < ITERATIONS_STRING; i++)
@@ -74,5 +83,28 @@ class TestPrimitiveTypeGen
       Assertions.assertTrue(strGen.getRandomPhrase().contains(" "));
       Assertions.assertTrue(strGen.getRandomLargeString().length() >= 1450);
     }
+  }
+
+  @Test
+  void testObjectIds() throws ParseException
+  {/*
+//    for (int i = 0; i < ITERATIONS_OID; i++)
+//      System.out.println(new Date());
+    ObjectId oid = oidGen.getTimestampObjectId(new SimpleDateFormat("dd/MM/yyyy").parse("21/12/2012"));
+    System.out.println("Counter: " + oid.getCounter());
+    System.out.println("MachineId: " + oid.getMachineIdentifier());
+    System.out.println("ProcessId: " + oid.getProcessIdentifier());
+    System.out.println("Timestamp: " + oid.getTimestamp());
+    System.out.println("Date: " + oid.getDate());
+
+    public ObjectId getTimestampObjectId(Date date)
+    {
+      return new ObjectId(date);
+          //TODO: Recordar que hay que restar la fecha actual a la dada...
+//          var objectIdFromDate = function (date) { return Math.floor(date.getTime() / 1000).toString(16) + "0000000000000000";};
+    }
+//    var timestamp = Math.floor(new Date(1974, 6, 25).getTime() / 1000);
+//    var hex       = ('00000000' + timestamp.toString(16)).substr(-8); // zero padding
+//    var objectId  = new ObjectId(hex + new ObjectId().str.substring(8));*/
   }
 }

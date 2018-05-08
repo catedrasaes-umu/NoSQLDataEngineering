@@ -34,6 +34,9 @@ public class EntityOptions
 
   public boolean doCheck()
   {
+    if ((this.getTimestamp() == null && this.getDateFormat() != null) || (this.getTimestamp() != null && this.getDateFormat() == null))
+      throw new IllegalArgumentException("If timeStamp or dateFormat is defined, then the other attribute must also be defined.");
+
     if (this.getVersions() != null)
       this.getVersions().doCheck();
 

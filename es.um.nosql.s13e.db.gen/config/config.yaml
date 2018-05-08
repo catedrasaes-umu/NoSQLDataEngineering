@@ -1,12 +1,12 @@
 input:
-  model: source/stackoverflow.xmi
+  model: source/oneofeach.xmi
   debug: true
-  splits: 100
+  splits: 1
 
 entities:
   versions:
-    minInstances: 50000
-    maxInstances: 50000
+    minInstances: 2
+    maxInstances: 2
   includeType: true
   dateFormat: dd/MM/yyyy
   timestamp: 17/6/1988
@@ -40,10 +40,10 @@ associations:
     maxAggregateAllowed: 3
 
 output:
-  database: localhost
-  databaseCollection: generated_collection
-  folder: output
-  console: false
+#  database: localhost
+#  databaseCollection: generated_collection
+#  folder: output
+  console: true
 
 # Generate images?
 # Introduce a timeout between operations and between insertions in database

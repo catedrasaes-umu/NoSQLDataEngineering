@@ -14,40 +14,40 @@ public final class ConfigConstants
 
   private static final DbGenOptions options;
 
-  private static final boolean DEFAULT_DEBUG                                        = true;
-  private static final int DEFAULT_SPLITS                                           = 1;
-  private static final double ATTRIBUTES_PRIMITIVE_TYPES_STRANGE_TYPES_PROBABILITY  = 0;
-  private static final double ATTRIBUTES_PRIMITIVE_TYPES_NULL_PROBABILITY           = 0;
-  private static final String ATTRIBUTES_PRIMITIVE_TYPES_STRING_TYPE                = "random";
-  private static final int ATTRIBUTES_PRIMITIVE_TYPES_MIN_INT_ALLOWED               = Integer.MIN_VALUE + 1;
-  private static final int ATTRIBUTES_PRIMITIVE_TYPES_MAX_INT_ALLOWED               = Integer.MAX_VALUE - 1;
-  private static final double ATTRIBUTES_PRIMITIVE_TYPES_MIN_DOUBLE_ALLOWED         = Double.MIN_VALUE + 1;
-  private static final double ATTRIBUTES_PRIMITIVE_TYPES_MAX_DOUBLE_ALLOWED         = Double.MAX_VALUE - 1;
-  private static final int ATTRIBUTES_PRIMITIVE_TYPES_DOUBLE_DECIMALS_ALLOWED       = 2;
-  private static final String ATTRIBUTES_PRIMITIVE_TYPES_NAMES_FILE                 = "config/names.txt";
-  private static final String ATTRIBUTES_PRIMITIVE_TYPES_SURNAMES_FILE              = "config/surnames.txt";
-  private static final String ATTRIBUTES_PRIMITIVE_TYPES_WORDS_FILE                 = "config/words.txt";
-  private static final int ATTRIBUTES_TUPLE_MIN_TUPLE_ELEMENTS                      = 1;
-  private static final int ATTRIBUTES_TUPLE_MAX_TUPLE_ELEMENTS                      = 10;
-  private static final double ATTRIBUTES_TUPLE_STRANGE_TYPES_PROBABILITY            = 0;
-  private static final double ATTRIBUTES_TUPLE_NULL_PROBABILITY                     = 0;
-  private static final int EVERSIONS_MIN_INSTANCES                                  = 10;
-  private static final int EVERSIONS_MAX_INSTANCES                                  = 20;
-  private static final int AGGREGATES_MIN_ALLOWED                                   = 2;
-  private static final int AGGREGATES_MAX_ALLOWED                                   = 3;
-  private static final int REFERENCES_MIN_ALLOWED                                   = 2;
-  private static final int REFERENCES_MAX_ALLOWED                                   = 3;
-  private static final int REFERENCES_STRANGE_TYPES_PROBABILITY                     = 0;
-  private static final String ENTITIES_DATEFORMAT                                   = "dd/MM/yyyy";
-  private static final String ENTITIES_TIMESTAMP                                    = "17/06/1988";
-  private static final boolean ENTITIES_INCLUDE_TYPE                                = false;
-  private static final boolean OUTPUT_FOLDER                                        = false;
-  private static final boolean OUTPUT_CONSOLE                                       = false;
-  private static final boolean OUTPUT_DATABASE                                      = false;
-  private static final String DEFAULT_FOLDER                                        = "output/";
-  private static final String DEFAULT_DATABASE                                      = "localhost";
-  private static final String DEFAULT_DATABASE_COLLECTION                           = "default_collection";
-  private static final String SPACES                                                = "  ";
+  private static final boolean  DEFAULT_DEBUG                                        = true;
+  private static final int      DEFAULT_SPLITS                                       = 1;
+  private static final double   ATTRIBUTES_PRIMITIVE_TYPES_STRANGE_TYPES_PROBABILITY = 0;
+  private static final double   ATTRIBUTES_PRIMITIVE_TYPES_NULL_PROBABILITY          = 0;
+  private static final String   ATTRIBUTES_PRIMITIVE_TYPES_STRING_TYPE               = "random";
+  private static final int      ATTRIBUTES_PRIMITIVE_TYPES_MIN_INT_ALLOWED           = Integer.MIN_VALUE + 1;
+  private static final int      ATTRIBUTES_PRIMITIVE_TYPES_MAX_INT_ALLOWED           = Integer.MAX_VALUE - 1;
+  private static final double   ATTRIBUTES_PRIMITIVE_TYPES_MIN_DOUBLE_ALLOWED        = Double.MIN_VALUE + 1;
+  private static final double   ATTRIBUTES_PRIMITIVE_TYPES_MAX_DOUBLE_ALLOWED        = Double.MAX_VALUE - 1;
+  private static final int      ATTRIBUTES_PRIMITIVE_TYPES_DOUBLE_DECIMALS_ALLOWED   = 2;
+  private static final String   ATTRIBUTES_PRIMITIVE_TYPES_NAMES_FILE                = "config/names.txt";
+  private static final String   ATTRIBUTES_PRIMITIVE_TYPES_SURNAMES_FILE             = "config/surnames.txt";
+  private static final String   ATTRIBUTES_PRIMITIVE_TYPES_WORDS_FILE                = "config/words.txt";
+  private static final int      ATTRIBUTES_TUPLE_MIN_TUPLE_ELEMENTS                  = 1;
+  private static final int      ATTRIBUTES_TUPLE_MAX_TUPLE_ELEMENTS                  = 10;
+  private static final double   ATTRIBUTES_TUPLE_STRANGE_TYPES_PROBABILITY           = 0;
+  private static final double   ATTRIBUTES_TUPLE_NULL_PROBABILITY                    = 0;
+  private static final int      EVERSIONS_MIN_INSTANCES                              = 10;
+  private static final int      EVERSIONS_MAX_INSTANCES                              = 20;
+  private static final int      AGGREGATES_MIN_ALLOWED                               = 2;
+  private static final int      AGGREGATES_MAX_ALLOWED                               = 3;
+  private static final int      REFERENCES_MIN_ALLOWED                               = 2;
+  private static final int      REFERENCES_MAX_ALLOWED                               = 3;
+  private static final int      REFERENCES_STRANGE_TYPES_PROBABILITY                 = 0;
+  private static final String   ENTITIES_DATEFORMAT                                  = "dd/MM/yyyy";
+  private static final String   ENTITIES_TIMESTAMP                                   = "17/06/1988";    //TODO: ¿A default date? Current? Seconds since Epoch?
+  private static final boolean  ENTITIES_INCLUDE_TYPE                                = false;
+  private static final boolean  OUTPUT_FOLDER                                        = false;
+  private static final boolean  OUTPUT_CONSOLE                                       = false;
+  private static final boolean  OUTPUT_DATABASE                                      = false;
+  private static final String   DEFAULT_FOLDER                                       = "output/";
+  private static final String   DEFAULT_DATABASE                                     = "localhost";
+  private static final String   DEFAULT_DATABASE_COLLECTION                          = "default_collection";
+  private static final String   SPACES                                               = "  ";
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
   ///////////////                           ENTITY OPTIONS                           ///////////////
