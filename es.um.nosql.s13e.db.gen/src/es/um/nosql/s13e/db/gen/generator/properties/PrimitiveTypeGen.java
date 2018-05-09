@@ -99,7 +99,10 @@ public class PrimitiveTypeGen
 
   public ObjectId genRandomObjectId()
   {
-    return objGen.getRandomObjectId();
+    if (ConfigConstants.SHOULD_GENERATE_BY_TIMESTAMP())
+      return objGen.getTimestampObjectId();
+    else
+      return objGen.getRandomObjectId();
   }
 
   public Object genNull()

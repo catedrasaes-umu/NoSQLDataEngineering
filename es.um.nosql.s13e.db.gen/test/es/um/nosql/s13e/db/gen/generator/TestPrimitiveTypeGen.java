@@ -1,8 +1,6 @@
 package es.um.nosql.s13e.db.gen.generator;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.bson.types.ObjectId;
 import org.junit.Ignore;
@@ -87,24 +85,11 @@ class TestPrimitiveTypeGen
 
   @Test
   void testObjectIds() throws ParseException
-  {/*
-//    for (int i = 0; i < ITERATIONS_OID; i++)
-//      System.out.println(new Date());
-    ObjectId oid = oidGen.getTimestampObjectId(new SimpleDateFormat("dd/MM/yyyy").parse("21/12/2012"));
-    System.out.println("Counter: " + oid.getCounter());
-    System.out.println("MachineId: " + oid.getMachineIdentifier());
-    System.out.println("ProcessId: " + oid.getProcessIdentifier());
-    System.out.println("Timestamp: " + oid.getTimestamp());
-    System.out.println("Date: " + oid.getDate());
-
-    public ObjectId getTimestampObjectId(Date date)
+  {
+    for (int i = 0; i < ITERATIONS_OID; i++)
     {
-      return new ObjectId(date);
-          //TODO: Recordar que hay que restar la fecha actual a la dada...
-//          var objectIdFromDate = function (date) { return Math.floor(date.getTime() / 1000).toString(16) + "0000000000000000";};
+      ObjectId oid = oidGen.getTimestampObjectId();
+      System.out.println("Date: " + oid.getDate());
     }
-//    var timestamp = Math.floor(new Date(1974, 6, 25).getTime() / 1000);
-//    var hex       = ('00000000' + timestamp.toString(16)).substr(-8); // zero padding
-//    var objectId  = new ObjectId(hex + new ObjectId().str.substring(8));*/
   }
 }

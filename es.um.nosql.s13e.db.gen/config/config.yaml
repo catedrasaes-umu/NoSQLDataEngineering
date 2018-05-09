@@ -8,8 +8,11 @@ entities:
     minInstances: 2
     maxInstances: 2
   includeType: true
-  dateFormat: dd/MM/yyyy
-  timestamp: 17/6/1988
+  dateFormat: "dd-MM-yyyy HH:mm:ss" 
+  timestamp: 17-6-1988 13:05:11
+  interval: 2000 minutes
+  randomIntervalProbability: 0.8
+  randomIntervalMargin: 0.95
 
 attributes:
   primitiveTypes:

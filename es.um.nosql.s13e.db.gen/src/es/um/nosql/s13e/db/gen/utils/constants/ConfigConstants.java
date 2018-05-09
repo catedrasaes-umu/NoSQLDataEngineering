@@ -1,6 +1,8 @@
 package es.um.nosql.s13e.db.gen.utils.constants;
 
 import java.io.File;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import es.um.nosql.s13e.db.gen.config.DbGenOptions;
 import es.um.nosql.s13e.db.gen.utils.IOUtils;
@@ -39,7 +41,10 @@ public final class ConfigConstants
   private static final int      REFERENCES_MAX_ALLOWED                               = 3;
   private static final int      REFERENCES_STRANGE_TYPES_PROBABILITY                 = 0;
   private static final String   ENTITIES_DATEFORMAT                                  = "dd/MM/yyyy";
-  private static final String   ENTITIES_TIMESTAMP                                   = "17/06/1988";    //TODO: ¿A default date? Current? Seconds since Epoch?
+  private static final String   ENTITIES_TIMESTAMP                                   = new SimpleDateFormat(ConfigConstants.GET_DATEFORMAT()).format(new Date());
+  private static final String   ENTITIES_INTERVAL                                    = "2 seconds";
+  private static final double   ENTITIES_RANDOM_INTERVAL_PROBABILITY                 = 0;
+  private static final double   ENTITIES_RANDOM_INTERVAL_MARGIN                      = 0;
   private static final boolean  ENTITIES_INCLUDE_TYPE                                = false;
   private static final boolean  OUTPUT_FOLDER                                        = false;
   private static final boolean  OUTPUT_CONSOLE                                       = false;
@@ -91,6 +96,38 @@ public final class ConfigConstants
       return options.getEntities().getTimestamp();
     else
       return ENTITIES_TIMESTAMP;
+  }
+
+  public static int GET_INTERVAL_NUMBER()
+  {
+    if (options.getEntities() != null && options.getEntities().getInterval() != null)
+      return Integer.parseInt(options.getEntities().getInterval().split(" ")[0]);
+    else
+      return Integer.parseInt(ENTITIES_INTERVAL.split(" ")[0]);
+  }
+
+  public static String GET_INTERVAL_UNITS()
+  {
+    if (options.getEntities() != null && options.getEntities().getInterval() != null)
+      return options.getEntities().getInterval().split(" ")[1].toLowerCase();
+    else
+      return ENTITIES_INTERVAL.split(" ")[1];
+  }
+
+  public static double GET_RANDOM_INTERVAL_PROBABILITY()
+  {
+    if (options.getEntities() != null && options.getEntities().getRandomIntervalProbability() != null)
+      return options.getEntities().getRandomIntervalProbability();
+    else
+      return ENTITIES_RANDOM_INTERVAL_PROBABILITY;
+  }
+
+  public static double GET_RANDOM_INTERVAL_MARGIN()
+  {
+    if (options.getEntities() != null && options.getEntities().getRandomIntervalMargin() != null)
+      return options.getEntities().getRandomIntervalMargin();
+    else
+      return ENTITIES_RANDOM_INTERVAL_MARGIN;
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////////
@@ -361,6 +398,11 @@ public final class ConfigConstants
     return result.toString();
   }
 
+  public static boolean SHOULD_GENERATE_BY_TIMESTAMP()
+  {
+    return options.getEntities() != null && options.getEntities().getTimestamp() != null && options.getEntities().getInterval() != null;
+  }
+
   public static String GET_OPTIONS()
   {
     StringBuilder result = new StringBuilder();
@@ -371,6 +413,10 @@ public final class ConfigConstants
     result.append("GET_ENTITY_INCLUDE_TYPE: " + ConfigConstants.GET_INCLUDE_TYPE() + "\n");
     result.append("GET_DATEFORMAT: " + ConfigConstants.GET_DATEFORMAT() + "\n");
     result.append("GET_INITIAL_TIMESTAMP: " + ConfigConstants.GET_INITIAL_TIMESTAMP() + "\n");
+    result.append("GET_INTERVAL_NUMBER: " + ConfigConstants.GET_INTERVAL_NUMBER() + "\n");
+    result.append("GET_INTERVAL_UNITS: " + ConfigConstants.GET_INTERVAL_UNITS() + "\n");
+    result.append("GET_RANDOM_INTERVAL_PROBABILITY: " + ConfigConstants.GET_RANDOM_INTERVAL_PROBABILITY() + "\n");
+    result.append("GET_RANDOM_INTERVAL_MARGIN: " + ConfigConstants.GET_RANDOM_INTERVAL_MARGIN() + "\n");
 
     result.append("\n===== PRIMITIVE TYPES OPTIONS =====\n\n");
     result.append("GET_PRIMITIVE_TYPES_NAMES_FILE: " + ConfigConstants.GET_PRIMITIVE_TYPES_NAMES_FILE() + "\n");
