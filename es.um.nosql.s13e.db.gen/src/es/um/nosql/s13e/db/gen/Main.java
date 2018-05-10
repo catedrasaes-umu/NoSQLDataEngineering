@@ -6,7 +6,10 @@ public class Main
 {
   public static void main(String[] args)
   {
-    Controller controller = new Controller();
-    controller.start(ConfigConstants.GET_INPUT_FILE());
+    //Controller controller = new Controller();
+    //controller.start(ConfigConstants.GET_INPUT_FILE());
+
+    ParallelController pcontroller = new ParallelController();
+    pcontroller.start(ConfigConstants.GET_INPUT_FILE());
   }
 }

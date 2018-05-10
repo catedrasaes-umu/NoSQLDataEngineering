@@ -18,27 +18,26 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2"
-        root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_id">
+          name="attr1">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="3"
-        root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="_id">
+          name="attr2">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="attr3">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Boolean"/>
       </properties>
     </entityversions>
   </entities>

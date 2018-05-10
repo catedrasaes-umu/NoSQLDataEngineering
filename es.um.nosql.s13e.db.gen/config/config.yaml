@@ -1,18 +1,18 @@
 input:
-  model: source/oneofeach.xmi
+  model: source/oneofeach_test.xmi
   debug: true
-  splits: 1
+  splits: 3
 
 entities:
   versions:
-    minInstances: 2
-    maxInstances: 2
+    minInstances: 3
+    maxInstances: 3
   includeType: true
-  dateFormat: "dd-MM-yyyy HH:mm:ss" 
-  timestamp: 17-6-1988 13:05:11
-  interval: 2000 minutes
-  randomIntervalProbability: 0.8
-  randomIntervalMargin: 0.95
+#  dateFormat: "dd-MM-yyyy HH:mm:ss" 
+#  timestamp: 17-6-1988 13:05:11
+#  interval: 2000 seconds
+#  randomIntervalProbability: 0
+#  randomIntervalMargin: 1
 
 attributes:
   primitiveTypes:
@@ -43,9 +43,9 @@ associations:
     maxAggregateAllowed: 3
 
 output:
-#  database: localhost
-#  databaseCollection: generated_collection
-#  folder: output
+  database: localhost
+  databaseCollection: generated_collection
+  #folder: output
   console: true
 
 # Generate images?
