@@ -72,16 +72,19 @@ public class ObjectIdGen
         number -= numGen.getInclusiveRandom(0, new Double(ConfigConstants.GET_RANDOM_INTERVAL_MARGIN() * number).intValue());
     }
 
-    switch (ConfigConstants.GET_INTERVAL_UNITS())
+    // Yeah, because apparently calendar is NOT thread safe, and memory corruption does happen...: (
+    synchronized(calendar)
     {
-      case "second": case "seconds": {calendar.add(Calendar.SECOND, number); break;}
-      case "minute": case "minutes": {calendar.add(Calendar.MINUTE, number); break;}
-      case "hour": case "hours": {calendar.add(Calendar.HOUR_OF_DAY, number); break;}
-      case "day": case "days": {calendar.add(Calendar.DAY_OF_MONTH, number); break;}
-      case "month": case "months": {calendar.add(Calendar.MONTH, number); break;}
-      case "year": case "years": {calendar.add(Calendar.YEAR, number); break;}
+      switch (ConfigConstants.GET_INTERVAL_UNITS())
+      {
+        case "second": case "seconds": {calendar.add(Calendar.SECOND, number); break;}
+        case "minute": case "minutes": {calendar.add(Calendar.MINUTE, number); break;}
+        case "hour": case "hours": {calendar.add(Calendar.HOUR_OF_DAY, number); break;}
+        case "day": case "days": {calendar.add(Calendar.DAY_OF_MONTH, number); break;}
+        case "month": case "months": {calendar.add(Calendar.MONTH, number); break;}
+        case "year": case "years": {calendar.add(Calendar.YEAR, number); break;}
+      }
+      return calendar.getTime();
     }
-
-    return calendar.getTime();
   }
 }

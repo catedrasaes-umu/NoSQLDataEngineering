@@ -1,15 +1,18 @@
 package es.um.nosql.s13e.db.gen;
 
+import es.um.nosql.s13e.db.gen.controllers.ControllerFactory;
+import es.um.nosql.s13e.db.gen.controllers.Controller_Type;
+import es.um.nosql.s13e.db.gen.controllers.IController;
 import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
 public class Main
 {
   public static void main(String[] args)
   {
-    //Controller controller = new Controller();
-    //controller.start(ConfigConstants.GET_INPUT_FILE());
-
-    ParallelController pcontroller = new ParallelController();
-    pcontroller.start(ConfigConstants.GET_INPUT_FILE());
+    for (int i = 0; i < 100; i++)
+    {
+      IController controller = ControllerFactory.GET_CONTROLLER(Controller_Type.PARALLEL_CONTROLLER);
+      controller.start(ConfigConstants.GET_INPUT_FILE());
+    }
   }
-}
+}//IN_PARALLEL

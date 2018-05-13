@@ -1,6 +1,8 @@
-package es.um.nosql.s13e.db.gen;
+package es.um.nosql.s13e.db.gen.controllers;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.db.gen.generator.ObjectGen;
@@ -10,17 +12,43 @@ import es.um.nosql.s13e.db.gen.utils.DebugLog;
 import es.um.nosql.s13e.db.gen.utils.IOUtils;
 import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
-public class Controller
+public class ParallelController implements IController
 {
-  NumberGen numGen;
-  ObjectGen oGen;
-  OutputGen outputModule;
+  private class RunnableGenerator implements Runnable
+  {
+    private int id;
+    private int objectsIteration;
+    private NoSQLSchema schema;
+    private ObjectGen oGen;
+    private OutputGen outputModule;
 
-  public Controller()
+    public RunnableGenerator(int id, int objectsIteration, NoSQLSchema schema, ObjectGen oGen, OutputGen outputModule)
+    {
+      this.id = id;
+      this.objectsIteration = objectsIteration;
+      this.schema = schema;
+      this.oGen = oGen;
+      this.outputModule = outputModule;
+    }
+
+    @Override
+    public void run()
+    {//TODO: Need to recheck the outputModule, because of the indexes used to name the files.
+      outputModule.genOutput(oGen.generateBulk(schema, objectsIteration));
+    }
+  }
+
+  private NumberGen numGen;
+  private ObjectGen oGen;
+  private OutputGen outputModule;
+  private List<Thread> threadList;
+
+  public ParallelController()
   {
     numGen = NumberGen.GET_INSTANCE();
     oGen = new ObjectGen();
     outputModule = new OutputGen();
+    threadList = new ArrayList<Thread>();
   }
 
   public void start(String modelRoute)
@@ -39,7 +67,9 @@ public class Controller
       for (int i = 0; i < ConfigConstants.GET_SPLITS(); i++)
       {
         DebugLog.PRINTOUT("Iteration " + (i+1) + "/" + ConfigConstants.GET_SPLITS() + " @ " + ((System.currentTimeMillis() - startTime)/1000) + " seconds...");
-        outputModule.genOutput(oGen.generateBulk(schema, objectsIteration));
+        Thread thread = new Thread(new RunnableGenerator(i, objectsIteration, schema, new ObjectGen(), new OutputGen()));
+        threadList.add(thread);
+        thread.start();
       }
 
     if (floor != 0)
@@ -48,7 +78,25 @@ public class Controller
       outputModule.genOutput(oGen.generateBulk(schema, floor));
     }
 
+    for (Thread t : threadList)
+      try
+      {
+        t.join();
+      } catch(InterruptedException e) {e.printStackTrace();}
+
     DebugLog.PRINTOUT("Elapsed time: " + ((System.currentTimeMillis() - startTime)/1000) + " seconds");
     DebugLog.PRINTOUT("Generation for " + ConfigConstants.GET_INPUT_FILE() + " finished.");
+  }
+
+  private int CALCULATE_THREADS(int splits)
+  {
+    //TODO: How should we calculate the necessary threads? Defining an IN_PARALLEL param seems too confusing with splits and threads everywhere..
+    if (splits < 16)
+      return 2;
+    if (splits < 64)
+      return 4;
+    if (splits < 256)
+      return 8;
+    return 16;
   }
 }

@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.db.gen;
+package es.um.nosql.s13e.db.gen.controllers;
 
 import java.io.File;
 
@@ -6,18 +6,17 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.db.gen.generator.ObjectGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
 import es.um.nosql.s13e.db.gen.output.OutputGen;
-import es.um.nosql.s13e.db.gen.runnable.RunnableParallelGen;
 import es.um.nosql.s13e.db.gen.utils.DebugLog;
 import es.um.nosql.s13e.db.gen.utils.IOUtils;
 import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
-public class ParallelController
+public class SerialController implements IController
 {
   NumberGen numGen;
   ObjectGen oGen;
   OutputGen outputModule;
 
-  public ParallelController()
+  public SerialController()
   {
     numGen = NumberGen.GET_INSTANCE();
     oGen = new ObjectGen();
@@ -40,7 +39,7 @@ public class ParallelController
       for (int i = 0; i < ConfigConstants.GET_SPLITS(); i++)
       {
         DebugLog.PRINTOUT("Iteration " + (i+1) + "/" + ConfigConstants.GET_SPLITS() + " @ " + ((System.currentTimeMillis() - startTime)/1000) + " seconds...");
-        new Thread(new RunnableParallelGen(i, objectsIteration, schema, new ObjectGen(), new OutputGen())).start();
+        outputModule.genOutput(oGen.generateBulk(schema, objectsIteration));
       }
 
     if (floor != 0)

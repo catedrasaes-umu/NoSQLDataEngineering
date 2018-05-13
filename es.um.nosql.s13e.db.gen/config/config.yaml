@@ -1,13 +1,13 @@
 input:
   model: source/oneofeach_test.xmi
   debug: true
-  splits: 3
+  splits: 10
 
 entities:
   versions:
-    minInstances: 3
-    maxInstances: 3
-  includeType: true
+    minInstances: 1500000
+    maxInstances: 1500000
+#  includeType: true
 #  dateFormat: "dd-MM-yyyy HH:mm:ss" 
 #  timestamp: 17-6-1988 13:05:11
 #  interval: 2000 seconds
@@ -43,10 +43,10 @@ associations:
     maxAggregateAllowed: 3
 
 output:
-  database: localhost
-  databaseCollection: generated_collection
-  #folder: output
-  console: true
+  #database: localhost
+  #databaseCollection: generated_collection
+  folder: output
+  #console: false
 
 # Generate images?
 # Introduce a timeout between operations and between insertions in database

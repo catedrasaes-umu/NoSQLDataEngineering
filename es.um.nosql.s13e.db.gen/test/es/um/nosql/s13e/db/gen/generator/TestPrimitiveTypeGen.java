@@ -23,7 +23,7 @@ class TestPrimitiveTypeGen
   private int ITERATIONS_STRING = 1000000;
   private int ITERATIONS_INTS   = 1000000;
   private int ITERATIONS_DOUBLE = 1000000;
-  private int ITERATIONS_OID    = 1000000;
+  private int ITERATIONS_OID    = 10000000;
 
   @Ignore
   void testBooleans()
@@ -89,7 +89,7 @@ class TestPrimitiveTypeGen
     for (int i = 0; i < ITERATIONS_OID; i++)
     {
       ObjectId oid = oidGen.getTimestampObjectId();
-      System.out.println("Date: " + oid.getDate());
+//      System.out.println("Date: " + oid.getDate());
     }
   }
 }
