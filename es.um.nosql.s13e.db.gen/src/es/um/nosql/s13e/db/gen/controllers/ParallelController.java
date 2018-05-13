@@ -63,13 +63,25 @@ public class ParallelController implements IController
     DebugLog.PRINTOUT("Starting generation for " + modelRoute + " @ 0 seconds");
     DebugLog.PRINTOUT("Objects per version being generated: " + objectsVersion + " in " + ConfigConstants.GET_SPLITS() + " splits");
 
+    int index = 0;
+
     if (objectsVersion >= ConfigConstants.GET_SPLITS())
       for (int i = 0; i < ConfigConstants.GET_SPLITS(); i++)
       {
         DebugLog.PRINTOUT("Iteration " + (i+1) + "/" + ConfigConstants.GET_SPLITS() + " @ " + ((System.currentTimeMillis() - startTime)/1000) + " seconds...");
-        Thread thread = new Thread(new RunnableGenerator(i, objectsIteration, schema, new ObjectGen(), new OutputGen()));
-        threadList.add(thread);
-        thread.start();
+        for (int j = 0; j < 4; j++)
+        {
+          Thread thread = new Thread(new RunnableGenerator(index++, objectsIteration / 4, schema, new ObjectGen(), new OutputGen()));
+          threadList.add(thread);
+          thread.start();          
+        }
+
+        for (Thread t : threadList)
+          try
+          {
+            t.join();
+          } catch(InterruptedException e) {e.printStackTrace();}
+        threadList.clear();
       }
 
     if (floor != 0)
@@ -77,12 +89,6 @@ public class ParallelController implements IController
       DebugLog.PRINTOUT("Floor iteration @ " + ((System.currentTimeMillis() - startTime)/1000) + " seconds...");
       outputModule.genOutput(oGen.generateBulk(schema, floor));
     }
-
-    for (Thread t : threadList)
-      try
-      {
-        t.join();
-      } catch(InterruptedException e) {e.printStackTrace();}
 
     DebugLog.PRINTOUT("Elapsed time: " + ((System.currentTimeMillis() - startTime)/1000) + " seconds");
     DebugLog.PRINTOUT("Generation for " + ConfigConstants.GET_INPUT_FILE() + " finished.");

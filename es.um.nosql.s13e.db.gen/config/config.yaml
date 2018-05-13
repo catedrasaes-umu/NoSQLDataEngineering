@@ -1,12 +1,12 @@
 input:
   model: source/stackoverflow.xmi
   debug: true
-  splits: 10
+  splits: 100
 
 entities:
   versions:
-    minInstances: 50
-    maxInstances: 50
+    minInstances: 100000
+    maxInstances: 100000
   includeType: true
 #  dateFormat: "dd-MM-yyyy HH:mm:ss" 
 #  timestamp: 17-6-1988 13:05:11
@@ -42,10 +42,10 @@ associations:
     minAggregateAllowed: 2
     maxAggregateAllowed: 3
 
-output:
+#output:
   #database: localhost
   #databaseCollection: generated_collection
-  folder: output
+  #folder: output
   #console: false
 
 # Generate images?
