@@ -1,13 +1,13 @@
 input:
-  model: source/oneofeach_test.xmi
+  model: source/stackoverflow.xmi
   debug: true
   splits: 10
 
 entities:
   versions:
-    minInstances: 1500000
-    maxInstances: 1500000
-#  includeType: true
+    minInstances: 50
+    maxInstances: 50
+  includeType: true
 #  dateFormat: "dd-MM-yyyy HH:mm:ss" 
 #  timestamp: 17-6-1988 13:05:11
 #  interval: 2000 seconds

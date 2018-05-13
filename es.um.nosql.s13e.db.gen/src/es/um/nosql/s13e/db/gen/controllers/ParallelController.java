@@ -33,8 +33,8 @@ public class ParallelController implements IController
 
     @Override
     public void run()
-    {//TODO: Need to recheck the outputModule, because of the indexes used to name the files.
-      outputModule.genOutput(oGen.generateBulk(schema, objectsIteration));
+    {
+      outputModule.genOutput(oGen.generateBulk(schema, objectsIteration), id);
     }
   }
 
@@ -88,7 +88,7 @@ public class ParallelController implements IController
     DebugLog.PRINTOUT("Generation for " + ConfigConstants.GET_INPUT_FILE() + " finished.");
   }
 
-  private int CALCULATE_THREADS(int splits)
+  private int calculateThreads(int splits)
   {
     //TODO: How should we calculate the necessary threads? Defining an IN_PARALLEL param seems too confusing with splits and threads everywhere..
     if (splits < 16)

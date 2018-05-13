@@ -27,6 +27,21 @@ public class OutputGen
     splitMap = new HashMap<String, Integer>();
   }
 
+  public void genOutput(Map<String, ArrayNode> jsonContent, int threadIndex)
+  {
+    for (String collName : jsonContent.keySet())
+    {
+      if (ConfigConstants.IS_DEFINED_OUTPUT_CONSOLE())
+        genToConsole(jsonContent.get(collName));
+
+      if (ConfigConstants.IS_DEFINED_OUTPUT_DATABASE())
+        genToDatabase(jsonContent.get(collName), collName);
+
+      if (ConfigConstants.IS_DEFINED_OUTPUT_FOLDER())
+        genToFile(jsonContent.get(collName), collName, threadIndex);
+    }
+  }
+
   public void genOutput(Map<String, ArrayNode> jsonContent)
   {
     for (String collName : jsonContent.keySet())
@@ -74,8 +89,6 @@ public class OutputGen
 
   private void genToFile(ArrayNode arrayNode, String collName)
   {
-    ObjectWriter writer = oMapper.writerWithDefaultPrettyPrinter();
-
     if (splitMap.containsKey(collName))
       splitMap.put(collName, splitMap.get(collName) + 1);
     else
@@ -83,7 +96,14 @@ public class OutputGen
 
     int splitExtension = splitMap.get(collName);
 
-    File outputFile = Paths.get(ConfigConstants.GET_OUTPUT_FOLDER(), collName + "_" + splitExtension + FILE_EXTENSION).toFile();
+    genToFile(arrayNode, collName, splitExtension);
+  }
+
+  private void genToFile(ArrayNode arrayNode, String collName, int index)
+  {
+    ObjectWriter writer = oMapper.writerWithDefaultPrettyPrinter();
+
+    File outputFile = Paths.get(ConfigConstants.GET_OUTPUT_FOLDER(), collName + "_" + index + FILE_EXTENSION).toFile();
     outputFile.getParentFile().mkdirs();
 
     try

@@ -9,10 +9,7 @@ public class Main
 {
   public static void main(String[] args)
   {
-    for (int i = 0; i < 100; i++)
-    {
-      IController controller = ControllerFactory.GET_CONTROLLER(Controller_Type.PARALLEL_CONTROLLER);
-      controller.start(ConfigConstants.GET_INPUT_FILE());
-    }
+    IController controller = ControllerFactory.GET_CONTROLLER(Controller_Type.PARALLEL_CONTROLLER);
+    controller.start(ConfigConstants.GET_INPUT_FILE());
   }
-}//IN_PARALLEL
+}
