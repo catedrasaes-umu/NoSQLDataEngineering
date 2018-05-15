@@ -9,7 +9,7 @@ public class Main
 {
   public static void main(String[] args)
   {
-    IController controller = ControllerFactory.GET_CONTROLLER(Controller_Type.PARALLEL_CONTROLLER);
+    IController controller = ControllerFactory.GET_CONTROLLER(Controller_Type.SERIAL_CONTROLLER);
     controller.start(ConfigConstants.GET_INPUT_FILE());
   }
 }

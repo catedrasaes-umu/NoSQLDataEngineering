@@ -11,6 +11,7 @@ import es.um.nosql.s13e.db.gen.output.OutputGen;
 import es.um.nosql.s13e.db.gen.utils.DebugLog;
 import es.um.nosql.s13e.db.gen.utils.IOUtils;
 import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
+import es.um.nosql.s13e.db.gen.utils.constants.FixedConstants;
 
 public class ParallelController implements IController
 {
@@ -69,13 +70,14 @@ public class ParallelController implements IController
       for (int i = 0; i < ConfigConstants.GET_SPLITS(); i++)
       {
         DebugLog.PRINTOUT("Iteration " + (i+1) + "/" + ConfigConstants.GET_SPLITS() + " @ " + ((System.currentTimeMillis() - startTime)/1000) + " seconds...");
-        for (int j = 0; j < 4; j++)
+        for (int j = 0; j < FixedConstants.GET_THREADS(); j++)
         {
-          Thread thread = new Thread(new RunnableGenerator(index++, objectsIteration / 4, schema, new ObjectGen(), new OutputGen()));
+          Thread thread = new Thread(new RunnableGenerator(index++, objectsIteration / FixedConstants.GET_THREADS(), schema, new ObjectGen(), new OutputGen()));
           threadList.add(thread);
           thread.start();          
         }
 
+        // We have to block after each split, just to make sure we do not fill all the available memory
         for (Thread t : threadList)
           try
           {
@@ -92,17 +94,5 @@ public class ParallelController implements IController
 
     DebugLog.PRINTOUT("Elapsed time: " + ((System.currentTimeMillis() - startTime)/1000) + " seconds");
     DebugLog.PRINTOUT("Generation for " + ConfigConstants.GET_INPUT_FILE() + " finished.");
-  }
-
-  private int calculateThreads(int splits)
-  {
-    //TODO: How should we calculate the necessary threads? Defining an IN_PARALLEL param seems too confusing with splits and threads everywhere..
-    if (splits < 16)
-      return 2;
-    if (splits < 64)
-      return 4;
-    if (splits < 256)
-      return 8;
-    return 16;
   }
 }

@@ -8,6 +8,7 @@ public class FixedConstants
   private static final int MAX_WORDS_IN_PHRASE    = 9;
   private static final int MIN_NONSENSE_CHARS     = 5;
   private static final int MAX_NONSENSE_CHARS     = 30;
+  private static final int THREADS                = 4;
 
   public static int GET_RANDOM_FUNCTIONS_COUNT()
   {
@@ -37,5 +38,10 @@ public class FixedConstants
   public static int GET_MAX_NONSENSE_CHARS()
   {
     return MAX_NONSENSE_CHARS;
+  }
+
+  public static int GET_THREADS()
+  {
+    return THREADS;
   }
 }
