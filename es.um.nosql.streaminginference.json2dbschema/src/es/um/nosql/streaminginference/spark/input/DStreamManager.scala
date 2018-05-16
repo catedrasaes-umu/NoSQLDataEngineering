@@ -17,7 +17,6 @@ import org.apache.spark.streaming.StateSpec
 import es.um.nosql.streaminginference.spark.utils.HDFSHelper
 import org.apache.spark.broadcast.Broadcast
 import org.apache.spark.SparkContext
-import es.um.nosql.streaminginference.spark.utils.SchemasAccumulator
 
 object DStreamManager
 {

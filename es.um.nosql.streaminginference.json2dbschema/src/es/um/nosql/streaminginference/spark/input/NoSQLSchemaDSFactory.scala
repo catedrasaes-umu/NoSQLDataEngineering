@@ -15,7 +15,6 @@ import es.um.nosql.streaminginference.spark.utils.EcoreHelper
 import org.apache.spark.streaming.State
 import org.apache.spark.streaming.StateSpec
 import es.um.nosql.streaminginference.spark.utils.EcoreHelper
-import es.um.nosql.streaminginference.spark.utils.SchemasAccumulator
 import org.apache.spark.SparkContext
 import es.um.nosql.streaminginference.spark.utils.HDFSHelper
 
