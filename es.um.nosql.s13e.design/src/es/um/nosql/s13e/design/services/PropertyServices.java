@@ -16,15 +16,6 @@ import es.um.nosql.s13e.NoSQLSchema.Tuple;
 
 public class PropertyServices
 {
-  // Cache<Entity, List<Attribute>> entityAllAttributesCache =
-  // Caffeine.newBuilder().build();
-  // Cache<Entity, List<Attribute>> entityAllAssociationsCache =
-  // Caffeine.newBuilder().build();
-  // Cache<Entity, List<Attribute>> entityCommonAttributesCache =
-  // Caffeine.newBuilder().build();
-  // Cache<Entity, List<Association>> entityCommonAssociationsCache =
-  // Caffeine.newBuilder().build();
-
   public List<Attribute> getAttributeList(Entity entity)
   {
     List<Attribute> result = new ArrayList<Attribute>();
