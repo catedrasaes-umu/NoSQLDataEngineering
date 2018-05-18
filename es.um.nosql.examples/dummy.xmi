@@ -20,6 +20,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="to">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="refToexample2" lowerBound="1" upperBound="1" refTo="Example2" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="refToexample1" lowerBound="1" upperBound="1" refTo="Example1" originalType="String"/>
     </entityversions>
     <entityversions versionId="2" root="true">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
@@ -37,6 +39,14 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="to">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="this">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="refToexample2" lowerBound="1" upperBound="1" refTo="Example2" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="refToexample1" lowerBound="1" upperBound="1" refTo="Example1" originalType="String"/>
     </entityversions>
+  </entities>
+  <entities name="Example2">
+    <entityversions versionId="1"/>
   </entities>
 </NoSQLSchema:NoSQLSchema>
