@@ -413,6 +413,12 @@
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: container">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::EntityVersion" referenceName="entityversions">
                   <subModelOperations xsi:type="tool:SetValue" featureName="versionId" valueExpression="aql: self.eContainer().entityversions->size()"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Attribute" referenceName="properties">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: '_id'"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::PrimitiveType" referenceName="type">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'ObjectId'"/>
+                    </subModelOperations>
+                  </subModelOperations>
                 </subModelOperations>
               </firstModelOperations>
             </initialOperation>
@@ -421,7 +427,7 @@
             <variable name="container"/>
             <viewVariable name="containerView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: container">
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: containerView.">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Attribute" referenceName="properties">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::PrimitiveType" referenceName="type">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'String'"/>
@@ -535,7 +541,7 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: element.eContainer().eContainer()">
-                <subModelOperations xsi:type="tool:For" expression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference)" iteratorName="ref NOT WORKING">
+                <subModelOperations xsi:type="tool:For" expression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference)" iteratorName="ref">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql: ref.oclAsType(NoSQLSchema::Reference).name = element.name">
                     <subModelOperations xsi:type="tool:RemoveElement"/>
                   </subModelOperations>
