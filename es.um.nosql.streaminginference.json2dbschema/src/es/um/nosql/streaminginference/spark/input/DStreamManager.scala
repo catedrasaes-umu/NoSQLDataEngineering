@@ -17,7 +17,9 @@ import org.apache.spark.streaming.StateSpec
 import es.um.nosql.streaminginference.spark.utils.HDFSHelper
 import org.apache.spark.broadcast.Broadcast
 import org.apache.spark.SparkContext
-import es.um.nosql.streaminginference.spark.utils.SchemasAccumulator
+import org.apache.spark.streaming.scheduler.StreamingListener
+import org.apache.spark.streaming.scheduler.StreamingListenerBatchCompleted
+import es.um.nosql.streaminginference.spark.listeners.BenchmarkListener
 
 object DStreamManager
 {
@@ -25,7 +27,7 @@ object DStreamManager
   final val SCHEMA_INFERENCE_MODE = "2"
   
   private val mode = NO_SQL_SCHEMA_MODE
-    
+  
   def startInteractions(ssc: StreamingContext, options: HashMap[String,String]) = 
   {
     val watcher = new Thread
@@ -33,23 +35,12 @@ object DStreamManager
       override def run
       {
         val donePath = options("output") + "/_DONE"
-        val outputPath = options("output") + "/_OUTPUT"
         val interval = options("interval").toInt
-        
         while (!HDFSHelper.exists(donePath)) 
-        {    
-            if (HDFSHelper.exists(outputPath))
-            {
-              val filePaths = HDFSHelper.getPatternFiles(options("output") + "/*.xmi")
-              filePaths.foreach(filePath => HDFSHelper.delete(filePath))
-              // Wait 5 seconds extra because output can be slow
-              Thread.sleep(interval + 5000)
-              HDFSHelper.delete(outputPath)
-            }
             Thread.sleep(interval)
-        }
+
         HDFSHelper.delete(donePath)
-        ssc.stop(true)
+        ssc.stop(true, true)
       }
     }
     
@@ -59,6 +50,9 @@ object DStreamManager
   def init(ssc: StreamingContext, options: HashMap[String, String]) = 
   {
     ssc.sparkContext.setLogLevel("ERROR")
+    if (options("benchmark").toBoolean)
+      ssc.addStreamingListener(new BenchmarkListener(options));
+    
     options("version") match 
     {
       case NO_SQL_SCHEMA_MODE =>

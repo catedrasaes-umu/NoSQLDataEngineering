@@ -117,7 +117,7 @@ public class SchemaInference implements Serializable
 	{
 		// IMPORTANT!! cp object will be modified so we need to work on a deep copy
 		// to avoid future problems
-		SchemaInference other = (SchemaInference) org.apache.commons.lang.SerializationUtils.clone(cp);
+		SchemaInference other = (SchemaInference) org.apache.commons.lang3.SerializationUtils.clone(cp);
 		SchemaInference merged = new SchemaInference(this);
 		Map<String, List<SchemaComponent>> mergedEntities = merged.getEntities();
 		Map<String, List<SchemaComponent>> otherEntities = other.getEntities();

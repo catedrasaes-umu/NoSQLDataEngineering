@@ -8,6 +8,7 @@ import org.apache.spark.streaming.StreamingContext
 
 import es.um.nosql.streaminginference.spark.input.DStreamManager
 import es.um.nosql.streaminginference.spark.utils.HDFSHelper
+import es.um.nosql.streaminginference.spark.utils.KryoHelper
 
 object Streaming
 {  
@@ -17,7 +18,10 @@ object Streaming
       "input" -> "input",
       "output" -> "output",
       "interval" -> "1000",
-      "version" -> DStreamManager.SCHEMA_INFERENCE_MODE
+      "version" -> DStreamManager.SCHEMA_INFERENCE_MODE,
+      "benchmark" -> "false",
+      "block-interval" -> "1000",
+      "kryo" -> "false"
   )
   
   def printHelp() 
@@ -66,7 +70,14 @@ object Streaming
   def createContext(args: Array[String])(): StreamingContext =
   {
     val options = parseOptions(args)
-    val conf = new SparkConf().setMaster("local[*]").setAppName("StreamingInference")
+    val conf = new SparkConf()
+                  .setAppName("StreamingInference")
+                  .set("spark.streaming.blockInterval", options("block-interval") + "ms")
+    
+    // Enable Kryo Serialization
+    if (options("kryo").toBoolean && options("version") == DStreamManager.SCHEMA_INFERENCE_MODE)
+      KryoHelper.enable(conf)
+
     val ssc = new StreamingContext(conf, Milliseconds(options("interval").toInt))
     DStreamManager.init(ssc, options)
     ssc.checkpoint(CheckpointDir)
