@@ -9,7 +9,6 @@ import scala.concurrent.duration.Duration
 import org.mongodb.scala.MongoClient
 import org.mongodb.scala.MongoDatabase
 import org.mongodb.scala.bson.collection.immutable.Document
-import org.mongodb.scala.model.Filters
 
 class MongoCollection (options: HashMap[String, String]) extends Collection(options) 
 {
@@ -29,13 +28,7 @@ class MongoCollection (options: HashMap[String, String]) extends Collection(opti
     val client: MongoClient = MongoClient("mongodb://"+connectionStr)
     client.getDatabase(database)
   }
-  
-  protected def removeCollections(db:MongoDatabase) = {
-    val collections = Await.result(db.listCollectionNames().toFuture(), Duration(10, TimeUnit.SECONDS))
-    collections.foreach(collection => 
-      Await.result(db.getCollection(collection).deleteMany(Filters.where("true")).toFuture(), Duration(1000, TimeUnit.SECONDS)))
-  }
-  
+    
   protected def insert(db:MongoDatabase, total:Int) = {
     for (i <- 0 to total-1)
     {
@@ -52,8 +45,8 @@ class MongoCollection (options: HashMap[String, String]) extends Collection(opti
   override def output()
   {
     val db = connect()
-    //Await.result(db.drop().toFuture(), Duration(10, TimeUnit.SECONDS))
-    removeCollections(db)
+    Await.result(db.drop().toFuture(), Duration(10, TimeUnit.SECONDS))
+    
     insert(db, total)
   }
 }
