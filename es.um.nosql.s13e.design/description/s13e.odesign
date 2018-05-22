@@ -172,7 +172,7 @@
         </popupMenus>
       </subItemMappings>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Refactored Database schema" label="Refactored Database schema" titleExpression="aql: 'Refactored Database schema -> Do not use'" domainClass="NoSQLSchema.NoSQLSchema">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" documentation="This diagram should NOT be used, it just factors out the common representation among each diagram." endUserDocumentation="This diagram should NOT be used, it just factors out the common representation among each diagram." name="Refactored Database schema" label="Refactored Database schema" titleExpression="aql: 'Refactored Database schema -> Do not use'">
       <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
       <defaultLayer name="Default" label="Default">
         <edgeMappings name="Aggregate" label="Aggregate" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVersion']" targetFinderExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Aggregate).refTo">
@@ -262,7 +262,7 @@
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Global Database schema" label="Global Database schema" titleExpression="aql: 'Global Database schema: ' + self.name" domainClass="NoSQLSchema.NoSQLSchema">
       <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
       <defaultLayer name="Default" label="Default">
-        <edgeMappings name="Reference" label="Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetFinderExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference).refTo">
+        <edgeMappings name="Reference" label="Reference" deletionDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@toolSections.2/@ownedTools[name='Common%20reference']" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetFinderExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference).refTo">
           <style routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription labelExpression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + if (ref.lowerBound&lt;>-1) then ref.lowerBound else '*' endif + '..' + if (ref.upperBound&lt;>-1) then ref.upperBound else '*' endif + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png">
@@ -278,9 +278,9 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="Entity" label="Entity" semanticCandidatesExpression="aql: self.entities" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity']" domainClass="NoSQLSchema.Entity" childrenPresentation="HorizontalStack">
+        <containerMappings name="Entity" label="Entity" labelDirectEdit="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@toolSections.2/@ownedTools[name='Entity']" semanticCandidatesExpression="aql: self.entities" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity']" domainClass="NoSQLSchema.Entity" childrenPresentation="HorizontalStack">
           <subContainerMappings name="Common properties" label="Common properties" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.Entity" childrenPresentation="List">
-            <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getCommonAttributeList" domainClass="NoSQLSchema.Attribute">
+            <subNodeMappings name="Attribute" label="Attribute" deletionDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@toolSections.2/@ownedTools[name='Common%20attribute']" semanticCandidatesExpression="service: getCommonAttributeList" domainClass="NoSQLSchema.Attribute">
               <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -394,6 +394,168 @@
             </initialOperation>
           </ownedTools>
         </toolSections>
+        <toolSections name="Create elements" label="Create elements">
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Entity" label="Entity" containerMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" iconPath="/es.um.nosql.s13e.design/images/icons/EntityIcon24.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Entity" referenceName="entities">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'Entity' + self.eContainer().entities->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:ContainerCreationDescription" name="Entity version" label="Entity version" containerMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Versions']/@subContainerMappings[name='EntityVersion']" iconPath="/es.um.nosql.s13e.design/images/icons/EntityVersionIcon24.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::EntityVersion" referenceName="entityversions">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="versionId" valueExpression="aql: self.eContainer().entityversions->size()"/>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Attribute" referenceName="properties">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: '_id'"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::PrimitiveType" referenceName="type">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'ObjectId'"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Primitive attribute" label="Primitive attribute" nodeMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Versions']/@subContainerMappings[name='EntityVersion']/@subNodeMappings[name='Attribute']" iconPath="/es.um.nosql.s13e.design/images/icons/Primitive16.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: containerView.">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Attribute" referenceName="properties">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::PrimitiveType" referenceName="type">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'String'"/>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'String_' + self.eContainer().properties->filter(NoSQLSchema::Attribute)->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Common primitive" label="Common primitive" nodeMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Common%20properties']/@subNodeMappings[name='Attribute']" iconPath="/es.um.nosql.s13e.design/images/icons/Primitive16.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: container">
+                <subModelOperations xsi:type="tool:For" expression="aql: self.entityversions" iteratorName="ev">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Attribute" referenceName="properties">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::PrimitiveType" referenceName="type">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'String'"/>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'PrimitiveAttr'"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Tuple attribute" label="Tuple attribute" nodeMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Versions']/@subContainerMappings[name='EntityVersion']/@subNodeMappings[name='Attribute']" iconPath="/es.um.nosql.s13e.design/images/icons/Tuple16.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Attribute" referenceName="properties">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Tuple" referenceName="type">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::PrimitiveType" referenceName="elements">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'String'"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'Tuple_' + self.eContainer().properties->filter(NoSQLSchema::Attribute)->size()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Common tuple" label="Common tuple" nodeMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Common%20properties']/@subNodeMappings[name='Attribute']" iconPath="/es.um.nosql.s13e.design/images/icons/Tuple16.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: container">
+                <subModelOperations xsi:type="tool:For" expression="aql: self.entityversions" iteratorName="ev">
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Attribute" referenceName="properties">
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Tuple" referenceName="type">
+                      <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::PrimitiveType" referenceName="elements">
+                        <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'String'"/>
+                      </subModelOperations>
+                    </subModelOperations>
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'Tuple'"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:EdgeCreationDescription" name="Common reference" label="Common reference" edgeMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@edgeMappings[name='Reference']" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png">
+            <sourceVariable name="source"/>
+            <targetVariable name="target"/>
+            <sourceViewVariable name="sourceView"/>
+            <targetViewVariable name="targetView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:For" expression="aql: source.entityversions" iteratorName="ev">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Reference" referenceName="properties">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="lowerBound" valueExpression="aql: 1"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="upperBound" valueExpression="aql: 1"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="originalType" valueExpression="aql: 'String'"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="refTo" valueExpression="aql: target"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'refTo' + target.name.toLower()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:NodeCreationDescription" name="Reference" label="Reference" nodeMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Versions']/@subContainerMappings[name='EntityVersion']/@subNodeMappings[name='Association']" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png">
+            <variable name="container"/>
+            <viewVariable name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: container">
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Reference" referenceName="properties">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="lowerBound" valueExpression="aql: 1"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="upperBound" valueExpression="aql: 1"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="originalType" valueExpression="aql: 'String'"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="refTo" valueExpression="aql: container.eContainer()"/>
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'refTo' + self.refTo.name.toLower()"/>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
+        <toolSections name="Operations" label="Operations">
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Common attribute" label="Common attribute">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: element.eContainer().eContainer()">
+                <subModelOperations xsi:type="tool:For" expression="aql: self.entityversions.properties->filter(NoSQLSchema::Attribute)" iteratorName="attr">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql: attr.name = element.name">
+                    <subModelOperations xsi:type="tool:RemoveElement"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DeleteElementDescription" name="Common reference" label="Common reference">
+            <element name="element"/>
+            <elementView name="elementView"/>
+            <containerView name="containerView"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: element.eContainer().eContainer()">
+                <subModelOperations xsi:type="tool:For" expression="aql: self.entityversions.properties->filter(NoSQLSchema::Reference)" iteratorName="ref">
+                  <subModelOperations xsi:type="tool:If" conditionExpression="aql: ref.oclAsType(NoSQLSchema::Reference).name = element.name">
+                    <subModelOperations xsi:type="tool:RemoveElement"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Entity" label="Entity">
+            <mask mask="{0}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:0"/>
+            </initialOperation>
+          </ownedTools>
+        </toolSections>
       </defaultLayer>
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Entity Database Schema" label="Entity Database Schema" titleExpression="aql: 'Entity Database Schema: ' + self.name" domainClass="NoSQLSchema.NoSQLSchema">
@@ -470,7 +632,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="NoSQLSchema Diagram (1)" label="NoSQLSchema Diagram (1) - Obs" titleExpression="aql: 'Schema diagram (1): ' + self.eContainer().oclAsType(NoSQLSchema::Entity).name + '_' + self.versionId" domainClass="NoSQLSchema.EntityVersion" preconditionExpression="aql: self.root = true">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="NoSQLSchema Diagram (1)" label="NoSQLSchema Diagram (1)" titleExpression="aql: 'Schema diagram (1): ' + self.eContainer().oclAsType(NoSQLSchema::Entity).name + '_' + self.versionId" domainClass="NoSQLSchema.EntityVersion" preconditionExpression="aql: self.root = true">
       <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide properties" label="Hide properties">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@edgeMappings[name='Aggregate'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@edgeMappings[name='Reference']"/>
@@ -482,10 +644,10 @@
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='Entity']"/>
       </filters>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide entity versions" label="Hide entity versions">
-        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersion']"/>
+        <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Versions']/@subContainerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersion']"/>
       </filters>
       <defaultLayer name="Default" label="Default">
-        <edgeMappings name="Aggregate" label="Aggregate" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersionRoot']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersionRoot']" targetFinderExpression="aql: self.properties->filter(NoSQLSchema::Aggregate).refTo">
+        <edgeMappings name="Aggregate" label="Aggregate" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Versions']/@subContainerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersionRoot']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Versions']/@subContainerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersionRoot']" targetFinderExpression="aql: self.properties->filter(NoSQLSchema::Aggregate).refTo">
           <style routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <endLabelStyleDescription showIcon="false" labelExpression="aql: self.ancestors()->filter(NoSQLSchema::Entity)->first().name + '_' + self.versionId + ' aggregates...'">
@@ -493,7 +655,7 @@
             </endLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Reference" label="Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersionRoot']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='Entity']" targetFinderExpression="aql: self.properties->filter(NoSQLSchema::Reference).refTo">
+        <edgeMappings name="Reference" label="Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Versions']/@subContainerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersionRoot']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='Entity']" targetFinderExpression="aql: self.properties->filter(NoSQLSchema::Reference).refTo">
           <style routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <endLabelStyleDescription showIcon="false" labelExpression="aql: self.ancestors()->filter(NoSQLSchema::Entity)->first().name + '_' + self.versionId + ' references...'">
@@ -516,9 +678,59 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </containerMappings>
-        <containerMappings name="Entity" label="Entity" semanticCandidatesExpression="service: getEntitiesFromSchema()" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity']" domainClass="NoSQLSchema.Entity">
-          <subContainerMappings name="EntityVersion" label="EntityVersion" semanticCandidatesExpression="aql: self.entityversions" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20version']" domainClass="NoSQLSchema.EntityVersion" reusedNodeMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVersion']/@subNodeMappings[name='Attribute'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVersion']/@subNodeMappings[name='Association']" childrenPresentation="List">
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: self.ancestors()->filter(NoSQLSchema::Entity)->first().name + '_' + self.versionId" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']">
+        <containerMappings name="Entity" label="Entity" semanticCandidatesExpression="service: getEntitiesFromSchema()" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity']" domainClass="NoSQLSchema.Entity" childrenPresentation="HorizontalStack">
+          <subContainerMappings name="Common properties" label="Common properties" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.Entity" childrenPresentation="List">
+            <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getCommonAttributeList" domainClass="NoSQLSchema.Attribute">
+              <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+              <conditionnalStyles predicateExpression="aql: self.type.oclIsTypeOf(NoSQLSchema::PrimitiveType)">
+                <style xsi:type="style:CustomStyleDescription" labelExpression="aql: self.name + ': ' + self.type.oclAsType(NoSQLSchema::PrimitiveType).name" iconPath="/es.um.nosql.s13e.design/images/icons/Primitive16.png" labelPosition="node" resizeKind="NSEW" id="PrimitiveTypeStyle">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+              <conditionnalStyles predicateExpression="aql: self.type.oclIsTypeOf(NoSQLSchema::Tuple)">
+                <style xsi:type="style:CustomStyleDescription" labelExpression="aql: self.name + ': Tuple [' + self.type.oclAsType(NoSQLSchema::Tuple).elements->filter(NoSQLSchema::PrimitiveType)->collect(elem | elem.name)->sep(', ') + ']'" iconPath="/es.um.nosql.s13e.design/images/icons/Tuple16.png" labelPosition="node" resizeKind="NSEW" id="TupleStyle">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+            </subNodeMappings>
+            <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getCommonAssociationList" domainClass="NoSQLSchema.Association">
+              <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+              <conditionnalStyles predicateExpression="aql: self.oclIsTypeOf(NoSQLSchema::Reference)">
+                <style xsi:type="style:CustomStyleDescription" labelExpression="aql: self.name + ': ' + self.oclAsType(NoSQLSchema::Reference).originalType + ' [' + if (self.lowerBound&lt;>-1) then self.lowerBound else '*' endif + '..' + if (self.upperBound&lt;>-1) then self.upperBound else '*' endif + '] ' + self.refTo.name" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png" labelPosition="node" resizeKind="NSEW" id="RefStyle">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+              <conditionnalStyles predicateExpression="aql: self.oclIsTypeOf(NoSQLSchema::Aggregate)">
+                <style xsi:type="style:CustomStyleDescription" labelExpression="aql: self.name + ': [' + if (self.lowerBound&lt;>-1) then self.lowerBound else '*' endif + '..' + if (self.upperBound&lt;>-1) then self.upperBound else '*' endif + '] ' + self.oclAsType(NoSQLSchema::Aggregate).refTo->first().eContainer().oclAsType(NoSQLSchema::Entity).name +' v_(' + self.refTo->sortedBy(ev | ev.versionId).versionId->sep(',') + ')'" iconPath="/es.um.nosql.s13e.design/images/icons/Aggr16.png" labelPosition="node" resizeKind="NSEW" id="AggrStyle">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'Common properties'" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-3']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-3']">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="Versions" label="Versions" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.Entity">
+            <subContainerMappings name="EntityVersion" label="EntityVersion" semanticCandidatesExpression="aql: self.entityversions" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20version']" domainClass="NoSQLSchema.EntityVersion" reusedNodeMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVersion']/@subNodeMappings[name='Attribute'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVersion']/@subNodeMappings[name='Association']" childrenPresentation="List">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: self.ancestors()->filter(NoSQLSchema::Entity)->first().name + '_' + self.versionId" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'Entity versions'" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-3']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-3']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -531,7 +743,7 @@
           </style>
         </containerMappings>
         <toolSections name="Navigate" label="Navigate">
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Click entity version" label="Click entity version" precondition="aql: self.root = true" forceRefresh="true" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersionRoot']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Click entity version" label="Click entity version" precondition="aql: self.root = true" forceRefresh="true" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Versions']/@subContainerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVersionRoot']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -548,7 +760,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="NoSQLSchema Diagram (2)" label="NoSQLSchema Diagram (2) - Obs" titleExpression="aql: 'Schema diagram (2): ' + self.eContainer().oclAsType(NoSQLSchema::Entity).name + '_' + self.versionId" domainClass="NoSQLSchema.EntityVersion" preconditionExpression="aql: self.root = true">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="NoSQLSchema Diagram (2)" label="NoSQLSchema Diagram (2)" titleExpression="aql: 'Schema diagram (2): ' + self.eContainer().oclAsType(NoSQLSchema::Entity).name + '_' + self.versionId" domainClass="NoSQLSchema.EntityVersion" preconditionExpression="aql: self.root = true">
       <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide properties" label="Hide properties">
         <filters xsi:type="filter:MappingFilter"/>

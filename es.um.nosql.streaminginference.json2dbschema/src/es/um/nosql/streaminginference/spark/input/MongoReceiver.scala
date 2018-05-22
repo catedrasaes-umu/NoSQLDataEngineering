@@ -118,7 +118,7 @@ class MongoReceiver (host: String, port: Int, databases: String, username: Optio
   
   private def receive(database: String) 
   {
-    val checkCollectionsInterval = 3
+    val checkCollectionsInterval = 6
     var collectionsReady = true
     var collectionsChecked = false
     var collections:List[String] = List()
@@ -173,8 +173,8 @@ class MongoReceiver (host: String, port: Int, databases: String, username: Optio
           it+=1  
         }
   
-        // Thread waiting
-        Thread.sleep(200)
+        // Thread waiting only when we have collections to watch
+        Thread.sleep(if (collectionsChecked) 1000 else 100)
       }
       
       subscriptions.clear

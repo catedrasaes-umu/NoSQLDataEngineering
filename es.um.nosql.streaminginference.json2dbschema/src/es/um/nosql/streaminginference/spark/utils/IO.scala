@@ -60,9 +60,6 @@ object IO
   
   def writeXMI(schema: NoSQLSchema, filePath: String): Unit = 
   {
-    // Check if file has been written recently
-    if (HDFSHelper.exists(filePath))
-      return;
     
     val packageInstance: NoSQLSchemaPackage = NoSQLSchemaPackage.eINSTANCE 
     // Create a new resource to serialize the ecore model
@@ -80,7 +77,6 @@ object IO
 		val options: Map[Object,Object] = new HashMap[Object,Object]
 		options.put(XMLResource.OPTION_SCHEMA_LOCATION, java.lang.Boolean.TRUE);
 		options.put(XMLResource.OPTION_ENCODING, "UTF-8");
-		// HDFSHelper.delete(filePath)
     val outputStream = HDFSHelper.getOutputStream(filePath)
 		outputRes.save(outputStream, options);
 		outputStream.close()

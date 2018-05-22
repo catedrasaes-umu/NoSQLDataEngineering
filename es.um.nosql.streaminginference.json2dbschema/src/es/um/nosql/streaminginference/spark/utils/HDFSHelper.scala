@@ -4,6 +4,7 @@ import org.apache.hadoop.conf.Configuration
 import org.apache.hadoop.fs.FileSystem
 import org.apache.hadoop.fs.Path
 import org.apache.hadoop.fs.FSDataOutputStream
+import java.io.IOException
 
 
 object HDFSHelper 
@@ -43,6 +44,39 @@ object HDFSHelper
   def getPatternFiles(path: String): Array[String] = {
     val hPath:Path = new Path(path);
     fs.globStatus(hPath).map(fileStatus => fileStatus.getPath.toString)
+  }
+  
+  def append(path: String, content:String, createString:String = "") = {
+    val hPath:Path = new Path(path)
+    if (!exists(path)) 
+    {
+      val handler = getOutputStream(path)
+      handler.writeBytes(createString+content)
+      handler.close()
+    } 
+    else
+    {
+      try
+      {
+        val handler = fs.append(hPath)  
+        handler.writeChars(content)
+        handler.close()
+      } 
+      catch 
+      {
+        // Append is not supported in local mode
+        case _ : IOException | _ : UnsupportedOperationException =>
+          scala.tools.nsc.io.File(path).appendAll(content)
+        
+      }
+    }
+    
+  }
+  
+  def touch(path: String) = {
+    val stream = getOutputStream(path)
+    stream.writeChars("")
+    stream.close()
   }
   
 }

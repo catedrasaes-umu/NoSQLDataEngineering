@@ -20,7 +20,6 @@ import es.um.nosql.streaminginference.json2dbschema.intermediate.raw.NumberSC;
 import es.um.nosql.streaminginference.json2dbschema.intermediate.raw.ObjectSC;
 import es.um.nosql.streaminginference.json2dbschema.intermediate.raw.SchemaComponent;
 import es.um.nosql.streaminginference.json2dbschema.intermediate.raw.StringSC;
-import es.um.nosql.streaminginference.json2dbschema.intermediate.raw.util.SchemaPrinter;
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.IAJArray;
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.IAJBoolean;
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.IAJElement;
@@ -65,7 +64,12 @@ public class SchemaInference implements Serializable
 	
 	public SchemaInference(SchemaInference copy) 
 	{
-		rawEntities = new HashMap<String, List<SchemaComponent>>(copy.rawEntities);
+		rawEntities = new HashMap<String, List<SchemaComponent>>();
+		copy.rawEntities.forEach((entity, versions) -> {
+			List<SchemaComponent> myVersions = new ArrayList<SchemaComponent>(versions);
+			rawEntities.put(entity, myVersions);
+		});
+		
 		innerSchemaNames = new HashSet<String>(copy.innerSchemaNames);
 	}
 	
@@ -109,20 +113,20 @@ public class SchemaInference implements Serializable
 	 * @param other SchemaInference object to merge
 	 * @return SchemaInference merged object
 	 */
-	public SchemaInference merge(SchemaInference other) 
-	{ 
+	public SchemaInference merge(SchemaInference cp) 
+	{
+		// IMPORTANT!! cp object will be modified so we need to work on a deep copy
+		// to avoid future problems
+		SchemaInference other = (SchemaInference) org.apache.commons.lang3.SerializationUtils.clone(cp);
 		SchemaInference merged = new SchemaInference(this);
 		Map<String, List<SchemaComponent>> mergedEntities = merged.getEntities();
 		Map<String, List<SchemaComponent>> otherEntities = other.getEntities();
-		List<Pair<SchemaComponent,SchemaComponent>> versionsToCheck = new ArrayList<Pair<SchemaComponent,SchemaComponent>>(10);
-		
+		Map<String, List<SchemaComponent>> toAppend = new HashMap<String, List<SchemaComponent>>();
+		List<Pair<SchemaComponent,SchemaComponent>> versionsToReplace = new ArrayList<Pair<SchemaComponent,SchemaComponent>>(10);
 		otherEntities.forEach((entity, versions) -> 
 		{
 			if (!rawEntities.containsKey(entity)) 
-			{
-				// Append unexisting entities
-				mergedEntities.put(entity, versions);
-			} 
+				toAppend.put(entity, versions);
 			else 
 			{
 				versions.forEach(version -> 
@@ -135,17 +139,35 @@ public class SchemaInference implements Serializable
 															.findAny();
 					
 					if (foundVersion.isPresent())
-						versionsToCheck.add(Pair.of(version, foundVersion.get()));
+						versionsToReplace.add(Pair.of(version, foundVersion.get()));
 					else
-						mergedEntities.get(entity).add(version);
+					{
+						if (toAppend.get(entity) == null)
+							toAppend.put(entity, new ArrayList<SchemaComponent>());
+						toAppend.get(entity).add(version);
+					}
 				});
 			}
 		});
-		
+
 		merged.innerSchemaNames.addAll(other.innerSchemaNames);
+		toAppend.forEach((entity, versions) -> {
+			if (mergedEntities.get(entity) == null)
+				mergedEntities.put(entity, new ArrayList<SchemaComponent>());
+			mergedEntities.get(entity).addAll(versions);
+		});
+		
 		merged.joinAggregatedEntities();
 		// Update references of merged entity versions
-		versionsToCheck.forEach(pair -> merged.updateReferences(pair.getLeft(), pair.getRight()));
+		versionsToReplace.forEach(pair -> 
+		{
+			toAppend.forEach((entity, versions) -> {
+				versions.forEach(version -> {
+					merged.updateReferences(pair.getLeft(), pair.getRight(), version);
+				});
+			});
+		});
+				
 		return merged;
 	}
 
@@ -456,7 +478,6 @@ public class SchemaInference implements Serializable
 
 		n.forEach(e -> schema.add(infer(e, name, NON_ROOT_OBJECT)));
 
-		// TODO: Compact ArraySC if homogeneous
 		return schema;
 	}
 

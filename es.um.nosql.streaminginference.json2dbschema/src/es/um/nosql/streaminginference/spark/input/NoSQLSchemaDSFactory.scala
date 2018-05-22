@@ -17,9 +17,11 @@ import org.apache.spark.streaming.StateSpec
 import es.um.nosql.streaminginference.spark.utils.EcoreHelper
 import org.apache.spark.SparkContext
 import es.um.nosql.streaminginference.spark.utils.HDFSHelper
+//import org.apache.spark.streaming.Milliseconds
 
 object NoSQLSchemaDSFactory
 {
+  private val OUTPUT_INTERVAL_MS = 10000
   
   /**
    * Initializes a DStream based on JSON Database files
@@ -117,6 +119,9 @@ object NoSQLSchemaDSFactory
     ssc.sparkContext.setLogLevel("ERROR")
     val outputDir = options("output")
     val stateSpec = buildState(ssc, options)
+    val benchmarking = options("benchmark").toBoolean
+//    val interval = options("interval").toInt
+    var lastCheck = System.currentTimeMillis()
     val ds = 
       initializeDS(ssc, options)
       .map 
@@ -126,19 +131,24 @@ object NoSQLSchemaDSFactory
       }
       .mapWithState(stateSpec)
       .stateSnapshots()
-      // Output only when allowed
-      .filter { case (schemaName, _) => 
-        !HDFSHelper.exists(outputDir + "/" + schemaName + ".xmi")  && 
-        HDFSHelper.exists(outputDir + "/_OUTPUT") 
-      }
-      // Output XMI schema
-      .foreachRDD(rdd => 
+      //.window(Milliseconds(interval), Milliseconds(Math.max(interval, OUTPUT_INTERVAL_MS)))
+      
+   if (options("benchmark").toBoolean)
+     ds.foreachRDD(rdd => rdd.foreach(p => {}))
+   else
+     ds.foreachRDD((rdd,timestamp) => 
+      if (System.currentTimeMillis() - lastCheck > OUTPUT_INTERVAL_MS)
+      {
+        lastCheck = System.currentTimeMillis()
         rdd
           .foreach 
           {
             case (schemaName, schema) => 
-              IO.copyAndWriteXMI(schema, outputDir + "/" + schemaName + ".xmi")
+              IO.copyAndWriteXMI(schema, outputDir + "/" + schemaName + "-" + timestamp.milliseconds + ".xmi")
           }
-      )
+      }
+      else  // Empty action to force RDD execution
+        rdd.foreach(p => {})
+    )
   }
 }

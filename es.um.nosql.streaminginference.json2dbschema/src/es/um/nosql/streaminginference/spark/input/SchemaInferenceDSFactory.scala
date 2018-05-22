@@ -16,10 +16,15 @@ import org.apache.spark.streaming.State
 import org.apache.spark.streaming.StateSpec
 import es.um.nosql.streaminginference.json2dbschema.process.SchemaInference
 import es.um.nosql.streaminginference.spark.utils.HDFSHelper
+import org.apache.spark.streaming.Time
+import org.apache.spark.streaming.Milliseconds
+import org.apache.spark.metrics.MetricsSystem
 
 
 object SchemaInferenceDSFactory
 {  
+  
+  private val OUTPUT_INTERVAL_MS = 10000
 
   /**
    * Initializes a DStream based on JSON Database files
@@ -126,26 +131,43 @@ object SchemaInferenceDSFactory
   def build(ssc: StreamingContext, options: HashMap[String, String]) =
   {
     val outputDir = options("output")
+    val benchmarking = options("benchmark").toBoolean
     val stateSpec = buildState(ssc, options)
+//    val interval = options("interval").toInt
+    var lastCheck = System.currentTimeMillis()
+    
     val ds = 
       initializeDS(ssc, options)
       .mapValues(IO.toSchemaInference(_))
       .mapWithState(stateSpec)
       .stateSnapshots()
-      .filter { case ((schema, entity), _) => 
-        HDFSHelper.exists(outputDir + "/_OUTPUT") && 
-        !HDFSHelper.exists(outputDir + "/" + schema + ".xmi") 
-      }
+      // Compute window at OUTPUT_INTERVAL_MS interval rate      
+      // .window(Milliseconds(interval), Milliseconds(Math.max(interval, OUTPUT_INTERVAL_MS)))
       // Strip entity from key
       .map { case ((schema, entity), inference) => (schema, inference) }
-      .reduceByKey(_.merge(_))
-      .foreachRDD(rdd => 
-        rdd
-          .foreach 
+      //.reduceByKey(_.merge(_))
+      
+      if (options("benchmark").toBoolean)
+        ds.foreachRDD(rdd => 
+          rdd
+            .reduceByKey(_.merge(_))
+            // Do SchemaInference to NoSQL conversion but don't output xmi file
+            .foreach { case (schema, inference) => IO.toNoSQLSchema(schema, inference) })
+      else
+        ds.foreachRDD((rdd, timestamp) => 
+          if (System.currentTimeMillis() - lastCheck > OUTPUT_INTERVAL_MS)
           {
-            case (schema, inference) => 
-              IO.writeXMI(inference, schema, outputDir + "/" + schema + ".xmi")
-          }
+            lastCheck = System.currentTimeMillis()
+            rdd
+              .reduceByKey(_.merge(_))
+              .foreach 
+              {
+                case (schema, inference) => 
+                  IO.writeXMI(inference, schema, outputDir + "/" + schema + "-" + timestamp.milliseconds + ".xmi")
+              }
+          } 
+          else  // Empty action to force RDD execution
+            rdd.foreach(p => {})
       )
   }
 }

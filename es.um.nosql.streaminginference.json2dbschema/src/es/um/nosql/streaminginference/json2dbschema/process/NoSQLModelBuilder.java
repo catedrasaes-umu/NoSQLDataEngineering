@@ -274,9 +274,10 @@ public class NoSQLModelBuilder
 
 		Stream<SchemaComponent> ssc;
 
-		if (sc.isHomogeneous())
-			ssc = Collections.nCopies(sc.size(), sc.getInners().get(0)).stream();
-		else
+// 		XXX: homogeneous arrays will only have one element
+//		if (sc.isHomogeneous())
+//			ssc = Collections.nCopies(sc.size(), sc.getInners().get(0)).stream();
+//		else
 			ssc = sc.getInners().stream();
 
 		t.getElements().addAll(
