@@ -67,7 +67,6 @@ object HDFSHelper
         // Append is not supported in local mode
         case _ : IOException | _ : UnsupportedOperationException =>
           scala.tools.nsc.io.File(path).appendAll(content)
-        
       }
     }
     

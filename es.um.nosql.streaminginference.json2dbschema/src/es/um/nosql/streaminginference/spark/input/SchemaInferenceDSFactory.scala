@@ -103,8 +103,7 @@ object SchemaInferenceDSFactory
         case (Some(state), Some(schema)) => Option(state.merge(schema)) 
       }
       
-      if (acc.isDefined)
-        state.update(acc.get)
+      acc.foreach(state.update(_))
       
       (keyPair, acc)
     }
