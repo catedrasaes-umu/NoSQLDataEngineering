@@ -11,9 +11,9 @@ MOVIES_DS=true # ~ 3 MB
 LICENSES_DS=true # ~ 50 kB
 METEORITES_DS=true # ~ 250 kB
 NOBEL_DS=true # ~ 650 kB
-STACKOVERFLOWES_DS=false # ~ 183 MB
+STACKOVERFLOWES_DS=true # ~ 183 MB
 LASTFM_SAMPLE_DS=false # ~ 34 MB
-LASTFM_TEST_DS=false # 390 MB
+LASTFM_TEST_DS=true # 390 MB
 LASTFM_TRAIN_DS=false # ~ 2.6 GB
 
 echo "Mongo database cleaning ... "

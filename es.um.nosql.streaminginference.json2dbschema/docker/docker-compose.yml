@@ -1,4 +1,4 @@
-version: '2'
+version: '3'
 services:
   couch:
     image: couchdb:latest
@@ -8,6 +8,9 @@ services:
       - "5984:5984"
   mongo:
 #    image: mongo:latest
+    build:
+      context: .
+      dockerfile: mongo-dockerfile
     image: pablodms/mongo-benchmark:latest
     container_name: mongodb
     hostname: mongodb
