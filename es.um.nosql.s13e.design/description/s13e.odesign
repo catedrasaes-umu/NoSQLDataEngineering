@@ -324,7 +324,7 @@
           </subContainerMappings>
           <subContainerMappings name="Versions" label="Versions" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.Entity">
             <subContainerMappings name="EntityVersion" label="EntityVersion" semanticCandidatesExpression="aql: self.entityversions" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20version']" domainClass="NoSQLSchema.EntityVersion" childrenPresentation="List">
-              <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getParticularAttributeList" domainClass="NoSQLSchema.Attribute">
+              <subNodeMappings name="Attribute" label="Attribute" labelDirectEdit="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@toolSections.2/@ownedTools[name='Primitive%20attribute']" semanticCandidatesExpression="service: getParticularAttributeList" domainClass="NoSQLSchema.Attribute">
                 <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -417,6 +417,12 @@
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: '_id'"/>
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::PrimitiveType" referenceName="type">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'ObjectId'"/>
+                    </subModelOperations>
+                  </subModelOperations>
+                  <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Attribute" referenceName="properties">
+                    <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: '_type'"/>
+                    <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::PrimitiveType" referenceName="type">
+                      <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: container.name"/>
                     </subModelOperations>
                   </subModelOperations>
                 </subModelOperations>
@@ -552,7 +558,19 @@
           <ownedTools xsi:type="tool_1:DirectEditLabel" name="Entity" label="Entity">
             <mask mask="{0}"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="var:0"/>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: arg0"/>
+            </initialOperation>
+          </ownedTools>
+          <ownedTools xsi:type="tool_1:DirectEditLabel" name="Primitive attribute" label="Primitive attribute" precondition="aql: self.type.oclIsTypeOf(NoSQLSchema::PrimitiveType)">
+            <mask mask="{0}: {1}"/>
+            <initialOperation>
+              <firstModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: arg0">
+                <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: self.type">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: arg1">
+                    <subModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: self.type"/>
+                  </subModelOperations>
+                </subModelOperations>
+              </firstModelOperations>
             </initialOperation>
           </ownedTools>
         </toolSections>
