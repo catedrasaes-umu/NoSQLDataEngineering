@@ -6,83 +6,81 @@ import org.apache.spark.streaming.scheduler.StreamingListenerBatchStarted
 import scala.collection.immutable.HashMap
 import es.um.nosql.streaminginference.spark.utils.HDFSHelper
 
-class BenchmarkListener(options: HashMap[String, String]) extends StreamingListener 
+abstract class BenchmarkListener(options: HashMap[String, String]) extends StreamingListener 
 { 
-    private var listening:Boolean = false
-    private var totalDelay:Long = 0
-    private var totalTime:Long = 0
-    private var totalRecords:Long = 0
-    private var totalBatches:Int = 0
-    private var maxDelay:Long = 0
-    private var maxProcessing:Long = 0
-    private var start:Long = 0
+    protected var listening:Boolean = false
+    protected var totalDelay:Long = 0
+    protected var totalTime:Long = 0
+    protected var totalIdle:Long = 0
+    protected var totalRecords:Long = 0
+    protected var totalBatches:Int = 0
+    protected var maxDelay:Long = 0
+    protected var maxProcessing:Long = 0
+    protected var maxIdle:Long = 0
+    protected var start:Long = 0
     
-    private val statsHeader = 
+    protected val statsHeader = 
       "BATCH_INTERVAL,BLOCK_INTERVAL,PROCESSING_INTERVAL," +
-      "TOTAL_BATCHES,TOTAL_DELAY,TOTAL_PROCESSING,TOTAL_RECORDS,"+
-      "AVERAGE_DELAY,AVERAGE_PROCESSING,AVERAGE_RECORDS,"+
-      "MAX_PROCESSING,MAX_DELAY\n"
-     
-    
-    override def onBatchCompleted(batchCompleted: StreamingListenerBatchCompleted) 
-    {      
-      if (listening) 
-      {
-        totalBatches += 1;
-        totalDelay += batchCompleted.batchInfo.totalDelay.get
-        totalTime += batchCompleted.batchInfo.processingDelay.get
-        totalRecords += batchCompleted.batchInfo.numRecords
-        
-        if (batchCompleted.batchInfo.totalDelay.get > maxDelay)
-          maxDelay = batchCompleted.batchInfo.totalDelay.get
-          
-        if (batchCompleted.batchInfo.processingDelay.get > maxProcessing)
-          maxProcessing = batchCompleted.batchInfo.processingDelay.get
-      }
-    }
-    
-    override def onBatchStarted(batchStarted: StreamingListenerBatchStarted) 
+      "TOTAL_BATCHES,TOTAL_DELAY,TOTAL_PROCESSING,TOTAL_IDLE,TOTAL_RECORDS,"+
+      "AVERAGE_DELAY,AVERAGE_PROCESSING,AVERAGE_IDLE,AVERAGE_RECORDS,"+
+      "MAX_PROCESSING,MAX_IDLE,MAX_DELAY\n"
+      
+    protected def outputStats(end:Long = System.currentTimeMillis())
     {
-      if (!listening && batchStarted.batchInfo.numRecords > 0) 
-      {
-        listening = true
-        start = System.currentTimeMillis()
-      } 
-      else if (listening &&
-              totalRecords > 0 &&
-              batchStarted.batchInfo.numRecords == 0 && 
-              batchStarted.batchInfo.schedulingDelay.get < 5) 
-      {
-        // Streaming application has processed all records
-        listening = false
-        val processingInterval = System.currentTimeMillis() - start
-        println("Processing interval: " + processingInterval)
-        println("Total batches: " + totalBatches)
-        println("Total delay: " + totalDelay)
-        println("Total processing time: " + totalTime)
-        println("Number of records: " + totalRecords)
-        println("Average delay: " + (totalDelay/totalBatches))
-        println("Average processing time: " + (totalTime/totalBatches))
-        println("Average batch records: " + (totalRecords/totalBatches))
-        println("Max processing: " + maxProcessing)
-        println("Max delay: " + maxDelay)
-        
-        HDFSHelper.append(options("output")+"/stats.csv",
-                          options("interval")+ "," +
-                          options("block-interval")+ "," +
-                          processingInterval + "," +
-                          totalBatches + "," +
-                          totalDelay + "," +
-                          totalTime + "," +
-                          totalRecords + "," +
-                          (totalDelay/totalBatches) + "," +
-                          (totalTime/totalBatches) + "," +
-                          (totalRecords/totalBatches) + "," +
-                          maxProcessing + "," +
-                          maxDelay + "\n",
-                          statsHeader)
-        // Force streaming shutdown
-        HDFSHelper.touch(options("output")+"/_DONE")
-      }
+      val processingInterval = end - start
+      println("Processing interval: " + processingInterval)
+      println("Total batches: " + totalBatches)
+      println("Total delay: " + totalDelay)
+      println("Total processing time: " + totalTime)
+      println("Total idle time: " + totalIdle)
+      println("Number of records: " + totalRecords)
+      println("Average delay: " + (totalDelay/totalBatches))
+      println("Average processing time: " + (totalTime/totalBatches))
+      println("Average idle time: " + (totalIdle/totalBatches))
+      println("Average batch records: " + (totalRecords/totalBatches))
+      println("Max processing: " + maxProcessing)
+      println("Max delay: " + maxDelay)
+      println("Max idle: " + maxIdle)
+      
+      HDFSHelper.append(options("output")+"/stats.csv",
+                        options("interval")+ "," +
+                        options("block-interval")+ "," +
+                        processingInterval + "," +
+                        totalBatches + "," +
+                        totalDelay + "," +
+                        totalTime + "," +
+                        totalIdle + "," +
+                        totalRecords + "," +
+                        (totalDelay/totalBatches) + "," +
+                        (totalTime/totalBatches) + "," +
+                        (totalIdle/totalBatches) + "," +
+                        (totalRecords/totalBatches) + "," +
+                        maxProcessing + "," +
+                        maxIdle + "," +
+                        maxDelay + "\n",
+                        statsHeader)
     }
+    
+    protected def updateStats(batchCompleted: StreamingListenerBatchCompleted) 
+    {
+      val interval = options("interval").toInt
+      val processing = batchCompleted.batchInfo.processingDelay.get
+      val delay = batchCompleted.batchInfo.totalDelay.get
+      val idle = if (interval - processing > 0) interval - processing else 0 
+      totalBatches += 1;
+      totalDelay += delay
+      totalTime += processing
+      totalIdle += idle
+      totalRecords += batchCompleted.batchInfo.numRecords
+      
+      if (delay > maxDelay)
+        maxDelay = delay
+        
+      if (processing > maxProcessing)
+        maxProcessing = processing
+        
+      if (idle > maxIdle)
+        maxProcessing = idle
+    }
+
 }

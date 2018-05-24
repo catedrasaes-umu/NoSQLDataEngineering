@@ -19,7 +19,8 @@ import org.apache.spark.broadcast.Broadcast
 import org.apache.spark.SparkContext
 import org.apache.spark.streaming.scheduler.StreamingListener
 import org.apache.spark.streaming.scheduler.StreamingListenerBatchCompleted
-import es.um.nosql.streaminginference.spark.listeners.BenchmarkListener
+import es.um.nosql.streaminginference.spark.listeners.FileBenchmarkListener
+import es.um.nosql.streaminginference.spark.listeners.ReceiverBenchmarkListener
 
 object DStreamManager
 {
@@ -51,7 +52,11 @@ object DStreamManager
   {
     ssc.sparkContext.setLogLevel("ERROR")
     if (options("benchmark").toBoolean)
-      ssc.addStreamingListener(new BenchmarkListener(options));
+      ssc.addStreamingListener(
+          if (options("mode") == "file") 
+            new FileBenchmarkListener(options)
+          else 
+            new ReceiverBenchmarkListener(options));
     
     options("version") match 
     {
