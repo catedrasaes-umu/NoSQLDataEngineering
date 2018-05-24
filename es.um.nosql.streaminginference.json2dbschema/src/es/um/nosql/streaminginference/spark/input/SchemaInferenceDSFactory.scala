@@ -19,6 +19,10 @@ import es.um.nosql.streaminginference.spark.utils.HDFSHelper
 import org.apache.spark.streaming.Time
 import org.apache.spark.streaming.Milliseconds
 import org.apache.spark.metrics.MetricsSystem
+import scala.collection.JavaConverters._
+import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.impl.jackson.JacksonAdapter
+import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.impl.jackson.JacksonArray
+import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.impl.jackson.JacksonElement
 
 
 object SchemaInferenceDSFactory
@@ -29,22 +33,44 @@ object SchemaInferenceDSFactory
   /**
    * Initializes a DStream based on JSON Database files
    */
-  private def createFileDS(ssc: StreamingContext, inputDir:String): DStream[((String, String), String)] =
+  private def createFileDS(ssc: StreamingContext, inputDir:String): DStream[((String, String), SchemaInference)] =
   {
+
+    // Update modification time of files in inputDir to force spark to check them
+    HDFSHelper.updateModificationTime(inputDir+"/*", System.currentTimeMillis()+20000)
     
-    System.err.println("[WARNING] Entity parallelization with Whole Text Files is currently not supported")
-        
     ssc
       // Based on: https://halfvim.github.io/2016/06/28/FileInputDStream-in-Spark-Streaming/
       .fileStream[Text, Text, WholeTextInputFormat](inputDir)
-      .map { case (filePath, content) => 
-              ((Paths.get(filePath.toString).getFileName.toString.split("\\_")(0), "any"), content.toString) }
+      .mapPartitions (partition => {
+          val adapter = new JacksonAdapter
+          partition.flatMap 
+          { 
+            case (filePath, content) => 
+            {
+              val root = adapter.readFromString(content.toString)
+              val rows = root.get("rows").asArray()
+              rows.asScala.groupBy(element => {
+                assert(element.isObject())
+                val entityType = element.asObject().get("_type")
+                if (entityType != null) entityType.asString() else "unknown"
+              }).map {
+                case (key, values) => 
+                {
+                  val sequence = values.map(_.asInstanceOf[JacksonElement]).asJava
+                  val subRows = new JacksonArray(sequence)
+                  ((Paths.get(filePath.toString).getFileName.toString.split("\\_")(0), key), IO.toSchemaInference(subRows))
+                }
+              }
+            }
+          }  
+      })
   }
   
   /**
    * Builds a DStream based on a database receiver
    */
-  private def buildDatabaseDS(ds: DStream[(String, String)]): DStream[((String, String), String)] = 
+  private def buildDatabaseDS(ds: DStream[(String, String)]): DStream[((String, String), SchemaInference)] = 
   {
       ds
       // Convert string key to a tuple
@@ -57,12 +83,13 @@ object SchemaInferenceDSFactory
       .groupByKey()
       // Build a json collection using a grouped batch of entities
       .mapValues (jsonList => "{\"rows\": [ " + jsonList.mkString(",") + " ]}")   
+      .mapValues(IO.toSchemaInference(_))
   } 
   
   /**
    * Initializes a DStream depending on mode value 
    */
-  private def initializeDS(ssc: StreamingContext, options: HashMap[String, String]): DStream[((String, String), String)] =
+  private def initializeDS(ssc: StreamingContext, options: HashMap[String, String]): DStream[((String, String), SchemaInference)] =
     
     options("mode") match 
     {
@@ -137,7 +164,6 @@ object SchemaInferenceDSFactory
     
     val ds = 
       initializeDS(ssc, options)
-      .mapValues(IO.toSchemaInference(_))
       .mapWithState(stateSpec)
       .stateSnapshots()
       // Compute window at OUTPUT_INTERVAL_MS interval rate      
