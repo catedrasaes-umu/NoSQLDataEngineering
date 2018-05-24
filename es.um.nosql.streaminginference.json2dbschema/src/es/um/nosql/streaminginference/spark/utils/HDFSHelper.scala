@@ -78,4 +78,9 @@ object HDFSHelper
     stream.close()
   }
   
+  def updateModificationTime(path: String, mtime: Long)
+  {
+    getPatternFiles(path).foreach(p => fs.setTimes(new Path(p), mtime, -1))
+  }
+  
 }
