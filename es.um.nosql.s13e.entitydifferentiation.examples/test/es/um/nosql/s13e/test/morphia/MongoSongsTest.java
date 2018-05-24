@@ -64,6 +64,42 @@ public class MongoSongsTest
   }
 
   @Test
+  public void fillDbPinkFloyd()
+  {
+    Artist artist = new Artist(); artist.set_id(new ObjectId().toString()); artist.setName("Pink Floyd"); artist.setStartingYear(1965);
+    //artist.setComposedTracks(composedTracks); artist.setLyricsTracks(lyricsTracks); artist.setAlbums(albums);
+  }
+
+  @Test
+  public void fillDbMassiveAttack()
+  {
+    Artist artist = new Artist(); artist.set_id(new ObjectId().toString()); artist.setName("Massive Attack"); artist.setStartingYear(1988);
+    //artist.setComposedTracks(composedTracks); artist.setLyricsTracks(lyricsTracks); artist.setAlbums(albums);
+  }
+
+  @Test
+  public void fillDbPearlJam()
+  {
+    Artist artist = new Artist(); artist.set_id(new ObjectId().toString()); artist.setName("Pearl Jam"); artist.setStartingYear(1990);
+
+    Rating r1 = new Rating(); r1.setScore(32); r1.setVoters(3174);
+    Track t1 = new Track(); t1.set_id(new ObjectId().toString()); t1.setArtist_id(Arrays.asList(artist)); t1.setGenres(Arrays.asList("Alternative rock", "Power ballad"));
+    t1.setLength(6); t1.setName("Black"); t1.setPopularity(9); t1.setRatings(Arrays.asList(r1));
+
+    Rating r2 = new Rating(); r2.setScore(10); r2.setVoters(957);
+    Track t2 = new Track(); t2.set_id(new ObjectId().toString()); t2.setArtist_id(Arrays.asList(artist)); t2.setGenres(Arrays.asList("Alternative rock", "Grunge"));
+    t2.setLength(5); t2.setName("Even flow"); t2.setPopularity(5); t2.setRatings(Arrays.asList(r2));
+
+    Rating r3 = new Rating(); r3.setScore(10); r3.setVoters(972);
+    Track t3 = new Track(); t3.set_id(new ObjectId().toString()); t3.setArtist_id(Arrays.asList(artist)); t3.setGenres(Arrays.asList("Alternative rock", "Grunge"));
+    t3.setLength(5); t3.setName("Jeremy"); t3.setPopularity(6); t3.setRatings(Arrays.asList(r3));
+
+    Album a1 = new Album(); a1.set_id(new ObjectId().toString());
+
+    artist.setComposedTracks(Arrays.asList(t1, t2, t3)); artist.setLyricsTracks(Arrays.asList(t1, t2, t3)); artist.setAlbums(Arrays.asList(a1, a2));
+  }
+
+  @Test
   public void testCheckConsistency()
   {
     checkMongomoviesDb(datastore);
