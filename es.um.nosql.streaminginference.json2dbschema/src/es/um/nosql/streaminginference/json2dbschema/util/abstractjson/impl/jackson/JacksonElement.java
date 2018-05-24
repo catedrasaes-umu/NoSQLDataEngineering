@@ -3,6 +3,8 @@ package es.um.nosql.streaminginference.json2dbschema.util.abstractjson.impl.jack
 import java.util.Iterator;
 
 import org.codehaus.jackson.JsonNode;
+import org.codehaus.jackson.map.ObjectMapper;
+import org.codehaus.jackson.node.ArrayNode;
 
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.IAJArray;
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.IAJBoolean;
@@ -39,6 +41,17 @@ public class JacksonElement implements IAJElement
 	public JacksonElement(JsonNode val)
 	{
 		n = val;
+	}
+	
+	
+	public JacksonElement(Iterable<JacksonElement> sequence) 
+	{
+		ObjectMapper mapper = new ObjectMapper();
+		ArrayNode array = mapper.createArrayNode();
+		sequence.forEach(element -> {
+			array.add(element.n);
+		});
+		n = array;
 	}
 
 	@Override

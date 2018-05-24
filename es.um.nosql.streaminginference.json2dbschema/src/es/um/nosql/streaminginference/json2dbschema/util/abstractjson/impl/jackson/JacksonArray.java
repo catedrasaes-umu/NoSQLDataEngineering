@@ -17,6 +17,10 @@ public class JacksonArray extends JacksonElement implements IAJArray
 		super(val);
 	}
 	
+	public JacksonArray(Iterable<JacksonElement> sequence) {
+		super(sequence);
+	}
+		
 	public int size() {
 		return n.size();
 	}
