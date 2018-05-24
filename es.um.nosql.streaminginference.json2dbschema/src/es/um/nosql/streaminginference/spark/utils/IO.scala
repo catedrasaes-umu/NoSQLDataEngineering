@@ -18,6 +18,7 @@ import es.um.nosql.streaminginference.json2dbschema.process.SchemaInference
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.IAJAdapter
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.impl.jackson.JacksonAdapter
 import es.um.nosql.streaminginference.util.emf.ResourceManager;
+import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.IAJArray
 
 
 object IO 
@@ -49,13 +50,18 @@ object IO
     schema
   }
   
+  def toSchemaInference(array: IAJArray): SchemaInference = 
+  {
+    val si = new SchemaInference(array)
+    si.infer()
+    si
+  }  
+  
   def toSchemaInference(jsonString: String): SchemaInference = 
   {
     val adapter = new JacksonAdapter
     val root = adapter.readFromString(jsonString)
-    val si = new SchemaInference(root.get("rows").asArray())
-    si.infer()
-    si
+    toSchemaInference(root.get("rows").asArray())
   }  
   
   def writeXMI(schema: NoSQLSchema, filePath: String): Unit = 
