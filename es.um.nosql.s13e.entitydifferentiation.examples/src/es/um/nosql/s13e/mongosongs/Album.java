@@ -113,9 +113,9 @@ public class Album
   
   @Property
   @NotNull(message = "popularity can't be null")
-  private Integer popularity;
-  public Integer getPopularity() {return this.popularity;}
-  public void setPopularity(Integer popularity) {this.popularity = popularity;}
+  private Double popularity;
+  public Double getPopularity() {return this.popularity;}
+  public void setPopularity(Double popularity) {this.popularity = popularity;}
   
   @Embedded
   private List<Prize> prizes;

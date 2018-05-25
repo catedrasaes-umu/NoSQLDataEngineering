@@ -457,7 +457,7 @@ class DiffToMorphia
     {
       case Commons.IS_STRING(typeName) : "String"
       case Commons.IS_INT(typeName) : "Integer"
-      case Commons.IS_FLOAT(typeName) :  "Float"
+      case Commons.IS_DOUBLE(typeName) : "Double"
       case Commons.IS_BOOLEAN(typeName) : "Boolean"
       case Commons.IS_OBJECTID(typeName) : "ObjectId"
       default: ""

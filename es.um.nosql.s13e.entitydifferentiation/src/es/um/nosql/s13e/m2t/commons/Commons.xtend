@@ -46,7 +46,7 @@ class Commons
 
   public static def IS_STRING(String type) { #["string"].contains(type)}
   public static def IS_INT(String type) { #["int", "integer", "number"].contains(type)}
-  public static def IS_FLOAT(String type) { #["float", "double"].contains(type)}
+  public static def IS_DOUBLE(String type) { #["float", "double"].contains(type)}
   public static def IS_BOOLEAN(String type) { #["boolean", "bool"].contains(type)}
   public static def IS_OBJECTID(String type) { #["objectid"].contains(type)}
 
