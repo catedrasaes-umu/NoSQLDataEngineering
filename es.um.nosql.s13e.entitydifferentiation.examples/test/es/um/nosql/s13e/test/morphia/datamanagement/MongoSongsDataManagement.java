@@ -31,6 +31,10 @@ public class MongoSongsDataManagement
   private String dbName;
   private Validator validator;
 
+  private int pinkFloydId = 0;
+  private int pearlJamId = 100;
+  private int massiveAttackId = 200;
+
   public MongoSongsDataManagement(String ip, String dbName)
   {
     this.dbName = dbName;
@@ -45,9 +49,24 @@ public class MongoSongsDataManagement
 
   public void startDemo()
   {
-//    fillDbPinkFloyd();
+    fillDbPinkFloyd();
     fillDbPearlJam();
     fillDbMassiveAttack();
+  }
+
+  private String getPinkFloydNextId()
+  {
+    return String.valueOf(pinkFloydId++);
+  }
+
+  private String getPearlJamNextId()
+  {
+    return String.valueOf(pearlJamId++);
+  }
+
+  private String getMassiveAttackNextId()
+  {
+    return String.valueOf(massiveAttackId++);
   }
 
   private void fillDbPinkFloyd()
@@ -66,12 +85,30 @@ public class MongoSongsDataManagement
     Album a1 = new Album(); a1.set_id(new ObjectId().toString()); a1.setFormats(Arrays.asList("Vinyl", "Album")); a1.setName("Wish you were here");
     a1.setPopularity(7.7); a1.setReleaseYear(1975); a1.setTracks(Arrays.asList(t1, t2, t3)); a1.setAvailability(Arrays.asList("EN", "FR")); a1.setGenre("Progressive rock");
     a1.setReviews(Arrays.asList(
-        createReview("Blender", "Excelent", "5/5", url),
-        createReview("The Great Rock Discography", "Excelent", "10/10", url),
-        createReview("The Rolling Stone Album Guide", "5 stars", ""));
-    //TODO: Almost
+        createReview("Blender", "Excelent", "5/5", ""),
+        createReview("Martin C. Strong", "Excelent", "10/10", "The Great Rock Discography"),
+        createReview("Ben Edmonds", "Excelent", "5 stars", "The Rolling Stone Album Guide")));
+
+    Track t4 = new Track(); t4.set_id(new ObjectId().toString()); t4.setArtist_id(Arrays.asList(artist)); t4.setLength(3.09); t4.setName("Another Brick in the Wall (Part I)");
+    t4.setGenres(Arrays.asList("Art rock", "Progressive rock", "Disco")); t4.setPopularity(7.1);
+
+    Track t5 = new Track(); t5.set_id(new ObjectId().toString()); t5.setArtist_id(Arrays.asList(artist)); t5.setLength(2.45); t5.setName("Goodbye Blue Sky");
+    t5.setGenres(Arrays.asList("Progressive rock")); t5.setPopularity(2.1);
+
+    Track t6 = new Track(); t6.set_id(new ObjectId().toString()); t6.setArtist_id(Arrays.asList(artist)); t6.setLength(6.24); t6.setName("Comfortably Numb");
+    t6.setGenres(Arrays.asList("Progressive rock")); t6.setPopularity(5.5); t6.setRatings(Arrays.asList(createRating(45.5, 4550)));
+
+    Album a2 = new Album(); a2.set_id(new ObjectId().toString()); a2.setFormats(Arrays.asList("Vinyl", "Album")); a2.setName("The Wall");
+    a2.setPopularity(8.5); a2.setReleaseYear(1979); a2.setTracks(Arrays.asList(t4, t5, t6)); a2.setAvailability(Arrays.asList("EN", "FR", "ES", "JP", "PT", "NE")); a2.setGenre("Art rock");
 
     artist.setComposedTracks(Arrays.asList(t1, t2, t3, t4, t5, t6)); artist.setLyricsTracks(Arrays.asList(t1, t2, t3, t4, t5, t6)); artist.setAlbums(Arrays.asList(a1, a2));
+
+    assertEquals(0, validator.validate(t1).size() + validator.validate(t2).size() + validator.validate(t3).size() + validator.validate(t4).size());
+    assertEquals(0, validator.validate(t5).size() + validator.validate(t6).size() + validator.validate(a1).size() + validator.validate(a2).size() + validator.validate(artist).size());
+
+    datastore.save(Arrays.asList(t1, t2, t3, t4, t5, t6));
+    datastore.save(Arrays.asList(a1, a2));
+    datastore.save(Arrays.asList(artist));
   }
 
   private void fillDbMassiveAttack()
@@ -155,8 +192,7 @@ public class MongoSongsDataManagement
     artist.setComposedTracks(Arrays.asList(t1, t2, t3, t4, t5, t6)); artist.setLyricsTracks(Arrays.asList(t1, t2, t3, t6)); artist.setAlbums(Arrays.asList(a1, a2));
 
     assertEquals(0, validator.validate(t1).size() + validator.validate(t2).size() + validator.validate(t3).size() + validator.validate(t4).size());
-    assertEquals(0, validator.validate(t5).size() + validator.validate(t6).size() + validator.validate(a1).size() + validator.validate(a2).size());
-    assertEquals(0, validator.validate(artist).size());
+    assertEquals(0, validator.validate(t5).size() + validator.validate(t6).size() + validator.validate(a1).size() + validator.validate(a2).size() + validator.validate(artist).size());
 
     datastore.save(Arrays.asList(t1, t2, t3, t4, t5, t6));
     datastore.save(Arrays.asList(a1, a2));
