@@ -10,9 +10,9 @@ public class Rating
 {
   @Property
   @NotNull(message = "score can't be null")
-  private Integer score;
-  public Integer getScore() {return this.score;}
-  public void setScore(Integer score) {this.score = score;}
+  private Double score;
+  public Double getScore() {return this.score;}
+  public void setScore(Double score) {this.score = score;}
   
   @Property
   @NotNull(message = "voters can't be null")

@@ -164,9 +164,9 @@ public class JsonGenerator
     return (new Random()).nextInt(maxValue + 1 - minValue) + minValue;
   }
 
-  private float getRandomFloat()
+  private float getRandomDouble()
   {
-    double d = Math.round(ThreadLocalRandom.current().nextFloat() * 100 * 100d) / 100d;
+    double d = Math.round(ThreadLocalRandom.current().nextDouble() * 100 * 100d) / 100d;
 
     if (d == Math.floor(d))
       d += 0.01;
@@ -201,7 +201,7 @@ public class JsonGenerator
     {
     case "String": case "string": {strObj.put(name, getRandomString()); break;}
     case "Int": case "int": case "Number": case "number": {strObj.put(name, getRandomInt()); break;}
-    case "Double": case "double": case "float": case "Float": {strObj.put(name, getRandomFloat()); break;}
+    case "Double": case "double": case "float": case "Float": {strObj.put(name, getRandomDouble()); break;}
     case "Bool": case "bool": case "Boolean": case "boolean": {strObj.put(name, getRandomBoolean()); break;}
     }
   }
@@ -217,7 +217,7 @@ public class JsonGenerator
     {
     case "String": case "string": {arrayObj.add(getRandomString()); break;}
     case "Int": case "int": case "Number": case "number": {arrayObj.add(getRandomInt()); break;}
-    case "Double": case "double": case "float": case "Float": {arrayObj.add(getRandomFloat()); break;}
+    case "Double": case "double": case "float": case "Float": {arrayObj.add(getRandomDouble()); break;}
     case "Bool": case "bool": case "Boolean": case "boolean": {arrayObj.add(getRandomBoolean()); break;}
     }
   }

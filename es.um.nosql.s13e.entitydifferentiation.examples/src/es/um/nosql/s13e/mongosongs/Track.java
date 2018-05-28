@@ -33,9 +33,9 @@ public class Track
   
   @Property
   @NotNull(message = "length can't be null")
-  private Integer length;
-  public Integer getLength() {return this.length;}
-  public void setLength(Integer length) {this.length = length;}
+  private Double length;
+  public Double getLength() {return this.length;}
+  public void setLength(Double length) {this.length = length;}
   
   @Property
   @NotNull(message = "name can't be null")
@@ -45,9 +45,9 @@ public class Track
   
   @Property
   @NotNull(message = "popularity can't be null")
-  private Integer popularity;
-  public Integer getPopularity() {return this.popularity;}
-  public void setPopularity(Integer popularity) {this.popularity = popularity;}
+  private Double popularity;
+  public Double getPopularity() {return this.popularity;}
+  public void setPopularity(Double popularity) {this.popularity = popularity;}
   
   @Embedded
   private List<Rating> ratings;

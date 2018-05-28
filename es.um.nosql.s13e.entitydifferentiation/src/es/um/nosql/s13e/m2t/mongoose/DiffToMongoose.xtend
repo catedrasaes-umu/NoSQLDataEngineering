@@ -397,7 +397,7 @@ public class DiffToMongoose
       {
         case Commons.IS_STRING(typeName) : "String"
         case Commons.IS_INT(typeName) : "Number"
-        case Commons.IS_FLOAT(typeName) :  "Number"
+        case Commons.IS_DOUBLE(typeName) :  "Number"
         case Commons.IS_BOOLEAN(typeName) : "Boolean"
         case Commons.IS_OBJECTID(typeName) : "mongoose.Schema.Types.ObjectId"
         default: ""
