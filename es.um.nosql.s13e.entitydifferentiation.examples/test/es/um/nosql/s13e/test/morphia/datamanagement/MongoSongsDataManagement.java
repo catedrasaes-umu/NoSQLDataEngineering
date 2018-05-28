@@ -8,7 +8,6 @@ import java.util.List;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
-import org.bson.types.ObjectId;
 import org.mongodb.morphia.Datastore;
 import org.mongodb.morphia.Morphia;
 import org.mongodb.morphia.ValidationExtension;
@@ -56,50 +55,53 @@ public class MongoSongsDataManagement
 
   private String getPinkFloydNextId()
   {
-    return String.valueOf(pinkFloydId++);
+    return String.valueOf(++pinkFloydId);
   }
 
   private String getPearlJamNextId()
   {
-    return String.valueOf(pearlJamId++);
+    return String.valueOf(++pearlJamId);
   }
 
   private String getMassiveAttackNextId()
   {
-    return String.valueOf(massiveAttackId++);
+    return String.valueOf(++massiveAttackId);
   }
 
   private void fillDbPinkFloyd()
   {
-    Artist artist = new Artist(); artist.set_id(new ObjectId().toString()); artist.setName("Pink Floyd"); artist.setStartingYear(1965);
+    Artist artist = new Artist(); artist.set_id(getPinkFloydNextId()); artist.setName("Pink Floyd"); artist.setStartingYear(1965);
 
-    Track t1 = new Track(); t1.set_id(new ObjectId().toString()); t1.setArtist_id(Arrays.asList(artist)); t1.setLength(13.32); t1.setName("Shine on you crazy diamond (I-V)");
+    Album a1 = new Album(); a1.set_id(getPinkFloydNextId());
+    Album a2 = new Album(); a2.set_id(getPinkFloydNextId());
+
+    Track t1 = new Track(); t1.set_id(getPinkFloydNextId()); t1.setArtist_id(Arrays.asList(artist)); t1.setLength(13.32); t1.setName("Shine on you crazy diamond (I-V)");
     t1.setGenres(Arrays.asList("Progressive rock")); t1.setPopularity(8.9); t1.setRatings(Arrays.asList(createRating(22.7, 1273)));
 
-    Track t2 = new Track(); t2.set_id(new ObjectId().toString()); t2.setArtist_id(Arrays.asList(artist)); t2.setLength(7.31); t2.setName("Welcome to the machine");
+    Track t2 = new Track(); t2.set_id(getPinkFloydNextId()); t2.setArtist_id(Arrays.asList(artist)); t2.setLength(7.31); t2.setName("Welcome to the machine");
     t2.setGenres(Arrays.asList("Progressive rock", "Electronic rock")); t2.setPopularity(3.8); t2.setRatings(Arrays.asList(createRating(5.3, 531)));
 
-    Track t3 = new Track(); t3.set_id(new ObjectId().toString()); t3.setArtist_id(Arrays.asList(artist)); t3.setLength(5.41); t3.setName("Wish you were here");
+    Track t3 = new Track(); t3.set_id(getPinkFloydNextId()); t3.setArtist_id(Arrays.asList(artist)); t3.setLength(5.41); t3.setName("Wish you were here");
     t3.setGenres(Arrays.asList("Vocal")); t3.setPopularity(6.9); t3.setRatings(Arrays.asList(createRating(33.1, 3310)));
 
-    Album a1 = new Album(); a1.set_id(new ObjectId().toString()); a1.setFormats(Arrays.asList("Vinyl", "Album")); a1.setName("Wish you were here");
-    a1.setPopularity(7.7); a1.setReleaseYear(1975); a1.setTracks(Arrays.asList(t1, t2, t3)); a1.setAvailability(Arrays.asList("EN", "FR")); a1.setGenre("Progressive rock");
+    a1.setFormats(Arrays.asList("Vinyl", "Album")); a1.setName("Wish you were here"); a1.setPopularity(7.7); a1.setReleaseYear(1975);
+    a1.setTracks(Arrays.asList(t1, t2, t3)); a1.setAvailability(Arrays.asList("EN", "FR")); a1.setGenre("Progressive rock");
     a1.setReviews(Arrays.asList(
         createReview("Blender", "Excelent", "5/5", ""),
         createReview("Martin C. Strong", "Excelent", "10/10", "The Great Rock Discography"),
         createReview("Ben Edmonds", "Excelent", "5 stars", "The Rolling Stone Album Guide")));
 
-    Track t4 = new Track(); t4.set_id(new ObjectId().toString()); t4.setArtist_id(Arrays.asList(artist)); t4.setLength(3.09); t4.setName("Another Brick in the Wall (Part I)");
+    Track t4 = new Track(); t4.set_id(getPinkFloydNextId()); t4.setArtist_id(Arrays.asList(artist)); t4.setLength(3.09); t4.setName("Another Brick in the Wall (Part I)");
     t4.setGenres(Arrays.asList("Art rock", "Progressive rock", "Disco")); t4.setPopularity(7.1);
 
-    Track t5 = new Track(); t5.set_id(new ObjectId().toString()); t5.setArtist_id(Arrays.asList(artist)); t5.setLength(2.45); t5.setName("Goodbye Blue Sky");
+    Track t5 = new Track(); t5.set_id(getPinkFloydNextId()); t5.setArtist_id(Arrays.asList(artist)); t5.setLength(2.45); t5.setName("Goodbye Blue Sky");
     t5.setGenres(Arrays.asList("Progressive rock")); t5.setPopularity(2.1);
 
-    Track t6 = new Track(); t6.set_id(new ObjectId().toString()); t6.setArtist_id(Arrays.asList(artist)); t6.setLength(6.24); t6.setName("Comfortably Numb");
+    Track t6 = new Track(); t6.set_id(getPinkFloydNextId()); t6.setArtist_id(Arrays.asList(artist)); t6.setLength(6.24); t6.setName("Comfortably Numb");
     t6.setGenres(Arrays.asList("Progressive rock")); t6.setPopularity(5.5); t6.setRatings(Arrays.asList(createRating(45.5, 4550)));
 
-    Album a2 = new Album(); a2.set_id(new ObjectId().toString()); a2.setFormats(Arrays.asList("Vinyl", "Album")); a2.setName("The Wall");
-    a2.setPopularity(8.5); a2.setReleaseYear(1979); a2.setTracks(Arrays.asList(t4, t5, t6)); a2.setAvailability(Arrays.asList("EN", "FR", "ES", "JP", "PT", "NE")); a2.setGenre("Art rock");
+    a2.setFormats(Arrays.asList("Vinyl", "Album")); a2.setName("The Wall"); a2.setPopularity(8.5); a2.setReleaseYear(1979);
+    a2.setTracks(Arrays.asList(t4, t5, t6)); a2.setAvailability(Arrays.asList("EN", "FR", "ES", "JP", "PT", "NE")); a2.setGenre("Art rock");
 
     artist.setComposedTracks(Arrays.asList(t1, t2, t3, t4, t5, t6)); artist.setLyricsTracks(Arrays.asList(t1, t2, t3, t4, t5, t6)); artist.setAlbums(Arrays.asList(a1, a2));
 
@@ -113,19 +115,22 @@ public class MongoSongsDataManagement
 
   private void fillDbMassiveAttack()
   {
-    Artist artist = new Artist(); artist.set_id(new ObjectId().toString()); artist.setName("Massive Attack"); artist.setStartingYear(1988);
+    Artist artist = new Artist(); artist.set_id(getMassiveAttackNextId()); artist.setName("Massive Attack"); artist.setStartingYear(1988);
 
-    Track t1 = new Track(); t1.set_id(new ObjectId().toString()); t1.setArtist_id(Arrays.asList(artist)); t1.setLength(6.19); t1.setName("Angel");
+    Album a1 = new Album(); a1.set_id(getMassiveAttackNextId());
+    Album a2 = new Album(); a2.set_id(getMassiveAttackNextId());
+
+    Track t1 = new Track(); t1.set_id(getMassiveAttackNextId()); t1.setArtist_id(Arrays.asList(artist)); t1.setLength(6.19); t1.setName("Angel");
     t1.setGenres(Arrays.asList("Trip hop", "Industrial rock")); t1.setPopularity(9.8); t1.setRatings(Arrays.asList(createRating(18.0, 180)));
 
-    Track t2 = new Track(); t2.set_id(new ObjectId().toString()); t2.setArtist_id(Arrays.asList(artist)); t2.setLength(5.31); t2.setName("Teardrop");
+    Track t2 = new Track(); t2.set_id(getMassiveAttackNextId()); t2.setArtist_id(Arrays.asList(artist)); t2.setLength(5.31); t2.setName("Teardrop");
     t2.setGenres(Arrays.asList("Trip hop", "Downtempo")); t2.setPopularity(6.1); t2.setRatings(Arrays.asList(createRating(19.0, 190)));
 
-    Track t3 = new Track(); t3.set_id(new ObjectId().toString()); t3.setArtist_id(Arrays.asList(artist)); t3.setLength(6.06); t3.setName("Dissolved girl");
+    Track t3 = new Track(); t3.set_id(getMassiveAttackNextId()); t3.setArtist_id(Arrays.asList(artist)); t3.setLength(6.06); t3.setName("Dissolved girl");
     t3.setGenres(Arrays.asList("Trip hop")); t3.setPopularity(7.7); t3.setRatings(Arrays.asList(createRating(5.0, 50)));
 
-    Album a1 = new Album(); a1.set_id(new ObjectId().toString()); a1.setFormats(Arrays.asList("LP", "Album")); a1.setName("Mezzanine");
-    a1.setPopularity(8.0); a1.setReleaseYear(1998); a1.setTracks(Arrays.asList(t1, t2, t3)); a1.setAvailability(Arrays.asList("ES", "EN", "FR")); a1.setGenre("Trip hop");
+    a1.setFormats(Arrays.asList("LP", "Album")); a1.setName("Mezzanine"); a1.setPopularity(8.0); a1.setReleaseYear(1998);
+    a1.setTracks(Arrays.asList(t1, t2, t3)); a1.setAvailability(Arrays.asList("ES", "EN", "FR")); a1.setGenre("Trip hop");
     a1.setReviews(Arrays.asList(
         createReview("Barney Hoskyns", "Very good", "3.5/5", "Rolling stone"),
         createReview("Alexis Petridis", "Excelent", 5, Arrays.asList(createMedia("The Guardian", "https://www.theguardian.com/us", "newspaper")))));
@@ -133,15 +138,14 @@ public class MongoSongsDataManagement
         createPrize("RIAA", 70000, 1998, "Platinum disk", "Australia", null),
         createPrize("SNEP", 243000, 1998, "2x Gold disk", "France", null)));
 
-    Track t4 = new Track(); t4.set_id(new ObjectId().toString()); t4.setArtist_id(Arrays.asList(artist)); t4.setLength(5.14); t4.setName("Karmacoma");
+    Track t4 = new Track(); t4.set_id(getMassiveAttackNextId()); t4.setArtist_id(Arrays.asList(artist)); t4.setLength(5.14); t4.setName("Karmacoma");
     t4.setGenres(Arrays.asList("Trip hop")); t4.setPopularity(4.5);
 
-    Track t5 = new Track(); t5.set_id(new ObjectId().toString()); t5.setArtist_id(Arrays.asList(artist)); t5.setLength(4.51); t5.setName("Live with me");
+    Track t5 = new Track(); t5.set_id(getMassiveAttackNextId()); t5.setArtist_id(Arrays.asList(artist)); t5.setLength(4.51); t5.setName("Live with me");
     t5.setGenres(Arrays.asList("Trip hop")); t5.setPopularity(5.0);
 
-    Album a2 = new Album(); a2.set_id(new ObjectId().toString()); a2.setFormats(Arrays.asList("Album", "Vinyl")); a2.setName("Collected"); a2.setPopularity(6.6);
-    a2.setReleaseYear(2006); a2.setTracks(Arrays.asList(t4, t5, t1)); a2.setAvailability(Arrays.asList("EN", "JP"));
-    a2.setGenres(Arrays.asList("Trip hop", "Electronica"));
+    a2.setFormats(Arrays.asList("Album", "Vinyl")); a2.setName("Collected"); a2.setPopularity(6.6); a2.setReleaseYear(2006);
+    a2.setTracks(Arrays.asList(t4, t5, t1)); a2.setAvailability(Arrays.asList("EN", "JP")); a2.setGenres(Arrays.asList("Trip hop", "Electronica"));
 
     artist.setComposedTracks(Arrays.asList(t1, t2, t3, t4, t5)); artist.setAlbums(Arrays.asList(a1, a2));
 
@@ -155,19 +159,22 @@ public class MongoSongsDataManagement
 
   private void fillDbPearlJam()
   {
-    Artist artist = new Artist(); artist.set_id(new ObjectId().toString()); artist.setName("Pearl Jam"); artist.setStartingYear(1990);
+    Artist artist = new Artist(); artist.set_id(getPearlJamNextId()); artist.setName("Pearl Jam"); artist.setStartingYear(1990);
 
-    Track t1 = new Track(); t1.set_id(new ObjectId().toString()); t1.setArtist_id(Arrays.asList(artist)); t1.setLength(5.43); t1.setName("Black"); 
+    Album a1 = new Album(); a1.set_id(getPearlJamNextId());
+    Album a2 = new Album(); a2.set_id(getPearlJamNextId());
+
+    Track t1 = new Track(); t1.set_id(getPearlJamNextId()); t1.setArtist_id(Arrays.asList(artist)); t1.setLength(5.43); t1.setName("Black"); 
     t1.setGenres(Arrays.asList("Alternative rock", "Power ballad")); t1.setPopularity(9.1); t1.setRatings(Arrays.asList(createRating(31.77, 3177)));
 
-    Track t2 = new Track(); t2.set_id(new ObjectId().toString()); t2.setArtist_id(Arrays.asList(artist)); t2.setLength(4.53); t2.setName("Even flow");
+    Track t2 = new Track(); t2.set_id(getPearlJamNextId()); t2.setArtist_id(Arrays.asList(artist)); t2.setLength(4.53); t2.setName("Even flow");
     t2.setGenres(Arrays.asList("Alternative rock", "Grunge")); t2.setPopularity(5.3); t2.setRatings(Arrays.asList(createRating(9.56, 956)));
 
-    Track t3 = new Track(); t3.set_id(new ObjectId().toString()); t3.setArtist_id(Arrays.asList(artist)); t3.setLength(5.18); t3.setName("Jeremy");
+    Track t3 = new Track(); t3.set_id(getPearlJamNextId()); t3.setArtist_id(Arrays.asList(artist)); t3.setLength(5.18); t3.setName("Jeremy");
     t3.setGenres(Arrays.asList("Alternative rock", "Grunge")); t3.setPopularity(6.7); t3.setRatings(Arrays.asList(createRating(9.72, 972)));
 
-    Album a1 = new Album(); a1.set_id(new ObjectId().toString()); a1.setFormats(Arrays.asList("LP", "Album", "Vinyl")); a1.setName("Ten");
-    a1.setPopularity(9.8); a1.setReleaseYear(1991); a1.setTracks(Arrays.asList(t1, t2, t3)); a1.setAvailability("ES EN JP FR"); a1.setGenre("Grunge");
+    a1.setFormats(Arrays.asList("LP", "Album", "Vinyl")); a1.setName("Ten"); a1.setPopularity(9.8); a1.setReleaseYear(1991);
+    a1.setTracks(Arrays.asList(t1, t2, t3)); a1.setAvailability("ES EN JP FR"); a1.setGenre("Grunge");
     a1.setReviews(Arrays.asList(
         createReview("David Fricke", "Very good", new Integer(4), Arrays.asList(createMedia("Rolling stone", "https://www.rollingstone.com/", "magazine"))),
         createReview("Steve Huey", "Excelent", "5/5", "AllMusic")));
@@ -176,18 +183,17 @@ public class MongoSongsDataManagement
         createPrize("The 100 Masterpieces", 68, 1993, null, null, Arrays.asList("Musik Express/Sounds", "Acclaimed Music")),
         createPrize("RIAA", 13000000, 2009, "Platinum disk", "United Kingdom", null)));
 
-    Track t4 = new Track(); t4.set_id(new ObjectId().toString()); t4.setArtist_id(Arrays.asList(artist)); t4.setLength(4.19); t4.setName("No way");
+    Track t4 = new Track(); t4.set_id(getPearlJamNextId()); t4.setArtist_id(Arrays.asList(artist)); t4.setLength(4.19); t4.setName("No way");
     t4.setGenres(Arrays.asList("Alternative rock")); t4.setPopularity(4.2);
 
-    Track t5 = new Track(); t5.set_id(new ObjectId().toString()); t5.setArtist_id(Arrays.asList(artist)); t5.setLength(3.49); t5.setName("Given to fly");
+    Track t5 = new Track(); t5.set_id(getPearlJamNextId()); t5.setArtist_id(Arrays.asList(artist)); t5.setLength(3.49); t5.setName("Given to fly");
     t5.setGenres(Arrays.asList("Grunge")); t5.setPopularity(7.0);
 
-    Track t6 = new Track(); t6.set_id(new ObjectId().toString()); t6.setArtist_id(Arrays.asList(artist)); t6.setLength(3.54); t6.setName("Do the evolution");
+    Track t6 = new Track(); t6.set_id(getPearlJamNextId()); t6.setArtist_id(Arrays.asList(artist)); t6.setLength(3.54); t6.setName("Do the evolution");
     t6.setGenres(Arrays.asList("Post-grunge", "Garage rock", "Punk rock")); t6.setPopularity(7.5);
 
-    Album a2 = new Album(); a2.set_id(new ObjectId().toString()); a2.setFormats(Arrays.asList("LP", "Album", "Vinyl")); a2.setName("Yield"); a2.setPopularity(7.2);
-    a2.setReleaseYear(1998); a2.setTracks(Arrays.asList(t4, t5, t6)); a2.setAvailability(Arrays.asList("ES", "EN", "FR", "PT", "JP"));
-    a2.setGenres(Arrays.asList("Grunge", "Alternative rock"));
+    a2.setFormats(Arrays.asList("LP", "Album", "Vinyl")); a2.setName("Yield"); a2.setPopularity(7.2); a2.setReleaseYear(1998);
+    a2.setTracks(Arrays.asList(t4, t5, t6)); a2.setAvailability(Arrays.asList("ES", "EN", "FR", "PT", "JP")); a2.setGenres(Arrays.asList("Grunge", "Alternative rock"));
 
     artist.setComposedTracks(Arrays.asList(t1, t2, t3, t4, t5, t6)); artist.setLyricsTracks(Arrays.asList(t1, t2, t3, t6)); artist.setAlbums(Arrays.asList(a1, a2));
 
