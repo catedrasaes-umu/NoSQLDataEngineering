@@ -21,8 +21,12 @@ import com.mongodb.client.model.changestream.FullDocument
 import es.um.nosql.streaminginference.json2dbschema.util.inflector.Inflector
 import com.mongodb.MongoCredential
 
-class MongoReceiver (host: String, port: Int, databases: String, username: Option[String] = None, password: Option[String] = None)
-  extends Receiver[(String, String)](StorageLevel.MEMORY_AND_DISK_2) with Logging 
+class MongoReceiver (host: String, 
+                     port: Int, 
+                     databases: String, 
+                     username: Option[String] = None, 
+                     password: Option[String] = None)
+  extends Receiver[((String,String), String)](StorageLevel.MEMORY_AND_DISK_2) with Logging 
 {
   def onStart() 
   {
@@ -48,7 +52,7 @@ class MongoReceiver (host: String, port: Int, databases: String, username: Optio
                 .append("_type", name)
                 .toJson
 
-    store((database+"#"+name, json))  // Directly send content to nodes            
+    store(((database, name), json))  // Directly send content to nodes            
   }
   
   private def onCollectionsReady(collections: List[String], 
@@ -85,9 +89,9 @@ class MongoReceiver (host: String, port: Int, databases: String, username: Optio
                   // Get documents previously added
                   collection.find().subscribe(new Observer[Document] 
                   {
-                    override def onSubscribe(subscription: Subscription): Unit = {
-                     subscription.request(10)
-                    }
+//                    override def onSubscribe(subscription: Subscription): Unit = {
+//                     subscription.request(10)
+//                    }
                     
                     override def onNext(document: Document): Unit =
                       onDocumentFound(db.name, document, name)

@@ -50,8 +50,8 @@ object SchemaInferenceDSFactory
             {
               val root = adapter.readFromString(content.toString)
               val rows = root.get("rows").asArray()
-              rows.asScala.groupBy(element => {
-                assert(element.isObject())
+              rows.asScala.groupBy(element => 
+              {
                 val entityType = element.asObject().get("_type")
                 if (entityType != null) entityType.asString() else "unknown"
               }).map {
@@ -70,18 +70,14 @@ object SchemaInferenceDSFactory
   /**
    * Builds a DStream based on a database receiver
    */
-  private def buildDatabaseDS(ds: DStream[(String, String)]): DStream[((String, String), SchemaInference)] = 
+  private def buildDatabaseDS(ds: DStream[((String, String), String)]): DStream[((String, String), SchemaInference)] = 
   {
       ds
-      // Convert string key to a tuple
-      .map { 
-        case (key, jsonList) => {
-          val keyComponents = key.split('#')
-          ((keyComponents(0), keyComponents(1)), jsonList) 
-        }
-      }
+//    This alternative is computationaly very expensive
+//      .mapValues (jsonStr => IO.toSchemaInference("{\"rows\": [ " + jsonStr + " ]}"))   
+//    This one is network communication expensive
       .groupByKey()
-      // Build a json collection using a grouped batch of entities
+//       Build a json collection using a grouped batch of entities
       .mapValues (jsonList => "{\"rows\": [ " + jsonList.mkString(",") + " ]}")   
       .mapValues(IO.toSchemaInference(_))
   } 

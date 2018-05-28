@@ -118,21 +118,22 @@ public class SchemaInference implements Serializable
 		// IMPORTANT!! cp object will be modified so we need to work on a deep copy
 		// to avoid future problems
 		SchemaInference other = (SchemaInference) org.apache.commons.lang3.SerializationUtils.clone(cp);
-		SchemaInference merged = new SchemaInference(this);
+		SchemaInference merged = (SchemaInference) org.apache.commons.lang3.SerializationUtils.clone(this);
 		Map<String, List<SchemaComponent>> mergedEntities = merged.getEntities();
 		Map<String, List<SchemaComponent>> otherEntities = other.getEntities();
 		Map<String, List<SchemaComponent>> toAppend = new HashMap<String, List<SchemaComponent>>();
 		List<Pair<SchemaComponent,SchemaComponent>> versionsToReplace = new ArrayList<Pair<SchemaComponent,SchemaComponent>>(10);
 		otherEntities.forEach((entity, versions) -> 
 		{
-			if (!rawEntities.containsKey(entity)) 
+			if (!merged.rawEntities.containsKey(entity)) 
 				toAppend.put(entity, versions);
 			else 
 			{
 				versions.forEach(version -> 
 				{
 					// Check the existance of an equal version
-					Optional<SchemaComponent> foundVersion = rawEntities
+					Optional<SchemaComponent> foundVersion = merged
+															.rawEntities
 															.get(entity)
 															.stream()
 															.filter(myVersion -> myVersion == version || myVersion.equals(version))

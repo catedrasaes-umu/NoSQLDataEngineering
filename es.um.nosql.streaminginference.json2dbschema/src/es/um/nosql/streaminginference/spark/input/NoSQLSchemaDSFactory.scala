@@ -38,11 +38,11 @@ object NoSQLSchemaDSFactory
   /**
    * Builds a DStream based on a database receiver
    */
-  private def buildDatabaseDS(ds: DStream[(String, String)]): DStream[(String, String)] = 
+  private def buildDatabaseDS(ds: DStream[((String, String), String)]): DStream[(String, String)] = 
   {
       ds
       // Strip entity name from key
-      .map { case (key, jsonList) => (key.split('#')(0), jsonList) }
+      .map { case (key, jsonList) => (key._1, jsonList) }
       .groupByKey()
       // Build a json collection using a grouped batch of entities
       .mapValues(jsonList => "{\"rows\": [ " + jsonList.mkString(",") + " ]}")

@@ -18,8 +18,11 @@ import com.fasterxml.jackson.databind.node.ObjectNode
 
 import es.um.nosql.streaminginference.json2dbschema.util.inflector.Inflector
 
-class CouchDBReceiver (host: String, port: Int, username: Option[String] = None, password: Option[String] = None)
-  extends Receiver[(String, String)](StorageLevel.MEMORY_AND_DISK_2) with Logging 
+class CouchDBReceiver (host: String, 
+                       port: Int, 
+                       username: Option[String] = None, 
+                       password: Option[String] = None)
+  extends Receiver[((String, String), String)](StorageLevel.MEMORY_AND_DISK_2) with Logging 
 {
   def onStart() 
   {
@@ -75,15 +78,15 @@ class CouchDBReceiver (host: String, port: Int, username: Option[String] = None,
                                            .build()
                                            
               val feed:ChangesFeed = db.changesFeed(cmd)
+              val entity = Inflector.getInstance.singularize(newDb)
               while (feed.isAlive() && !isStopped) 
               {
-                  val entity = Inflector.getInstance.singularize(newDb)
                   val change:DocumentChange = feed.next();
                   val node = change.getDocAsNode.asInstanceOf[ObjectNode]
                   node
                     .put("_type", entity)
                     .remove("_rev")
-                  store(("couch#"+entity, node.toString))            
+                  store((("couch", entity), node.toString))       
               }
             }
           }.start()
