@@ -44,7 +44,7 @@ class MongooseIndexValGen
       {
         if (v.min !== null) result.add(new Pair("min", genValidatorValue(v.min.toString, v.message)));
         if (v.max !== null) result.add(new Pair("max", genValidatorValue(v.max.toString, v.message)));
-        if (v.enumValues !== null) result.add(new Pair("enum", genValidatorValue("[" + String.join(", ", v.enumValues.map[value | "'" + value + "'"]) + "]", v.message)));
+        if (v.enumValues !== null) result.add(new Pair("enum", "[" + String.join(", ", v.enumValues.map[value | "'" + value + "'"]) + "]"));
         if (v.match !== null) result.add(new Pair("match", genValidatorValue(v.match, v.message)));
         if (v.minLength !== null) result.add(new Pair("minlength", genValidatorValue(v.minLength.toString, v.message)));
         if (v.maxLength !== null) result.add(new Pair("maxlength", genValidatorValue(v.maxLength.toString, v.message)));

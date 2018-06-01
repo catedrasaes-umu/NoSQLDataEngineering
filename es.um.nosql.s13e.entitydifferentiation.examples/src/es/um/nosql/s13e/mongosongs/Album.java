@@ -2,6 +2,7 @@ package es.um.nosql.s13e.mongosongs;
 
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
+import es.um.nosql.s13e.mongosongs.commons.Commons;
 import org.mongodb.morphia.annotations.PreLoad;
 import org.mongodb.morphia.annotations.PreSave;
 import com.mongodb.DBObject;
@@ -13,7 +14,6 @@ import java.util.List;
 
 import es.um.nosql.s13e.mongosongs.Prize;
 import es.um.nosql.s13e.mongosongs.Review;
-import es.um.nosql.s13e.mongosongs.commons.Commons;
 
 @Entity(value = "album", noClassnameStored = true)
 public class Album

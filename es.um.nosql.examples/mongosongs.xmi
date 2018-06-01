@@ -137,13 +137,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="popularity">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Double"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="genre">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -220,13 +213,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="popularity">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Double"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="name">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -260,7 +246,7 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="reviews"
           upperBound="-1"
-          refTo="//@entities.4/@entityversions.0 //@entities.4/@entityversions.1"/>
+          refTo="//@entities.4/@entityversions.0"/>
     </entityversions>
     <entityversions
         versionId="3"
@@ -295,96 +281,6 @@
               xsi:type="NoSQLSchema:PrimitiveType"
               name="String"/>
         </type>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="popularity">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Double"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="name">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="formats">
-        <type
-            xsi:type="NoSQLSchema:Tuple">
-          <elements
-              xsi:type="NoSQLSchema:PrimitiveType"
-              name="String"/>
-        </type>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Reference"
-          name="tracks"
-          lowerBound="1"
-          upperBound="-1"
-          refTo="Track"
-          originalType="String"/>
-      <properties
-          xsi:type="NoSQLSchema:Aggregate"
-          name="prizes"
-          upperBound="-1"
-          refTo="//@entities.3/@entityversions.0 //@entities.3/@entityversions.1"/>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="genre">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Aggregate"
-          name="reviews"
-          upperBound="-1"
-          refTo="//@entities.4/@entityversions.0 //@entities.4/@entityversions.1"/>
-    </entityversions>
-    <entityversions
-        versionId="4"
-        root="true">
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_id">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Album"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="releaseYear">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="availability">
-        <type
-            xsi:type="NoSQLSchema:Tuple">
-          <elements
-              xsi:type="NoSQLSchema:PrimitiveType"
-              name="String"/>
-        </type>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="popularity">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Double"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -450,13 +346,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="popularity">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Double"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="length">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -508,13 +397,6 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="popularity">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Double"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -646,7 +528,7 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="media"
           upperBound="1"
-          refTo="//@entities.5/@entityversions.0 //@entities.5/@entityversions.1"/>
+          refTo="//@entities.5/@entityversions.0"/>
     </entityversions>
     <entityversions
         versionId="2">
@@ -684,23 +566,6 @@
       name="Media">
     <entityversions
         versionId="1">
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="name">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="url">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-    </entityversions>
-    <entityversions
-        versionId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="name">

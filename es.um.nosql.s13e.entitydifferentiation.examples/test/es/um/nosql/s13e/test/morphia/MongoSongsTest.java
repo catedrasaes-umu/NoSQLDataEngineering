@@ -35,7 +35,7 @@ import es.um.nosql.s13e.mongosongs.Track;
 public class MongoSongsTest
 {
   private final static int N_ARTISTS = 2000;
-  private final static int N_ALBUMS = 4000;
+  private final static int N_ALBUMS = 3000;
   private final static int N_TRACKS = 2000;
 
   private Morphia morphia;
@@ -103,13 +103,13 @@ public class MongoSongsTest
     assertEquals(5, validator.validate(a1).size());
     assertThrows(VerboseJSR303ConstraintViolationException.class, () -> {newDatastore.save(a1);});
 
-    Media m1 = new Media(); m1.setName("name1"); m1.setUrl("url1");
-    Media m2 = new Media(); m2.setName("name2"); m2.setUrl("url2");
+    Media m1 = new Media(); m1.setName("name1"); m1.setUrl("url1"); m1.setType("type1");
+    Media m2 = new Media(); m2.setName("name2"); m2.setUrl("url2"); m2.setType("type2");
     assertEquals(0, validator.validate(m1).size());
     assertEquals(0, validator.validate(m2).size());
 
-    Review r1 = new Review(); r1.setJournalist("journalist1"); r1.setRank("high"); r1.setMedia(Arrays.asList(m1, m2));
-    Review r2 = new Review(); r2.setJournalist("journalist2"); r2.setRank("medium"); r2.setMedia("media2");
+    Review r1 = new Review(); r1.setJournalist("journalist1"); r1.setRank("Very good"); r1.setMedia(Arrays.asList(m1, m2));
+    Review r2 = new Review(); r2.setJournalist("journalist2"); r2.setRank("Excelent"); r2.setMedia("media2");
     Review r3 = new Review(); r3.setJournalist("journalist3");
     assertThrows(ClassCastException.class, () -> {r3.setMedia(false);});
     assertThrows(ClassCastException.class, () -> {r3.setMedia(m1);});

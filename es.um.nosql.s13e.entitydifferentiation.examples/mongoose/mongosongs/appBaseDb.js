@@ -20,7 +20,7 @@ var Media = require('./app/models/MediaSchema');
 var Rating = require('./app/models/RatingSchema');
 
 var N_ARTISTS = 2000;
-var N_ALBUMS = 4000;
+var N_ALBUMS = 3000;
 var N_TRACKS = 2000;
 
 testCheckConsistency();
@@ -118,8 +118,8 @@ function testAddErrorAndCheck()
   if (a2.validateSync() !== undefined)
     console.error("Error: artist2 was not correctly validated.");
 
-  var m1 = new Media(); m1.name = "name1"; m1.url = "url1";
-  var m2 = new Media(); m2.name = "name2"; m2.url = "url2";
+  var m1 = new Media(); m1.name = "name1"; m1.url = "url1"; m1.type = "type1";
+  var m2 = new Media(); m2.name = "name2"; m2.url = "url2"; m2.type = "type2";
 
   if (m1.validateSync() !== undefined)
     console.error("Error: media1 was not correctly validated.");

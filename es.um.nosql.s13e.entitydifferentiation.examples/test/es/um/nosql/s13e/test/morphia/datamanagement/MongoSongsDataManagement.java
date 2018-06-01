@@ -31,8 +31,7 @@ public class MongoSongsDataManagement
   private Validator validator;
 
   private int pinkFloydId = 0;
-  private int pearlJamId = 100;
-  private int massiveAttackId = 200;
+  private int massiveAttackId = 100;
 
   public MongoSongsDataManagement(String ip, String dbName)
   {
@@ -49,18 +48,12 @@ public class MongoSongsDataManagement
   public void startDemo()
   {
     fillDbPinkFloyd();
-    fillDbPearlJam();
     fillDbMassiveAttack();
   }
 
   private String getPinkFloydNextId()
   {
     return String.valueOf(++pinkFloydId);
-  }
-
-  private String getPearlJamNextId()
-  {
-    return String.valueOf(++pearlJamId);
   }
 
   private String getMassiveAttackNextId()
@@ -101,7 +94,7 @@ public class MongoSongsDataManagement
     t6.setGenres(Arrays.asList("Progressive rock")); t6.setRatings(Arrays.asList(createRating(45.5, 4550)));
 
     a2.setFormats(Arrays.asList("Vinyl", "Album")); a2.setName("The Wall"); a2.setReleaseYear(1979);
-    a2.setTracks(Arrays.asList(t4, t5, t6)); a2.setAvailability(Arrays.asList("EN", "FR", "ES", "JP", "PT", "NE")); a2.setGenre("Art rock");
+    a2.setTracks(Arrays.asList(t4, t5, t6)); a2.setAvailability(Arrays.asList("EN", "FR", "ES", "JP", "PT", "NE")); a2.setGenres(Arrays.asList("Art rock"));
 
     artist.setComposedTracks(Arrays.asList(t1, t2, t3, t4, t5, t6)); artist.setLyricsTracks(Arrays.asList(t1, t2, t3, t4, t5, t6)); artist.setAlbums(Arrays.asList(a1, a2));
 
@@ -130,13 +123,13 @@ public class MongoSongsDataManagement
     t3.setGenres(Arrays.asList("Trip hop")); t3.setRatings(Arrays.asList(createRating(5.0, 50)));
 
     a1.setFormats(Arrays.asList("LP", "Album")); a1.setName("Mezzanine"); a1.setReleaseYear(1998);
-    a1.setTracks(Arrays.asList(t1, t2, t3)); a1.setAvailability(Arrays.asList("ES", "EN", "FR")); a1.setGenre("Trip hop");
+    a1.setTracks(Arrays.asList(t1, t2, t3)); a1.setAvailability("ES, EN, FR"); a1.setGenre("Trip hop");
     a1.setReviews(Arrays.asList(
         createReview("Barney Hoskyns", "Very good", "3.5/5", "Rolling stone"),
         createReview("Alexis Petridis", "Excelent", 5, Arrays.asList(createMedia("The Guardian", "https://www.theguardian.com/us", "newspaper")))));
     a1.setPrizes(Arrays.asList(
         createPrize("RIAA", 70000, 1998, "Platinum disk", "Australia", null),
-        createPrize("SNEP", 243000, 1998, "2x Gold disk", "France", null)));
+        createPrize("SNEP", 243000, 1998, null, null, Arrays.asList("France", "2x Gold disk"))));
 
     Track t4 = new Track(); t4.set_id(getMassiveAttackNextId()); t4.setArtist_id(Arrays.asList(artist)); t4.setLength(5.14); t4.setName("Karmacoma");
     t4.setGenres(Arrays.asList("Trip hop"));
@@ -153,54 +146,6 @@ public class MongoSongsDataManagement
     assertEquals(0, validator.validate(t5).size() + validator.validate(a1).size() + validator.validate(a2).size() + validator.validate(artist).size());
 
     datastore.save(Arrays.asList(t1, t2, t3, t4, t5));
-    datastore.save(Arrays.asList(a1, a2));
-    datastore.save(Arrays.asList(artist));
-  }
-
-  private void fillDbPearlJam()
-  {
-    Artist artist = new Artist(); artist.set_id(getPearlJamNextId()); artist.setName("Pearl Jam"); artist.setStartingYear(1990);
-
-    Album a1 = new Album(); a1.set_id(getPearlJamNextId());
-    Album a2 = new Album(); a2.set_id(getPearlJamNextId());
-
-    Track t1 = new Track(); t1.set_id(getPearlJamNextId()); t1.setArtist_id(Arrays.asList(artist)); t1.setLength(5.43); t1.setName("Black"); 
-    t1.setGenres(Arrays.asList("Alternative rock", "Power ballad")); t1.setRatings(Arrays.asList(createRating(31.77, 3177)));
-
-    Track t2 = new Track(); t2.set_id(getPearlJamNextId()); t2.setArtist_id(Arrays.asList(artist)); t2.setLength(4.53); t2.setName("Even flow");
-    t2.setGenres(Arrays.asList("Alternative rock", "Grunge")); t2.setRatings(Arrays.asList(createRating(9.56, 956)));
-
-    Track t3 = new Track(); t3.set_id(getPearlJamNextId()); t3.setArtist_id(Arrays.asList(artist)); t3.setLength(5.18); t3.setName("Jeremy");
-    t3.setGenres(Arrays.asList("Alternative rock", "Grunge")); t3.setRatings(Arrays.asList(createRating(9.72, 972)));
-
-    a1.setFormats(Arrays.asList("LP", "Album", "Vinyl")); a1.setName("Ten"); a1.setReleaseYear(1991);
-    a1.setTracks(Arrays.asList(t1, t2, t3)); a1.setAvailability("ES EN JP FR"); a1.setGenre("Grunge");
-    a1.setReviews(Arrays.asList(
-        createReview("David Fricke", "Very good", new Integer(4), Arrays.asList(createMedia("Rolling stone", "https://www.rollingstone.com/", "magazine"))),
-        createReview("Steve Huey", "Excelent", "5/5", "AllMusic")));
-    a1.setPrizes(Arrays.asList(
-        createPrize("100 Greatest Guitar Albums of All Time", 15, 2006, null, null, Arrays.asList("Guitar world", "Acclaimed Music")),
-        createPrize("The 100 Masterpieces", 68, 1993, null, null, Arrays.asList("Musik Express/Sounds", "Acclaimed Music")),
-        createPrize("RIAA", 13000000, 2009, "Platinum disk", "United Kingdom", null)));
-
-    Track t4 = new Track(); t4.set_id(getPearlJamNextId()); t4.setArtist_id(Arrays.asList(artist)); t4.setLength(4.19); t4.setName("No way");
-    t4.setGenres(Arrays.asList("Alternative rock"));
-
-    Track t5 = new Track(); t5.set_id(getPearlJamNextId()); t5.setArtist_id(Arrays.asList(artist)); t5.setLength(3.49); t5.setName("Given to fly");
-    t5.setGenres(Arrays.asList("Grunge"));
-
-    Track t6 = new Track(); t6.set_id(getPearlJamNextId()); t6.setArtist_id(Arrays.asList(artist)); t6.setLength(3.54); t6.setName("Do the evolution");
-    t6.setGenres(Arrays.asList("Post-grunge", "Garage rock", "Punk rock"));
-
-    a2.setFormats(Arrays.asList("LP", "Album", "Vinyl")); a2.setName("Yield"); a2.setReleaseYear(1998);
-    a2.setTracks(Arrays.asList(t4, t5, t6)); a2.setAvailability(Arrays.asList("ES", "EN", "FR", "PT", "JP")); a2.setGenres(Arrays.asList("Grunge", "Alternative rock"));
-
-    artist.setComposedTracks(Arrays.asList(t1, t2, t3, t4, t5, t6)); artist.setLyricsTracks(Arrays.asList(t1, t2, t3, t6)); artist.setAlbums(Arrays.asList(a1, a2));
-
-    assertEquals(0, validator.validate(t1).size() + validator.validate(t2).size() + validator.validate(t3).size() + validator.validate(t4).size());
-    assertEquals(0, validator.validate(t5).size() + validator.validate(t6).size() + validator.validate(a1).size() + validator.validate(a2).size() + validator.validate(artist).size());
-
-    datastore.save(Arrays.asList(t1, t2, t3, t4, t5, t6));
     datastore.save(Arrays.asList(a1, a2));
     datastore.save(Arrays.asList(artist));
   }

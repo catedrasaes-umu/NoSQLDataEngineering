@@ -1,43 +1,38 @@
-mapper: Morphia
+mapper: Mongoose
 entities:
-  - name: Persons
+  - name: Artist
     indexes:
-
-      - attr: [age]
-        type: [asc]
-
-      - attr: [name, surname]
-        type: [asc, desc]
+      - attr: [name]
+        type: [desc]
         unique: true
         sparse: true
         background: false
 
-      - attr: [status]
-        type: [text]
-        weight: [25]
-        name: custom_index_name
-        expireAfterSeconds: 330
+    validators:
+      - attr: startingYear
+        min: 1900
+        max: 2018
+        message: Starting year of a group must be > 1900 and < 2018
 
-      - attr: [isEmployed]
-        type: [hashed]
+    populateReferences: [composedTracks, lyricsTracks]
+
+  - name: Album
+    indexes:
+      - attr: [name, releaseYear]
+        type: [asc, desc]
+        unique: true
 
     validators:
-      - attr: age
-        min: 18
-        max: 100
-        message: age must be > 18 && < 100
-
-      - attr: status
-        match: /status[0-9]/
-
+      - attr: releaseYear
+        min: 1900
       - attr: name
-        minLength: 3
-        maxLength: 10
-        message: name must have a length > 3 && < 10
+        maxLength: 300
+        message: This album's name is too long
 
-      - attr: surname
-        enumValues: [surname1, surname2, surname3, surname4, surname5]
-        # custom: "{ validator: function(v) { return /surname[0-9]/.test(v); }, message: 'Surname: surname[0-9]'}
-    #ignoreUnknown: true
-
-    populateReferences: [ref1, ref2]
+  - name: Review
+    validators:
+      - attr: rank
+        enumValues: [Excelent, Very good, Good, Poor, Terrible]
+      - attr: stars
+        min: 0
+        max: 5
