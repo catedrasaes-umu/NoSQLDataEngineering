@@ -111,12 +111,6 @@ public class Album
   public String getName() {return this.name;}
   public void setName(String name) {this.name = name;}
   
-  @Property
-  @NotNull(message = "popularity can't be null")
-  private Double popularity;
-  public Double getPopularity() {return this.popularity;}
-  public void setPopularity(Double popularity) {this.popularity = popularity;}
-  
   @Embedded
   private List<Prize> prizes;
   public List<Prize> getPrizes() {return this.prizes;}

@@ -9,7 +9,6 @@ var TrackSchema = new mongoose.Schema({
   genres: {type: [String], required: true},
   length: {type: Number, required: true},
   name: {type: String, required: true},
-  popularity: {type: Number, required: true},
   ratings: {type: [RatingSchema.schema], default: undefined}
 }, { versionKey: false, collection: 'track'});
 

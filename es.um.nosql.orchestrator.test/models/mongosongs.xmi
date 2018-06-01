@@ -137,13 +137,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="popularity">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Double"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="genre">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -220,13 +213,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="popularity">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Double"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="name">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -295,13 +281,6 @@
               xsi:type="NoSQLSchema:PrimitiveType"
               name="String"/>
         </type>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="popularity">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Double"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -381,13 +360,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="popularity">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Double"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="name">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -450,13 +422,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="popularity">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Double"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="length">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -508,13 +473,6 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="popularity">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Double"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"

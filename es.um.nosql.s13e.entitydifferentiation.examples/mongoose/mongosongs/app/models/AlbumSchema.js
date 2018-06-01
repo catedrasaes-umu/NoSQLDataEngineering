@@ -12,7 +12,6 @@ var AlbumSchema = new mongoose.Schema({
   genre: String,
   genres: {type: [String], default: undefined},
   name: {type: String, required: true},
-  popularity: {type: Number, required: true},
   prizes: {type: [PrizeSchema.schema], default: undefined},
   releaseYear: {type: Number, required: true},
   reviews: {type: [ReviewSchema.schema], default: undefined},
