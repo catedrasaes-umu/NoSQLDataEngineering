@@ -23,12 +23,11 @@ import scala.collection.JavaConverters._
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.impl.jackson.JacksonAdapter
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.impl.jackson.JacksonArray
 import es.um.nosql.streaminginference.json2dbschema.util.abstractjson.impl.jackson.JacksonElement
+import org.apache.hadoop.fs.Path
 
 
 object SchemaInferenceDSFactory
 {  
-  
-  private val OUTPUT_INTERVAL_MS = 10000
 
   /**
    * Initializes a DStream based on JSON Database files
@@ -37,11 +36,11 @@ object SchemaInferenceDSFactory
   {
 
     // Update modification time of files in inputDir to force spark to check them
-    HDFSHelper.updateModificationTime(inputDir+"/*", System.currentTimeMillis()+20000)
+    HDFSHelper.updateModificationTime(inputDir+"/*", System.currentTimeMillis())
     
     ssc
       // Based on: https://halfvim.github.io/2016/06/28/FileInputDStream-in-Spark-Streaming/
-      .fileStream[Text, Text, WholeTextInputFormat](inputDir)
+      .fileStream[Text, Text, WholeTextInputFormat](inputDir, (f: Path) => true, newFilesOnly = false)
       .mapPartitions (partition => {
           val adapter = new JacksonAdapter
           partition.flatMap 
@@ -65,6 +64,7 @@ object SchemaInferenceDSFactory
             }
           }  
       })
+      .reduceByKey(_.merge(_))
   }
   
   /**
@@ -75,6 +75,7 @@ object SchemaInferenceDSFactory
       ds
 //    This alternative is computationaly very expensive
 //      .mapValues (jsonStr => IO.toSchemaInference("{\"rows\": [ " + jsonStr + " ]}"))   
+//      .reduceByKey((sch1:SchemaInference, sch2:SchemaInference) => sch1.merge(sch2), 1)
 //    This one is network communication expensive
       .groupByKey()
 //       Build a json collection using a grouped batch of entities
@@ -152,14 +153,16 @@ object SchemaInferenceDSFactory
   
   def build(ssc: StreamingContext, options: HashMap[String, String]) =
   {
+    val outputInterval = options("output-interval").toLong
     val outputDir = options("output")
     val benchmarking = options("benchmark").toBoolean
     val stateSpec = buildState(ssc, options)
 //    val interval = options("interval").toInt
-    var lastCheck = System.currentTimeMillis()
+    var lastCheck:Long = 0
     
     val ds = 
       initializeDS(ssc, options)
+//      .checkpoint(Milliseconds(options("interval").toInt*100))
       .mapWithState(stateSpec)
       .stateSnapshots()
       // Compute window at OUTPUT_INTERVAL_MS interval rate      
@@ -173,12 +176,14 @@ object SchemaInferenceDSFactory
           rdd
             .reduceByKey(_.merge(_))
             // Do SchemaInference to NoSQL conversion but don't output xmi file
-            .foreach { case (schema, inference) => IO.toNoSQLSchema(schema, inference) })
+//            .foreach(p => {})
+            .foreach { case (schema, inference) => IO.toNoSQLSchema(schema, inference) }
+        )
       else
         ds.foreachRDD((rdd, timestamp) => 
-          if (System.currentTimeMillis() - lastCheck > OUTPUT_INTERVAL_MS)
+          if (timestamp.milliseconds - lastCheck >= outputInterval)
           {
-            lastCheck = System.currentTimeMillis()
+            lastCheck = timestamp.milliseconds
             rdd
               .reduceByKey(_.merge(_))
               .foreach 

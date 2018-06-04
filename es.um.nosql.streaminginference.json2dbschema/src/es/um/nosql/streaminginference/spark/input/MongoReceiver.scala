@@ -89,9 +89,6 @@ class MongoReceiver (host: String,
                   // Get documents previously added
                   collection.find().subscribe(new Observer[Document] 
                   {
-//                    override def onSubscribe(subscription: Subscription): Unit = {
-//                     subscription.request(10)
-//                    }
                     
                     override def onNext(document: Document): Unit =
                       onDocumentFound(db.name, document, name)

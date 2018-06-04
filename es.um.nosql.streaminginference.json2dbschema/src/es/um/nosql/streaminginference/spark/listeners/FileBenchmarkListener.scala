@@ -8,30 +8,24 @@ import es.um.nosql.streaminginference.spark.utils.HDFSHelper
 
 class FileBenchmarkListener(options: HashMap[String, String]) extends BenchmarkListener(options)
 { 
-  private val LOWER_PROCESSING_THRESHOLD = 300
-  private val UPPER_PROCESSING_THRESHOLD = 700
+  private val LOWER_PROCESSING_THRESHOLD = 1000
+  private val UPPER_PROCESSING_THRESHOLD = 1000
   
+    override def onBatchStarted(batchStarted: StreamingListenerBatchStarted) 
+    {
+      // Only measure first batch in file benchmark mode
+      if (totalBatches == 0)
+        start = System.currentTimeMillis()
+    }
     override def onBatchCompleted(batchCompleted: StreamingListenerBatchCompleted) 
-    {      
-      if (batchCompleted.batchInfo.processingDelay.get > UPPER_PROCESSING_THRESHOLD)
+    {    
+      // Only measure first batch in file benchmark mode
+      if (totalBatches == 0)
       {
-        val interval = options("interval").toInt
-        start = System.currentTimeMillis() - interval
-        listening = true
-      }
-      
-      if (listening) 
-      {
-        if (batchCompleted.batchInfo.processingDelay.get < LOWER_PROCESSING_THRESHOLD)
-        {
-          listening = false
-          val interval = options("interval").toInt
-          outputStats(System.currentTimeMillis()-interval)
-          // Force streaming shutdown
-          HDFSHelper.touch(options("output")+"/_DONE")
-        }
-        else
-          updateStats(batchCompleted)
+        updateStats(batchCompleted)
+        outputStats()
+        HDFSHelper.touch(options("output")+"/_DONE")
+        totalBatches+=1
       }
     }
 }

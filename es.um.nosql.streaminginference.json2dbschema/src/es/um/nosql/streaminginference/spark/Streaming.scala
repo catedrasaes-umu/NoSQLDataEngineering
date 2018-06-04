@@ -9,6 +9,9 @@ import org.apache.spark.streaming.StreamingContext
 import es.um.nosql.streaminginference.spark.input.DStreamManager
 import es.um.nosql.streaminginference.spark.utils.HDFSHelper
 import es.um.nosql.streaminginference.spark.utils.KryoHelper
+import java.io.File
+import java.io.FileInputStream
+import es.um.nosql.streaminginference.spark.utils.IO
 
 object Streaming
 {  
@@ -20,7 +23,7 @@ object Streaming
       "interval" -> "1000",
       "version" -> DStreamManager.SCHEMA_INFERENCE_MODE,
       "benchmark" -> "false",
-      "block-interval" -> "1000",
+      "block-interval" -> "200",
       "kryo" -> "false"
   )
   
@@ -63,16 +66,19 @@ object Streaming
     
     // Initialize default options
     defaultOptions.foreach { case (key, value) => if (!options.contains(key)) options += key -> value }
+    // Initialize output interval to interval if not defined
+    if (!options.get("output-interval").isDefined)
+      options += "output-interval" -> options("interval")
     options
   }
   
     
-  def createContext(args: Array[String])(): StreamingContext =
+  def createContext(options: HashMap[String, String])(): StreamingContext =
   {
-    val options = parseOptions(args)
     val conf = new SparkConf()
                   .setAppName("StreamingInference")
                   .set("spark.streaming.blockInterval", options("block-interval") + "ms")
+//                  .set("spark.streaming.backpressure.enabled", "true")
     
     // Enable Kryo Serialization
     if (options("kryo").toBoolean && options("version") == DStreamManager.SCHEMA_INFERENCE_MODE)
@@ -84,17 +90,45 @@ object Streaming
     ssc
   }
   
+  def executeOriginalInference(options: HashMap[String, String]) = 
+  {
+    val jsonFile:File = new File(options("input"));
+    val schema:String = jsonFile.getName().split("\\.")(0);
+    val content:String = org.apache.commons.io.FileUtils.readFileToString(jsonFile);
+    var start:Long = 0
+    if (options("benchmark").toBoolean)
+    {
+      start = System.currentTimeMillis()
+      IO.toNoSQLSchema(schema, content)
+      val processingTime = System.currentTimeMillis() - start
+	    println("Total time: " + processingTime + " ms")
+	    HDFSHelper.append(options("output")+"/stats.csv",
+                        processingTime+ "\n",
+                        "TOTAL_PROCESSING\n")
+    } 
+    else 
+    {
+      IO.writeXMI(IO.toNoSQLSchema(schema, content), options("output") + "/" + schema + ".xmi")
+    }
+  }
+  
   def clean(directories: String*) = directories.foreach(HDFSHelper.delete(_))
   
-  def main(args: Array[String]) = 
+  def main(args: Array[String]) =
   {
     try 
     {
-      clean(CheckpointDir)
-      val context = StreamingContext.getOrCreate(CheckpointDir, createContext(args))
-      context.start()             // Start the computation
-      context.awaitTermination()  // Wait for the computation to terminate
-    
+      val options = parseOptions(args)
+      if (options("mode") == "single") 
+        executeOriginalInference(options)
+      else
+      {
+        clean(CheckpointDir)
+        val context = StreamingContext.getOrCreate(CheckpointDir, createContext(options))
+        context.start()             // Start the computation
+        context.awaitTerminationOrTimeout(300000)  // Wait for the computation to terminate
+        print("DONE")
+      }
     } 
     catch 
     {

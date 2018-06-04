@@ -21,8 +21,6 @@ import es.um.nosql.streaminginference.spark.utils.HDFSHelper
 
 object NoSQLSchemaDSFactory
 {
-  private val OUTPUT_INTERVAL_MS = 10000
-  
   /**
    * Initializes a DStream based on JSON Database files
    */
@@ -116,12 +114,12 @@ object NoSQLSchemaDSFactory
   def build(ssc: StreamingContext, options: HashMap[String, String]) =
   {
     
-    ssc.sparkContext.setLogLevel("ERROR")
+    val outputInterval = options("output-interval").toLong
     val outputDir = options("output")
     val stateSpec = buildState(ssc, options)
     val benchmarking = options("benchmark").toBoolean
 //    val interval = options("interval").toInt
-    var lastCheck = System.currentTimeMillis()
+    var lastCheck:Long = 0
     val ds = 
       initializeDS(ssc, options)
       .map 
@@ -137,9 +135,9 @@ object NoSQLSchemaDSFactory
      ds.foreachRDD(rdd => rdd.foreach(p => {}))
    else
      ds.foreachRDD((rdd,timestamp) => 
-      if (System.currentTimeMillis() - lastCheck > OUTPUT_INTERVAL_MS)
+      if (timestamp.milliseconds - lastCheck > outputInterval)
       {
-        lastCheck = System.currentTimeMillis()
+        lastCheck = timestamp.milliseconds
         rdd
           .foreach 
           {
