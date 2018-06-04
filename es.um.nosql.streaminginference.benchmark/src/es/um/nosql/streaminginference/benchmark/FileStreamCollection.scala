@@ -13,11 +13,10 @@ class FileStreamCollection(options: HashMap[String, String]) extends FileCollect
     val batches = if (total % batchSize == 0) total/batchSize else total/batchSize+1    
     for (i <- 0 to batches-1)
     {
-      val file = new File(path.dropRight(5)+"_"+(i+1)+".json")
-      val buff = new BufferedWriter(new FileWriter(file))
+      
+      val filePath = path.dropRight(5)+"_"+(i+1)+".json"
       val elements = Math.min(batchSize, total-(batchSize*i))
-      buff.write(toJsonStr(elements))
-      buff.close()
+      toJsonFileStr(elements, filePath)
       Thread.sleep(batchDelay)
     }
   }

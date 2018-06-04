@@ -69,18 +69,27 @@ object Benchmark {
   }
   
   def main(args: Array[String]) = 
-  {
+  {    
     try
     {
       val options = parseOptions(args)
-      val collection = 
-        if (options("mode") == "mongo") 
-          if (options("flow") == "stream") new MongoStreamCollection(options)
-          else new MongoCollection(options)
-        else if (options("flow") == "stream") new FileStreamCollection(options)
-          else new FileCollection(options)
-
-      collection.output()
+      if (options("mode") == "find") 
+      {
+        val finder = new MongoStressFind(options)
+        finder.findAll()
+        // findAll is an async operation so main must wait for monitoring cpu and memory usage
+        Thread.sleep(100000)
+      }
+      else
+      {
+        val collection = 
+          if (options("mode") == "mongo") 
+            if (options("flow") == "stream") new MongoStreamCollection(options)
+            else new MongoCollection(options)
+          else if (options("flow") == "stream") new FileStreamCollection(options)
+            else new FileCollection(options)
+        collection.output()
+      }
     } 
     catch 
     {

@@ -7,18 +7,22 @@ class FileCollection(options: HashMap[String, String]) extends Collection(option
 {
   protected val path = options("output")
   
-  def toJsonStr(elements:Int=total):String = 
+  def toJsonFileStr(elements:Int=total, filePath:String = path): Unit = 
   {
-    var str =
+    val file = new File(filePath)
+    val buff = new BufferedWriter(new FileWriter(file))
+    
+    val heading =
 """{
   "rows": [
 """; 
     
+    buff.write(heading)
     for (i <- 0 to elements-1) 
     {
       val name = "entity-" + (i*entities/elements)
       val agg = new Aggregate(fields=fields, version=(i%versions) + 1, depth=depth-1)
-      str += 
+      var elementStr = 
 """
       {
         "_id": """"+currentId+"""",
@@ -26,20 +30,23 @@ class FileCollection(options: HashMap[String, String]) extends Collection(option
 """ + 
         agg.toJsonStr(1) +
 """
-      },"""
+      }"""
+        
+      if (i < elements-1) 
+        elementStr += ","
+
       currentId += 1
+      buff.write(elementStr)
     }
-    str = str.dropRight(1)
-    str += "\n  ]\n}"
-    str
+    
+    buff.write("\n  ]\n}")
+    buff.close()
   }
   
   override def output() = 
   {
-    val file = new File(path)
-    val buff = new BufferedWriter(new FileWriter(file))
-    buff.write(toJsonStr())
-    buff.close()
+    toJsonFileStr()
+    
   }
 
 }
