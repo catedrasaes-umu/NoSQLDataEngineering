@@ -1202,6 +1202,200 @@
     <ownedJavaExtensions qualifiedClassName="es.um.nosql.s13e.design.services.NoSQLSchemaServices"/>
     <ownedJavaExtensions qualifiedClassName="es.um.nosql.s13e.design.services.PropertyServices"/>
   </ownedViewpoints>
+  <ownedViewpoints name="EntityDifferentiation" label="EntityDifferentiation">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Entity Differences Diagram" label="Entity Differences Diagram" domainClass="EntityDifferentiation::EntityDiffSpec">
+      <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
+      <metamodel href="http://www.modelum.es/EntityDifferentiation#/"/>
+      <defaultLayer name="Default">
+        <containerMappings name="EntityDiffSpec" label="EntityDiffSpec" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityDiffSpec" childrenPresentation="VerticalStack">
+          <subContainerMappings name="EntityDiffSpecContainer1" label="EntityDiffSpecContainer1" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityDiffSpec" childrenPresentation="List">
+            <subNodeMappings name="PropertySpec" label="PropertySpec" semanticCandidatesExpression="aql: self.commonProps" domainClass="EntityDifferentiation::PropertySpec">
+              <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: self.property.eClass().name + ': ' + self.property.name + '\t(' + 'TCheck: ' + self.needsTypeCheck + ')'" labelPosition="node" resizeKind="NSEW" id="PropertySpecStyle">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subNodeMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'Common properties'" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            </style>
+          </subContainerMappings>
+          <subContainerMappings name="EntityDiffSpecContainer2" label="EntityDiffSpecContainer2" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityDiffSpec" childrenPresentation="VerticalStack">
+            <subContainerMappings name="EntityVersionProp" label="EntityVersionProp" semanticCandidatesExpression="aql: self.entityVersionProps" domainClass="EntityDifferentiation::EntityVersionProp" childrenPresentation="HorizontalStack">
+              <subContainerMappings name="EntityVersionPropContainer1" label="EntityVersionPropContainer1" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityVersionProp" childrenPresentation="List">
+                <subNodeMappings name="PropertySpec" label="PropertySpec" semanticCandidatesExpression="aql: self.propertySpecs" domainClass="EntityDifferentiation::PropertySpec">
+                  <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: self.property.eClass().name + ': ' + self.property.name + '\t(' + 'TCheck: ' + self.needsTypeCheck + ')'" labelPosition="node" resizeKind="NSEW" id="PropertySpecStyle">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  </style>
+                </subNodeMappings>
+                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'Properties'" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-1']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelFormat>bold</labelFormat>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subContainerMappings>
+              <subContainerMappings name="EntityVersionPropContainer2" label="EntityVersionPropContainer2" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityVersionProp" childrenPresentation="List">
+                <subNodeMappings name="PropertySpec" label="PropertySpec" semanticCandidatesExpression="aql: self.notProps" domainClass="EntityDifferentiation::PropertySpec">
+                  <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: self.property.eClass().name + ': ' + self.property.name + '\t(' + 'TCheck: ' + self.needsTypeCheck + ')'" labelPosition="node" resizeKind="NSEW" id="PropertySpecStyle">
+                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  </style>
+                </subNodeMappings>
+                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'Not properties'" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-1']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelFormat>bold</labelFormat>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </subContainerMappings>
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: self.entityVersion.eContainer().name + '_' + self.entityVersion.versionId" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-1']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']">
+                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                <labelFormat>bold</labelFormat>
+                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              </style>
+            </subContainerMappings>
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'EntityVersion properties'" backgroundStyle="GradientTopToBottom">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            </style>
+          </subContainerMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'EntityDiffSpec: ' + self.entity.name + ' (' + self.eContainer().name + ')'" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelFormat>bold</labelFormat>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Entity Differences Diagram (Legacy)" label="Entity Differences Diagram (Legacy)" domainClass="EntityDifferentiation::EntityDiffSpec">
+      <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
+      <metamodel href="http://www.modelum.es/EntityDifferentiation#/"/>
+      <defaultLayer name="Default">
+        <edgeMappings name="EntityDiffSpecs" label="EntityDiffSpecs" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityDifferentiation']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityDiffSpec']" targetFinderExpression="aql: self.entityDiffSpecs">
+          <style sourceArrow="FillDiamond">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql: 'entityDiffSpecs'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="EntityVersionProps" label="EntityVersionProps" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityDiffSpec']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityVersionProp']" targetFinderExpression="aql: self.entityVersionProps">
+          <style sourceArrow="FillDiamond">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql: 'entityVersionProps'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="PropertySpecs" label="PropertySpecs" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityVersionProp']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='PropertySpec']" targetFinderExpression="aql: self.propertySpecs">
+          <style sourceArrow="FillDiamond">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql: 'propertySpecs'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="NotProps" label="NotProps" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityVersionProp']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='PropertySpec']" targetFinderExpression="aql: self.notProps">
+          <style sourceArrow="FillDiamond">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql: 'notProps'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="CommonProps" label="CommonProps" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityDiffSpec']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='PropertySpec']" targetFinderExpression="aql: self.commonProps">
+          <style sourceArrow="FillDiamond">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql: 'commonProps'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="Property" label="Property" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='PropertySpec']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='Property']" targetFinderExpression="aql: self.property">
+          <style>
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql: 'property'">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <containerMappings name="EntityDifferentiation" label="EntityDifferentiation" semanticCandidatesExpression="aql: self.eContainer()" domainClass="EntityDifferentiation::EntityDifferentiation" childrenPresentation="VerticalStack">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'EntityDifferentiation: ' + self.name" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='purple']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EntityDiffSpec" label="EntityDiffSpec" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityDiffSpec" childrenPresentation="List">
+          <subNodeMappings name="EntityDiffSpecName" label="EntityDiffSpecName" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityDiffSpec">
+            <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: 'ref(Entity): ' + self.entity.name" labelPosition="node" resizeKind="NSEW" id="EntityDiffSpecStyle">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'EntityDiffSpec'" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="EntityVersionProp" label="EntityVersionProp" semanticCandidatesExpression="aql: self.entityVersionProps" domainClass="EntityDifferentiation::EntityVersionProp" childrenPresentation="List">
+          <subNodeMappings name="EntityVersionPropName" label="EntityVersionPropName" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityVersionProp">
+            <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: 'ref(EntityVersion): ' + self.entityVersion.eContainer().name + self.entityVersion.versionId" labelPosition="node" resizeKind="NSEW" id="EntityVersionPropNameStyle">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelFormat>bold</labelFormat>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'EntityVersionProp'" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="PropertySpec" label="PropertySpec" semanticCandidatesExpression="aql: self.commonProps->concat(self.entityVersionProps.propertySpecs)->concat(self.entityVersionProps.notProps)" domainClass="EntityDifferentiation::PropertySpec" childrenPresentation="List">
+          <subNodeMappings name="needsTypeCheck" label="needsTypeCheck" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::PropertySpec">
+            <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: 'needsTypeCheck: ' + self.needsTypeCheck" labelPosition="node" resizeKind="NSEW" id="PropertySpecStyle">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'PropertySpec'" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='green']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
+          </style>
+        </containerMappings>
+        <containerMappings name="Property" label="Property" semanticCandidatesExpression="aql: self.commonProps.property->concat(self.entityVersionProps.propertySpecs.property)->concat(self.entityVersionProps.notProps.property)" domainClass="NoSQLSchema::Property" childrenPresentation="List">
+          <subNodeMappings name="PropertyName" label="PropertyName" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema::Property">
+            <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: 'name: ' + self.name" labelPosition="node" resizeKind="NSEW" id="PropertyNameStyle">
+              <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </style>
+          </subNodeMappings>
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: self.eClass().name" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+            <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
+          </style>
+        </containerMappings>
+      </defaultLayer>
+    </ownedRepresentations>
+  </ownedViewpoints>
   <userColorsPalettes name="Palette">
     <entries xsi:type="description:UserFixedColor" red="255" green="240" blue="171" name="Yellow-1"/>
     <entries xsi:type="description:UserFixedColor" red="247" green="246" blue="208" name="Yellow-2"/>
