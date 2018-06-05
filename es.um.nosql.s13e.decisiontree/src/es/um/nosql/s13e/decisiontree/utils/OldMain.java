@@ -24,7 +24,6 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.util.emf.ModelLoader;
 import es.um.nosql.s13e.util.emf.Serializer;
-import weka.classifiers.trees.j48.ClassifierSplitModel;
 import weka.classifiers.trees.j48.ClassifierTree;
 import weka.core.Attribute;
 import weka.core.DenseInstance;
@@ -34,7 +33,7 @@ import weka.core.Instances;
 public class OldMain {
 
 	public static OpenJ48 generateTree(Instances train) throws Exception
-    {
+	{
 		OpenJ48 classifier = new OpenJ48();
 		classifier.setUnpruned(true);
 		classifier.setMinNumObj(1);
@@ -147,7 +146,7 @@ public class OldMain {
 		for (String name: classes)
 		{
 			// TODO: Update to Class Weight
-			double weight = 1.0; 
+			//double weight = 1.0; 
 			int[] vector = binary_vectors.get(name);
 			Instance ints = new DenseInstance(vector.length + 1);
 			
@@ -185,7 +184,7 @@ public class OldMain {
 		}
 		else
 		{			
-			ClassifierSplitModel classifierSplitModel = tree.getLocalModel();
+			//ClassifierSplitModel classifierSplitModel = tree.getLocalModel();
 			ClassifierTree[] sons = tree.getSons();	
 			String left = tree.getLocalModel().leftSide(tree.getTrainingData());
 			List<Property> p = properties.get(left.trim());

@@ -10,9 +10,9 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.xmi.XMIResource;
 
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation;
-import es.um.nosql.s13e.entitydifferentiation.EntitydifferentiationPackage;
 import es.um.nosql.s13e.m2m.NoSQLSchemaToEntityDiff;
 import es.um.nosql.s13e.m2t.mongoose.DiffMongooseBaseGen;
 import es.um.nosql.s13e.m2t.mongoose.DiffToMongoose;
@@ -56,7 +56,7 @@ public class Main
     EntityDifferentiation diffModel = transformer.m2m(INPUT_MODEL);
 
     NoSQLSchemaPackage nosqlschemaPackage = NoSQLSchemaPackage.eINSTANCE;
-    EntitydifferentiationPackage entitydiffPackage = EntitydifferentiationPackage.eINSTANCE;
+    EntityDifferentiationPackage entitydiffPackage = EntityDifferentiationPackage.eINSTANCE;
     ResourceManager resManager = new ResourceManager(nosqlschemaPackage, entitydiffPackage);
 
     nosqlschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e/model/nosqlschema.ecore", true));

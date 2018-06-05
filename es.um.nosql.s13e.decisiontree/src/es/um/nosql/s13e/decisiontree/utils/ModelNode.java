@@ -1,7 +1,7 @@
 package es.um.nosql.s13e.decisiontree.utils;
 
 import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
-import es.um.nosql.s13e.entitydifferentiation.PropertySpec;
+import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 
 public class ModelNode
 {

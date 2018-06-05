@@ -13,25 +13,24 @@ import es.um.nosql.s13e.NoSQLSchema.Tuple
 import es.um.nosql.s13e.NoSQLSchema.Reference
 import es.um.nosql.s13e.NoSQLSchema.Aggregate
 import es.um.nosql.s13e.NoSQLSchema.Entity
-import es.um.nosql.s13e.decisiontree.DecisiontreePackage
-import es.um.nosql.s13e.decisiontree.DecisionTrees
-import es.um.nosql.s13e.decisiontree.DecisionTreeForEntity
-import es.um.nosql.s13e.decisiontree.PropertySpec2
-import es.um.nosql.s13e.decisiontree.IntermediateNode
-import es.um.nosql.s13e.decisiontree.LeafNode
-import es.um.nosql.s13e.entitydifferentiation.EntitydifferentiationPackage
+import es.um.nosql.s13e.DecisionTree.DecisionTreePackage
+import es.um.nosql.s13e.DecisionTree.DecisionTrees
+import es.um.nosql.s13e.DecisionTree.DecisionTreeForEntity
+import es.um.nosql.s13e.DecisionTree.PropertySpec2
+import es.um.nosql.s13e.DecisionTree.IntermediateNode
+import es.um.nosql.s13e.DecisionTree.LeafNode
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage
 import es.um.nosql.s13e.NoSQLSchema.EntityVersion
 import java.util.Deque
-import java.util.LinkedList
 import java.util.HashMap
 import java.util.Map
-import es.um.nosql.s13e.decisiontree.DecisionTreeNode
+import es.um.nosql.s13e.DecisionTree.DecisionTreeNode
 
 class DecisionTreeToJS
 {
 	var modelName = "";
 
-	final val SPECIAL_TYPE_IDENTIFIER = "type"
+//	final val SPECIAL_TYPE_IDENTIFIER = "type"
 
 	def static void main(String[] args)
     {
@@ -42,8 +41,8 @@ class DecisionTreeToJS
 		}
 
         val inputModel = new File(args.head)
-        val ResourceManager rm = new ResourceManager(DecisiontreePackage.eINSTANCE,
-        	EntitydifferentiationPackage.eINSTANCE,
+        val ResourceManager rm = new ResourceManager(DecisionTreePackage.eINSTANCE,
+        	EntityDifferentiationPackage.eINSTANCE,
         	NoSQLSchemaPackage.eINSTANCE)
         rm.loadResourcesAsStrings(inputModel.getPath())
         val DecisionTrees trees = rm.resources.head.contents.head as DecisionTrees

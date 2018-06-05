@@ -22,11 +22,11 @@ import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Property;
-import es.um.nosql.s13e.entitydifferentiation.EntityDiffSpec;
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation;
-import es.um.nosql.s13e.entitydifferentiation.EntityVersionProp;
-import es.um.nosql.s13e.entitydifferentiation.EntitydifferentiationFactory;
-import es.um.nosql.s13e.entitydifferentiation.PropertySpec;
+import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec;
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
+import es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp;
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationFactory;
+import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 import es.um.nosql.s13e.m2m.util.hashing.PropertyHashingStrategy;
 import es.um.nosql.s13e.m2m.util.hashing.PropertyJustNameHashingStrategy;
 import es.um.nosql.s13e.util.emf.ModelLoader;
@@ -69,7 +69,7 @@ public class NoSQLSchemaToEntityDiff
    */
   public EntityDifferentiation m2m(NoSQLSchema schema)
   {
-    EntityDifferentiation differentiation = EntitydifferentiationFactory.eINSTANCE.createEntityDifferentiation();
+    EntityDifferentiation differentiation = EntityDifferentiationFactory.eINSTANCE.createEntityDifferentiation();
 
     differentiation.setName(schema.getName());
     differentiation.setSchema(schema);
@@ -106,7 +106,7 @@ public class NoSQLSchemaToEntityDiff
     // not to create duplicate checks
     Map<EntityVersion, Map<String, PropertySpec>> propSpecsByEV = new HashMap<>();
 
-    EntityDiffSpec de = EntitydifferentiationFactory.eINSTANCE.createEntityDiffSpec();
+    EntityDiffSpec de = EntityDifferentiationFactory.eINSTANCE.createEntityDiffSpec();
     de.setEntity(e);
 
     Set<Property> commonProperties = commonEntityProperties.get(e);
@@ -119,7 +119,7 @@ public class NoSQLSchemaToEntityDiff
     // identified the own attributes of an EntityVersion, output "HasNotField" items
     // for the rest of EntityVersions
     e.getEntityversions().forEach(ev -> {
-      EntityVersionProp evp = EntitydifferentiationFactory.eINSTANCE.createEntityVersionProp();
+      EntityVersionProp evp = EntityDifferentiationFactory.eINSTANCE.createEntityVersionProp();
       evp.setEntityVersion(ev);
       de.getEntityVersionProps().add(evp);
 
@@ -204,14 +204,14 @@ public class NoSQLSchemaToEntityDiff
 
   private PropertySpec genPropertySpecNamed(Property p)
   {
-    PropertySpec ps = EntitydifferentiationFactory.eINSTANCE.createPropertySpec();
+    PropertySpec ps = EntityDifferentiationFactory.eINSTANCE.createPropertySpec();
     ps.setProperty(p);
     return ps;
   }
 
   private PropertySpec genPropertySpecTyped(Property p)
   {
-    PropertySpec ps = EntitydifferentiationFactory.eINSTANCE.createPropertySpec();
+    PropertySpec ps = EntityDifferentiationFactory.eINSTANCE.createPropertySpec();
     ps.setNeedsTypeCheck(true);
     ps.setProperty(p);
     return ps;

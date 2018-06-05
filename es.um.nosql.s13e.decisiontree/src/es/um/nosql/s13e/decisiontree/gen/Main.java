@@ -22,21 +22,21 @@ import org.eclipse.emf.ecore.resource.Resource;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
 import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.s13e.decisiontree.DecisionTreeForEntity;
-import es.um.nosql.s13e.decisiontree.DecisionTreeNode;
-import es.um.nosql.s13e.decisiontree.DecisionTrees;
-import es.um.nosql.s13e.decisiontree.DecisiontreeFactory;
-import es.um.nosql.s13e.decisiontree.DecisiontreePackage;
-import es.um.nosql.s13e.decisiontree.IntermediateNode;
-import es.um.nosql.s13e.decisiontree.LeafNode;
-import es.um.nosql.s13e.decisiontree.PropertySpec2;
+import es.um.nosql.s13e.DecisionTree.DecisionTreeForEntity;
+import es.um.nosql.s13e.DecisionTree.DecisionTreeNode;
+import es.um.nosql.s13e.DecisionTree.DecisionTrees;
+import es.um.nosql.s13e.DecisionTree.DecisionTreeFactory;
+import es.um.nosql.s13e.DecisionTree.DecisionTreePackage;
+import es.um.nosql.s13e.DecisionTree.IntermediateNode;
+import es.um.nosql.s13e.DecisionTree.LeafNode;
+import es.um.nosql.s13e.DecisionTree.PropertySpec2;
 import es.um.nosql.s13e.decisiontree.utils.ModelNode;
 import es.um.nosql.s13e.decisiontree.utils.OpenJ48;
-import es.um.nosql.s13e.entitydifferentiation.EntityDiffSpec;
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation;
-import es.um.nosql.s13e.entitydifferentiation.EntityVersionProp;
-import es.um.nosql.s13e.entitydifferentiation.EntitydifferentiationPackage;
-import es.um.nosql.s13e.entitydifferentiation.PropertySpec;
+import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec;
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
+import es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp;
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
+import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 import es.um.nosql.s13e.util.emf.ModelLoader;
 import es.um.nosql.s13e.util.emf.Serializer;
 import weka.classifiers.trees.j48.ClassifierTree;
@@ -138,12 +138,12 @@ public class Main
 		}
 		
 		ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
-		loader.registerPackages(EntitydifferentiationPackage.eINSTANCE,DecisiontreePackage.eINSTANCE);
+		loader.registerPackages(EntityDifferentiationPackage.eINSTANCE,DecisionTreePackage.eINSTANCE);
 		EntityDifferentiation diff = loader.load(new File(args[0]),
 				EntityDifferentiation.class);
 
 		// Create a DecisionTree Model to be written
-		DecisionTrees dt = DecisiontreeFactory.eINSTANCE.createDecisionTrees();
+		DecisionTrees dt = DecisionTreeFactory.eINSTANCE.createDecisionTrees();
 		dt.setName(diff.getName());
 		
 		diff.getEntityDiffSpecs().stream().filter(ed -> ed.getEntityVersionProps().size() > 1)
@@ -151,7 +151,7 @@ public class Main
 				ModelNode root = generateTreeForEntity(eds);
 				
 				DecisionTreeForEntity dte = 
-					DecisiontreeFactory.eINSTANCE.createDecisionTreeForEntity();
+					DecisionTreeFactory.eINSTANCE.createDecisionTreeForEntity();
 				dte.setEntity(eds.getEntity());
 				// fill dte
 				dte.setRoot(decisionTreeForEntity(root));
@@ -175,14 +175,14 @@ public class Main
 	{
 		if (root.is_leaf())
 		{
-			LeafNode ln =  DecisiontreeFactory.eINSTANCE.createLeafNode();
+			LeafNode ln =  DecisionTreeFactory.eINSTANCE.createLeafNode();
 			ln.setIdentifiedVersion(root.getEv());
 			return ln;
 		}
 		else
 		{
 			IntermediateNode in = 
-					DecisiontreeFactory.eINSTANCE.createIntermediateNode();
+					DecisionTreeFactory.eINSTANCE.createIntermediateNode();
 
 			// Exchange branches when the test is negative.
 			if (root.isCheckNot())
@@ -196,7 +196,7 @@ public class Main
 			}
 			
 			// Create PropertySpec2 from PropertySpec
-			PropertySpec2 ps2 = DecisiontreeFactory.eINSTANCE.createPropertySpec2();
+			PropertySpec2 ps2 = DecisionTreeFactory.eINSTANCE.createPropertySpec2();
 			ps2.setProperty(root.getProperty().getProperty());
 			ps2.setNeedsTypeCheck(root.getProperty().isNeedsTypeCheck());
 			

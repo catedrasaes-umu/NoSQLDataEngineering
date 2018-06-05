@@ -1,6 +1,6 @@
 package es.um.nosql.s13e.m2t.config;
 
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation;
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
 
 public abstract class BaseConfig
 {

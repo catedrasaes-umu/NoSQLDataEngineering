@@ -1,15 +1,15 @@
 package es.um.nosql.s13e.m2t.js
 
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation
 import es.um.nosql.s13e.util.emf.ResourceManager
-import es.um.nosql.s13e.entitydifferentiation.EntitydifferentiationPackage
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage
 import java.io.File
-import es.um.nosql.s13e.entitydifferentiation.EntityDiffSpec
+import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec
 import java.util.List
-import es.um.nosql.s13e.entitydifferentiation.EntityVersionProp
+import es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp
 import java.io.PrintStream
-import es.um.nosql.s13e.entitydifferentiation.PropertySpec
+import es.um.nosql.s13e.EntityDifferentiation.PropertySpec
 import org.eclipse.xtext.xbase.lib.Functions.Function1
 import es.um.nosql.s13e.NoSQLSchema.Property
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType
@@ -39,7 +39,7 @@ class DiffToJS
 		}
 
         val inputModel = new File(args.head)
-        val ResourceManager rm = new ResourceManager(EntitydifferentiationPackage.eINSTANCE,
+        val ResourceManager rm = new ResourceManager(EntityDifferentiationPackage.eINSTANCE,
         	NoSQLSchemaPackage.eINSTANCE)
         rm.loadResourcesAsStrings(inputModel.getPath())
         val EntityDifferentiation td = rm.resources.head.contents.head as EntityDifferentiation

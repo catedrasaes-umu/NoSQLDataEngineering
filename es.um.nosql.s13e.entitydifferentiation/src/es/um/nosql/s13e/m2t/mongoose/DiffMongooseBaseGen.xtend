@@ -2,8 +2,8 @@ package es.um.nosql.s13e.m2t.mongoose
 
 import java.io.File
 import es.um.nosql.s13e.util.emf.ModelLoader
-import es.um.nosql.s13e.entitydifferentiation.EntitydifferentiationPackage
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation
 import java.io.PrintStream
 
 class DiffMongooseBaseGen
@@ -17,7 +17,7 @@ class DiffMongooseBaseGen
   // - The root entities (entities with at least one root version), so we can include some variables and generate base validators.
   def m2t(File modelFile, File outputFolder)
   {
-    val loader = new ModelLoader(EntitydifferentiationPackage.eINSTANCE);
+    val loader = new ModelLoader(EntityDifferentiationPackage.eINSTANCE);
     val diff = loader.load(modelFile, EntityDifferentiation);
 
     m2t(diff, outputFolder);

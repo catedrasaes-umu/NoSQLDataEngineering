@@ -6,7 +6,7 @@ import es.um.nosql.s13e.NoSQLSchema.Reference
 import java.util.regex.Pattern
 import com.fasterxml.jackson.dataformat.yaml.YAMLFactory
 import com.fasterxml.jackson.databind.ObjectMapper
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation
 import es.um.nosql.s13e.m2t.config.BaseConfig
 
 /**

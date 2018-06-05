@@ -4,10 +4,10 @@ import java.util.Map
 import es.um.nosql.s13e.NoSQLSchema.Entity
 import java.util.Set
 import java.util.List
-import es.um.nosql.s13e.entitydifferentiation.PropertySpec
-import es.um.nosql.s13e.entitydifferentiation.EntityDiffSpec
+import es.um.nosql.s13e.EntityDifferentiation.PropertySpec
+import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec
 import es.um.nosql.s13e.NoSQLSchema.Aggregate
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation
 
 /**
  * This class is designed to analyze the EntityDifferentiation model and

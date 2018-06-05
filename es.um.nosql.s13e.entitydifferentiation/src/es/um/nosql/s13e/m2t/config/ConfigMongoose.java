@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.stream.Collectors;
 
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation;
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
 import es.um.nosql.s13e.m2t.config.pojo.ConfigEntity;
 
 public class ConfigMongoose extends BaseConfig

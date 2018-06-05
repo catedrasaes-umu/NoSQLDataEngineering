@@ -89,7 +89,7 @@ class TestPrimitiveTypeGen
     for (int i = 0; i < ITERATIONS_OID; i++)
     {
       ObjectId oid = oidGen.getTimestampObjectId();
-//      System.out.println("Date: " + oid.getDate());
+      System.out.println("Date: " + oid.getDate());
     }
   }
 }

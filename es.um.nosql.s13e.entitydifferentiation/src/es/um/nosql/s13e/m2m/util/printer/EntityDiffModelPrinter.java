@@ -7,18 +7,18 @@ import java.util.List;
 
 import org.eclipse.emf.ecore.resource.Resource;
 
-import es.um.nosql.s13e.entitydifferentiation.EntityDiffSpec;
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation;
-import es.um.nosql.s13e.entitydifferentiation.EntityVersionProp;
-import es.um.nosql.s13e.entitydifferentiation.EntitydifferentiationPackage;
-import es.um.nosql.s13e.entitydifferentiation.PropertySpec;
+import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec;
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
+import es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp;
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
+import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 import es.um.nosql.s13e.util.emf.ResourceManager;
 
 public class EntityDiffModelPrinter
 {
   public static void main(String[] args)
   {		
-    EntitydifferentiationPackage tdp = EntitydifferentiationPackage.eINSTANCE;
+    EntityDifferentiationPackage tdp = EntityDifferentiationPackage.eINSTANCE;
     ResourceManager rm = new ResourceManager(tdp);
 
     // Load the origin model.

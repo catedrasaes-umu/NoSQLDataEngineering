@@ -3,7 +3,7 @@ package es.um.nosql.s13e.m2m.util.hashing;
 import org.eclipse.collections.api.block.HashingStrategy;
 import org.eclipse.emf.ecore.util.EcoreUtil;
 
-import es.um.nosql.s13e.entitydifferentiation.PropertySpec;
+import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 
 public class PropertySpecHashingStrategy implements HashingStrategy<PropertySpec>
 {

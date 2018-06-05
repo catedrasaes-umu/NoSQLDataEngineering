@@ -3,7 +3,6 @@ package es.um.nosql.s13e.decisiontree.utils;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
 import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
 import es.um.nosql.s13e.NoSQLSchema.Property;
-import es.um.nosql.s13e.entitydifferentiation.PropertySpec;
 
 public class ModelTree
 {
