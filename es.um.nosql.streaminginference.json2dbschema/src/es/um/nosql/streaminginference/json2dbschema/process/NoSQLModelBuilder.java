@@ -5,7 +5,6 @@ package es.um.nosql.streaminginference.json2dbschema.process;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -104,24 +103,24 @@ public class NoSQLModelBuilder
 		// Populate empty EntityVersions
 		mEntityVersions.forEach((schema, ev) -> fillEV(schema, ev));
 
-		// Opposite references
-		mEntities.forEach(eFrom -> {
-			eFrom.getEntityversions().forEach(ev -> {
-				ev.getProperties().stream().filter(p -> p instanceof Reference).forEach(r -> {
-					Reference ref = (Reference)r;
-					Entity eTo = ref.getRefTo();
-
-					// Find a EntityVersion of eTo that has a reference to the
-					// current Entity eFrom
-					Optional<Property> refTo =
-							eTo.getEntityversions().stream().flatMap(evTo ->
-							evTo.getProperties().stream().filter(pTo -> pTo instanceof Reference))
-							.filter(rTo -> ((Reference)rTo).getRefTo() == eFrom).findFirst();
-
-					refTo.ifPresent(r_ -> ref.setOpposite((Reference)r_));
-				});
-			});
-		});
+//		// Opposite references
+//		mEntities.forEach(eFrom -> {
+//			eFrom.getEntityversions().forEach(ev -> {
+//				ev.getProperties().stream().filter(p -> p instanceof Reference).forEach(r -> {
+//					Reference ref = (Reference)r;
+//					Entity eTo = ref.getRefTo();
+//
+//					// Find a EntityVersion of eTo that has a reference to the
+//					// current Entity eFrom
+//					Optional<Property> refTo =
+//							eTo.getEntityversions().stream().flatMap(evTo ->
+//							evTo.getProperties().stream().filter(pTo -> pTo instanceof Reference))
+//							.filter(rTo -> ((Reference)rTo).getRefTo() == eFrom).findFirst();
+//
+//					refTo.ifPresent(r_ -> ref.setOpposite((Reference)r_));
+//				});
+//			});
+//		});
 
 		NoSQLSchema finalSchema = factory.createNoSQLSchema();
 		finalSchema.setName(name);

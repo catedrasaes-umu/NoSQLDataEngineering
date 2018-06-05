@@ -107,9 +107,7 @@ object Streaming
                         "TOTAL_PROCESSING\n")
     } 
     else 
-    {
       IO.writeXMI(IO.toNoSQLSchema(schema, content), options("output") + "/" + schema + ".xmi")
-    }
   }
   
   def clean(directories: String*) = directories.foreach(HDFSHelper.delete(_))
