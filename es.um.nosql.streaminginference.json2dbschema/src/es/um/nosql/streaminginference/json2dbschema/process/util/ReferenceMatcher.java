@@ -49,7 +49,7 @@ public class ReferenceMatcher<T>
 										Pair.of(("^.*?" + affix + c + entry.getKey() + "$").toLowerCase(), entry.getValue()))))
 				)
 			)
-		).collect(Collectors.toMap(p -> p.getKey(), p -> p.getValue(), (p, q) -> p));
+		).collect(Collectors.toMap(Pair::getKey, Pair::getValue, (p, q) -> p));
 	}
 
 	public Optional<T> maybeMatch(String id)
