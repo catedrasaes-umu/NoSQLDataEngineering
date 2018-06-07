@@ -5,6 +5,7 @@ package es.um.nosql.streaminginference.json2dbschema.process.util;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -27,7 +28,7 @@ public class ReferenceMatcher<T>
 	// Unlikely words to appear in a reference
 	private static List<String> UnlikelyWords = Arrays.asList("count");
 
-	private List<Pair<String,T>> idRegexps;
+	private Map<String, T> idRegexps;
 
 	public ReferenceMatcher(Stream<Pair<String, T>> stream)
 	{		
@@ -48,16 +49,14 @@ public class ReferenceMatcher<T>
 										Pair.of(("^.*?" + affix + c + entry.getKey() + "$").toLowerCase(), entry.getValue()))))
 				)
 			)
-		).collect(Collectors.toList());
+		).collect(Collectors.toMap(p -> p.getKey(), p -> p.getValue(), (p, q) -> p));
 	}
 
 	public Optional<T> maybeMatch(String id)
 	{
 		if (UnlikelyWords.stream().anyMatch(w -> id.toLowerCase().contains(w)))
 			return Optional.<T>empty();
-		
-		return idRegexps.stream()
-			.filter(pair -> id.toLowerCase().matches(pair.getKey())).findFirst()
-			.map(Pair::getValue);
+
+		return Optional.ofNullable(idRegexps.get(id.toLowerCase()));
 	}
 }
