@@ -1,7 +1,7 @@
 /**
  * 
  */
-package es.um.nosql.streaminginference.json2dbschema.process.util;
+package es.um.nosql.s13e.json2dbschema.process.util;
 
 import java.util.Arrays;
 import java.util.List;
