@@ -151,7 +151,7 @@ public class InferenceTest
     // Users.xml: 6438660 filas => 38 minutos
     // Votes.xml: 116720227 filas => 10 horas
     // Comments.xml: 53566720 filas => 5 horas
-    // Posts.xml: ???
+    // Posts.xml: 33566854 filas  => ???
     // Tags.xml: 48375 filas
     // PostLinks.xml: 3993518 filas
     // Badges.xml: 21882069 filas
