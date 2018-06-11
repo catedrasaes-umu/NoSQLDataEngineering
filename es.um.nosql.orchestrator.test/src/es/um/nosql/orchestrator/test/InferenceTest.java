@@ -73,7 +73,7 @@ public class InferenceTest
   {//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
     // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.
     // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
-    prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
+    //prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
     //prepareSOFExample(DbType.MONGODB, FILL_ONLY, FOLDER_SOF);
     //prepareEPolExample(DbType.MONGODB, FILL_ONLY, FOLDER_EPOL);
     //prepareUrbanExample(DbType.MONGODB, FILL_ONLY, FILE_URBAN);                  //POJO
@@ -82,7 +82,7 @@ public class InferenceTest
     // Null values tend to abort the inference process. Until the inference process is fixed (TODO(tm)),
     // we will make use of POJO objects and ignore problematic fields. Thing is, then we have a lot of options...
     //prepareCompanyExample(DbType.MONGODB, FILL_AND_INFER, FILE_COMPANY);              //POJO
-    //prepareLinkExample(DbType.MONGODB, FILL_ONLY, FOLDER_LINK);                  //POJO
+    prepareLinkExample(DbType.MONGODB, FILL_ONLY, FOLDER_LINK);                  //POJO
     //prepareHarvardExample(DbType.MONGODB, FILL_ONLY, FILE_HARVARD);              //POJO
     //prepareFacebookExample(DbType.MONGODB, FILL_ONLY, FOLDER_FACEBOOK);          //POJO
     //prepareProteinExample(DbType.MONGODB, FILL_ONLY, FOLDER_PROTEIN);            //POJO
