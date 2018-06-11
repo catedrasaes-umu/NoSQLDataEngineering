@@ -58,6 +58,7 @@ public class StackOverflowDataManagement
 //    System.out.println(String.join(" ", sPostlinksIds));
 
     analyzePosts();
+    analyzeUsers();
   }
 
   private List<String> getDistinctPostTypeIds()
@@ -127,13 +128,6 @@ public class StackOverflowDataManagement
   {
     Map<String, Integer> mPostsByYear = getPostsByYear();
 
-//  System.out.println("Posts created by year: ");
-//  for (String key : mPostsByYear.keySet())
-//    System.out.println(key + ": " + mPostsByYear.get(key));
-
-    int sumPosts = mPostsByYear.values().stream().reduce((x,y) -> {return x + y;}).get();
-    SortedMap<String, Integer> mSortedPosts = new TreeMap<String, Integer>();
-
     List<Entry<String, Integer>> lPosts = new ArrayList<Entry<String, Integer>>(mPostsByYear.entrySet());
     Collections.sort(lPosts, new Comparator<Entry<String, Integer>>()
     {
@@ -144,14 +138,41 @@ public class StackOverflowDataManagement
       }
     });
 
+    System.out.println("Top ten percent months of activity: ");
+    int sumPosts = mPostsByYear.values().stream().reduce((x,y) -> {return x + y;}).get();
+    int aux = 0;
+
     for (Entry<String, Integer> entry : lPosts)
+    {
+      aux += entry.getValue();
       System.out.println(entry.getKey() + ": " + entry.getValue());
-    // Extract the top 10%...
+
+      if (aux >= sumPosts / 10)
+        break;
+    }
   }
-/*
-  private List<Users> getUsersBreakdown(int startingYear, int endingYear)
+
+  private Map<String, Integer> getUsersByLanguage()
   {
-//    List<Events> result = new ArrayList<Events>();
+    SortedMap<String, Integer> result = new TreeMap<String, Integer>();
+
+    datastore.createQuery(Users.class).project(/**/null, true)
+      .fetch(new FindOptions().batchSize(25000)).iterator()
+      .forEachRemaining(post ->
+      {
+//        String year = post.getCreationDate().substring(0, post.getCreationDate().lastIndexOf("-"));
+//        if (result.containsKey(year))
+//          result.put(year, result.get(year) + 1);
+//        else
+//          result.put(year, 0);
+      });
+
+    return result;
+  }
+
+  private List<Users> analyzeUsers()
+  {
+    List<Users> result = getUsersByLanguage();
 
     result.addAll(datastore.createQuery(Users.class).asList().stream()
         .filter(ev ->
@@ -162,7 +183,7 @@ public class StackOverflowDataManagement
 
     return null;
   }
-*/
+
   public static void main(String[] args)
   {
     StackOverflowDataManagement manager = new StackOverflowDataManagement("localhost", "stackoverflow");
