@@ -52,47 +52,38 @@ public class StackOverflowDataManagement
   public void startDemo()
   {
     /**
-     * First test: Check how many distinct PostTypeIds (could have been done with the distinct Morphia operator)
+     * First test: Check how many distinct PostTypeIds, VoteTypeIds and LinkTypeIds (could have been done with the distinct Morphia operator)
      */
-    List<String> sPostTypeIds = getDistinctPostTypeIds();
-    System.out.print("Distinct PostTypeIds: ");
-    System.out.println(String.join(" ", sPostTypeIds));
+    distinctValues();
 
     /**
-     * Second test: Check how many distinct VoteTypeIds (could have been done with the distinct Morphia operator)
-     */
-    List<String> sVoteTypeIds = getDistinctVoteTypeIds();
-    System.out.print("Distinct VoteTypeIds: ");
-    System.out.println(String.join(" ", sVoteTypeIds));
-
-    /**
-     * Third test: Check how many distinct LinkTypeIds (could have been done with the distinct Morphia operator)
-     */
-    List<String> sPostlinksIds = getDistinctPostlinksIds();
-    System.out.print("Distinct LinkTypeIds: ");
-    System.out.println(String.join(" ", sPostlinksIds));
-
-    /**
-     * Fourth test: Check which months generated the top 25% posts in this StackOverflow subdataset.
+     * Second test: Check which months generated the top 25% posts in this StackOverflow subdataset.
      */
     topMonthsOfActivity();
 
     /**
-     * Fifth test: Check which are the top 25% most commonly used tags in this StackOverflow subdataset.
+     * Third test: Check which are the top 25% most commonly used tags in this StackOverflow subdataset.
      */
     mostPopularTags();
 
     /**
-     * Sixth test: Check the average close question post time from posts closed in less than a year.
+     * Fourth test: Check the average close question post time from posts closed in less than a year.
      */
     avgTimeToCloseQuestion();
 
     /**
-     * Seventh test: For each badge check the recent date in which some User earned it.
+     * Fifth test: For each badge check the recent date in which some User earned it.
      */
     mostRecentBadges();
 
     this.client.close();
+  }
+
+  private void distinctValues()
+  {
+    System.out.print("PostTypeIds: " + String.join(" ", getDistinctPostTypeIds()));
+    System.out.print("VoteTypeIds: " + String.join(" ", getDistinctVoteTypeIds()));
+    System.out.print("LinkTypeIds: " + String.join(" ", getDistinctPostlinksIds()));
   }
 
   private List<String> getDistinctPostTypeIds()
@@ -254,7 +245,7 @@ public class StackOverflowDataManagement
     for (int i = 0; i < diffLongs.size(); i++)
       avgTime = ((avgTime * i) + diffLongs.get(i)) / (i + 1);
 
-    System.out.println("Average closing time of posts in seconds is " + avgTime);
+    System.out.println("Average time in seconds: " + avgTime);
     System.out.println("(Minutes: " + TimeUnit.MINUTES.convert(avgTime, TimeUnit.SECONDS) + ")");
     System.out.println("(Hours: " + TimeUnit.HOURS.convert(avgTime, TimeUnit.SECONDS) + ")");
     System.out.println("(Days: " + TimeUnit.DAYS.convert(avgTime, TimeUnit.SECONDS) + ")");
