@@ -8,3 +8,4 @@ Require-Bundle: org.eclipse.emf.ecore
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: es.um.nosql.s13e.NoSQLSchema,
  org.eclipse.emf.ecore.xmi
+Automatic-Module-Name: es.um.nosql.orchestrator.test

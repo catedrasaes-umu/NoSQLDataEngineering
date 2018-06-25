@@ -6,3 +6,4 @@ Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Require-Bundle: es.um.nosql.s13e;bundle-version="1.0.0",
  org.eclipse.emf.ecore.xmi
+Automatic-Module-Name: es.um.nosql.s13e.json2dbschema

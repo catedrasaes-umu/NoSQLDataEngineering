@@ -9,3 +9,4 @@ Require-Bundle: es.um.nosql.s13e;bundle-version="1.0.0",
 Import-Package: org.apache.commons.lang3.tuple
 Export-Package: es.um.nosql.s13e.db.adapters.couchdb,
  es.um.nosql.s13e.db.adapters.mongodb
+Automatic-Module-Name: es.um.nosql.s13e.db

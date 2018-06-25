@@ -4,3 +4,4 @@ Bundle-Name: Mongoimport
 Bundle-SymbolicName: es.um.nosql.s13e.nosqlimport
 Bundle-Version: 1.0.0.qualifier
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Automatic-Module-Name: es.um.nosql.s13e.nosqlimport

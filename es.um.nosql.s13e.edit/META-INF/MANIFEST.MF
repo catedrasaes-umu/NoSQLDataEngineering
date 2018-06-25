@@ -13,3 +13,4 @@ Require-Bundle: org.eclipse.core.runtime,
  es.um.nosql.s13e;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport
 Bundle-ActivationPolicy: lazy
+Automatic-Module-Name: es.um.nosql.s13e.edit

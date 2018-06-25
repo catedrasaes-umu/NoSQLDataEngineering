@@ -42,10 +42,5 @@
   		<artifactId>neo4j-java-driver</artifactId>
   		<version>1.6.1</version>
   	</dependency>
-  	<dependency>
-  		<groupId>org.neo4j</groupId>
-  		<artifactId>neo4j</artifactId>
-  		<version>3.5.0-alpha01</version>
-  	</dependency>
   </dependencies>
 </project>
