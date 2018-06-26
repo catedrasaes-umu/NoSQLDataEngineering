@@ -12,6 +12,8 @@
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entityversions" lowerBound="1"
         upperBound="-1" eType="#//EntityVersion" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parents" upperBound="-1"
+        eType="#//Entity"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntityVersion">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="versionId" lowerBound="1"
@@ -22,6 +24,7 @@
         defaultValueLiteral="0"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="root" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"
         defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="timestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
@@ -43,6 +46,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="opposite" eType="#//Reference"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="refTo" lowerBound="1" eType="#//Entity"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="originalType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="properties" upperBound="-1"
+        eType="#//Property" containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Aggregate" eSuperTypes="#//Association">
     <eStructuralFeatures xsi:type="ecore:EReference" name="refTo" unique="false" lowerBound="1"
@@ -51,4 +56,5 @@
   <eClassifiers xsi:type="ecore:EClass" name="PrimitiveType" eSuperTypes="#//Type">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Null" eSuperTypes="#//Property"/>
 </ecore:EPackage>

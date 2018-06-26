@@ -4,26 +4,24 @@ package es.um.nosql.s13e.NoSQLSchema.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.s13e.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.Null;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Type</b></em>'.
+ * An implementation of the model object '<em><b>Null</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public abstract class TypeImpl extends MinimalEObjectImpl.Container implements Type
+public class NullImpl extends PropertyImpl implements Null
 {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected TypeImpl()
+  protected NullImpl()
   {
     super();
   }
@@ -36,7 +34,7 @@ public abstract class TypeImpl extends MinimalEObjectImpl.Container implements T
   @Override
   protected EClass eStaticClass()
   {
-    return NoSQLSchemaPackage.Literals.TYPE;
+    return NoSQLSchemaPackage.Literals.NULL;
   }
 
-} //TypeImpl
+} //NullImpl

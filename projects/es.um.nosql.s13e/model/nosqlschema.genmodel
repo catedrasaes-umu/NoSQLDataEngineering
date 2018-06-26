@@ -5,8 +5,7 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
   <foreignModel>nosqlschema.ecore</foreignModel>
-  <genPackages prefix="NoSQLSchema" basePackage="es.um.nosql.s13e" disposableProviderFactory="true"
-      ecorePackage="nosqlschema.ecore#/">
+  <genPackages prefix="NoSQLSchema" disposableProviderFactory="true" ecorePackage="nosqlschema.ecore#/">
     <genClasses ecoreClass="nosqlschema.ecore#//NoSQLSchema">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//NoSQLSchema/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//NoSQLSchema/entities"/>
@@ -14,12 +13,14 @@
     <genClasses ecoreClass="nosqlschema.ecore#//Entity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//Entity/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Entity/entityversions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Entity/parents"/>
     </genClasses>
     <genClasses ecoreClass="nosqlschema.ecore#//EntityVersion">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//EntityVersion/versionId"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//EntityVersion/properties"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//EntityVersion/count"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//EntityVersion/root"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//EntityVersion/timestamp"/>
     </genClasses>
     <genClasses image="false" ecoreClass="nosqlschema.ecore#//Property">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//Property/name"/>
@@ -39,6 +40,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Reference/opposite"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Reference/refTo"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//Reference/originalType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Reference/properties"/>
     </genClasses>
     <genClasses ecoreClass="nosqlschema.ecore#//Aggregate">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Aggregate/refTo"/>
@@ -46,5 +48,6 @@
     <genClasses ecoreClass="nosqlschema.ecore#//PrimitiveType">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//PrimitiveType/name"/>
     </genClasses>
+    <genClasses ecoreClass="nosqlschema.ecore#//Null"/>
   </genPackages>
 </genmodel:GenModel>
