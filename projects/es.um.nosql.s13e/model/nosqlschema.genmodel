@@ -16,7 +16,7 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Entity/parents"/>
     </genClasses>
     <genClasses ecoreClass="nosqlschema.ecore#//EntityVariation">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//EntityVariation/versionId"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//EntityVariation/variationId"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//EntityVariation/properties"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//EntityVariation/count"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//EntityVariation/root"/>

@@ -82,13 +82,13 @@
     <hints xsi:type="Version_Diff:HasNotField" withName="salary">
       <withType xsi:type="Version_Diff:PrimitiveType" type="float"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="tablesAssigned">
-      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
-    </hints>
     <hints xsi:type="Version_Diff:HasNotField" withName="hasTables">
       <withType xsi:type="Version_Diff:AggregateType" upperBound="5">
         <type>Table_2</type>
       </withType>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="tablesAssigned">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Waiter_2">
@@ -110,16 +110,16 @@
     <hints xsi:type="Version_Diff:HasField" withName="type">
       <withType xsi:type="Version_Diff:EntityType" type="Waiter"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasTables">
-      <withType xsi:type="Version_Diff:AggregateType" upperBound="5">
-        <type>Table_2</type>
-      </withType>
-    </hints>
     <hints xsi:type="Version_Diff:HasNotField" withName="hours_per_week">
       <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
     </hints>
     <hints xsi:type="Version_Diff:HasNotField" withName="salary">
       <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="hasTables">
+      <withType xsi:type="Version_Diff:AggregateType" upperBound="5">
+        <type>Table_2</type>
+      </withType>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Waiter_3">
@@ -143,14 +143,14 @@
     <hints xsi:type="Version_Diff:HasField" withName="type">
       <withType xsi:type="Version_Diff:EntityType" type="Waiter"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="tablesAssigned">
-      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
-    </hints>
     <hints xsi:type="Version_Diff:HasNotField" withName="hours_per_week">
       <withType xsi:type="Version_Diff:PrimitiveType" type="string"/>
     </hints>
     <hints xsi:type="Version_Diff:HasNotField" withName="salary">
       <withType xsi:type="Version_Diff:PrimitiveType" type="int"/>
+    </hints>
+    <hints xsi:type="Version_Diff:HasNotField" withName="tablesAssigned">
+      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="int"/>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Menu_1">

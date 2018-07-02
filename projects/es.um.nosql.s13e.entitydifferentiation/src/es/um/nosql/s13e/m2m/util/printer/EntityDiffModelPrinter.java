@@ -45,7 +45,7 @@ public class EntityDiffModelPrinter
 
       for (EntityVariationProp evp : eds.getEntityVariationProps())
       {
-        System.out.println("EV " + evp.getEntityVariation().getVersionId() + " -----------------");
+        System.out.println("EV " + evp.getEntityVariation().getVariationId() + " -----------------");
 
         System.out.println("Own Properties:");
         for (PropertySpec ps: evp.getPropertySpecs())

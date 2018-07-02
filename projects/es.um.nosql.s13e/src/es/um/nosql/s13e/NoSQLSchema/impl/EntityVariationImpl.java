@@ -30,7 +30,7 @@ import es.um.nosql.s13e.NoSQLSchema.Property;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVariationImpl#getVersionId <em>Version Id</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVariationImpl#getVariationId <em>Variation Id</em>}</li>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVariationImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVariationImpl#getCount <em>Count</em>}</li>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVariationImpl#isRoot <em>Root</em>}</li>
@@ -42,24 +42,24 @@ import es.um.nosql.s13e.NoSQLSchema.Property;
 public class EntityVariationImpl extends MinimalEObjectImpl.Container implements EntityVariation
 {
   /**
-   * The default value of the '{@link #getVersionId() <em>Version Id</em>}' attribute.
+   * The default value of the '{@link #getVariationId() <em>Variation Id</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVersionId()
+   * @see #getVariationId()
    * @generated
    * @ordered
    */
-  protected static final int VERSION_ID_EDEFAULT = 0;
+  protected static final int VARIATION_ID_EDEFAULT = 0;
 
   /**
-   * The cached value of the '{@link #getVersionId() <em>Version Id</em>}' attribute.
+   * The cached value of the '{@link #getVariationId() <em>Variation Id</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVersionId()
+   * @see #getVariationId()
    * @generated
    * @ordered
    */
-  protected int versionId = VERSION_ID_EDEFAULT;
+  protected int variationId = VARIATION_ID_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
@@ -157,9 +157,9 @@ public class EntityVariationImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getVersionId()
+  public int getVariationId()
   {
-    return versionId;
+    return variationId;
   }
 
   /**
@@ -167,12 +167,12 @@ public class EntityVariationImpl extends MinimalEObjectImpl.Container implements
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVersionId(int newVersionId)
+  public void setVariationId(int newVariationId)
   {
-    int oldVersionId = versionId;
-    versionId = newVersionId;
+    int oldVariationId = variationId;
+    variationId = newVariationId;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY_VARIATION__VERSION_ID, oldVersionId, versionId));
+      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY_VARIATION__VARIATION_ID, oldVariationId, variationId));
   }
 
   /**
@@ -284,8 +284,8 @@ public class EntityVariationImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case NoSQLSchemaPackage.ENTITY_VARIATION__VERSION_ID:
-        return getVersionId();
+      case NoSQLSchemaPackage.ENTITY_VARIATION__VARIATION_ID:
+        return getVariationId();
       case NoSQLSchemaPackage.ENTITY_VARIATION__PROPERTIES:
         return getProperties();
       case NoSQLSchemaPackage.ENTITY_VARIATION__COUNT:
@@ -309,8 +309,8 @@ public class EntityVariationImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case NoSQLSchemaPackage.ENTITY_VARIATION__VERSION_ID:
-        setVersionId((Integer)newValue);
+      case NoSQLSchemaPackage.ENTITY_VARIATION__VARIATION_ID:
+        setVariationId((Integer)newValue);
         return;
       case NoSQLSchemaPackage.ENTITY_VARIATION__PROPERTIES:
         getProperties().clear();
@@ -339,8 +339,8 @@ public class EntityVariationImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case NoSQLSchemaPackage.ENTITY_VARIATION__VERSION_ID:
-        setVersionId(VERSION_ID_EDEFAULT);
+      case NoSQLSchemaPackage.ENTITY_VARIATION__VARIATION_ID:
+        setVariationId(VARIATION_ID_EDEFAULT);
         return;
       case NoSQLSchemaPackage.ENTITY_VARIATION__PROPERTIES:
         getProperties().clear();
@@ -368,8 +368,8 @@ public class EntityVariationImpl extends MinimalEObjectImpl.Container implements
   {
     switch (featureID)
     {
-      case NoSQLSchemaPackage.ENTITY_VARIATION__VERSION_ID:
-        return versionId != VERSION_ID_EDEFAULT;
+      case NoSQLSchemaPackage.ENTITY_VARIATION__VARIATION_ID:
+        return variationId != VARIATION_ID_EDEFAULT;
       case NoSQLSchemaPackage.ENTITY_VARIATION__PROPERTIES:
         return properties != null && !properties.isEmpty();
       case NoSQLSchemaPackage.ENTITY_VARIATION__COUNT:
@@ -393,8 +393,8 @@ public class EntityVariationImpl extends MinimalEObjectImpl.Container implements
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (versionId: ");
-    result.append(versionId);
+    result.append(" (variationId: ");
+    result.append(variationId);
     result.append(", count: ");
     result.append(count);
     result.append(", root: ");

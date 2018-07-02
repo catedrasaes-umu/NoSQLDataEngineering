@@ -99,7 +99,7 @@ class DiffToJS
 	'''
 
 	def genEntityVariationDiff(EntityVariationProp evp, EntityDiffSpec spec) {
-		val entityVersionName = spec.entity.name.toFirstUpper + "_" + evp.entityVariation.versionId
+		val entityVersionName = spec.entity.name.toFirstUpper + "_" + evp.entityVariation.variationId
 
 		'''
 		«entityVersionName»: {
@@ -175,13 +175,13 @@ class DiffToJS
 		    obj.«a.name».every(function(e)
 		        { return (typeof e === 'object') && !(e.constructor === Array)
 		            && («FOR rt : a.refTo SEPARATOR " || "»
-		            «modelName».«(rt.eContainer as Entity).name»_«rt.versionId».isOfExactType(e)
+		            «modelName».«(rt.eContainer as Entity).name»_«rt.variationId».isOfExactType(e)
 		            «ENDFOR»);
 		        })
 		«ELSE»
 		«var refToEV = a.refTo.get(0)»
 		(typeof obj.«a.name» === 'object') && !(obj.«a.name».constructor === Array)
-		    && «modelName».«(refToEV.eContainer as Entity).name»_«refToEV.versionId».isOfExactType(obj.«a.name»)
+		    && «modelName».«(refToEV.eContainer as Entity).name»_«refToEV.variationId».isOfExactType(obj.«a.name»)
 		«ENDIF»
 	'''
 

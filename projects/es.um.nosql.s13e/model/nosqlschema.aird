@@ -82,9 +82,9 @@
         <children xmi:type="notation:Node" xmi:id="_lzF3IH3JEeiFWLY39dCCNg" type="2003" element="_lxeGgH3JEeiFWLY39dCCNg">
           <children xmi:type="notation:Node" xmi:id="_lzF3I33JEeiFWLY39dCCNg" type="5007"/>
           <children xmi:type="notation:Node" xmi:id="_lzF3JH3JEeiFWLY39dCCNg" type="7004">
-            <children xmi:type="notation:Node" xmi:id="_lzLWsH3JEeiFWLY39dCCNg" type="3010" element="_lyh2cX3JEeiFWLY39dCCNg">
-              <styles xmi:type="notation:FontStyle" xmi:id="_lzLWsX3JEeiFWLY39dCCNg" fontName="Segoe UI" fontHeight="8" bold="true"/>
-              <layoutConstraint xmi:type="notation:Location" xmi:id="_lzLWsn3JEeiFWLY39dCCNg"/>
+            <children xmi:type="notation:Node" xmi:id="_531KQH3pEeiFWLY39dCCNg" type="3010" element="_53vDoH3pEeiFWLY39dCCNg">
+              <styles xmi:type="notation:FontStyle" xmi:id="_531KQX3pEeiFWLY39dCCNg" fontName="Segoe UI" fontHeight="8" bold="true"/>
+              <layoutConstraint xmi:type="notation:Location" xmi:id="_531KQn3pEeiFWLY39dCCNg"/>
             </children>
             <children xmi:type="notation:Node" xmi:id="_lzLWs33JEeiFWLY39dCCNg" type="3010" element="_lyidgX3JEeiFWLY39dCCNg">
               <styles xmi:type="notation:FontStyle" xmi:id="_lzLWtH3JEeiFWLY39dCCNg" fontName="Segoe UI" fontHeight="8"/>
@@ -528,10 +528,10 @@
         <description xmi:type="style:FlatContainerStyleDescription" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@style"/>
       </ownedStyle>
       <actualMapping xmi:type="description_1:ContainerMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']"/>
-      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_lyh2cX3JEeiFWLY39dCCNg" name="versionId : EInt" tooltipText="">
-        <target xmi:type="ecore:EAttribute" href="nosqlschema.ecore#//EntityVariation/versionId"/>
-        <semanticElements xmi:type="ecore:EAttribute" href="nosqlschema.ecore#//EntityVariation/versionId"/>
-        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_lyidgH3JEeiFWLY39dCCNg" labelAlignment="LEFT" description="_lyfaMH3JEeiFWLY39dCCNg">
+      <ownedElements xmi:type="diagram:DNodeListElement" xmi:id="_53vDoH3pEeiFWLY39dCCNg" name="variationId : EInt" tooltipText="">
+        <target xmi:type="ecore:EAttribute" href="nosqlschema.ecore#//EntityVariation/variationId"/>
+        <semanticElements xmi:type="ecore:EAttribute" href="nosqlschema.ecore#//EntityVariation/variationId"/>
+        <ownedStyle xmi:type="diagram:BundledImage" xmi:id="_53vDoX3pEeiFWLY39dCCNg" labelAlignment="LEFT" description="_lyfaMH3JEeiFWLY39dCCNg">
           <labelFormat>bold</labelFormat>
         </ownedStyle>
         <actualMapping xmi:type="description_1:NodeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@containerMappings[name='EC%20EClass']/@subNodeMappings[name='EC%20EAttribute']"/>

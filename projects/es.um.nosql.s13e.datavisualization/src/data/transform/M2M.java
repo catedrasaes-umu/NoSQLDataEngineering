@@ -80,7 +80,7 @@ public class M2M
 			for (EntityVariation entityVersion : entity.getEntityvariations())
 			{
 				TypeDifference tDiff = Version_DiffFactory.eINSTANCE.createTypeDifference();
-				tDiff.setName(entity.getName() + "_" + entityVersion.getVersionId());
+				tDiff.setName(entity.getName() + "_" + entityVersion.getVariationId());
 				differenceModel.getHasTypeDifferences().add(tDiff);
 
 				addHasFields(evMap.get(entityVersion), tDiff);
@@ -162,7 +162,7 @@ public class M2M
 					((AggregateType)type).setLowerBound(((Aggregate)property).getLowerBound());
 					((AggregateType)type).setUpperBound(((Aggregate)property).getUpperBound());
 					for (EntityVariation aggregatedEV : ((Aggregate)property).getRefTo())
-						((AggregateType)type).getType().add(((Entity)aggregatedEV.eContainer()).getName() + "_" + String.valueOf(aggregatedEV.getVersionId()));
+						((AggregateType)type).getType().add(((Entity)aggregatedEV.eContainer()).getName() + "_" + String.valueOf(aggregatedEV.getVariationId()));
 				}
 
 				pairList.add(new MutablePair<String, FieldType>(name, type));

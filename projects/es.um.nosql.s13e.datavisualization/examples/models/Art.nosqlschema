@@ -7,8 +7,8 @@
     name="Art">
   <entities
       name="ArtisticType">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -24,9 +24,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="int"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -42,12 +42,12 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="float"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Style">
-    <entityversions
-        versionId="1">
+    <entityvariations
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="name">
@@ -81,12 +81,12 @@
               name="string"/>
         </type>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Piece">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -109,9 +109,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="string"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -141,9 +141,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="string"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="3"
+    </entityvariations>
+    <entityvariations
+        variationId="3"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -180,9 +180,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="string"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="4"
+    </entityvariations>
+    <entityvariations
+        variationId="4"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -239,9 +239,9 @@
               name="float"/>
         </type>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="5"
+    </entityvariations>
+    <entityvariations
+        variationId="5"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -296,10 +296,10 @@
           name="hasStyle"
           lowerBound="1"
           upperBound="-1"
-          refTo="//@entities.1/@entityversions.0"/>
-    </entityversions>
-    <entityversions
-        versionId="6"
+          refTo="//@entities.1/@entityvariations.0"/>
+    </entityvariations>
+    <entityvariations
+        variationId="6"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -347,19 +347,19 @@
           name="hasStyle"
           lowerBound="1"
           upperBound="-1"
-          refTo="//@entities.1/@entityversions.0"/>
+          refTo="//@entities.1/@entityvariations.0"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="hasArtisticType"
           lowerBound="1"
           upperBound="1"
           refTo="ArtisticType"/>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Exposing">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -387,9 +387,9 @@
           lowerBound="1"
           upperBound="-1"
           refTo="Piece"/>
-    </entityversions>
-    <entityversions
-        versionId="2">
+    </entityvariations>
+    <entityvariations
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="name">
@@ -437,12 +437,12 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="boolean"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Restorer">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -465,9 +465,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="float"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -496,12 +496,12 @@
               name="string"/>
         </type>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Guide">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -520,9 +520,9 @@
           name="showsPieces"
           upperBound="-1"
           refTo="Piece"/>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -548,9 +548,9 @@
           name="showsPieces"
           upperBound="-1"
           refTo="Piece"/>
-    </entityversions>
-    <entityversions
-        versionId="3">
+    </entityvariations>
+    <entityvariations
+        variationId="3">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="name">
@@ -584,13 +584,13 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="showsExposings"
           upperBound="-1"
-          refTo="//@entities.3/@entityversions.1"/>
-    </entityversions>
+          refTo="//@entities.3/@entityvariations.1"/>
+    </entityvariations>
   </entities>
   <entities
       name="Director">
-    <entityversions
-        versionId="1">
+    <entityvariations
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="name">
@@ -612,12 +612,12 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="float"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Museum">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -639,9 +639,9 @@
           lowerBound="1"
           upperBound="-1"
           refTo="Piece"/>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -670,9 +670,9 @@
           lowerBound="1"
           upperBound="-1"
           refTo="Piece"/>
-    </entityversions>
-    <entityversions
-        versionId="3"
+    </entityvariations>
+    <entityvariations
+        variationId="3"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -732,9 +732,9 @@
           </elements>
         </type>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="4"
+    </entityvariations>
+    <entityvariations
+        variationId="4"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -804,23 +804,23 @@
           name="hasDirector"
           lowerBound="1"
           upperBound="1"
-          refTo="//@entities.6/@entityversions.0"/>
+          refTo="//@entities.6/@entityvariations.0"/>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
           name="hasGuides"
           upperBound="-1"
-          refTo="//@entities.5/@entityversions.2"/>
+          refTo="//@entities.5/@entityvariations.2"/>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
           name="hasGuards"
           upperBound="-1"
-          refTo="//@entities.8/@entityversions.0"/>
-    </entityversions>
+          refTo="//@entities.8/@entityvariations.0"/>
+    </entityvariations>
   </entities>
   <entities
       name="Guard">
-    <entityversions
-        versionId="1">
+    <entityvariations
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="name">
@@ -842,6 +842,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="float"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

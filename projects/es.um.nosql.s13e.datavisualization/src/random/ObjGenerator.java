@@ -105,7 +105,7 @@ public class ObjGenerator
 			for (int i = 1; i < getRandomBetween(MIN_ENTITY_VERSIONS, MAX_ENTITY_VERSIONS) + 1; i++)
 			{
 			  EntityVariation oev = NoSQLSchemaFactory.eINSTANCE.createEntityVariation();
-				oev.setVersionId(++IDENTIFIER);
+				oev.setVariationId(++IDENTIFIER);
 				oev.setRoot(true);
 				mapE.get(entity).getEntityvariations().add(oev);
 
@@ -405,7 +405,7 @@ public class ObjGenerator
 				aggr.getRefTo().add(ev);
 
 				for (JsonElement jElem : lStorage)
-					if (jElem.getAsJsonObject().get("_id").getAsInt() == (ev.getVersionId()))
+					if (jElem.getAsJsonObject().get("_id").getAsInt() == (ev.getVariationId()))
 					{
 						strObj.add(aggr.getName(), jElem);
 						break;
@@ -426,7 +426,7 @@ public class ObjGenerator
 					aggr.getRefTo().add(ev);
 
 					for (JsonElement jElem : lStorage)
-						if (jElem.getAsJsonObject().get("_id").getAsInt() == (ev.getVersionId()))
+						if (jElem.getAsJsonObject().get("_id").getAsInt() == (ev.getVariationId()))
 						{
 							aggrArray.add(jElem);
 							break;

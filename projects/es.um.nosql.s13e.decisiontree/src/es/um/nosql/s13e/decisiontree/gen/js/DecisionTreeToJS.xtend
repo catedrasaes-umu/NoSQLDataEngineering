@@ -147,9 +147,9 @@ class DecisionTreeToJS
 	}
 
 	def generateSpecificCheck(DecisionTreeForEntity dte, 
-		EntityVariation version, Deque<PropertyAndBranch> checks)
+		EntityVariation variation, Deque<PropertyAndBranch> checks)
 	'''
-		checkEV_«dte.entity.name»_«version.versionId»: function (obj)
+		checkEV_«dte.entity.name»_«variation.variationId»: function (obj)
 		{
 		«FOR PropertyAndBranch branch : checks»
 ««« Note that we change the branches to generate the correct check
@@ -171,7 +171,7 @@ class DecisionTreeToJS
 	''' 
 	
 	def dispatch generateCheckTree(DecisionTreeForEntity dte, LeafNode node) '''
-		return "«dte.entity.name + "_" + node.identifiedVariation.versionId»";
+		return "«dte.entity.name + "_" + node.identifiedVariation.variationId»";
 	'''
 	
     def genProp(PropertySpec2 p)
@@ -201,13 +201,13 @@ class DecisionTreeToJS
 		    obj.«a.name».every(function(e)
 		        { return (typeof e === 'object') && !(e.constructor === Array)
 		            && («FOR rt : a.refTo SEPARATOR " || "»
-		            «modelName».«(rt.eContainer as Entity).name»_«rt.versionId».isOfExactType(e)
+		            «modelName».«(rt.eContainer as Entity).name»_«rt.variationId».isOfExactType(e)
 		            «ENDFOR»);
 		        })
 		«ELSE»
 		«var refToEV = a.refTo.get(0)»
 		(typeof obj.«a.name» === 'object') && !(obj.«a.name».constructor === Array)
-		    && «modelName».«(refToEV.eContainer as Entity).name»_«refToEV.versionId».isOfExactType(obj.«a.name»)
+		    && «modelName».«(refToEV.eContainer as Entity).name»_«refToEV.variationId».isOfExactType(obj.«a.name»)
 		«ENDIF»
 	'''
 

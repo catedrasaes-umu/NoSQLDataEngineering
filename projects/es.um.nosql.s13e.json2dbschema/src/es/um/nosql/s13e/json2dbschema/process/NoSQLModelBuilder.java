@@ -82,7 +82,7 @@ public class NoSQLModelBuilder
 
 			schemas.forEach(schema -> {
 			  EntityVariation theEV = factory.createEntityVariation();
-				theEV.setVersionId(n.next());
+				theEV.setVariationId(n.next());
 
 				// Set the root flag. It is needed to know which
 				// entities can be destination of a reference

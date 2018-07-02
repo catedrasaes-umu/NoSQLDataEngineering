@@ -74,12 +74,12 @@ var DiffMethodsExclusive =
 			return false;
 		if ("salary" in obj && !(!(typeof obj.salary === "number") || (obj.salary % 1 === 0)))
 			return false;
-		if ("tablesAssigned" in obj && !(!(obj.tablesAssigned.constructor === Array) || (!checkAllOf(obj.tablesAssigned, "int"))))
-			return false;
 		if ("hasTables" in obj && !((typeof obj.hasTables === "object" && !(obj.hasTables instanceof Array) && (!this.isOfExactType_Table_2(obj.hasTables)))
 				|| (obj.hasTables.constructor === Array && (0 > obj.hasTables.size || 5 < obj.hasTables.size || !checkAllOf(obj.hasTables, "object")
 				|| obj.hasTables[0] == null || !this.isOfExactType_Table_2(obj.hasTables[0])
 				)) || (typeof obj.hasTables !== "object" && obj.hasTables.constructor !== Array)))
+			return false;
+		if ("tablesAssigned" in obj && !(!(obj.tablesAssigned.constructor === Array) || (!checkAllOf(obj.tablesAssigned, "int"))))
 			return false;
 
 		return true;
@@ -99,14 +99,14 @@ var DiffMethodsExclusive =
 			return false;
 		if (!("type" in obj) || !(typeof obj.type === "string") || (obj.type !== "Waiter"))
 			return false;
+		if ("hours_per_week" in obj && !(!(typeof obj.hours_per_week === "string")))
+			return false;
+		if ("salary" in obj && !(!(typeof obj.salary === "number") || !(obj.salary % 1 === 0)))
+			return false;
 		if ("hasTables" in obj && !((typeof obj.hasTables === "object" && !(obj.hasTables instanceof Array) && (!this.isOfExactType_Table_2(obj.hasTables)))
 				|| (obj.hasTables.constructor === Array && (0 > obj.hasTables.size || 5 < obj.hasTables.size || !checkAllOf(obj.hasTables, "object")
 				|| obj.hasTables[0] == null || !this.isOfExactType_Table_2(obj.hasTables[0])
 				)) || (typeof obj.hasTables !== "object" && obj.hasTables.constructor !== Array)))
-			return false;
-		if ("hours_per_week" in obj && !(!(typeof obj.hours_per_week === "string")))
-			return false;
-		if ("salary" in obj && !(!(typeof obj.salary === "number") || !(obj.salary % 1 === 0)))
 			return false;
 
 		return true;
@@ -129,11 +129,11 @@ var DiffMethodsExclusive =
 			return false;
 		if (!("type" in obj) || !(typeof obj.type === "string") || (obj.type !== "Waiter"))
 			return false;
-		if ("tablesAssigned" in obj && !(!(obj.tablesAssigned.constructor === Array) || (!checkAllOf(obj.tablesAssigned, "int"))))
-			return false;
 		if ("hours_per_week" in obj && !(!(typeof obj.hours_per_week === "string")))
 			return false;
 		if ("salary" in obj && !(!(typeof obj.salary === "number") || !(obj.salary % 1 === 0)))
+			return false;
+		if ("tablesAssigned" in obj && !(!(obj.tablesAssigned.constructor === Array) || (!checkAllOf(obj.tablesAssigned, "int"))))
 			return false;
 
 		return true;

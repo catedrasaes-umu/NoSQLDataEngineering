@@ -48,7 +48,7 @@ public class OldMain {
 				e.getEntityvariations().stream()
 				.filter(EntityVariation::isRoot)
 				.map(ev ->
-					Pair.of(String.format("%1$s:%2$d", e.getName(), ev.getVersionId())
+					Pair.of(String.format("%1$s:%2$d", e.getName(), ev.getVariationId())
 							,ev)))
 			.collect(Collectors.toMap(Pair::getKey,Pair::getValue));
 	}
@@ -79,7 +79,7 @@ public class OldMain {
 						.collect(Collectors.toList());
 								
 				// Add current Entity Version to entities Map
-				String key = String.format("%1$s:%2$d", entity.getName(), entityVersion.getVersionId());
+				String key = String.format("%1$s:%2$d", entity.getName(), entityVersion.getVariationId());
 				classes.put(key, properties);
 			}
 		}
@@ -226,7 +226,7 @@ public class OldMain {
 		if (tree.is_leaf())
 		{
 			Entity e = tree.getEntity();
-			System.out.println(indent+"Entity: "+e.getName()+", Version: "+tree.getTag().getVersionId());
+			System.out.println(indent+"Entity: "+e.getName()+", Version: "+tree.getTag().getVariationId());
 		}
 		else
 		{

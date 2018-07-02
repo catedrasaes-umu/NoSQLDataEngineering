@@ -118,7 +118,7 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
     isInited = true;
 
     // Initialize simple dependencies
-    NoSQLSchemaPackage.eINSTANCE.eClass();
+    es.um.nosql.s13e.NoSQLSchema.eClass();
 
     // Create package meta-data objects
     theDecisionTreePackage.createPackageContents();
@@ -373,7 +373,7 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
     setNsURI(eNS_URI);
 
     // Obtain other dependent packages
-    NoSQLSchemaPackage theNoSQLSchemaPackage = (NoSQLSchemaPackage)EPackage.Registry.INSTANCE.getEPackage(NoSQLSchemaPackage.eNS_URI);
+    NoSQLSchemaPackage theNoSQLSchemaPackage = (NoSQLSchemaPackage)EPackage.Registry.INSTANCE.getEPackage(es.um.nosql.s13e.NoSQLSchema);
 
     // Create type parameters
 

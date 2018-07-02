@@ -2,6 +2,8 @@
  */
 package es.um.nosql.s13e.NoSQLSchema.provider;
 
+import es.um.nosql.s13e.NoSQLSchema.util.NoSQLSchemaAdapterFactory;
+
 import java.util.ArrayList;
 import java.util.Collection;
 
@@ -20,8 +22,6 @@ import org.eclipse.emf.edit.provider.IItemPropertySource;
 import org.eclipse.emf.edit.provider.INotifyChangedListener;
 import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
 import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-
-import es.um.nosql.s13e.NoSQLSchema.util.NoSQLSchemaAdapterFactory;
 
 /**
  * This is the factory that is used to provide the interfaces needed to support Viewers.
@@ -74,7 +74,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.NoSQLSchema} instances.
+   * This keeps track of the one adapter used for all {@link NoSQLSchema.NoSQLSchema} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -82,7 +82,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   protected NoSQLSchemaItemProvider noSQLSchemaItemProvider;
 
   /**
-   * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.NoSQLSchema}.
+   * This creates an adapter for a {@link NoSQLSchema.NoSQLSchema}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -99,7 +99,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.Entity} instances.
+   * This keeps track of the one adapter used for all {@link NoSQLSchema.Entity} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -107,7 +107,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   protected EntityItemProvider entityItemProvider;
 
   /**
-   * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Entity}.
+   * This creates an adapter for a {@link NoSQLSchema.Entity}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -124,7 +124,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.EntityVariation} instances.
+   * This keeps track of the one adapter used for all {@link NoSQLSchema.EntityVariation} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -132,7 +132,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   protected EntityVariationItemProvider entityVariationItemProvider;
 
   /**
-   * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.EntityVariation}.
+   * This creates an adapter for a {@link NoSQLSchema.EntityVariation}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -149,7 +149,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.Attribute} instances.
+   * This keeps track of the one adapter used for all {@link NoSQLSchema.Attribute} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -157,7 +157,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   protected AttributeItemProvider attributeItemProvider;
 
   /**
-   * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Attribute}.
+   * This creates an adapter for a {@link NoSQLSchema.Attribute}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -174,7 +174,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.Tuple} instances.
+   * This keeps track of the one adapter used for all {@link NoSQLSchema.Tuple} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -182,7 +182,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   protected TupleItemProvider tupleItemProvider;
 
   /**
-   * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Tuple}.
+   * This creates an adapter for a {@link NoSQLSchema.Tuple}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -199,7 +199,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.Reference} instances.
+   * This keeps track of the one adapter used for all {@link NoSQLSchema.Reference} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -207,7 +207,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   protected ReferenceItemProvider referenceItemProvider;
 
   /**
-   * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Reference}.
+   * This creates an adapter for a {@link NoSQLSchema.Reference}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -224,7 +224,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.Aggregate} instances.
+   * This keeps track of the one adapter used for all {@link NoSQLSchema.Aggregate} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -232,7 +232,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   protected AggregateItemProvider aggregateItemProvider;
 
   /**
-   * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Aggregate}.
+   * This creates an adapter for a {@link NoSQLSchema.Aggregate}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -249,7 +249,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.PrimitiveType} instances.
+   * This keeps track of the one adapter used for all {@link NoSQLSchema.PrimitiveType} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -257,7 +257,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   protected PrimitiveTypeItemProvider primitiveTypeItemProvider;
 
   /**
-   * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.PrimitiveType}.
+   * This creates an adapter for a {@link NoSQLSchema.PrimitiveType}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -274,7 +274,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.Null} instances.
+   * This keeps track of the one adapter used for all {@link NoSQLSchema.Null} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -282,7 +282,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   protected NullItemProvider nullItemProvider;
 
   /**
-   * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Null}.
+   * This creates an adapter for a {@link NoSQLSchema.Null}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated

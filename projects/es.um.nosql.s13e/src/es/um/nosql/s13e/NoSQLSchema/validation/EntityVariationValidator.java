@@ -18,7 +18,7 @@ public interface EntityVariationValidator
 {
   boolean validate();
 
-  boolean validateVersionId(int value);
+  boolean validateVariationId(int value);
   boolean validateProperties(EList<Property> value);
   boolean validateCount(long value);
   boolean validateRoot(boolean value);

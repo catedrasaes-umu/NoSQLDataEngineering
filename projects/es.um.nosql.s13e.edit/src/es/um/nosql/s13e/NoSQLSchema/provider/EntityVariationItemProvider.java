@@ -3,6 +3,10 @@
 package es.um.nosql.s13e.NoSQLSchema.provider;
 
 
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -24,12 +28,8 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-
 /**
- * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.EntityVariation} object.
+ * This is the item provider adapter for a {@link NoSQLSchema.EntityVariation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
@@ -67,7 +67,7 @@ public class EntityVariationItemProvider
     {
       super.getPropertyDescriptors(object);
 
-      addVersionIdPropertyDescriptor(object);
+      addVariationIdPropertyDescriptor(object);
       addCountPropertyDescriptor(object);
       addRootPropertyDescriptor(object);
       addTimestampPropertyDescriptor(object);
@@ -76,20 +76,20 @@ public class EntityVariationItemProvider
   }
 
   /**
-   * This adds a property descriptor for the Version Id feature.
+   * This adds a property descriptor for the Variation Id feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected void addVersionIdPropertyDescriptor(Object object)
+  protected void addVariationIdPropertyDescriptor(Object object)
   {
     itemPropertyDescriptors.add
       (createItemPropertyDescriptor
         (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
          getResourceLocator(),
-         getString("_UI_EntityVariation_versionId_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_EntityVariation_versionId_feature", "_UI_EntityVariation_type"),
-         NoSQLSchemaPackage.Literals.ENTITY_VARIATION__VERSION_ID,
+         getString("_UI_EntityVariation_variationId_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_EntityVariation_variationId_feature", "_UI_EntityVariation_type"),
+         NoSQLSchemaPackage.Literals.ENTITY_VARIATION__VARIATION_ID,
          true,
          false,
          false,
@@ -222,7 +222,7 @@ public class EntityVariationItemProvider
   public String getText(Object object)
   {
     EntityVariation entityVariation = (EntityVariation)object;
-    return getString("_UI_EntityVariation_type") + " " + entityVariation.getVersionId();
+    return getString("_UI_EntityVariation_type") + " " + entityVariation.getVariationId();
   }
   
 
@@ -240,7 +240,7 @@ public class EntityVariationItemProvider
 
     switch (notification.getFeatureID(EntityVariation.class))
     {
-      case NoSQLSchemaPackage.ENTITY_VARIATION__VERSION_ID:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__VARIATION_ID:
       case NoSQLSchemaPackage.ENTITY_VARIATION__COUNT:
       case NoSQLSchemaPackage.ENTITY_VARIATION__ROOT:
       case NoSQLSchemaPackage.ENTITY_VARIATION__TIMESTAMP:

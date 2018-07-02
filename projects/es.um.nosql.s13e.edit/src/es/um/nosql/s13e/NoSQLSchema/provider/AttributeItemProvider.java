@@ -3,6 +3,10 @@
 package es.um.nosql.s13e.NoSQLSchema.provider;
 
 
+import es.um.nosql.s13e.NoSQLSchema.Attribute;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -14,12 +18,8 @@ import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-
 /**
- * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Attribute} object.
+ * This is the item provider adapter for a {@link NoSQLSchema.Attribute} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

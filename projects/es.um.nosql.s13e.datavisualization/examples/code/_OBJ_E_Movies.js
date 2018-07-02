@@ -12,12 +12,12 @@ var DiffMethodsExclusive =
 			return false;
 		if ("Nationality" in obj && !(!(obj.Nationality.constructor === Array) || (!checkAllOf(obj.Nationality, "String"))))
 			return false;
-		if ("Debut_year" in obj && !(!(typeof obj.Debut_year === "number") || !(obj.Debut_year % 1 === 0)))
-			return false;
 		if ("hasAwards" in obj && !((typeof obj.hasAwards === "object" && !(obj.hasAwards instanceof Array) && (!this.isOfExactType_Award_1(obj.hasAwards)))
 				|| (obj.hasAwards.constructor === Array && (0 > obj.hasAwards.size || !checkAllOf(obj.hasAwards, "object")
 				|| obj.hasAwards[0] == null || !this.isOfExactType_Award_1(obj.hasAwards[0])
 				)) || (typeof obj.hasAwards !== "object" && obj.hasAwards.constructor !== Array)))
+			return false;
+		if ("Debut_year" in obj && !(!(typeof obj.Debut_year === "number") || !(obj.Debut_year % 1 === 0)))
 			return false;
 		if ("Website" in obj && !(!(typeof obj.Website === "string")))
 			return false;
@@ -124,12 +124,12 @@ var DiffMethodsExclusive =
 			return false;
 		if ("Age" in obj && !(!(typeof obj.Age === "number") || !(obj.Age % 1 === 0)))
 			return false;
+		if ("Oscars" in obj && !(!(typeof obj.Oscars === "number") || !(obj.Oscars % 1 === 0)))
+			return false;
 		if ("hasAwards" in obj && !((typeof obj.hasAwards === "object" && !(obj.hasAwards instanceof Array) && (!this.isOfExactType_Award_1(obj.hasAwards)))
 				|| (obj.hasAwards.constructor === Array && (0 > obj.hasAwards.size || !checkAllOf(obj.hasAwards, "object")
 				|| obj.hasAwards[0] == null || !this.isOfExactType_Award_1(obj.hasAwards[0])
 				)) || (typeof obj.hasAwards !== "object" && obj.hasAwards.constructor !== Array)))
-			return false;
-		if ("Oscars" in obj && !(!(typeof obj.Oscars === "number") || !(obj.Oscars % 1 === 0)))
 			return false;
 
 		return true;
@@ -169,9 +169,9 @@ var DiffMethodsExclusive =
 			return false;
 		if (!("type" in obj) || !(typeof obj.type === "string") || (obj.type !== "Director"))
 			return false;
-		if ("Age" in obj && !(!(typeof obj.Age === "string")))
-			return false;
 		if ("Oscars" in obj && !(!(typeof obj.Oscars === "number") || !(obj.Oscars % 1 === 0)))
+			return false;
+		if ("Age" in obj && !(!(typeof obj.Age === "string")))
 			return false;
 
 		return true;
@@ -207,24 +207,24 @@ var DiffMethodsExclusive =
 			return false;
 		if ("Awards" in obj && !(!(typeof obj.Awards === "number") || !(obj.Awards % 1 === 0)))
 			return false;
-		if ("hasRating" in obj && !((typeof obj.hasRating === "object" && !(obj.hasRating instanceof Array) && (!this.isOfExactType_Rating_1(obj.hasRating)))
-				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "object")
-				|| obj.hasRating[0] == null || !this.isOfExactType_Rating_1(obj.hasRating[0])
-				)) || (typeof obj.hasRating !== "object" && obj.hasRating.constructor !== Array)))
+		if ("hasRating" in obj && !((typeof obj.hasRating === "string" && false)
+				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "string"))
+				|| (typeof obj.hasRating !== "string" && obj.hasRating.constructor !== Array))))
 			return false;
 		if ("hasRating" in obj && !((typeof obj.hasRating === "object" && !(obj.hasRating instanceof Array) && (!this.isOfExactType_Rating_2(obj.hasRating)))
 				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "object")
 				|| obj.hasRating[0] == null || !this.isOfExactType_Rating_2(obj.hasRating[0])
 				)) || (typeof obj.hasRating !== "object" && obj.hasRating.constructor !== Array)))
 			return false;
+		if ("hasRating" in obj && !((typeof obj.hasRating === "object" && !(obj.hasRating instanceof Array) && (!this.isOfExactType_Rating_1(obj.hasRating)))
+				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "object")
+				|| obj.hasRating[0] == null || !this.isOfExactType_Rating_1(obj.hasRating[0])
+				)) || (typeof obj.hasRating !== "object" && obj.hasRating.constructor !== Array)))
+			return false;
 		if ("hasAwards" in obj && !((typeof obj.hasAwards === "object" && !(obj.hasAwards instanceof Array) && (!this.isOfExactType_Award_1(obj.hasAwards)))
 				|| (obj.hasAwards.constructor === Array && (0 > obj.hasAwards.size || !checkAllOf(obj.hasAwards, "object")
 				|| obj.hasAwards[0] == null || !this.isOfExactType_Award_1(obj.hasAwards[0])
 				)) || (typeof obj.hasAwards !== "object" && obj.hasAwards.constructor !== Array)))
-			return false;
-		if ("hasRating" in obj && !((typeof obj.hasRating === "string" && false)
-				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "string"))
-				|| (typeof obj.hasRating !== "string" && obj.hasRating.constructor !== Array))))
 			return false;
 
 		return true;
@@ -260,24 +260,24 @@ var DiffMethodsExclusive =
 			return false;
 		if ("Awards" in obj && !(!(typeof obj.Awards === "number") || !(obj.Awards % 1 === 0)))
 			return false;
-		if ("hasRating" in obj && !((typeof obj.hasRating === "object" && !(obj.hasRating instanceof Array) && (!this.isOfExactType_Rating_1(obj.hasRating)))
-				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "object")
-				|| obj.hasRating[0] == null || !this.isOfExactType_Rating_1(obj.hasRating[0])
-				)) || (typeof obj.hasRating !== "object" && obj.hasRating.constructor !== Array)))
+		if ("hasRating" in obj && !((typeof obj.hasRating === "string" && false)
+				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "string"))
+				|| (typeof obj.hasRating !== "string" && obj.hasRating.constructor !== Array))))
 			return false;
 		if ("hasRating" in obj && !((typeof obj.hasRating === "object" && !(obj.hasRating instanceof Array) && (!this.isOfExactType_Rating_2(obj.hasRating)))
 				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "object")
 				|| obj.hasRating[0] == null || !this.isOfExactType_Rating_2(obj.hasRating[0])
 				)) || (typeof obj.hasRating !== "object" && obj.hasRating.constructor !== Array)))
 			return false;
+		if ("hasRating" in obj && !((typeof obj.hasRating === "object" && !(obj.hasRating instanceof Array) && (!this.isOfExactType_Rating_1(obj.hasRating)))
+				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "object")
+				|| obj.hasRating[0] == null || !this.isOfExactType_Rating_1(obj.hasRating[0])
+				)) || (typeof obj.hasRating !== "object" && obj.hasRating.constructor !== Array)))
+			return false;
 		if ("hasAwards" in obj && !((typeof obj.hasAwards === "object" && !(obj.hasAwards instanceof Array) && (!this.isOfExactType_Award_1(obj.hasAwards)))
 				|| (obj.hasAwards.constructor === Array && (0 > obj.hasAwards.size || !checkAllOf(obj.hasAwards, "object")
 				|| obj.hasAwards[0] == null || !this.isOfExactType_Award_1(obj.hasAwards[0])
 				)) || (typeof obj.hasAwards !== "object" && obj.hasAwards.constructor !== Array)))
-			return false;
-		if ("hasRating" in obj && !((typeof obj.hasRating === "string" && false)
-				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "string"))
-				|| (typeof obj.hasRating !== "string" && obj.hasRating.constructor !== Array))))
 			return false;
 
 		return true;
@@ -311,20 +311,20 @@ var DiffMethodsExclusive =
 			return false;
 		if (!("type" in obj) || !(typeof obj.type === "string") || (obj.type !== "Movie"))
 			return false;
-		if ("Director" in obj && !(!(typeof obj.Director === "string")))
-			return false;
 		if ("Rating" in obj && !(!(typeof obj.Rating === "number") || (obj.Rating % 1 === 0)))
 			return false;
 		if ("Oscars" in obj && !(!(typeof obj.Oscars === "number") || !(obj.Oscars % 1 === 0)))
 			return false;
-		if ("hasRating" in obj && !((typeof obj.hasRating === "object" && !(obj.hasRating instanceof Array) && (!this.isOfExactType_Rating_1(obj.hasRating)))
-				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "object")
-				|| obj.hasRating[0] == null || !this.isOfExactType_Rating_1(obj.hasRating[0])
-				)) || (typeof obj.hasRating !== "object" && obj.hasRating.constructor !== Array)))
+		if ("Director" in obj && !(!(typeof obj.Director === "string")))
 			return false;
 		if ("hasRating" in obj && !((typeof obj.hasRating === "object" && !(obj.hasRating instanceof Array) && (!this.isOfExactType_Rating_2(obj.hasRating)))
 				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "object")
 				|| obj.hasRating[0] == null || !this.isOfExactType_Rating_2(obj.hasRating[0])
+				)) || (typeof obj.hasRating !== "object" && obj.hasRating.constructor !== Array)))
+			return false;
+		if ("hasRating" in obj && !((typeof obj.hasRating === "object" && !(obj.hasRating instanceof Array) && (!this.isOfExactType_Rating_1(obj.hasRating)))
+				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "object")
+				|| obj.hasRating[0] == null || !this.isOfExactType_Rating_1(obj.hasRating[0])
 				)) || (typeof obj.hasRating !== "object" && obj.hasRating.constructor !== Array)))
 			return false;
 		if ("hasAwards" in obj && !((typeof obj.hasAwards === "object" && !(obj.hasAwards instanceof Array) && (!this.isOfExactType_Award_1(obj.hasAwards)))
@@ -365,11 +365,15 @@ var DiffMethodsExclusive =
 			return false;
 		if (!("type" in obj) || !(typeof obj.type === "string") || (obj.type !== "Movie"))
 			return false;
-		if ("Director" in obj && !(!(typeof obj.Director === "string")))
-			return false;
 		if ("Rating" in obj && !(!(typeof obj.Rating === "number") || (obj.Rating % 1 === 0)))
 			return false;
 		if ("Oscars" in obj && !(!(typeof obj.Oscars === "number") || !(obj.Oscars % 1 === 0)))
+			return false;
+		if ("Director" in obj && !(!(typeof obj.Director === "string")))
+			return false;
+		if ("hasRating" in obj && !((typeof obj.hasRating === "string" && false)
+				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "string"))
+				|| (typeof obj.hasRating !== "string" && obj.hasRating.constructor !== Array))))
 			return false;
 		if ("hasRating" in obj && !((typeof obj.hasRating === "object" && !(obj.hasRating instanceof Array) && (!this.isOfExactType_Rating_2(obj.hasRating)))
 				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "object")
@@ -380,10 +384,6 @@ var DiffMethodsExclusive =
 				|| (obj.hasAwards.constructor === Array && (0 > obj.hasAwards.size || !checkAllOf(obj.hasAwards, "object")
 				|| obj.hasAwards[0] == null || !this.isOfExactType_Award_1(obj.hasAwards[0])
 				)) || (typeof obj.hasAwards !== "object" && obj.hasAwards.constructor !== Array)))
-			return false;
-		if ("hasRating" in obj && !((typeof obj.hasRating === "string" && false)
-				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "string"))
-				|| (typeof obj.hasRating !== "string" && obj.hasRating.constructor !== Array))))
 			return false;
 
 		return true;
@@ -418,11 +418,15 @@ var DiffMethodsExclusive =
 			return false;
 		if (!("type" in obj) || !(typeof obj.type === "string") || (obj.type !== "Movie"))
 			return false;
-		if ("Director" in obj && !(!(typeof obj.Director === "string")))
-			return false;
 		if ("Rating" in obj && !(!(typeof obj.Rating === "number") || (obj.Rating % 1 === 0)))
 			return false;
 		if ("Oscars" in obj && !(!(typeof obj.Oscars === "number") || !(obj.Oscars % 1 === 0)))
+			return false;
+		if ("Director" in obj && !(!(typeof obj.Director === "string")))
+			return false;
+		if ("hasRating" in obj && !((typeof obj.hasRating === "string" && false)
+				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "string"))
+				|| (typeof obj.hasRating !== "string" && obj.hasRating.constructor !== Array))))
 			return false;
 		if ("hasRating" in obj && !((typeof obj.hasRating === "object" && !(obj.hasRating instanceof Array) && (!this.isOfExactType_Rating_1(obj.hasRating)))
 				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "object")
@@ -433,10 +437,6 @@ var DiffMethodsExclusive =
 				|| (obj.hasAwards.constructor === Array && (0 > obj.hasAwards.size || !checkAllOf(obj.hasAwards, "object")
 				|| obj.hasAwards[0] == null || !this.isOfExactType_Award_1(obj.hasAwards[0])
 				)) || (typeof obj.hasAwards !== "object" && obj.hasAwards.constructor !== Array)))
-			return false;
-		if ("hasRating" in obj && !((typeof obj.hasRating === "string" && false)
-				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "string"))
-				|| (typeof obj.hasRating !== "string" && obj.hasRating.constructor !== Array))))
 			return false;
 
 		return true;
@@ -474,22 +474,22 @@ var DiffMethodsExclusive =
 			return false;
 		if (!("type" in obj) || !(typeof obj.type === "string") || (obj.type !== "Movie"))
 			return false;
-		if ("Director" in obj && !(!(typeof obj.Director === "string")))
-			return false;
 		if ("Rating" in obj && !(!(typeof obj.Rating === "number") || (obj.Rating % 1 === 0)))
 			return false;
 		if ("Oscars" in obj && !(!(typeof obj.Oscars === "number") || !(obj.Oscars % 1 === 0)))
 			return false;
+		if ("Director" in obj && !(!(typeof obj.Director === "string")))
+			return false;
 		if ("Awards" in obj && !(!(typeof obj.Awards === "number") || !(obj.Awards % 1 === 0)))
+			return false;
+		if ("hasRating" in obj && !((typeof obj.hasRating === "string" && false)
+				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "string"))
+				|| (typeof obj.hasRating !== "string" && obj.hasRating.constructor !== Array))))
 			return false;
 		if ("hasRating" in obj && !((typeof obj.hasRating === "object" && !(obj.hasRating instanceof Array) && (!this.isOfExactType_Rating_1(obj.hasRating)))
 				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "object")
 				|| obj.hasRating[0] == null || !this.isOfExactType_Rating_1(obj.hasRating[0])
 				)) || (typeof obj.hasRating !== "object" && obj.hasRating.constructor !== Array)))
-			return false;
-		if ("hasRating" in obj && !((typeof obj.hasRating === "string" && false)
-				|| (obj.hasRating.constructor === Array && (1 > obj.hasRating.size || 1 < obj.hasRating.size || !checkAllOf(obj.hasRating, "string"))
-				|| (typeof obj.hasRating !== "string" && obj.hasRating.constructor !== Array))))
 			return false;
 
 		return true;

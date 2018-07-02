@@ -15,7 +15,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getVersionId <em>Version Id</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getVariationId <em>Variation Id</em>}</li>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getProperties <em>Properties</em>}</li>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getCount <em>Count</em>}</li>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#isRoot <em>Root</em>}</li>
@@ -29,30 +29,30 @@ import org.eclipse.emf.ecore.EObject;
 public interface EntityVariation extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Version Id</b></em>' attribute.
+   * Returns the value of the '<em><b>Variation Id</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Version Id</em>' attribute isn't clear,
+   * If the meaning of the '<em>Variation Id</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Version Id</em>' attribute.
-   * @see #setVersionId(int)
-   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntityVariation_VersionId()
+   * @return the value of the '<em>Variation Id</em>' attribute.
+   * @see #setVariationId(int)
+   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntityVariation_VariationId()
    * @model required="true"
    * @generated
    */
-  int getVersionId();
+  int getVariationId();
 
   /**
-   * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getVersionId <em>Version Id</em>}' attribute.
+   * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getVariationId <em>Variation Id</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Version Id</em>' attribute.
-   * @see #getVersionId()
+   * @param value the new value of the '<em>Variation Id</em>' attribute.
+   * @see #getVariationId()
    * @generated
    */
-  void setVersionId(int value);
+  void setVariationId(int value);
 
   /**
    * Returns the value of the '<em><b>Properties</b></em>' containment reference list.

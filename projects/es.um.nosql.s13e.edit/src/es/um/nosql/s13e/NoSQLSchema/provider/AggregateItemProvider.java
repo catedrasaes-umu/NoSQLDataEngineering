@@ -3,6 +3,9 @@
 package es.um.nosql.s13e.NoSQLSchema.provider;
 
 
+import es.um.nosql.s13e.NoSQLSchema.Aggregate;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -12,11 +15,8 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-import es.um.nosql.s13e.NoSQLSchema.Aggregate;
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-
 /**
- * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Aggregate} object.
+ * This is the item provider adapter for a {@link NoSQLSchema.Aggregate} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

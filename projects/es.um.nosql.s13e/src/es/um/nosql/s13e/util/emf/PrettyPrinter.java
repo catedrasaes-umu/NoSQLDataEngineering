@@ -58,7 +58,7 @@ public class PrettyPrinter
 
 		String tabs = defTabs + TAB;
 
-		String result = defTabs + "EntityVersion versionId:" + eVersion.getVersionId() + System.lineSeparator() 
+		String result = defTabs + "EntityVersion versionId:" + eVersion.getVariationId() + System.lineSeparator() 
 				 + eVersion.getProperties().stream()
 				 	.map(p -> tabs + Serializer.serialize(p) + System.lineSeparator())
 				 	.collect(Collectors.joining());

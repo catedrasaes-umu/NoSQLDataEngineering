@@ -110,7 +110,7 @@ public class NoSQLSchemaSerializer
 		String tabs = defTabs + TAB;
 		StringBuilder result = new StringBuilder();
 
-		result.append(tabs + "EntityVersion - versionId: " + eVersion.getVersionId() +
+		result.append(tabs + "EntityVersion - versionId: " + eVersion.getVariationId() +
 		        ", root: " + eVersion.isRoot() + ", count: " + eVersion.getCount() + ENDLINE);
 
 		for (Property property : eVersion.getProperties())
@@ -214,7 +214,7 @@ public class NoSQLSchemaSerializer
 			for (int i = 0; i < aggregate.getRefTo().size(); i++)
 			{
 			  EntityVariation eVersion = aggregate.getRefTo().get(i);
-				result.append("EntityVersion " + eVersion.getVersionId());
+				result.append("EntityVersion " + eVersion.getVariationId());
 				if (i != (aggregate.getRefTo().size() - 1))
 					result.append(", ");
 			}
@@ -237,33 +237,33 @@ public class NoSQLSchemaSerializer
 	 * @param entityVersionList The EntityVersion Triple list.
 	 * @return A String containing a serialized EntityVersion Triple list.
 	 */
-	public String stringifyEntityVersionList(List<Triple<EntityVariation, Set<EntityVariation>, Set<Entity>>> entityVersionList)
+	public String stringifyEntityVersionList(List<Triple<EntityVariation, Set<EntityVariation>, Set<Entity>>> entityVariationList)
 	{
-		if (entityVersionList == null)
+		if (entityVariationList == null)
 			return null;
 
-		Collections.sort(entityVersionList, new Comparator<Triple<EntityVariation, Set<EntityVariation>, Set<Entity>>>()
+		Collections.sort(entityVariationList, new Comparator<Triple<EntityVariation, Set<EntityVariation>, Set<Entity>>>()
 		{
 			public int compare(Triple<EntityVariation, Set<EntityVariation>, Set<Entity>> o1, Triple<EntityVariation, Set<EntityVariation>, Set<Entity>> o2)
 			{
-				return o1.getLeft().getVersionId() < o2.getLeft().getVersionId() ? -1 : 1;
+				return o1.getLeft().getVariationId() < o2.getLeft().getVariationId() ? -1 : 1;
 			}
 		});
 
 		StringBuilder result = new StringBuilder();
-		result.append("Printing EntityVersion list...\n");
+		result.append("Printing EntityVariation list...\n");
 
-		if (entityVersionList.isEmpty())
-			result.append("EntityVersion list is empty.\n");
+		if (entityVariationList.isEmpty())
+			result.append("EntityVariation list is empty.\n");
 		else
 		{
 			result.append("[\n");
-			for (Triple<EntityVariation, Set<EntityVariation>, Set<Entity>> triple : entityVersionList)
+			for (Triple<EntityVariation, Set<EntityVariation>, Set<Entity>> triple : entityVariationList)
 			{
-				result.append("\t<EntityVersion " + triple.getLeft().getVersionId() + ", EntityVersion List: [ ");
+				result.append("\t<EntityVariation " + triple.getLeft().getVariationId() + ", EntityVariation List: [ ");
 
 				for (EntityVariation ev : triple.getMiddle())
-					result.append("EV_" + ev.getVersionId() + " ");
+					result.append("EV_" + ev.getVariationId() + " ");
 				result.append("],");
 
 				result.append(" Entity List: [ ");
@@ -307,7 +307,7 @@ public class NoSQLSchemaSerializer
 				result.append("\t<Entity " + triple.getLeft().getName() + ", EntityVersion List: [ ");
 
 				for (EntityVariation ev : triple.getMiddle())
-					result.append("EV_" + ev.getVersionId() + " ");
+					result.append("EV_" + ev.getVariationId() + " ");
 				result.append("],");
 
 				result.append(" Entity List: [ ");

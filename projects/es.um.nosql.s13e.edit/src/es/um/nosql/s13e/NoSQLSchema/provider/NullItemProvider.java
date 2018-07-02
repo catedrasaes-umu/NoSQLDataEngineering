@@ -3,6 +3,8 @@
 package es.um.nosql.s13e.NoSQLSchema.provider;
 
 
+import es.um.nosql.s13e.NoSQLSchema.Null;
+
 import java.util.Collection;
 import java.util.List;
 
@@ -11,10 +13,8 @@ import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
-import es.um.nosql.s13e.NoSQLSchema.Null;
-
 /**
- * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Null} object.
+ * This is the item provider adapter for a {@link NoSQLSchema.Null} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated

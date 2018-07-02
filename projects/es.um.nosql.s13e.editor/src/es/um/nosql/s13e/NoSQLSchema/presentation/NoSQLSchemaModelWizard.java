@@ -73,6 +73,7 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.provider.NosqlschemaEditPlugin;
 
+
 import org.eclipse.core.runtime.Path;
 
 import org.eclipse.jface.viewers.ISelection;

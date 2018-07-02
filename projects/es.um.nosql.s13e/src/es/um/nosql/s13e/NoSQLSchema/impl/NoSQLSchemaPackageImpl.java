@@ -264,7 +264,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEntityVariation_VersionId()
+  public EAttribute getEntityVariation_VariationId()
   {
     return (EAttribute)entityVariationEClass.getEStructuralFeatures().get(0);
   }
@@ -549,7 +549,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
     createEReference(entityEClass, ENTITY__PARENTS);
 
     entityVariationEClass = createEClass(ENTITY_VARIATION);
-    createEAttribute(entityVariationEClass, ENTITY_VARIATION__VERSION_ID);
+    createEAttribute(entityVariationEClass, ENTITY_VARIATION__VARIATION_ID);
     createEReference(entityVariationEClass, ENTITY_VARIATION__PROPERTIES);
     createEAttribute(entityVariationEClass, ENTITY_VARIATION__COUNT);
     createEAttribute(entityVariationEClass, ENTITY_VARIATION__ROOT);
@@ -633,7 +633,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
     initEReference(getEntity_Parents(), this.getEntity(), null, "parents", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(entityVariationEClass, EntityVariation.class, "EntityVariation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getEntityVariation_VersionId(), ecorePackage.getEInt(), "versionId", null, 1, 1, EntityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntityVariation_VariationId(), ecorePackage.getEInt(), "variationId", null, 1, 1, EntityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntityVariation_Properties(), this.getProperty(), null, "properties", null, 1, -1, EntityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEntityVariation_Count(), ecorePackage.getELong(), "count", "0", 0, 1, EntityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEntityVariation_Root(), ecorePackage.getEBoolean(), "root", "false", 0, 1, EntityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

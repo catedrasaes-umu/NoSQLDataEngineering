@@ -56,6 +56,8 @@ var DiffMethodsExclusive =
 			return false;
 		if ("artisticType" in obj && !(!(typeof obj.artisticType === "string")))
 			return false;
+		if ("style" in obj && !(!(typeof obj.style === "string")))
+			return false;
 		if ("size" in obj && !(!(obj.size.constructor === Array) || (!checkAllOf(obj.size, "float"))))
 			return false;
 		if ("hasStyle" in obj && !((typeof obj.hasStyle === "object" && !(obj.hasStyle instanceof Array) && (!this.isOfExactType_Style_1(obj.hasStyle)))
@@ -66,8 +68,6 @@ var DiffMethodsExclusive =
 		if ("hasArtisticType" in obj && !((typeof obj.hasArtisticType === "string" && false)
 				|| (obj.hasArtisticType.constructor === Array && (1 > obj.hasArtisticType.size || 1 < obj.hasArtisticType.size || !checkAllOf(obj.hasArtisticType, "string"))
 				|| (typeof obj.hasArtisticType !== "string" && obj.hasArtisticType.constructor !== Array))))
-			return false;
-		if ("style" in obj && !(!(typeof obj.style === "string")))
 			return false;
 
 		return true;
@@ -87,6 +87,8 @@ var DiffMethodsExclusive =
 			return false;
 		if ("artisticType" in obj && !(!(typeof obj.artisticType === "string")))
 			return false;
+		if ("style" in obj && !(!(typeof obj.style === "string")))
+			return false;
 		if ("size" in obj && !(!(obj.size.constructor === Array) || (!checkAllOf(obj.size, "float"))))
 			return false;
 		if ("hasStyle" in obj && !((typeof obj.hasStyle === "object" && !(obj.hasStyle instanceof Array) && (!this.isOfExactType_Style_1(obj.hasStyle)))
@@ -97,8 +99,6 @@ var DiffMethodsExclusive =
 		if ("hasArtisticType" in obj && !((typeof obj.hasArtisticType === "string" && false)
 				|| (obj.hasArtisticType.constructor === Array && (1 > obj.hasArtisticType.size || 1 < obj.hasArtisticType.size || !checkAllOf(obj.hasArtisticType, "string"))
 				|| (typeof obj.hasArtisticType !== "string" && obj.hasArtisticType.constructor !== Array))))
-			return false;
-		if ("style" in obj && !(!(typeof obj.style === "string")))
 			return false;
 
 		return true;
@@ -118,6 +118,8 @@ var DiffMethodsExclusive =
 			return false;
 		if (!("type" in obj) || !(typeof obj.type === "string") || (obj.type !== "Piece"))
 			return false;
+		if ("style" in obj && !(!(typeof obj.style === "string")))
+			return false;
 		if ("size" in obj && !(!(obj.size.constructor === Array) || (!checkAllOf(obj.size, "float"))))
 			return false;
 		if ("hasStyle" in obj && !((typeof obj.hasStyle === "object" && !(obj.hasStyle instanceof Array) && (!this.isOfExactType_Style_1(obj.hasStyle)))
@@ -128,8 +130,6 @@ var DiffMethodsExclusive =
 		if ("hasArtisticType" in obj && !((typeof obj.hasArtisticType === "string" && false)
 				|| (obj.hasArtisticType.constructor === Array && (1 > obj.hasArtisticType.size || 1 < obj.hasArtisticType.size || !checkAllOf(obj.hasArtisticType, "string"))
 				|| (typeof obj.hasArtisticType !== "string" && obj.hasArtisticType.constructor !== Array))))
-			return false;
-		if ("style" in obj && !(!(typeof obj.style === "string")))
 			return false;
 
 		return true;
@@ -187,11 +187,11 @@ var DiffMethodsExclusive =
 			return false;
 		if (!("type" in obj) || !(typeof obj.type === "string") || (obj.type !== "Piece"))
 			return false;
+		if ("style" in obj && !(!(typeof obj.style === "string")))
+			return false;
 		if ("hasArtisticType" in obj && !((typeof obj.hasArtisticType === "string" && false)
 				|| (obj.hasArtisticType.constructor === Array && (1 > obj.hasArtisticType.size || 1 < obj.hasArtisticType.size || !checkAllOf(obj.hasArtisticType, "string"))
 				|| (typeof obj.hasArtisticType !== "string" && obj.hasArtisticType.constructor !== Array))))
-			return false;
-		if ("style" in obj && !(!(typeof obj.style === "string")))
 			return false;
 
 		return true;

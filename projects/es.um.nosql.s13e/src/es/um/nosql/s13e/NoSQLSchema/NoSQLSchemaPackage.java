@@ -169,13 +169,13 @@ public interface NoSQLSchemaPackage extends EPackage
   int ENTITY_VARIATION = 2;
 
   /**
-   * The feature id for the '<em><b>Version Id</b></em>' attribute.
+   * The feature id for the '<em><b>Variation Id</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY_VARIATION__VERSION_ID = 0;
+  int ENTITY_VARIATION__VARIATION_ID = 0;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -750,15 +750,15 @@ public interface NoSQLSchemaPackage extends EPackage
   EClass getEntityVariation();
 
   /**
-   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getVersionId <em>Version Id</em>}'.
+   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getVariationId <em>Variation Id</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Version Id</em>'.
-   * @see es.um.nosql.s13e.NoSQLSchema.EntityVariation#getVersionId()
+   * @return the meta object for the attribute '<em>Variation Id</em>'.
+   * @see es.um.nosql.s13e.NoSQLSchema.EntityVariation#getVariationId()
    * @see #getEntityVariation()
    * @generated
    */
-  EAttribute getEntityVariation_VersionId();
+  EAttribute getEntityVariation_VariationId();
 
   /**
    * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getProperties <em>Properties</em>}'.
@@ -1110,12 +1110,12 @@ public interface NoSQLSchemaPackage extends EPackage
     EClass ENTITY_VARIATION = eINSTANCE.getEntityVariation();
 
     /**
-     * The meta object literal for the '<em><b>Version Id</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>Variation Id</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ENTITY_VARIATION__VERSION_ID = eINSTANCE.getEntityVariation_VersionId();
+    EAttribute ENTITY_VARIATION__VARIATION_ID = eINSTANCE.getEntityVariation_VariationId();
 
     /**
      * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.

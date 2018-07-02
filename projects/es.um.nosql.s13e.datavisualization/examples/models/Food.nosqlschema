@@ -7,8 +7,8 @@
     name="Food">
   <entities
       name="Restaurant">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -42,12 +42,12 @@
           lowerBound="1"
           upperBound="1"
           refTo="Menu"/>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Table">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -70,9 +70,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="string"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2">
+    </entityvariations>
+    <entityvariations
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="number">
@@ -100,12 +100,12 @@
               name="int"/>
         </type>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Waiter">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -135,9 +135,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="int"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -183,9 +183,9 @@
               name="int"/>
         </type>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="3"
+    </entityvariations>
+    <entityvariations
+        variationId="3"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -219,13 +219,13 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="hasTables"
           upperBound="5"
-          refTo="//@entities.1/@entityversions.1"/>
-    </entityversions>
+          refTo="//@entities.1/@entityvariations.1"/>
+    </entityvariations>
   </entities>
   <entities
       name="Menu">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -247,12 +247,12 @@
           lowerBound="1"
           upperBound="-1"
           refTo="Dish"/>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Dish">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -273,10 +273,10 @@
           name="hasIngredients"
           lowerBound="1"
           upperBound="-1"
-          refTo="//@entities.5/@entityversions.1"/>
-    </entityversions>
-    <entityversions
-        versionId="2"
+          refTo="//@entities.5/@entityvariations.1"/>
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -304,10 +304,10 @@
           name="hasIngredients"
           lowerBound="1"
           upperBound="-1"
-          refTo="//@entities.5/@entityversions.1"/>
-    </entityversions>
-    <entityversions
-        versionId="3"
+          refTo="//@entities.5/@entityvariations.1"/>
+    </entityvariations>
+    <entityvariations
+        variationId="3"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -349,10 +349,10 @@
           name="hasIngredients"
           lowerBound="1"
           upperBound="-1"
-          refTo="//@entities.5/@entityversions.1"/>
-    </entityversions>
-    <entityversions
-        versionId="4"
+          refTo="//@entities.5/@entityvariations.1"/>
+    </entityvariations>
+    <entityvariations
+        variationId="4"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -401,13 +401,13 @@
           name="hasIngredients"
           lowerBound="1"
           upperBound="-1"
-          refTo="//@entities.5/@entityversions.1"/>
-    </entityversions>
+          refTo="//@entities.5/@entityvariations.1"/>
+    </entityvariations>
   </entities>
   <entities
       name="Ingredient">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -423,9 +423,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="float"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2">
+    </entityvariations>
+    <entityvariations
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="name">
@@ -454,6 +454,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="boolean"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

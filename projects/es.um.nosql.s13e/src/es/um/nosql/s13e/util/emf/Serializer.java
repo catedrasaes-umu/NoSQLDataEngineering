@@ -21,7 +21,7 @@ public class Serializer
 		if (eVersion == null)
 			return null;
 
-		return ((Entity)eVersion.eContainer()).getName() + "_" + eVersion.getVersionId();
+		return ((Entity)eVersion.eContainer()).getName() + "_" + eVersion.getVariationId();
 	}
 
 	public static String serialize(Property property)

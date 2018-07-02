@@ -16,7 +16,7 @@
         eType="#//Entity"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntityVariation">
-    <eStructuralFeatures xsi:type="ecore:EAttribute" name="versionId" lowerBound="1"
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variationId" lowerBound="1"
         eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="properties" lowerBound="1"
         upperBound="-1" eType="#//Property" containment="true"/>

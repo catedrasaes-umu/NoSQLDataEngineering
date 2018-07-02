@@ -111,7 +111,7 @@ public class Main
 		String indent = String.join("", Collections.nCopies(level, "  "));
 
 		if (tree.is_leaf())
-			System.out.println(indent+"Entity: "+e.getName()+", Version: "+tree.getEv().getVersionId());
+			System.out.println(indent+"Entity: "+e.getName()+", Version: "+tree.getEv().getVariationId());
 		else
 		{
 			Function<Boolean,String> present = v -> v ? " is present." : " is NOT present."; 
@@ -262,7 +262,7 @@ public class Main
 		
 		final String entityName = eds.getEntity().getName();
 		Map<String,EntityVariationProp> classNameToEvp = eds.getEntityVariationProps().stream()
-				.map(evp -> Pair.of(String.format("%1$s_%2$d", entityName, evp.getEntityVariation().getVersionId()),evp))
+				.map(evp -> Pair.of(String.format("%1$s_%2$d", entityName, evp.getEntityVariation().getVariationId()),evp))
 				.collect(toMap(Pair::getKey,Pair::getValue));
 		Map<EntityVariationProp,String> evpToClassName = classNameToEvp.entrySet().stream()
 				.collect(toMap(Map.Entry::getValue,
