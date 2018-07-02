@@ -18,7 +18,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec#getEntity <em>Entity</em>}</li>
- *   <li>{@link es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec#getEntityVersionProps <em>Entity Version Props</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec#getEntityVariationProps <em>Entity Variation Props</em>}</li>
  *   <li>{@link es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec#getCommonProps <em>Common Props</em>}</li>
  * </ul>
  *
@@ -55,20 +55,20 @@ public interface EntityDiffSpec extends EObject
   void setEntity(Entity value);
 
   /**
-   * Returns the value of the '<em><b>Entity Version Props</b></em>' containment reference list.
-   * The list contents are of type {@link es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp}.
+   * Returns the value of the '<em><b>Entity Variation Props</b></em>' containment reference list.
+   * The list contents are of type {@link es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Entity Version Props</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Entity Variation Props</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Entity Version Props</em>' containment reference list.
-   * @see es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage#getEntityDiffSpec_EntityVersionProps()
+   * @return the value of the '<em>Entity Variation Props</em>' containment reference list.
+   * @see es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage#getEntityDiffSpec_EntityVariationProps()
    * @model containment="true"
    * @generated
    */
-  EList<EntityVersionProp> getEntityVersionProps();
+  EList<EntityVariationProp> getEntityVariationProps();
 
   /**
    * Returns the value of the '<em><b>Common Props</b></em>' containment reference list.

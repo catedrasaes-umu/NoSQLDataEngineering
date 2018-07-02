@@ -2,7 +2,7 @@
  */
 package es.um.nosql.s13e.DecisionTree;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,7 +13,7 @@ import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.s13e.DecisionTree.LeafNode#getIdentifiedVersion <em>Identified Version</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.DecisionTree.LeafNode#getIdentifiedVariation <em>Identified Variation</em>}</li>
  * </ul>
  *
  * @see es.um.nosql.s13e.DecisionTree.DecisionTreePackage#getLeafNode()
@@ -23,29 +23,29 @@ import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
 public interface LeafNode extends DecisionTreeNode
 {
   /**
-   * Returns the value of the '<em><b>Identified Version</b></em>' reference.
+   * Returns the value of the '<em><b>Identified Variation</b></em>' reference.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Identified Version</em>' reference isn't clear,
+   * If the meaning of the '<em>Identified Variation</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Identified Version</em>' reference.
-   * @see #setIdentifiedVersion(EntityVersion)
-   * @see es.um.nosql.s13e.DecisionTree.DecisionTreePackage#getLeafNode_IdentifiedVersion()
+   * @return the value of the '<em>Identified Variation</em>' reference.
+   * @see #setIdentifiedVariation(EntityVariation)
+   * @see es.um.nosql.s13e.DecisionTree.DecisionTreePackage#getLeafNode_IdentifiedVariation()
    * @model required="true"
    * @generated
    */
-  EntityVersion getIdentifiedVersion();
+  EntityVariation getIdentifiedVariation();
 
   /**
-   * Sets the value of the '{@link es.um.nosql.s13e.DecisionTree.LeafNode#getIdentifiedVersion <em>Identified Version</em>}' reference.
+   * Sets the value of the '{@link es.um.nosql.s13e.DecisionTree.LeafNode#getIdentifiedVariation <em>Identified Variation</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Identified Version</em>' reference.
-   * @see #getIdentifiedVersion()
+   * @param value the new value of the '<em>Identified Variation</em>' reference.
+   * @see #getIdentifiedVariation()
    * @generated
    */
-  void setIdentifiedVersion(EntityVersion value);
+  void setIdentifiedVariation(EntityVariation value);
 
 } // LeafNode

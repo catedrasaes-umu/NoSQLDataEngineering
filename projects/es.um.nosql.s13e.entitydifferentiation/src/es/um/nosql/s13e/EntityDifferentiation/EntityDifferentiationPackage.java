@@ -132,13 +132,13 @@ public interface EntityDifferentiationPackage extends EPackage
   int ENTITY_DIFF_SPEC__ENTITY = 0;
 
   /**
-   * The feature id for the '<em><b>Entity Version Props</b></em>' containment reference list.
+   * The feature id for the '<em><b>Entity Variation Props</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY_DIFF_SPEC__ENTITY_VERSION_PROPS = 1;
+  int ENTITY_DIFF_SPEC__ENTITY_VARIATION_PROPS = 1;
 
   /**
    * The feature id for the '<em><b>Common Props</b></em>' containment reference list.
@@ -214,14 +214,14 @@ public interface EntityDifferentiationPackage extends EPackage
   int PROPERTY_SPEC_OPERATION_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link es.um.nosql.s13e.EntityDifferentiation.impl.EntityVersionPropImpl <em>Entity Version Prop</em>}' class.
+   * The meta object id for the '{@link es.um.nosql.s13e.EntityDifferentiation.impl.EntityVariationPropImpl <em>Entity Variation Prop</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see es.um.nosql.s13e.EntityDifferentiation.impl.EntityVersionPropImpl
-   * @see es.um.nosql.s13e.EntityDifferentiation.impl.EntityDifferentiationPackageImpl#getEntityVersionProp()
+   * @see es.um.nosql.s13e.EntityDifferentiation.impl.EntityVariationPropImpl
+   * @see es.um.nosql.s13e.EntityDifferentiation.impl.EntityDifferentiationPackageImpl#getEntityVariationProp()
    * @generated
    */
-  int ENTITY_VERSION_PROP = 3;
+  int ENTITY_VARIATION_PROP = 3;
 
   /**
    * The feature id for the '<em><b>Property Specs</b></em>' containment reference list.
@@ -230,16 +230,16 @@ public interface EntityDifferentiationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_VERSION_PROP__PROPERTY_SPECS = 0;
+  int ENTITY_VARIATION_PROP__PROPERTY_SPECS = 0;
 
   /**
-   * The feature id for the '<em><b>Entity Version</b></em>' reference.
+   * The feature id for the '<em><b>Entity Variation</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY_VERSION_PROP__ENTITY_VERSION = 1;
+  int ENTITY_VARIATION_PROP__ENTITY_VARIATION = 1;
 
   /**
    * The feature id for the '<em><b>Not Props</b></em>' containment reference list.
@@ -248,25 +248,25 @@ public interface EntityDifferentiationPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_VERSION_PROP__NOT_PROPS = 2;
+  int ENTITY_VARIATION_PROP__NOT_PROPS = 2;
 
   /**
-   * The number of structural features of the '<em>Entity Version Prop</em>' class.
+   * The number of structural features of the '<em>Entity Variation Prop</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY_VERSION_PROP_FEATURE_COUNT = 3;
+  int ENTITY_VARIATION_PROP_FEATURE_COUNT = 3;
 
   /**
-   * The number of operations of the '<em>Entity Version Prop</em>' class.
+   * The number of operations of the '<em>Entity Variation Prop</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY_VERSION_PROP_OPERATION_COUNT = 0;
+  int ENTITY_VARIATION_PROP_OPERATION_COUNT = 0;
 
 
   /**
@@ -334,15 +334,15 @@ public interface EntityDifferentiationPackage extends EPackage
   EReference getEntityDiffSpec_Entity();
 
   /**
-   * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec#getEntityVersionProps <em>Entity Version Props</em>}'.
+   * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec#getEntityVariationProps <em>Entity Variation Props</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Entity Version Props</em>'.
-   * @see es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec#getEntityVersionProps()
+   * @return the meta object for the containment reference list '<em>Entity Variation Props</em>'.
+   * @see es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec#getEntityVariationProps()
    * @see #getEntityDiffSpec()
    * @generated
    */
-  EReference getEntityDiffSpec_EntityVersionProps();
+  EReference getEntityDiffSpec_EntityVariationProps();
 
   /**
    * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec#getCommonProps <em>Common Props</em>}'.
@@ -388,47 +388,47 @@ public interface EntityDifferentiationPackage extends EPackage
   EAttribute getPropertySpec_NeedsTypeCheck();
 
   /**
-   * Returns the meta object for class '{@link es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp <em>Entity Version Prop</em>}'.
+   * Returns the meta object for class '{@link es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp <em>Entity Variation Prop</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Entity Version Prop</em>'.
-   * @see es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp
+   * @return the meta object for class '<em>Entity Variation Prop</em>'.
+   * @see es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp
    * @generated
    */
-  EClass getEntityVersionProp();
+  EClass getEntityVariationProp();
 
   /**
-   * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp#getPropertySpecs <em>Property Specs</em>}'.
+   * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp#getPropertySpecs <em>Property Specs</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Property Specs</em>'.
-   * @see es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp#getPropertySpecs()
-   * @see #getEntityVersionProp()
+   * @see es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp#getPropertySpecs()
+   * @see #getEntityVariationProp()
    * @generated
    */
-  EReference getEntityVersionProp_PropertySpecs();
+  EReference getEntityVariationProp_PropertySpecs();
 
   /**
-   * Returns the meta object for the reference '{@link es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp#getEntityVersion <em>Entity Version</em>}'.
+   * Returns the meta object for the reference '{@link es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp#getEntityVariation <em>Entity Variation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Entity Version</em>'.
-   * @see es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp#getEntityVersion()
-   * @see #getEntityVersionProp()
+   * @return the meta object for the reference '<em>Entity Variation</em>'.
+   * @see es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp#getEntityVariation()
+   * @see #getEntityVariationProp()
    * @generated
    */
-  EReference getEntityVersionProp_EntityVersion();
+  EReference getEntityVariationProp_EntityVariation();
 
   /**
-   * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp#getNotProps <em>Not Props</em>}'.
+   * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp#getNotProps <em>Not Props</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Not Props</em>'.
-   * @see es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp#getNotProps()
-   * @see #getEntityVersionProp()
+   * @see es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp#getNotProps()
+   * @see #getEntityVariationProp()
    * @generated
    */
-  EReference getEntityVersionProp_NotProps();
+  EReference getEntityVariationProp_NotProps();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -507,12 +507,12 @@ public interface EntityDifferentiationPackage extends EPackage
     EReference ENTITY_DIFF_SPEC__ENTITY = eINSTANCE.getEntityDiffSpec_Entity();
 
     /**
-     * The meta object literal for the '<em><b>Entity Version Props</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Entity Variation Props</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ENTITY_DIFF_SPEC__ENTITY_VERSION_PROPS = eINSTANCE.getEntityDiffSpec_EntityVersionProps();
+    EReference ENTITY_DIFF_SPEC__ENTITY_VARIATION_PROPS = eINSTANCE.getEntityDiffSpec_EntityVariationProps();
 
     /**
      * The meta object literal for the '<em><b>Common Props</b></em>' containment reference list feature.
@@ -549,14 +549,14 @@ public interface EntityDifferentiationPackage extends EPackage
     EAttribute PROPERTY_SPEC__NEEDS_TYPE_CHECK = eINSTANCE.getPropertySpec_NeedsTypeCheck();
 
     /**
-     * The meta object literal for the '{@link es.um.nosql.s13e.EntityDifferentiation.impl.EntityVersionPropImpl <em>Entity Version Prop</em>}' class.
+     * The meta object literal for the '{@link es.um.nosql.s13e.EntityDifferentiation.impl.EntityVariationPropImpl <em>Entity Variation Prop</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see es.um.nosql.s13e.EntityDifferentiation.impl.EntityVersionPropImpl
-     * @see es.um.nosql.s13e.EntityDifferentiation.impl.EntityDifferentiationPackageImpl#getEntityVersionProp()
+     * @see es.um.nosql.s13e.EntityDifferentiation.impl.EntityVariationPropImpl
+     * @see es.um.nosql.s13e.EntityDifferentiation.impl.EntityDifferentiationPackageImpl#getEntityVariationProp()
      * @generated
      */
-    EClass ENTITY_VERSION_PROP = eINSTANCE.getEntityVersionProp();
+    EClass ENTITY_VARIATION_PROP = eINSTANCE.getEntityVariationProp();
 
     /**
      * The meta object literal for the '<em><b>Property Specs</b></em>' containment reference list feature.
@@ -564,15 +564,15 @@ public interface EntityDifferentiationPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ENTITY_VERSION_PROP__PROPERTY_SPECS = eINSTANCE.getEntityVersionProp_PropertySpecs();
+    EReference ENTITY_VARIATION_PROP__PROPERTY_SPECS = eINSTANCE.getEntityVariationProp_PropertySpecs();
 
     /**
-     * The meta object literal for the '<em><b>Entity Version</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Entity Variation</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ENTITY_VERSION_PROP__ENTITY_VERSION = eINSTANCE.getEntityVersionProp_EntityVersion();
+    EReference ENTITY_VARIATION_PROP__ENTITY_VARIATION = eINSTANCE.getEntityVariationProp_EntityVariation();
 
     /**
      * The meta object literal for the '<em><b>Not Props</b></em>' containment reference list feature.
@@ -580,7 +580,7 @@ public interface EntityDifferentiationPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ENTITY_VERSION_PROP__NOT_PROPS = eINSTANCE.getEntityVersionProp_NotProps();
+    EReference ENTITY_VARIATION_PROP__NOT_PROPS = eINSTANCE.getEntityVariationProp_NotProps();
 
   }
 

@@ -2,13 +2,13 @@
  */
 package es.um.nosql.s13e.EntityDifferentiation.impl;
 
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationFactory;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
-import es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp;
+import es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -51,7 +51,7 @@ public class EntityDifferentiationPackageImpl extends EPackageImpl implements En
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass entityVersionPropEClass = null;
+  private EClass entityVariationPropEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -184,7 +184,7 @@ public class EntityDifferentiationPackageImpl extends EPackageImpl implements En
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEntityDiffSpec_EntityVersionProps()
+  public EReference getEntityDiffSpec_EntityVariationProps()
   {
     return (EReference)entityDiffSpecEClass.getEStructuralFeatures().get(1);
   }
@@ -234,9 +234,9 @@ public class EntityDifferentiationPackageImpl extends EPackageImpl implements En
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getEntityVersionProp()
+  public EClass getEntityVariationProp()
   {
-    return entityVersionPropEClass;
+    return entityVariationPropEClass;
   }
 
   /**
@@ -244,9 +244,9 @@ public class EntityDifferentiationPackageImpl extends EPackageImpl implements En
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEntityVersionProp_PropertySpecs()
+  public EReference getEntityVariationProp_PropertySpecs()
   {
-    return (EReference)entityVersionPropEClass.getEStructuralFeatures().get(0);
+    return (EReference)entityVariationPropEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -254,9 +254,9 @@ public class EntityDifferentiationPackageImpl extends EPackageImpl implements En
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEntityVersionProp_EntityVersion()
+  public EReference getEntityVariationProp_EntityVariation()
   {
-    return (EReference)entityVersionPropEClass.getEStructuralFeatures().get(1);
+    return (EReference)entityVariationPropEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -264,9 +264,9 @@ public class EntityDifferentiationPackageImpl extends EPackageImpl implements En
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEntityVersionProp_NotProps()
+  public EReference getEntityVariationProp_NotProps()
   {
-    return (EReference)entityVersionPropEClass.getEStructuralFeatures().get(2);
+    return (EReference)entityVariationPropEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -306,17 +306,17 @@ public class EntityDifferentiationPackageImpl extends EPackageImpl implements En
 
     entityDiffSpecEClass = createEClass(ENTITY_DIFF_SPEC);
     createEReference(entityDiffSpecEClass, ENTITY_DIFF_SPEC__ENTITY);
-    createEReference(entityDiffSpecEClass, ENTITY_DIFF_SPEC__ENTITY_VERSION_PROPS);
+    createEReference(entityDiffSpecEClass, ENTITY_DIFF_SPEC__ENTITY_VARIATION_PROPS);
     createEReference(entityDiffSpecEClass, ENTITY_DIFF_SPEC__COMMON_PROPS);
 
     propertySpecEClass = createEClass(PROPERTY_SPEC);
     createEReference(propertySpecEClass, PROPERTY_SPEC__PROPERTY);
     createEAttribute(propertySpecEClass, PROPERTY_SPEC__NEEDS_TYPE_CHECK);
 
-    entityVersionPropEClass = createEClass(ENTITY_VERSION_PROP);
-    createEReference(entityVersionPropEClass, ENTITY_VERSION_PROP__PROPERTY_SPECS);
-    createEReference(entityVersionPropEClass, ENTITY_VERSION_PROP__ENTITY_VERSION);
-    createEReference(entityVersionPropEClass, ENTITY_VERSION_PROP__NOT_PROPS);
+    entityVariationPropEClass = createEClass(ENTITY_VARIATION_PROP);
+    createEReference(entityVariationPropEClass, ENTITY_VARIATION_PROP__PROPERTY_SPECS);
+    createEReference(entityVariationPropEClass, ENTITY_VARIATION_PROP__ENTITY_VARIATION);
+    createEReference(entityVariationPropEClass, ENTITY_VARIATION_PROP__NOT_PROPS);
   }
 
   /**
@@ -360,17 +360,17 @@ public class EntityDifferentiationPackageImpl extends EPackageImpl implements En
 
     initEClass(entityDiffSpecEClass, EntityDiffSpec.class, "EntityDiffSpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getEntityDiffSpec_Entity(), theNoSQLSchemaPackage.getEntity(), null, "entity", null, 1, 1, EntityDiffSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEntityDiffSpec_EntityVersionProps(), this.getEntityVersionProp(), null, "entityVersionProps", null, 0, -1, EntityDiffSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEntityDiffSpec_EntityVariationProps(), this.getEntityVariationProp(), null, "entityVariationProps", null, 0, -1, EntityDiffSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntityDiffSpec_CommonProps(), this.getPropertySpec(), null, "commonProps", null, 0, -1, EntityDiffSpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertySpecEClass, PropertySpec.class, "PropertySpec", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getPropertySpec_Property(), theNoSQLSchemaPackage.getProperty(), null, "property", null, 1, 1, PropertySpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getPropertySpec_NeedsTypeCheck(), ecorePackage.getEBoolean(), "needsTypeCheck", null, 0, 1, PropertySpec.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(entityVersionPropEClass, EntityVersionProp.class, "EntityVersionProp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getEntityVersionProp_PropertySpecs(), this.getPropertySpec(), null, "propertySpecs", null, 0, -1, EntityVersionProp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEntityVersionProp_EntityVersion(), theNoSQLSchemaPackage.getEntityVersion(), null, "entityVersion", null, 1, 1, EntityVersionProp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEntityVersionProp_NotProps(), this.getPropertySpec(), null, "notProps", null, 0, -1, EntityVersionProp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(entityVariationPropEClass, EntityVariationProp.class, "EntityVariationProp", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEntityVariationProp_PropertySpecs(), this.getPropertySpec(), null, "propertySpecs", null, 0, -1, EntityVariationProp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEntityVariationProp_EntityVariation(), theNoSQLSchemaPackage.getEntityVariation(), null, "entityVariation", null, 1, 1, EntityVariationProp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEntityVariationProp_NotProps(), this.getPropertySpec(), null, "notProps", null, 0, -1, EntityVariationProp.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

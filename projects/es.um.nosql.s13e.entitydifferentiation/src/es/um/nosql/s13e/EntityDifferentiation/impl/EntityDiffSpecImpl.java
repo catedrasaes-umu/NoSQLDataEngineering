@@ -2,11 +2,11 @@
  */
 package es.um.nosql.s13e.EntityDifferentiation.impl;
 
+import es.um.nosql.s13e.NoSQLSchema.Entity;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
-import es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp;
+import es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
-import es.um.nosql.s13e.NoSQLSchema.Entity;
 
 import java.util.Collection;
 
@@ -33,7 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link es.um.nosql.s13e.EntityDifferentiation.impl.EntityDiffSpecImpl#getEntity <em>Entity</em>}</li>
- *   <li>{@link es.um.nosql.s13e.EntityDifferentiation.impl.EntityDiffSpecImpl#getEntityVersionProps <em>Entity Version Props</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.EntityDifferentiation.impl.EntityDiffSpecImpl#getEntityVariationProps <em>Entity Variation Props</em>}</li>
  *   <li>{@link es.um.nosql.s13e.EntityDifferentiation.impl.EntityDiffSpecImpl#getCommonProps <em>Common Props</em>}</li>
  * </ul>
  *
@@ -52,14 +52,14 @@ public class EntityDiffSpecImpl extends MinimalEObjectImpl.Container implements 
   protected Entity entity;
 
   /**
-   * The cached value of the '{@link #getEntityVersionProps() <em>Entity Version Props</em>}' containment reference list.
+   * The cached value of the '{@link #getEntityVariationProps() <em>Entity Variation Props</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEntityVersionProps()
+   * @see #getEntityVariationProps()
    * @generated
    * @ordered
    */
-  protected EList<EntityVersionProp> entityVersionProps;
+  protected EList<EntityVariationProp> entityVariationProps;
 
   /**
    * The cached value of the '{@link #getCommonProps() <em>Common Props</em>}' containment reference list.
@@ -140,13 +140,13 @@ public class EntityDiffSpecImpl extends MinimalEObjectImpl.Container implements 
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<EntityVersionProp> getEntityVersionProps()
+  public EList<EntityVariationProp> getEntityVariationProps()
   {
-    if (entityVersionProps == null)
+    if (entityVariationProps == null)
     {
-      entityVersionProps = new EObjectContainmentEList<EntityVersionProp>(EntityVersionProp.class, this, EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY_VERSION_PROPS);
+      entityVariationProps = new EObjectContainmentEList<EntityVariationProp>(EntityVariationProp.class, this, EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY_VARIATION_PROPS);
     }
-    return entityVersionProps;
+    return entityVariationProps;
   }
 
   /**
@@ -173,8 +173,8 @@ public class EntityDiffSpecImpl extends MinimalEObjectImpl.Container implements 
   {
     switch (featureID)
     {
-      case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY_VERSION_PROPS:
-        return ((InternalEList<?>)getEntityVersionProps()).basicRemove(otherEnd, msgs);
+      case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY_VARIATION_PROPS:
+        return ((InternalEList<?>)getEntityVariationProps()).basicRemove(otherEnd, msgs);
       case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__COMMON_PROPS:
         return ((InternalEList<?>)getCommonProps()).basicRemove(otherEnd, msgs);
     }
@@ -194,8 +194,8 @@ public class EntityDiffSpecImpl extends MinimalEObjectImpl.Container implements 
       case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY:
         if (resolve) return getEntity();
         return basicGetEntity();
-      case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY_VERSION_PROPS:
-        return getEntityVersionProps();
+      case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY_VARIATION_PROPS:
+        return getEntityVariationProps();
       case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__COMMON_PROPS:
         return getCommonProps();
     }
@@ -216,9 +216,9 @@ public class EntityDiffSpecImpl extends MinimalEObjectImpl.Container implements 
       case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY:
         setEntity((Entity)newValue);
         return;
-      case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY_VERSION_PROPS:
-        getEntityVersionProps().clear();
-        getEntityVersionProps().addAll((Collection<? extends EntityVersionProp>)newValue);
+      case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY_VARIATION_PROPS:
+        getEntityVariationProps().clear();
+        getEntityVariationProps().addAll((Collection<? extends EntityVariationProp>)newValue);
         return;
       case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__COMMON_PROPS:
         getCommonProps().clear();
@@ -241,8 +241,8 @@ public class EntityDiffSpecImpl extends MinimalEObjectImpl.Container implements 
       case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY:
         setEntity((Entity)null);
         return;
-      case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY_VERSION_PROPS:
-        getEntityVersionProps().clear();
+      case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY_VARIATION_PROPS:
+        getEntityVariationProps().clear();
         return;
       case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__COMMON_PROPS:
         getCommonProps().clear();
@@ -263,8 +263,8 @@ public class EntityDiffSpecImpl extends MinimalEObjectImpl.Container implements 
     {
       case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY:
         return entity != null;
-      case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY_VERSION_PROPS:
-        return entityVersionProps != null && !entityVersionProps.isEmpty();
+      case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__ENTITY_VARIATION_PROPS:
+        return entityVariationProps != null && !entityVariationProps.isEmpty();
       case EntityDifferentiationPackage.ENTITY_DIFF_SPEC__COMMON_PROPS:
         return commonProps != null && !commonProps.isEmpty();
     }

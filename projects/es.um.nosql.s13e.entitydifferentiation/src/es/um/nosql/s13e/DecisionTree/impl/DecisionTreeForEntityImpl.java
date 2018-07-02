@@ -2,10 +2,10 @@
  */
 package es.um.nosql.s13e.DecisionTree.impl;
 
+import es.um.nosql.s13e.NoSQLSchema.Entity;
 import es.um.nosql.s13e.DecisionTree.DecisionTreeForEntity;
 import es.um.nosql.s13e.DecisionTree.DecisionTreeNode;
 import es.um.nosql.s13e.DecisionTree.DecisionTreePackage;
-import es.um.nosql.s13e.NoSQLSchema.Entity;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;

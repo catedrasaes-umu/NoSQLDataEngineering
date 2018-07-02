@@ -2,19 +2,19 @@
 <?eclipse version="3.0"?>
 <plugin>
    <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated entitydifferentiation -->
-      <package
-            uri="http://www.modelum.es/EntityDifferentiation"
-            class="es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage"
-            genModel="model/entitydifferentiation.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated decisiontree -->
       <package
             uri="http://www.modelum.es/DecisionTree"
             class="es.um.nosql.s13e.DecisionTree.DecisionTreePackage"
             genModel="model/decisiontree.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated entitydifferentiation -->
+      <package
+            uri="http://www.modelum.es/EntityDifferentiation"
+            class="es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage"
+            genModel="model/entitydifferentiation.genmodel"/>
    </extension>
 
 </plugin>

@@ -89,7 +89,7 @@ public class DiffToMongoose
 
     var «e.name»Schema = new mongoose.Schema({
       «genSpecs(e, analyzer.getDiffByEntity().get(e))»
-    }, { versionKey: false, «IF (e.entityversions.exists[ev | ev.isRoot])»collection: '«e.name.toFirstLower»'«ELSE»_id : false«ENDIF»});
+    }, { versionKey: false, «IF (e.entityvariations.exists[ev | ev.isRoot])»collection: '«e.name.toFirstLower»'«ELSE»_id : false«ENDIF»});
 
     «indexValGen.genIndexesForEntity(e)»
 
@@ -103,7 +103,7 @@ public class DiffToMongoose
     «FOR e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
       var «e.name»Schema = require('./«schemaFileName(e)»');
     «ENDFOR»
-    «IF spec.commonProps.exists[cp | cp.needsTypeCheck] || spec.entityVersionProps.exists[ev | ev.propertySpecs.exists[ps | ps.needsTypeCheck]]»
+    «IF spec.commonProps.exists[cp | cp.needsTypeCheck] || spec.entityVariationProps.exists[ev | ev.propertySpecs.exists[ps | ps.needsTypeCheck]]»
       var UnionType = require('./util/UnionType.js');
     «ENDIF»
   '''
@@ -129,7 +129,7 @@ public class DiffToMongoose
 
   def specificProps(EntityDiffSpec spec)
   {
-    spec.entityVersionProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
+    spec.entityVariationProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
       [result, neew |
         val names = result.map[p | p.property.name].toSet
         result.addAll(neew.filter[p | !names.contains(p.property.name)])

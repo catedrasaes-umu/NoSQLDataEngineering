@@ -202,7 +202,7 @@ class DiffMongooseBaseGen
     var «e.name» = require('./app/models/«e.name»Schema');
   «ENDFOR»
 
-  «FOR e : diff.entityDiffSpecs.filter[ed | ed.entity.entityversions.exists[ev | ev.isRoot]].map[ed | ed.entity]»
+  «FOR e : diff.entityDiffSpecs.filter[ed | ed.entity.entityvariations.exists[ev | ev.isRoot]].map[ed | ed.entity]»
     «e.name».find(function(err, result)
     {
       if (err)

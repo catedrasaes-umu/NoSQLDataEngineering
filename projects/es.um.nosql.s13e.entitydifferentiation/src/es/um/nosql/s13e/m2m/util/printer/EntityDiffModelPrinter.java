@@ -9,7 +9,7 @@ import org.eclipse.emf.ecore.resource.Resource;
 
 import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
-import es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp;
+import es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 import es.um.nosql.s13e.util.emf.ResourceManager;
@@ -43,9 +43,9 @@ public class EntityDiffModelPrinter
       for (PropertySpec ps : eds.getCommonProps())
         System.out.println(" * " + ps.getProperty().getName() + (ps.isNeedsTypeCheck() ? "*" :""));
 
-      for (EntityVersionProp evp : eds.getEntityVersionProps())
+      for (EntityVariationProp evp : eds.getEntityVariationProps())
       {
-        System.out.println("EV " + evp.getEntityVersion().getVersionId() + " -----------------");
+        System.out.println("EV " + evp.getEntityVariation().getVersionId() + " -----------------");
 
         System.out.println("Own Properties:");
         for (PropertySpec ps: evp.getPropertySpecs())

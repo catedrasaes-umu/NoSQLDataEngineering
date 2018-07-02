@@ -50,13 +50,13 @@ public interface EntityDifferentiationFactory extends EFactory
   PropertySpec createPropertySpec();
 
   /**
-   * Returns a new object of class '<em>Entity Version Prop</em>'.
+   * Returns a new object of class '<em>Entity Variation Prop</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Entity Version Prop</em>'.
+   * @return a new object of class '<em>Entity Variation Prop</em>'.
    * @generated
    */
-  EntityVersionProp createEntityVersionProp();
+  EntityVariationProp createEntityVariationProp();
 
   /**
    * Returns the package supported by this factory.

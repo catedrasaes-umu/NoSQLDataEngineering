@@ -93,10 +93,10 @@ public class EntityDifferentiationSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP:
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP:
       {
-        EntityVersionProp entityVersionProp = (EntityVersionProp)theEObject;
-        T result = caseEntityVersionProp(entityVersionProp);
+        EntityVariationProp entityVariationProp = (EntityVariationProp)theEObject;
+        T result = caseEntityVariationProp(entityVariationProp);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -153,17 +153,17 @@ public class EntityDifferentiationSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Entity Version Prop</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Entity Variation Prop</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Entity Version Prop</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Entity Variation Prop</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEntityVersionProp(EntityVersionProp object)
+  public T caseEntityVariationProp(EntityVariationProp object)
   {
     return null;
   }

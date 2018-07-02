@@ -132,13 +132,13 @@ public interface DecisionTreePackage extends EPackage
   int LEAF_NODE__NO_BRANCH = DECISION_TREE_NODE__NO_BRANCH;
 
   /**
-   * The feature id for the '<em><b>Identified Version</b></em>' reference.
+   * The feature id for the '<em><b>Identified Variation</b></em>' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int LEAF_NODE__IDENTIFIED_VERSION = DECISION_TREE_NODE_FEATURE_COUNT + 0;
+  int LEAF_NODE__IDENTIFIED_VARIATION = DECISION_TREE_NODE_FEATURE_COUNT + 0;
 
   /**
    * The number of structural features of the '<em>Leaf Node</em>' class.
@@ -395,15 +395,15 @@ public interface DecisionTreePackage extends EPackage
   EClass getLeafNode();
 
   /**
-   * Returns the meta object for the reference '{@link es.um.nosql.s13e.DecisionTree.LeafNode#getIdentifiedVersion <em>Identified Version</em>}'.
+   * Returns the meta object for the reference '{@link es.um.nosql.s13e.DecisionTree.LeafNode#getIdentifiedVariation <em>Identified Variation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Identified Version</em>'.
-   * @see es.um.nosql.s13e.DecisionTree.LeafNode#getIdentifiedVersion()
+   * @return the meta object for the reference '<em>Identified Variation</em>'.
+   * @see es.um.nosql.s13e.DecisionTree.LeafNode#getIdentifiedVariation()
    * @see #getLeafNode()
    * @generated
    */
-  EReference getLeafNode_IdentifiedVersion();
+  EReference getLeafNode_IdentifiedVariation();
 
   /**
    * Returns the meta object for class '{@link es.um.nosql.s13e.DecisionTree.IntermediateNode <em>Intermediate Node</em>}'.
@@ -583,12 +583,12 @@ public interface DecisionTreePackage extends EPackage
     EClass LEAF_NODE = eINSTANCE.getLeafNode();
 
     /**
-     * The meta object literal for the '<em><b>Identified Version</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Identified Variation</b></em>' reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference LEAF_NODE__IDENTIFIED_VERSION = eINSTANCE.getLeafNode_IdentifiedVersion();
+    EReference LEAF_NODE__IDENTIFIED_VARIATION = eINSTANCE.getLeafNode_IdentifiedVariation();
 
     /**
      * The meta object literal for the '{@link es.um.nosql.s13e.DecisionTree.impl.IntermediateNodeImpl <em>Intermediate Node</em>}' class.

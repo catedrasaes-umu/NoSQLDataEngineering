@@ -12,7 +12,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="EntityDiffSpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" lowerBound="1"
         eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//Entity"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="entityVersionProps" upperBound="-1"
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entityVariationProps" upperBound="-1"
         eType="#//EntityVariationProp" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="commonProps" upperBound="-1"
         eType="#//PropertySpec" containment="true"/>

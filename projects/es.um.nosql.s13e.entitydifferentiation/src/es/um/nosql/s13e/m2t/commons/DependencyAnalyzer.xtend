@@ -38,7 +38,7 @@ class DependencyAnalyzer
   def calcTypeListMatrix(List<Entity> entities)
   {
     entities.toInvertedMap[e |
-      diffByEntity.get(e).entityVersionProps
+      diffByEntity.get(e).entityVariationProps
         .map[propertySpecs]
         .flatten
         .filter[needsTypeCheck].groupBy[property.name]
@@ -63,7 +63,7 @@ class DependencyAnalyzer
   // Get the first level of dependencies for an Entity
   private def getDepsFor(Entity entity)
   {
-    entity.entityversions.map[ev | 
+    entity.entityvariations.map[ev | 
       ev.properties.filter[p | p instanceof Aggregate]
       .map[p | (p as Aggregate).refTo.map[ev2 | ev2.eContainer as Entity]]
       .flatten

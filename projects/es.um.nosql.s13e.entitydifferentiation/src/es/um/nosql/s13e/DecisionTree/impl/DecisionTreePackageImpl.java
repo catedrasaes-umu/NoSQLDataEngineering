@@ -2,6 +2,7 @@
  */
 package es.um.nosql.s13e.DecisionTree.impl;
 
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.DecisionTree.DecisionTreeFactory;
 import es.um.nosql.s13e.DecisionTree.DecisionTreeForEntity;
 import es.um.nosql.s13e.DecisionTree.DecisionTreeNode;
@@ -10,7 +11,6 @@ import es.um.nosql.s13e.DecisionTree.DecisionTrees;
 import es.um.nosql.s13e.DecisionTree.IntermediateNode;
 import es.um.nosql.s13e.DecisionTree.LeafNode;
 import es.um.nosql.s13e.DecisionTree.PropertySpec2;
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -180,7 +180,7 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLeafNode_IdentifiedVersion()
+  public EReference getLeafNode_IdentifiedVariation()
   {
     return (EReference)leafNodeEClass.getEStructuralFeatures().get(0);
   }
@@ -330,7 +330,7 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
     createEReference(decisionTreeNodeEClass, DECISION_TREE_NODE__NO_BRANCH);
 
     leafNodeEClass = createEClass(LEAF_NODE);
-    createEReference(leafNodeEClass, LEAF_NODE__IDENTIFIED_VERSION);
+    createEReference(leafNodeEClass, LEAF_NODE__IDENTIFIED_VARIATION);
 
     intermediateNodeEClass = createEClass(INTERMEDIATE_NODE);
     createEReference(intermediateNodeEClass, INTERMEDIATE_NODE__CHECKED_PROPERTY);
@@ -389,7 +389,7 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
     initEReference(getDecisionTreeNode_NoBranch(), this.getDecisionTreeNode(), null, "noBranch", null, 0, 1, DecisionTreeNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(leafNodeEClass, LeafNode.class, "LeafNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getLeafNode_IdentifiedVersion(), theNoSQLSchemaPackage.getEntityVersion(), null, "identifiedVersion", null, 1, 1, LeafNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getLeafNode_IdentifiedVariation(), theNoSQLSchemaPackage.getEntityVariation(), null, "identifiedVariation", null, 1, 1, LeafNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(intermediateNodeEClass, IntermediateNode.class, "IntermediateNode", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getIntermediateNode_CheckedProperty(), this.getPropertySpec2(), null, "checkedProperty", null, 1, 1, IntermediateNode.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

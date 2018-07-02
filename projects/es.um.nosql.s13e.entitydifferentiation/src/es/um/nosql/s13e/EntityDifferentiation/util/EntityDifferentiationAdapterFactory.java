@@ -90,9 +90,9 @@ public class EntityDifferentiationAdapterFactory extends AdapterFactoryImpl
         return createPropertySpecAdapter();
       }
       @Override
-      public Adapter caseEntityVersionProp(EntityVersionProp object)
+      public Adapter caseEntityVariationProp(EntityVariationProp object)
       {
-        return createEntityVersionPropAdapter();
+        return createEntityVariationPropAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -162,16 +162,16 @@ public class EntityDifferentiationAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp <em>Entity Version Prop</em>}'.
+   * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp <em>Entity Variation Prop</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp
+   * @see es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp
    * @generated
    */
-  public Adapter createEntityVersionPropAdapter()
+  public Adapter createEntityVariationPropAdapter()
   {
     return null;
   }

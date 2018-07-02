@@ -2,10 +2,10 @@
  */
 package es.um.nosql.s13e.EntityDifferentiation.impl;
 
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 
 import java.util.Collection;
 

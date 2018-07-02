@@ -2,9 +2,9 @@
  */
 package es.um.nosql.s13e.EntityDifferentiation.impl;
 
+import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
-import es.um.nosql.s13e.NoSQLSchema.Property;
 
 import org.eclipse.emf.common.notify.Notification;
 

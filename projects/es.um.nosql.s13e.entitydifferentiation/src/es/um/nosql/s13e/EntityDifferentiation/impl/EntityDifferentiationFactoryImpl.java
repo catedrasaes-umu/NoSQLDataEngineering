@@ -67,7 +67,7 @@ public class EntityDifferentiationFactoryImpl extends EFactoryImpl implements En
       case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION: return createEntityDifferentiation();
       case EntityDifferentiationPackage.ENTITY_DIFF_SPEC: return createEntityDiffSpec();
       case EntityDifferentiationPackage.PROPERTY_SPEC: return createPropertySpec();
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP: return createEntityVersionProp();
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP: return createEntityVariationProp();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -111,10 +111,10 @@ public class EntityDifferentiationFactoryImpl extends EFactoryImpl implements En
    * <!-- end-user-doc -->
    * @generated
    */
-  public EntityVersionProp createEntityVersionProp()
+  public EntityVariationProp createEntityVariationProp()
   {
-    EntityVersionPropImpl entityVersionProp = new EntityVersionPropImpl();
-    return entityVersionProp;
+    EntityVariationPropImpl entityVariationProp = new EntityVariationPropImpl();
+    return entityVariationProp;
   }
 
   /**

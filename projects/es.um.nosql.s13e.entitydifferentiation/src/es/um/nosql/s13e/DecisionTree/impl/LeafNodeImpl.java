@@ -2,9 +2,9 @@
  */
 package es.um.nosql.s13e.DecisionTree.impl;
 
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.DecisionTree.DecisionTreePackage;
 import es.um.nosql.s13e.DecisionTree.LeafNode;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.s13e.DecisionTree.impl.LeafNodeImpl#getIdentifiedVersion <em>Identified Version</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.DecisionTree.impl.LeafNodeImpl#getIdentifiedVariation <em>Identified Variation</em>}</li>
  * </ul>
  *
  * @generated
@@ -29,14 +29,14 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
 {
   /**
-   * The cached value of the '{@link #getIdentifiedVersion() <em>Identified Version</em>}' reference.
+   * The cached value of the '{@link #getIdentifiedVariation() <em>Identified Variation</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getIdentifiedVersion()
+   * @see #getIdentifiedVariation()
    * @generated
    * @ordered
    */
-  protected EntityVersion identifiedVersion;
+  protected EntityVariation identifiedVariation;
 
   /**
    * <!-- begin-user-doc -->
@@ -64,19 +64,19 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
    * <!-- end-user-doc -->
    * @generated
    */
-  public EntityVersion getIdentifiedVersion()
+  public EntityVariation getIdentifiedVariation()
   {
-    if (identifiedVersion != null && identifiedVersion.eIsProxy())
+    if (identifiedVariation != null && identifiedVariation.eIsProxy())
     {
-      InternalEObject oldIdentifiedVersion = (InternalEObject)identifiedVersion;
-      identifiedVersion = (EntityVersion)eResolveProxy(oldIdentifiedVersion);
-      if (identifiedVersion != oldIdentifiedVersion)
+      InternalEObject oldIdentifiedVariation = (InternalEObject)identifiedVariation;
+      identifiedVariation = (EntityVariation)eResolveProxy(oldIdentifiedVariation);
+      if (identifiedVariation != oldIdentifiedVariation)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DecisionTreePackage.LEAF_NODE__IDENTIFIED_VERSION, oldIdentifiedVersion, identifiedVersion));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION, oldIdentifiedVariation, identifiedVariation));
       }
     }
-    return identifiedVersion;
+    return identifiedVariation;
   }
 
   /**
@@ -84,9 +84,9 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
    * <!-- end-user-doc -->
    * @generated
    */
-  public EntityVersion basicGetIdentifiedVersion()
+  public EntityVariation basicGetIdentifiedVariation()
   {
-    return identifiedVersion;
+    return identifiedVariation;
   }
 
   /**
@@ -94,12 +94,12 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setIdentifiedVersion(EntityVersion newIdentifiedVersion)
+  public void setIdentifiedVariation(EntityVariation newIdentifiedVariation)
   {
-    EntityVersion oldIdentifiedVersion = identifiedVersion;
-    identifiedVersion = newIdentifiedVersion;
+    EntityVariation oldIdentifiedVariation = identifiedVariation;
+    identifiedVariation = newIdentifiedVariation;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DecisionTreePackage.LEAF_NODE__IDENTIFIED_VERSION, oldIdentifiedVersion, identifiedVersion));
+      eNotify(new ENotificationImpl(this, Notification.SET, DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION, oldIdentifiedVariation, identifiedVariation));
   }
 
   /**
@@ -112,9 +112,9 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
   {
     switch (featureID)
     {
-      case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VERSION:
-        if (resolve) return getIdentifiedVersion();
-        return basicGetIdentifiedVersion();
+      case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
+        if (resolve) return getIdentifiedVariation();
+        return basicGetIdentifiedVariation();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -129,8 +129,8 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
   {
     switch (featureID)
     {
-      case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VERSION:
-        setIdentifiedVersion((EntityVersion)newValue);
+      case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
+        setIdentifiedVariation((EntityVariation)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -146,8 +146,8 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
   {
     switch (featureID)
     {
-      case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VERSION:
-        setIdentifiedVersion((EntityVersion)null);
+      case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
+        setIdentifiedVariation((EntityVariation)null);
         return;
     }
     super.eUnset(featureID);
@@ -163,8 +163,8 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
   {
     switch (featureID)
     {
-      case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VERSION:
-        return identifiedVersion != null;
+      case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
+        return identifiedVariation != null;
     }
     return super.eIsSet(featureID);
   }

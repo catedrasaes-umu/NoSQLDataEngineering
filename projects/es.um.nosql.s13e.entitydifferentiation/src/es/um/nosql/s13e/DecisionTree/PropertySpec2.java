@@ -2,9 +2,9 @@
  */
 package es.um.nosql.s13e.DecisionTree;
 
-import es.um.nosql.s13e.NoSQLSchema.Property;
-
 import org.eclipse.emf.ecore.EObject;
+
+import es.um.nosql.s13e.NoSQLSchema.Property;
 
 /**
  * <!-- begin-user-doc -->

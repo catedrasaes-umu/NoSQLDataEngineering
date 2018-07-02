@@ -7,7 +7,6 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage
 import java.io.File
 import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec
 import java.util.List
-import es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp
 import java.io.PrintStream
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec
 import org.eclipse.xtext.xbase.lib.Functions.Function1
@@ -20,6 +19,7 @@ import es.um.nosql.s13e.NoSQLSchema.Reference
 import es.um.nosql.s13e.NoSQLSchema.Aggregate
 import es.um.nosql.s13e.NoSQLSchema.Entity
 import java.util.Collections
+import es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp
 
 class DiffToJS
 {
@@ -93,13 +93,13 @@ class DiffToJS
 	'''
 
 	def genEntityDiffs(EntityDiffSpec spec) '''
-		«FOR evp : spec.entityVersionProps SEPARATOR ','»
-			«genEntityVersionDiff(evp, spec)»
+		«FOR evp : spec.entityVariationProps SEPARATOR ','»
+			«genEntityVariationDiff(evp, spec)»
 		«ENDFOR»
 	'''
 
-	def genEntityVersionDiff(EntityVersionProp evp, EntityDiffSpec spec) {
-		val entityVersionName = spec.entity.name.toFirstUpper + "_" + evp.entityVersion.versionId
+	def genEntityVariationDiff(EntityVariationProp evp, EntityDiffSpec spec) {
+		val entityVersionName = spec.entity.name.toFirstUpper + "_" + evp.entityVariation.versionId
 
 		'''
 		«entityVersionName»: {
@@ -119,7 +119,7 @@ class DiffToJS
 		}'''
 	}
 
-	def generateHints(EntityVersionProp evp, EntityDiffSpec spec, boolean exact) {
+	def generateHints(EntityVariationProp evp, EntityDiffSpec spec, boolean exact) {
 	    var propsToGenerate = spec.commonProps + evp.propertySpecs
 	    var propsToGenerateNot = Collections.<PropertySpec>emptyList as Iterable<PropertySpec>
 

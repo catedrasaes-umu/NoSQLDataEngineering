@@ -24,8 +24,8 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
-import es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationFactory;
+import es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 import es.um.nosql.s13e.m2m.util.hashing.PropertyHashingStrategy;
 import es.um.nosql.s13e.m2m.util.hashing.PropertyJustNameHashingStrategy;
@@ -35,7 +35,7 @@ public class NoSQLSchemaToEntityDiff
 {
   private Map<Entity, Set<Property>> commonEntityProperties;
   private Map<EntityVariation, Set<Property>> evOwnProperties;
-  private Map<EntityVariation, EntityVersionProp> evPropsByEv;
+  private Map<EntityVariation, EntityVariationProp> evPropsByEv;
   private HashingStrategy<Property> propertyHashing;
 
   public NoSQLSchemaToEntityDiff()
@@ -119,9 +119,9 @@ public class NoSQLSchemaToEntityDiff
     // identified the own attributes of an EntityVersion, output "HasNotField" items
     // for the rest of EntityVersions
     e.getEntityvariations().forEach(ev -> {
-      EntityVersionProp evp = EntityDifferentiationFactory.eINSTANCE.createEntityVersionProp();
-      evp.setEntityVersion(ev);
-      de.getEntityVersionProps().add(evp);
+      EntityVariationProp evp = EntityDifferentiationFactory.eINSTANCE.createEntityVariationProp();
+      evp.setEntityVariation(ev);
+      de.getEntityVariationProps().add(evp);
 
       // Set of properties by entity, for fast lookup
       propSpecsByEV.put(ev, new HashMap<>());
@@ -130,9 +130,9 @@ public class NoSQLSchemaToEntityDiff
       evPropsByEv.put(ev, evp);
     });
 
-    if (e.getEntityversions().size() > 1)
+    if (e.getEntityvariations().size() > 1)
     {
-      for (EntityVersion ev : e.getEntityversions())
+      for (EntityVariation ev : e.getEntityvariations())
       {
         // For each property, check whether other entity versions having this property have also the same type for it
         for (Property p : evOwnProperties.get(ev))
@@ -148,9 +148,9 @@ public class NoSQLSchemaToEntityDiff
         }
       }
 
-      for (EntityVersionProp evp: de.getEntityVersionProps())
+      for (EntityVariationProp evp: de.getEntityVariationProps())
       {
-        propSpecsByEV.get(evp.getEntityVersion()).values().forEach(pe -> {
+        propSpecsByEV.get(evp.getEntityVariation()).values().forEach(pe -> {
           evp.getPropertySpecs().add(pe);
         });
       }
@@ -159,14 +159,14 @@ public class NoSQLSchemaToEntityDiff
 
       // For each entity version, for each property appearing in the rest 
       // of entityVersions but not in this one, add a "notProp"
-      for (EntityVersionProp evp: de.getEntityVersionProps())
+      for (EntityVariationProp evp: de.getEntityVariationProps())
       {
         Set<String> ownPropNames =
             evp.getPropertySpecs().stream().map(pe -> pe.getProperty().getName())
             .collect(Collectors.toSet());
 
         Map<String, PropertySpec> otherPropsByName = 
-            de.getEntityVersionProps().stream()
+            de.getEntityVariationProps().stream()
             .filter(_evp -> _evp != evp)
             .flatMap(_evp -> _evp.getPropertySpecs().stream())
             .filter(_ps -> !ownPropNames.contains(_ps.getProperty().getName()))
@@ -187,8 +187,8 @@ public class NoSQLSchemaToEntityDiff
 
   private Set<Property> calcCommonProperties(Entity e)
   {
-    Map<EntityVersion, Set<Property>> allProperties =
-        e.getEntityversions().stream()
+    Map<EntityVariation, Set<Property>> allProperties =
+        e.getEntityvariations().stream()
         .collect(toMap(
             identity(),
             ev -> new UnifiedSetWithHashingStrategy<>(propertyHashing, ev.getProperties())));

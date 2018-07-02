@@ -94,7 +94,7 @@ class DiffToMorphia
 
     «genIncludes(entity)»
 
-    «IF entity.entityversions.exists[ev | ev.isRoot]»@Entity(value = "«entity.name.toFirstLower»", noClassnameStored = true)«ELSE»@Embedded«ENDIF»
+    «IF entity.entityvariations.exists[ev | ev.isRoot]»@Entity(value = "«entity.name.toFirstLower»", noClassnameStored = true)«ELSE»@Embedded«ENDIF»
     «indexValGen.genIndexesForEntity(entity)»
     public class «entity.name»
     {
@@ -107,13 +107,13 @@ class DiffToMorphia
    */
   def genIncludes(Entity entity)
   {
-    val isEntityRoot = entity.entityversions.exists[ev | ev.isRoot];
+    val isEntityRoot = entity.entityvariations.exists[ev | ev.isRoot];
     val collListUnionProperties = analyzer.getTypeListByPropertyName.get(entity).values;
     '''
     «IF isEntityRoot»
     import org.mongodb.morphia.annotations.Entity;
     import org.mongodb.morphia.annotations.Id;
-    «IF entity.entityversions.exists[ev | ev.properties.exists[p | (p instanceof Attribute && (p as Attribute).type instanceof PrimitiveType && ((p as Attribute).type as PrimitiveType).name.equals("ObjectId")) ||
+    «IF entity.entityvariations.exists[ev | ev.properties.exists[p | (p instanceof Attribute && (p as Attribute).type instanceof PrimitiveType && ((p as Attribute).type as PrimitiveType).name.equals("ObjectId")) ||
       (p instanceof Reference && (p as Reference).originalType.equals("ObjectId"))]]»
     import org.bson.types.ObjectId;
     «ENDIF»
@@ -126,11 +126,11 @@ class DiffToMorphia
       import org.mongodb.morphia.annotations.PreSave;
       import com.mongodb.DBObject;
     «ENDIF»
-    «IF entity.entityversions.exists[ev | !ev.isRoot || ev.properties.exists[p | p instanceof Aggregate]]»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
-    «IF entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Attribute]]»import org.mongodb.morphia.annotations.Property;«ENDIF»
-    «IF entity.entityversions.exists[ev | ev.properties.exists[p | p instanceof Reference]]»import org.mongodb.morphia.annotations.Reference;«ENDIF»
+    «IF entity.entityvariations.exists[ev | !ev.isRoot || ev.properties.exists[p | p instanceof Aggregate]]»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
+    «IF entity.entityvariations.exists[ev | ev.properties.exists[p | p instanceof Attribute]]»import org.mongodb.morphia.annotations.Property;«ENDIF»
+    «IF entity.entityvariations.exists[ev | ev.properties.exists[p | p instanceof Reference]]»import org.mongodb.morphia.annotations.Reference;«ENDIF»
     «IF !analyzer.getDiffByEntity().get(entity).commonProps.isEmpty»import javax.validation.constraints.NotNull;«ENDIF»
-    «IF entity.entityversions.exists[ev | ev.properties.exists[p | (p instanceof Association &&
+    «IF entity.entityvariations.exists[ev | ev.properties.exists[p | (p instanceof Association &&
       ((p as Association).lowerBound !== 1 || (p as Association).upperBound !== 1)) || (p instanceof Attribute && (p as Attribute).type instanceof Tuple)]]»
     import java.util.List;
     «ENDIF»
@@ -163,7 +163,7 @@ class DiffToMorphia
 
   def specificProps(EntityDiffSpec spec)
   {
-    spec.entityVersionProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
+    spec.entityVariationProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
       [result, neew |
         val names = result.map[p | p.property.name].toSet
         result.addAll(neew.filter[p | !names.contains(p.property.name)])

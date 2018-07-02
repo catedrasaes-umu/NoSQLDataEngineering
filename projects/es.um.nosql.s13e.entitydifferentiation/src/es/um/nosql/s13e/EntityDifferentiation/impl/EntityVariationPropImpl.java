@@ -2,10 +2,10 @@
  */
 package es.um.nosql.s13e.EntityDifferentiation.impl;
 
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
-import es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp;
+import es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
 
 import java.util.Collection;
 
@@ -25,20 +25,20 @@ import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Entity Version Prop</b></em>'.
+ * An implementation of the model object '<em><b>Entity Variation Prop</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.s13e.EntityDifferentiation.impl.EntityVersionPropImpl#getPropertySpecs <em>Property Specs</em>}</li>
- *   <li>{@link es.um.nosql.s13e.EntityDifferentiation.impl.EntityVersionPropImpl#getEntityVersion <em>Entity Version</em>}</li>
- *   <li>{@link es.um.nosql.s13e.EntityDifferentiation.impl.EntityVersionPropImpl#getNotProps <em>Not Props</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.EntityDifferentiation.impl.EntityVariationPropImpl#getPropertySpecs <em>Property Specs</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.EntityDifferentiation.impl.EntityVariationPropImpl#getEntityVariation <em>Entity Variation</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.EntityDifferentiation.impl.EntityVariationPropImpl#getNotProps <em>Not Props</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implements EntityVersionProp
+public class EntityVariationPropImpl extends MinimalEObjectImpl.Container implements EntityVariationProp
 {
   /**
    * The cached value of the '{@link #getPropertySpecs() <em>Property Specs</em>}' containment reference list.
@@ -51,14 +51,14 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
   protected EList<PropertySpec> propertySpecs;
 
   /**
-   * The cached value of the '{@link #getEntityVersion() <em>Entity Version</em>}' reference.
+   * The cached value of the '{@link #getEntityVariation() <em>Entity Variation</em>}' reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEntityVersion()
+   * @see #getEntityVariation()
    * @generated
    * @ordered
    */
-  protected EntityVersion entityVersion;
+  protected EntityVariation entityVariation;
 
   /**
    * The cached value of the '{@link #getNotProps() <em>Not Props</em>}' containment reference list.
@@ -75,7 +75,7 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  protected EntityVersionPropImpl()
+  protected EntityVariationPropImpl()
   {
     super();
   }
@@ -88,7 +88,7 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
   @Override
   protected EClass eStaticClass()
   {
-    return EntityDifferentiationPackage.Literals.ENTITY_VERSION_PROP;
+    return EntityDifferentiationPackage.Literals.ENTITY_VARIATION_PROP;
   }
 
   /**
@@ -100,7 +100,7 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
   {
     if (propertySpecs == null)
     {
-      propertySpecs = new EObjectContainmentEList<PropertySpec>(PropertySpec.class, this, EntityDifferentiationPackage.ENTITY_VERSION_PROP__PROPERTY_SPECS);
+      propertySpecs = new EObjectContainmentEList<PropertySpec>(PropertySpec.class, this, EntityDifferentiationPackage.ENTITY_VARIATION_PROP__PROPERTY_SPECS);
     }
     return propertySpecs;
   }
@@ -110,19 +110,19 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public EntityVersion getEntityVersion()
+  public EntityVariation getEntityVariation()
   {
-    if (entityVersion != null && entityVersion.eIsProxy())
+    if (entityVariation != null && entityVariation.eIsProxy())
     {
-      InternalEObject oldEntityVersion = (InternalEObject)entityVersion;
-      entityVersion = (EntityVersion)eResolveProxy(oldEntityVersion);
-      if (entityVersion != oldEntityVersion)
+      InternalEObject oldEntityVariation = (InternalEObject)entityVariation;
+      entityVariation = (EntityVariation)eResolveProxy(oldEntityVariation);
+      if (entityVariation != oldEntityVariation)
       {
         if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityDifferentiationPackage.ENTITY_VERSION_PROP__ENTITY_VERSION, oldEntityVersion, entityVersion));
+          eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityDifferentiationPackage.ENTITY_VARIATION_PROP__ENTITY_VARIATION, oldEntityVariation, entityVariation));
       }
     }
-    return entityVersion;
+    return entityVariation;
   }
 
   /**
@@ -130,9 +130,9 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public EntityVersion basicGetEntityVersion()
+  public EntityVariation basicGetEntityVariation()
   {
-    return entityVersion;
+    return entityVariation;
   }
 
   /**
@@ -140,12 +140,12 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setEntityVersion(EntityVersion newEntityVersion)
+  public void setEntityVariation(EntityVariation newEntityVariation)
   {
-    EntityVersion oldEntityVersion = entityVersion;
-    entityVersion = newEntityVersion;
+    EntityVariation oldEntityVariation = entityVariation;
+    entityVariation = newEntityVariation;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDifferentiationPackage.ENTITY_VERSION_PROP__ENTITY_VERSION, oldEntityVersion, entityVersion));
+      eNotify(new ENotificationImpl(this, Notification.SET, EntityDifferentiationPackage.ENTITY_VARIATION_PROP__ENTITY_VARIATION, oldEntityVariation, entityVariation));
   }
 
   /**
@@ -157,7 +157,7 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
   {
     if (notProps == null)
     {
-      notProps = new EObjectContainmentEList<PropertySpec>(PropertySpec.class, this, EntityDifferentiationPackage.ENTITY_VERSION_PROP__NOT_PROPS);
+      notProps = new EObjectContainmentEList<PropertySpec>(PropertySpec.class, this, EntityDifferentiationPackage.ENTITY_VARIATION_PROP__NOT_PROPS);
     }
     return notProps;
   }
@@ -172,9 +172,9 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP__PROPERTY_SPECS:
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP__PROPERTY_SPECS:
         return ((InternalEList<?>)getPropertySpecs()).basicRemove(otherEnd, msgs);
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP__NOT_PROPS:
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP__NOT_PROPS:
         return ((InternalEList<?>)getNotProps()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -190,12 +190,12 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP__PROPERTY_SPECS:
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP__PROPERTY_SPECS:
         return getPropertySpecs();
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP__ENTITY_VERSION:
-        if (resolve) return getEntityVersion();
-        return basicGetEntityVersion();
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP__NOT_PROPS:
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP__ENTITY_VARIATION:
+        if (resolve) return getEntityVariation();
+        return basicGetEntityVariation();
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP__NOT_PROPS:
         return getNotProps();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -212,14 +212,14 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP__PROPERTY_SPECS:
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP__PROPERTY_SPECS:
         getPropertySpecs().clear();
         getPropertySpecs().addAll((Collection<? extends PropertySpec>)newValue);
         return;
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP__ENTITY_VERSION:
-        setEntityVersion((EntityVersion)newValue);
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP__ENTITY_VARIATION:
+        setEntityVariation((EntityVariation)newValue);
         return;
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP__NOT_PROPS:
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP__NOT_PROPS:
         getNotProps().clear();
         getNotProps().addAll((Collection<? extends PropertySpec>)newValue);
         return;
@@ -237,13 +237,13 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP__PROPERTY_SPECS:
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP__PROPERTY_SPECS:
         getPropertySpecs().clear();
         return;
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP__ENTITY_VERSION:
-        setEntityVersion((EntityVersion)null);
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP__ENTITY_VARIATION:
+        setEntityVariation((EntityVariation)null);
         return;
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP__NOT_PROPS:
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP__NOT_PROPS:
         getNotProps().clear();
         return;
     }
@@ -260,14 +260,14 @@ public class EntityVersionPropImpl extends MinimalEObjectImpl.Container implemen
   {
     switch (featureID)
     {
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP__PROPERTY_SPECS:
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP__PROPERTY_SPECS:
         return propertySpecs != null && !propertySpecs.isEmpty();
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP__ENTITY_VERSION:
-        return entityVersion != null;
-      case EntityDifferentiationPackage.ENTITY_VERSION_PROP__NOT_PROPS:
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP__ENTITY_VARIATION:
+        return entityVariation != null;
+      case EntityDifferentiationPackage.ENTITY_VARIATION_PROP__NOT_PROPS:
         return notProps != null && !notProps.isEmpty();
     }
     return super.eIsSet(featureID);
   }
 
-} //EntityVersionPropImpl
+} //EntityVariationPropImpl
