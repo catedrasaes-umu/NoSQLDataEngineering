@@ -166,17 +166,17 @@ function transformIntoD3Json (element)
 function transformIntoD3Csv (element)
 {
 	var d3Csv = [];
-	var maxVersion = getMaxVersion(element);
+	var maxVariation = getMaxVariation(element);
 
 	for (var field in element)
 	{
 		var newField = {"Entity": field};
 
-		for (var i = 1; i <= maxVersion; i++)
-			newField["Version " + i] = 0;
+		for (var i = 1; i <= maxVariation; i++)
+			newField["Variation " + i] = 0;
 
 		for (var subField in element[field])
-			newField["Version " + subField.substring(subField.lastIndexOf("_") + 1)] = element[field][subField];
+			newField["Variation " + subField.substring(subField.lastIndexOf("_") + 1)] = element[field][subField];
 
 		d3Csv.push(newField);
 	}

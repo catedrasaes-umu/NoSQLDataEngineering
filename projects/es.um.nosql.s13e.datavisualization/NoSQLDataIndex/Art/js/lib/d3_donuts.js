@@ -20,9 +20,9 @@ function drawD3Donuts(DiffStruct, divId)
 	jsonObj.forEach(function(d)
 	{
 		var counter = 0;
-		for (var numVersions in d)
-			if (typeof d[numVersions] === "number")
-				counter += d[numVersions];
+		for (var numVariations in d)
+			if (typeof d[numVariations] === "number")
+				counter += d[numVariations];
 
 		d.tmp = color.domain().map(function(name)
 		{
