@@ -1,6 +1,3 @@
-/**
- *
- */
 package es.um.nosql.s13e.json2dbschema.process;
 
 import java.util.ArrayList;
@@ -22,7 +19,7 @@ import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
@@ -47,8 +44,8 @@ public class NoSQLModelBuilder
 {
 	private NoSQLSchemaFactory factory;
 
-	// Reverse indexes for finding EntityVersions
-	private Map<SchemaComponent, EntityVersion> mEntityVersions;
+	// Reverse indexes for finding EntityVariations
+	private Map<SchemaComponent, EntityVariation> mEntityVersions;
 
 	// List of Entities
 	private List<Entity> mEntities;
@@ -64,7 +61,7 @@ public class NoSQLModelBuilder
 		name = name2;
 
 		mEntities = new ArrayList<Entity>(20);
-		mEntityVersions = new HashMap<SchemaComponent, EntityVersion>();
+		mEntityVersions = new HashMap<SchemaComponent, EntityVariation>();
 	}
 
 	public NoSQLSchema build(Map<String, List<SchemaComponent>> rawEntities)
@@ -84,7 +81,7 @@ public class NoSQLModelBuilder
 			OfInt n = IntStream.iterate(1, i -> i+1).iterator();
 
 			schemas.forEach(schema -> {
-				EntityVersion theEV = factory.createEntityVersion();
+			  EntityVariation theEV = factory.createEntityVariation();
 				theEV.setVersionId(n.next());
 
 				// Set the root flag. It is needed to know which
@@ -92,7 +89,7 @@ public class NoSQLModelBuilder
 				ObjectSC obj = (ObjectSC)schema;
 				theEV.setRoot(obj.isRoot);
 
-				e.getEntityversions().add(theEV);
+				e.getEntityvariations().add(theEV);
 				mEntityVersions.put(schema, theEV);
 			});
 		});
@@ -106,7 +103,7 @@ public class NoSQLModelBuilder
 
 		// Opposite references
 		mEntities.forEach(eFrom -> {
-			eFrom.getEntityversions().forEach(ev -> {
+			eFrom.getEntityvariations().forEach(ev -> {
 				ev.getProperties().stream().filter(p -> p instanceof Reference).forEach(r -> {
 					Reference ref = (Reference)r;
 					Entity eTo = ref.getRefTo();
@@ -114,7 +111,7 @@ public class NoSQLModelBuilder
 					// Find a EntityVersion of eTo that has a reference to the
 					// current Entity eFrom
 					Optional<Property> refTo =
-							eTo.getEntityversions().stream().flatMap(evTo ->
+							eTo.getEntityvariations().stream().flatMap(evTo ->
 							evTo.getProperties().stream().filter(pTo -> pTo instanceof Reference))
 							.filter(rTo -> ((Reference)rTo).getRefTo() == eFrom).findFirst();
 
@@ -134,7 +131,7 @@ public class NoSQLModelBuilder
 	{
 		return 
 			new ReferenceMatcher<>(mEntities.stream()
-				.filter(e -> e.getEntityversions().stream().anyMatch(EntityVersion::isRoot))
+				.filter(e -> e.getEntityvariations().stream().anyMatch(EntityVariation::isRoot))
 				.map(e -> 
 					Pair.of(new HashSet<String>(Arrays.asList(
 								e.getName(),
@@ -144,7 +141,7 @@ public class NoSQLModelBuilder
 				.flatMap(p -> p.getKey().stream().map(s -> Pair.of(s,p.getValue()))));
 	}
 
-	private void fillEV(SchemaComponent schema, EntityVersion ev)
+	private void fillEV(SchemaComponent schema, EntityVariation ev)
 	{
 		assert(schema instanceof ObjectSC);
 
@@ -231,7 +228,7 @@ public class NoSQLModelBuilder
 
 		// Non-homogeneous array. If all elements are objects, then
 		// create an aggregate. If not, create a tuple
-		EntityVersion ev = mEntityVersions.get(sc.getInners().get(0));
+		EntityVariation ev = mEntityVersions.get(sc.getInners().get(0));
 		if (ev != null)
 		{
 			Aggregate a = factory.createAggregate();

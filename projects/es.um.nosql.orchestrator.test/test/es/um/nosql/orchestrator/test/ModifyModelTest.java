@@ -12,7 +12,7 @@ import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.junit.Test;
 
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
@@ -31,7 +31,7 @@ public class ModifyModelTest
     NoSQLSchema schema = loader.load(new File(inputRoute), NoSQLSchema.class);
 
     for (Entity e : schema.getEntities())
-      for (EntityVersion ev : e.getEntityversions())
+      for (EntityVariation ev : e.getEntityvariations())
         ev.getProperties().stream().filter(p -> p instanceof Reference).map(p -> (Reference)p).forEach(ref ->
         {
           if (e.getName().equals("Posts") && (ref.getName().equals("LastEditorUserId") || ref.getName().equals("OwnerUserId")))

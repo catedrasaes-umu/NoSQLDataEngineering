@@ -15,7 +15,7 @@ import com.google.gson.JsonArray;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
@@ -470,7 +470,7 @@ public class InferenceTest
         idToDelete = e;
         continue;
       }
-      for (EntityVersion ev : e.getEntityversions())
+      for (EntityVariation ev : e.getEntityvariations())
       {
         Property malformedId = null;
         for (Property p : ev.getProperties())

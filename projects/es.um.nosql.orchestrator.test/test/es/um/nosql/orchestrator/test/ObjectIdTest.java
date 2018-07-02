@@ -78,7 +78,7 @@ public class ObjectIdTest
         memberships = e;
     }
 
-    memberships.getEntityversions().forEach(ev ->
+    memberships.getEntityvariations().forEach(ev ->
     {
       assertTrue(ev.getProperties().stream().noneMatch(p -> p.getName().equals("_id") && p instanceof Association));
     });
