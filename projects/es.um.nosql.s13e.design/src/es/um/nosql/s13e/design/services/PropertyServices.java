@@ -8,7 +8,7 @@ import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
@@ -20,7 +20,7 @@ public class PropertyServices
   {
     List<Attribute> result = new ArrayList<Attribute>();
 
-    for (EntityVersion eVersion : entity.getEntityversions())
+    for (EntityVariation eVersion : entity.getEntityvariations())
     {
       eVersion.getProperties().stream().filter(prop -> prop instanceof Attribute).forEach(prop -> {
         Attribute attr = (Attribute) prop;
@@ -56,7 +56,7 @@ public class PropertyServices
   {
     List<Association> result = new ArrayList<Association>();
 
-    for (EntityVersion eVersion : entity.getEntityversions())
+    for (EntityVariation eVersion : entity.getEntityvariations())
     {
       eVersion.getProperties().stream().filter(prop -> prop instanceof Association).forEach(prop -> {
         Association assoc = (Association) prop;
@@ -98,20 +98,20 @@ public class PropertyServices
   {
     List<Attribute> result = new ArrayList<Attribute>();
 
-    if (entity.getEntityversions().isEmpty())
+    if (entity.getEntityvariations().isEmpty())
       return result;
 
-    EntityVersion eVersion = entity.getEntityversions().get(0);
+    EntityVariation eVersion = entity.getEntityvariations().get(0);
 
     for (Property prop : eVersion.getProperties())
       if (prop instanceof Attribute)
         result.add((Attribute) prop);
 
-    if (entity.getEntityversions().size() == 1)
+    if (entity.getEntityvariations().size() == 1)
       return result;
 
     result = result.stream().filter(attr1 -> {
-      return entity.getEntityversions().stream().skip(1).allMatch(ev -> {
+      return entity.getEntityvariations().stream().skip(1).allMatch(ev -> {
         for (Property p : ev.getProperties())
           if (p instanceof Attribute && checkAttributesEqual(attr1, (Attribute) p))
             return true;
@@ -125,7 +125,7 @@ public class PropertyServices
     return result;
   }
 
-  public List<Attribute> getParticularAttributeList(EntityVersion eVersion)
+  public List<Attribute> getParticularAttributeList(EntityVariation eVersion)
   {
     List<Attribute> result = new ArrayList<Attribute>();
     List<Attribute> commonAttrs = getCommonAttributeList((Entity) eVersion.eContainer());
@@ -149,20 +149,20 @@ public class PropertyServices
   {
     List<Association> result = new ArrayList<Association>();
 
-    if (entity.getEntityversions().isEmpty())
+    if (entity.getEntityvariations().isEmpty())
       return result;
 
-    EntityVersion eVersion = entity.getEntityversions().get(0);
+    EntityVariation eVersion = entity.getEntityvariations().get(0);
 
     for (Property prop : eVersion.getProperties())
       if (prop instanceof Association)
         result.add((Association) prop);
 
-    if (entity.getEntityversions().size() == 1)
+    if (entity.getEntityvariations().size() == 1)
       return result;
 
     result = result.stream().filter(assc -> {
-      return entity.getEntityversions().stream().skip(1).allMatch(ev -> {
+      return entity.getEntityvariations().stream().skip(1).allMatch(ev -> {
         for (Property p : ev.getProperties())
           if (p instanceof Association && checkAssociationsEqual(assc, (Association) p))
             return true;
@@ -176,7 +176,7 @@ public class PropertyServices
     return result;
   }
 
-  public List<Association> getParticularAssociationList(EntityVersion eVersion)
+  public List<Association> getParticularAssociationList(EntityVariation eVersion)
   {
     List<Association> result = new ArrayList<Association>();
     List<Association> commonAssc = getCommonAssociationList((Entity) eVersion.eContainer());

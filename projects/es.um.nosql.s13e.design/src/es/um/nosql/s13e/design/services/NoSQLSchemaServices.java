@@ -8,7 +8,7 @@ import org.eclipse.emf.common.util.ECollections;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
@@ -19,8 +19,8 @@ public class NoSQLSchemaServices
   public boolean existsSchemaVersion(NoSQLSchema model)
   {
     for (Entity entity : model.getEntities())
-      for (EntityVersion eVersion : entity.getEntityversions())
-        if (eVersion.isRoot())
+      for (EntityVariation eVariation : entity.getEntityvariations())
+        if (eVariation.isRoot())
           return true;
 
     return false;
@@ -31,8 +31,8 @@ public class NoSQLSchemaServices
     List<Entity> result = new ArrayList<Entity>();
 
     for (Entity entity : model.getEntities())
-      for (EntityVersion eVersion : entity.getEntityversions())
-        if (eVersion.isRoot())
+      for (EntityVariation eVariation : entity.getEntityvariations())
+        if (eVariation.isRoot())
         {
           result.add(entity);
           break;
@@ -49,9 +49,9 @@ public class NoSQLSchemaServices
     return result;
   }
 
-  public List<EntityVersion> getEVersionsForIndexBranch(NoSQLSchema model)
+  public List<EntityVariation> geteVariationsForIndexBranch(NoSQLSchema model)
   {
-    List<EntityVersion> result = new ArrayList<EntityVersion>();
+    List<EntityVariation> result = new ArrayList<EntityVariation>();
 
     ECollections.sort(model.getEntities(), new Comparator<Entity>()
     {
@@ -62,20 +62,20 @@ public class NoSQLSchemaServices
     });
 
     for (Entity entity : model.getEntities())
-      for (EntityVersion eVersion : entity.getEntityversions())
-        result.add(eVersion);
+      for (EntityVariation eVariation : entity.getEntityvariations())
+        result.add(eVariation);
 
     return result;
   }
 
-  public List<EntityVersion> getEVersionsFromSchema(EntityVersion root)
+  public List<EntityVariation> geteVariationsFromSchema(EntityVariation root)
   {
-    List<EntityVersion> result = SchemaCollector.getEVersionsFromSchema(root);
-    result.sort(new Comparator<EntityVersion>()
+    List<EntityVariation> result = SchemaCollector.geteVariationsFromSchema(root);
+    result.sort(new Comparator<EntityVariation>()
     {
-      public int compare(EntityVersion ev0, EntityVersion ev1)
+      public int compare(EntityVariation ev0, EntityVariation ev1)
       {
-        return ev0.getVersionId() > ev1.getVersionId() ? 1 : -1;
+        return ev0.getVariationId() > ev1.getVariationId() ? 1 : -1;
       }
     });
 
@@ -84,7 +84,7 @@ public class NoSQLSchemaServices
 
   /**
    * Method used for the Entity Union Schema viewpoint to gather entities related
-   * to any EVersion root.
+   * to any eVariation root.
    * 
    * @param entity
    *          The entity of which the union is being performed
@@ -94,20 +94,20 @@ public class NoSQLSchemaServices
   {
     List<Entity> result = new ArrayList<Entity>();
 
-    entity.getEntityversions().stream().filter(ev -> ev.isRoot())
+    entity.getEntityvariations().stream().filter(ev -> ev.isRoot())
         .forEach(ev -> result.addAll(getEntitiesFromSchema(ev)));
 
     return result;
   }
 
   /**
-   * Method used to gather all the entities related to a EVersion root in any way.
+   * Method used to gather all the entities related to a eVariation root in any way.
    * 
    * @param root
-   *          The EVersion of which we want to collect all the entities
+   *          The eVariation of which we want to collect all the entities
    * @return A list of Entities
    */
-  public List<Entity> getEntitiesFromSchema(EntityVersion root)
+  public List<Entity> getEntitiesFromSchema(EntityVariation root)
   {
     List<Entity> result = SchemaCollector.getEntitiesFromSchema(root);
     result.sort(new Comparator<Entity>()
@@ -122,31 +122,31 @@ public class NoSQLSchemaServices
   }
 
   /**
-   * Method used for the Entity Union Schema viewpoint to gather EVersions related
-   * to any EVersion root.
+   * Method used for the Entity Union Schema viewpoint to gather eVariations related
+   * to any eVariation root.
    * 
    * @param entity
    *          The entity of which the union is being performed
-   * @return A list of EVersions
+   * @return A list of eVariations
    */
-  public List<EntityVersion> getEVersionsFromEntityUnion(Entity entity)
+  public List<EntityVariation> geteVariationsFromEntityUnion(Entity entity)
   {
-    List<EntityVersion> result = new ArrayList<EntityVersion>();
+    List<EntityVariation> result = new ArrayList<EntityVariation>();
 
-    entity.getEntityversions().stream().filter(ev -> ev.isRoot())
-        .forEach(ev -> result.addAll(getReducedEVersionsFromSchema(ev)));
+    entity.getEntityvariations().stream().filter(ev -> ev.isRoot())
+        .forEach(ev -> result.addAll(getReducedeVariationsFromSchema(ev)));
 
     return result;
   }
 
-  public List<EntityVersion> getReducedEVersionsFromSchema(EntityVersion root)
+  public List<EntityVariation> getReducedeVariationsFromSchema(EntityVariation root)
   {
-    List<EntityVersion> result = SchemaCollector.getReducedEVersionsFromSchema(root);
+    List<EntityVariation> result = SchemaCollector.getReducedeVariationsFromSchema(root);
 
     return result;
   }
 
-  public List<Entity> getIndirectEntitiesFromSchema(EntityVersion root)
+  public List<Entity> getIndirectEntitiesFromSchema(EntityVariation root)
   {
     List<Entity> result = SchemaCollector.getEntitiesFromSchema(root);
 
@@ -157,9 +157,9 @@ public class NoSQLSchemaServices
     return result;
   }
 
-  public List<EntityVersion> getIndirectEVersionsFromSchema(EntityVersion root)
+  public List<EntityVariation> getIndirecteVariationsFromSchema(EntityVariation root)
   {
-    List<EntityVersion> result = SchemaCollector.getReducedEVersionsFromSchema(root);
+    List<EntityVariation> result = SchemaCollector.getReducedeVariationsFromSchema(root);
 
     for (Property prop : root.getProperties())
       if (prop instanceof Aggregate)
@@ -168,10 +168,10 @@ public class NoSQLSchemaServices
     return result;
   }
 
-  public List<EntityVersion> getEVersionsFromEVersion(EntityVersion eVersion)
+  public List<EntityVariation> geteVariationsFromeVariation(EntityVariation eVariation)
   {
-    List<EntityVersion> result = new ArrayList<EntityVersion>();
-    NoSQLSchema model = (NoSQLSchema) eVersion.eContainer().eContainer();
+    List<EntityVariation> result = new ArrayList<EntityVariation>();
+    NoSQLSchema model = (NoSQLSchema) eVariation.eContainer().eContainer();
 
     ECollections.sort(model.getEntities(), new Comparator<Entity>()
     {
@@ -182,9 +182,9 @@ public class NoSQLSchemaServices
     });
 
     for (Entity entity : model.getEntities())
-      for (EntityVersion evInEntity : entity.getEntityversions())
+      for (EntityVariation evInEntity : entity.getEntityvariations())
         if (evInEntity.isRoot()
-            && (evInEntity == eVersion || SchemaCollector.getEVersionsFromSchema(evInEntity).contains(eVersion)))
+            && (evInEntity == eVariation || SchemaCollector.geteVariationsFromSchema(evInEntity).contains(eVariation)))
           result.add(evInEntity);
 
     return result;
