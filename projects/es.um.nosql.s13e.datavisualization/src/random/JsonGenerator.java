@@ -15,7 +15,7 @@ import com.google.gson.JsonObject;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
@@ -32,7 +32,7 @@ public class JsonGenerator
 	private static final int MIN_INSTANCES = 3;
 	private static final int MAX_INSTANCES = 10;
 
-	private Map<EntityVersion, List<JsonObject>> mapEV;
+	private Map<EntityVariation, List<JsonObject>> mapEV;
 	private Random random;
 
 	private JsonArray lStorage;
@@ -69,7 +69,7 @@ public class JsonGenerator
 	 */
 	public String generate(NoSQLSchema schema)
 	{
-		mapEV = new HashMap<EntityVersion, List<JsonObject>>();
+		mapEV = new HashMap<EntityVariation, List<JsonObject>>();
 
 		random = new Random();
 		lStorage = new JsonArray();
@@ -78,7 +78,7 @@ public class JsonGenerator
 		int IDENTIFIER = 0;
 		for (Entity entity : schema.getEntities())
 		{
-			for (EntityVersion eVersion : entity.getEntityversions())
+			for (EntityVariation eVersion : entity.getEntityvariations())
 			{
 				mapEV.put(eVersion, new ArrayList<JsonObject>());
 
@@ -126,7 +126,7 @@ public class JsonGenerator
 
 		// Second run to generate the aggregates since now all the versions and instances exist.
 		for (Entity entity : schema.getEntities())
-			for (EntityVersion eVersion : entity.getEntityversions())
+			for (EntityVariation eVersion : entity.getEntityvariations())
 				for (JsonObject strObj : mapEV.get(eVersion))
 				{
 					for (Property property : eVersion.getProperties())
@@ -137,7 +137,7 @@ public class JsonGenerator
 							JsonArray array = new JsonArray();
 							strObj.add(aggr.getName(), array);
 
-							for (EntityVersion aggrEV : aggr.getRefTo())
+							for (EntityVariation aggrEV : aggr.getRefTo())
 								array.add(mapEV.get(aggrEV).get(0));
 						}
 					}

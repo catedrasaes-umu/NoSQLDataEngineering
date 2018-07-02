@@ -13,7 +13,7 @@ import com.google.gson.JsonObject;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
@@ -49,7 +49,7 @@ public class ObjGenerator
 	private static final int MAX_REF = 3;
 
 	private NoSQLSchema schema;
-	private Map<String, EntityVersion> mapEV;
+	private Map<String, EntityVariation> mapEV;
 	private Map<String, Entity> mapE;
 	private Random random;
 
@@ -85,7 +85,7 @@ public class ObjGenerator
 	{
 		schema = NoSQLSchemaFactory.eINSTANCE.createNoSQLSchema();
 		mapE = new HashMap<String, Entity>();
-		mapEV = new HashMap<String, EntityVersion>();
+		mapEV = new HashMap<String, EntityVariation>();
 
 		random = new Random();
 		lStorage = new JsonArray();
@@ -104,10 +104,10 @@ public class ObjGenerator
 			IDENTIFIER = 0;
 			for (int i = 1; i < getRandomBetween(MIN_ENTITY_VERSIONS, MAX_ENTITY_VERSIONS) + 1; i++)
 			{
-				EntityVersion oev = NoSQLSchemaFactory.eINSTANCE.createEntityVersion();
+			  EntityVariation oev = NoSQLSchemaFactory.eINSTANCE.createEntityVariation();
 				oev.setVersionId(++IDENTIFIER);
 				oev.setRoot(true);
-				mapE.get(entity).getEntityversions().add(oev);
+				mapE.get(entity).getEntityvariations().add(oev);
 
 				JsonObject strObj = new JsonObject();
 
@@ -198,7 +198,7 @@ public class ObjGenerator
 	 * @param strObj The JSON object to which the "type" field is being added.
 	 * @param type The type to be given.
 	 */
-	private void generateType(EntityVersion oev, JsonObject strObj, String type)
+	private void generateType(EntityVariation oev, JsonObject strObj, String type)
 	{
 		Attribute attribute = NoSQLSchemaFactory.eINSTANCE.createAttribute();
 		PrimitiveType pType = NoSQLSchemaFactory.eINSTANCE.createPrimitiveType();
@@ -215,7 +215,7 @@ public class ObjGenerator
 	 * @param oev The EntityVersion to which the string is being associated.
 	 * @param strObj The JSON object to which the "string" field is being added.
 	 */
-	private void generateStrings(EntityVersion oev, JsonObject strObj)
+	private void generateStrings(EntityVariation oev, JsonObject strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_STRING_ATTR, MAX_STRING_ATTR); j++)
 		{
@@ -235,7 +235,7 @@ public class ObjGenerator
 	 * @param oev The EntityVersion to which the int is being associated.
 	 * @param strObj The JSON object to which the "int" field is being added.
 	 */
-	private void generateInts(EntityVersion oev, JsonObject strObj)
+	private void generateInts(EntityVariation oev, JsonObject strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_INT_ATTR, MAX_INT_ATTR); j++)
 		{
@@ -255,7 +255,7 @@ public class ObjGenerator
 	 * @param oev The EntityVersion to which the float is being associated.
 	 * @param strObj The JSON object to which the "float" field is being added.
 	 */
-	private void generateFloats(EntityVersion oev, JsonObject strObj)
+	private void generateFloats(EntityVariation oev, JsonObject strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_FLOAT_ATTR, MAX_FLOAT_ATTR); j++)
 		{
@@ -275,7 +275,7 @@ public class ObjGenerator
 	 * @param oev The EntityVersion to which the bool is being associated.
 	 * @param strObj The JSON object to which the "bool" field is being added.
 	 */
-	private void generateBools(EntityVersion oev, JsonObject strObj)
+	private void generateBools(EntityVariation oev, JsonObject strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_BOOL_ATTR, MAX_BOOL_ATTR); j++)
 		{
@@ -295,7 +295,7 @@ public class ObjGenerator
 	 * @param oev The EntityVersion to which the tuple is being associated.
 	 * @param strObj The JSON object to which the "tuple" field is being added.
 	 */
-	private void generateTuples(EntityVersion oev, JsonObject strObj)
+	private void generateTuples(EntityVariation oev, JsonObject strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_TUPLE_ATTR, MAX_TUPLE_ATTR); j++)
 		{
@@ -386,7 +386,7 @@ public class ObjGenerator
 	 * @param oev The EntityVersion to which the aggregation is being associated.
 	 * @param strObj The JSON object to which the "Aggregate" field is being added.
 	 */
-	private void generateAggregates(EntityVersion oev, JsonObject strObj)
+	private void generateAggregates(EntityVariation oev, JsonObject strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_AGGR, MAX_AGGR) && !mapEV.isEmpty(); j++)
 		{
@@ -400,7 +400,7 @@ public class ObjGenerator
 				aggr.setUpperBound(1);
 
 				String evId = (String)mapEV.keySet().toArray()[random.nextInt(mapEV.size())];
-				EntityVersion ev = mapEV.get(evId);
+				EntityVariation ev = mapEV.get(evId);
 				ev.setRoot(false);
 				aggr.getRefTo().add(ev);
 
@@ -421,7 +421,7 @@ public class ObjGenerator
 				for (int k = 1; k < getRandomBetween(aggr.getLowerBound(), aggr.getUpperBound()) && k < mapEV.size(); k++)
 				{
 					String evId = (String)mapEV.keySet().toArray()[random.nextInt(mapEV.size())];
-					EntityVersion ev = mapEV.get(evId);
+					EntityVariation ev = mapEV.get(evId);
 					ev.setRoot(false);
 					aggr.getRefTo().add(ev);
 

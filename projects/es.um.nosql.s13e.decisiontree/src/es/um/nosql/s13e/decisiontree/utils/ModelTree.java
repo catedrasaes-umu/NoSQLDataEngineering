@@ -1,18 +1,18 @@
 package es.um.nosql.s13e.decisiontree.utils;
 
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 
 public class ModelTree
 {
 	private Property property;
-	private EntityVersion tag;
+	private EntityVariation tag;
 	private ModelTree nodePresent;
 	private ModelTree nodeAbsent;
 	private Entity entity;
 
-	public ModelTree(Entity e, EntityVersion tag)
+	public ModelTree(Entity e, EntityVariation tag)
 	{
 		super();
 		this.tag = tag;
@@ -40,11 +40,11 @@ public class ModelTree
 		this.property = property;
 	}
 	
-	public EntityVersion getTag() {
+	public EntityVariation getTag() {
 		return tag;
 	}
 
-	public void setTag(EntityVersion tag) {
+	public void setTag(EntityVariation tag) {
 		this.tag = tag;
 	}
 

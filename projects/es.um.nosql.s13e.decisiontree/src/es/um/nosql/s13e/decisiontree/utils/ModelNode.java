@@ -1,17 +1,17 @@
 package es.um.nosql.s13e.decisiontree.utils;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 
 public class ModelNode
 {
 	private PropertySpec property;
-	private EntityVersion ev;
+	private EntityVariation ev;
 	private ModelNode nodePresent;
 	private ModelNode nodeAbsent;
 	private boolean checkNot;
 
-	public ModelNode(EntityVersion tag)
+	public ModelNode(EntityVariation tag)
 	{
 		setEv(tag);
 		setCheckNot(false);
@@ -31,11 +31,11 @@ public class ModelNode
 		this.property = property;
 	}
 	
-	public EntityVersion getEv() {
+	public EntityVariation getEv() {
 		return ev;
 	}
 
-	public void setEv(EntityVersion tag) {
+	public void setEv(EntityVariation tag) {
 		this.ev = tag;
 	}
 

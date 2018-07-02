@@ -20,7 +20,7 @@ import es.um.nosql.s13e.DecisionTree.PropertySpec2
 import es.um.nosql.s13e.DecisionTree.IntermediateNode
 import es.um.nosql.s13e.DecisionTree.LeafNode
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation
 import java.util.Deque
 import java.util.HashMap
 import java.util.Map
@@ -105,7 +105,7 @@ class DecisionTreeToJS
 			{
 				«generateCheckTree(dte, dte.root)»
 			}
-			«FOR EntityVersion ev : dte.entity.entityversions SEPARATOR ','»
+			«FOR EntityVariation ev : dte.entity.entityvariations SEPARATOR ','»
 				«generateSpecificCheck(dte, ev, paths.get(ev))»
 			«ENDFOR»
 		}
@@ -120,18 +120,18 @@ class DecisionTreeToJS
 	
 	def calcPaths(DecisionTreeForEntity dte) 
 	{
-		var paths = new HashMap<EntityVersion, Deque<PropertyAndBranch>>
+		var paths = new HashMap<EntityVariation, Deque<PropertyAndBranch>>
 		calcPaths(paths, newLinkedList(), dte.root)
 		return paths
 	}
 
-	def void calcPaths(Map<EntityVersion, Deque<PropertyAndBranch>> paths,
+	def void calcPaths(Map<EntityVariation, Deque<PropertyAndBranch>> paths,
 		Deque<PropertyAndBranch> checks,
 		DecisionTreeNode node)
 	{
 		switch node
 		{
-			LeafNode : paths.put(node.identifiedVersion, newLinkedList(checks.clone))
+			LeafNode : paths.put(node.identifiedVariation, newLinkedList(checks.clone))
 			IntermediateNode : {
 				// yes
 				checks.add(new PropertyAndBranch(node.checkedProperty, true))
@@ -147,7 +147,7 @@ class DecisionTreeToJS
 	}
 
 	def generateSpecificCheck(DecisionTreeForEntity dte, 
-		EntityVersion version, Deque<PropertyAndBranch> checks)
+		EntityVariation version, Deque<PropertyAndBranch> checks)
 	'''
 		checkEV_«dte.entity.name»_«version.versionId»: function (obj)
 		{
@@ -171,7 +171,7 @@ class DecisionTreeToJS
 	''' 
 	
 	def dispatch generateCheckTree(DecisionTreeForEntity dte, LeafNode node) '''
-		return "«dte.entity.name + "_" + node.identifiedVersion.versionId»";
+		return "«dte.entity.name + "_" + node.identifiedVariation.versionId»";
 	'''
 	
     def genProp(PropertySpec2 p)

@@ -12,7 +12,7 @@ import Version_Diff.Version_DiffFactory;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
@@ -71,13 +71,13 @@ public class M2M
 	{
 		NoSQLDifferences differenceModel = Version_DiffFactory.eINSTANCE.createNoSQLDifferences();
 		differenceModel.setName(baseModel.getName());
-		Map<EntityVersion, List<Pair<String, FieldType>>> evMap;
+		Map<EntityVariation, List<Pair<String, FieldType>>> evMap;
 
 		for (Entity entity : baseModel.getEntities())
 		{
 			evMap = getEVPropertiesMap(entity);
 
-			for (EntityVersion entityVersion : entity.getEntityversions())
+			for (EntityVariation entityVersion : entity.getEntityvariations())
 			{
 				TypeDifference tDiff = Version_DiffFactory.eINSTANCE.createTypeDifference();
 				tDiff.setName(entity.getName() + "_" + entityVersion.getVersionId());
@@ -95,11 +95,11 @@ public class M2M
 	 * @param baseEntity The Entity containing the EntityVersions to be mapped.
 	 * @return A Map<EntityVersion, List<Pair<String, String>>> in which the mapping is stored.
 	 */
-	private Map<EntityVersion, List<Pair<String, FieldType>>> getEVPropertiesMap(Entity baseEntity)
+	private Map<EntityVariation, List<Pair<String, FieldType>>> getEVPropertiesMap(Entity baseEntity)
 	{
-		Map<EntityVersion, List<Pair<String, FieldType>>> evMap = new HashMap<EntityVersion, List<Pair<String, FieldType>>>();
+		Map<EntityVariation, List<Pair<String, FieldType>>> evMap = new HashMap<EntityVariation, List<Pair<String, FieldType>>>();
 
-		for (EntityVersion ev : baseEntity.getEntityversions())
+		for (EntityVariation ev : baseEntity.getEntityvariations())
 		{
 			List<Pair<String, FieldType>> pairList = new ArrayList<Pair<String, FieldType>>();
 			evMap.put(ev, pairList);
@@ -161,7 +161,7 @@ public class M2M
 
 					((AggregateType)type).setLowerBound(((Aggregate)property).getLowerBound());
 					((AggregateType)type).setUpperBound(((Aggregate)property).getUpperBound());
-					for (EntityVersion aggregatedEV : ((Aggregate)property).getRefTo())
+					for (EntityVariation aggregatedEV : ((Aggregate)property).getRefTo())
 						((AggregateType)type).getType().add(((Entity)aggregatedEV.eContainer()).getName() + "_" + String.valueOf(aggregatedEV.getVersionId()));
 				}
 
@@ -210,11 +210,11 @@ public class M2M
 	 * @param tDiff TypeDifferences whose fields HasNotFields are being generated.
 	 * @param evMap The map in which EntityVersions are associated with their Properties (name, value).
 	 */
-	private void addHasNotFields(EntityVersion theEntityVersion, TypeDifference tDiff, Map<EntityVersion, List<Pair<String, FieldType>>> evMap)
+	private void addHasNotFields(EntityVariation theEntityVersion, TypeDifference tDiff, Map<EntityVariation, List<Pair<String, FieldType>>> evMap)
 	{
 		boolean propertyFound = false;
 
-		for (EntityVersion evInList : evMap.keySet())
+		for (EntityVariation evInList : evMap.keySet())
 		{
 			// And we add other EntityVersion properties as HasNotValue.
 			if (evInList != theEntityVersion)

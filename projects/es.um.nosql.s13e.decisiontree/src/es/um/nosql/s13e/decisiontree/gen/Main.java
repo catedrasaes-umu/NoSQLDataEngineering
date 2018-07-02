@@ -20,7 +20,7 @@ import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
 
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.DecisionTree.DecisionTreeForEntity;
 import es.um.nosql.s13e.DecisionTree.DecisionTreeNode;
@@ -34,7 +34,7 @@ import es.um.nosql.s13e.decisiontree.utils.ModelNode;
 import es.um.nosql.s13e.decisiontree.utils.OpenJ48;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
-import es.um.nosql.s13e.EntityDifferentiation.EntityVersionProp;
+import es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 import es.um.nosql.s13e.util.emf.ModelLoader;
@@ -58,7 +58,7 @@ public class Main
 
 	static Pattern pattern = Pattern.compile("\\[(.*?) .*$");
 	
-	private ModelNode getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, PropertySpec> properties) throws Exception
+	private ModelNode getModelTree(ClassifierTree tree, Map<String, EntityVariation> entityVersions, Map<String, PropertySpec> properties) throws Exception
 	{
 		if (tree.isLeaf())
 		{
@@ -67,7 +67,7 @@ public class Main
 
 			if (matcher.find())
 			{
-				EntityVersion ev = entityVersions.get(matcher.group(1));
+				EntityVariation ev = entityVersions.get(matcher.group(1));
 				return new ModelNode(ev);
 			}
 			else
@@ -146,7 +146,7 @@ public class Main
 		DecisionTrees dt = DecisionTreeFactory.eINSTANCE.createDecisionTrees();
 		dt.setName(diff.getName());
 		
-		diff.getEntityDiffSpecs().stream().filter(ed -> ed.getEntityVersionProps().size() > 1)
+		diff.getEntityDiffSpecs().stream().filter(ed -> ed.getEntityVariationProps().size() > 1)
 			.forEach(eds -> {
 				ModelNode root = generateTreeForEntity(eds);
 				
@@ -176,7 +176,7 @@ public class Main
 		if (root.is_leaf())
 		{
 			LeafNode ln =  DecisionTreeFactory.eINSTANCE.createLeafNode();
-			ln.setIdentifiedVersion(root.getEv());
+			ln.setIdentifiedVariation(root.getEv());
 			return ln;
 		}
 		else
@@ -221,8 +221,8 @@ public class Main
 
 	private ModelNode generateTreeForEntity(EntityDiffSpec eds)
 	{
-		Map<EntityVersionProp, List<Pair<String, PropertySpec>>> propsByEv =
-			eds.getEntityVersionProps().stream()
+		Map<EntityVariationProp, List<Pair<String, PropertySpec>>> propsByEv =
+			eds.getEntityVariationProps().stream()
 			.collect(toMap(Function.identity(),
 					evp ->
 						Stream.concat(
@@ -261,10 +261,10 @@ public class Main
 //						Function.identity()));
 		
 		final String entityName = eds.getEntity().getName();
-		Map<String,EntityVersionProp> classNameToEvp = eds.getEntityVersionProps().stream()
-				.map(evp -> Pair.of(String.format("%1$s_%2$d", entityName, evp.getEntityVersion().getVersionId()),evp))
+		Map<String,EntityVariationProp> classNameToEvp = eds.getEntityVariationProps().stream()
+				.map(evp -> Pair.of(String.format("%1$s_%2$d", entityName, evp.getEntityVariation().getVersionId()),evp))
 				.collect(toMap(Pair::getKey,Pair::getValue));
-		Map<EntityVersionProp,String> evpToClassName = classNameToEvp.entrySet().stream()
+		Map<EntityVariationProp,String> evpToClassName = classNameToEvp.entrySet().stream()
 				.collect(toMap(Map.Entry::getValue,
 						Map.Entry::getKey));
 
@@ -287,7 +287,7 @@ public class Main
 		final double[] defaultValues = new double[features.size()+1];
 		Arrays.fill(defaultValues,1.0);
 		
-		Map<EntityVersionProp, Instance> featuresByEv =
+		Map<EntityVariationProp, Instance> featuresByEv =
 			propsByEv.entrySet().stream()
 			.collect(toMap(Map.Entry::getKey,
 					e -> {
@@ -317,7 +317,7 @@ public class Main
 					getModelTree(root,
 							classNameToEvp.entrySet().stream()
 								.collect(toMap(Map.Entry::getKey,
-											   v -> v.getValue().getEntityVersion())),
+											   v -> v.getValue().getEntityVariation())),
 							features);
 			
 			printModelTree(eds.getEntity(),modelTree);

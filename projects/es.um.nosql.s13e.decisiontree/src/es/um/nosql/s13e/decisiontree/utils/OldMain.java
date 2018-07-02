@@ -18,7 +18,7 @@ import java.util.stream.IntStream;
 import org.apache.commons.lang3.tuple.Pair;
 
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Property;
@@ -41,12 +41,12 @@ public class OldMain {
 		return classifier;
 	}
 	
-	public static Map<String, EntityVersion> getEntityVersions(NoSQLSchema schema)
+	public static Map<String, EntityVariation> getEntityVersions(NoSQLSchema schema)
 	{
 		return 
 			schema.getEntities().stream().flatMap(e ->
-				e.getEntityversions().stream()
-				.filter(EntityVersion::isRoot)
+				e.getEntityvariations().stream()
+				.filter(EntityVariation::isRoot)
 				.map(ev ->
 					Pair.of(String.format("%1$s:%2$d", e.getName(), ev.getVersionId())
 							,ev)))
@@ -57,7 +57,7 @@ public class OldMain {
 	{
 		return	
 			schema.getEntities().stream().flatMap(e ->
-				e.getEntityversions().stream().filter(EntityVersion::isRoot))
+				e.getEntityvariations().stream().filter(EntityVariation::isRoot))
 				.flatMap(ev -> ev.getProperties().stream())
 				.collect(Collectors.groupingBy(Serializer::serialize));
 	}
@@ -67,7 +67,7 @@ public class OldMain {
 		Map<String, List<String>> classes = new HashMap<String, List<String>>();
 		for (Entity entity: schema.getEntities())
 		{
-			for (EntityVersion entityVersion: entity.getEntityversions())
+			for (EntityVariation entityVersion: entity.getEntityvariations())
 			{
 				// FIXME
 				if (!entityVersion.isRoot())
@@ -164,7 +164,7 @@ public class OldMain {
 	}
 	
 
-	public static ModelTree getModelTree(ClassifierTree tree, Map<String, EntityVersion> entityVersions, Map<String, List<Property>> properties) throws Exception
+	public static ModelTree getModelTree(ClassifierTree tree, Map<String, EntityVariation> entityVersions, Map<String, List<Property>> properties) throws Exception
 	{
 		if (tree.isLeaf())
 		{
@@ -176,7 +176,7 @@ public class OldMain {
 			
 			if (matcher.find())
 			{
-				EntityVersion ev = entityVersions.get(matcher.group(1));
+			  EntityVariation ev = entityVersions.get(matcher.group(1));
 				return new ModelTree((Entity)ev.eContainer(),ev);
 			}
 			
