@@ -59,12 +59,12 @@ public class NoSQLSchemaToEntityDiff
    * The following code takes some assumptions.
    *
    * - All the objects are represented, so just storing their differences at the level of attributes contained or not contained is enough to discern them
-   * - In cases of same name attributes with different types between entity versions, more complete type enabled tests are output
+   * - In cases of same name attributes with different types between entity variations, more complete type enabled tests are output
    *
    * So what we do is:
    *
-   * 1. For each Entity, check all the common properties of all the EntityVersions (name and type). This will generate simple checks against property names.
-   * 2. For each EntityVersion, record the specific properties of that entity. There will be two types: Those with properties that don't appear in any other EVs
+   * 1. For each Entity, check all the common properties of all the EntityVariations (name and type). This will generate simple checks against property names.
+   * 2. For each EntityVariation, record the specific properties of that entity. There will be two types: Those with properties that don't appear in any other EVs
    *    (we have to check just the existence of the property with its name), and those with properties that exist in any other of the EVs. For those, we will have to check for the type.
    */
   public EntityDifferentiation m2m(NoSQLSchema schema)
@@ -102,7 +102,7 @@ public class NoSQLSchemaToEntityDiff
 
   private void transformEntity(Entity e, EntityDifferentiation diff)
   {
-    // Holds the set of properties to check for each EntityVersion. It will be used to
+    // Holds the set of properties to check for each EntityVariation. It will be used to
     // not to create duplicate checks
     Map<EntityVariation, Map<String, PropertySpec>> propSpecsByEV = new HashMap<>();
 
@@ -115,9 +115,9 @@ public class NoSQLSchemaToEntityDiff
     de.getCommonProps().addAll(commonProperties.stream()
         .map(this::genPropertySpecNamed).collect(toList()));
 
-    // Create and add all the EntityVersionProp. This is because it is easier, when
-    // identified the own attributes of an EntityVersion, output "HasNotField" items
-    // for the rest of EntityVersions
+    // Create and add all the EntityVariationProp. This is because it is easier, when
+    // identified the own attributes of an EntityVariation, output "HasNotField" items
+    // for the rest of EntityVariations
     e.getEntityvariations().forEach(ev -> {
       EntityVariationProp evp = EntityDifferentiationFactory.eINSTANCE.createEntityVariationProp();
       evp.setEntityVariation(ev);
@@ -134,10 +134,10 @@ public class NoSQLSchemaToEntityDiff
     {
       for (EntityVariation ev : e.getEntityvariations())
       {
-        // For each property, check whether other entity versions having this property have also the same type for it
+        // For each property, check whether other entity variations having this property have also the same type for it
         for (Property p : evOwnProperties.get(ev))
         {
-          // If this property appears in any other entity version with a different type, needs to type check
+          // If this property appears in any other entity variation with a different type, needs to type check
           boolean hasToTypeCheck =
               !evOwnProperties.entrySet().stream().filter(en -> en.getKey() != ev)
               .flatMap(en -> en.getValue().stream().filter(p1 -> PropertyJustNameHashingStrategy.checkEquality(p, p1)))
@@ -157,8 +157,8 @@ public class NoSQLSchemaToEntityDiff
 
       // Calc notProps
 
-      // For each entity version, for each property appearing in the rest 
-      // of entityVersions but not in this one, add a "notProp"
+      // For each entity variation, for each property appearing in the rest 
+      // of entityVariations but not in this one, add a "notProp"
       for (EntityVariationProp evp: de.getEntityVariationProps())
       {
         Set<String> ownPropNames =

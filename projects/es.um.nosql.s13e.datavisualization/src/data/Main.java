@@ -6,7 +6,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 
-import Version_Diff.NoSQLDifferences;
+import Variation_Diff.NoSQLDifferences;
 import data.generation.DifferencesToJSData;
 import data.generation.DifferencesToJSObj;
 import data.transform.M2M;
@@ -26,7 +26,7 @@ public class Main
 
 	private static final String INPUT_MODEL_EXT = ".nosqlschema";
 
-	private static final String OUTPUT_MODEL_EXT = ".version_diff";
+	private static final String OUTPUT_MODEL_EXT = ".variation_diff";
 
 	private static final String OUTPUT_CODE_EXT = ".js";
 

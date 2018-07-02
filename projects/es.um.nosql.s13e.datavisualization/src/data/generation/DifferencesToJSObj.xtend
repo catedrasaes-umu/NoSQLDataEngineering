@@ -1,19 +1,19 @@
 package data.generation
 
-import Version_Diff.NoSQLDifferences
-import Version_Diff.TypeDifference
-import Version_Diff.TypeHint
-import Version_Diff.HasField
-import Version_Diff.HasNotField
-import Version_Diff.Version_DiffFactory
+import Variation_Diff.NoSQLDifferences
+import Variation_Diff.TypeDifference
+import Variation_Diff.TypeHint
+import Variation_Diff.HasField
+import Variation_Diff.HasNotField
+import Variation_Diff.Variation_DiffFactory
 import org.eclipse.emf.common.util.EList
-import Version_Diff.EntityType
-import Version_Diff.HomogeneousTupleType
-import Version_Diff.HeterogeneousTupleType
-import Version_Diff.AggregateType
-import Version_Diff.ReferenceType
-import Version_Diff.FieldType
-import Version_Diff.PrimitiveType
+import Variation_Diff.EntityType
+import Variation_Diff.HomogeneousTupleType
+import Variation_Diff.HeterogeneousTupleType
+import Variation_Diff.AggregateType
+import Variation_Diff.ReferenceType
+import Variation_Diff.FieldType
+import Variation_Diff.PrimitiveType
 
 class DifferencesToJSObj
 {
@@ -115,17 +115,17 @@ class DifferencesToJSObj
 	«var i = 0»
 	«FOR String sType : TupleType.type»
 		«IF sType.startsWith("Tuple[") && sType.endsWith("]")»
-			«var tTuple = Version_DiffFactory.eINSTANCE.createHeterogeneousTupleType()»
+			«var tTuple = Variation_DiffFactory.eINSTANCE.createHeterogeneousTupleType()»
 			«fillTupleList(tTuple.type, sType.substring(6, sType.length - 1))»
 			|| «generateTypeCheck(name + "[" + i++ + "]", tTuple)»
 		«ELSE»
-			«var tPrimitive = Version_DiffFactory.eINSTANCE.createPrimitiveType()»
+			«var tPrimitive = Variation_DiffFactory.eINSTANCE.createPrimitiveType()»
 			«tPrimitive.setType(sType)»
 			|| «generateTypeCheck(name + "[" + i++ + "]", tPrimitive)»
 		«ENDIF»
 	«ENDFOR»'''
 
-	// Remember we previously saved the parent entity followed by a "_" and the versionId so we can now make a function call based on that string following the string "isOfExactType_".
+	// Remember we previously saved the parent entity followed by a "_" and the variationId so we can now make a function call based on that string following the string "isOfExactType_".
 	/**
 	 * Method used to generate code for an Aggregate Type comparison.
 	 */

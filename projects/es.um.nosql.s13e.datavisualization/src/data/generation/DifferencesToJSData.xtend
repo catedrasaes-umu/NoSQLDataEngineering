@@ -1,10 +1,10 @@
 package data.generation
 
-import Version_Diff.NoSQLDifferences
-import Version_Diff.TypeDifference
-import Version_Diff.TypeHint
-import Version_Diff.HasField
-import Version_Diff.EntityType
+import Variation_Diff.NoSQLDifferences
+import Variation_Diff.TypeDifference
+import Variation_Diff.TypeHint
+import Variation_Diff.HasField
+import Variation_Diff.EntityType
 import java.util.Collection
 
 class DifferencesToJSData
@@ -38,7 +38,7 @@ class DifferencesToJSData
 	var DATA_DIFF_NAME = "«name»";
 
 	/**
-	 * A DiffStruct which will store the EntityVersions and how many of them exist.
+	 * A DiffStruct which will store the EntityVariations and how many of them exist.
 	 */
 	var DiffStruct =
 	{

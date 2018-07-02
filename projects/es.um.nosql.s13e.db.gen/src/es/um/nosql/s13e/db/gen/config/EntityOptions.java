@@ -6,9 +6,9 @@ import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
 public class EntityOptions
 {
-  private VersionOptions versions;
-  public void setVersions(VersionOptions versions) {this.versions = versions;}
-  public VersionOptions getVersions() {return this.versions;}
+  private VariationOptions variations;
+  public void setVariations(VariationOptions variations) {this.variations = variations;}
+  public VariationOptions getVariations() {return this.variations;}
 
   public String dateFormat;
   public void setDateFormat(String dateFormat) {this.dateFormat = dateFormat;}
@@ -38,7 +38,7 @@ public class EntityOptions
   {
     StringBuilder result = new StringBuilder();
 
-    if (this.getVersions() != null)                   result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Versions:\n" + this.getVersions());
+    if (this.getVariations() != null)                 result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Variations:\n" + this.getVariations());
     if (this.getIncludeType() != null)                result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Include type: " + this.getIncludeType() + "\n");
     if (this.getDateFormat() != null)                 result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Date format: " + this.getDateFormat() + "\n");
     if (this.getTimestamp() != null)                  result.append(ConfigConstants.GET_TABS(this.getClass()) + "-Timestamp: " + this.getTimestamp() + "\n");
@@ -67,8 +67,8 @@ public class EntityOptions
     if (this.getRandomIntervalMargin() != null && (this.getRandomIntervalMargin() < 0.0 || this.getRandomIntervalMargin() > 1.0))
       throw new IllegalArgumentException("The \"RandomIntervalMargin\" double must be equal or greater than 0.0 and equal or less than 1.0.");
 
-    if (this.getVersions() != null)
-      this.getVersions().doCheck();
+    if (this.getVariations() != null)
+      this.getVariations().doCheck();
 
     return true;
   }

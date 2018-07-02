@@ -2,884 +2,884 @@
 <EntityDifferentiation:EntityDifferentiation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EntityDifferentiation="http://www.modelum.es/EntityDifferentiation" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/EntityDifferentiation platform:/resource/es.um.nosql.s13e.entitydifferentiation/model/entitydifferentiation.ecore http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="everypolitician">
   <entityDiffSpecs>
     <entity href="../testSources/everypolitician_sweden.xmi#Memberships"/>
-    <entityVersionProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.0/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.0/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.0/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.0/@properties.2"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.0/@properties.10"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.0/@properties.10"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.0"/>
-    </entityVersionProps>
-    <entityVersionProps>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.0"/>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.1/@properties.3"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.1/@properties.2"/>
-      </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.1"/>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.6/@properties.8"/>
-      </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.2/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.1/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.2/@properties.9"/>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.1/@properties.2"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.2"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.1"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.5/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.6/@properties.8"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.3/@properties.2"/>
-      </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.3"/>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.5/@properties.2"/>
-      </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.6/@properties.8"/>
-      </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.4/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.2/@properties.2"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.4/@properties.9"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.2/@properties.9"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.4"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.2"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.3/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.5/@properties.2"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.5/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.3/@properties.2"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.5"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.3"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.3/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.5/@properties.2"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.6/@properties.8"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.6/@properties.8"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.6/@properties.8"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.4/@properties.2"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.6"/>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.4/@properties.9"/>
+      </propertySpecs>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.4"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.5/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.3/@properties.2"/>
+      </notProps>
+    </entityVariationProps>
+    <entityVariationProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.5/@properties.2"/>
+      </propertySpecs>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.5"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.3/@properties.2"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.3/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.6/@properties.8"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.7"/>
+    </entityVariationProps>
+    <entityVariationProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.6/@properties.8"/>
+      </propertySpecs>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.6"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.5/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.5/@properties.2"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.3/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.3/@properties.2"/>
+      </notProps>
+    </entityVariationProps>
+    <entityVariationProps>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.7"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.5/@properties.2"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.6/@properties.8"/>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.3/@properties.2"/>
       </notProps>
-    </entityVersionProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.6/@properties.8"/>
+      </notProps>
+    </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.5/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.7/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.5/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.7/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.5/@properties.6"/>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.7/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.5/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.7/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.5/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.7/@properties.4"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.5/@properties.7"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.7/@properties.6"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.5/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.7/@properties.3"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityversions.5/@properties.8"/>
+      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.0/@entityvariations.7/@properties.7"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
     <entity href="../testSources/everypolitician_sweden.xmi#Identifier"/>
-    <entityVersionProps>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.1/@entityversions.0"/>
-    </entityVersionProps>
+    <entityVariationProps>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.1/@entityvariations.0"/>
+    </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.1/@entityversions.0/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.1/@entityvariations.0/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.1/@entityversions.0/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.1/@entityvariations.0/@properties.0"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
     <entity href="../testSources/everypolitician_sweden.xmi#Events"/>
-    <entityVersionProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityversions.0/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityvariations.0/@properties.4"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityversions.0"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityvariations.0"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityversions.1/@properties.5"/>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityvariations.1/@properties.5"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityversions.1/@properties.5"/>
+        <property xsi:type="NoSQLSchema:Reference" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityvariations.1/@properties.5"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityversions.1"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityvariations.1"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityversions.0/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityvariations.0/@properties.4"/>
       </notProps>
-    </entityVersionProps>
+    </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityversions.1/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityvariations.0/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityversions.1/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityvariations.0/@properties.3"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityversions.1/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityvariations.0/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityversions.1/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityvariations.0/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityversions.1/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityvariations.0/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityversions.1/@properties.6"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.2/@entityvariations.0/@properties.6"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
     <entity href="../testSources/everypolitician_sweden.xmi#Persons"/>
-    <entityVersionProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.0/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.0/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.0/@properties.12"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.0/@properties.12"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.0/@properties.14"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.0/@properties.14"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.0/@properties.5"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.0/@properties.5"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.0/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.0/@properties.4"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.0"/>
-    </entityVersionProps>
-    <entityVersionProps>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.0"/>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.1/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.1/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.1/@properties.12"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.1/@properties.12"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.1/@properties.14"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.1/@properties.14"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.1/@properties.5"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.1/@properties.5"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.1/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.1/@properties.4"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.1"/>
-    </entityVersionProps>
-    <entityVersionProps>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.1"/>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.2/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.2/@properties.11"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2/@properties.13"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.2/@properties.13"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.2/@properties.4"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.2"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.3/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.3/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.3/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.3/@properties.11"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.3/@properties.13"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.3/@properties.13"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.3/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.3/@properties.4"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.3"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.3"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.4/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.4/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.4/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.4/@properties.11"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.4/@properties.13"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.4/@properties.13"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.4/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.4/@properties.4"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.4"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.4"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.5/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.5/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.5/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.5/@properties.11"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.5/@properties.13"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.5/@properties.13"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.5/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.5/@properties.4"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.5"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.5"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.6/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.6/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.6/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.6/@properties.11"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.6/@properties.13"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.6/@properties.13"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.6/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.6/@properties.4"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.6"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.6"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.7/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.7/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.7/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.7/@properties.11"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.7/@properties.13"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.7/@properties.13"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.7/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.7/@properties.4"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.7"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.7"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.8/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.8/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.8/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.8/@properties.11"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.8/@properties.13"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.8/@properties.13"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.8/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.8/@properties.4"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.8"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.8"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.9/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.9/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.9/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.9/@properties.11"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.9/@properties.13"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.9/@properties.13"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.9/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.9/@properties.4"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.9"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.9"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.10/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.10/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.10/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.10/@properties.11"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.10/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.10/@properties.4"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.10"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.10"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.21/@properties.11"/>
-      </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
-      </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.11/@properties.3"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.11/@properties.4"/>
-      </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.11"/>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.21/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.21/@properties.11"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.22/@properties.9"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
-      </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.12/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.11/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.12/@properties.10"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.11/@properties.4"/>
+      </propertySpecs>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.11"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.21/@properties.11"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.22/@properties.9"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
+      </notProps>
+    </entityVariationProps>
+    <entityVariationProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.12/@properties.3"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.12/@properties.10"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.12/@properties.12"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.12/@properties.12"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.12"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.12"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.11/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.11/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.13/@properties.10"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.13/@properties.10"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.13/@properties.12"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.13/@properties.12"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.13/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.13/@properties.3"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.13"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.13"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.12/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.12/@properties.3"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.11/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.11/@properties.4"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.14/@properties.10"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.14/@properties.10"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.14/@properties.12"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.14/@properties.12"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.14/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.14/@properties.3"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.14"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.14"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.12/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.12/@properties.3"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.11/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.11/@properties.4"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.21/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.21/@properties.11"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.22/@properties.9"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.22/@properties.9"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.12/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.12/@properties.3"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.11/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.11/@properties.4"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.16/@properties.9"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.16/@properties.9"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.16/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.16/@properties.11"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.16"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.16"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.12/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.12/@properties.3"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.11/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.11/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.17/@properties.9"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.17/@properties.9"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.17/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.17/@properties.11"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.17"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.17"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.12/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.12/@properties.3"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.11/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.11/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.18/@properties.9"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.18/@properties.9"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.18/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.18/@properties.11"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.18"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.18"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.12/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.12/@properties.3"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.11/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.11/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.19/@properties.9"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.19/@properties.9"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.19/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.19/@properties.11"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.19"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.19"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.12/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.12/@properties.3"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.11/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.11/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.20/@properties.9"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.20/@properties.9"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.20/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.20/@properties.11"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.20"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.20"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.12/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.12/@properties.3"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.11/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.11/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.21/@properties.9"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.21/@properties.9"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.21/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.21/@properties.11"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.21"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.21"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.12/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.12/@properties.3"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.11/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.11/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.22/@properties.9"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.22/@properties.9"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.22"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.22"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.21/@properties.11"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.21/@properties.11"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.12/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.12/@properties.3"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.11/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.11/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.23"/>
+    </entityVariationProps>
+    <entityVariationProps>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.23"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.21/@properties.11"/>
-      </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.22/@properties.9"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.21/@properties.11"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.12/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.22/@properties.9"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.11/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.12/@properties.3"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.15/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.11/@properties.4"/>
       </notProps>
-    </entityVersionProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.3"/>
+      </notProps>
+    </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2/@properties.8"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2/@properties.9"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2/@properties.7"/>
+      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.7"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2/@properties.14"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.10"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.4"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2/@properties.12"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.8"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.9"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2/@properties.6"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.6"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityversions.2/@properties.10"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.3/@entityvariations.15/@properties.11"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
     <entity href="../testSources/everypolitician_sweden.xmi#Organizations"/>
-    <entityVersionProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.0/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.0/@properties.4"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.0/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.0/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.0/@properties.5"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.0/@properties.5"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.0/@properties.7"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.0/@properties.7"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.0/@properties.8"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.0/@properties.8"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.0"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.0"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.4/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.4/@properties.6"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.4/@properties.5"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.4/@properties.5"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.1/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.1/@properties.4"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.1/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.1/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.1/@properties.5"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.1/@properties.5"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.1/@properties.7"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.1/@properties.7"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.1"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.1"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.4/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.4/@properties.6"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.4/@properties.5"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.4/@properties.5"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.2/@properties.7"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.2/@properties.7"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.2/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.2/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.2/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.2/@properties.4"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.2/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.2/@properties.6"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.2/@properties.7"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.2/@properties.7"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.2"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.2"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.1/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.1/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.4/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.4/@properties.6"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.4/@properties.5"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.4/@properties.5"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.3/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.3/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.3/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.3/@properties.4"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.3/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.3/@properties.6"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.3"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.3"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.1/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.1/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.4/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.4/@properties.6"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.4/@properties.5"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.4/@properties.5"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.2/@properties.7"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.2/@properties.7"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
+    </entityVariationProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.4/@properties.3"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.4/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.4/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.4/@properties.5"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.4/@properties.6"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.4"/>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.4/@properties.5"/>
+      </propertySpecs>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.4"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.1/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.1/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.3/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.3/@properties.6"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.3/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.3/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.2/@properties.7"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.2/@properties.7"/>
       </notProps>
-    </entityVersionProps>
-    <entityVersionProps>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.5"/>
+    </entityVariationProps>
+    <entityVariationProps>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.5"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.1/@properties.4"/>
-      </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.4/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.1/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.3/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.4/@properties.3"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.3/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.3/@properties.6"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.4/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.3/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.4/@properties.5"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.4/@properties.6"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.2/@properties.7"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.4/@properties.5"/>
       </notProps>
-    </entityVersionProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.2/@properties.7"/>
+      </notProps>
+    </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.5/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.2/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.5/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.2/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.5/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.2/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityversions.5/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.4/@entityvariations.2/@properties.5"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
     <entity href="../testSources/everypolitician_sweden.xmi#Other_name"/>
-    <entityVersionProps>
+    <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.5/@entityversions.0/@properties.0"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.5/@entityvariations.0/@properties.0"/>
       </propertySpecs>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.5/@entityversions.0"/>
-    </entityVersionProps>
-    <entityVersionProps>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.5/@entityversions.1"/>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.5/@entityvariations.0"/>
+    </entityVariationProps>
+    <entityVariationProps>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.5/@entityvariations.1"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.5/@entityversions.0/@properties.0"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.5/@entityvariations.0/@properties.0"/>
       </notProps>
-    </entityVersionProps>
+    </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.5/@entityversions.0/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.5/@entityvariations.1/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.5/@entityversions.0/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.5/@entityvariations.1/@properties.1"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
     <entity href="../testSources/everypolitician_sweden.xmi#Image"/>
-    <entityVersionProps>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.6/@entityversions.0"/>
-    </entityVersionProps>
+    <entityVariationProps>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.6/@entityvariations.0"/>
+    </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.6/@entityversions.0/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.6/@entityvariations.0/@properties.0"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
     <entity href="../testSources/everypolitician_sweden.xmi#Contact_detail"/>
-    <entityVersionProps>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.7/@entityversions.0"/>
-    </entityVersionProps>
+    <entityVariationProps>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.7/@entityvariations.0"/>
+    </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.7/@entityversions.0/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.7/@entityvariations.0/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.7/@entityversions.0/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.7/@entityvariations.0/@properties.0"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
     <entity href="../testSources/everypolitician_sweden.xmi#Link"/>
-    <entityVersionProps>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.8/@entityversions.0"/>
-    </entityVersionProps>
+    <entityVariationProps>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.8/@entityvariations.0"/>
+    </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.8/@entityversions.0/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.8/@entityvariations.0/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.8/@entityversions.0/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.8/@entityvariations.0/@properties.1"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
     <entity href="../testSources/everypolitician_sweden.xmi#Source"/>
-    <entityVersionProps>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.9/@entityversions.0"/>
-    </entityVersionProps>
+    <entityVariationProps>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.9/@entityvariations.0"/>
+    </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.9/@entityversions.0/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.9/@entityvariations.0/@properties.0"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
     <entity href="../testSources/everypolitician_sweden.xmi#Areas"/>
-    <entityVersionProps>
-      <entityVersion href="../testSources/everypolitician_sweden.xmi#//@entities.10/@entityversions.0"/>
-    </entityVersionProps>
+    <entityVariationProps>
+      <entityVariation href="../testSources/everypolitician_sweden.xmi#//@entities.10/@entityvariations.0"/>
+    </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.10/@entityversions.0/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.10/@entityvariations.0/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.10/@entityversions.0/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.10/@entityvariations.0/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.10/@entityversions.0/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.10/@entityvariations.0/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.10/@entityversions.0/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/everypolitician_sweden.xmi#//@entities.10/@entityvariations.0/@properties.3"/>
     </commonProps>
   </entityDiffSpecs>
   <schema href="../testSources/everypolitician_sweden.xmi#everypolitician"/>

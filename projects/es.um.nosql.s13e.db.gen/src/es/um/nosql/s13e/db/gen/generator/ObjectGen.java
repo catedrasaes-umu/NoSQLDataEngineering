@@ -50,15 +50,15 @@ public class ObjectGen
     evMap = new HashMap<EntityVariation, List<ObjectNode>>();
   }
 
-  public Map<String, ArrayNode> generateBulk(NoSQLSchema schema, int objectsVersion)
+  public Map<String, ArrayNode> generateBulk(NoSQLSchema schema, int objectsVariations)
   {
-    return generate(schema, objectsVersion);
+    return generate(schema, objectsVariations);
   }
 
-  public Map<String, Stream<JsonNode>> generateStream(NoSQLSchema schema, int objectsVersion)
+  public Map<String, Stream<JsonNode>> generateStream(NoSQLSchema schema, int objectsVariations)
   {
     Map<String, Stream<JsonNode>> result = new HashMap<String, Stream<JsonNode>>();
-    Map<String, ArrayNode> generatedResult = generate(schema, objectsVersion);
+    Map<String, ArrayNode> generatedResult = generate(schema, objectsVariations);
 
     for (String key : generatedResult.keySet())
       result.put(key, StreamSupport.stream(generatedResult.get(key).spliterator(), false));
@@ -66,7 +66,7 @@ public class ObjectGen
     return result;
   }
 
-  private Map<String, ArrayNode> generate(NoSQLSchema schema, int objectsVersion)
+  private Map<String, ArrayNode> generate(NoSQLSchema schema, int objectsVariations)
   {
     Map<String, ArrayNode> result = new HashMap<String, ArrayNode>();
 
@@ -78,21 +78,21 @@ public class ObjectGen
       if (entity.getEntityvariations().stream().anyMatch(ev -> ev.isRoot()))
         eIdMap.initialize(entity.getName());
 
-      for (EntityVariation eVersion : entity.getEntityvariations())
+      for (EntityVariation eVariation : entity.getEntityvariations())
       {
-        evMap.put(eVersion, new ArrayList<ObjectNode>());
+        evMap.put(eVariation, new ArrayList<ObjectNode>());
 
-        for (int i = 0; i < objectsVersion; i++)
+        for (int i = 0; i < objectsVariations; i++)
         {
           ObjectNode oNode = factory.objectNode();
-          evMap.get(eVersion).add(oNode);
+          evMap.get(eVariation).add(oNode);
 
-          eVersion.getProperties().stream().filter(p -> p instanceof Attribute && !p.getName().equals("_id")).forEach(p -> this.generateAttribute(oNode, (Attribute)p));
+          eVariation.getProperties().stream().filter(p -> p instanceof Attribute && !p.getName().equals("_id")).forEach(p -> this.generateAttribute(oNode, (Attribute)p));
 
-          if (eVersion.isRoot())
+          if (eVariation.isRoot())
           {
             entityObjs.add(oNode);
-            this.generateMetadata(oNode, entity, eVersion.getProperties().stream()
+            this.generateMetadata(oNode, entity, eVariation.getProperties().stream()
                 .filter(p -> p instanceof Attribute && p.getName().equals("_id")).map(p -> (Attribute)p)
                 .findFirst());
           }
@@ -103,11 +103,11 @@ public class ObjectGen
         result.put(entity.getName(), entityObjs);
     }
 
-    // Second run to generate the references and aggregates since now all the versions and instances exist.
+    // Second run to generate the references and aggregates since now all the variations and instances exist.
     for (Entity entity : schema.getEntities())
-      for (EntityVariation eVersion : entity.getEntityvariations())
-        for (ObjectNode strObj : evMap.get(eVersion))
-          eVersion.getProperties().stream().filter(p -> p instanceof Association).forEach(p -> this.generateAssociation(strObj, (Association)p));
+      for (EntityVariation eVariation : entity.getEntityvariations())
+        for (ObjectNode strObj : evMap.get(eVariation))
+          eVariation.getProperties().stream().filter(p -> p instanceof Association).forEach(p -> this.generateAssociation(strObj, (Association)p));
 
     evMap.clear();
     eIdMap.clear();

@@ -78,9 +78,9 @@ public class JsonGenerator
 		int IDENTIFIER = 0;
 		for (Entity entity : schema.getEntities())
 		{
-			for (EntityVariation eVersion : entity.getEntityvariations())
+			for (EntityVariation eVariation : entity.getEntityvariations())
 			{
-				mapEV.put(eVersion, new ArrayList<JsonObject>());
+				mapEV.put(eVariation, new ArrayList<JsonObject>());
 
 				for (int i = 0; i < getRandomBetween(MIN_INSTANCES, MAX_INSTANCES); i++)
 				{
@@ -88,7 +88,7 @@ public class JsonGenerator
 					strObj.addProperty("_id", ++IDENTIFIER);
 					strObj.addProperty("type", entity.getName());
 
-					for (Property property : eVersion.getProperties())
+					for (Property property : eVariation.getProperties())
 					{
 						if (property instanceof Attribute)
 						{
@@ -117,19 +117,19 @@ public class JsonGenerator
 							}
 						}
 					}
-					mapEV.get(eVersion).add(strObj);
+					mapEV.get(eVariation).add(strObj);
 
 					lStorage.add(strObj);
 				}
 			}
 		}
 
-		// Second run to generate the aggregates since now all the versions and instances exist.
+		// Second run to generate the aggregates since now all the variations and instances exist.
 		for (Entity entity : schema.getEntities())
-			for (EntityVariation eVersion : entity.getEntityvariations())
-				for (JsonObject strObj : mapEV.get(eVersion))
+			for (EntityVariation eVariation : entity.getEntityvariations())
+				for (JsonObject strObj : mapEV.get(eVariation))
 				{
-					for (Property property : eVersion.getProperties())
+					for (Property property : eVariation.getProperties())
 					{
 						if (property instanceof Aggregate)
 						{

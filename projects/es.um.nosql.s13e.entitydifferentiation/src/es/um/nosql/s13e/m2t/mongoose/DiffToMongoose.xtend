@@ -114,7 +114,7 @@ public class DiffToMongoose
   }
 
   /**
-   * For each property of any version of an entity, generate code.
+   * For each property of any variation of an entity, generate code.
    * s.key stores a PropertySpec
    * s.value stores "required" or not
    */

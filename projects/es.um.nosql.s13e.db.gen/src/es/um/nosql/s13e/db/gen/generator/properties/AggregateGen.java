@@ -39,8 +39,8 @@ public class AggregateGen
       ArrayNode aggrArray = jsonFactory.arrayNode();
 
       // TODO: This might aggregate the same object several times. It might be a problem.
-      // For each aggregation we have to include, we select a random aggregated version and aggregate one object according to that version.
-      // TODO: This is for sure optimisable. We should be able to shuffle versions and extract some objects of them, not only one version.
+      // For each aggregation we have to include, we select a random aggregated variation and aggregate one object according to that variation.
+      // TODO: This is for sure optimisable. We should be able to shuffle variations and extract some objects of them, not only one variation.
       // TODO: Fix cardinalities
       for (EntityVariation ev : aggr.getRefTo())
         aggrArray.addAll(this.getRandomAggrs(ev, evMap, uBound));
@@ -51,12 +51,12 @@ public class AggregateGen
     return result;
   }
 
-  private List<JsonNode> getRandomAggrs(EntityVariation eVersion, Map<EntityVariation, List<ObjectNode>> evMap, int numElements)
+  private List<JsonNode> getRandomAggrs(EntityVariation eVariation, Map<EntityVariation, List<ObjectNode>> evMap, int numElements)
   {
     List<JsonNode> result = new ArrayList<JsonNode>();
 
     for (int i = 0; i < numElements; i++)
-      result.add(evMap.get(eVersion).get(numGen.getExclusiveRandom(0, evMap.get(eVersion).size())));
+      result.add(evMap.get(eVariation).get(numGen.getExclusiveRandom(0, evMap.get(eVariation).size())));
 
     return result;
   }

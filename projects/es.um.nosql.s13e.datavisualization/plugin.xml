@@ -9,8 +9,8 @@
    <extension point="org.eclipse.emf.ecore.generated_package">
       <!-- @generated NoSQLDataDifferences -->
       <package
-            uri="http://www.modelum.es/version_diff"
-            class="Version_Diff.Version_DiffPackage"
+            uri="http://www.modelum.es/variation_diff"
+            class="Variation_Diff.Variation_DiffPackage"
             genModel="metamodel/NoSQLDataDifferences.genmodel"/>
    </extension>
 

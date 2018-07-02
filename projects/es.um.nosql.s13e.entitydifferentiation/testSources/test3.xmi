@@ -8,8 +8,8 @@
     name="test3">
   <entities
       name="Persons">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -32,9 +32,9 @@
           upperBound="1"
           refTo="CustomDate1"
           originalType="ObjectId"/>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -48,13 +48,13 @@
           name="data"
           lowerBound="1"
           upperBound="-1"
-          refTo="//@entities.3/@entityversions.0"/>
-    </entityversions>
+          refTo="//@entities.3/@entityvariations.0"/>
+    </entityvariations>
   </entities>
   <entities
       name="CustomDate1">
-    <entityversions
-        versionId="10"
+    <entityvariations
+        variationId="10"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -70,12 +70,12 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="number"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="CustomDate2">
-    <entityversions
-        versionId="11">
+    <entityvariations
+        variationId="11">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="date2">
@@ -83,12 +83,12 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="boolean"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="PersonalData">
-    <entityversions
-        versionId="20">
+    <entityvariations
+        variationId="20">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Name">
@@ -103,6 +103,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

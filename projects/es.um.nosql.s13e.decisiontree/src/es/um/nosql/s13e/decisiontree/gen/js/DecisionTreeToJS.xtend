@@ -101,7 +101,7 @@ class DecisionTreeToJS
 		'''
 		«entityName»: {
 			name: "«entityName»",
-			entityVersionForObject: function (obj)
+			entityVariationForObject: function (obj)
 			{
 				«generateCheckTree(dte, dte.root)»
 			}

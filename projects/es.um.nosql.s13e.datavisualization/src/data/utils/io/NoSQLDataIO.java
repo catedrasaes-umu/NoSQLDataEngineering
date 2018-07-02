@@ -13,13 +13,13 @@ import org.eclipse.emf.ecore.resource.impl.ResourceSetImpl;
 import org.eclipse.emf.ecore.xmi.impl.EcoreResourceFactoryImpl;
 import org.eclipse.emf.ecore.xmi.impl.XMIResourceFactoryImpl;
 
-import Version_Diff.Version_DiffPackage;
-import Version_Diff.NoSQLDifferences;
+import Variation_Diff.Variation_DiffPackage;
+import Variation_Diff.NoSQLDifferences;
 
 /**
  * Class used to read a DBDIFFERENCES model from an input file or a String.
  * Implemented as a Singleton.
- * @author Alberto Hern�ndez Chill�n
+ * @author Alberto Hernández Chillón
  */
 public class NoSQLDataIO
 {
@@ -51,7 +51,7 @@ public class NoSQLDataIO
 	private NoSQLDataIO()
 	{
 		resourceSet = new ResourceSetImpl();
-		resourceSet.getPackageRegistry().put(Version_DiffPackage.eNS_URI, Version_DiffPackage.eINSTANCE);		// DBDIFFERENCES metamodel
+		resourceSet.getPackageRegistry().put(Variation_DiffPackage.eNS_URI, Variation_DiffPackage.eINSTANCE);		// DBDIFFERENCES metamodel
 		Map<String, Object> options = resourceSet.getResourceFactoryRegistry().getExtensionToFactoryMap();
 		options.put(Resource.Factory.Registry.DEFAULT_EXTENSION, new XMIResourceFactoryImpl());
 		options.put("ecore", new EcoreResourceFactoryImpl());

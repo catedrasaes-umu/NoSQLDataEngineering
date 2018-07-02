@@ -28,14 +28,14 @@ public class SerialController implements IController
     long startTime = System.currentTimeMillis();
 
     NoSQLSchema schema = IOUtils.READ_MODEL(new File(ConfigConstants.GET_INPUT_FILE()));
-    int objectsVersion = numGen.getInclusiveRandom(ConfigConstants.GET_MIN_INSTANCES(), ConfigConstants.GET_MAX_INSTANCES());
-    int objectsIteration = objectsVersion / ConfigConstants.GET_SPLITS();
-    int floor = Math.floorMod(objectsVersion, ConfigConstants.GET_SPLITS());
+    int objectsVariations = numGen.getInclusiveRandom(ConfigConstants.GET_MIN_INSTANCES(), ConfigConstants.GET_MAX_INSTANCES());
+    int objectsIteration = objectsVariations / ConfigConstants.GET_SPLITS();
+    int floor = Math.floorMod(objectsVariations, ConfigConstants.GET_SPLITS());
 
     DebugLog.PRINTOUT("Starting generation for " + modelRoute + " @ 0 seconds");
-    DebugLog.PRINTOUT("Objects per version being generated: " + objectsVersion + " in " + ConfigConstants.GET_SPLITS() + " splits");
+    DebugLog.PRINTOUT("Objects per variation being generated: " + objectsVariations + " in " + ConfigConstants.GET_SPLITS() + " splits");
 
-    if (objectsVersion >= ConfigConstants.GET_SPLITS())
+    if (objectsVariations >= ConfigConstants.GET_SPLITS())
       for (int i = 0; i < ConfigConstants.GET_SPLITS(); i++)
       {
         DebugLog.PRINTOUT("Iteration " + (i+1) + "/" + ConfigConstants.GET_SPLITS() + " @ " + ((System.currentTimeMillis() - startTime)/1000) + " seconds...");

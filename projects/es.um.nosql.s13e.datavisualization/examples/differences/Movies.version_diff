@@ -1,635 +1,635 @@
 <?xml version="1.0" encoding="ASCII"?>
-<Version_Diff:NoSQLDifferences xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Version_Diff="http://www.modelum.es/version_diff" name="Movies">
+<Variation_Diff:NoSQLDifferences xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:Variation_Diff="http://www.modelum.es/variation_diff" name="Movies">
   <hasTypeDifferences name="Actor_1">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Age">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Age">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Birthday">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Birthday">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Actor"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Actor"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Nationality">
-      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Nationality">
+      <withType xsi:type="Variation_Diff:HomogeneousTupleType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasAwards">
-      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasAwards">
+      <withType xsi:type="Variation_Diff:AggregateType" upperBound="-1">
         <type>Award_1</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Debut_year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Debut_year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Website">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Website">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Actor_2">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Age">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Age">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Birthday">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Birthday">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Nationality">
-      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Nationality">
+      <withType xsi:type="Variation_Diff:HomogeneousTupleType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasAwards">
-      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasField" withName="hasAwards">
+      <withType xsi:type="Variation_Diff:AggregateType" upperBound="-1">
         <type>Award_1</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Actor"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Actor"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Debut_year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Debut_year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Website">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Website">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Actor_3">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Age">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Age">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Birthday">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Birthday">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Nationality">
-      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Nationality">
+      <withType xsi:type="Variation_Diff:HomogeneousTupleType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Debut_year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Debut_year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasAwards">
-      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasField" withName="hasAwards">
+      <withType xsi:type="Variation_Diff:AggregateType" upperBound="-1">
         <type>Award_1</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Actor"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Actor"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Website">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Website">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Actor_4">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Age">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Age">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Birthday">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Birthday">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Nationality">
-      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Nationality">
+      <withType xsi:type="Variation_Diff:HomogeneousTupleType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Debut_year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Debut_year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Website">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Website">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasAwards">
-      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasField" withName="hasAwards">
+      <withType xsi:type="Variation_Diff:AggregateType" upperBound="-1">
         <type>Award_1</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Actor"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Actor"/>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Award_1">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Institution">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Institution">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Award"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Award"/>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Director_1">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Age">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Age">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Director"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Director"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Age">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Age">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Oscars">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Oscars">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasAwards">
-      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasAwards">
+      <withType xsi:type="Variation_Diff:AggregateType" upperBound="-1">
         <type>Award_1</type>
       </withType>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Director_2">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Age">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Age">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Oscars">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Oscars">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Director"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Director"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasAwards">
-      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasAwards">
+      <withType xsi:type="Variation_Diff:AggregateType" upperBound="-1">
         <type>Award_1</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Age">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Age">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Director_3">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Age">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Age">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasAwards">
-      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasField" withName="hasAwards">
+      <withType xsi:type="Variation_Diff:AggregateType" upperBound="-1">
         <type>Award_1</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Director"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Director"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Oscars">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Oscars">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Age">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Age">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Movie_1">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Director">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Director">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Rating">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Float"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Rating">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Float"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Genre">
-      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Genre">
+      <withType xsi:type="Variation_Diff:HomogeneousTupleType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Movie"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Movie"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Oscars">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Oscars">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasDirector">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Director"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasDirector">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Director"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasProducers">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Producer"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasProducers">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Producer"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasActors">
-      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Actor"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasActors">
+      <withType xsi:type="Variation_Diff:ReferenceType" upperBound="-1" type="Actor"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Awards">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Awards">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasRating">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Rating"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Rating"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasRating">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="1">
         <type>Rating_2</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasRating">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="1">
         <type>Rating_1</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasAwards">
-      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasAwards">
+      <withType xsi:type="Variation_Diff:AggregateType" upperBound="-1">
         <type>Award_1</type>
       </withType>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Movie_2">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Rating">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Float"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Rating">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Float"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Genre">
-      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Genre">
+      <withType xsi:type="Variation_Diff:HomogeneousTupleType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Oscars">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Oscars">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasDirector">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Director"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasDirector">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Director"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasProducers">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Producer"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasProducers">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Producer"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasActors">
-      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Actor"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasActors">
+      <withType xsi:type="Variation_Diff:ReferenceType" upperBound="-1" type="Actor"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Movie"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Movie"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Director">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Director">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Awards">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Awards">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasRating">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Rating"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Rating"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasRating">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="1">
         <type>Rating_2</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasRating">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="1">
         <type>Rating_1</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasAwards">
-      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasAwards">
+      <withType xsi:type="Variation_Diff:AggregateType" upperBound="-1">
         <type>Award_1</type>
       </withType>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Movie_3">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Genre">
-      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Genre">
+      <withType xsi:type="Variation_Diff:HomogeneousTupleType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Awards">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Awards">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasDirector">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Director"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasDirector">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Director"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasProducers">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Producer"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasProducers">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Producer"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasActors">
-      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Actor"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasActors">
+      <withType xsi:type="Variation_Diff:ReferenceType" upperBound="-1" type="Actor"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasRating">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Rating"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Rating"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Movie"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Movie"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Rating">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Float"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Rating">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Float"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Oscars">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Oscars">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Director">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Director">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasRating">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="1">
         <type>Rating_2</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasRating">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="1">
         <type>Rating_1</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasAwards">
-      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasAwards">
+      <withType xsi:type="Variation_Diff:AggregateType" upperBound="-1">
         <type>Award_1</type>
       </withType>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Movie_4">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Genre">
-      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Genre">
+      <withType xsi:type="Variation_Diff:HomogeneousTupleType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Awards">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Awards">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasDirector">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Director"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasDirector">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Director"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasProducers">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Producer"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasProducers">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Producer"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasActors">
-      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Actor"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasActors">
+      <withType xsi:type="Variation_Diff:ReferenceType" upperBound="-1" type="Actor"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasRating">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+    <hints xsi:type="Variation_Diff:HasField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="1">
         <type>Rating_1</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Movie"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Movie"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Rating">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Float"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Rating">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Float"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Oscars">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Oscars">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Director">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Director">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasRating">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Rating"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Rating"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasRating">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="1">
         <type>Rating_2</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasAwards">
-      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasAwards">
+      <withType xsi:type="Variation_Diff:AggregateType" upperBound="-1">
         <type>Award_1</type>
       </withType>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Movie_5">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Genre">
-      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Genre">
+      <withType xsi:type="Variation_Diff:HomogeneousTupleType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Awards">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Awards">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasDirector">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Director"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasDirector">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Director"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasProducers">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Producer"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasProducers">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Producer"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasActors">
-      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Actor"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasActors">
+      <withType xsi:type="Variation_Diff:ReferenceType" upperBound="-1" type="Actor"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasRating">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+    <hints xsi:type="Variation_Diff:HasField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="1">
         <type>Rating_2</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Movie"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Movie"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Rating">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Float"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Rating">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Float"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Oscars">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Oscars">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Director">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Director">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasRating">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Rating"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Rating"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasRating">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="1">
         <type>Rating_1</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasAwards">
-      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasAwards">
+      <withType xsi:type="Variation_Diff:AggregateType" upperBound="-1">
         <type>Award_1</type>
       </withType>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Movie_6">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Genre">
-      <withType xsi:type="Version_Diff:HomogeneousTupleType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Genre">
+      <withType xsi:type="Variation_Diff:HomogeneousTupleType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasDirector">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Director"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasDirector">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Director"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasProducers">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Producer"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasProducers">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="-1" type="Producer"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasActors">
-      <withType xsi:type="Version_Diff:ReferenceType" upperBound="-1" type="Actor"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="hasActors">
+      <withType xsi:type="Variation_Diff:ReferenceType" upperBound="-1" type="Actor"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasRating">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+    <hints xsi:type="Variation_Diff:HasField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="1">
         <type>Rating_2</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasAwards">
-      <withType xsi:type="Version_Diff:AggregateType" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasField" withName="hasAwards">
+      <withType xsi:type="Variation_Diff:AggregateType" upperBound="-1">
         <type>Award_1</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Movie"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Movie"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Rating">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Float"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Rating">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Float"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Oscars">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Oscars">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Director">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Director">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Awards">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Awards">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasRating">
-      <withType xsi:type="Version_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Rating"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:ReferenceType" lowerBound="1" upperBound="1" type="Rating"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasRating">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasRating">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="1">
         <type>Rating_1</type>
       </withType>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Producer_1">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Budget">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Float"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Budget">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Float"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasStudio">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasField" withName="hasStudio">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="-1">
         <type>Studio_1</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Producer"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Producer"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Budget_per_year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Float"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Budget_per_year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Float"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Movies_per_year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Movies_per_year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasStudio">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasStudio">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="-1">
         <type>Studio_2</type>
       </withType>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Producer_2">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Budget_per_year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Float"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Budget_per_year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Float"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Movies_per_year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Movies_per_year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="hasStudio">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasField" withName="hasStudio">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="-1">
         <type>Studio_2</type>
       </withType>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Producer"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Producer"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Budget">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Float"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Budget">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Float"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="hasStudio">
-      <withType xsi:type="Version_Diff:AggregateType" lowerBound="1" upperBound="-1">
+    <hints xsi:type="Variation_Diff:HasNotField" withName="hasStudio">
+      <withType xsi:type="Variation_Diff:AggregateType" lowerBound="1" upperBound="-1">
         <type>Studio_1</type>
       </withType>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Rating_1">
-    <hints xsi:type="Version_Diff:HasField" withName="Rating">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Float"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Rating">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Float"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Rating"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Rating"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Votes">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Votes">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Rating_2">
-    <hints xsi:type="Version_Diff:HasField" withName="Rating">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Float"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Rating">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Float"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Votes">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Votes">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Rating"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Rating"/>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Studio_1">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Location">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Location">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Website">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Website">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Studio"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Studio"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Founder">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Founder">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
   </hasTypeDifferences>
   <hasTypeDifferences name="Studio_2">
-    <hints xsi:type="Version_Diff:HasField" withName="Name">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Name">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Location">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Location">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="Int"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="Int"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Website">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Website">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="Founder">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="Founder">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasField" withName="type">
-      <withType xsi:type="Version_Diff:EntityType" type="Studio"/>
+    <hints xsi:type="Variation_Diff:HasField" withName="type">
+      <withType xsi:type="Variation_Diff:EntityType" type="Studio"/>
     </hints>
-    <hints xsi:type="Version_Diff:HasNotField" withName="Year">
-      <withType xsi:type="Version_Diff:PrimitiveType" type="String"/>
+    <hints xsi:type="Variation_Diff:HasNotField" withName="Year">
+      <withType xsi:type="Variation_Diff:PrimitiveType" type="String"/>
     </hints>
   </hasTypeDifferences>
-</Version_Diff:NoSQLDifferences>
+</Variation_Diff:NoSQLDifferences>

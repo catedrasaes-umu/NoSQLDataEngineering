@@ -4,7 +4,7 @@ input:
   splits: 100
 
 entities:
-  versions:
+  variations:
     minInstances: 10000
     maxInstances: 10000
   includeType: true

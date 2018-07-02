@@ -1,17 +1,17 @@
 package data.utils.serializer;
 
-import Version_Diff.HasField;
-import Version_Diff.HasNotField;
-import Version_Diff.NoSQLDifferences;
-import Version_Diff.PrimitiveType;
-import Version_Diff.ReferenceType;
-import Version_Diff.TypeDifference;
-import Version_Diff.AggregateType;
-import Version_Diff.EntityType;
-import Version_Diff.FieldType;
-import Version_Diff.HeterogeneousTupleType;
-import Version_Diff.TypeHint;
-import Version_Diff.HomogeneousTupleType;
+import Variation_Diff.HasField;
+import Variation_Diff.HasNotField;
+import Variation_Diff.NoSQLDifferences;
+import Variation_Diff.PrimitiveType;
+import Variation_Diff.ReferenceType;
+import Variation_Diff.TypeDifference;
+import Variation_Diff.AggregateType;
+import Variation_Diff.EntityType;
+import Variation_Diff.FieldType;
+import Variation_Diff.HeterogeneousTupleType;
+import Variation_Diff.TypeHint;
+import Variation_Diff.HomogeneousTupleType;
 
 /**
  * Class used to serialize a NoSQLDifferences object in a human-readable way.

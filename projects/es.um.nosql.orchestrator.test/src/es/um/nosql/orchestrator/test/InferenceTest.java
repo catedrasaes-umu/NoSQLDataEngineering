@@ -452,7 +452,7 @@ public class InferenceTest
 
   /**
    * Temporal method used to patch all these inference errors until we actually fix them on the inference process.
-   * First, it will set correctly the _type attribute on each version.
+   * First, it will set correctly the _type attribute on each variation.
    * Second, if an _id is inferred as an Aggregate instead of an ObjectId, it will fix it.
    * TODO: I swear we will fix these problems!
    */

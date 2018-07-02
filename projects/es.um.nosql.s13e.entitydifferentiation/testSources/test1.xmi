@@ -8,8 +8,8 @@
     name="test1">
   <entities
       name="Persons">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -25,9 +25,9 @@
           upperBound="1"
           refTo="CustomDate3"
           originalType="String"/>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -41,10 +41,10 @@
           name="date"
           lowerBound="1"
           upperBound="1"
-          refTo="//@entities.1/@entityversions.0"/>
-    </entityversions>
-    <entityversions
-        versionId="3"
+          refTo="//@entities.1/@entityvariations.0"/>
+    </entityvariations>
+    <entityvariations
+        variationId="3"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -60,9 +60,9 @@
           upperBound="-1"
           refTo="CustomDate3"
           originalType="ObjectId"/>
-    </entityversions>
-    <entityversions
-        versionId="4"
+    </entityvariations>
+    <entityvariations
+        variationId="4"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -81,12 +81,12 @@
               name="String"/>
         </type>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="CustomDate1">
-    <entityversions
-        versionId="10">
+    <entityvariations
+        variationId="10">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="date1">
@@ -94,12 +94,12 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="number"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="CustomDate2">
-    <entityversions
-        versionId="20"
+    <entityvariations
+        variationId="20"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -115,12 +115,12 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="CustomDate3">
-    <entityversions
-        versionId="30"
+    <entityvariations
+        variationId="30"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -136,6 +136,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

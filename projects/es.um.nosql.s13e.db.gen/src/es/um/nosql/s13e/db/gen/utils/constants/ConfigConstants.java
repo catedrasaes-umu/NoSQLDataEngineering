@@ -33,8 +33,8 @@ public final class ConfigConstants
   private static final int      ATTRIBUTES_TUPLE_MAX_TUPLE_ELEMENTS                  = 10;
   private static final double   ATTRIBUTES_TUPLE_STRANGE_TYPES_PROBABILITY           = 0;
   private static final double   ATTRIBUTES_TUPLE_NULL_PROBABILITY                    = 0;
-  private static final int      EVERSIONS_MIN_INSTANCES                              = 10;
-  private static final int      EVERSIONS_MAX_INSTANCES                              = 20;
+  private static final int      EVARIATIONS_MIN_INSTANCES                            = 10;
+  private static final int      EVARIATIONS_MAX_INSTANCES                            = 20;
   private static final int      AGGREGATES_MIN_ALLOWED                               = 2;
   private static final int      AGGREGATES_MAX_ALLOWED                               = 3;
   private static final int      REFERENCES_MIN_ALLOWED                               = 2;
@@ -60,18 +60,18 @@ public final class ConfigConstants
 
   public static int GET_MIN_INSTANCES()
   {
-    if (options.getEntities() != null && options.getEntities().getVersions() != null && options.getEntities().getVersions().getMinInstances() != null)
-      return options.getEntities().getVersions().getMinInstances();
+    if (options.getEntities() != null && options.getEntities().getVariations() != null && options.getEntities().getVariations().getMinInstances() != null)
+      return options.getEntities().getVariations().getMinInstances();
     else
-      return EVERSIONS_MIN_INSTANCES;
+      return EVARIATIONS_MIN_INSTANCES;
   }
 
   public static int GET_MAX_INSTANCES()
   {
-    if (options.getEntities() != null && options.getEntities().getVersions() != null && options.getEntities().getVersions().getMaxInstances() != null)
-      return options.getEntities().getVersions().getMaxInstances();
+    if (options.getEntities() != null && options.getEntities().getVariations() != null && options.getEntities().getVariations().getMaxInstances() != null)
+      return options.getEntities().getVariations().getMaxInstances();
     else
-      return EVERSIONS_MAX_INSTANCES;
+      return EVARIATIONS_MAX_INSTANCES;
   }
 
   public static boolean GET_INCLUDE_TYPE()
@@ -391,7 +391,7 @@ public final class ConfigConstants
     {
       case "DbGenOptions": break;
       case "EntityOptions": case "AttributeOptions": case "AssociationOptions": case "InputOptions": case "OutputOptions": {result.append(SPACES); break;}
-      case "VersionOptions": case "PrimitiveTypeOptions": case "TupleOptions": case "AggregateOptions": case "ReferenceOptions": {result.append(SPACES + SPACES); break;}
+      case "VariationOptions": case "PrimitiveTypeOptions": case "TupleOptions": case "AggregateOptions": case "ReferenceOptions": {result.append(SPACES + SPACES); break;}
       default: System.err.println("Didn't find spacing for: " + className.getSimpleName());
     }
 

@@ -1,82 +1,82 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="books">
   <entities name="">
-    <entityversions versionId="1" root="true">
-      <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="authors" upperBound="-1" refTo="//@entities.3/@entityversions.0 //@entities.3/@entityversions.1"/>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="content" lowerBound="1" upperBound="1" refTo="//@entities.2/@entityversions.0"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="publisher_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="title" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="type" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="year" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="Number"/>
-    </entityversions>
-    <entityversions versionId="2" root="true">
-      <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="discipline" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="issn" upperBound="-1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="name" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="type" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-    </entityversions>
-    <entityversions versionId="3" root="true">
-      <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="discipline" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="issn" upperBound="-1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="name" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="number" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="Number"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="type" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-    </entityversions>
-    <entityversions versionId="4" root="true">
-      <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="city" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="name" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="type" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-    </entityversions>
-    <entityversions versionId="5" root="true">
-      <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="author" lowerBound="1" upperBound="1" refTo="//@entities.3/@entityversions.0"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="publisher_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="title" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="type" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-    </entityversions>
-    <entityversions versionId="6" root="true">
-      <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="name" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="type" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-    </entityversions>
-    <entityversions versionId="7" root="true">
-      <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="journals" upperBound="-1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="name" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="type" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityversions.0/@properties.0" refTo="" originalType="String"/>
-    </entityversions>
+    <entityvariations variationId="1" root="true">
+      <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="authors" upperBound="-1" refTo="//@entities.3/@entityvariations.0 //@entities.3/@entityvariations.1"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="content" lowerBound="1" upperBound="1" refTo="//@entities.2/@entityvariations.0"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="publisher_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="title" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="type" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="year" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="Number"/>
+    </entityvariations>
+    <entityvariations variationId="2" root="true">
+      <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="discipline" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="issn" upperBound="-1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="name" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="type" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+    </entityvariations>
+    <entityvariations variationId="3" root="true">
+      <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="discipline" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="issn" upperBound="-1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="name" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="number" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="Number"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="type" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+    </entityvariations>
+    <entityvariations variationId="4" root="true">
+      <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="city" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="name" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="type" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+    </entityvariations>
+    <entityvariations variationId="5" root="true">
+      <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="author" lowerBound="1" upperBound="1" refTo="//@entities.3/@entityvariations.0"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="publisher_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="title" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="type" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+    </entityvariations>
+    <entityvariations variationId="6" root="true">
+      <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="name" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="type" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+    </entityvariations>
+    <entityvariations variationId="7" root="true">
+      <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="journals" upperBound="-1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="name" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="type" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.0" refTo="" originalType="String"/>
+    </entityvariations>
   </entities>
   <entities name="Company">
-    <entityversions versionId="1">
+    <entityvariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="country">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="name" lowerBound="1" upperBound="1" refTo="" originalType="String"/>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities name="Content">
-    <entityversions versionId="1">
+    <entityvariations variationId="1">
       <properties xsi:type="NoSQLSchema:Reference" name="chapters" lowerBound="1" upperBound="1" refTo="" originalType="Number"/>
       <properties xsi:type="NoSQLSchema:Reference" name="pages" lowerBound="1" upperBound="1" refTo="" originalType="Number"/>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities name="Author">
-    <entityversions versionId="1">
+    <entityvariations variationId="1">
       <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" refTo="" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="company" lowerBound="1" upperBound="1" refTo="//@entities.1/@entityversions.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="company" lowerBound="1" upperBound="1" refTo="//@entities.1/@entityvariations.0"/>
       <properties xsi:type="NoSQLSchema:Reference" name="name" lowerBound="1" upperBound="1" refTo="" originalType="String"/>
-    </entityversions>
-    <entityversions versionId="2">
+    </entityvariations>
+    <entityvariations variationId="2">
       <properties xsi:type="NoSQLSchema:Reference" name="_id" lowerBound="1" upperBound="1" refTo="" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Reference" name="company" lowerBound="1" upperBound="1" refTo="" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="country">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="name" lowerBound="1" upperBound="1" refTo="" originalType="String"/>
-    </entityversions>
+    </entityvariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

@@ -40,7 +40,7 @@ function drawD3Bubbles(DiffStruct, divId)
 	// Legend.
 	node.append("title")
 		.attr("class", "bubble_title")
-		.text(function(d) { return (d.children ? (d.parent ? "Entity " : "" ) : "Entity version ") + d.name + (d.children ? "" : ": " + format(d.size) + " instances"); });
+		.text(function(d) { return (d.children ? (d.parent ? "Entity " : "" ) : "Entity variation ") + d.name + (d.children ? "" : ": " + format(d.size) + " instances"); });
 
 	d3.select(self.frameElement).style("height", diameter + "px");
 	d3.select("#dBubbles").style("background", color(-1));

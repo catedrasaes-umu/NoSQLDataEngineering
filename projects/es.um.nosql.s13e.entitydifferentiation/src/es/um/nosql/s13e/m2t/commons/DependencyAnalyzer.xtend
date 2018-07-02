@@ -32,7 +32,7 @@ class DependencyAnalyzer
   }
 
   // Fill, for each property of each entity that appear in more than 
-  // one entity version *with different type* (those that hold the needsTypeCheck
+  // one entity variation *with different type* (those that hold the needsTypeCheck
   // boolean attribute), the list of types, to check possible type folding in
   // a latter pass
   def calcTypeListMatrix(List<Entity> entities)

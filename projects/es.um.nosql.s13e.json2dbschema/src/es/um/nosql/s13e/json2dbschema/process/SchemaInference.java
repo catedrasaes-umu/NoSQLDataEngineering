@@ -58,7 +58,7 @@ public class SchemaInference
 		
 		mergeEquivalentEVs();
 
-		// Print entities and entity versions
+		// Print entities and entity variations
 		rawEntities.forEach((en, evl) ->
 		{
 			System.out.println("Entity: " + en);
@@ -310,18 +310,18 @@ public class SchemaInference
 		schema.addAll(fields.stream()
 				.map(f -> Pair.of(f, infer(n.get(f), Optional.of(f), NON_ROOT_OBJECT)))::iterator);
 
-		// Now that we have the complete schema, try to compare it with any of the versions in the map
-		List<SchemaComponent> entityVersions = rawEntities.get(schema.entityName);
+		// Now that we have the complete schema, try to compare it with any of the variations in the map
+		List<SchemaComponent> entityVariations = rawEntities.get(schema.entityName);
 		SchemaComponent retSchema = schema;
 
-		if (entityVersions != null)
+		if (entityVariations != null)
 		{
 			Optional<SchemaComponent> foundSchema =
-					entityVersions.stream().filter(sc -> schema.equals(sc)).findFirst();
+			    entityVariations.stream().filter(sc -> schema.equals(sc)).findFirst();
 			if (foundSchema.isPresent())
 				retSchema = foundSchema.get();
 			else
-				entityVersions.add(schema);
+			  entityVariations.add(schema);
 		}
 		else
 		{

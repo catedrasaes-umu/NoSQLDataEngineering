@@ -45,7 +45,7 @@ public class NoSQLModelBuilder
 	private NoSQLSchemaFactory factory;
 
 	// Reverse indexes for finding EntityVariations
-	private Map<SchemaComponent, EntityVariation> mEntityVersions;
+	private Map<SchemaComponent, EntityVariation> mEntityVariations;
 
 	// List of Entities
 	private List<Entity> mEntities;
@@ -61,7 +61,7 @@ public class NoSQLModelBuilder
 		name = name2;
 
 		mEntities = new ArrayList<Entity>(20);
-		mEntityVersions = new HashMap<SchemaComponent, EntityVariation>();
+		mEntityVariations = new HashMap<SchemaComponent, EntityVariation>();
 	}
 
 	public NoSQLSchema build(Map<String, List<SchemaComponent>> rawEntities)
@@ -71,7 +71,7 @@ public class NoSQLModelBuilder
 		// { "$ref" : <type>, "$id" : <value>, "$db" : <value> }
 
 
-		// Build reverse indices & Create Entities & Populate with EntityVersions
+		// Build reverse indices & Create Entities & Populate with EntityVariations
 		rawEntities.forEach((entityName, schemas) -> {
 			// Entity creation
 			Entity e = factory.createEntity();
@@ -90,16 +90,16 @@ public class NoSQLModelBuilder
 				theEV.setRoot(obj.isRoot);
 
 				e.getEntityvariations().add(theEV);
-				mEntityVersions.put(schema, theEV);
+				mEntityVariations.put(schema, theEV);
 			});
 		});
 
 		// Consider as reference matcher only those Entities of which
-		// at least one version is root
+		// at least one variation is root
 		rm = createReferenceMatcher();
 
-		// Populate empty EntityVersions
-		mEntityVersions.forEach((schema, ev) -> fillEV(schema, ev));
+		// Populate empty EntityVariations
+		mEntityVariations.forEach((schema, ev) -> fillEV(schema, ev));
 
 		// Opposite references
 		mEntities.forEach(eFrom -> {
@@ -108,7 +108,7 @@ public class NoSQLModelBuilder
 					Reference ref = (Reference)r;
 					Entity eTo = ref.getRefTo();
 
-					// Find a EntityVersion of eTo that has a reference to the
+					// Find a EntityVariation of eTo that has a reference to the
 					// current Entity eFrom
 					Optional<Property> refTo =
 							eTo.getEntityvariations().stream().flatMap(evTo ->
@@ -185,7 +185,7 @@ public class NoSQLModelBuilder
 		a.setName(en);
 		a.setLowerBound(1);
 		a.setUpperBound(1);
-		a.getRefTo().add(mEntityVersions.get(sc));
+		a.getRefTo().add(mEntityVariations.get(sc));
 		return a;
 	}
 
@@ -221,14 +221,14 @@ public class NoSQLModelBuilder
 				a.setName(en);
 				a.setLowerBound(sc.getLowerBounds() == 1 ? 0 : sc.getLowerBounds());
 				a.setUpperBound(sc.getUpperBounds() > 1 ? -1 : sc.getUpperBounds());
-				a.getRefTo().add(mEntityVersions.get(inner));
+				a.getRefTo().add(mEntityVariations.get(inner));
 				return a;
 			}
 		}
 
 		// Non-homogeneous array. If all elements are objects, then
 		// create an aggregate. If not, create a tuple
-		EntityVariation ev = mEntityVersions.get(sc.getInners().get(0));
+		EntityVariation ev = mEntityVariations.get(sc.getInners().get(0));
 		if (ev != null)
 		{
 			Aggregate a = factory.createAggregate();
@@ -239,7 +239,7 @@ public class NoSQLModelBuilder
 			// FIXME: OJO, error en Ecore/EMF desde el 2005 sin arreglar, y aquí tiene problema:
 			// https://bugs.eclipse.org/bugs/show_bug.cgi?id=89325
 			a.getRefTo().addAll(sc.getInners().stream()
-					.map(mEntityVersions::get)
+					.map(mEntityVariations::get)
 					.collect(Collectors.toList()));
 
 			return a;

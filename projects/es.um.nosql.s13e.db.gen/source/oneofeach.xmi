@@ -8,8 +8,8 @@
     name="oneofeach">
   <entities
       name="EntityOne">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -46,9 +46,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Null"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -113,37 +113,37 @@
           </elements>
         </type>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="3"
+    </entityvariations>
+    <entityvariations
+        variationId="3"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Aggregate"
           name="embedded01"
           lowerBound="1"
           upperBound="1"
-          refTo="//@entities.1/@entityversions.0"/>
+          refTo="//@entities.1/@entityvariations.0"/>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
           name="embedded11"
           lowerBound="1"
           upperBound="1"
-          refTo="//@entities.1/@entityversions.1"/>
+          refTo="//@entities.1/@entityvariations.1"/>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
           name="embedded04"
           lowerBound="1"
           upperBound="4"
-          refTo="//@entities.1/@entityversions.0 //@entities.1/@entityversions.1"/>
+          refTo="//@entities.1/@entityvariations.0 //@entities.1/@entityvariations.1"/>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
           name="embedded0N"
           lowerBound="1"
           upperBound="-1"
-          refTo="//@entities.1/@entityversions.0 //@entities.1/@entityversions.1"/>
-    </entityversions>
-    <entityversions
-        versionId="4"
+          refTo="//@entities.1/@entityvariations.0 //@entities.1/@entityvariations.1"/>
+    </entityvariations>
+    <entityvariations
+        variationId="4"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Reference"
@@ -166,12 +166,12 @@
           upperBound="1"
           refTo="EntityThree"
           originalType="Number"/>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="EntityTwo">
-    <entityversions
-        versionId="1">
+    <entityvariations
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="embeddedString">
@@ -193,9 +193,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Boolean"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2">
+    </entityvariations>
+    <entityvariations
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="embeddedTupleString">
@@ -226,12 +226,12 @@
               name="Boolean"/>
         </type>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="EntityThree">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -240,9 +240,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="ObjectId"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -251,9 +251,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="3"
+    </entityvariations>
+    <entityvariations
+        variationId="3"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -262,6 +262,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

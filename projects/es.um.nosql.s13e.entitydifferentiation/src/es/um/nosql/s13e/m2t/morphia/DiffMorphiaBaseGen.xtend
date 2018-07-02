@@ -15,7 +15,7 @@ class DiffMorphiaBaseGen
   // For the base generation we need three items:
   // - The folder to output the generation
   // - The model name to name the files and variables
-  // - The root entities (entities with at least one root version), so we can include some variables and generate base validators.
+  // - The root entities (entities with at least one root variation), so we can include some variables and generate base validators.
   def m2t(File modelFile, File outputFolder)
   {
     val loader = new ModelLoader(EntityDifferentiationPackage.eINSTANCE);

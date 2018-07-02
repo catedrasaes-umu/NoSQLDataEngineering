@@ -8,8 +8,8 @@
     name="publications">
   <entities
       name="Publications">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -53,9 +53,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -92,9 +92,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="3"
+    </entityvariations>
+    <entityvariations
+        variationId="3"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -131,9 +131,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="4"
+    </entityvariations>
+    <entityvariations
+        variationId="4"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -163,6 +163,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

@@ -143,7 +143,7 @@ class DiffToMorphia
   }
 
   /**
-   * For each property of any version of an entity, generate code.
+   * For each property of any variation of an entity, generate code.
    * Two methods are called depending on if there is a need for the type check.
    * s.key stores a PropertySpec
    * s.value stores "required" or not

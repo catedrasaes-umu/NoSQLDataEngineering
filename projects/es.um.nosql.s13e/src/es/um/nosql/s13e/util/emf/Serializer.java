@@ -16,12 +16,12 @@ import es.um.nosql.s13e.NoSQLSchema.Type;
 
 public class Serializer
 {
-	public static String serialize(EntityVariation eVersion)
+	public static String serialize(EntityVariation eVariation)
 	{
-		if (eVersion == null)
+		if (eVariation == null)
 			return null;
 
-		return ((Entity)eVersion.eContainer()).getName() + "_" + eVersion.getVariationId();
+		return ((Entity)eVariation.eContainer()).getName() + "_" + eVariation.getVariationId();
 	}
 
 	public static String serialize(Property property)

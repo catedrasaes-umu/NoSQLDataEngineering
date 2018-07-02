@@ -58,7 +58,7 @@ public class Main
 
 	static Pattern pattern = Pattern.compile("\\[(.*?) .*$");
 	
-	private ModelNode getModelTree(ClassifierTree tree, Map<String, EntityVariation> entityVersions, Map<String, PropertySpec> properties) throws Exception
+	private ModelNode getModelTree(ClassifierTree tree, Map<String, EntityVariation> entityVariations, Map<String, PropertySpec> properties) throws Exception
 	{
 		if (tree.isLeaf())
 		{
@@ -67,7 +67,7 @@ public class Main
 
 			if (matcher.find())
 			{
-				EntityVariation ev = entityVersions.get(matcher.group(1));
+				EntityVariation ev = entityVariations.get(matcher.group(1));
 				return new ModelNode(ev);
 			}
 			else
@@ -89,7 +89,7 @@ public class Main
 			for (int i = 0 ; i < sons.length; i++)
 			{
 				String value = tree.getLocalModel().rightSide(i, tree.getTrainingData()).trim();
-				ModelNode node = getModelTree(sons[i], entityVersions, properties);
+				ModelNode node = getModelTree(sons[i], entityVariations, properties);
 				if (value.equals("= yes"))
 					m.setNodePresent(node);
 				else if (value.contentEquals("= no"))
@@ -111,7 +111,7 @@ public class Main
 		String indent = String.join("", Collections.nCopies(level, "  "));
 
 		if (tree.is_leaf())
-			System.out.println(indent+"Entity: "+e.getName()+", Version: "+tree.getEv().getVariationId());
+			System.out.println(indent+"Entity: "+e.getName()+", Variation: "+tree.getEv().getVariationId());
 		else
 		{
 			Function<Boolean,String> present = v -> v ? " is present." : " is NOT present."; 
@@ -233,7 +233,7 @@ public class Main
 					LinkedHashMap::new));
 		
 		// serializedFeature -> PropertySpec. We do the final reducing to leave just one element on 
-		// the list, as there may be features in different entity version that serialize to the same
+		// the list, as there may be features in different entity variation that serialize to the same
 		// string. We just select one.
 		Map<String, PropertySpec> features =
 			propsByEv.values().stream().flatMap(l -> l.stream())
@@ -269,7 +269,7 @@ public class Main
 						Map.Entry::getKey));
 
 		// Get classes and count them. We do it in the order that they are obtained
-		// from the original list of EntityVersionProps
+		// from the original list of EntityVariationProps
 		List<String> classes = propsByEv.keySet().stream()
 				.map(evp -> evpToClassName.get(evp))
 				.collect(toCollection(ArrayList::new));

@@ -41,7 +41,7 @@ public class OldMain {
 		return classifier;
 	}
 	
-	public static Map<String, EntityVariation> getEntityVersions(NoSQLSchema schema)
+	public static Map<String, EntityVariation> getEntityVariations(NoSQLSchema schema)
 	{
 		return 
 			schema.getEntities().stream().flatMap(e ->
@@ -67,19 +67,19 @@ public class OldMain {
 		Map<String, List<String>> classes = new HashMap<String, List<String>>();
 		for (Entity entity: schema.getEntities())
 		{
-			for (EntityVariation entityVersion: entity.getEntityvariations())
+			for (EntityVariation entityVariation: entity.getEntityvariations())
 			{
 				// FIXME
-				if (!entityVersion.isRoot())
+				if (!entityVariation.isRoot())
 					continue;
 				
 				// Get List of properties Names
-				List<String> properties = entityVersion.getProperties().stream()
+				List<String> properties = entityVariation.getProperties().stream()
 						.map(Serializer::serialize)
 						.collect(Collectors.toList());
 								
-				// Add current Entity Version to entities Map
-				String key = String.format("%1$s:%2$d", entity.getName(), entityVersion.getVariationId());
+				// Add current Entity Variation to entities Map
+				String key = String.format("%1$s:%2$d", entity.getName(), entityVariation.getVariationId());
 				classes.put(key, properties);
 			}
 		}
@@ -164,7 +164,7 @@ public class OldMain {
 	}
 	
 
-	public static ModelTree getModelTree(ClassifierTree tree, Map<String, EntityVariation> entityVersions, Map<String, List<Property>> properties) throws Exception
+	public static ModelTree getModelTree(ClassifierTree tree, Map<String, EntityVariation> entityVariations, Map<String, List<Property>> properties) throws Exception
 	{
 		if (tree.isLeaf())
 		{
@@ -176,7 +176,7 @@ public class OldMain {
 			
 			if (matcher.find())
 			{
-			  EntityVariation ev = entityVersions.get(matcher.group(1));
+			  EntityVariation ev = entityVariations.get(matcher.group(1));
 				return new ModelTree((Entity)ev.eContainer(),ev);
 			}
 			
@@ -197,7 +197,7 @@ public class OldMain {
 			for (int i = 0 ; i < sons.length; i++)
 			{
 				String value = tree.getLocalModel().rightSide(i, tree.getTrainingData());
-				ModelTree node = getModelTree(sons[i], entityVersions, properties);
+				ModelTree node = getModelTree(sons[i], entityVariations, properties);
 				if (value.trim().equals("= 1"))
 				{
 					m.setNodePresent(node);
@@ -226,7 +226,7 @@ public class OldMain {
 		if (tree.is_leaf())
 		{
 			Entity e = tree.getEntity();
-			System.out.println(indent+"Entity: "+e.getName()+", Version: "+tree.getTag().getVariationId());
+			System.out.println(indent+"Entity: "+e.getName()+", Variation: "+tree.getTag().getVariationId());
 		}
 		else
 		{
@@ -282,7 +282,7 @@ public class OldMain {
 			}
 			
 			ModelTree modelTree = 
-					getModelTree(root, getEntityVersions(schema), getProperties(schema));
+					getModelTree(root, getEntityVariations(schema), getProperties(schema));
 			runModelTree(modelTree);
 		} 
 		

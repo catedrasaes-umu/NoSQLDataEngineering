@@ -99,11 +99,11 @@ class DiffToJS
 	'''
 
 	def genEntityVariationDiff(EntityVariationProp evp, EntityDiffSpec spec) {
-		val entityVersionName = spec.entity.name.toFirstUpper + "_" + evp.entityVariation.variationId
+		val entityVariationName = spec.entity.name.toFirstUpper + "_" + evp.entityVariation.variationId
 
 		'''
-		«entityVersionName»: {
-			name: "«entityVersionName»",
+		«entityVariationName»: {
+			name: "«entityVariationName»",
 			isOfExactType: function (obj)
 			{
 			    var b = true;

@@ -31,8 +31,8 @@ public class ObjGenerator
 	private static final String[] ENTITIES = {"Book", "Author", "Journal", "Publisher", "Content"};
 	private static final int MIN_INSTANCES = 1;
 	private static final int MAX_INSTANCES = 10;
-	private static final int MIN_ENTITY_VERSIONS = 3;
-	private static final int MAX_ENTITY_VERSIONS = 10;
+	private static final int MIN_ENTITY_VARIATIONS = 3;
+	private static final int MAX_ENTITY_VARIATIONS = 10;
 	private static final int MIN_STRING_ATTR = 1;
 	private static final int MAX_STRING_ATTR = 5;
 	private static final int MIN_INT_ATTR = 0;
@@ -102,7 +102,7 @@ public class ObjGenerator
 		for (String entity : ENTITIES)
 		{
 			IDENTIFIER = 0;
-			for (int i = 1; i < getRandomBetween(MIN_ENTITY_VERSIONS, MAX_ENTITY_VERSIONS) + 1; i++)
+			for (int i = 1; i < getRandomBetween(MIN_ENTITY_VARIATIONS, MAX_ENTITY_VARIATIONS) + 1; i++)
 			{
 			  EntityVariation oev = NoSQLSchemaFactory.eINSTANCE.createEntityVariation();
 				oev.setVariationId(++IDENTIFIER);
@@ -193,8 +193,8 @@ public class ObjGenerator
 	}
 
 	/**
-	 * Method used to generate a "Type" attribute and associate it to the JSON object and the EntityVersion.
-	 * @param oev The EntityVersion to which the type is being associated.
+	 * Method used to generate a "Type" attribute and associate it to the JSON object and the EntityVariation.
+	 * @param oev The EntityVariation to which the type is being associated.
 	 * @param strObj The JSON object to which the "type" field is being added.
 	 * @param type The type to be given.
 	 */
@@ -211,8 +211,8 @@ public class ObjGenerator
 	}
 
 	/**
-	 * Method used to generate a "String" attribute and associate it to the JSON object and the EntityVersion.
-	 * @param oev The EntityVersion to which the string is being associated.
+	 * Method used to generate a "String" attribute and associate it to the JSON object and the EntityVariation.
+	 * @param oev The EntityVariation to which the string is being associated.
 	 * @param strObj The JSON object to which the "string" field is being added.
 	 */
 	private void generateStrings(EntityVariation oev, JsonObject strObj)
@@ -231,8 +231,8 @@ public class ObjGenerator
 	}
 
 	/**
-	 * Method used to generate an "Int" attribute and associate it to the JSON object and the EntityVersion.
-	 * @param oev The EntityVersion to which the int is being associated.
+	 * Method used to generate an "Int" attribute and associate it to the JSON object and the EntityVariation.
+	 * @param oev The EntityVariation to which the int is being associated.
 	 * @param strObj The JSON object to which the "int" field is being added.
 	 */
 	private void generateInts(EntityVariation oev, JsonObject strObj)
@@ -251,8 +251,8 @@ public class ObjGenerator
 	}
 
 	/**
-	 * Method used to generate a "Float" attribute and associate it to the JSON object and the EntityVersion.
-	 * @param oev The EntityVersion to which the float is being associated.
+	 * Method used to generate a "Float" attribute and associate it to the JSON object and the EntityVariation.
+	 * @param oev The EntityVariation to which the float is being associated.
 	 * @param strObj The JSON object to which the "float" field is being added.
 	 */
 	private void generateFloats(EntityVariation oev, JsonObject strObj)
@@ -271,8 +271,8 @@ public class ObjGenerator
 	}
 
 	/**
-	 * Method used to generate a "Bool" attribute and associate it to the JSON object and the EntityVersion.
-	 * @param oev The EntityVersion to which the bool is being associated.
+	 * Method used to generate a "Bool" attribute and associate it to the JSON object and the EntityVariation.
+	 * @param oev The EntityVariation to which the bool is being associated.
 	 * @param strObj The JSON object to which the "bool" field is being added.
 	 */
 	private void generateBools(EntityVariation oev, JsonObject strObj)
@@ -291,8 +291,8 @@ public class ObjGenerator
 	}
 
 	/**
-	 * Method used to generate a "Tuple" attribute and associate it to the JSON object and the EntityVersion.
-	 * @param oev The EntityVersion to which the tuple is being associated.
+	 * Method used to generate a "Tuple" attribute and associate it to the JSON object and the EntityVariation.
+	 * @param oev The EntityVariation to which the tuple is being associated.
 	 * @param strObj The JSON object to which the "tuple" field is being added.
 	 */
 	private void generateTuples(EntityVariation oev, JsonObject strObj)
@@ -382,8 +382,8 @@ public class ObjGenerator
 	}
 
 	/**
-	 * Method used to generate a "Aggregate" attribute and associate it to the JSON object and the EntityVersion.
-	 * @param oev The EntityVersion to which the aggregation is being associated.
+	 * Method used to generate a "Aggregate" attribute and associate it to the JSON object and the EntityVariation.
+	 * @param oev The EntityVariation to which the aggregation is being associated.
 	 * @param strObj The JSON object to which the "Aggregate" field is being added.
 	 */
 	private void generateAggregates(EntityVariation oev, JsonObject strObj)

@@ -90,30 +90,30 @@ public class NoSQLSchemaSerializer
 
 		result.append(tabs + "Entity - name: " + entity.getName() + ENDLINE);
 
-		for (EntityVariation eVersion : entity.getEntityvariations())
-			result.append(stringify(eVersion, tabs));
+		for (EntityVariation eVariation : entity.getEntityvariations())
+			result.append(stringify(eVariation, tabs));
 
 		return result.toString();
 	}
 
 	/**
-	 * Method used to stringify an EntityVersion.
-	 * @param eVersion The EntityVersion to be serialized.
+	 * Method used to stringify an EntityVariation.
+	 * @param eVariation The EntityVariation to be serialized.
 	 * @param defTabs The number of tabs to apply to the serialization.
-	 * @return A String containing a serialized EntityVersion.
+	 * @return A String containing a serialized EntityVariation.
 	 */
-	public String stringify(EntityVariation eVersion, String defTabs)
+	public String stringify(EntityVariation eVariation, String defTabs)
 	{
-		if (eVersion == null)
+		if (eVariation == null)
 			return null;
 
 		String tabs = defTabs + TAB;
 		StringBuilder result = new StringBuilder();
 
-		result.append(tabs + "EntityVersion - versionId: " + eVersion.getVariationId() +
-		        ", root: " + eVersion.isRoot() + ", count: " + eVersion.getCount() + ENDLINE);
+		result.append(tabs + "EntityVariation - variationId: " + eVariation.getVariationId() +
+		        ", root: " + eVariation.isRoot() + ", count: " + eVariation.getCount() + ENDLINE);
 
-		for (Property property : eVersion.getProperties())
+		for (Property property : eVariation.getProperties())
 		{
 			if (property instanceof Attribute)
 				result.append(stringify((Attribute)property, tabs));
@@ -213,8 +213,8 @@ public class NoSQLSchemaSerializer
 
 			for (int i = 0; i < aggregate.getRefTo().size(); i++)
 			{
-			  EntityVariation eVersion = aggregate.getRefTo().get(i);
-				result.append("EntityVersion " + eVersion.getVariationId());
+			  EntityVariation eVariation = aggregate.getRefTo().get(i);
+				result.append("EntityVariation " + eVariation.getVariationId());
 				if (i != (aggregate.getRefTo().size() - 1))
 					result.append(", ");
 			}
@@ -233,11 +233,11 @@ public class NoSQLSchemaSerializer
 	}
 
 	/**
-	 * Method used to stringify an EntityVersion Triple list with the associated schema info.
-	 * @param entityVersionList The EntityVersion Triple list.
-	 * @return A String containing a serialized EntityVersion Triple list.
+	 * Method used to stringify an EntityVariation Triple list with the associated schema info.
+	 * @param entityVariationList The EntityVariation Triple list.
+	 * @return A String containing a serialized EntityVariation Triple list.
 	 */
-	public String stringifyEntityVersionList(List<Triple<EntityVariation, Set<EntityVariation>, Set<Entity>>> entityVariationList)
+	public String stringifyEntityVariationList(List<Triple<EntityVariation, Set<EntityVariation>, Set<Entity>>> entityVariationList)
 	{
 		if (entityVariationList == null)
 			return null;
@@ -304,7 +304,7 @@ public class NoSQLSchemaSerializer
 			result.append("[\n");
 			for (Triple<Entity, Set<EntityVariation>, Set<Entity>> triple : entityList)
 			{
-				result.append("\t<Entity " + triple.getLeft().getName() + ", EntityVersion List: [ ");
+				result.append("\t<Entity " + triple.getLeft().getName() + ", EntityVariation List: [ ");
 
 				for (EntityVariation ev : triple.getMiddle())
 					result.append("EV_" + ev.getVariationId() + " ");

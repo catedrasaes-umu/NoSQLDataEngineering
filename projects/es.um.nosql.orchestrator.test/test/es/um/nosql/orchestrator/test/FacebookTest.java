@@ -84,13 +84,13 @@ public class FacebookTest
         posts = e;
     }
 
-    // Check Entities are not null, and there is only one version of each Entity
+    // Check Entities are not null, and there is only one variation of each Entity
     assertNotNull("Comments can't be null", comments);
-    assertEquals("Only one Comment version", comments.getEntityvariations().size(), 1);
+    assertEquals("Only one Comment variation", comments.getEntityvariations().size(), 1);
     assertNotNull("Pages can't be null", pages);
-    assertEquals("Only one Page version", pages.getEntityvariations().size(), 1);
+    assertEquals("Only one Page variation", pages.getEntityvariations().size(), 1);
     assertNotNull("Posts can't be null", posts);
-    assertEquals("Only one Post version", posts.getEntityvariations().size(), 1);
+    assertEquals("Only one Post variation", posts.getEntityvariations().size(), 1);
 
     List<Property> commentProps = comments.getEntityvariations().get(0).getProperties();
     List<Property> pagesProps = pages.getEntityvariations().get(0).getProperties();

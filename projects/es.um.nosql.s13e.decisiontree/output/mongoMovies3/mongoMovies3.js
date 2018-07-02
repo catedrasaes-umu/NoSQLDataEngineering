@@ -5,7 +5,7 @@ var mongoMovies3 = {
 	name: "mongoMovies3",
 	Movie: {
 		name: "Movie",
-		entityVersionForObject: function (obj)
+		entityVariationForObject: function (obj)
 		{
 			if (("criticisms" in obj))
 			{
@@ -106,7 +106,7 @@ var mongoMovies3 = {
 	,,
 	Movietheater: {
 		name: "Movietheater",
-		entityVersionForObject: function (obj)
+		entityVariationForObject: function (obj)
 		{
 			if (("noOfRooms" in obj))
 			{
@@ -133,7 +133,7 @@ var mongoMovies3 = {
 	,,
 	Director: {
 		name: "Director",
-		entityVersionForObject: function (obj)
+		entityVariationForObject: function (obj)
 		{
 			if (("actor_movies" in obj))
 			{
@@ -160,7 +160,7 @@ var mongoMovies3 = {
 	,,
 	Criticism: {
 		name: "Criticism",
-		entityVersionForObject: function (obj)
+		entityVariationForObject: function (obj)
 		{
 			if ((("media" in obj) && (typeof obj.media === 'object') && !(obj.media.constructor === Array)
 			    && mongoMovies3.Media_1.isOfExactType(obj.media)
@@ -193,7 +193,7 @@ var mongoMovies3 = {
 	,,
 	Prize: {
 		name: "Prize",
-		entityVersionForObject: function (obj)
+		entityVariationForObject: function (obj)
 		{
 			if (("names" in obj))
 			{

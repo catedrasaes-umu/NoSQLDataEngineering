@@ -27,8 +27,8 @@ import es.um.nosql.s13e.NoSQLSchema.Type;
 
 public class JsonGenerator
 {
-  private int MIN_INSTANCES_VERSION;
-  private int MAX_INSTANCES_VERSION;
+  private int MIN_INSTANCES_VARIATION;
+  private int MAX_INSTANCES_VARIATION;
 
   private Map<EntityVariation, List<ObjectNode>> evMap;
   private Map<String, List<String>> entityIdMap;
@@ -38,14 +38,14 @@ public class JsonGenerator
 
   public JsonGenerator()
   {
-    MIN_INSTANCES_VERSION = 3;
-    MAX_INSTANCES_VERSION = 10;
+    MIN_INSTANCES_VARIATION = 3;
+    MAX_INSTANCES_VARIATION = 10;
   }
 
   public String generate(NoSQLSchema schema, int minInstances, int maxInstances) throws Exception
   {
-    MIN_INSTANCES_VERSION = minInstances;
-    MAX_INSTANCES_VERSION = maxInstances;
+    MIN_INSTANCES_VARIATION = minInstances;
+    MAX_INSTANCES_VARIATION = maxInstances;
 
     return generate(schema);
   }
@@ -61,16 +61,16 @@ public class JsonGenerator
     for (Entity entity : schema.getEntities())
     {
       entityIdMap.put(entity.getName().toLowerCase(), new ArrayList<String>());
-      for (EntityVariation eVersion : entity.getEntityvariations())
+      for (EntityVariation eVariation : entity.getEntityvariations())
       {
-        evMap.put(eVersion, new ArrayList<ObjectNode>());
-        int countInstances = getRandomBetween(MIN_INSTANCES_VERSION, MAX_INSTANCES_VERSION);
+        evMap.put(eVariation, new ArrayList<ObjectNode>());
+        int countInstances = getRandomBetween(MIN_INSTANCES_VARIATION, MAX_INSTANCES_VARIATION);
 
         for (int i = 0; i < countInstances; i++)
         {
           ObjectNode strObj = factory.objectNode();
 
-          for (Property property : eVersion.getProperties())
+          for (Property property : eVariation.getProperties())
           {
             if (property instanceof Attribute)
             {
@@ -83,7 +83,7 @@ public class JsonGenerator
           }
 
           // We will override the _id and the type parameters...
-          if (eVersion.isRoot())
+          if (eVariation.isRoot())
           {
             strObj.put("_id", new ObjectId().toString());
             strObj.put("_type", entity.getName());
@@ -91,17 +91,17 @@ public class JsonGenerator
             entityIdMap.get(entity.getName().toLowerCase()).add(strObj.get("_id").asText());
           }
 
-          evMap.get(eVersion).add(strObj);
+          evMap.get(eVariation).add(strObj);
         }
       }
     }
 
-    // Second run to generate the references and aggregates since now all the versions and instances exist.
+    // Second run to generate the references and aggregates since now all the variations and instances exist.
     for (Entity entity : schema.getEntities())
-      for (EntityVariation eVersion : entity.getEntityvariations())
-        for (ObjectNode strObj : evMap.get(eVersion))
+      for (EntityVariation eVariation : entity.getEntityvariations())
+        for (ObjectNode strObj : evMap.get(eVariation))
         {
-          for (Property property : eVersion.getProperties())
+          for (Property property : eVariation.getProperties())
           {
             if (property instanceof Reference)
             {
@@ -131,7 +131,7 @@ public class JsonGenerator
               {
                 ArrayNode array = factory.arrayNode();
                 strObj.put(aggr.getName(), array);
-                // We keep all the aggregated versions in a banned list because we won't add them to the database as standalone objects.
+                // We keep all the aggregated variations in a banned list because we won't add them to the database as standalone objects.
                 for (EntityVariation aggrEV : aggr.getRefTo())
                 {
                   ObjectNode aggrNode = getRandomAggr(aggrEV);
@@ -154,9 +154,9 @@ public class JsonGenerator
     throw new Exception("Reference not found: " + name);
   }
 
-  private ObjectNode getRandomAggr(EntityVariation eVersion)
+  private ObjectNode getRandomAggr(EntityVariation eVariation)
   {
-    return evMap.get(eVersion).get(getRandomBetween(0, evMap.get(eVersion).size() - 1));
+    return evMap.get(eVariation).get(getRandomBetween(0, evMap.get(eVariation).size() - 1));
   }
 
   private int getRandomBetween(int minValue, int maxValue)

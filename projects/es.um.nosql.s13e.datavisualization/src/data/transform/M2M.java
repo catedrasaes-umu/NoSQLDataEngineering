@@ -8,7 +8,7 @@ import java.util.Map;
 import org.apache.commons.lang3.tuple.MutablePair;
 import org.apache.commons.lang3.tuple.Pair;
 
-import Version_Diff.Version_DiffFactory;
+import Variation_Diff.Variation_DiffFactory;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
@@ -19,18 +19,18 @@ import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.Tuple;
 import es.um.nosql.s13e.NoSQLSchema.Type;
 import data.utils.serializer.NoSQLSchemaSerializer;
-import Version_Diff.HasField;
-import Version_Diff.HasNotField;
-import Version_Diff.NoSQLDifferences;
-import Version_Diff.PrimitiveType;
-import Version_Diff.AggregateType;
-import Version_Diff.TypeDifference;
-import Version_Diff.EntityType;
-import Version_Diff.HeterogeneousTupleType;
-import Version_Diff.TypeHint;
-import Version_Diff.HomogeneousTupleType;
-import Version_Diff.ReferenceType;
-import Version_Diff.FieldType;
+import Variation_Diff.HasField;
+import Variation_Diff.HasNotField;
+import Variation_Diff.NoSQLDifferences;
+import Variation_Diff.PrimitiveType;
+import Variation_Diff.AggregateType;
+import Variation_Diff.TypeDifference;
+import Variation_Diff.EntityType;
+import Variation_Diff.HeterogeneousTupleType;
+import Variation_Diff.TypeHint;
+import Variation_Diff.HomogeneousTupleType;
+import Variation_Diff.ReferenceType;
+import Variation_Diff.FieldType;
 
 /**
  * Class used to transform DBSCHEMA models into DBDIFFERENCES models.
@@ -69,7 +69,7 @@ public class M2M
 	 */
 	public NoSQLDifferences transform(NoSQLSchema baseModel)
 	{
-		NoSQLDifferences differenceModel = Version_DiffFactory.eINSTANCE.createNoSQLDifferences();
+		NoSQLDifferences differenceModel = Variation_DiffFactory.eINSTANCE.createNoSQLDifferences();
 		differenceModel.setName(baseModel.getName());
 		Map<EntityVariation, List<Pair<String, FieldType>>> evMap;
 
@@ -77,23 +77,23 @@ public class M2M
 		{
 			evMap = getEVPropertiesMap(entity);
 
-			for (EntityVariation entityVersion : entity.getEntityvariations())
+			for (EntityVariation entityVariation : entity.getEntityvariations())
 			{
-				TypeDifference tDiff = Version_DiffFactory.eINSTANCE.createTypeDifference();
-				tDiff.setName(entity.getName() + "_" + entityVersion.getVariationId());
+				TypeDifference tDiff = Variation_DiffFactory.eINSTANCE.createTypeDifference();
+				tDiff.setName(entity.getName() + "_" + entityVariation.getVariationId());
 				differenceModel.getHasTypeDifferences().add(tDiff);
 
-				addHasFields(evMap.get(entityVersion), tDiff);
-				addHasNotFields(entityVersion, tDiff, evMap);
+				addHasFields(evMap.get(entityVariation), tDiff);
+				addHasNotFields(entityVariation, tDiff, evMap);
 			}
 		}
 		return differenceModel;
 	}
 
 	/**
-	 * Method used to get a map in which properties (name, value) are associated to each EntityVersion of an Entity.
-	 * @param baseEntity The Entity containing the EntityVersions to be mapped.
-	 * @return A Map<EntityVersion, List<Pair<String, String>>> in which the mapping is stored.
+	 * Method used to get a map in which properties (name, value) are associated to each EntityVariation of an Entity.
+	 * @param baseEntity The Entity containing the EntityVariations to be mapped.
+	 * @return A Map<EntityVariation, List<Pair<String, String>>> in which the mapping is stored.
 	 */
 	private Map<EntityVariation, List<Pair<String, FieldType>>> getEVPropertiesMap(Entity baseEntity)
 	{
@@ -117,18 +117,18 @@ public class M2M
 					{
 						if (name.equals("type") || name.equals("Type"))
 						{
-							type = Version_DiffFactory.eINSTANCE.createEntityType();
+							type = Variation_DiffFactory.eINSTANCE.createEntityType();
 							((EntityType)type).setType(((es.um.nosql.s13e.NoSQLSchema.PrimitiveType)theType).getName());
 						}
 						else
 						{
-							type = Version_DiffFactory.eINSTANCE.createPrimitiveType();
+							type = Variation_DiffFactory.eINSTANCE.createPrimitiveType();
 							((PrimitiveType)type).setType(((es.um.nosql.s13e.NoSQLSchema.PrimitiveType)theType).getName());
 						}
 					}
 					else if (theType instanceof Tuple)
 					{
-						type = Version_DiffFactory.eINSTANCE.createHeterogeneousTupleType();
+						type = Variation_DiffFactory.eINSTANCE.createHeterogeneousTupleType();
 
 						for (Type tupleType : ((Tuple)theType).getElements())
 						{
@@ -141,7 +141,7 @@ public class M2M
 						String aType = getAType(((HeterogeneousTupleType)type).getType().get(0));
 						if (checkSameTypes(((HeterogeneousTupleType)type).getType(), aType))
 						{
-							type = Version_DiffFactory.eINSTANCE.createHomogeneousTupleType();
+							type = Variation_DiffFactory.eINSTANCE.createHomogeneousTupleType();
 							((HomogeneousTupleType)type).setType(aType);
 						}
 								
@@ -149,7 +149,7 @@ public class M2M
 				}
 				else if (property instanceof Reference)
 				{
-					type = Version_DiffFactory.eINSTANCE.createReferenceType();
+					type = Variation_DiffFactory.eINSTANCE.createReferenceType();
 
 					((ReferenceType)type).setType(((Reference)property).getRefTo().getName());
 					((ReferenceType)type).setLowerBound(((Reference)property).getLowerBound());
@@ -157,7 +157,7 @@ public class M2M
 				}
 				else if (property instanceof Aggregate)
 				{
-					type = Version_DiffFactory.eINSTANCE.createAggregateType();
+					type = Variation_DiffFactory.eINSTANCE.createAggregateType();
 
 					((AggregateType)type).setLowerBound(((Aggregate)property).getLowerBound());
 					((AggregateType)type).setUpperBound(((Aggregate)property).getUpperBound());
@@ -177,7 +177,7 @@ public class M2M
 				}
 			if (!typeIsDefined)
 			{
-				FieldType type = Version_DiffFactory.eINSTANCE.createEntityType();
+				FieldType type = Variation_DiffFactory.eINSTANCE.createEntityType();
 				((EntityType)type).setType(baseEntity.getName());
 				pairList.add(new MutablePair<String, FieldType>("type", type));
 			}
@@ -188,15 +188,15 @@ public class M2M
 
 	/**
 	 * Method used to add HasField objects to a TypeDifference object from a propertiesList.
-	 * @param propertiesList The propertiesList associated to the EntityVersion whose TypeDifferences are being generated.
+	 * @param propertiesList The propertiesList associated to the EntityVariation whose TypeDifferences are being generated.
 	 * @param tDiff A TypeDifference object in which store the HasField objects.
 	 */
 	private void addHasFields(List<Pair<String, FieldType>> propertiesList, TypeDifference tDiff)
 	{
-		// Para cada EntityVersion, agregamos sus propiedades como HasValue.
+		// Para cada EntityVariation, agregamos sus propiedades como HasValue.
 		for (Pair<String, FieldType> propertyPair : propertiesList)
 		{
-			HasField hField = Version_DiffFactory.eINSTANCE.createHasField();
+			HasField hField = Variation_DiffFactory.eINSTANCE.createHasField();
 			hField.setWithName(propertyPair.getLeft());
 			hField.setWithType(createNewFieldType(propertyPair.getRight()));
 
@@ -205,25 +205,25 @@ public class M2M
 	}
 
 	/**
-	 * Method used to add HasNotField objects from a Map to a TypeDifference object associated with an EntityVersion.
-	 * @param theEntityVersion The EntityVersion whose TypeDifferences are being generated.
+	 * Method used to add HasNotField objects from a Map to a TypeDifference object associated with an EntityVariation.
+	 * @param theEntityVariation The EntityVariation whose TypeDifferences are being generated.
 	 * @param tDiff TypeDifferences whose fields HasNotFields are being generated.
-	 * @param evMap The map in which EntityVersions are associated with their Properties (name, value).
+	 * @param evMap The map in which EntityVariations are associated with their Properties (name, value).
 	 */
-	private void addHasNotFields(EntityVariation theEntityVersion, TypeDifference tDiff, Map<EntityVariation, List<Pair<String, FieldType>>> evMap)
+	private void addHasNotFields(EntityVariation theEntityVariation, TypeDifference tDiff, Map<EntityVariation, List<Pair<String, FieldType>>> evMap)
 	{
 		boolean propertyFound = false;
 
 		for (EntityVariation evInList : evMap.keySet())
 		{
-			// And we add other EntityVersion properties as HasNotValue.
-			if (evInList != theEntityVersion)
+			// And we add other EntityVariation properties as HasNotValue.
+			if (evInList != theEntityVariation)
 			{
 				for (Pair<String, FieldType> pairProperty : evMap.get(evInList))
 				{
 					for (TypeHint hint : tDiff.getHints())
 					{
-						// Except if an EntityVersion has a {name, value} property equals to another's.
+						// Except if an EntityVariation has a {name, value} property equals to another's.
 						// Or the property was already added as HasNotField.
 						if (hint.getWithName().equals(pairProperty.getLeft()) && sameTypeHints(hint.getWithType(), pairProperty.getRight()))
 						{
@@ -235,7 +235,7 @@ public class M2M
 					// We can't do this step inside the loop because we are modifying the collection we are iterating.
 					if (!propertyFound)
 					{
-						HasNotField hNotField = Version_DiffFactory.eINSTANCE.createHasNotField();
+						HasNotField hNotField = Variation_DiffFactory.eINSTANCE.createHasNotField();
 						hNotField.setWithName(pairProperty.getLeft());
 						hNotField.setWithType(createNewFieldType(pairProperty.getRight()));
 
@@ -311,31 +311,31 @@ public class M2M
 
 		if (type instanceof PrimitiveType)
 		{
-			PrimitiveType newType = Version_DiffFactory.eINSTANCE.createPrimitiveType();
+			PrimitiveType newType = Variation_DiffFactory.eINSTANCE.createPrimitiveType();
 			newType.setType(((PrimitiveType)type).getType());
 			return newType;
 		}
 		else if (type instanceof EntityType)
 		{
-			EntityType newType = Version_DiffFactory.eINSTANCE.createEntityType();
+			EntityType newType = Variation_DiffFactory.eINSTANCE.createEntityType();
 			newType.setType(((EntityType)type).getType());
 			return newType;
 		}
 		else if (type instanceof HomogeneousTupleType)
 		{
-			HomogeneousTupleType newType = Version_DiffFactory.eINSTANCE.createHomogeneousTupleType();
+			HomogeneousTupleType newType = Variation_DiffFactory.eINSTANCE.createHomogeneousTupleType();
 			newType.setType(((HomogeneousTupleType)type).getType());
 			return newType;
 		}
 		else if (type instanceof HeterogeneousTupleType)
 		{
-			HeterogeneousTupleType newType = Version_DiffFactory.eINSTANCE.createHeterogeneousTupleType();
+			HeterogeneousTupleType newType = Variation_DiffFactory.eINSTANCE.createHeterogeneousTupleType();
 			newType.getType().addAll(((HeterogeneousTupleType)type).getType());
 			return newType;
 		}
 		else if (type instanceof AggregateType)
 		{
-			AggregateType newType = Version_DiffFactory.eINSTANCE.createAggregateType();
+			AggregateType newType = Variation_DiffFactory.eINSTANCE.createAggregateType();
 			newType.setLowerBound(((AggregateType)type).getLowerBound());
 			newType.setUpperBound(((AggregateType)type).getUpperBound());
 			newType.getType().addAll(((AggregateType)type).getType());
@@ -343,7 +343,7 @@ public class M2M
 		}
 		else if (type instanceof ReferenceType)
 		{
-			ReferenceType newType = Version_DiffFactory.eINSTANCE.createReferenceType();
+			ReferenceType newType = Variation_DiffFactory.eINSTANCE.createReferenceType();
 			newType.setLowerBound(((ReferenceType)type).getLowerBound());
 			newType.setUpperBound(((ReferenceType)type).getUpperBound());
 			newType.setType(((ReferenceType)type).getType());

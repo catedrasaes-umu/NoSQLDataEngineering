@@ -46,20 +46,20 @@ public class PrettyPrinter
 		return result;
 	}
 
-	public static String printPretty(EntityVariation eVersion)
+	public static String printPretty(EntityVariation eVariation)
 	{
-		return printPretty(eVersion, "");
+		return printPretty(eVariation, "");
 	}
 
-	private static String printPretty(EntityVariation eVersion, String defTabs)
+	private static String printPretty(EntityVariation eVariation, String defTabs)
 	{
-		if (eVersion == null)
+		if (eVariation == null)
 			return null;
 
 		String tabs = defTabs + TAB;
 
-		String result = defTabs + "EntityVersion versionId:" + eVersion.getVariationId() + System.lineSeparator() 
-				 + eVersion.getProperties().stream()
+		String result = defTabs + "EntityVariation variationId:" + eVariation.getVariationId() + System.lineSeparator() 
+				 + eVariation.getProperties().stream()
 				 	.map(p -> tabs + Serializer.serialize(p) + System.lineSeparator())
 				 	.collect(Collectors.joining());
 
