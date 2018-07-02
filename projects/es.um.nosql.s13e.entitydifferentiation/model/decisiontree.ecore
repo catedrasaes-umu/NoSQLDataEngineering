@@ -8,8 +8,8 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LeafNode" eSuperTypes="#//DecisionTreeNode">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="identifiedVersion" lowerBound="1"
-        eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//EntityVersion"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="identifiedVariation" lowerBound="1"
+        eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//EntityVariation"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntermediateNode" eSuperTypes="#//DecisionTreeNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="checkedProperty" lowerBound="1"

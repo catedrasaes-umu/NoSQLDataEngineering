@@ -18,7 +18,7 @@ import org.eclipse.collections.impl.set.strategy.mutable.UnifiedSetWithHashingSt
 import org.eclipse.collections.impl.tuple.Tuples;
 
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Property;
@@ -34,8 +34,8 @@ import es.um.nosql.s13e.util.emf.ModelLoader;
 public class NoSQLSchemaToEntityDiff
 {
   private Map<Entity, Set<Property>> commonEntityProperties;
-  private Map<EntityVersion, Set<Property>> evOwnProperties;
-  private Map<EntityVersion, EntityVersionProp> evPropsByEv;
+  private Map<EntityVariation, Set<Property>> evOwnProperties;
+  private Map<EntityVariation, EntityVersionProp> evPropsByEv;
   private HashingStrategy<Property> propertyHashing;
 
   public NoSQLSchemaToEntityDiff()
@@ -92,7 +92,7 @@ public class NoSQLSchemaToEntityDiff
         .collect(toMap(identity(), this::calcCommonProperties));
 
     evOwnProperties = schema.getEntities().stream()
-        .flatMap(e -> e.getEntityversions().stream().map(ev -> Tuples.pair(ev,
+        .flatMap(e -> e.getEntityvariations().stream().map(ev -> Tuples.pair(ev,
             ev.getProperties().stream().filter(p -> !commonEntityProperties.get(e).contains(p))
             .collect(toCollection(() -> new UnifiedSetWithHashingStrategy<>(propertyHashing))))))
         .collect(toMap(Pair::getOne, Pair::getTwo));
@@ -104,7 +104,7 @@ public class NoSQLSchemaToEntityDiff
   {
     // Holds the set of properties to check for each EntityVersion. It will be used to
     // not to create duplicate checks
-    Map<EntityVersion, Map<String, PropertySpec>> propSpecsByEV = new HashMap<>();
+    Map<EntityVariation, Map<String, PropertySpec>> propSpecsByEV = new HashMap<>();
 
     EntityDiffSpec de = EntityDifferentiationFactory.eINSTANCE.createEntityDiffSpec();
     de.setEntity(e);
@@ -118,7 +118,7 @@ public class NoSQLSchemaToEntityDiff
     // Create and add all the EntityVersionProp. This is because it is easier, when
     // identified the own attributes of an EntityVersion, output "HasNotField" items
     // for the rest of EntityVersions
-    e.getEntityversions().forEach(ev -> {
+    e.getEntityvariations().forEach(ev -> {
       EntityVersionProp evp = EntityDifferentiationFactory.eINSTANCE.createEntityVersionProp();
       evp.setEntityVersion(ev);
       de.getEntityVersionProps().add(evp);
