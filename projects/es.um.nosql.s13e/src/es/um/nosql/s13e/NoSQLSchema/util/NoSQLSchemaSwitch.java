@@ -86,10 +86,10 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.ENTITY_VERSION:
+      case NoSQLSchemaPackage.ENTITY_VARIATION:
       {
-        EntityVersion entityVersion = (EntityVersion)theEObject;
-        T result = caseEntityVersion(entityVersion);
+        EntityVariation entityVariation = (EntityVariation)theEObject;
+        T result = caseEntityVariation(entityVariation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -202,17 +202,17 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Entity Version</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Entity Variation</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Entity Version</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Entity Variation</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEntityVersion(EntityVersion object)
+  public T caseEntityVariation(EntityVariation object)
   {
     return null;
   }

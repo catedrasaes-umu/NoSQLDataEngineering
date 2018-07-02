@@ -3,7 +3,7 @@ package es.um.nosql.s13e.util.emf;
 import java.util.stream.Collectors;
 
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 
 public class PrettyPrinter
@@ -39,19 +39,19 @@ public class PrettyPrinter
 		String tabs = defTabs + TAB;
 
 		String result = defTabs + "Entity name:" + entity.getName() + System.lineSeparator() 
-				 + entity.getEntityversions().stream()
+				 + entity.getEntityvariations().stream()
 				 	.map(ev -> printPretty(ev,tabs))
 				 	.collect(Collectors.joining(""));
 
 		return result;
 	}
 
-	public static String printPretty(EntityVersion eVersion)
+	public static String printPretty(EntityVariation eVersion)
 	{
 		return printPretty(eVersion, "");
 	}
 
-	private static String printPretty(EntityVersion eVersion, String defTabs)
+	private static String printPretty(EntityVariation eVersion, String defTabs)
 	{
 		if (eVersion == null)
 			return null;

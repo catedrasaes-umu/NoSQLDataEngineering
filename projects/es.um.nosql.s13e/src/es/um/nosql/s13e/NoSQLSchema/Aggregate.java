@@ -24,7 +24,7 @@ public interface Aggregate extends Association
 {
   /**
    * Returns the value of the '<em><b>Ref To</b></em>' reference list.
-   * The list contents are of type {@link es.um.nosql.s13e.NoSQLSchema.EntityVersion}.
+   * The list contents are of type {@link es.um.nosql.s13e.NoSQLSchema.EntityVariation}.
    * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Ref To</em>' reference list isn't clear,
@@ -36,6 +36,6 @@ public interface Aggregate extends Association
    * @model required="true"
    * @generated
    */
-  EList<EntityVersion> getRefTo();
+  EList<EntityVariation> getRefTo();
 
 } // Aggregate

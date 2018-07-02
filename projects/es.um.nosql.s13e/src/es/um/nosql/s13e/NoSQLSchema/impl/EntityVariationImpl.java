@@ -18,28 +18,28 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Entity Version</b></em>'.
+ * An implementation of the model object '<em><b>Entity Variation</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVersionImpl#getVersionId <em>Version Id</em>}</li>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVersionImpl#getProperties <em>Properties</em>}</li>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVersionImpl#getCount <em>Count</em>}</li>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVersionImpl#isRoot <em>Root</em>}</li>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVersionImpl#getTimestamp <em>Timestamp</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVariationImpl#getVersionId <em>Version Id</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVariationImpl#getProperties <em>Properties</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVariationImpl#getCount <em>Count</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVariationImpl#isRoot <em>Root</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVariationImpl#getTimestamp <em>Timestamp</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class EntityVersionImpl extends MinimalEObjectImpl.Container implements EntityVersion
+public class EntityVariationImpl extends MinimalEObjectImpl.Container implements EntityVariation
 {
   /**
    * The default value of the '{@link #getVersionId() <em>Version Id</em>}' attribute.
@@ -119,7 +119,7 @@ public class EntityVersionImpl extends MinimalEObjectImpl.Container implements E
    * @generated
    * @ordered
    */
-  protected static final String TIMESTAMP_EDEFAULT = null;
+  protected static final long TIMESTAMP_EDEFAULT = 0L;
 
   /**
    * The cached value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
@@ -129,14 +129,14 @@ public class EntityVersionImpl extends MinimalEObjectImpl.Container implements E
    * @generated
    * @ordered
    */
-  protected String timestamp = TIMESTAMP_EDEFAULT;
+  protected long timestamp = TIMESTAMP_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected EntityVersionImpl()
+  protected EntityVariationImpl()
   {
     super();
   }
@@ -149,7 +149,7 @@ public class EntityVersionImpl extends MinimalEObjectImpl.Container implements E
   @Override
   protected EClass eStaticClass()
   {
-    return NoSQLSchemaPackage.Literals.ENTITY_VERSION;
+    return NoSQLSchemaPackage.Literals.ENTITY_VARIATION;
   }
 
   /**
@@ -172,7 +172,7 @@ public class EntityVersionImpl extends MinimalEObjectImpl.Container implements E
     int oldVersionId = versionId;
     versionId = newVersionId;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY_VERSION__VERSION_ID, oldVersionId, versionId));
+      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY_VARIATION__VERSION_ID, oldVersionId, versionId));
   }
 
   /**
@@ -184,7 +184,7 @@ public class EntityVersionImpl extends MinimalEObjectImpl.Container implements E
   {
     if (properties == null)
     {
-      properties = new EObjectContainmentEList<Property>(Property.class, this, NoSQLSchemaPackage.ENTITY_VERSION__PROPERTIES);
+      properties = new EObjectContainmentEList<Property>(Property.class, this, NoSQLSchemaPackage.ENTITY_VARIATION__PROPERTIES);
     }
     return properties;
   }
@@ -209,7 +209,7 @@ public class EntityVersionImpl extends MinimalEObjectImpl.Container implements E
     long oldCount = count;
     count = newCount;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY_VERSION__COUNT, oldCount, count));
+      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY_VARIATION__COUNT, oldCount, count));
   }
 
   /**
@@ -232,7 +232,7 @@ public class EntityVersionImpl extends MinimalEObjectImpl.Container implements E
     boolean oldRoot = root;
     root = newRoot;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY_VERSION__ROOT, oldRoot, root));
+      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY_VARIATION__ROOT, oldRoot, root));
   }
 
   /**
@@ -240,7 +240,7 @@ public class EntityVersionImpl extends MinimalEObjectImpl.Container implements E
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getTimestamp()
+  public long getTimestamp()
   {
     return timestamp;
   }
@@ -250,12 +250,12 @@ public class EntityVersionImpl extends MinimalEObjectImpl.Container implements E
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTimestamp(String newTimestamp)
+  public void setTimestamp(long newTimestamp)
   {
-    String oldTimestamp = timestamp;
+    long oldTimestamp = timestamp;
     timestamp = newTimestamp;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY_VERSION__TIMESTAMP, oldTimestamp, timestamp));
+      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY_VARIATION__TIMESTAMP, oldTimestamp, timestamp));
   }
 
   /**
@@ -268,7 +268,7 @@ public class EntityVersionImpl extends MinimalEObjectImpl.Container implements E
   {
     switch (featureID)
     {
-      case NoSQLSchemaPackage.ENTITY_VERSION__PROPERTIES:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__PROPERTIES:
         return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -284,15 +284,15 @@ public class EntityVersionImpl extends MinimalEObjectImpl.Container implements E
   {
     switch (featureID)
     {
-      case NoSQLSchemaPackage.ENTITY_VERSION__VERSION_ID:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__VERSION_ID:
         return getVersionId();
-      case NoSQLSchemaPackage.ENTITY_VERSION__PROPERTIES:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__PROPERTIES:
         return getProperties();
-      case NoSQLSchemaPackage.ENTITY_VERSION__COUNT:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__COUNT:
         return getCount();
-      case NoSQLSchemaPackage.ENTITY_VERSION__ROOT:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__ROOT:
         return isRoot();
-      case NoSQLSchemaPackage.ENTITY_VERSION__TIMESTAMP:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__TIMESTAMP:
         return getTimestamp();
     }
     return super.eGet(featureID, resolve, coreType);
@@ -309,21 +309,21 @@ public class EntityVersionImpl extends MinimalEObjectImpl.Container implements E
   {
     switch (featureID)
     {
-      case NoSQLSchemaPackage.ENTITY_VERSION__VERSION_ID:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__VERSION_ID:
         setVersionId((Integer)newValue);
         return;
-      case NoSQLSchemaPackage.ENTITY_VERSION__PROPERTIES:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__PROPERTIES:
         getProperties().clear();
         getProperties().addAll((Collection<? extends Property>)newValue);
         return;
-      case NoSQLSchemaPackage.ENTITY_VERSION__COUNT:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__COUNT:
         setCount((Long)newValue);
         return;
-      case NoSQLSchemaPackage.ENTITY_VERSION__ROOT:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__ROOT:
         setRoot((Boolean)newValue);
         return;
-      case NoSQLSchemaPackage.ENTITY_VERSION__TIMESTAMP:
-        setTimestamp((String)newValue);
+      case NoSQLSchemaPackage.ENTITY_VARIATION__TIMESTAMP:
+        setTimestamp((Long)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -339,19 +339,19 @@ public class EntityVersionImpl extends MinimalEObjectImpl.Container implements E
   {
     switch (featureID)
     {
-      case NoSQLSchemaPackage.ENTITY_VERSION__VERSION_ID:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__VERSION_ID:
         setVersionId(VERSION_ID_EDEFAULT);
         return;
-      case NoSQLSchemaPackage.ENTITY_VERSION__PROPERTIES:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__PROPERTIES:
         getProperties().clear();
         return;
-      case NoSQLSchemaPackage.ENTITY_VERSION__COUNT:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__COUNT:
         setCount(COUNT_EDEFAULT);
         return;
-      case NoSQLSchemaPackage.ENTITY_VERSION__ROOT:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__ROOT:
         setRoot(ROOT_EDEFAULT);
         return;
-      case NoSQLSchemaPackage.ENTITY_VERSION__TIMESTAMP:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__TIMESTAMP:
         setTimestamp(TIMESTAMP_EDEFAULT);
         return;
     }
@@ -368,16 +368,16 @@ public class EntityVersionImpl extends MinimalEObjectImpl.Container implements E
   {
     switch (featureID)
     {
-      case NoSQLSchemaPackage.ENTITY_VERSION__VERSION_ID:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__VERSION_ID:
         return versionId != VERSION_ID_EDEFAULT;
-      case NoSQLSchemaPackage.ENTITY_VERSION__PROPERTIES:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__PROPERTIES:
         return properties != null && !properties.isEmpty();
-      case NoSQLSchemaPackage.ENTITY_VERSION__COUNT:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__COUNT:
         return count != COUNT_EDEFAULT;
-      case NoSQLSchemaPackage.ENTITY_VERSION__ROOT:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__ROOT:
         return root != ROOT_EDEFAULT;
-      case NoSQLSchemaPackage.ENTITY_VERSION__TIMESTAMP:
-        return TIMESTAMP_EDEFAULT == null ? timestamp != null : !TIMESTAMP_EDEFAULT.equals(timestamp);
+      case NoSQLSchemaPackage.ENTITY_VARIATION__TIMESTAMP:
+        return timestamp != TIMESTAMP_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -405,4 +405,4 @@ public class EntityVersionImpl extends MinimalEObjectImpl.Container implements E
     return result.toString();
   }
 
-} //EntityVersionImpl
+} //EntityVariationImpl

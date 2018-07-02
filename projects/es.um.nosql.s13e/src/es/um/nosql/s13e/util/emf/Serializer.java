@@ -7,7 +7,7 @@ import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
@@ -16,7 +16,7 @@ import es.um.nosql.s13e.NoSQLSchema.Type;
 
 public class Serializer
 {
-	public static String serialize(EntityVersion eVersion)
+	public static String serialize(EntityVariation eVersion)
 	{
 		if (eVersion == null)
 			return null;

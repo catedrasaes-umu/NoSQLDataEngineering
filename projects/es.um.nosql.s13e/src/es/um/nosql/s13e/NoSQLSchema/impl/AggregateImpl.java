@@ -11,7 +11,7 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 
 /**
@@ -37,7 +37,7 @@ public class AggregateImpl extends AssociationImpl implements Aggregate
    * @generated
    * @ordered
    */
-  protected EList<EntityVersion> refTo;
+  protected EList<EntityVariation> refTo;
 
   /**
    * <!-- begin-user-doc -->
@@ -65,11 +65,11 @@ public class AggregateImpl extends AssociationImpl implements Aggregate
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<EntityVersion> getRefTo()
+  public EList<EntityVariation> getRefTo()
   {
     if (refTo == null)
     {
-      refTo = new EObjectResolvingEList<EntityVersion>(EntityVersion.class, this, NoSQLSchemaPackage.AGGREGATE__REF_TO);
+      refTo = new EObjectResolvingEList<EntityVariation>(EntityVariation.class, this, NoSQLSchemaPackage.AGGREGATE__REF_TO);
     }
     return refTo;
   }
@@ -103,7 +103,7 @@ public class AggregateImpl extends AssociationImpl implements Aggregate
     {
       case NoSQLSchemaPackage.AGGREGATE__REF_TO:
         getRefTo().clear();
-        getRefTo().addAll((Collection<? extends EntityVersion>)newValue);
+        getRefTo().addAll((Collection<? extends EntityVariation>)newValue);
         return;
     }
     super.eSet(featureID, newValue);

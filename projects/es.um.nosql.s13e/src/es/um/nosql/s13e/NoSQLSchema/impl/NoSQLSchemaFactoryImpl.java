@@ -66,7 +66,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
     {
       case NoSQLSchemaPackage.NO_SQL_SCHEMA: return createNoSQLSchema();
       case NoSQLSchemaPackage.ENTITY: return createEntity();
-      case NoSQLSchemaPackage.ENTITY_VERSION: return createEntityVersion();
+      case NoSQLSchemaPackage.ENTITY_VARIATION: return createEntityVariation();
       case NoSQLSchemaPackage.ATTRIBUTE: return createAttribute();
       case NoSQLSchemaPackage.TUPLE: return createTuple();
       case NoSQLSchemaPackage.REFERENCE: return createReference();
@@ -105,10 +105,10 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public EntityVersion createEntityVersion()
+  public EntityVariation createEntityVariation()
   {
-    EntityVersionImpl entityVersion = new EntityVersionImpl();
-    return entityVersion;
+    EntityVariationImpl entityVariation = new EntityVariationImpl();
+    return entityVariation;
   }
 
   /**

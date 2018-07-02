@@ -41,13 +41,13 @@ public interface NoSQLSchemaFactory extends EFactory
   Entity createEntity();
 
   /**
-   * Returns a new object of class '<em>Entity Version</em>'.
+   * Returns a new object of class '<em>Entity Variation</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Entity Version</em>'.
+   * @return a new object of class '<em>Entity Variation</em>'.
    * @generated
    */
-  EntityVersion createEntityVersion();
+  EntityVariation createEntityVariation();
 
   /**
    * Returns a new object of class '<em>Attribute</em>'.

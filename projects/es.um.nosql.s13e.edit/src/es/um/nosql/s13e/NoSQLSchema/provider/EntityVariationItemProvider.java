@@ -24,17 +24,17 @@ import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
-import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 
 /**
- * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Entity} object.
+ * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.EntityVariation} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class EntityItemProvider 
+public class EntityVariationItemProvider 
   extends ItemProviderAdapter
   implements
     IEditingDomainItemProvider,
@@ -49,7 +49,7 @@ public class EntityItemProvider
    * <!-- end-user-doc -->
    * @generated
    */
-  public EntityItemProvider(AdapterFactory adapterFactory)
+  public EntityVariationItemProvider(AdapterFactory adapterFactory)
   {
     super(adapterFactory);
   }
@@ -67,54 +67,102 @@ public class EntityItemProvider
     {
       super.getPropertyDescriptors(object);
 
-      addNamePropertyDescriptor(object);
-      addParentsPropertyDescriptor(object);
+      addVersionIdPropertyDescriptor(object);
+      addCountPropertyDescriptor(object);
+      addRootPropertyDescriptor(object);
+      addTimestampPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
   }
 
   /**
-   * This adds a property descriptor for the Name feature.
+   * This adds a property descriptor for the Version Id feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected void addNamePropertyDescriptor(Object object)
+  protected void addVersionIdPropertyDescriptor(Object object)
   {
     itemPropertyDescriptors.add
       (createItemPropertyDescriptor
         (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
          getResourceLocator(),
-         getString("_UI_Entity_name_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Entity_name_feature", "_UI_Entity_type"),
-         NoSQLSchemaPackage.Literals.ENTITY__NAME,
+         getString("_UI_EntityVariation_versionId_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_EntityVariation_versionId_feature", "_UI_EntityVariation_type"),
+         NoSQLSchemaPackage.Literals.ENTITY_VARIATION__VERSION_ID,
          true,
          false,
          false,
-         ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
          null,
          null));
   }
 
   /**
-   * This adds a property descriptor for the Parents feature.
+   * This adds a property descriptor for the Count feature.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected void addParentsPropertyDescriptor(Object object)
+  protected void addCountPropertyDescriptor(Object object)
   {
     itemPropertyDescriptors.add
       (createItemPropertyDescriptor
         (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
          getResourceLocator(),
-         getString("_UI_Entity_parents_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Entity_parents_feature", "_UI_Entity_type"),
-         NoSQLSchemaPackage.Literals.ENTITY__PARENTS,
+         getString("_UI_EntityVariation_count_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_EntityVariation_count_feature", "_UI_EntityVariation_type"),
+         NoSQLSchemaPackage.Literals.ENTITY_VARIATION__COUNT,
          true,
          false,
-         true,
+         false,
+         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
          null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Root feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addRootPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_EntityVariation_root_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_EntityVariation_root_feature", "_UI_EntityVariation_type"),
+         NoSQLSchemaPackage.Literals.ENTITY_VARIATION__ROOT,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Timestamp feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addTimestampPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_EntityVariation_timestamp_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_EntityVariation_timestamp_feature", "_UI_EntityVariation_type"),
+         NoSQLSchemaPackage.Literals.ENTITY_VARIATION__TIMESTAMP,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
          null,
          null));
   }
@@ -133,7 +181,7 @@ public class EntityItemProvider
     if (childrenFeatures == null)
     {
       super.getChildrenFeatures(object);
-      childrenFeatures.add(NoSQLSchemaPackage.Literals.ENTITY__ENTITYVARIATIONS);
+      childrenFeatures.add(NoSQLSchemaPackage.Literals.ENTITY_VARIATION__PROPERTIES);
     }
     return childrenFeatures;
   }
@@ -153,7 +201,7 @@ public class EntityItemProvider
   }
 
   /**
-   * This returns Entity.gif.
+   * This returns EntityVariation.gif.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -161,7 +209,7 @@ public class EntityItemProvider
   @Override
   public Object getImage(Object object)
   {
-    return overlayImage(object, getResourceLocator().getImage("full/obj16/Entity"));
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/EntityVariation"));
   }
 
   /**
@@ -173,10 +221,8 @@ public class EntityItemProvider
   @Override
   public String getText(Object object)
   {
-    String label = ((Entity)object).getName();
-    return label == null || label.length() == 0 ?
-      getString("_UI_Entity_type") :
-      getString("_UI_Entity_type") + " " + label;
+    EntityVariation entityVariation = (EntityVariation)object;
+    return getString("_UI_EntityVariation_type") + " " + entityVariation.getVersionId();
   }
   
 
@@ -192,12 +238,15 @@ public class EntityItemProvider
   {
     updateChildren(notification);
 
-    switch (notification.getFeatureID(Entity.class))
+    switch (notification.getFeatureID(EntityVariation.class))
     {
-      case NoSQLSchemaPackage.ENTITY__NAME:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__VERSION_ID:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__COUNT:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__ROOT:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__TIMESTAMP:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
-      case NoSQLSchemaPackage.ENTITY__ENTITYVARIATIONS:
+      case NoSQLSchemaPackage.ENTITY_VARIATION__PROPERTIES:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
     }
@@ -218,8 +267,23 @@ public class EntityItemProvider
 
     newChildDescriptors.add
       (createChildParameter
-        (NoSQLSchemaPackage.Literals.ENTITY__ENTITYVARIATIONS,
-         NoSQLSchemaFactory.eINSTANCE.createEntityVariation()));
+        (NoSQLSchemaPackage.Literals.ENTITY_VARIATION__PROPERTIES,
+         NoSQLSchemaFactory.eINSTANCE.createAttribute()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (NoSQLSchemaPackage.Literals.ENTITY_VARIATION__PROPERTIES,
+         NoSQLSchemaFactory.eINSTANCE.createReference()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (NoSQLSchemaPackage.Literals.ENTITY_VARIATION__PROPERTIES,
+         NoSQLSchemaFactory.eINSTANCE.createAggregate()));
+
+    newChildDescriptors.add
+      (createChildParameter
+        (NoSQLSchemaPackage.Literals.ENTITY_VARIATION__PROPERTIES,
+         NoSQLSchemaFactory.eINSTANCE.createNull()));
   }
 
   /**

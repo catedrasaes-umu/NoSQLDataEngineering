@@ -85,9 +85,9 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
         return createEntityAdapter();
       }
       @Override
-      public Adapter caseEntityVersion(EntityVersion object)
+      public Adapter caseEntityVariation(EntityVariation object)
       {
-        return createEntityVersionAdapter();
+        return createEntityVariationAdapter();
       }
       @Override
       public Adapter caseProperty(Property object)
@@ -187,16 +187,16 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
-   * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion <em>Entity Version</em>}'.
+   * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation <em>Entity Variation</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
    * it's useful to ignore a case when inheritance will catch all the cases anyway.
    * <!-- end-user-doc -->
    * @return the new adapter.
-   * @see es.um.nosql.s13e.NoSQLSchema.EntityVersion
+   * @see es.um.nosql.s13e.NoSQLSchema.EntityVariation
    * @generated
    */
-  public Adapter createEntityVersionAdapter()
+  public Adapter createEntityVariationAdapter()
   {
     return null;
   }

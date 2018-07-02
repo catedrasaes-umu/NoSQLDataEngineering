@@ -13,7 +13,7 @@ import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
@@ -51,7 +51,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass entityVersionEClass = null;
+  private EClass entityVariationEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -234,7 +234,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEntity_Entityversions()
+  public EReference getEntity_Entityvariations()
   {
     return (EReference)entityEClass.getEStructuralFeatures().get(1);
   }
@@ -254,9 +254,9 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getEntityVersion()
+  public EClass getEntityVariation()
   {
-    return entityVersionEClass;
+    return entityVariationEClass;
   }
 
   /**
@@ -264,9 +264,9 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEntityVersion_VersionId()
+  public EAttribute getEntityVariation_VersionId()
   {
-    return (EAttribute)entityVersionEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)entityVariationEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -274,9 +274,9 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getEntityVersion_Properties()
+  public EReference getEntityVariation_Properties()
   {
-    return (EReference)entityVersionEClass.getEStructuralFeatures().get(1);
+    return (EReference)entityVariationEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -284,9 +284,9 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEntityVersion_Count()
+  public EAttribute getEntityVariation_Count()
   {
-    return (EAttribute)entityVersionEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)entityVariationEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -294,9 +294,9 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEntityVersion_Root()
+  public EAttribute getEntityVariation_Root()
   {
-    return (EAttribute)entityVersionEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)entityVariationEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -304,9 +304,9 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEntityVersion_Timestamp()
+  public EAttribute getEntityVariation_Timestamp()
   {
-    return (EAttribute)entityVersionEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)entityVariationEClass.getEStructuralFeatures().get(4);
   }
 
   /**
@@ -545,15 +545,15 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 
     entityEClass = createEClass(ENTITY);
     createEAttribute(entityEClass, ENTITY__NAME);
-    createEReference(entityEClass, ENTITY__ENTITYVERSIONS);
+    createEReference(entityEClass, ENTITY__ENTITYVARIATIONS);
     createEReference(entityEClass, ENTITY__PARENTS);
 
-    entityVersionEClass = createEClass(ENTITY_VERSION);
-    createEAttribute(entityVersionEClass, ENTITY_VERSION__VERSION_ID);
-    createEReference(entityVersionEClass, ENTITY_VERSION__PROPERTIES);
-    createEAttribute(entityVersionEClass, ENTITY_VERSION__COUNT);
-    createEAttribute(entityVersionEClass, ENTITY_VERSION__ROOT);
-    createEAttribute(entityVersionEClass, ENTITY_VERSION__TIMESTAMP);
+    entityVariationEClass = createEClass(ENTITY_VARIATION);
+    createEAttribute(entityVariationEClass, ENTITY_VARIATION__VERSION_ID);
+    createEReference(entityVariationEClass, ENTITY_VARIATION__PROPERTIES);
+    createEAttribute(entityVariationEClass, ENTITY_VARIATION__COUNT);
+    createEAttribute(entityVariationEClass, ENTITY_VARIATION__ROOT);
+    createEAttribute(entityVariationEClass, ENTITY_VARIATION__TIMESTAMP);
 
     propertyEClass = createEClass(PROPERTY);
     createEAttribute(propertyEClass, PROPERTY__NAME);
@@ -629,15 +629,15 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 
     initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEntity_Name(), ecorePackage.getEString(), "name", null, 1, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEntity_Entityversions(), this.getEntityVersion(), null, "entityversions", null, 1, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEntity_Entityvariations(), this.getEntityVariation(), null, "entityvariations", null, 1, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntity_Parents(), this.getEntity(), null, "parents", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(entityVersionEClass, EntityVersion.class, "EntityVersion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getEntityVersion_VersionId(), ecorePackage.getEInt(), "versionId", null, 1, 1, EntityVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getEntityVersion_Properties(), this.getProperty(), null, "properties", null, 1, -1, EntityVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getEntityVersion_Count(), ecorePackage.getELong(), "count", "0", 0, 1, EntityVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getEntityVersion_Root(), ecorePackage.getEBoolean(), "root", "false", 0, 1, EntityVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getEntityVersion_Timestamp(), ecorePackage.getEString(), "timestamp", null, 0, 1, EntityVersion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(entityVariationEClass, EntityVariation.class, "EntityVariation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getEntityVariation_VersionId(), ecorePackage.getEInt(), "versionId", null, 1, 1, EntityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEntityVariation_Properties(), this.getProperty(), null, "properties", null, 1, -1, EntityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntityVariation_Count(), ecorePackage.getELong(), "count", "0", 0, 1, EntityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntityVariation_Root(), ecorePackage.getEBoolean(), "root", "false", 0, 1, EntityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntityVariation_Timestamp(), ecorePackage.getELong(), "timestamp", null, 0, 1, EntityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyEClass, Property.class, "Property", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getProperty_Name(), ecorePackage.getEString(), "name", null, 1, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -661,7 +661,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
     initEReference(getReference_Properties(), this.getProperty(), null, "properties", null, 0, -1, Reference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(aggregateEClass, Aggregate.class, "Aggregate", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getAggregate_RefTo(), this.getEntityVersion(), null, "refTo", null, 1, -1, Aggregate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAggregate_RefTo(), this.getEntityVariation(), null, "refTo", null, 1, -1, Aggregate.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(primitiveTypeEClass, PrimitiveType.class, "PrimitiveType", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getPrimitiveType_Name(), ecorePackage.getEString(), "name", null, 1, 1, PrimitiveType.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

@@ -16,7 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Entity#getName <em>Name</em>}</li>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Entity#getEntityversions <em>Entityversions</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Entity#getEntityvariations <em>Entityvariations</em>}</li>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Entity#getParents <em>Parents</em>}</li>
  * </ul>
  *
@@ -53,20 +53,20 @@ public interface Entity extends EObject
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Entityversions</b></em>' containment reference list.
-   * The list contents are of type {@link es.um.nosql.s13e.NoSQLSchema.EntityVersion}.
+   * Returns the value of the '<em><b>Entityvariations</b></em>' containment reference list.
+   * The list contents are of type {@link es.um.nosql.s13e.NoSQLSchema.EntityVariation}.
    * <!-- begin-user-doc -->
    * <p>
-   * If the meaning of the '<em>Entityversions</em>' containment reference list isn't clear,
+   * If the meaning of the '<em>Entityvariations</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Entityversions</em>' containment reference list.
-   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntity_Entityversions()
+   * @return the value of the '<em>Entityvariations</em>' containment reference list.
+   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntity_Entityvariations()
    * @model containment="true" required="true"
    * @generated
    */
-  EList<EntityVersion> getEntityversions();
+  EList<EntityVariation> getEntityvariations();
 
   /**
    * Returns the value of the '<em><b>Parents</b></em>' reference list.

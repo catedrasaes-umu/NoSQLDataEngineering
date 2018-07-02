@@ -9,30 +9,17 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 
-import org.eclipse.emf.common.util.ResourceLocator;
-
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
-import org.eclipse.emf.edit.provider.ItemProviderAdapter;
+
+import es.um.nosql.s13e.NoSQLSchema.Null;
 
 /**
- * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Type} object.
+ * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Null} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TypeItemProvider 
-  extends ItemProviderAdapter
-  implements
-    IEditingDomainItemProvider,
-    IStructuredItemContentProvider,
-    ITreeItemContentProvider,
-    IItemLabelProvider,
-    IItemPropertySource
+public class NullItemProvider extends PropertyItemProvider
 {
   /**
    * This constructs an instance from a factory and a notifier.
@@ -40,7 +27,7 @@ public class TypeItemProvider
    * <!-- end-user-doc -->
    * @generated
    */
-  public TypeItemProvider(AdapterFactory adapterFactory)
+  public NullItemProvider(AdapterFactory adapterFactory)
   {
     super(adapterFactory);
   }
@@ -63,6 +50,18 @@ public class TypeItemProvider
   }
 
   /**
+   * This returns Null.gif.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Object getImage(Object object)
+  {
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/Null"));
+  }
+
+  /**
    * This returns the label text for the adapted class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -71,7 +70,10 @@ public class TypeItemProvider
   @Override
   public String getText(Object object)
   {
-    return getString("_UI_Type_type");
+    String label = ((Null)object).getName();
+    return label == null || label.length() == 0 ?
+      getString("_UI_Null_type") :
+      getString("_UI_Null_type") + " " + label;
   }
   
 
@@ -100,18 +102,6 @@ public class TypeItemProvider
   protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
   {
     super.collectNewChildDescriptors(newChildDescriptors, object);
-  }
-
-  /**
-   * Return the resource locator for this item provider's resources.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public ResourceLocator getResourceLocator()
-  {
-    return NosqlschemaEditPlugin.INSTANCE;
   }
 
 }

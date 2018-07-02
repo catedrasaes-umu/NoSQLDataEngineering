@@ -8,25 +8,25 @@ import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Entity Version</b></em>'.
+ * A representation of the model object '<em><b>Entity Variation</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#getVersionId <em>Version Id</em>}</li>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#getProperties <em>Properties</em>}</li>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#getCount <em>Count</em>}</li>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#isRoot <em>Root</em>}</li>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#getTimestamp <em>Timestamp</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getVersionId <em>Version Id</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getProperties <em>Properties</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getCount <em>Count</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#isRoot <em>Root</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getTimestamp <em>Timestamp</em>}</li>
  * </ul>
  *
- * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntityVersion()
+ * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntityVariation()
  * @model
  * @generated
  */
-public interface EntityVersion extends EObject
+public interface EntityVariation extends EObject
 {
   /**
    * Returns the value of the '<em><b>Version Id</b></em>' attribute.
@@ -38,14 +38,14 @@ public interface EntityVersion extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Version Id</em>' attribute.
    * @see #setVersionId(int)
-   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntityVersion_VersionId()
+   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntityVariation_VersionId()
    * @model required="true"
    * @generated
    */
   int getVersionId();
 
   /**
-   * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#getVersionId <em>Version Id</em>}' attribute.
+   * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getVersionId <em>Version Id</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Version Id</em>' attribute.
@@ -64,7 +64,7 @@ public interface EntityVersion extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Properties</em>' containment reference list.
-   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntityVersion_Properties()
+   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntityVariation_Properties()
    * @model containment="true" required="true"
    * @generated
    */
@@ -81,14 +81,14 @@ public interface EntityVersion extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Count</em>' attribute.
    * @see #setCount(long)
-   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntityVersion_Count()
+   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntityVariation_Count()
    * @model default="0"
    * @generated
    */
   long getCount();
 
   /**
-   * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#getCount <em>Count</em>}' attribute.
+   * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getCount <em>Count</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Count</em>' attribute.
@@ -108,14 +108,14 @@ public interface EntityVersion extends EObject
    * <!-- end-user-doc -->
    * @return the value of the '<em>Root</em>' attribute.
    * @see #setRoot(boolean)
-   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntityVersion_Root()
+   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntityVariation_Root()
    * @model default="false"
    * @generated
    */
   boolean isRoot();
 
   /**
-   * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#isRoot <em>Root</em>}' attribute.
+   * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#isRoot <em>Root</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Root</em>' attribute.
@@ -133,21 +133,21 @@ public interface EntityVersion extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Timestamp</em>' attribute.
-   * @see #setTimestamp(String)
-   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntityVersion_Timestamp()
+   * @see #setTimestamp(long)
+   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntityVariation_Timestamp()
    * @model
    * @generated
    */
-  String getTimestamp();
+  long getTimestamp();
 
   /**
-   * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#getTimestamp <em>Timestamp</em>}' attribute.
+   * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getTimestamp <em>Timestamp</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @param value the new value of the '<em>Timestamp</em>' attribute.
    * @see #getTimestamp()
    * @generated
    */
-  void setTimestamp(String value);
+  void setTimestamp(long value);
 
-} // EntityVersion
+} // EntityVariation

@@ -12,7 +12,7 @@
     </genClasses>
     <genClasses ecoreClass="nosqlschema.ecore#//Entity">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//Entity/name"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Entity/entityversions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Entity/entityvariations"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Entity/parents"/>
     </genClasses>
     <genClasses ecoreClass="nosqlschema.ecore#//EntityVariation">

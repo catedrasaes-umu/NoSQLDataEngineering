@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 
 /**
@@ -32,7 +32,7 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
  * </p>
  * <ul>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityImpl#getName <em>Name</em>}</li>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityImpl#getEntityversions <em>Entityversions</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityImpl#getEntityvariations <em>Entityvariations</em>}</li>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityImpl#getParents <em>Parents</em>}</li>
  * </ul>
  *
@@ -61,14 +61,14 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getEntityversions() <em>Entityversions</em>}' containment reference list.
+   * The cached value of the '{@link #getEntityvariations() <em>Entityvariations</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEntityversions()
+   * @see #getEntityvariations()
    * @generated
    * @ordered
    */
-  protected EList<EntityVersion> entityversions;
+  protected EList<EntityVariation> entityvariations;
 
   /**
    * The cached value of the '{@link #getParents() <em>Parents</em>}' reference list.
@@ -129,13 +129,13 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<EntityVersion> getEntityversions()
+  public EList<EntityVariation> getEntityvariations()
   {
-    if (entityversions == null)
+    if (entityvariations == null)
     {
-      entityversions = new EObjectContainmentEList<EntityVersion>(EntityVersion.class, this, NoSQLSchemaPackage.ENTITY__ENTITYVERSIONS);
+      entityvariations = new EObjectContainmentEList<EntityVariation>(EntityVariation.class, this, NoSQLSchemaPackage.ENTITY__ENTITYVARIATIONS);
     }
-    return entityversions;
+    return entityvariations;
   }
 
   /**
@@ -162,8 +162,8 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   {
     switch (featureID)
     {
-      case NoSQLSchemaPackage.ENTITY__ENTITYVERSIONS:
-        return ((InternalEList<?>)getEntityversions()).basicRemove(otherEnd, msgs);
+      case NoSQLSchemaPackage.ENTITY__ENTITYVARIATIONS:
+        return ((InternalEList<?>)getEntityvariations()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -180,8 +180,8 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
     {
       case NoSQLSchemaPackage.ENTITY__NAME:
         return getName();
-      case NoSQLSchemaPackage.ENTITY__ENTITYVERSIONS:
-        return getEntityversions();
+      case NoSQLSchemaPackage.ENTITY__ENTITYVARIATIONS:
+        return getEntityvariations();
       case NoSQLSchemaPackage.ENTITY__PARENTS:
         return getParents();
     }
@@ -202,9 +202,9 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
       case NoSQLSchemaPackage.ENTITY__NAME:
         setName((String)newValue);
         return;
-      case NoSQLSchemaPackage.ENTITY__ENTITYVERSIONS:
-        getEntityversions().clear();
-        getEntityversions().addAll((Collection<? extends EntityVersion>)newValue);
+      case NoSQLSchemaPackage.ENTITY__ENTITYVARIATIONS:
+        getEntityvariations().clear();
+        getEntityvariations().addAll((Collection<? extends EntityVariation>)newValue);
         return;
       case NoSQLSchemaPackage.ENTITY__PARENTS:
         getParents().clear();
@@ -227,8 +227,8 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
       case NoSQLSchemaPackage.ENTITY__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case NoSQLSchemaPackage.ENTITY__ENTITYVERSIONS:
-        getEntityversions().clear();
+      case NoSQLSchemaPackage.ENTITY__ENTITYVARIATIONS:
+        getEntityvariations().clear();
         return;
       case NoSQLSchemaPackage.ENTITY__PARENTS:
         getParents().clear();
@@ -249,8 +249,8 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
     {
       case NoSQLSchemaPackage.ENTITY__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case NoSQLSchemaPackage.ENTITY__ENTITYVERSIONS:
-        return entityversions != null && !entityversions.isEmpty();
+      case NoSQLSchemaPackage.ENTITY__ENTITYVARIATIONS:
+        return entityvariations != null && !entityvariations.isEmpty();
       case NoSQLSchemaPackage.ENTITY__PARENTS:
         return parents != null && !parents.isEmpty();
     }

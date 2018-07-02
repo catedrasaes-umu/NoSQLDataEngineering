@@ -123,13 +123,13 @@ public interface NoSQLSchemaPackage extends EPackage
   int ENTITY__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Entityversions</b></em>' containment reference list.
+   * The feature id for the '<em><b>Entityvariations</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY__ENTITYVERSIONS = 1;
+  int ENTITY__ENTITYVARIATIONS = 1;
 
   /**
    * The feature id for the '<em><b>Parents</b></em>' reference list.
@@ -159,14 +159,14 @@ public interface NoSQLSchemaPackage extends EPackage
   int ENTITY_OPERATION_COUNT = 0;
 
   /**
-   * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVersionImpl <em>Entity Version</em>}' class.
+   * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVariationImpl <em>Entity Variation</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see es.um.nosql.s13e.NoSQLSchema.impl.EntityVersionImpl
-   * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getEntityVersion()
+   * @see es.um.nosql.s13e.NoSQLSchema.impl.EntityVariationImpl
+   * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getEntityVariation()
    * @generated
    */
-  int ENTITY_VERSION = 2;
+  int ENTITY_VARIATION = 2;
 
   /**
    * The feature id for the '<em><b>Version Id</b></em>' attribute.
@@ -175,7 +175,7 @@ public interface NoSQLSchemaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_VERSION__VERSION_ID = 0;
+  int ENTITY_VARIATION__VERSION_ID = 0;
 
   /**
    * The feature id for the '<em><b>Properties</b></em>' containment reference list.
@@ -184,7 +184,7 @@ public interface NoSQLSchemaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_VERSION__PROPERTIES = 1;
+  int ENTITY_VARIATION__PROPERTIES = 1;
 
   /**
    * The feature id for the '<em><b>Count</b></em>' attribute.
@@ -193,7 +193,7 @@ public interface NoSQLSchemaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_VERSION__COUNT = 2;
+  int ENTITY_VARIATION__COUNT = 2;
 
   /**
    * The feature id for the '<em><b>Root</b></em>' attribute.
@@ -202,7 +202,7 @@ public interface NoSQLSchemaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_VERSION__ROOT = 3;
+  int ENTITY_VARIATION__ROOT = 3;
 
   /**
    * The feature id for the '<em><b>Timestamp</b></em>' attribute.
@@ -211,25 +211,25 @@ public interface NoSQLSchemaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_VERSION__TIMESTAMP = 4;
+  int ENTITY_VARIATION__TIMESTAMP = 4;
 
   /**
-   * The number of structural features of the '<em>Entity Version</em>' class.
+   * The number of structural features of the '<em>Entity Variation</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY_VERSION_FEATURE_COUNT = 5;
+  int ENTITY_VARIATION_FEATURE_COUNT = 5;
 
   /**
-   * The number of operations of the '<em>Entity Version</em>' class.
+   * The number of operations of the '<em>Entity Variation</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY_VERSION_OPERATION_COUNT = 0;
+  int ENTITY_VARIATION_OPERATION_COUNT = 0;
 
   /**
    * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.PropertyImpl <em>Property</em>}' class.
@@ -718,15 +718,15 @@ public interface NoSQLSchemaPackage extends EPackage
   EAttribute getEntity_Name();
 
   /**
-   * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.NoSQLSchema.Entity#getEntityversions <em>Entityversions</em>}'.
+   * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.NoSQLSchema.Entity#getEntityvariations <em>Entityvariations</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Entityversions</em>'.
-   * @see es.um.nosql.s13e.NoSQLSchema.Entity#getEntityversions()
+   * @return the meta object for the containment reference list '<em>Entityvariations</em>'.
+   * @see es.um.nosql.s13e.NoSQLSchema.Entity#getEntityvariations()
    * @see #getEntity()
    * @generated
    */
-  EReference getEntity_Entityversions();
+  EReference getEntity_Entityvariations();
 
   /**
    * Returns the meta object for the reference list '{@link es.um.nosql.s13e.NoSQLSchema.Entity#getParents <em>Parents</em>}'.
@@ -740,69 +740,69 @@ public interface NoSQLSchemaPackage extends EPackage
   EReference getEntity_Parents();
 
   /**
-   * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion <em>Entity Version</em>}'.
+   * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation <em>Entity Variation</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Entity Version</em>'.
-   * @see es.um.nosql.s13e.NoSQLSchema.EntityVersion
+   * @return the meta object for class '<em>Entity Variation</em>'.
+   * @see es.um.nosql.s13e.NoSQLSchema.EntityVariation
    * @generated
    */
-  EClass getEntityVersion();
+  EClass getEntityVariation();
 
   /**
-   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#getVersionId <em>Version Id</em>}'.
+   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getVersionId <em>Version Id</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Version Id</em>'.
-   * @see es.um.nosql.s13e.NoSQLSchema.EntityVersion#getVersionId()
-   * @see #getEntityVersion()
+   * @see es.um.nosql.s13e.NoSQLSchema.EntityVariation#getVersionId()
+   * @see #getEntityVariation()
    * @generated
    */
-  EAttribute getEntityVersion_VersionId();
+  EAttribute getEntityVariation_VersionId();
 
   /**
-   * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#getProperties <em>Properties</em>}'.
+   * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getProperties <em>Properties</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Properties</em>'.
-   * @see es.um.nosql.s13e.NoSQLSchema.EntityVersion#getProperties()
-   * @see #getEntityVersion()
+   * @see es.um.nosql.s13e.NoSQLSchema.EntityVariation#getProperties()
+   * @see #getEntityVariation()
    * @generated
    */
-  EReference getEntityVersion_Properties();
+  EReference getEntityVariation_Properties();
 
   /**
-   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#getCount <em>Count</em>}'.
+   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getCount <em>Count</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Count</em>'.
-   * @see es.um.nosql.s13e.NoSQLSchema.EntityVersion#getCount()
-   * @see #getEntityVersion()
+   * @see es.um.nosql.s13e.NoSQLSchema.EntityVariation#getCount()
+   * @see #getEntityVariation()
    * @generated
    */
-  EAttribute getEntityVersion_Count();
+  EAttribute getEntityVariation_Count();
 
   /**
-   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#isRoot <em>Root</em>}'.
+   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#isRoot <em>Root</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Root</em>'.
-   * @see es.um.nosql.s13e.NoSQLSchema.EntityVersion#isRoot()
-   * @see #getEntityVersion()
+   * @see es.um.nosql.s13e.NoSQLSchema.EntityVariation#isRoot()
+   * @see #getEntityVariation()
    * @generated
    */
-  EAttribute getEntityVersion_Root();
+  EAttribute getEntityVariation_Root();
 
   /**
-   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.EntityVersion#getTimestamp <em>Timestamp</em>}'.
+   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getTimestamp <em>Timestamp</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Timestamp</em>'.
-   * @see es.um.nosql.s13e.NoSQLSchema.EntityVersion#getTimestamp()
-   * @see #getEntityVersion()
+   * @see es.um.nosql.s13e.NoSQLSchema.EntityVariation#getTimestamp()
+   * @see #getEntityVariation()
    * @generated
    */
-  EAttribute getEntityVersion_Timestamp();
+  EAttribute getEntityVariation_Timestamp();
 
   /**
    * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.Property <em>Property</em>}'.
@@ -1084,12 +1084,12 @@ public interface NoSQLSchemaPackage extends EPackage
     EAttribute ENTITY__NAME = eINSTANCE.getEntity_Name();
 
     /**
-     * The meta object literal for the '<em><b>Entityversions</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Entityvariations</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ENTITY__ENTITYVERSIONS = eINSTANCE.getEntity_Entityversions();
+    EReference ENTITY__ENTITYVARIATIONS = eINSTANCE.getEntity_Entityvariations();
 
     /**
      * The meta object literal for the '<em><b>Parents</b></em>' reference list feature.
@@ -1100,14 +1100,14 @@ public interface NoSQLSchemaPackage extends EPackage
     EReference ENTITY__PARENTS = eINSTANCE.getEntity_Parents();
 
     /**
-     * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVersionImpl <em>Entity Version</em>}' class.
+     * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityVariationImpl <em>Entity Variation</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see es.um.nosql.s13e.NoSQLSchema.impl.EntityVersionImpl
-     * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getEntityVersion()
+     * @see es.um.nosql.s13e.NoSQLSchema.impl.EntityVariationImpl
+     * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getEntityVariation()
      * @generated
      */
-    EClass ENTITY_VERSION = eINSTANCE.getEntityVersion();
+    EClass ENTITY_VARIATION = eINSTANCE.getEntityVariation();
 
     /**
      * The meta object literal for the '<em><b>Version Id</b></em>' attribute feature.
@@ -1115,7 +1115,7 @@ public interface NoSQLSchemaPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ENTITY_VERSION__VERSION_ID = eINSTANCE.getEntityVersion_VersionId();
+    EAttribute ENTITY_VARIATION__VERSION_ID = eINSTANCE.getEntityVariation_VersionId();
 
     /**
      * The meta object literal for the '<em><b>Properties</b></em>' containment reference list feature.
@@ -1123,7 +1123,7 @@ public interface NoSQLSchemaPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference ENTITY_VERSION__PROPERTIES = eINSTANCE.getEntityVersion_Properties();
+    EReference ENTITY_VARIATION__PROPERTIES = eINSTANCE.getEntityVariation_Properties();
 
     /**
      * The meta object literal for the '<em><b>Count</b></em>' attribute feature.
@@ -1131,7 +1131,7 @@ public interface NoSQLSchemaPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ENTITY_VERSION__COUNT = eINSTANCE.getEntityVersion_Count();
+    EAttribute ENTITY_VARIATION__COUNT = eINSTANCE.getEntityVariation_Count();
 
     /**
      * The meta object literal for the '<em><b>Root</b></em>' attribute feature.
@@ -1139,7 +1139,7 @@ public interface NoSQLSchemaPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ENTITY_VERSION__ROOT = eINSTANCE.getEntityVersion_Root();
+    EAttribute ENTITY_VARIATION__ROOT = eINSTANCE.getEntityVariation_Root();
 
     /**
      * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
@@ -1147,7 +1147,7 @@ public interface NoSQLSchemaPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute ENTITY_VERSION__TIMESTAMP = eINSTANCE.getEntityVersion_Timestamp();
+    EAttribute ENTITY_VARIATION__TIMESTAMP = eINSTANCE.getEntityVariation_Timestamp();
 
     /**
      * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.PropertyImpl <em>Property</em>}' class.
