@@ -17,7 +17,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
@@ -30,7 +30,7 @@ public class JsonGenerator
   private int MIN_INSTANCES_VERSION;
   private int MAX_INSTANCES_VERSION;
 
-  private Map<EntityVersion, List<ObjectNode>> evMap;
+  private Map<EntityVariation, List<ObjectNode>> evMap;
   private Map<String, List<String>> entityIdMap;
   private ArrayNode lStorage;
 
@@ -52,7 +52,7 @@ public class JsonGenerator
 
   public String generate(NoSQLSchema schema) throws Exception
   {
-    evMap = new HashMap<EntityVersion, List<ObjectNode>>();
+    evMap = new HashMap<EntityVariation, List<ObjectNode>>();
     entityIdMap = new HashMap<String, List<String>>();
 
     lStorage = factory.arrayNode();
@@ -61,7 +61,7 @@ public class JsonGenerator
     for (Entity entity : schema.getEntities())
     {
       entityIdMap.put(entity.getName().toLowerCase(), new ArrayList<String>());
-      for (EntityVersion eVersion : entity.getEntityversions())
+      for (EntityVariation eVersion : entity.getEntityvariations())
       {
         evMap.put(eVersion, new ArrayList<ObjectNode>());
         int countInstances = getRandomBetween(MIN_INSTANCES_VERSION, MAX_INSTANCES_VERSION);
@@ -98,7 +98,7 @@ public class JsonGenerator
 
     // Second run to generate the references and aggregates since now all the versions and instances exist.
     for (Entity entity : schema.getEntities())
-      for (EntityVersion eVersion : entity.getEntityversions())
+      for (EntityVariation eVersion : entity.getEntityvariations())
         for (ObjectNode strObj : evMap.get(eVersion))
         {
           for (Property property : eVersion.getProperties())
@@ -132,7 +132,7 @@ public class JsonGenerator
                 ArrayNode array = factory.arrayNode();
                 strObj.put(aggr.getName(), array);
                 // We keep all the aggregated versions in a banned list because we won't add them to the database as standalone objects.
-                for (EntityVersion aggrEV : aggr.getRefTo())
+                for (EntityVariation aggrEV : aggr.getRefTo())
                 {
                   ObjectNode aggrNode = getRandomAggr(aggrEV);
                   array.add(aggrNode);
@@ -154,7 +154,7 @@ public class JsonGenerator
     throw new Exception("Reference not found: " + name);
   }
 
-  private ObjectNode getRandomAggr(EntityVersion eVersion)
+  private ObjectNode getRandomAggr(EntityVariation eVersion)
   {
     return evMap.get(eVersion).get(getRandomBetween(0, evMap.get(eVersion).size() - 1));
   }

@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
 import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
 
@@ -25,7 +25,7 @@ public class AggregateGen
     jsonFactory = JsonNodeFactory.instance;
   }
 
-  public JsonNode genAggregate(Aggregate aggr, Map<EntityVersion, List<ObjectNode>> evMap)
+  public JsonNode genAggregate(Aggregate aggr, Map<EntityVariation, List<ObjectNode>> evMap)
   {
     JsonNode result = null;
 
@@ -42,7 +42,7 @@ public class AggregateGen
       // For each aggregation we have to include, we select a random aggregated version and aggregate one object according to that version.
       // TODO: This is for sure optimisable. We should be able to shuffle versions and extract some objects of them, not only one version.
       // TODO: Fix cardinalities
-      for (EntityVersion ev : aggr.getRefTo())
+      for (EntityVariation ev : aggr.getRefTo())
         aggrArray.addAll(this.getRandomAggrs(ev, evMap, uBound));
 
       result = aggrArray;
@@ -51,7 +51,7 @@ public class AggregateGen
     return result;
   }
 
-  private List<JsonNode> getRandomAggrs(EntityVersion eVersion, Map<EntityVersion, List<ObjectNode>> evMap, int numElements)
+  private List<JsonNode> getRandomAggrs(EntityVariation eVersion, Map<EntityVariation, List<ObjectNode>> evMap, int numElements)
   {
     List<JsonNode> result = new ArrayList<JsonNode>();
 

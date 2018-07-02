@@ -17,7 +17,7 @@ import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVersion;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
@@ -37,7 +37,7 @@ public class ObjectGen
   private AggregateGen aggrGen;
   private JsonNodeFactory factory;
   private EntityIdMap eIdMap;
-  private Map<EntityVersion, List<ObjectNode>> evMap;
+  private Map<EntityVariation, List<ObjectNode>> evMap;
 
   public ObjectGen()
   {
@@ -47,7 +47,7 @@ public class ObjectGen
     aggrGen = new AggregateGen();
     factory = JsonNodeFactory.instance;
     eIdMap = new EntityIdMap();
-    evMap = new HashMap<EntityVersion, List<ObjectNode>>();
+    evMap = new HashMap<EntityVariation, List<ObjectNode>>();
   }
 
   public Map<String, ArrayNode> generateBulk(NoSQLSchema schema, int objectsVersion)
@@ -75,10 +75,10 @@ public class ObjectGen
     {
       ArrayNode entityObjs = factory.arrayNode();
 
-      if (entity.getEntityversions().stream().anyMatch(ev -> ev.isRoot()))
+      if (entity.getEntityvariations().stream().anyMatch(ev -> ev.isRoot()))
         eIdMap.initialize(entity.getName());
 
-      for (EntityVersion eVersion : entity.getEntityversions())
+      for (EntityVariation eVersion : entity.getEntityvariations())
       {
         evMap.put(eVersion, new ArrayList<ObjectNode>());
 
@@ -105,7 +105,7 @@ public class ObjectGen
 
     // Second run to generate the references and aggregates since now all the versions and instances exist.
     for (Entity entity : schema.getEntities())
-      for (EntityVersion eVersion : entity.getEntityversions())
+      for (EntityVariation eVersion : entity.getEntityvariations())
         for (ObjectNode strObj : evMap.get(eVersion))
           eVersion.getProperties().stream().filter(p -> p instanceof Association).forEach(p -> this.generateAssociation(strObj, (Association)p));
 
