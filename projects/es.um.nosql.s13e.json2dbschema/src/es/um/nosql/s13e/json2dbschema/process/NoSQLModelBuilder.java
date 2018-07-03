@@ -101,7 +101,12 @@ public class NoSQLModelBuilder
 		// Populate empty EntityVariations
 		mEntityVariations.forEach((schema, ev) -> fillEV(schema, ev));
 
+		/** TODO: We are removing the opposite calculations for the moment since there is no easy way
+		 * to infer these. On the near future we might try to complete this property but for the time being
+		 * it is safer for the user to programatically find the opposites on demand.
+		 */
 		// Opposite references
+		/*
 		mEntities.forEach(eFrom -> {
 			eFrom.getEntityvariations().forEach(ev -> {
 				ev.getProperties().stream().filter(p -> p instanceof Reference).forEach(r -> {
@@ -119,6 +124,7 @@ public class NoSQLModelBuilder
 				});
 			});
 		});
+		*/
 
 		NoSQLSchema finalSchema = factory.createNoSQLSchema();
 		finalSchema.setName(name);
