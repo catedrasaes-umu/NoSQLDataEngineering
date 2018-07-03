@@ -28,231 +28,228 @@ import es.um.nosql.s13e.DecisionTree.DecisionTreeNode
 
 class DecisionTreeToJS
 {
-	var modelName = "";
+  var modelName = "";
 
-//	final val SPECIAL_TYPE_IDENTIFIER = "type"
+//  final val SPECIAL_TYPE_IDENTIFIER = "type"
 
-	def static void main(String[] args)
+  def static void main(String[] args)
+  {
+    if (args.length < 1)
     {
-		if (args.length < 1)
-		{
-			System.out.println("Usage: DiffToJS model [outdir]")
-			System.exit(-1)
-		}
-
-        val inputModel = new File(args.head)
-        val ResourceManager rm = new ResourceManager(DecisionTreePackage.eINSTANCE,
-        	EntityDifferentiationPackage.eINSTANCE,
-        	NoSQLSchemaPackage.eINSTANCE)
-        rm.loadResourcesAsStrings(inputModel.getPath())
-        val DecisionTrees trees = rm.resources.head.contents.head as DecisionTrees
-
-		val outputDir = new File(if (args.length > 1) args.get(1) else ".")
-								.toPath().resolve(trees.name).toFile()
-		// Create destination directory if it does not exist
-		outputDir.mkdirs()
-        System.out.println("Generating Javascript for "
-        					+ inputModel.getPath()
-        					+ " in "
-        					+ outputDir.getPath())
-
-		val dt_to_js = new DecisionTreeToJS()
-		val outFile = outputDir.toPath().resolve(trees.name + ".js").toFile()
-		val outFileWriter = new PrintStream(outFile)
-
-        outFileWriter.println(dt_to_js.generate(trees))
-        outFileWriter.close()
-
-        System.exit(0)
+      System.out.println("Usage: DiffToJS model [outdir]")
+      System.exit(-1)
     }
 
-	/**
-	 * Method used to generate an Inclusive/Exclusive differences file for a NoSQLDifferences object.
-	 */
-	def generate(DecisionTrees dt)
-	{
-		modelName = dt.name;
+    val inputModel = new File(args.head)
+    val ResourceManager rm = new ResourceManager(DecisionTreePackage.eINSTANCE,
+      EntityDifferentiationPackage.eINSTANCE,
+      NoSQLSchemaPackage.eINSTANCE)
+    rm.loadResourcesAsStrings(inputModel.getPath())
+    val DecisionTrees trees = rm.resources.head.contents.head as DecisionTrees
 
-		'''
-		'use strict'
+    val outputDir = new File(if (args.length > 1) args.get(1) else ".").toPath().resolve(trees.name).toFile()
+    // Create destination directory if it does not exist
+    outputDir.mkdirs()
+    System.out.println("Generating Javascript for " + inputModel.getPath() + " in " + outputDir.getPath())
 
-		var «dt.name» = {
+    val dt_to_js = new DecisionTreeToJS()
+    val outFile = outputDir.toPath().resolve(trees.name + ".js").toFile()
+    val outFileWriter = new PrintStream(outFile)
 
-			name: "«dt.name»",
-			«genCheckFunctions(dt.trees)»
-		}
+    outFileWriter.println(dt_to_js.generate(trees))
+    outFileWriter.close()
 
-		module.exports = «dt.name»;
-		'''
-	}
+    System.exit(0)
+  }
 
-	def genCheckFunctions(List<DecisionTreeForEntity> list) '''
-		«FOR DecisionTreeForEntity dte : list SEPARATOR ','»
-			«genCheckFunction(dte)»,
-		«ENDFOR»
-	'''
+  /**
+    * Method used to generate an Inclusive/Exclusive differences file for a NoSQLDifferences object.
+    */
+  def generate(DecisionTrees dt)
+  {
+    modelName = dt.name;
 
-	def genCheckFunction(DecisionTreeForEntity dte)
-	{
-		val entityName = dte.entity.name.toFirstUpper
+    '''
+    'use strict'
 
-		val paths = calcPaths(dte)
-		
-		'''
-		«entityName»: {
-			name: "«entityName»",
-			entityVariationForObject: function (obj)
-			{
-				«generateCheckTree(dte, dte.root)»
-			}
-			«FOR EntityVariation ev : dte.entity.entityvariations SEPARATOR ','»
-				«generateSpecificCheck(dte, ev, paths.get(ev))»
-			«ENDFOR»
-		}
-		'''
-	}	
-	
-	@Data static class PropertyAndBranch
-	{
-		PropertySpec2 prop
-		boolean branch
-	}
-	
-	def calcPaths(DecisionTreeForEntity dte) 
-	{
-		var paths = new HashMap<EntityVariation, Deque<PropertyAndBranch>>
-		calcPaths(paths, newLinkedList(), dte.root)
-		return paths
-	}
+    var «dt.name» = {
 
-	def void calcPaths(Map<EntityVariation, Deque<PropertyAndBranch>> paths,
-		Deque<PropertyAndBranch> checks,
-		DecisionTreeNode node)
-	{
-		switch node
-		{
-			LeafNode : paths.put(node.identifiedVariation, newLinkedList(checks.clone))
-			IntermediateNode : {
-				// yes
-				checks.add(new PropertyAndBranch(node.checkedProperty, true))
-				calcPaths(paths, checks, node.yesBranch)
-				checks.removeLast
-				
-				// no
-				checks.add(new PropertyAndBranch(node.checkedProperty, false))
-				calcPaths(paths, checks, node.noBranch)
-				checks.removeLast
-			}
-		}
-	}
+    name: "«dt.name»",
+    «genCheckFunctions(dt.trees)»
+    }
 
-	def generateSpecificCheck(DecisionTreeForEntity dte, 
-		EntityVariation variation, Deque<PropertyAndBranch> checks)
-	'''
-		checkEV_«dte.entity.name»_«variation.variationId»: function (obj)
-		{
-		«FOR PropertyAndBranch branch : checks»
-««« Note that we change the branches to generate the correct check
-			if («if (branch.branch) genPropNot(branch.prop) else genProp(branch.prop) »)
-				return false;
-		«ENDFOR»
-		
-			return true;
-		}
-	'''
+    module.exports = «dt.name»;
+    '''
+  }
 
-	def dispatch String generateCheckTree(DecisionTreeForEntity dte, IntermediateNode root) '''
-		if («genProp(root.checkedProperty)»)
-		{
-			«generateCheckTree(dte,root.yesBranch)»
-		} else {
-			«generateCheckTree(dte,root.noBranch)»
-		}
-	''' 
-	
-	def dispatch generateCheckTree(DecisionTreeForEntity dte, LeafNode node) '''
-		return "«dte.entity.name + "_" + node.identifiedVariation.variationId»";
-	'''
-	
-    def genProp(PropertySpec2 p)
+  def genCheckFunctions(List<DecisionTreeForEntity> list)
+  '''
+    «FOR DecisionTreeForEntity dte : list SEPARATOR ','»
+      «genCheckFunction(dte)»,
+    «ENDFOR»
+  '''
+
+  def genCheckFunction(DecisionTreeForEntity dte)
+  {
+    val entityName = dte.entity.name.toFirstUpper
+
+    val paths = calcPaths(dte)
+
+    '''
+    «entityName»: {
+      name: "«entityName»",
+      entityVariationForObject: function (obj)
+      {
+        «generateCheckTree(dte, dte.root)»
+      }
+      «FOR EntityVariation ev : dte.entity.entityvariations SEPARATOR ','»
+        «generateSpecificCheck(dte, ev, paths.get(ev))»
+      «ENDFOR»
+    }
+    '''
+  }
+
+  @Data static class PropertyAndBranch
+  {
+    PropertySpec2 prop
+    boolean branch
+  }
+
+  def calcPaths(DecisionTreeForEntity dte) 
+  {
+    var paths = new HashMap<EntityVariation, Deque<PropertyAndBranch>>
+    calcPaths(paths, newLinkedList(), dte.root)
+    return paths
+  }
+
+  def void calcPaths(Map<EntityVariation, Deque<PropertyAndBranch>> paths, Deque<PropertyAndBranch> checks, DecisionTreeNode node)
+  {
+    switch node
     {
-		if (p.needsTypeCheck)
-			'''(("«p.property.name»" in obj) && «genTypeCheck(p.property)»)'''
-		else
-			'''("«p.property.name»" in obj)'''
-	}
+      LeafNode : paths.put(node.identifiedVariation, newLinkedList(checks.clone))
+      IntermediateNode : {
+        // yes
+        checks.add(new PropertyAndBranch(node.checkedProperty, true))
+        calcPaths(paths, checks, node.yesBranch)
+        checks.removeLast
 
-    def genPropNot(PropertySpec2 p)
+        // no
+        checks.add(new PropertyAndBranch(node.checkedProperty, false))
+        calcPaths(paths, checks, node.noBranch)
+        checks.removeLast
+      }
+    }
+  }
+
+  def generateSpecificCheck(DecisionTreeForEntity dte, EntityVariation variation, Deque<PropertyAndBranch> checks)
+  '''
+    checkEV_«dte.entity.name»_«variation.variationId»: function (obj)
     {
-		if (p.needsTypeCheck)
-			'''(!("«p.property.name»" in obj) || !(«genTypeCheck(p.property)»))'''
-		else
-			'''(!("«p.property.name»" in obj))'''
-	}
+    «FOR PropertyAndBranch branch : checks»
+      if («if (branch.branch) genPropNot(branch.prop) else genProp(branch.prop) »)
+        return false;
+    «ENDFOR»
 
+      return true;
+    }
+  '''
 
-	def dispatch genTypeCheck(Property p) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
+  def dispatch String generateCheckTree(DecisionTreeForEntity dte, IntermediateNode root) '''
+    if («genProp(root.checkedProperty)»)
+    {
+      «generateCheckTree(dte,root.yesBranch)»
+    } else {
+      «generateCheckTree(dte,root.noBranch)»
+    }
+  ''' 
 
-	def dispatch genTypeCheck(Aggregate a) '''
-		«IF a.lowerBound == 0»
-		(obj.«a.name».constructor === Array) &&
-		    obj.«a.name».every(function(e)
-		        { return (typeof e === 'object') && !(e.constructor === Array)
-		            && («FOR rt : a.refTo SEPARATOR " || "»
-		            «modelName».«(rt.eContainer as Entity).name»_«rt.variationId».isOfExactType(e)
-		            «ENDFOR»);
-		        })
-		«ELSE»
-		«var refToEV = a.refTo.get(0)»
-		(typeof obj.«a.name» === 'object') && !(obj.«a.name».constructor === Array)
-		    && «modelName».«(refToEV.eContainer as Entity).name»_«refToEV.variationId».isOfExactType(obj.«a.name»)
-		«ENDIF»
-	'''
+  def dispatch generateCheckTree(DecisionTreeForEntity dte, LeafNode node) '''
+    return "«dte.entity.name + "_" + node.identifiedVariation.variationId»";
+  '''
 
-	def dispatch genTypeCheck(Reference r) '''
-		«IF r.lowerBound == 0»
-		(obj.«r.name».constructor === Array) &&
-		    (obj.«r.name».every(function(e) { return typeof e === "number";})
-		     ||
-		     obj.«r.name».every(function(e) { return typeof e === "string";}))
-		«ELSE»
-		((typeof obj.«r.name» === "number") || (typeof obj.«r.name» === "string"))
-		«ENDIF»
-	'''
+  def genProp(PropertySpec2 p)
+  {
+    if (p.needsTypeCheck)
+      '''(("«p.property.name»" in obj) && «genTypeCheck(p.property)»)'''
+    else
+      '''("«p.property.name»" in obj)'''
+  }
 
+  def genPropNot(PropertySpec2 p)
+  {
+    if (p.needsTypeCheck)
+      '''(!("«p.property.name»" in obj) || !(«genTypeCheck(p.property)»))'''
+    else
+      '''(!("«p.property.name»" in obj))'''
+  }
 
-	def dispatch genTypeCheck(Attribute a) {
-		genTypeCheckLowLevel(a.type, "obj." + a.name);
-	}
+  def dispatch genTypeCheck(Property p)
+  {
+  	throw new UnsupportedOperationException("TODO: auto-generated method stub")
+  }
 
-	def dispatch genTypeCheckLowLevel(Type type, String name) {
-		throw new UnsupportedOperationException("TODO: auto-generated method stub")
-	}
+  def dispatch genTypeCheck(Aggregate a)
+  '''
+    «IF a.lowerBound == 0»
+    (obj.«a.name».constructor === Array) &&
+        obj.«a.name».every(function(e)
+            { return (typeof e === 'object') && !(e.constructor === Array)
+                && («FOR rt : a.refTo SEPARATOR " || "»
+                «modelName».«(rt.eContainer as Entity).name»_«rt.variationId».isOfExactType(e)
+                «ENDFOR»);
+            })
+    «ELSE»
+    «var refToEV = a.refTo.get(0)»
+    (typeof obj.«a.name» === 'object') && !(obj.«a.name».constructor === Array)
+        && «modelName».«(refToEV.eContainer as Entity).name»_«refToEV.variationId».isOfExactType(obj.«a.name»)
+    «ENDIF»
+  '''
 
-	private def isInt(String type) { #["int", "integer", "number"].contains(type) }
-	private def isFloat(String type) { #["float", "double"].contains(type) }
-	private def isBoolean(String type) { #["boolean", "bool"].contains(type) }
+  def dispatch genTypeCheck(Reference r) '''
+    «IF r.lowerBound == 0»
+    (obj.«r.name».constructor === Array) &&
+        (obj.«r.name».every(function(e) { return typeof e === "number";})
+         ||
+         obj.«r.name».every(function(e) { return typeof e === "string";}))
+    «ELSE»
+    ((typeof obj.«r.name» === "number") || (typeof obj.«r.name» === "string"))
+    «ENDIF»
+  '''
 
-	def dispatch CharSequence genTypeCheckLowLevel(PrimitiveType type, String name) {
-		switch typeName : type.name.toLowerCase {
-			case "string" : '''(typeof «name» === "string")'''
-			case typeName.isInt : '''(typeof «name» === "number") && («name» % 1 === 0)'''
-			case typeName.isFloat :  '''(typeof «name» === "number") && !(«name» % 1 === 0)'''
-			case typeName.isBoolean : '''(typeof «name» === "boolean")'''
-			default: ''''''
-		}
-	}
+  def dispatch genTypeCheck(Attribute a)
+  {
+    genTypeCheckLowLevel(a.type, "obj." + a.name);
+  }
 
-	def dispatch CharSequence genTypeCheckLowLevel(Tuple type, String name) {
-	    '''(«name».constructor === Array) && («name».length === «type.elements.size»)
-	    «IF type.elements.size != 0»
-	    &&
-	    «var i = 0»
-	    «FOR t : type.elements SEPARATOR " && "»
-	    «genTypeCheckLowLevel(t, name + '[' + i++ + ']')»
-	    «ENDFOR»
-	    «ENDIF»'''
-	}
+  def dispatch genTypeCheckLowLevel(Type type, String name)
+  {
+    throw new UnsupportedOperationException("TODO: auto-generated method stub")
+  }
+
+  private def isInt(String type) { #["int", "integer", "number"].contains(type) }
+  private def isFloat(String type) { #["float", "double"].contains(type) }
+  private def isBoolean(String type) { #["boolean", "bool"].contains(type) }
+
+  def dispatch CharSequence genTypeCheckLowLevel(PrimitiveType type, String name)
+  {
+    switch typeName : type.name.toLowerCase
+    {
+      case "string" : '''(typeof «name» === "string")'''
+      case typeName.isInt : '''(typeof «name» === "number") && («name» % 1 === 0)'''
+      case typeName.isFloat :  '''(typeof «name» === "number") && !(«name» % 1 === 0)'''
+      case typeName.isBoolean : '''(typeof «name» === "boolean")'''
+      default: ''''''
+    }
+  }
+
+  def dispatch CharSequence genTypeCheckLowLevel(Tuple type, String name) {
+      '''(«name».constructor === Array) && («name».length === «type.elements.size»)
+      «IF type.elements.size != 0»
+      &&
+      «var i = 0»
+      «FOR t : type.elements SEPARATOR " && "»
+      «genTypeCheckLowLevel(t, name + '[' + i++ + ']')»
+      «ENDFOR»
+      «ENDIF»'''
+  }
 }

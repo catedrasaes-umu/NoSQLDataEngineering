@@ -1,14 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<NoSQLSchema:NoSQLSchema
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema"
-    name="tfg">
+<NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="tfg">
   <entities
       name="Address data">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -52,9 +47,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Address data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -98,9 +93,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Address data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="3"
+    </entityvariations>
+    <entityvariations
+        variationId="3"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -144,9 +139,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Address data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="4"
+    </entityvariations>
+    <entityvariations
+        variationId="4"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -183,9 +178,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Address data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="5"
+    </entityvariations>
+    <entityvariations
+        variationId="5"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -222,9 +217,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Address data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="6"
+    </entityvariations>
+    <entityvariations
+        variationId="6"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -261,12 +256,12 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Address data"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Contact data">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -303,9 +298,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Contact data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -335,9 +330,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Contact data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="3"
+    </entityvariations>
+    <entityvariations
+        variationId="3"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -367,12 +362,12 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Contact data"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Extra data">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -423,9 +418,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Extra data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -469,9 +464,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Extra data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="3"
+    </entityvariations>
+    <entityvariations
+        variationId="3"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -515,9 +510,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Extra data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="4"
+    </entityvariations>
+    <entityvariations
+        variationId="4"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -554,12 +549,12 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Extra data"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Personal data">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -624,9 +619,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Personal data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -684,9 +679,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Personal data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="3"
+    </entityvariations>
+    <entityvariations
+        variationId="3"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -751,9 +746,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Personal data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="4"
+    </entityvariations>
+    <entityvariations
+        variationId="4"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -811,9 +806,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Personal data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="5"
+    </entityvariations>
+    <entityvariations
+        variationId="5"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -878,9 +873,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Personal data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="6"
+    </entityvariations>
+    <entityvariations
+        variationId="6"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -938,9 +933,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Personal data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="7"
+    </entityvariations>
+    <entityvariations
+        variationId="7"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -998,9 +993,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Personal data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="8"
+    </entityvariations>
+    <entityvariations
+        variationId="8"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1065,9 +1060,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Personal data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="9"
+    </entityvariations>
+    <entityvariations
+        variationId="9"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1125,9 +1120,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Personal data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="10"
+    </entityvariations>
+    <entityvariations
+        variationId="10"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1185,9 +1180,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Personal data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="11"
+    </entityvariations>
+    <entityvariations
+        variationId="11"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1252,9 +1247,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Personal data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="12"
+    </entityvariations>
+    <entityvariations
+        variationId="12"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1312,9 +1307,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Personal data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="13"
+    </entityvariations>
+    <entityvariations
+        variationId="13"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1379,9 +1374,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Personal data"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="14"
+    </entityvariations>
+    <entityvariations
+        variationId="14"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1439,6 +1434,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Personal data"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

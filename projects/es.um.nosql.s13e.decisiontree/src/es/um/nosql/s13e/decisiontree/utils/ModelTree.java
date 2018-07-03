@@ -6,67 +6,77 @@ import es.um.nosql.s13e.NoSQLSchema.Property;
 
 public class ModelTree
 {
-	private Property property;
-	private EntityVariation tag;
-	private ModelTree nodePresent;
-	private ModelTree nodeAbsent;
-	private Entity entity;
+  private Property property;
+  private EntityVariation tag;
+  private ModelTree nodePresent;
+  private ModelTree nodeAbsent;
+  private Entity entity;
 
-	public ModelTree(Entity e, EntityVariation tag)
-	{
-		super();
-		this.tag = tag;
-		this.entity = e;
-	}
-	
-	public Entity getEntity() {
-		return entity;
-	}
+  public ModelTree(Entity e, EntityVariation tag)
+  {
+    super();
+    this.tag = tag;
+    this.entity = e;
+  }
 
-	public void setEntity(Entity entity) {
-		this.entity = entity;
-	}
+  public Entity getEntity()
+  {
+    return entity;
+  }
 
-	public ModelTree(Property property) {
-		super();
-		this.property = property;
-	}
+  public void setEntity(Entity entity)
+  {
+    this.entity = entity;
+  }
 
-	public Property getProperty() {
-		return property;
-	}
-	
-	public void setProperty(Property property) {
-		this.property = property;
-	}
-	
-	public EntityVariation getTag() {
-		return tag;
-	}
+  public ModelTree(Property property)
+  {
+    super();
+    this.property = property;
+  }
 
-	public void setTag(EntityVariation tag) {
-		this.tag = tag;
-	}
+  public Property getProperty()
+  {
+    return property;
+  }
 
-	public ModelTree getNodePresent() {
-		return nodePresent;
-	}
+  public void setProperty(Property property)
+  {
+    this.property = property;
+  }
 
-	public void setNodePresent(ModelTree nodePresent) {
-		this.nodePresent = nodePresent;
-	}
+  public EntityVariation getTag()
+  {
+    return tag;
+  }
 
-	public ModelTree getNodeAbsent() {
-		return nodeAbsent;
-	}
+  public void setTag(EntityVariation tag)
+  {
+    this.tag = tag;
+  }
 
-	public void setNodeAbsent(ModelTree nodeAbsent)
-	{
-		this.nodeAbsent = nodeAbsent;
-	}
+  public ModelTree getNodePresent()
+  {
+    return nodePresent;
+  }
 
-	public boolean is_leaf()
-	{
-		return nodePresent == null && nodeAbsent == null;
-	}
+  public void setNodePresent(ModelTree nodePresent)
+  {
+    this.nodePresent = nodePresent;
+  }
+
+  public ModelTree getNodeAbsent()
+  {
+    return nodeAbsent;
+  }
+
+  public void setNodeAbsent(ModelTree nodeAbsent)
+  {
+    this.nodeAbsent = nodeAbsent;
+  }
+
+  public boolean is_leaf()
+  {
+    return nodePresent == null && nodeAbsent == null;
+  }
 }

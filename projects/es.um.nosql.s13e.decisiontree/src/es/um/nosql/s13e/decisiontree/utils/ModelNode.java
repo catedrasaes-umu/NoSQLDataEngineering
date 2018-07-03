@@ -5,67 +5,76 @@ import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 
 public class ModelNode
 {
-	private PropertySpec property;
-	private EntityVariation ev;
-	private ModelNode nodePresent;
-	private ModelNode nodeAbsent;
-	private boolean checkNot;
+  private PropertySpec property;
+  private EntityVariation ev;
+  private ModelNode nodePresent;
+  private ModelNode nodeAbsent;
+  private boolean checkNot;
 
-	public ModelNode(EntityVariation tag)
-	{
-		setEv(tag);
-		setCheckNot(false);
-	}
-	
-	public ModelNode(PropertySpec property, boolean checkNot)
-	{
-		setProperty(property);
-		setCheckNot(checkNot);
-	}
+  public ModelNode(EntityVariation tag)
+  {
+    setEv(tag);
+    setCheckNot(false);
+  }
 
-	public PropertySpec getProperty() {
-		return property;
-	}
-	
-	public void setProperty(PropertySpec property) {
-		this.property = property;
-	}
-	
-	public EntityVariation getEv() {
-		return ev;
-	}
+  public ModelNode(PropertySpec property, boolean checkNot)
+  {
+    setProperty(property);
+    setCheckNot(checkNot);
+  }
 
-	public void setEv(EntityVariation tag) {
-		this.ev = tag;
-	}
+  public PropertySpec getProperty()
+  {
+    return property;
+  }
 
-	public ModelNode getNodePresent() {
-		return nodePresent;
-	}
+  public void setProperty(PropertySpec property)
+  {
+    this.property = property;
+  }
 
-	public void setNodePresent(ModelNode nodePresent) {
-		this.nodePresent = nodePresent;
-	}
+  public EntityVariation getEv()
+  {
+    return ev;
+  }
 
-	public ModelNode getNodeAbsent() {
-		return nodeAbsent;
-	}
+  public void setEv(EntityVariation tag)
+  {
+    this.ev = tag;
+  }
 
-	public void setNodeAbsent(ModelNode nodeAbsent)
-	{
-		this.nodeAbsent = nodeAbsent;
-	}
+  public ModelNode getNodePresent()
+  {
+    return nodePresent;
+  }
 
-	public boolean is_leaf()
-	{
-		return nodePresent == null && nodeAbsent == null;
-	}
+  public void setNodePresent(ModelNode nodePresent)
+  {
+    this.nodePresent = nodePresent;
+  }
 
-	public boolean isCheckNot() {
-		return checkNot;
-	}
+  public ModelNode getNodeAbsent()
+  {
+    return nodeAbsent;
+  }
 
-	public void setCheckNot(boolean checkNot) {
-		this.checkNot = checkNot;
-	}
+  public void setNodeAbsent(ModelNode nodeAbsent)
+  {
+    this.nodeAbsent = nodeAbsent;
+  }
+
+  public boolean is_leaf()
+  {
+    return nodePresent == null && nodeAbsent == null;
+  }
+
+  public boolean isCheckNot()
+  {
+    return checkNot;
+  }
+
+  public void setCheckNot(boolean checkNot)
+  {
+    this.checkNot = checkNot;
+  }
 }

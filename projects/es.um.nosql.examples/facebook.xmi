@@ -4,12 +4,12 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema"
-    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../../es.um.nosql.s13e/model/nosqlschema.ecore"
+    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore"
     name="facebook">
   <entities
       name="Pages">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -32,12 +32,12 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Comments">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -88,9 +88,9 @@
           upperBound="1"
           refTo="Posts"
           originalType="String"/>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -134,9 +134,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="3"
+    </entityvariations>
+    <entityvariations
+        variationId="3"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -180,9 +180,9 @@
           upperBound="1"
           refTo="Posts"
           originalType="String"/>
-    </entityversions>
-    <entityversions
-        versionId="4"
+    </entityvariations>
+    <entityvariations
+        variationId="4"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -226,9 +226,9 @@
           upperBound="1"
           refTo="Posts"
           originalType="String"/>
-    </entityversions>
-    <entityversions
-        versionId="5"
+    </entityvariations>
+    <entityvariations
+        variationId="5"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -258,9 +258,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="6"
+    </entityvariations>
+    <entityvariations
+        variationId="6"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -283,9 +283,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="7"
+    </entityvariations>
+    <entityvariations
+        variationId="7"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -301,12 +301,12 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Comments"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Posts">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -413,9 +413,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -515,9 +515,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="3"
+    </entityvariations>
+    <entityvariations
+        variationId="3"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -617,9 +617,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="4"
+    </entityvariations>
+    <entityvariations
+        variationId="4"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -712,9 +712,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="5"
+    </entityvariations>
+    <entityvariations
+        variationId="5"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -807,9 +807,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="6"
+    </entityvariations>
+    <entityvariations
+        variationId="6"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -895,6 +895,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

@@ -4,11 +4,12 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema"
+    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore"
     name="mongosongs">
   <entities
       name="Artist">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -56,9 +57,9 @@
           upperBound="-1"
           refTo="Track"
           originalType="String"/>
-    </entityversions>
-    <entityversions
-        versionId="2"
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -100,12 +101,12 @@
           upperBound="-1"
           refTo="Track"
           originalType="String"/>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Album">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -170,15 +171,15 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="prizes"
           upperBound="-1"
-          refTo="//@entities.3/@entityversions.0 //@entities.3/@entityversions.1"/>
+          refTo="//@entities.3/@entityvariations.0 //@entities.3/@entityvariations.1"/>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
           name="reviews"
           upperBound="-1"
-          refTo="//@entities.4/@entityversions.0 //@entities.4/@entityversions.1"/>
-    </entityversions>
-    <entityversions
-        versionId="2"
+          refTo="//@entities.4/@entityvariations.0 //@entities.4/@entityvariations.1"/>
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -246,10 +247,10 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="reviews"
           upperBound="-1"
-          refTo="//@entities.4/@entityversions.0"/>
-    </entityversions>
-    <entityversions
-        versionId="3"
+          refTo="//@entities.4/@entityvariations.0"/>
+    </entityvariations>
+    <entityvariations
+        variationId="3"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -316,12 +317,12 @@
               name="String"/>
         </type>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Track">
-    <entityversions
-        versionId="1"
+    <entityvariations
+        variationId="1"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -372,10 +373,10 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="ratings"
           upperBound="1"
-          refTo="//@entities.6/@entityversions.0"/>
-    </entityversions>
-    <entityversions
-        versionId="2"
+          refTo="//@entities.6/@entityvariations.0"/>
+    </entityvariations>
+    <entityvariations
+        variationId="2"
         root="true">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -422,12 +423,12 @@
           upperBound="-1"
           refTo="Artist"
           originalType="String"/>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Prize">
-    <entityversions
-        versionId="1">
+    <entityvariations
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="event">
@@ -463,9 +464,9 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
-    <entityversions
-        versionId="2">
+    </entityvariations>
+    <entityvariations
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="names">
@@ -497,12 +498,12 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Review">
-    <entityversions
-        versionId="1">
+    <entityvariations
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="journalist">
@@ -528,10 +529,10 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="media"
           upperBound="1"
-          refTo="//@entities.5/@entityversions.0"/>
-    </entityversions>
-    <entityversions
-        versionId="2">
+          refTo="//@entities.5/@entityvariations.0"/>
+    </entityvariations>
+    <entityvariations
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="rank">
@@ -560,12 +561,12 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Media">
-    <entityversions
-        versionId="1">
+    <entityvariations
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="name">
@@ -587,12 +588,12 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
   <entities
       name="Rating">
-    <entityversions
-        versionId="1">
+    <entityvariations
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="score">
@@ -607,6 +608,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityversions>
+    </entityvariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>
