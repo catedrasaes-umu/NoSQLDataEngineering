@@ -33,6 +33,7 @@ import es.um.nosql.s13e.db.interfaces.OSanctions2Db;
 import es.um.nosql.s13e.db.interfaces.Pleiades2Db;
 import es.um.nosql.s13e.db.interfaces.Proteins2Db;
 import es.um.nosql.s13e.db.interfaces.SOF2Db;
+import es.um.nosql.s13e.db.interfaces.Source2Db;
 import es.um.nosql.s13e.db.interfaces.Urban2Db;
 import es.um.nosql.s13e.db.interfaces.Webclick2Db;
 import es.um.nosql.s13e.db.utils.DbType;
@@ -51,11 +52,10 @@ public class InferenceTest
   private static final String COUCHDB_MAPREDUCE_FOLDER = "mapreduce/couchdb/v1";
   private static final String MONGODB_MAPREDUCE_FOLDER = "mapreduce/mongodb/v1";
 
-  private static final boolean FILL_ONLY = true;
-  private static final boolean FILL_AND_INFER = false;
+  private enum INFER_OPTION { FILL_ONLY, FILL_AND_INFER, INFER_ONLY };
 
   private static final String FILE_JSON = "json/tfg.json";
-  private static final String FILE_MODEL = "models/mongosongs.xmi";
+  private static final String FILE_MODEL = "models/mongomovies.xmi";
   private static final String FOLDER_SOF = "F:\\Informatica\\datasets\\stackoverflow\\";
   private static final String FOLDER_EPOL = "/media/alberto/tarsonis/datasets/everypolitician/countries/Sweden_Riksdag.json";
   private static final String FILE_URBAN = "/media/alberto/tarsonis/datasets/urban/words.json";
@@ -73,350 +73,365 @@ public class InferenceTest
   {//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
     // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.
     // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
-    //prepareModelExample(DbType.MONGODB, FILL_ONLY, FILE_MODEL);
-    //prepareSOFExample(DbType.MONGODB, FILL_ONLY, FOLDER_SOF);
-    //prepareEPolExample(DbType.MONGODB, FILL_ONLY, FOLDER_EPOL);
-    //prepareUrbanExample(DbType.MONGODB, FILL_ONLY, FILE_URBAN);                  //POJO
+    prepareModelExample(DbType.MONGODB, INFER_OPTION.INFER_ONLY, FILE_MODEL);
+    //prepareSOFExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_SOF);
+    //prepareEPolExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_EPOL);
+    //prepareUrbanExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FILE_URBAN);                  //POJO
     // Problem with this dataset is that it contains A LOT of aggregated objects and null values.
     // Aggregated objects tend to make mongodb run out of memory during the reduce process.
     // Null values tend to abort the inference process. Until the inference process is fixed (TODO(tm)),
     // we will make use of POJO objects and ignore problematic fields. Thing is, then we have a lot of options...
-    //prepareCompanyExample(DbType.MONGODB, FILL_AND_INFER, FILE_COMPANY);              //POJO
-    prepareLinkExample(DbType.MONGODB, FILL_ONLY, FOLDER_LINK);                  //POJO
-    //prepareHarvardExample(DbType.MONGODB, FILL_ONLY, FILE_HARVARD);              //POJO
-    //prepareFacebookExample(DbType.MONGODB, FILL_ONLY, FOLDER_FACEBOOK);          //POJO
-    //prepareProteinExample(DbType.MONGODB, FILL_ONLY, FOLDER_PROTEIN);            //POJO
-    //preparePublicationsExample(DbType.MONGODB, FILL_ONLY, FILE_PUBLICATIONS);    //POJO
-    //prepareWebclickExample(DbType.MONGODB, FILL_ONLY, FOLDER_WEBCLICKS);         //POJO
-    //prepareSanctionsExample(DbType.MONGODB, FILL_ONLY, FILE_SANCTIONS);
-    //preparePleiadesExample(DbType.MONGODB, FILL_AND_INFER, FILE_PLEIDADES);
-    //prepareJsonExample(DbType.MONGODB, FILL_AND_INFER, FILE_JSON);
+    //prepareCompanyExample(DbType.MONGODB, INFER_OPTION.FILL_AND_INFER, FILE_COMPANY);              //POJO
+    //prepareLinkExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_LINK);                  //POJO
+    //prepareHarvardExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FILE_HARVARD);              //POJO
+    //prepareFacebookExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_FACEBOOK);          //POJO
+    //prepareProteinExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_PROTEIN);            //POJO
+    //preparePublicationsExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FILE_PUBLICATIONS);    //POJO
+    //prepareWebclickExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_WEBCLICKS);         //POJO
+    //prepareSanctionsExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FILE_SANCTIONS);
+    //preparePleiadesExample(DbType.MONGODB, INFER_OPTION.FILL_AND_INFER, FILE_PLEIDADES);
+    //prepareJsonExample(DbType.MONGODB, INFER_OPTION.FILL_AND_INFER, FILE_JSON);
   }
 
-  public static void prepareModelExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
-  {
-    File source = new File(sourceFile);
-    String dbName = source.getName().substring(0, source.getName().indexOf("."));
-    String outputModel = MODELS_FOLDER + dbName + "_RESULT.xmi";
-    int minInstances = 1000;
-    int maxInstances = 1000;
-
-    long startTime = System.currentTimeMillis();
-
-    System.out.println("Filling the " + dbType.toString() + " database...");
-
-    Model2Db controller = new Model2Db(dbType, DATABASE_IP);
-    controller.run(sourceFile, minInstances, maxInstances);
-    controller.shutdown();
-
-    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
-
-    if (FILL_ONLY)
-      return;
-    else
-      performInference(dbType, dbName, outputModel);
-  }
-
-  public static void prepareJsonExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
+  public static void prepareModelExample(DbType dbType, INFER_OPTION option, String sourceFile)
   {
     File source = new File(sourceFile);
     String dbName = source.getName().substring(0, source.getName().indexOf("."));
     String outputModel = MODELS_FOLDER + dbName + "_RESULT.xmi";
 
-    long startTime = System.currentTimeMillis();
+    if (option != INFER_OPTION.INFER_ONLY)
+    {
+      int minInstances = 1000;
+      int maxInstances = 1000;
 
-    System.out.println("Filling the " + dbType.toString() + " database...");
+      long startTime = System.currentTimeMillis();
 
-    Json2Db controller = new Json2Db(dbType, DATABASE_IP);
-    controller.run(sourceFile, dbName);
-    controller.shutdown();
+      System.out.println("Filling the " + dbType.toString() + " database...");
 
-    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+      Model2Db controller = new Model2Db(dbType, DATABASE_IP);
+      controller.run(sourceFile, minInstances, maxInstances);
+      controller.shutdown();
 
-    if (FILL_ONLY)
-      return;
-    else
+      System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");      
+    }
+
+    if (option != INFER_OPTION.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareSOFExample(DbType dbType, boolean FILL_ONLY, String source)
+  public static void prepareJsonExample(DbType dbType, INFER_OPTION option, String sourceFile)
+  {
+    File source = new File(sourceFile);
+    String dbName = source.getName().substring(0, source.getName().indexOf("."));
+    String outputModel = MODELS_FOLDER + dbName + "_RESULT.xmi";
+
+    if (option != INFER_OPTION.INFER_ONLY)
+    {
+      long startTime = System.currentTimeMillis();
+  
+      System.out.println("Filling the " + dbType.toString() + " database...");
+  
+      Json2Db controller = new Json2Db(dbType, DATABASE_IP);
+      controller.run(sourceFile, dbName);
+      controller.shutdown();
+  
+      System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+    }
+
+    if (option != INFER_OPTION.FILL_ONLY)
+      performInference(dbType, dbName, outputModel);
+  }
+
+  public static void prepareSOFExample(DbType dbType, INFER_OPTION option, String source)
   {
     String dbName = "stackoverflow";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    long startTime = System.currentTimeMillis();
+    if (option != INFER_OPTION.INFER_ONLY)
+    {
+      long startTime = System.currentTimeMillis();
+  
+      System.out.println("Filling the " + dbType.toString() + " database...");
+      String[] files = new String[]{"Users.xml", "Votes.xml", "Comments.xml", "Posts.xml", "Tags.xml", "PostLinks.xml", "Badges.xml"};
+      // Users.xml: 6438660 filas => 38 minutos
+      // Votes.xml: 116720227 filas => 10 horas
+      // Comments.xml: 53566720 filas => 5 horas
+      // Posts.xml: 33566854 filas  => ???
+      // Tags.xml: 48375 filas
+      // PostLinks.xml: 3993518 filas
+      // Badges.xml: 21882069 filas
+  
+      SOF2Db controller = new SOF2Db(dbType, DATABASE_IP);
+      for (String fileName : files)
+        controller.run(source + fileName, dbName);
+  
+      controller.shutdown();
+  
+      System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+    }
 
-    System.out.println("Filling the " + dbType.toString() + " database...");
-    String[] files = new String[]{"Users.xml", "Votes.xml", "Comments.xml", "Posts.xml", "Tags.xml", "PostLinks.xml", "Badges.xml"};
-    // Users.xml: 6438660 filas => 38 minutos
-    // Votes.xml: 116720227 filas => 10 horas
-    // Comments.xml: 53566720 filas => 5 horas
-    // Posts.xml: 33566854 filas  => ???
-    // Tags.xml: 48375 filas
-    // PostLinks.xml: 3993518 filas
-    // Badges.xml: 21882069 filas
-
-    SOF2Db controller = new SOF2Db(dbType, DATABASE_IP);
-    for (String fileName : files)
-      controller.run(source + fileName, dbName);
-
-    controller.shutdown();
-
-    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
-
-    if (FILL_ONLY)
-      return;
-    else
+    if (option != INFER_OPTION.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareEPolExample(DbType dbType, boolean FILL_ONLY, String source)
+  public static void prepareEPolExample(DbType dbType, INFER_OPTION option, String source)
   {
     String dbName = "everypolitician";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    long startTime = System.currentTimeMillis();
-
-    System.out.println("Filling the " + dbType.toString() + " database...");
-    EPol2Db controller = new EPol2Db(dbType, DATABASE_IP);
-    File theFile = new File(source);
-    if (theFile.isDirectory())
+    if (option != INFER_OPTION.INFER_ONLY)
     {
-      for (String countryRoute : theFile.list())
-        controller.run(source + countryRoute, dbName);
+      long startTime = System.currentTimeMillis();
+  
+      System.out.println("Filling the " + dbType.toString() + " database...");
+      EPol2Db controller = new EPol2Db(dbType, DATABASE_IP);
+      File theFile = new File(source);
+      if (theFile.isDirectory())
+      {
+        for (String countryRoute : theFile.list())
+          controller.run(source + countryRoute, dbName);
+      }
+      else
+        controller.run(source, dbName);
+  
+      controller.shutdown();
+  
+      System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
-    else
-      controller.run(source, dbName);
 
-    controller.shutdown();
-
-    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
-
-    if (FILL_ONLY)
-      return;
-    else
+    if (option != INFER_OPTION.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareUrbanExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
+  public static void prepareUrbanExample(DbType dbType, INFER_OPTION option, String sourceFile)
   {
     String dbName = "urban";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    long startTime = System.currentTimeMillis();
+    if (option != INFER_OPTION.INFER_ONLY)
+    {
+      long startTime = System.currentTimeMillis();
+  
+      System.out.println("Filling the " + dbType.toString() + " database...");
+      Urban2Db controller = new Urban2Db(dbType, DATABASE_IP);
+      controller.run(sourceFile, dbName);
+      controller.shutdown();
+  
+      System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+    }
 
-    System.out.println("Filling the " + dbType.toString() + " database...");
-    Urban2Db controller = new Urban2Db(dbType, DATABASE_IP);
-    controller.run(sourceFile, dbName);
-    controller.shutdown();
-
-    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
-
-    if (FILL_ONLY)
-      return;
-    else
+    if (option != INFER_OPTION.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareCompanyExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
+  public static void prepareCompanyExample(DbType dbType, INFER_OPTION option, String sourceFile)
   {
     String dbName = "companies";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    long startTime = System.currentTimeMillis();
+    if (option != INFER_OPTION.INFER_ONLY)
+    {
+      long startTime = System.currentTimeMillis();
+  
+      System.out.println("Filling the " + dbType.toString() + " database...");
+      Comp2Db controller = new Comp2Db(dbType, DATABASE_IP);
+      controller.run(sourceFile, dbName);
+      controller.shutdown();
+  
+      System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+    }
 
-    System.out.println("Filling the " + dbType.toString() + " database...");
-    Comp2Db controller = new Comp2Db(dbType, DATABASE_IP);
-    controller.run(sourceFile, dbName);
-    controller.shutdown();
-
-    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
-
-    if (FILL_ONLY)
-      return;
-    else
+    if (option != INFER_OPTION.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareLinkExample(DbType dbType, boolean FILL_ONLY, String source)
+  public static void prepareLinkExample(DbType dbType, INFER_OPTION option, String source)
   {
     String dbName = "links";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    long startTime = System.currentTimeMillis();
-
-    System.out.println("Filling the " + dbType.toString() + " database...");
-    Link2Db controller = new Link2Db(dbType, DATABASE_IP);
-    File theFile = new File(source);
-    if (theFile.isDirectory())
+    if (option != INFER_OPTION.INFER_ONLY)
     {
-      for (String countryRoute : theFile.list())
-        controller.run(source + countryRoute, dbName);
+      long startTime = System.currentTimeMillis();
+  
+      System.out.println("Filling the " + dbType.toString() + " database...");
+      Link2Db controller = new Link2Db(dbType, DATABASE_IP);
+      File theFile = new File(source);
+      if (theFile.isDirectory())
+      {
+        for (String countryRoute : theFile.list())
+          controller.run(source + countryRoute, dbName);
+      }
+      else
+        controller.run(source, dbName);
+  
+      controller.shutdown();
+
+      System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
-    else
-      controller.run(source, dbName);
 
-    controller.shutdown();
-
-    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
-
-    if (FILL_ONLY)
-      return;
-    else
+    if (option != INFER_OPTION.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareHarvardExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
+  public static void prepareHarvardExample(DbType dbType, INFER_OPTION option, String sourceFile)
   {
     String dbName = "harvard";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    long startTime = System.currentTimeMillis();
+    if (option != INFER_OPTION.INFER_ONLY)
+    {
+      long startTime = System.currentTimeMillis();
+  
+      System.out.println("Filling the " + dbType.toString() + " database...");
+      Harvard2Db controller = new Harvard2Db(dbType, DATABASE_IP);
+      controller.run(sourceFile, dbName);
+      controller.shutdown();
+  
+      System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+    }
 
-    System.out.println("Filling the " + dbType.toString() + " database...");
-    Harvard2Db controller = new Harvard2Db(dbType, DATABASE_IP);
-    controller.run(sourceFile, dbName);
-    controller.shutdown();
-
-    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
-
-    if (FILL_ONLY)
-      return;
-    else
+    if (option != INFER_OPTION.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareFacebookExample(DbType dbType, boolean FILL_ONLY, String source)
+  public static void prepareFacebookExample(DbType dbType, INFER_OPTION option, String source)
   {
     String dbName = "facebook";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    long startTime = System.currentTimeMillis();
-    System.out.println("Filling the " + dbType.toString() + " database...");
+    if (option != INFER_OPTION.INFER_ONLY)
+    {
+      long startTime = System.currentTimeMillis();
+      System.out.println("Filling the " + dbType.toString() + " database...");
+  
+      Facebook2Db controller = new Facebook2Db(dbType, DATABASE_IP);
+      for (String fileName : new File(source).list())
+        if (fileName.endsWith(".csv"))
+          controller.run(source + fileName, dbName);
+  
+      controller.shutdown();
+  
+      System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+    }
 
-    Facebook2Db controller = new Facebook2Db(dbType, DATABASE_IP);
-    for (String fileName : new File(source).list())
-      if (fileName.endsWith(".csv"))
-        controller.run(source + fileName, dbName);
-
-    controller.shutdown();
-
-    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
-
-    if (FILL_ONLY)
-      return;
-    else
+    if (option != INFER_OPTION.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareProteinExample(DbType dbType, boolean FILL_ONLY, String source)
+  public static void prepareProteinExample(DbType dbType, INFER_OPTION option, String source)
   {
     String dbName = "proteins";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    long startTime = System.currentTimeMillis();
-    System.out.println("Filling the " + dbType.toString() + " database...");
+    if (option != INFER_OPTION.INFER_ONLY)
+    {
+      long startTime = System.currentTimeMillis();
+      System.out.println("Filling the " + dbType.toString() + " database...");
+  
+      Proteins2Db controller = new Proteins2Db(dbType, DATABASE_IP);
+      for (String fileName : new File(source).list())
+        if (fileName.endsWith(".csv"))
+          controller.run(source + fileName, dbName);
+  
+      controller.shutdown();
+  
+      System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+    }
 
-    Proteins2Db controller = new Proteins2Db(dbType, DATABASE_IP);
-    for (String fileName : new File(source).list())
-      if (fileName.endsWith(".csv"))
-        controller.run(source + fileName, dbName);
-
-    controller.shutdown();
-
-    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
-
-    if (FILL_ONLY)
-      return;
-    else
+    if (option != INFER_OPTION.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void preparePublicationsExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
+  public static void preparePublicationsExample(DbType dbType, INFER_OPTION option, String sourceFile)
   {
     String dbName = "publications";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    long startTime = System.currentTimeMillis();
+    if (option != INFER_OPTION.INFER_ONLY)
+    {
+      long startTime = System.currentTimeMillis();
+  
+      System.out.println("Filling the " + dbType.toString() + " database...");
+      Publications2Db controller = new Publications2Db(dbType, DATABASE_IP);
+      controller.run(sourceFile, dbName);
+      controller.shutdown();
+  
+      System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+    }
 
-    System.out.println("Filling the " + dbType.toString() + " database...");
-    Publications2Db controller = new Publications2Db(dbType, DATABASE_IP);
-    controller.run(sourceFile, dbName);
-    controller.shutdown();
-
-    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
-
-    if (FILL_ONLY)
-      return;
-    else
+    if (option != INFER_OPTION.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareWebclickExample(DbType dbType, boolean FILL_ONLY, String source)
+  public static void prepareWebclickExample(DbType dbType, INFER_OPTION option, String source)
   {
     String dbName = "webclicks";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    long startTime = System.currentTimeMillis();
-
-    System.out.println("Filling the " + dbType.toString() + " database...");
-    Webclick2Db controller = new Webclick2Db(dbType, DATABASE_IP);
-    File theFile = new File(source);
-    if (theFile.isDirectory())
+    if (option != INFER_OPTION.INFER_ONLY)
     {
-      for (String countryRoute : theFile.list())
-        controller.run(source + countryRoute, dbName);
+      long startTime = System.currentTimeMillis();
+  
+      System.out.println("Filling the " + dbType.toString() + " database...");
+      Webclick2Db controller = new Webclick2Db(dbType, DATABASE_IP);
+      File theFile = new File(source);
+      if (theFile.isDirectory())
+      {
+        for (String countryRoute : theFile.list())
+          controller.run(source + countryRoute, dbName);
+      }
+      else
+        controller.run(source, dbName);
+  
+      controller.shutdown();
+  
+      System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
-    else
-      controller.run(source, dbName);
 
-    controller.shutdown();
-
-    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
-
-    if (FILL_ONLY)
-      return;
-    else
+    if (option != INFER_OPTION.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareSanctionsExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
+  public static void prepareSanctionsExample(DbType dbType, INFER_OPTION option, String sourceFile)
   {
     String dbName = "opensanctions";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    long startTime = System.currentTimeMillis();
+    if (option != INFER_OPTION.INFER_ONLY)
+    {
+      long startTime = System.currentTimeMillis();
+  
+      System.out.println("Filling the " + dbType.toString() + " database...");
+      OSanctions2Db controller = new OSanctions2Db(dbType, DATABASE_IP);
+      controller.run(sourceFile, dbName);
+      controller.shutdown();
+  
+      System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+    }
 
-    System.out.println("Filling the " + dbType.toString() + " database...");
-    OSanctions2Db controller = new OSanctions2Db(dbType, DATABASE_IP);
-    controller.run(sourceFile, dbName);
-    controller.shutdown();
-
-    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
-
-    if (FILL_ONLY)
-      return;
-    else
+    if (option != INFER_OPTION.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void preparePleiadesExample(DbType dbType, boolean FILL_ONLY, String sourceFile)
+  public static void preparePleiadesExample(DbType dbType, INFER_OPTION option, String sourceFile)
   {
     String dbName = "pleiades";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    long startTime = System.currentTimeMillis();
+    if (option != INFER_OPTION.INFER_ONLY)
+    {
+      long startTime = System.currentTimeMillis();
+  
+      System.out.println("Filling the " + dbType.toString() + " database...");
+      Pleiades2Db controller = new Pleiades2Db(dbType, DATABASE_IP);
+      controller.run(sourceFile, dbName);
+      controller.shutdown();
+  
+      System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
+    }
 
-    System.out.println("Filling the " + dbType.toString() + " database...");
-    Pleiades2Db controller = new Pleiades2Db(dbType, DATABASE_IP);
-    controller.run(sourceFile, dbName);
-    controller.shutdown();
-
-    System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
-
-    if (FILL_ONLY)
-      return;
-    else
+    if (option != INFER_OPTION.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 

@@ -5,7 +5,6 @@ package es.um.nosql.s13e.json2dbschema.process.util;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.Map;
 import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -28,12 +27,15 @@ public class ReferenceMatcher<T>
 	// Unlikely words to appear in a reference
 	private static List<String> UnlikelyWords = Arrays.asList("count");
 
-	private Map<String, T> idRegexps;
+	// TODO: By using a list this matcher is just too slow.
+	// A different approach might be to test each key with an affix and a suffix,
+	// or let the user solve the references, or use a configuration file.
+	// For now we will keep this as it is.
+	private List<Pair<String, T>> idRegexps;
 
 	public ReferenceMatcher(Stream<Pair<String, T>> stream)
 	{		
-		// Build the regexp that will allow checking if a field may be a reference
-		// to another entity
+		// Build the regexp that will allow checking if a field may be a reference to another entity
 		idRegexps = stream.flatMap(entry ->
 			Affixes.stream().flatMap(affix ->
 				Stream.concat(
@@ -49,7 +51,7 @@ public class ReferenceMatcher<T>
 										Pair.of(("^.*?" + affix + c + entry.getKey() + "$").toLowerCase(), entry.getValue()))))
 				)
 			)
-		).collect(Collectors.toMap(Pair::getKey, Pair::getValue, (p, q) -> p));
+		).collect(Collectors.toList());
 	}
 
 	public Optional<T> maybeMatch(String id)
@@ -57,6 +59,6 @@ public class ReferenceMatcher<T>
 		if (UnlikelyWords.stream().anyMatch(w -> id.toLowerCase().contains(w)))
 			return Optional.<T>empty();
 
-		return Optional.ofNullable(idRegexps.get(id.toLowerCase()));
+		return idRegexps.stream().filter(pair -> id.toLowerCase().matches(pair.getKey())).findFirst().map(Pair::getValue);
 	}
 }

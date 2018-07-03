@@ -16,6 +16,11 @@ public class Model2Db extends Source2Db
 	  super(db, ip);
   }
 
+	public void run(String modelRoute, String dbName)
+	{
+	  throw new UnsupportedOperationException();
+	}
+
 	public void run(String modelRoute, int minInstances, int maxInstances)
 	{
 	  long startTime = System.currentTimeMillis();

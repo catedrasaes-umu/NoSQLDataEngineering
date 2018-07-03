@@ -9,23 +9,42 @@ public abstract class Source2Db
 {
   private DbClient client;
 
+  private DbType dbType;
+
+  private String ip;
+
   public Source2Db(DbType db, String ip)
   {
-    switch (db)
+    this.dbType = db;
+    this.ip = ip;
+
+    switch (this.dbType)
     {
-      case COUCHDB: { client = CouchDbAdapter.getCouchDbClient(ip); break;}
-      case MONGODB: { client = MongoDbAdapter.getMongoDbClient(ip); break;}
+      case COUCHDB: { client = CouchDbAdapter.getCouchDbClient(this.ip); break;}
+      case MONGODB: { client = MongoDbAdapter.getMongoDbClient(this.ip); break;}
       default: throw new IllegalArgumentException("Database type not implemented yet.");
     }
   }
 
+  public DbType getDbType()
+  {
+    return this.dbType;
+  }
+
+  public String getIp()
+  {
+    return this.ip;
+  }
+
   public DbClient getClient()
   {
-    return client;
+    return this.client;
   }
+
+  public abstract void run(String jsonRoute, String dbName);
 
   public boolean shutdown()
   {
-    return client.shutdown();
+    return this.client.shutdown();
   }
 }
