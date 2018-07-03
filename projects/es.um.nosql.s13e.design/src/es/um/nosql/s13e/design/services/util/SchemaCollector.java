@@ -13,7 +13,7 @@ import es.um.nosql.s13e.NoSQLSchema.Reference;
 
 public class SchemaCollector
 {
-  public static List<EntityVariation> geteVariationsFromSchema(EntityVariation eVariation)
+  public static List<EntityVariation> getEVariationsFromSchema(EntityVariation eVariation)
   {
     List<EntityVariation> result = new ArrayList<EntityVariation>();
     result.addAll(getElementsFromSchema(eVariation).getLeft());
@@ -33,11 +33,11 @@ public class SchemaCollector
    * Method used to get a list of reduced EntityVariations.
    * This list will gather each EntityVariation and then remove those EntityVariations
    * added because their Entities were referenced. In other words, this method
-   * will only get versions explicitly aggregated by the process.
-   * @param root The version to which we want to get the reduced EntityVariations list.
+   * will only get variations explicitly aggregated by the process.
+   * @param root The variation to which we want to get the reduced EntityVariations list.
    * @return An EntityVariation list
    */
-  public static List<EntityVariation> getReducedeVariationsFromSchema(EntityVariation root)
+  public static List<EntityVariation> getReducedEVariationsFromSchema(EntityVariation root)
   {
     List<EntityVariation> result = new ArrayList<EntityVariation>();
     Pair<Set<EntityVariation>, Set<Entity>> elementList = getElementsFromSchema(root);

@@ -16,7 +16,7 @@ import es.um.nosql.s13e.design.services.util.SchemaCollector;
 
 public class NoSQLSchemaServices
 {
-  public boolean existsSchemaVersion(NoSQLSchema model)
+  public boolean existsSchemaVariation(NoSQLSchema model)
   {
     for (Entity entity : model.getEntities())
       for (EntityVariation eVariation : entity.getEntityvariations())
@@ -49,7 +49,7 @@ public class NoSQLSchemaServices
     return result;
   }
 
-  public List<EntityVariation> geteVariationsForIndexBranch(NoSQLSchema model)
+  public List<EntityVariation> getEVariationsForIndexBranch(NoSQLSchema model)
   {
     List<EntityVariation> result = new ArrayList<EntityVariation>();
 
@@ -68,9 +68,9 @@ public class NoSQLSchemaServices
     return result;
   }
 
-  public List<EntityVariation> geteVariationsFromSchema(EntityVariation root)
+  public List<EntityVariation> getEVariationsFromSchema(EntityVariation root)
   {
-    List<EntityVariation> result = SchemaCollector.geteVariationsFromSchema(root);
+    List<EntityVariation> result = SchemaCollector.getEVariationsFromSchema(root);
     result.sort(new Comparator<EntityVariation>()
     {
       public int compare(EntityVariation ev0, EntityVariation ev1)
@@ -129,19 +129,19 @@ public class NoSQLSchemaServices
    *          The entity of which the union is being performed
    * @return A list of eVariations
    */
-  public List<EntityVariation> geteVariationsFromEntityUnion(Entity entity)
+  public List<EntityVariation> getEVariationsFromEntityUnion(Entity entity)
   {
     List<EntityVariation> result = new ArrayList<EntityVariation>();
 
     entity.getEntityvariations().stream().filter(ev -> ev.isRoot())
-        .forEach(ev -> result.addAll(getReducedeVariationsFromSchema(ev)));
+        .forEach(ev -> result.addAll(getReducedEVariationsFromSchema(ev)));
 
     return result;
   }
 
-  public List<EntityVariation> getReducedeVariationsFromSchema(EntityVariation root)
+  public List<EntityVariation> getReducedEVariationsFromSchema(EntityVariation root)
   {
-    List<EntityVariation> result = SchemaCollector.getReducedeVariationsFromSchema(root);
+    List<EntityVariation> result = SchemaCollector.getReducedEVariationsFromSchema(root);
 
     return result;
   }
@@ -157,9 +157,9 @@ public class NoSQLSchemaServices
     return result;
   }
 
-  public List<EntityVariation> getIndirecteVariationsFromSchema(EntityVariation root)
+  public List<EntityVariation> getIndirectEVariationsFromSchema(EntityVariation root)
   {
-    List<EntityVariation> result = SchemaCollector.getReducedeVariationsFromSchema(root);
+    List<EntityVariation> result = SchemaCollector.getReducedEVariationsFromSchema(root);
 
     for (Property prop : root.getProperties())
       if (prop instanceof Aggregate)
@@ -168,7 +168,7 @@ public class NoSQLSchemaServices
     return result;
   }
 
-  public List<EntityVariation> geteVariationsFromeVariation(EntityVariation eVariation)
+  public List<EntityVariation> getEVariationsFromeVariation(EntityVariation eVariation)
   {
     List<EntityVariation> result = new ArrayList<EntityVariation>();
     NoSQLSchema model = (NoSQLSchema) eVariation.eContainer().eContainer();
@@ -184,7 +184,7 @@ public class NoSQLSchemaServices
     for (Entity entity : model.getEntities())
       for (EntityVariation evInEntity : entity.getEntityvariations())
         if (evInEntity.isRoot()
-            && (evInEntity == eVariation || SchemaCollector.geteVariationsFromSchema(evInEntity).contains(eVariation)))
+            && (evInEntity == eVariation || SchemaCollector.getEVariationsFromSchema(evInEntity).contains(eVariation)))
           result.add(evInEntity);
 
     return result;

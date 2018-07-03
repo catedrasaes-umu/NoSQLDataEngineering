@@ -20,9 +20,9 @@ public class PropertyServices
   {
     List<Attribute> result = new ArrayList<Attribute>();
 
-    for (EntityVariation eVersion : entity.getEntityvariations())
+    for (EntityVariation eVariation : entity.getEntityvariations())
     {
-      eVersion.getProperties().stream().filter(prop -> prop instanceof Attribute).forEach(prop -> {
+      eVariation.getProperties().stream().filter(prop -> prop instanceof Attribute).forEach(prop -> {
         Attribute attr = (Attribute) prop;
 
         if (attr.getType() instanceof PrimitiveType)
@@ -56,9 +56,9 @@ public class PropertyServices
   {
     List<Association> result = new ArrayList<Association>();
 
-    for (EntityVariation eVersion : entity.getEntityvariations())
+    for (EntityVariation eVariation : entity.getEntityvariations())
     {
-      eVersion.getProperties().stream().filter(prop -> prop instanceof Association).forEach(prop -> {
+      eVariation.getProperties().stream().filter(prop -> prop instanceof Association).forEach(prop -> {
         Association assoc = (Association) prop;
 
         if (assoc instanceof Reference)
@@ -101,9 +101,9 @@ public class PropertyServices
     if (entity.getEntityvariations().isEmpty())
       return result;
 
-    EntityVariation eVersion = entity.getEntityvariations().get(0);
+    EntityVariation eVariation = entity.getEntityvariations().get(0);
 
-    for (Property prop : eVersion.getProperties())
+    for (Property prop : eVariation.getProperties())
       if (prop instanceof Attribute)
         result.add((Attribute) prop);
 
@@ -125,12 +125,12 @@ public class PropertyServices
     return result;
   }
 
-  public List<Attribute> getParticularAttributeList(EntityVariation eVersion)
+  public List<Attribute> getParticularAttributeList(EntityVariation eVariation)
   {
     List<Attribute> result = new ArrayList<Attribute>();
-    List<Attribute> commonAttrs = getCommonAttributeList((Entity) eVersion.eContainer());
+    List<Attribute> commonAttrs = getCommonAttributeList((Entity) eVariation.eContainer());
 
-    for (Property prop : eVersion.getProperties())
+    for (Property prop : eVariation.getProperties())
       if (prop instanceof Attribute)
         result.add((Attribute) prop);
 
@@ -152,9 +152,9 @@ public class PropertyServices
     if (entity.getEntityvariations().isEmpty())
       return result;
 
-    EntityVariation eVersion = entity.getEntityvariations().get(0);
+    EntityVariation eVariation = entity.getEntityvariations().get(0);
 
-    for (Property prop : eVersion.getProperties())
+    for (Property prop : eVariation.getProperties())
       if (prop instanceof Association)
         result.add((Association) prop);
 
@@ -176,12 +176,12 @@ public class PropertyServices
     return result;
   }
 
-  public List<Association> getParticularAssociationList(EntityVariation eVersion)
+  public List<Association> getParticularAssociationList(EntityVariation eVariation)
   {
     List<Association> result = new ArrayList<Association>();
-    List<Association> commonAssc = getCommonAssociationList((Entity) eVersion.eContainer());
+    List<Association> commonAssc = getCommonAssociationList((Entity) eVariation.eContainer());
 
-    for (Property prop : eVersion.getProperties())
+    for (Property prop : eVariation.getProperties())
       if (prop instanceof Association)
         result.add((Association) prop);
 
@@ -238,7 +238,7 @@ public class PropertyServices
       Aggregate aggr1 = (Aggregate) assc1;
       Aggregate aggr2 = (Aggregate) assc2;
 
-      // Check the aggregates have the same name, and the refTo points to versions of the same entity
+      // Check the aggregates have the same name, and the refTo points to variations of the same entity
       if (aggr1.getName().equals(aggr2.getName())
           && aggr1.getRefTo().get(0).eContainer() == aggr2.getRefTo().get(0).eContainer()
           && aggr1.getRefTo().size() == aggr2.getRefTo().size())

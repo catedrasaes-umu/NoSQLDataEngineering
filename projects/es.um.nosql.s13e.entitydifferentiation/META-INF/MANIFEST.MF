@@ -23,3 +23,4 @@ Export-Package: es.um.nosql.s13e.DecisionTree,
  es.um.nosql.s13e.EntityDifferentiation,
  es.um.nosql.s13e.EntityDifferentiation.impl,
  es.um.nosql.s13e.EntityDifferentiation.util
+Automatic-Module-Name: es.um.nosql.s13e.entitydifferentiation

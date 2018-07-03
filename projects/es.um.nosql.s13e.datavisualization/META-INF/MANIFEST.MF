@@ -19,3 +19,4 @@ Require-Bundle: org.eclipse.core.runtime,
  es.um.nosql.s13e;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Import-Package: org.eclipse.emf.ecore.xmi.impl
+Automatic-Module-Name: es.um.nosql.s13e.datavisualization

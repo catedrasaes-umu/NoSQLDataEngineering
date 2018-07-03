@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:description="http://www.eclipse.org/sirius/description/1.1.0" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xsi:schemaLocation="http://www.eclipse.org/sirius/description/1.1.0 http://www.eclipse.org/sirius/1.1.0#//description" xmi:id="_Ro7B0H6jEeiylar9uVaDCw" selectedViews="_SxfzcH6jEeiylar9uVaDCw _SxnIMH6jEeiylar9uVaDCw" version="12.1.0.201708031200">
+  <semanticResources>Diffs/everypolitician_sweden_Diff.xmi</semanticResources>
+  <semanticResources>everypolitician_sweden.xmi</semanticResources>
+  <semanticResources>Diffs/facebook_Diff.xmi</semanticResources>
+  <semanticResources>facebook.xmi</semanticResources>
+  <semanticResources>Diffs/mongomovies_Diff.xmi</semanticResources>
+  <semanticResources>mongomovies.xmi</semanticResources>
+  <semanticResources>Diffs/mongosongs_Diff.xmi</semanticResources>
+  <semanticResources>mongosongs.xmi</semanticResources>
+  <semanticResources>Diffs/publications_Diff.xmi</semanticResources>
+  <semanticResources>publications.xmi</semanticResources>
+  <semanticResources>harvard.xmi</semanticResources>
+  <semanticResources>links.xmi</semanticResources>
+  <semanticResources>opensanctions.xmi</semanticResources>
+  <semanticResources>proteins.xmi</semanticResources>
+  <semanticResources>stackoverflow.xmi</semanticResources>
+  <semanticResources>tfg_RESULT.xmi</semanticResources>
+  <semanticResources>urban.xmi</semanticResources>
+  <semanticResources>webclicks.xmi</semanticResources>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_SxfzcH6jEeiylar9uVaDCw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/es.um.nosql.s13e.design/description/s13e.odesign#//@ownedViewpoints[name='NoSQLSchema']"/>
+  </ownedViews>
+  <ownedViews xmi:type="viewpoint:DView" xmi:id="_SxnIMH6jEeiylar9uVaDCw">
+    <viewpoint xmi:type="description:Viewpoint" href="platform:/resource/es.um.nosql.s13e.design/description/s13e.odesign#//@ownedViewpoints[name='EntityDifferentiation']"/>
+  </ownedViews>
+</viewpoint:DAnalysis>
