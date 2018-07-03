@@ -224,18 +224,18 @@ function transformIntoD3ExtendedJson (element)
 };
 
 /**
- * Private method used to get the maximum version number of a JSON object with entityVersions defined on it.
- * @param element: The element of which we want to know the maximum version.
- * @return: The maximum version found on the JSON object.
+ * Private method used to get the maximum variation number of a JSON object with entityVariations defined on it.
+ * @param element: The element of which we want to know the maximum variation.
+ * @return: The maximum variation found on the JSON object.
  */
-function getMaxVersion (element)
+function getMaxVariation (element)
 {
-	var maxVersion = 1;
+	var maxVariation = 1;
 
 	for (var field in element)
 		for (var subField in element[field])
-			if (parseInt(subField.substring(subField.lastIndexOf("_") + 1)) > maxVersion)
-				maxVersion = parseInt(subField.substring(subField.lastIndexOf("_") + 1));
+			if (parseInt(subField.substring(subField.lastIndexOf("_") + 1)) > maxVariation)
+				maxVariation = parseInt(subField.substring(subField.lastIndexOf("_") + 1));
 
-	return maxVersion;
+	return maxVariation;
 };

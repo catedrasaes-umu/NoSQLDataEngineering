@@ -10,7 +10,7 @@ var BUTTON_IDS = ["#bBubbles", "#bBars", "#bDonuts", "#bTree"];
 
 /**
  * Method used to start the drawing operation over the divs.
- * @param jsonData: A json object containing all the entity versions.
+ * @param jsonData: A json object containing all the entity variations.
  */
 
 $(function()

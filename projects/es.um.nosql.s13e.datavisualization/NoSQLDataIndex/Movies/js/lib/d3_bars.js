@@ -15,7 +15,7 @@ function drawD3Bars(DiffStruct, divId)
 	var xAxis = d3.svg.axis().scale(x0).orient("bottom");
 	var yAxis = d3.svg.axis().scale(y).orient("left").tickFormat(d3.format("d"));
 	var color = d3.scale.category10();
-	var eVersions = d3.keys(jsonObj[0]).filter(function(key) { return key !== "Entity"; });
+	var eVariations = d3.keys(jsonObj[0]).filter(function(key) { return key !== "Entity"; });
 	var svg = d3.select(divId).append("svg")
 		.attr("width", width + margin.left + margin.right)
 		.attr("height", height + margin.top + margin.bottom)
@@ -26,15 +26,15 @@ function drawD3Bars(DiffStruct, divId)
 	jsonObj.forEach(function(d)
 	{
 		var counter = 0;
-		for (var numVersions in d)
-			if (typeof d[numVersions] === "number")
-				counter += d[numVersions];
+		for (var numVariations in d)
+			if (typeof d[numVariations] === "number")
+				counter += d[numVariations];
 
-		d.tmp = eVersions.map(function(name) { return {name: name, value: +d[name], total: counter}; });
+		d.tmp = eVariations.map(function(name) { return {name: name, value: +d[name], total: counter}; });
 	});
 
 	x0.domain(jsonObj.map(function(d) { return d.Entity; }));
-	x1.domain(eVersions).rangeRoundBands([0, x0.rangeBand()]);
+	x1.domain(eVariations).rangeRoundBands([0, x0.rangeBand()]);
 	y.domain([0, d3.max(jsonObj, function(d) { return d3.max(d.tmp, function(d) { return d.value; }); })]);
 
 	svg.append("g")
@@ -89,7 +89,7 @@ function drawD3Bars(DiffStruct, divId)
 
 	// Legend.
 	var legend = svg.selectAll(".legend")
-		.data(eVersions.slice())
+		.data(eVariations.slice())
 		.enter().append("g")
 		.attr("class", "bars_legend")
 		.attr("transform", function(d, i) { return "translate(0," + i * 20 + ")"; });

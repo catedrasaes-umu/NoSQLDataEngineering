@@ -4,7 +4,7 @@
 var DATA_DIFF_NAME = "Movies";
 
 /**
- * A DiffStruct which will store the EntityVersions and how many of them exist.
+ * A DiffStruct which will store the EntityVariations and how many of them exist.
  */
 var DiffStruct =
 {
