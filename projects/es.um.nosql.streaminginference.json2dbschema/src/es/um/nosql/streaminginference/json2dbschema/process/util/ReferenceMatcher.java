@@ -28,7 +28,7 @@ public class ReferenceMatcher<T>
 	// Unlikely words to appear in a reference
 	private static List<String> UnlikelyWords = Arrays.asList("count");
 
-	private Map<String, T> idRegexps;
+	private Map<String, Stream<Pair<String, T>>> idRegexps;
 
 	public ReferenceMatcher(Stream<Pair<String, T>> stream)
 	{		
@@ -48,15 +48,33 @@ public class ReferenceMatcher<T>
 									StopChars.stream().filter(c -> !c.isEmpty() || !affix.isEmpty()).map(c ->
 										Pair.of(("^.*?" + affix + c + entry.getKey() + "$").toLowerCase(), entry.getValue()))))
 				)
+				.map(pair -> Pair.of(entry.getKey().toLowerCase(), Stream.of(pair)))
 			)
-		).collect(Collectors.toMap(Pair::getKey, Pair::getValue, (p, q) -> p));
+		)
+		.collect(Collectors.toMap(Pair::getKey, Pair::getValue, (p, q) -> Stream.concat(p,q)));
 	}
 
 	public Optional<T> maybeMatch(String id)
 	{
-		if (UnlikelyWords.stream().anyMatch(w -> id.toLowerCase().contains(w)))
+		String lowerId = id.toLowerCase();
+		if (UnlikelyWords.stream().anyMatch(w -> lowerId.contains(w)))
 			return Optional.<T>empty();
-
-		return Optional.ofNullable(idRegexps.get(id.toLowerCase()));
+		
+		for (String candidate : idRegexps.keySet()) 
+		{
+			if (lowerId.contains(candidate)) 
+			{
+				Optional<T> op = idRegexps
+						.get(candidate)
+						.filter(pair -> lowerId
+								.matches(pair.getKey()))
+						.findFirst()
+						.map(pair -> pair.getValue());
+				if (op.isPresent())
+					return op;
+			}
+		}
+		
+		return Optional.empty();
 	}
 }
