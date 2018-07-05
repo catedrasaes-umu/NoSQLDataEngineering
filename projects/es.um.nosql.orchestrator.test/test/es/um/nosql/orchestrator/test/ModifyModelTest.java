@@ -31,7 +31,7 @@ public class ModifyModelTest
     NoSQLSchema schema = loader.load(new File(inputRoute), NoSQLSchema.class);
 
     for (Entity e : schema.getEntities())
-      for (EntityVariation ev : e.getEntityvariations())
+      for (EntityVariation ev : e.getEntityVariations())
         ev.getProperties().stream().filter(p -> p instanceof Reference).map(p -> (Reference)p).forEach(ref ->
         {
           if (e.getName().equals("Posts") && (ref.getName().equals("LastEditorUserId") || ref.getName().equals("OwnerUserId")))

@@ -77,7 +77,7 @@ public class M2M
 		{
 			evMap = getEVPropertiesMap(entity);
 
-			for (EntityVariation entityVariation : entity.getEntityvariations())
+			for (EntityVariation entityVariation : entity.getEntityVariations())
 			{
 				TypeDifference tDiff = Variation_DiffFactory.eINSTANCE.createTypeDifference();
 				tDiff.setName(entity.getName() + "_" + entityVariation.getVariationId());
@@ -99,7 +99,7 @@ public class M2M
 	{
 		Map<EntityVariation, List<Pair<String, FieldType>>> evMap = new HashMap<EntityVariation, List<Pair<String, FieldType>>>();
 
-		for (EntityVariation ev : baseEntity.getEntityvariations())
+		for (EntityVariation ev : baseEntity.getEntityVariations())
 		{
 			List<Pair<String, FieldType>> pairList = new ArrayList<Pair<String, FieldType>>();
 			evMap.put(ev, pairList);

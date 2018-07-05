@@ -61,7 +61,7 @@ public class JsonGenerator
     for (Entity entity : schema.getEntities())
     {
       entityIdMap.put(entity.getName().toLowerCase(), new ArrayList<String>());
-      for (EntityVariation eVariation : entity.getEntityvariations())
+      for (EntityVariation eVariation : entity.getEntityVariations())
       {
         evMap.put(eVariation, new ArrayList<ObjectNode>());
         int countInstances = getRandomBetween(MIN_INSTANCES_VARIATION, MAX_INSTANCES_VARIATION);
@@ -98,7 +98,7 @@ public class JsonGenerator
 
     // Second run to generate the references and aggregates since now all the variations and instances exist.
     for (Entity entity : schema.getEntities())
-      for (EntityVariation eVariation : entity.getEntityvariations())
+      for (EntityVariation eVariation : entity.getEntityVariations())
         for (ObjectNode strObj : evMap.get(eVariation))
         {
           for (Property property : eVariation.getProperties())

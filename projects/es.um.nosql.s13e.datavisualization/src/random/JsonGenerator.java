@@ -78,7 +78,7 @@ public class JsonGenerator
 		int IDENTIFIER = 0;
 		for (Entity entity : schema.getEntities())
 		{
-			for (EntityVariation eVariation : entity.getEntityvariations())
+			for (EntityVariation eVariation : entity.getEntityVariations())
 			{
 				mapEV.put(eVariation, new ArrayList<JsonObject>());
 
@@ -126,7 +126,7 @@ public class JsonGenerator
 
 		// Second run to generate the aggregates since now all the variations and instances exist.
 		for (Entity entity : schema.getEntities())
-			for (EntityVariation eVariation : entity.getEntityvariations())
+			for (EntityVariation eVariation : entity.getEntityVariations())
 				for (JsonObject strObj : mapEV.get(eVariation))
 				{
 					for (Property property : eVariation.getProperties())

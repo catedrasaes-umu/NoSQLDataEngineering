@@ -92,7 +92,7 @@ public class NoSQLSchemaToEntityDiff
         .collect(toMap(identity(), this::calcCommonProperties));
 
     evOwnProperties = schema.getEntities().stream()
-        .flatMap(e -> e.getEntityvariations().stream().map(ev -> Tuples.pair(ev,
+        .flatMap(e -> e.getEntityVariations().stream().map(ev -> Tuples.pair(ev,
             ev.getProperties().stream().filter(p -> !commonEntityProperties.get(e).contains(p))
             .collect(toCollection(() -> new UnifiedSetWithHashingStrategy<>(propertyHashing))))))
         .collect(toMap(Pair::getOne, Pair::getTwo));
@@ -118,7 +118,7 @@ public class NoSQLSchemaToEntityDiff
     // Create and add all the EntityVariationProp. This is because it is easier, when
     // identified the own attributes of an EntityVariation, output "HasNotField" items
     // for the rest of EntityVariations
-    e.getEntityvariations().forEach(ev -> {
+    e.getEntityVariations().forEach(ev -> {
       EntityVariationProp evp = EntityDifferentiationFactory.eINSTANCE.createEntityVariationProp();
       evp.setEntityVariation(ev);
       de.getEntityVariationProps().add(evp);
@@ -130,9 +130,9 @@ public class NoSQLSchemaToEntityDiff
       evPropsByEv.put(ev, evp);
     });
 
-    if (e.getEntityvariations().size() > 1)
+    if (e.getEntityVariations().size() > 1)
     {
-      for (EntityVariation ev : e.getEntityvariations())
+      for (EntityVariation ev : e.getEntityVariations())
       {
         // For each property, check whether other entity variations having this property have also the same type for it
         for (Property p : evOwnProperties.get(ev))
@@ -188,7 +188,7 @@ public class NoSQLSchemaToEntityDiff
   private Set<Property> calcCommonProperties(Entity e)
   {
     Map<EntityVariation, Set<Property>> allProperties =
-        e.getEntityvariations().stream()
+        e.getEntityVariations().stream()
         .collect(toMap(
             identity(),
             ev -> new UnifiedSetWithHashingStrategy<>(propertyHashing, ev.getProperties())));

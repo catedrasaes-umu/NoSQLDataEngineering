@@ -35,389 +35,377 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFactory implements ComposeableAdapterFactory, IChangeNotifier, IDisposable
 {
   /**
-   * This keeps track of the root adapter factory that delegates to this adapter factory.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the root adapter factory that delegates to this adapter factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected ComposedAdapterFactory parentAdapterFactory;
 
   /**
-   * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
-   * <!-- begin-user-doc -->
+	 * This is used to implement {@link org.eclipse.emf.edit.provider.IChangeNotifier}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected IChangeNotifier changeNotifier = new ChangeNotifier();
 
   /**
-   * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
-   * <!-- begin-user-doc -->
+	 * This keeps track of all the supported types checked by {@link #isFactoryForType isFactoryForType}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected Collection<Object> supportedTypes = new ArrayList<Object>();
 
   /**
-   * This constructs an instance.
-   * <!-- begin-user-doc -->
+	 * This constructs an instance.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NoSQLSchemaItemProviderAdapterFactory()
   {
-    supportedTypes.add(IEditingDomainItemProvider.class);
-    supportedTypes.add(IStructuredItemContentProvider.class);
-    supportedTypes.add(ITreeItemContentProvider.class);
-    supportedTypes.add(IItemLabelProvider.class);
-    supportedTypes.add(IItemPropertySource.class);
-  }
+		supportedTypes.add(IEditingDomainItemProvider.class);
+		supportedTypes.add(IStructuredItemContentProvider.class);
+		supportedTypes.add(ITreeItemContentProvider.class);
+		supportedTypes.add(IItemLabelProvider.class);
+		supportedTypes.add(IItemPropertySource.class);
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link NoSQLSchema.NoSQLSchema} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.NoSQLSchema} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected NoSQLSchemaItemProvider noSQLSchemaItemProvider;
 
   /**
-   * This creates an adapter for a {@link NoSQLSchema.NoSQLSchema}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.NoSQLSchema}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createNoSQLSchemaAdapter()
   {
-    if (noSQLSchemaItemProvider == null)
-    {
-      noSQLSchemaItemProvider = new NoSQLSchemaItemProvider(this);
-    }
+		if (noSQLSchemaItemProvider == null) {
+			noSQLSchemaItemProvider = new NoSQLSchemaItemProvider(this);
+		}
 
-    return noSQLSchemaItemProvider;
-  }
+		return noSQLSchemaItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link NoSQLSchema.Entity} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.Entity} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected EntityItemProvider entityItemProvider;
 
   /**
-   * This creates an adapter for a {@link NoSQLSchema.Entity}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Entity}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createEntityAdapter()
   {
-    if (entityItemProvider == null)
-    {
-      entityItemProvider = new EntityItemProvider(this);
-    }
+		if (entityItemProvider == null) {
+			entityItemProvider = new EntityItemProvider(this);
+		}
 
-    return entityItemProvider;
-  }
+		return entityItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link NoSQLSchema.EntityVariation} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.EntityVariation} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected EntityVariationItemProvider entityVariationItemProvider;
 
   /**
-   * This creates an adapter for a {@link NoSQLSchema.EntityVariation}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.EntityVariation}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createEntityVariationAdapter()
   {
-    if (entityVariationItemProvider == null)
-    {
-      entityVariationItemProvider = new EntityVariationItemProvider(this);
-    }
+		if (entityVariationItemProvider == null) {
+			entityVariationItemProvider = new EntityVariationItemProvider(this);
+		}
 
-    return entityVariationItemProvider;
-  }
+		return entityVariationItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link NoSQLSchema.Attribute} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.Attribute} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected AttributeItemProvider attributeItemProvider;
 
   /**
-   * This creates an adapter for a {@link NoSQLSchema.Attribute}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Attribute}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createAttributeAdapter()
   {
-    if (attributeItemProvider == null)
-    {
-      attributeItemProvider = new AttributeItemProvider(this);
-    }
+		if (attributeItemProvider == null) {
+			attributeItemProvider = new AttributeItemProvider(this);
+		}
 
-    return attributeItemProvider;
-  }
+		return attributeItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link NoSQLSchema.Tuple} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.Tuple} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected TupleItemProvider tupleItemProvider;
 
   /**
-   * This creates an adapter for a {@link NoSQLSchema.Tuple}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Tuple}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createTupleAdapter()
   {
-    if (tupleItemProvider == null)
-    {
-      tupleItemProvider = new TupleItemProvider(this);
-    }
+		if (tupleItemProvider == null) {
+			tupleItemProvider = new TupleItemProvider(this);
+		}
 
-    return tupleItemProvider;
-  }
+		return tupleItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link NoSQLSchema.Reference} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.Reference} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected ReferenceItemProvider referenceItemProvider;
 
   /**
-   * This creates an adapter for a {@link NoSQLSchema.Reference}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Reference}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createReferenceAdapter()
   {
-    if (referenceItemProvider == null)
-    {
-      referenceItemProvider = new ReferenceItemProvider(this);
-    }
+		if (referenceItemProvider == null) {
+			referenceItemProvider = new ReferenceItemProvider(this);
+		}
 
-    return referenceItemProvider;
-  }
+		return referenceItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link NoSQLSchema.Aggregate} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.Aggregate} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected AggregateItemProvider aggregateItemProvider;
 
   /**
-   * This creates an adapter for a {@link NoSQLSchema.Aggregate}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Aggregate}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createAggregateAdapter()
   {
-    if (aggregateItemProvider == null)
-    {
-      aggregateItemProvider = new AggregateItemProvider(this);
-    }
+		if (aggregateItemProvider == null) {
+			aggregateItemProvider = new AggregateItemProvider(this);
+		}
 
-    return aggregateItemProvider;
-  }
+		return aggregateItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link NoSQLSchema.PrimitiveType} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.PrimitiveType} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected PrimitiveTypeItemProvider primitiveTypeItemProvider;
 
   /**
-   * This creates an adapter for a {@link NoSQLSchema.PrimitiveType}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.PrimitiveType}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createPrimitiveTypeAdapter()
   {
-    if (primitiveTypeItemProvider == null)
-    {
-      primitiveTypeItemProvider = new PrimitiveTypeItemProvider(this);
-    }
+		if (primitiveTypeItemProvider == null) {
+			primitiveTypeItemProvider = new PrimitiveTypeItemProvider(this);
+		}
 
-    return primitiveTypeItemProvider;
-  }
+		return primitiveTypeItemProvider;
+	}
 
   /**
-   * This keeps track of the one adapter used for all {@link NoSQLSchema.Null} instances.
-   * <!-- begin-user-doc -->
+	 * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.Null} instances.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected NullItemProvider nullItemProvider;
 
   /**
-   * This creates an adapter for a {@link NoSQLSchema.Null}.
-   * <!-- begin-user-doc -->
+	 * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Null}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter createNullAdapter()
   {
-    if (nullItemProvider == null)
-    {
-      nullItemProvider = new NullItemProvider(this);
-    }
+		if (nullItemProvider == null) {
+			nullItemProvider = new NullItemProvider(this);
+		}
 
-    return nullItemProvider;
-  }
+		return nullItemProvider;
+	}
 
   /**
-   * This returns the root adapter factory that contains this factory.
-   * <!-- begin-user-doc -->
+	 * This returns the root adapter factory that contains this factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public ComposeableAdapterFactory getRootAdapterFactory()
   {
-    return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
-  }
+		return parentAdapterFactory == null ? this : parentAdapterFactory.getRootAdapterFactory();
+	}
 
   /**
-   * This sets the composed adapter factory that contains this factory.
-   * <!-- begin-user-doc -->
+	 * This sets the composed adapter factory that contains this factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setParentAdapterFactory(ComposedAdapterFactory parentAdapterFactory)
   {
-    this.parentAdapterFactory = parentAdapterFactory;
-  }
+		this.parentAdapterFactory = parentAdapterFactory;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean isFactoryForType(Object type)
   {
-    return supportedTypes.contains(type) || super.isFactoryForType(type);
-  }
+		return supportedTypes.contains(type) || super.isFactoryForType(type);
+	}
 
   /**
-   * This implementation substitutes the factory itself as the key for the adapter.
-   * <!-- begin-user-doc -->
+	 * This implementation substitutes the factory itself as the key for the adapter.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Adapter adapt(Notifier notifier, Object type)
   {
-    return super.adapt(notifier, this);
-  }
+		return super.adapt(notifier, this);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object adapt(Object object, Object type)
   {
-    if (isFactoryForType(type))
-    {
-      Object adapter = super.adapt(object, type);
-      if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter)))
-      {
-        return adapter;
-      }
-    }
+		if (isFactoryForType(type)) {
+			Object adapter = super.adapt(object, type);
+			if (!(type instanceof Class<?>) || (((Class<?>)type).isInstance(adapter))) {
+				return adapter;
+			}
+		}
 
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * This adds a listener.
-   * <!-- begin-user-doc -->
+	 * This adds a listener.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void addListener(INotifyChangedListener notifyChangedListener)
   {
-    changeNotifier.addListener(notifyChangedListener);
-  }
+		changeNotifier.addListener(notifyChangedListener);
+	}
 
   /**
-   * This removes a listener.
-   * <!-- begin-user-doc -->
+	 * This removes a listener.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void removeListener(INotifyChangedListener notifyChangedListener)
   {
-    changeNotifier.removeListener(notifyChangedListener);
-  }
+		changeNotifier.removeListener(notifyChangedListener);
+	}
 
   /**
-   * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
-   * <!-- begin-user-doc -->
+	 * This delegates to {@link #changeNotifier} and to {@link #parentAdapterFactory}.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void fireNotifyChanged(Notification notification)
   {
-    changeNotifier.fireNotifyChanged(notification);
+		changeNotifier.fireNotifyChanged(notification);
 
-    if (parentAdapterFactory != null)
-    {
-      parentAdapterFactory.fireNotifyChanged(notification);
-    }
-  }
+		if (parentAdapterFactory != null) {
+			parentAdapterFactory.fireNotifyChanged(notification);
+		}
+	}
 
   /**
-   * This disposes all of the item providers created by this factory. 
-   * <!-- begin-user-doc -->
+	 * This disposes all of the item providers created by this factory. 
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void dispose()
   {
-    if (noSQLSchemaItemProvider != null) noSQLSchemaItemProvider.dispose();
-    if (entityItemProvider != null) entityItemProvider.dispose();
-    if (entityVariationItemProvider != null) entityVariationItemProvider.dispose();
-    if (attributeItemProvider != null) attributeItemProvider.dispose();
-    if (tupleItemProvider != null) tupleItemProvider.dispose();
-    if (referenceItemProvider != null) referenceItemProvider.dispose();
-    if (aggregateItemProvider != null) aggregateItemProvider.dispose();
-    if (primitiveTypeItemProvider != null) primitiveTypeItemProvider.dispose();
-    if (nullItemProvider != null) nullItemProvider.dispose();
-  }
+		if (noSQLSchemaItemProvider != null) noSQLSchemaItemProvider.dispose();
+		if (entityItemProvider != null) entityItemProvider.dispose();
+		if (entityVariationItemProvider != null) entityVariationItemProvider.dispose();
+		if (attributeItemProvider != null) attributeItemProvider.dispose();
+		if (tupleItemProvider != null) tupleItemProvider.dispose();
+		if (referenceItemProvider != null) referenceItemProvider.dispose();
+		if (aggregateItemProvider != null) aggregateItemProvider.dispose();
+		if (primitiveTypeItemProvider != null) primitiveTypeItemProvider.dispose();
+		if (nullItemProvider != null) nullItemProvider.dispose();
+	}
 
 }

@@ -89,7 +89,7 @@ public class NoSQLModelBuilder
 				ObjectSC obj = (ObjectSC)schema;
 				theEV.setRoot(obj.isRoot);
 
-				e.getEntityvariations().add(theEV);
+				e.getEntityVariations().add(theEV);
 				mEntityVariations.put(schema, theEV);
 			});
 		});
@@ -108,7 +108,7 @@ public class NoSQLModelBuilder
 		// Opposite references
 		/*
 		mEntities.forEach(eFrom -> {
-			eFrom.getEntityvariations().forEach(ev -> {
+			eFrom.getEntityVariations().forEach(ev -> {
 				ev.getProperties().stream().filter(p -> p instanceof Reference).forEach(r -> {
 					Reference ref = (Reference)r;
 					Entity eTo = ref.getRefTo();
@@ -116,7 +116,7 @@ public class NoSQLModelBuilder
 					// Find a EntityVariation of eTo that has a reference to the
 					// current Entity eFrom
 					Optional<Property> refTo =
-							eTo.getEntityvariations().stream().flatMap(evTo ->
+							eTo.getEntityVariations().stream().flatMap(evTo ->
 							evTo.getProperties().stream().filter(pTo -> pTo instanceof Reference))
 							.filter(rTo -> ((Reference)rTo).getRefTo() == eFrom).findFirst();
 
@@ -137,7 +137,7 @@ public class NoSQLModelBuilder
 	{
 		return 
 			new ReferenceMatcher<>(mEntities.stream()
-				.filter(e -> e.getEntityvariations().stream().anyMatch(EntityVariation::isRoot))
+				.filter(e -> e.getEntityVariations().stream().anyMatch(EntityVariation::isRoot))
 				.map(e -> 
 					Pair.of(new HashSet<String>(Arrays.asList(
 								e.getName(),

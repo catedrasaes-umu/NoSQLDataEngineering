@@ -75,10 +75,10 @@ public class ObjectGen
     {
       ArrayNode entityObjs = factory.arrayNode();
 
-      if (entity.getEntityvariations().stream().anyMatch(ev -> ev.isRoot()))
+      if (entity.getEntityVariations().stream().anyMatch(ev -> ev.isRoot()))
         eIdMap.initialize(entity.getName());
 
-      for (EntityVariation eVariation : entity.getEntityvariations())
+      for (EntityVariation eVariation : entity.getEntityVariations())
       {
         evMap.put(eVariation, new ArrayList<ObjectNode>());
 
@@ -105,7 +105,7 @@ public class ObjectGen
 
     // Second run to generate the references and aggregates since now all the variations and instances exist.
     for (Entity entity : schema.getEntities())
-      for (EntityVariation eVariation : entity.getEntityvariations())
+      for (EntityVariation eVariation : entity.getEntityVariations())
         for (ObjectNode strObj : evMap.get(eVariation))
           eVariation.getProperties().stream().filter(p -> p instanceof Association).forEach(p -> this.generateAssociation(strObj, (Association)p));
 

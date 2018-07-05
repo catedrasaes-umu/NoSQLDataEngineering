@@ -45,7 +45,7 @@ public class OldMain {
   {
     return 
         schema.getEntities().stream().flatMap(e ->
-        e.getEntityvariations().stream()
+        e.getEntityVariations().stream()
         .filter(EntityVariation::isRoot)
         .map(ev ->
         Pair.of(String.format("%1$s:%2$d", e.getName(), ev.getVariationId())
@@ -57,7 +57,7 @@ public class OldMain {
   {
     return	
         schema.getEntities().stream().flatMap(e ->
-        e.getEntityvariations().stream().filter(EntityVariation::isRoot))
+        e.getEntityVariations().stream().filter(EntityVariation::isRoot))
         .flatMap(ev -> ev.getProperties().stream())
         .collect(Collectors.groupingBy(Serializer::serialize));
   }
@@ -67,7 +67,7 @@ public class OldMain {
     Map<String, List<String>> classes = new HashMap<String, List<String>>();
     for (Entity entity: schema.getEntities())
     {
-      for (EntityVariation entityVariation: entity.getEntityvariations())
+      for (EntityVariation entityVariation: entity.getEntityVariations())
       {
         // FIXME
         if (!entityVariation.isRoot())

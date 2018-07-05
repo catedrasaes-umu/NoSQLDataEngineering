@@ -43,7 +43,7 @@ public class SchemaCollector
     Pair<Set<EntityVariation>, Set<Entity>> elementList = getElementsFromSchema(root);
 
     for (Entity entity : elementList.getRight())
-      for (EntityVariation eVariation : entity.getEntityvariations())
+      for (EntityVariation eVariation : entity.getEntityVariations())
         elementList.getLeft().remove(eVariation);
 
     result.addAll(elementList.getLeft());
@@ -84,7 +84,7 @@ public class SchemaCollector
       eVToDiscover.addAll(newEntityVariations);
 
       for (Entity entity : newEntities)
-        eVToDiscover.addAll(entity.getEntityvariations());
+        eVToDiscover.addAll(entity.getEntityVariations());
 
       // Now remove EntityVariations that were already discovered before.
       eVToDiscover.removeAll(elementList.getLeft());

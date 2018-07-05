@@ -19,7 +19,7 @@ public class NoSQLSchemaServices
   public boolean existsSchemaVariation(NoSQLSchema model)
   {
     for (Entity entity : model.getEntities())
-      for (EntityVariation eVariation : entity.getEntityvariations())
+      for (EntityVariation eVariation : entity.getEntityVariations())
         if (eVariation.isRoot())
           return true;
 
@@ -31,7 +31,7 @@ public class NoSQLSchemaServices
     List<Entity> result = new ArrayList<Entity>();
 
     for (Entity entity : model.getEntities())
-      for (EntityVariation eVariation : entity.getEntityvariations())
+      for (EntityVariation eVariation : entity.getEntityVariations())
         if (eVariation.isRoot())
         {
           result.add(entity);
@@ -62,7 +62,7 @@ public class NoSQLSchemaServices
     });
 
     for (Entity entity : model.getEntities())
-      for (EntityVariation eVariation : entity.getEntityvariations())
+      for (EntityVariation eVariation : entity.getEntityVariations())
         result.add(eVariation);
 
     return result;
@@ -94,7 +94,7 @@ public class NoSQLSchemaServices
   {
     List<Entity> result = new ArrayList<Entity>();
 
-    entity.getEntityvariations().stream().filter(ev -> ev.isRoot())
+    entity.getEntityVariations().stream().filter(ev -> ev.isRoot())
         .forEach(ev -> result.addAll(getEntitiesFromSchema(ev)));
 
     return result;
@@ -133,7 +133,7 @@ public class NoSQLSchemaServices
   {
     List<EntityVariation> result = new ArrayList<EntityVariation>();
 
-    entity.getEntityvariations().stream().filter(ev -> ev.isRoot())
+    entity.getEntityVariations().stream().filter(ev -> ev.isRoot())
         .forEach(ev -> result.addAll(getReducedEVariationsFromSchema(ev)));
 
     return result;
@@ -182,7 +182,7 @@ public class NoSQLSchemaServices
     });
 
     for (Entity entity : model.getEntities())
-      for (EntityVariation evInEntity : entity.getEntityvariations())
+      for (EntityVariation evInEntity : entity.getEntityVariations())
         if (evInEntity.isRoot()
             && (evInEntity == eVariation || SchemaCollector.getEVariationsFromSchema(evInEntity).contains(eVariation)))
           result.add(evInEntity);

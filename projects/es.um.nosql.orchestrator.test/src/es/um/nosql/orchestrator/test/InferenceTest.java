@@ -484,7 +484,7 @@ public class InferenceTest
         idToDelete = e;
         continue;
       }
-      for (EntityVariation ev : e.getEntityvariations())
+      for (EntityVariation ev : e.getEntityVariations())
       {
         Property malformedId = null;
         for (Property p : ev.getProperties())

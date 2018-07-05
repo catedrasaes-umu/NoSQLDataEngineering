@@ -20,7 +20,7 @@ public class PropertyServices
   {
     List<Attribute> result = new ArrayList<Attribute>();
 
-    for (EntityVariation eVariation : entity.getEntityvariations())
+    for (EntityVariation eVariation : entity.getEntityVariations())
     {
       eVariation.getProperties().stream().filter(prop -> prop instanceof Attribute).forEach(prop -> {
         Attribute attr = (Attribute) prop;
@@ -56,7 +56,7 @@ public class PropertyServices
   {
     List<Association> result = new ArrayList<Association>();
 
-    for (EntityVariation eVariation : entity.getEntityvariations())
+    for (EntityVariation eVariation : entity.getEntityVariations())
     {
       eVariation.getProperties().stream().filter(prop -> prop instanceof Association).forEach(prop -> {
         Association assoc = (Association) prop;
@@ -98,20 +98,20 @@ public class PropertyServices
   {
     List<Attribute> result = new ArrayList<Attribute>();
 
-    if (entity.getEntityvariations().isEmpty())
+    if (entity.getEntityVariations().isEmpty())
       return result;
 
-    EntityVariation eVariation = entity.getEntityvariations().get(0);
+    EntityVariation eVariation = entity.getEntityVariations().get(0);
 
     for (Property prop : eVariation.getProperties())
       if (prop instanceof Attribute)
         result.add((Attribute) prop);
 
-    if (entity.getEntityvariations().size() == 1)
+    if (entity.getEntityVariations().size() == 1)
       return result;
 
     result = result.stream().filter(attr1 -> {
-      return entity.getEntityvariations().stream().skip(1).allMatch(ev -> {
+      return entity.getEntityVariations().stream().skip(1).allMatch(ev -> {
         for (Property p : ev.getProperties())
           if (p instanceof Attribute && checkAttributesEqual(attr1, (Attribute) p))
             return true;
@@ -149,20 +149,20 @@ public class PropertyServices
   {
     List<Association> result = new ArrayList<Association>();
 
-    if (entity.getEntityvariations().isEmpty())
+    if (entity.getEntityVariations().isEmpty())
       return result;
 
-    EntityVariation eVariation = entity.getEntityvariations().get(0);
+    EntityVariation eVariation = entity.getEntityVariations().get(0);
 
     for (Property prop : eVariation.getProperties())
       if (prop instanceof Association)
         result.add((Association) prop);
 
-    if (entity.getEntityvariations().size() == 1)
+    if (entity.getEntityVariations().size() == 1)
       return result;
 
     result = result.stream().filter(assc -> {
-      return entity.getEntityvariations().stream().skip(1).allMatch(ev -> {
+      return entity.getEntityVariations().stream().skip(1).allMatch(ev -> {
         for (Property p : ev.getProperties())
           if (p instanceof Association && checkAssociationsEqual(assc, (Association) p))
             return true;
