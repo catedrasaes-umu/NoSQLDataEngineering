@@ -63,7 +63,7 @@ class DependencyAnalyzer
   // Get the first level of dependencies for an Entity
   private def getDepsFor(Entity entity)
   {
-    entity.entityvariations.map[ev | 
+    entity.entityVariations.map[ev | 
       ev.properties.filter[p | p instanceof Aggregate]
       .map[p | (p as Aggregate).refTo.map[ev2 | ev2.eContainer as Entity]]
       .flatten

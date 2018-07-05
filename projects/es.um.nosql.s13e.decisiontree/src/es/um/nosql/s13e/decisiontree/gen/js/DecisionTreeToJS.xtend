@@ -102,7 +102,7 @@ class DecisionTreeToJS
       {
         «generateCheckTree(dte, dte.root)»
       }
-      «FOR EntityVariation ev : dte.entity.entityvariations SEPARATOR ','»
+      «FOR EntityVariation ev : dte.entity.entityVariations SEPARATOR ','»
         «generateSpecificCheck(dte, ev, paths.get(ev))»
       «ENDFOR»
     }
