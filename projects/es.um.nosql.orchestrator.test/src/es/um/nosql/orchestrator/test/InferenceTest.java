@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.xmi.XMIResource;
 
 import com.google.gson.JsonArray;
 
+import es.um.nosql.orchestrator.config.InferenceMode;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
@@ -52,8 +53,6 @@ public class InferenceTest
   private static final String COUCHDB_MAPREDUCE_FOLDER = "mapreduce/couchdb/v1";
   private static final String MONGODB_MAPREDUCE_FOLDER = "mapreduce/mongodb/v1";
 
-  private enum INFER_OPTION { FILL_ONLY, FILL_AND_INFER, INFER_ONLY };
-
   private static final String FILE_JSON = "json/tfg.json";
   private static final String FILE_MODEL = "models/mongomovies.xmi";
   private static final String FOLDER_SOF = "F:\\Informatica\\datasets\\stackoverflow\\";
@@ -73,7 +72,7 @@ public class InferenceTest
   {//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
     // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.
     // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
-    prepareModelExample(DbType.COUCHDB, INFER_OPTION.FILL_ONLY, FILE_MODEL);
+    prepareModelExample(DbType.MONGODB, InferenceMode.INFER_ONLY, FILE_MODEL);
     //prepareSOFExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_SOF);
     //prepareEPolExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_EPOL);
     //prepareUrbanExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FILE_URBAN);                  //POJO
@@ -93,16 +92,16 @@ public class InferenceTest
     //prepareJsonExample(DbType.MONGODB, INFER_OPTION.FILL_AND_INFER, FILE_JSON);
   }
 
-  public static void prepareModelExample(DbType dbType, INFER_OPTION option, String sourceFile)
+  public static void prepareModelExample(DbType dbType, InferenceMode option, String sourceFile)
   {
     File source = new File(sourceFile);
     String dbName = source.getName().substring(0, source.getName().indexOf("."));
     String outputModel = MODELS_FOLDER + dbName + "_RESULT.xmi";
 
-    if (option != INFER_OPTION.INFER_ONLY)
+    if (option != InferenceMode.INFER_ONLY)
     {
-      int minInstances = 3;
-      int maxInstances = 3;
+      int minInstances = 1000;
+      int maxInstances = 1000;
 
       long startTime = System.currentTimeMillis();
 
@@ -115,17 +114,17 @@ public class InferenceTest
       System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");      
     }
 
-    if (option != INFER_OPTION.FILL_ONLY)
+    if (option != InferenceMode.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareJsonExample(DbType dbType, INFER_OPTION option, String sourceFile)
+  public static void prepareJsonExample(DbType dbType, InferenceMode option, String sourceFile)
   {
     File source = new File(sourceFile);
     String dbName = source.getName().substring(0, source.getName().indexOf("."));
     String outputModel = MODELS_FOLDER + dbName + "_RESULT.xmi";
 
-    if (option != INFER_OPTION.INFER_ONLY)
+    if (option != InferenceMode.INFER_ONLY)
     {
       long startTime = System.currentTimeMillis();
   
@@ -138,16 +137,16 @@ public class InferenceTest
       System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
-    if (option != INFER_OPTION.FILL_ONLY)
+    if (option != InferenceMode.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareSOFExample(DbType dbType, INFER_OPTION option, String source)
+  public static void prepareSOFExample(DbType dbType, InferenceMode option, String source)
   {
     String dbName = "stackoverflow";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    if (option != INFER_OPTION.INFER_ONLY)
+    if (option != InferenceMode.INFER_ONLY)
     {
       long startTime = System.currentTimeMillis();
   
@@ -170,16 +169,16 @@ public class InferenceTest
       System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
-    if (option != INFER_OPTION.FILL_ONLY)
+    if (option != InferenceMode.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareEPolExample(DbType dbType, INFER_OPTION option, String source)
+  public static void prepareEPolExample(DbType dbType, InferenceMode option, String source)
   {
     String dbName = "everypolitician";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    if (option != INFER_OPTION.INFER_ONLY)
+    if (option != InferenceMode.INFER_ONLY)
     {
       long startTime = System.currentTimeMillis();
   
@@ -199,16 +198,16 @@ public class InferenceTest
       System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
-    if (option != INFER_OPTION.FILL_ONLY)
+    if (option != InferenceMode.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareUrbanExample(DbType dbType, INFER_OPTION option, String sourceFile)
+  public static void prepareUrbanExample(DbType dbType, InferenceMode option, String sourceFile)
   {
     String dbName = "urban";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    if (option != INFER_OPTION.INFER_ONLY)
+    if (option != InferenceMode.INFER_ONLY)
     {
       long startTime = System.currentTimeMillis();
   
@@ -220,16 +219,16 @@ public class InferenceTest
       System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
-    if (option != INFER_OPTION.FILL_ONLY)
+    if (option != InferenceMode.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareCompanyExample(DbType dbType, INFER_OPTION option, String sourceFile)
+  public static void prepareCompanyExample(DbType dbType, InferenceMode option, String sourceFile)
   {
     String dbName = "companies";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    if (option != INFER_OPTION.INFER_ONLY)
+    if (option != InferenceMode.INFER_ONLY)
     {
       long startTime = System.currentTimeMillis();
   
@@ -241,16 +240,16 @@ public class InferenceTest
       System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
-    if (option != INFER_OPTION.FILL_ONLY)
+    if (option != InferenceMode.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareLinkExample(DbType dbType, INFER_OPTION option, String source)
+  public static void prepareLinkExample(DbType dbType, InferenceMode option, String source)
   {
     String dbName = "links";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    if (option != INFER_OPTION.INFER_ONLY)
+    if (option != InferenceMode.INFER_ONLY)
     {
       long startTime = System.currentTimeMillis();
   
@@ -270,16 +269,16 @@ public class InferenceTest
       System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
-    if (option != INFER_OPTION.FILL_ONLY)
+    if (option != InferenceMode.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareHarvardExample(DbType dbType, INFER_OPTION option, String sourceFile)
+  public static void prepareHarvardExample(DbType dbType, InferenceMode option, String sourceFile)
   {
     String dbName = "harvard";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    if (option != INFER_OPTION.INFER_ONLY)
+    if (option != InferenceMode.INFER_ONLY)
     {
       long startTime = System.currentTimeMillis();
   
@@ -291,16 +290,16 @@ public class InferenceTest
       System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
-    if (option != INFER_OPTION.FILL_ONLY)
+    if (option != InferenceMode.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareFacebookExample(DbType dbType, INFER_OPTION option, String source)
+  public static void prepareFacebookExample(DbType dbType, InferenceMode option, String source)
   {
     String dbName = "facebook";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    if (option != INFER_OPTION.INFER_ONLY)
+    if (option != InferenceMode.INFER_ONLY)
     {
       long startTime = System.currentTimeMillis();
       System.out.println("Filling the " + dbType.toString() + " database...");
@@ -315,16 +314,16 @@ public class InferenceTest
       System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
-    if (option != INFER_OPTION.FILL_ONLY)
+    if (option != InferenceMode.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareProteinExample(DbType dbType, INFER_OPTION option, String source)
+  public static void prepareProteinExample(DbType dbType, InferenceMode option, String source)
   {
     String dbName = "proteins";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    if (option != INFER_OPTION.INFER_ONLY)
+    if (option != InferenceMode.INFER_ONLY)
     {
       long startTime = System.currentTimeMillis();
       System.out.println("Filling the " + dbType.toString() + " database...");
@@ -339,16 +338,16 @@ public class InferenceTest
       System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
-    if (option != INFER_OPTION.FILL_ONLY)
+    if (option != InferenceMode.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void preparePublicationsExample(DbType dbType, INFER_OPTION option, String sourceFile)
+  public static void preparePublicationsExample(DbType dbType, InferenceMode option, String sourceFile)
   {
     String dbName = "publications";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    if (option != INFER_OPTION.INFER_ONLY)
+    if (option != InferenceMode.INFER_ONLY)
     {
       long startTime = System.currentTimeMillis();
   
@@ -360,16 +359,16 @@ public class InferenceTest
       System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
-    if (option != INFER_OPTION.FILL_ONLY)
+    if (option != InferenceMode.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareWebclickExample(DbType dbType, INFER_OPTION option, String source)
+  public static void prepareWebclickExample(DbType dbType, InferenceMode option, String source)
   {
     String dbName = "webclicks";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    if (option != INFER_OPTION.INFER_ONLY)
+    if (option != InferenceMode.INFER_ONLY)
     {
       long startTime = System.currentTimeMillis();
   
@@ -389,16 +388,16 @@ public class InferenceTest
       System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
-    if (option != INFER_OPTION.FILL_ONLY)
+    if (option != InferenceMode.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void prepareSanctionsExample(DbType dbType, INFER_OPTION option, String sourceFile)
+  public static void prepareSanctionsExample(DbType dbType, InferenceMode option, String sourceFile)
   {
     String dbName = "opensanctions";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    if (option != INFER_OPTION.INFER_ONLY)
+    if (option != InferenceMode.INFER_ONLY)
     {
       long startTime = System.currentTimeMillis();
   
@@ -410,16 +409,16 @@ public class InferenceTest
       System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
-    if (option != INFER_OPTION.FILL_ONLY)
+    if (option != InferenceMode.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
-  public static void preparePleiadesExample(DbType dbType, INFER_OPTION option, String sourceFile)
+  public static void preparePleiadesExample(DbType dbType, InferenceMode option, String sourceFile)
   {
     String dbName = "pleiades";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
-    if (option != INFER_OPTION.INFER_ONLY)
+    if (option != InferenceMode.INFER_ONLY)
     {
       long startTime = System.currentTimeMillis();
   
@@ -431,7 +430,7 @@ public class InferenceTest
       System.out.println("Database " + dbName + " filled in " + (System.currentTimeMillis() - startTime) + " ms");
     }
 
-    if (option != INFER_OPTION.FILL_ONLY)
+    if (option != InferenceMode.FILL_ONLY)
       performInference(dbType, dbName, outputModel);
   }
 
