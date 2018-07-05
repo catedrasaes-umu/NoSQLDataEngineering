@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<viewpoint:DAnalysis xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:viewpoint="http://www.eclipse.org/sirius/1.1.0" xmi:id="_2AsRsIA7EeixA_xr2H8KZw" version="12.1.0.201708031200">
+  <semanticResources>everypolitician_sweden/everypolitician_sweden.xmi</semanticResources>
+  <semanticResources>everypolitician_sweden/everypolitician_sweden_Diff.xmi</semanticResources>
+  <semanticResources>facebook/facebook.xmi</semanticResources>
+  <semanticResources>facebook/facebook_Diff.xmi</semanticResources>
+  <semanticResources>harvard/harvard.xmi</semanticResources>
+  <semanticResources>links/links.xmi</semanticResources>
+  <semanticResources>mongomovies/mongomovies.xmi</semanticResources>
+  <semanticResources>mongomovies/mongomovies_Diff.xmi</semanticResources>
+  <semanticResources>mongosongs/mongosongs.xmi</semanticResources>
+  <semanticResources>mongosongs/mongosongs_Diff.xmi</semanticResources>
+  <semanticResources>opensanctions/opensanctions.xmi</semanticResources>
+  <semanticResources>proteins/proteins.xmi</semanticResources>
+  <semanticResources>publications/publications_Diff.xmi</semanticResources>
+  <semanticResources>publications/publications.xmi</semanticResources>
+  <semanticResources>stackoverflow/stackoverflow.xmi</semanticResources>
+  <semanticResources>tfg/tfg_RESULT.xmi</semanticResources>
+  <semanticResources>urban/urban.xmi</semanticResources>
+</viewpoint:DAnalysis>

@@ -73,7 +73,7 @@ public class InferenceTest
   {//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
     // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.
     // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
-    prepareModelExample(DbType.MONGODB, INFER_OPTION.INFER_ONLY, FILE_MODEL);
+    prepareModelExample(DbType.COUCHDB, INFER_OPTION.FILL_ONLY, FILE_MODEL);
     //prepareSOFExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_SOF);
     //prepareEPolExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_EPOL);
     //prepareUrbanExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FILE_URBAN);                  //POJO
@@ -101,8 +101,8 @@ public class InferenceTest
 
     if (option != INFER_OPTION.INFER_ONLY)
     {
-      int minInstances = 1000;
-      int maxInstances = 1000;
+      int minInstances = 3;
+      int maxInstances = 3;
 
       long startTime = System.currentTimeMillis();
 

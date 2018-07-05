@@ -2,7 +2,7 @@ function()
 {
     function flatten_schema_str(obj, interesting_keys)
     {
-	return JSON.stringify(flatten_schema(obj,interesting_keys));
+        return JSON.stringify(flatten_schema(obj,interesting_keys));
     }
 
     function flatten_schema (obj , interesting_keys)
@@ -12,35 +12,34 @@ function()
         function _search_string_in_array(str, strArray)
         {
             return !strArray.every(function (s)
-                                   {
-        		               return !s.toLowerCase().match(str);
-        	                   });
+            {
+                return !s.toLowerCase().match(str);
+            });
         }
 
         function _complex_obj(obj, asObject)
         {
             var _retschema;
             if (asObject)
-            	_retschema = {};
+                _retschema = {};
             else
-            	_retschema = [];
-
-            Object.keys(obj).sort()
-                .forEach(function (key)
-                         {
-                             //if (!obj.hasOwnProperty(key))
-                             //    return;
-                             if (asObject)
-                             {
-                                 if ((typeof interesting_keys !== 'undefined')
-                                     && _search_string_in_array(key, interesting_keys))
-                                     _retschema[key] = obj[key];
-                                 else
-                    	             _retschema[key] = flatten_schema(obj[key]);
-                             }
-                             else
-                	         _retschema.push(flatten_schema(obj[key]));
-                         });
+                _retschema = [];
+            
+            Object.keys(obj).sort().forEach(function (key)
+            {
+                //if (!obj.hasOwnProperty(key))
+                //    return;
+                if (asObject)
+                {
+                    if ((typeof interesting_keys !== 'undefined')
+                        && _search_string_in_array(key, interesting_keys))
+                        _retschema[key] = obj[key];
+                    else
+                        _retschema[key] = flatten_schema(obj[key]);
+                }
+                else
+                    _retschema.push(flatten_schema(obj[key]));
+            });
 
             return _retschema;
         };
@@ -49,17 +48,17 @@ function()
         if (Array.isArray(obj))
         {
             if (obj.length == 0)
-        	retschema = [];
+                retschema = [];
             else
             {
-        	// See if we can produce just one array object with one inside type (homogeneous)
-        	var schemas = obj.map(function (e) { return flatten_schema(e); });
+                // See if we can produce just one array object with one inside type (homogeneous)
+                var schemas = obj.map(function (e) { return flatten_schema(e); });
 
-        	var str_schema_0 = JSON.stringify(schemas[0]);
-        	if (obj.length == 1 || schemas.every(function (e) { return JSON.stringify(e) == str_schema_0; }))
-        	    retschema = [ schemas[0] ];
-        	else
-        	    retschema = schemas;
+                var str_schema_0 = JSON.stringify(schemas[0]);
+                if (obj.length == 1 || schemas.every(function (e) { return JSON.stringify(e) == str_schema_0; }))
+                    retschema = [ schemas[0] ];
+                else
+                    retschema = schemas;
             }
         } // null
         else if (obj === null)
@@ -81,7 +80,7 @@ function()
         } else if ((typeof obj == 'boolean'))
         {
             retschema = true;
-      	} else if ((typeof obj == 'string'))
+        } else if ((typeof obj == 'string'))
         {
             retschema = 's';
         }
