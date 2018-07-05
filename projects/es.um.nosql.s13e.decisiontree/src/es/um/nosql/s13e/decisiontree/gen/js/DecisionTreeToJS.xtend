@@ -2,6 +2,7 @@ package es.um.nosql.s13e.decisiontree.gen.js
 
 import es.um.nosql.s13e.util.emf.ResourceManager
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage
+import org.eclipse.xtend.lib.annotations.Data
 import java.io.File
 import java.util.List
 import java.io.PrintStream
