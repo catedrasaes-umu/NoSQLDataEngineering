@@ -5,7 +5,8 @@
     importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
     operationReflection="true" importOrganizing="true">
   <foreignModel>nosqlschema.ecore</foreignModel>
-  <genPackages prefix="NoSQLSchema" disposableProviderFactory="true" ecorePackage="nosqlschema.ecore#/">
+  <genPackages prefix="NoSQLSchema" basePackage="es.um.nosql.s13e" disposableProviderFactory="true"
+      ecorePackage="nosqlschema.ecore#/">
     <genClasses ecoreClass="nosqlschema.ecore#//NoSQLSchema">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//NoSQLSchema/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//NoSQLSchema/entities"/>

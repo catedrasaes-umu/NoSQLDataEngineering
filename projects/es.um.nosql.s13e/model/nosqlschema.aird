@@ -910,9 +910,9 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC%20ESupertypes']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="__J31AH3QEeiFWLY39dCCNg" name="[1..*] entityvariations" sourceNode="_lxc4YH3JEeiFWLY39dCCNg" targetNode="_lxeGgH3JEeiFWLY39dCCNg">
-      <target xmi:type="ecore:EReference" href="nosqlschema.ecore#//Entity/entityvariations"/>
-      <semanticElements xmi:type="ecore:EReference" href="nosqlschema.ecore#//Entity/entityvariations"/>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="__J31AH3QEeiFWLY39dCCNg" name="[1..*] entityVariations" sourceNode="_lxc4YH3JEeiFWLY39dCCNg" targetNode="_lxeGgH3JEeiFWLY39dCCNg">
+      <target xmi:type="ecore:EReference" href="nosqlschema.ecore#//Entity/entityVariations"/>
+      <semanticElements xmi:type="ecore:EReference" href="nosqlschema.ecore#//Entity/entityVariations"/>
       <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="__J4cEH3QEeiFWLY39dCCNg" description="_lyy8MH3JEeiFWLY39dCCNg" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
         <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="__J4cEX3QEeiFWLY39dCCNg" showIcon="false">
           <customFeatures>labelSize</customFeatures>

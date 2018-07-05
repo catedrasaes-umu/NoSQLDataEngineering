@@ -30,116 +30,111 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 public class AggregateImpl extends AssociationImpl implements Aggregate
 {
   /**
-   * The cached value of the '{@link #getRefTo() <em>Ref To</em>}' reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getRefTo() <em>Ref To</em>}' reference list.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRefTo()
-   * @generated
-   * @ordered
-   */
+	 * @see #getRefTo()
+	 * @generated
+	 * @ordered
+	 */
   protected EList<EntityVariation> refTo;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected AggregateImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return NoSQLSchemaPackage.Literals.AGGREGATE;
-  }
+		return NoSQLSchemaPackage.Literals.AGGREGATE;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public EList<EntityVariation> getRefTo()
   {
-    if (refTo == null)
-    {
-      refTo = new EObjectResolvingEList<EntityVariation>(EntityVariation.class, this, NoSQLSchemaPackage.AGGREGATE__REF_TO);
-    }
-    return refTo;
-  }
+		if (refTo == null) {
+			refTo = new EObjectResolvingEList<EntityVariation>(EntityVariation.class, this, NoSQLSchemaPackage.AGGREGATE__REF_TO);
+		}
+		return refTo;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case NoSQLSchemaPackage.AGGREGATE__REF_TO:
-        return getRefTo();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.AGGREGATE__REF_TO:
+				return getRefTo();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case NoSQLSchemaPackage.AGGREGATE__REF_TO:
-        getRefTo().clear();
-        getRefTo().addAll((Collection<? extends EntityVariation>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.AGGREGATE__REF_TO:
+				getRefTo().clear();
+				getRefTo().addAll((Collection<? extends EntityVariation>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case NoSQLSchemaPackage.AGGREGATE__REF_TO:
-        getRefTo().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.AGGREGATE__REF_TO:
+				getRefTo().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case NoSQLSchemaPackage.AGGREGATE__REF_TO:
-        return refTo != null && !refTo.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.AGGREGATE__REF_TO:
+				return refTo != null && !refTo.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
 } //AggregateImpl

@@ -10,7 +10,10 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: es.um.nosql.s13e.NoSQLSchema,
  es.um.nosql.s13e.NoSQLSchema.impl,
  es.um.nosql.s13e.NoSQLSchema.util,
- es.um.nosql.s13e.util.emf
+ es.um.nosql.s13e.util.emf,
+ NoSQLSchema,
+ NoSQLSchema.impl,
+ NoSQLSchema.util
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport
 Bundle-ActivationPolicy: lazy

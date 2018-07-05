@@ -39,7 +39,7 @@ public class PrettyPrinter
 		String tabs = defTabs + TAB;
 
 		String result = defTabs + "Entity name:" + entity.getName() + System.lineSeparator() 
-				 + entity.getEntityvariations().stream()
+				 + entity.getEntityVariations().stream()
 				 	.map(ev -> printPretty(ev,tabs))
 				 	.collect(Collectors.joining(""));
 

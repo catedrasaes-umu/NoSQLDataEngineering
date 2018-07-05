@@ -41,330 +41,320 @@ import es.um.nosql.s13e.NoSQLSchema.Reference;
 public class ReferenceImpl extends AssociationImpl implements Reference
 {
   /**
-   * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getOpposite()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOpposite()
+	 * @generated
+	 * @ordered
+	 */
   protected Reference opposite;
 
   /**
-   * The cached value of the '{@link #getRefTo() <em>Ref To</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getRefTo() <em>Ref To</em>}' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRefTo()
-   * @generated
-   * @ordered
-   */
+	 * @see #getRefTo()
+	 * @generated
+	 * @ordered
+	 */
   protected Entity refTo;
 
   /**
-   * The default value of the '{@link #getOriginalType() <em>Original Type</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getOriginalType() <em>Original Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getOriginalType()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOriginalType()
+	 * @generated
+	 * @ordered
+	 */
   protected static final String ORIGINAL_TYPE_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getOriginalType() <em>Original Type</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getOriginalType() <em>Original Type</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getOriginalType()
-   * @generated
-   * @ordered
-   */
+	 * @see #getOriginalType()
+	 * @generated
+	 * @ordered
+	 */
   protected String originalType = ORIGINAL_TYPE_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getProperties() <em>Properties</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getProperties()
-   * @generated
-   * @ordered
-   */
+	 * @see #getProperties()
+	 * @generated
+	 * @ordered
+	 */
   protected EList<Property> properties;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected ReferenceImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return NoSQLSchemaPackage.Literals.REFERENCE;
-  }
+		return NoSQLSchemaPackage.Literals.REFERENCE;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Reference getOpposite()
   {
-    if (opposite != null && opposite.eIsProxy())
-    {
-      InternalEObject oldOpposite = (InternalEObject)opposite;
-      opposite = (Reference)eResolveProxy(oldOpposite);
-      if (opposite != oldOpposite)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, NoSQLSchemaPackage.REFERENCE__OPPOSITE, oldOpposite, opposite));
-      }
-    }
-    return opposite;
-  }
+		if (opposite != null && opposite.eIsProxy()) {
+			InternalEObject oldOpposite = (InternalEObject)opposite;
+			opposite = (Reference)eResolveProxy(oldOpposite);
+			if (opposite != oldOpposite) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, NoSQLSchemaPackage.REFERENCE__OPPOSITE, oldOpposite, opposite));
+			}
+		}
+		return opposite;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Reference basicGetOpposite()
   {
-    return opposite;
-  }
+		return opposite;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setOpposite(Reference newOpposite)
   {
-    Reference oldOpposite = opposite;
-    opposite = newOpposite;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.REFERENCE__OPPOSITE, oldOpposite, opposite));
-  }
+		Reference oldOpposite = opposite;
+		opposite = newOpposite;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.REFERENCE__OPPOSITE, oldOpposite, opposite));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Entity getRefTo()
   {
-    if (refTo != null && refTo.eIsProxy())
-    {
-      InternalEObject oldRefTo = (InternalEObject)refTo;
-      refTo = (Entity)eResolveProxy(oldRefTo);
-      if (refTo != oldRefTo)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, NoSQLSchemaPackage.REFERENCE__REF_TO, oldRefTo, refTo));
-      }
-    }
-    return refTo;
-  }
+		if (refTo != null && refTo.eIsProxy()) {
+			InternalEObject oldRefTo = (InternalEObject)refTo;
+			refTo = (Entity)eResolveProxy(oldRefTo);
+			if (refTo != oldRefTo) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, NoSQLSchemaPackage.REFERENCE__REF_TO, oldRefTo, refTo));
+			}
+		}
+		return refTo;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Entity basicGetRefTo()
   {
-    return refTo;
-  }
+		return refTo;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setRefTo(Entity newRefTo)
   {
-    Entity oldRefTo = refTo;
-    refTo = newRefTo;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.REFERENCE__REF_TO, oldRefTo, refTo));
-  }
+		Entity oldRefTo = refTo;
+		refTo = newRefTo;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.REFERENCE__REF_TO, oldRefTo, refTo));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String getOriginalType()
   {
-    return originalType;
-  }
+		return originalType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setOriginalType(String newOriginalType)
   {
-    String oldOriginalType = originalType;
-    originalType = newOriginalType;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.REFERENCE__ORIGINAL_TYPE, oldOriginalType, originalType));
-  }
+		String oldOriginalType = originalType;
+		originalType = newOriginalType;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.REFERENCE__ORIGINAL_TYPE, oldOriginalType, originalType));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public EList<Property> getProperties()
   {
-    if (properties == null)
-    {
-      properties = new EObjectContainmentEList<Property>(Property.class, this, NoSQLSchemaPackage.REFERENCE__PROPERTIES);
-    }
-    return properties;
-  }
+		if (properties == null) {
+			properties = new EObjectContainmentEList<Property>(Property.class, this, NoSQLSchemaPackage.REFERENCE__PROPERTIES);
+		}
+		return properties;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    switch (featureID)
-    {
-      case NoSQLSchemaPackage.REFERENCE__PROPERTIES:
-        return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.REFERENCE__PROPERTIES:
+				return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case NoSQLSchemaPackage.REFERENCE__OPPOSITE:
-        if (resolve) return getOpposite();
-        return basicGetOpposite();
-      case NoSQLSchemaPackage.REFERENCE__REF_TO:
-        if (resolve) return getRefTo();
-        return basicGetRefTo();
-      case NoSQLSchemaPackage.REFERENCE__ORIGINAL_TYPE:
-        return getOriginalType();
-      case NoSQLSchemaPackage.REFERENCE__PROPERTIES:
-        return getProperties();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.REFERENCE__OPPOSITE:
+				if (resolve) return getOpposite();
+				return basicGetOpposite();
+			case NoSQLSchemaPackage.REFERENCE__REF_TO:
+				if (resolve) return getRefTo();
+				return basicGetRefTo();
+			case NoSQLSchemaPackage.REFERENCE__ORIGINAL_TYPE:
+				return getOriginalType();
+			case NoSQLSchemaPackage.REFERENCE__PROPERTIES:
+				return getProperties();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case NoSQLSchemaPackage.REFERENCE__OPPOSITE:
-        setOpposite((Reference)newValue);
-        return;
-      case NoSQLSchemaPackage.REFERENCE__REF_TO:
-        setRefTo((Entity)newValue);
-        return;
-      case NoSQLSchemaPackage.REFERENCE__ORIGINAL_TYPE:
-        setOriginalType((String)newValue);
-        return;
-      case NoSQLSchemaPackage.REFERENCE__PROPERTIES:
-        getProperties().clear();
-        getProperties().addAll((Collection<? extends Property>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.REFERENCE__OPPOSITE:
+				setOpposite((Reference)newValue);
+				return;
+			case NoSQLSchemaPackage.REFERENCE__REF_TO:
+				setRefTo((Entity)newValue);
+				return;
+			case NoSQLSchemaPackage.REFERENCE__ORIGINAL_TYPE:
+				setOriginalType((String)newValue);
+				return;
+			case NoSQLSchemaPackage.REFERENCE__PROPERTIES:
+				getProperties().clear();
+				getProperties().addAll((Collection<? extends Property>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case NoSQLSchemaPackage.REFERENCE__OPPOSITE:
-        setOpposite((Reference)null);
-        return;
-      case NoSQLSchemaPackage.REFERENCE__REF_TO:
-        setRefTo((Entity)null);
-        return;
-      case NoSQLSchemaPackage.REFERENCE__ORIGINAL_TYPE:
-        setOriginalType(ORIGINAL_TYPE_EDEFAULT);
-        return;
-      case NoSQLSchemaPackage.REFERENCE__PROPERTIES:
-        getProperties().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.REFERENCE__OPPOSITE:
+				setOpposite((Reference)null);
+				return;
+			case NoSQLSchemaPackage.REFERENCE__REF_TO:
+				setRefTo((Entity)null);
+				return;
+			case NoSQLSchemaPackage.REFERENCE__ORIGINAL_TYPE:
+				setOriginalType(ORIGINAL_TYPE_EDEFAULT);
+				return;
+			case NoSQLSchemaPackage.REFERENCE__PROPERTIES:
+				getProperties().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case NoSQLSchemaPackage.REFERENCE__OPPOSITE:
-        return opposite != null;
-      case NoSQLSchemaPackage.REFERENCE__REF_TO:
-        return refTo != null;
-      case NoSQLSchemaPackage.REFERENCE__ORIGINAL_TYPE:
-        return ORIGINAL_TYPE_EDEFAULT == null ? originalType != null : !ORIGINAL_TYPE_EDEFAULT.equals(originalType);
-      case NoSQLSchemaPackage.REFERENCE__PROPERTIES:
-        return properties != null && !properties.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.REFERENCE__OPPOSITE:
+				return opposite != null;
+			case NoSQLSchemaPackage.REFERENCE__REF_TO:
+				return refTo != null;
+			case NoSQLSchemaPackage.REFERENCE__ORIGINAL_TYPE:
+				return ORIGINAL_TYPE_EDEFAULT == null ? originalType != null : !ORIGINAL_TYPE_EDEFAULT.equals(originalType);
+			case NoSQLSchemaPackage.REFERENCE__PROPERTIES:
+				return properties != null && !properties.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (originalType: ");
-    result.append(originalType);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuffer result = new StringBuffer(super.toString());
+		result.append(" (originalType: ");
+		result.append(originalType);
+		result.append(')');
+		return result.toString();
+	}
 
 } //ReferenceImpl
