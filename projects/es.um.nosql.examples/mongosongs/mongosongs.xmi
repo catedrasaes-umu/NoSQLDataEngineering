@@ -8,7 +8,7 @@
     name="mongosongs">
   <entities
       name="Artist">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -57,8 +57,8 @@
           upperBound="-1"
           refTo="Track"
           originalType="String"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -101,11 +101,11 @@
           upperBound="-1"
           refTo="Track"
           originalType="String"/>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Album">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -171,14 +171,14 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="prizes"
           upperBound="-1"
-          refTo="//@entities.3/@entityvariations.0 //@entities.3/@entityvariations.1"/>
+          refTo="//@entities.3/@entityVariations.0 //@entities.3/@entityVariations.1"/>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
           name="reviews"
           upperBound="-1"
-          refTo="//@entities.4/@entityvariations.0 //@entities.4/@entityvariations.1"/>
-    </entityvariations>
-    <entityvariations
+          refTo="//@entities.4/@entityVariations.0 //@entities.4/@entityVariations.1"/>
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -247,9 +247,9 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="reviews"
           upperBound="-1"
-          refTo="//@entities.4/@entityvariations.0"/>
-    </entityvariations>
-    <entityvariations
+          refTo="//@entities.4/@entityVariations.0"/>
+    </entityVariations>
+    <entityVariations
         variationId="3"
         root="true">
       <properties
@@ -317,11 +317,11 @@
               name="String"/>
         </type>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Track">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -373,9 +373,9 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="ratings"
           upperBound="1"
-          refTo="//@entities.6/@entityvariations.0"/>
-    </entityvariations>
-    <entityvariations
+          refTo="//@entities.6/@entityVariations.0"/>
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -423,11 +423,11 @@
           upperBound="-1"
           refTo="Artist"
           originalType="String"/>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Prize">
-    <entityvariations
+    <entityVariations
         variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -464,8 +464,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -498,11 +498,11 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Review">
-    <entityvariations
+    <entityVariations
         variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -529,9 +529,9 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="media"
           upperBound="1"
-          refTo="//@entities.5/@entityvariations.0"/>
-    </entityvariations>
-    <entityvariations
+          refTo="//@entities.5/@entityVariations.0"/>
+    </entityVariations>
+    <entityVariations
         variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -561,11 +561,11 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Media">
-    <entityvariations
+    <entityVariations
         variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -588,11 +588,11 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Rating">
-    <entityvariations
+    <entityVariations
         variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -608,6 +608,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

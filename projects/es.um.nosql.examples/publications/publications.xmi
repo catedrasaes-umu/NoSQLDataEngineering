@@ -8,7 +8,7 @@
     name="publications">
   <entities
       name="Publications">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -53,8 +53,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -92,8 +92,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="3"
         root="true">
       <properties
@@ -131,8 +131,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="4"
         root="true">
       <properties
@@ -163,6 +163,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

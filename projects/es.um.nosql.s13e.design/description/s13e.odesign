@@ -20,7 +20,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </defaultStyle>
-            <subItemMappings name="Schemas" label="Schemas" domainClass="NoSQLSchema.EntityVariation" semanticCandidatesExpression="aql: self.entityvariations->select(ev | ev.root = true)">
+            <subItemMappings name="Schemas" label="Schemas" domainClass="NoSQLSchema.EntityVariation" semanticCandidatesExpression="aql: self.entityVariations->select(ev | ev.root = true)">
               <defaultStyle labelSize="9" labelExpression="aql: 'EntityVariation root: ' + self.ancestors()->filter(NoSQLSchema::Entity)->first().name + '_' + self.variationId" iconPath="/es.um.nosql.s13e.design/images/icons/EntityVariationRootIcon24.png">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -110,7 +110,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </defaultStyle>
-            <subItemMappings name="EntityVariations in Tree" label="EntityVariations in Tree" domainClass="NoSQLSchema.EntityVariation" semanticCandidatesExpression="aql: self.entityvariations">
+            <subItemMappings name="EntityVariations in Tree" label="EntityVariations in Tree" domainClass="NoSQLSchema.EntityVariation" semanticCandidatesExpression="aql: self.entityVariations">
               <defaultStyle labelSize="9" labelExpression="aql: self.ancestors()->filter(NoSQLSchema::Entity)->first().name + '_' + self.variationId" iconPath="/es.um.nosql.s13e.design/images/icons/EntityVariationIcon24.png">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -175,24 +175,24 @@
     <ownedRepresentations xsi:type="description_2:DiagramDescription" documentation="This diagram should NOT be used, it just factors out the common representation among each diagram." endUserDocumentation="This diagram should NOT be used, it just factors out the common representation among each diagram." name="Refactored Database schema" label="Refactored Database schema" titleExpression="aql: 'Refactored Database schema -> Do not use'">
       <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
       <defaultLayer name="Default" label="Default">
-        <edgeMappings name="Aggregate" label="Aggregate" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVariation']" targetFinderExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Aggregate).refTo">
+        <edgeMappings name="Aggregate" label="Aggregate" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVariation']" targetFinderExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Aggregate).refTo">
           <style routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <endLabelStyleDescription labelExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Aggregate)->select(aggr | aggr.refTo->includes(view.targetNode.target))->asSet()->collect(aggr | ' [' + aggr.lowerBound + '..' + aggr.upperBound + ']' + aggr.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Aggr16.png">
+            <endLabelStyleDescription labelExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Aggregate)->select(aggr | aggr.refTo->includes(view.targetNode.target))->asSet()->collect(aggr | ' [' + aggr.lowerBound + '..' + aggr.upperBound + ']' + aggr.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Aggr16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Reference" label="Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetFinderExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Reference).refTo">
+        <edgeMappings name="Reference" label="Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetFinderExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Reference).refTo">
           <style routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <endLabelStyleDescription labelExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + if (ref.lowerBound&lt;>-1) then ref.lowerBound else '*' endif + '..' + if (ref.upperBound&lt;>-1) then ref.upperBound else '*' endif + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png">
+            <endLabelStyleDescription labelExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + if (ref.lowerBound&lt;>-1) then ref.lowerBound else '*' endif + '..' + if (ref.upperBound&lt;>-1) then ref.upperBound else '*' endif + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
           </style>
         </edgeMappings>
         <containerMappings name="Entity" label="Entity" semanticCandidatesExpression="aql: self.entities" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity']" domainClass="NoSQLSchema.Entity">
-          <subContainerMappings name="EntityVariation" label="EntityVariation" semanticCandidatesExpression="aql: self.entityvariations" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20variation']" domainClass="NoSQLSchema.EntityVariation" childrenPresentation="List">
+          <subContainerMappings name="EntityVariation" label="EntityVariation" semanticCandidatesExpression="aql: self.entityVariations" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20variation']" domainClass="NoSQLSchema.EntityVariation" childrenPresentation="List">
             <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="aql: self.properties" domainClass="NoSQLSchema.Attribute">
               <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -262,18 +262,18 @@
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Global Database schema" label="Global Database schema" titleExpression="aql: 'Global Database schema: ' + self.name" domainClass="NoSQLSchema.NoSQLSchema">
       <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
       <defaultLayer name="Default" label="Default">
-        <edgeMappings name="Reference" label="Reference" deletionDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@toolSections.2/@ownedTools[name='Common%20reference']" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetFinderExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Reference).refTo">
+        <edgeMappings name="Reference" label="Reference" deletionDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@toolSections.2/@ownedTools[name='Common%20reference']" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetFinderExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Reference).refTo">
           <style routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription labelExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + if (ref.lowerBound&lt;>-1) then ref.lowerBound else '*' endif + '..' + if (ref.upperBound&lt;>-1) then ref.upperBound else '*' endif + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png">
+            <centerLabelStyleDescription labelExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + if (ref.lowerBound&lt;>-1) then ref.lowerBound else '*' endif + '..' + if (ref.upperBound&lt;>-1) then ref.upperBound else '*' endif + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Aggregate" label="Aggregate" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetFinderExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Aggregate).refTo.eContainer()">
+        <edgeMappings name="Aggregate" label="Aggregate" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']" targetFinderExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Aggregate).refTo.eContainer()">
           <style sourceArrow="FillDiamond" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription labelExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Aggregate)->select(aggr | aggr.refTo.eContainer()->includes(view.targetNode.target))->asSet()->collect(aggr | '[' + if (aggr.lowerBound&lt;>-1) then aggr.lowerBound else '*' endif + '..' + if (aggr.upperBound&lt;>-1) then aggr.upperBound else '*' endif + ']' + aggr.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Aggr16.png">
+            <centerLabelStyleDescription labelExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Aggregate)->select(aggr | aggr.refTo.eContainer()->includes(view.targetNode.target))->asSet()->collect(aggr | '[' + if (aggr.lowerBound&lt;>-1) then aggr.lowerBound else '*' endif + '..' + if (aggr.upperBound&lt;>-1) then aggr.upperBound else '*' endif + ']' + aggr.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Aggr16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -323,7 +323,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="Variations" label="Variations" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.Entity">
-            <subContainerMappings name="EntityVariation" label="EntityVariation" semanticCandidatesExpression="aql: self.entityvariations" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20variation']" domainClass="NoSQLSchema.EntityVariation" childrenPresentation="List">
+            <subContainerMappings name="EntityVariation" label="EntityVariation" semanticCandidatesExpression="aql: self.entityVariations" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20variation']" domainClass="NoSQLSchema.EntityVariation" childrenPresentation="List">
               <subNodeMappings name="Attribute" label="Attribute" labelDirectEdit="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@toolSections.2/@ownedTools[name='Primitive%20attribute']" semanticCandidatesExpression="service: getParticularAttributeList" domainClass="NoSQLSchema.Attribute">
                 <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -411,8 +411,8 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: container">
-                <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::EntityVariation" referenceName="entityvariations">
-                  <subModelOperations xsi:type="tool:SetValue" featureName="variationId" valueExpression="aql: self.eContainer().entityvariations->size()"/>
+                <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::EntityVariation" referenceName="entityVariations">
+                  <subModelOperations xsi:type="tool:SetValue" featureName="variationId" valueExpression="aql: self.eContainer().entityVariations->size()"/>
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Attribute" referenceName="properties">
                     <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: '_id'"/>
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::PrimitiveType" referenceName="type">
@@ -448,7 +448,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: container">
-                <subModelOperations xsi:type="tool:For" expression="aql: self.entityvariations" iteratorName="ev">
+                <subModelOperations xsi:type="tool:For" expression="aql: self.entityVariations" iteratorName="ev">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Attribute" referenceName="properties">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::PrimitiveType" referenceName="type">
                       <subModelOperations xsi:type="tool:SetValue" featureName="name" valueExpression="aql: 'String'"/>
@@ -480,7 +480,7 @@
             <viewVariable name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: container">
-                <subModelOperations xsi:type="tool:For" expression="aql: self.entityvariations" iteratorName="ev">
+                <subModelOperations xsi:type="tool:For" expression="aql: self.entityVariations" iteratorName="ev">
                   <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Attribute" referenceName="properties">
                     <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Tuple" referenceName="type">
                       <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::PrimitiveType" referenceName="elements">
@@ -499,7 +499,7 @@
             <sourceViewVariable name="sourceView"/>
             <targetViewVariable name="targetView"/>
             <initialOperation>
-              <firstModelOperations xsi:type="tool:For" expression="aql: source.entityvariations" iteratorName="ev">
+              <firstModelOperations xsi:type="tool:For" expression="aql: source.entityVariations" iteratorName="ev">
                 <subModelOperations xsi:type="tool:CreateInstance" typeName="NoSQLSchema::Reference" referenceName="properties">
                   <subModelOperations xsi:type="tool:SetValue" featureName="lowerBound" valueExpression="aql: 1"/>
                   <subModelOperations xsi:type="tool:SetValue" featureName="upperBound" valueExpression="aql: 1"/>
@@ -533,7 +533,7 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: element.eContainer().eContainer()">
-                <subModelOperations xsi:type="tool:For" expression="aql: self.entityvariations.properties->filter(NoSQLSchema::Attribute)" iteratorName="attr">
+                <subModelOperations xsi:type="tool:For" expression="aql: self.entityVariations.properties->filter(NoSQLSchema::Attribute)" iteratorName="attr">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql: attr.name = element.name">
                     <subModelOperations xsi:type="tool:RemoveElement"/>
                   </subModelOperations>
@@ -547,7 +547,7 @@
             <containerView name="containerView"/>
             <initialOperation>
               <firstModelOperations xsi:type="tool:ChangeContext" browseExpression="aql: element.eContainer().eContainer()">
-                <subModelOperations xsi:type="tool:For" expression="aql: self.entityvariations.properties->filter(NoSQLSchema::Reference)" iteratorName="ref">
+                <subModelOperations xsi:type="tool:For" expression="aql: self.entityVariations.properties->filter(NoSQLSchema::Reference)" iteratorName="ref">
                   <subModelOperations xsi:type="tool:If" conditionExpression="aql: ref.oclAsType(NoSQLSchema::Reference).name = element.name">
                     <subModelOperations xsi:type="tool:RemoveElement"/>
                   </subModelOperations>
@@ -579,18 +579,18 @@
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Entity Database Schema" label="Entity Database Schema" titleExpression="aql: 'Entity Database Schema: ' + self.name" domainClass="NoSQLSchema.NoSQLSchema">
       <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
       <defaultLayer name="Default" label="Default">
-        <edgeMappings name="Reference" label="Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Database%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Database%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetFinderExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Reference).refTo">
+        <edgeMappings name="Reference" label="Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Database%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Database%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetFinderExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Reference).refTo">
           <style routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription labelExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + if (ref.lowerBound&lt;>-1) then ref.lowerBound else '*' endif + '..' + if (ref.upperBound&lt;>-1) then ref.upperBound else '*' endif + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png">
+            <centerLabelStyleDescription labelExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + if (ref.lowerBound&lt;>-1) then ref.lowerBound else '*' endif + '..' + if (ref.upperBound&lt;>-1) then ref.upperBound else '*' endif + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Aggregate" label="Aggregate" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Database%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Database%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetFinderExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Aggregate).refTo.eContainer()">
+        <edgeMappings name="Aggregate" label="Aggregate" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Database%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Database%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetFinderExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Aggregate).refTo.eContainer()">
           <style sourceArrow="FillDiamond" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription labelExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Aggregate)->select(aggr | aggr.refTo.eContainer()->includes(view.targetNode.target))->asSet()->collect(aggr | '[' + if (aggr.lowerBound&lt;>-1) then aggr.lowerBound else '*' endif + '..' + if (aggr.upperBound&lt;>-1) then aggr.upperBound else '*' endif + ']' + aggr.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Aggr16.png">
+            <centerLabelStyleDescription labelExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Aggregate)->select(aggr | aggr.refTo.eContainer()->includes(view.targetNode.target))->asSet()->collect(aggr | '[' + if (aggr.lowerBound&lt;>-1) then aggr.lowerBound else '*' endif + '..' + if (aggr.upperBound&lt;>-1) then aggr.upperBound else '*' endif + ']' + aggr.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Aggr16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -741,7 +741,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="Variations" label="Variations" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.Entity">
-            <subContainerMappings name="EntityVariation" label="EntityVariation" semanticCandidatesExpression="aql: self.entityvariations" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20variation']" domainClass="NoSQLSchema.EntityVariation" reusedNodeMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVariation']/@subNodeMappings[name='Attribute'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVariation']/@subNodeMappings[name='Association']" childrenPresentation="List">
+            <subContainerMappings name="EntityVariation" label="EntityVariation" semanticCandidatesExpression="aql: self.entityVariations" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20variation']" domainClass="NoSQLSchema.EntityVariation" reusedNodeMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVariation']/@subNodeMappings[name='Attribute'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVariation']/@subNodeMappings[name='Association']" childrenPresentation="List">
               <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: self.ancestors()->filter(NoSQLSchema::Entity)->first().name + '_' + self.variationId" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
@@ -793,18 +793,18 @@
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Variations']/@subContainerMappings[name='EntityVariation'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariation'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariationRoot']/@subContainerMappings[name='RefAggrPart']/@subContainerMappings[name='Entity']/@subContainerMappings[name='Variations']/@subContainerMappings[name='EntityVariations'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariationRoot']/@subContainerMappings[name='RefAggrPart']/@subContainerMappings[name='EntityVariation']"/>
       </filters>
       <defaultLayer name="Default" label="Default">
-        <edgeMappings name="Reference" label="Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariationRoot']/@subContainerMappings[name='RefAggrPart']/@subContainerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='Entity']" targetFinderExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Reference).refTo">
+        <edgeMappings name="Reference" label="Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariationRoot']/@subContainerMappings[name='RefAggrPart']/@subContainerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='Entity']" targetFinderExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Reference).refTo">
           <style routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription labelExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + if (ref.lowerBound&lt;>-1) then ref.lowerBound else '*' endif + '..' + if (ref.upperBound&lt;>-1) then ref.upperBound else '*' endif + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png">
+            <centerLabelStyleDescription labelExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + if (ref.lowerBound&lt;>-1) then ref.lowerBound else '*' endif + '..' + if (ref.upperBound&lt;>-1) then ref.upperBound else '*' endif + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Aggregate" label="Aggregate" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariationRoot']/@subContainerMappings[name='RefAggrPart']/@subContainerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='Entity'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariationRoot']/@subContainerMappings[name='RefAggrPart']/@subContainerMappings[name='Entity']" targetFinderExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Aggregate).refTo.eContainer()">
+        <edgeMappings name="Aggregate" label="Aggregate" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariationRoot']/@subContainerMappings[name='RefAggrPart']/@subContainerMappings[name='Entity']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='Entity'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariationRoot']/@subContainerMappings[name='RefAggrPart']/@subContainerMappings[name='Entity']" targetFinderExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Aggregate).refTo.eContainer()">
           <style sourceArrow="FillDiamond" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription labelExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Aggregate)->select(aggr | aggr.refTo.eContainer()->includes(view.targetNode.target))->asSet()->collect(aggr | '[' + aggr.lowerBound + '..' + aggr.upperBound + ']' + aggr.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Aggr16.png">
+            <centerLabelStyleDescription labelExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Aggregate)->select(aggr | aggr.refTo.eContainer()->includes(view.targetNode.target))->asSet()->collect(aggr | '[' + aggr.lowerBound + '..' + aggr.upperBound + ']' + aggr.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Aggr16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -863,7 +863,7 @@
                 </style>
               </subContainerMappings>
               <subContainerMappings name="Variations" label="Variations" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.Entity">
-                <subContainerMappings name="EntityVariations" label="EntityVariations" semanticCandidatesExpression="aql: self.entityvariations" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20variation']" domainClass="NoSQLSchema.EntityVariation" childrenPresentation="List">
+                <subContainerMappings name="EntityVariations" label="EntityVariations" semanticCandidatesExpression="aql: self.entityVariations" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20variation']" domainClass="NoSQLSchema.EntityVariation" childrenPresentation="List">
                   <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getParticularAttributeList" domainClass="NoSQLSchema.Attribute">
                     <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                       <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -983,7 +983,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="Variations" label="Variations" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.Entity">
-            <subContainerMappings name="EntityVariation" label="EntityVariation" semanticCandidatesExpression="aql: self.entityvariations" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20variation']" domainClass="NoSQLSchema.EntityVariation" childrenPresentation="List">
+            <subContainerMappings name="EntityVariation" label="EntityVariation" semanticCandidatesExpression="aql: self.entityVariations" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20variation']" domainClass="NoSQLSchema.EntityVariation" childrenPresentation="List">
               <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getParticularAttributeList" domainClass="NoSQLSchema.Attribute">
                 <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1066,18 +1066,18 @@
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Entity Union Schema" label="Entity Union Schema" titleExpression="aql: 'Entity Union Schema: ' + self.name" domainClass="NoSQLSchema.Entity">
       <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
       <defaultLayer name="Default" label="Default">
-        <edgeMappings name="Aggregate" label="Aggregate" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Union%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Union%20Schema']/@defaultLayer/@containerMappings[name='AggregatedEntityVariation']" targetFinderExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Aggregate).refTo">
+        <edgeMappings name="Aggregate" label="Aggregate" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Union%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Union%20Schema']/@defaultLayer/@containerMappings[name='AggregatedEntityVariation']" targetFinderExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Aggregate).refTo">
           <style sourceArrow="FillDiamond" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <endLabelStyleDescription labelExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Aggregate)->select(aggr | aggr.refTo->includes(view.targetNode.target))->asSet()->collect(aggr | '[' + aggr.lowerBound + '..' + aggr.upperBound + ']' + aggr.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Aggr16.png">
+            <endLabelStyleDescription labelExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Aggregate)->select(aggr | aggr.refTo->includes(view.targetNode.target))->asSet()->collect(aggr | '[' + aggr.lowerBound + '..' + aggr.upperBound + ']' + aggr.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Aggr16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Reference" label="Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Union%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Union%20Schema']/@defaultLayer/@containerMappings[name='ReferencedEntityUnion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Union%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetFinderExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Reference).refTo">
+        <edgeMappings name="Reference" label="Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Union%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Union%20Schema']/@defaultLayer/@containerMappings[name='ReferencedEntityUnion'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Union%20Schema']/@defaultLayer/@containerMappings[name='EntityUnion']" targetFinderExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Reference).refTo">
           <style routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <endLabelStyleDescription labelExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + ref.lowerBound + '..' + ref.upperBound + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png">
+            <endLabelStyleDescription labelExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refTo=view.targetNode.target)->asSet()->collect(ref | '[' + ref.lowerBound + '..' + ref.upperBound + ']' + ref.name)->sep(', ')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </endLabelStyleDescription>
           </style>
@@ -1126,7 +1126,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </containerMappings>
-        <containerMappings name="ReferencedEntityUnion" label="ReferencedEntityUnion" semanticCandidatesExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Reference).refTo->excluding(self)" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity']" domainClass="NoSQLSchema.Entity" childrenPresentation="List">
+        <containerMappings name="ReferencedEntityUnion" label="ReferencedEntityUnion" semanticCandidatesExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Reference).refTo->excluding(self)" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity']" domainClass="NoSQLSchema.Entity" childrenPresentation="List">
           <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service:getAttributeList()" domainClass="NoSQLSchema.Attribute">
             <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1169,7 +1169,7 @@
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
           </style>
         </containerMappings>
-        <containerMappings name="AggregatedEntityVariation" label="AggregatedEntityVariation" semanticCandidatesExpression="aql: self.entityvariations.properties->filter(NoSQLSchema::Aggregate).refTo" domainClass="NoSQLSchema.EntityVariation" reusedNodeMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVariation']/@subNodeMappings[name='Attribute'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVariation']/@subNodeMappings[name='Association']" childrenPresentation="List">
+        <containerMappings name="AggregatedEntityVariation" label="AggregatedEntityVariation" semanticCandidatesExpression="aql: self.entityVariations.properties->filter(NoSQLSchema::Aggregate).refTo" domainClass="NoSQLSchema.EntityVariation" reusedNodeMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVariation']/@subNodeMappings[name='Attribute'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVariation']/@subNodeMappings[name='Association']" childrenPresentation="List">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: self.ancestors()->filter(NoSQLSchema::Entity)->first().name + '_' + self.variationId" roundedCorner="true" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelFormat>bold</labelFormat>
