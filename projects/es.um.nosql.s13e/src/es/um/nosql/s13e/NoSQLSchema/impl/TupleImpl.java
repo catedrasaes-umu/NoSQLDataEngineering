@@ -34,126 +34,132 @@ import es.um.nosql.s13e.NoSQLSchema.Type;
 public class TupleImpl extends TypeImpl implements Tuple
 {
   /**
-	 * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
-	 * <!-- begin-user-doc -->
+   * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @see #getElements()
-	 * @generated
-	 * @ordered
-	 */
+   * @see #getElements()
+   * @generated
+   * @ordered
+   */
   protected EList<Type> elements;
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected TupleImpl()
   {
-		super();
-	}
+    super();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   protected EClass eStaticClass()
   {
-		return NoSQLSchemaPackage.Literals.TUPLE;
-	}
+    return NoSQLSchemaPackage.Literals.TUPLE;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public EList<Type> getElements()
   {
-		if (elements == null) {
-			elements = new EObjectContainmentEList<Type>(Type.class, this, NoSQLSchemaPackage.TUPLE__ELEMENTS);
-		}
-		return elements;
-	}
+    if (elements == null)
+    {
+      elements = new EObjectContainmentEList<Type>(Type.class, this, NoSQLSchemaPackage.TUPLE__ELEMENTS);
+    }
+    return elements;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-		switch (featureID) {
-			case NoSQLSchemaPackage.TUPLE__ELEMENTS:
-				return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
+    switch (featureID)
+    {
+      case NoSQLSchemaPackage.TUPLE__ELEMENTS:
+        return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-		switch (featureID) {
-			case NoSQLSchemaPackage.TUPLE__ELEMENTS:
-				return getElements();
-		}
-		return super.eGet(featureID, resolve, coreType);
-	}
+    switch (featureID)
+    {
+      case NoSQLSchemaPackage.TUPLE__ELEMENTS:
+        return getElements();
+    }
+    return super.eGet(featureID, resolve, coreType);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
-		switch (featureID) {
-			case NoSQLSchemaPackage.TUPLE__ELEMENTS:
-				getElements().clear();
-				getElements().addAll((Collection<? extends Type>)newValue);
-				return;
-		}
-		super.eSet(featureID, newValue);
-	}
+    switch (featureID)
+    {
+      case NoSQLSchemaPackage.TUPLE__ELEMENTS:
+        getElements().clear();
+        getElements().addAll((Collection<? extends Type>)newValue);
+        return;
+    }
+    super.eSet(featureID, newValue);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public void eUnset(int featureID)
   {
-		switch (featureID) {
-			case NoSQLSchemaPackage.TUPLE__ELEMENTS:
-				getElements().clear();
-				return;
-		}
-		super.eUnset(featureID);
-	}
+    switch (featureID)
+    {
+      case NoSQLSchemaPackage.TUPLE__ELEMENTS:
+        getElements().clear();
+        return;
+    }
+    super.eUnset(featureID);
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public boolean eIsSet(int featureID)
   {
-		switch (featureID) {
-			case NoSQLSchemaPackage.TUPLE__ELEMENTS:
-				return elements != null && !elements.isEmpty();
-		}
-		return super.eIsSet(featureID);
-	}
+    switch (featureID)
+    {
+      case NoSQLSchemaPackage.TUPLE__ELEMENTS:
+        return elements != null && !elements.isEmpty();
+    }
+    return super.eIsSet(featureID);
+  }
 
 } //TupleImpl

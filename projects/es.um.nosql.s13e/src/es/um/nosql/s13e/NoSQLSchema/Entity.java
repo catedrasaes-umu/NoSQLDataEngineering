@@ -27,61 +27,61 @@ import org.eclipse.emf.ecore.EObject;
 public interface Entity extends EObject
 {
   /**
-	 * Returns the value of the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Name</em>' attribute.
-	 * @see #setName(String)
-	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntity_Name()
-	 * @model id="true" required="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Name</em>' attribute.
+   * @see #setName(String)
+   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntity_Name()
+   * @model id="true" required="true"
+   * @generated
+   */
   String getName();
 
   /**
-	 * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.Entity#getName <em>Name</em>}' attribute.
-	 * <!-- begin-user-doc -->
+   * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.Entity#getName <em>Name</em>}' attribute.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Name</em>' attribute.
-	 * @see #getName()
-	 * @generated
-	 */
+   * @param value the new value of the '<em>Name</em>' attribute.
+   * @see #getName()
+   * @generated
+   */
   void setName(String value);
 
   /**
-	 * Returns the value of the '<em><b>Entity Variations</b></em>' containment reference list.
-	 * The list contents are of type {@link es.um.nosql.s13e.NoSQLSchema.EntityVariation}.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Entity Variations</b></em>' containment reference list.
+   * The list contents are of type {@link es.um.nosql.s13e.NoSQLSchema.EntityVariation}.
+   * <!-- begin-user-doc -->
 	 * <p>
 	 * If the meaning of the '<em>Entity Variations</em>' containment reference list isn't clear,
 	 * there really should be more of a description here...
 	 * </p>
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Entity Variations</em>' containment reference list.
-	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntity_EntityVariations()
-	 * @model containment="true" required="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Entity Variations</em>' containment reference list.
+   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntity_EntityVariations()
+   * @model containment="true" required="true"
+   * @generated
+   */
 	EList<EntityVariation> getEntityVariations();
 
 		/**
-	 * Returns the value of the '<em><b>Parents</b></em>' reference list.
-	 * The list contents are of type {@link es.um.nosql.s13e.NoSQLSchema.Entity}.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Parents</b></em>' reference list.
+   * The list contents are of type {@link es.um.nosql.s13e.NoSQLSchema.Entity}.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Parents</em>' reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Parents</em>' reference list.
-	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntity_Parents()
-	 * @model
-	 * @generated
-	 */
+   * @return the value of the '<em>Parents</em>' reference list.
+   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntity_Parents()
+   * @model
+   * @generated
+   */
   EList<Entity> getParents();
 
 } // Entity

@@ -19,24 +19,24 @@ import es.um.nosql.s13e.NoSQLSchema.Type;
 public abstract class TypeImpl extends MinimalEObjectImpl.Container implements Type
 {
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   protected TypeImpl()
   {
-		super();
-	}
+    super();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   protected EClass eStaticClass()
   {
-		return NoSQLSchemaPackage.Literals.TYPE;
-	}
+    return NoSQLSchemaPackage.Literals.TYPE;
+  }
 
 } //TypeImpl

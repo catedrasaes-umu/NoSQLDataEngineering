@@ -23,19 +23,19 @@ import org.eclipse.emf.common.util.EList;
 public interface Tuple extends Type
 {
   /**
-	 * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
-	 * The list contents are of type {@link es.um.nosql.s13e.NoSQLSchema.Type}.
-	 * <!-- begin-user-doc -->
+   * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
+   * The list contents are of type {@link es.um.nosql.s13e.NoSQLSchema.Type}.
+   * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Elements</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-	 * @return the value of the '<em>Elements</em>' containment reference list.
-	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getTuple_Elements()
-	 * @model containment="true"
-	 * @generated
-	 */
+   * @return the value of the '<em>Elements</em>' containment reference list.
+   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getTuple_Elements()
+   * @model containment="true"
+   * @generated
+   */
   EList<Type> getElements();
 
 } // Tuple
