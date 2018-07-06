@@ -353,22 +353,6 @@
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_AIdb1n3fEeiFWLY39dCCNg" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_AIdb133fEeiFWLY39dCCNg" id="(0.5,0.5)"/>
         </edges>
-        <edges xmi:type="notation:Edge" xmi:id="_AIdb2H3fEeiFWLY39dCCNg" type="4001" element="_AIZxcH3fEeiFWLY39dCCNg" source="_DCnrMAgnEeemnv6T81DU_g" target="_AIcNsH3fEeiFWLY39dCCNg">
-          <children xmi:type="notation:Node" xmi:id="_AIdb3H3fEeiFWLY39dCCNg" type="6001">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AIdb3X3fEeiFWLY39dCCNg" x="4" y="4"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_AIdb3n3fEeiFWLY39dCCNg" type="6002">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AIdb333fEeiFWLY39dCCNg" x="10"/>
-          </children>
-          <children xmi:type="notation:Node" xmi:id="_AIdb4H3fEeiFWLY39dCCNg" type="6003">
-            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AIdb4X3fEeiFWLY39dCCNg" x="10"/>
-          </children>
-          <styles xmi:type="notation:ConnectorStyle" xmi:id="_AIdb2X3fEeiFWLY39dCCNg" routing="Rectilinear"/>
-          <styles xmi:type="notation:FontStyle" xmi:id="_AIdb2n3fEeiFWLY39dCCNg" fontColor="7490599" fontName="Segoe UI" fontHeight="8"/>
-          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_AIdb233fEeiFWLY39dCCNg" points="[-1, 49, 0, -146]$[-1, 146, 0, -49]"/>
-          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_AIdb4n3fEeiFWLY39dCCNg" id="(0.5,0.5)"/>
-          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_AIdb433fEeiFWLY39dCCNg" id="(0.5,0.5)"/>
-        </edges>
         <edges xmi:type="notation:Edge" xmi:id="_AIdb5H3fEeiFWLY39dCCNg" type="4001" element="_AIZxdH3fEeiFWLY39dCCNg" source="_AIcNsH3fEeiFWLY39dCCNg" target="_Tdvu8AgpEeemnv6T81DU_g">
           <children xmi:type="notation:Node" xmi:id="_AIeC4H3fEeiFWLY39dCCNg" type="6001">
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_AIeC4X3fEeiFWLY39dCCNg" x="-18"/>
@@ -384,6 +368,22 @@
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_AIdb533fEeiFWLY39dCCNg" points="[0, 49, -15, -216]$[0, 216, -15, -49]"/>
           <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_AIeC5n3fEeiFWLY39dCCNg" id="(0.5,0.5)"/>
           <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_AIeC533fEeiFWLY39dCCNg" id="(0.5,0.5)"/>
+        </edges>
+        <edges xmi:type="notation:Edge" xmi:id="_O2xBEIEFEei61INumghkgA" type="4001" element="_O2svoIEFEei61INumghkgA" source="_DCnrMAgnEeemnv6T81DU_g" target="_AIcNsH3fEeiFWLY39dCCNg">
+          <children xmi:type="notation:Node" xmi:id="_O2xBFIEFEei61INumghkgA" type="6001">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_O2xBFYEFEei61INumghkgA" y="-10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_O2xBFoEFEei61INumghkgA" type="6002">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_O2xBF4EFEei61INumghkgA" y="10"/>
+          </children>
+          <children xmi:type="notation:Node" xmi:id="_O2xBGIEFEei61INumghkgA" type="6003">
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_O2xBGYEFEei61INumghkgA" y="10"/>
+          </children>
+          <styles xmi:type="notation:ConnectorStyle" xmi:id="_O2xBEYEFEei61INumghkgA" routing="Rectilinear"/>
+          <styles xmi:type="notation:FontStyle" xmi:id="_O2xBEoEFEei61INumghkgA" fontColor="7490599" fontName="Ubuntu" fontHeight="8"/>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_O2xBE4EFEei61INumghkgA" points="[0, 0, 15, -195]$[-15, 195, 0, 0]"/>
+          <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_O2xoIIEFEei61INumghkgA" id="(0.5,0.5)"/>
+          <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_O2xoIYEFEei61INumghkgA" id="(0.5,0.5)"/>
         </edges>
       </data>
     </ownedAnnotationEntries>
@@ -469,7 +469,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_DCd6MAgnEeemnv6T81DU_g" name="Entity" tooltipText="" outgoingEdges="_-lvE0H3eEeiFWLY39dCCNg _AIZxcH3fEeiFWLY39dCCNg" incomingEdges="_uNqZEAgnEeemnv6T81DU_g _-lvE0H3eEeiFWLY39dCCNg" width="12" height="10">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_DCd6MAgnEeemnv6T81DU_g" name="Entity" tooltipText="" outgoingEdges="_-lvE0H3eEeiFWLY39dCCNg _O2svoIEFEei61INumghkgA" incomingEdges="_uNqZEAgnEeemnv6T81DU_g _-lvE0H3eEeiFWLY39dCCNg" width="12" height="10">
       <target xmi:type="ecore:EClass" href="platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore#//Entity"/>
       <semanticElements xmi:type="ecore:EClass" href="platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore#//Entity"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_DClO8QgnEeemnv6T81DU_g">
@@ -638,7 +638,7 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_AIR1oH3fEeiFWLY39dCCNg" name="EntityVariation" tooltipText="" outgoingEdges="_AIZxdH3fEeiFWLY39dCCNg" incomingEdges="_AIZKYH3fEeiFWLY39dCCNg _AIZxcH3fEeiFWLY39dCCNg" width="12" height="10">
+    <ownedDiagramElements xmi:type="diagram:DNodeList" xmi:id="_AIR1oH3fEeiFWLY39dCCNg" name="EntityVariation" tooltipText="" outgoingEdges="_AIZxdH3fEeiFWLY39dCCNg" incomingEdges="_AIZKYH3fEeiFWLY39dCCNg _O2svoIEFEei61INumghkgA" width="12" height="10">
       <target xmi:type="ecore:EClass" href="platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore#//EntityVariation"/>
       <semanticElements xmi:type="ecore:EClass" href="platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore#//EntityVariation"/>
       <decorations xmi:type="viewpoint:Decoration" xmi:id="_AIR1on3fEeiFWLY39dCCNg">
@@ -698,20 +698,6 @@
       </ownedStyle>
       <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
     </ownedDiagramElements>
-    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_AIZxcH3fEeiFWLY39dCCNg" name="[1..*] entityvariations" sourceNode="_DCd6MAgnEeemnv6T81DU_g" targetNode="_AIR1oH3fEeiFWLY39dCCNg">
-      <target xmi:type="ecore:EReference" href="platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore#//Entity/entityvariations"/>
-      <semanticElements xmi:type="ecore:EReference" href="platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore#//Entity/entityvariations"/>
-      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_AIZxcX3fEeiFWLY39dCCNg" description="_kw_04AgoEeemnv6T81DU_g" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
-        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_AIZxcn3fEeiFWLY39dCCNg" showIcon="false">
-          <customFeatures>labelSize</customFeatures>
-          <labelFormat>bold</labelFormat>
-        </centerLabelStyle>
-        <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_AIZxc33fEeiFWLY39dCCNg" showIcon="false" labelColor="39,76,114">
-          <customFeatures>labelSize</customFeatures>
-        </endLabelStyle>
-      </ownedStyle>
-      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
-    </ownedDiagramElements>
     <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_AIZxdH3fEeiFWLY39dCCNg" name="[1..*] properties" sourceNode="_AIR1oH3fEeiFWLY39dCCNg" targetNode="_TdmlAAgpEeemnv6T81DU_g">
       <target xmi:type="ecore:EReference" href="platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore#//EntityVariation/properties"/>
       <semanticElements xmi:type="ecore:EReference" href="platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore#//EntityVariation/properties"/>
@@ -721,6 +707,20 @@
           <labelFormat>bold</labelFormat>
         </centerLabelStyle>
         <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_AIaYgn3fEeiFWLY39dCCNg" showIcon="false" labelColor="39,76,114">
+          <customFeatures>labelSize</customFeatures>
+        </endLabelStyle>
+      </ownedStyle>
+      <actualMapping xmi:type="description_1:EdgeMapping" href="platform:/plugin/org.eclipse.emf.ecoretools.design/description/ecore.odesign#//@ownedViewpoints[name='Design']/@ownedRepresentations[name='Entities']/@defaultLayer/@edgeMappings[name='EC_EReference']"/>
+    </ownedDiagramElements>
+    <ownedDiagramElements xmi:type="diagram:DEdge" xmi:id="_O2svoIEFEei61INumghkgA" name="[1..*] entityVariations" sourceNode="_DCd6MAgnEeemnv6T81DU_g" targetNode="_AIR1oH3fEeiFWLY39dCCNg">
+      <target xmi:type="ecore:EReference" href="platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore#//Entity/entityVariations"/>
+      <semanticElements xmi:type="ecore:EReference" href="platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore#//Entity/entityVariations"/>
+      <ownedStyle xmi:type="diagram:EdgeStyle" xmi:id="_O2tWsIEFEei61INumghkgA" description="_kw_04AgoEeemnv6T81DU_g" sourceArrow="FillDiamond" routingStyle="manhattan" strokeColor="0,0,0">
+        <centerLabelStyle xmi:type="diagram:CenterLabelStyle" xmi:id="_O2tWsYEFEei61INumghkgA" showIcon="false">
+          <customFeatures>labelSize</customFeatures>
+          <labelFormat>bold</labelFormat>
+        </centerLabelStyle>
+        <endLabelStyle xmi:type="diagram:EndLabelStyle" xmi:id="_O2tWsoEFEei61INumghkgA" showIcon="false" labelColor="39,76,114">
           <customFeatures>labelSize</customFeatures>
         </endLabelStyle>
       </ownedStyle>
