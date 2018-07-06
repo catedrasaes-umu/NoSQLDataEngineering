@@ -7,7 +7,7 @@
     name="example">
   <entities
       name="Book">
-    <entityvariations
+    <entityVariations
         variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -79,8 +79,8 @@
           lowerBound="1"
           upperBound="1"
           refTo="Publisher"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -117,8 +117,8 @@
           lowerBound="1"
           upperBound="1"
           refTo="Author"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="3"
         root="true">
       <properties
@@ -156,8 +156,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="bool"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="4"
         root="true">
       <properties
@@ -208,11 +208,11 @@
           lowerBound="1"
           upperBound="1"
           refTo="Book"/>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Author">
-    <entityvariations
+    <entityVariations
         variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -242,8 +242,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="int"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -338,8 +338,8 @@
           name="Book_id_reference"
           upperBound="2"
           refTo="Book"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="3">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -412,8 +412,8 @@
           lowerBound="1"
           upperBound="1"
           refTo="Journal"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="4"
         root="true">
       <properties
@@ -475,8 +475,8 @@
           name="Author_id_reference"
           upperBound="2"
           refTo="Author"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="5"
         root="true">
       <properties
@@ -581,8 +581,8 @@
           name="Publisher_id_reference"
           upperBound="2"
           refTo="Publisher"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="6">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -598,8 +598,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="string"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="7"
         root="true">
       <properties
@@ -685,18 +685,18 @@
           name="aggregates_0"
           lowerBound="1"
           upperBound="2"
-          refTo="//@entities.1/@entityvariations.0"/>
+          refTo="//@entities.1/@entityVariations.0"/>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
           name="aggregates_2"
           lowerBound="1"
           upperBound="3"
-          refTo="//@entities.1/@entityvariations.2"/>
-    </entityvariations>
+          refTo="//@entities.1/@entityVariations.2"/>
+    </entityVariations>
   </entities>
   <entities
       name="Journal">
-    <entityvariations
+    <entityVariations
         variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -795,9 +795,9 @@
           name="aggregates_0"
           lowerBound="1"
           upperBound="2"
-          refTo="//@entities.0/@entityvariations.0"/>
-    </entityvariations>
-    <entityvariations
+          refTo="//@entities.0/@entityVariations.0"/>
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -850,8 +850,8 @@
           lowerBound="1"
           upperBound="1"
           refTo="Content"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="3"
         root="true">
       <properties
@@ -919,9 +919,9 @@
           name="aggregates_1"
           lowerBound="1"
           upperBound="3"
-          refTo="//@entities.2/@entityvariations.0"/>
-    </entityvariations>
-    <entityvariations
+          refTo="//@entities.2/@entityVariations.0"/>
+    </entityVariations>
+    <entityVariations
         variationId="4"
         root="true">
       <properties
@@ -984,14 +984,14 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="aggregates_1"
           upperBound="2"
-          refTo="//@entities.1/@entityvariations.0"/>
+          refTo="//@entities.1/@entityVariations.0"/>
       <properties
           xsi:type="NoSQLSchema:Aggregate"
           name="aggregates_2"
           upperBound="3"
-          refTo="//@entities.1/@entityvariations.0"/>
-    </entityvariations>
-    <entityvariations
+          refTo="//@entities.1/@entityVariations.0"/>
+    </entityVariations>
+    <entityVariations
         variationId="5"
         root="true">
       <properties
@@ -1055,8 +1055,8 @@
           name="Journal_id_reference"
           upperBound="2"
           refTo="Journal"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="6"
         root="true">
       <properties
@@ -1113,11 +1113,11 @@
           </elements>
         </type>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Publisher">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -1176,8 +1176,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="bool"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -1261,8 +1261,8 @@
               name="float"/>
         </type>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="3"
         root="true">
       <properties
@@ -1365,9 +1365,9 @@
           name="aggregates_0"
           lowerBound="1"
           upperBound="2"
-          refTo="//@entities.1/@entityvariations.5"/>
-    </entityvariations>
-    <entityvariations
+          refTo="//@entities.1/@entityVariations.5"/>
+    </entityVariations>
+    <entityVariations
         variationId="4"
         root="true">
       <properties
@@ -1454,8 +1454,8 @@
           lowerBound="1"
           upperBound="1"
           refTo="Publisher"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="5"
         root="true">
       <properties
@@ -1502,8 +1502,8 @@
               name="float"/>
         </type>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="6"
         root="true">
       <properties
@@ -1544,11 +1544,11 @@
           name="Journal_id_reference"
           upperBound="2"
           refTo="Journal"/>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Content">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -1638,8 +1638,8 @@
           lowerBound="1"
           upperBound="1"
           refTo="Journal"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -1702,8 +1702,8 @@
           name="Book_id_reference"
           upperBound="2"
           refTo="Book"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="3"
         root="true">
       <properties
@@ -1752,8 +1752,8 @@
           name="Journal_id_reference"
           upperBound="1"
           refTo="Journal"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="4"
         root="true">
       <properties
@@ -1823,6 +1823,6 @@
           lowerBound="1"
           upperBound="1"
           refTo="Author"/>
-    </entityvariations>
+    </entityVariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

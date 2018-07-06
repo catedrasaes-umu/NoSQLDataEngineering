@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="movies">
   <entities name="Movie">
-    <entityvariations variationId="1" root="true">
+    <entityVariations variationId="1" root="true">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="criticisms" upperBound="-1" refTo="//@entities.2/@entityvariations.0 //@entities.2/@entityvariations.1"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="criticisms" upperBound="-1" refTo="//@entities.2/@entityVariations.0 //@entities.2/@entityVariations.1"/>
       <properties xsi:type="NoSQLSchema:Reference" name="director_id" lowerBound="1" upperBound="1" refTo="Director"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="genre">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="-1" refTo="//@entities.3/@entityvariations.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="-1" refTo="//@entities.3/@entityVariations.0"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="title">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -20,49 +20,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="year">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-    </entityvariations>
-    <entityvariations variationId="2" root="true">
+    </entityVariations>
+    <entityVariations variationId="2" root="true">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="director_id" lowerBound="1" upperBound="1" refTo="Director"/>
-      <properties xsi:type="NoSQLSchema:Attribute" name="genre">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="title">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="year">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-    </entityvariations>
-    <entityvariations variationId="3" root="true">
-      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="director_id" lowerBound="1" upperBound="1" refTo="Director"/>
-      <properties xsi:type="NoSQLSchema:Attribute" name="genre">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="-1" refTo="//@entities.3/@entityvariations.0"/>
-      <properties xsi:type="NoSQLSchema:Attribute" name="title">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="year">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-    </entityvariations>
-    <entityvariations variationId="4" root="true">
-      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="criticisms" upperBound="-1" refTo="//@entities.2/@entityvariations.0 //@entities.2/@entityvariations.1"/>
       <properties xsi:type="NoSQLSchema:Reference" name="director_id" lowerBound="1" upperBound="1" refTo="Director"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="genre">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -76,8 +38,46 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="year">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-    </entityvariations>
-    <entityvariations variationId="5" root="true">
+    </entityVariations>
+    <entityVariations variationId="3" root="true">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="director_id" lowerBound="1" upperBound="1" refTo="Director"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="genre">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="-1" refTo="//@entities.3/@entityVariations.0"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="year">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+    </entityVariations>
+    <entityVariations variationId="4" root="true">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="criticisms" upperBound="-1" refTo="//@entities.2/@entityVariations.0 //@entities.2/@entityVariations.1"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="director_id" lowerBound="1" upperBound="1" refTo="Director"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="genre">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="year">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+    </entityVariations>
+    <entityVariations variationId="5" root="true">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -103,10 +103,10 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="year">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities name="Director">
-    <entityvariations variationId="1" root="true">
+    <entityVariations variationId="1" root="true">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -128,8 +128,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="type">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-    </entityvariations>
-    <entityvariations variationId="2" root="true">
+    </entityVariations>
+    <entityVariations variationId="2" root="true">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -144,10 +144,10 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="type">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities name="Criticism">
-    <entityvariations variationId="1">
+    <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="color">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -160,8 +160,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="url">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-    </entityvariations>
-    <entityvariations variationId="2">
+    </entityVariations>
+    <entityVariations variationId="2">
       <properties xsi:type="NoSQLSchema:Attribute" name="color">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -171,10 +171,10 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="media">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities name="Prize">
-    <entityvariations variationId="1">
+    <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="event">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -187,6 +187,6 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="year">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

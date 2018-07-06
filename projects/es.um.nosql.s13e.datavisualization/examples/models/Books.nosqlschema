@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" name="Books">
   <entities name="Publisher">
-    <entityvariations variationId="1" root="true">
+    <entityVariations variationId="1" root="true">
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="city">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-    </entityvariations>
-    <entityvariations variationId="2" root="true">
+    </entityVariations>
+    <entityVariations variationId="2" root="true">
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-    </entityvariations>
-    <entityvariations variationId="3" root="true">
+    </entityVariations>
+    <entityVariations variationId="3" root="true">
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="journal" lowerBound="1" upperBound="-1" refTo="Journal"/>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities name="Journal">
-    <entityvariations variationId="1" root="true">
+    <entityVariations variationId="1" root="true">
       <properties xsi:type="NoSQLSchema:Attribute" name="issn">
         <type xsi:type="NoSQLSchema:Tuple">
           <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -35,8 +35,8 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="discipline">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-    </entityvariations>
-    <entityvariations variationId="2" root="true">
+    </entityVariations>
+    <entityVariations variationId="2" root="true">
       <properties xsi:type="NoSQLSchema:Attribute" name="issn">
         <type xsi:type="NoSQLSchema:Tuple">
           <elements xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -52,10 +52,10 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="number">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="int"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities name="Book">
-    <entityvariations variationId="1" root="true">
+    <entityVariations variationId="1" root="true">
       <properties xsi:type="NoSQLSchema:Attribute" name="title">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -63,25 +63,25 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="int"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="publisher" lowerBound="1" upperBound="1" refTo="Publisher"/>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="content" lowerBound="1" upperBound="1" refTo="//@entities.5/@entityvariations.0"/>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="author" lowerBound="1" upperBound="-1" refTo="//@entities.3/@entityvariations.0"/>
-    </entityvariations>
-    <entityvariations variationId="2" root="true">
+      <properties xsi:type="NoSQLSchema:Aggregate" name="content" lowerBound="1" upperBound="1" refTo="//@entities.5/@entityVariations.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="author" lowerBound="1" upperBound="-1" refTo="//@entities.3/@entityVariations.0"/>
+    </entityVariations>
+    <entityVariations variationId="2" root="true">
       <properties xsi:type="NoSQLSchema:Attribute" name="title">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="publisher" lowerBound="1" upperBound="1" refTo="Publisher"/>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="author" lowerBound="1" upperBound="1" refTo="//@entities.3/@entityvariations.0"/>
-    </entityvariations>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="author" lowerBound="1" upperBound="1" refTo="//@entities.3/@entityVariations.0"/>
+    </entityVariations>
   </entities>
   <entities name="Author">
-    <entityvariations variationId="1">
+    <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="company" lowerBound="1" upperBound="1" refTo="//@entities.4/@entityvariations.0"/>
-    </entityvariations>
-    <entityvariations variationId="2" root="true">
+      <properties xsi:type="NoSQLSchema:Aggregate" name="company" lowerBound="1" upperBound="1" refTo="//@entities.4/@entityVariations.0"/>
+    </entityVariations>
+    <entityVariations variationId="2" root="true">
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -91,26 +91,26 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="country">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities name="Company">
-    <entityvariations variationId="1">
+    <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="country">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities name="Content">
-    <entityvariations variationId="1">
+    <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="chapters">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="int"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="pages">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="int"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

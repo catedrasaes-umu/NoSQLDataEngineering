@@ -8,7 +8,7 @@
     name="test1">
   <entities
       name="Persons">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -25,8 +25,8 @@
           upperBound="1"
           refTo="CustomDate3"
           originalType="String"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -41,9 +41,9 @@
           name="date"
           lowerBound="1"
           upperBound="1"
-          refTo="//@entities.1/@entityvariations.0"/>
-    </entityvariations>
-    <entityvariations
+          refTo="//@entities.1/@entityVariations.0"/>
+    </entityVariations>
+    <entityVariations
         variationId="3"
         root="true">
       <properties
@@ -60,8 +60,8 @@
           upperBound="-1"
           refTo="CustomDate3"
           originalType="ObjectId"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="4"
         root="true">
       <properties
@@ -81,11 +81,11 @@
               name="String"/>
         </type>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="CustomDate1">
-    <entityvariations
+    <entityVariations
         variationId="10">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -94,11 +94,11 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="number"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="CustomDate2">
-    <entityvariations
+    <entityVariations
         variationId="20"
         root="true">
       <properties
@@ -115,11 +115,11 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="CustomDate3">
-    <entityvariations
+    <entityVariations
         variationId="30"
         root="true">
       <properties
@@ -136,6 +136,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

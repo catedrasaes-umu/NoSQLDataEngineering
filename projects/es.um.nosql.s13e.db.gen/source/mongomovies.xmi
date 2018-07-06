@@ -8,7 +8,7 @@
     name="mongomovies">
   <entities
       name="Movie">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -22,13 +22,13 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="criticisms"
           upperBound="-1"
-          refTo="//@entities.5/@entityvariations.0 //@entities.5/@entityvariations.1"/>
+          refTo="//@entities.5/@entityVariations.0 //@entities.5/@entityVariations.1"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="director_id"
           lowerBound="1"
           upperBound="1"
-          opposite="//@entities.4/@entityvariations.0/@properties.1"
+          opposite="//@entities.4/@entityVariations.0/@properties.1"
           refTo="Director"
           originalType="String"/>
       <properties
@@ -42,7 +42,7 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="prizes"
           upperBound="-1"
-          refTo="//@entities.6/@entityvariations.0 //@entities.6/@entityvariations.1"/>
+          refTo="//@entities.6/@entityVariations.0 //@entities.6/@entityVariations.1"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="title">
@@ -64,8 +64,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -80,7 +80,7 @@
           name="director_id"
           lowerBound="1"
           upperBound="1"
-          opposite="//@entities.4/@entityvariations.0/@properties.1"
+          opposite="//@entities.4/@entityVariations.0/@properties.1"
           refTo="Director"
           originalType="String"/>
       <properties
@@ -118,8 +118,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Movie"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="3"
         root="true">
       <properties
@@ -134,7 +134,7 @@
           name="director_id"
           lowerBound="1"
           upperBound="1"
-          opposite="//@entities.4/@entityvariations.0/@properties.1"
+          opposite="//@entities.4/@entityVariations.0/@properties.1"
           refTo="Director"
           originalType="String"/>
       <properties
@@ -148,7 +148,7 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="prizes"
           upperBound="-1"
-          refTo="//@entities.6/@entityvariations.1"/>
+          refTo="//@entities.6/@entityVariations.1"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="title">
@@ -170,8 +170,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Movie"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="4"
         root="true">
       <properties
@@ -185,13 +185,13 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="criticisms"
           upperBound="-1"
-          refTo="//@entities.5/@entityvariations.0 //@entities.5/@entityvariations.1"/>
+          refTo="//@entities.5/@entityVariations.0 //@entities.5/@entityVariations.1"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="director_id"
           lowerBound="1"
           upperBound="1"
-          opposite="//@entities.4/@entityvariations.0/@properties.1"
+          opposite="//@entities.4/@entityVariations.0/@properties.1"
           refTo="Director"
           originalType="String"/>
       <properties
@@ -206,7 +206,7 @@
           name="rating"
           lowerBound="1"
           upperBound="1"
-          refTo="//@entities.2/@entityvariations.0"/>
+          refTo="//@entities.2/@entityVariations.0"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="title">
@@ -228,8 +228,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Movie"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="5"
         root="true">
       <properties
@@ -244,7 +244,7 @@
           name="director_id"
           lowerBound="1"
           upperBound="1"
-          opposite="//@entities.4/@entityvariations.0/@properties.1"
+          opposite="//@entities.4/@entityVariations.0/@properties.1"
           refTo="Director"
           originalType="String"/>
       <properties
@@ -288,11 +288,11 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Movie"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Movietheater">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -330,8 +330,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Movietheater"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -376,11 +376,11 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Movietheater"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Rating">
-    <entityvariations
+    <entityVariations
         variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -396,11 +396,11 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Media">
-    <entityvariations
+    <entityVariations
         variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -416,11 +416,11 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Director">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -434,14 +434,14 @@
           xsi:type="NoSQLSchema:Reference"
           name="actor_movies"
           upperBound="-1"
-          opposite="//@entities.0/@entityvariations.0/@properties.2"
+          opposite="//@entities.0/@entityVariations.0/@properties.2"
           refTo="Movie"
           originalType="String"/>
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="directed_movies"
           upperBound="-1"
-          opposite="//@entities.0/@entityvariations.0/@properties.2"
+          opposite="//@entities.0/@entityVariations.0/@properties.2"
           refTo="Movie"
           originalType="String"/>
       <properties
@@ -458,8 +458,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Director"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -473,7 +473,7 @@
           xsi:type="NoSQLSchema:Reference"
           name="directed_movies"
           upperBound="-1"
-          opposite="//@entities.0/@entityvariations.0/@properties.2"
+          opposite="//@entities.0/@entityVariations.0/@properties.2"
           refTo="Movie"
           originalType="String"/>
       <properties
@@ -490,11 +490,11 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Director"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Criticism">
-    <entityvariations
+    <entityVariations
         variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -514,9 +514,9 @@
           xsi:type="NoSQLSchema:Aggregate"
           name="media"
           upperBound="1"
-          refTo="//@entities.3/@entityvariations.0"/>
-    </entityvariations>
-    <entityvariations
+          refTo="//@entities.3/@entityVariations.0"/>
+    </entityVariations>
+    <entityVariations
         variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -539,11 +539,11 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Prize">
-    <entityvariations
+    <entityVariations
         variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -569,8 +569,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -593,6 +593,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="DEBUG_TypeAndRef">
   <entities name="Urban_word">
-    <entityvariations variationId="1" root="true">
+    <entityVariations variationId="1" root="true">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="definition">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="lowercase_urban_word" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.2" refTo="Urban_word" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="lowercase_urban_word" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityVariations.0/@properties.2" refTo="Urban_word" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_down">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="type">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="urban_word" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityvariations.0/@properties.2" refTo="Urban_word" originalType="String"/>
-    </entityvariations>
+      <properties xsi:type="NoSQLSchema:Reference" name="urban_word" lowerBound="1" upperBound="1" opposite="//@entities.0/@entityVariations.0/@properties.2" refTo="Urban_word" originalType="String"/>
+    </entityVariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

@@ -8,7 +8,7 @@
     name="test2">
   <entities
       name="Persons">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -60,6 +60,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

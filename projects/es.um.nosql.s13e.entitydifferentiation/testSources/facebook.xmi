@@ -8,7 +8,7 @@
     name="facebook">
   <entities
       name="Pages">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -32,11 +32,11 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Comments">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -88,8 +88,8 @@
           upperBound="1"
           refTo="Posts"
           originalType="String"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -134,8 +134,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="3"
         root="true">
       <properties
@@ -180,8 +180,8 @@
           upperBound="1"
           refTo="Posts"
           originalType="String"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="4"
         root="true">
       <properties
@@ -226,8 +226,8 @@
           upperBound="1"
           refTo="Posts"
           originalType="String"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="5"
         root="true">
       <properties
@@ -258,8 +258,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="6"
         root="true">
       <properties
@@ -283,8 +283,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="7"
         root="true">
       <properties
@@ -301,11 +301,11 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Comments"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="Posts">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -413,8 +413,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -515,8 +515,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="3"
         root="true">
       <properties
@@ -617,8 +617,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="4"
         root="true">
       <properties
@@ -712,8 +712,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="5"
         root="true">
       <properties
@@ -807,8 +807,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="6"
         root="true">
       <properties
@@ -895,6 +895,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

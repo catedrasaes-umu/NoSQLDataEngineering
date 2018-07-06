@@ -8,7 +8,7 @@
     name="webclicks">
   <entities
       name="Webclicks">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -53,8 +53,8 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -92,6 +92,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

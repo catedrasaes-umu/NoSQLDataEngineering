@@ -8,7 +8,7 @@
     name="oneofeach">
   <entities
       name="EntityOne">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -39,6 +39,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Boolean"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

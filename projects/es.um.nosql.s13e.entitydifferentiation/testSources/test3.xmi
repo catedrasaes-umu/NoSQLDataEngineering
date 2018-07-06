@@ -8,7 +8,7 @@
     name="test3">
   <entities
       name="Persons">
-    <entityvariations
+    <entityVariations
         variationId="1"
         root="true">
       <properties
@@ -32,8 +32,8 @@
           upperBound="1"
           refTo="CustomDate1"
           originalType="ObjectId"/>
-    </entityvariations>
-    <entityvariations
+    </entityVariations>
+    <entityVariations
         variationId="2"
         root="true">
       <properties
@@ -48,12 +48,12 @@
           name="data"
           lowerBound="1"
           upperBound="-1"
-          refTo="//@entities.3/@entityvariations.0"/>
-    </entityvariations>
+          refTo="//@entities.3/@entityVariations.0"/>
+    </entityVariations>
   </entities>
   <entities
       name="CustomDate1">
-    <entityvariations
+    <entityVariations
         variationId="10"
         root="true">
       <properties
@@ -70,11 +70,11 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="number"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="CustomDate2">
-    <entityvariations
+    <entityVariations
         variationId="11">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -83,11 +83,11 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="boolean"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
   <entities
       name="PersonalData">
-    <entityvariations
+    <entityVariations
         variationId="20">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -103,6 +103,6 @@
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
-    </entityvariations>
+    </entityVariations>
   </entities>
 </NoSQLSchema:NoSQLSchema>

@@ -4,51 +4,51 @@
     <entity href="../testSources/publications.xmi#Publications"/>
     <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityvariations.0/@properties.5"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityVariations.0/@properties.5"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityvariations.0/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityVariations.0/@properties.3"/>
       </propertySpecs>
-      <entityVariation href="../testSources/publications.xmi#//@entities.0/@entityvariations.0"/>
+      <entityVariation href="../testSources/publications.xmi#//@entities.0/@entityVariations.0"/>
     </entityVariationProps>
     <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityvariations.1/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
       </propertySpecs>
-      <entityVariation href="../testSources/publications.xmi#//@entities.0/@entityvariations.1"/>
+      <entityVariation href="../testSources/publications.xmi#//@entities.0/@entityVariations.1"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityvariations.2/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityVariations.2/@properties.4"/>
       </notProps>
     </entityVariationProps>
     <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityvariations.2/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityVariations.2/@properties.4"/>
       </propertySpecs>
-      <entityVariation href="../testSources/publications.xmi#//@entities.0/@entityvariations.2"/>
+      <entityVariation href="../testSources/publications.xmi#//@entities.0/@entityVariations.2"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityvariations.1/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
       </notProps>
     </entityVariationProps>
     <entityVariationProps>
-      <entityVariation href="../testSources/publications.xmi#//@entities.0/@entityvariations.3"/>
+      <entityVariation href="../testSources/publications.xmi#//@entities.0/@entityVariations.3"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityvariations.2/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityVariations.2/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityvariations.1/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
       </notProps>
     </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityvariations.2/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityVariations.2/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityvariations.2/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityVariations.2/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityvariations.2/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityVariations.2/@properties.3"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityvariations.2/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="../testSources/publications.xmi#//@entities.0/@entityVariations.2/@properties.0"/>
     </commonProps>
   </entityDiffSpecs>
   <schema href="../testSources/publications.xmi#publications"/>
