@@ -72,24 +72,24 @@ public class InferenceTest
   {//TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
     // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.
     // So tldr; datasets loaded without POJO objects are inserting NULL and empty values.
-    prepareModelExample(DbType.MONGODB, InferenceMode.INFER_ONLY, FILE_MODEL);
-    //prepareSOFExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_SOF);
-    //prepareEPolExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_EPOL);
-    //prepareUrbanExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FILE_URBAN);                  //POJO
+    //prepareModelExample(DbType.MONGODB, InferenceMode.INFER_ONLY, FILE_MODEL);
+    //prepareSOFExample(DbType.MONGODB, InferenceMode.FILL_ONLY, FOLDER_SOF);
+    //prepareEPolExample(DbType.MONGODB, InferenceMode.FILL_ONLY, FOLDER_EPOL);
+    //prepareUrbanExample(DbType.MONGODB, InferenceMode.FILL_ONLY, FILE_URBAN);                  //POJO
     // Problem with this dataset is that it contains A LOT of aggregated objects and null values.
     // Aggregated objects tend to make mongodb run out of memory during the reduce process.
     // Null values tend to abort the inference process. Until the inference process is fixed (TODO(tm)),
     // we will make use of POJO objects and ignore problematic fields. Thing is, then we have a lot of options...
-    //prepareCompanyExample(DbType.MONGODB, INFER_OPTION.FILL_AND_INFER, FILE_COMPANY);              //POJO
-    //prepareLinkExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_LINK);                  //POJO
-    //prepareHarvardExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FILE_HARVARD);              //POJO
-    //prepareFacebookExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_FACEBOOK);          //POJO
-    //prepareProteinExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_PROTEIN);            //POJO
-    //preparePublicationsExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FILE_PUBLICATIONS);    //POJO
-    //prepareWebclickExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FOLDER_WEBCLICKS);         //POJO
-    //prepareSanctionsExample(DbType.MONGODB, INFER_OPTION.FILL_ONLY, FILE_SANCTIONS);
-    //preparePleiadesExample(DbType.MONGODB, INFER_OPTION.FILL_AND_INFER, FILE_PLEIDADES);
-    //prepareJsonExample(DbType.MONGODB, INFER_OPTION.FILL_AND_INFER, FILE_JSON);
+    //prepareCompanyExample(DbType.MONGODB, InferenceMode.FILL_AND_INFER, FILE_COMPANY);              //POJO
+    //prepareLinkExample(DbType.MONGODB, InferenceMode.FILL_ONLY, FOLDER_LINK);                  //POJO
+    prepareHarvardExample(DbType.MONGODB, InferenceMode.INFER_ONLY, FILE_HARVARD);              //POJO
+    //prepareFacebookExample(DbType.MONGODB, InferenceMode.FILL_ONLY, FOLDER_FACEBOOK);          //POJO
+    //prepareProteinExample(DbType.MONGODB, InferenceMode.FILL_ONLY, FOLDER_PROTEIN);            //POJO
+    //preparePublicationsExample(DbType.MONGODB, InferenceMode.FILL_ONLY, FILE_PUBLICATIONS);    //POJO
+    //prepareWebclickExample(DbType.MONGODB, InferenceMode.FILL_ONLY, FOLDER_WEBCLICKS);         //POJO
+    //prepareSanctionsExample(DbType.MONGODB, InferenceMode.FILL_ONLY, FILE_SANCTIONS);
+    //preparePleiadesExample(DbType.MONGODB, InferenceMode.FILL_AND_INFER, FILE_PLEIDADES);
+    //prepareJsonExample(DbType.MONGODB, InferenceMode.FILL_AND_INFER, FILE_JSON);
   }
 
   public static void prepareModelExample(DbType dbType, InferenceMode option, String sourceFile)
@@ -275,13 +275,13 @@ public class InferenceTest
 
   public static void prepareHarvardExample(DbType dbType, InferenceMode option, String sourceFile)
   {
-    String dbName = "harvard";
+    String dbName = "harvard_test";
     String outputModel = MODELS_FOLDER + dbName + ".xmi";
 
     if (option != InferenceMode.INFER_ONLY)
     {
       long startTime = System.currentTimeMillis();
-  
+
       System.out.println("Filling the " + dbType.toString() + " database...");
       Harvard2Db controller = new Harvard2Db(dbType, DATABASE_IP);
       controller.run(sourceFile, dbName);
