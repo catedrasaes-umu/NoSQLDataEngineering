@@ -44,9 +44,8 @@ public class OldMain {
   public static Map<String, EntityVariation> getEntityVariations(NoSQLSchema schema)
   {
     return 
-        schema.getEntities().stream().flatMap(e ->
+        schema.getEntities().stream().filter(e -> e.isRoot()).flatMap(e ->
         e.getEntityVariations().stream()
-        .filter(EntityVariation::isRoot)
         .map(ev ->
         Pair.of(String.format("%1$s:%2$d", e.getName(), ev.getVariationId())
             ,ev)))
@@ -56,8 +55,8 @@ public class OldMain {
   public static Map<String, List<Property>> getProperties(NoSQLSchema schema)
   {
     return	
-        schema.getEntities().stream().flatMap(e ->
-        e.getEntityVariations().stream().filter(EntityVariation::isRoot))
+        schema.getEntities().stream().filter(e -> e.isRoot()).flatMap(e ->
+        e.getEntityVariations().stream())
         .flatMap(ev -> ev.getProperties().stream())
         .collect(Collectors.groupingBy(Serializer::serialize));
   }
@@ -67,12 +66,12 @@ public class OldMain {
     Map<String, List<String>> classes = new HashMap<String, List<String>>();
     for (Entity entity: schema.getEntities())
     {
+      // FIXME
+      if (!entity.isRoot())
+        continue;
+
       for (EntityVariation entityVariation: entity.getEntityVariations())
       {
-        // FIXME
-        if (!entityVariation.isRoot())
-          continue;
-
         // Get List of properties Names
         List<String> properties = entityVariation.getProperties().stream()
             .map(Serializer::serialize)

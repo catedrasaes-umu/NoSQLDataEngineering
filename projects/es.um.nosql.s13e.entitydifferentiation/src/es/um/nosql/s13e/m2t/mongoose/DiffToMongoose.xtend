@@ -89,7 +89,7 @@ public class DiffToMongoose
 
     var «e.name»Schema = new mongoose.Schema({
       «genSpecs(e, analyzer.getDiffByEntity().get(e))»
-    }, { versionKey: false, «IF (e.entityVariations.exists[ev | ev.isRoot])»collection: '«e.name.toFirstLower»'«ELSE»_id : false«ENDIF»});
+    }, { versionKey: false, «IF (e.isRoot)»collection: '«e.name.toFirstLower»'«ELSE»_id : false«ENDIF»});
 
     «indexValGen.genIndexesForEntity(e)»
 

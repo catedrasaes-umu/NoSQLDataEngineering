@@ -9,8 +9,7 @@
   <entities
       name="Urban_words">
     <entityVariations
-        variationId="1"
-        root="true">
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="author">
@@ -111,7 +110,7 @@
     </entityVariations>
     <entityVariations
         variationId="2"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="author">
@@ -202,7 +201,7 @@
     </entityVariations>
     <entityVariations
         variationId="3"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="author">
@@ -293,7 +292,7 @@
     </entityVariations>
     <entityVariations
         variationId="4"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="author">
@@ -374,7 +373,7 @@
     </entityVariations>
     <entityVariations
         variationId="5"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="author">
@@ -451,7 +450,7 @@
     </entityVariations>
     <entityVariations
         variationId="6"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="author">
@@ -545,7 +544,7 @@
     </entityVariations>
     <entityVariations
         variationId="7"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="author">
@@ -629,7 +628,7 @@
     </entityVariations>
     <entityVariations
         variationId="8"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="author">
@@ -713,7 +712,7 @@
     </entityVariations>
     <entityVariations
         variationId="9"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="author">
@@ -787,7 +786,7 @@
     </entityVariations>
     <entityVariations
         variationId="10"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="author">
@@ -881,7 +880,7 @@
     </entityVariations>
     <entityVariations
         variationId="11"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="author">
@@ -965,7 +964,7 @@
     </entityVariations>
     <entityVariations
         variationId="12"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="author">
@@ -1039,7 +1038,7 @@
     </entityVariations>
     <entityVariations
         variationId="13"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="author">
@@ -1123,7 +1122,7 @@
     </entityVariations>
     <entityVariations
         variationId="14"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="defid">
@@ -1217,7 +1216,7 @@
     </entityVariations>
     <entityVariations
         variationId="15"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="defid">
@@ -1301,7 +1300,7 @@
     </entityVariations>
     <entityVariations
         variationId="16"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="defid">
@@ -1385,7 +1384,7 @@
     </entityVariations>
     <entityVariations
         variationId="17"
-        root="true">
+       >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="defid">

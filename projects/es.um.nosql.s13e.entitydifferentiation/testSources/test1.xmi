@@ -9,8 +9,7 @@
   <entities
       name="Persons">
     <entityVariations
-        variationId="1"
-        root="true">
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -27,8 +26,7 @@
           originalType="String"/>
     </entityVariations>
     <entityVariations
-        variationId="2"
-        root="true">
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -44,8 +42,7 @@
           refTo="//@entities.1/@entityVariations.0"/>
     </entityVariations>
     <entityVariations
-        variationId="3"
-        root="true">
+        variationId="3">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -62,8 +59,7 @@
           originalType="ObjectId"/>
     </entityVariations>
     <entityVariations
-        variationId="4"
-        root="true">
+        variationId="4">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -84,7 +80,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="CustomDate1">
+      name="CustomDate1" root="false">>
     <entityVariations
         variationId="10">
       <properties
@@ -99,8 +95,7 @@
   <entities
       name="CustomDate2">
     <entityVariations
-        variationId="20"
-        root="true">
+        variationId="20">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -120,8 +115,7 @@
   <entities
       name="CustomDate3">
     <entityVariations
-        variationId="30"
-        root="true">
+        variationId="30">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
