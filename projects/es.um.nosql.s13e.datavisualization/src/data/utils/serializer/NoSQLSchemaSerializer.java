@@ -88,7 +88,7 @@ public class NoSQLSchemaSerializer
 		String tabs = defTabs + TAB;
 		StringBuilder result = new StringBuilder();
 
-		result.append(tabs + "Entity - name: " + entity.getName() + ENDLINE);
+		result.append(tabs + "Entity - name: " + entity.getName() + ", root: " + entity.isRoot() + ENDLINE);
 
 		for (EntityVariation eVariation : entity.getEntityVariations())
 			result.append(stringify(eVariation, tabs));
@@ -111,7 +111,7 @@ public class NoSQLSchemaSerializer
 		StringBuilder result = new StringBuilder();
 
 		result.append(tabs + "EntityVariation - variationId: " + eVariation.getVariationId() +
-		        ", root: " + eVariation.isRoot() + ", count: " + eVariation.getCount() + ENDLINE);
+		    ", count: " + eVariation.getCount() + ", timestamp: " + eVariation.getTimestamp() + ENDLINE);
 
 		for (Property property : eVariation.getProperties())
 		{

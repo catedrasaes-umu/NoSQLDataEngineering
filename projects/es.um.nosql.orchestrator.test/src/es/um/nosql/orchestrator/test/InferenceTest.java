@@ -82,7 +82,7 @@ public class InferenceTest
     // we will make use of POJO objects and ignore problematic fields. Thing is, then we have a lot of options...
     //prepareCompanyExample(DbType.MONGODB, InferenceMode.FILL_AND_INFER, FILE_COMPANY);              //POJO
     //prepareLinkExample(DbType.MONGODB, InferenceMode.FILL_ONLY, FOLDER_LINK);                  //POJO
-    prepareHarvardExample(DbType.MONGODB, InferenceMode.INFER_ONLY, FILE_HARVARD);              //POJO
+    //prepareHarvardExample(DbType.MONGODB, InferenceMode.INFER_ONLY, FILE_HARVARD);              //POJO
     //prepareFacebookExample(DbType.MONGODB, InferenceMode.FILL_ONLY, FOLDER_FACEBOOK);          //POJO
     //prepareProteinExample(DbType.MONGODB, InferenceMode.FILL_ONLY, FOLDER_PROTEIN);            //POJO
     //preparePublicationsExample(DbType.MONGODB, InferenceMode.FILL_ONLY, FILE_PUBLICATIONS);    //POJO

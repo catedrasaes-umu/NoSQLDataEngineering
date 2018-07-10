@@ -9,8 +9,7 @@
   <entities
       name="EntityOne">
     <entityVariations
-        variationId="1"
-        root="true">
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="TypeString">
@@ -48,8 +47,7 @@
       </properties>
     </entityVariations>
     <entityVariations
-        variationId="2"
-        root="true">
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="TypeTupleString">
@@ -115,8 +113,7 @@
       </properties>
     </entityVariations>
     <entityVariations
-        variationId="3"
-        root="true">
+        variationId="3">
       <properties
           xsi:type="NoSQLSchema:Aggregate"
           name="embedded01"
@@ -143,8 +140,7 @@
           refTo="//@entities.1/@entityVariations.0 //@entities.1/@entityVariations.1"/>
     </entityVariations>
     <entityVariations
-        variationId="4"
-        root="true">
+        variationId="4">
       <properties
           xsi:type="NoSQLSchema:Reference"
           name="refsThree1"
@@ -169,7 +165,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="EntityTwo">
+      name="EntityTwo" root="false">
     <entityVariations
         variationId="1">
       <properties
@@ -231,8 +227,7 @@
   <entities
       name="EntityThree">
     <entityVariations
-        variationId="1"
-        root="true">
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -242,8 +237,7 @@
       </properties>
     </entityVariations>
     <entityVariations
-        variationId="2"
-        root="true">
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -253,8 +247,7 @@
       </properties>
     </entityVariations>
     <entityVariations
-        variationId="3"
-        root="true">
+        variationId="3">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">

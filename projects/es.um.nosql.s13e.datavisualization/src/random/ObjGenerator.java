@@ -106,7 +106,7 @@ public class ObjGenerator
 			{
 			  EntityVariation oev = NoSQLSchemaFactory.eINSTANCE.createEntityVariation();
 				oev.setVariationId(++IDENTIFIER);
-				oev.setRoot(true);
+				((Entity)oev.eContainer()).setRoot(true);
 				mapE.get(entity).getEntityVariations().add(oev);
 
 				JsonObject strObj = new JsonObject();
@@ -401,7 +401,7 @@ public class ObjGenerator
 
 				String evId = (String)mapEV.keySet().toArray()[random.nextInt(mapEV.size())];
 				EntityVariation ev = mapEV.get(evId);
-				ev.setRoot(false);
+				((Entity)ev.eContainer()).setRoot(false);
 				aggr.getRefTo().add(ev);
 
 				for (JsonElement jElem : lStorage)
@@ -422,7 +422,7 @@ public class ObjGenerator
 				{
 					String evId = (String)mapEV.keySet().toArray()[random.nextInt(mapEV.size())];
 					EntityVariation ev = mapEV.get(evId);
-					ev.setRoot(false);
+					((Entity)ev.eContainer()).setRoot(false);
 					aggr.getRefTo().add(ev);
 
 					for (JsonElement jElem : lStorage)

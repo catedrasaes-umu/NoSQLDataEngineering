@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" name="everypolitician">
   <entities name="Memberships">
-    <entityVariations variationId="1" root="true">
+    <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
@@ -28,7 +28,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="2" root="true">
+    <entityVariations variationId="2">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
@@ -52,7 +52,7 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Aggregate" name="sources" upperBound="1" refTo="//@entities.9/@entityVariations.0"/>
     </entityVariations>
-    <entityVariations variationId="3" root="true">
+    <entityVariations variationId="3">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
@@ -76,7 +76,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="4" root="true">
+    <entityVariations variationId="4">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
@@ -97,7 +97,7 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Aggregate" name="sources" upperBound="1" refTo="//@entities.9/@entityVariations.0"/>
     </entityVariations>
-    <entityVariations variationId="5" root="true">
+    <entityVariations variationId="5">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
@@ -123,7 +123,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="6" root="true">
+    <entityVariations variationId="6">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
@@ -146,7 +146,7 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Aggregate" name="sources" upperBound="1" refTo="//@entities.9/@entityVariations.0"/>
     </entityVariations>
-    <entityVariations variationId="7" root="true">
+    <entityVariations variationId="7">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
@@ -169,7 +169,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="8" root="true">
+    <entityVariations variationId="8">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
@@ -190,7 +190,7 @@
       <properties xsi:type="NoSQLSchema:Aggregate" name="sources" upperBound="1" refTo="//@entities.9/@entityVariations.0"/>
     </entityVariations>
   </entities>
-  <entities name="Identifier">
+  <entities name="Identifier" root="false">
     <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="identifier">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -201,7 +201,7 @@
     </entityVariations>
   </entities>
   <entities name="Events">
-    <entityVariations variationId="1" root="true">
+    <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -222,7 +222,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="2" root="true">
+    <entityVariations variationId="2">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -245,7 +245,7 @@
     </entityVariations>
   </entities>
   <entities name="Persons">
-    <entityVariations variationId="1" root="true">
+    <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -285,7 +285,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="2" root="true">
+    <entityVariations variationId="2">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -325,7 +325,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="3" root="true">
+    <entityVariations variationId="3">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -362,7 +362,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="4" root="true">
+    <entityVariations variationId="4">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -399,7 +399,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="5" root="true">
+    <entityVariations variationId="5">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -436,7 +436,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="6" root="true">
+    <entityVariations variationId="6">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -473,7 +473,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="7" root="true">
+    <entityVariations variationId="7">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -510,7 +510,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="8" root="true">
+    <entityVariations variationId="8">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -547,7 +547,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="9" root="true">
+    <entityVariations variationId="9">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -584,7 +584,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="10" root="true">
+    <entityVariations variationId="10">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -621,7 +621,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="11" root="true">
+    <entityVariations variationId="11">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -657,7 +657,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="12" root="true">
+    <entityVariations variationId="12">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -692,7 +692,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="13" root="true">
+    <entityVariations variationId="13">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -726,7 +726,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="14" root="true">
+    <entityVariations variationId="14">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -762,7 +762,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="15" root="true">
+    <entityVariations variationId="15">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -798,7 +798,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="16" root="true">
+    <entityVariations variationId="16">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -832,7 +832,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="17" root="true">
+    <entityVariations variationId="17">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -865,7 +865,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="18" root="true">
+    <entityVariations variationId="18">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -898,7 +898,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="19" root="true">
+    <entityVariations variationId="19">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -931,7 +931,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="20" root="true">
+    <entityVariations variationId="20">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -964,7 +964,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="21" root="true">
+    <entityVariations variationId="21">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -997,7 +997,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="22" root="true">
+    <entityVariations variationId="22">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1030,7 +1030,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="23" root="true">
+    <entityVariations variationId="23">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1062,7 +1062,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="24" root="true">
+    <entityVariations variationId="24">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1095,7 +1095,7 @@
     </entityVariations>
   </entities>
   <entities name="Organizations">
-    <entityVariations variationId="1" root="true">
+    <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1118,7 +1118,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="2" root="true">
+    <entityVariations variationId="2">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1138,7 +1138,7 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Aggregate" name="other_names" upperBound="1" refTo="//@entities.5/@entityVariations.0"/>
     </entityVariations>
-    <entityVariations variationId="3" root="true">
+    <entityVariations variationId="3">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1158,7 +1158,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="4" root="true">
+    <entityVariations variationId="4">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1175,7 +1175,7 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Aggregate" name="other_names" upperBound="1" refTo="//@entities.5/@entityVariations.0"/>
     </entityVariations>
-    <entityVariations variationId="5" root="true">
+    <entityVariations variationId="5">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1196,7 +1196,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
-    <entityVariations variationId="6" root="true">
+    <entityVariations variationId="6">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1211,7 +1211,7 @@
       </properties>
     </entityVariations>
   </entities>
-  <entities name="Other_name">
+  <entities name="Other_name" root="false">
     <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="lang">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -1232,14 +1232,14 @@
       </properties>
     </entityVariations>
   </entities>
-  <entities name="Image">
+  <entities name="Image" root="false">
     <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="url">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
   </entities>
-  <entities name="Contact_detail">
+  <entities name="Contact_detail" root="false">
     <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="type">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -1250,7 +1250,7 @@
     </entityVariations>
   </entities>
   <entities name="Link">
-    <entityVariations variationId="1">
+    <entityVariations variationId="1" root="false">
       <properties xsi:type="NoSQLSchema:Attribute" name="note">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1260,14 +1260,14 @@
     </entityVariations>
   </entities>
   <entities name="Source">
-    <entityVariations variationId="1">
+    <entityVariations variationId="1" root="false">
       <properties xsi:type="NoSQLSchema:Attribute" name="url">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </entityVariations>
   </entities>
   <entities name="Areas">
-    <entityVariations variationId="1" root="true">
+    <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>

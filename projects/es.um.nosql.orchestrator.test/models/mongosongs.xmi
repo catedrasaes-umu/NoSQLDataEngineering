@@ -5,11 +5,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema"
     name="mongosongs">
-  <entities
-      name="Artist">
-    <entityVariations
-        variationId="1"
-        root="true">
+  <entities name="Artist">
+    <entityVariations variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -57,9 +54,7 @@
           refTo="Track"
           originalType="String"/>
     </entityVariations>
-    <entityVariations
-        variationId="2"
-        root="true">
+    <entityVariations variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -104,9 +99,7 @@
   </entities>
   <entities
       name="Album">
-    <entityVariations
-        variationId="1"
-        root="true">
+    <entityVariations variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -177,9 +170,7 @@
           upperBound="-1"
           refTo="//@entities.4/@entityVariations.0 //@entities.4/@entityVariations.1"/>
     </entityVariations>
-    <entityVariations
-        variationId="2"
-        root="true">
+    <entityVariations variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -248,9 +239,7 @@
           upperBound="-1"
           refTo="//@entities.4/@entityVariations.0"/>
     </entityVariations>
-    <entityVariations
-        variationId="3"
-        root="true">
+    <entityVariations variationId="3">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -320,9 +309,7 @@
   </entities>
   <entities
       name="Track">
-    <entityVariations
-        variationId="1"
-        root="true">
+    <entityVariations variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -374,9 +361,7 @@
           upperBound="1"
           refTo="//@entities.6/@entityVariations.0"/>
     </entityVariations>
-    <entityVariations
-        variationId="2"
-        root="true">
+    <entityVariations variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -425,7 +410,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="Prize">
+      name="Prize" root="false">
     <entityVariations
         variationId="1">
       <properties
@@ -500,7 +485,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="Review">
+      name="Review" root="false">
     <entityVariations
         variationId="1">
       <properties
@@ -563,7 +548,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="Media">
+      name="Media" root="false">
     <entityVariations
         variationId="1">
       <properties
@@ -590,7 +575,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="Rating">
+      name="Rating" root="false">
     <entityVariations
         variationId="1">
       <properties

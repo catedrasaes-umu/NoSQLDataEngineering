@@ -83,7 +83,7 @@ public class JsonGenerator
           }
 
           // We will override the _id and the type parameters...
-          if (eVariation.isRoot())
+          if (entity.isRoot())
           {
             strObj.put("_id", new ObjectId().toString());
             strObj.put("_type", entity.getName());

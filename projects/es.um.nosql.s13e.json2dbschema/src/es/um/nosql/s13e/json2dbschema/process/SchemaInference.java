@@ -292,6 +292,7 @@ public class SchemaInference
   {
     // Entity names are by convention capitalized
     Optional<String> typeName = Optional.empty();
+    // TODO: Remember now a variation cant be root, it is entity which may be root.
     if (isRoot)
       typeName = Optional.ofNullable(n.get("_type"))
       .map(_n -> Inflector.getInstance().capitalize(_n.asString()));

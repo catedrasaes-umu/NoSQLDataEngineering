@@ -84,10 +84,11 @@ public class NoSQLModelBuilder
 			  EntityVariation theEV = factory.createEntityVariation();
 				theEV.setVariationId(n.next());
 
-				// Set the root flag. It is needed to know which
-				// entities can be destination of a reference
+				// If any variation is not root, then the entity is not root
 				ObjectSC obj = (ObjectSC)schema;
-				theEV.setRoot(obj.isRoot);
+				if (!obj.isRoot)
+				  e.setRoot(false);
+
 				theEV.setCount(obj.count);
 				theEV.setTimestamp(obj.timestamp);
 
@@ -137,9 +138,8 @@ public class NoSQLModelBuilder
 
 	private ReferenceMatcher<Entity> createReferenceMatcher() 
 	{
-		return 
-			new ReferenceMatcher<>(mEntities.stream()
-				.filter(e -> e.getEntityVariations().stream().anyMatch(EntityVariation::isRoot))
+		return new ReferenceMatcher<>(mEntities.stream()
+				.filter(e -> e.isRoot())
 				.map(e -> 
 					Pair.of(new HashSet<String>(Arrays.asList(
 								e.getName(),

@@ -75,7 +75,7 @@ public class ObjectGen
     {
       ArrayNode entityObjs = factory.arrayNode();
 
-      if (entity.getEntityVariations().stream().anyMatch(ev -> ev.isRoot()))
+      if (entity.isRoot())
         eIdMap.initialize(entity.getName());
 
       for (EntityVariation eVariation : entity.getEntityVariations())
@@ -89,7 +89,7 @@ public class ObjectGen
 
           eVariation.getProperties().stream().filter(p -> p instanceof Attribute && !p.getName().equals("_id")).forEach(p -> this.generateAttribute(oNode, (Attribute)p));
 
-          if (eVariation.isRoot())
+          if (entity.isRoot())
           {
             entityObjs.add(oNode);
             this.generateMetadata(oNode, entity, eVariation.getProperties().stream()

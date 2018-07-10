@@ -45,7 +45,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="Style">
+      name="Style" root="false">
     <entityVariations
         variationId="1">
       <properties
@@ -588,7 +588,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="Director">
+      name="Director" root="false">
     <entityVariations
         variationId="1">
       <properties
@@ -818,7 +818,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="Guard">
+      name="Guard" root="false">
     <entityVariations
         variationId="1">
       <properties

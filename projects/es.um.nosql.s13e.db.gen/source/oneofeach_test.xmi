@@ -9,8 +9,7 @@
   <entities
       name="EntityOne">
     <entityVariations
-        variationId="1"
-        root="true">
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">

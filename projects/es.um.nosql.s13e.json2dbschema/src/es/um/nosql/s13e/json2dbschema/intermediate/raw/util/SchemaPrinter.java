@@ -19,7 +19,7 @@ public class SchemaPrinter
 {
   public static String schemaString(SchemaComponent sc)
   {
-    StringBuilder sb = new StringBuilder(20);
+    StringBuilder sb = new StringBuilder();
     return schemaString(sc, sb);
   }
 
