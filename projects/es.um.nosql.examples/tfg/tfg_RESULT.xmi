@@ -4,7 +4,7 @@
       name="Address data">
     <entityVariations
         variationId="1"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="CP Address">
@@ -50,7 +50,7 @@
     </entityVariations>
     <entityVariations
         variationId="2"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="CP Address">
@@ -96,7 +96,7 @@
     </entityVariations>
     <entityVariations
         variationId="3"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="CP Address">
@@ -142,7 +142,7 @@
     </entityVariations>
     <entityVariations
         variationId="4"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="CP Address">
@@ -181,7 +181,7 @@
     </entityVariations>
     <entityVariations
         variationId="5"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="CP Address">
@@ -220,7 +220,7 @@
     </entityVariations>
     <entityVariations
         variationId="6"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="CP Address">
@@ -262,7 +262,7 @@
       name="Contact data">
     <entityVariations
         variationId="1"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Email">
@@ -301,7 +301,7 @@
     </entityVariations>
     <entityVariations
         variationId="2"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Email">
@@ -333,7 +333,7 @@
     </entityVariations>
     <entityVariations
         variationId="3"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Email">
@@ -368,7 +368,7 @@
       name="Extra data">
     <entityVariations
         variationId="1"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Date Register">
@@ -421,7 +421,7 @@
     </entityVariations>
     <entityVariations
         variationId="2"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Date Register">
@@ -467,7 +467,7 @@
     </entityVariations>
     <entityVariations
         variationId="3"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Date Register">
@@ -513,7 +513,7 @@
     </entityVariations>
     <entityVariations
         variationId="4"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Date Register">
@@ -555,7 +555,7 @@
       name="Personal data">
     <entityVariations
         variationId="1"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -622,7 +622,7 @@
     </entityVariations>
     <entityVariations
         variationId="2"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -682,7 +682,7 @@
     </entityVariations>
     <entityVariations
         variationId="3"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -749,7 +749,7 @@
     </entityVariations>
     <entityVariations
         variationId="4"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -809,7 +809,7 @@
     </entityVariations>
     <entityVariations
         variationId="5"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -876,7 +876,7 @@
     </entityVariations>
     <entityVariations
         variationId="6"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -936,7 +936,7 @@
     </entityVariations>
     <entityVariations
         variationId="7"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -996,7 +996,7 @@
     </entityVariations>
     <entityVariations
         variationId="8"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -1063,7 +1063,7 @@
     </entityVariations>
     <entityVariations
         variationId="9"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -1123,7 +1123,7 @@
     </entityVariations>
     <entityVariations
         variationId="10"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -1183,7 +1183,7 @@
     </entityVariations>
     <entityVariations
         variationId="11"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -1250,7 +1250,7 @@
     </entityVariations>
     <entityVariations
         variationId="12"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -1310,7 +1310,7 @@
     </entityVariations>
     <entityVariations
         variationId="13"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -1377,7 +1377,7 @@
     </entityVariations>
     <entityVariations
         variationId="14"
-        root="true">
+        >
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">

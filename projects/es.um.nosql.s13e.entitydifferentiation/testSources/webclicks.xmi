@@ -54,8 +54,7 @@
       </properties>
     </entityVariations>
     <entityVariations
-        variationId="2"
-        root="true">
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">

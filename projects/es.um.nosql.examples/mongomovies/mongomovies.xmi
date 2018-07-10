@@ -9,8 +9,7 @@
   <entities
       name="Movie">
     <entityVariations
-        variationId="1"
-        root="true">
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -66,8 +65,7 @@
       </properties>
     </entityVariations>
     <entityVariations
-        variationId="2"
-        root="true">
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -120,8 +118,7 @@
       </properties>
     </entityVariations>
     <entityVariations
-        variationId="3"
-        root="true">
+        variationId="3">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -172,8 +169,7 @@
       </properties>
     </entityVariations>
     <entityVariations
-        variationId="4"
-        root="true">
+        variationId="4">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -230,8 +226,7 @@
       </properties>
     </entityVariations>
     <entityVariations
-        variationId="5"
-        root="true">
+        variationId="5">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -299,8 +294,7 @@
   <entities
       name="Movietheater">
     <entityVariations
-        variationId="1"
-        root="true">
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -338,8 +332,7 @@
       </properties>
     </entityVariations>
     <entityVariations
-        variationId="2"
-        root="true">
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -385,7 +378,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="Rating">
+      name="Rating" root="false">
     <entityVariations
         variationId="1">
       <properties
@@ -405,7 +398,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="Media">
+      name="Media" root="false">
     <entityVariations
         variationId="1">
       <properties
@@ -427,8 +420,7 @@
   <entities
       name="Director">
     <entityVariations
-        variationId="1"
-        root="true">
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -466,8 +458,7 @@
       </properties>
     </entityVariations>
     <entityVariations
-        variationId="2"
-        root="true">
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -499,7 +490,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="Criticism">
+      name="Criticism" root="false">
     <entityVariations
         variationId="1">
       <properties
@@ -548,7 +539,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="Prize">
+      name="Prize" root="false">
     <entityVariations
         variationId="1">
       <properties

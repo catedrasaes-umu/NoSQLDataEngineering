@@ -9,8 +9,7 @@
   <entities
       name="Artist">
     <entityVariations
-        variationId="1"
-        root="true">
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -59,8 +58,7 @@
           originalType="String"/>
     </entityVariations>
     <entityVariations
-        variationId="2"
-        root="true">
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -106,8 +104,7 @@
   <entities
       name="Album">
     <entityVariations
-        variationId="1"
-        root="true">
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -179,8 +176,7 @@
           refTo="//@entities.4/@entityVariations.0 //@entities.4/@entityVariations.1"/>
     </entityVariations>
     <entityVariations
-        variationId="2"
-        root="true">
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -250,8 +246,7 @@
           refTo="//@entities.4/@entityVariations.0"/>
     </entityVariations>
     <entityVariations
-        variationId="3"
-        root="true">
+        variationId="3">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -322,8 +317,7 @@
   <entities
       name="Track">
     <entityVariations
-        variationId="1"
-        root="true">
+        variationId="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -376,8 +370,7 @@
           refTo="//@entities.6/@entityVariations.0"/>
     </entityVariations>
     <entityVariations
-        variationId="2"
-        root="true">
+        variationId="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -426,7 +419,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="Prize">
+      name="Prize" root="false">
     <entityVariations
         variationId="1">
       <properties
@@ -501,7 +494,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="Review">
+      name="Review" root="false">
     <entityVariations
         variationId="1">
       <properties
@@ -564,7 +557,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="Media">
+      name="Media" root="false">
     <entityVariations
         variationId="1">
       <properties
@@ -591,7 +584,7 @@
     </entityVariations>
   </entities>
   <entities
-      name="Rating">
+      name="Rating" root="false">
     <entityVariations
         variationId="1">
       <properties
