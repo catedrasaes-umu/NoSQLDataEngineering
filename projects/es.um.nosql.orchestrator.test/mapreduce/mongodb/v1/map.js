@@ -2,10 +2,10 @@ function()
 {
   function flatten_schema_str(obj, interesting_keys)
   {
-    return JSON.stringify(flatten_schema(obj,interesting_keys));
+    return JSON.stringify(flatten_schema(obj, interesting_keys));
   }
 
-  function flatten_schema (obj , interesting_keys)
+  function flatten_schema(obj, interesting_keys)
   {
     var retschema = null;
 
@@ -68,7 +68,7 @@ function()
     else if (obj instanceof Date)
     {
       retschema = new Date();
-    }// Object
+    } // Object
     else if ((typeof obj) == 'object')
     {
       retschema = _complex_obj(obj, true);

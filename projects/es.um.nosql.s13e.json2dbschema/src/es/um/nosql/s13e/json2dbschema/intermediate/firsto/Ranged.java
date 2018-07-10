@@ -8,5 +8,5 @@ import org.apache.commons.lang3.Range;
  */
 public interface Ranged
 {
-	public abstract Range<? extends Comparable<?>> getRange();
+  public abstract Range<? extends Comparable<?>> getRange();
 }

@@ -14,14 +14,16 @@ import es.um.nosql.s13e.json2dbschema.intermediate.raw.StringSC;
  */
 public class StringMultiValuedSC extends StringSC implements MultiValued
 {
-	Set<String> values;
+  Set<String> values;
 
-	public StringMultiValuedSC() {
-		values = new HashSet<String>();
-	}
+  public StringMultiValuedSC()
+  {
+    values = new HashSet<String>();
+  }
 
-	@Override
-	public Set<String> getValues() {
-		return values;
-	}
+  @Override
+  public Set<String> getValues()
+  {
+    return values;
+  }
 }

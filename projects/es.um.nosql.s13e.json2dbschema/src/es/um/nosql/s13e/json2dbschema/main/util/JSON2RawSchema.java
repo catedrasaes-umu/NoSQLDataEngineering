@@ -16,10 +16,10 @@ import org.codehaus.jackson.map.ObjectMapper;
  */
 public class JSON2RawSchema
 {
-	private static ObjectMapper m = new ObjectMapper();
-	
-	public static JsonNode fromJSON(String json) throws JsonProcessingException, IOException
-	{
-		return m.readTree(json);
-	}
+  private static ObjectMapper m = new ObjectMapper();
+
+  public static JsonNode fromJSON(String json) throws JsonProcessingException, IOException
+  {
+    return m.readTree(json);
+  }
 }
