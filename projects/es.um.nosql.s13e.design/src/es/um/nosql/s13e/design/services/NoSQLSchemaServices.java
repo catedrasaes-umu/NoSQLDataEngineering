@@ -19,9 +19,8 @@ public class NoSQLSchemaServices
   public boolean existsSchemaVariation(NoSQLSchema model)
   {
     for (Entity entity : model.getEntities())
-      for (EntityVariation eVariation : entity.getEntityVariations())
-        if (eVariation.isRoot())
-          return true;
+      if (entity.isRoot())
+        return true;
 
     return false;
   }
@@ -31,12 +30,11 @@ public class NoSQLSchemaServices
     List<Entity> result = new ArrayList<Entity>();
 
     for (Entity entity : model.getEntities())
-      for (EntityVariation eVariation : entity.getEntityVariations())
-        if (eVariation.isRoot())
-        {
-          result.add(entity);
-          break;
-        }
+      if (entity.isRoot())
+      {
+        result.add(entity);
+        break;
+      }
 
     result.sort(new Comparator<Entity>()
     {
@@ -94,8 +92,10 @@ public class NoSQLSchemaServices
   {
     List<Entity> result = new ArrayList<Entity>();
 
-    entity.getEntityVariations().stream().filter(ev -> ev.isRoot())
-        .forEach(ev -> result.addAll(getEntitiesFromSchema(ev)));
+    if (!entity.isRoot())
+      return result;
+
+    entity.getEntityVariations().stream().forEach(ev -> result.addAll(getEntitiesFromSchema(ev)));
 
     return result;
   }
@@ -103,8 +103,7 @@ public class NoSQLSchemaServices
   /**
    * Method used to gather all the entities related to a eVariation root in any way.
    * 
-   * @param root
-   *          The eVariation of which we want to collect all the entities
+   * @param root The eVariation of which we want to collect all the entities
    * @return A list of Entities
    */
   public List<Entity> getEntitiesFromSchema(EntityVariation root)
@@ -133,8 +132,10 @@ public class NoSQLSchemaServices
   {
     List<EntityVariation> result = new ArrayList<EntityVariation>();
 
-    entity.getEntityVariations().stream().filter(ev -> ev.isRoot())
-        .forEach(ev -> result.addAll(getReducedEVariationsFromSchema(ev)));
+    if (!entity.isRoot())
+      return result;
+
+    entity.getEntityVariations().stream().forEach(ev -> result.addAll(getReducedEVariationsFromSchema(ev)));
 
     return result;
   }
@@ -183,7 +184,7 @@ public class NoSQLSchemaServices
 
     for (Entity entity : model.getEntities())
       for (EntityVariation evInEntity : entity.getEntityVariations())
-        if (evInEntity.isRoot()
+        if (entity.isRoot()
             && (evInEntity == eVariation || SchemaCollector.getEVariationsFromSchema(evInEntity).contains(eVariation)))
           result.add(evInEntity);
 
