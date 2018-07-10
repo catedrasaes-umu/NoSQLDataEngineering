@@ -2,14 +2,14 @@
  */
 package es.um.nosql.s13e.NoSQLSchema.impl;
 
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
+
 import org.eclipse.emf.common.notify.Notification;
 
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 
 /**
  * <!-- begin-user-doc -->

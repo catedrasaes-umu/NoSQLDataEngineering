@@ -2,10 +2,10 @@
  */
 package es.um.nosql.s13e.NoSQLSchema.impl;
 
-import org.eclipse.emf.ecore.EClass;
-
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Null;
+
+import org.eclipse.emf.ecore.EClass;
 
 /**
  * <!-- begin-user-doc -->

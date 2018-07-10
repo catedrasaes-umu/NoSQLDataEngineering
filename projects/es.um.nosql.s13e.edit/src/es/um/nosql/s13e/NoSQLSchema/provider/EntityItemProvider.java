@@ -68,6 +68,7 @@ public class EntityItemProvider
       super.getPropertyDescriptors(object);
 
       addNamePropertyDescriptor(object);
+      addRootPropertyDescriptor(object);
       addParentsPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
@@ -92,6 +93,29 @@ public class EntityItemProvider
          false,
          false,
          ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+         null,
+         null));
+  }
+
+  /**
+   * This adds a property descriptor for the Root feature.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected void addRootPropertyDescriptor(Object object)
+  {
+    itemPropertyDescriptors.add
+      (createItemPropertyDescriptor
+        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+         getResourceLocator(),
+         getString("_UI_Entity_root_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_Entity_root_feature", "_UI_Entity_type"),
+         NoSQLSchemaPackage.Literals.ENTITY__ROOT,
+         true,
+         false,
+         false,
+         ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
          null,
          null));
   }
@@ -195,6 +219,7 @@ public class EntityItemProvider
     switch (notification.getFeatureID(Entity.class))
     {
       case NoSQLSchemaPackage.ENTITY__NAME:
+      case NoSQLSchemaPackage.ENTITY__ROOT:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
       case NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS:

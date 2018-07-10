@@ -69,7 +69,6 @@ public class EntityVariationItemProvider
 
       addVariationIdPropertyDescriptor(object);
       addCountPropertyDescriptor(object);
-      addRootPropertyDescriptor(object);
       addTimestampPropertyDescriptor(object);
     }
     return itemPropertyDescriptors;
@@ -117,29 +116,6 @@ public class EntityVariationItemProvider
          false,
          false,
          ItemPropertyDescriptor.INTEGRAL_VALUE_IMAGE,
-         null,
-         null));
-  }
-
-  /**
-   * This adds a property descriptor for the Root feature.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  protected void addRootPropertyDescriptor(Object object)
-  {
-    itemPropertyDescriptors.add
-      (createItemPropertyDescriptor
-        (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
-         getResourceLocator(),
-         getString("_UI_EntityVariation_root_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_EntityVariation_root_feature", "_UI_EntityVariation_type"),
-         NoSQLSchemaPackage.Literals.ENTITY_VARIATION__ROOT,
-         true,
-         false,
-         false,
-         ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
          null,
          null));
   }
@@ -242,7 +218,6 @@ public class EntityVariationItemProvider
     {
       case NoSQLSchemaPackage.ENTITY_VARIATION__VARIATION_ID:
       case NoSQLSchemaPackage.ENTITY_VARIATION__COUNT:
-      case NoSQLSchemaPackage.ENTITY_VARIATION__ROOT:
       case NoSQLSchemaPackage.ENTITY_VARIATION__TIMESTAMP:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;

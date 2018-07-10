@@ -4,9 +4,9 @@
  */
 package es.um.nosql.s13e.NoSQLSchema.validation;
 
-import org.eclipse.emf.common.util.EList;
-
 import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * A sample validator interface for {@link es.um.nosql.s13e.NoSQLSchema.Aggregate}.

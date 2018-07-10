@@ -2,13 +2,6 @@
  */
 package es.um.nosql.s13e.NoSQLSchema.impl;
 
-import org.eclipse.emf.ecore.EAttribute;
-import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.emf.ecore.EReference;
-
-import org.eclipse.emf.ecore.impl.EPackageImpl;
-
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
@@ -23,6 +16,13 @@ import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.Tuple;
 import es.um.nosql.s13e.NoSQLSchema.Type;
+
+import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EPackage;
+import org.eclipse.emf.ecore.EReference;
+
+import org.eclipse.emf.ecore.impl.EPackageImpl;
 
 /**
  * <!-- begin-user-doc -->
@@ -231,21 +231,32 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 
   /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EReference getEntity_EntityVariations() {
-    return (EReference)entityEClass.getEStructuralFeatures().get(1);
+  public EAttribute getEntity_Root()
+  {
+    return (EAttribute)entityEClass.getEStructuralFeatures().get(1);
   }
 
-		/**
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EReference getEntity_EntityVariations()
+  {
+    return (EReference)entityEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   public EReference getEntity_Parents()
   {
-    return (EReference)entityEClass.getEStructuralFeatures().get(2);
+    return (EReference)entityEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -293,19 +304,9 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEntityVariation_Root()
-  {
-    return (EAttribute)entityVariationEClass.getEStructuralFeatures().get(3);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
   public EAttribute getEntityVariation_Timestamp()
   {
-    return (EAttribute)entityVariationEClass.getEStructuralFeatures().get(4);
+    return (EAttribute)entityVariationEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -544,6 +545,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 
     entityEClass = createEClass(ENTITY);
     createEAttribute(entityEClass, ENTITY__NAME);
+    createEAttribute(entityEClass, ENTITY__ROOT);
     createEReference(entityEClass, ENTITY__ENTITY_VARIATIONS);
     createEReference(entityEClass, ENTITY__PARENTS);
 
@@ -551,7 +553,6 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
     createEAttribute(entityVariationEClass, ENTITY_VARIATION__VARIATION_ID);
     createEReference(entityVariationEClass, ENTITY_VARIATION__PROPERTIES);
     createEAttribute(entityVariationEClass, ENTITY_VARIATION__COUNT);
-    createEAttribute(entityVariationEClass, ENTITY_VARIATION__ROOT);
     createEAttribute(entityVariationEClass, ENTITY_VARIATION__TIMESTAMP);
 
     propertyEClass = createEClass(PROPERTY);
@@ -628,6 +629,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 
     initEClass(entityEClass, Entity.class, "Entity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getEntity_Name(), ecorePackage.getEString(), "name", null, 1, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getEntity_Root(), ecorePackage.getEBoolean(), "root", "true", 0, 1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntity_EntityVariations(), this.getEntityVariation(), null, "entityVariations", null, 1, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntity_Parents(), this.getEntity(), null, "parents", null, 0, -1, Entity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -635,7 +637,6 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
     initEAttribute(getEntityVariation_VariationId(), ecorePackage.getEInt(), "variationId", null, 1, 1, EntityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getEntityVariation_Properties(), this.getProperty(), null, "properties", null, 1, -1, EntityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEntityVariation_Count(), ecorePackage.getELong(), "count", "0", 0, 1, EntityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getEntityVariation_Root(), ecorePackage.getEBoolean(), "root", "false", 0, 1, EntityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getEntityVariation_Timestamp(), ecorePackage.getELong(), "timestamp", null, 0, 1, EntityVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyEClass, Property.class, "Property", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);

@@ -2,6 +2,10 @@
  */
 package es.um.nosql.s13e.NoSQLSchema.impl;
 
+import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -19,10 +23,6 @@ import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Entity</b></em>'.
@@ -32,6 +32,7 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
  * </p>
  * <ul>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityImpl#getName <em>Name</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityImpl#isRoot <em>Root</em>}</li>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityImpl#getEntityVariations <em>Entity Variations</em>}</li>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityImpl#getParents <em>Parents</em>}</li>
  * </ul>
@@ -61,16 +62,36 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
   protected String name = NAME_EDEFAULT;
 
   /**
+   * The default value of the '{@link #isRoot() <em>Root</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isRoot()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean ROOT_EDEFAULT = true;
+
+  /**
+   * The cached value of the '{@link #isRoot() <em>Root</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isRoot()
+   * @generated
+   * @ordered
+   */
+  protected boolean root = ROOT_EDEFAULT;
+
+  /**
    * The cached value of the '{@link #getEntityVariations() <em>Entity Variations</em>}' containment reference list.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @see #getEntityVariations()
    * @generated
    * @ordered
    */
-	protected EList<EntityVariation> entityVariations;
+  protected EList<EntityVariation> entityVariations;
 
-		/**
+  /**
    * The cached value of the '{@link #getParents() <em>Parents</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -126,10 +147,34 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
 
   /**
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    */
-	public EList<EntityVariation> getEntityVariations() {
+  public boolean isRoot()
+  {
+    return root;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setRoot(boolean newRoot)
+  {
+    boolean oldRoot = root;
+    root = newRoot;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY__ROOT, oldRoot, root));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EList<EntityVariation> getEntityVariations()
+  {
     if (entityVariations == null)
     {
       entityVariations = new EObjectContainmentEList<EntityVariation>(EntityVariation.class, this, NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS);
@@ -137,7 +182,7 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
     return entityVariations;
   }
 
-		/**
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -179,6 +224,8 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
     {
       case NoSQLSchemaPackage.ENTITY__NAME:
         return getName();
+      case NoSQLSchemaPackage.ENTITY__ROOT:
+        return isRoot();
       case NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS:
         return getEntityVariations();
       case NoSQLSchemaPackage.ENTITY__PARENTS:
@@ -200,6 +247,9 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
     {
       case NoSQLSchemaPackage.ENTITY__NAME:
         setName((String)newValue);
+        return;
+      case NoSQLSchemaPackage.ENTITY__ROOT:
+        setRoot((Boolean)newValue);
         return;
       case NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS:
         getEntityVariations().clear();
@@ -226,6 +276,9 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
       case NoSQLSchemaPackage.ENTITY__NAME:
         setName(NAME_EDEFAULT);
         return;
+      case NoSQLSchemaPackage.ENTITY__ROOT:
+        setRoot(ROOT_EDEFAULT);
+        return;
       case NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS:
         getEntityVariations().clear();
         return;
@@ -248,6 +301,8 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
     {
       case NoSQLSchemaPackage.ENTITY__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case NoSQLSchemaPackage.ENTITY__ROOT:
+        return root != ROOT_EDEFAULT;
       case NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS:
         return entityVariations != null && !entityVariations.isEmpty();
       case NoSQLSchemaPackage.ENTITY__PARENTS:
@@ -269,6 +324,8 @@ public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
     StringBuffer result = new StringBuffer(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", root: ");
+    result.append(root);
     result.append(')');
     return result.toString();
   }

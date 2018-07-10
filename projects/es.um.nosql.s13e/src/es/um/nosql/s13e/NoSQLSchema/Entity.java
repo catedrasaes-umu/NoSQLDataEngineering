@@ -16,6 +16,7 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Entity#getName <em>Name</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Entity#isRoot <em>Root</em>}</li>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Entity#getEntityVariations <em>Entity Variations</em>}</li>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Entity#getParents <em>Parents</em>}</li>
  * </ul>
@@ -53,22 +54,49 @@ public interface Entity extends EObject
   void setName(String value);
 
   /**
+   * Returns the value of the '<em><b>Root</b></em>' attribute.
+   * The default value is <code>"true"</code>.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Root</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Root</em>' attribute.
+   * @see #setRoot(boolean)
+   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntity_Root()
+   * @model default="true"
+   * @generated
+   */
+  boolean isRoot();
+
+  /**
+   * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.Entity#isRoot <em>Root</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Root</em>' attribute.
+   * @see #isRoot()
+   * @generated
+   */
+  void setRoot(boolean value);
+
+  /**
    * Returns the value of the '<em><b>Entity Variations</b></em>' containment reference list.
    * The list contents are of type {@link es.um.nosql.s13e.NoSQLSchema.EntityVariation}.
    * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Entity Variations</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Entity Variations</em>' containment reference list isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
    * @return the value of the '<em>Entity Variations</em>' containment reference list.
    * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getEntity_EntityVariations()
    * @model containment="true" required="true"
    * @generated
    */
-	EList<EntityVariation> getEntityVariations();
+  EList<EntityVariation> getEntityVariations();
 
-		/**
+  /**
    * Returns the value of the '<em><b>Parents</b></em>' reference list.
    * The list contents are of type {@link es.um.nosql.s13e.NoSQLSchema.Entity}.
    * <!-- begin-user-doc -->

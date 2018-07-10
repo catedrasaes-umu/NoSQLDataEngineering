@@ -4,9 +4,9 @@
  */
 package es.um.nosql.s13e.NoSQLSchema.validation;
 
-import org.eclipse.emf.common.util.EList;
-
 import es.um.nosql.s13e.NoSQLSchema.Property;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * A sample validator interface for {@link es.um.nosql.s13e.NoSQLSchema.EntityVariation}.
@@ -21,6 +21,5 @@ public interface EntityVariationValidator
   boolean validateVariationId(int value);
   boolean validateProperties(EList<Property> value);
   boolean validateCount(long value);
-  boolean validateRoot(boolean value);
   boolean validateTimestamp(long value);
 }

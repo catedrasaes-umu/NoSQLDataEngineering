@@ -2,12 +2,12 @@
  */
 package es.um.nosql.s13e.NoSQLSchema.util;
 
+import es.um.nosql.s13e.NoSQLSchema.*;
+
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
-
-import es.um.nosql.s13e.NoSQLSchema.*;
 
 /**
  * <!-- begin-user-doc -->

@@ -4,11 +4,11 @@
  */
 package es.um.nosql.s13e.NoSQLSchema.validation;
 
-import org.eclipse.emf.common.util.EList;
-
 import es.um.nosql.s13e.NoSQLSchema.Entity;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * A sample validator interface for {@link es.um.nosql.s13e.NoSQLSchema.Reference}.

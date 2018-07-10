@@ -2,6 +2,11 @@
  */
 package es.um.nosql.s13e.NoSQLSchema.impl;
 
+import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.NoSQLSchema.Property;
+import es.um.nosql.s13e.NoSQLSchema.Reference;
+
 import java.util.Collection;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -16,11 +21,6 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 import org.eclipse.emf.ecore.util.EObjectContainmentEList;
 import org.eclipse.emf.ecore.util.InternalEList;
-
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.s13e.NoSQLSchema.Property;
-import es.um.nosql.s13e.NoSQLSchema.Reference;
 
 /**
  * <!-- begin-user-doc -->

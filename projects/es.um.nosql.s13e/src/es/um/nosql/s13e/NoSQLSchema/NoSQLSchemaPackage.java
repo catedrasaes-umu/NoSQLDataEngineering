@@ -123,22 +123,31 @@ public interface NoSQLSchemaPackage extends EPackage
   int ENTITY__NAME = 0;
 
   /**
-   * The feature id for the '<em><b>Entity Variations</b></em>' containment reference list.
+   * The feature id for the '<em><b>Root</b></em>' attribute.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-	int ENTITY__ENTITY_VARIATIONS = 1;
+  int ENTITY__ROOT = 1;
 
-		/**
+  /**
+   * The feature id for the '<em><b>Entity Variations</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTITY__ENTITY_VARIATIONS = 2;
+
+  /**
    * The feature id for the '<em><b>Parents</b></em>' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY__PARENTS = 2;
+  int ENTITY__PARENTS = 3;
 
   /**
    * The number of structural features of the '<em>Entity</em>' class.
@@ -147,7 +156,7 @@ public interface NoSQLSchemaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_FEATURE_COUNT = 3;
+  int ENTITY_FEATURE_COUNT = 4;
 
   /**
    * The number of operations of the '<em>Entity</em>' class.
@@ -196,22 +205,13 @@ public interface NoSQLSchemaPackage extends EPackage
   int ENTITY_VARIATION__COUNT = 2;
 
   /**
-   * The feature id for the '<em><b>Root</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int ENTITY_VARIATION__ROOT = 3;
-
-  /**
    * The feature id for the '<em><b>Timestamp</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int ENTITY_VARIATION__TIMESTAMP = 4;
+  int ENTITY_VARIATION__TIMESTAMP = 3;
 
   /**
    * The number of structural features of the '<em>Entity Variation</em>' class.
@@ -220,7 +220,7 @@ public interface NoSQLSchemaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int ENTITY_VARIATION_FEATURE_COUNT = 5;
+  int ENTITY_VARIATION_FEATURE_COUNT = 4;
 
   /**
    * The number of operations of the '<em>Entity Variation</em>' class.
@@ -718,17 +718,28 @@ public interface NoSQLSchemaPackage extends EPackage
   EAttribute getEntity_Name();
 
   /**
+   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.Entity#isRoot <em>Root</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Root</em>'.
+   * @see es.um.nosql.s13e.NoSQLSchema.Entity#isRoot()
+   * @see #getEntity()
+   * @generated
+   */
+  EAttribute getEntity_Root();
+
+  /**
    * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.NoSQLSchema.Entity#getEntityVariations <em>Entity Variations</em>}'.
    * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
+   * <!-- end-user-doc -->
    * @return the meta object for the containment reference list '<em>Entity Variations</em>'.
    * @see es.um.nosql.s13e.NoSQLSchema.Entity#getEntityVariations()
    * @see #getEntity()
    * @generated
    */
-	EReference getEntity_EntityVariations();
+  EReference getEntity_EntityVariations();
 
-		/**
+  /**
    * Returns the meta object for the reference list '{@link es.um.nosql.s13e.NoSQLSchema.Entity#getParents <em>Parents</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -781,17 +792,6 @@ public interface NoSQLSchemaPackage extends EPackage
    * @generated
    */
   EAttribute getEntityVariation_Count();
-
-  /**
-   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#isRoot <em>Root</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Root</em>'.
-   * @see es.um.nosql.s13e.NoSQLSchema.EntityVariation#isRoot()
-   * @see #getEntityVariation()
-   * @generated
-   */
-  EAttribute getEntityVariation_Root();
 
   /**
    * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.EntityVariation#getTimestamp <em>Timestamp</em>}'.
@@ -1084,14 +1084,22 @@ public interface NoSQLSchemaPackage extends EPackage
     EAttribute ENTITY__NAME = eINSTANCE.getEntity_Name();
 
     /**
-     * The meta object literal for the '<em><b>Entity Variations</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Root</b></em>' attribute feature.
      * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
+     * <!-- end-user-doc -->
      * @generated
      */
-		EReference ENTITY__ENTITY_VARIATIONS = eINSTANCE.getEntity_EntityVariations();
+    EAttribute ENTITY__ROOT = eINSTANCE.getEntity_Root();
 
-				/**
+    /**
+     * The meta object literal for the '<em><b>Entity Variations</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENTITY__ENTITY_VARIATIONS = eINSTANCE.getEntity_EntityVariations();
+
+    /**
      * The meta object literal for the '<em><b>Parents</b></em>' reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1132,14 +1140,6 @@ public interface NoSQLSchemaPackage extends EPackage
      * @generated
      */
     EAttribute ENTITY_VARIATION__COUNT = eINSTANCE.getEntityVariation_Count();
-
-    /**
-     * The meta object literal for the '<em><b>Root</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute ENTITY_VARIATION__ROOT = eINSTANCE.getEntityVariation_Root();
 
     /**
      * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.

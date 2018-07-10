@@ -4,10 +4,10 @@
  */
 package es.um.nosql.s13e.NoSQLSchema.validation;
 
-import org.eclipse.emf.common.util.EList;
-
 import es.um.nosql.s13e.NoSQLSchema.Entity;
 import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+
+import org.eclipse.emf.common.util.EList;
 
 /**
  * A sample validator interface for {@link es.um.nosql.s13e.NoSQLSchema.Entity}.
@@ -20,6 +20,7 @@ public interface EntityValidator
   boolean validate();
 
   boolean validateName(String value);
-  boolean validateEntityvariations(EList<EntityVariation> value);
+  boolean validateRoot(boolean value);
+  boolean validateEntityVariations(EList<EntityVariation> value);
   boolean validateParents(EList<Entity> value);
 }
