@@ -17,60 +17,60 @@ import es.um.nosql.s13e.json2dbschema.intermediate.raw.StringSC;
  */
 public class SchemaPrinter
 {
-	public static String schemaString(SchemaComponent sc)
-	{
-		StringBuilder sb = new StringBuilder(20);
-		return schemaString(sc, sb);
-	}
+  public static String schemaString(SchemaComponent sc)
+  {
+    StringBuilder sb = new StringBuilder(20);
+    return schemaString(sc, sb);
+  }
 
-	private static String schemaString(SchemaComponent sc, StringBuilder sb)
-	{
-		if (sc instanceof ObjectSC)
-			schemaString((ObjectSC)sc, sb);
+  private static String schemaString(SchemaComponent sc, StringBuilder sb)
+  {
+    if (sc instanceof ObjectSC)
+      schemaString((ObjectSC)sc, sb);
 
-		if (sc instanceof ArraySC)
-			schemaString((ArraySC)sc, sb);
+    if (sc instanceof ArraySC)
+      schemaString((ArraySC)sc, sb);
 
-		if (sc instanceof BooleanSC)
-			sb.append('b');
+    if (sc instanceof BooleanSC)
+      sb.append('b');
 
-		if (sc instanceof NumberSC)
-			sb.append('n');
+    if (sc instanceof NumberSC)
+      sb.append('n');
 
-		if (sc instanceof NullSC)
-			sb.append('0');
+    if (sc instanceof NullSC)
+      sb.append('0');
 
-		if (sc instanceof StringSC)
-			sb.append('s');
+    if (sc instanceof StringSC)
+      sb.append('s');
 
-		return sb.toString();
-	}
+    return sb.toString();
+  }
 
-	private static void _outname(String name, StringBuilder sb)
-	{
-		sb.append('"');
-		sb.append(name);
-		sb.append('"');
-	}
+  private static void _outname(String name, StringBuilder sb)
+  {
+    sb.append('"');
+    sb.append(name);
+    sb.append('"');
+  }
 
-	private static void schemaString(ObjectSC sc, StringBuilder sb)
-	{
-		if (sc.isRoot)
-			sb.append("(root)");
-		sb.append("<");
-		sb.append(sc.entityName);
-		sb.append(">{");
-		sc.getInners().forEach(e -> {
-			_outname(e.getLeft(), sb);
-			schemaString(e.getRight(), sb);
-		});
-		sb.append("}");
-	}
+  private static void schemaString(ObjectSC sc, StringBuilder sb)
+  {
+    if (sc.isRoot)
+      sb.append("(root)");
+    sb.append("(count: " + sc.count + ")");
+    sb.append("(ts: " + sc.timestamp + ")");
+    sb.append("<" + sc.entityName + ">{");
+    sc.getInners().forEach(e -> {
+      _outname(e.getLeft(), sb);
+      schemaString(e.getRight(), sb);
+    });
+    sb.append("}");
+  }
 
-	private static void schemaString(ArraySC sc, StringBuilder sb)
-	{
-		sb.append("[");
-		sc.getInners().forEach(e -> schemaString(e, sb));
-		sb.append("]");
-	}
+  private static void schemaString(ArraySC sc, StringBuilder sb)
+  {
+    sb.append("[");
+    sc.getInners().forEach(e -> schemaString(e, sb));
+    sb.append("]");
+  }
 }

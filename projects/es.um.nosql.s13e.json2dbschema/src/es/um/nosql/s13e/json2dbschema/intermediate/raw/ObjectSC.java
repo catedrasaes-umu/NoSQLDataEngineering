@@ -18,6 +18,8 @@ public class ObjectSC extends SchemaComponent
 	private List<Pair<String, SchemaComponent>> inners;
 
 	public boolean isRoot;
+	public int count;
+	public long timestamp;
 	public String entityName;
 
 	public ObjectSC()

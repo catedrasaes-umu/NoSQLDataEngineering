@@ -31,100 +31,100 @@ import es.um.nosql.s13e.util.emf.ResourceManager;
  */
 public class BuildNoSQLSchema
 {
-	public BuildNoSQLSchema()
-	{
-	}
+  public BuildNoSQLSchema()
+  {
+  }
 
-	public void buildFromGsonArray(String schemaName, JsonArray jArray, String outputFile)
-	{
-		buildFromArray(schemaName, new GsonArray(jArray), outputFile, new GsonAdapter());
-	}
+  public void buildFromGsonArray(String schemaName, JsonArray jArray, String outputFile)
+  {
+    buildFromArray(schemaName, new GsonArray(jArray), outputFile, new GsonAdapter());
+  }
 
-	public void buildFromJacksonArray(String schemaName, ArrayNode jArray, String outputFile)
-	{
-		buildFromArray(schemaName, new JacksonArray(jArray), outputFile, new JacksonAdapter());
-	}
+  public void buildFromJacksonArray(String schemaName, ArrayNode jArray, String outputFile)
+  {
+    buildFromArray(schemaName, new JacksonArray(jArray), outputFile, new JacksonAdapter());
+  }
 
-	public void buildFromArray(String schemaName, IAJArray objRows, String outputFile, IAJAdapter<?> adapter)
-	{
-		NoSQLSchemaPackage packageInstance = NoSQLSchemaPackage.eINSTANCE;
-		NoSQLSchema schema = new JSON2Schema<>(packageInstance.getNoSQLSchemaFactory(), adapter).fromJSONArray(schemaName, objRows);
-		schema2File(packageInstance, schema, outputFile);
-	}
+  private void buildFromArray(String schemaName, IAJArray objRows, String outputFile, IAJAdapter<?> adapter)
+  {
+    NoSQLSchemaPackage packageInstance = NoSQLSchemaPackage.eINSTANCE;
+    NoSQLSchema schema = new JSON2Schema<>(packageInstance.getNoSQLSchemaFactory(), adapter).fromJSONArray(schemaName, objRows);
+    schema2File(packageInstance, schema, outputFile);
+  }
 
-	public void buildFromGsonFile(String inputFile, String outputFile)
-	{
-		buildFromFile(inputFile, outputFile, new GsonAdapter());
-	}
+  public void buildFromGsonFile(String inputFile, String outputFile)
+  {
+    buildFromFile(inputFile, outputFile, new GsonAdapter());
+  }
 
-	public void buildFromJacksonFile(String inputFile, String outputFile)
-	{
-		buildFromFile(inputFile, outputFile, new JacksonAdapter());
-	}
+  public void buildFromJacksonFile(String inputFile, String outputFile)
+  {
+    buildFromFile(inputFile, outputFile, new JacksonAdapter());
+  }
 
-	private void buildFromFile(String inputFile, String outputFile, IAJAdapter<?> adapter)
-	{
-		NoSQLSchemaPackage packageInstance = NoSQLSchemaPackage.eINSTANCE;
+  private void buildFromFile(String inputFile, String outputFile, IAJAdapter<?> adapter)
+  {
+    NoSQLSchemaPackage packageInstance = NoSQLSchemaPackage.eINSTANCE;
 
-		NoSQLSchema schema = null;
-		try
-		{
-			schema = new JSON2Schema<>(packageInstance.getNoSQLSchemaFactory(), adapter).fromJSONFile(inputFile);
-		} catch (JsonProcessingException e)
-		{
-			e.printStackTrace();
-		} catch (IOException e)
-		{
-			e.printStackTrace();
-		}
+    NoSQLSchema schema = null;
+    try
+    {
+      schema = new JSON2Schema<>(packageInstance.getNoSQLSchemaFactory(), adapter).fromJSONFile(inputFile);
+    } catch (JsonProcessingException e)
+    {
+      e.printStackTrace();
+    } catch (IOException e)
+    {
+      e.printStackTrace();
+    }
 
-		schema2File(packageInstance, schema, outputFile);
-	}
+    schema2File(packageInstance, schema, outputFile);
+  }
 
-	private void schema2File(NoSQLSchemaPackage packageInstance, NoSQLSchema schema, String outputFile)
-	{
-		// Create a new resource to serialize the ecore model
-		Resource outputRes = new ResourceManager(packageInstance).getResourceSet().createResource(URI.createFileURI(outputFile));
-		// Add our new package to resource contents
-		outputRes.getContents().add(schema);
+  private void schema2File(NoSQLSchemaPackage packageInstance, NoSQLSchema schema, String outputFile)
+  {
+    // Create a new resource to serialize the ecore model
+    Resource outputRes = new ResourceManager(packageInstance).getResourceSet().createResource(URI.createFileURI(outputFile));
+    // Add our new package to resource contents
+    outputRes.getContents().add(schema);
 
-		// Make the actual URI to be exported in the generated models. This
-		// allows using the models without having to register them.
-		packageInstance.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e/model/nosqlschema.ecore", true));
-		Map<Object,Object> options = new HashMap<Object,Object>();
-		options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
-		options.put(XMIResource.OPTION_ENCODING, "UTF-8");
+    // Make the actual URI to be exported in the generated models. This
+    // allows using the models without having to register them.
+    packageInstance.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e/model/nosqlschema.ecore", true));
+    Map<Object,Object> options = new HashMap<Object,Object>();
+    options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
+    options.put(XMIResource.OPTION_ENCODING, "UTF-8");
 
-		try
-		{
-			outputRes.save(new FileOutputStream(outputFile), options);
-		} catch (IOException e)
-		{
-			e.printStackTrace();
-		}
-	}
+    try
+    {
+      outputRes.save(new FileOutputStream(outputFile), options);
+    } catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
 
-	public static void main(String[] args) throws IOException
-	{
-		String inputFile;
-		String outputFile;
+  public static void main(String[] args) throws IOException
+  {
+    String inputFile;
+    String outputFile;
 
-		if (args.length < 2)
-		{
-			System.err.println("At least the JSON file must be specified.");
-			System.err.println("Usage: BuildNoSQLSchema JSONfile [outputXMIfile]");
-			System.exit(-1);
-			return;
-		} else
-		{
-			inputFile = args[0];
-			outputFile = args[1];
-			File file = new File(outputFile);
-			file.getParentFile().mkdirs();
-			file.createNewFile();
-		}
+    if (args.length < 2)
+    {
+      System.err.println("At least the JSON file must be specified.");
+      System.err.println("Usage: BuildNoSQLSchema JSONfile [outputXMIfile]");
+      System.exit(-1);
+      return;
+    } else
+    {
+      inputFile = args[0];
+      outputFile = args[1];
+      File file = new File(outputFile);
+      file.getParentFile().mkdirs();
+      file.createNewFile();
+    }
 
-		BuildNoSQLSchema builder = new BuildNoSQLSchema();
-		builder.buildFromJacksonFile(inputFile, outputFile);
-	}
+    BuildNoSQLSchema builder = new BuildNoSQLSchema();
+    builder.buildFromJacksonFile(inputFile, outputFile);
+  }
 }

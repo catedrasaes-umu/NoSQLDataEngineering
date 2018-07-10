@@ -88,6 +88,8 @@ public class NoSQLModelBuilder
 				// entities can be destination of a reference
 				ObjectSC obj = (ObjectSC)schema;
 				theEV.setRoot(obj.isRoot);
+				theEV.setCount(obj.count);
+				theEV.setTimestamp(obj.timestamp);
 
 				e.getEntityVariations().add(theEV);
 				mEntityVariations.put(schema, theEV);
