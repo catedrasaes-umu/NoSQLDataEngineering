@@ -1,0 +1,38 @@
+mapper: Mongoose
+entities:
+  - name: Artist
+    indexes:
+      - attr: [name]
+        type: [desc]
+        unique: true
+        sparse: true
+        background: false
+
+    validators:
+      - attr: startingYear
+        min: 1900
+        max: 2018
+        message: Starting year of a group must be > 1900 and < 2018
+
+    populateReferences: [composedTracks, lyricsTracks]
+
+  - name: Album
+    indexes:
+      - attr: [name, releaseYear]
+        type: [asc, desc]
+        unique: true
+
+    validators:
+      - attr: releaseYear
+        min: 1900
+      - attr: name
+        maxLength: 300
+        message: This album's name is too long
+
+  - name: Review
+    validators:
+      - attr: rank
+        enumValues: [Excelent, Very good, Good, Poor, Terrible]
+      - attr: stars
+        min: 0
+        max: 5

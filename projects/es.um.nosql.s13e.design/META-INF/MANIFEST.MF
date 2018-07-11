@@ -10,7 +10,8 @@ Require-Bundle: org.eclipse.ui,
  org.eclipse.core.resources,
  org.eclipse.sirius,
  org.eclipse.sirius.common.acceleo.aql,
- es.um.nosql.s13e;bundle-version="1.0.0";visibility:=reexport
+ es.um.nosql.s13e;bundle-version="1.0.0";visibility:=reexport,
+ es.um.nosql.s13e.entitydifferentiation;bundle-version="1.0.0"
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Bundle-Vendor: %providerName

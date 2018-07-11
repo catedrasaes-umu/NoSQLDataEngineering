@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EntityDifferentiation:EntityDifferentiation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EntityDifferentiation="http://www.modelum.es/EntityDifferentiation" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/EntityDifferentiation platform:/resource/es.um.nosql.s13e.entitydifferentiation/model/entitydifferentiation.ecore http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="webclicks">
+  <entityDiffSpecs>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/webclicks/webclicks.xmi#Webclicks"/>
+    <entityVariationProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/webclicks/webclicks.xmi#//@entities.0/@entityVariations.0/@properties.3"/>
+      </propertySpecs>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/webclicks/webclicks.xmi#//@entities.0/@entityVariations.0"/>
+    </entityVariationProps>
+    <entityVariationProps>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/webclicks/webclicks.xmi#//@entities.0/@entityVariations.1"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/webclicks/webclicks.xmi#//@entities.0/@entityVariations.0/@properties.3"/>
+      </notProps>
+    </entityVariationProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/webclicks/webclicks.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/webclicks/webclicks.xmi#//@entities.0/@entityVariations.1/@properties.4"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/webclicks/webclicks.xmi#//@entities.0/@entityVariations.1/@properties.1"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/webclicks/webclicks.xmi#//@entities.0/@entityVariations.1/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/webclicks/webclicks.xmi#//@entities.0/@entityVariations.1/@properties.2"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <schema href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/webclicks/webclicks.xmi#webclicks"/>
+</EntityDifferentiation:EntityDifferentiation>

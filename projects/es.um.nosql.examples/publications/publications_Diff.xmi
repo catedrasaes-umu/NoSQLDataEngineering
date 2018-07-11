@@ -1,55 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EntityDifferentiation:EntityDifferentiation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EntityDifferentiation="http://www.modelum.es/EntityDifferentiation" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/EntityDifferentiation platform:/resource/es.um.nosql.s13e.entitydifferentiation/model/entitydifferentiation.ecore http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="publications">
   <entityDiffSpecs>
-    <entity href="publications.xmi#Publications"/>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#Publications"/>
     <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="publications.xmi#//@entities.0/@entityVariations.0/@properties.5"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.0/@properties.5"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="publications.xmi#//@entities.0/@entityVariations.0/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.0/@properties.3"/>
       </propertySpecs>
-      <entityVariation href="publications.xmi#//@entities.0/@entityVariations.0"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.0"/>
     </entityVariationProps>
     <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="publications.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
       </propertySpecs>
-      <entityVariation href="publications.xmi#//@entities.0/@entityVariations.1"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.1"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="publications.xmi#//@entities.0/@entityVariations.2/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.2/@properties.4"/>
       </notProps>
     </entityVariationProps>
     <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="publications.xmi#//@entities.0/@entityVariations.2/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.2/@properties.4"/>
       </propertySpecs>
-      <entityVariation href="publications.xmi#//@entities.0/@entityVariations.2"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.2"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="publications.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
       </notProps>
     </entityVariationProps>
     <entityVariationProps>
-      <entityVariation href="publications.xmi#//@entities.0/@entityVariations.3"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.3"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="publications.xmi#//@entities.0/@entityVariations.2/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.2/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="publications.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
       </notProps>
     </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="publications.xmi#//@entities.0/@entityVariations.3/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.3/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="publications.xmi#//@entities.0/@entityVariations.3/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.3/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="publications.xmi#//@entities.0/@entityVariations.3/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.3/@properties.3"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="publications.xmi#//@entities.0/@entityVariations.3/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#//@entities.0/@entityVariations.3/@properties.0"/>
     </commonProps>
   </entityDiffSpecs>
-  <schema href="publications.xmi#publications"/>
+  <schema href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/publications/publications.xmi#publications"/>
 </EntityDifferentiation:EntityDifferentiation>

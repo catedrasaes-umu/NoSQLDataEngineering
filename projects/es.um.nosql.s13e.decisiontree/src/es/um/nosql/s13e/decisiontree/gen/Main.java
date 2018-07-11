@@ -136,7 +136,7 @@ public class Main
   private void run(String[] args)
   {
     args = new String[2];
-    args[0] = "model/mongoMovies3_Diff.xmi";
+    args[0] = "../es.um.nosql.examples/mongomovies/mongomovies3_Diff.xmi";
     args[1] = "model/output.xmi";
     if (args.length != 2)
     {

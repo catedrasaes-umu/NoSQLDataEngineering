@@ -1,235 +1,235 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EntityDifferentiation:EntityDifferentiation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EntityDifferentiation="http://www.modelum.es/EntityDifferentiation" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/EntityDifferentiation platform:/resource/es.um.nosql.s13e.entitydifferentiation/model/entitydifferentiation.ecore http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="mongosongs">
   <entityDiffSpecs>
-    <entity href="mongosongs.xmi#Artist"/>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#Artist"/>
     <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Reference" href="mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Reference" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.6"/>
       </propertySpecs>
-      <entityVariation href="mongosongs.xmi#//@entities.0/@entityVariations.0"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.0/@entityVariations.0"/>
     </entityVariationProps>
     <entityVariationProps>
-      <entityVariation href="mongosongs.xmi#//@entities.0/@entityVariations.1"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.0/@entityVariations.1"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Reference" href="mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Reference" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.6"/>
       </notProps>
     </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Reference" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Reference" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.4"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.0/@entityVariations.0/@properties.3"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
-    <entity href="mongosongs.xmi#Album"/>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#Album"/>
     <entityVariationProps>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.9"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.9"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.8"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.4"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.3"/>
       </propertySpecs>
-      <entityVariation href="mongosongs.xmi#//@entities.1/@entityVariations.0"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.0"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.1/@entityVariations.2/@properties.7"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.2/@properties.7"/>
       </notProps>
     </entityVariationProps>
     <entityVariationProps>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongosongs.xmi#//@entities.1/@entityVariations.1/@properties.8"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.1/@properties.8"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.1/@entityVariations.1/@properties.7"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.1/@properties.7"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.1/@entityVariations.1/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.1/@properties.3"/>
       </propertySpecs>
-      <entityVariation href="mongosongs.xmi#//@entities.1/@entityVariations.1"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.1"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.1/@entityVariations.2/@properties.7"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.2/@properties.7"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.8"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.8"/>
       </notProps>
     </entityVariationProps>
     <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.1/@entityVariations.2/@properties.7"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.2/@properties.7"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.1/@entityVariations.2/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.2/@properties.3"/>
       </propertySpecs>
-      <entityVariation href="mongosongs.xmi#//@entities.1/@entityVariations.2"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.2"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongosongs.xmi#//@entities.1/@entityVariations.1/@properties.8"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.1/@properties.8"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.8"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.8"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.1/@entityVariations.1/@properties.7"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.1/@properties.7"/>
       </notProps>
     </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.1/@entityVariations.2/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.1/@entityVariations.2/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.1/@entityVariations.2/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.5"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="mongosongs.xmi#//@entities.1/@entityVariations.2/@properties.6"/>
+      <property xsi:type="NoSQLSchema:Reference" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.7"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.1/@entityVariations.2/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.1/@entityVariations.2/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.1/@entityVariations.0/@properties.6"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
-    <entity href="mongosongs.xmi#Track"/>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#Track"/>
     <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongosongs.xmi#//@entities.2/@entityVariations.0/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.2/@entityVariations.0/@properties.6"/>
       </propertySpecs>
-      <entityVariation href="mongosongs.xmi#//@entities.2/@entityVariations.0"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.2/@entityVariations.0"/>
     </entityVariationProps>
     <entityVariationProps>
-      <entityVariation href="mongosongs.xmi#//@entities.2/@entityVariations.1"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.2/@entityVariations.1"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongosongs.xmi#//@entities.2/@entityVariations.0/@properties.6"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.2/@entityVariations.0/@properties.6"/>
       </notProps>
     </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.2/@entityVariations.1/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.2/@entityVariations.1/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.2/@entityVariations.1/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.2/@entityVariations.1/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.2/@entityVariations.1/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.2/@entityVariations.1/@properties.4"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.2/@entityVariations.1/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.2/@entityVariations.1/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.2/@entityVariations.1/@properties.3"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.2/@entityVariations.1/@properties.3"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="mongosongs.xmi#//@entities.2/@entityVariations.1/@properties.5"/>
+      <property xsi:type="NoSQLSchema:Reference" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.2/@entityVariations.1/@properties.5"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
-    <entity href="mongosongs.xmi#Prize"/>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#Prize"/>
     <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.3/@entityVariations.0/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.3/@entityVariations.0/@properties.2"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.3/@entityVariations.0/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.3/@entityVariations.0/@properties.3"/>
       </propertySpecs>
-      <entityVariation href="mongosongs.xmi#//@entities.3/@entityVariations.0"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.3/@entityVariations.0"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.3/@entityVariations.1/@properties.0"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.3/@entityVariations.1/@properties.0"/>
       </notProps>
     </entityVariationProps>
     <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.3/@entityVariations.1/@properties.0"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.3/@entityVariations.1/@properties.0"/>
       </propertySpecs>
-      <entityVariation href="mongosongs.xmi#//@entities.3/@entityVariations.1"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.3/@entityVariations.1"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.3/@entityVariations.0/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.3/@entityVariations.0/@properties.2"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.3/@entityVariations.0/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.3/@entityVariations.0/@properties.3"/>
       </notProps>
     </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.3/@entityVariations.0/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.3/@entityVariations.1/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.3/@entityVariations.0/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.3/@entityVariations.1/@properties.3"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.3/@entityVariations.0/@properties.4"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.3/@entityVariations.1/@properties.1"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
-    <entity href="mongosongs.xmi#Review"/>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#Review"/>
     <entityVariationProps>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.4/@entityVariations.0/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.4/@entityVariations.0/@properties.2"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongosongs.xmi#//@entities.4/@entityVariations.0/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.4/@entityVariations.0/@properties.3"/>
       </propertySpecs>
-      <entityVariation href="mongosongs.xmi#//@entities.4/@entityVariations.0"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.4/@entityVariations.0"/>
     </entityVariationProps>
     <entityVariationProps>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.4/@entityVariations.1/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.4/@entityVariations.1/@properties.2"/>
       </propertySpecs>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.4/@entityVariations.1/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.4/@entityVariations.1/@properties.3"/>
       </propertySpecs>
-      <entityVariation href="mongosongs.xmi#//@entities.4/@entityVariations.1"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.4/@entityVariations.1"/>
     </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.4/@entityVariations.1/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.4/@entityVariations.0/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.4/@entityVariations.1/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.4/@entityVariations.0/@properties.0"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
-    <entity href="mongosongs.xmi#Media"/>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#Media"/>
     <entityVariationProps>
-      <entityVariation href="mongosongs.xmi#//@entities.5/@entityVariations.0"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.5/@entityVariations.0"/>
     </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.5/@entityVariations.0/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.5/@entityVariations.0/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.5/@entityVariations.0/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.5/@entityVariations.0/@properties.2"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.5/@entityVariations.0/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.5/@entityVariations.0/@properties.1"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
-    <entity href="mongosongs.xmi#Rating"/>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#Rating"/>
     <entityVariationProps>
-      <entityVariation href="mongosongs.xmi#//@entities.6/@entityVariations.0"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.6/@entityVariations.0"/>
     </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.6/@entityVariations.0/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.6/@entityVariations.0/@properties.0"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongosongs.xmi#//@entities.6/@entityVariations.0/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#//@entities.6/@entityVariations.0/@properties.1"/>
     </commonProps>
   </entityDiffSpecs>
-  <schema href="mongosongs.xmi#mongosongs"/>
+  <schema href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongosongs/mongosongs.xmi#mongosongs"/>
 </EntityDifferentiation:EntityDifferentiation>

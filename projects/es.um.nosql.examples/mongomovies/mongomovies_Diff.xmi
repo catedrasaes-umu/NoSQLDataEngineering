@@ -1,271 +1,271 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <EntityDifferentiation:EntityDifferentiation xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:EntityDifferentiation="http://www.modelum.es/EntityDifferentiation" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/EntityDifferentiation platform:/resource/es.um.nosql.s13e.entitydifferentiation/model/entitydifferentiation.ecore http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="mongomovies">
   <entityDiffSpecs>
-    <entity href="mongomovies.xmi#Movie"/>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#Movie"/>
     <entityVariationProps>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.0/@entityVariations.0/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.0/@properties.4"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.0/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.0/@properties.3"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.0/@entityVariations.0/@properties.1"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.0/@properties.1"/>
       </propertySpecs>
-      <entityVariation href="mongomovies.xmi#//@entities.0/@entityVariations.0"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.0"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.2"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.4"/>
       </notProps>
     </entityVariationProps>
     <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.2"/>
       </propertySpecs>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
       </propertySpecs>
-      <entityVariation href="mongomovies.xmi#//@entities.0/@entityVariations.1"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.1"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.2"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.0/@entityVariations.2/@properties.3"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.2/@properties.3"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.4"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.4"/>
       </notProps>
       <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.1"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.1"/>
       </notProps>
-    </entityVariationProps>
-    <entityVariationProps>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.0/@entityVariations.2/@properties.3"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.2/@properties.2"/>
-      </propertySpecs>
-      <entityVariation href="mongomovies.xmi#//@entities.0/@entityVariations.2"/>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.2"/>
-      </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.4"/>
-      </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
-      </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.4"/>
-      </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.1"/>
-      </notProps>
-    </entityVariationProps>
-    <entityVariationProps>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.3"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.4"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.1"/>
-      </propertySpecs>
-      <entityVariation href="mongomovies.xmi#//@entities.0/@entityVariations.3"/>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.2"/>
-      </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.0/@entityVariations.2/@properties.3"/>
-      </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
-      </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.4"/>
-      </notProps>
-    </entityVariationProps>
-    <entityVariationProps>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.2"/>
-      </propertySpecs>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.4"/>
-      </propertySpecs>
-      <entityVariation href="mongomovies.xmi#//@entities.0/@entityVariations.4"/>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.0/@entityVariations.2/@properties.3"/>
-      </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.4"/>
-      </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.3"/>
-      </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
-      </notProps>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.1"/>
-      </notProps>
-    </entityVariationProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.2"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.7"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.5"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.0"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.6"/>
-    </commonProps>
-  </entityDiffSpecs>
-  <entityDiffSpecs>
-    <entity href="mongomovies.xmi#Movietheater"/>
-    <entityVariationProps>
-      <entityVariation href="mongomovies.xmi#//@entities.1/@entityVariations.0"/>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.1/@entityVariations.1/@properties.4"/>
-      </notProps>
-    </entityVariationProps>
-    <entityVariationProps>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.1/@entityVariations.1/@properties.4"/>
-      </propertySpecs>
-      <entityVariation href="mongomovies.xmi#//@entities.1/@entityVariations.1"/>
-    </entityVariationProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.1/@entityVariations.1/@properties.5"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.1/@entityVariations.1/@properties.0"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.1/@entityVariations.1/@properties.3"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.1/@entityVariations.1/@properties.1"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.1/@entityVariations.1/@properties.2"/>
-    </commonProps>
-  </entityDiffSpecs>
-  <entityDiffSpecs>
-    <entity href="mongomovies.xmi#Rating"/>
-    <entityVariationProps>
-      <entityVariation href="mongomovies.xmi#//@entities.2/@entityVariations.0"/>
-    </entityVariationProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.2/@entityVariations.0/@properties.0"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.2/@entityVariations.0/@properties.1"/>
-    </commonProps>
-  </entityDiffSpecs>
-  <entityDiffSpecs>
-    <entity href="mongomovies.xmi#Media"/>
-    <entityVariationProps>
-      <entityVariation href="mongomovies.xmi#//@entities.3/@entityVariations.0"/>
-    </entityVariationProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.3/@entityVariations.0/@properties.0"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.3/@entityVariations.0/@properties.1"/>
-    </commonProps>
-  </entityDiffSpecs>
-  <entityDiffSpecs>
-    <entity href="mongomovies.xmi#Director"/>
-    <entityVariationProps>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Reference" href="mongomovies.xmi#//@entities.4/@entityVariations.0/@properties.1"/>
-      </propertySpecs>
-      <entityVariation href="mongomovies.xmi#//@entities.4/@entityVariations.0"/>
-    </entityVariationProps>
-    <entityVariationProps>
-      <entityVariation href="mongomovies.xmi#//@entities.4/@entityVariations.1"/>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Reference" href="mongomovies.xmi#//@entities.4/@entityVariations.0/@properties.1"/>
-      </notProps>
-    </entityVariationProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.4/@entityVariations.1/@properties.3"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.4/@entityVariations.1/@properties.0"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Reference" href="mongomovies.xmi#//@entities.4/@entityVariations.1/@properties.1"/>
-    </commonProps>
-    <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.4/@entityVariations.1/@properties.2"/>
-    </commonProps>
-  </entityDiffSpecs>
-  <entityDiffSpecs>
-    <entity href="mongomovies.xmi#Criticism"/>
-    <entityVariationProps>
-      <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Aggregate" href="mongomovies.xmi#//@entities.5/@entityVariations.0/@properties.2"/>
-      </propertySpecs>
-      <entityVariation href="mongomovies.xmi#//@entities.5/@entityVariations.0"/>
     </entityVariationProps>
     <entityVariationProps>
       <propertySpecs needsTypeCheck="true">
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.5/@entityVariations.1/@properties.2"/>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.2/@properties.3"/>
       </propertySpecs>
-      <entityVariation href="mongomovies.xmi#//@entities.5/@entityVariations.1"/>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.2/@properties.2"/>
+      </propertySpecs>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.2"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.2"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.4"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.4"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.1"/>
+      </notProps>
+    </entityVariationProps>
+    <entityVariationProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.3"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.4"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.1"/>
+      </propertySpecs>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.3"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.2"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.2/@properties.3"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.4"/>
+      </notProps>
+    </entityVariationProps>
+    <entityVariationProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.2"/>
+      </propertySpecs>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.4/@properties.4"/>
+      </propertySpecs>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.4"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.2/@properties.3"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.4"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.3"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.3"/>
+      </notProps>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.3/@properties.1"/>
+      </notProps>
     </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.5/@entityVariations.0/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Reference" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.1"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.5/@entityVariations.0/@properties.1"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.6"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.4"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.0/@entityVariations.1/@properties.5"/>
     </commonProps>
   </entityDiffSpecs>
   <entityDiffSpecs>
-    <entity href="mongomovies.xmi#Prize"/>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#Movietheater"/>
     <entityVariationProps>
-      <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.6/@entityVariations.0/@properties.1"/>
-      </propertySpecs>
-      <entityVariation href="mongomovies.xmi#//@entities.6/@entityVariations.0"/>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.1/@entityVariations.0"/>
       <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.6/@entityVariations.1/@properties.1"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.1/@entityVariations.1/@properties.4"/>
       </notProps>
     </entityVariationProps>
     <entityVariationProps>
       <propertySpecs>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.6/@entityVariations.1/@properties.1"/>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.1/@entityVariations.1/@properties.4"/>
       </propertySpecs>
-      <entityVariation href="mongomovies.xmi#//@entities.6/@entityVariations.1"/>
-      <notProps>
-        <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.6/@entityVariations.0/@properties.1"/>
-      </notProps>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.1/@entityVariations.1"/>
     </entityVariationProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.6/@entityVariations.0/@properties.0"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.1/@entityVariations.0/@properties.4"/>
     </commonProps>
     <commonProps>
-      <property xsi:type="NoSQLSchema:Attribute" href="mongomovies.xmi#//@entities.6/@entityVariations.0/@properties.2"/>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.1/@entityVariations.0/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.1/@entityVariations.0/@properties.3"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.1/@entityVariations.0/@properties.1"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.1/@entityVariations.0/@properties.2"/>
     </commonProps>
   </entityDiffSpecs>
-  <schema href="mongomovies.xmi#mongomovies"/>
+  <entityDiffSpecs>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#Rating"/>
+    <entityVariationProps>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.2/@entityVariations.0"/>
+    </entityVariationProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.2/@entityVariations.0/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.2/@entityVariations.0/@properties.1"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <entityDiffSpecs>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#Media"/>
+    <entityVariationProps>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.3/@entityVariations.0"/>
+    </entityVariationProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.3/@entityVariations.0/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.3/@entityVariations.0/@properties.1"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <entityDiffSpecs>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#Director"/>
+    <entityVariationProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Reference" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.4/@entityVariations.0/@properties.1"/>
+      </propertySpecs>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.4/@entityVariations.0"/>
+    </entityVariationProps>
+    <entityVariationProps>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.4/@entityVariations.1"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Reference" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.4/@entityVariations.0/@properties.1"/>
+      </notProps>
+    </entityVariationProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.4/@entityVariations.0/@properties.4"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.4/@entityVariations.0/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Reference" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.4/@entityVariations.0/@properties.2"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.4/@entityVariations.0/@properties.3"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <entityDiffSpecs>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#Criticism"/>
+    <entityVariationProps>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Aggregate" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.5/@entityVariations.0/@properties.2"/>
+      </propertySpecs>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.5/@entityVariations.0"/>
+    </entityVariationProps>
+    <entityVariationProps>
+      <propertySpecs needsTypeCheck="true">
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.5/@entityVariations.1/@properties.2"/>
+      </propertySpecs>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.5/@entityVariations.1"/>
+    </entityVariationProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.5/@entityVariations.0/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.5/@entityVariations.0/@properties.1"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <entityDiffSpecs>
+    <entity href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#Prize"/>
+    <entityVariationProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.6/@entityVariations.0/@properties.1"/>
+      </propertySpecs>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.6/@entityVariations.0"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.6/@entityVariations.1/@properties.1"/>
+      </notProps>
+    </entityVariationProps>
+    <entityVariationProps>
+      <propertySpecs>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.6/@entityVariations.1/@properties.1"/>
+      </propertySpecs>
+      <entityVariation href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.6/@entityVariations.1"/>
+      <notProps>
+        <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.6/@entityVariations.0/@properties.1"/>
+      </notProps>
+    </entityVariationProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.6/@entityVariations.1/@properties.0"/>
+    </commonProps>
+    <commonProps>
+      <property xsi:type="NoSQLSchema:Attribute" href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#//@entities.6/@entityVariations.1/@properties.2"/>
+    </commonProps>
+  </entityDiffSpecs>
+  <schema href="file:/home/alberto/repos/NoSQLDataEngineering/projects/es.um.nosql.s13e.entitydifferentiation/../es.um.nosql.examples/mongomovies/mongomovies.xmi#mongomovies"/>
 </EntityDifferentiation:EntityDifferentiation>

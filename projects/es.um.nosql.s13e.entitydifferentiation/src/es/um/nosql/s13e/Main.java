@@ -20,14 +20,25 @@ import es.um.nosql.s13e.m2t.morphia.DiffMorphiaBaseGen;
 import es.um.nosql.s13e.m2t.morphia.DiffToMorphia;
 import es.um.nosql.s13e.util.emf.ResourceManager;
 
+/**
+ * Usage: Just change the following parameters to the routes you prefer, and execute it freely.
+ * The main method provided is more than enough to execute all the workflow.
+ * @dependencies: es.um.nosql.examples (for input models), es.um.nosql.s13e (for the NoSQLSchema metamodel)
+ * @param INPUT_FOLDER The folder in which NoSQLSchema xmi models are contained.
+ * @param OUTPUT_FOLDER The folder in which EntityDiff xmi models will be stored.
+ * @param MONGOOSE_OUTPUT_GEN_BASE_FOLDER The folder in which Mongoose code will be generated.
+ * @param MORPHIA_OUTPUT_GEN_BASE_FOLDER The folder in which Morphia code will be generated.
+ * @param YAML_CONFIG_ROUTE The yaml configuration file location.
+ * @param GENERATE_BASE_FILES True if base files should be generated. False otherwise.
+ */
 public class Main
 {
-  public static String INPUT_FOLDER = "testSources/";
-  public static String OUTPUT_FOLDER = "testOutput/";
-  public static String MONGOOSE_OUTPUT_GEN_BASE_FOLDER = OUTPUT_FOLDER + "mongoose/";
-  public static String MORPHIA_OUTPUT_GEN_BASE_FOLDER = "src/es/um/nosql/s13e/";
-  private static String YAML_CONFIG_ROUTE = "config.yaml";
-  public static boolean GENERATE_BASE_FILES = true;
+  public static final String INPUT_FOLDER = "../es.um.nosql.examples/";
+  public static final String OUTPUT_FOLDER = "../es.um.nosql.examples/";
+  public static final String MONGOOSE_OUTPUT_GEN_BASE_FOLDER = OUTPUT_FOLDER + "mongoose/";
+  public static final String MORPHIA_OUTPUT_GEN_BASE_FOLDER = "src/es/um/nosql/s13e/";
+  private static final String YAML_CONFIG_ROUTE = "config/config.yaml";
+  public static final boolean GENERATE_BASE_FILES = true;
 
   public static void main(String[] args)
   {
@@ -36,12 +47,11 @@ public class Main
 
     for (String input_model : input_models)
     {
-      String inputFile = INPUT_FOLDER + input_model + ".xmi";
-      String configFile = INPUT_FOLDER + YAML_CONFIG_ROUTE;
-      String outputFile = OUTPUT_FOLDER + input_model + "_Diff.xmi";
+      String inputFile = INPUT_FOLDER + input_model + "/" + input_model + ".xmi";
+      String outputFile = OUTPUT_FOLDER + input_model + "/" + input_model + "_Diff.xmi";
       prepareM2MExample(inputFile, outputFile);
-      prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER + input_model), new File(configFile));
-      prepareM2MorphiaExample(new File(outputFile), new File(MORPHIA_OUTPUT_GEN_BASE_FOLDER), new File(configFile));      
+      prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER + input_model), new File(YAML_CONFIG_ROUTE));
+      prepareM2MorphiaExample(new File(outputFile), new File(MORPHIA_OUTPUT_GEN_BASE_FOLDER), new File(YAML_CONFIG_ROUTE));
     }
   }
 
