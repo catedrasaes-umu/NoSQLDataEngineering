@@ -6,7 +6,7 @@ Bundle-Version: 1.1.1
 Bundle-ClassPath: .
 Bundle-Vendor: %providerName
 Bundle-Localization: plugin
-Bundle-RequiredExecutionEnvironment: JavaSE-1.7
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: Variation_Diff,
  Variation_Diff.impl,
  Variation_Diff.util

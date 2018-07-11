@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.entitydifferentiation;
+package entitydifferentiation;
 
 import static org.junit.Assert.*;
 
