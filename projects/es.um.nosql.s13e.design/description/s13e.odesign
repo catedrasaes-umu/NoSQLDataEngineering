@@ -20,7 +20,7 @@
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </defaultStyle>
-            <subItemMappings name="Schemas" label="Schemas" domainClass="NoSQLSchema.EntityVariation" semanticCandidatesExpression="aql: self.entityVariations->select(ev | ev.root = true)">
+            <subItemMappings name="Schemas" label="Schemas" domainClass="NoSQLSchema.EntityVariation" semanticCandidatesExpression="aql: self.entityVariations->select(ev | ev.eContainer().oclAsType(NoSQLSchema::Entity).root = true)">
               <defaultStyle labelSize="9" labelExpression="aql: 'EntityVariation root: ' + self.ancestors()->filter(NoSQLSchema::Entity)->first().name + '_' + self.variationId" iconPath="/es.um.nosql.s13e.design/images/icons/EntityVariationRootIcon24.png">
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
@@ -249,7 +249,7 @@
               <firstModelOperations xsi:type="tool_1:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Union%20Schema']"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Click entity variation" label="Click entity variation" precondition="aql: self.root = true" forceRefresh="true" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVariation']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Click entity variation" label="Click entity variation" precondition="aql: self.eContainer().oclAsType(NoSQLSchema::Entity).root = true" forceRefresh="true" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Refactored%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='EntityVariation']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -386,7 +386,7 @@
               <firstModelOperations xsi:type="tool_1:Navigation" createIfNotExistent="true" diagramDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Entity%20Union%20Schema']"/>
             </initialOperation>
           </ownedTools>
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Click entity variation" label="Click entity variation" precondition="aql: self.root = true" forceRefresh="true" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Variations']/@subContainerMappings[name='EntityVariation']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Click entity variation" label="Click entity variation" precondition="aql: self.eContainer().oclAsType(NoSQLSchema::Entity).root = true" forceRefresh="true" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Variations']/@subContainerMappings[name='EntityVariation']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -650,7 +650,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="NoSQLSchema Diagram (1)" label="NoSQLSchema Diagram (1)" titleExpression="aql: 'Schema diagram (1): ' + self.eContainer().oclAsType(NoSQLSchema::Entity).name + '_' + self.variationId" domainClass="NoSQLSchema.EntityVariation" preconditionExpression="aql: self.root = true">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="NoSQLSchema Diagram (1)" label="NoSQLSchema Diagram (1)" titleExpression="aql: 'Schema diagram (1): ' + self.eContainer().oclAsType(NoSQLSchema::Entity).name + '_' + self.variationId" domainClass="NoSQLSchema.EntityVariation" preconditionExpression="aql: self.eContainer().oclAsType(NoSQLSchema::Entity).root = true">
       <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide properties" label="Hide properties">
         <filters xsi:type="filter:MappingFilter" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@edgeMappings[name='Aggregate'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@edgeMappings[name='Reference']"/>
@@ -761,7 +761,7 @@
           </style>
         </containerMappings>
         <toolSections name="Navigate" label="Navigate">
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Click entity variation" label="Click entity variation" precondition="aql: self.root = true" forceRefresh="true" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Variations']/@subContainerMappings[name='EntityVariation'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVariation'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVariationRoot']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Click entity variation" label="Click entity variation" precondition="aql: self.eContainer().oclAsType(NoSQLSchema::Entity).root = true" forceRefresh="true" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Variations']/@subContainerMappings[name='EntityVariation'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVariation'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@containerMappings[name='EntityVariationRoot']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -778,7 +778,7 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="NoSQLSchema Diagram (2)" label="NoSQLSchema Diagram (2)" titleExpression="aql: 'Schema diagram (2): ' + self.eContainer().oclAsType(NoSQLSchema::Entity).name + '_' + self.variationId" domainClass="NoSQLSchema.EntityVariation" preconditionExpression="aql: self.root = true">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="NoSQLSchema Diagram (2)" label="NoSQLSchema Diagram (2)" titleExpression="aql: 'Schema diagram (2): ' + self.eContainer().oclAsType(NoSQLSchema::Entity).name + '_' + self.variationId" domainClass="NoSQLSchema.EntityVariation" preconditionExpression="aql: self.eContainer().oclAsType(NoSQLSchema::Entity).root = true">
       <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
       <filters xsi:type="filter:CompositeFilterDescription" name="Hide properties" label="Hide properties">
         <filters xsi:type="filter:MappingFilter"/>
@@ -1046,7 +1046,7 @@
           </style>
         </containerMappings>
         <toolSections name="Navigate" label="Navigate">
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Click entity variation" label="Click entity variation" precondition="aql: self.root = true" forceRefresh="true" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Variations']/@subContainerMappings[name='EntityVariation'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariation'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariationRoot'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariationRoot']/@subContainerMappings[name='RefAggrPart']/@subContainerMappings[name='Entity']/@subContainerMappings[name='Variations']/@subContainerMappings[name='EntityVariations'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariationRoot']/@subContainerMappings[name='RefAggrPart']/@subContainerMappings[name='EntityVariation']">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Click entity variation" label="Click entity variation" precondition="aql: self.eContainer().oclAsType(NoSQLSchema::Entity).root = true" forceRefresh="true" mappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='Entity']/@subContainerMappings[name='Variations']/@subContainerMappings[name='EntityVariation'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariation'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariationRoot'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariationRoot']/@subContainerMappings[name='RefAggrPart']/@subContainerMappings[name='Entity']/@subContainerMappings[name='Variations']/@subContainerMappings[name='EntityVariations'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@containerMappings[name='EntityVariationRoot']/@subContainerMappings[name='RefAggrPart']/@subContainerMappings[name='EntityVariation']">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
@@ -1177,7 +1177,7 @@
           </style>
         </containerMappings>
         <toolSections name="Navigate" label="Navigate">
-          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Click entity variation" label="Click entity variation" precondition="aql: self.root = true" forceRefresh="true">
+          <ownedTools xsi:type="tool_1:DoubleClickDescription" name="Click entity variation" label="Click entity variation" precondition="aql: self.eContainer().oclAsType(NoSQLSchema::Entity).root = true" forceRefresh="true">
             <element name="element"/>
             <elementView name="elementView"/>
             <initialOperation>
