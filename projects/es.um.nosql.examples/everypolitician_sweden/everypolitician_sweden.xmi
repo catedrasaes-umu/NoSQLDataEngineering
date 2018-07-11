@@ -1249,8 +1249,8 @@
       </properties>
     </entityVariations>
   </entities>
-  <entities name="Link">
-    <entityVariations variationId="1" root="false">
+  <entities name="Link" root="false">
+    <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="note">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1259,8 +1259,8 @@
       </properties>
     </entityVariations>
   </entities>
-  <entities name="Source">
-    <entityVariations variationId="1" root="false">
+  <entities name="Source" root="false">
+    <entityVariations variationId="1">
       <properties xsi:type="NoSQLSchema:Attribute" name="url">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
