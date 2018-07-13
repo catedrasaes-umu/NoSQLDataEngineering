@@ -14,11 +14,11 @@ import es.um.nosql.s13e.db.utils.DbType;
 import es.um.nosql.s13e.db.utils.deserializer.NumberToNumberDeserializer;
 import es.um.nosql.s13e.db.utils.deserializer.StringToStringDeserializer;
 
-public class Urban2Db extends Source2Db
+public class UrbanDictionary2Db extends Source2Db
 {
   private int MAX_LINES_BEFORE_STORE = 25000;
 
-  public Urban2Db(DbType db, String ip)
+  public UrbanDictionary2Db(DbType db, String ip)
   {
     super(db, ip);
   }

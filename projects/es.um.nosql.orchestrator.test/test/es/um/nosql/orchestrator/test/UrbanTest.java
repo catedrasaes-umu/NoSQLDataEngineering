@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.google.gson.JsonArray;
 
-import es.um.nosql.s13e.db.interfaces.Urban2Db;
+import es.um.nosql.s13e.db.interfaces.UrbanDictionary2Db;
 import es.um.nosql.s13e.db.utils.DbType;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
@@ -19,12 +19,12 @@ public class UrbanTest
   private static String DBNAME = "DEBUG_urban";
   private static String OUTPUT_MODEL = "testOutput/" + DBNAME + ".xmi";
 
-  private Urban2Db controller;
+  private UrbanDictionary2Db controller;
 
   @Before
   public void setUp() throws Exception
   {
-    controller = new Urban2Db(DbType.MONGODB, DATABASE_IP);
+    controller = new UrbanDictionary2Db(DbType.MONGODB, DATABASE_IP);
   }
 
   @After

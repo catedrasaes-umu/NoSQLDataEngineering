@@ -11,9 +11,9 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import es.um.nosql.s13e.db.utils.DbType;
 
-public class EPol2Db extends Source2Db
+public class EveryPolitician2Db extends Source2Db
 {
-  public EPol2Db(DbType db, String ip)
+  public EveryPolitician2Db(DbType db, String ip)
   {
     super(db, ip);
   }

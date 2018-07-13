@@ -18,19 +18,22 @@ public class Model2Db extends Source2Db
 
 	public void run(String modelRoute, String dbName)
 	{
-	  throw new UnsupportedOperationException();
+    int minInstances = 1000;
+    int maxInstances = 1000;
+
+    this.run(modelRoute, dbName, minInstances, maxInstances);
 	}
 
-	public void run(String modelRoute, int minInstances, int maxInstances)
+	public void run(String modelRoute, String dbName, int minInstances, int maxInstances)
 	{
 	  long startTime = System.currentTimeMillis();
 
 	  System.out.println("Reading input model " + modelRoute + "...");
-	  storeJSONContent(modelRoute, minInstances, maxInstances);
+	  storeJSONContent(modelRoute, dbName, minInstances, maxInstances);
 	  System.out.println(Paths.get(modelRoute).getFileName() + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
 	}
 
-  private void storeJSONContent(String modelRoute, int minInstances, int maxInstances)
+  private void storeJSONContent(String modelRoute, String dbName, int minInstances, int maxInstances)
 	{
 		ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
 		JsonGenerator generator = new JsonGenerator();
@@ -47,6 +50,6 @@ public class Model2Db extends Source2Db
 		}
 
 		getClient().cleanDb(schema.getName().toLowerCase());
-		getClient().insert(schema.getName().toLowerCase(), jsonContent);
+		getClient().insert(dbName, jsonContent);
 	}
 }

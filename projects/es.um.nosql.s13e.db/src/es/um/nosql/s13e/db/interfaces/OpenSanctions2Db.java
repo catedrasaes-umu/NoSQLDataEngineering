@@ -11,11 +11,11 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import es.um.nosql.s13e.db.utils.DbType;
 
-public class OSanctions2Db extends Source2Db
+public class OpenSanctions2Db extends Source2Db
 {
   private int MAX_LINES_BEFORE_STORE = 2000;
 
-  public OSanctions2Db(DbType db, String ip)
+  public OpenSanctions2Db(DbType db, String ip)
   {
     super(db, ip);
   }

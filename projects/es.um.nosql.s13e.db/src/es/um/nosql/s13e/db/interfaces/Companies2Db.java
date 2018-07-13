@@ -10,11 +10,11 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import es.um.nosql.s13e.db.utils.DbType;
 
-public class Comp2Db extends Source2Db
+public class Companies2Db extends Source2Db
 {
   private int MAX_LINES_BEFORE_STORE = 2000;
 
-  public Comp2Db(DbType db, String ip)
+  public Companies2Db(DbType db, String ip)
   {
     super(db, ip);
   }

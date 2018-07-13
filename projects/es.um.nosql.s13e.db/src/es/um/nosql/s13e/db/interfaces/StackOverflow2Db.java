@@ -12,12 +12,12 @@ import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
 import es.um.nosql.s13e.db.utils.DbType;
 
-public class SOF2Db extends Source2Db
+public class StackOverflow2Db extends Source2Db
 {
   private int MAX_OBJECTS = 2500000;
   private int MAX_LINES_BEFORE_STORE = 10000;
 
-  public SOF2Db(DbType db, String ip)
+  public StackOverflow2Db(DbType db, String ip)
   {
     super(db, ip);
   }

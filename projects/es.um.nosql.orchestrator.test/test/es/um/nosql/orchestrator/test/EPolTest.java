@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.google.gson.JsonArray;
 
-import es.um.nosql.s13e.db.interfaces.EPol2Db;
+import es.um.nosql.s13e.db.interfaces.EveryPolitician2Db;
 import es.um.nosql.s13e.db.utils.DbType;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
@@ -19,12 +19,12 @@ public class EPolTest
   private static String DBNAME = "DEBUG_everypolitician";
   private static String OUTPUT_MODEL = "testOutput/" + DBNAME + ".xmi";
 
-  private EPol2Db controller;
+  private EveryPolitician2Db controller;
 
   @Before
   public void setUp() throws Exception
   {
-    controller = new EPol2Db(DbType.MONGODB, DATABASE_IP);
+    controller = new EveryPolitician2Db(DbType.MONGODB, DATABASE_IP);
   }
 
   @After

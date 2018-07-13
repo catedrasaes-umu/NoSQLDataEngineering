@@ -14,11 +14,11 @@ import es.um.nosql.s13e.db.utils.DbType;
 import es.um.nosql.s13e.db.utils.deserializer.NumberToNumberDeserializer;
 import es.um.nosql.s13e.db.utils.deserializer.StringToStringDeserializer;
 
-public class Link2Db extends Source2Db
+public class Links2Db extends Source2Db
 {
   private int MAX_LINES_BEFORE_STORE = 5000;
 
-  public Link2Db(DbType db, String ip)
+  public Links2Db(DbType db, String ip)
   {
     super(db, ip);
   }
