@@ -1,11 +1,11 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: Test
-Bundle-SymbolicName: es.um.nosql.orchestrator.test
-Bundle-Version: 1.0.0.qualifier
+Bundle-Name: es.um.nosql.orchestrator
+Bundle-SymbolicName: es.um.nosql.orchestrator
+Bundle-Version: 1.0.0
 Export-Package: es.um.nosql.orchestrator
 Require-Bundle: org.eclipse.emf.ecore
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Import-Package: es.um.nosql.s13e.NoSQLSchema,
  org.eclipse.emf.ecore.xmi
-Automatic-Module-Name: es.um.nosql.orchestrator.test
+Automatic-Module-Name: es.um.nosql.orchestrator
