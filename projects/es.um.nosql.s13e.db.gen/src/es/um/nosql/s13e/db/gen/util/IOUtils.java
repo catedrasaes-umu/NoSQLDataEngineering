@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.db.gen.utils;
+package es.um.nosql.s13e.db.gen.util;
 
 import java.io.File;
 

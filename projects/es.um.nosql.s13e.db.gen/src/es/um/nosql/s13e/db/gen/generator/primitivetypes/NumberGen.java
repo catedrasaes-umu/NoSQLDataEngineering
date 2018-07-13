@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.util.concurrent.ThreadLocalRandom;
 
-import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
+import es.um.nosql.s13e.db.gen.util.constants.ConfigConstants;
 
 public class NumberGen
 {

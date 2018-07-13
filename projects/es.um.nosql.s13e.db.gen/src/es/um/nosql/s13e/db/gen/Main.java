@@ -3,7 +3,7 @@ package es.um.nosql.s13e.db.gen;
 import es.um.nosql.s13e.db.gen.controllers.ControllerFactory;
 import es.um.nosql.s13e.db.gen.controllers.Controller_Type;
 import es.um.nosql.s13e.db.gen.controllers.IController;
-import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
+import es.um.nosql.s13e.db.gen.util.constants.ConfigConstants;
 
 public class Main
 {

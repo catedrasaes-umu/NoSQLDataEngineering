@@ -1,4 +1,4 @@
-package es.um.nosql.orchestrator.config;
+package es.um.nosql.orchestrator.util;
 
 public enum InferenceMode
 {

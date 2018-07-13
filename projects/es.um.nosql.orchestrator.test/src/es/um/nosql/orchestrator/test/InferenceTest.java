@@ -17,7 +17,7 @@ import com.google.inject.Inject;
 import com.google.inject.Injector;
 import com.google.inject.Module;
 
-import es.um.nosql.orchestrator.config.InferenceMode;
+import es.um.nosql.orchestrator.util.InferenceMode;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
@@ -79,8 +79,9 @@ public class InferenceTest
   private static class InferenceTestModule implements Module
   {
     @Override
-    public void configure(Binder binder0) {
-      binder0.bind(DbType.class).toInstance(DbType.MONGODB);
+    public void configure(Binder theBinder)
+    {
+      theBinder.bind(DbType.class).toInstance(DbType.MONGODB);
     }
   }
 

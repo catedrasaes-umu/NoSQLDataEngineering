@@ -1,6 +1,6 @@
-package es.um.nosql.s13e.db.gen.utils;
+package es.um.nosql.s13e.db.gen.util;
 
-import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
+import es.um.nosql.s13e.db.gen.util.constants.ConfigConstants;
 
 public class DebugLog
 {

@@ -13,7 +13,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbAdapter;
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbClient;
-import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
+import es.um.nosql.s13e.db.gen.util.constants.ConfigConstants;
 
 public class OutputGen
 {

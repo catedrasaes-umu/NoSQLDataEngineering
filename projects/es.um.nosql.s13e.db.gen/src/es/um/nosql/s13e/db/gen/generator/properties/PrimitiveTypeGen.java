@@ -9,8 +9,8 @@ import es.um.nosql.s13e.db.gen.generator.primitivetypes.BooleanGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.ObjectIdGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.StringGen;
-import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
-import es.um.nosql.s13e.db.gen.utils.constants.Types;
+import es.um.nosql.s13e.db.gen.util.constants.ConfigConstants;
+import es.um.nosql.s13e.db.gen.util.constants.Types;
 
 public class PrimitiveTypeGen
 {

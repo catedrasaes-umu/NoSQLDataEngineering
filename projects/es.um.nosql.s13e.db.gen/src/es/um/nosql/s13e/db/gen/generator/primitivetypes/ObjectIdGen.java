@@ -7,7 +7,7 @@ import java.util.Date;
 
 import org.bson.types.ObjectId;
 
-import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
+import es.um.nosql.s13e.db.gen.util.constants.ConfigConstants;
 
 public class ObjectIdGen
 {

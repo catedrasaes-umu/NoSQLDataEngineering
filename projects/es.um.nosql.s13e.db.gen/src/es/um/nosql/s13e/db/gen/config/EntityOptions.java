@@ -2,7 +2,7 @@ package es.um.nosql.s13e.db.gen.config;
 
 import java.util.Arrays;
 
-import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
+import es.um.nosql.s13e.db.gen.util.constants.ConfigConstants;
 
 public class EntityOptions
 {

@@ -10,8 +10,8 @@ import es.um.nosql.s13e.NoSQLSchema.Tuple;
 import es.um.nosql.s13e.NoSQLSchema.Type;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.BooleanGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
-import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
-import es.um.nosql.s13e.db.gen.utils.constants.Types;
+import es.um.nosql.s13e.db.gen.util.constants.ConfigConstants;
+import es.um.nosql.s13e.db.gen.util.constants.Types;
 
 public class TupleGen
 {

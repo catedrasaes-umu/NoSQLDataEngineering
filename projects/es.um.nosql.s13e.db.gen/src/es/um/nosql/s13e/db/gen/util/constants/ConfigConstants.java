@@ -1,11 +1,11 @@
-package es.um.nosql.s13e.db.gen.utils.constants;
+package es.um.nosql.s13e.db.gen.util.constants;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import es.um.nosql.s13e.db.gen.config.DbGenOptions;
-import es.um.nosql.s13e.db.gen.utils.IOUtils;
+import es.um.nosql.s13e.db.gen.util.IOUtils;
 
 public final class ConfigConstants
 {

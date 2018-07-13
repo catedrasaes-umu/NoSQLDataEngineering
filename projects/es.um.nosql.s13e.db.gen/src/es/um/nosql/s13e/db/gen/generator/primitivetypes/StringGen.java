@@ -6,8 +6,8 @@ import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.List;
 
-import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
-import es.um.nosql.s13e.db.gen.utils.constants.FixedConstants;
+import es.um.nosql.s13e.db.gen.util.constants.ConfigConstants;
+import es.um.nosql.s13e.db.gen.util.constants.FixedConstants;
 
 public class StringGen
 {

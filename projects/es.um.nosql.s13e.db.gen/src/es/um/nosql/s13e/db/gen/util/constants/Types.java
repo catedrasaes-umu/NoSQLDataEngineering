@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.db.gen.utils.constants;
+package es.um.nosql.s13e.db.gen.util.constants;
 
 import java.util.Arrays;
 import java.util.List;

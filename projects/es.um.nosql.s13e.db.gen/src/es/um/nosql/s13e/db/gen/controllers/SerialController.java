@@ -6,9 +6,9 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.db.gen.generator.ObjectGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
 import es.um.nosql.s13e.db.gen.output.OutputGen;
-import es.um.nosql.s13e.db.gen.utils.DebugLog;
-import es.um.nosql.s13e.db.gen.utils.IOUtils;
-import es.um.nosql.s13e.db.gen.utils.constants.ConfigConstants;
+import es.um.nosql.s13e.db.gen.util.DebugLog;
+import es.um.nosql.s13e.db.gen.util.IOUtils;
+import es.um.nosql.s13e.db.gen.util.constants.ConfigConstants;
 
 public class SerialController implements IController
 {
