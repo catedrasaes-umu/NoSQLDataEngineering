@@ -8,61 +8,61 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 
 public class PrettyPrinter
 {
-	private static final String TAB = "\t";
+  private static final String TAB = "\t";
 
-	public static String printPretty(NoSQLSchema theSchema)
-	{
-		if (theSchema == null)
-			return null;
+  public static String printPretty(NoSQLSchema theSchema)
+  {
+    if (theSchema == null)
+      return null;
 
-		StringBuilder result = new StringBuilder();
+    StringBuilder result = new StringBuilder();
 
-		result.append("NoSQLSchema name:" + theSchema.getName()
-			+ System.lineSeparator());
+    result.append("NoSQLSchema name:" + theSchema.getName()
+      + System.lineSeparator());
 
-		for (Entity entity : theSchema.getEntities())
-			result.append(printPretty(entity, TAB));
+    for (Entity entity : theSchema.getEntities())
+      result.append(printPretty(entity, TAB));
 
-		return result.toString();
-	}
+    return result.toString();
+  }
 
-	public static String printPretty(Entity entity)
-	{
-		return printPretty(entity, "");
-	}
+  public static String printPretty(Entity entity)
+  {
+    return printPretty(entity, "");
+  }
 
-	private static String printPretty(Entity entity, String defTabs)
-	{
-		if (entity == null)
-			return null;
+  private static String printPretty(Entity entity, String defTabs)
+  {
+    if (entity == null)
+      return null;
 
-		String tabs = defTabs + TAB;
+    String tabs = defTabs + TAB;
 
-		String result = defTabs + "Entity name:" + entity.getName() + System.lineSeparator() 
-				 + entity.getEntityVariations().stream()
-				 	.map(ev -> printPretty(ev,tabs))
-				 	.collect(Collectors.joining(""));
+    String result = defTabs + "Entity name:" + entity.getName() + System.lineSeparator() 
+      + entity.getEntityVariations().stream()
+      .map(ev -> printPretty(ev,tabs))
+      .collect(Collectors.joining(""));
 
-		return result;
-	}
+    return result;
+  }
 
-	public static String printPretty(EntityVariation eVariation)
-	{
-		return printPretty(eVariation, "");
-	}
+  public static String printPretty(EntityVariation eVariation)
+  {
+    return printPretty(eVariation, "");
+  }
 
-	private static String printPretty(EntityVariation eVariation, String defTabs)
-	{
-		if (eVariation == null)
-			return null;
+  private static String printPretty(EntityVariation eVariation, String defTabs)
+  {
+    if (eVariation == null)
+      return null;
 
-		String tabs = defTabs + TAB;
+    String tabs = defTabs + TAB;
 
-		String result = defTabs + "EntityVariation variationId:" + eVariation.getVariationId() + System.lineSeparator() 
-				 + eVariation.getProperties().stream()
-				 	.map(p -> tabs + Serializer.serialize(p) + System.lineSeparator())
-				 	.collect(Collectors.joining());
+    String result = defTabs + "EntityVariation variationId:" + eVariation.getVariationId() + System.lineSeparator() 
+      + eVariation.getProperties().stream()
+      .map(p -> tabs + Serializer.serialize(p) + System.lineSeparator())
+      .collect(Collectors.joining());
 
-		return result;
-	}
+    return result;
+  }
 }

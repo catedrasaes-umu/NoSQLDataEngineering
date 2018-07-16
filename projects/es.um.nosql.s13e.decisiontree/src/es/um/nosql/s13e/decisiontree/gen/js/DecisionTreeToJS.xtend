@@ -35,20 +35,23 @@ class DecisionTreeToJS
 
   def static void main(String[] args)
   {
+    val inputFile = "../es.um.nosql.examples/mongosongs/mongosongs_Tree.xmi";
+    val outputFile = "../es.um.nosql.examples/mongosongs/";
+/*
     if (args.length < 1)
     {
       System.out.println("Usage: DiffToJS model [outdir]")
       System.exit(-1)
-    }
+    }*/
 
-    val inputModel = new File(args.head)
+    val inputModel = new File(inputFile)
     val ResourceManager rm = new ResourceManager(DecisionTreePackage.eINSTANCE,
       EntityDifferentiationPackage.eINSTANCE,
       NoSQLSchemaPackage.eINSTANCE)
     rm.loadResourcesAsStrings(inputModel.getPath())
     val DecisionTrees trees = rm.resources.head.contents.head as DecisionTrees
 
-    val outputDir = new File(if (args.length > 1) args.get(1) else ".").toPath().resolve(trees.name).toFile()
+    val outputDir = new File(outputFile).toPath().resolve(trees.name).toFile()
     // Create destination directory if it does not exist
     outputDir.mkdirs()
     System.out.println("Generating Javascript for " + inputModel.getPath() + " in " + outputDir.getPath())
