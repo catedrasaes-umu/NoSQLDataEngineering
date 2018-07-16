@@ -6,7 +6,7 @@ import com.google.gson.JsonArray;
 
 import es.um.nosql.orchestrator.util.constants.ConfigConstants;
 import es.um.nosql.s13e.db.interfaces.Source2Db;
-import es.um.nosql.s13e.db.utils.DbType;
+import es.um.nosql.s13e.db.util.DbType;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.s13e.nosqlimport.db.couchdb.CouchDBImport;
 import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;

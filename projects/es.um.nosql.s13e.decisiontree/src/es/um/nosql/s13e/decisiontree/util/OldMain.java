@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.decisiontree.utils;
+package es.um.nosql.s13e.decisiontree.util;
 
 import java.io.File;
 import java.util.ArrayList;

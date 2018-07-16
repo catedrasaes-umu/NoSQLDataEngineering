@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.db.utils;
+package es.um.nosql.s13e.db.util;
 
 public enum DbType
 {

@@ -12,9 +12,9 @@ import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
 import es.um.nosql.s13e.db.pojo.harvard.HarvardCourse;
-import es.um.nosql.s13e.db.utils.DbType;
-import es.um.nosql.s13e.db.utils.deserializer.NumberToNumberDeserializer;
-import es.um.nosql.s13e.db.utils.deserializer.StringToStringDeserializer;
+import es.um.nosql.s13e.db.util.DbType;
+import es.um.nosql.s13e.db.util.deserializer.NumberToNumberDeserializer;
+import es.um.nosql.s13e.db.util.deserializer.StringToStringDeserializer;
 
 public class Harvard2Db extends Source2Db
 {

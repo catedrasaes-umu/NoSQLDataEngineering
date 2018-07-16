@@ -10,9 +10,9 @@ import com.fasterxml.jackson.databind.module.SimpleModule;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 
 import es.um.nosql.s13e.db.pojo.urban.Word;
-import es.um.nosql.s13e.db.utils.DbType;
-import es.um.nosql.s13e.db.utils.deserializer.NumberToNumberDeserializer;
-import es.um.nosql.s13e.db.utils.deserializer.StringToStringDeserializer;
+import es.um.nosql.s13e.db.util.DbType;
+import es.um.nosql.s13e.db.util.deserializer.NumberToNumberDeserializer;
+import es.um.nosql.s13e.db.util.deserializer.StringToStringDeserializer;
 
 public class UrbanDictionary2Db extends Source2Db
 {

@@ -3,7 +3,7 @@ package es.um.nosql.s13e.db.interfaces;
 import es.um.nosql.s13e.db.adapters.DbClient;
 import es.um.nosql.s13e.db.adapters.couchdb.CouchDbAdapter;
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbAdapter;
-import es.um.nosql.s13e.db.utils.DbType;
+import es.um.nosql.s13e.db.util.DbType;
 
 public abstract class Source2Db
 {

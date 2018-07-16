@@ -5,8 +5,8 @@ import java.nio.file.Paths;
 
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.s13e.db.utils.DbType;
-import es.um.nosql.s13e.db.utils.generator.JsonGenerator;
+import es.um.nosql.s13e.db.util.DbType;
+import es.um.nosql.s13e.db.util.generator.JsonGenerator;
 import es.um.nosql.s13e.util.emf.ModelLoader;
 
 public class Model2Db extends Source2Db

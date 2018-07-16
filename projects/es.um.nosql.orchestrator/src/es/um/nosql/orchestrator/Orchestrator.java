@@ -20,7 +20,7 @@ import es.um.nosql.s13e.db.interfaces.StackOverflow2Db;
 import es.um.nosql.s13e.db.interfaces.Source2Db;
 import es.um.nosql.s13e.db.interfaces.UrbanDictionary2Db;
 import es.um.nosql.s13e.db.interfaces.Webclick2Db;
-import es.um.nosql.s13e.db.utils.DbType;
+import es.um.nosql.s13e.db.util.DbType;
 
 public class Orchestrator
 {

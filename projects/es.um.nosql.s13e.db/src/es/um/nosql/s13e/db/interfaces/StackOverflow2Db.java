@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 
-import es.um.nosql.s13e.db.utils.DbType;
+import es.um.nosql.s13e.db.util.DbType;
 
 public class StackOverflow2Db extends Source2Db
 {

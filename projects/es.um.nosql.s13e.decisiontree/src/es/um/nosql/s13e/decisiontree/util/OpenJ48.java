@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.decisiontree.utils;
+package es.um.nosql.s13e.decisiontree.util;
 
 import weka.classifiers.trees.J48;
 import weka.classifiers.trees.j48.ClassifierTree;

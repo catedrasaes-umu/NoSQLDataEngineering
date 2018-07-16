@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
-import es.um.nosql.s13e.db.utils.DbType;
+import es.um.nosql.s13e.db.util.DbType;
 
 public class OpenSanctions2Db extends Source2Db
 {

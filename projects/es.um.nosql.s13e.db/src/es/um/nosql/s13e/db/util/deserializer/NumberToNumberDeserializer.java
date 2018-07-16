@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.db.utils.deserializer;
+package es.um.nosql.s13e.db.util.deserializer;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.db.utils.generator;
+package es.um.nosql.s13e.db.util.generator;
 
 import java.util.ArrayList;
 import java.util.HashMap;

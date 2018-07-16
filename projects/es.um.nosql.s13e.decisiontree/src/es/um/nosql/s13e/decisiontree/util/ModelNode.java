@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.decisiontree.utils;
+package es.um.nosql.s13e.decisiontree.util;
 
 import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;

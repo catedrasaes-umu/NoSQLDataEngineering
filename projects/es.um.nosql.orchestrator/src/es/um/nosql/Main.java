@@ -3,7 +3,7 @@ package es.um.nosql;
 import es.um.nosql.orchestrator.Orchestrator;
 import es.um.nosql.orchestrator.util.InferenceMode;
 import es.um.nosql.orchestrator.util.constants.ConfigConstants;
-import es.um.nosql.s13e.db.utils.DbType;
+import es.um.nosql.s13e.db.util.DbType;
 
 /*
 private static class InferenceTestModule implements Module

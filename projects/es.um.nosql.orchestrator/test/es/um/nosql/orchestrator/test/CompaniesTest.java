@@ -7,7 +7,7 @@ import org.junit.Test;
 import com.google.gson.JsonArray;
 
 import es.um.nosql.s13e.db.interfaces.Companies2Db;
-import es.um.nosql.s13e.db.utils.DbType;
+import es.um.nosql.s13e.db.util.DbType;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
 
