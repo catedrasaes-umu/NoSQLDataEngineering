@@ -54,7 +54,7 @@ public class OldMain {
 
   public static Map<String, List<Property>> getProperties(NoSQLSchema schema)
   {
-    return	
+    return
         schema.getEntities().stream().filter(e -> e.isRoot()).flatMap(e ->
         e.getEntityVariations().stream())
         .flatMap(ev -> ev.getProperties().stream())
@@ -119,7 +119,7 @@ public class OldMain {
     // Count properties
     int maxNumFeatures = features.size();
 
-    // Define Nominal values for features fields	
+    // Define Nominal values for features fields
     List<String> f_values = Arrays.asList(new String[]{"1","0"});
 
     // Define Weka Instances Model
@@ -129,7 +129,7 @@ public class OldMain {
       Attribute attribute = new Attribute(features.get(i), f_values);
       atts.add(attribute);
     }
-    Attribute tag = new Attribute("tag", classes);	
+    Attribute tag = new Attribute("tag", classes);
     atts.add(tag);
     return atts;
   }
@@ -155,7 +155,7 @@ public class OldMain {
       }
 
       ints.setValue(tag, name);
-      dataset.add(ints);			
+      dataset.add(ints);
     }
 
     dataset.setClass(tag);
@@ -184,7 +184,7 @@ public class OldMain {
     else
     {
       //ClassifierSplitModel classifierSplitModel = tree.getLocalModel();
-      ClassifierTree[] sons = tree.getSons();	
+      ClassifierTree[] sons = tree.getSons();
       String left = tree.getLocalModel().leftSide(tree.getTrainingData());
       List<Property> p = properties.get(left.trim());
 
@@ -239,7 +239,7 @@ public class OldMain {
   public static void main(String[] args)
   {
     ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
-    NoSQLSchema schema = loader.load(new File("model/mongoMovies3.xmi"), 
+    NoSQLSchema schema = loader.load(new File("model/mongoMovies3.xmi"),
         NoSQLSchema.class);
 
     // Get list of classes and list of their properties
@@ -249,13 +249,13 @@ public class OldMain {
     int num_classes = classes.size();
 
     // Get List of properties names
-    Set<String> featuresNames = new HashSet<String>();		
+    Set<String> featuresNames = new HashSet<String>();
     for (List<String> list : classes.values())
     {
       featuresNames.addAll(list);
     }
 
-    List<String> featuresList = Arrays.asList(featuresNames.toArray(new String[featuresNames.size()]));		
+    List<String> featuresList = Arrays.asList(featuresNames.toArray(new String[featuresNames.size()]));
     List<String> classesList = Arrays.asList(classes.keySet().toArray(new String[num_classes]));
 
     // Encode classes into binary vectors

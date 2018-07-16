@@ -186,7 +186,7 @@ class DecisionTreeToJS
 
   def dispatch genTypeCheck(Property p)
   {
-  	throw new UnsupportedOperationException("TODO: auto-generated method stub")
+    throw new UnsupportedOperationException("TODO: auto-generated method stub")
   }
 
   def dispatch genTypeCheck(Aggregate a)

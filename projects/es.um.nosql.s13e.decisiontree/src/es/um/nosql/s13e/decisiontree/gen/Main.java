@@ -136,8 +136,8 @@ public class Main
   private void run(String[] args)
   {
     args = new String[2];
-    args[0] = "../es.um.nosql.examples/mongomovies/mongomovies3_Diff.xmi";
-    args[1] = "model/output.xmi";
+    args[0] = "../es.um.nosql.examples/mongomovies/mongomovies_Diff.xmi";
+    args[1] = "output/output.xmi";
     if (args.length != 2)
     {
       System.err.println("Usage: decisiontree infile outfile");
@@ -196,7 +196,7 @@ public class Main
       else
       {
         in.setYesBranch(decisionTreeForEntity(root.getNodePresent()));
-        in.setNoBranch(decisionTreeForEntity(root.getNodeAbsent()));				
+        in.setNoBranch(decisionTreeForEntity(root.getNodeAbsent()));
       }
 
       // Create PropertySpec2 from PropertySpec
