@@ -2,10 +2,6 @@ package es.um.nosql.s13e.mongomovies;
 
 import org.mongodb.morphia.annotations.Entity;
 import org.mongodb.morphia.annotations.Id;
-import es.um.nosql.s13e.mongomovies.commons.Commons;
-import org.mongodb.morphia.annotations.PreLoad;
-import org.mongodb.morphia.annotations.PreSave;
-import com.mongodb.DBObject;
 import org.mongodb.morphia.annotations.Embedded;
 import org.mongodb.morphia.annotations.Property;
 import org.mongodb.morphia.annotations.Reference;

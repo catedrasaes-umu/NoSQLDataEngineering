@@ -101,7 +101,6 @@ public class Review
   // @Union_Integer_String
   @Max(value = 5)
   @Min(value = 0)
-  @SuppressWarnings("unused")
   private Object stars;
   public Object getStars()
   {

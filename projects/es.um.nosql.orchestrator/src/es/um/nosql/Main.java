@@ -1,6 +1,8 @@
 package es.um.nosql;
 
 import es.um.nosql.orchestrator.Orchestrator;
+import es.um.nosql.orchestrator.util.InferenceMode;
+import es.um.nosql.orchestrator.util.constants.ConfigConstants;
 import es.um.nosql.s13e.db.utils.DbType;
 
 /*
@@ -27,7 +29,7 @@ public class Main
     //inferenceTest.runHarvardExample(InferenceMode.FILL_AND_INFER, ConfigConstants.HARVARD_FILE);                    //POJO
     //inferenceTest.runJsonExample(InferenceMode.FILL_AND_INFER, ConfigConstants.JSON_FILE);
     //inferenceTest.runLinksExample(InferenceMode.FILL_AND_INFER, ConfigConstants.LINKS_FOLDER);                      //POJO
-    //inferenceTest.runModelExample(InferenceMode.FILL_AND_INFER, ConfigConstants.MODEL_FILE);
+    inferenceTest.runModelExample(InferenceMode.FILL_AND_INFER, ConfigConstants.MODEL_FILE);
     //inferenceTest.runOpenSanctionsExample(InferenceMode.FILL_AND_INFER, ConfigConstants.OPENSANCTIONS_FILE);
     //inferenceTest.runPleiadesExample(InferenceMode.FILL_AND_INFER, ConfigConstants.PLEIADES_FILE);                  //TODO: DOESNT WORK YET
     //inferenceTest.runProteinsExample(InferenceMode.FILL_AND_INFER, ConfigConstants.PROTEINS_FOLDER);                //POJO
