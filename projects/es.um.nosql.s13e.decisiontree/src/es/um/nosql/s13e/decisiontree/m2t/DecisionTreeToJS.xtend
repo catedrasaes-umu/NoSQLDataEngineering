@@ -1,11 +1,8 @@
-package es.um.nosql.s13e.decisiontree.gen.js
+package es.um.nosql.s13e.decisiontree.m2t
 
-import es.um.nosql.s13e.util.emf.ResourceManager
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage
 import org.eclipse.xtend.lib.annotations.Data
 import java.io.File
 import java.util.List
-import java.io.PrintStream
 import es.um.nosql.s13e.NoSQLSchema.Property
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType
 import es.um.nosql.s13e.NoSQLSchema.Attribute
@@ -14,93 +11,74 @@ import es.um.nosql.s13e.NoSQLSchema.Tuple
 import es.um.nosql.s13e.NoSQLSchema.Reference
 import es.um.nosql.s13e.NoSQLSchema.Aggregate
 import es.um.nosql.s13e.NoSQLSchema.Entity
-import es.um.nosql.s13e.DecisionTree.DecisionTreePackage
 import es.um.nosql.s13e.DecisionTree.DecisionTrees
 import es.um.nosql.s13e.DecisionTree.DecisionTreeForEntity
 import es.um.nosql.s13e.DecisionTree.PropertySpec2
 import es.um.nosql.s13e.DecisionTree.IntermediateNode
 import es.um.nosql.s13e.DecisionTree.LeafNode
-import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage
 import es.um.nosql.s13e.NoSQLSchema.EntityVariation
 import java.util.Deque
 import java.util.HashMap
 import java.util.Map
 import es.um.nosql.s13e.DecisionTree.DecisionTreeNode
+import es.um.nosql.s13e.util.emf.ModelLoader
+import es.um.nosql.s13e.DecisionTree.DecisionTreePackage
+import es.um.nosql.s13e.decisiontree.m2t.commons.Commons
 
 class DecisionTreeToJS
 {
-  var modelName = "";
+  private var modelName = "";
 
-//  final val SPECIAL_TYPE_IDENTIFIER = "type"
-
-  def static void main(String[] args)
+  @Data static class PropertyAndBranch
   {
-    val inputFile = "../es.um.nosql.examples/mongosongs/mongosongs_Tree.xmi";
-    val outputFile = "../es.um.nosql.examples/mongosongs/";
-/*
-    if (args.length < 1)
-    {
-      System.out.println("Usage: DiffToJS model [outdir]")
-      System.exit(-1)
-    }*/
-
-    val inputModel = new File(inputFile)
-    val ResourceManager rm = new ResourceManager(DecisionTreePackage.eINSTANCE,
-      EntityDifferentiationPackage.eINSTANCE,
-      NoSQLSchemaPackage.eINSTANCE)
-    rm.loadResourcesAsStrings(inputModel.getPath())
-    val DecisionTrees trees = rm.resources.head.contents.head as DecisionTrees
-
-    val outputDir = new File(outputFile).toPath().resolve(trees.name).toFile()
-    // Create destination directory if it does not exist
-    outputDir.mkdirs()
-    System.out.println("Generating Javascript for " + inputModel.getPath() + " in " + outputDir.getPath())
-
-    val dt_to_js = new DecisionTreeToJS()
-    val outFile = outputDir.toPath().resolve(trees.name + ".js").toFile()
-    val outFileWriter = new PrintStream(outFile)
-
-    outFileWriter.println(dt_to_js.generate(trees))
-    outFileWriter.close()
-
-    System.exit(0)
+    PropertySpec2 prop
+    boolean branch
   }
 
-  /**
-    * Method used to generate an Inclusive/Exclusive differences file for a NoSQLDifferences object.
-    */
-  def generate(DecisionTrees dt)
+  public def m2t(File modelFile, File outputFolder)
   {
-    modelName = dt.name;
+    val loader = new ModelLoader(DecisionTreePackage.eINSTANCE);
+    val decTrees = loader.load(modelFile, DecisionTrees);
 
-    '''
-    'use strict'
-
-    var «dt.name» = {
-
-    name: "«dt.name»",
-    «genCheckFunctions(dt.trees)»
-    }
-
-    module.exports = «dt.name»;
-    '''
+    m2t(decTrees, outputFolder);
   }
 
-  def genCheckFunctions(List<DecisionTreeForEntity> list)
+  public def m2t(DecisionTrees decTrees, File outputFolder)
+  {
+    modelName = decTrees.name;
+
+    Commons.WRITE_TO_FILE(outputFolder, decTrees.name + ".js", genDecisionTree(decTrees));
+  }
+
+  private def genDecisionTree(DecisionTrees decTrees)
+  '''
+  'use strict'
+
+  var «decTrees.name» =
+  {
+    name: "«decTrees.name»",
+    «genCheckFunctions(decTrees.trees)»
+  }
+
+  module.exports = «decTrees.name»;
+  '''
+
+  private def genCheckFunctions(List<DecisionTreeForEntity> list)
   '''
     «FOR DecisionTreeForEntity dte : list SEPARATOR ','»
-      «genCheckFunction(dte)»,
+      «genCheckFunction(dte)»
     «ENDFOR»
   '''
 
-  def genCheckFunction(DecisionTreeForEntity dte)
+  private def genCheckFunction(DecisionTreeForEntity dte)
   {
     val entityName = dte.entity.name.toFirstUpper
 
     val paths = calcPaths(dte)
 
     '''
-    «entityName»: {
+    «entityName»:
+    {
       name: "«entityName»",
       entityVariationForObject: function (obj)
       {
@@ -113,25 +91,21 @@ class DecisionTreeToJS
     '''
   }
 
-  @Data static class PropertyAndBranch
+  private def calcPaths(DecisionTreeForEntity dte) 
   {
-    PropertySpec2 prop
-    boolean branch
+    var paths = new HashMap<EntityVariation, Deque<PropertyAndBranch>>;
+    calcPaths(paths, newLinkedList(), dte.root);
+
+    return paths;
   }
 
-  def calcPaths(DecisionTreeForEntity dte) 
-  {
-    var paths = new HashMap<EntityVariation, Deque<PropertyAndBranch>>
-    calcPaths(paths, newLinkedList(), dte.root)
-    return paths
-  }
-
-  def void calcPaths(Map<EntityVariation, Deque<PropertyAndBranch>> paths, Deque<PropertyAndBranch> checks, DecisionTreeNode node)
+  private def void calcPaths(Map<EntityVariation, Deque<PropertyAndBranch>> paths, Deque<PropertyAndBranch> checks, DecisionTreeNode node)
   {
     switch node
     {
       LeafNode : paths.put(node.identifiedVariation, newLinkedList(checks.clone))
-      IntermediateNode : {
+      IntermediateNode :
+      {
         // yes
         checks.add(new PropertyAndBranch(node.checkedProperty, true))
         calcPaths(paths, checks, node.yesBranch)
@@ -145,33 +119,35 @@ class DecisionTreeToJS
     }
   }
 
-  def generateSpecificCheck(DecisionTreeForEntity dte, EntityVariation variation, Deque<PropertyAndBranch> checks)
+  private def generateSpecificCheck(DecisionTreeForEntity dte, EntityVariation variation, Deque<PropertyAndBranch> checks)
   '''
     checkEV_«dte.entity.name»_«variation.variationId»: function (obj)
     {
-    «FOR PropertyAndBranch branch : checks»
+      «FOR PropertyAndBranch branch : checks»
       if («if (branch.branch) genPropNot(branch.prop) else genProp(branch.prop) »)
         return false;
-    «ENDFOR»
+      «ENDFOR»
 
       return true;
     }
   '''
 
-  def dispatch String generateCheckTree(DecisionTreeForEntity dte, IntermediateNode root) '''
+  private def dispatch String generateCheckTree(DecisionTreeForEntity dte, IntermediateNode root) '''
     if («genProp(root.checkedProperty)»)
     {
       «generateCheckTree(dte,root.yesBranch)»
-    } else {
+    }
+    else
+    {
       «generateCheckTree(dte,root.noBranch)»
     }
   ''' 
 
-  def dispatch generateCheckTree(DecisionTreeForEntity dte, LeafNode node) '''
+  private def dispatch generateCheckTree(DecisionTreeForEntity dte, LeafNode node) '''
     return "«dte.entity.name + "_" + node.identifiedVariation.variationId»";
   '''
 
-  def genProp(PropertySpec2 p)
+  private def genProp(PropertySpec2 p)
   {
     if (p.needsTypeCheck)
       '''(("«p.property.name»" in obj) && «genTypeCheck(p.property)»)'''
@@ -179,7 +155,7 @@ class DecisionTreeToJS
       '''("«p.property.name»" in obj)'''
   }
 
-  def genPropNot(PropertySpec2 p)
+  private def genPropNot(PropertySpec2 p)
   {
     if (p.needsTypeCheck)
       '''(!("«p.property.name»" in obj) || !(«genTypeCheck(p.property)»))'''
@@ -187,12 +163,12 @@ class DecisionTreeToJS
       '''(!("«p.property.name»" in obj))'''
   }
 
-  def dispatch genTypeCheck(Property p)
+  private def dispatch genTypeCheck(Property p)
   {
     throw new UnsupportedOperationException("TODO: auto-generated method stub")
   }
 
-  def dispatch genTypeCheck(Aggregate a)
+  private def dispatch genTypeCheck(Aggregate a)
   '''
     «IF a.lowerBound == 0»
     (obj.«a.name».constructor === Array) &&
@@ -209,7 +185,8 @@ class DecisionTreeToJS
     «ENDIF»
   '''
 
-  def dispatch genTypeCheck(Reference r) '''
+  private def dispatch genTypeCheck(Reference r)
+  '''
     «IF r.lowerBound == 0»
     (obj.«r.name».constructor === Array) &&
         (obj.«r.name».every(function(e) { return typeof e === "number";})
@@ -220,40 +197,37 @@ class DecisionTreeToJS
     «ENDIF»
   '''
 
-  def dispatch genTypeCheck(Attribute a)
+  private def dispatch genTypeCheck(Attribute a)
   {
     genTypeCheckLowLevel(a.type, "obj." + a.name);
   }
 
-  def dispatch genTypeCheckLowLevel(Type type, String name)
+  private def dispatch genTypeCheckLowLevel(Type type, String name)
   {
     throw new UnsupportedOperationException("TODO: auto-generated method stub")
   }
 
-  private def isInt(String type) { #["int", "integer", "number"].contains(type) }
-  private def isFloat(String type) { #["float", "double"].contains(type) }
-  private def isBoolean(String type) { #["boolean", "bool"].contains(type) }
-
-  def dispatch CharSequence genTypeCheckLowLevel(PrimitiveType type, String name)
+  private def dispatch CharSequence genTypeCheckLowLevel(PrimitiveType type, String name)
   {
     switch typeName : type.name.toLowerCase
     {
-      case "string" : '''(typeof «name» === "string")'''
-      case typeName.isInt : '''(typeof «name» === "number") && («name» % 1 === 0)'''
-      case typeName.isFloat :  '''(typeof «name» === "number") && !(«name» % 1 === 0)'''
-      case typeName.isBoolean : '''(typeof «name» === "boolean")'''
+      case Commons.IS_STRING(typeName) : '''(typeof «name» === "string")'''
+      case Commons.IS_INT(typeName) : '''(typeof «name» === "number") && («name» % 1 === 0)'''
+      case Commons.IS_DOUBLE(typeName) :  '''(typeof «name» === "number") && !(«name» % 1 === 0)'''
+      case Commons.IS_BOOLEAN(typeName) : '''(typeof «name» === "boolean")'''
       default: ''''''
     }
   }
 
-  def dispatch CharSequence genTypeCheckLowLevel(Tuple type, String name) {
-      '''(«name».constructor === Array) && («name».length === «type.elements.size»)
-      «IF type.elements.size != 0»
+  private def dispatch CharSequence genTypeCheckLowLevel(Tuple type, String name)
+  {
+    '''(«name».constructor === Array) && («name».length === «type.elements.size»)
+    «IF type.elements.size != 0»
       &&
       «var i = 0»
       «FOR t : type.elements SEPARATOR " && "»
       «genTypeCheckLowLevel(t, name + '[' + i++ + ']')»
       «ENDFOR»
-      «ENDIF»'''
+    «ENDIF»'''
   }
 }

@@ -28,7 +28,7 @@ import java.util.HashMap
  */
 public class DiffToMongoose
 {
-  static class Label
+  private static class Label
   {
     var label = ""
     new(String l) {label = l}
@@ -38,18 +38,18 @@ public class DiffToMongoose
   /**
    * The name of the model, directly extracted from the EntityDifferentiation object.
    */
-  var modelName = "";
+  private var modelName = "";
 
-  static File outputDir;
+  private File outputDir;
 
-  DependencyAnalyzer analyzer;
+  private DependencyAnalyzer analyzer;
 
-  MongooseIndexValGen indexValGen;
+  private MongooseIndexValGen indexValGen;
 
   /**
    * Method used to start the generation process from a diff model file
    */
-  def void m2t(File modelFile, File outputFolder, File configFile)
+  public def void m2t(File modelFile, File outputFolder, File configFile)
   {
     val loader = new ModelLoader(EntityDifferentiationPackage.eINSTANCE);
     val diff = loader.load(modelFile, EntityDifferentiation);
@@ -60,7 +60,7 @@ public class DiffToMongoose
   /**
    * Method used to start the generation process from an EntityDifferentiation object
    */
-  def void m2t(EntityDifferentiation diff, File outputFolder, File configFile)
+  public def void m2t(EntityDifferentiation diff, File outputFolder, File configFile)
   {
     if (outputFolder.toPath.resolve("app/models/").toFile.exists)
       outputDir = outputFolder.toPath.resolve("app/models/").toFile
@@ -81,7 +81,7 @@ public class DiffToMongoose
   /**
    * This method generates the basic structure of the Javascript class.
    */
-  def genSchema(Entity e) '''
+  private def genSchema(Entity e) '''
     'use strict'
 
     var mongoose = require('mongoose');
@@ -99,7 +99,7 @@ public class DiffToMongoose
   /**
    * To generate imports, we just recreate the routes of the imports to be used.
    */
-  def genIncludes(Entity entity, EntityDiffSpec spec) '''
+  private def genIncludes(Entity entity, EntityDiffSpec spec) '''
     «FOR e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
       var «e.name»Schema = require('./«schemaFileName(e)»');
     «ENDFOR»
@@ -108,7 +108,7 @@ public class DiffToMongoose
     «ENDIF»
   '''
 
-  def schemaFileName(Entity e)
+  private def schemaFileName(Entity e)
   {
     e.name + "Schema.js"
   }
@@ -118,7 +118,7 @@ public class DiffToMongoose
    * s.key stores a PropertySpec
    * s.value stores "required" or not
    */
-  def genSpecs(Entity e, EntityDiffSpec spec)
+  private def genSpecs(Entity e, EntityDiffSpec spec)
   '''
     «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false])
       .reject[p | p.key.property.name.startsWith("_") && !p.key.property.name.equals("_id")]
@@ -127,7 +127,7 @@ public class DiffToMongoose
     «ENDFOR»
   '''
 
-  def specificProps(EntityDiffSpec spec)
+  private def specificProps(EntityDiffSpec spec)
   {
     spec.entityVariationProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
       [result, neew |
@@ -137,7 +137,7 @@ public class DiffToMongoose
       ])
   }
 
-  def mongooseOptionsForPropertySpec(Entity e, PropertySpec spec, boolean required)
+  private def mongooseOptionsForPropertySpec(Entity e, PropertySpec spec, boolean required)
   {
     val props = new HashMap<String,Object>()
 
@@ -159,7 +159,7 @@ public class DiffToMongoose
     props
   }
 
-  def CharSequence toJSONString(Object o)
+  private def CharSequence toJSONString(Object o)
   {
     switch o
     {
@@ -170,7 +170,7 @@ public class DiffToMongoose
   }
 
   // Maybe simplify output when the map has only one element (the type)
-  def toJSONMaybeSimplified(Map<String, Object> m)
+  private def toJSONMaybeSimplified(Map<String, Object> m)
   {
     val keySet = m.keySet;
     if (keySet.length == 1 && keySet.get(0).equals("type"))
@@ -192,7 +192,7 @@ public class DiffToMongoose
   /**
    * Method used to check if a property needs type check, and call the neccesary method.
    */
-  def genPropSpec(Entity e, PropertySpec ps)
+  private def genPropSpec(Entity e, PropertySpec ps)
   {
     if (ps.needsTypeCheck)
       genCodeForTypeCheckProperty(e, ps.property)
@@ -206,7 +206,7 @@ public class DiffToMongoose
    * If the reduction is possible, we generate the property as any other.
    * If not, a Union is generated.
    */
-  def genCodeForTypeCheckProperty(Entity e, Property property)
+  private def genCodeForTypeCheckProperty(Entity e, Property property)
   {
     val typeList = analyzer.getTypeListByPropertyName().get(e).get(property.name)
     // On uniqueTypeList we removed duplicated property types, such as a String PrimitiveType and a Reference w originalType String.
@@ -229,17 +229,17 @@ public class DiffToMongoose
     }
   }
 
-  def dispatch reduceUnionProperty(Aggregate aggr, List<Property> uniqueTypeList, List<String> typeShortcutList)
+  private def dispatch reduceUnionProperty(Aggregate aggr, List<Property> uniqueTypeList, List<String> typeShortcutList)
   {
     addToReduceLists(aggr, (aggr.refTo.get(0).eContainer as Entity).name, uniqueTypeList, typeShortcutList);
   }
 
-  def dispatch reduceUnionProperty(Reference ref, List<Property> uniqueTypeList, List<String> typeShortcutList)
+  private def dispatch reduceUnionProperty(Reference ref, List<Property> uniqueTypeList, List<String> typeShortcutList)
   {
     addToReduceLists(ref, ref.originalType, uniqueTypeList, typeShortcutList);
   }
 
-  def dispatch reduceUnionProperty(Attribute attr, List<Property> uniqueTypeList, List<String> typeShortcutList)
+  private def dispatch reduceUnionProperty(Attribute attr, List<Property> uniqueTypeList, List<String> typeShortcutList)
   {
     if (attr.type instanceof PrimitiveType)
       addToReduceLists(attr, (attr.type as PrimitiveType).name, uniqueTypeList, typeShortcutList);
@@ -256,7 +256,7 @@ public class DiffToMongoose
     }
   }
 
-  def addToReduceLists(Property p, String name, List<Property> uniqueTypeList, List<String> typeShortcutList)
+  private def addToReduceLists(Property p, String name, List<Property> uniqueTypeList, List<String> typeShortcutList)
   {
     if (!typeShortcutList.exists[type | type.equals(name)])
     {
@@ -271,7 +271,7 @@ public class DiffToMongoose
    * using a function generated in the Mongoose.Commons part.
    * The attribute type will look like "U_Type1_Type2...TypeN"
    */
-  def String genUnion(Iterable<Property> list)
+  private def String genUnion(Iterable<Property> list)
   {
     // Concatenate each type of the union removing the Schema.schema from the name if neccesary
     val unionName = "U_" + list.map[p | genCodeForProperty(p).values.get(0)]
@@ -289,7 +289,7 @@ public class DiffToMongoose
   /**
    * Generate code attribute for Aggregation
    */
-  def dispatch genCodeForProperty(Aggregate aggr) 
+  private def dispatch genCodeForProperty(Aggregate aggr) 
   {
     #{ 'type' -> aggregateType(aggr) }
   }
@@ -297,7 +297,7 @@ public class DiffToMongoose
   /**
    * Shortcut method to generate an Aggregate type.
    */
-  def aggregateType(Aggregate aggr)
+  private def aggregateType(Aggregate aggr)
   {
     val entityName = (aggr.refTo.get(0).eContainer as Entity).name
 
@@ -312,7 +312,7 @@ public class DiffToMongoose
   /**
    * Generate code attribute for Reference
    */
-  def dispatch genCodeForProperty(Reference ref)
+  private def dispatch genCodeForProperty(Reference ref)
   {
     val refComps = Commons.EXPAND_REF(ref)
 
@@ -326,7 +326,7 @@ public class DiffToMongoose
   /**
    * Shortcut method to generate a Reference type.
    */
-  def referenceType(Reference ref)
+  private def referenceType(Reference ref)
   {
     // If originalType is empty, suppose String
     var theType = "";
@@ -348,7 +348,7 @@ public class DiffToMongoose
   /**
    * Generate code attribute for Attribute
    */
-  def dispatch genCodeForProperty(Attribute a) 
+  private def dispatch genCodeForProperty(Attribute a) 
   {
     genAttributeType(a.type)
   }
@@ -356,7 +356,7 @@ public class DiffToMongoose
   /**
    * Generate code attribute for a Tuple Attribute
    */
-  def dispatch genAttributeType(Tuple type)
+  private def dispatch genAttributeType(Tuple type)
   {
     #{'type' -> genType(type)}
   }
@@ -364,7 +364,7 @@ public class DiffToMongoose
   /**
    * Generate code attribute for PrimitiveType Attribute
    */
-  def dispatch genAttributeType(PrimitiveType type)
+  private def dispatch genAttributeType(PrimitiveType type)
   {
     #{'type' -> genTypeForPrimitiveString(type.name)}
   }
@@ -372,7 +372,7 @@ public class DiffToMongoose
   /**
    * Shortcut method to generate a Primitive type.
    */
-  def dispatch genType(PrimitiveType type)
+  private def dispatch genType(PrimitiveType type)
   {
     genTypeForPrimitiveString(type.name)
   }
@@ -380,7 +380,7 @@ public class DiffToMongoose
   /**
    * Shortcut method to generate a Tuple type.
    */
-  def dispatch Object genType(Tuple tuple)
+  private def dispatch Object genType(Tuple tuple)
   {
     if (tuple.elements.size == 1)
       '''[«genType(tuple.elements.get(0))»]'''
@@ -389,7 +389,7 @@ public class DiffToMongoose
       '''[Mixed]'''
   }
 
-  def genTypeForPrimitiveString(String type)
+  private def genTypeForPrimitiveString(String type)
   {
     label
     (

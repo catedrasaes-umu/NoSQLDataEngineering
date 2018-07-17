@@ -30,23 +30,23 @@ class DiffToMorphia
   /**
    * The name of the model, directly extracted from the EntityDifferentiation object.
    */
-  var modelName = "";
+  private var modelName = "";
 
   /**
    * This route stores the import routes between objects.
    */
-  var importRoute = "";
+  private var importRoute = "";
 
-  static File outputDir;
+  private File outputDir;
 
-  DependencyAnalyzer analyzer;
+  private DependencyAnalyzer analyzer;
 
-  MorphiaIndexValGen indexValGen;
+  private MorphiaIndexValGen indexValGen;
 
   /**
    * Method used to start the generation process from a diff model file
    */
-  def void m2t(File modelFile, File outputFolder, File configFile)
+  public def void m2t(File modelFile, File outputFolder, File configFile)
   {
     val loader = new ModelLoader(EntityDifferentiationPackage.eINSTANCE);
     val diff = loader.load(modelFile, EntityDifferentiation);
@@ -57,7 +57,7 @@ class DiffToMorphia
   /**
    * Method used to start the generation process from an EntityDifferentiation object.
    */
-  def void m2t(EntityDifferentiation diff, File outputFolder, File configFile)
+  public def void m2t(EntityDifferentiation diff, File outputFolder, File configFile)
   {
     modelName = diff.name;
     outputDir = outputFolder.toPath.resolve(modelName).toFile;
@@ -77,18 +77,18 @@ class DiffToMorphia
     // Calc dependencies between entities
     analyzer = new DependencyAnalyzer();
     analyzer.performAnalysis(diff);
-    analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
+    analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))];
   }
 
-  def schemaFileName(Entity entity)
+  private def schemaFileName(Entity entity)
   {
-    entity.name + ".java"
+    entity.name + ".java";
   }
 
   /**
    * This method generates the basic structure of the Java class.
    */
-  def genSchema(Entity entity)
+  private def genSchema(Entity entity)
   '''
     package «importRoute»;
 
@@ -105,7 +105,7 @@ class DiffToMorphia
   /**
    * To generate imports, we just check the conditions in which these imports will be used.
    */
-  def genIncludes(Entity entity)
+  private def genIncludes(Entity entity)
   {
     val collListUnionProperties = analyzer.getTypeListByPropertyName.get(entity).values;
     '''
@@ -147,7 +147,7 @@ class DiffToMorphia
    * s.key stores a PropertySpec
    * s.value stores "required" or not
    */
-  def genSpecs(Entity entity, EntityDiffSpec spec)
+  private def genSpecs(Entity entity, EntityDiffSpec spec)
   '''
     «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false])
       .reject[p | p.key.property.name.startsWith("_") && !p.key.property.name.equals("_id")]
@@ -160,7 +160,7 @@ class DiffToMorphia
     «ENDFOR»
   '''
 
-  def specificProps(EntityDiffSpec spec)
+  private def specificProps(EntityDiffSpec spec)
   {
     spec.entityVariationProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
       [result, neew |
@@ -176,7 +176,7 @@ class DiffToMorphia
    * If the reduction is possible, we generate the property as any other.
    * If not, a Union is generated.
    */
-  def genCodeForTypeCheckProperty(Entity entity, Property property, boolean required)
+  private def genCodeForTypeCheckProperty(Entity entity, Property property, boolean required)
   {
     val typeList = analyzer.getTypeListByPropertyName().get(entity).get(property.name)
     // On uniqueTypeList we removed duplicated property types, such as a String PrimitiveType and a Reference w originalType String.
@@ -199,7 +199,7 @@ class DiffToMorphia
     }
   }
 
-  def addToReduceLists(Property p, String name, List<Property> uniqueTypeList, List<String> typeShortcutList)
+  private def addToReduceLists(Property p, String name, List<Property> uniqueTypeList, List<String> typeShortcutList)
   {
     if (!typeShortcutList.exists[type | type.equals(name)])
     {
@@ -216,7 +216,7 @@ class DiffToMorphia
    * and some restrictions when setting that attribute.
    * It is also neccesary to create a @Preload method in order to identify the Union during the loading process.
    */
-  def String genUnion(Iterable<Property> list, boolean required)
+  private def String genUnion(Iterable<Property> list, boolean required)
   {
     val theTypes = list.map[p | genTypeForUnion(p)];
     val theName = list.head.name;
@@ -291,7 +291,7 @@ class DiffToMorphia
   '''
   }
 
-  def genTypeForUnion(Property p)
+  private def genTypeForUnion(Property p)
   {
     if (p instanceof Reference)
     {
@@ -306,7 +306,7 @@ class DiffToMorphia
       genTypeForProperty(p);
   }
 
-  def dispatch genUnionCompareMethod(Aggregate aggr, String name, boolean preload)
+  private def dispatch genUnionCompareMethod(Aggregate aggr, String name, boolean preload)
   {
     if (aggr.lowerBound === 1 && aggr.upperBound === 1)
     '''«name» instanceof «genTypeForProperty(aggr)»'''
@@ -314,7 +314,7 @@ class DiffToMorphia
     '''Commons.IS_CASTABLE_LIST«IF preload»_OBJDB«ENDIF»(«genTypeForProperty(aggr).toString.replace("List<", "").replace(">", "")».class, «name»)'''
   }
 
-  def dispatch genUnionCompareMethod(Reference ref, String name, boolean preload)
+  private def dispatch genUnionCompareMethod(Reference ref, String name, boolean preload)
   {
     if (ref.lowerBound === 1 && ref.upperBound === 1)
     '''«name» instanceof «genAttributeType(ref.originalType)»'''
@@ -322,7 +322,7 @@ class DiffToMorphia
     '''Commons.IS_CASTABLE_LIST(«genAttributeType(ref.originalType)».class, «name»)'''
   }
 
-  def dispatch genUnionCompareMethod(Attribute attr, String name, boolean preload)
+  private def dispatch genUnionCompareMethod(Attribute attr, String name, boolean preload)
   {
     if (attr.type instanceof PrimitiveType)
     '''«name» instanceof «genTypeForProperty(attr)»'''
@@ -330,7 +330,7 @@ class DiffToMorphia
     '''Commons.IS_CASTABLE_LIST(«genTypeForProperty(attr).toString.replace("List<", "").replace(">", "")».class, «name»)'''
   }
 
-  def dispatch genUnionAssignMethod(Aggregate aggr, String name, boolean preload)
+  private def dispatch genUnionAssignMethod(Aggregate aggr, String name, boolean preload)
   {
     if (aggr.lowerBound === 1 && aggr.upperBound === 1)
     '''(«genTypeForProperty(aggr)»)«name»'''
@@ -338,7 +338,7 @@ class DiffToMorphia
     '''Commons.CAST_LIST«IF preload»_OBJDB«ENDIF»(«genTypeForProperty(aggr).toString.replace("List<", "").replace(">", "")».class, «name»)'''
   }
 
-  def dispatch genUnionAssignMethod(Reference ref, String name, boolean preload)
+  private def dispatch genUnionAssignMethod(Reference ref, String name, boolean preload)
   {
     if (ref.lowerBound === 1 && ref.upperBound === 1)
     '''(«genAttributeType(ref.originalType)»)«name»'''
@@ -346,7 +346,7 @@ class DiffToMorphia
     '''Commons.CAST_LIST(«genAttributeType(ref.originalType).toString».class, «name»)'''
   }
 
-  def dispatch genUnionAssignMethod(Attribute attr, String name, boolean preload)
+  private def dispatch genUnionAssignMethod(Attribute attr, String name, boolean preload)
   {
     if (attr.type instanceof PrimitiveType)
     '''(«genTypeForProperty(attr)»)«name»'''
@@ -359,7 +359,7 @@ class DiffToMorphia
    * Generate code method for Aggregation
    * It generates a private attribute, and Get/Set methods.
    */
-  def dispatch genCodeForProperty(Aggregate aggr, boolean required)
+  private def dispatch genCodeForProperty(Aggregate aggr, boolean required)
   '''
     @Embedded
     «IF required»@NotNull(message = "«aggr.name» can't be null")«ENDIF»
@@ -372,7 +372,7 @@ class DiffToMorphia
   /**
    * Shortcut method to generate an Aggregate type.
    */
-  def dispatch genTypeForProperty(Aggregate aggr)
+  private def dispatch genTypeForProperty(Aggregate aggr)
   {
     var entityName = (aggr.refTo.get(0).eContainer as Entity).name;
     if (aggr.lowerBound !== 1 || aggr.upperBound !== 1)
@@ -385,7 +385,7 @@ class DiffToMorphia
    * Generate code method for Reference
    * It generates a private attribute, and Get/Set methods.
    */
-  def dispatch genCodeForProperty(Reference ref, boolean required)
+  private def dispatch genCodeForProperty(Reference ref, boolean required)
   '''
     @Reference«IF !Commons.IS_DBREF(ref)»(idOnly = true«indexValGen.genPopulateReferences(ref.eContainer.eContainer as Entity, ref.name)»)«ENDIF»
     «IF required»@NotNull(message = "«ref.name» can't be null")«ENDIF»
@@ -398,7 +398,7 @@ class DiffToMorphia
   /**
    * Shortcut method to generate a Reference type.
    */
-  def dispatch genTypeForProperty(Reference ref)
+  private def dispatch genTypeForProperty(Reference ref)
   {
     var returnValue = ref.refTo.name;
 
@@ -412,7 +412,7 @@ class DiffToMorphia
    * Generate code method for Attribute
    * It generates a private attribute, and Get/Set methods.
    */
-  def dispatch genCodeForProperty(Attribute a, boolean required)
+  private def dispatch genCodeForProperty(Attribute a, boolean required)
   '''
     «IF a.name.toLowerCase.equals("_id")»@Id«ELSE»@Property«ENDIF»
     «IF required»@NotNull(message = "«a.name» can't be null")«ENDIF»
@@ -425,7 +425,7 @@ class DiffToMorphia
   /**
    * Shortcut method to generate an Attribute type.
    */
-  def dispatch genTypeForProperty(Attribute a)
+  private def dispatch genTypeForProperty(Attribute a)
   {
     genAttributeType(a.type)
   }
@@ -433,7 +433,7 @@ class DiffToMorphia
   /**
    * Shortcut method to generate a PrimitiveType type.
    */
-  def dispatch CharSequence genAttributeType(PrimitiveType type)
+  private def dispatch CharSequence genAttributeType(PrimitiveType type)
   {
     genAttributeType(type.name)
   }
@@ -441,7 +441,7 @@ class DiffToMorphia
   /**
    * Shortcut method to generate a Tuple type.
    */
-  def dispatch CharSequence genAttributeType(Tuple tuple)
+  private def dispatch CharSequence genAttributeType(Tuple tuple)
   {
     if (tuple.elements.size == 1)
       '''List<«genAttributeType(tuple.elements.get(0))»>'''
@@ -450,7 +450,7 @@ class DiffToMorphia
       '''List<Object>'''
   }
 
-  def dispatch CharSequence genAttributeType(String type)
+  private def dispatch CharSequence genAttributeType(String type)
   {
     switch typeName : type.toLowerCase
     {

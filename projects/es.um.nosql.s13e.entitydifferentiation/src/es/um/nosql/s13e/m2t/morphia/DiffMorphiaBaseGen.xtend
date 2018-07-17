@@ -16,7 +16,7 @@ class DiffMorphiaBaseGen
   // - The folder to output the generation
   // - The model name to name the files and variables
   // - The root entities (entities with at least one root variation), so we can include some variables and generate base validators.
-  def m2t(File modelFile, File outputFolder)
+  public def m2t(File modelFile, File outputFolder)
   {
     val loader = new ModelLoader(EntityDifferentiationPackage.eINSTANCE);
     val diff = loader.load(modelFile, EntityDifferentiation);
@@ -27,7 +27,7 @@ class DiffMorphiaBaseGen
   /**
    * Method used to start the generation process from an EntityDifferentiation object
    */
-  def void m2t(EntityDifferentiation diff, File outputFolder)
+  public def void m2t(EntityDifferentiation diff, File outputFolder)
   {
     modelName = diff.name;
     outputDir = outputFolder.toPath.resolve(modelName).resolve("commons").toFile;
@@ -47,7 +47,7 @@ class DiffMorphiaBaseGen
     writeToFile("Commons.java", generateCommonsFile());
   }
 
-  def generateCommonsFile()
+  private def generateCommonsFile()
   '''
   package «importRoute»;
 

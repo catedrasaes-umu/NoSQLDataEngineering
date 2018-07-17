@@ -8,14 +8,14 @@ import java.io.PrintStream
 
 class DiffMongooseBaseGen
 {
-  var modelName = "";
-  static File outputDir;
+  private var modelName = "";
+  private static File outputDir;
 
   // For the base generation we need three items:
   // - The folder to output the generation
   // - The model name to name the files and variables
   // - The root entities (entities with at least one root variation), so we can include some variables and generate base validators.
-  def m2t(File modelFile, File outputFolder)
+  public def m2t(File modelFile, File outputFolder)
   {
     val loader = new ModelLoader(EntityDifferentiationPackage.eINSTANCE);
     val diff = loader.load(modelFile, EntityDifferentiation);
@@ -26,7 +26,7 @@ class DiffMongooseBaseGen
   /**
    * Method used to start the generation process from an EntityDifferentiation object
    */
-  def void m2t(EntityDifferentiation diff, File outputFolder)
+  public def void m2t(EntityDifferentiation diff, File outputFolder)
   {
     outputDir = outputFolder;
     modelName = diff.name;
@@ -37,7 +37,7 @@ class DiffMongooseBaseGen
     writeToFile("appBaseDb.js", generateCheckDbFile(diff));
   }
 
-  def generatePackageFile()
+  private def generatePackageFile()
   '''
   {
     "name": "node-api",
@@ -50,7 +50,7 @@ class DiffMongooseBaseGen
   }
   '''
 
-  def generateUnionTypeFile()
+  private def generateUnionTypeFile()
   '''
   'use strict'
   
@@ -183,7 +183,7 @@ class DiffMongooseBaseGen
   module.exports = makeUnionType;
   '''
 
-  def generateCheckDbFile(EntityDifferentiation diff)
+  private def generateCheckDbFile(EntityDifferentiation diff)
   '''
   var mongoose = require('mongoose');
   mongoose.Promise = require('bluebird');

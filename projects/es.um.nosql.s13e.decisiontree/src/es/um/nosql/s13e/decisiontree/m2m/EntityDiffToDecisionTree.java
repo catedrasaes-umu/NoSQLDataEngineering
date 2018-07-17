@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.decisiontree.gen;
+package es.um.nosql.s13e.decisiontree.m2m;
 
 import static java.util.stream.Collectors.toCollection;
 import static java.util.stream.Collectors.toList;

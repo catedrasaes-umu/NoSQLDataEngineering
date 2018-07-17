@@ -42,28 +42,25 @@ public class Main
 
   public static void main(String[] args)
   {
-    String[] input_models = new String[] {"everypolitician_sweden", "facebook", "harvard", "links", "mongomovies", "opensanctions",
-        "proteins", "publications", "stackoverflow", "urban", "webclicks", "mongosongs"};
+    String[] input_models = new String[] {/*"everypolitician_sweden", "facebook", "harvard", "links", "mongomovies", "opensanctions",
+        "proteins", "publications", "stackoverflow", "urban", "webclicks", */"mongosongs"};
 
     for (String input_model : input_models)
     {
       String inputFile = INPUT_FOLDER + input_model + "/" + input_model + ".xmi";
       String outputFile = OUTPUT_FOLDER + input_model + "/" + input_model + "_Diff.xmi";
-      prepareM2MExample(inputFile, outputFile);
+      prepareM2MExample(new File(inputFile), new File(outputFile));
       prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER + input_model), new File(YAML_CONFIG_ROUTE));
       prepareM2MorphiaExample(new File(outputFile), new File(MORPHIA_OUTPUT_GEN_BASE_FOLDER), new File(YAML_CONFIG_ROUTE));
     }
   }
 
-  public static void prepareM2MExample(String inputFile, String outputFile)
+  public static void prepareM2MExample(File inputFile, File outputFile)
   {
-    File INPUT_MODEL = new File(inputFile);
-    File OUTPUT_MODEL = new File(outputFile);
-
-    System.out.println("Generating EntityDiff model for " + INPUT_MODEL.getName() + " in " + OUTPUT_MODEL.getPath());
+    System.out.println("Generating EntityDiff model for " + inputFile.getName() + " in " + outputFile.getPath());
 
     NoSQLSchemaToEntityDiff transformer = new NoSQLSchemaToEntityDiff();
-    EntityDifferentiation diffModel = transformer.m2m(INPUT_MODEL);
+    EntityDifferentiation diffModel = transformer.m2m(inputFile);
 
     NoSQLSchemaPackage nosqlschemaPackage = NoSQLSchemaPackage.eINSTANCE;
     EntityDifferentiationPackage entitydiffPackage = EntityDifferentiationPackage.eINSTANCE;
@@ -72,7 +69,7 @@ public class Main
     nosqlschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e/model/nosqlschema.ecore", true));
     entitydiffPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e.entitydifferentiation/model/entitydifferentiation.ecore", true));
 
-    Resource outputRes = resManager.getResourceSet().createResource(URI.createFileURI(OUTPUT_MODEL.getAbsolutePath()));
+    Resource outputRes = resManager.getResourceSet().createResource(URI.createFileURI(outputFile.getAbsolutePath()));
     outputRes.getContents().add(diffModel);
 
     // Configure output
@@ -82,7 +79,7 @@ public class Main
 
     try
     {
-      outputRes.save(new FileOutputStream(OUTPUT_MODEL), options);
+      outputRes.save(new FileOutputStream(outputFile), options);
     } catch (IOException e)
     {
       e.printStackTrace();

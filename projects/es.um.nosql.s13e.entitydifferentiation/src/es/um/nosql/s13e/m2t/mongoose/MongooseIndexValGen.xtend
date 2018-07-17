@@ -12,12 +12,12 @@ class MongooseIndexValGen
 {
   ConfigMongoose config;
 
-  new(ConfigMongoose config)
+  public new(ConfigMongoose config)
   {
     this.config = config;
   }
 
-  def genIndexesForEntity(Entity e)
+  public def genIndexesForEntity(Entity e)
   {
     if (config === null)
     ''''''
@@ -31,7 +31,7 @@ class MongooseIndexValGen
     }
   }
 
-  def List<Pair<String, String>> genValidatorsForField(Entity e, String field)
+  public def List<Pair<String, String>> genValidatorsForField(Entity e, String field)
   {
     val result = new ArrayList<Pair<String, String>>();
     if (config === null)
@@ -55,7 +55,7 @@ class MongooseIndexValGen
     return result;
   }
 
-  def genValidatorValue(String value, String message)
+  private def genValidatorValue(String value, String message)
   {
     if (message === null)
       value
