@@ -50,8 +50,8 @@ public class Main
       String inputFile = INPUT_FOLDER + input_model + "/" + input_model + ".xmi";
       String outputFile = OUTPUT_FOLDER + input_model + "/" + input_model + "_Diff.xmi";
       prepareM2MExample(new File(inputFile), new File(outputFile));
-      //prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER + input_model), new File(YAML_CONFIG_ROUTE));
-      //prepareM2MorphiaExample(new File(outputFile), new File(MORPHIA_OUTPUT_GEN_BASE_FOLDER), new File(YAML_CONFIG_ROUTE));
+      prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER + input_model), new File(YAML_CONFIG_ROUTE));
+      prepareM2MorphiaExample(new File(outputFile), new File(MORPHIA_OUTPUT_GEN_BASE_FOLDER), new File(YAML_CONFIG_ROUTE));
     }
   }
 

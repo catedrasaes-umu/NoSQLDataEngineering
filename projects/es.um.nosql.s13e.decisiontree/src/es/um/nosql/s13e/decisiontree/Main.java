@@ -13,18 +13,20 @@ import es.um.nosql.s13e.DecisionTree.DecisionTrees;
 import es.um.nosql.s13e.DecisionTree.DecisionTreePackage;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
 import es.um.nosql.s13e.decisiontree.m2m.EntityDiffToDecisionTree;
+import es.um.nosql.s13e.decisiontree.m2t.DecisionTreeJSBaseGen;
 import es.um.nosql.s13e.decisiontree.m2t.DecisionTreeToJS;
 import es.um.nosql.s13e.util.emf.ResourceManager;
 
 public class Main 
 {
-  public static final String INPUT_FOLDER = "../es.um.nosql.examples/";
-  public static final String OUTPUT_FOLDER = "../es.um.nosql.examples/";
+  private static final String INPUT_FOLDER = "../es.um.nosql.examples/";
+  private static final String OUTPUT_FOLDER = "../es.um.nosql.examples/";
+  private static final boolean GENERATE_BASE_FILES = true;
 
   public static void main(String[] args)
   {
     String[] input_models = new String[] {/*"everypolitician_sweden", "facebook", "harvard", "links", "mongomovies", "opensanctions",
-        "proteins", "publications", "stackoverflow", "urban", "webclicks", */"mongosongs"};
+        "proteins", "publications", */"stackoverflow"/*, "urban", "webclicks", "mongosongs"*/};
 
     for (String input_model : input_models)
     {
@@ -75,6 +77,12 @@ public class Main
 
     if (!outputFolder.exists())
       outputFolder.mkdirs();
+
+    if (GENERATE_BASE_FILES)
+    {
+      DecisionTreeJSBaseGen baseGen = new DecisionTreeJSBaseGen();
+      baseGen.m2t(inputFile, outputFolder);
+    }
 
     DecisionTreeToJS tree2js = new DecisionTreeToJS();
     tree2js.m2t(inputFile, outputFolder);
