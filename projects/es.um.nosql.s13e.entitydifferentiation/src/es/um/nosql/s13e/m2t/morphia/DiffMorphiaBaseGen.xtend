@@ -4,13 +4,11 @@ import java.io.File
 import es.um.nosql.s13e.util.emf.ModelLoader
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation
-import java.io.PrintStream
+import es.um.nosql.s13e.m2t.commons.Commons
 
-class DiffMorphiaBaseGen
+public class DiffMorphiaBaseGen
 {
-  var modelName = "";
-  var importRoute = "";
-  static File outputDir;
+  private var importRoute = "";
 
   // For the base generation we need three items:
   // - The folder to output the generation
@@ -29,8 +27,8 @@ class DiffMorphiaBaseGen
    */
   public def void m2t(EntityDifferentiation diff, File outputFolder)
   {
-    modelName = diff.name;
-    outputDir = outputFolder.toPath.resolve(modelName).resolve("commons").toFile;
+    val modelName = diff.name;
+    val outputDir = outputFolder.toPath.resolve(modelName).resolve("commons").toFile;
     outputDir.mkdirs;
 
     if (outputDir.toString.contains("src"))
@@ -42,9 +40,7 @@ class DiffMorphiaBaseGen
       importRoute = outputDir.toString;
     }
 
-    modelName = diff.name;
-
-    writeToFile("Commons.java", generateCommonsFile());
+    Commons.WRITE_TO_FILE(outputDir, "Commons.java", generateCommonsFile());
   }
 
   private def generateCommonsFile()
@@ -136,15 +132,4 @@ class DiffMorphiaBaseGen
     }
   }
   '''
-
-  /**
-   * Method used to write a generated CharSequence to a file
-   */
-  private def writeToFile(String filename, CharSequence toWrite)
-  {
-    val outFile = outputDir.toPath().resolve(filename).toFile()
-    val outFileWriter = new PrintStream(outFile)
-    outFileWriter.print(toWrite)
-    outFileWriter.close()
-  }
 }

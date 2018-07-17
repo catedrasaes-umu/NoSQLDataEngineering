@@ -35,11 +35,6 @@ public class DiffToMongoose
     override toString() {label}
   }
 
-  /**
-   * The name of the model, directly extracted from the EntityDifferentiation object.
-   */
-  private var modelName = "";
-
   private File outputDir;
 
   private DependencyAnalyzer analyzer;
@@ -66,8 +61,6 @@ public class DiffToMongoose
       outputDir = outputFolder.toPath.resolve("app/models/").toFile
     else
       outputDir = outputFolder
-
-    modelName = diff.name;
 
     // Process the configuration file
     indexValGen = new MongooseIndexValGen(Commons.PARSE_CONFIG_FILE(ConfigMongoose, configFile, diff))

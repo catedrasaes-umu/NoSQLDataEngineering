@@ -33,12 +33,12 @@ import es.um.nosql.s13e.util.emf.ResourceManager;
  */
 public class Main
 {
-  public static final String INPUT_FOLDER = "../es.um.nosql.examples/";
-  public static final String OUTPUT_FOLDER = "../es.um.nosql.examples/";
-  public static final String MONGOOSE_OUTPUT_GEN_BASE_FOLDER = OUTPUT_FOLDER + "mongoose/";
-  public static final String MORPHIA_OUTPUT_GEN_BASE_FOLDER = "src/es/um/nosql/s13e/";
+  private static final String INPUT_FOLDER = "../es.um.nosql.examples/";
+  private static final String OUTPUT_FOLDER = "../es.um.nosql.examples/";
+  private static final String MONGOOSE_OUTPUT_GEN_BASE_FOLDER = OUTPUT_FOLDER + "mongoose/";
+  private static final String MORPHIA_OUTPUT_GEN_BASE_FOLDER = "src/es/um/nosql/s13e/";
   private static final String YAML_CONFIG_ROUTE = "config/config.yaml";
-  public static final boolean GENERATE_BASE_FILES = true;
+  private static final boolean GENERATE_BASE_FILES = true;
 
   public static void main(String[] args)
   {
@@ -50,8 +50,8 @@ public class Main
       String inputFile = INPUT_FOLDER + input_model + "/" + input_model + ".xmi";
       String outputFile = OUTPUT_FOLDER + input_model + "/" + input_model + "_Diff.xmi";
       prepareM2MExample(new File(inputFile), new File(outputFile));
-      prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER + input_model), new File(YAML_CONFIG_ROUTE));
-      prepareM2MorphiaExample(new File(outputFile), new File(MORPHIA_OUTPUT_GEN_BASE_FOLDER), new File(YAML_CONFIG_ROUTE));
+      //prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER + input_model), new File(YAML_CONFIG_ROUTE));
+      //prepareM2MorphiaExample(new File(outputFile), new File(MORPHIA_OUTPUT_GEN_BASE_FOLDER), new File(YAML_CONFIG_ROUTE));
     }
   }
 

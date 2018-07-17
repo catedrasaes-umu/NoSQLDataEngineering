@@ -25,19 +25,12 @@ import java.util.stream.IntStream
 /**
  * Class designed to perform the Morphia code generation: Java
  */
-class DiffToMorphia
+public class DiffToMorphia
 {
-  /**
-   * The name of the model, directly extracted from the EntityDifferentiation object.
-   */
-  private var modelName = "";
-
   /**
    * This route stores the import routes between objects.
    */
   private var importRoute = "";
-
-  private File outputDir;
 
   private DependencyAnalyzer analyzer;
 
@@ -59,8 +52,8 @@ class DiffToMorphia
    */
   public def void m2t(EntityDifferentiation diff, File outputFolder, File configFile)
   {
-    modelName = diff.name;
-    outputDir = outputFolder.toPath.resolve(modelName).toFile;
+    val modelName = diff.name;
+    val outputDir = outputFolder.toPath.resolve(modelName).toFile;
     outputDir.mkdirs;
     if (outputDir.toString.contains("src"))
     {

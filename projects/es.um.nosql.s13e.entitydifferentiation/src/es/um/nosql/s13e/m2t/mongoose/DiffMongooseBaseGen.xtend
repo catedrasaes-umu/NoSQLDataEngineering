@@ -4,12 +4,11 @@ import java.io.File
 import es.um.nosql.s13e.util.emf.ModelLoader
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation
-import java.io.PrintStream
+import es.um.nosql.s13e.m2t.commons.Commons
 
-class DiffMongooseBaseGen
+public class DiffMongooseBaseGen
 {
   private var modelName = "";
-  private static File outputDir;
 
   // For the base generation we need three items:
   // - The folder to output the generation
@@ -28,13 +27,13 @@ class DiffMongooseBaseGen
    */
   public def void m2t(EntityDifferentiation diff, File outputFolder)
   {
-    outputDir = outputFolder;
+    val outputDir = outputFolder;
     modelName = diff.name;
 
     outputDir.toPath.resolve("app").resolve("models").resolve("util").toFile.mkdirs;
-    writeToFile("package.json", generatePackageFile());
-    writeToFile("app/models/util/UnionType.js", generateUnionTypeFile());
-    writeToFile("appBaseDb.js", generateCheckDbFile(diff));
+    Commons.WRITE_TO_FILE(outputDir, "package.json", generatePackageFile());
+    Commons.WRITE_TO_FILE(outputDir, "app/models/util/UnionType.js", generateUnionTypeFile());
+    Commons.WRITE_TO_FILE(outputDir, "appBaseDb.js", generateCheckDbFile(diff));
   }
 
   private def generatePackageFile()
@@ -229,15 +228,4 @@ class DiffMongooseBaseGen
 
   «ENDFOR»
   '''
-
-  /**
-   * Method used to write a generated CharSequence to a file
-   */
-  private def writeToFile(String filename, CharSequence toWrite)
-  {
-    val outFile = outputDir.toPath().resolve(filename).toFile()
-    val outFileWriter = new PrintStream(outFile)
-    outFileWriter.print(toWrite)
-    outFileWriter.close()
-  }
 }
