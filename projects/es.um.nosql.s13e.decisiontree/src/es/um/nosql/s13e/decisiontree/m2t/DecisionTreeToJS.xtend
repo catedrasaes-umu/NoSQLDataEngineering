@@ -29,6 +29,8 @@ public class DecisionTreeToJS
 {
   private var modelName = "";
 
+  private val FILE_EXTENSION = "Classifier.js";
+
   @Data static class PropertyAndBranch
   {
     PropertySpec2 prop
@@ -45,28 +47,28 @@ public class DecisionTreeToJS
 
   public def m2t(DecisionTrees decTrees, File outputFolder)
   {
-    modelName = decTrees.name;
+    modelName = decTrees.name + "Classifier";
 
-    Commons.WRITE_TO_FILE(outputFolder, decTrees.name + ".js", genDecisionTree(decTrees));
+    Commons.WRITE_TO_FILE(outputFolder, decTrees.name + FILE_EXTENSION, genDecisionTree(decTrees));
   }
 
   private def genDecisionTree(DecisionTrees decTrees)
   '''
   'use strict'
 
-  var «decTrees.name» =
+  var «modelName» =
   {
     name: "«decTrees.name»",
     «genCheckFunctions(decTrees.trees)»
   }
 
-  module.exports = «decTrees.name»;
+  module.exports = «modelName»;
   '''
 
   private def genCheckFunctions(List<DecisionTreeForEntity> list)
   '''
-    «FOR DecisionTreeForEntity dte : list SEPARATOR ','»
-      «genCheckFunction(dte)»
+    «FOR DecisionTreeForEntity decTreeEntity : list SEPARATOR ','»
+      «genCheckFunction(decTreeEntity)»
     «ENDFOR»
   '''
 
@@ -83,7 +85,7 @@ public class DecisionTreeToJS
       entityVariationForObject: function (obj)
       {
         «generateCheckTree(dte, dte.root)»
-      }
+      },
       «FOR EntityVariation ev : dte.entity.entityVariations SEPARATOR ','»
         «generateSpecificCheck(dte, ev, paths.get(ev))»
       «ENDFOR»
@@ -175,13 +177,13 @@ public class DecisionTreeToJS
         obj.«a.name».every(function(e)
             { return (typeof e === 'object') && !(e.constructor === Array)
                 && («FOR rt : a.refTo SEPARATOR " || "»
-                «modelName».«(rt.eContainer as Entity).name»_«rt.variationId».isOfExactType(e)
+                «modelName».«(rt.eContainer as Entity).name».checkEV_«(rt.eContainer as Entity).name»_«rt.variationId»(e)
                 «ENDFOR»);
             })
     «ELSE»
     «var refToEV = a.refTo.get(0)»
     (typeof obj.«a.name» === 'object') && !(obj.«a.name».constructor === Array)
-        && «modelName».«(refToEV.eContainer as Entity).name»_«refToEV.variationId».isOfExactType(obj.«a.name»)
+        && «modelName».«(refToEV.eContainer as Entity).name».checkEV_«(refToEV.eContainer as Entity).name»_«refToEV.variationId»(obj.«a.name»)
     «ENDIF»
   '''
 

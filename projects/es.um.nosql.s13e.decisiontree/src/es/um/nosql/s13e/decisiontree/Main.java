@@ -23,14 +23,14 @@ public class Main
 
   public static void main(String[] args)
   {
-    String[] input_models = new String[] {"everypolitician_sweden", "facebook", "harvard", "links", "mongomovies", "opensanctions",
-        "proteins", "publications", "stackoverflow", "urban", "webclicks", "mongosongs"};
+    String[] input_models = new String[] {/*"everypolitician_sweden", "facebook", "harvard", "links", "mongomovies", "opensanctions",
+        "proteins", "publications", "stackoverflow", "urban", "webclicks", */"mongosongs"};
 
     for (String input_model : input_models)
     {
       String inputFile = INPUT_FOLDER + input_model + "/" + input_model + "_Diff.xmi";
       String outputFile = OUTPUT_FOLDER + input_model + "/" + input_model + "_Tree.xmi";
-      String outputFolder = OUTPUT_FOLDER + input_model + "/";
+      String outputFolder = OUTPUT_FOLDER + input_model + "/" + input_model + "/";
       prepareM2MExample(new File(inputFile), new File(outputFile));
       prepareM2TExample(new File(outputFile), new File(outputFolder));
     }

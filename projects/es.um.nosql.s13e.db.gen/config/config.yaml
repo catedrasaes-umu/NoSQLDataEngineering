@@ -5,8 +5,8 @@ input:
 
 entities:
   variations:
-    minInstances: 1000
-    maxInstances: 1000
+    minInstances: 15
+    maxInstances: 15
   includeType: true
 #  dateFormat: "dd-MM-yyyy HH:mm:ss" 
 #  timestamp: 17-6-1988 13:05:11
