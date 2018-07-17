@@ -6,22 +6,21 @@ import es.um.nosql.s13e.NoSQLSchema.Property;
 
 public class ModelTree
 {
-  private Property property;
+  private Entity entity;
   private EntityVariation tag;
+  private Property property;
   private ModelTree nodePresent;
   private ModelTree nodeAbsent;
-  private Entity entity;
 
   public ModelTree(Entity e, EntityVariation tag)
   {
-    super();
     this.tag = tag;
     this.entity = e;
   }
 
-  public Entity getEntity()
+  public ModelTree(Property property)
   {
-    return entity;
+    this.property = property;
   }
 
   public void setEntity(Entity entity)
@@ -29,9 +28,23 @@ public class ModelTree
     this.entity = entity;
   }
 
-  public ModelTree(Property property)
+  public Entity getEntity()
   {
-    super();
+    return entity;
+  }
+
+  public void setTag(EntityVariation tag)
+  {
+    this.tag = tag;
+  }
+
+  public EntityVariation getTag()
+  {
+    return tag;
+  }
+
+  public void setProperty(Property property)
+  {
     this.property = property;
   }
 
@@ -40,19 +53,9 @@ public class ModelTree
     return property;
   }
 
-  public void setProperty(Property property)
+  public void setNodePresent(ModelTree nodePresent)
   {
-    this.property = property;
-  }
-
-  public EntityVariation getTag()
-  {
-    return tag;
-  }
-
-  public void setTag(EntityVariation tag)
-  {
-    this.tag = tag;
+    this.nodePresent = nodePresent;
   }
 
   public ModelTree getNodePresent()
@@ -60,9 +63,9 @@ public class ModelTree
     return nodePresent;
   }
 
-  public void setNodePresent(ModelTree nodePresent)
+  public void setNodeAbsent(ModelTree nodeAbsent)
   {
-    this.nodePresent = nodePresent;
+    this.nodeAbsent = nodeAbsent;
   }
 
   public ModelTree getNodeAbsent()
@@ -70,12 +73,7 @@ public class ModelTree
     return nodeAbsent;
   }
 
-  public void setNodeAbsent(ModelTree nodeAbsent)
-  {
-    this.nodeAbsent = nodeAbsent;
-  }
-
-  public boolean is_leaf()
+  public boolean isLeaf()
   {
     return nodePresent == null && nodeAbsent == null;
   }

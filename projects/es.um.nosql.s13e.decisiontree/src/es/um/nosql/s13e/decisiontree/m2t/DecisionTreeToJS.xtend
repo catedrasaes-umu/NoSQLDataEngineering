@@ -25,7 +25,7 @@ import es.um.nosql.s13e.util.emf.ModelLoader
 import es.um.nosql.s13e.DecisionTree.DecisionTreePackage
 import es.um.nosql.s13e.decisiontree.m2t.commons.Commons
 
-class DecisionTreeToJS
+public class DecisionTreeToJS
 {
   private var modelName = "";
 
@@ -106,12 +106,12 @@ class DecisionTreeToJS
       LeafNode : paths.put(node.identifiedVariation, newLinkedList(checks.clone))
       IntermediateNode :
       {
-        // yes
+        // YES branch
         checks.add(new PropertyAndBranch(node.checkedProperty, true))
         calcPaths(paths, checks, node.yesBranch)
         checks.removeLast
 
-        // no
+        // NO branch
         checks.add(new PropertyAndBranch(node.checkedProperty, false))
         calcPaths(paths, checks, node.noBranch)
         checks.removeLast

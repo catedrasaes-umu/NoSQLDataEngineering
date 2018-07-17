@@ -214,7 +214,8 @@ public class OldMain {
     }
   }
 
-  public static void runModelTree(ModelTree tree){
+  public static void runModelTree(ModelTree tree)
+  {
     runModelTree(tree, 0);
   }
 
@@ -222,7 +223,7 @@ public class OldMain {
   {
     String indent = String.join("", Collections.nCopies(level, "  "));
 
-    if (tree.is_leaf())
+    if (tree.isLeaf())
     {
       Entity e = tree.getEntity();
       System.out.println(indent+"Entity: "+e.getName()+", Variation: "+tree.getTag().getVariationId());

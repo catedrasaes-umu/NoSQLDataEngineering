@@ -5,8 +5,8 @@ import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 
 public class ModelNode
 {
-  private PropertySpec property;
   private EntityVariation ev;
+  private PropertySpec property;
   private ModelNode nodePresent;
   private ModelNode nodeAbsent;
   private boolean checkNot;
@@ -23,19 +23,14 @@ public class ModelNode
     setCheckNot(checkNot);
   }
 
-  public PropertySpec getProperty()
-  {
-    return property;
-  }
-
   public void setProperty(PropertySpec property)
   {
     this.property = property;
   }
 
-  public EntityVariation getEv()
+  public PropertySpec getProperty()
   {
-    return ev;
+    return property;
   }
 
   public void setEv(EntityVariation tag)
@@ -43,9 +38,9 @@ public class ModelNode
     this.ev = tag;
   }
 
-  public ModelNode getNodePresent()
+  public EntityVariation getEv()
   {
-    return nodePresent;
+    return ev;
   }
 
   public void setNodePresent(ModelNode nodePresent)
@@ -53,9 +48,9 @@ public class ModelNode
     this.nodePresent = nodePresent;
   }
 
-  public ModelNode getNodeAbsent()
+  public ModelNode getNodePresent()
   {
-    return nodeAbsent;
+    return nodePresent;
   }
 
   public void setNodeAbsent(ModelNode nodeAbsent)
@@ -63,9 +58,14 @@ public class ModelNode
     this.nodeAbsent = nodeAbsent;
   }
 
-  public boolean is_leaf()
+  public ModelNode getNodeAbsent()
   {
-    return nodePresent == null && nodeAbsent == null;
+    return nodeAbsent;
+  }
+
+  public void setCheckNot(boolean checkNot)
+  {
+    this.checkNot = checkNot;
   }
 
   public boolean isCheckNot()
@@ -73,8 +73,8 @@ public class ModelNode
     return checkNot;
   }
 
-  public void setCheckNot(boolean checkNot)
+  public boolean isLeaf()
   {
-    this.checkNot = checkNot;
+    return nodePresent == null && nodeAbsent == null;
   }
 }

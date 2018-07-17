@@ -44,8 +44,6 @@ import weka.core.Instances;
 
 public class EntityDiffToDecisionTree
 {
-  private Pattern pattern = Pattern.compile("\\[(.*?) .*$");
-
   public DecisionTrees m2m(File modelFile)
   {
     ModelLoader loader = new ModelLoader(EntityDifferentiationPackage.eINSTANCE);
@@ -56,87 +54,72 @@ public class EntityDiffToDecisionTree
 
   public DecisionTrees m2m(EntityDifferentiation entityDiff)
   {
-    DecisionTrees dTrees = DecisionTreeFactory.eINSTANCE.createDecisionTrees();
+    DecisionTrees decTrees = DecisionTreeFactory.eINSTANCE.createDecisionTrees();
 
-    dTrees.setName(entityDiff.getName());
+    decTrees.setName(entityDiff.getName());
 
     entityDiff.getEntityDiffSpecs().stream().filter(ed -> ed.getEntityVariationProps().size() > 1)
-      .forEach(eds ->
+      .forEach(eDiffSpec ->
       {
-        ModelNode root = generateTreeForEntity(eds);
-        DecisionTreeForEntity dte = DecisionTreeFactory.eINSTANCE.createDecisionTreeForEntity();
-        dte.setEntity(eds.getEntity());
-        // fill dte
-        dte.setRoot(decisionTreeForEntity(root));
-        dTrees.getTrees().add(dte);
+        ModelNode root = generateTreeForEntity(eDiffSpec);
+        DecisionTreeForEntity decTreeEntity = DecisionTreeFactory.eINSTANCE.createDecisionTreeForEntity();
+        decTreeEntity.setEntity(eDiffSpec.getEntity());
+        decTreeEntity.setRoot(decisionTreeForEntity(root));
+        decTrees.getTrees().add(decTreeEntity);
       });
 
-    return dTrees;
+    return decTrees;
   }
 
-  private ModelNode generateTreeForEntity(EntityDiffSpec eds)
+  private ModelNode generateTreeForEntity(EntityDiffSpec eDiffSpec)
   {
     Map<EntityVariationProp, List<Pair<String, PropertySpec>>> propsByEv =
-      eds.getEntityVariationProps().stream()
-      .collect(toMap(Function.identity(),
-          evp ->
-            Stream.concat(
-                evp.getPropertySpecs().stream().map(ps -> Pair.of(serialize(ps), ps)),
-                evp.getNotProps().stream().map(ps -> Pair.of(serializeNot(ps), ps)))
-            .collect(toList()),
-            (u,v) -> u,
-            LinkedHashMap::new));
+      eDiffSpec.getEntityVariationProps().stream().collect(toMap(Function.identity(),
+        eVarProp -> Stream.concat(
+          eVarProp.getPropertySpecs().stream().map(ps -> Pair.of(serialize(ps), ps)),
+          eVarProp.getNotProps().stream().map(ps -> Pair.of(serializeNot(ps), ps)))
+        .collect(toList()), (u,v) -> u, LinkedHashMap::new));
 
     // serializedFeature -> PropertySpec. We do the final reducing to leave just one element on 
     // the list, as there may be features in different entity variation that serialize to the same
     // string. We just select one.
-    Map<String, PropertySpec> features =
-      propsByEv.values().stream().flatMap(l -> l.stream())
+    Map<String, PropertySpec> features = propsByEv.values().stream().flatMap(l -> l.stream())
       .collect(toMap(Pair::getKey, Pair::getValue, (u,v) -> u, LinkedHashMap::new));
 
-    final List<String> f_values = Arrays.asList(new String[]{"yes","no"});
+    final List<String> fValues = Arrays.asList(new String[]{"yes","no"});
 
     // Attributes associated to each feature (propertyspec serialization)
     Map<String, Attribute> attrMap = features.keySet().stream().collect(toMap(Function.identity(),
-      s -> new Attribute(s, f_values),
-      (u,v) -> u,
-      LinkedHashMap::new));
+      s -> new Attribute(s, fValues), (u,v) -> u, LinkedHashMap::new));
 
-//  // Generate inverted index for feature serialization to feature vector position
-//  final Iterator<Map.Entry<String,PropertySpec>> it = features.entrySet().iterator();
-//  Map<String,Integer> arrayPos =
-//    IntStream.range(0,features.size()).boxed().collect(toMap(e -> it.next().getKey(),Function.identity()));
+    // Generate inverted index for feature serialization to feature vector position
 
-    final String entityName = eds.getEntity().getName();
-    Map<String,EntityVariationProp> classNameToEvp = eds.getEntityVariationProps().stream()
-        .map(evp -> Pair.of(String.format("%1$s_%2$d", entityName, evp.getEntityVariation().getVariationId()),evp))
-        .collect(toMap(Pair::getKey,Pair::getValue));
+    final String entityName = eDiffSpec.getEntity().getName();
+    Map<String,EntityVariationProp> classNameToEvp = eDiffSpec.getEntityVariationProps().stream()
+      .map(evp -> Pair.of(String.format("%1$s_%2$d", entityName, evp.getEntityVariation().getVariationId()),evp))
+      .collect(toMap(Pair::getKey,Pair::getValue));
     Map<EntityVariationProp,String> evpToClassName = classNameToEvp.entrySet().stream()
       .collect(toMap(Map.Entry::getValue, Map.Entry::getKey));
 
     // Get classes and count them. We do it in the order that they are obtained
     // from the original list of EntityVariationProps
-    List<String> classes = propsByEv.keySet().stream()
-        .map(evp -> evpToClassName.get(evp))
-        .collect(toCollection(ArrayList::new));
-    int num_classes = classes.size();
+    List<String> classes = propsByEv.keySet().stream().map(evp -> evpToClassName.get(evp)).collect(toCollection(ArrayList::new));
 
-    // Define Weka Instances Model
-    // Build Attribute models for weka
+    // Define Weka Instances Model. Build Attribute models for weka
     ArrayList<Attribute> atts = new ArrayList<>(attrMap.values());
     Attribute tag = new Attribute("tag", classes);
     atts.add(tag);
 
     // Generate Dataset
-    Instances dataset = new Instances("Train", atts, num_classes);
+    Instances dataset = new Instances("Train", atts, classes.size());
 
-    final double[] defaultValues = new double[features.size()+1];
+    final double[] defaultValues = new double[features.size() + 1];
     Arrays.fill(defaultValues,1.0);
 
     Map<EntityVariationProp, Instance> featuresByEv = propsByEv.entrySet().stream()
       .collect(toMap(Map.Entry::getKey,
           e -> {
-            Instance inst = new DenseInstance(1.0,defaultValues);
+            Instance inst = new DenseInstance(1.0, defaultValues);
             e.getValue().forEach(p -> inst.setValue(attrMap.get(p.getKey()),"yes"));
             inst.setValue(tag, evpToClassName.get(e.getKey()));
             return inst;
@@ -145,7 +128,8 @@ public class EntityDiffToDecisionTree
     dataset.addAll(featuresByEv.values());
     dataset.setClass(tag);
 
-    try {
+    try
+    {
       // Get Classification Tree
       OpenJ48 tree = generateTree(dataset);
       ClassifierTree root = tree.get_m_root();
@@ -158,10 +142,11 @@ public class EntityDiffToDecisionTree
 
       System.out.println(dataset);
       ModelNode modelTree = getModelTree(root, classNameToEvp.entrySet().stream() .collect(toMap(Map.Entry::getKey, v -> v.getValue().getEntityVariation())), features);
-      printModelTree(eds.getEntity(),modelTree);
+      printModelTree(eDiffSpec.getEntity(),modelTree);
 
       return modelTree;
-    } catch (Exception e) {
+    } catch (Exception e)
+    {
       e.printStackTrace();
     }
 
@@ -171,36 +156,36 @@ public class EntityDiffToDecisionTree
 
   private DecisionTreeNode decisionTreeForEntity(ModelNode root)
   {
-    if (root.is_leaf())
+    if (root.isLeaf())
     {
-      LeafNode ln =  DecisionTreeFactory.eINSTANCE.createLeafNode();
-      ln.setIdentifiedVariation(root.getEv());
-      return ln;
+      LeafNode leafNode =  DecisionTreeFactory.eINSTANCE.createLeafNode();
+      leafNode.setIdentifiedVariation(root.getEv());
+      return leafNode;
     }
     else
     {
-      IntermediateNode in = DecisionTreeFactory.eINSTANCE.createIntermediateNode();
+      IntermediateNode intermNode = DecisionTreeFactory.eINSTANCE.createIntermediateNode();
 
       // Exchange branches when the test is negative.
       if (root.isCheckNot())
       {
-        in.setNoBranch(decisionTreeForEntity(root.getNodePresent()));
-        in.setYesBranch(decisionTreeForEntity(root.getNodeAbsent()));
+        intermNode.setNoBranch(decisionTreeForEntity(root.getNodePresent()));
+        intermNode.setYesBranch(decisionTreeForEntity(root.getNodeAbsent()));
       }
       else
       {
-        in.setYesBranch(decisionTreeForEntity(root.getNodePresent()));
-        in.setNoBranch(decisionTreeForEntity(root.getNodeAbsent()));
+        intermNode.setYesBranch(decisionTreeForEntity(root.getNodePresent()));
+        intermNode.setNoBranch(decisionTreeForEntity(root.getNodeAbsent()));
       }
 
       // Create PropertySpec2 from PropertySpec
-      PropertySpec2 ps2 = DecisionTreeFactory.eINSTANCE.createPropertySpec2();
-      ps2.setProperty(root.getProperty().getProperty());
-      ps2.setNeedsTypeCheck(root.getProperty().isNeedsTypeCheck());
+      PropertySpec2 propSpec2 = DecisionTreeFactory.eINSTANCE.createPropertySpec2();
+      propSpec2.setProperty(root.getProperty().getProperty());
+      propSpec2.setNeedsTypeCheck(root.getProperty().isNeedsTypeCheck());
 
-      in.setCheckedProperty(ps2);
+      intermNode.setCheckedProperty(propSpec2);
 
-      return in;
+      return intermNode;
     }
   }
 
@@ -219,6 +204,7 @@ public class EntityDiffToDecisionTree
     if (tree.isLeaf())
     {
       String tag = tree.prefix();
+      Pattern pattern = Pattern.compile("\\[(.*?) .*$");
       Matcher matcher = pattern.matcher(tag);
 
       if (matcher.find())
@@ -235,15 +221,15 @@ public class EntityDiffToDecisionTree
       ClassifierTree[] sons = tree.getSons();
       String left = tree.getLocalModel().leftSide(tree.getTrainingData()).trim();
 
-      PropertySpec p = properties.get(left);
+      PropertySpec propSpec = properties.get(left);
 
-      if (p == null)
+      if (propSpec == null)
         throw new Exception("Unknown Property Name: " + left);
 
       if (sons.length != 2)
         throw new Exception("This is not a binary decision tree");
 
-      ModelNode m = new ModelNode(p, left.startsWith("!"));
+      ModelNode m = new ModelNode(propSpec, left.startsWith("!"));
       for (int i = 0 ; i < sons.length; i++)
       {
         String value = tree.getLocalModel().rightSide(i, tree.getTrainingData()).trim();
@@ -260,39 +246,39 @@ public class EntityDiffToDecisionTree
     }
   }
 
-  private void printModelTree(Entity e, ModelNode tree)
+  private void printModelTree(Entity entity, ModelNode tree)
   {
-    printModelTree(e, tree, 0);
+    printModelTree(entity, tree, 0);
   }
 
-  private void printModelTree(Entity e, ModelNode tree, int level)
+  private void printModelTree(Entity entity, ModelNode tree, int level)
   {
     String indent = String.join("", Collections.nCopies(level, "  "));
 
-    if (tree.is_leaf())
-      System.out.println(indent+"Entity: "+e.getName()+", Variation: "+tree.getEv().getVariationId());
+    if (tree.isLeaf())
+      System.out.println(indent + "Entity: " + entity.getName() + ", Variation: " + tree.getEv().getVariationId());
     else
     {
       Function<Boolean,String> present = v -> v ? " is present." : " is NOT present."; 
 
-      System.out.println(indent+tree.getProperty().getProperty().getName()+ present.apply(!tree.isCheckNot()));
-      printModelTree(e, tree.getNodePresent(), level+1);
+      System.out.println(indent + tree.getProperty().getProperty().getName() + present.apply(!tree.isCheckNot()));
+      printModelTree(entity, tree.getNodePresent(), level + 1);
 
-      System.out.println(indent+tree.getProperty().getProperty().getName()+ present.apply(tree.isCheckNot()));
-      printModelTree(e, tree.getNodeAbsent(), level+1);
+      System.out.println(indent + tree.getProperty().getProperty().getName() + present.apply(tree.isCheckNot()));
+      printModelTree(entity, tree.getNodeAbsent(), level + 1);
     }
   }
 
-  private String serialize(PropertySpec ps)
+  private String serialize(PropertySpec propSpec)
   {
-    if (ps.isNeedsTypeCheck())
-      return Serializer.serialize(ps.getProperty());
+    if (propSpec.isNeedsTypeCheck())
+      return Serializer.serialize(propSpec.getProperty());
     else
-      return ps.getProperty().getName();
+      return propSpec.getProperty().getName();
   }
 
-  private String serializeNot(PropertySpec ps)
+  private String serializeNot(PropertySpec propSpec)
   {
-    return "!" + ps.getProperty().getName();
+    return "!" + propSpec.getProperty().getName();
   }
 }
