@@ -28,7 +28,7 @@ public class PrettyPrinter
 
     StringBuilder result = new StringBuilder();
 
-    result.append("EntityDifferentiation name:" + entityDifferentiation.getName() + ENDL);
+    result.append("EntityDifferentiation name: " + entityDifferentiation.getName() + ENDL);
 
     for (EntityDiffSpec eDiffSpec : entityDifferentiation.getEntityDiffSpecs())
       result.append(printPretty(eDiffSpec, TAB) + ENDL);
@@ -36,41 +36,45 @@ public class PrettyPrinter
     return result.toString();
   }
 
-  public static String printPretty(EntityDiffSpec eDiffSpec, String defTabs)
+  public static String printPretty(EntityDiffSpec eDiffSpec)
+  {
+    return printPretty(eDiffSpec, "");
+  }
+
+  private static String printPretty(EntityDiffSpec eDiffSpec, String defTabs)
   {
     if (eDiffSpec == null)
       return null;
 
-    String tabs = defTabs + TAB;
     StringBuilder result = new StringBuilder();
 
-    result.append(tabs + "Entity: " + eDiffSpec.getEntity().getName() + ENDL);
+    result.append(defTabs + "Entity: " + eDiffSpec.getEntity().getName() + ENDL);
 
     if (!eDiffSpec.getCommonProps().isEmpty())
     {
-      result.append(tabs + "Common props:" + ENDL);
+      result.append(defTabs + "Common props:" + ENDL);
       for (PropertySpec pSpec : eDiffSpec.getCommonProps())
-        result.append(prettyPrint(pSpec, tabs) + ENDL);
+        result.append(prettyPrint(pSpec, defTabs + TAB) + ENDL);
     }
 
     if (!eDiffSpec.getEntityVariationProps().isEmpty())
     {
       for (EntityVariationProp evProp : eDiffSpec.getEntityVariationProps())
       {
-        result.append(tabs + "EV " + evProp.getEntityVariation().getVariationId() + " ---------" + ENDL);
+        result.append(defTabs + "EV " + evProp.getEntityVariation().getVariationId() + " ---------" + ENDL);
 
         if (!evProp.getPropertySpecs().isEmpty())
         {
-          result.append(tabs + "Own properties:" + ENDL);
+          result.append(defTabs + "Own properties:" + ENDL);
           for (PropertySpec pSpec : evProp.getPropertySpecs())
-            result.append(prettyPrint(pSpec, tabs) + ENDL);          
+            result.append(prettyPrint(pSpec, defTabs + TAB) + ENDL);          
         }
 
         if (!evProp.getNotProps().isEmpty())
         {
-          result.append(tabs + "Properties NOT to have:" + ENDL);
+          result.append(defTabs + "Properties NOT to have:" + ENDL);
           for (PropertySpec pSpec : evProp.getNotProps())
-            result.append(prettyPrint(pSpec, tabs) + ENDL);          
+            result.append(prettyPrint(pSpec, defTabs + TAB) + ENDL);          
         }
       }
     }
@@ -78,14 +82,19 @@ public class PrettyPrinter
     return result.toString();
   }
 
-  public static String prettyPrint(PropertySpec pSpec, String defTabs)
+  public static String prettyPrint(PropertySpec pSpec)
+  {
+    return prettyPrint(pSpec, "");
+  }
+
+  private static String prettyPrint(PropertySpec pSpec, String defTabs)
   {
     if (pSpec == null)
       return null;
 
-    String tabs = defTabs + TAB;
     StringBuilder result = new StringBuilder();
-    result.append(tabs + " * " + pSpec.getProperty().getName() + (pSpec.isNeedsTypeCheck() ? "*" : ""));
+
+    result.append(defTabs + " * " + pSpec.getProperty().getName() + (pSpec.isNeedsTypeCheck() ? " (needsTypeCheck)" : ""));
 
     return result.toString();
   }
