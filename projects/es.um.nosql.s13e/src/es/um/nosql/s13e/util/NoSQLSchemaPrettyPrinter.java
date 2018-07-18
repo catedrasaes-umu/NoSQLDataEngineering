@@ -1,26 +1,49 @@
 package es.um.nosql.s13e.util;
 
-import java.util.stream.Collectors;
+import java.io.File;
 
 import es.um.nosql.s13e.NoSQLSchema.Entity;
 import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.NoSQLSchema.Property;
 
 public class NoSQLSchemaPrettyPrinter
 {
-  private static final String TAB = "\t";
+  private static final String TAB = "  ";
+  private static final String ENDL = System.lineSeparator();
 
-  public static String printPretty(NoSQLSchema theSchema)
+  public static void main(String[] args)
   {
-    if (theSchema == null)
+    String INPUT_FOLDER = "../es.um.nosql.examples/";
+    String[] input_models = new String[] {/*"everypolitician_sweden", "facebook", "harvard", "links","mongomovies", "opensanctions",
+        "proteins", "publications", "stackoverflow", "urban", "webclicks",*/ "mongosongs"};
+
+    for (String input_model : input_models)
+    {
+      String inputFile = INPUT_FOLDER + input_model + "/" + input_model + ".xmi";
+      System.out.println(printPretty(inputFile));
+    }
+  }
+
+  public static String printPretty(String inputFile)
+  {
+    ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
+    NoSQLSchema nosqlschema = loader.load(new File(inputFile), NoSQLSchema.class);
+
+    return printPretty(nosqlschema);
+  }
+
+  public static String printPretty(NoSQLSchema nosqlschema)
+  {
+    if (nosqlschema == null)
       return null;
 
     StringBuilder result = new StringBuilder();
 
-    result.append("NoSQLSchema name:" + theSchema.getName()
-      + System.lineSeparator());
+    result.append("NoSQLSchema name: " + nosqlschema.getName() + ENDL);
 
-    for (Entity entity : theSchema.getEntities())
+    for (Entity entity : nosqlschema.getEntities())
       result.append(printPretty(entity, TAB));
 
     return result.toString();
@@ -36,14 +59,14 @@ public class NoSQLSchemaPrettyPrinter
     if (entity == null)
       return null;
 
-    String tabs = defTabs + TAB;
+    StringBuilder result = new StringBuilder();
 
-    String result = defTabs + "Entity name:" + entity.getName() + System.lineSeparator() 
-      + entity.getEntityVariations().stream()
-      .map(ev -> printPretty(ev,tabs))
-      .collect(Collectors.joining(""));
+    result.append(defTabs + "Entity name: " + entity.getName() + (entity.isRoot() ? " (root)" : "") + ENDL);
 
-    return result;
+    for (EntityVariation eVariation : entity.getEntityVariations())
+      result.append(printPretty(eVariation, defTabs + TAB));
+
+    return result.toString();
   }
 
   public static String printPretty(EntityVariation eVariation)
@@ -56,13 +79,29 @@ public class NoSQLSchemaPrettyPrinter
     if (eVariation == null)
       return null;
 
-    String tabs = defTabs + TAB;
+    StringBuilder result = new StringBuilder();
 
-    String result = defTabs + "EntityVariation variationId:" + eVariation.getVariationId() + System.lineSeparator() 
-      + eVariation.getProperties().stream()
-      .map(p -> tabs + Serializer.serialize(p) + System.lineSeparator())
-      .collect(Collectors.joining());
+    result.append(defTabs + "EntityVariation vId: " + eVariation.getVariationId() + ENDL);
+    for (Property prop : eVariation.getProperties())
+      result.append(printPretty(prop, defTabs + TAB));
 
-    return result;
+    return result.toString();
+  }
+
+  public static String printPretty(Property property)
+  {
+    return printPretty(property, "");
+  }
+
+  private static String printPretty(Property property, String defTabs)
+  {
+    if (property == null)
+      return null;
+
+    StringBuilder result = new StringBuilder();
+
+    result.append(defTabs + Serializer.serialize(property) + ENDL);
+
+    return result.toString();
   }
 }
