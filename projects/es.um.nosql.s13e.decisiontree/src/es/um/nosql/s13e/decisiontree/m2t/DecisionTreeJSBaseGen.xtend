@@ -29,15 +29,15 @@ public class DecisionTreeJSBaseGen
   private def generateClassificationFile(DecisionTrees decTrees)
   '''
   var «modelName» = require('./«modelName»');
-  «FOR Entity entity : decTrees.trees.map[tree | tree.entity]»
+  «FOR Entity entity : decTrees.trees.map[tree | tree.entity].filter[e | e.root]»
   var «entity.name.toLowerCase»Json = require('./json/«entity.name».json');
   «ENDFOR»
 
-  «FOR Entity entity : decTrees.trees.map[tree | tree.entity]»
+  «FOR Entity entity : decTrees.trees.map[tree | tree.entity].filter[e | e.root]»
   test«entity.name»Classifier();
   «ENDFOR»
 
-  «FOR Entity entity : decTrees.trees.map[tree | tree.entity] SEPARATOR "\n"»
+  «FOR Entity entity : decTrees.trees.map[tree | tree.entity].filter[e | e.root] SEPARATOR "\n"»
   function test«entity.name»Classifier()
   {
     var «entity.name.toLowerCase»Counter = { «FOR EntityVariation ev : entity.entityVariations SEPARATOR ', '»«entity.name»_«ev.variationId» : 0«ENDFOR»}

@@ -1,12 +1,12 @@
 input:
-  model: ../es.um.nosql.examples/stackoverflow/stackoverflow_reduced.xmi
+  model: ../es.um.nosql.examples/stackoverflow/stackoverflow.xmi
   debug: true
   splits: 1
 
 entities:
   variations:
-    minInstances: 15
-    maxInstances: 15
+    minInstances: 1500
+    maxInstances: 1500
   includeType: true
 #  dateFormat: "dd-MM-yyyy HH:mm:ss" 
 #  timestamp: 17-6-1988 13:05:11
@@ -45,7 +45,7 @@ associations:
 output:
   #database: localhost
   #databaseCollection: generated_collection
-  folder: output
+  folder: ../es.um.nosql.examples/stackoverflow/stackoverflow/json/
   #console: false
 
 # Generate images?

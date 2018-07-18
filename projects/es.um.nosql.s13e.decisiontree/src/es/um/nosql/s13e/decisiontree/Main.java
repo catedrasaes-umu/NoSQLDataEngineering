@@ -25,8 +25,10 @@ public class Main
 
   public static void main(String[] args)
   {
-    String[] input_models = new String[] {/*"everypolitician_sweden", "facebook", "harvard", "links", "mongomovies", "opensanctions",
-        "proteins", "publications", */"stackoverflow"/*, "urban", "webclicks", "mongosongs"*/};
+    // Everypolitician_sweden and OpenSanctions examples do not work properly. Maybe there is a generation problem with aggregates...?
+    // Mongosongs is not correctly classified. Album_1 and Album_2 are not correctly separated. Check it out.
+    String[] input_models = new String[] {"everypolitician_sweden",/*"facebook", "harvard", "links",*/"mongomovies", "opensanctions",
+      /*"proteins", "publications", "stackoverflow", "urban", "webclicks",*/ "mongosongs"};
 
     for (String input_model : input_models)
     {
