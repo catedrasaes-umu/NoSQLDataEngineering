@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.decisiontree.m2m.util;
+package es.um.nosql.s13e.util;
 
 import java.io.File;
 
@@ -12,7 +12,7 @@ import es.um.nosql.s13e.DecisionTree.PropertySpec2;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
 import es.um.nosql.s13e.util.ModelLoader;
 
-public class PrettyPrinter
+public class DecisionTreePrettyPrinter
 {
   private static final String TAB = "  ";
   private static final String ENDL = System.lineSeparator();
@@ -21,7 +21,7 @@ public class PrettyPrinter
   {
     String INPUT_FOLDER = "../es.um.nosql.examples/";
     String[] input_models = new String[] {"everypolitician_sweden", "facebook", "harvard", "links","mongomovies", "opensanctions",
-      "proteins", "publications", "stackoverflow", "urban", "webclicks", "mongosongs"};
+        "proteins", "publications", "stackoverflow", "urban", "webclicks", "mongosongs"};
 
     for (String input_model : input_models)
     {

@@ -6,7 +6,7 @@ import es.um.nosql.s13e.NoSQLSchema.Entity;
 import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 
-public class PrettyPrinter
+public class NoSQLSchemaPrettyPrinter
 {
   private static final String TAB = "\t";
 

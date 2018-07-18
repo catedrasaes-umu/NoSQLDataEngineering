@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.m2m.util.hashing;
+package es.um.nosql.s13e.m2m.hashing;
 
 import org.eclipse.collections.api.block.HashingStrategy;
 import org.eclipse.emf.ecore.util.EcoreUtil;

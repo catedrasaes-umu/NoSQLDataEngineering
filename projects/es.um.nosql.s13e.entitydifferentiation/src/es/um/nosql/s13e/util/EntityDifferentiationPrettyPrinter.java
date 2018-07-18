@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.m2m.util;
+package es.um.nosql.s13e.util;
 
 import java.io.File;
 
@@ -9,16 +9,30 @@ import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 import es.um.nosql.s13e.util.ModelLoader;
 
-public class PrettyPrinter
+public class EntityDifferentiationPrettyPrinter
 {
   private static final String TAB = "  ";
   private static final String ENDL = System.lineSeparator();
 
   public static void main(String[] args)
   {
+    String INPUT_FOLDER = "../es.um.nosql.examples/";
+    String[] input_models = new String[] {"everypolitician_sweden", "facebook", "harvard", "links","mongomovies", "opensanctions",
+        "proteins", "publications", "stackoverflow", "urban", "webclicks", "mongosongs"};
+
+    for (String input_model : input_models)
+    {
+      String inputFile = INPUT_FOLDER + input_model + "/" + input_model + "_Diff.xmi";
+      System.out.println(printPretty(inputFile));
+    }
+  }
+
+  public static String printPretty(String inputFile)
+  {
     ModelLoader loader = new ModelLoader(EntityDifferentiationPackage.eINSTANCE);
-    EntityDifferentiation eDiff = loader.load(new File("../es.um.nosql.examples/mongomovies/mongomovies_Diff.xmi"), EntityDifferentiation.class);
-    System.out.println(printPretty(eDiff));
+    EntityDifferentiation eDiff = loader.load(new File(inputFile), EntityDifferentiation.class);
+
+    return printPretty(eDiff);
   }
 
   public static String printPretty(EntityDifferentiation entityDifferentiation)

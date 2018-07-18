@@ -22,13 +22,13 @@ import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Property;
+import es.um.nosql.s13e.m2m.hashing.PropertyHashingStrategy;
+import es.um.nosql.s13e.m2m.hashing.PropertyJustNameHashingStrategy;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationFactory;
 import es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
-import es.um.nosql.s13e.m2m.util.hashing.PropertyHashingStrategy;
-import es.um.nosql.s13e.m2m.util.hashing.PropertyJustNameHashingStrategy;
 import es.um.nosql.s13e.util.ModelLoader;
 
 public class NoSQLSchemaToEntityDiff
