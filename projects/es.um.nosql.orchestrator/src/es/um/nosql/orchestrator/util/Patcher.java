@@ -19,8 +19,8 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
-import es.um.nosql.s13e.util.emf.ModelLoader;
-import es.um.nosql.s13e.util.emf.ResourceManager;
+import es.um.nosql.s13e.util.ModelLoader;
+import es.um.nosql.s13e.util.ResourceManager;
 
 // TODO: Yeah, this class shouldnt exist at all, but the inference process is not perfect and some fixes need to be maded.
 public class Patcher

@@ -16,7 +16,7 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.decisiontree.m2m.EntityDiffToDecisionTree;
 import es.um.nosql.s13e.decisiontree.m2t.DecisionTreeJSBaseGen;
 import es.um.nosql.s13e.decisiontree.m2t.DecisionTreeToJS;
-import es.um.nosql.s13e.util.emf.ResourceManager;
+import es.um.nosql.s13e.util.ResourceManager;
 
 public class Main 
 {

@@ -7,7 +7,7 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.db.util.DbType;
 import es.um.nosql.s13e.db.util.generator.JsonGenerator;
-import es.um.nosql.s13e.util.emf.ModelLoader;
+import es.um.nosql.s13e.util.ModelLoader;
 
 public class Model2Db extends Source2Db
 {

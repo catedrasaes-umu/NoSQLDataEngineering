@@ -1,7 +1,7 @@
 package es.um.nosql.s13e.m2t.mongoose
 
 import java.io.File
-import es.um.nosql.s13e.util.emf.ModelLoader
+import es.um.nosql.s13e.util.ModelLoader
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation
 import es.um.nosql.s13e.m2t.commons.Commons

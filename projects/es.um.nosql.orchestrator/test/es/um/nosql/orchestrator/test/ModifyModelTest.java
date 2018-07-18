@@ -16,8 +16,8 @@ import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
-import es.um.nosql.s13e.util.emf.ModelLoader;
-import es.um.nosql.s13e.util.emf.ResourceManager;
+import es.um.nosql.s13e.util.ModelLoader;
+import es.um.nosql.s13e.util.ResourceManager;
 
 public class ModifyModelTest
 {

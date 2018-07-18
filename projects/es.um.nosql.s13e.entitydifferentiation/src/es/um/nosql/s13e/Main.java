@@ -18,7 +18,7 @@ import es.um.nosql.s13e.m2t.mongoose.DiffMongooseBaseGen;
 import es.um.nosql.s13e.m2t.mongoose.DiffToMongoose;
 import es.um.nosql.s13e.m2t.morphia.DiffMorphiaBaseGen;
 import es.um.nosql.s13e.m2t.morphia.DiffToMorphia;
-import es.um.nosql.s13e.util.emf.ResourceManager;
+import es.um.nosql.s13e.util.ResourceManager;
 
 /**
  * Usage: Just change the following parameters to the routes you prefer, and execute it freely.

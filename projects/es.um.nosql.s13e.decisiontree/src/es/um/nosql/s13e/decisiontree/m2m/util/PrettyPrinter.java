@@ -10,7 +10,7 @@ import es.um.nosql.s13e.DecisionTree.IntermediateNode;
 import es.um.nosql.s13e.DecisionTree.LeafNode;
 import es.um.nosql.s13e.DecisionTree.PropertySpec2;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.util.emf.ModelLoader;
+import es.um.nosql.s13e.util.ModelLoader;
 
 public class PrettyPrinter
 {

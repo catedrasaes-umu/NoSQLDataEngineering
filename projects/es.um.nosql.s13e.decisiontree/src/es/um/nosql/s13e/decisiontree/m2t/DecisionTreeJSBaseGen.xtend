@@ -1,7 +1,7 @@
 package es.um.nosql.s13e.decisiontree.m2t
 
 import java.io.File
-import es.um.nosql.s13e.util.emf.ModelLoader
+import es.um.nosql.s13e.util.ModelLoader
 import es.um.nosql.s13e.DecisionTree.DecisionTrees
 import es.um.nosql.s13e.DecisionTree.DecisionTreePackage
 import es.um.nosql.s13e.decisiontree.m2t.commons.Commons

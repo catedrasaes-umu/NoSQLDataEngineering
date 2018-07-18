@@ -21,7 +21,7 @@ import java.util.Deque
 import java.util.HashMap
 import java.util.Map
 import es.um.nosql.s13e.DecisionTree.DecisionTreeNode
-import es.um.nosql.s13e.util.emf.ModelLoader
+import es.um.nosql.s13e.util.ModelLoader
 import es.um.nosql.s13e.DecisionTree.DecisionTreePackage
 import es.um.nosql.s13e.decisiontree.m2t.commons.Commons
 

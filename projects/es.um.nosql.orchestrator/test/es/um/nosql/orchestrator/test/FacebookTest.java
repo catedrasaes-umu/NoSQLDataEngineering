@@ -24,7 +24,7 @@ import es.um.nosql.s13e.db.interfaces.Facebook2Db;
 import es.um.nosql.s13e.db.util.DbType;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
-import es.um.nosql.s13e.util.emf.ModelLoader;
+import es.um.nosql.s13e.util.ModelLoader;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class FacebookTest

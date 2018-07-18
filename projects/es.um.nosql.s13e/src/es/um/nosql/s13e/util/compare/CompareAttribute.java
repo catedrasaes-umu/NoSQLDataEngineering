@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.util.emf.compare;
+package es.um.nosql.s13e.util.compare;
 
 import org.eclipse.emf.ecore.util.EcoreUtil;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;

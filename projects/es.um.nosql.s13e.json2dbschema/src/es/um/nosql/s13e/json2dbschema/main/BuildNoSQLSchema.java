@@ -23,7 +23,7 @@ import es.um.nosql.s13e.json2dbschema.util.abstractjson.impl.gson.GsonAdapter;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.impl.gson.GsonArray;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.impl.jackson.JacksonAdapter;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.impl.jackson.JacksonArray;
-import es.um.nosql.s13e.util.emf.ResourceManager;
+import es.um.nosql.s13e.util.ResourceManager;
 
 /**
  * @author dsevilla

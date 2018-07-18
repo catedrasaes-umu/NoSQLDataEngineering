@@ -14,7 +14,7 @@ import es.um.nosql.s13e.NoSQLSchema.Entity
 import java.util.Map
 import java.util.Comparator
 import es.um.nosql.s13e.NoSQLSchema.Property
-import es.um.nosql.s13e.util.emf.ModelLoader
+import es.um.nosql.s13e.util.ModelLoader
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage
 import es.um.nosql.s13e.NoSQLSchema.Association
 import java.util.ArrayList

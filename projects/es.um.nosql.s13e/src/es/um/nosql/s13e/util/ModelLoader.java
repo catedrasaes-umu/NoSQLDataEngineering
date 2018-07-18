@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.util.emf;
+package es.um.nosql.s13e.util;
 
 import java.io.File;
 import java.util.Map;

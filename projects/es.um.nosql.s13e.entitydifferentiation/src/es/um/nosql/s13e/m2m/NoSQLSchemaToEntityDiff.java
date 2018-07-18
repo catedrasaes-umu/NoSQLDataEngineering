@@ -29,7 +29,7 @@ import es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 import es.um.nosql.s13e.m2m.util.hashing.PropertyHashingStrategy;
 import es.um.nosql.s13e.m2m.util.hashing.PropertyJustNameHashingStrategy;
-import es.um.nosql.s13e.util.emf.ModelLoader;
+import es.um.nosql.s13e.util.ModelLoader;
 
 public class NoSQLSchemaToEntityDiff
 {

@@ -7,7 +7,7 @@ import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
 import es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
-import es.um.nosql.s13e.util.emf.ModelLoader;
+import es.um.nosql.s13e.util.ModelLoader;
 
 public class PrettyPrinter
 {

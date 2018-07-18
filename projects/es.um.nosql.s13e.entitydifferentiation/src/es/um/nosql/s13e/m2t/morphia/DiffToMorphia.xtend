@@ -5,7 +5,7 @@ import es.um.nosql.s13e.NoSQLSchema.Entity
 import java.util.List
 import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec
-import es.um.nosql.s13e.util.emf.ModelLoader
+import es.um.nosql.s13e.util.ModelLoader
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation
 import es.um.nosql.s13e.NoSQLSchema.Aggregate
