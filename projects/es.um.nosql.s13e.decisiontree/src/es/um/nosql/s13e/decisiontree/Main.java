@@ -12,6 +12,7 @@ import org.eclipse.emf.ecore.xmi.XMIResource;
 import es.um.nosql.s13e.DecisionTree.DecisionTrees;
 import es.um.nosql.s13e.DecisionTree.DecisionTreePackage;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.decisiontree.m2m.EntityDiffToDecisionTree;
 import es.um.nosql.s13e.decisiontree.m2t.DecisionTreeJSBaseGen;
 import es.um.nosql.s13e.decisiontree.m2t.DecisionTreeToJS;
@@ -27,8 +28,8 @@ public class Main
   {
     // Everypolitician_sweden and OpenSanctions examples do not work properly. Maybe there is a generation problem with aggregates...?
     // Mongosongs is not correctly classified. Album_1 and Album_2 are not correctly separated. Check it out.
-    String[] input_models = new String[] {"everypolitician_sweden",/*"facebook", "harvard", "links",*/"mongomovies", "opensanctions",
-      /*"proteins", "publications", "stackoverflow", "urban", "webclicks",*/ "mongosongs"};
+    String[] input_models = new String[] {"everypolitician_sweden", "facebook", "harvard", "links","mongomovies", "opensanctions",
+      "proteins", "publications", "stackoverflow", "urban", "webclicks", "mongosongs"};
 
     for (String input_model : input_models)
     {
@@ -47,10 +48,12 @@ public class Main
     EntityDiffToDecisionTree transformer = new EntityDiffToDecisionTree();
     DecisionTrees dTrees = transformer.m2m(inputFile);
 
+    NoSQLSchemaPackage noqslschemaPackage = NoSQLSchemaPackage.eINSTANCE;
     EntityDifferentiationPackage entitydiffPackage = EntityDifferentiationPackage.eINSTANCE;
     DecisionTreePackage decisiontreePackage = DecisionTreePackage.eINSTANCE;
-    ResourceManager resManager = new ResourceManager(entitydiffPackage, decisiontreePackage);
+    ResourceManager resManager = new ResourceManager(noqslschemaPackage, entitydiffPackage, decisiontreePackage);
 
+    noqslschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e/model/nosqlschema.ecore", true));
     entitydiffPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e.entitydifferentiation/model/entitydifferentiation.ecore", true));
     decisiontreePackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e.entitydifferentiation/model/decisiontree.ecore", true));
 
