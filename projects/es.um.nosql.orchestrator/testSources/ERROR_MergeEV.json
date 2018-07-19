@@ -1,8 +1,18 @@
 {
   "persons": [
     {
-      "id": "b76aa13a-b2fd",
+      "id": "b76aa13a",
       "name": "Name1",
+      "other_names": [
+        {
+          "name": "Kerstin-Maria Stalín",
+          "note": "alternate"
+        }
+      ]
+    },
+    {
+      "id": "b76aa13a-b2fd",
+      "name": "Name2",
       "other_names": [
         {
           "name": "Kerstin-Maria Stalín",
@@ -17,7 +27,7 @@
     },
     {
       "id": "b76aa13a-b2fd-4e5f",
-      "name": "Name2",
+      "name": "Name3",
       "other_names": [
         {
           "name": "Kerstin-Maria Stalín",
@@ -42,7 +52,7 @@
     },
     {
       "id": "b76aa13a-b2fd-4e5f-8497-4c9a653d8d5f",
-      "name": "Name3",
+      "name": "Name4",
       "other_names": [
         {
           "name": "Kerstin-Maria Stalín",
