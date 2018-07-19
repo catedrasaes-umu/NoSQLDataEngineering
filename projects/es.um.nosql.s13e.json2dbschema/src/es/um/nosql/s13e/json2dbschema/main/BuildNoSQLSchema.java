@@ -31,8 +31,19 @@ import es.um.nosql.s13e.util.ResourceManager;
  */
 public class BuildNoSQLSchema
 {
-  public BuildNoSQLSchema()
+  public NoSQLSchema buildFromGsonArray(String schemaName, JsonArray jArray)
   {
+    return buildFromArray(schemaName, new GsonArray(jArray), new GsonAdapter());
+  }
+
+  public NoSQLSchema buildFromJacksonArray(String schemaName, ArrayNode jArray)
+  {
+    return buildFromArray(schemaName, new JacksonArray(jArray), new JacksonAdapter());
+  }
+
+  private NoSQLSchema buildFromArray(String schemaName, IAJArray objRows, IAJAdapter<?> adapter)
+  {
+    return new JSON2Schema<>(NoSQLSchemaPackage.eINSTANCE.getNoSQLSchemaFactory(), adapter).fromJSONArray(schemaName, objRows);
   }
 
   public void buildFromGsonArray(String schemaName, JsonArray jArray, String outputFile)
@@ -47,9 +58,8 @@ public class BuildNoSQLSchema
 
   private void buildFromArray(String schemaName, IAJArray objRows, String outputFile, IAJAdapter<?> adapter)
   {
-    NoSQLSchemaPackage packageInstance = NoSQLSchemaPackage.eINSTANCE;
-    NoSQLSchema schema = new JSON2Schema<>(packageInstance.getNoSQLSchemaFactory(), adapter).fromJSONArray(schemaName, objRows);
-    schema2File(packageInstance, schema, outputFile);
+    NoSQLSchema schema = new JSON2Schema<>(NoSQLSchemaPackage.eINSTANCE.getNoSQLSchemaFactory(), adapter).fromJSONArray(schemaName, objRows);
+    schema2File(schema, outputFile);
   }
 
   public void buildFromGsonFile(String inputFile, String outputFile)
@@ -64,12 +74,10 @@ public class BuildNoSQLSchema
 
   private void buildFromFile(String inputFile, String outputFile, IAJAdapter<?> adapter)
   {
-    NoSQLSchemaPackage packageInstance = NoSQLSchemaPackage.eINSTANCE;
-
     NoSQLSchema schema = null;
     try
     {
-      schema = new JSON2Schema<>(packageInstance.getNoSQLSchemaFactory(), adapter).fromJSONFile(inputFile);
+      schema = new JSON2Schema<>(NoSQLSchemaPackage.eINSTANCE.getNoSQLSchemaFactory(), adapter).fromJSONFile(inputFile);
     } catch (JsonProcessingException e)
     {
       e.printStackTrace();
@@ -78,19 +86,19 @@ public class BuildNoSQLSchema
       e.printStackTrace();
     }
 
-    schema2File(packageInstance, schema, outputFile);
+    schema2File(schema, outputFile);
   }
 
-  private void schema2File(NoSQLSchemaPackage packageInstance, NoSQLSchema schema, String outputFile)
+  private void schema2File(NoSQLSchema schema, String outputFile)
   {
-    // Create a new resource to serialize the ecore model
-    Resource outputRes = new ResourceManager(packageInstance).getResourceSet().createResource(URI.createFileURI(outputFile));
-    // Add our new package to resource contents
+    NoSQLSchemaPackage nosqlschemaPackage = NoSQLSchemaPackage.eINSTANCE;
+    ResourceManager resManager = new ResourceManager(nosqlschemaPackage);
+    nosqlschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e/model/nosqlschema.ecore", true));
+
+    Resource outputRes = resManager.getResourceSet().createResource(URI.createFileURI(outputFile));
     outputRes.getContents().add(schema);
 
-    // Make the actual URI to be exported in the generated models. This
-    // allows using the models without having to register them.
-    packageInstance.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e/model/nosqlschema.ecore", true));
+    // Configure output
     Map<Object,Object> options = new HashMap<Object,Object>();
     options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
     options.put(XMIResource.OPTION_ENCODING, "UTF-8");
