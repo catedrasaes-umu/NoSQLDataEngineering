@@ -35,12 +35,12 @@ attributes:
 
 associations:
   references:
-    minReferenceAllowed: 2
-    maxReferenceAllowed: 3
+    minReferenceAllowed: 1
+    maxReferenceAllowed: 2
     strangeTypesProbability: 0
   aggregates:
-    minAggregateAllowed: 2
-    maxAggregateAllowed: 3
+    minAggregateAllowed: 1
+    maxAggregateAllowed: 2
 
 output:
   #database: localhost

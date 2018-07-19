@@ -41,7 +41,6 @@ public class AggregateGen
       // TODO: This might aggregate the same object several times. It might be a problem.
       // For each aggregation we have to include, we select a random aggregated variation and aggregate one object according to that variation.
       // TODO: This is for sure optimisable. We should be able to shuffle variations and extract some objects of them, not only one variation.
-      // TODO: Fix cardinalities
       for (EntityVariation ev : aggr.getRefTo())
         aggrArray.addAll(this.getRandomAggrs(ev, evMap, uBound));
 
