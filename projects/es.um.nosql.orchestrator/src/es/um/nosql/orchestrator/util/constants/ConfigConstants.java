@@ -17,7 +17,7 @@ public class ConfigConstants
   /********************** DATASET ROUTES **********************/
   /************************************************************/
   public static final String COMPANIES_FILE           = "/media/alberto/tarsonis/datasets/companies/companies.json";
-  public static final String EVERYPOLITICIAN_FOLDER   = "/media/alberto/tarsonis/datasets/everypolitician/countries/Sweden_Riksdag.json";
+  public static final String EVERYPOLITICIAN_FILE     = "/media/alberto/tarsonis/datasets/everypolitician/countries/Sweden_Riksdag.json";
   public static final String FACEBOOK_FOLDER          = "/media/alberto/tarsonis/datasets/facebook/";
   public static final String HARVARD_FILE             = "/media/alberto/tarsonis/datasets/harvard/HMXPC13_DI_v2_5-14-14.csv";
   public static final String JSON_FILE                = "../es.um.nosql.examples/mongomovies/mongomovies.json";
