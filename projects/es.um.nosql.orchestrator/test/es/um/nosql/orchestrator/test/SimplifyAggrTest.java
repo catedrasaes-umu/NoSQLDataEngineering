@@ -13,11 +13,11 @@ import es.um.nosql.s13e.db.util.DbType;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
 
-public class MergeEVTest
+public class SimplifyAggrTest
 {
-  String inputRoute = "testSources/ERROR_MergeEV.json";
-  String dbName = "DEBUG_everypolitician";
-  EveryPolitician2Db controller;
+  private String inputRoute = "testSources/ERROR_SimplAggr.json";
+  private String dbName = "DEBUG_SimplifyAggr";
+  private EveryPolitician2Db controller;
 
   @Before
   public void setUp() throws Exception

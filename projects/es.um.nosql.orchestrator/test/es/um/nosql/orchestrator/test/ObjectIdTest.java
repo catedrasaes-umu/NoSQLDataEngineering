@@ -8,15 +8,19 @@ import static org.junit.Assert.assertTrue;
 import java.io.File;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.google.gson.JsonArray;
 
 import es.um.nosql.s13e.NoSQLSchema.Association;
+import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
+import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.db.interfaces.EveryPolitician2Db;
 import es.um.nosql.s13e.db.util.DbType;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
@@ -25,63 +29,43 @@ import es.um.nosql.s13e.util.ModelLoader;
 
 public class ObjectIdTest
 {
-  private static final String DATABASE_IP = "localhost";
-  private static final String MONGODB_MAPREDUCE_FOLDER = "mapreduce/mongodb/v1";
-  private static String INPUT_FILE = "testSources/ERROR_InferenceObjectIds.json";
-  private static String DBNAME = "DEBUG_InferenceTest";
-  private static String OUTPUT_MODEL = "testOutput/" + DBNAME + ".xmi";
-
+  private String inputRoute = "testSources/ERROR_ObjectIds.json";
+  private String dbName = "DEBUG_ObjectIds";
   private EveryPolitician2Db controller;
 
   @Before
   public void setUp() throws Exception
   {
-    controller = new EveryPolitician2Db(DbType.MONGODB, DATABASE_IP);
+    controller = new EveryPolitician2Db(DbType.MONGODB, "localhost");
   }
 
   @After
   public void tearDown() throws Exception
   {
-//    controller.getClient().cleanDb(DBNAME);
+    controller.getClient().cleanDb(dbName);
     controller.shutdown();
   }
 
   @Test
   public void test()
   {
-    controller.run(INPUT_FILE, DBNAME);
+    controller.run(inputRoute, dbName);
 
-    System.out.println("Starting inference...");
     MongoDBImport inferrer = new MongoDBImport();
-    JsonArray jArray = inferrer.mapRed2Array(DATABASE_IP, DBNAME, MONGODB_MAPREDUCE_FOLDER);
-    System.out.println("Inference finished.");
+    JsonArray jArray = inferrer.mapRed2Array("localhost", dbName, "mapreduce/mongodb/v1/");
 
-    System.out.println("Starting BuildNoSQLSchema...");
     BuildNoSQLSchema builder = new BuildNoSQLSchema();
-    builder.buildFromGsonArray(DBNAME, jArray, OUTPUT_MODEL);
+    NoSQLSchema nosqlschema = builder.buildFromGsonArray(dbName, jArray);
 
-    System.out.println("BuildNoSQLSchema created: " + OUTPUT_MODEL);
+    assertNotNull("Schema can't be null", nosqlschema);
+    assertNotNull("Schema should have entities", nosqlschema.getEntities());
+    assertEquals("Schema should have one entity", 1, nosqlschema.getEntities().size());
 
-    ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
-    NoSQLSchema schema = loader.load(new File(OUTPUT_MODEL), NoSQLSchema.class);
+    Property property = nosqlschema.getEntities().get(0).getEntityVariations().get(0).getProperties().stream().filter(p -> p.getName().equals("_id")).findFirst().get();
 
-    assertNotNull("Schema can't be null", schema);
-    assertNotNull("Schema should have entities", schema.getEntities());
-    assertEquals("Schema should have one entity", 1, schema.getEntities().size());
+    assertTrue(property instanceof Attribute);
+    assertEquals("ObjectId", ((PrimitiveType)((Attribute)property).getType()).getName());
 
-    Entity memberships = null;
-
-    for (Entity e : schema.getEntities())
-    {
-      assertFalse(e.getName().equals("_id"));
-      if (e.getName().equals("memberships"))
-        memberships = e;
-    }
-
-    memberships.getEntityVariations().forEach(ev ->
-    {
-      assertTrue(ev.getProperties().stream().noneMatch(p -> p.getName().equals("_id") && p instanceof Association));
-    });
     // TODO: The inference process fails when the _id identifier is an ObjectId: ObjectId("code")
     // It is inferred it as an Aggregate of an _id Entity with no attributes.
     // It should be inferred as a PrimitiveType with ObjectId type.
