@@ -12,7 +12,6 @@ import es.um.nosql.s13e.db.interfaces.EveryPolitician2Db;
 import es.um.nosql.s13e.db.util.DbType;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
-import es.um.nosql.s13e.util.NoSQLSchemaPrettyPrinter;
 
 public class MergeEVTest
 {
@@ -43,10 +42,9 @@ public class MergeEVTest
 
     BuildNoSQLSchema builder = new BuildNoSQLSchema();
     NoSQLSchema nosqlschema = builder.buildFromGsonArray(dbName, jArray);
-    System.out.println(NoSQLSchemaPrettyPrinter.printPretty(nosqlschema));
 
-//    Assert.assertEquals(nosqlschema.getEntities(), 2);
-//    Assert.assertEquals(nosqlschema.getEntities().get(0), 1);
-//    Assert.assertEquals(nosqlschema.getEntities().get(1), 2);
+    Assert.assertEquals(2, nosqlschema.getEntities().size());
+    Assert.assertEquals(2, nosqlschema.getEntities().get(0).getEntityVariations().size());
+    Assert.assertEquals(2, nosqlschema.getEntities().get(1).getEntityVariations().size());
   }
 }

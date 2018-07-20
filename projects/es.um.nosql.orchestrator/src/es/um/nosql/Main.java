@@ -24,19 +24,19 @@ public class Main
     Orchestrator inferenceTest = new Orchestrator(DbType.MONGODB);
 
     //inferenceTest.runCompaniesExample(InferenceMode.FILL_AND_INFER, ConfigConstants.COMPANIES_FILE);                //POJO
-    inferenceTest.runEveryPoliticianExample(InferenceMode.FILL_AND_INFER, ConfigConstants.EVERYPOLITICIAN_FILE);
-    //inferenceTest.runFacebookExample(InferenceMode.FILL_AND_INFER, ConfigConstants.FACEBOOK_FOLDER);                //POJO
-    //inferenceTest.runHarvardExample(InferenceMode.FILL_AND_INFER, ConfigConstants.HARVARD_FILE);                    //POJO
+    //inferenceTest.runEveryPoliticianExample(InferenceMode.INFER_ONLY, ConfigConstants.EVERYPOLITICIAN_FILE);
+    //inferenceTest.runFacebookExample(InferenceMode.INFER_ONLY, ConfigConstants.FACEBOOK_FOLDER);                //POJO
+    //inferenceTest.runHarvardExample(InferenceMode.INFER_ONLY, ConfigConstants.HARVARD_FILE);                    //POJO
     //inferenceTest.runJsonExample(InferenceMode.FILL_AND_INFER, ConfigConstants.JSON_FILE);
-    //inferenceTest.runLinksExample(InferenceMode.FILL_AND_INFER, ConfigConstants.LINKS_FOLDER);                      //POJO
+    //inferenceTest.runLinksExample(InferenceMode.INFER_ONLY, ConfigConstants.LINKS_FOLDER);                      //POJO
     //inferenceTest.runModelExample(InferenceMode.FILL_AND_INFER, ConfigConstants.MODEL_FILE);
     //inferenceTest.runOpenSanctionsExample(InferenceMode.FILL_AND_INFER, ConfigConstants.OPENSANCTIONS_FILE);
     //inferenceTest.runPleiadesExample(InferenceMode.FILL_AND_INFER, ConfigConstants.PLEIADES_FILE);                  //TODO: DOESNT WORK YET
-    //inferenceTest.runProteinsExample(InferenceMode.FILL_AND_INFER, ConfigConstants.PROTEINS_FOLDER);                //POJO
-    //inferenceTest.runPublicationsExample(InferenceMode.FILL_AND_INFER, ConfigConstants.PUBLICATIONS_FILE);          //POJO
+    //inferenceTest.runProteinsExample(InferenceMode.INFER_ONLY, ConfigConstants.PROTEINS_FOLDER);                //POJO
+    //inferenceTest.runPublicationsExample(InferenceMode.INFER_ONLY, ConfigConstants.PUBLICATIONS_FILE);          //POJO
     //inferenceTest.runStackOverflowExample(InferenceMode.FILL_AND_INFER, ConfigConstants.STACKOVERFLOW_FOLDER);
-    //inferenceTest.runUrbanDictionaryExample(InferenceMode.FILL_AND_INFER, ConfigConstants.URBANDICTIONARY_FILE);    //POJO
-    //inferenceTest.runWebclickExample(InferenceMode.FILL_AND_INFER, ConfigConstants.WEBCLICKS_FOLDER);              //POJO
+    //inferenceTest.runUrbanDictionaryExample(InferenceMode.INFER_ONLY, ConfigConstants.URBANDICTIONARY_FILE);    //POJO
+    //inferenceTest.runWebclickExample(InferenceMode.INFER_ONLY, ConfigConstants.WEBCLICKS_FOLDER);              //POJO
 
     //TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
     // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.

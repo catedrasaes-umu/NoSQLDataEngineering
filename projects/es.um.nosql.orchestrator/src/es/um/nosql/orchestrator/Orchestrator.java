@@ -141,7 +141,7 @@ public class Orchestrator
 
   public void runUrbanDictionaryExample(InferenceMode option, String sourceFile)
   {
-    String dbName = "urban2";
+    String dbName = "urban";
     String outputModel = ConfigConstants.OUTPUT_FOLDER + dbName + ".xmi";
 
     runExample(option, new UrbanDictionary2Db(dbType, ConfigConstants.DATABASE_IP), dbName, sourceFile, outputModel);

@@ -348,7 +348,15 @@ public class SchemaInference
 
     final Optional<String> name = Optional.of(singularName);
 
-    n.forEach(e -> schema.add(infer(e, name, NON_ROOT_OBJECT)));
+    // Before adding a SchemaComponent to the array we first check there is not another similar object.
+    // This way we simplify Aggr{V1, V2, V2, V2...V2} to Aggr{V1, V2}
+    n.forEach(e ->
+    {
+      SchemaComponent sComponent = infer(e, name, NON_ROOT_OBJECT);
+
+      if (!schema.getInners().stream().anyMatch(sc -> sc.equals(sComponent)))
+        schema.add(sComponent);
+    });
 
     return schema;
   }
