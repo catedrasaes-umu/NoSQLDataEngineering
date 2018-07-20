@@ -1,20 +1,15 @@
 {"memberships": [
     {
-      "end_date": "2002-10-21",
+      "_id": { "$oid": "507f191e810c19729de860ea" },
       "legislative_period_id": "term/2002",
-      "on_behalf_of_id": "S",
-      "organization_id": "984f0a80-7942-4438-948e-6094b55f65ce",
-      "person_id": "0048198e-1541-48e1-ac15-41a76ba438ae",
-      "role": "member",
-      "start_date": "2002-10-15"
+      "ref_memberships": { "$oid": "507f191e810c19729de860eb"}
     },
     {
+      "_id": { "$oid": "507f191e810c19729de860eb" },
       "area_id": "area/göteborgs_kommun",
       "legislative_period_id": "term/2006",
-      "on_behalf_of_id": "M",
-      "organization_id": "984f0a80-7942-4438-948e-6094b55f65ce",
-      "person_id": "0079fcb8-c1bb-495c-a8c1-0102bcf93d0e",
-      "role": "member"
+      "role": "member",
+      "ref_memberships": {"$oid": "507f191e810c19729de860ea"}
     }
   ]
 }

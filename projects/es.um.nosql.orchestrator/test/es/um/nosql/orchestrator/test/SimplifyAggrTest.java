@@ -15,7 +15,7 @@ import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
 
 public class SimplifyAggrTest
 {
-  private String inputRoute = "testSources/ERROR_SimplAggr.json";
+  private String inputRoute = "testSources/ERROR_SimplifyAggr.json";
   private String dbName = "DEBUG_SimplifyAggr";
   private EveryPolitician2Db controller;
 

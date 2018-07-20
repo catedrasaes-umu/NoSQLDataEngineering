@@ -43,7 +43,6 @@ function()
 
       return _retschema;
     };
-
     // Array
     if (Array.isArray(obj))
     {
@@ -71,7 +70,10 @@ function()
     } // Object
     else if ((typeof obj) == 'object')
     {
-      retschema = _complex_obj(obj, true);
+      if (obj instanceof ObjectId)
+        retschema = "oid";
+      else
+        retschema = _complex_obj(obj, true);
     }
     // Other
     else if ((typeof obj) == 'number')
