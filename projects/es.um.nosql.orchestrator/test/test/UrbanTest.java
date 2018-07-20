@@ -1,4 +1,4 @@
-package es.um.nosql.orchestrator.test;
+package test;
 
 import org.junit.After;
 import org.junit.Before;

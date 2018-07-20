@@ -1,4 +1,4 @@
-package es.um.nosql.orchestrator.test;
+package test;
 
 import java.io.File;
 import java.io.FileOutputStream;

@@ -1,4 +1,4 @@
-package es.um.nosql.orchestrator.test;
+package regression;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;

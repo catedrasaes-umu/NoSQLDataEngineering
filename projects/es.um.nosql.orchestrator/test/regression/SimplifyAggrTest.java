@@ -1,4 +1,4 @@
-package es.um.nosql.orchestrator.test;
+package regression;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -13,6 +13,11 @@ import es.um.nosql.s13e.db.util.DbType;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
 
+/**
+ * Validation test: The inference process should be able to simplify Aggr{V1, V2, V2,...V2} to Aggr{V1, V2}.
+ * If this fails, the inferrer is aggregating variations which already are added to the list.
+ * @fail: Several variations are stored as different when in fact they are equivalent.
+ */
 public class SimplifyAggrTest
 {
   private String inputRoute = "testSources/ERROR_SimplifyAggr.json";
