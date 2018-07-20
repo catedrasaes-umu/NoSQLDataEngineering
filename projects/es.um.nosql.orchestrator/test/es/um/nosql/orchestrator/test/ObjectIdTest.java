@@ -4,14 +4,6 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,15 +12,19 @@ import com.google.gson.JsonArray;
 
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.db.interfaces.EveryPolitician2Db;
 import es.um.nosql.s13e.db.util.DbType;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
-import es.um.nosql.s13e.util.ResourceManager;
 
+/**
+ * Validation test: The inference process should be able to differentiate between strings and ObjectIds
+ * in attributes as well as in the original types of references. If this fails, please check the inference
+ * process and also the mapReduce files.
+ * @fail: An ObjectId is inferred as a String or as an Aggregated entity.
+ */
 public class ObjectIdTest
 {
   private String inputRoute = "testSources/ERROR_ObjectIds.json";
@@ -58,38 +54,14 @@ public class ObjectIdTest
 
     BuildNoSQLSchema builder = new BuildNoSQLSchema();
     NoSQLSchema nosqlschema = builder.buildFromGsonArray(dbName, jArray);
-/*
-    NoSQLSchemaPackage nosqlschemaPackage = NoSQLSchemaPackage.eINSTANCE;
-    ResourceManager resManager = new ResourceManager(nosqlschemaPackage);
-    nosqlschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e/model/nosqlschema.ecore", true));
 
-    Resource outputRes = resManager.getResourceSet().createResource(URI.createFileURI("testSources/output.xmi"));
-    outputRes.getContents().add(nosqlschema);
+    assertNotNull("Schema can't be null", nosqlschema);
+    assertNotNull("Schema should have entities", nosqlschema.getEntities());
+    assertEquals("Schema should have one entity", 1, nosqlschema.getEntities().size());
 
-    // Configure output
-    Map<Object,Object> options = new HashMap<Object,Object>();
-    options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
-    options.put(XMIResource.OPTION_ENCODING, "UTF-8");
+    Property property = nosqlschema.getEntities().get(0).getEntityVariations().get(0).getProperties().stream().filter(p -> p.getName().equals("_id")).findFirst().get();
 
-    try
-    {
-      outputRes.save(new FileOutputStream("testSources/output.xmi"), options);
-    } catch (IOException e)
-    {
-      e.printStackTrace();
-    }*/
-
-//    assertNotNull("Schema can't be null", nosqlschema);
-//    assertNotNull("Schema should have entities", nosqlschema.getEntities());
-//    assertEquals("Schema should have one entity", 1, nosqlschema.getEntities().size());
-
-//    Property property = nosqlschema.getEntities().get(0).getEntityVariations().get(0).getProperties().stream().filter(p -> p.getName().equals("_id")).findFirst().get();
-
-//    assertTrue(property instanceof Attribute);
-//    assertEquals("ObjectId", ((PrimitiveType)((Attribute)property).getType()).getName());
-
-    // TODO: The inference process fails when the _id identifier is an ObjectId: ObjectId("code")
-    // It is inferred it as an Aggregate of an _id Entity with no attributes.
-    // It should be inferred as a PrimitiveType with ObjectId type.
+    assertTrue(property instanceof Attribute);
+    assertEquals("ObjectId", ((PrimitiveType)((Attribute)property).getType()).getName());
   }
 }

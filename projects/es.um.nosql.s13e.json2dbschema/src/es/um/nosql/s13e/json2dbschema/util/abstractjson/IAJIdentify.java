@@ -21,6 +21,8 @@ public interface IAJIdentify
 
 	public boolean isNull();
 
+	public boolean isObjectId();
+
 	public IAJArray asArray();
 
 	public IAJObject asObject();
@@ -34,4 +36,6 @@ public interface IAJIdentify
 	public IAJNull asNull();
 
 	public IAJNumber asNumber();
+
+	public IAJObjectId asObjectId();
 }

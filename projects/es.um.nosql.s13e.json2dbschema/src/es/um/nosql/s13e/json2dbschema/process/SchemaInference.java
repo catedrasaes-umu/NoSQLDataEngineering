@@ -16,6 +16,7 @@ import es.um.nosql.s13e.json2dbschema.intermediate.raw.ArraySC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.BooleanSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.NullSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.NumberSC;
+import es.um.nosql.s13e.json2dbschema.intermediate.raw.ObjectIdSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.ObjectSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.SchemaComponent;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.StringSC;
@@ -26,6 +27,7 @@ import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJElement;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJNumber;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJNull;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJObject;
+import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJObjectId;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJTextual;
 import es.um.nosql.s13e.json2dbschema.util.inflector.Inflector;
 import org.apache.commons.lang3.tuple.Pair;
@@ -283,6 +285,9 @@ public class SchemaInference
     if (n.isTextual())
       return infer(n.asTextual(), elementName.get());
 
+    if (n.isObjectId())
+      return infer(n.asObjectId(), elementName.get());
+
     assert(false);
 
     return null;
@@ -379,8 +384,15 @@ public class SchemaInference
     return schema;
   }
 
-  private SchemaComponent infer(IAJTextual n, String elementName) {
+  private SchemaComponent infer(IAJTextual n, String elementName)
+  {
     StringSC schema = new StringSC();
+    return schema;
+  }
+
+  private SchemaComponent infer(IAJObjectId n, String elementName)
+  {
+    ObjectIdSC schema = new ObjectIdSC();
     return schema;
   }
 }

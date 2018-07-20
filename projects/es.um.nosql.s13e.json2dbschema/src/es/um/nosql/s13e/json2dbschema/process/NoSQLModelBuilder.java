@@ -30,6 +30,7 @@ import es.um.nosql.s13e.json2dbschema.intermediate.raw.ArraySC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.BooleanSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.NullSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.NumberSC;
+import es.um.nosql.s13e.json2dbschema.intermediate.raw.ObjectIdSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.ObjectSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.SchemaComponent;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.StringSC;
@@ -177,8 +178,11 @@ public class NoSQLModelBuilder
 		if (sc instanceof NullSC)
 			return propertyFromSchemaComponent(en, (NullSC)sc);
 
-		if (sc instanceof StringSC)
-			return propertyFromSchemaComponent(en, (StringSC)sc);
+    if (sc instanceof StringSC)
+      return propertyFromSchemaComponent(en, (StringSC)sc);
+
+    if (sc instanceof ObjectIdSC)
+      return propertyFromSchemaComponent(en, (ObjectIdSC)sc);
 
 		return null;
 	}
@@ -302,8 +306,11 @@ public class NoSQLModelBuilder
 		if (sc instanceof NumberSC)
 			return "Number";
 
-		if (sc instanceof StringSC)
-			return "String";	
+    if (sc instanceof StringSC)
+      return "String";
+
+		if (sc instanceof ObjectIdSC)
+		  return "ObjectId";
 
 		return "";
 	}
@@ -322,6 +329,11 @@ public class NoSQLModelBuilder
 	{
 		return propertyFromPrimitive(en, sc, "String");
 	}
+
+	private Property propertyFromSchemaComponent(String en, ObjectIdSC sc)
+  {
+    return propertyFromPrimitive(en, sc, "ObjectId");
+  }
 
 	private Optional<Entity> idReferencesEntity(String id)
 	{

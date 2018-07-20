@@ -10,6 +10,7 @@ import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJElement;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJNumber;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJNull;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJObject;
+import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJObjectId;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJTextual;
 
 public class JacksonElement implements IAJElement
@@ -84,7 +85,12 @@ public class JacksonElement implements IAJElement
 
 	@Override
 	public boolean isTextual() {
-		return n.isTextual();
+		return n.isTextual() && !isObjectId();
+	}
+
+	@Override
+	public boolean isObjectId() {
+	  return n.isTextual() && n.asText().equals("oid");
 	}
 
 	@Override
@@ -135,5 +141,10 @@ public class JacksonElement implements IAJElement
 	@Override
 	public IAJTextual asTextual() {
 		return new JacksonTextual(n);
+	}
+
+	@Override
+	public IAJObjectId asObjectId() {
+	  return new JacksonObjectId(n);
 	}
 }

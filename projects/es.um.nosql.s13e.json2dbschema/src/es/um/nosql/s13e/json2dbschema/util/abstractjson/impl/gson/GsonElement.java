@@ -13,6 +13,7 @@ import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJElement;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJNumber;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJNull;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJObject;
+import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJObjectId;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJTextual;
 
 public class GsonElement implements IAJElement
@@ -106,9 +107,19 @@ public class GsonElement implements IAJElement
 		if (e != null && e.isJsonPrimitive())
 		{
 			JsonPrimitive p = e.getAsJsonPrimitive();
-			return p.isString();
+			return p.isString() && !isObjectId();
 		}
 		return false;
+	}
+
+	@Override
+	public boolean isObjectId() {
+    if (e != null && e.isJsonPrimitive())
+    {
+      JsonPrimitive p = e.getAsJsonPrimitive();
+      return p.isString() && p.getAsString().equals("oid");
+    }
+    return false;
 	}
 
 	@Override
@@ -148,6 +159,11 @@ public class GsonElement implements IAJElement
 	@Override
 	public IAJTextual asTextual() {
 		return isTextual() ? new GsonTextual(e) : null;
+	}
+
+	@Override
+	public IAJObjectId asObjectId() {
+	  return isObjectId() ? new GsonObjectId(e) : null;
 	}
 
 	@Override

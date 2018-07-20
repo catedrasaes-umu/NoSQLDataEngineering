@@ -7,6 +7,7 @@ import es.um.nosql.s13e.json2dbschema.intermediate.raw.ArraySC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.BooleanSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.NullSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.NumberSC;
+import es.um.nosql.s13e.json2dbschema.intermediate.raw.ObjectIdSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.ObjectSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.SchemaComponent;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.StringSC;
@@ -40,17 +41,20 @@ public class SchemaPrinter
     if (sc instanceof NullSC)
       sb.append('0');
 
+    if (sc instanceof ObjectIdSC)
+      sb.append("oid");
+
     if (sc instanceof StringSC)
       sb.append('s');
+
+    sb.append(' ');
 
     return sb.toString();
   }
 
   private static void _outname(String name, StringBuilder sb)
   {
-    sb.append('"');
-    sb.append(name);
-    sb.append('"');
+    sb.append("\"" + name + "\": ");
   }
 
   private static void schemaString(ObjectSC sc, StringBuilder sb)
