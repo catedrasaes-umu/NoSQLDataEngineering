@@ -13,7 +13,7 @@ import es.um.nosql.s13e.util.EntityDifferentiationWriter;
 /**
  * Usage: Just change the following parameters to the routes you prefer, and execute it freely.
  * The main method provided is more than enough to execute all the workflow.
- * @dependencies: es.um.nosql.examples (for input models), es.um.nosql.s13e (for the NoSQLSchema metamodel)
+ * @dependencies: es.um.nosql.models (for input models), es.um.nosql.s13e (for the NoSQLSchema metamodel)
  * @param INPUT_FOLDER The folder in which NoSQLSchema xmi models are contained.
  * @param OUTPUT_FOLDER The folder in which EntityDiff xmi models will be stored.
  * @param MONGOOSE_OUTPUT_GEN_BASE_FOLDER The folder in which Mongoose code will be generated.
@@ -23,8 +23,8 @@ import es.um.nosql.s13e.util.EntityDifferentiationWriter;
  */
 public class Main
 {
-  private static final String INPUT_FOLDER = "../es.um.nosql.examples/";
-  private static final String OUTPUT_FOLDER = "../es.um.nosql.examples/";
+  private static final String INPUT_FOLDER = "../es.um.nosql.models/";
+  private static final String OUTPUT_FOLDER = "../es.um.nosql.models/";
   private static final String MONGOOSE_OUTPUT_GEN_BASE_FOLDER = OUTPUT_FOLDER + "mongoose/";
   private static final String MORPHIA_OUTPUT_GEN_BASE_FOLDER = "src/es/um/nosql/s13e/";
   private static final String YAML_CONFIG_ROUTE = "config/config.yaml";

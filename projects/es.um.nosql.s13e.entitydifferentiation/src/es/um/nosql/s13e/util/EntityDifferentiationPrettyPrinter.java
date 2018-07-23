@@ -16,7 +16,7 @@ public class EntityDifferentiationPrettyPrinter
 
   public static void main(String[] args)
   {
-    String INPUT_FOLDER = "../es.um.nosql.examples/";
+    String INPUT_FOLDER = "../es.um.nosql.models/";
     String[] input_models = new String[] {"everypolitician_sweden", "facebook", "harvard", "links","mongomovies", "opensanctions",
         "proteins", "publications", "stackoverflow", "urban", "webclicks", "mongosongs"};
 

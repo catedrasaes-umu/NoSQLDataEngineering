@@ -48,7 +48,7 @@ public class SimplifyAggrTest
     BuildNoSQLSchema builder = new BuildNoSQLSchema();
     NoSQLSchema nosqlschema = builder.buildFromGsonArray(dbName, jArray);
 
-    Assert.assertEquals(2, nosqlschema.getEntities().size());
+    Assert.assertEquals(23, nosqlschema.getEntities().size());
     Assert.assertEquals(2, nosqlschema.getEntities().get(0).getEntityVariations().size());
     Assert.assertEquals(2, nosqlschema.getEntities().get(1).getEntityVariations().size());
   }

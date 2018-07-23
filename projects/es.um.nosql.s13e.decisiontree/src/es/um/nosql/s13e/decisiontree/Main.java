@@ -10,8 +10,8 @@ import es.um.nosql.s13e.util.DecisionTreeWriter;
 
 public class Main 
 {
-  private static final String INPUT_FOLDER = "../es.um.nosql.examples/";
-  private static final String OUTPUT_FOLDER = "../es.um.nosql.examples/";
+  private static final String INPUT_FOLDER = "../es.um.nosql.models/";
+  private static final String OUTPUT_FOLDER = "../es.um.nosql.models/";
   private static final boolean GENERATE_BASE_FILES = true;
 
   public static void main(String[] args)

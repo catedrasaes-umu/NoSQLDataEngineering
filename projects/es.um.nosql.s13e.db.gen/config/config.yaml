@@ -1,5 +1,5 @@
 input:
-  model: ../es.um.nosql.examples/stackoverflow/stackoverflow.xmi
+  model: ../es.um.nosql.models/stackoverflow/stackoverflow.xmi
   debug: true
   splits: 1
 
@@ -45,7 +45,7 @@ associations:
 output:
   #database: localhost
   #databaseCollection: generated_collection
-  folder: ../es.um.nosql.examples/stackoverflow/stackoverflow/json/
+  folder: ../es.um.nosql.models/stackoverflow/stackoverflow/json/
   #console: false
 
 # Generate images?
