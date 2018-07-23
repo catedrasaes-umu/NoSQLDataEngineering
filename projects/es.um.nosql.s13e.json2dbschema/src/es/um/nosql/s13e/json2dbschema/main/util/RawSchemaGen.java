@@ -46,7 +46,7 @@ public class RawSchemaGen
 		
 		if (n.isNull())
 			return deSchema(name, (NullNode)n);
-		
+
 		return null;
 	}
 	

@@ -193,9 +193,11 @@ public class SchemaInference
     return schema;
   }
 
+  // Be careful: If it is a StringSC we store the string value.
+  // Might be just "String" but also might be the _type attribute and so the entity name must be preserved.
   private SchemaComponent infer(IAJTextual n, String elementName)
   {
-    StringSC schema = new StringSC();
+    StringSC schema = new StringSC(n.asString().substring(0, 1).toUpperCase() + n.asString().substring(1));
     return schema;
   }
 

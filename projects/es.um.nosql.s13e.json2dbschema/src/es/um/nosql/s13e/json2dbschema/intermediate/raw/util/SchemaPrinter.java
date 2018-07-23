@@ -12,10 +12,6 @@ import es.um.nosql.s13e.json2dbschema.intermediate.raw.ObjectSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.SchemaComponent;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.StringSC;
 
-/**
- * @author dsevilla
- *
- */
 public class SchemaPrinter
 {
   public static void schemaEntities(Map<String, List<SchemaComponent>> rawEntities)
@@ -47,19 +43,19 @@ public class SchemaPrinter
       schemaString((ArraySC)sc, sb);
 
     if (sc instanceof BooleanSC)
-      sb.append('b');
+      sb.append("Bool");
 
     if (sc instanceof NumberSC)
-      sb.append('n');
+      sb.append("Number");
 
     if (sc instanceof NullSC)
-      sb.append('0');
+      sb.append("Null");
 
     if (sc instanceof ObjectIdSC)
-      sb.append("oid");
+      sb.append("Oid");
 
     if (sc instanceof StringSC)
-      sb.append('s');
+      sb.append( ((StringSC)sc).getValue());
 
     sb.append(' ');
 

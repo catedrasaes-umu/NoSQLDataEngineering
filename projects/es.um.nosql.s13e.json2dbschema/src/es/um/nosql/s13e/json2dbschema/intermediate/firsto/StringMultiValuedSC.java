@@ -1,6 +1,3 @@
-/**
- *
- */
 package es.um.nosql.s13e.json2dbschema.intermediate.firsto;
 
 import java.util.HashSet;
@@ -16,8 +13,9 @@ public class StringMultiValuedSC extends StringSC implements MultiValued
 {
   Set<String> values;
 
-  public StringMultiValuedSC()
+  public StringMultiValuedSC(String string)
   {
+    super(string);
     values = new HashSet<String>();
   }
 

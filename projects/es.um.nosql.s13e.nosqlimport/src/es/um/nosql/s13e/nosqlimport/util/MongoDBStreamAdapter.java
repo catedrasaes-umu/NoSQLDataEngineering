@@ -37,7 +37,7 @@ public class MongoDBStreamAdapter extends AbstractStreamAdapter
       return StreamSupport.stream(e.getValue().spliterator(), false).map(doc ->
       {
         JsonObject jObj = (JsonObject)(parser).parse(doc.get("_id").toString());
-        jObj.addProperty("_type", e.getKey());
+        jObj.addProperty("_type", e.getKey().substring(0, 1).toUpperCase() + e.getKey().substring(1));
 
         return jObj;
       });

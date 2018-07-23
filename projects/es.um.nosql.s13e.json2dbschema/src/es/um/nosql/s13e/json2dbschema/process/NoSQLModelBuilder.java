@@ -52,7 +52,7 @@ public class NoSQLModelBuilder
 	private List<Entity> mEntities;
 
 	// Reference matcher
-	ReferenceMatcher<Entity> rm;
+	private ReferenceMatcher<Entity> refMatcher;
 
 	private String name;
 
@@ -70,7 +70,6 @@ public class NoSQLModelBuilder
 		// TODO: Identify objects that are references in the form of MongoDB
 		// references: https://docs.mongodb.org/manual/reference/database-references/#dbrefs
 		// { "$ref" : <type>, "$id" : <value>, "$db" : <value> }
-
 
 		// Build reverse indices & Create Entities & Populate with EntityVariations
 		rawEntities.forEach((entityName, schemas) -> {
@@ -100,7 +99,7 @@ public class NoSQLModelBuilder
 
 		// Consider as reference matcher only those Entities of which
 		// at least one variation is root
-		rm = createReferenceMatcher();
+		refMatcher = createReferenceMatcher();
 
 		// Populate empty EntityVariations
 		mEntityVariations.forEach((schema, ev) -> fillEV(schema, ev));
@@ -158,10 +157,10 @@ public class NoSQLModelBuilder
 
 		// Set properties
 		ev.getProperties().addAll(obj.getInners().stream()
-				.map(p -> propertyFromSchemaComponent(p.getLeft(), p.getRight())).collect(Collectors.toList()));
+				.map(p -> propertyFromSchemaComponent(ev, p.getLeft(), p.getRight())).collect(Collectors.toList()));
 	}
 
-	private Property propertyFromSchemaComponent(String en, SchemaComponent sc)
+	private Property propertyFromSchemaComponent(EntityVariation ev, String en, SchemaComponent sc)
 	{
 		if (sc instanceof ObjectSC)
 			return propertyFromSchemaComponent(en, (ObjectSC)sc);
@@ -307,14 +306,14 @@ public class NoSQLModelBuilder
 			return "Number";
 
     if (sc instanceof StringSC)
-      return "String";
+      return ((StringSC)sc).getValue();
 
 		if (sc instanceof ObjectIdSC)
 		  return "ObjectId";
 
 		return "";
 	}
-	
+
 	private Property propertyFromSchemaComponent(String en, NullSC sc)
 	{
 		return propertyFromPrimitive(en, sc, "Null");
@@ -327,7 +326,7 @@ public class NoSQLModelBuilder
 
 	private Property propertyFromSchemaComponent(String en, StringSC sc)
 	{
-		return propertyFromPrimitive(en, sc, "String");
+	  return propertyFromPrimitive(en, sc, sc.getValue());
 	}
 
 	private Property propertyFromSchemaComponent(String en, ObjectIdSC sc)
@@ -335,14 +334,9 @@ public class NoSQLModelBuilder
     return propertyFromPrimitive(en, sc, "ObjectId");
   }
 
-	private Optional<Entity> idReferencesEntity(String id)
-	{
-		return rm.maybeMatch(id);
-	}
-
 	private Optional<Property> maybeReference(String en, SchemaComponent sc)
 	{
-		return idReferencesEntity(en).map(e -> {
+		return refMatcher.maybeMatch(en).map(e -> {
 			Reference r = factory.createReference();
 			r.setName(en);
 			r.setRefTo(e);

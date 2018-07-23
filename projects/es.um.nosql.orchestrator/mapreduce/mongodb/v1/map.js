@@ -84,7 +84,7 @@ function()
       retschema = true;
     } else if ((typeof obj == 'string'))
     {
-      retschema = 's';
+      retschema = "string";
     }
 
     return retschema;

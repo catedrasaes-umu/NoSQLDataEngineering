@@ -34,7 +34,7 @@ public class ReferenceMatcher<T>
 	private List<Pair<String, T>> idRegexps;
 
 	public ReferenceMatcher(Stream<Pair<String, T>> stream)
-	{		
+	{
 		// Build the regexp that will allow checking if a field may be a reference to another entity
 		idRegexps = stream.flatMap(entry ->
 			Affixes.stream().flatMap(affix ->
