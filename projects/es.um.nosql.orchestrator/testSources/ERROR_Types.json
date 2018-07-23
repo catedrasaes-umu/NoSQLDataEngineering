@@ -1,0 +1,112 @@
+{
+  "persons": [
+    {
+      "family_name": "Rosengren",
+      "given_name": "Björn",
+      "id": "0048198e-1541-48e1-ac15-41a76ba438ae",
+      "links": [
+        {
+          "note": "Wikipedia (commons)",
+          "url": "https://commons.wikipedia.org/wiki/Category:Björn_Rosengren"
+        }
+      ],
+      "name": "Björn Rosengren",
+      "other_names": [
+        {
+          "lang": "da",
+          "name": "Björn Rosengren",
+          "note": "multilingual"
+        }
+      ]
+    },
+    {
+      "family_name": "Granberg",
+      "given_name": "Lars U",
+      "id": "fe299516-1546-4edf-ace1-3c4e8493fb5c",
+      "links": [
+        {
+          "note": "Wikipedia (en)",
+          "url": "https://en.wikipedia.org/wiki/Lars_U._Granberg"
+        }
+      ],
+      "name": "Lars U Granberg",
+      "other_names": [
+        {
+          "name": "Lars U. Granberg",
+          "note": "alternate"
+        },
+        {
+          "lang": "en",
+          "name": "Lars U. Granberg",
+          "note": "multilingual"
+        }
+      ]
+    },
+    {
+      "family_name": "Andersson",
+      "given_name": "Marianne",
+      "id": "fe3dec55-1362-4a24-8627-784789f57f9e",
+      "name": "Marianne Andersson"
+    },
+    {
+      "family_name": "Bager",
+      "given_name": "Erling",
+      "id": "fed310ba-412b-4aab-84ef-07613c1b690e",
+      "links": [
+        {
+          "note": "Wikipedia (en)",
+          "url": "https://en.wikipedia.org/wiki/Erling_Bager"
+        }
+      ],
+      "name": "Erling Bager",
+      "other_names": [
+        {
+          "lang": "de",
+          "name": "Erling Bager",
+          "note": "multilingual"
+        }
+      ]
+    }
+  ],
+  "organizations": [
+    {
+      "classification": "party",
+      "id": "C",
+      "identifiers": [ { "identifier": "Q110832", "scheme": "wikidata" } ],
+      "name": "Centerpartiet"
+    },
+    {
+      "classification": "party",
+      "id": "IND",
+      "name": "Independent"
+    }
+  ],
+  "memberships": [
+    {
+      "legislative_period_id": "term/2002",
+      "sources": [ { "url": "http://data.riksdagen.se/person/d7c3299c-83e4-11d4-ae60-0050040c9b55" } ],
+      "start_date": "2002-10-15"
+    },
+    {
+      "legislative_period_id": "term/2006",
+      "sources": [ { "url": "http://data.riksdagen.se/person/8949ff34-0c3c-4f9b-82b8-de1a9b29a54a" } ]
+    }
+  ],
+  "events": [
+    {
+      "classification": "general election",
+      "start_date": "1866",
+      "end_date": "1866",
+      "id": "Q10411438",
+      "identifiers": [ { "identifier": "Q10411438", "scheme": "wikidata" } ],
+      "name": "Swedish General Election, 1866"
+    }
+  ],
+  "areas": [
+    {
+      "id": "area/blekinge_län",
+      "name": "Blekinge län",
+      "type": "constituency"
+    }
+  ]
+}

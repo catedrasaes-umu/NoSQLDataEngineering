@@ -1,4 +1,6 @@
-package regression;
+package test;
+
+import java.util.Optional;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -7,21 +9,21 @@ import org.junit.Test;
 
 import com.google.gson.JsonArray;
 
+import es.um.nosql.s13e.NoSQLSchema.Attribute;
+import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
+import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
+import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.db.interfaces.EveryPolitician2Db;
 import es.um.nosql.s13e.db.util.DbType;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
 
-/**
- * Validation test: The inference process should be able to simplify Aggr{V1, V2, V2,...V2} to Aggr{V1, V2}.
- * If this fails, the inferrer is aggregating variations which already are added to the list.
- * @fail: Several variations are stored as different when in fact they are equivalent.
- */
-public class SimplifyAggrTest
+public class TypesTest
 {
-  private String inputRoute = "testSources/ERROR_SimplifyAggr.json";
-  private String dbName = "DEBUG_SimplifyAggr";
+  private String inputRoute = "testSources/ERROR_Types.json";
+  private String dbName = "DEBUG_Type";
   private EveryPolitician2Db controller;
 
   @Before
@@ -48,8 +50,17 @@ public class SimplifyAggrTest
     BuildNoSQLSchema builder = new BuildNoSQLSchema();
     NoSQLSchema nosqlschema = builder.buildFromGsonArray(dbName, jArray);
 
-    Assert.assertEquals(2, nosqlschema.getEntities().size());
-    Assert.assertEquals(2, nosqlschema.getEntities().get(0).getEntityVariations().size());
-    Assert.assertEquals(2, nosqlschema.getEntities().get(1).getEntityVariations().size());
+    for (Entity e : nosqlschema.getEntities())
+      for (EntityVariation ev : e.getEntityVariations())
+      {
+        Optional<Property> prop = ev.getProperties().stream().filter(p -> p.getName().equals("_type")).findFirst();
+        if (e.isRoot())
+        {
+          Assert.assertTrue(prop.isPresent());
+          Assert.assertEquals(e.getName(), ((PrimitiveType)((Attribute)prop.get()).getType()).getName());
+        }
+        else
+          Assert.assertFalse(prop.isPresent());
+      }
   }
 }
