@@ -1,7 +1,7 @@
-/**
- *
- */
 package es.um.nosql.s13e.json2dbschema.intermediate.raw.util;
+
+import java.util.List;
+import java.util.Map;
 
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.ArraySC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.BooleanSC;
@@ -18,6 +18,20 @@ import es.um.nosql.s13e.json2dbschema.intermediate.raw.StringSC;
  */
 public class SchemaPrinter
 {
+  public static void schemaEntities(Map<String, List<SchemaComponent>> rawEntities)
+  {
+    rawEntities.forEach((entity, evList) ->
+    {
+      System.out.println("Entity: " + entity);
+
+      evList.forEach(ev ->
+      {
+        System.out.print("* ");
+        System.out.println(schemaString(ev));
+      });
+    });
+  }
+
   public static String schemaString(SchemaComponent sc)
   {
     StringBuilder sb = new StringBuilder();
