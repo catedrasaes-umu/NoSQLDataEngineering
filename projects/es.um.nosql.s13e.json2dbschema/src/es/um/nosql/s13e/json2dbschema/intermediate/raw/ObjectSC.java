@@ -1,6 +1,3 @@
-/**
- *
- */
 package es.um.nosql.s13e.json2dbschema.intermediate.raw;
 
 import java.util.ArrayList;
@@ -52,7 +49,8 @@ public class ObjectSC extends SchemaComponent
 		inners.add(sc);
 	}
 
-	public List<Pair<String, SchemaComponent>> getInners() {
+	public List<Pair<String, SchemaComponent>> getInners()
+	{
 		return inners;
 	}
 

@@ -1,16 +1,10 @@
 package es.um.nosql.s13e.json2dbschema.main;
 
 import java.io.File;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
 
 import org.codehaus.jackson.JsonProcessingException;
 import org.codehaus.jackson.node.ArrayNode;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.xmi.XMIResource;
 
 import com.google.gson.JsonArray;
 
@@ -24,7 +18,6 @@ import es.um.nosql.s13e.json2dbschema.util.abstractjson.impl.gson.GsonArray;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.impl.jackson.JacksonAdapter;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.impl.jackson.JacksonArray;
 import es.um.nosql.s13e.util.NoSQLSchemaWriter;
-import es.um.nosql.s13e.util.ResourceManager;
 
 /**
  * @author dsevilla

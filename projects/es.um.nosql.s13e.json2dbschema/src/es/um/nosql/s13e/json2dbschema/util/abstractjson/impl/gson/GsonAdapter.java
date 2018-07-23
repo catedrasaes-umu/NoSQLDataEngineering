@@ -1,6 +1,3 @@
-/**
- *
- */
 package es.um.nosql.s13e.json2dbschema.util.abstractjson.impl.gson;
 
 import java.io.BufferedReader;
