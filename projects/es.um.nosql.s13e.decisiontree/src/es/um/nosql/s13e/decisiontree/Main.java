@@ -1,22 +1,12 @@
 package es.um.nosql.s13e.decisiontree;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.xmi.XMIResource;
 
 import es.um.nosql.s13e.DecisionTree.DecisionTrees;
-import es.um.nosql.s13e.DecisionTree.DecisionTreePackage;
-import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.decisiontree.m2m.EntityDiffToDecisionTree;
 import es.um.nosql.s13e.decisiontree.m2t.DecisionTreeJSBaseGen;
 import es.um.nosql.s13e.decisiontree.m2t.DecisionTreeToJS;
-import es.um.nosql.s13e.util.ResourceManager;
+import es.um.nosql.s13e.util.DecisionTreeWriter;
 
 public class Main 
 {
@@ -48,30 +38,8 @@ public class Main
     EntityDiffToDecisionTree transformer = new EntityDiffToDecisionTree();
     DecisionTrees dTrees = transformer.m2m(inputFile);
 
-    NoSQLSchemaPackage noqslschemaPackage = NoSQLSchemaPackage.eINSTANCE;
-    EntityDifferentiationPackage entitydiffPackage = EntityDifferentiationPackage.eINSTANCE;
-    DecisionTreePackage decisiontreePackage = DecisionTreePackage.eINSTANCE;
-    ResourceManager resManager = new ResourceManager(noqslschemaPackage, entitydiffPackage, decisiontreePackage);
-
-    noqslschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e/model/nosqlschema.ecore", true));
-    entitydiffPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e.entitydifferentiation/model/entitydifferentiation.ecore", true));
-    decisiontreePackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e.entitydifferentiation/model/decisiontree.ecore", true));
-
-    Resource outputRes = resManager.getResourceSet().createResource(URI.createFileURI(outputFile.getAbsolutePath()));
-    outputRes.getContents().add(dTrees);
-
-    // Configure output
-    Map<Object,Object> options = new HashMap<Object,Object>();
-    options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
-    options.put(XMIResource.OPTION_ENCODING, "UTF-8");
-
-    try
-    {
-      outputRes.save(new FileOutputStream(outputFile), options);
-    } catch (IOException e)
-    {
-      e.printStackTrace();
-    }
+    DecisionTreeWriter writer = new DecisionTreeWriter();
+    writer.write(dTrees, outputFile.getAbsolutePath());
 
     System.out.println("Transformation model finished");
   }

@@ -1,14 +1,6 @@
 package test;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.xmi.XMIResource;
 import org.junit.Test;
 
 import es.um.nosql.s13e.NoSQLSchema.Entity;
@@ -17,7 +9,7 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.util.ModelLoader;
-import es.um.nosql.s13e.util.ResourceManager;
+import es.um.nosql.s13e.util.NoSQLSchemaWriter;
 
 public class ModifyModelTest
 {
@@ -53,20 +45,7 @@ public class ModifyModelTest
             ref.setOriginalType("String");
         });
 
-    Resource outputRes = new ResourceManager(NoSQLSchemaPackage.eINSTANCE).getResourceSet().createResource(URI.createFileURI(outputRoute));
-    outputRes.getContents().add(schema);
-  
-    NoSQLSchemaPackage.eINSTANCE.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e/model/nosqlschema.ecore", true));
-    Map<Object,Object> options = new HashMap<Object,Object>();
-    options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
-    options.put(XMIResource.OPTION_ENCODING, "UTF-8");
-  
-    try
-    {
-      outputRes.save(new FileOutputStream(outputRoute), options);
-    } catch (IOException e)
-    {
-      e.printStackTrace();
-    }
+    NoSQLSchemaWriter writer = new NoSQLSchemaWriter();
+    writer.write(schema, outputRoute);
   }
 }

@@ -1,24 +1,14 @@
 package es.um.nosql.s13e;
 
 import java.io.File;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-
-import org.eclipse.emf.common.util.URI;
-import org.eclipse.emf.ecore.resource.Resource;
-import org.eclipse.emf.ecore.xmi.XMIResource;
 
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
-import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.m2m.NoSQLSchemaToEntityDiff;
 import es.um.nosql.s13e.m2t.mongoose.DiffMongooseBaseGen;
 import es.um.nosql.s13e.m2t.mongoose.DiffToMongoose;
 import es.um.nosql.s13e.m2t.morphia.DiffMorphiaBaseGen;
 import es.um.nosql.s13e.m2t.morphia.DiffToMorphia;
-import es.um.nosql.s13e.util.ResourceManager;
+import es.um.nosql.s13e.util.EntityDifferentiationWriter;
 
 /**
  * Usage: Just change the following parameters to the routes you prefer, and execute it freely.
@@ -62,28 +52,8 @@ public class Main
     NoSQLSchemaToEntityDiff transformer = new NoSQLSchemaToEntityDiff();
     EntityDifferentiation diffModel = transformer.m2m(inputFile);
 
-    NoSQLSchemaPackage nosqlschemaPackage = NoSQLSchemaPackage.eINSTANCE;
-    EntityDifferentiationPackage entitydiffPackage = EntityDifferentiationPackage.eINSTANCE;
-    ResourceManager resManager = new ResourceManager(nosqlschemaPackage, entitydiffPackage);
-
-    nosqlschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e/model/nosqlschema.ecore", true));
-    entitydiffPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e.entitydifferentiation/model/entitydifferentiation.ecore", true));
-
-    Resource outputRes = resManager.getResourceSet().createResource(URI.createFileURI(outputFile.getAbsolutePath()));
-    outputRes.getContents().add(diffModel);
-
-    // Configure output
-    Map<Object,Object> options = new HashMap<Object,Object>();
-    options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
-    options.put(XMIResource.OPTION_ENCODING, "UTF-8");
-
-    try
-    {
-      outputRes.save(new FileOutputStream(outputFile), options);
-    } catch (IOException e)
-    {
-      e.printStackTrace();
-    }
+    EntityDifferentiationWriter writer = new EntityDifferentiationWriter();
+    writer.write(diffModel, outputFile.getAbsolutePath());
 
     System.out.println("Transformation model finished");
   }

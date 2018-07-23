@@ -23,6 +23,7 @@ import es.um.nosql.s13e.json2dbschema.util.abstractjson.impl.gson.GsonAdapter;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.impl.gson.GsonArray;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.impl.jackson.JacksonAdapter;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.impl.jackson.JacksonArray;
+import es.um.nosql.s13e.util.NoSQLSchemaWriter;
 import es.um.nosql.s13e.util.ResourceManager;
 
 /**
@@ -91,25 +92,8 @@ public class BuildNoSQLSchema
 
   private void schema2File(NoSQLSchema schema, String outputFile)
   {
-    NoSQLSchemaPackage nosqlschemaPackage = NoSQLSchemaPackage.eINSTANCE;
-    ResourceManager resManager = new ResourceManager(nosqlschemaPackage);
-    nosqlschemaPackage.eResource().setURI(URI.createPlatformResourceURI("es.um.nosql.s13e/model/nosqlschema.ecore", true));
-
-    Resource outputRes = resManager.getResourceSet().createResource(URI.createFileURI(outputFile));
-    outputRes.getContents().add(schema);
-
-    // Configure output
-    Map<Object,Object> options = new HashMap<Object,Object>();
-    options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
-    options.put(XMIResource.OPTION_ENCODING, "UTF-8");
-
-    try
-    {
-      outputRes.save(new FileOutputStream(outputFile), options);
-    } catch (IOException e)
-    {
-      e.printStackTrace();
-    }
+    NoSQLSchemaWriter writer = new NoSQLSchemaWriter();
+    writer.write(schema,  outputFile);
   }
 
   public static void main(String[] args) throws IOException
