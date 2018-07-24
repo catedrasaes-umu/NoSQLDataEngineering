@@ -26,6 +26,8 @@ public interface IAJIdentify
 
 	public String asString();
 
+	public Long asLong();
+
 	public IAJTextual asTextual();
 
 	public IAJBoolean asBoolean();

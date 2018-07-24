@@ -157,6 +157,11 @@ public class GsonElement implements IAJElement
 	}
 
 	@Override
+	public Long asLong() {
+	  return isNumber() ? e.getAsLong() : null;
+	}
+
+	@Override
 	public IAJTextual asTextual() {
 		return isTextual() ? new GsonTextual(e) : null;
 	}

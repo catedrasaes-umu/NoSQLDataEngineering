@@ -1,4 +1,4 @@
-package test;
+package regression;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -14,6 +14,11 @@ import es.um.nosql.s13e.db.util.DbType;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
 
+/**
+ * Validation test: The inference process should be able to infer correctly the count and timestamp of root entities variations.
+ * In non root entity variations, the count and timestamp is copied from the parents, for now.
+ * @fail: Count and timestamp are not correctly calculated.
+ */
 public class CountTimestampTest
 {
   private String inputRoute = "testSources/ERROR_CountTimestamp.json";

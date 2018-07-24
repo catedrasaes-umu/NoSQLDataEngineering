@@ -124,6 +124,11 @@ public class JacksonElement implements IAJElement
 	}
 
 	@Override
+	public Long asLong() {
+	  return n.asLong();
+	}
+
+	@Override
 	public IAJBoolean asBoolean() {
 		return new JacksonBoolean(n);
 	}

@@ -3,6 +3,7 @@ package es.um.nosql.s13e.json2dbschema.process;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
@@ -33,10 +34,6 @@ import es.um.nosql.s13e.json2dbschema.util.inflector.Inflector;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-/**
- * @author dsevilla
- *
- */
 public class SchemaInference
 {
   private IAJArray theArray;
@@ -48,35 +45,51 @@ public class SchemaInference
   private static final boolean ROOT_OBJECT = true;
   private static final boolean NON_ROOT_OBJECT = false;
 
-  private static final boolean DEBUG = true;
+  private static final boolean DEBUG = false;
 
   public SchemaInference(IAJArray rows)
-  {/*
-    rows.forEach(p ->
-    {
-      System.out.println(p.asObject());
-
-      p.asObject().getFieldNames().forEachRemaining(f ->
-      {
-        System.out.println("Field: " + f);
-        System.out.println(p.asObject().get(f).asNumber());
-      });
-
-      System.out.println("====");
-    });
-
-    System.exit(-1);*/
+  {
+    if(!validateRows(rows))
+      throw new IllegalArgumentException("JSON rows do not follow the expected schema: [ {schema: <JSON Object>, count: <Integer>, timestamp: <Long>} ...]");
 
     theArray = rows;
     rawEntities = new HashMap<String, List<SchemaComponent>>();
     innerSchemaNames = new HashSet<String>();
     merger = new EVariationMerger();
     joiner = new EntityJoiner();
+    //TODO: Maybe calculate count and timestamp for inner schema variations?
+  }
+
+  private boolean validateRows(IAJArray rows)
+  {
+    Iterator<IAJElement> iterator = rows.iterator();
+
+    while (iterator.hasNext())
+    {
+      IAJElement triple = iterator.next();
+      Iterator<String> fields = triple.asObject().getFieldNames();
+
+      while (fields.hasNext())
+      {
+        String fieldName = fields.next();
+        if ((fieldName.equals("schema") && triple.get(fieldName).isObject())
+            || (fieldName.equals("count") && triple.get(fieldName).isNumber())
+            || (fieldName.equals("timestamp") && triple.get(fieldName).isNumber()))
+          continue;
+
+        return false;
+      }
+    }
+
+    return true;
   }
 
   public Map<String, List<SchemaComponent>> infer()
   {
-    theArray.forEach(n -> infer(n, Optional.<String>empty(), ROOT_OBJECT));
+    theArray.forEach(n ->
+    {
+      infer(n.get("schema"), Optional.<String>empty(), ROOT_OBJECT, Math.toIntExact(n.get("count").asLong()), n.get("timestamp").asLong());
+    });
 
     joiner.joinAggregatedEntities(rawEntities, innerSchemaNames);
 
@@ -89,10 +102,10 @@ public class SchemaInference
     return rawEntities;
   }
 
-  private SchemaComponent infer(IAJElement n, Optional<String> elementName, boolean isRoot)
+  private SchemaComponent infer(IAJElement n, Optional<String> elementName, boolean isRoot, int count, long timestamp)
   {
     if (n.isObject())
-      return infer(n.asObject(), elementName, isRoot);
+      return infer(n.asObject(), elementName, isRoot, count, timestamp);
 
     if (n.isArray())
       return infer(n.asArray(), elementName.get());
@@ -117,7 +130,7 @@ public class SchemaInference
     return null;
   }
 
-  private SchemaComponent infer(IAJObject n, Optional<String> elementName, boolean isRoot)
+  private SchemaComponent infer(IAJObject n, Optional<String> elementName, boolean isRoot, int count, long timestamp)
   {
     // Entity names are by convention capitalized
     Optional<String> typeName = Optional.empty();
@@ -127,6 +140,8 @@ public class SchemaInference
 
     ObjectSC schema = new ObjectSC();
     schema.isRoot = isRoot;
+    schema.count = count;
+    schema.timestamp = timestamp;
     schema.entityName = typeName.orElse(Inflector.getInstance().capitalize(elementName.orElse("")));
 
     // It is important this is a sorted set
@@ -134,8 +149,8 @@ public class SchemaInference
     n.getFieldNames().forEachRemaining(fields::add);
 
     // Recursive phase
-    schema.addAll(fields.stream()
-        .map(f -> Pair.of(f, infer(n.get(f), Optional.of(f), NON_ROOT_OBJECT)))::iterator);
+    schema.addAll(fields.stream()//TODO: Test if it is viable to get the parent's timestamp and count.
+        .map(f -> Pair.of(f, infer(n.get(f), Optional.of(f), NON_ROOT_OBJECT, count, timestamp)))::iterator);
 
     // Now that we have the complete schema, try to compare it with any of the variations in the map
     List<SchemaComponent> entityVariations = rawEntities.get(schema.entityName);
@@ -177,8 +192,8 @@ public class SchemaInference
     // Before adding a SchemaComponent to the array we first check there is not another similar object.
     // This way we simplify Aggr{V1, V2, V2, V2...V2} to Aggr{V1, V2}
     n.forEach(e ->
-    {
-      SchemaComponent sComponent = infer(e, name, NON_ROOT_OBJECT);
+    {//TODO: 0 and 0?
+      SchemaComponent sComponent = infer(e, name, NON_ROOT_OBJECT, 0, 0);
 
       if (!schema.getInners().stream().anyMatch(sc -> sc.equals(sComponent)))
         schema.add(sComponent);
