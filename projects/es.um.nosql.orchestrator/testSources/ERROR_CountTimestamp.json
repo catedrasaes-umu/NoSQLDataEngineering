@@ -1,0 +1,56 @@
+{
+  "areas": [
+    {
+      "id": "area/blekinge_län1",
+      "name": "n1",
+      "type": "t1"
+    },
+    {
+      "id": "area/blekinge_län2",
+      "name": "n2",
+      "type": "t2"
+    },
+    {
+      "id": "area/blekinge_län3",
+      "name": "n3",
+      "type": "t3"
+    },
+    {
+      "id": "area/blekinge_län4",
+      "name": "n4",
+      "type": "t4"
+    },
+    {
+      "id": "area/blekinge_län5",
+      "name": "n5",
+      "type": "t5"
+    },
+    {
+      "id": "area/blekinge_län6",
+      "name": "n6",
+      "type": "t6"
+    },
+    {
+      "id": "area/blekinge_län7",
+      "name": "n7",
+      "type": "t7"
+    },
+    {
+      "id": "area/blekinge_län8",
+      "name": "n8",
+      "type": "t8"
+    },
+    {
+      "id": "area/blekinge_län9",
+      "name": "n9"
+    },
+    {
+      "id": "area/blekinge_län10",
+      "name": "n10"
+    },
+    {
+      "id": "area/blekinge_län11",
+      "name": "n11"
+    }
+  ]
+}

@@ -20,6 +20,11 @@ import es.um.nosql.s13e.db.util.DbType;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
 
+/**
+ * Validation test: The inference process should be able to store for each variation a "_type" Attribute
+ * with a PrimitiveType with value equal to the Entities name.
+ * @fail: A _type attribute doesn't exist, or doesn't have the correct value.
+ */
 public class TypesTest
 {
   private String inputRoute = "testSources/ERROR_Types.json";

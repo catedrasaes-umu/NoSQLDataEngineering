@@ -16,9 +16,9 @@ public class MongoDBStreamAdapter extends AbstractStreamAdapter
   {
     Stream<JsonObject> result = Stream.empty();
     JsonParser parser = new JsonParser();
-
+/*
     //TODO: Code under testing. We do not return _id field, but the schema, count and timestamp.
-/*    result = mapRedMap.entrySet().stream().flatMap(e ->
+    result = mapRedMap.entrySet().stream().flatMap(e ->
     StreamSupport.stream(e.getValue().spliterator(), false).map(doc ->
     {
       Document docValue = doc.get("value", Document.class);
@@ -27,7 +27,7 @@ public class MongoDBStreamAdapter extends AbstractStreamAdapter
       jObj.add("schema", parser.parse(docValue.getString("schema")));
       jObj.addProperty("count", docValue.getDouble("count").intValue());
       jObj.addProperty("timestamp", docValue.getDouble("timestamp").longValue());
-      jObj.getAsJsonObject("schema").addProperty("_type", e.getKey());
+      jObj.getAsJsonObject("schema").addProperty("_type", e.getKey().substring(0, 1).toUpperCase() + e.getKey().substring(1));
 
       return jObj;
     }));
