@@ -34,6 +34,7 @@ public class EVariationMerger
               // Update references to the old SchemaComponent
               updateReferences(rawEntities, toConsider, sc);
 
+              //TODO: Actualizar COUNT y TIMESTAMP
               // remove toConsider
               it.remove();
 

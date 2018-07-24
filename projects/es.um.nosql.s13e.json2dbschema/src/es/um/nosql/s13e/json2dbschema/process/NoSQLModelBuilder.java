@@ -77,6 +77,7 @@ public class NoSQLModelBuilder
 			Entity e = factory.createEntity();
 			e.setName(entityName);
 			mEntities.add(e);
+			//TODO: Hacer root la entidad aquí.
 
 			OfInt n = IntStream.iterate(1, i -> i+1).iterator();
 
@@ -84,7 +85,6 @@ public class NoSQLModelBuilder
 			  EntityVariation theEV = factory.createEntityVariation();
 				theEV.setVariationId(n.next());
 
-				// If any variation is not root, then the entity is not root
 				ObjectSC obj = (ObjectSC)schema;
 				if (!obj.isRoot)
 				  e.setRoot(false);

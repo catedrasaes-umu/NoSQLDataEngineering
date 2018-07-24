@@ -51,7 +51,22 @@ public class SchemaInference
   private static final boolean DEBUG = true;
 
   public SchemaInference(IAJArray rows)
-  {
+  {/*
+    rows.forEach(p ->
+    {
+      System.out.println(p.asObject());
+
+      p.asObject().getFieldNames().forEachRemaining(f ->
+      {
+        System.out.println("Field: " + f);
+        System.out.println(p.asObject().get(f).asNumber());
+      });
+
+      System.out.println("====");
+    });
+
+    System.exit(-1);*/
+
     theArray = rows;
     rawEntities = new HashMap<String, List<SchemaComponent>>();
     innerSchemaNames = new HashSet<String>();
