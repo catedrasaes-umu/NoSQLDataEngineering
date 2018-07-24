@@ -26,7 +26,7 @@ public class J2SchemaSimpleTests
       SchemaComponent sc = RawSchemaGen.deSchema(null, n);
       String result = SchemaPrinter.schemaString(sc);
 
-      assertEquals("test1", HEADER + "{\"a\": n } ", result);
+      assertEquals("test1", HEADER + "{\"a\": Number } ", result);
     } catch (IOException e)
     {
       e.printStackTrace();
@@ -43,7 +43,7 @@ public class J2SchemaSimpleTests
       SchemaComponent sc = RawSchemaGen.deSchema(null, n);
       String result = SchemaPrinter.schemaString(sc);
 
-      assertEquals("test2", HEADER + "{\"a\": [n ] } ", result);
+      assertEquals("test2", HEADER + "{\"a\": [Number ] } ", result);
     } catch (IOException e)
     {
       e.printStackTrace();
@@ -60,7 +60,7 @@ public class J2SchemaSimpleTests
       SchemaComponent sc = RawSchemaGen.deSchema(null, n);
       String result = SchemaPrinter.schemaString(sc);
 
-      assertEquals("test3", HEADER + "{\"a\": n \"b\": n \"c\": n } ", result);
+      assertEquals("test3", HEADER + "{\"a\": Number \"b\": Number \"c\": Number } ", result);
     } catch (IOException e)
     {
       e.printStackTrace();

@@ -123,14 +123,11 @@ public class SchemaInference
     Optional<String> typeName = Optional.empty();
     // TODO: Remember now a variation cant be root, it is entity which may be root.
     if (isRoot)
-      typeName = Optional.ofNullable(n.get("_type"))
-      .map(_n -> Inflector.getInstance().capitalize(_n.asString()));
+      typeName = Optional.ofNullable(n.get("_type")).map(_n -> Inflector.getInstance().capitalize(_n.asString()));
 
     ObjectSC schema = new ObjectSC();
     schema.isRoot = isRoot;
-
-    schema.entityName = typeName.orElse(
-        Inflector.getInstance().capitalize(elementName.orElse("")));
+    schema.entityName = typeName.orElse(Inflector.getInstance().capitalize(elementName.orElse("")));
 
     // It is important this is a sorted set
     SortedSet<String> fields = new TreeSet<String>();
@@ -212,7 +209,7 @@ public class SchemaInference
   // Might be just "String" but also might be the _type attribute and so the entity name must be preserved.
   private SchemaComponent infer(IAJTextual n, String elementName)
   {
-    StringSC schema = new StringSC(n.asString().substring(0, 1).toUpperCase() + n.asString().substring(1));
+    StringSC schema = new StringSC(n.asString());
     return schema;
   }
 

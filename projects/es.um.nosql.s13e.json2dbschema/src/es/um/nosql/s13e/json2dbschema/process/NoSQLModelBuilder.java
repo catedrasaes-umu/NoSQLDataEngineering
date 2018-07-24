@@ -37,10 +37,6 @@ import es.um.nosql.s13e.json2dbschema.intermediate.raw.StringSC;
 import es.um.nosql.s13e.json2dbschema.process.util.ReferenceMatcher;
 import es.um.nosql.s13e.json2dbschema.util.inflector.Inflector;
 
-/**
- * @author dsevilla
- *
- */
 public class NoSQLModelBuilder
 {
 	private NoSQLSchemaFactory factory;
