@@ -68,12 +68,10 @@ public class NoSQLModelBuilder
     // { "$ref" : <type>, "$id" : <value>, "$db" : <value> }
 
     // Build reverse indices & Create Entities & Populate with EntityVariations
-    rawEntities.forEach((entityName, schemas) ->
-    {
+    rawEntities.forEach((entityName, schemas) -> {
       Entity entity = factory.createEntity();
       entity.setName(entityName);
-      entity.setRoot(schemas.stream().anyMatch(schema ->
-      {
+      entity.setRoot(schemas.stream().anyMatch(schema -> {
         return ((ObjectSC)schema).isRoot;
       }));
 
@@ -81,8 +79,7 @@ public class NoSQLModelBuilder
 
       OfInt intIterator = IntStream.iterate(1, i -> i+1).iterator();
 
-      schemas.forEach(schema ->
-      {
+      schemas.forEach(schema -> {
         ObjectSC obj = (ObjectSC)schema;
 
         EntityVariation theEV = factory.createEntityVariation();
@@ -135,7 +132,7 @@ public class NoSQLModelBuilder
   private ReferenceMatcher<Entity> createReferenceMatcher() 
   {
     return new ReferenceMatcher<>(mEntities.stream()
-        .filter(e -> e.isRoot())
+        .filter(Entity::isRoot)
         .map(e -> 
         Pair.of(new HashSet<String>(Arrays.asList(
             e.getName(),
@@ -149,10 +146,8 @@ public class NoSQLModelBuilder
   {
     assert(schema instanceof ObjectSC);
 
-    ObjectSC obj = (ObjectSC)schema;
-
     // Set properties
-    ev.getProperties().addAll(obj.getInners().stream()
+    ev.getProperties().addAll(((ObjectSC)schema).getInners().stream()
         .map(p -> propertyFromSchemaComponent(p.getLeft(), p.getRight())).collect(Collectors.toList()));
   }
 
