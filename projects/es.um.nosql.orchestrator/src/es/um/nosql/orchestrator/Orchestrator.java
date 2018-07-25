@@ -66,13 +66,12 @@ public class Orchestrator
     runExample(option, new Harvard2Db(dbType, ConfigConstants.DATABASE_IP), dbName, sourceFile, outputModel);
   }
 
-  public void runJsonExample(InferenceMode option, String sourceFile)
+  public void runJsonExample(InferenceMode option, String sourceFolder)
   {
-    File source = new File(sourceFile);
-    String dbName = source.getName().substring(0, source.getName().indexOf("."));
+    String dbName = new File(sourceFolder).getName();
     String outputModel = ConfigConstants.OUTPUT_FOLDER + dbName + "_RESULT.xmi";
 
-    runExample(option, new Json2Db(dbType, ConfigConstants.DATABASE_IP), dbName, sourceFile, outputModel);
+    runExample(option, new Json2Db(dbType, ConfigConstants.DATABASE_IP), dbName, sourceFolder, outputModel);
   }
 
   public void runLinksExample(InferenceMode option, String sourceFolder)

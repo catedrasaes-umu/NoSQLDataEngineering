@@ -6,10 +6,6 @@ import java.util.List;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-/**
- * @author dsevilla
- *
- */
 public class ObjectSC extends SchemaComponent
 {
 	private List<Pair<String, SchemaComponent>> inners;
@@ -28,7 +24,9 @@ public class ObjectSC extends SchemaComponent
 	public boolean equals(Object other)
 	{
 		if (other instanceof ObjectSC)
-			return inners.equals(((ObjectSC)other).inners);
+			return entityName.equals(((ObjectSC)other).entityName)
+			    && isRoot == ((ObjectSC)other).isRoot
+			    && inners.equals(((ObjectSC)other).inners);
 
 		return false;
 	}

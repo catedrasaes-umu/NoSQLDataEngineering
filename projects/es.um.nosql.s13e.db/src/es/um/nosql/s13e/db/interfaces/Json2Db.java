@@ -41,8 +41,8 @@ public class Json2Db extends Source2Db
       {
         ObjectNode obj = (ObjectNode)node;
         obj.put("_id", new ObjectId().toString());
-        String newCollName = obj.get("type").asText();
-        obj.remove("type");
+        String newCollName = obj.get("_type").asText();
+        obj.remove("_type");
 
         if (!collName.equals(newCollName) && arrayToInsert.size() != 0)
         {

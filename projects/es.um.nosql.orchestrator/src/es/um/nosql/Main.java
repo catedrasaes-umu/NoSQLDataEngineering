@@ -5,18 +5,6 @@ import es.um.nosql.orchestrator.util.InferenceMode;
 import es.um.nosql.orchestrator.util.constants.ConfigConstants;
 import es.um.nosql.s13e.db.util.DbType;
 
-/*
-private static class InferenceTestModule implements Module
-{
-  @Override
-  public void configure(Binder theBinder)
-  {
-    theBinder.bind(DbType.class).toInstance(DbType.MONGODB);
-  }
-}
-  Injector injector = Guice.createInjector(new InferenceTestModule());
-  InferenceTest inferenceTest = injector.getInstance(InferenceTest.class);
-*/
 public class Main
 {
   public static void main(String[] args)
@@ -27,10 +15,10 @@ public class Main
     inferenceTest.runEveryPoliticianExample(InferenceMode.INFER_ONLY, ConfigConstants.EVERYPOLITICIAN_FILE);
     //inferenceTest.runFacebookExample(InferenceMode.INFER_ONLY, ConfigConstants.FACEBOOK_FOLDER);                //POJO
     //inferenceTest.runHarvardExample(InferenceMode.INFER_ONLY, ConfigConstants.HARVARD_FILE);                    //POJO
-    //inferenceTest.runJsonExample(InferenceMode.FILL_AND_INFER, ConfigConstants.JSON_FILE);
+    //inferenceTest.runJsonExample(InferenceMode.FILL_AND_INFER, ConfigConstants.JSON_FOLDER);
     //inferenceTest.runLinksExample(InferenceMode.INFER_ONLY, ConfigConstants.LINKS_FOLDER);                      //POJO
     //inferenceTest.runModelExample(InferenceMode.FILL_AND_INFER, ConfigConstants.MODEL_FILE);
-    //inferenceTest.runOpenSanctionsExample(InferenceMode.FILL_AND_INFER, ConfigConstants.OPENSANCTIONS_FILE);
+    //inferenceTest.runOpenSanctionsExample(InferenceMode.INFER_ONLY, ConfigConstants.OPENSANCTIONS_FILE);
     //inferenceTest.runPleiadesExample(InferenceMode.FILL_AND_INFER, ConfigConstants.PLEIADES_FILE);                  //TODO: DOESNT WORK YET
     //inferenceTest.runProteinsExample(InferenceMode.INFER_ONLY, ConfigConstants.PROTEINS_FOLDER);                //POJO
     //inferenceTest.runPublicationsExample(InferenceMode.INFER_ONLY, ConfigConstants.PUBLICATIONS_FILE);          //POJO

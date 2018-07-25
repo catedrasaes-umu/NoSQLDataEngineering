@@ -10,6 +10,7 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.ArraySC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.BooleanSC;
@@ -45,7 +46,7 @@ public class SchemaInference
   private static final boolean ROOT_OBJECT = true;
   private static final boolean NON_ROOT_OBJECT = false;
 
-  private static final boolean DEBUG = false;
+  private static final boolean DEBUG = true;
 
   public SchemaInference(IAJArray rows)
   {
@@ -55,9 +56,8 @@ public class SchemaInference
     theArray = rows;
     rawEntities = new HashMap<String, List<SchemaComponent>>();
     innerSchemaNames = new HashSet<String>();
-    merger = new EVariationMerger();
     joiner = new EntityJoiner();
-    //TODO: Maybe calculate count and timestamp for inner schema variations?
+    merger = new EVariationMerger();
   }
 
   private boolean validateRows(IAJArray rows)
@@ -84,6 +84,30 @@ public class SchemaInference
     return true;
   }
 
+  private void innerCountAndTimestamp(Set<String> innerSchemaNames, Map<String, List<SchemaComponent>> rawEntities)
+  {
+    // For each non-root entity...
+    for (String innerSchema : innerSchemaNames)
+    {
+      // Each of these non-root objects have count and timestamp = 0
+      for (SchemaComponent schComponent : rawEntities.get(innerSchema))
+      {
+        ObjectSC nonRootObj = (ObjectSC)schComponent;
+
+        for (SchemaComponent sc : rawEntities.values().stream().flatMap(list -> list.stream()).collect(Collectors.toList()))
+          if (((ObjectSC)sc).getInners().stream().map(pair -> pair.getValue())
+              .anyMatch(innerSchComponent -> (innerSchComponent instanceof ArraySC && ((ArraySC)innerSchComponent).getInners().contains(nonRootObj))
+                  || (innerSchComponent instanceof ObjectSC && innerSchComponent.equals(nonRootObj))))
+          {
+            nonRootObj.count += ((ObjectSC)sc).count;
+
+            if (nonRootObj.timestamp == 0 || ((ObjectSC)sc).timestamp < nonRootObj.timestamp)
+              nonRootObj.timestamp = ((ObjectSC)sc).timestamp;
+          }
+      }
+    }
+  }
+
   public Map<String, List<SchemaComponent>> infer()
   {
     theArray.forEach(n ->
@@ -92,11 +116,10 @@ public class SchemaInference
     });
 
     joiner.joinAggregatedEntities(rawEntities, innerSchemaNames);
-
+    innerCountAndTimestamp(innerSchemaNames, rawEntities);
     merger.mergeEquivalentEVs(rawEntities);
 
     if (DEBUG)
-      // Print entities and entity variations
       SchemaPrinter.schemaEntities(rawEntities);
 
     return rawEntities;
@@ -149,8 +172,8 @@ public class SchemaInference
     n.getFieldNames().forEachRemaining(fields::add);
 
     // Recursive phase
-    schema.addAll(fields.stream()//TODO: Test if it is viable to get the parent's timestamp and count.
-        .map(f -> Pair.of(f, infer(n.get(f), Optional.of(f), NON_ROOT_OBJECT, count, timestamp)))::iterator);
+    schema.addAll(fields.stream()
+        .map(f -> Pair.of(f, infer(n.get(f), Optional.of(f), NON_ROOT_OBJECT, 0, 0)))::iterator);
 
     // Now that we have the complete schema, try to compare it with any of the variations in the map
     List<SchemaComponent> entityVariations = rawEntities.get(schema.entityName);
@@ -192,7 +215,7 @@ public class SchemaInference
     // Before adding a SchemaComponent to the array we first check there is not another similar object.
     // This way we simplify Aggr{V1, V2, V2, V2...V2} to Aggr{V1, V2}
     n.forEach(e ->
-    {//TODO: 0 and 0?
+    {
       SchemaComponent sComponent = infer(e, name, NON_ROOT_OBJECT, 0, 0);
 
       if (!schema.getInners().stream().anyMatch(sc -> sc.equals(sComponent)))

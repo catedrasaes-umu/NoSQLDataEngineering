@@ -10,6 +10,7 @@ import es.um.nosql.s13e.json2dbschema.intermediate.raw.ArraySC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.ObjectSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.SchemaComponent;
 
+//TODO: I suspect this is not used anymore...how can we test this?
 public class EVariationMerger
 {
   public void mergeEquivalentEVs(Map<String, List<SchemaComponent>> rawEntities)
@@ -34,7 +35,9 @@ public class EVariationMerger
               // Update references to the old SchemaComponent
               updateReferences(rawEntities, toConsider, sc);
 
-              //TODO: Actualizar COUNT y TIMESTAMP
+              ((ObjectSC)sc).count += ((ObjectSC)toConsider).count;
+              ((ObjectSC)sc).timestamp = Math.min(((ObjectSC)sc).timestamp, ((ObjectSC)toConsider).timestamp);
+
               // remove toConsider
               it.remove();
 

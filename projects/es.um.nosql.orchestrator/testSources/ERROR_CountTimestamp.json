@@ -52,5 +52,25 @@
       "id": "area/blekinge_län11",
       "name": "n11"
     }
+  ],
+
+  "container": [
+    {
+      "id": "id1",
+      "name": "n1",
+      "aggr":
+      {
+        "attr1": "value1",
+        "attr2": "value2"
+      }
+    },
+    {
+      "id": "id2",
+      "aggr":
+      {
+        "attr1": "value1",
+        "attr2": "value2"
+      }
+    }
   ]
 }
