@@ -11,7 +11,7 @@ public class ObjectSC extends SchemaComponent
 	private List<Pair<String, SchemaComponent>> inners;
 
 	public boolean isRoot;
-	public int count;
+	public long count;
 	public long timestamp;
 	public String entityName;
 
@@ -24,9 +24,12 @@ public class ObjectSC extends SchemaComponent
 	public boolean equals(Object other)
 	{
 		if (other instanceof ObjectSC)
-			return entityName.equals(((ObjectSC)other).entityName)
-			    && isRoot == ((ObjectSC)other).isRoot
-			    && inners.equals(((ObjectSC)other).inners);
+		{
+			ObjectSC theObject = (ObjectSC)other;
+			return entityName.equals(theObject.entityName)
+			    && isRoot == theObject.isRoot
+			    && inners.equals(theObject.inners);
+		}
 
 		return false;
 	}

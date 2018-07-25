@@ -21,182 +21,178 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
 public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaFactory
 {
   /**
-   * Creates the default factory implementation.
-   * <!-- begin-user-doc -->
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static NoSQLSchemaFactory init()
   {
-    try
-    {
-      NoSQLSchemaFactory theNoSQLSchemaFactory = (NoSQLSchemaFactory)EPackage.Registry.INSTANCE.getEFactory(NoSQLSchemaPackage.eNS_URI);
-      if (theNoSQLSchemaFactory != null)
-      {
-        return theNoSQLSchemaFactory;
-      }
-    }
-    catch (Exception exception)
-    {
-      EcorePlugin.INSTANCE.log(exception);
-    }
-    return new NoSQLSchemaFactoryImpl();
-  }
+		try {
+			NoSQLSchemaFactory theNoSQLSchemaFactory = (NoSQLSchemaFactory)EPackage.Registry.INSTANCE.getEFactory(NoSQLSchemaPackage.eNS_URI);
+			if (theNoSQLSchemaFactory != null) {
+				return theNoSQLSchemaFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new NoSQLSchemaFactoryImpl();
+	}
 
   /**
-   * Creates an instance of the factory.
-   * <!-- begin-user-doc -->
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NoSQLSchemaFactoryImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public EObject create(EClass eClass)
   {
-    switch (eClass.getClassifierID())
-    {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA: return createNoSQLSchema();
-      case NoSQLSchemaPackage.ENTITY: return createEntity();
-      case NoSQLSchemaPackage.ENTITY_VARIATION: return createEntityVariation();
-      case NoSQLSchemaPackage.ATTRIBUTE: return createAttribute();
-      case NoSQLSchemaPackage.TUPLE: return createTuple();
-      case NoSQLSchemaPackage.REFERENCE: return createReference();
-      case NoSQLSchemaPackage.AGGREGATE: return createAggregate();
-      case NoSQLSchemaPackage.PRIMITIVE_TYPE: return createPrimitiveType();
-      case NoSQLSchemaPackage.NULL: return createNull();
-      default:
-        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-    }
-  }
+		switch (eClass.getClassifierID()) {
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA: return createNoSQLSchema();
+			case NoSQLSchemaPackage.ENTITY: return createEntity();
+			case NoSQLSchemaPackage.ENTITY_VARIATION: return createEntityVariation();
+			case NoSQLSchemaPackage.ATTRIBUTE: return createAttribute();
+			case NoSQLSchemaPackage.TUPLE: return createTuple();
+			case NoSQLSchemaPackage.REFERENCE: return createReference();
+			case NoSQLSchemaPackage.AGGREGATE: return createAggregate();
+			case NoSQLSchemaPackage.PRIMITIVE_TYPE: return createPrimitiveType();
+			case NoSQLSchemaPackage.NULL: return createNull();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NoSQLSchema createNoSQLSchema()
   {
-    NoSQLSchemaImpl noSQLSchema = new NoSQLSchemaImpl();
-    return noSQLSchema;
-  }
+		NoSQLSchemaImpl noSQLSchema = new NoSQLSchemaImpl();
+		return noSQLSchema;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Entity createEntity()
   {
-    EntityImpl entity = new EntityImpl();
-    return entity;
-  }
+		EntityImpl entity = new EntityImpl();
+		return entity;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public EntityVariation createEntityVariation()
   {
-    EntityVariationImpl entityVariation = new EntityVariationImpl();
-    return entityVariation;
-  }
+		EntityVariationImpl entityVariation = new EntityVariationImpl();
+		return entityVariation;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Attribute createAttribute()
   {
-    AttributeImpl attribute = new AttributeImpl();
-    return attribute;
-  }
+		AttributeImpl attribute = new AttributeImpl();
+		return attribute;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Tuple createTuple()
   {
-    TupleImpl tuple = new TupleImpl();
-    return tuple;
-  }
+		TupleImpl tuple = new TupleImpl();
+		return tuple;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Reference createReference()
   {
-    ReferenceImpl reference = new ReferenceImpl();
-    return reference;
-  }
+		ReferenceImpl reference = new ReferenceImpl();
+		return reference;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Aggregate createAggregate()
   {
-    AggregateImpl aggregate = new AggregateImpl();
-    return aggregate;
-  }
+		AggregateImpl aggregate = new AggregateImpl();
+		return aggregate;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public PrimitiveType createPrimitiveType()
   {
-    PrimitiveTypeImpl primitiveType = new PrimitiveTypeImpl();
-    return primitiveType;
-  }
+		PrimitiveTypeImpl primitiveType = new PrimitiveTypeImpl();
+		return primitiveType;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Null createNull()
   {
-    NullImpl null_ = new NullImpl();
-    return null_;
-  }
+		NullImpl null_ = new NullImpl();
+		return null_;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NoSQLSchemaPackage getNoSQLSchemaPackage()
   {
-    return (NoSQLSchemaPackage)getEPackage();
-  }
+		return (NoSQLSchemaPackage)getEPackage();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @deprecated
-   * @generated
-   */
+	 * @deprecated
+	 * @generated
+	 */
   @Deprecated
   public static NoSQLSchemaPackage getPackage()
   {
-    return NoSQLSchemaPackage.eINSTANCE;
-  }
+		return NoSQLSchemaPackage.eINSTANCE;
+	}
 
 } //NoSQLSchemaFactoryImpl

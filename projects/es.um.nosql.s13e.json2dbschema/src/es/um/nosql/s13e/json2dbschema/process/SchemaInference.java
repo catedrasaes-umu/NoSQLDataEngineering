@@ -10,7 +10,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
-import java.util.stream.Collectors;
 
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.ArraySC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.BooleanSC;
@@ -62,26 +61,15 @@ public class SchemaInference
 
   private boolean validateRows(IAJArray rows)
   {
-    Iterator<IAJElement> iterator = rows.iterator();
-
-    while (iterator.hasNext())
-    {
-      IAJElement triple = iterator.next();
-      Iterator<String> fields = triple.asObject().getFieldNames();
-
-      while (fields.hasNext())
-      {
-        String fieldName = fields.next();
-        if ((fieldName.equals("schema") && triple.get(fieldName).isObject())
-            || (fieldName.equals("count") && triple.get(fieldName).isNumber())
-            || (fieldName.equals("timestamp") && triple.get(fieldName).isNumber()))
-          continue;
-
-        return false;
-      }
-    }
-
-    return true;
+	  // Check just the first element, suppose the rest are correct, as this will be the result of some automated process
+	  Iterator<IAJElement> iterator = rows.iterator();
+	  if (!iterator.hasNext())
+		  return true; // Empty
+	  
+      IAJObject triple = iterator.next().asObject();
+      return Optional.ofNullable(triple.get("schema")).filter(IAJElement::isObject).isPresent() &&
+    		  Optional.ofNullable(triple.get("count")).filter(IAJElement::isNumber).isPresent() &&
+    		  Optional.ofNullable(triple.get("timestamp")).filter(IAJElement::isNumber).isPresent();
   }
 
   private void innerCountAndTimestamp(Set<String> innerSchemaNames, Map<String, List<SchemaComponent>> rawEntities)
@@ -94,25 +82,28 @@ public class SchemaInference
       {
         ObjectSC nonRootObj = (ObjectSC)schComponent;
 
-        for (SchemaComponent sc : rawEntities.values().stream().flatMap(list -> list.stream()).collect(Collectors.toList()))
-          if (((ObjectSC)sc).getInners().stream().map(pair -> pair.getValue())
-              .anyMatch(innerSchComponent -> (innerSchComponent instanceof ArraySC && ((ArraySC)innerSchComponent).getInners().contains(nonRootObj))
-                  || (innerSchComponent instanceof ObjectSC && innerSchComponent.equals(nonRootObj))))
-          {
-            nonRootObj.count += ((ObjectSC)sc).count;
+        rawEntities.values().stream().flatMap(List::stream)
+        .forEach(sc -> {
+        	ObjectSC osc = (ObjectSC)sc;
+        	if (osc.getInners().stream().map(Pair::getValue)
+        			.anyMatch(innerSchComponent -> 
+        				(innerSchComponent instanceof ArraySC && ((ArraySC)innerSchComponent).getInners().contains(nonRootObj))
+        					|| innerSchComponent.equals(nonRootObj)))
+        	{
+        		nonRootObj.count += osc.count;
 
-            if (nonRootObj.timestamp == 0 || ((ObjectSC)sc).timestamp < nonRootObj.timestamp)
-              nonRootObj.timestamp = ((ObjectSC)sc).timestamp;
-          }
+        		if (nonRootObj.timestamp == 0 || osc.timestamp < nonRootObj.timestamp)
+        			nonRootObj.timestamp = osc.timestamp;
+        	}
+        });
       }
     }
   }
 
   public Map<String, List<SchemaComponent>> infer()
   {
-    theArray.forEach(n ->
-    {
-      infer(n.get("schema"), Optional.<String>empty(), ROOT_OBJECT, Math.toIntExact(n.get("count").asLong()), n.get("timestamp").asLong());
+    theArray.forEach(n -> {
+      infer(n.get("schema"), Optional.<String>empty(), ROOT_OBJECT, n.get("count").asLong(), n.get("timestamp").asLong());
     });
 
     joiner.joinAggregatedEntities(rawEntities, innerSchemaNames);
@@ -125,7 +116,7 @@ public class SchemaInference
     return rawEntities;
   }
 
-  private SchemaComponent infer(IAJElement n, Optional<String> elementName, boolean isRoot, int count, long timestamp)
+  private SchemaComponent infer(IAJElement n, Optional<String> elementName, boolean isRoot, long count, long timestamp)
   {
     if (n.isObject())
       return infer(n.asObject(), elementName, isRoot, count, timestamp);
@@ -153,7 +144,7 @@ public class SchemaInference
     return null;
   }
 
-  private SchemaComponent infer(IAJObject n, Optional<String> elementName, boolean isRoot, int count, long timestamp)
+  private SchemaComponent infer(IAJObject n, Optional<String> elementName, boolean isRoot, long count, long timestamp)
   {
     // Entity names are by convention capitalized
     Optional<String> typeName = Optional.empty();

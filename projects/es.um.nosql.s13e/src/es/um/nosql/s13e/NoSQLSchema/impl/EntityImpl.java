@@ -42,292 +42,285 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class EntityImpl extends MinimalEObjectImpl.Container implements Entity
 {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The default value of the '{@link #isRoot() <em>Root</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #isRoot() <em>Root</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isRoot()
-   * @generated
-   * @ordered
-   */
+	 * @see #isRoot()
+	 * @generated
+	 * @ordered
+	 */
   protected static final boolean ROOT_EDEFAULT = true;
 
   /**
-   * The cached value of the '{@link #isRoot() <em>Root</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #isRoot() <em>Root</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isRoot()
-   * @generated
-   * @ordered
-   */
+	 * @see #isRoot()
+	 * @generated
+	 * @ordered
+	 */
   protected boolean root = ROOT_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getEntityVariations() <em>Entity Variations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getEntityVariations() <em>Entity Variations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEntityVariations()
-   * @generated
-   * @ordered
-   */
+	 * @see #getEntityVariations()
+	 * @generated
+	 * @ordered
+	 */
   protected EList<EntityVariation> entityVariations;
 
   /**
-   * The cached value of the '{@link #getParents() <em>Parents</em>}' reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getParents() <em>Parents</em>}' reference list.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParents()
-   * @generated
-   * @ordered
-   */
+	 * @see #getParents()
+	 * @generated
+	 * @ordered
+	 */
   protected EList<Entity> parents;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected EntityImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return NoSQLSchemaPackage.Literals.ENTITY;
-  }
+		return NoSQLSchemaPackage.Literals.ENTITY;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String getName()
   {
-    return name;
-  }
+		return name;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setName(String newName)
   {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY__NAME, oldName, name));
-  }
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY__NAME, oldName, name));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public boolean isRoot()
   {
-    return root;
-  }
+		return root;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setRoot(boolean newRoot)
   {
-    boolean oldRoot = root;
-    root = newRoot;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY__ROOT, oldRoot, root));
-  }
+		boolean oldRoot = root;
+		root = newRoot;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY__ROOT, oldRoot, root));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public EList<EntityVariation> getEntityVariations()
   {
-    if (entityVariations == null)
-    {
-      entityVariations = new EObjectContainmentEList<EntityVariation>(EntityVariation.class, this, NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS);
-    }
-    return entityVariations;
-  }
+		if (entityVariations == null) {
+			entityVariations = new EObjectContainmentEList<EntityVariation>(EntityVariation.class, this, NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS);
+		}
+		return entityVariations;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public EList<Entity> getParents()
   {
-    if (parents == null)
-    {
-      parents = new EObjectResolvingEList<Entity>(Entity.class, this, NoSQLSchemaPackage.ENTITY__PARENTS);
-    }
-    return parents;
-  }
+		if (parents == null) {
+			parents = new EObjectResolvingEList<Entity>(Entity.class, this, NoSQLSchemaPackage.ENTITY__PARENTS);
+		}
+		return parents;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    switch (featureID)
-    {
-      case NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS:
-        return ((InternalEList<?>)getEntityVariations()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS:
+				return ((InternalEList<?>)getEntityVariations()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case NoSQLSchemaPackage.ENTITY__NAME:
-        return getName();
-      case NoSQLSchemaPackage.ENTITY__ROOT:
-        return isRoot();
-      case NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS:
-        return getEntityVariations();
-      case NoSQLSchemaPackage.ENTITY__PARENTS:
-        return getParents();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.ENTITY__NAME:
+				return getName();
+			case NoSQLSchemaPackage.ENTITY__ROOT:
+				return isRoot();
+			case NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS:
+				return getEntityVariations();
+			case NoSQLSchemaPackage.ENTITY__PARENTS:
+				return getParents();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case NoSQLSchemaPackage.ENTITY__NAME:
-        setName((String)newValue);
-        return;
-      case NoSQLSchemaPackage.ENTITY__ROOT:
-        setRoot((Boolean)newValue);
-        return;
-      case NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS:
-        getEntityVariations().clear();
-        getEntityVariations().addAll((Collection<? extends EntityVariation>)newValue);
-        return;
-      case NoSQLSchemaPackage.ENTITY__PARENTS:
-        getParents().clear();
-        getParents().addAll((Collection<? extends Entity>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.ENTITY__NAME:
+				setName((String)newValue);
+				return;
+			case NoSQLSchemaPackage.ENTITY__ROOT:
+				setRoot((Boolean)newValue);
+				return;
+			case NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS:
+				getEntityVariations().clear();
+				getEntityVariations().addAll((Collection<? extends EntityVariation>)newValue);
+				return;
+			case NoSQLSchemaPackage.ENTITY__PARENTS:
+				getParents().clear();
+				getParents().addAll((Collection<? extends Entity>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case NoSQLSchemaPackage.ENTITY__NAME:
-        setName(NAME_EDEFAULT);
-        return;
-      case NoSQLSchemaPackage.ENTITY__ROOT:
-        setRoot(ROOT_EDEFAULT);
-        return;
-      case NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS:
-        getEntityVariations().clear();
-        return;
-      case NoSQLSchemaPackage.ENTITY__PARENTS:
-        getParents().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.ENTITY__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case NoSQLSchemaPackage.ENTITY__ROOT:
+				setRoot(ROOT_EDEFAULT);
+				return;
+			case NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS:
+				getEntityVariations().clear();
+				return;
+			case NoSQLSchemaPackage.ENTITY__PARENTS:
+				getParents().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case NoSQLSchemaPackage.ENTITY__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case NoSQLSchemaPackage.ENTITY__ROOT:
-        return root != ROOT_EDEFAULT;
-      case NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS:
-        return entityVariations != null && !entityVariations.isEmpty();
-      case NoSQLSchemaPackage.ENTITY__PARENTS:
-        return parents != null && !parents.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.ENTITY__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case NoSQLSchemaPackage.ENTITY__ROOT:
+				return root != ROOT_EDEFAULT;
+			case NoSQLSchemaPackage.ENTITY__ENTITY_VARIATIONS:
+				return entityVariations != null && !entityVariations.isEmpty();
+			case NoSQLSchemaPackage.ENTITY__PARENTS:
+				return parents != null && !parents.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", root: ");
-    result.append(root);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(", root: ");
+		result.append(root);
+		result.append(')');
+		return result.toString();
+	}
 
 } //EntityImpl
