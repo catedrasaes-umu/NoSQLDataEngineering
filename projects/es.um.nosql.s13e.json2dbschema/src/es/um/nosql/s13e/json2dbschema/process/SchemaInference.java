@@ -45,7 +45,7 @@ public class SchemaInference
   private static final boolean ROOT_OBJECT = true;
   private static final boolean NON_ROOT_OBJECT = false;
 
-  private static final boolean DEBUG = true;
+  private static final boolean DEBUG = false;
 
   public SchemaInference(IAJArray rows)
   {
@@ -61,19 +61,20 @@ public class SchemaInference
 
   private boolean validateRows(IAJArray rows)
   {
-	  // Check just the first element, suppose the rest are correct, as this will be the result of some automated process
-	  Iterator<IAJElement> iterator = rows.iterator();
-	  if (!iterator.hasNext())
-		  return true; // Empty
-	  
-      IAJObject triple = iterator.next().asObject();
-      return Optional.ofNullable(triple.get("schema")).filter(IAJElement::isObject).isPresent() &&
-    		  Optional.ofNullable(triple.get("count")).filter(IAJElement::isNumber).isPresent() &&
-    		  Optional.ofNullable(triple.get("timestamp")).filter(IAJElement::isNumber).isPresent();
+    // Check just the first element, suppose the rest are correct, as this will be the result of some automated process
+    Iterator<IAJElement> iterator = rows.iterator();
+    if (!iterator.hasNext())
+      return true; // Empty
+
+    IAJObject triple = iterator.next().asObject();
+    return Optional.ofNullable(triple.get("schema")).filter(IAJElement::isObject).isPresent() &&
+        Optional.ofNullable(triple.get("count")).filter(IAJElement::isNumber).isPresent() &&
+        Optional.ofNullable(triple.get("timestamp")).filter(IAJElement::isNumber).isPresent();
   }
 
   private void innerCountAndTimestamp(Set<String> innerSchemaNames, Map<String, List<SchemaComponent>> rawEntities)
   {
+    System.out.println("INNERCOUNTANDTIMESTAMP:");
     // For each non-root entity...
     for (String innerSchema : innerSchemaNames)
     {
@@ -84,17 +85,17 @@ public class SchemaInference
 
         rawEntities.values().stream().flatMap(List::stream)
         .forEach(sc -> {
-        	ObjectSC osc = (ObjectSC)sc;
-        	if (osc.getInners().stream().map(Pair::getValue)
-        			.anyMatch(innerSchComponent -> 
-        				(innerSchComponent instanceof ArraySC && ((ArraySC)innerSchComponent).getInners().contains(nonRootObj))
-        					|| innerSchComponent.equals(nonRootObj)))
-        	{
-        		nonRootObj.count += osc.count;
+          ObjectSC osc = (ObjectSC)sc;
+          if (osc.getInners().stream().map(Pair::getValue)
+              .anyMatch(innerSchComponent -> 
+                (innerSchComponent instanceof ArraySC && ((ArraySC)innerSchComponent).getInners().contains(nonRootObj))
+                  || (innerSchComponent instanceof ObjectSC && innerSchComponent.equals(nonRootObj))))
+          {
+            nonRootObj.count += osc.count;
 
-        		if (nonRootObj.timestamp == 0 || osc.timestamp < nonRootObj.timestamp)
-        			nonRootObj.timestamp = osc.timestamp;
-        	}
+            if (nonRootObj.timestamp == 0 || osc.timestamp < nonRootObj.timestamp)
+              nonRootObj.timestamp = osc.timestamp;
+          }
         });
       }
     }

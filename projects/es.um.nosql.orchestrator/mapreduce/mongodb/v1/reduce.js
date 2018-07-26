@@ -1,4 +1,4 @@
-function (key, values)
+function reduce(key, values)
 {
   var v = values.reduce(function (v1, v2)
     {

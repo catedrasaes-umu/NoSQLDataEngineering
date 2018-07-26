@@ -1,4 +1,4 @@
-function()
+function map()
 {
   function flatten_schema_str(obj, interesting_keys)
   {
