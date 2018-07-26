@@ -69,7 +69,9 @@ public class ArraySC extends SchemaComponent
 	@Override
 	public boolean equals(Object other)
 	{
-		if (other instanceof ArraySC)
+	  if (this == other)
+	    return true;
+	  else if (other instanceof ArraySC)
 		{
 			ArraySC otherA = (ArraySC)other;
 

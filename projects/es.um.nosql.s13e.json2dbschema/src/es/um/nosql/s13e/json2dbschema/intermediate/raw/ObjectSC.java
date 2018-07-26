@@ -23,7 +23,9 @@ public class ObjectSC extends SchemaComponent
 	@Override
 	public boolean equals(Object other)
 	{
-		if (other instanceof ObjectSC)
+	  if (this == other)
+	    return true;
+	  else if (other instanceof ObjectSC)
 		{
 			ObjectSC theObject = (ObjectSC)other;
 			return entityName.equals(theObject.entityName)

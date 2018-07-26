@@ -14,6 +14,7 @@ public class Main
   private static final String OUTPUT_FOLDER = "../es.um.nosql.models/";
   private static final boolean GENERATE_BASE_FILES = true;
 
+  //TODO: Módulo de salida -> J48 a .dot
   public static void main(String[] args)
   {
     // Everypolitician_sweden and OpenSanctions examples do not work properly. Maybe there is a generation problem with aggregates...?

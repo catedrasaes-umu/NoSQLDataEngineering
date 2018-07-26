@@ -74,7 +74,6 @@ public class SchemaInference
 
   private void innerCountAndTimestamp(Set<String> innerSchemaNames, Map<String, List<SchemaComponent>> rawEntities)
   {
-    System.out.println("INNERCOUNTANDTIMESTAMP:");
     // For each non-root entity...
     for (String innerSchema : innerSchemaNames)
     {
