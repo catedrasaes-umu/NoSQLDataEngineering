@@ -107,7 +107,7 @@ public class ObjGenerator
 			  EntityVariation oev = NoSQLSchemaFactory.eINSTANCE.createEntityVariation();
 				oev.setVariationId(++IDENTIFIER);
 				((Entity)oev.eContainer()).setRoot(true);
-				mapE.get(entity).getEntityVariations().add(oev);
+				mapE.get(entity).getVariations().add(oev);
 
 				JsonObject strObj = new JsonObject();
 

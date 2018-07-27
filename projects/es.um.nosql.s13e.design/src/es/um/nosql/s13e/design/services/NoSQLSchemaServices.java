@@ -60,7 +60,7 @@ public class NoSQLSchemaServices
     });
 
     for (Entity entity : model.getEntities())
-      for (EntityVariation eVariation : entity.getEntityVariations())
+      for (EntityVariation eVariation : entity.getVariations())
         result.add(eVariation);
 
     return result;
@@ -95,7 +95,7 @@ public class NoSQLSchemaServices
     if (!entity.isRoot())
       return result;
 
-    entity.getEntityVariations().stream().forEach(ev -> result.addAll(getEntitiesFromSchema(ev)));
+    entity.getVariations().stream().forEach(ev -> result.addAll(getEntitiesFromSchema(ev)));
 
     return result;
   }
@@ -135,7 +135,7 @@ public class NoSQLSchemaServices
     if (!entity.isRoot())
       return result;
 
-    entity.getEntityVariations().stream().forEach(ev -> result.addAll(getReducedEVariationsFromSchema(ev)));
+    entity.getVariations().stream().forEach(ev -> result.addAll(getReducedEVariationsFromSchema(ev)));
 
     return result;
   }
@@ -183,7 +183,7 @@ public class NoSQLSchemaServices
     });
 
     for (Entity entity : model.getEntities())
-      for (EntityVariation evInEntity : entity.getEntityVariations())
+      for (EntityVariation evInEntity : entity.getVariations())
         if (entity.isRoot()
             && (evInEntity == eVariation || SchemaCollector.getEVariationsFromSchema(evInEntity).contains(eVariation)))
           result.add(evInEntity);

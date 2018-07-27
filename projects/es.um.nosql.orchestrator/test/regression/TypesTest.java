@@ -56,7 +56,7 @@ public class TypesTest
     NoSQLSchema nosqlschema = builder.buildFromGsonArray(dbName, jArray);
 
     for (Entity e : nosqlschema.getEntities())
-      for (EntityVariation ev : e.getEntityVariations())
+      for (EntityVariation ev : e.getVariations())
       {
         Optional<Property> prop = ev.getProperties().stream().filter(p -> p.getName().equals("_type")).findFirst();
         if (e.isRoot())

@@ -18,13 +18,13 @@ import org.apache.commons.lang3.tuple.Pair;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
-import es.um.nosql.s13e.NoSQLSchema.Tuple;
+import es.um.nosql.s13e.NoSQLSchema.PList;
 import es.um.nosql.s13e.NoSQLSchema.Type;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.ArraySC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.BooleanSC;
@@ -41,14 +41,14 @@ public class NoSQLModelBuilder
 {
   private NoSQLSchemaFactory factory;
 
-  // Reverse indexes for finding EntityVariations
-  private Map<SchemaComponent, EntityVariation> mEntityVariations;
+  // Reverse indexes for finding StructuralVariations
+  private Map<SchemaComponent, StructuralVariation> mStructuralVariations;
 
   // List of Entities
-  private List<Entity> mEntities;
+  private List<EntityClass> mEntities;
 
   // Reference matcher
-  private ReferenceMatcher<Entity> refMatcher;
+  private ReferenceMatcher<EntityClass> refMatcher;
 
   private String name;
 
@@ -57,8 +57,8 @@ public class NoSQLModelBuilder
     factory = factory2;
     name = name2;
 
-    mEntities = new ArrayList<Entity>(20);
-    mEntityVariations = new HashMap<SchemaComponent, EntityVariation>();
+    mEntities = new ArrayList<EntityClass>(20);
+    mStructuralVariations = new HashMap<SchemaComponent, StructuralVariation>();
   }
 
   public NoSQLSchema build(Map<String, List<SchemaComponent>> rawEntities)
@@ -67,36 +67,36 @@ public class NoSQLModelBuilder
     // references: https://docs.mongodb.org/manual/reference/database-references/#dbrefs
     // { "$ref" : <type>, "$id" : <value>, "$db" : <value> }
 
-    // Build reverse indices & Create Entities & Populate with EntityVariations
-    rawEntities.forEach((entityName, schemas) -> {
-      Entity entity = factory.createEntity();
-      entity.setName(entityName);
-      entity.setRoot(schemas.stream().anyMatch(schema -> {
+    // Build reverse indices & Create Entities & Populate with StructuralVariations
+    rawEntities.forEach((EntityClassName, schemas) -> {
+      EntityClass EntityClass = factory.createEntityClass();
+      EntityClass.setName(EntityClassName);
+      EntityClass.setRoot(schemas.stream().anyMatch(schema -> {
         return ((ObjectSC)schema).isRoot;
       }));
 
-      mEntities.add(entity);
+      mEntities.add(EntityClass);
 
       OfInt intIterator = IntStream.iterate(1, i -> i+1).iterator();
 
       schemas.forEach(schema -> {
         ObjectSC obj = (ObjectSC)schema;
 
-        EntityVariation theEV = factory.createEntityVariation();
+        StructuralVariation theEV = factory.createStructuralVariation();
         theEV.setVariationId(intIterator.next());
         theEV.setCount(obj.count);
         theEV.setTimestamp(obj.timestamp);
 
-        entity.getEntityVariations().add(theEV);
-        mEntityVariations.put(schema, theEV);
+        EntityClass.getVariations().add(theEV);
+        mStructuralVariations.put(schema, theEV);
       });
     });
 
     // Consider as reference matcher only those Entities of which at least one variation is root
     refMatcher = createReferenceMatcher();
 
-    // Populate empty EntityVariations
-    mEntityVariations.forEach((schema, ev) -> fillEV(schema, ev));
+    // Populate empty StructuralVariations
+    mStructuralVariations.forEach((schema, ev) -> fillEV(schema, ev));
 
     /** TODO: We are removing the opposite calculations for the moment since there is no easy way
      * to infer these. On the near future we might try to complete this property but for the time being
@@ -104,15 +104,15 @@ public class NoSQLModelBuilder
      */
 /*
     mEntities.forEach(eFrom -> {
-      eFrom.getEntityVariations().forEach(ev -> {
+      eFrom.getStructuralVariations().forEach(ev -> {
         ev.getProperties().stream().filter(p -> p instanceof Reference).forEach(r -> {
           Reference ref = (Reference)r;
-          Entity eTo = ref.getRefTo();
+          EntityClass eTo = ref.getRefTo();
 
-          // Find a EntityVariation of eTo that has a reference to the
-          // current Entity eFrom
+          // Find a StructuralVariation of eTo that has a reference to the
+          // current EntityClass eFrom
           Optional<Property> refTo =
-            eTo.getEntityVariations().stream().flatMap(evTo ->
+            eTo.getStructuralVariations().stream().flatMap(evTo ->
             evTo.getProperties().stream().filter(pTo -> pTo instanceof Reference))
             .filter(rTo -> ((Reference)rTo).getRefTo() == eFrom).findFirst();
 
@@ -129,10 +129,10 @@ public class NoSQLModelBuilder
     return finalSchema;
   }
 
-  private ReferenceMatcher<Entity> createReferenceMatcher() 
+  private ReferenceMatcher<EntityClass> createReferenceMatcher() 
   {
     return new ReferenceMatcher<>(mEntities.stream()
-        .filter(Entity::isRoot)
+        .filter(EntityClass::isRoot)
         .map(e -> 
         Pair.of(new HashSet<String>(Arrays.asList(
             e.getName(),
@@ -142,7 +142,7 @@ public class NoSQLModelBuilder
         .flatMap(p -> p.getKey().stream().map(s -> Pair.of(s,p.getValue()))));
   }
 
-  private void fillEV(SchemaComponent schema, EntityVariation ev)
+  private void fillEV(SchemaComponent schema, StructuralVariation ev)
   {
     assert(schema instanceof ObjectSC);
 
@@ -187,7 +187,7 @@ public class NoSQLModelBuilder
     a.setName(en);
     a.setLowerBound(1);
     a.setUpperBound(1);
-    a.getRefTo().add(mEntityVariations.get(sc));
+    a.getAggregates().add(mStructuralVariations.get(sc));
     return a;
   }
 
@@ -209,10 +209,10 @@ public class NoSQLModelBuilder
           ref.setOriginalType(schemaComponentToPrimitiveType(inner));
           return p;
         }).orElseGet(() -> {
-          // Or else  build a tuple with the correct types
+          // Or else  build a PList with the correct types
           Attribute a = factory.createAttribute();
           a.setName(en);
-          a.setType(tupleForArray(sc));
+          a.setType(PListForArray(sc));
           return a;
         });
       }
@@ -223,14 +223,14 @@ public class NoSQLModelBuilder
         a.setName(en);
         a.setLowerBound(sc.getLowerBounds() == 1 ? 0 : sc.getLowerBounds());
         a.setUpperBound(sc.getUpperBounds() > 1 ? -1 : sc.getUpperBounds());
-        a.getRefTo().add(mEntityVariations.get(inner));
+        a.getAggregates().add(mStructuralVariations.get(inner));
         return a;
       }
     }
 
     // Non-homogeneous array. If all elements are objects, then
-    // create an aggregate. If not, create a tuple
-    EntityVariation ev = mEntityVariations.get(sc.getInners().get(0));
+    // create an aggregate. If not, create a PList
+    StructuralVariation ev = mStructuralVariations.get(sc.getInners().get(0));
     if (ev != null)
     {
       Aggregate a = factory.createAggregate();
@@ -240,24 +240,24 @@ public class NoSQLModelBuilder
 
       // FIXME: OJO, error en Ecore/EMF desde el 2005 sin arreglar, y aquí tiene problema:
       // https://bugs.eclipse.org/bugs/show_bug.cgi?id=89325
-      a.getRefTo().addAll(sc.getInners().stream()
-          .map(mEntityVariations::get)
+      a.getAggregates().addAll(sc.getInners().stream()
+          .map(mStructuralVariations::get)
           .collect(Collectors.toList()));
 
       return a;
     }
     else
     {
-      // Or else  build a tuple with the correct types
+      // Or else  build a PList with the correct types
       Attribute a = factory.createAttribute();
       a.setName(en);
-      a.setType(tupleForArray(sc));
+      a.setType(PListForArray(sc));
       return a;
     }
   }
 
-  private Type tupleForArray(ArraySC sc) {
-    Tuple t = factory.createTuple();
+  private Type PListForArray(ArraySC sc) {
+    PList t = factory.createPList();
 
     if (sc.size() == 0)
       return t;
@@ -269,12 +269,12 @@ public class NoSQLModelBuilder
     else
       ssc = sc.getInners().stream();
 
-    t.getElements().addAll(
+    t.getElementType().addAll(
         ssc.map(_sc -> {
 
           // Recursive
           if (_sc instanceof ArraySC)
-            return tupleForArray((ArraySC)_sc);
+            return PListForArray((ArraySC)_sc);
 
           // TODO: Consider Objects?
           String primType = schemaComponentToPrimitiveType(_sc);
@@ -330,7 +330,7 @@ public class NoSQLModelBuilder
     return refMatcher.maybeMatch(en).map(e -> {
       Reference r = factory.createReference();
       r.setName(en);
-      r.setRefTo(e);
+      r.setRefsTo(e);
       r.setLowerBound(1);
       r.setUpperBound(1);
       r.setOriginalType(schemaComponentToPrimitiveType(sc));

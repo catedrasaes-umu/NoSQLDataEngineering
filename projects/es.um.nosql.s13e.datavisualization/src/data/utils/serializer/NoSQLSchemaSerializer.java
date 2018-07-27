@@ -90,7 +90,7 @@ public class NoSQLSchemaSerializer
 
 		result.append(tabs + "Entity - name: " + entity.getName() + ", root: " + entity.isRoot() + ENDLINE);
 
-		for (EntityVariation eVariation : entity.getEntityVariations())
+		for (EntityVariation eVariation : entity.getVariations())
 			result.append(stringify(eVariation, tabs));
 
 		return result.toString();

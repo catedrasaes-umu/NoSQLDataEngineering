@@ -74,7 +74,7 @@ public class ConfigEntity
 
   public boolean doCheck(Entity e)
   {
-    List<Property> eProperties = e.getEntityVariations().stream().flatMap(ev -> ev.getProperties().stream()).collect(Collectors.toList());
+    List<Property> eProperties = e.getVariations().stream().flatMap(ev -> ev.getProperties().stream()).collect(Collectors.toList());
 
     if (this.getValidators() != null)
       for (ConfigValidator validator : this.getValidators())

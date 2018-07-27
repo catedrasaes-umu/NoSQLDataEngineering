@@ -49,7 +49,7 @@ public class SimplifyAggrTest
     NoSQLSchema nosqlschema = builder.buildFromGsonArray(dbName, jArray);
 
     Assert.assertEquals(2, nosqlschema.getEntities().size());
-    Assert.assertEquals(2, nosqlschema.getEntities().get(0).getEntityVariations().size());
-    Assert.assertEquals(2, nosqlschema.getEntities().get(1).getEntityVariations().size());
+    Assert.assertEquals(2, nosqlschema.getEntities().get(0).getVariations().size());
+    Assert.assertEquals(2, nosqlschema.getEntities().get(1).getVariations().size());
   }
 }

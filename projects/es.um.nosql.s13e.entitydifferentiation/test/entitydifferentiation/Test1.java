@@ -29,7 +29,7 @@ public class Test1
     EntityVariation ev10 = factory.createEntityVariation(); ev10.setVariationId(10);
     Attribute attr1101 = factory.createAttribute(); attr1101.setName("date1");
     PrimitiveType pType1101 = factory.createPrimitiveType(); pType1101.setName("number"); attr1101.setType(pType1101);
-    cdate1.getEntityVariations().add(ev10); ev10.getProperties().add(attr1101);
+    cdate1.getVariations().add(ev10); ev10.getProperties().add(attr1101);
 
     Entity cdate2 = factory.createEntity(); cdate2.setName("CustomDate2"); cdate2.setRoot(true);
     EntityVariation ev20 = factory.createEntityVariation(); ev20.setVariationId(20);
@@ -37,7 +37,7 @@ public class Test1
     PrimitiveType pType2201 = factory.createPrimitiveType(); pType2201.setName("String"); attr2201.setType(pType2201);
     Attribute attr2202 = factory.createAttribute(); attr2202.setName("date2");
     PrimitiveType pType2202 = factory.createPrimitiveType(); pType2202.setName("String"); attr2202.setType(pType2202);
-    cdate2.getEntityVariations().add(ev20); ev20.getProperties().add(attr2201); ev20.getProperties().add(attr2202);
+    cdate2.getVariations().add(ev20); ev20.getProperties().add(attr2201); ev20.getProperties().add(attr2202);
 
     Entity cdate3 = factory.createEntity(); cdate3.setName("CustomDate3"); cdate3.setRoot(true);
     EntityVariation ev30 = factory.createEntityVariation(); ev30.setVariationId(30);
@@ -45,7 +45,7 @@ public class Test1
     PrimitiveType pType3301 = factory.createPrimitiveType(); pType3301.setName("ObjectId"); attr3301.setType(pType3301);
     Attribute attr3302 = factory.createAttribute(); attr3302.setName("date3");
     PrimitiveType pType3302 = factory.createPrimitiveType(); pType3302.setName("Number"); attr3302.setType(pType3302);
-    cdate3.getEntityVariations().add(ev30); ev30.getProperties().add(attr3301); ev30.getProperties().add(attr3302);
+    cdate3.getVariations().add(ev30); ev30.getProperties().add(attr3301); ev30.getProperties().add(attr3302);
 
     Entity persons = factory.createEntity(); persons.setName("Persons"); persons.setRoot(true);
     EntityVariation ev1 = factory.createEntityVariation(); ev1.setVariationId(1);
@@ -76,7 +76,7 @@ public class Test1
     Tuple tupleP42 = factory.createTuple(); tupleP42.getElements().add(pTypeP42); attrP42.setType(tupleP42);
     ev4.getProperties().add(attrP41); ev4.getProperties().add(attrP42);
 
-    persons.getEntityVariations().add(ev1); persons.getEntityVariations().add(ev2); persons.getEntityVariations().add(ev3); persons.getEntityVariations().add(ev4);
+    persons.getVariations().add(ev1); persons.getVariations().add(ev2); persons.getVariations().add(ev3); persons.getVariations().add(ev4);
 
     schema = factory.createNoSQLSchema(); schema.setName("test1");
     schema.getEntities().add(persons); schema.getEntities().add(cdate1); schema.getEntities().add(cdate2); schema.getEntities().add(cdate3);

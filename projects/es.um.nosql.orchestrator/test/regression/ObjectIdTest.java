@@ -59,7 +59,7 @@ public class ObjectIdTest
     assertNotNull("Schema should have entities", nosqlschema.getEntities());
     assertEquals("Schema should have one entity", 1, nosqlschema.getEntities().size());
 
-    Property property = nosqlschema.getEntities().get(0).getEntityVariations().get(0).getProperties().stream().filter(p -> p.getName().equals("_id")).findFirst().get();
+    Property property = nosqlschema.getEntities().get(0).getVariations().get(0).getProperties().stream().filter(p -> p.getName().equals("_id")).findFirst().get();
 
     assertTrue(property instanceof Attribute);
     assertEquals("ObjectId", ((PrimitiveType)((Attribute)property).getType()).getName());

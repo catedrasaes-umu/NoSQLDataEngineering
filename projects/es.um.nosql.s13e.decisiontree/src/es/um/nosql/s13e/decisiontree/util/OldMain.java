@@ -41,11 +41,11 @@ public class OldMain {
     return classifier;
   }
 
-  public static Map<String, EntityVariation> getEntityVariations(NoSQLSchema schema)
+  public static Map<String, EntityVariation> getVariations(NoSQLSchema schema)
   {
     return 
         schema.getEntities().stream().filter(e -> e.isRoot()).flatMap(e ->
-        e.getEntityVariations().stream()
+        e.getVariations().stream()
         .map(ev ->
         Pair.of(String.format("%1$s:%2$d", e.getName(), ev.getVariationId())
             ,ev)))
@@ -56,7 +56,7 @@ public class OldMain {
   {
     return
         schema.getEntities().stream().filter(e -> e.isRoot()).flatMap(e ->
-        e.getEntityVariations().stream())
+        e.getVariations().stream())
         .flatMap(ev -> ev.getProperties().stream())
         .collect(Collectors.groupingBy(Serializer::serialize));
   }
@@ -70,7 +70,7 @@ public class OldMain {
       if (!entity.isRoot())
         continue;
 
-      for (EntityVariation entityVariation: entity.getEntityVariations())
+      for (EntityVariation entityVariation: entity.getVariations())
       {
         // Get List of properties Names
         List<String> properties = entityVariation.getProperties().stream()
@@ -282,7 +282,7 @@ public class OldMain {
       }
 
       ModelTree modelTree = 
-          getModelTree(root, getEntityVariations(schema), getProperties(schema));
+          getModelTree(root, getVariations(schema), getProperties(schema));
       runModelTree(modelTree);
     } 
 

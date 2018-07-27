@@ -43,7 +43,7 @@ public class Test2
     ev1.getProperties().add(attrP1); ev1.getProperties().add(attrP2); ev1.getProperties().add(attrP3); ev1.getProperties().add(attrP4);
     ev1.getProperties().add(attrP5); ev1.getProperties().add(attrP6); ev1.getProperties().add(attrP7);
 
-    persons.getEntityVariations().add(ev1);
+    persons.getVariations().add(ev1);
 
     schema = factory.createNoSQLSchema(); schema.setName("test2");
     schema.getEntities().add(persons);
