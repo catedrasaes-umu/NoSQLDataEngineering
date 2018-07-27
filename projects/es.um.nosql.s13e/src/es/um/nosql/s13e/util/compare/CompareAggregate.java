@@ -10,7 +10,7 @@ public class CompareAggregate extends CompareAssociation<Aggregate>
 			return false;
 
 		// Compare type
-		return t1.getRefTo().equals(t2.getRefTo());
+		return t1.getAggregates().equals(t2.getAggregates());
 	}
 
 }

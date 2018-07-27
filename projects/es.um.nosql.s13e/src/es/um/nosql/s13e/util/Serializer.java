@@ -7,6 +7,9 @@ import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.PList;
+import es.um.nosql.s13e.NoSQLSchema.PMap;
+import es.um.nosql.s13e.NoSQLSchema.PSet;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
@@ -55,26 +58,15 @@ public class Serializer
 
     if (type instanceof PrimitiveType)
       result.append(((PrimitiveType)type).getName());
-    else if (type instanceof es.um.nosql.s13e.NoSQLSchema.List)
-      result.append("Tuple[" + serialize(((Tuple)type).getElements()) + "]");
-
+    else if (type instanceof PList)
+      result.append("PList<" + serialize(((PList)type).getElementType()) + ">");
+    else if (type instanceof PSet)
+        result.append("PSet<" + serialize(((PSet)type).getElementType()) + ">");
+    else if (type instanceof PMap)
+        result.append("PMap<" + serialize(((PMap)type).getKeyType()) 
+        	+ "," + serialize(((PMap)type).getValueType()) + ">");
+    
     return result.toString();
-  }
-
-  public static String serialize(List<Type> typeList)
-  {
-    if (typeList == null)
-      return null;
-
-    String result = typeList.stream().map(type ->
-    {
-      if (type instanceof PrimitiveType)
-        return ((PrimitiveType)type).getName();
-      else // if (type instanceof Tuple)
-        return "Tuple[" + serialize(((Tuple)type).getElements()) + "]";
-      }).collect(Collectors.joining(";"));
-
-    return result;
   }
 
   public static String serialize(Association association)
@@ -92,15 +84,15 @@ public class Serializer
       result.append("[");
 
       result.append(
-        aggregate.getRefTo().stream()
-        .map(ev -> serialize(ev))
+        aggregate.getAggregates().stream()
+        .map(Serializer::serialize)
         .collect(Collectors.joining(";")));
       result.append("]:[" + association.getLowerBound() + ".." + association.getUpperBound() + "]");
     }
     else if (association instanceof Reference)
     {
       Reference reference = (Reference)association;
-      result.append(((EntityClass)reference.getRefTo()).getName());
+      result.append(((EntityClass)reference.getRefsTo()).getName());
       result.append(":[" + association.getLowerBound() + ".." + association.getUpperBound() + "]:");
       result.append("opp[");
 
@@ -110,7 +102,7 @@ public class Serializer
         result.append(oppositeRef + "]");
       else
       {
-        result.append(oppositeRef.getName() + ":" + ((EntityClass)oppositeRef.getRefTo()).getName());
+        result.append(oppositeRef.getName() + ":" + ((EntityClass)oppositeRef.getRefsTo()).getName());
         result.append(":[" + oppositeRef.getLowerBound() + ".." + oppositeRef.getUpperBound() + "]]");
       }
     }
