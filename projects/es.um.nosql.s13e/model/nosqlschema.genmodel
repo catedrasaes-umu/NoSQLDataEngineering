@@ -63,5 +63,8 @@
     <genClasses ecoreClass="nosqlschema.ecore#//PSet">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//PSet/elementType"/>
     </genClasses>
+    <genClasses ecoreClass="nosqlschema.ecore#//PTuple">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//PTuple/elements"/>
+    </genClasses>
   </genPackages>
 </genmodel:GenModel>

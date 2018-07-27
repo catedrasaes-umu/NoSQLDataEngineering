@@ -154,6 +154,11 @@ public class PMapItemProvider extends TypeItemProvider {
 			(createChildParameter
 				(NoSQLSchemaPackage.Literals.PMAP__VALUE_TYPE,
 				 NoSQLSchemaFactory.eINSTANCE.createPMap()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(NoSQLSchemaPackage.Literals.PMAP__VALUE_TYPE,
+				 NoSQLSchemaFactory.eINSTANCE.createPTuple()));
 	}
 
 	/**

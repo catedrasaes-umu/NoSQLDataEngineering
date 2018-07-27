@@ -68,6 +68,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
 			case NoSQLSchemaPackage.REFERENCE_CLASS: return createReferenceClass();
 			case NoSQLSchemaPackage.PMAP: return createPMap();
 			case NoSQLSchemaPackage.PSET: return createPSet();
+			case NoSQLSchemaPackage.PTUPLE: return createPTuple();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -191,6 +192,16 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
 	public PSet createPSet() {
 		PSetImpl pSet = new PSetImpl();
 		return pSet;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public PTuple createPTuple() {
+		PTupleImpl pTuple = new PTupleImpl();
+		return pTuple;
 	}
 
 	/**

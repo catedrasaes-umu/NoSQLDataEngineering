@@ -11,7 +11,7 @@ import org.junit.Test;
 import com.google.gson.JsonArray;
 
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
@@ -52,11 +52,11 @@ public class FacebookTest
     BuildNoSQLSchema builder = new BuildNoSQLSchema();
     NoSQLSchema nosqlschema = builder.buildFromGsonArray(dbName, jArray);
 
-    Entity comments = null;
-    Entity pages = null;
-    Entity posts = null;
+    EntityClass comments = null;
+    EntityClass pages = null;
+    EntityClass posts = null;
 
-    for (Entity e : nosqlschema.getEntities())
+    for (EntityClass e : nosqlschema.getEntities())
     {
       if (e.getName().equals("Comments"))
         comments = e;
@@ -146,7 +146,7 @@ public class FacebookTest
 
     Reference ref = (Reference)p;
 
-    return (ref.getOriginalType().equals(origType) && ref.getRefTo().getName().equals(eName)
+    return (ref.getOriginalType().equals(origType) && ref.getRefsTo().getName().equals(eName)
         && ref.getOpposite() == null && ref.getLowerBound() == lBound && ref.getUpperBound() == uBound);
   }
 }

@@ -2,7 +2,6 @@ package es.um.nosql.s13e.json2dbschema.process;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
@@ -11,7 +10,6 @@ import java.util.Optional;
 import java.util.PrimitiveIterator.OfInt;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
-import java.util.stream.Stream;
 
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -25,6 +23,7 @@ import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.PList;
+import es.um.nosql.s13e.NoSQLSchema.PTuple;
 import es.um.nosql.s13e.NoSQLSchema.Type;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.ArraySC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.BooleanSC;
@@ -212,7 +211,7 @@ public class NoSQLModelBuilder
           // Or else  build a PList with the correct types
           Attribute a = factory.createAttribute();
           a.setName(en);
-          a.setType(PListForArray(sc));
+          a.setType(PListOrPTupleForArray(sc));
           return a;
         });
       }
@@ -251,43 +250,49 @@ public class NoSQLModelBuilder
       // Or else  build a PList with the correct types
       Attribute a = factory.createAttribute();
       a.setName(en);
-      a.setType(PListForArray(sc));
+      a.setType(PListOrPTupleForArray(sc));
       return a;
     }
   }
 
-  private Type PListForArray(ArraySC sc) {
-    PList t = factory.createPList();
-
+  private Type PListOrPTupleForArray(ArraySC sc)
+  {
+	// Return a list by default if empty array
     if (sc.size() == 0)
-      return t;
-
-    Stream<SchemaComponent> ssc;
-
+      return factory.createPList();
+    
     if (sc.isHomogeneous())
-      ssc = Collections.nCopies(sc.size(), sc.getInners().get(0)).stream();
-    else
-      ssc = sc.getInners().stream();
+    {
+    	PList t = factory.createPList();
+    	t.setElementType(schemaComponentToTypeRecursive(sc.getInners().get(0)));
+    	return t;
+    }
 
-    t.getElementType().addAll(
-        ssc.map(_sc -> {
+    PTuple t = factory.createPTuple();
 
-          // Recursive
-          if (_sc instanceof ArraySC)
-            return PListForArray((ArraySC)_sc);
-
-          // TODO: Consider Objects?
-          String primType = schemaComponentToPrimitiveType(_sc);
-
-          PrimitiveType pt = factory.createPrimitiveType();
-          pt.setName(primType);
-
-          return pt;
-        }).collect(Collectors.toList()));
+    t.getElements().addAll(
+        sc.getInners().stream()
+        	.map(this::schemaComponentToTypeRecursive)
+        	.collect(Collectors.toList()));
 
     return t;
   }
 
+  private Type schemaComponentToTypeRecursive(SchemaComponent sc)
+  {
+      // Recursive
+      if (sc instanceof ArraySC)
+        return PListOrPTupleForArray((ArraySC)sc);
+
+      // TODO: Consider Objects?
+      String primType = schemaComponentToPrimitiveType(sc);
+
+      PrimitiveType pt = factory.createPrimitiveType();
+      pt.setName(primType);
+
+      return pt;	  
+  }
+  
   private String schemaComponentToPrimitiveType(SchemaComponent sc)
   {
     if (sc instanceof BooleanSC)
@@ -296,8 +301,9 @@ public class NoSQLModelBuilder
     if (sc instanceof NumberSC)
       return "Number";
 
+    // TODO: Check the _type parameter
     if (sc instanceof StringSC)
-      return ((StringSC)sc).getValue();
+      return "String";
 
     if (sc instanceof ObjectIdSC)
       return "ObjectId";

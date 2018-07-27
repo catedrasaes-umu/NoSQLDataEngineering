@@ -22,7 +22,7 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
-import es.um.nosql.s13e.NoSQLSchema.PList;
+import es.um.nosql.s13e.NoSQLSchema.PTuple;
 import es.um.nosql.s13e.NoSQLSchema.Type;
 
 public class JsonGenerator
@@ -77,8 +77,8 @@ public class JsonGenerator
               Attribute attr = (Attribute)property;
               if (attr.getType() instanceof PrimitiveType)
                 generatePrimitiveType(strObj, attr.getName(), ((PrimitiveType)attr.getType()).getName());
-              else if (attr.getType() instanceof Tuple)
-                generateTuple(strObj, attr.getName(), ((Tuple)attr.getType()).getElements());
+              else if (attr.getType() instanceof PTuple)
+                generatePTuple(strObj, attr.getName(), ((PTuple)attr.getType()).getElements());
             }
           }
 
@@ -126,13 +126,13 @@ public class JsonGenerator
               Aggregate aggr = (Aggregate)property;
 
               if (aggr.getLowerBound() == 1 && aggr.getUpperBound() == 1)
-                strObj.put(aggr.getName(), getRandomAggr(aggr.getRefTo().get(0)));
+                strObj.put(aggr.getName(), getRandomAggr(aggr.getAggregates().get(0)));
               else
               {
                 ArrayNode array = factory.arrayNode();
                 strObj.put(aggr.getName(), array);
                 // We keep all the aggregated variations in a banned list because we won't add them to the database as standalone objects.
-                for (StructuralVariation aggrEV : aggr.getRefTo())
+                for (StructuralVariation aggrEV : aggr.getAggregates())
                 {
                   ObjectNode aggrNode = getRandomAggr(aggrEV);
                   array.add(aggrNode);
@@ -228,7 +228,7 @@ public class JsonGenerator
    * @param name The tuple key.
    * @param elements The tuple to generate.
    */
-  private void generateTuple(ObjectNode strObj, String name, List<Type> elements)
+  private void generatePTuple(ObjectNode strObj, String name, List<Type> elements)
   {
     ArrayNode array = factory.arrayNode();
     strObj.put(name, array);
@@ -237,11 +237,11 @@ public class JsonGenerator
     {
       if (type instanceof PrimitiveType)
         generatePrimitiveType(array, ((PrimitiveType)type).getName());
-      else if (type instanceof Tuple)
+      else if (type instanceof PTuple)
       {
         ArrayNode innerArray = factory.arrayNode();
         array.add(innerArray);
-        generateTuple(innerArray, ((Tuple)type).getElements());
+        generateTuple(innerArray, ((PTuple)type).getElements());
       }
     }
   }
@@ -257,11 +257,11 @@ public class JsonGenerator
     {
       if (type instanceof PrimitiveType)
         generatePrimitiveType(arrayObj, ((PrimitiveType)type).getName());
-      else if (type instanceof Tuple)
+      else if (type instanceof PTuple)
       {
         ArrayNode innerArray = factory.arrayNode();
         arrayObj.add(innerArray);
-        generateTuple(innerArray, ((Tuple)type).getElements());
+        generateTuple(innerArray, ((PTuple)type).getElements());
       }
     }
   }

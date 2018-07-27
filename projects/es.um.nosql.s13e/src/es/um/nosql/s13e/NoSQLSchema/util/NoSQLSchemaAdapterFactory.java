@@ -132,6 +132,10 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 				return createPSetAdapter();
 			}
 			@Override
+			public Adapter casePTuple(PTuple object) {
+				return createPTupleAdapter();
+			}
+			@Override
 			public Adapter defaultCase(EObject object) {
 				return createEObjectAdapter();
 			}
@@ -372,6 +376,20 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createPSetAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.PTuple <em>PTuple</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see es.um.nosql.s13e.NoSQLSchema.PTuple
+	 * @generated
+	 */
+	public Adapter createPTupleAdapter() {
 		return null;
 	}
 

@@ -147,6 +147,11 @@ public class PListItemProvider extends TypeItemProvider {
 			(createChildParameter
 				(NoSQLSchemaPackage.Literals.PLIST__ELEMENT_TYPE,
 				 NoSQLSchemaFactory.eINSTANCE.createPMap()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(NoSQLSchemaPackage.Literals.PLIST__ELEMENT_TYPE,
+				 NoSQLSchemaFactory.eINSTANCE.createPTuple()));
 	}
 
 }

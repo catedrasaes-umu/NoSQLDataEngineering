@@ -159,6 +159,11 @@ public class AttributeItemProvider extends PropertyItemProvider
 			(createChildParameter
 				(NoSQLSchemaPackage.Literals.ATTRIBUTE__TYPE,
 				 NoSQLSchemaFactory.eINSTANCE.createPMap()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(NoSQLSchemaPackage.Literals.ATTRIBUTE__TYPE,
+				 NoSQLSchemaFactory.eINSTANCE.createPTuple()));
 	}
 
 }

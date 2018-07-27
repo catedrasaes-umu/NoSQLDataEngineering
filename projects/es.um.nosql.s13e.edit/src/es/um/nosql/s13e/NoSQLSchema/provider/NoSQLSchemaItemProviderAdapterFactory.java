@@ -356,6 +356,29 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
 	}
 
 		/**
+	 * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.PTuple} instances.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected PTupleItemProvider pTupleItemProvider;
+
+		/**
+	 * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.PTuple}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Adapter createPTupleAdapter() {
+		if (pTupleItemProvider == null) {
+			pTupleItemProvider = new PTupleItemProvider(this);
+		}
+
+		return pTupleItemProvider;
+	}
+
+		/**
 	 * This returns the root adapter factory that contains this factory.
 	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -475,6 +498,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
 		if (referenceClassItemProvider != null) referenceClassItemProvider.dispose();
 		if (pMapItemProvider != null) pMapItemProvider.dispose();
 		if (pSetItemProvider != null) pSetItemProvider.dispose();
+		if (pTupleItemProvider != null) pTupleItemProvider.dispose();
 	}
 
 }

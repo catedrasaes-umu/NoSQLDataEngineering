@@ -14,6 +14,7 @@ import es.um.nosql.s13e.NoSQLSchema.Null;
 import es.um.nosql.s13e.NoSQLSchema.PList;
 import es.um.nosql.s13e.NoSQLSchema.PMap;
 import es.um.nosql.s13e.NoSQLSchema.PSet;
+import es.um.nosql.s13e.NoSQLSchema.PTuple;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
@@ -146,6 +147,13 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 	 * @generated
 	 */
 	private EClass pSetEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass pTupleEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -582,6 +590,24 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	public EClass getPTuple() {
+		return pTupleEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EReference getPTuple_Elements() {
+		return (EReference)pTupleEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	public NoSQLSchemaFactory getNoSQLSchemaFactory() {
 		return (NoSQLSchemaFactory)getEFactoryInstance();
 	}
@@ -661,6 +687,9 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 
 		pSetEClass = createEClass(PSET);
 		createEReference(pSetEClass, PSET__ELEMENT_TYPE);
+
+		pTupleEClass = createEClass(PTUPLE);
+		createEReference(pTupleEClass, PTUPLE__ELEMENTS);
 	}
 
 	/**
@@ -701,6 +730,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 		nullEClass.getESuperTypes().add(this.getProperty());
 		referenceClassEClass.getESuperTypes().add(this.getClassifier());
 		pMapEClass.getESuperTypes().add(this.getType());
+		pTupleEClass.getESuperTypes().add(this.getType());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(noSQLSchemaEClass, NoSQLSchema.class, "NoSQLSchema", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -759,6 +789,9 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 
 		initEClass(pSetEClass, PSet.class, "PSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPSet_ElementType(), this.getType(), null, "elementType", null, 0, 1, PSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(pTupleEClass, PTuple.class, "PTuple", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPTuple_Elements(), this.getType(), null, "elements", null, 0, -1, PTuple.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

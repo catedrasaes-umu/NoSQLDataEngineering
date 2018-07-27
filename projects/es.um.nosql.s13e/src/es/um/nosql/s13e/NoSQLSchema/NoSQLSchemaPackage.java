@@ -865,6 +865,43 @@ public interface NoSQLSchemaPackage extends EPackage {
 	int PSET_OPERATION_COUNT = 0;
 
 	/**
+	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.PTupleImpl <em>PTuple</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.PTupleImpl
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getPTuple()
+	 * @generated
+	 */
+	int PTUPLE = 16;
+
+	/**
+	 * The feature id for the '<em><b>Elements</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PTUPLE__ELEMENTS = TYPE_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>PTuple</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PTUPLE_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>PTuple</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PTUPLE_OPERATION_COUNT = TYPE_OPERATION_COUNT + 0;
+
+	/**
 	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.NoSQLSchema <em>No SQL Schema</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1300,6 +1337,27 @@ public interface NoSQLSchemaPackage extends EPackage {
 	EReference getPSet_ElementType();
 
 	/**
+	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.PTuple <em>PTuple</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>PTuple</em>'.
+	 * @see es.um.nosql.s13e.NoSQLSchema.PTuple
+	 * @generated
+	 */
+	EClass getPTuple();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link es.um.nosql.s13e.NoSQLSchema.PTuple#getElements <em>Elements</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Elements</em>'.
+	 * @see es.um.nosql.s13e.NoSQLSchema.PTuple#getElements()
+	 * @see #getPTuple()
+	 * @generated
+	 */
+	EReference getPTuple_Elements();
+
+	/**
 	 * Returns the factory that creates the instances of the model.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1681,6 +1739,24 @@ public interface NoSQLSchemaPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PSET__ELEMENT_TYPE = eINSTANCE.getPSet_ElementType();
+
+		/**
+		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.PTupleImpl <em>PTuple</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.PTupleImpl
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getPTuple()
+		 * @generated
+		 */
+		EClass PTUPLE = eINSTANCE.getPTuple();
+
+		/**
+		 * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PTUPLE__ELEMENTS = eINSTANCE.getPTuple_Elements();
 
 	}
 

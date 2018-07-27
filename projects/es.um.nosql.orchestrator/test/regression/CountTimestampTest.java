@@ -7,7 +7,7 @@ import org.junit.Test;
 
 import com.google.gson.JsonArray;
 
-import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.db.interfaces.EveryPolitician2Db;
 import es.um.nosql.s13e.db.util.DbType;
@@ -50,7 +50,7 @@ public class CountTimestampTest
     NoSQLSchema nosqlschema = builder.buildFromGsonArray(dbName, jArray);
 
     Assert.assertEquals(3, nosqlschema.getEntities().size());
-    Entity entity = nosqlschema.getEntities().get(0);
+    EntityClass entity = nosqlschema.getEntities().get(0);
     Assert.assertEquals(2, entity.getVariations().size());
     Assert.assertEquals(1, entity.getVariations().get(0).getVariationId());
     Assert.assertEquals(1, entity.getVariations().get(0).getCount());

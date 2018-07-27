@@ -72,4 +72,8 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="elementType" eType="#//Type"
         containment="true"/>
   </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PTuple" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="elements" upperBound="-1"
+        eType="#//Type" containment="true"/>
+  </eClassifiers>
 </ecore:EPackage>

@@ -162,6 +162,11 @@ public class PSetItemProvider
 			(createChildParameter
 				(NoSQLSchemaPackage.Literals.PSET__ELEMENT_TYPE,
 				 NoSQLSchemaFactory.eINSTANCE.createPMap()));
+
+		newChildDescriptors.add
+			(createChildParameter
+				(NoSQLSchemaPackage.Literals.PSET__ELEMENT_TYPE,
+				 NoSQLSchemaFactory.eINSTANCE.createPTuple()));
 	}
 
 	/**

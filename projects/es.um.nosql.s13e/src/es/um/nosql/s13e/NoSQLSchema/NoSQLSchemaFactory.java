@@ -130,6 +130,15 @@ public interface NoSQLSchemaFactory extends EFactory {
 	PSet createPSet();
 
 	/**
+	 * Returns a new object of class '<em>PTuple</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>PTuple</em>'.
+	 * @generated
+	 */
+	PTuple createPTuple();
+
+	/**
 	 * Returns the package supported by this factory.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

@@ -3,7 +3,7 @@ package es.um.nosql.orchestrator.util;
 import java.io.File;
 
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
@@ -26,7 +26,7 @@ public class Patcher
     ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
     NoSQLSchema schema = loader.load(outputFile, NoSQLSchema.class);
 
-    for (Entity e : schema.getEntities())
+    for (EntityClass e : schema.getEntities())
       for (StructuralVariation ev : e.getVariations())
         for (Property p : ev.getProperties())
           if (p.getName().equals("_type"))
