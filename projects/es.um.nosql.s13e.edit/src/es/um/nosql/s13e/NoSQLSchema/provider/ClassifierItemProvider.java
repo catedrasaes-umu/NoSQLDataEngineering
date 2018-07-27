@@ -3,7 +3,7 @@
 package es.um.nosql.s13e.NoSQLSchema.provider;
 
 
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
+import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 
@@ -29,63 +29,60 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.NoSQLSchema} object.
+ * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Classifier} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class NoSQLSchemaItemProvider 
-  extends ItemProviderAdapter
-  implements
-    IEditingDomainItemProvider,
-    IStructuredItemContentProvider,
-    ITreeItemContentProvider,
-    IItemLabelProvider,
-    IItemPropertySource
-{
-  /**
+public class ClassifierItemProvider 
+	extends ItemProviderAdapter
+	implements
+		IEditingDomainItemProvider,
+		IStructuredItemContentProvider,
+		ITreeItemContentProvider,
+		IItemLabelProvider,
+		IItemPropertySource {
+	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-  public NoSQLSchemaItemProvider(AdapterFactory adapterFactory)
-  {
+	public ClassifierItemProvider(AdapterFactory adapterFactory) {
 		super(adapterFactory);
 	}
 
-  /**
+	/**
 	 * This returns the property descriptors for the adapted class.
 	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-  @Override
-  public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object)
-  {
+	@Override
+	public List<IItemPropertyDescriptor> getPropertyDescriptors(Object object) {
 		if (itemPropertyDescriptors == null) {
 			super.getPropertyDescriptors(object);
 
 			addNamePropertyDescriptor(object);
+			addParentsPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
 
-  /**
+	/**
 	 * This adds a property descriptor for the Name feature.
 	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-  protected void addNamePropertyDescriptor(Object object)
-  {
+	protected void addNamePropertyDescriptor(Object object) {
 		itemPropertyDescriptors.add
 			(createItemPropertyDescriptor
 				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
 				 getResourceLocator(),
-				 getString("_UI_NoSQLSchema_name_feature"),
-				 getString("_UI_PropertyDescriptor_description", "_UI_NoSQLSchema_name_feature", "_UI_NoSQLSchema_type"),
-				 NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA__NAME,
+				 getString("_UI_Classifier_name_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_name_feature", "_UI_Classifier_type"),
+				 NoSQLSchemaPackage.Literals.CLASSIFIER__NAME,
 				 true,
 				 false,
 				 false,
@@ -94,123 +91,120 @@ public class NoSQLSchemaItemProvider
 				 null));
 	}
 
-  /**
+	/**
+	 * This adds a property descriptor for the Parents feature.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void addParentsPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_Classifier_parents_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_Classifier_parents_feature", "_UI_Classifier_type"),
+				 NoSQLSchemaPackage.Literals.CLASSIFIER__PARENTS,
+				 true,
+				 false,
+				 true,
+				 null,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This specifies how to implement {@link #getChildren} and is used to deduce an appropriate feature for an
 	 * {@link org.eclipse.emf.edit.command.AddCommand}, {@link org.eclipse.emf.edit.command.RemoveCommand} or
 	 * {@link org.eclipse.emf.edit.command.MoveCommand} in {@link #createCommand}.
 	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-  @Override
-  public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object)
-  {
+	@Override
+	public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
 		if (childrenFeatures == null) {
 			super.getChildrenFeatures(object);
-			childrenFeatures.add(NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA__ENTITIES);
-			childrenFeatures.add(NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA__REF_CLASSES);
+			childrenFeatures.add(NoSQLSchemaPackage.Literals.CLASSIFIER__VARIATIONS);
 		}
 		return childrenFeatures;
 	}
 
-  /**
+	/**
 	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-  @Override
-  protected EStructuralFeature getChildFeature(Object object, Object child)
-  {
+	@Override
+	protected EStructuralFeature getChildFeature(Object object, Object child) {
 		// Check the type of the specified child object and return the proper feature to use for
 		// adding (see {@link AddCommand}) it as a child.
 
 		return super.getChildFeature(object, child);
 	}
 
-  /**
-	 * This returns NoSQLSchema.gif.
-	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-	 * @generated
-	 */
-  @Override
-  public Object getImage(Object object)
-  {
-		return overlayImage(object, getResourceLocator().getImage("full/obj16/NoSQLSchema"));
-	}
-
-  /**
+	/**
 	 * This returns the label text for the adapted class.
 	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-  @Override
-  public String getText(Object object)
-  {
-		String label = ((NoSQLSchema)object).getName();
+	@Override
+	public String getText(Object object) {
+		String label = ((Classifier)object).getName();
 		return label == null || label.length() == 0 ?
-			getString("_UI_NoSQLSchema_type") :
-			getString("_UI_NoSQLSchema_type") + " " + label;
+			getString("_UI_Classifier_type") :
+			getString("_UI_Classifier_type") + " " + label;
 	}
-  
 
-  /**
+
+	/**
 	 * This handles model notifications by calling {@link #updateChildren} to update any cached
 	 * children and by creating a viewer notification, which it passes to {@link #fireNotifyChanged}.
 	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-  @Override
-  public void notifyChanged(Notification notification)
-  {
+	@Override
+	public void notifyChanged(Notification notification) {
 		updateChildren(notification);
 
-		switch (notification.getFeatureID(NoSQLSchema.class)) {
-			case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
+		switch (notification.getFeatureID(Classifier.class)) {
+			case NoSQLSchemaPackage.CLASSIFIER__NAME:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
-			case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-			case NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES:
+			case NoSQLSchemaPackage.CLASSIFIER__VARIATIONS:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
 				return;
 		}
 		super.notifyChanged(notification);
 	}
 
-  /**
+	/**
 	 * This adds {@link org.eclipse.emf.edit.command.CommandParameter}s describing the children
 	 * that can be created under this object.
 	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-  @Override
-  protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object)
-  {
+	@Override
+	protected void collectNewChildDescriptors(Collection<Object> newChildDescriptors, Object object) {
 		super.collectNewChildDescriptors(newChildDescriptors, object);
 
 		newChildDescriptors.add
 			(createChildParameter
-				(NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA__ENTITIES,
-				 NoSQLSchemaFactory.eINSTANCE.createEntityClass()));
-
-		newChildDescriptors.add
-			(createChildParameter
-				(NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA__REF_CLASSES,
-				 NoSQLSchemaFactory.eINSTANCE.createReferenceClass()));
+				(NoSQLSchemaPackage.Literals.CLASSIFIER__VARIATIONS,
+				 NoSQLSchemaFactory.eINSTANCE.createStructuralVariation()));
 	}
 
-  /**
+	/**
 	 * Return the resource locator for this item provider's resources.
 	 * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
+	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-  @Override
-  public ResourceLocator getResourceLocator()
-  {
+	@Override
+	public ResourceLocator getResourceLocator() {
 		return NosqlschemaEditPlugin.INSTANCE;
 	}
 
