@@ -11,7 +11,7 @@ import com.google.gson.JsonArray;
 
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
@@ -56,7 +56,7 @@ public class TypesTest
     NoSQLSchema nosqlschema = builder.buildFromGsonArray(dbName, jArray);
 
     for (Entity e : nosqlschema.getEntities())
-      for (EntityVariation ev : e.getVariations())
+      for (StructuralVariation ev : e.getVariations())
       {
         Optional<Property> prop = ev.getProperties().stream().filter(p -> p.getName().equals("_type")).findFirst();
         if (e.isRoot())

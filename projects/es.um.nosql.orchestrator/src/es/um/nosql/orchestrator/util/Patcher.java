@@ -4,7 +4,7 @@ import java.io.File;
 
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
@@ -27,7 +27,7 @@ public class Patcher
     NoSQLSchema schema = loader.load(outputFile, NoSQLSchema.class);
 
     for (Entity e : schema.getEntities())
-      for (EntityVariation ev : e.getVariations())
+      for (StructuralVariation ev : e.getVariations())
         for (Property p : ev.getProperties())
           if (p.getName().equals("_type"))
             ((PrimitiveType)((Attribute)p).getType()).setName(e.getName());
