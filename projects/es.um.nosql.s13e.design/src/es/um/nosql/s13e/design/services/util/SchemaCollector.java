@@ -6,44 +6,44 @@ import java.util.List;
 import java.util.Set;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 
 public class SchemaCollector
 {
-  public static List<EntityVariation> getEVariationsFromSchema(EntityVariation eVariation)
+  public static List<StructuralVariation> getEVariationsFromSchema(StructuralVariation eVariation)
   {
-    List<EntityVariation> result = new ArrayList<EntityVariation>();
+    List<StructuralVariation> result = new ArrayList<StructuralVariation>();
     result.addAll(getElementsFromSchema(eVariation).getLeft());
 
     return result;
   }
 
-  public static List<Entity> getEntitiesFromSchema(EntityVariation eVariation)
+  public static List<EntityClass> getEntitiesFromSchema(StructuralVariation eVariation)
   {
-    List<Entity> result = new ArrayList<Entity>();
+    List<EntityClass> result = new ArrayList<EntityClass>();
     result.addAll(getElementsFromSchema(eVariation).getRight());
 
     return result;
   }
 
   /**
-   * Method used to get a list of reduced EntityVariations.
-   * This list will gather each EntityVariation and then remove those EntityVariations
+   * Method used to get a list of reduced StructuralVariations.
+   * This list will gather each StructuralVariation and then remove those StructuralVariations
    * added because their Entities were referenced. In other words, this method
    * will only get variations explicitly aggregated by the process.
-   * @param root The variation to which we want to get the reduced EntityVariations list.
-   * @return An EntityVariation list
+   * @param root The variation to which we want to get the reduced StructuralVariations list.
+   * @return An StructuralVariation list
    */
-  public static List<EntityVariation> getReducedEVariationsFromSchema(EntityVariation root)
+  public static List<StructuralVariation> getReducedEVariationsFromSchema(StructuralVariation root)
   {
-    List<EntityVariation> result = new ArrayList<EntityVariation>();
-    Pair<Set<EntityVariation>, Set<Entity>> elementList = getElementsFromSchema(root);
+    List<StructuralVariation> result = new ArrayList<StructuralVariation>();
+    Pair<Set<StructuralVariation>, Set<EntityClass>> elementList = getElementsFromSchema(root);
 
-    for (Entity entity : elementList.getRight())
-      for (EntityVariation eVariation : entity.getVariations())
+    for (EntityClass entity : elementList.getRight())
+      for (StructuralVariation eVariation : entity.getVariations())
         elementList.getLeft().remove(eVariation);
 
     result.addAll(elementList.getLeft());
@@ -51,17 +51,17 @@ public class SchemaCollector
     return result;
   }
 
-  private static Pair<Set<EntityVariation>, Set<Entity>> getElementsFromSchema(EntityVariation eVariation)
+  private static Pair<Set<StructuralVariation>, Set<EntityClass>> getElementsFromSchema(StructuralVariation eVariation)
   {
     boolean keepDiscovering;
-    Pair<Set<EntityVariation>, Set<Entity>> elementList = new Pair<Set<EntityVariation>, Set<Entity>>(
-        new HashSet<EntityVariation>(), new HashSet<Entity>());
+    Pair<Set<StructuralVariation>, Set<EntityClass>> elementList = new Pair<Set<StructuralVariation>, Set<EntityClass>>(
+        new HashSet<StructuralVariation>(), new HashSet<EntityClass>());
 
     keepDiscovering = true;
 
-    Set<EntityVariation> eVToDiscover = new HashSet<EntityVariation>();
-    Set<EntityVariation> newEntityVariations = new HashSet<EntityVariation>();
-    Set<Entity> newEntities = new HashSet<Entity>();
+    Set<StructuralVariation> eVToDiscover = new HashSet<StructuralVariation>();
+    Set<StructuralVariation> newStructuralVariations = new HashSet<StructuralVariation>();
+    Set<EntityClass> newEntities = new HashSet<EntityClass>();
 
     eVToDiscover.add(eVariation);
 
@@ -70,30 +70,30 @@ public class SchemaCollector
      */
     while (keepDiscovering)
     {
-      // For each EntityVariation to discover, add more EntityVariations to an auxiliar list.
-      for (EntityVariation eV : eVToDiscover)
-        newEntityVariations.addAll(getAllEntityVariationsFor(eV));
+      // For each StructuralVariation to discover, add more StructuralVariations to an auxiliar list.
+      for (StructuralVariation eV : eVToDiscover)
+        newStructuralVariations.addAll(getAllStructuralVariationsFor(eV));
 
-      // For each EntityVariation to discover, add its Entities to an auxiliar list.
-      for (EntityVariation eV : eVToDiscover)
+      // For each StructuralVariation to discover, add its Entities to an auxiliar list.
+      for (StructuralVariation eV : eVToDiscover)
         newEntities.addAll(getAllEntitiesFor(eV));
 
-      // Now that we iterated over each EntityVariation to discover, prepare the list for next iteration.
-      // Add the new EntityVariations discovered and the EntityVariations contained in the Entities discovered.
+      // Now that we iterated over each StructuralVariation to discover, prepare the list for next iteration.
+      // Add the new StructuralVariations discovered and the StructuralVariations contained in the Entities discovered.
       eVToDiscover.clear();
-      eVToDiscover.addAll(newEntityVariations);
+      eVToDiscover.addAll(newStructuralVariations);
 
-      for (Entity entity : newEntities)
+      for (EntityClass entity : newEntities)
         eVToDiscover.addAll(entity.getVariations());
 
-      // Now remove EntityVariations that were already discovered before.
+      // Now remove StructuralVariations that were already discovered before.
       eVToDiscover.removeAll(elementList.getLeft());
 
       // And add to the final lists new discoveries.
       elementList.getLeft().addAll(eVToDiscover);
       elementList.getRight().addAll(newEntities);
 
-      newEntityVariations.clear();
+      newStructuralVariations.clear();
       newEntities.clear();
 
       // Exit if, and only if, there is no more discovers to do.
@@ -103,25 +103,25 @@ public class SchemaCollector
     return elementList;
   }
 
-  private static Set<EntityVariation> getAllEntityVariationsFor(EntityVariation eVariation)
+  private static Set<StructuralVariation> getAllStructuralVariationsFor(StructuralVariation eVariation)
   {
-    Set<EntityVariation> neweVariations = new HashSet<EntityVariation>();
+    Set<StructuralVariation> neweVariations = new HashSet<StructuralVariation>();
 
     for (Property property : eVariation.getProperties())
       if (property instanceof Aggregate)
-        for (EntityVariation refToeVariation : ((Aggregate) property).getRefTo())
+        for (StructuralVariation refToeVariation : ((Aggregate) property).getAggregates())
           neweVariations.add(refToeVariation);
 
     return neweVariations;
   }
 
-  private static Set<Entity> getAllEntitiesFor(EntityVariation eVariation)
+  private static Set<EntityClass> getAllEntitiesFor(StructuralVariation eVariation)
   {
-    Set<Entity> newEntities = new HashSet<Entity>();
+    Set<EntityClass> newEntities = new HashSet<EntityClass>();
 
     for (Property property : eVariation.getProperties())
       if (property instanceof Reference)
-        newEntities.add(((Reference) property).getRefTo());
+        newEntities.add(((Reference) property).getRefsTo());
 
     return newEntities;
   }

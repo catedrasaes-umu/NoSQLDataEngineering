@@ -7,20 +7,20 @@ import java.util.stream.Collectors;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
-import es.um.nosql.s13e.NoSQLSchema.Tuple;
+import es.um.nosql.s13e.NoSQLSchema.PList;
 
 public class PropertyServices
 {
-  public List<Attribute> getAttributeList(Entity entity)
+  public List<Attribute> getAttributeList(EntityClass entity)
   {
     List<Attribute> result = new ArrayList<Attribute>();
 
-    for (EntityVariation eVariation : entity.getVariations())
+    for (StructuralVariation eVariation : entity.getVariations())
     {
       eVariation.getProperties().stream().filter(prop -> prop instanceof Attribute).forEach(prop -> {
         Attribute attr = (Attribute) prop;
@@ -33,15 +33,14 @@ public class PropertyServices
               .anyMatch(attr2 -> attr2.getType() instanceof PrimitiveType && attr2.getName().equals(attr.getName())
                   && ((PrimitiveType) attr2.getType()).getName().equals(attr1Type.getName())))
             result.add(attr);
-        } else if (attr.getType() instanceof Tuple)
+        } else if (attr.getType() instanceof PList)
         {
-          Tuple attr1Type = (Tuple) attr.getType();
+          PList attr1Type = (PList) attr.getType();
 
           if (!result.stream()
-              .anyMatch(attr2 -> attr2.getType() instanceof Tuple
+              .anyMatch(attr2 -> attr2.getType() instanceof PList
                   && attr2.getName().equals(attr.getName())
-                  && attr1Type.getElements().size() == ((Tuple)attr2.getType()).getElements().size()
-                  && ((PrimitiveType)attr1Type.getElements().get(0)).getName().equals(((PrimitiveType)((Tuple)attr2.getType()).getElements().get(0)).getName())))
+                  && ((PrimitiveType)attr1Type.getElementType()).getName().equals(((PrimitiveType)((PList)attr2.getType()).getElementType()).getName())))
             result.add(attr);
 
         }
@@ -52,11 +51,11 @@ public class PropertyServices
     return result;
   }
 
-  public List<Association> getAssociationList(Entity entity)
+  public List<Association> getAssociationList(EntityClass entity)
   {
     List<Association> result = new ArrayList<Association>();
 
-    for (EntityVariation eVariation : entity.getVariations())
+    for (StructuralVariation eVariation : entity.getVariations())
     {
       eVariation.getProperties().stream().filter(prop -> prop instanceof Association).forEach(prop -> {
         Association assoc = (Association) prop;
@@ -66,7 +65,7 @@ public class PropertyServices
           Reference ref = (Reference) assoc;
 
           if (result.stream().noneMatch(ref2 -> ref2 instanceof Reference && ref.getName().equals(ref2.getName())
-              && (ref.getRefTo().getName().equals(((Reference) ref2).getRefTo().getName()))))
+              && (ref.getRefsTo().getName().equals(((Reference) ref2).getRefsTo().getName()))))
             result.add(ref);
         } else if (assoc instanceof Aggregate)
         {
@@ -83,7 +82,7 @@ public class PropertyServices
             // Aggregation. Otherwise we would need to adjust that...
             Aggregate aggr2 = (Aggregate) result.stream()
                 .filter(any -> any instanceof Aggregate && aggr.getName().equals(any.getName())).findFirst().get();
-            aggr2.getRefTo().addAll(aggr.getRefTo());
+            aggr2.getAggregates().addAll(aggr.getAggregates());
             aggr2.setUpperBound(-1);
           }
         }
@@ -94,14 +93,14 @@ public class PropertyServices
     return result;
   }
 
-  public List<Attribute> getCommonAttributeList(Entity entity)
+  public List<Attribute> getCommonAttributeList(EntityClass entity)
   {
     List<Attribute> result = new ArrayList<Attribute>();
 
     if (entity.getVariations().isEmpty())
       return result;
 
-    EntityVariation eVariation = entity.getVariations().get(0);
+    StructuralVariation eVariation = entity.getVariations().get(0);
 
     for (Property prop : eVariation.getProperties())
       if (prop instanceof Attribute)
@@ -125,10 +124,10 @@ public class PropertyServices
     return result;
   }
 
-  public List<Attribute> getParticularAttributeList(EntityVariation eVariation)
+  public List<Attribute> getParticularAttributeList(StructuralVariation eVariation)
   {
     List<Attribute> result = new ArrayList<Attribute>();
-    List<Attribute> commonAttrs = getCommonAttributeList((Entity) eVariation.eContainer());
+    List<Attribute> commonAttrs = getCommonAttributeList((EntityClass) eVariation.eContainer());
 
     for (Property prop : eVariation.getProperties())
       if (prop instanceof Attribute)
@@ -145,14 +144,14 @@ public class PropertyServices
     return result;
   }
 
-  public List<Association> getCommonAssociationList(Entity entity)
+  public List<Association> getCommonAssociationList(EntityClass entity)
   {
     List<Association> result = new ArrayList<Association>();
 
     if (entity.getVariations().isEmpty())
       return result;
 
-    EntityVariation eVariation = entity.getVariations().get(0);
+    StructuralVariation eVariation = entity.getVariations().get(0);
 
     for (Property prop : eVariation.getProperties())
       if (prop instanceof Association)
@@ -176,10 +175,10 @@ public class PropertyServices
     return result;
   }
 
-  public List<Association> getParticularAssociationList(EntityVariation eVariation)
+  public List<Association> getParticularAssociationList(StructuralVariation eVariation)
   {
     List<Association> result = new ArrayList<Association>();
-    List<Association> commonAssc = getCommonAssociationList((Entity) eVariation.eContainer());
+    List<Association> commonAssc = getCommonAssociationList((EntityClass) eVariation.eContainer());
 
     for (Property prop : eVariation.getProperties())
       if (prop instanceof Association)
@@ -206,16 +205,16 @@ public class PropertyServices
       // Check the primitive attributes have the same name and the same type.
       if (attr1.getName().equals(attr2.getName()) && atType1.getName().equals(atType2.getName()))
         return true;
-    } else if (attr1.getType() instanceof Tuple && attr2.getType() instanceof Tuple)
+    } else if (attr1.getType() instanceof PList && attr2.getType() instanceof PList)
     {
-      Tuple atType1 = (Tuple) attr1.getType();
-      Tuple atType2 = (Tuple) attr2.getType();
+      PList atType1 = (PList) attr1.getType();
+      PList atType2 = (PList) attr2.getType();
 
       // TODO: We will forget about heterogeneous arrays for the moment...
       // Check tuples have the same name, the same size and the same first type.
-      if (attr1.getName().equals(attr2.getName()) && atType1.getElements().size() == atType2.getElements().size()
-          && ((PrimitiveType) atType1.getElements().get(0)).getName()
-              .equals(((PrimitiveType) atType2.getElements().get(0)).getName()))
+      if (attr1.getName().equals(attr2.getName())
+          && ((PrimitiveType) atType1.getElementType()).getName()
+              .equals(((PrimitiveType) atType2.getElementType()).getName()))
         return true;
     }
 
@@ -231,7 +230,7 @@ public class PropertyServices
 
       // Check the references have the same name, the same original type and are pointing to the same entity.
       if (ref1.getName().equals(ref2.getName()) && (ref1.getOriginalType() == null || ref2.getOriginalType() == null
-          || ref1.getOriginalType().equals(ref2.getOriginalType())) && ref1.getRefTo() == ref2.getRefTo())
+          || ref1.getOriginalType().equals(ref2.getOriginalType())) && ref1.getRefsTo() == ref2.getRefsTo())
         return true;
     } else if (assc1 instanceof Aggregate && assc2 instanceof Aggregate)
     {
@@ -240,8 +239,8 @@ public class PropertyServices
 
       // Check the aggregates have the same name, and the refTo points to variations of the same entity
       if (aggr1.getName().equals(aggr2.getName())
-          && aggr1.getRefTo().get(0).eContainer() == aggr2.getRefTo().get(0).eContainer()
-          && aggr1.getRefTo().size() == aggr2.getRefTo().size())
+          && aggr1.getAggregates().get(0).eContainer() == aggr2.getAggregates().get(0).eContainer()
+          && aggr1.getAggregates().size() == aggr2.getAggregates().size())
         return true;
     }
 
