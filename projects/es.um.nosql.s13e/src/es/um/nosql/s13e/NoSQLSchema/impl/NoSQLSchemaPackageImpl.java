@@ -7,17 +7,17 @@ import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.EntityClass;
-import es.um.nosql.s13e.NoSQLSchema.List;
-import es.um.nosql.s13e.NoSQLSchema.Map;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Null;
+import es.um.nosql.s13e.NoSQLSchema.PList;
+import es.um.nosql.s13e.NoSQLSchema.PMap;
+import es.um.nosql.s13e.NoSQLSchema.PSet;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.ReferenceClass;
-import es.um.nosql.s13e.NoSQLSchema.Set;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.Type;
 
@@ -82,7 +82,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass listEClass = null;
+	private EClass pListEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -138,14 +138,14 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass mapEClass = null;
+	private EClass pMapEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass setEClass = null;
+	private EClass pSetEClass = null;
 
 	/**
 	 * Creates an instance of the model <b>Package</b>, registered with
@@ -357,8 +357,8 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getList() {
-		return listEClass;
+	public EClass getPList() {
+		return pListEClass;
 	}
 
 	/**
@@ -366,8 +366,8 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getList_ElementType() {
-		return (EReference)listEClass.getEStructuralFeatures().get(0);
+	public EReference getPList_ElementType() {
+		return (EReference)pListEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -537,8 +537,8 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getMap() {
-		return mapEClass;
+	public EClass getPMap() {
+		return pMapEClass;
 	}
 
 	/**
@@ -546,8 +546,8 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMap_KeyType() {
-		return (EReference)mapEClass.getEStructuralFeatures().get(0);
+	public EReference getPMap_KeyType() {
+		return (EReference)pMapEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -555,8 +555,8 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getMap_ValueType() {
-		return (EReference)mapEClass.getEStructuralFeatures().get(1);
+	public EReference getPMap_ValueType() {
+		return (EReference)pMapEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -564,8 +564,8 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EClass getSet() {
-		return setEClass;
+	public EClass getPSet() {
+		return pSetEClass;
 	}
 
 	/**
@@ -573,8 +573,8 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public EReference getSet_ElementType() {
-		return (EReference)setEClass.getEStructuralFeatures().get(0);
+	public EReference getPSet_ElementType() {
+		return (EReference)pSetEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -627,8 +627,8 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 
 		typeEClass = createEClass(TYPE);
 
-		listEClass = createEClass(LIST);
-		createEReference(listEClass, LIST__ELEMENT_TYPE);
+		pListEClass = createEClass(PLIST);
+		createEReference(pListEClass, PLIST__ELEMENT_TYPE);
 
 		associationEClass = createEClass(ASSOCIATION);
 		createEAttribute(associationEClass, ASSOCIATION__LOWER_BOUND);
@@ -655,12 +655,12 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 		createEReference(classifierEClass, CLASSIFIER__PARENTS);
 		createEReference(classifierEClass, CLASSIFIER__VARIATIONS);
 
-		mapEClass = createEClass(MAP);
-		createEReference(mapEClass, MAP__KEY_TYPE);
-		createEReference(mapEClass, MAP__VALUE_TYPE);
+		pMapEClass = createEClass(PMAP);
+		createEReference(pMapEClass, PMAP__KEY_TYPE);
+		createEReference(pMapEClass, PMAP__VALUE_TYPE);
 
-		setEClass = createEClass(SET);
-		createEReference(setEClass, SET__ELEMENT_TYPE);
+		pSetEClass = createEClass(PSET);
+		createEReference(pSetEClass, PSET__ELEMENT_TYPE);
 	}
 
 	/**
@@ -693,14 +693,14 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 		// Add supertypes to classes
 		entityClassEClass.getESuperTypes().add(this.getClassifier());
 		attributeEClass.getESuperTypes().add(this.getProperty());
-		listEClass.getESuperTypes().add(this.getType());
+		pListEClass.getESuperTypes().add(this.getType());
 		associationEClass.getESuperTypes().add(this.getProperty());
 		referenceEClass.getESuperTypes().add(this.getAssociation());
 		aggregateEClass.getESuperTypes().add(this.getAssociation());
 		primitiveTypeEClass.getESuperTypes().add(this.getType());
 		nullEClass.getESuperTypes().add(this.getProperty());
 		referenceClassEClass.getESuperTypes().add(this.getClassifier());
-		mapEClass.getESuperTypes().add(this.getType());
+		pMapEClass.getESuperTypes().add(this.getType());
 
 		// Initialize classes, features, and operations; add parameters
 		initEClass(noSQLSchemaEClass, NoSQLSchema.class, "NoSQLSchema", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -725,8 +725,8 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 
 		initEClass(typeEClass, Type.class, "Type", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(listEClass, List.class, "List", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getList_ElementType(), this.getType(), null, "elementType", null, 0, 1, List.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(pListEClass, PList.class, "PList", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPList_ElementType(), this.getType(), null, "elementType", null, 0, 1, PList.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(associationEClass, Association.class, "Association", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getAssociation_LowerBound(), ecorePackage.getEInt(), "lowerBound", null, 0, 1, Association.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -753,12 +753,12 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
 		initEReference(getClassifier_Parents(), this.getClassifier(), null, "parents", null, 0, -1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getClassifier_Variations(), this.getStructuralVariation(), null, "variations", null, 1, -1, Classifier.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(mapEClass, Map.class, "Map", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getMap_KeyType(), this.getType(), null, "keyType", null, 0, 1, Map.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getMap_ValueType(), this.getType(), null, "valueType", null, 0, 1, Map.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(pMapEClass, PMap.class, "PMap", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPMap_KeyType(), this.getPrimitiveType(), null, "keyType", null, 0, 1, PMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPMap_ValueType(), this.getType(), null, "valueType", null, 0, 1, PMap.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(setEClass, Set.class, "Set", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getSet_ElementType(), this.getType(), null, "elementType", null, 0, 1, Set.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEClass(pSetEClass, PSet.class, "PSet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getPSet_ElementType(), this.getType(), null, "elementType", null, 0, 1, PSet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Create resource
 		createResource(eNS_URI);

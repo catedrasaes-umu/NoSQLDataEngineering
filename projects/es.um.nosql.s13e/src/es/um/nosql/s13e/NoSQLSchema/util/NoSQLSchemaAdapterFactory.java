@@ -92,8 +92,8 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 				return createTypeAdapter();
 			}
 			@Override
-			public Adapter caseList(List object) {
-				return createListAdapter();
+			public Adapter casePList(PList object) {
+				return createPListAdapter();
 			}
 			@Override
 			public Adapter caseAssociation(Association object) {
@@ -124,12 +124,12 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 				return createClassifierAdapter();
 			}
 			@Override
-			public Adapter caseMap(Map object) {
-				return createMapAdapter();
+			public Adapter casePMap(PMap object) {
+				return createPMapAdapter();
 			}
 			@Override
-			public Adapter caseSet(Set object) {
-				return createSetAdapter();
+			public Adapter casePSet(PSet object) {
+				return createPSetAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -236,16 +236,16 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.List <em>List</em>}'.
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.PList <em>PList</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see es.um.nosql.s13e.NoSQLSchema.List
+	 * @see es.um.nosql.s13e.NoSQLSchema.PList
 	 * @generated
 	 */
-	public Adapter createListAdapter() {
+	public Adapter createPListAdapter() {
 		return null;
 	}
 
@@ -348,30 +348,30 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.Map <em>Map</em>}'.
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.PMap <em>PMap</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see es.um.nosql.s13e.NoSQLSchema.Map
+	 * @see es.um.nosql.s13e.NoSQLSchema.PMap
 	 * @generated
 	 */
-	public Adapter createMapAdapter() {
+	public Adapter createPMapAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.Set <em>Set</em>}'.
+	 * Creates a new adapter for an object of class '{@link es.um.nosql.s13e.NoSQLSchema.PSet <em>PSet</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see es.um.nosql.s13e.NoSQLSchema.Set
+	 * @see es.um.nosql.s13e.NoSQLSchema.PSet
 	 * @generated
 	 */
-	public Adapter createSetAdapter() {
+	public Adapter createPSetAdapter() {
 		return null;
 	}
 

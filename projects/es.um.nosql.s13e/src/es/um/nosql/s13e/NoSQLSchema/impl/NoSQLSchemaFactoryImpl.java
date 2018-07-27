@@ -60,14 +60,14 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
 			case NoSQLSchemaPackage.ENTITY_CLASS: return createEntityClass();
 			case NoSQLSchemaPackage.STRUCTURAL_VARIATION: return createStructuralVariation();
 			case NoSQLSchemaPackage.ATTRIBUTE: return createAttribute();
-			case NoSQLSchemaPackage.LIST: return createList();
+			case NoSQLSchemaPackage.PLIST: return createPList();
 			case NoSQLSchemaPackage.REFERENCE: return createReference();
 			case NoSQLSchemaPackage.AGGREGATE: return createAggregate();
 			case NoSQLSchemaPackage.PRIMITIVE_TYPE: return createPrimitiveType();
 			case NoSQLSchemaPackage.NULL: return createNull();
 			case NoSQLSchemaPackage.REFERENCE_CLASS: return createReferenceClass();
-			case NoSQLSchemaPackage.MAP: return createMap();
-			case NoSQLSchemaPackage.SET: return createSet();
+			case NoSQLSchemaPackage.PMAP: return createPMap();
+			case NoSQLSchemaPackage.PSET: return createPSet();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -118,9 +118,9 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public List createList() {
-		ListImpl list = new ListImpl();
-		return list;
+	public PList createPList() {
+		PListImpl pList = new PListImpl();
+		return pList;
 	}
 
 	/**
@@ -178,9 +178,9 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Map createMap() {
-		MapImpl map = new MapImpl();
-		return map;
+	public PMap createPMap() {
+		PMapImpl pMap = new PMapImpl();
+		return pMap;
 	}
 
 	/**
@@ -188,9 +188,9 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	public Set createSet() {
-		SetImpl set = new SetImpl();
-		return set;
+	public PSet createPSet() {
+		PSetImpl pSet = new PSetImpl();
+		return pSet;
 	}
 
 	/**

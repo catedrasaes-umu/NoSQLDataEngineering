@@ -58,13 +58,13 @@ public interface NoSQLSchemaFactory extends EFactory {
 	Attribute createAttribute();
 
 	/**
-	 * Returns a new object of class '<em>List</em>'.
+	 * Returns a new object of class '<em>PList</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>List</em>'.
+	 * @return a new object of class '<em>PList</em>'.
 	 * @generated
 	 */
-	List createList();
+	PList createPList();
 
 	/**
 	 * Returns a new object of class '<em>Reference</em>'.
@@ -112,22 +112,22 @@ public interface NoSQLSchemaFactory extends EFactory {
 	ReferenceClass createReferenceClass();
 
 	/**
-	 * Returns a new object of class '<em>Map</em>'.
+	 * Returns a new object of class '<em>PMap</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Map</em>'.
+	 * @return a new object of class '<em>PMap</em>'.
 	 * @generated
 	 */
-	Map createMap();
+	PMap createPMap();
 
 	/**
-	 * Returns a new object of class '<em>Set</em>'.
+	 * Returns a new object of class '<em>PSet</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Set</em>'.
+	 * @return a new object of class '<em>PSet</em>'.
 	 * @generated
 	 */
-	Set createSet();
+	PSet createPSet();
 
 	/**
 	 * Returns the package supported by this factory.

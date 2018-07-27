@@ -6,22 +6,21 @@ import java.util.stream.Collectors;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
-import es.um.nosql.s13e.NoSQLSchema.Tuple;
 import es.um.nosql.s13e.NoSQLSchema.Type;
 
 public class Serializer
 {
-  public static String serialize(EntityVariation eVariation)
+  public static String serialize(StructuralVariation eVariation)
   {
     if (eVariation == null)
       return null;
 
-    return ((Entity)eVariation.eContainer()).getName() + "_" + eVariation.getVariationId();
+    return ((EntityClass)eVariation.eContainer()).getName() + "_" + eVariation.getVariationId();
   }
 
   public static String serialize(Property property)
@@ -56,7 +55,7 @@ public class Serializer
 
     if (type instanceof PrimitiveType)
       result.append(((PrimitiveType)type).getName());
-    else // if (type instanceof Tuple)
+    else if (type instanceof es.um.nosql.s13e.NoSQLSchema.List)
       result.append("Tuple[" + serialize(((Tuple)type).getElements()) + "]");
 
     return result.toString();
@@ -101,7 +100,7 @@ public class Serializer
     else if (association instanceof Reference)
     {
       Reference reference = (Reference)association;
-      result.append(((Entity)reference.getRefTo()).getName());
+      result.append(((EntityClass)reference.getRefTo()).getName());
       result.append(":[" + association.getLowerBound() + ".." + association.getUpperBound() + "]:");
       result.append("opp[");
 
@@ -111,7 +110,7 @@ public class Serializer
         result.append(oppositeRef + "]");
       else
       {
-        result.append(oppositeRef.getName() + ":" + ((Entity)oppositeRef.getRefTo()).getName());
+        result.append(oppositeRef.getName() + ":" + ((EntityClass)oppositeRef.getRefTo()).getName());
         result.append(":[" + oppositeRef.getLowerBound() + ".." + oppositeRef.getUpperBound() + "]]");
       }
     }

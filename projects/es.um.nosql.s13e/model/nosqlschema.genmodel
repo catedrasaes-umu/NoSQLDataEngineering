@@ -30,8 +30,8 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Attribute/type"/>
     </genClasses>
     <genClasses image="false" ecoreClass="nosqlschema.ecore#//Type"/>
-    <genClasses ecoreClass="nosqlschema.ecore#//List">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//List/elementType"/>
+    <genClasses ecoreClass="nosqlschema.ecore#//PList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//PList/elementType"/>
     </genClasses>
     <genClasses image="false" ecoreClass="nosqlschema.ecore#//Association">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//Association/lowerBound"/>
@@ -56,12 +56,12 @@
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Classifier/parents"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Classifier/variations"/>
     </genClasses>
-    <genClasses ecoreClass="nosqlschema.ecore#//Map">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Map/keyType"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Map/valueType"/>
+    <genClasses ecoreClass="nosqlschema.ecore#//PMap">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//PMap/keyType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//PMap/valueType"/>
     </genClasses>
-    <genClasses ecoreClass="nosqlschema.ecore#//Set">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Set/elementType"/>
+    <genClasses ecoreClass="nosqlschema.ecore#//PSet">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//PSet/elementType"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

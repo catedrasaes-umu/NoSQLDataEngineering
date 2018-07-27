@@ -30,7 +30,7 @@
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true"/>
-  <eClassifiers xsi:type="ecore:EClass" name="List" eSuperTypes="#//Type">
+  <eClassifiers xsi:type="ecore:EClass" name="PList" eSuperTypes="#//Type">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elementType" eType="#//Type"
         containment="true"/>
   </eClassifiers>
@@ -62,13 +62,13 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="variations" lowerBound="1"
         upperBound="-1" eType="#//StructuralVariation" containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Map" eSuperTypes="#//Type">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="keyType" eType="#//Type"
+  <eClassifiers xsi:type="ecore:EClass" name="PMap" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="keyType" eType="#//PrimitiveType"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="valueType" eType="#//Type"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="Set">
+  <eClassifiers xsi:type="ecore:EClass" name="PSet">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elementType" eType="#//Type"
         containment="true"/>
   </eClassifiers>

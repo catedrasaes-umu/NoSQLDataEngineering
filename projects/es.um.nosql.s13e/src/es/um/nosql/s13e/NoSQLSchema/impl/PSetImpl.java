@@ -2,8 +2,8 @@
  */
 package es.um.nosql.s13e.NoSQLSchema.impl;
 
-import es.um.nosql.s13e.NoSQLSchema.List;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.NoSQLSchema.PSet;
 import es.um.nosql.s13e.NoSQLSchema.Type;
 
 import org.eclipse.emf.common.notify.Notification;
@@ -13,21 +13,22 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>List</b></em>'.
+ * An implementation of the model object '<em><b>PSet</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.ListImpl#getElementType <em>Element Type</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.PSetImpl#getElementType <em>Element Type</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ListImpl extends TypeImpl implements List {
+public class PSetImpl extends MinimalEObjectImpl.Container implements PSet {
 	/**
 	 * The cached value of the '{@link #getElementType() <em>Element Type</em>}' containment reference.
 	 * <!-- begin-user-doc -->
@@ -43,7 +44,7 @@ public class ListImpl extends TypeImpl implements List {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	protected ListImpl() {
+	protected PSetImpl() {
 		super();
 	}
 
@@ -54,7 +55,7 @@ public class ListImpl extends TypeImpl implements List {
 	 */
 	@Override
 	protected EClass eStaticClass() {
-		return NoSQLSchemaPackage.Literals.LIST;
+		return NoSQLSchemaPackage.Literals.PSET;
 	}
 
 	/**
@@ -75,7 +76,7 @@ public class ListImpl extends TypeImpl implements List {
 		Type oldElementType = elementType;
 		elementType = newElementType;
 		if (eNotificationRequired()) {
-			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.LIST__ELEMENT_TYPE, oldElementType, newElementType);
+			ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.PSET__ELEMENT_TYPE, oldElementType, newElementType);
 			if (msgs == null) msgs = notification; else msgs.add(notification);
 		}
 		return msgs;
@@ -90,14 +91,14 @@ public class ListImpl extends TypeImpl implements List {
 		if (newElementType != elementType) {
 			NotificationChain msgs = null;
 			if (elementType != null)
-				msgs = ((InternalEObject)elementType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NoSQLSchemaPackage.LIST__ELEMENT_TYPE, null, msgs);
+				msgs = ((InternalEObject)elementType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NoSQLSchemaPackage.PSET__ELEMENT_TYPE, null, msgs);
 			if (newElementType != null)
-				msgs = ((InternalEObject)newElementType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - NoSQLSchemaPackage.LIST__ELEMENT_TYPE, null, msgs);
+				msgs = ((InternalEObject)newElementType).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - NoSQLSchemaPackage.PSET__ELEMENT_TYPE, null, msgs);
 			msgs = basicSetElementType(newElementType, msgs);
 			if (msgs != null) msgs.dispatch();
 		}
 		else if (eNotificationRequired())
-			eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.LIST__ELEMENT_TYPE, newElementType, newElementType));
+			eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.PSET__ELEMENT_TYPE, newElementType, newElementType));
 	}
 
 	/**
@@ -108,7 +109,7 @@ public class ListImpl extends TypeImpl implements List {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case NoSQLSchemaPackage.LIST__ELEMENT_TYPE:
+			case NoSQLSchemaPackage.PSET__ELEMENT_TYPE:
 				return basicSetElementType(null, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
@@ -122,7 +123,7 @@ public class ListImpl extends TypeImpl implements List {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case NoSQLSchemaPackage.LIST__ELEMENT_TYPE:
+			case NoSQLSchemaPackage.PSET__ELEMENT_TYPE:
 				return getElementType();
 		}
 		return super.eGet(featureID, resolve, coreType);
@@ -136,7 +137,7 @@ public class ListImpl extends TypeImpl implements List {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case NoSQLSchemaPackage.LIST__ELEMENT_TYPE:
+			case NoSQLSchemaPackage.PSET__ELEMENT_TYPE:
 				setElementType((Type)newValue);
 				return;
 		}
@@ -151,7 +152,7 @@ public class ListImpl extends TypeImpl implements List {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case NoSQLSchemaPackage.LIST__ELEMENT_TYPE:
+			case NoSQLSchemaPackage.PSET__ELEMENT_TYPE:
 				setElementType((Type)null);
 				return;
 		}
@@ -166,10 +167,10 @@ public class ListImpl extends TypeImpl implements List {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case NoSQLSchemaPackage.LIST__ELEMENT_TYPE:
+			case NoSQLSchemaPackage.PSET__ELEMENT_TYPE:
 				return elementType != null;
 		}
 		return super.eIsSet(featureID);
 	}
 
-} //ListImpl
+} //PSetImpl

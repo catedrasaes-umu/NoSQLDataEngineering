@@ -104,10 +104,10 @@ public class NoSQLSchemaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case NoSQLSchemaPackage.LIST: {
-				List list = (List)theEObject;
-				T result = caseList(list);
-				if (result == null) result = caseType(list);
+			case NoSQLSchemaPackage.PLIST: {
+				PList pList = (PList)theEObject;
+				T result = casePList(pList);
+				if (result == null) result = caseType(pList);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -161,16 +161,16 @@ public class NoSQLSchemaSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case NoSQLSchemaPackage.MAP: {
-				Map map = (Map)theEObject;
-				T result = caseMap(map);
-				if (result == null) result = caseType(map);
+			case NoSQLSchemaPackage.PMAP: {
+				PMap pMap = (PMap)theEObject;
+				T result = casePMap(pMap);
+				if (result == null) result = caseType(pMap);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
-			case NoSQLSchemaPackage.SET: {
-				Set set = (Set)theEObject;
-				T result = caseSet(set);
+			case NoSQLSchemaPackage.PSET: {
+				PSet pSet = (PSet)theEObject;
+				T result = casePSet(pSet);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -269,17 +269,17 @@ public class NoSQLSchemaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>List</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PList</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>List</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PList</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseList(List object) {
+	public T casePList(PList object) {
 		return null;
 	}
 
@@ -389,32 +389,32 @@ public class NoSQLSchemaSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Map</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PMap</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Map</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PMap</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseMap(Map object) {
+	public T casePMap(PMap object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Set</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>PSet</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Set</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>PSet</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseSet(Set object) {
+	public T casePSet(PSet object) {
 		return null;
 	}
 

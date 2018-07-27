@@ -406,14 +406,14 @@ public interface NoSQLSchemaPackage extends EPackage {
 	int TYPE_OPERATION_COUNT = 0;
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.ListImpl <em>List</em>}' class.
+	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.PListImpl <em>PList</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.s13e.NoSQLSchema.impl.ListImpl
-	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getList()
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.PListImpl
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getPList()
 	 * @generated
 	 */
-	int LIST = 6;
+	int PLIST = 6;
 
 	/**
 	 * The feature id for the '<em><b>Element Type</b></em>' containment reference.
@@ -422,25 +422,25 @@ public interface NoSQLSchemaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIST__ELEMENT_TYPE = TYPE_FEATURE_COUNT + 0;
+	int PLIST__ELEMENT_TYPE = TYPE_FEATURE_COUNT + 0;
 
 	/**
-	 * The number of structural features of the '<em>List</em>' class.
+	 * The number of structural features of the '<em>PList</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIST_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
+	int PLIST_FEATURE_COUNT = TYPE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of operations of the '<em>List</em>' class.
+	 * The number of operations of the '<em>PList</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIST_OPERATION_COUNT = TYPE_OPERATION_COUNT + 0;
+	int PLIST_OPERATION_COUNT = TYPE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.AssociationImpl <em>Association</em>}' class.
@@ -782,14 +782,14 @@ public interface NoSQLSchemaPackage extends EPackage {
 	int REFERENCE_CLASS_OPERATION_COUNT = CLASSIFIER_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.MapImpl <em>Map</em>}' class.
+	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.PMapImpl <em>PMap</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.s13e.NoSQLSchema.impl.MapImpl
-	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getMap()
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.PMapImpl
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getPMap()
 	 * @generated
 	 */
-	int MAP = 14;
+	int PMAP = 14;
 
 	/**
 	 * The feature id for the '<em><b>Key Type</b></em>' containment reference.
@@ -798,7 +798,7 @@ public interface NoSQLSchemaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP__KEY_TYPE = TYPE_FEATURE_COUNT + 0;
+	int PMAP__KEY_TYPE = TYPE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Value Type</b></em>' containment reference.
@@ -807,35 +807,35 @@ public interface NoSQLSchemaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MAP__VALUE_TYPE = TYPE_FEATURE_COUNT + 1;
+	int PMAP__VALUE_TYPE = TYPE_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Map</em>' class.
+	 * The number of structural features of the '<em>PMap</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
+	int PMAP_FEATURE_COUNT = TYPE_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Map</em>' class.
+	 * The number of operations of the '<em>PMap</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MAP_OPERATION_COUNT = TYPE_OPERATION_COUNT + 0;
+	int PMAP_OPERATION_COUNT = TYPE_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.SetImpl <em>Set</em>}' class.
+	 * The meta object id for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.PSetImpl <em>PSet</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see es.um.nosql.s13e.NoSQLSchema.impl.SetImpl
-	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getSet()
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.PSetImpl
+	 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getPSet()
 	 * @generated
 	 */
-	int SET = 15;
+	int PSET = 15;
 
 	/**
 	 * The feature id for the '<em><b>Element Type</b></em>' containment reference.
@@ -844,26 +844,25 @@ public interface NoSQLSchemaPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int SET__ELEMENT_TYPE = 0;
+	int PSET__ELEMENT_TYPE = 0;
 
 	/**
-	 * The number of structural features of the '<em>Set</em>' class.
+	 * The number of structural features of the '<em>PSet</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SET_FEATURE_COUNT = 1;
+	int PSET_FEATURE_COUNT = 1;
 
 	/**
-	 * The number of operations of the '<em>Set</em>' class.
+	 * The number of operations of the '<em>PSet</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int SET_OPERATION_COUNT = 0;
-
+	int PSET_OPERATION_COUNT = 0;
 
 	/**
 	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.NoSQLSchema <em>No SQL Schema</em>}'.
@@ -1036,25 +1035,25 @@ public interface NoSQLSchemaPackage extends EPackage {
 	EClass getType();
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.List <em>List</em>}'.
+	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.PList <em>PList</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>List</em>'.
-	 * @see es.um.nosql.s13e.NoSQLSchema.List
+	 * @return the meta object for class '<em>PList</em>'.
+	 * @see es.um.nosql.s13e.NoSQLSchema.PList
 	 * @generated
 	 */
-	EClass getList();
+	EClass getPList();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link es.um.nosql.s13e.NoSQLSchema.List#getElementType <em>Element Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link es.um.nosql.s13e.NoSQLSchema.PList#getElementType <em>Element Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Element Type</em>'.
-	 * @see es.um.nosql.s13e.NoSQLSchema.List#getElementType()
-	 * @see #getList()
+	 * @see es.um.nosql.s13e.NoSQLSchema.PList#getElementType()
+	 * @see #getPList()
 	 * @generated
 	 */
-	EReference getList_ElementType();
+	EReference getPList_ElementType();
 
 	/**
 	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.Association <em>Association</em>}'.
@@ -1248,57 +1247,57 @@ public interface NoSQLSchemaPackage extends EPackage {
 	EReference getClassifier_Variations();
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.Map <em>Map</em>}'.
+	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.PMap <em>PMap</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Map</em>'.
-	 * @see es.um.nosql.s13e.NoSQLSchema.Map
+	 * @return the meta object for class '<em>PMap</em>'.
+	 * @see es.um.nosql.s13e.NoSQLSchema.PMap
 	 * @generated
 	 */
-	EClass getMap();
+	EClass getPMap();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link es.um.nosql.s13e.NoSQLSchema.Map#getKeyType <em>Key Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link es.um.nosql.s13e.NoSQLSchema.PMap#getKeyType <em>Key Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Key Type</em>'.
-	 * @see es.um.nosql.s13e.NoSQLSchema.Map#getKeyType()
-	 * @see #getMap()
+	 * @see es.um.nosql.s13e.NoSQLSchema.PMap#getKeyType()
+	 * @see #getPMap()
 	 * @generated
 	 */
-	EReference getMap_KeyType();
+	EReference getPMap_KeyType();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link es.um.nosql.s13e.NoSQLSchema.Map#getValueType <em>Value Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link es.um.nosql.s13e.NoSQLSchema.PMap#getValueType <em>Value Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Value Type</em>'.
-	 * @see es.um.nosql.s13e.NoSQLSchema.Map#getValueType()
-	 * @see #getMap()
+	 * @see es.um.nosql.s13e.NoSQLSchema.PMap#getValueType()
+	 * @see #getPMap()
 	 * @generated
 	 */
-	EReference getMap_ValueType();
+	EReference getPMap_ValueType();
 
 	/**
-	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.Set <em>Set</em>}'.
+	 * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.PSet <em>PSet</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Set</em>'.
-	 * @see es.um.nosql.s13e.NoSQLSchema.Set
+	 * @return the meta object for class '<em>PSet</em>'.
+	 * @see es.um.nosql.s13e.NoSQLSchema.PSet
 	 * @generated
 	 */
-	EClass getSet();
+	EClass getPSet();
 
 	/**
-	 * Returns the meta object for the containment reference '{@link es.um.nosql.s13e.NoSQLSchema.Set#getElementType <em>Element Type</em>}'.
+	 * Returns the meta object for the containment reference '{@link es.um.nosql.s13e.NoSQLSchema.PSet#getElementType <em>Element Type</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference '<em>Element Type</em>'.
-	 * @see es.um.nosql.s13e.NoSQLSchema.Set#getElementType()
-	 * @see #getSet()
+	 * @see es.um.nosql.s13e.NoSQLSchema.PSet#getElementType()
+	 * @see #getPSet()
 	 * @generated
 	 */
-	EReference getSet_ElementType();
+	EReference getPSet_ElementType();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -1464,14 +1463,14 @@ public interface NoSQLSchemaPackage extends EPackage {
 		EClass TYPE = eINSTANCE.getType();
 
 		/**
-		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.ListImpl <em>List</em>}' class.
+		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.PListImpl <em>PList</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.s13e.NoSQLSchema.impl.ListImpl
-		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getList()
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.PListImpl
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getPList()
 		 * @generated
 		 */
-		EClass LIST = eINSTANCE.getList();
+		EClass PLIST = eINSTANCE.getPList();
 
 		/**
 		 * The meta object literal for the '<em><b>Element Type</b></em>' containment reference feature.
@@ -1479,7 +1478,7 @@ public interface NoSQLSchemaPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference LIST__ELEMENT_TYPE = eINSTANCE.getList_ElementType();
+		EReference PLIST__ELEMENT_TYPE = eINSTANCE.getPList_ElementType();
 
 		/**
 		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.AssociationImpl <em>Association</em>}' class.
@@ -1640,14 +1639,14 @@ public interface NoSQLSchemaPackage extends EPackage {
 		EReference CLASSIFIER__VARIATIONS = eINSTANCE.getClassifier_Variations();
 
 		/**
-		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.MapImpl <em>Map</em>}' class.
+		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.PMapImpl <em>PMap</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.s13e.NoSQLSchema.impl.MapImpl
-		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getMap()
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.PMapImpl
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getPMap()
 		 * @generated
 		 */
-		EClass MAP = eINSTANCE.getMap();
+		EClass PMAP = eINSTANCE.getPMap();
 
 		/**
 		 * The meta object literal for the '<em><b>Key Type</b></em>' containment reference feature.
@@ -1655,7 +1654,7 @@ public interface NoSQLSchemaPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MAP__KEY_TYPE = eINSTANCE.getMap_KeyType();
+		EReference PMAP__KEY_TYPE = eINSTANCE.getPMap_KeyType();
 
 		/**
 		 * The meta object literal for the '<em><b>Value Type</b></em>' containment reference feature.
@@ -1663,17 +1662,17 @@ public interface NoSQLSchemaPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference MAP__VALUE_TYPE = eINSTANCE.getMap_ValueType();
+		EReference PMAP__VALUE_TYPE = eINSTANCE.getPMap_ValueType();
 
 		/**
-		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.SetImpl <em>Set</em>}' class.
+		 * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.PSetImpl <em>PSet</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see es.um.nosql.s13e.NoSQLSchema.impl.SetImpl
-		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getSet()
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.PSetImpl
+		 * @see es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaPackageImpl#getPSet()
 		 * @generated
 		 */
-		EClass SET = eINSTANCE.getSet();
+		EClass PSET = eINSTANCE.getPSet();
 
 		/**
 		 * The meta object literal for the '<em><b>Element Type</b></em>' containment reference feature.
@@ -1681,7 +1680,7 @@ public interface NoSQLSchemaPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference SET__ELEMENT_TYPE = eINSTANCE.getSet_ElementType();
+		EReference PSET__ELEMENT_TYPE = eINSTANCE.getPSet_ElementType();
 
 	}
 

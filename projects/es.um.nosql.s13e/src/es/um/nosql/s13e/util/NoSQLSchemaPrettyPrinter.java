@@ -2,12 +2,13 @@ package es.um.nosql.s13e.util;
 
 import java.io.File;
 
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 
+// TODO: Adapt to version 2
 public class NoSQLSchemaPrettyPrinter
 {
   private static final String TAB = "  ";
@@ -43,18 +44,18 @@ public class NoSQLSchemaPrettyPrinter
 
     result.append("NoSQLSchema name: " + nosqlschema.getName() + ENDL);
 
-    for (Entity entity : nosqlschema.getEntities())
+    for (EntityClass entity : nosqlschema.getEntities())
       result.append(printPretty(entity, TAB));
 
     return result.toString();
   }
 
-  public static String printPretty(Entity entity)
+  public static String printPretty(EntityClass entity)
   {
     return printPretty(entity, "");
   }
 
-  private static String printPretty(Entity entity, String defTabs)
+  private static String printPretty(EntityClass entity, String defTabs)
   {
     if (entity == null)
       return null;
@@ -63,18 +64,18 @@ public class NoSQLSchemaPrettyPrinter
 
     result.append(defTabs + "Entity name: " + entity.getName() + (entity.isRoot() ? " (root)" : "") + ENDL);
 
-    for (EntityVariation eVariation : entity.getEntityVariations())
+    for (StructuralVariation eVariation : entity.getVariations())
       result.append(printPretty(eVariation, defTabs + TAB));
 
     return result.toString();
   }
 
-  public static String printPretty(EntityVariation eVariation)
+  public static String printPretty(StructuralVariation eVariation)
   {
     return printPretty(eVariation, "");
   }
 
-  private static String printPretty(EntityVariation eVariation, String defTabs)
+  private static String printPretty(StructuralVariation eVariation, String defTabs)
   {
     if (eVariation == null)
       return null;
