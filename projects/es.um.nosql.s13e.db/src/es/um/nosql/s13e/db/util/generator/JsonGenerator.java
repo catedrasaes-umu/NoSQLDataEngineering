@@ -16,8 +16,8 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
@@ -30,7 +30,7 @@ public class JsonGenerator
   private int MIN_INSTANCES_VARIATION;
   private int MAX_INSTANCES_VARIATION;
 
-  private Map<EntityVariation, List<ObjectNode>> evMap;
+  private Map<StructuralVariation, List<ObjectNode>> evMap;
   private Map<String, List<String>> entityIdMap;
   private ArrayNode lStorage;
 
@@ -52,16 +52,16 @@ public class JsonGenerator
 
   public String generate(NoSQLSchema schema) throws Exception
   {
-    evMap = new HashMap<EntityVariation, List<ObjectNode>>();
+    evMap = new HashMap<StructuralVariation, List<ObjectNode>>();
     entityIdMap = new HashMap<String, List<String>>();
 
     lStorage = factory.arrayNode();
 
     // First run to generate all the primitive types and tuples.
-    for (Entity entity : schema.getEntities())
+    for (EntityClass entity : schema.getEntities())
     {
       entityIdMap.put(entity.getName().toLowerCase(), new ArrayList<String>());
-      for (EntityVariation eVariation : entity.getVariations())
+      for (StructuralVariation eVariation : entity.getVariations())
       {
         evMap.put(eVariation, new ArrayList<ObjectNode>());
         int countInstances = getRandomBetween(MIN_INSTANCES_VARIATION, MAX_INSTANCES_VARIATION);
@@ -97,8 +97,8 @@ public class JsonGenerator
     }
 
     // Second run to generate the references and aggregates since now all the variations and instances exist.
-    for (Entity entity : schema.getEntities())
-      for (EntityVariation eVariation : entity.getVariations())
+    for (EntityClass entity : schema.getEntities())
+      for (StructuralVariation eVariation : entity.getVariations())
         for (ObjectNode strObj : evMap.get(eVariation))
         {
           for (Property property : eVariation.getProperties())
@@ -132,7 +132,7 @@ public class JsonGenerator
                 ArrayNode array = factory.arrayNode();
                 strObj.put(aggr.getName(), array);
                 // We keep all the aggregated variations in a banned list because we won't add them to the database as standalone objects.
-                for (EntityVariation aggrEV : aggr.getRefTo())
+                for (StructuralVariation aggrEV : aggr.getRefTo())
                 {
                   ObjectNode aggrNode = getRandomAggr(aggrEV);
                   array.add(aggrNode);
@@ -154,7 +154,7 @@ public class JsonGenerator
     throw new Exception("Reference not found: " + name);
   }
 
-  private ObjectNode getRandomAggr(EntityVariation eVariation)
+  private ObjectNode getRandomAggr(StructuralVariation eVariation)
   {
     return evMap.get(eVariation).get(getRandomBetween(0, evMap.get(eVariation).size() - 1));
   }
