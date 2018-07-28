@@ -1,7 +1,7 @@
 package es.um.nosql.s13e.m2t.mongoose
 
 import es.um.nosql.s13e.m2t.config.ConfigMongoose
-import es.um.nosql.s13e.NoSQLSchema.Entity
+import es.um.nosql.s13e.NoSQLSchema.EntityClass
 import es.um.nosql.s13e.m2t.config.pojo.ConfigIndex
 import java.util.ArrayList
 import java.util.List
@@ -17,7 +17,7 @@ class MongooseIndexValGen
     this.config = config;
   }
 
-  public def genIndexesForEntity(Entity e)
+  public def genIndexesForEntity(EntityClass e)
   {
     if (config === null)
     ''''''
@@ -31,7 +31,7 @@ class MongooseIndexValGen
     }
   }
 
-  public def List<Pair<String, String>> genValidatorsForField(Entity e, String field)
+  public def List<Pair<String, String>> genValidatorsForField(EntityClass e, String field)
   {
     val result = new ArrayList<Pair<String, String>>();
     if (config === null)

@@ -9,7 +9,7 @@ import es.um.nosql.s13e.DecisionTree.DecisionTrees;
 import es.um.nosql.s13e.DecisionTree.IntermediateNode;
 import es.um.nosql.s13e.DecisionTree.LeafNode;
 import es.um.nosql.s13e.DecisionTree.PropertySpec2;
-import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.util.ModelLoader;
 
 public class DecisionTreePrettyPrinter
@@ -142,7 +142,9 @@ public class DecisionTreePrettyPrinter
 
     StringBuilder result = new StringBuilder();
 
-    result.append(defTabs + "LeafNode: " + ((Entity)lNode.getIdentifiedVariation().eContainer()).getName() + "_" + lNode.getIdentifiedVariation().getVariationId() + ENDL);
+    result.append(defTabs + "LeafNode: " 
+      + ((EntityClass)lNode.getIdentifiedVariation().eContainer()).getName() 
+      + "_" + lNode.getIdentifiedVariation().getVariationId() + ENDL);
 
     return result.toString();
   }

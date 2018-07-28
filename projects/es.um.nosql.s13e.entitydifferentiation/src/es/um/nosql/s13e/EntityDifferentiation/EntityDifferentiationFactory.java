@@ -15,56 +15,56 @@ import org.eclipse.emf.ecore.EFactory;
 public interface EntityDifferentiationFactory extends EFactory
 {
   /**
-   * The singleton instance of the factory.
-   * <!-- begin-user-doc -->
+	 * The singleton instance of the factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   EntityDifferentiationFactory eINSTANCE = es.um.nosql.s13e.EntityDifferentiation.impl.EntityDifferentiationFactoryImpl.init();
 
   /**
-   * Returns a new object of class '<em>Entity Differentiation</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Entity Differentiation</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Entity Differentiation</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Entity Differentiation</em>'.
+	 * @generated
+	 */
   EntityDifferentiation createEntityDifferentiation();
 
   /**
-   * Returns a new object of class '<em>Entity Diff Spec</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Entity Diff Spec</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Entity Diff Spec</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Entity Diff Spec</em>'.
+	 * @generated
+	 */
   EntityDiffSpec createEntityDiffSpec();
 
   /**
-   * Returns a new object of class '<em>Property Spec</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns a new object of class '<em>Property Spec</em>'.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Property Spec</em>'.
-   * @generated
-   */
+	 * @return a new object of class '<em>Property Spec</em>'.
+	 * @generated
+	 */
   PropertySpec createPropertySpec();
 
   /**
-   * Returns a new object of class '<em>Entity Variation Prop</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Entity Variation Prop</em>'.
-   * @generated
-   */
-  EntityVariationProp createEntityVariationProp();
+	 * Returns a new object of class '<em>Structural Variation Prop</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Structural Variation Prop</em>'.
+	 * @generated
+	 */
+	StructuralVariationProp createStructuralVariationProp();
 
-  /**
-   * Returns the package supported by this factory.
-   * <!-- begin-user-doc -->
+		/**
+	 * Returns the package supported by this factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the package supported by this factory.
-   * @generated
-   */
+	 * @return the package supported by this factory.
+	 * @generated
+	 */
   EntityDifferentiationPackage getEntityDifferentiationPackage();
 
 } //EntityDifferentiationFactory

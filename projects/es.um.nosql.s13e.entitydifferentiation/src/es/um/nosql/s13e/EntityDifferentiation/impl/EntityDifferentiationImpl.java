@@ -41,266 +41,258 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class EntityDifferentiationImpl extends MinimalEObjectImpl.Container implements EntityDifferentiation
 {
   /**
-   * The cached value of the '{@link #getEntityDiffSpecs() <em>Entity Diff Specs</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getEntityDiffSpecs() <em>Entity Diff Specs</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEntityDiffSpecs()
-   * @generated
-   * @ordered
-   */
+	 * @see #getEntityDiffSpecs()
+	 * @generated
+	 * @ordered
+	 */
   protected EList<EntityDiffSpec> entityDiffSpecs;
 
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getSchema() <em>Schema</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getSchema() <em>Schema</em>}' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getSchema()
-   * @generated
-   * @ordered
-   */
+	 * @see #getSchema()
+	 * @generated
+	 * @ordered
+	 */
   protected NoSQLSchema schema;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected EntityDifferentiationImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return EntityDifferentiationPackage.Literals.ENTITY_DIFFERENTIATION;
-  }
+		return EntityDifferentiationPackage.Literals.ENTITY_DIFFERENTIATION;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public EList<EntityDiffSpec> getEntityDiffSpecs()
   {
-    if (entityDiffSpecs == null)
-    {
-      entityDiffSpecs = new EObjectContainmentEList<EntityDiffSpec>(EntityDiffSpec.class, this, EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__ENTITY_DIFF_SPECS);
-    }
-    return entityDiffSpecs;
-  }
+		if (entityDiffSpecs == null) {
+			entityDiffSpecs = new EObjectContainmentEList<EntityDiffSpec>(EntityDiffSpec.class, this, EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__ENTITY_DIFF_SPECS);
+		}
+		return entityDiffSpecs;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String getName()
   {
-    return name;
-  }
+		return name;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setName(String newName)
   {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__NAME, oldName, name));
-  }
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__NAME, oldName, name));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NoSQLSchema getSchema()
   {
-    if (schema != null && schema.eIsProxy())
-    {
-      InternalEObject oldSchema = (InternalEObject)schema;
-      schema = (NoSQLSchema)eResolveProxy(oldSchema);
-      if (schema != oldSchema)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA, oldSchema, schema));
-      }
-    }
-    return schema;
-  }
+		if (schema != null && schema.eIsProxy()) {
+			InternalEObject oldSchema = (InternalEObject)schema;
+			schema = (NoSQLSchema)eResolveProxy(oldSchema);
+			if (schema != oldSchema) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA, oldSchema, schema));
+			}
+		}
+		return schema;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public NoSQLSchema basicGetSchema()
   {
-    return schema;
-  }
+		return schema;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setSchema(NoSQLSchema newSchema)
   {
-    NoSQLSchema oldSchema = schema;
-    schema = newSchema;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA, oldSchema, schema));
-  }
+		NoSQLSchema oldSchema = schema;
+		schema = newSchema;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA, oldSchema, schema));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
   {
-    switch (featureID)
-    {
-      case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__ENTITY_DIFF_SPECS:
-        return ((InternalEList<?>)getEntityDiffSpecs()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__ENTITY_DIFF_SPECS:
+				return ((InternalEList<?>)getEntityDiffSpecs()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__ENTITY_DIFF_SPECS:
-        return getEntityDiffSpecs();
-      case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__NAME:
-        return getName();
-      case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA:
-        if (resolve) return getSchema();
-        return basicGetSchema();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__ENTITY_DIFF_SPECS:
+				return getEntityDiffSpecs();
+			case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__NAME:
+				return getName();
+			case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA:
+				if (resolve) return getSchema();
+				return basicGetSchema();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__ENTITY_DIFF_SPECS:
-        getEntityDiffSpecs().clear();
-        getEntityDiffSpecs().addAll((Collection<? extends EntityDiffSpec>)newValue);
-        return;
-      case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__NAME:
-        setName((String)newValue);
-        return;
-      case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA:
-        setSchema((NoSQLSchema)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__ENTITY_DIFF_SPECS:
+				getEntityDiffSpecs().clear();
+				getEntityDiffSpecs().addAll((Collection<? extends EntityDiffSpec>)newValue);
+				return;
+			case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__NAME:
+				setName((String)newValue);
+				return;
+			case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA:
+				setSchema((NoSQLSchema)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__ENTITY_DIFF_SPECS:
-        getEntityDiffSpecs().clear();
-        return;
-      case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__NAME:
-        setName(NAME_EDEFAULT);
-        return;
-      case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA:
-        setSchema((NoSQLSchema)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__ENTITY_DIFF_SPECS:
+				getEntityDiffSpecs().clear();
+				return;
+			case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA:
+				setSchema((NoSQLSchema)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__ENTITY_DIFF_SPECS:
-        return entityDiffSpecs != null && !entityDiffSpecs.isEmpty();
-      case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA:
-        return schema != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__ENTITY_DIFF_SPECS:
+				return entityDiffSpecs != null && !entityDiffSpecs.isEmpty();
+			case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case EntityDifferentiationPackage.ENTITY_DIFFERENTIATION__SCHEMA:
+				return schema != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
+	}
 
 } //EntityDifferentiationImpl

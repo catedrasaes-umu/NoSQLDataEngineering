@@ -11,9 +11,9 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntityDiffSpec">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" lowerBound="1"
-        eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//Entity"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="entityVariationProps" upperBound="-1"
-        eType="#//EntityVariationProp" containment="true"/>
+        eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//EntityClass"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variationProps" upperBound="-1"
+        eType="#//StructuralVariationProp" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="commonProps" upperBound="-1"
         eType="#//PropertySpec" containment="true"/>
   </eClassifiers>
@@ -22,11 +22,11 @@
         eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//Property"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="needsTypeCheck" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EntityVariationProp">
+  <eClassifiers xsi:type="ecore:EClass" name="StructuralVariationProp">
     <eStructuralFeatures xsi:type="ecore:EReference" name="propertySpecs" upperBound="-1"
         eType="#//PropertySpec" containment="true"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="entityVariation" lowerBound="1"
-        eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//EntityVariation"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variation" lowerBound="1"
+        eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//StructuralVariation"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="notProps" upperBound="-1"
         eType="#//PropertySpec" containment="true"/>
   </eClassifiers>

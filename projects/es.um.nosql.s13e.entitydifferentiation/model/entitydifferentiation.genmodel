@@ -6,7 +6,8 @@
     usedGenPackages="../../es.um.nosql.s13e/model/nosqlschema.genmodel#//NoSQLSchema"
     operationReflection="true" importOrganizing="true">
   <foreignModel>entitydifferentiation.ecore</foreignModel>
-  <genPackages prefix="EntityDifferentiation" disposableProviderFactory="true" ecorePackage="entitydifferentiation.ecore#/">
+  <genPackages prefix="EntityDifferentiation" basePackage="es.um.nosql.s13e" disposableProviderFactory="true"
+      ecorePackage="entitydifferentiation.ecore#/">
     <genClasses ecoreClass="entitydifferentiation.ecore#//EntityDifferentiation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDifferentiation/entityDiffSpecs"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entitydifferentiation.ecore#//EntityDifferentiation/name"/>
@@ -14,17 +15,17 @@
     </genClasses>
     <genClasses ecoreClass="entitydifferentiation.ecore#//EntityDiffSpec">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDiffSpec/entity"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDiffSpec/entityVariationProps"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDiffSpec/variationProps"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDiffSpec/commonProps"/>
     </genClasses>
     <genClasses ecoreClass="entitydifferentiation.ecore#//PropertySpec">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//PropertySpec/property"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entitydifferentiation.ecore#//PropertySpec/needsTypeCheck"/>
     </genClasses>
-    <genClasses ecoreClass="entitydifferentiation.ecore#//EntityVariationProp">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityVariationProp/propertySpecs"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityVariationProp/entityVariation"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityVariationProp/notProps"/>
+    <genClasses ecoreClass="entitydifferentiation.ecore#//StructuralVariationProp">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//StructuralVariationProp/propertySpecs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//StructuralVariationProp/variation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//StructuralVariationProp/notProps"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

@@ -7,10 +7,10 @@ import java.util.List
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType
 import es.um.nosql.s13e.NoSQLSchema.Attribute
-import es.um.nosql.s13e.NoSQLSchema.Tuple
+import es.um.nosql.s13e.NoSQLSchema.PTuple
 import es.um.nosql.s13e.NoSQLSchema.Reference
 import es.um.nosql.s13e.NoSQLSchema.Aggregate
-import es.um.nosql.s13e.NoSQLSchema.Entity
+import es.um.nosql.s13e.NoSQLSchema.EntityClass
 import java.util.Map
 import java.util.Comparator
 import es.um.nosql.s13e.NoSQLSchema.Property
@@ -74,7 +74,7 @@ public class DiffToMongoose
   /**
    * This method generates the basic structure of the Javascript class.
    */
-  private def genSchema(Entity e) '''
+  private def genSchema(EntityClass e) '''
     'use strict'
 
     var mongoose = require('mongoose');
@@ -92,16 +92,16 @@ public class DiffToMongoose
   /**
    * To generate imports, we just recreate the routes of the imports to be used.
    */
-  private def genIncludes(Entity entity, EntityDiffSpec spec) '''
+  private def genIncludes(EntityClass entity, EntityDiffSpec spec) '''
     «FOR e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
       var «e.name»Schema = require('./«schemaFileName(e)»');
     «ENDFOR»
-    «IF spec.commonProps.exists[cp | cp.needsTypeCheck] || spec.entityVariationProps.exists[ev | ev.propertySpecs.exists[ps | ps.needsTypeCheck]]»
+    «IF spec.commonProps.exists[cp | cp.needsTypeCheck] || spec.variationProps.exists[ev | ev.propertySpecs.exists[ps | ps.needsTypeCheck]]»
       var UnionType = require('./util/UnionType.js');
     «ENDIF»
   '''
 
-  private def schemaFileName(Entity e)
+  private def schemaFileName(EntityClass e)
   {
     e.name + "Schema.js"
   }
@@ -111,7 +111,7 @@ public class DiffToMongoose
    * s.key stores a PropertySpec
    * s.value stores "required" or not
    */
-  private def genSpecs(Entity e, EntityDiffSpec spec)
+  private def genSpecs(EntityClass e, EntityDiffSpec spec)
   '''
     «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false])
       .reject[p | p.key.property.name.startsWith("_") && !p.key.property.name.equals("_id")]
@@ -122,7 +122,7 @@ public class DiffToMongoose
 
   private def specificProps(EntityDiffSpec spec)
   {
-    spec.entityVariationProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
+    spec.variationProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
       [result, neew |
         val names = result.map[p | p.property.name].toSet
         result.addAll(neew.filter[p | !names.contains(p.property.name)])
@@ -130,7 +130,7 @@ public class DiffToMongoose
       ])
   }
 
-  private def mongooseOptionsForPropertySpec(Entity e, PropertySpec spec, boolean required)
+  private def mongooseOptionsForPropertySpec(EntityClass e, PropertySpec spec, boolean required)
   {
     val props = new HashMap<String,Object>()
 
@@ -141,7 +141,7 @@ public class DiffToMongoose
     // if it is an association w lowerBound == 0. Proof: https://stackoverflow.com/questions/27268172/mongoose-schema-to-require-array-that-can-be-empty
     if (required && (!(spec.property instanceof Association) || (spec.property as Association).lowerBound != 0))
       props.put('required', true)
-    else if ((spec.property instanceof Attribute && (spec.property as Attribute).type instanceof Tuple) ||
+    else if ((spec.property instanceof Attribute && (spec.property as Attribute).type instanceof PTuple) ||
       (spec.property instanceof Association && ((spec.property as Association).upperBound !== 1 || (spec.property as Association).lowerBound !== 1)))
       props.put('default', label("undefined"))
     // This last condition is used because empty optional arrays are stored in Mongoose. This shouldn't be a thing.
@@ -185,7 +185,7 @@ public class DiffToMongoose
   /**
    * Method used to check if a property needs type check, and call the neccesary method.
    */
-  private def genPropSpec(Entity e, PropertySpec ps)
+  private def genPropSpec(EntityClass e, PropertySpec ps)
   {
     if (ps.needsTypeCheck)
       genCodeForTypeCheckProperty(e, ps.property)
@@ -199,7 +199,7 @@ public class DiffToMongoose
    * If the reduction is possible, we generate the property as any other.
    * If not, a Union is generated.
    */
-  private def genCodeForTypeCheckProperty(Entity e, Property property)
+  private def genCodeForTypeCheckProperty(EntityClass e, Property property)
   {
     val typeList = analyzer.getTypeListByPropertyName().get(e).get(property.name)
     // On uniqueTypeList we removed duplicated property types, such as a String PrimitiveType and a Reference w originalType String.
@@ -224,7 +224,7 @@ public class DiffToMongoose
 
   private def dispatch reduceUnionProperty(Aggregate aggr, List<Property> uniqueTypeList, List<String> typeShortcutList)
   {
-    addToReduceLists(aggr, (aggr.refTo.get(0).eContainer as Entity).name, uniqueTypeList, typeShortcutList);
+    addToReduceLists(aggr, (aggr.aggregates.get(0).eContainer as EntityClass).name, uniqueTypeList, typeShortcutList);
   }
 
   private def dispatch reduceUnionProperty(Reference ref, List<Property> uniqueTypeList, List<String> typeShortcutList)
@@ -236,9 +236,9 @@ public class DiffToMongoose
   {
     if (attr.type instanceof PrimitiveType)
       addToReduceLists(attr, (attr.type as PrimitiveType).name, uniqueTypeList, typeShortcutList);
-    if (attr.type instanceof Tuple)
+    if (attr.type instanceof PTuple)
     {
-      val typeTuple = (attr.type as Tuple).elements;
+      val typeTuple = (attr.type as PTuple).elements;
       if (typeTuple.size == 1)
       {
         uniqueTypeList.add(attr);
@@ -292,7 +292,7 @@ public class DiffToMongoose
    */
   private def aggregateType(Aggregate aggr)
   {
-    val entityName = (aggr.refTo.get(0).eContainer as Entity).name
+    val entityName = (aggr.aggregates.get(0).eContainer as EntityClass).name
 
     // Lower bound might be 0 or 1. In any of those cases we only need a value, not an array
     if (aggr.upperBound == 1 && aggr.lowerBound == 1)
@@ -311,9 +311,9 @@ public class DiffToMongoose
 
     // DBRef
     if (refComps.length == 2)
-      #{ 'type' -> genTypeForPrimitiveString(refComps.get(1)), 'ref' -> label(ref.refTo.name)}
+      #{ 'type' -> genTypeForPrimitiveString(refComps.get(1)), 'ref' -> label(ref.refsTo.name)}
     else
-      #{ 'type' -> referenceType(ref), 'ref' -> label("\"" + ref.refTo.name + "\"")}
+      #{ 'type' -> referenceType(ref), 'ref' -> label("\"" + ref.refsTo.name + "\"")}
   }
 
   /**
@@ -349,7 +349,7 @@ public class DiffToMongoose
   /**
    * Generate code attribute for a Tuple Attribute
    */
-  private def dispatch genAttributeType(Tuple type)
+  private def dispatch genAttributeType(PTuple type)
   {
     #{'type' -> genType(type)}
   }
@@ -373,7 +373,7 @@ public class DiffToMongoose
   /**
    * Shortcut method to generate a Tuple type.
    */
-  private def dispatch Object genType(Tuple tuple)
+  private def dispatch Object genType(PTuple tuple)
   {
     if (tuple.elements.size == 1)
       '''[«genType(tuple.elements.get(0))»]'''

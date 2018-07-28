@@ -2,7 +2,7 @@
  */
 package es.um.nosql.s13e.DecisionTree.impl;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.DecisionTree.DecisionTreePackage;
 import es.um.nosql.s13e.DecisionTree.LeafNode;
 
@@ -29,144 +29,137 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
 {
   /**
-   * The cached value of the '{@link #getIdentifiedVariation() <em>Identified Variation</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getIdentifiedVariation() <em>Identified Variation</em>}' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getIdentifiedVariation()
-   * @generated
-   * @ordered
-   */
-  protected EntityVariation identifiedVariation;
+	 * @see #getIdentifiedVariation()
+	 * @generated
+	 * @ordered
+	 */
+  protected StructuralVariation identifiedVariation;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected LeafNodeImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return DecisionTreePackage.Literals.LEAF_NODE;
-  }
+		return DecisionTreePackage.Literals.LEAF_NODE;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public EntityVariation getIdentifiedVariation()
+	 * @generated
+	 */
+  public StructuralVariation getIdentifiedVariation()
   {
-    if (identifiedVariation != null && identifiedVariation.eIsProxy())
-    {
-      InternalEObject oldIdentifiedVariation = (InternalEObject)identifiedVariation;
-      identifiedVariation = (EntityVariation)eResolveProxy(oldIdentifiedVariation);
-      if (identifiedVariation != oldIdentifiedVariation)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION, oldIdentifiedVariation, identifiedVariation));
-      }
-    }
-    return identifiedVariation;
-  }
+		if (identifiedVariation != null && identifiedVariation.eIsProxy()) {
+			InternalEObject oldIdentifiedVariation = (InternalEObject)identifiedVariation;
+			identifiedVariation = (StructuralVariation)eResolveProxy(oldIdentifiedVariation);
+			if (identifiedVariation != oldIdentifiedVariation) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION, oldIdentifiedVariation, identifiedVariation));
+			}
+		}
+		return identifiedVariation;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
-  public EntityVariation basicGetIdentifiedVariation()
+	 * @generated
+	 */
+  public StructuralVariation basicGetIdentifiedVariation()
   {
-    return identifiedVariation;
-  }
+		return identifiedVariation;
+	}
 
   /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setIdentifiedVariation(EntityVariation newIdentifiedVariation)
-  {
-    EntityVariation oldIdentifiedVariation = identifiedVariation;
-    identifiedVariation = newIdentifiedVariation;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION, oldIdentifiedVariation, identifiedVariation));
-  }
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public void setIdentifiedVariation(StructuralVariation newIdentifiedVariation) {
+		StructuralVariation oldIdentifiedVariation = identifiedVariation;
+		identifiedVariation = newIdentifiedVariation;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION, oldIdentifiedVariation, identifiedVariation));
+	}
 
-  /**
-   * <!-- begin-user-doc -->
+		/**
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
-        if (resolve) return getIdentifiedVariation();
-        return basicGetIdentifiedVariation();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
+				if (resolve) return getIdentifiedVariation();
+				return basicGetIdentifiedVariation();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
-        setIdentifiedVariation((EntityVariation)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
+				setIdentifiedVariation((StructuralVariation)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
-        setIdentifiedVariation((EntityVariation)null);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
+				setIdentifiedVariation((StructuralVariation)null);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
-        return identifiedVariation != null;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
+				return identifiedVariation != null;
+		}
+		return super.eIsSet(featureID);
+	}
 
 } //LeafNodeImpl

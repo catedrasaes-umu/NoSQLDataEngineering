@@ -1,6 +1,5 @@
 package es.um.nosql.s13e.util;
 
-import java.util.List;
 import java.util.stream.Collectors;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;

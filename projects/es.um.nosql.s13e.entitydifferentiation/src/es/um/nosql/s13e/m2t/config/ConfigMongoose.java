@@ -3,7 +3,7 @@ package es.um.nosql.s13e.m2t.config;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import es.um.nosql.s13e.NoSQLSchema.Entity;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
 import es.um.nosql.s13e.m2t.config.pojo.ConfigEntity;
 
@@ -66,10 +66,11 @@ public class ConfigMongoose extends BaseConfig
 
     for (ConfigEntity e : getEntities())
     {
-      Entity schemaE = diff.getSchema().getEntities().stream().filter(innerE -> innerE.getName().equals(e.getName())).findFirst().orElse(null);
-
-      if (schemaE == null)
-        throw new IllegalArgumentException("Entity " + e.getName() + " defined on the config file must exist on the Entity model");
+      EntityClass schemaE =
+    		  diff.getSchema().getEntities().stream()
+    		    .filter(innerE -> innerE.getName().equals(e.getName())).findFirst()
+    		    .orElseThrow(() -> 
+    		      new IllegalArgumentException("Entity " + e.getName() + " defined on the config file must exist on the Entity model"));
 
       e.doCheck(schemaE);
     }

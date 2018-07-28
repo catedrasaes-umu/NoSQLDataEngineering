@@ -25,212 +25,204 @@ import es.um.nosql.s13e.DecisionTree.*;
 public class DecisionTreeSwitch<T> extends Switch<T>
 {
   /**
-   * The cached model package
-   * <!-- begin-user-doc -->
+	 * The cached model package
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected static DecisionTreePackage modelPackage;
 
   /**
-   * Creates an instance of the switch.
-   * <!-- begin-user-doc -->
+	 * Creates an instance of the switch.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public DecisionTreeSwitch()
   {
-    if (modelPackage == null)
-    {
-      modelPackage = DecisionTreePackage.eINSTANCE;
-    }
-  }
+		if (modelPackage == null) {
+			modelPackage = DecisionTreePackage.eINSTANCE;
+		}
+	}
 
   /**
-   * Checks whether this is a switch for the given package.
-   * <!-- begin-user-doc -->
+	 * Checks whether this is a switch for the given package.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param ePackage the package in question.
-   * @return whether this is a switch for the given package.
-   * @generated
-   */
+	 * @param ePackage the package in question.
+	 * @return whether this is a switch for the given package.
+	 * @generated
+	 */
   @Override
   protected boolean isSwitchFor(EPackage ePackage)
   {
-    return ePackage == modelPackage;
-  }
+		return ePackage == modelPackage;
+	}
 
   /**
-   * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
-   * <!-- begin-user-doc -->
+	 * Calls <code>caseXXX</code> for each class of the model until one returns a non null result; it yields that result.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the first non-null result returned by a <code>caseXXX</code> call.
-   * @generated
-   */
+	 * @return the first non-null result returned by a <code>caseXXX</code> call.
+	 * @generated
+	 */
   @Override
   protected T doSwitch(int classifierID, EObject theEObject)
   {
-    switch (classifierID)
-    {
-      case DecisionTreePackage.DECISION_TREE_NODE:
-      {
-        DecisionTreeNode decisionTreeNode = (DecisionTreeNode)theEObject;
-        T result = caseDecisionTreeNode(decisionTreeNode);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecisionTreePackage.LEAF_NODE:
-      {
-        LeafNode leafNode = (LeafNode)theEObject;
-        T result = caseLeafNode(leafNode);
-        if (result == null) result = caseDecisionTreeNode(leafNode);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecisionTreePackage.INTERMEDIATE_NODE:
-      {
-        IntermediateNode intermediateNode = (IntermediateNode)theEObject;
-        T result = caseIntermediateNode(intermediateNode);
-        if (result == null) result = caseDecisionTreeNode(intermediateNode);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecisionTreePackage.DECISION_TREE_FOR_ENTITY:
-      {
-        DecisionTreeForEntity decisionTreeForEntity = (DecisionTreeForEntity)theEObject;
-        T result = caseDecisionTreeForEntity(decisionTreeForEntity);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecisionTreePackage.DECISION_TREES:
-      {
-        DecisionTrees decisionTrees = (DecisionTrees)theEObject;
-        T result = caseDecisionTrees(decisionTrees);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DecisionTreePackage.PROPERTY_SPEC2:
-      {
-        PropertySpec2 propertySpec2 = (PropertySpec2)theEObject;
-        T result = casePropertySpec2(propertySpec2);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      default: return defaultCase(theEObject);
-    }
-  }
+		switch (classifierID) {
+			case DecisionTreePackage.DECISION_TREE_NODE: {
+				DecisionTreeNode decisionTreeNode = (DecisionTreeNode)theEObject;
+				T result = caseDecisionTreeNode(decisionTreeNode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DecisionTreePackage.LEAF_NODE: {
+				LeafNode leafNode = (LeafNode)theEObject;
+				T result = caseLeafNode(leafNode);
+				if (result == null) result = caseDecisionTreeNode(leafNode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DecisionTreePackage.INTERMEDIATE_NODE: {
+				IntermediateNode intermediateNode = (IntermediateNode)theEObject;
+				T result = caseIntermediateNode(intermediateNode);
+				if (result == null) result = caseDecisionTreeNode(intermediateNode);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DecisionTreePackage.DECISION_TREE_FOR_ENTITY: {
+				DecisionTreeForEntity decisionTreeForEntity = (DecisionTreeForEntity)theEObject;
+				T result = caseDecisionTreeForEntity(decisionTreeForEntity);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DecisionTreePackage.DECISION_TREES: {
+				DecisionTrees decisionTrees = (DecisionTrees)theEObject;
+				T result = caseDecisionTrees(decisionTrees);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			case DecisionTreePackage.PROPERTY_SPEC2: {
+				PropertySpec2 propertySpec2 = (PropertySpec2)theEObject;
+				T result = casePropertySpec2(propertySpec2);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
+			default: return defaultCase(theEObject);
+		}
+	}
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Node</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Node</em>'.
+	 * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Node</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Node</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
   public T caseDecisionTreeNode(DecisionTreeNode object)
   {
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Leaf Node</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Leaf Node</em>'.
+	 * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Leaf Node</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Leaf Node</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
   public T caseLeafNode(LeafNode object)
   {
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Intermediate Node</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Intermediate Node</em>'.
+	 * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Intermediate Node</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Intermediate Node</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
   public T caseIntermediateNode(IntermediateNode object)
   {
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>For Entity</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>For Entity</em>'.
+	 * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>For Entity</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>For Entity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
   public T caseDecisionTreeForEntity(DecisionTreeForEntity object)
   {
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Decision Trees</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Decision Trees</em>'.
+	 * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Decision Trees</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Decision Trees</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
   public T caseDecisionTrees(DecisionTrees object)
   {
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Property Spec2</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>Property Spec2</em>'.
+	 * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Property Spec2</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Property Spec2</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
   public T casePropertySpec2(PropertySpec2 object)
   {
-    return null;
-  }
+		return null;
+	}
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
-   * <!-- begin-user-doc -->
+	 * Returns the result of interpreting the object as an instance of '<em>EObject</em>'.
+	 * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch, but this is the last case anyway.
    * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject)
-   * @generated
-   */
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>EObject</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject)
+	 * @generated
+	 */
   @Override
   public T defaultCase(EObject object)
   {
-    return null;
-  }
+		return null;
+	}
 
 } //DecisionTreeSwitch

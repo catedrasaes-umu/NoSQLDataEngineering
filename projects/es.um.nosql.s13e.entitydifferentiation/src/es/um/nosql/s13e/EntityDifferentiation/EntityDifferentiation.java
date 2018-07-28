@@ -29,71 +29,71 @@ import org.eclipse.emf.ecore.EObject;
 public interface EntityDifferentiation extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Entity Diff Specs</b></em>' containment reference list.
-   * The list contents are of type {@link es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec}.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Entity Diff Specs</b></em>' containment reference list.
+	 * The list contents are of type {@link es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec}.
+	 * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Entity Diff Specs</em>' containment reference list isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Entity Diff Specs</em>' containment reference list.
-   * @see es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage#getEntityDifferentiation_EntityDiffSpecs()
-   * @model containment="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Entity Diff Specs</em>' containment reference list.
+	 * @see es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage#getEntityDifferentiation_EntityDiffSpecs()
+	 * @model containment="true"
+	 * @generated
+	 */
   EList<EntityDiffSpec> getEntityDiffSpecs();
 
   /**
-   * Returns the value of the '<em><b>Name</b></em>' attribute.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Name</em>' attribute isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name</em>' attribute.
-   * @see #setName(String)
-   * @see es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage#getEntityDifferentiation_Name()
-   * @model
-   * @generated
-   */
+	 * @return the value of the '<em>Name</em>' attribute.
+	 * @see #setName(String)
+	 * @see es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage#getEntityDifferentiation_Name()
+	 * @model
+	 * @generated
+	 */
   String getName();
 
   /**
-   * Sets the value of the '{@link es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation#getName <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation#getName <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name</em>' attribute.
-   * @see #getName()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Name</em>' attribute.
+	 * @see #getName()
+	 * @generated
+	 */
   void setName(String value);
 
   /**
-   * Returns the value of the '<em><b>Schema</b></em>' reference.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Schema</b></em>' reference.
+	 * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Schema</em>' reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Schema</em>' reference.
-   * @see #setSchema(NoSQLSchema)
-   * @see es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage#getEntityDifferentiation_Schema()
-   * @model required="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Schema</em>' reference.
+	 * @see #setSchema(NoSQLSchema)
+	 * @see es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage#getEntityDifferentiation_Schema()
+	 * @model required="true"
+	 * @generated
+	 */
   NoSQLSchema getSchema();
 
   /**
-   * Sets the value of the '{@link es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation#getSchema <em>Schema</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation#getSchema <em>Schema</em>}' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Schema</em>' reference.
-   * @see #getSchema()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Schema</em>' reference.
+	 * @see #getSchema()
+	 * @generated
+	 */
   void setSchema(NoSQLSchema value);
 
 } // EntityDifferentiation

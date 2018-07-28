@@ -31,214 +31,208 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 public class PropertySpecImpl extends MinimalEObjectImpl.Container implements PropertySpec
 {
   /**
-   * The cached value of the '{@link #getProperty() <em>Property</em>}' reference.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getProperty() <em>Property</em>}' reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getProperty()
-   * @generated
-   * @ordered
-   */
+	 * @see #getProperty()
+	 * @generated
+	 * @ordered
+	 */
   protected Property property;
 
   /**
-   * The default value of the '{@link #isNeedsTypeCheck() <em>Needs Type Check</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #isNeedsTypeCheck() <em>Needs Type Check</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isNeedsTypeCheck()
-   * @generated
-   * @ordered
-   */
+	 * @see #isNeedsTypeCheck()
+	 * @generated
+	 * @ordered
+	 */
   protected static final boolean NEEDS_TYPE_CHECK_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #isNeedsTypeCheck() <em>Needs Type Check</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #isNeedsTypeCheck() <em>Needs Type Check</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isNeedsTypeCheck()
-   * @generated
-   * @ordered
-   */
+	 * @see #isNeedsTypeCheck()
+	 * @generated
+	 * @ordered
+	 */
   protected boolean needsTypeCheck = NEEDS_TYPE_CHECK_EDEFAULT;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected PropertySpecImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass()
   {
-    return EntityDifferentiationPackage.Literals.PROPERTY_SPEC;
-  }
+		return EntityDifferentiationPackage.Literals.PROPERTY_SPEC;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Property getProperty()
   {
-    if (property != null && property.eIsProxy())
-    {
-      InternalEObject oldProperty = (InternalEObject)property;
-      property = (Property)eResolveProxy(oldProperty);
-      if (property != oldProperty)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityDifferentiationPackage.PROPERTY_SPEC__PROPERTY, oldProperty, property));
-      }
-    }
-    return property;
-  }
+		if (property != null && property.eIsProxy()) {
+			InternalEObject oldProperty = (InternalEObject)property;
+			property = (Property)eResolveProxy(oldProperty);
+			if (property != oldProperty) {
+				if (eNotificationRequired())
+					eNotify(new ENotificationImpl(this, Notification.RESOLVE, EntityDifferentiationPackage.PROPERTY_SPEC__PROPERTY, oldProperty, property));
+			}
+		}
+		return property;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public Property basicGetProperty()
   {
-    return property;
-  }
+		return property;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setProperty(Property newProperty)
   {
-    Property oldProperty = property;
-    property = newProperty;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDifferentiationPackage.PROPERTY_SPEC__PROPERTY, oldProperty, property));
-  }
+		Property oldProperty = property;
+		property = newProperty;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityDifferentiationPackage.PROPERTY_SPEC__PROPERTY, oldProperty, property));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public boolean isNeedsTypeCheck()
   {
-    return needsTypeCheck;
-  }
+		return needsTypeCheck;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setNeedsTypeCheck(boolean newNeedsTypeCheck)
   {
-    boolean oldNeedsTypeCheck = needsTypeCheck;
-    needsTypeCheck = newNeedsTypeCheck;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, EntityDifferentiationPackage.PROPERTY_SPEC__NEEDS_TYPE_CHECK, oldNeedsTypeCheck, needsTypeCheck));
-  }
+		boolean oldNeedsTypeCheck = needsTypeCheck;
+		needsTypeCheck = newNeedsTypeCheck;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, EntityDifferentiationPackage.PROPERTY_SPEC__NEEDS_TYPE_CHECK, oldNeedsTypeCheck, needsTypeCheck));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
-    switch (featureID)
-    {
-      case EntityDifferentiationPackage.PROPERTY_SPEC__PROPERTY:
-        if (resolve) return getProperty();
-        return basicGetProperty();
-      case EntityDifferentiationPackage.PROPERTY_SPEC__NEEDS_TYPE_CHECK:
-        return isNeedsTypeCheck();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case EntityDifferentiationPackage.PROPERTY_SPEC__PROPERTY:
+				if (resolve) return getProperty();
+				return basicGetProperty();
+			case EntityDifferentiationPackage.PROPERTY_SPEC__NEEDS_TYPE_CHECK:
+				return isNeedsTypeCheck();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eSet(int featureID, Object newValue)
   {
-    switch (featureID)
-    {
-      case EntityDifferentiationPackage.PROPERTY_SPEC__PROPERTY:
-        setProperty((Property)newValue);
-        return;
-      case EntityDifferentiationPackage.PROPERTY_SPEC__NEEDS_TYPE_CHECK:
-        setNeedsTypeCheck((Boolean)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case EntityDifferentiationPackage.PROPERTY_SPEC__PROPERTY:
+				setProperty((Property)newValue);
+				return;
+			case EntityDifferentiationPackage.PROPERTY_SPEC__NEEDS_TYPE_CHECK:
+				setNeedsTypeCheck((Boolean)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID)
   {
-    switch (featureID)
-    {
-      case EntityDifferentiationPackage.PROPERTY_SPEC__PROPERTY:
-        setProperty((Property)null);
-        return;
-      case EntityDifferentiationPackage.PROPERTY_SPEC__NEEDS_TYPE_CHECK:
-        setNeedsTypeCheck(NEEDS_TYPE_CHECK_EDEFAULT);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case EntityDifferentiationPackage.PROPERTY_SPEC__PROPERTY:
+				setProperty((Property)null);
+				return;
+			case EntityDifferentiationPackage.PROPERTY_SPEC__NEEDS_TYPE_CHECK:
+				setNeedsTypeCheck(NEEDS_TYPE_CHECK_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID)
   {
-    switch (featureID)
-    {
-      case EntityDifferentiationPackage.PROPERTY_SPEC__PROPERTY:
-        return property != null;
-      case EntityDifferentiationPackage.PROPERTY_SPEC__NEEDS_TYPE_CHECK:
-        return needsTypeCheck != NEEDS_TYPE_CHECK_EDEFAULT;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case EntityDifferentiationPackage.PROPERTY_SPEC__PROPERTY:
+				return property != null;
+			case EntityDifferentiationPackage.PROPERTY_SPEC__NEEDS_TYPE_CHECK:
+				return needsTypeCheck != NEEDS_TYPE_CHECK_EDEFAULT;
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String toString()
   {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (needsTypeCheck: ");
-    result.append(needsTypeCheck);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (needsTypeCheck: ");
+		result.append(needsTypeCheck);
+		result.append(')');
+		return result.toString();
+	}
 
 } //PropertySpecImpl

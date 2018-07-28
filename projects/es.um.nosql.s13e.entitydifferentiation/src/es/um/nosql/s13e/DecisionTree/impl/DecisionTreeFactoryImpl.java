@@ -21,134 +21,130 @@ import es.um.nosql.s13e.DecisionTree.*;
 public class DecisionTreeFactoryImpl extends EFactoryImpl implements DecisionTreeFactory
 {
   /**
-   * Creates the default factory implementation.
-   * <!-- begin-user-doc -->
+	 * Creates the default factory implementation.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public static DecisionTreeFactory init()
   {
-    try
-    {
-      DecisionTreeFactory theDecisionTreeFactory = (DecisionTreeFactory)EPackage.Registry.INSTANCE.getEFactory(DecisionTreePackage.eNS_URI);
-      if (theDecisionTreeFactory != null)
-      {
-        return theDecisionTreeFactory;
-      }
-    }
-    catch (Exception exception)
-    {
-      EcorePlugin.INSTANCE.log(exception);
-    }
-    return new DecisionTreeFactoryImpl();
-  }
+		try {
+			DecisionTreeFactory theDecisionTreeFactory = (DecisionTreeFactory)EPackage.Registry.INSTANCE.getEFactory(DecisionTreePackage.eNS_URI);
+			if (theDecisionTreeFactory != null) {
+				return theDecisionTreeFactory;
+			}
+		}
+		catch (Exception exception) {
+			EcorePlugin.INSTANCE.log(exception);
+		}
+		return new DecisionTreeFactoryImpl();
+	}
 
   /**
-   * Creates an instance of the factory.
-   * <!-- begin-user-doc -->
+	 * Creates an instance of the factory.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public DecisionTreeFactoryImpl()
   {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public EObject create(EClass eClass)
   {
-    switch (eClass.getClassifierID())
-    {
-      case DecisionTreePackage.LEAF_NODE: return createLeafNode();
-      case DecisionTreePackage.INTERMEDIATE_NODE: return createIntermediateNode();
-      case DecisionTreePackage.DECISION_TREE_FOR_ENTITY: return createDecisionTreeForEntity();
-      case DecisionTreePackage.DECISION_TREES: return createDecisionTrees();
-      case DecisionTreePackage.PROPERTY_SPEC2: return createPropertySpec2();
-      default:
-        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-    }
-  }
+		switch (eClass.getClassifierID()) {
+			case DecisionTreePackage.LEAF_NODE: return createLeafNode();
+			case DecisionTreePackage.INTERMEDIATE_NODE: return createIntermediateNode();
+			case DecisionTreePackage.DECISION_TREE_FOR_ENTITY: return createDecisionTreeForEntity();
+			case DecisionTreePackage.DECISION_TREES: return createDecisionTrees();
+			case DecisionTreePackage.PROPERTY_SPEC2: return createPropertySpec2();
+			default:
+				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+		}
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public LeafNode createLeafNode()
   {
-    LeafNodeImpl leafNode = new LeafNodeImpl();
-    return leafNode;
-  }
+		LeafNodeImpl leafNode = new LeafNodeImpl();
+		return leafNode;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public IntermediateNode createIntermediateNode()
   {
-    IntermediateNodeImpl intermediateNode = new IntermediateNodeImpl();
-    return intermediateNode;
-  }
+		IntermediateNodeImpl intermediateNode = new IntermediateNodeImpl();
+		return intermediateNode;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public DecisionTreeForEntity createDecisionTreeForEntity()
   {
-    DecisionTreeForEntityImpl decisionTreeForEntity = new DecisionTreeForEntityImpl();
-    return decisionTreeForEntity;
-  }
+		DecisionTreeForEntityImpl decisionTreeForEntity = new DecisionTreeForEntityImpl();
+		return decisionTreeForEntity;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public DecisionTrees createDecisionTrees()
   {
-    DecisionTreesImpl decisionTrees = new DecisionTreesImpl();
-    return decisionTrees;
-  }
+		DecisionTreesImpl decisionTrees = new DecisionTreesImpl();
+		return decisionTrees;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public PropertySpec2 createPropertySpec2()
   {
-    PropertySpec2Impl propertySpec2 = new PropertySpec2Impl();
-    return propertySpec2;
-  }
+		PropertySpec2Impl propertySpec2 = new PropertySpec2Impl();
+		return propertySpec2;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public DecisionTreePackage getDecisionTreePackage()
   {
-    return (DecisionTreePackage)getEPackage();
-  }
+		return (DecisionTreePackage)getEPackage();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @deprecated
-   * @generated
-   */
+	 * @deprecated
+	 * @generated
+	 */
   @Deprecated
   public static DecisionTreePackage getPackage()
   {
-    return DecisionTreePackage.eINSTANCE;
-  }
+		return DecisionTreePackage.eINSTANCE;
+	}
 
 } //DecisionTreeFactoryImpl

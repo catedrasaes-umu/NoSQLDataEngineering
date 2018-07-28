@@ -17,8 +17,8 @@ import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.set.strategy.mutable.UnifiedSetWithHashingStrategy;
 import org.eclipse.collections.impl.tuple.Tuples;
 
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Property;
@@ -27,15 +27,15 @@ import es.um.nosql.s13e.m2m.hashing.PropertyJustNameHashingStrategy;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationFactory;
-import es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp;
+import es.um.nosql.s13e.EntityDifferentiation.StructuralVariationProp;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 import es.um.nosql.s13e.util.ModelLoader;
 
 public class NoSQLSchemaToEntityDiff
 {
-  private Map<Entity, Set<Property>> commonEntityProperties;
-  private Map<EntityVariation, Set<Property>> evOwnProperties;
-  private Map<EntityVariation, EntityVariationProp> evPropsByEv;
+  private Map<EntityClass, Set<Property>> commonEntityProperties;
+  private Map<StructuralVariation, Set<Property>> evOwnProperties;
+  private Map<StructuralVariation, StructuralVariationProp> evPropsByEv;
   private HashingStrategy<Property> propertyHashing;
 
   public NoSQLSchemaToEntityDiff()
@@ -63,8 +63,8 @@ public class NoSQLSchemaToEntityDiff
    *
    * So what we do is:
    *
-   * 1. For each Entity, check all the common properties of all the EntityVariations (name and type). This will generate simple checks against property names.
-   * 2. For each EntityVariation, record the specific properties of that entity. There will be two types: Those with properties that don't appear in any other EVs
+   * 1. For each Entity, check all the common properties of all the StructuralVariations (name and type). This will generate simple checks against property names.
+   * 2. For each StructuralVariation, record the specific properties of that entity. There will be two types: Those with properties that don't appear in any other EVs
    *    (we have to check just the existence of the property with its name), and those with properties that exist in any other of the EVs. For those, we will have to check for the type.
    */
   public EntityDifferentiation m2m(NoSQLSchema schema)
@@ -77,7 +77,7 @@ public class NoSQLSchemaToEntityDiff
     initCalculations(schema);
 
     // Generate entity References
-    for (Entity e: schema.getEntities())
+    for (EntityClass e: schema.getEntities())
       transformEntity(e, differentiation);
 
     return differentiation;
@@ -100,11 +100,11 @@ public class NoSQLSchemaToEntityDiff
     evPropsByEv = new HashMap<>();
   }
 
-  private void transformEntity(Entity e, EntityDifferentiation diff)
+  private void transformEntity(EntityClass e, EntityDifferentiation diff)
   {
-    // Holds the set of properties to check for each EntityVariation. It will be used to
+    // Holds the set of properties to check for each StructuralVariation. It will be used to
     // not to create duplicate checks
-    Map<EntityVariation, Map<String, PropertySpec>> propSpecsByEV = new HashMap<>();
+    Map<StructuralVariation, Map<String, PropertySpec>> propSpecsByEV = new HashMap<>();
 
     EntityDiffSpec de = EntityDifferentiationFactory.eINSTANCE.createEntityDiffSpec();
     de.setEntity(e);
@@ -115,13 +115,13 @@ public class NoSQLSchemaToEntityDiff
     de.getCommonProps().addAll(commonProperties.stream()
         .map(this::genPropertySpecNamed).collect(toList()));
 
-    // Create and add all the EntityVariationProp. This is because it is easier, when
-    // identified the own attributes of an EntityVariation, output "HasNotField" items
-    // for the rest of EntityVariations
+    // Create and add all the StructuralVariationProp. This is because it is easier, when
+    // identified the own attributes of an StructuralVariation, output "HasNotField" items
+    // for the rest of StructuralVariations
     e.getVariations().forEach(ev -> {
-      EntityVariationProp evp = EntityDifferentiationFactory.eINSTANCE.createEntityVariationProp();
-      evp.setEntityVariation(ev);
-      de.getEntityVariationProps().add(evp);
+      StructuralVariationProp evp = EntityDifferentiationFactory.eINSTANCE.createStructuralVariationProp();
+      evp.setVariation(ev);
+      de.getVariationProps().add(evp);
 
       // Set of properties by entity, for fast lookup
       propSpecsByEV.put(ev, new HashMap<>());
@@ -132,7 +132,7 @@ public class NoSQLSchemaToEntityDiff
 
     if (e.getVariations().size() > 1)
     {
-      for (EntityVariation ev : e.getVariations())
+      for (StructuralVariation ev : e.getVariations())
       {
         // For each property, check whether other entity variations having this property have also the same type for it
         for (Property p : evOwnProperties.get(ev))
@@ -148,9 +148,9 @@ public class NoSQLSchemaToEntityDiff
         }
       }
 
-      for (EntityVariationProp evp: de.getEntityVariationProps())
+      for (StructuralVariationProp evp: de.getVariationProps())
       {
-        propSpecsByEV.get(evp.getEntityVariation()).values().forEach(pe -> {
+        propSpecsByEV.get(evp.getVariation()).values().forEach(pe -> {
           evp.getPropertySpecs().add(pe);
         });
       }
@@ -158,15 +158,15 @@ public class NoSQLSchemaToEntityDiff
       // Calc notProps
 
       // For each entity variation, for each property appearing in the rest 
-      // of entityVariations but not in this one, add a "notProp"
-      for (EntityVariationProp evp: de.getEntityVariationProps())
+      // of StructuralVariations but not in this one, add a "notProp"
+      for (StructuralVariationProp evp: de.getVariationProps())
       {
         Set<String> ownPropNames =
             evp.getPropertySpecs().stream().map(pe -> pe.getProperty().getName())
             .collect(Collectors.toSet());
 
         Map<String, PropertySpec> otherPropsByName = 
-            de.getEntityVariationProps().stream()
+            de.getVariationProps().stream()
             .filter(_evp -> _evp != evp)
             .flatMap(_evp -> _evp.getPropertySpecs().stream())
             .filter(_ps -> !ownPropNames.contains(_ps.getProperty().getName()))
@@ -185,9 +185,9 @@ public class NoSQLSchemaToEntityDiff
     diff.getEntityDiffSpecs().add(de);
   }
 
-  private Set<Property> calcCommonProperties(Entity e)
+  private Set<Property> calcCommonProperties(EntityClass e)
   {
-    Map<EntityVariation, Set<Property>> allProperties =
+    Map<StructuralVariation, Set<Property>> allProperties =
         e.getVariations().stream()
         .collect(toMap(
             identity(),

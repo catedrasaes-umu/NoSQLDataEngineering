@@ -4,7 +4,7 @@ import java.io.File;
 
 import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
-import es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp;
+import es.um.nosql.s13e.EntityDifferentiation.StructuralVariationProp;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 import es.um.nosql.s13e.util.ModelLoader;
@@ -71,11 +71,12 @@ public class EntityDifferentiationPrettyPrinter
         result.append(prettyPrint(pSpec, defTabs + TAB) + ENDL);
     }
 
-    if (!eDiffSpec.getEntityVariationProps().isEmpty())
+    if (!eDiffSpec.getVariationProps().isEmpty())
     {
-      for (EntityVariationProp evProp : eDiffSpec.getEntityVariationProps())
+      for (StructuralVariationProp evProp : eDiffSpec.getVariationProps())
       {
-        result.append(defTabs + "EV " + evProp.getEntityVariation().getVariationId() + " ---------" + ENDL);
+        result.append(defTabs + "EV " + evProp.getVariation().getVariationId() 
+        		+ " ---------" + ENDL);
 
         if (!evProp.getPropertySpecs().isEmpty())
         {

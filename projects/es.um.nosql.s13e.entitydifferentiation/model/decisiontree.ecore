@@ -9,7 +9,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="LeafNode" eSuperTypes="#//DecisionTreeNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="identifiedVariation" lowerBound="1"
-        eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//EntityVariation"/>
+        eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//StructuralVariation"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="IntermediateNode" eSuperTypes="#//DecisionTreeNode">
     <eStructuralFeatures xsi:type="ecore:EReference" name="checkedProperty" lowerBound="1"
@@ -19,7 +19,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="root" eType="#//DecisionTreeNode"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" lowerBound="1"
-        eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//Entity"/>
+        eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//EntityClass"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="DecisionTrees">
     <eStructuralFeatures xsi:type="ecore:EReference" name="trees" upperBound="-1"

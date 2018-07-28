@@ -1,7 +1,7 @@
 package es.um.nosql.s13e.m2t.commons
 
 import java.util.Map
-import es.um.nosql.s13e.NoSQLSchema.Entity
+import es.um.nosql.s13e.NoSQLSchema.EntityClass
 import java.util.Set
 import java.util.List
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec
@@ -16,13 +16,13 @@ import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation
  */
 class DependencyAnalyzer
 {
-  List<Entity> topOrderEntities
-  Map<Entity, Set<Entity>> entityDeps
-  Map<Entity, Set<Entity>> inverseEntityDeps
-  Map<Entity, EntityDiffSpec> diffByEntity
-  Map<Entity, Map<String, List<PropertySpec>>> typeListByPropertyName
+  List<EntityClass> topOrderEntities
+  Map<EntityClass, Set<EntityClass>> entityDeps
+  Map<EntityClass, Set<EntityClass>> inverseEntityDeps
+  Map<EntityClass, EntityDiffSpec> diffByEntity
+  Map<EntityClass, Map<String, List<PropertySpec>>> typeListByPropertyName
 
- public def performAnalysis(EntityDifferentiation diff)
+  def performAnalysis(EntityDifferentiation diff)
   {
     val entities = diff.entityDiffSpecs.map[entity]
 
@@ -35,10 +35,10 @@ class DependencyAnalyzer
   // one entity variation *with different type* (those that hold the needsTypeCheck
   // boolean attribute), the list of types, to check possible type folding in
   // a latter pass
-  def calcTypeListMatrix(List<Entity> entities)
+  def calcTypeListMatrix(List<EntityClass> entities)
   {
     entities.toInvertedMap[e |
-      diffByEntity.get(e).entityVariationProps
+      diffByEntity.get(e).variationProps
         .map[propertySpecs]
         .flatten
         .filter[needsTypeCheck].groupBy[property.name]
@@ -48,7 +48,7 @@ class DependencyAnalyzer
   /**
    * Method used to calculate the dependencies between entities, and reorder them in the correct order
    */
-  private def calculateDeps(List<Entity> entities) 
+  private def calculateDeps(List<EntityClass> entities) 
   { 
     entityDeps = newHashMap(entities.map[e | e -> getDepsFor(e)])
     inverseEntityDeps = newHashMap(entities.map[e | 
@@ -61,16 +61,16 @@ class DependencyAnalyzer
   }
 
   // Get the first level of dependencies for an Entity
-  private def getDepsFor(Entity entity)
+  private def getDepsFor(EntityClass entity)
   {
-    entity.entityVariations.map[ev | 
+    entity.variations.map[ev | 
       ev.properties.filter[p | p instanceof Aggregate]
-      .map[p | (p as Aggregate).refTo.map[ev2 | ev2.eContainer as Entity]]
+      .map[p | (p as Aggregate).aggregates.map[ev2 | ev2.eContainer as EntityClass]]
       .flatten
     ].flatten.toSet
   }
 
-  private def List<Entity> topologicalOrder()
+  private def List<EntityClass> topologicalOrder()
   {
     depListRec(
       entityDeps.filter[k, v| v.empty].keySet,
@@ -79,7 +79,8 @@ class DependencyAnalyzer
     )
   }
 
-  private def List<Entity> depListRec(Set<Entity> to_consider, List<Entity> top_order, Set<Entity> seen)
+  private def List<EntityClass> depListRec(Set<EntityClass> to_consider, 
+  					List<EntityClass> top_order, Set<EntityClass> seen)
   {
     // End condition
     if (to_consider.isEmpty)
@@ -103,22 +104,22 @@ class DependencyAnalyzer
     }
   }
 
-  def List<Entity> getTopOrderEntities()
+  def getTopOrderEntities()
   {
     return topOrderEntities;
   }
 
-  def Map<Entity, Set<Entity>> getEntityDeps()
+  def getEntityDeps()
   {
     return entityDeps;
   }
 
-  def Map<Entity, Map<String, List<PropertySpec>>> getTypeListByPropertyName()
+  def getTypeListByPropertyName()
   {
     return typeListByPropertyName;
   }
 
-  def Map<Entity, EntityDiffSpec> getDiffByEntity()
+  def getDiffByEntity()
   {
     return diffByEntity;
   }
