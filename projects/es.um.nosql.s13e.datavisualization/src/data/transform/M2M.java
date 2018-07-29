@@ -11,12 +11,12 @@ import org.apache.commons.lang3.tuple.Pair;
 import Variation_Diff.Variation_DiffFactory;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
-import es.um.nosql.s13e.NoSQLSchema.Tuple;
+import es.um.nosql.s13e.NoSQLSchema.PTuple;
 import es.um.nosql.s13e.NoSQLSchema.Type;
 import data.utils.serializer.NoSQLSchemaSerializer;
 import Variation_Diff.HasField;
@@ -71,13 +71,13 @@ public class M2M
 	{
 		NoSQLDifferences differenceModel = Variation_DiffFactory.eINSTANCE.createNoSQLDifferences();
 		differenceModel.setName(baseModel.getName());
-		Map<EntityVariation, List<Pair<String, FieldType>>> evMap;
+		Map<StructuralVariation, List<Pair<String, FieldType>>> evMap;
 
-		for (Entity entity : baseModel.getEntities())
+		for (EntityClass entity : baseModel.getEntities())
 		{
 			evMap = getEVPropertiesMap(entity);
 
-			for (EntityVariation entityVariation : entity.getVariations())
+			for (StructuralVariation entityVariation : entity.getVariations())
 			{
 				TypeDifference tDiff = Variation_DiffFactory.eINSTANCE.createTypeDifference();
 				tDiff.setName(entity.getName() + "_" + entityVariation.getVariationId());
@@ -91,15 +91,15 @@ public class M2M
 	}
 
 	/**
-	 * Method used to get a map in which properties (name, value) are associated to each EntityVariation of an Entity.
-	 * @param baseEntity The Entity containing the EntityVariations to be mapped.
-	 * @return A Map<EntityVariation, List<Pair<String, String>>> in which the mapping is stored.
+	 * Method used to get a map in which properties (name, value) are associated to each StructuralVariation of an EntityClass.
+	 * @param baseEntityClass The EntityClass containing the StructuralVariations to be mapped.
+	 * @return A Map<StructuralVariation, List<Pair<String, String>>> in which the mapping is stored.
 	 */
-	private Map<EntityVariation, List<Pair<String, FieldType>>> getEVPropertiesMap(Entity baseEntity)
+	private Map<StructuralVariation, List<Pair<String, FieldType>>> getEVPropertiesMap(EntityClass baseEntityClass)
 	{
-		Map<EntityVariation, List<Pair<String, FieldType>>> evMap = new HashMap<EntityVariation, List<Pair<String, FieldType>>>();
+		Map<StructuralVariation, List<Pair<String, FieldType>>> evMap = new HashMap<StructuralVariation, List<Pair<String, FieldType>>>();
 
-		for (EntityVariation ev : baseEntity.getVariations())
+		for (StructuralVariation ev : baseEntityClass.getVariations())
 		{
 			List<Pair<String, FieldType>> pairList = new ArrayList<Pair<String, FieldType>>();
 			evMap.put(ev, pairList);
@@ -126,16 +126,16 @@ public class M2M
 							((PrimitiveType)type).setType(((es.um.nosql.s13e.NoSQLSchema.PrimitiveType)theType).getName());
 						}
 					}
-					else if (theType instanceof Tuple)
+					else if (theType instanceof PTuple)
 					{
 						type = Variation_DiffFactory.eINSTANCE.createHeterogeneousTupleType();
 
-						for (Type tupleType : ((Tuple)theType).getElements())
+						for (Type tupleType : ((PTuple)theType).getElements())
 						{
 							if (tupleType instanceof es.um.nosql.s13e.NoSQLSchema.PrimitiveType)
 								((HeterogeneousTupleType)type).getType().add(((es.um.nosql.s13e.NoSQLSchema.PrimitiveType)tupleType).getName());
-							else if (tupleType instanceof Tuple)
-								((HeterogeneousTupleType)type).getType().add("Tuple[" + NoSQLSchemaSerializer.getInstance().stringify(((Tuple)tupleType).getElements()) + "]");
+							else if (tupleType instanceof PTuple)
+								((HeterogeneousTupleType)type).getType().add("PTuple[" + NoSQLSchemaSerializer.getInstance().stringify(((PTuple)tupleType).getElements()) + "]");
 						}
 
 						String aType = getAType(((HeterogeneousTupleType)type).getType().get(0));
@@ -151,7 +151,7 @@ public class M2M
 				{
 					type = Variation_DiffFactory.eINSTANCE.createReferenceType();
 
-					((ReferenceType)type).setType(((Reference)property).getRefTo().getName());
+					((ReferenceType)type).setType(((Reference)property).getRefsTo().getName());
 					((ReferenceType)type).setLowerBound(((Reference)property).getLowerBound());
 					((ReferenceType)type).setUpperBound(((Reference)property).getUpperBound());
 				}
@@ -161,8 +161,8 @@ public class M2M
 
 					((AggregateType)type).setLowerBound(((Aggregate)property).getLowerBound());
 					((AggregateType)type).setUpperBound(((Aggregate)property).getUpperBound());
-					for (EntityVariation aggregatedEV : ((Aggregate)property).getRefTo())
-						((AggregateType)type).getType().add(((Entity)aggregatedEV.eContainer()).getName() + "_" + String.valueOf(aggregatedEV.getVariationId()));
+					for (StructuralVariation aggregatedEV : ((Aggregate)property).getAggregates())
+						((AggregateType)type).getType().add(((EntityClass)aggregatedEV.eContainer()).getName() + "_" + String.valueOf(aggregatedEV.getVariationId()));
 				}
 
 				pairList.add(new MutablePair<String, FieldType>(name, type));
@@ -178,7 +178,7 @@ public class M2M
 			if (!typeIsDefined)
 			{
 				FieldType type = Variation_DiffFactory.eINSTANCE.createEntityType();
-				((EntityType)type).setType(baseEntity.getName());
+				((EntityType)type).setType(baseEntityClass.getName());
 				pairList.add(new MutablePair<String, FieldType>("type", type));
 			}
 				
@@ -188,12 +188,12 @@ public class M2M
 
 	/**
 	 * Method used to add HasField objects to a TypeDifference object from a propertiesList.
-	 * @param propertiesList The propertiesList associated to the EntityVariation whose TypeDifferences are being generated.
+	 * @param propertiesList The propertiesList associated to the StructuralVariation whose TypeDifferences are being generated.
 	 * @param tDiff A TypeDifference object in which store the HasField objects.
 	 */
 	private void addHasFields(List<Pair<String, FieldType>> propertiesList, TypeDifference tDiff)
 	{
-		// Para cada EntityVariation, agregamos sus propiedades como HasValue.
+		// Para cada StructuralVariation, agregamos sus propiedades como HasValue.
 		for (Pair<String, FieldType> propertyPair : propertiesList)
 		{
 			HasField hField = Variation_DiffFactory.eINSTANCE.createHasField();
@@ -205,25 +205,25 @@ public class M2M
 	}
 
 	/**
-	 * Method used to add HasNotField objects from a Map to a TypeDifference object associated with an EntityVariation.
-	 * @param theEntityVariation The EntityVariation whose TypeDifferences are being generated.
+	 * Method used to add HasNotField objects from a Map to a TypeDifference object associated with an StructuralVariation.
+	 * @param theStructuralVariation The StructuralVariation whose TypeDifferences are being generated.
 	 * @param tDiff TypeDifferences whose fields HasNotFields are being generated.
-	 * @param evMap The map in which EntityVariations are associated with their Properties (name, value).
+	 * @param evMap The map in which StructuralVariations are associated with their Properties (name, value).
 	 */
-	private void addHasNotFields(EntityVariation theEntityVariation, TypeDifference tDiff, Map<EntityVariation, List<Pair<String, FieldType>>> evMap)
+	private void addHasNotFields(StructuralVariation theStructuralVariation, TypeDifference tDiff, Map<StructuralVariation, List<Pair<String, FieldType>>> evMap)
 	{
 		boolean propertyFound = false;
 
-		for (EntityVariation evInList : evMap.keySet())
+		for (StructuralVariation evInList : evMap.keySet())
 		{
-			// And we add other EntityVariation properties as HasNotValue.
-			if (evInList != theEntityVariation)
+			// And we add other StructuralVariation properties as HasNotValue.
+			if (evInList != theStructuralVariation)
 			{
 				for (Pair<String, FieldType> pairProperty : evMap.get(evInList))
 				{
 					for (TypeHint hint : tDiff.getHints())
 					{
-						// Except if an EntityVariation has a {name, value} property equals to another's.
+						// Except if an StructuralVariation has a {name, value} property equals to another's.
 						// Or the property was already added as HasNotField.
 						if (hint.getWithName().equals(pairProperty.getLeft()) && sameTypeHints(hint.getWithType(), pairProperty.getRight()))
 						{
@@ -354,15 +354,15 @@ public class M2M
 	}
 
 	/**
-	 * Method used to get the first type of a given Tuple content in a string.
-	 * @param type The Tuple content.
+	 * Method used to get the first type of a given PTuple content in a string.
+	 * @param type The PTuple content.
 	 * @return A type in a string.
 	 */
 	private String getAType(String type)
 	{
 		String result = type;
 
-		if (result.startsWith("Tuple["))
+		if (result.startsWith("PTuple["))
 		{
 			int startIndex = 6;
 			int endIndex = result.length();
@@ -389,10 +389,10 @@ public class M2M
 	{
 		for (String typeInList : typeList)
 		{
-			if (typeInList.startsWith("Tuple["))
+			if (typeInList.startsWith("PTuple["))
 			{
 				List<String> eList = new ArrayList<String>();
-				fillTupleList(eList, typeInList.substring(6, typeInList.length() - 1));
+				fillPTupleList(eList, typeInList.substring(6, typeInList.length() - 1));
 
 				if (!checkSameTypes(eList, theType))
 					return false;
@@ -409,14 +409,14 @@ public class M2M
 	 * @param list The list to be filled.
 	 * @param typeChain The tuple chain to be parsed.
 	 */
-	private void fillTupleList(List<String> list, String typeChain)
+	private void fillPTupleList(List<String> list, String typeChain)
 	{
 		String types = typeChain;
 
 		if (types.startsWith(";"))
 			types = types.substring(1);
 
-		if (types.startsWith("Tuple["))
+		if (types.startsWith("PTuple["))
 		{
 			String auxVar = types.substring(6);
 			int keyBalance = 1;
@@ -431,9 +431,9 @@ public class M2M
 				}
 				if (keyBalance == 0)
 				{
-					list.add("Tuple[" + auxVar.substring(0, i + 1));
+					list.add("PTuple[" + auxVar.substring(0, i + 1));
 					if (i + 1 < auxVar.length())
-						fillTupleList(list, auxVar.substring(i + 1, auxVar.length()));
+						fillPTupleList(list, auxVar.substring(i + 1, auxVar.length()));
 
 					keepLooping = false;
 				}
@@ -444,7 +444,7 @@ public class M2M
 			if (types.contains(";"))
 			{
 				list.add(types.substring(0, types.indexOf(";")));
-				fillTupleList(list, types.substring(types.indexOf(";") + 1));
+				fillPTupleList(list, types.substring(types.indexOf(";") + 1));
 			}
 			else
 				list.add(types);

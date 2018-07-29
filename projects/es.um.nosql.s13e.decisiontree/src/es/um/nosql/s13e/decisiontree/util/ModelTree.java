@@ -1,18 +1,18 @@
 package es.um.nosql.s13e.decisiontree.util;
 
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 
 public class ModelTree
 {
-  private Entity entity;
-  private EntityVariation tag;
+  private EntityClass entity;
+  private StructuralVariation tag;
   private Property property;
   private ModelTree nodePresent;
   private ModelTree nodeAbsent;
 
-  public ModelTree(Entity e, EntityVariation tag)
+  public ModelTree(EntityClass e, StructuralVariation tag)
   {
     this.tag = tag;
     this.entity = e;
@@ -23,22 +23,22 @@ public class ModelTree
     this.property = property;
   }
 
-  public void setEntity(Entity entity)
+  public void setEntityClass(EntityClass entity)
   {
     this.entity = entity;
   }
 
-  public Entity getEntity()
+  public EntityClass getEntityClass()
   {
     return entity;
   }
 
-  public void setTag(EntityVariation tag)
+  public void setTag(StructuralVariation tag)
   {
     this.tag = tag;
   }
 
-  public EntityVariation getTag()
+  public StructuralVariation getTag()
   {
     return tag;
   }

@@ -7,16 +7,16 @@ import es.um.nosql.s13e.NoSQLSchema.Property
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType
 import es.um.nosql.s13e.NoSQLSchema.Attribute
 import es.um.nosql.s13e.NoSQLSchema.Type
-import es.um.nosql.s13e.NoSQLSchema.Tuple
+import es.um.nosql.s13e.NoSQLSchema.PTuple
 import es.um.nosql.s13e.NoSQLSchema.Reference
 import es.um.nosql.s13e.NoSQLSchema.Aggregate
-import es.um.nosql.s13e.NoSQLSchema.Entity
+import es.um.nosql.s13e.NoSQLSchema.EntityClass
 import es.um.nosql.s13e.DecisionTree.DecisionTrees
 import es.um.nosql.s13e.DecisionTree.DecisionTreeForEntity
 import es.um.nosql.s13e.DecisionTree.PropertySpec2
 import es.um.nosql.s13e.DecisionTree.IntermediateNode
 import es.um.nosql.s13e.DecisionTree.LeafNode
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation
 import java.util.Deque
 import java.util.HashMap
 import java.util.Map
@@ -67,8 +67,8 @@ public class DecisionTreeToJS
 
   private def genCheckFunctions(List<DecisionTreeForEntity> list)
   '''
-    «FOR DecisionTreeForEntity decTreeEntity : list SEPARATOR ','»
-      «genCheckFunction(decTreeEntity)»
+    «FOR DecisionTreeForEntity decTreeEntityClass : list SEPARATOR ','»
+      «genCheckFunction(decTreeEntityClass)»
     «ENDFOR»
   '''
 
@@ -86,7 +86,7 @@ public class DecisionTreeToJS
       {
         «generateCheckTree(dte, dte.root)»
       },
-      «FOR EntityVariation ev : dte.entity.entityVariations SEPARATOR ','»
+      «FOR StructuralVariation ev : dte.entity.variations SEPARATOR ','»
         «generateSpecificCheck(dte, ev, paths.get(ev))»
       «ENDFOR»
     }
@@ -95,13 +95,13 @@ public class DecisionTreeToJS
 
   private def calcPaths(DecisionTreeForEntity dte) 
   {
-    var paths = new HashMap<EntityVariation, Deque<PropertyAndBranch>>;
+    var paths = new HashMap<StructuralVariation, Deque<PropertyAndBranch>>;
     calcPaths(paths, newLinkedList(), dte.root);
 
     return paths;
   }
 
-  private def void calcPaths(Map<EntityVariation, Deque<PropertyAndBranch>> paths, Deque<PropertyAndBranch> checks, DecisionTreeNode node)
+  private def void calcPaths(Map<StructuralVariation, Deque<PropertyAndBranch>> paths, Deque<PropertyAndBranch> checks, DecisionTreeNode node)
   {
     switch node
     {
@@ -121,7 +121,7 @@ public class DecisionTreeToJS
     }
   }
 
-  private def generateSpecificCheck(DecisionTreeForEntity dte, EntityVariation variation, Deque<PropertyAndBranch> checks)
+  private def generateSpecificCheck(DecisionTreeForEntity dte, StructuralVariation variation, Deque<PropertyAndBranch> checks)
   '''
     checkEV_«dte.entity.name»_«variation.variationId»: function (obj)
     {
@@ -176,14 +176,14 @@ public class DecisionTreeToJS
     (obj.«a.name».constructor === Array) &&
         obj.«a.name».every(function(e)
             { return (typeof e === 'object') && !(e.constructor === Array)
-                && («FOR rt : a.refTo SEPARATOR " || "»
-                «modelName».«(rt.eContainer as Entity).name».checkEV_«(rt.eContainer as Entity).name»_«rt.variationId»(e)
+                && («FOR rt : a.aggregates SEPARATOR " || "»
+                «modelName».«(rt.eContainer as EntityClass).name».checkEV_«(rt.eContainer as EntityClass).name»_«rt.variationId»(e)
                 «ENDFOR»);
             })
     «ELSE»
-    «var refToEV = a.refTo.get(0)»
+    «var aggToEV = a.aggregates.get(0)»
     (typeof obj.«a.name» === 'object') && !(obj.«a.name».constructor === Array)
-        && «modelName».«(refToEV.eContainer as Entity).name».checkEV_«(refToEV.eContainer as Entity).name»_«refToEV.variationId»(obj.«a.name»)
+        && «modelName».«(aggToEV.eContainer as EntityClass).name».checkEV_«(aggToEV.eContainer as EntityClass).name»_«aggToEV.variationId»(obj.«a.name»)
     «ENDIF»
   '''
 
@@ -221,7 +221,7 @@ public class DecisionTreeToJS
     }
   }
 
-  private def dispatch CharSequence genTypeCheckLowLevel(Tuple type, String name)
+  private def dispatch CharSequence genTypeCheckLowLevel(PTuple type, String name)
   {
     '''(«name».constructor === Array) && («name».length === «type.elements.size»)
     «IF type.elements.size != 0»

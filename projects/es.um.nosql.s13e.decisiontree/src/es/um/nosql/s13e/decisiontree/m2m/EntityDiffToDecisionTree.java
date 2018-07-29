@@ -28,10 +28,10 @@ import es.um.nosql.s13e.DecisionTree.PropertySpec2;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
-import es.um.nosql.s13e.EntityDifferentiation.EntityVariationProp;
+import es.um.nosql.s13e.EntityDifferentiation.StructuralVariationProp;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.decisiontree.util.ModelNode;
 import es.um.nosql.s13e.decisiontree.util.OpenJ48;
 import es.um.nosql.s13e.util.ModelLoader;
@@ -58,7 +58,7 @@ public class EntityDiffToDecisionTree
 
     decTrees.setName(entityDiff.getName());
 
-    entityDiff.getEntityDiffSpecs().stream().filter(ed -> ed.getEntityVariationProps().size() > 1)
+    entityDiff.getEntityDiffSpecs().stream().filter(ed -> ed.getVariationProps().size() > 1)
       .forEach(eDiffSpec ->
       {
         ModelNode root = generateTreeForEntity(eDiffSpec);
@@ -73,8 +73,8 @@ public class EntityDiffToDecisionTree
 
   private ModelNode generateTreeForEntity(EntityDiffSpec eDiffSpec)
   {
-    Map<EntityVariationProp, List<Pair<String, PropertySpec>>> propsByEv =
-      eDiffSpec.getEntityVariationProps().stream().collect(toMap(Function.identity(),
+    Map<StructuralVariationProp, List<Pair<String, PropertySpec>>> propsByEv =
+      eDiffSpec.getVariationProps().stream().collect(toMap(Function.identity(),
         eVarProp -> Stream.concat(
           eVarProp.getPropertySpecs().stream().map(ps -> Pair.of(serialize(ps), ps)),
           eVarProp.getNotProps().stream().map(ps -> Pair.of(serializeNot(ps), ps)))
@@ -95,10 +95,10 @@ public class EntityDiffToDecisionTree
     // Generate inverted index for feature serialization to feature vector position
 
     final String entityName = eDiffSpec.getEntity().getName();
-    Map<String,EntityVariationProp> classNameToEvp = eDiffSpec.getEntityVariationProps().stream()
-      .map(evp -> Pair.of(String.format("%1$s_%2$d", entityName, evp.getEntityVariation().getVariationId()),evp))
+    Map<String,StructuralVariationProp> classNameToEvp = eDiffSpec.getVariationProps().stream()
+      .map(evp -> Pair.of(String.format("%1$s_%2$d", entityName, evp.getVariation().getVariationId()),evp))
       .collect(toMap(Pair::getKey,Pair::getValue));
-    Map<EntityVariationProp,String> evpToClassName = classNameToEvp.entrySet().stream()
+    Map<StructuralVariationProp,String> evpToClassName = classNameToEvp.entrySet().stream()
       .collect(toMap(Map.Entry::getValue, Map.Entry::getKey));
 
     // Get classes and count them. We do it in the order that they are obtained
@@ -116,7 +116,7 @@ public class EntityDiffToDecisionTree
     final double[] defaultValues = new double[features.size() + 1];
     Arrays.fill(defaultValues,1.0);
 
-    Map<EntityVariationProp, Instance> featuresByEv = propsByEv.entrySet().stream()
+    Map<StructuralVariationProp, Instance> featuresByEv = propsByEv.entrySet().stream()
       .collect(toMap(Map.Entry::getKey,
           e -> {
             Instance inst = new DenseInstance(1.0, defaultValues);
@@ -141,7 +141,8 @@ public class EntityDiffToDecisionTree
       }
 
       System.out.println(dataset);
-      ModelNode modelTree = getModelTree(root, classNameToEvp.entrySet().stream() .collect(toMap(Map.Entry::getKey, v -> v.getValue().getEntityVariation())), features);
+      ModelNode modelTree = getModelTree(root, classNameToEvp.entrySet().stream()
+    		  .collect(toMap(Map.Entry::getKey, v -> v.getValue().getVariation())), features);
       printModelTree(eDiffSpec.getEntity(),modelTree);
 
       return modelTree;
@@ -159,7 +160,7 @@ public class EntityDiffToDecisionTree
     if (root.isLeaf())
     {
       LeafNode leafNode =  DecisionTreeFactory.eINSTANCE.createLeafNode();
-      leafNode.setIdentifiedVariation(root.getEv());
+      leafNode.setIdentifiedVariation(root.getSv());
       return leafNode;
     }
     else
@@ -199,7 +200,7 @@ public class EntityDiffToDecisionTree
     return classifier;
   }
 
-  private ModelNode getModelTree(ClassifierTree tree, Map<String, EntityVariation> entityVariations, Map<String, PropertySpec> properties) throws Exception
+  private ModelNode getModelTree(ClassifierTree tree, Map<String, StructuralVariation> entityVariations, Map<String, PropertySpec> properties) throws Exception
   {
     if (tree.isLeaf())
     {
@@ -209,7 +210,7 @@ public class EntityDiffToDecisionTree
 
       if (matcher.find())
       {
-        EntityVariation ev = entityVariations.get(matcher.group(1));
+        StructuralVariation ev = entityVariations.get(matcher.group(1));
         return new ModelNode(ev);
       }
       else
@@ -246,17 +247,17 @@ public class EntityDiffToDecisionTree
     }
   }
 
-  private void printModelTree(Entity entity, ModelNode tree)
+  private void printModelTree(EntityClass entity, ModelNode tree)
   {
     printModelTree(entity, tree, 0);
   }
 
-  private void printModelTree(Entity entity, ModelNode tree, int level)
+  private void printModelTree(EntityClass entity, ModelNode tree, int level)
   {
     String indent = String.join("", Collections.nCopies(level, "  "));
 
     if (tree.isLeaf())
-      System.out.println(indent + "Entity: " + entity.getName() + ", Variation: " + tree.getEv().getVariationId());
+      System.out.println(indent + "Entity: " + entity.getName() + ", Variation: " + tree.getSv().getVariationId());
     else
     {
       Function<Boolean,String> present = v -> v ? " is present." : " is NOT present."; 

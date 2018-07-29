@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
 import es.um.nosql.s13e.db.gen.util.constants.ConfigConstants;
 
@@ -25,7 +25,7 @@ public class AggregateGen
     jsonFactory = JsonNodeFactory.instance;
   }
 
-  public JsonNode genAggregate(Aggregate aggr, Map<EntityVariation, List<ObjectNode>> evMap)
+  public JsonNode genAggregate(Aggregate aggr, Map<StructuralVariation, List<ObjectNode>> evMap)
   {
     JsonNode result = null;
 
@@ -33,7 +33,7 @@ public class AggregateGen
     int uBound = aggr.getUpperBound() > 0 ? aggr.getUpperBound() : ConfigConstants.GET_AGGREGATE_MAX_ALLOWED();
 
     if (lBound == 1 && uBound == 1)
-      result = this.getRandomAggrs(aggr.getRefTo().get(0), evMap, 1).get(0);
+      result = this.getRandomAggrs(aggr.getAggregates().get(0), evMap, 1).get(0);
     else
     {
       ArrayNode aggrArray = jsonFactory.arrayNode();
@@ -41,7 +41,7 @@ public class AggregateGen
       // TODO: This might aggregate the same object several times. It might be a problem.
       // For each aggregation we have to include, we select a random aggregated variation and aggregate one object according to that variation.
       // TODO: This is for sure optimisable. We should be able to shuffle variations and extract some objects of them, not only one variation.
-      for (EntityVariation ev : aggr.getRefTo())
+      for (StructuralVariation ev : aggr.getAggregates())
         aggrArray.addAll(this.getRandomAggrs(ev, evMap, uBound));
 
       result = aggrArray;
@@ -50,7 +50,7 @@ public class AggregateGen
     return result;
   }
 
-  private List<JsonNode> getRandomAggrs(EntityVariation eVariation, Map<EntityVariation, List<ObjectNode>> evMap, int numElements)
+  private List<JsonNode> getRandomAggrs(StructuralVariation eVariation, Map<StructuralVariation, List<ObjectNode>> evMap, int numElements)
   {
     List<JsonNode> result = new ArrayList<JsonNode>();
 

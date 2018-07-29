@@ -6,27 +6,27 @@ import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
-import es.um.nosql.s13e.NoSQLSchema.Tuple;
+import es.um.nosql.s13e.NoSQLSchema.PTuple;
 import es.um.nosql.s13e.NoSQLSchema.Type;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.BooleanGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
 import es.um.nosql.s13e.db.gen.util.constants.ConfigConstants;
 import es.um.nosql.s13e.db.gen.util.constants.Types;
 
-public class TupleGen
+public class PTupleGen
 {
   private PrimitiveTypeGen pTypeGen;
   private NumberGen numGen;
   private BooleanGen boolGen;
 
-  public TupleGen()
+  public PTupleGen()
   {
     pTypeGen = new PrimitiveTypeGen();
     numGen = NumberGen.GET_INSTANCE();
     boolGen = BooleanGen.GET_INSTANCE();
   }
 
-  public ArrayNode genTuple(List<Type> elements)
+  public ArrayNode genPTuple(List<Type> elements)
   {
     ArrayNode result = JsonNodeFactory.instance.arrayNode();
 
@@ -43,8 +43,8 @@ public class TupleGen
 
           result.add(pTypeGen.genTrustedPrimitiveType(theType));
         }
-        else if (type instanceof Tuple)
-          result.add(genTuple(((Tuple)type).getElements()));
+        else if (type instanceof PTuple)
+          result.add(genPTuple(((PTuple)type).getElements()));
 
     return result;
   }

@@ -12,13 +12,13 @@ import com.google.gson.JsonObject;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
-import es.um.nosql.s13e.NoSQLSchema.Tuple;
+import es.um.nosql.s13e.NoSQLSchema.PTuple;
 
 /**
  * Class used to generate a random JSON file and the associated DBSCHEMA file.
@@ -49,8 +49,8 @@ public class ObjGenerator
 	private static final int MAX_REF = 3;
 
 	private NoSQLSchema schema;
-	private Map<String, EntityVariation> mapEV;
-	private Map<String, Entity> mapE;
+	private Map<String, StructuralVariation> mapEV;
+	private Map<String, EntityClass> mapE;
 	private Random random;
 
 	private JsonArray lStorage;
@@ -84,18 +84,18 @@ public class ObjGenerator
 	private ObjGenerator()
 	{
 		schema = NoSQLSchemaFactory.eINSTANCE.createNoSQLSchema();
-		mapE = new HashMap<String, Entity>();
-		mapEV = new HashMap<String, EntityVariation>();
+		mapE = new HashMap<String, EntityClass>();
+		mapEV = new HashMap<String, StructuralVariation>();
 
 		random = new Random();
 		lStorage = new JsonArray();
 
 		for (String entity : ENTITIES)
 		{
-			Entity oEntity = NoSQLSchemaFactory.eINSTANCE.createEntity();
-			oEntity.setName(entity);
-			schema.getEntities().add(oEntity);
-			mapE.put(entity, oEntity);
+			EntityClass oEntityClass = NoSQLSchemaFactory.eINSTANCE.createEntityClass();
+			oEntityClass.setName(entity);
+			schema.getEntities().add(oEntityClass);
+			mapE.put(entity, oEntityClass);
 		}
 
 		int IDENTIFIER = 0;
@@ -104,9 +104,9 @@ public class ObjGenerator
 			IDENTIFIER = 0;
 			for (int i = 1; i < getRandomBetween(MIN_ENTITY_VARIATIONS, MAX_ENTITY_VARIATIONS) + 1; i++)
 			{
-			  EntityVariation oev = NoSQLSchemaFactory.eINSTANCE.createEntityVariation();
+			  StructuralVariation oev = NoSQLSchemaFactory.eINSTANCE.createStructuralVariation();
 				oev.setVariationId(++IDENTIFIER);
-				((Entity)oev.eContainer()).setRoot(true);
+				((EntityClass)oev.eContainer()).setRoot(true);
 				mapE.get(entity).getVariations().add(oev);
 
 				JsonObject strObj = new JsonObject();
@@ -122,13 +122,13 @@ public class ObjGenerator
 				generateFloats(oev, strObj);
 				generateBools(oev, strObj);
 
-				// Generate Tuples.
-				generateTuples(oev, strObj);
+				// Generate PTuples.
+				generatePTuples(oev, strObj);
 
 				// Generate References.
 				for (int j = 0; j < getRandomBetween(MIN_REF, MAX_REF); j++)
 				{
-					Entity e = mapE.get(ENTITIES[random.nextInt(ENTITIES.length)]);
+					EntityClass e = mapE.get(ENTITIES[random.nextInt(ENTITIES.length)]);
 
 					Reference ref = NoSQLSchemaFactory.eINSTANCE.createReference();
 					ref.setName(e.getName() + "_id_reference");
@@ -145,7 +145,7 @@ public class ObjGenerator
 						ref.setLowerBound(random.nextInt(2));
 						ref.setUpperBound(random.nextInt(2) + 1);
 					}
-					ref.setRefTo(e);
+					ref.setRefsTo(e);
 					oev.getProperties().add(ref);
 
 					if (randomVal)
@@ -193,12 +193,12 @@ public class ObjGenerator
 	}
 
 	/**
-	 * Method used to generate a "Type" attribute and associate it to the JSON object and the EntityVariation.
-	 * @param oev The EntityVariation to which the type is being associated.
+	 * Method used to generate a "Type" attribute and associate it to the JSON object and the StructuralVariation.
+	 * @param oev The StructuralVariation to which the type is being associated.
 	 * @param strObj The JSON object to which the "type" field is being added.
 	 * @param type The type to be given.
 	 */
-	private void generateType(EntityVariation oev, JsonObject strObj, String type)
+	private void generateType(StructuralVariation oev, JsonObject strObj, String type)
 	{
 		Attribute attribute = NoSQLSchemaFactory.eINSTANCE.createAttribute();
 		PrimitiveType pType = NoSQLSchemaFactory.eINSTANCE.createPrimitiveType();
@@ -211,11 +211,11 @@ public class ObjGenerator
 	}
 
 	/**
-	 * Method used to generate a "String" attribute and associate it to the JSON object and the EntityVariation.
-	 * @param oev The EntityVariation to which the string is being associated.
+	 * Method used to generate a "String" attribute and associate it to the JSON object and the StructuralVariation.
+	 * @param oev The StructuralVariation to which the string is being associated.
 	 * @param strObj The JSON object to which the "string" field is being added.
 	 */
-	private void generateStrings(EntityVariation oev, JsonObject strObj)
+	private void generateStrings(StructuralVariation oev, JsonObject strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_STRING_ATTR, MAX_STRING_ATTR); j++)
 		{
@@ -231,11 +231,11 @@ public class ObjGenerator
 	}
 
 	/**
-	 * Method used to generate an "Int" attribute and associate it to the JSON object and the EntityVariation.
-	 * @param oev The EntityVariation to which the int is being associated.
+	 * Method used to generate an "Int" attribute and associate it to the JSON object and the StructuralVariation.
+	 * @param oev The StructuralVariation to which the int is being associated.
 	 * @param strObj The JSON object to which the "int" field is being added.
 	 */
-	private void generateInts(EntityVariation oev, JsonObject strObj)
+	private void generateInts(StructuralVariation oev, JsonObject strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_INT_ATTR, MAX_INT_ATTR); j++)
 		{
@@ -251,11 +251,11 @@ public class ObjGenerator
 	}
 
 	/**
-	 * Method used to generate a "Float" attribute and associate it to the JSON object and the EntityVariation.
-	 * @param oev The EntityVariation to which the float is being associated.
+	 * Method used to generate a "Float" attribute and associate it to the JSON object and the StructuralVariation.
+	 * @param oev The StructuralVariation to which the float is being associated.
 	 * @param strObj The JSON object to which the "float" field is being added.
 	 */
-	private void generateFloats(EntityVariation oev, JsonObject strObj)
+	private void generateFloats(StructuralVariation oev, JsonObject strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_FLOAT_ATTR, MAX_FLOAT_ATTR); j++)
 		{
@@ -271,11 +271,11 @@ public class ObjGenerator
 	}
 
 	/**
-	 * Method used to generate a "Bool" attribute and associate it to the JSON object and the EntityVariation.
-	 * @param oev The EntityVariation to which the bool is being associated.
+	 * Method used to generate a "Bool" attribute and associate it to the JSON object and the StructuralVariation.
+	 * @param oev The StructuralVariation to which the bool is being associated.
 	 * @param strObj The JSON object to which the "bool" field is being added.
 	 */
-	private void generateBools(EntityVariation oev, JsonObject strObj)
+	private void generateBools(StructuralVariation oev, JsonObject strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_BOOL_ATTR, MAX_BOOL_ATTR); j++)
 		{
@@ -291,17 +291,17 @@ public class ObjGenerator
 	}
 
 	/**
-	 * Method used to generate a "Tuple" attribute and associate it to the JSON object and the EntityVariation.
-	 * @param oev The EntityVariation to which the tuple is being associated.
+	 * Method used to generate a "PTuple" attribute and associate it to the JSON object and the StructuralVariation.
+	 * @param oev The StructuralVariation to which the tuple is being associated.
 	 * @param strObj The JSON object to which the "tuple" field is being added.
 	 */
-	private void generateTuples(EntityVariation oev, JsonObject strObj)
+	private void generatePTuples(StructuralVariation oev, JsonObject strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_TUPLE_ATTR, MAX_TUPLE_ATTR); j++)
 		{
 			Attribute attribute = NoSQLSchemaFactory.eINSTANCE.createAttribute();
-			Tuple tuple = NoSQLSchemaFactory.eINSTANCE.createTuple();
-			attribute.setName("atTuple_" + j);
+			PTuple tuple = NoSQLSchemaFactory.eINSTANCE.createPTuple();
+			attribute.setName("atPTuple_" + j);
 			attribute.setType(tuple);
 
 			JsonArray array = new JsonArray();
@@ -356,8 +356,8 @@ public class ObjGenerator
 					{
 						if (random.nextBoolean())
 						{
-							Tuple anotherTuple = NoSQLSchemaFactory.eINSTANCE.createTuple();
-							tuple.getElements().add(anotherTuple);
+							PTuple anotherPTuple = NoSQLSchemaFactory.eINSTANCE.createPTuple();
+							tuple.getElements().add(anotherPTuple);
 
 							JsonArray arrayAux = new JsonArray();
 							array.add(arrayAux);
@@ -365,7 +365,7 @@ public class ObjGenerator
 							{
 								PrimitiveType pType = NoSQLSchemaFactory.eINSTANCE.createPrimitiveType();
 								pType.setName("int");
-								anotherTuple.getElements().add(pType);
+								anotherPTuple.getElements().add(pType);
 
 								arrayAux.add(random.nextInt(50));
 							}
@@ -382,11 +382,11 @@ public class ObjGenerator
 	}
 
 	/**
-	 * Method used to generate a "Aggregate" attribute and associate it to the JSON object and the EntityVariation.
-	 * @param oev The EntityVariation to which the aggregation is being associated.
+	 * Method used to generate a "Aggregate" attribute and associate it to the JSON object and the StructuralVariation.
+	 * @param oev The StructuralVariation to which the aggregation is being associated.
 	 * @param strObj The JSON object to which the "Aggregate" field is being added.
 	 */
-	private void generateAggregates(EntityVariation oev, JsonObject strObj)
+	private void generateAggregates(StructuralVariation oev, JsonObject strObj)
 	{
 		for (int j = 0; j < getRandomBetween(MIN_AGGR, MAX_AGGR) && !mapEV.isEmpty(); j++)
 		{
@@ -400,9 +400,9 @@ public class ObjGenerator
 				aggr.setUpperBound(1);
 
 				String evId = (String)mapEV.keySet().toArray()[random.nextInt(mapEV.size())];
-				EntityVariation ev = mapEV.get(evId);
-				((Entity)ev.eContainer()).setRoot(false);
-				aggr.getRefTo().add(ev);
+				StructuralVariation ev = mapEV.get(evId);
+				((EntityClass)ev.eContainer()).setRoot(false);
+				aggr.getAggregates().add(ev);
 
 				for (JsonElement jElem : lStorage)
 					if (jElem.getAsJsonObject().get("_id").getAsInt() == (ev.getVariationId()))
@@ -421,9 +421,9 @@ public class ObjGenerator
 				for (int k = 1; k < getRandomBetween(aggr.getLowerBound(), aggr.getUpperBound()) && k < mapEV.size(); k++)
 				{
 					String evId = (String)mapEV.keySet().toArray()[random.nextInt(mapEV.size())];
-					EntityVariation ev = mapEV.get(evId);
-					((Entity)ev.eContainer()).setRoot(false);
-					aggr.getRefTo().add(ev);
+					StructuralVariation ev = mapEV.get(evId);
+					((EntityClass)ev.eContainer()).setRoot(false);
+					aggr.getAggregates().add(ev);
 
 					for (JsonElement jElem : lStorage)
 						if (jElem.getAsJsonObject().get("_id").getAsInt() == (ev.getVariationId()))

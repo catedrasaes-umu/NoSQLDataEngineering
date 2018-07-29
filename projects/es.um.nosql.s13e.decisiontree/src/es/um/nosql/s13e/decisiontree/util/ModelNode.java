@@ -1,17 +1,17 @@
 package es.um.nosql.s13e.decisiontree.util;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 
 public class ModelNode
 {
-  private EntityVariation ev;
+  private StructuralVariation sv;
   private PropertySpec property;
   private ModelNode nodePresent;
   private ModelNode nodeAbsent;
   private boolean checkNot;
 
-  public ModelNode(EntityVariation tag)
+  public ModelNode(StructuralVariation tag)
   {
     setEv(tag);
     setCheckNot(false);
@@ -33,14 +33,14 @@ public class ModelNode
     return property;
   }
 
-  public void setEv(EntityVariation tag)
+  public void setEv(StructuralVariation tag)
   {
-    this.ev = tag;
+    this.sv = tag;
   }
 
-  public EntityVariation getEv()
+  public StructuralVariation getSv()
   {
-    return ev;
+    return sv;
   }
 
   public void setNodePresent(ModelNode nodePresent)

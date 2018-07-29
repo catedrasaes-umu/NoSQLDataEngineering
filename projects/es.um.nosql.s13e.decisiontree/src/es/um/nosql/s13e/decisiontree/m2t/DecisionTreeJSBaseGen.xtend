@@ -5,8 +5,8 @@ import es.um.nosql.s13e.util.ModelLoader
 import es.um.nosql.s13e.DecisionTree.DecisionTrees
 import es.um.nosql.s13e.DecisionTree.DecisionTreePackage
 import es.um.nosql.s13e.decisiontree.m2t.commons.Commons
-import es.um.nosql.s13e.NoSQLSchema.Entity
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation
+import es.um.nosql.s13e.NoSQLSchema.EntityClass
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation
 
 public class DecisionTreeJSBaseGen
 {
@@ -29,18 +29,18 @@ public class DecisionTreeJSBaseGen
   private def generateClassificationFile(DecisionTrees decTrees)
   '''
   var «modelName» = require('./«modelName»');
-  «FOR Entity entity : decTrees.trees.map[tree | tree.entity].filter[e | e.root]»
+  «FOR EntityClass entity : decTrees.trees.map[tree | tree.entity].filter[e | e.root]»
   var «entity.name.toLowerCase»Json = require('./json/«entity.name».json');
   «ENDFOR»
 
-  «FOR Entity entity : decTrees.trees.map[tree | tree.entity].filter[e | e.root]»
+  «FOR EntityClass entity : decTrees.trees.map[tree | tree.entity].filter[e | e.root]»
   test«entity.name»Classifier();
   «ENDFOR»
 
-  «FOR Entity entity : decTrees.trees.map[tree | tree.entity].filter[e | e.root] SEPARATOR "\n"»
+  «FOR EntityClass entity : decTrees.trees.map[tree | tree.entity].filter[e | e.root] SEPARATOR "\n"»
   function test«entity.name»Classifier()
   {
-    var «entity.name.toLowerCase»Counter = { «FOR EntityVariation ev : entity.entityVariations SEPARATOR ', '»«entity.name»_«ev.variationId» : 0«ENDFOR»}
+    var «entity.name.toLowerCase»Counter = { «FOR StructuralVariation ev : entity.variations SEPARATOR ', '»«entity.name»_«ev.variationId» : 0«ENDFOR»}
 
     for («entity.name.toLowerCase» of «entity.name.toLowerCase»Json)
     {

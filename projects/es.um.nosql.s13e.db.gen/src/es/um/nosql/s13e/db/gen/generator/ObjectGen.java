@@ -16,38 +16,38 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
-import es.um.nosql.s13e.NoSQLSchema.Tuple;
+import es.um.nosql.s13e.NoSQLSchema.PTuple;
 import es.um.nosql.s13e.db.gen.generator.properties.AggregateGen;
 import es.um.nosql.s13e.db.gen.generator.properties.PrimitiveTypeGen;
 import es.um.nosql.s13e.db.gen.generator.properties.ReferenceGen;
-import es.um.nosql.s13e.db.gen.generator.properties.TupleGen;
+import es.um.nosql.s13e.db.gen.generator.properties.PTupleGen;
 import es.um.nosql.s13e.db.gen.util.EntityIdMap;
 import es.um.nosql.s13e.db.gen.util.constants.ConfigConstants;
 
 public class ObjectGen
 {
   private PrimitiveTypeGen pTypeGen;
-  private TupleGen tupleGen;
+  private PTupleGen tupleGen;
   private ReferenceGen refGen;
   private AggregateGen aggrGen;
   private JsonNodeFactory factory;
   private EntityIdMap eIdMap;
-  private Map<EntityVariation, List<ObjectNode>> evMap;
+  private Map<StructuralVariation, List<ObjectNode>> evMap;
 
   public ObjectGen()
   {
     pTypeGen = new PrimitiveTypeGen();
-    tupleGen = new TupleGen();
+    tupleGen = new PTupleGen();
     refGen = new ReferenceGen();
     aggrGen = new AggregateGen();
     factory = JsonNodeFactory.instance;
     eIdMap = new EntityIdMap();
-    evMap = new HashMap<EntityVariation, List<ObjectNode>>();
+    evMap = new HashMap<StructuralVariation, List<ObjectNode>>();
   }
 
   public Map<String, ArrayNode> generateBulk(NoSQLSchema schema, int objectsVariations)
@@ -71,14 +71,14 @@ public class ObjectGen
     Map<String, ArrayNode> result = new HashMap<String, ArrayNode>();
 
     // First run to generate all the primitive types and tuples.
-    for (Entity entity : schema.getEntities())
+    for (EntityClass entity : schema.getEntities())
     {
       ArrayNode entityObjs = factory.arrayNode();
 
       if (entity.isRoot())
         eIdMap.initialize(entity.getName());
 
-      for (EntityVariation eVariation : entity.getVariations())
+      for (StructuralVariation eVariation : entity.getVariations())
       {
         evMap.put(eVariation, new ArrayList<ObjectNode>());
 
@@ -104,8 +104,8 @@ public class ObjectGen
     }
 
     // Second run to generate the references and aggregates since now all the variations and instances exist.
-    for (Entity entity : schema.getEntities())
-      for (EntityVariation eVariation : entity.getVariations())
+    for (EntityClass entity : schema.getEntities())
+      for (StructuralVariation eVariation : entity.getVariations())
         for (ObjectNode strObj : evMap.get(eVariation))
           eVariation.getProperties().stream().filter(p -> p instanceof Association).forEach(p -> this.generateAssociation(strObj, (Association)p));
 
@@ -115,7 +115,7 @@ public class ObjectGen
     return result;
   }
 
-  private void generateMetadata(ObjectNode oNode, Entity entity, Optional<Attribute> theId)
+  private void generateMetadata(ObjectNode oNode, EntityClass entity, Optional<Attribute> theId)
   {
     if (!theId.isPresent())
       oNode.put("_id", pTypeGen.genTrustedObjectId("objectid"));
@@ -132,8 +132,8 @@ public class ObjectGen
   {
     if (attr.getType() instanceof PrimitiveType)
       oNode.put(attr.getName(), pTypeGen.genPrimitiveType(((PrimitiveType)attr.getType()).getName()));
-    else if (attr.getType() instanceof Tuple)
-      oNode.put(attr.getName(), tupleGen.genTuple(((Tuple)attr.getType()).getElements()));
+    else if (attr.getType() instanceof PTuple)
+      oNode.put(attr.getName(), tupleGen.genPTuple(((PTuple)attr.getType()).getElements()));
   }
 
   private void generateAssociation(ObjectNode oNode, Association assc)

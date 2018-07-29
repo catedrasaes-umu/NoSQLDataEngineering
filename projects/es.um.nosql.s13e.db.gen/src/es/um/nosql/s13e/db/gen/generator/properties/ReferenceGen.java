@@ -52,12 +52,12 @@ public class ReferenceGen
 
     List<JsonNode> result = new ArrayList<JsonNode>();
 
-    if (!eIdMap.containsKey(ref.getRefTo().getName(), refOriginalType))
-      throw new IllegalArgumentException("Reference " + ref.getRefTo().getName() + " with type " + refOriginalType + " not found.");
+    if (!eIdMap.containsKey(ref.getRefsTo().getName(), refOriginalType))
+      throw new IllegalArgumentException("Reference " + ref.getRefsTo().getName() + " with type " + refOriginalType + " not found.");
 
     // TODO: This might reference the same object several times. It might be a problem.
     for (int i = 0; i < numElements; i++)
-      result.add(eIdMap.getRandomElement(ref.getRefTo().getName(), refOriginalType));
+      result.add(eIdMap.getRandomElement(ref.getRefsTo().getName(), refOriginalType));
 
     return result;
   }

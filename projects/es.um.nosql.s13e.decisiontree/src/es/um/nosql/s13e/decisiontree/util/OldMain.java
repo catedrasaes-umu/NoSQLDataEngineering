@@ -17,8 +17,8 @@ import java.util.stream.IntStream;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Property;
@@ -41,7 +41,7 @@ public class OldMain {
     return classifier;
   }
 
-  public static Map<String, EntityVariation> getVariations(NoSQLSchema schema)
+  public static Map<String, StructuralVariation> getVariations(NoSQLSchema schema)
   {
     return 
         schema.getEntities().stream().filter(e -> e.isRoot()).flatMap(e ->
@@ -64,20 +64,20 @@ public class OldMain {
   public static Map<String, List<String>> getClasses(NoSQLSchema schema)
   {
     Map<String, List<String>> classes = new HashMap<String, List<String>>();
-    for (Entity entity: schema.getEntities())
+    for (EntityClass entity: schema.getEntities())
     {
       // FIXME
       if (!entity.isRoot())
         continue;
 
-      for (EntityVariation entityVariation: entity.getVariations())
+      for (StructuralVariation entityVariation: entity.getVariations())
       {
         // Get List of properties Names
         List<String> properties = entityVariation.getProperties().stream()
             .map(Serializer::serialize)
             .collect(Collectors.toList());
 
-        // Add current Entity Variation to entities Map
+        // Add current EntityClass Variation to entities Map
         String key = String.format("%1$s:%2$d", entity.getName(), entityVariation.getVariationId());
         classes.put(key, properties);
       }
@@ -163,7 +163,7 @@ public class OldMain {
   }
 
 
-  public static ModelTree getModelTree(ClassifierTree tree, Map<String, EntityVariation> entityVariations, Map<String, List<Property>> properties) throws Exception
+  public static ModelTree getModelTree(ClassifierTree tree, Map<String, StructuralVariation> entityVariations, Map<String, List<Property>> properties) throws Exception
   {
     if (tree.isLeaf())
     {
@@ -175,8 +175,8 @@ public class OldMain {
 
       if (matcher.find())
       {
-        EntityVariation ev = entityVariations.get(matcher.group(1));
-        return new ModelTree((Entity)ev.eContainer(),ev);
+        StructuralVariation ev = entityVariations.get(matcher.group(1));
+        return new ModelTree((EntityClass)ev.eContainer(),ev);
       }
 
       else throw new Exception("Invalid exp reg for: "+tag);
@@ -225,8 +225,8 @@ public class OldMain {
 
     if (tree.isLeaf())
     {
-      Entity e = tree.getEntity();
-      System.out.println(indent+"Entity: "+e.getName()+", Variation: "+tree.getTag().getVariationId());
+      EntityClass e = tree.getEntityClass();
+      System.out.println(indent+"EntityClass: "+e.getName()+", Variation: "+tree.getTag().getVariationId());
     }
     else
     {

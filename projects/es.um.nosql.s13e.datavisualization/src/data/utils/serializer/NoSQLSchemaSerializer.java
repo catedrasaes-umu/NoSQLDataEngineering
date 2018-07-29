@@ -4,19 +4,21 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.tuple.Triple;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.Entity;
-import es.um.nosql.s13e.NoSQLSchema.EntityVariation;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
-import es.um.nosql.s13e.NoSQLSchema.Tuple;
+import es.um.nosql.s13e.NoSQLSchema.PTuple;
 import es.um.nosql.s13e.NoSQLSchema.Type;
 
 /**
@@ -68,19 +70,19 @@ public class NoSQLSchemaSerializer
 
 		result.append("NoSQLSchema - name: " + theSchema.getName() + ENDLINE);
 
-		for (Entity entity : theSchema.getEntities())
+		for (EntityClass entity : theSchema.getEntities())
 			result.append(stringify(entity, tabs));
 
 		return result.toString();
 	}
 
 	/**
-	 * Method used to stringify an Entity.
-	 * @param entity The Entity to be serialized.
+	 * Method used to stringify an EntityClass.
+	 * @param entity The EntityClass to be serialized.
 	 * @param defTabs The number of tabs to apply to the serialization.
-	 * @return A String containing a serialized Entity.
+	 * @return A String containing a serialized EntityClass.
 	 */
-	public String stringify(Entity entity, String defTabs)
+	public String stringify(EntityClass entity, String defTabs)
 	{
 		if (entity == null)
 			return null;
@@ -88,21 +90,21 @@ public class NoSQLSchemaSerializer
 		String tabs = defTabs + TAB;
 		StringBuilder result = new StringBuilder();
 
-		result.append(tabs + "Entity - name: " + entity.getName() + ", root: " + entity.isRoot() + ENDLINE);
+		result.append(tabs + "EntityClass - name: " + entity.getName() + ", root: " + entity.isRoot() + ENDLINE);
 
-		for (EntityVariation eVariation : entity.getVariations())
+		for (StructuralVariation eVariation : entity.getVariations())
 			result.append(stringify(eVariation, tabs));
 
 		return result.toString();
 	}
 
 	/**
-	 * Method used to stringify an EntityVariation.
-	 * @param eVariation The EntityVariation to be serialized.
+	 * Method used to stringify an StructuralVariation.
+	 * @param eVariation The StructuralVariation to be serialized.
 	 * @param defTabs The number of tabs to apply to the serialization.
-	 * @return A String containing a serialized EntityVariation.
+	 * @return A String containing a serialized StructuralVariation.
 	 */
-	public String stringify(EntityVariation eVariation, String defTabs)
+	public String stringify(StructuralVariation eVariation, String defTabs)
 	{
 		if (eVariation == null)
 			return null;
@@ -110,7 +112,7 @@ public class NoSQLSchemaSerializer
 		String tabs = defTabs + TAB;
 		StringBuilder result = new StringBuilder();
 
-		result.append(tabs + "EntityVariation - variationId: " + eVariation.getVariationId() +
+		result.append(tabs + "StructuralVariation - variationId: " + eVariation.getVariationId() +
 		    ", count: " + eVariation.getCount() + ", timestamp: " + eVariation.getTimestamp() + ENDLINE);
 
 		for (Property property : eVariation.getProperties())
@@ -157,14 +159,14 @@ public class NoSQLSchemaSerializer
 
 		if (type instanceof PrimitiveType)
 			result.append("type: " + ((PrimitiveType)type).getName());
-		if (type instanceof Tuple)
-			result.append("type: Tuple[" + stringify(((Tuple)type).getElements()) + "]");
+		if (type instanceof PTuple)
+			result.append("type: PTuple[" + stringify(((PTuple)type).getElements()) + "]");
 
 		return result.toString();
 	}
 
 	/**
-	 * Method used to stringify a list of Types in case a Tuple is being processed.
+	 * Method used to stringify a list of Types in case a PTuple is being processed.
 	 * @param typeList The Type list to be serialized.
 	 * @return A String containing a serialized Type list.
 	 */
@@ -173,19 +175,13 @@ public class NoSQLSchemaSerializer
 		if (typeList == null)
 			return null;
 
-		StringBuilder result = new StringBuilder();
-
-		for (int i = 0; i < typeList.size(); i++)
-		{
-			Type type = typeList.get(i);
+		return typeList.stream().map(type -> {
 			if (type instanceof PrimitiveType)
-				result.append(((PrimitiveType)type).getName());
-			if (type instanceof Tuple)
-				result.append("Tuple[" + stringify(((Tuple)type).getElements()) + "]");
-			if (i != (typeList.size() - 1))
-				result.append(";");
-		}
-		return result.toString();
+				return ((PrimitiveType)type).getName();
+			if (type instanceof PTuple)
+				return "PTuple[" + stringify(((PTuple)type).getElements()) + "]";
+			return "";
+		}).collect(Collectors.joining(", "));
 	}
 
 	/**
@@ -211,20 +207,15 @@ public class NoSQLSchemaSerializer
 			result.insert(0, tabs + "Aggregate");
 			result.append("refTo: ");
 
-			for (int i = 0; i < aggregate.getRefTo().size(); i++)
-			{
-			  EntityVariation eVariation = aggregate.getRefTo().get(i);
-				result.append("EntityVariation " + eVariation.getVariationId());
-				if (i != (aggregate.getRefTo().size() - 1))
-					result.append(", ");
-			}
+			result.append(aggregate.getAggregates().stream()
+					.map(ev -> "StructuralVariation " + ev.getVariationId()).collect(Collectors.joining(", ")));
 		}
 
 		if (association instanceof Reference)
 		{
 			Reference reference = (Reference)association;
 			result.insert(0, tabs + "Reference");
-			result.append("opposite: " + reference.getOpposite() + ", refTo: " + ((Entity)reference.getRefTo()).getName());
+			result.append("opposite: " + reference.getOpposite() + ", refTo: " + ((EntityClass)reference.getRefsTo()).getName());
 		}
 
 		result.append(ENDLINE);
@@ -233,41 +224,41 @@ public class NoSQLSchemaSerializer
 	}
 
 	/**
-	 * Method used to stringify an EntityVariation Triple list with the associated schema info.
-	 * @param entityVariationList The EntityVariation Triple list.
-	 * @return A String containing a serialized EntityVariation Triple list.
+	 * Method used to stringify an StructuralVariation Triple list with the associated schema info.
+	 * @param entityVariationList The StructuralVariation Triple list.
+	 * @return A String containing a serialized StructuralVariation Triple list.
 	 */
-	public String stringifyEntityVariationList(List<Triple<EntityVariation, Set<EntityVariation>, Set<Entity>>> entityVariationList)
+	public String stringifyStructuralVariationList(List<Triple<StructuralVariation, Set<StructuralVariation>, Set<EntityClass>>> entityVariationList)
 	{
 		if (entityVariationList == null)
 			return null;
 
-		Collections.sort(entityVariationList, new Comparator<Triple<EntityVariation, Set<EntityVariation>, Set<Entity>>>()
+		Collections.sort(entityVariationList, new Comparator<Triple<StructuralVariation, Set<StructuralVariation>, Set<EntityClass>>>()
 		{
-			public int compare(Triple<EntityVariation, Set<EntityVariation>, Set<Entity>> o1, Triple<EntityVariation, Set<EntityVariation>, Set<Entity>> o2)
+			public int compare(Triple<StructuralVariation, Set<StructuralVariation>, Set<EntityClass>> o1, Triple<StructuralVariation, Set<StructuralVariation>, Set<EntityClass>> o2)
 			{
 				return o1.getLeft().getVariationId() < o2.getLeft().getVariationId() ? -1 : 1;
 			}
 		});
 
 		StringBuilder result = new StringBuilder();
-		result.append("Printing EntityVariation list...\n");
+		result.append("Printing StructuralVariation list...\n");
 
 		if (entityVariationList.isEmpty())
-			result.append("EntityVariation list is empty.\n");
+			result.append("StructuralVariation list is empty.\n");
 		else
 		{
 			result.append("[\n");
-			for (Triple<EntityVariation, Set<EntityVariation>, Set<Entity>> triple : entityVariationList)
+			for (Triple<StructuralVariation, Set<StructuralVariation>, Set<EntityClass>> triple : entityVariationList)
 			{
-				result.append("\t<EntityVariation " + triple.getLeft().getVariationId() + ", EntityVariation List: [ ");
+				result.append("\t<StructuralVariation " + triple.getLeft().getVariationId() + ", StructuralVariation List: [ ");
 
-				for (EntityVariation ev : triple.getMiddle())
+				for (StructuralVariation ev : triple.getMiddle())
 					result.append("EV_" + ev.getVariationId() + " ");
 				result.append("],");
 
-				result.append(" Entity List: [ ");
-				for (Entity e : triple.getRight())
+				result.append(" EntityClass List: [ ");
+				for (EntityClass e : triple.getRight())
 					result.append(e.getName() + " ");
 				result.append("]>\n");
 			}
@@ -277,41 +268,41 @@ public class NoSQLSchemaSerializer
 	}
 
 	/**
-	 * Method used to stringify an Entity Triple list with the associated schema info.
-	 * @param entityList The Entity Triple list.
-	 * @return A String containing a serialized Entity Triple list.
+	 * Method used to stringify an EntityClass Triple list with the associated schema info.
+	 * @param entityList The EntityClass Triple list.
+	 * @return A String containing a serialized EntityClass Triple list.
 	 */
-	public String stringifyEntityList(List<Triple<Entity, Set<EntityVariation>, Set<Entity>>> entityList)
+	public String stringifyEntityClassList(List<Triple<EntityClass, Set<StructuralVariation>, Set<EntityClass>>> entityList)
 	{
 		if (entityList == null)
 			return null;
 
-		Collections.sort(entityList, new Comparator<Triple<Entity, Set<EntityVariation>, Set<Entity>>>()
+		Collections.sort(entityList, new Comparator<Triple<EntityClass, Set<StructuralVariation>, Set<EntityClass>>>()
 		{
-			public int compare(Triple<Entity, Set<EntityVariation>, Set<Entity>> o1, Triple<Entity, Set<EntityVariation>, Set<Entity>> o2)
+			public int compare(Triple<EntityClass, Set<StructuralVariation>, Set<EntityClass>> o1, Triple<EntityClass, Set<StructuralVariation>, Set<EntityClass>> o2)
 			{
 				return o1.getLeft().getName().compareTo(o2.getLeft().getName());
 			}
 		});
 
 		StringBuilder result = new StringBuilder();
-		result.append("Printing Entity list...\n");
+		result.append("Printing EntityClass list...\n");
 
 		if (entityList.isEmpty())
-			result.append("Entity list is empty.\n");
+			result.append("EntityClass list is empty.\n");
 		else
 		{
 			result.append("[\n");
-			for (Triple<Entity, Set<EntityVariation>, Set<Entity>> triple : entityList)
+			for (Triple<EntityClass, Set<StructuralVariation>, Set<EntityClass>> triple : entityList)
 			{
-				result.append("\t<Entity " + triple.getLeft().getName() + ", EntityVariation List: [ ");
+				result.append("\t<EntityClass " + triple.getLeft().getName() + ", StructuralVariation List: [ ");
 
-				for (EntityVariation ev : triple.getMiddle())
+				for (StructuralVariation ev : triple.getMiddle())
 					result.append("EV_" + ev.getVariationId() + " ");
 				result.append("],");
 
-				result.append(" Entity List: [ ");
-				for (Entity e : triple.getRight())
+				result.append(" EntityClass List: [ ");
+				for (EntityClass e : triple.getRight())
 					result.append(e.getName() + " ");
 				result.append("]>\n");
 			}
