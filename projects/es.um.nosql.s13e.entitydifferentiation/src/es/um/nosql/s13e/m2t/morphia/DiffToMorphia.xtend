@@ -152,9 +152,9 @@ public class DiffToMorphia
    */
   private def genSpecs(EntityClass entity, EntityDiffSpec spec)
   '''
-    «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.variationProps.map[sp | sp -> false])
-      .reject[p | p.key.property.name.startsWith("_") && !p.key.property.name.equals("_id")]
-      .sortBy[p | p.key.property.name] SEPARATOR '\n'»
+    «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false])
+    	.reject[p | p.key.property.name.startsWith("_") && !p.key.property.name.equals("_id")]
+      	.sortBy[p | p.key.property.name] SEPARATOR '\n'»
       «IF s.key.needsTypeCheck»
         «genCodeForTypeCheckProperty(entity, s.key.property, s.value)»
       «ELSE»
@@ -392,7 +392,7 @@ public class DiffToMorphia
   '''
     @Reference«IF !Commons.IS_DBREF(ref)»(idOnly = true«indexValGen.genPopulateReferences(ref.eContainer.eContainer as EntityClass, ref.name)»)«ENDIF»
     «IF required»@NotNull(message = "«ref.name» can't be null")«ENDIF»
-    «indexValGen.genValidatorsForField(ref.eContainer.eContainer as Entity, ref.name)»
+    «indexValGen.genValidatorsForField(ref.eContainer.eContainer as EntityClass, ref.name)»
     private «genTypeForProperty(ref)» «ref.name»;
     public «genTypeForProperty(ref)» get«ref.name.toFirstUpper»() {return this.«ref.name»;}
     public void set«ref.name.toFirstUpper»(«genTypeForProperty(ref)» «ref.name») {this.«ref.name» = «ref.name»;}
