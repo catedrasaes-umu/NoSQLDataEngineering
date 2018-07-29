@@ -1,25 +1,25 @@
 package es.um.nosql.s13e.m2t.morphia
 
-import java.io.File
-import es.um.nosql.s13e.NoSQLSchema.Entity
-import java.util.List
 import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec
-import es.um.nosql.s13e.EntityDifferentiation.PropertySpec
-import es.um.nosql.s13e.util.ModelLoader
-import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation
+import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage
+import es.um.nosql.s13e.EntityDifferentiation.PropertySpec
 import es.um.nosql.s13e.NoSQLSchema.Aggregate
-import java.util.Comparator
+import es.um.nosql.s13e.NoSQLSchema.Association
 import es.um.nosql.s13e.NoSQLSchema.Attribute
-import es.um.nosql.s13e.NoSQLSchema.Reference
-import es.um.nosql.s13e.NoSQLSchema.Tuple
+import es.um.nosql.s13e.NoSQLSchema.EntityClass
+import es.um.nosql.s13e.NoSQLSchema.PTuple
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType
 import es.um.nosql.s13e.NoSQLSchema.Property
-import java.util.ArrayList
+import es.um.nosql.s13e.NoSQLSchema.Reference
 import es.um.nosql.s13e.m2t.commons.Commons
 import es.um.nosql.s13e.m2t.commons.DependencyAnalyzer
 import es.um.nosql.s13e.m2t.config.ConfigMorphia
-import es.um.nosql.s13e.NoSQLSchema.Association
+import es.um.nosql.s13e.util.ModelLoader
+import java.io.File
+import java.util.ArrayList
+import java.util.Comparator
+import java.util.List
 import java.util.stream.IntStream
 
 /**
@@ -57,6 +57,7 @@ public class DiffToMorphia
     outputDir.mkdirs;
     if (outputDir.toString.contains("src"))
     {
+    	// TODO: Write this OS-independent
       importRoute = outputDir.toString.substring(outputDir.toString.lastIndexOf("src") + 4).replace(File.separatorChar, ".");
     }
     else
@@ -73,7 +74,7 @@ public class DiffToMorphia
     analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))];
   }
 
-  private def schemaFileName(Entity entity)
+  private def schemaFileName(EntityClass entity)
   {
     entity.name + ".java";
   }
@@ -81,7 +82,7 @@ public class DiffToMorphia
   /**
    * This method generates the basic structure of the Java class.
    */
-  private def genSchema(Entity entity)
+  private def genSchema(EntityClass entity)
   '''
     package «importRoute»;
 
@@ -98,15 +99,14 @@ public class DiffToMorphia
   /**
    * To generate imports, we just check the conditions in which these imports will be used.
    */
-  private def genIncludes(Entity entity)
+  private def genIncludes(EntityClass entity)
   {
     val collListUnionProperties = analyzer.getTypeListByPropertyName.get(entity).values;
     '''
     «IF entity.isRoot»
     import org.mongodb.morphia.annotations.Entity;
     import org.mongodb.morphia.annotations.Id;
-    «IF entity.entityVariations.exists[ev | ev.properties.exists[p | (p instanceof Attribute && (p as Attribute).type instanceof PrimitiveType && ((p as Attribute).type as PrimitiveType).name.equals("ObjectId")) ||
-      (p instanceof Reference && (p as Reference).originalType.equals("ObjectId"))]]»
+    «IF entityReferencesObjectId(entity)»
     import org.bson.types.ObjectId;
     «ENDIF»
     «ENDIF»
@@ -118,20 +118,30 @@ public class DiffToMorphia
       import org.mongodb.morphia.annotations.PreSave;
       import com.mongodb.DBObject;
     «ENDIF»
-    «IF !entity.isRoot || entity.entityVariations.exists[ev | ev.properties.exists[p | p instanceof Aggregate]]»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
-    «IF entity.entityVariations.exists[ev | ev.properties.exists[p | p instanceof Attribute]]»import org.mongodb.morphia.annotations.Property;«ENDIF»
-    «IF entity.entityVariations.exists[ev | ev.properties.exists[p | p instanceof Reference]]»import org.mongodb.morphia.annotations.Reference;«ENDIF»
+    «IF !entity.isRoot || entity.variations.exists[ev | ev.properties.exists[p | p instanceof Aggregate]]»import org.mongodb.morphia.annotations.Embedded;«ENDIF»
+    «IF entity.variations.exists[ev | ev.properties.exists[p | p instanceof Attribute]]»import org.mongodb.morphia.annotations.Property;«ENDIF»
+    «IF entity.variations.exists[ev | ev.properties.exists[p | p instanceof Reference]]»import org.mongodb.morphia.annotations.Reference;«ENDIF»
     «IF !analyzer.getDiffByEntity().get(entity).commonProps.isEmpty»import javax.validation.constraints.NotNull;«ENDIF»
-    «IF entity.entityVariations.exists[ev | ev.properties.exists[p | (p instanceof Association &&
-      ((p as Association).lowerBound !== 1 || (p as Association).upperBound !== 1)) || (p instanceof Attribute && (p as Attribute).type instanceof Tuple)]]»
+    «IF entityHasMultipleCardinalityAttributes(entity)»
     import java.util.List;
     «ENDIF»
     «indexValGen.genIncludesForEntity(entity)»
 
-    «FOR Entity e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
+    «FOR EntityClass e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
       import «importRoute».«e.name»;
     «ENDFOR»
     '''
+  }
+		
+	protected def boolean entityHasMultipleCardinalityAttributes(EntityClass entity) {
+		entity.variations.exists[ev | ev.properties.exists[p | (p instanceof Association &&
+		      ((p as Association).lowerBound !== 1 || (p as Association).upperBound !== 1)) || (p instanceof Attribute && (p as Attribute).type instanceof PTuple)]]
+	}
+		
+  protected def boolean entityReferencesObjectId(EntityClass entity) 
+  {
+	entity.variations.exists[ev | ev.properties.exists[p | (p instanceof Attribute && (p as Attribute).type instanceof PrimitiveType && ((p as Attribute).type as PrimitiveType).name.equals("ObjectId")) ||
+		(p instanceof Reference && (p as Reference).originalType.equals("ObjectId"))]]
   }
 
   /**
@@ -140,9 +150,9 @@ public class DiffToMorphia
    * s.key stores a PropertySpec
    * s.value stores "required" or not
    */
-  private def genSpecs(Entity entity, EntityDiffSpec spec)
+  private def genSpecs(EntityClass entity, EntityDiffSpec spec)
   '''
-    «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false])
+    «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.variationProps.map[sp | sp -> false])
       .reject[p | p.key.property.name.startsWith("_") && !p.key.property.name.equals("_id")]
       .sortBy[p | p.key.property.name] SEPARATOR '\n'»
       «IF s.key.needsTypeCheck»
@@ -155,7 +165,7 @@ public class DiffToMorphia
 
   private def specificProps(EntityDiffSpec spec)
   {
-    spec.entityVariationProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
+    spec.variationProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
       [result, neew |
         val names = result.map[p | p.property.name].toSet
         result.addAll(neew.filter[p | !names.contains(p.property.name)])
@@ -169,7 +179,7 @@ public class DiffToMorphia
    * If the reduction is possible, we generate the property as any other.
    * If not, a Union is generated.
    */
-  private def genCodeForTypeCheckProperty(Entity entity, Property property, boolean required)
+  private def genCodeForTypeCheckProperty(EntityClass entity, Property property, boolean required)
   {
     val typeList = analyzer.getTypeListByPropertyName().get(entity).get(property.name)
     // On uniqueTypeList we removed duplicated property types, such as a String PrimitiveType and a Reference w originalType String.
@@ -223,7 +233,7 @@ public class DiffToMorphia
 
   // @Union_«theTypes.join('_')»
   «IF required»@NotNull(message = "«theName» can't be null")«ENDIF»
-  «indexValGen.genValidatorsForField(list.head.eContainer.eContainer as Entity, theName)»
+  «indexValGen.genValidatorsForField(list.head.eContainer.eContainer as EntityClass, theName)»
   @SuppressWarnings("unused")
   private Object «theName»;
   public Object get«theName.toFirstUpper»()
@@ -356,7 +366,7 @@ public class DiffToMorphia
   '''
     @Embedded
     «IF required»@NotNull(message = "«aggr.name» can't be null")«ENDIF»
-    «indexValGen.genValidatorsForField(aggr.eContainer.eContainer as Entity, aggr.name)»
+    «indexValGen.genValidatorsForField(aggr.eContainer.eContainer as EntityClass, aggr.name)»
     private «genTypeForProperty(aggr)» «aggr.name»;
     public «genTypeForProperty(aggr)» get«aggr.name.toFirstUpper»() {return this.«aggr.name»;}
     public void set«aggr.name.toFirstUpper»(«genTypeForProperty(aggr)» «aggr.name») {this.«aggr.name» = «aggr.name»;}
@@ -367,7 +377,7 @@ public class DiffToMorphia
    */
   private def dispatch genTypeForProperty(Aggregate aggr)
   {
-    var entityName = (aggr.refTo.get(0).eContainer as Entity).name;
+    var entityName = (aggr.aggregates.get(0).eContainer as EntityClass).name;
     if (aggr.lowerBound !== 1 || aggr.upperBound !== 1)
       entityName = "List<" + entityName + ">";
 
@@ -380,7 +390,7 @@ public class DiffToMorphia
    */
   private def dispatch genCodeForProperty(Reference ref, boolean required)
   '''
-    @Reference«IF !Commons.IS_DBREF(ref)»(idOnly = true«indexValGen.genPopulateReferences(ref.eContainer.eContainer as Entity, ref.name)»)«ENDIF»
+    @Reference«IF !Commons.IS_DBREF(ref)»(idOnly = true«indexValGen.genPopulateReferences(ref.eContainer.eContainer as EntityClass, ref.name)»)«ENDIF»
     «IF required»@NotNull(message = "«ref.name» can't be null")«ENDIF»
     «indexValGen.genValidatorsForField(ref.eContainer.eContainer as Entity, ref.name)»
     private «genTypeForProperty(ref)» «ref.name»;
@@ -393,7 +403,7 @@ public class DiffToMorphia
    */
   private def dispatch genTypeForProperty(Reference ref)
   {
-    var returnValue = ref.refTo.name;
+    var returnValue = ref.refsTo.name;
 
     if (ref.lowerBound !== 1 || ref.upperBound !== 1)
       returnValue = "List<" + returnValue + ">";
@@ -409,7 +419,7 @@ public class DiffToMorphia
   '''
     «IF a.name.toLowerCase.equals("_id")»@Id«ELSE»@Property«ENDIF»
     «IF required»@NotNull(message = "«a.name» can't be null")«ENDIF»
-    «indexValGen.genValidatorsForField(a.eContainer.eContainer as Entity, a.name)»
+    «indexValGen.genValidatorsForField(a.eContainer.eContainer as EntityClass, a.name)»
     private «genTypeForProperty(a)» «a.name»;
     public «genTypeForProperty(a)» get«a.name.toFirstUpper»() {return this.«a.name»;}
     public void set«a.name.toFirstUpper»(«genTypeForProperty(a)» «a.name») {this.«a.name» = «a.name»;}
@@ -434,7 +444,8 @@ public class DiffToMorphia
   /**
    * Shortcut method to generate a Tuple type.
    */
-  private def dispatch CharSequence genAttributeType(Tuple tuple)
+  // TODO: Treat the different containers.
+  private def dispatch CharSequence genAttributeType(PTuple tuple)
   {
     if (tuple.elements.size == 1)
       '''List<«genAttributeType(tuple.elements.get(0))»>'''
