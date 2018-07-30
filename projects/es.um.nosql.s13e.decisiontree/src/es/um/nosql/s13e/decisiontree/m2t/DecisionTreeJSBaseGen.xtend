@@ -8,11 +8,11 @@ import es.um.nosql.s13e.decisiontree.m2t.commons.Commons
 import es.um.nosql.s13e.NoSQLSchema.EntityClass
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation
 
-public class DecisionTreeJSBaseGen
+class DecisionTreeJSBaseGen
 {
-  private var modelName = "";
+  var modelName = "";
 
-  public def m2t(File modelFile, File outputFolder)
+  def m2t(File modelFile, File outputFolder)
   {
     val loader = new ModelLoader(DecisionTreePackage.eINSTANCE);
     val decTrees = loader.load(modelFile, DecisionTrees);
@@ -20,7 +20,7 @@ public class DecisionTreeJSBaseGen
     m2t(decTrees, outputFolder);
   }
 
-  public def void m2t(DecisionTrees decTrees, File outputFolder)
+  def void m2t(DecisionTrees decTrees, File outputFolder)
   {
     modelName = decTrees.name + "Classifier";
     Commons.WRITE_TO_FILE(outputFolder, "testClassifier.js", generateClassificationFile(decTrees));

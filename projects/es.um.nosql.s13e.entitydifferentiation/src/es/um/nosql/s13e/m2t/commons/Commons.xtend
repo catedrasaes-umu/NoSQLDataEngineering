@@ -18,7 +18,7 @@ class Commons
   /**
    * Method used to write a generated CharSequence to a file
    */
-  public static def void WRITE_TO_FILE(File outputDir, String filename, CharSequence toWrite)
+  static def void WRITE_TO_FILE(File outputDir, String filename, CharSequence toWrite)
   {
     val outFile = outputDir.toPath().resolve(filename).toFile()
     val outFileWriter = new PrintStream(outFile)
@@ -29,7 +29,7 @@ class Commons
   /**
    * Method used to process a Reference and check out if it is a DBRef or just a string|number storing an id.
    */
-  public static def EXPAND_REF(Reference reference) 
+  static def EXPAND_REF(Reference reference) 
   {
     val pat = Pattern.compile("DBRef\\((.+?)\\)")
     val m = pat.matcher(reference.originalType)
@@ -39,16 +39,16 @@ class Commons
       #[reference.originalType]
   }
 
-  public static def IS_DBREF(Reference reference)
+  static def IS_DBREF(Reference reference)
   {
     return EXPAND_REF(reference).length == 2
   }
 
-  public static def IS_STRING(String type) { #["string"].contains(type)}
-  public static def IS_INT(String type) { #["int", "integer", "number"].contains(type)}
-  public static def IS_DOUBLE(String type) { #["float", "double"].contains(type)}
-  public static def IS_BOOLEAN(String type) { #["boolean", "bool"].contains(type)}
-  public static def IS_OBJECTID(String type) { #["objectid"].contains(type)}
+  static def IS_STRING(String type) { #["string"].contains(type)}
+  static def IS_INT(String type) { #["int", "integer", "number"].contains(type)}
+  static def IS_DOUBLE(String type) { #["float", "double"].contains(type)}
+  static def IS_BOOLEAN(String type) { #["boolean", "bool"].contains(type)}
+  static def IS_OBJECTID(String type) { #["objectid"].contains(type)}
 
   def static <T extends BaseConfig> T PARSE_CONFIG_FILE(Class<T> className, File configFile, EntityDifferentiation diff)
   {

@@ -6,15 +6,15 @@ import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation
 import es.um.nosql.s13e.m2t.commons.Commons
 
-public class DiffMongooseBaseGen
+class DiffMongooseBaseGen
 {
-  private var modelName = "";
+  var modelName = "";
 
   // For the base generation we need three items:
   // - The folder to output the generation
   // - The model name to name the files and variables
   // - The root entities (entities with at least one root variation), so we can include some variables and generate base validators.
-  public def m2t(File modelFile, File outputFolder)
+  def m2t(File modelFile, File outputFolder)
   {
     val loader = new ModelLoader(EntityDifferentiationPackage.eINSTANCE);
     val diff = loader.load(modelFile, EntityDifferentiation);
@@ -25,7 +25,7 @@ public class DiffMongooseBaseGen
   /**
    * Method used to start the generation process from an EntityDifferentiation object
    */
-  public def void m2t(EntityDifferentiation diff, File outputFolder)
+  def void m2t(EntityDifferentiation diff, File outputFolder)
   {
     val outputDir = outputFolder;
     modelName = diff.name;

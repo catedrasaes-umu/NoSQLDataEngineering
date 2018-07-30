@@ -8,14 +8,14 @@ import es.um.nosql.s13e.m2t.config.pojo.ConfigValidator
 
 class MorphiaIndexValGen
 {
-  private ConfigMorphia config;
+  ConfigMorphia config;
 
-  public new(ConfigMorphia config)
+  new(ConfigMorphia config)
   {
     this.config = config;
   }
 
-  public def genIncludesForEntity(EntityClass e)
+  def genIncludesForEntity(EntityClass e)
   {
     if (config === null)
     ''''''
@@ -42,7 +42,7 @@ class MorphiaIndexValGen
     }
   }
 
-  public def genValidatorsForField(EntityClass e, String field)
+  def genValidatorsForField(EntityClass e, String field)
   {
     if (config === null)
     ''''''
@@ -66,7 +66,7 @@ class MorphiaIndexValGen
     }
   }
 
-  public def genPopulateReferences(EntityClass e, String field)
+  def genPopulateReferences(EntityClass e, String field)
   {
     if (config === null)
     ''', lazy = true'''
@@ -81,7 +81,7 @@ class MorphiaIndexValGen
   private def genMsg(ConfigValidator v)
   '''«IF v.message !== null», message = "«v.message»"«ENDIF»'''
 
-  public def genIndexesForEntity(EntityClass e)
+  def genIndexesForEntity(EntityClass e)
   {
     if (config === null)
     ''''''

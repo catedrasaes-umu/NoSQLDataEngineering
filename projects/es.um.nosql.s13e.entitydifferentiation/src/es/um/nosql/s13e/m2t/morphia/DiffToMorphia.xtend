@@ -25,21 +25,21 @@ import java.util.stream.IntStream
 /**
  * Class designed to perform the Morphia code generation: Java
  */
-public class DiffToMorphia
+class DiffToMorphia
 {
   /**
    * This route stores the import routes between objects.
    */
-  private var importRoute = "";
+  var importRoute = "";
 
-  private DependencyAnalyzer analyzer;
+  DependencyAnalyzer analyzer;
 
-  private MorphiaIndexValGen indexValGen;
+  MorphiaIndexValGen indexValGen;
 
   /**
    * Method used to start the generation process from a diff model file
    */
-  public def void m2t(File modelFile, File outputFolder, File configFile)
+  def void m2t(File modelFile, File outputFolder, File configFile)
   {
     val loader = new ModelLoader(EntityDifferentiationPackage.eINSTANCE);
     val diff = loader.load(modelFile, EntityDifferentiation);
@@ -50,7 +50,7 @@ public class DiffToMorphia
   /**
    * Method used to start the generation process from an EntityDifferentiation object.
    */
-  public def void m2t(EntityDifferentiation diff, File outputFolder, File configFile)
+  def void m2t(EntityDifferentiation diff, File outputFolder, File configFile)
   {
     val modelName = diff.name;
     val outputDir = outputFolder.toPath.resolve(modelName).toFile;

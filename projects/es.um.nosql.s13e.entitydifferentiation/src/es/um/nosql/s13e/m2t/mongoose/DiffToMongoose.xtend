@@ -26,7 +26,7 @@ import java.util.HashMap
 /**
  * Class designed to perform the Mongoose code generation: Javascript
  */
-public class DiffToMongoose
+class DiffToMongoose
 {
   private static class Label
   {
@@ -35,16 +35,16 @@ public class DiffToMongoose
     override toString() {label}
   }
 
-  private File outputDir;
+  File outputDir;
 
-  private DependencyAnalyzer analyzer;
+  DependencyAnalyzer analyzer;
 
-  private MongooseIndexValGen indexValGen;
+  MongooseIndexValGen indexValGen;
 
   /**
    * Method used to start the generation process from a diff model file
    */
-  public def void m2t(File modelFile, File outputFolder, File configFile)
+  def void m2t(File modelFile, File outputFolder, File configFile)
   {
     val loader = new ModelLoader(EntityDifferentiationPackage.eINSTANCE);
     val diff = loader.load(modelFile, EntityDifferentiation);
@@ -55,7 +55,7 @@ public class DiffToMongoose
   /**
    * Method used to start the generation process from an EntityDifferentiation object
    */
-  public def void m2t(EntityDifferentiation diff, File outputFolder, File configFile)
+  def void m2t(EntityDifferentiation diff, File outputFolder, File configFile)
   {
     if (outputFolder.toPath.resolve("app/models/").toFile.exists)
       outputDir = outputFolder.toPath.resolve("app/models/").toFile

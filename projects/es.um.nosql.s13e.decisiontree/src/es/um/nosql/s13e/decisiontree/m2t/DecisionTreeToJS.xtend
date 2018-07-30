@@ -25,11 +25,11 @@ import es.um.nosql.s13e.util.ModelLoader
 import es.um.nosql.s13e.DecisionTree.DecisionTreePackage
 import es.um.nosql.s13e.decisiontree.m2t.commons.Commons
 
-public class DecisionTreeToJS
+class DecisionTreeToJS
 {
-  private var modelName = "";
+  var modelName = "";
 
-  private val FILE_EXTENSION = "Classifier.js";
+  val FILE_EXTENSION = "Classifier.js";
 
   @Data static class PropertyAndBranch
   {
@@ -37,7 +37,7 @@ public class DecisionTreeToJS
     boolean branch
   }
 
-  public def m2t(File modelFile, File outputFolder)
+  def m2t(File modelFile, File outputFolder)
   {
     val loader = new ModelLoader(DecisionTreePackage.eINSTANCE);
     val decTrees = loader.load(modelFile, DecisionTrees);
@@ -45,7 +45,7 @@ public class DecisionTreeToJS
     m2t(decTrees, outputFolder);
   }
 
-  public def m2t(DecisionTrees decTrees, File outputFolder)
+  def m2t(DecisionTrees decTrees, File outputFolder)
   {
     modelName = decTrees.name + "Classifier";
 
