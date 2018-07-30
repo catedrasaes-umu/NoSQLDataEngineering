@@ -1,259 +1,289 @@
+[{
+  "_id" : "1",
+  "name" : "Pink Floyd",
+  "startingYear" : 1965,
+  "albums" : ["2", "3"],
+  "composedTracks" : ["4", "5", "6", "7", "8", "9"],
+  "lyricsTracks" : [ "4", "5", "6", "7", "8", "9"],
+  "_type": "Artist"
+},
 {
-  "artists":
-  [
-    {
-      "_id" : "1",
-      "name" : "Pink Floyd",
-      "startingYear" : 1965,
-      "albums" : ["2", "3"],
-      "composedTracks" : ["4", "5", "6", "7", "8", "9"],
-      "lyricsTracks" : [ "4", "5", "6", "7", "8", "9"]
-    },
-    {
-      "_id" : "101",
-      "name" : "Pearl Jam",
-      "startingYear" : 1990,
-      "albums" : ["102", "103"],
-      "composedTracks" : ["104", "105", "106", "107", "108", "109"],
-      "lyricsTracks" : ["104", "105", "106", "109"]
-    },
-    {
-      "_id" : "201",
-      "name" : "Massive Attack",
-      "startingYear" : 1988,
-      "albums" : [ "202", "203"],
-      "composedTracks" : [ "204", "205", "206", "207", "208"]
-    }
-  ],
+  "_id" : "2",
+  "name" : "Wish you were here",
+  "genre" : "Progressive rock",
+  "releaseYear" : 1975,
+  "popularity" : 7.7,
+  "availability" : ["EN", "FR"],
+  "formats" : ["Vinyl", "Album"],
+  "tracks" : ["4", "5", "6"],
+  "reviews" : [
+    { "journalist" : "Blender", "media" : "", "rank" : "Excelent", "stars" : "5/5" }, 
+    { "journalist" : "Martin C. Strong", "media" : "The Great Rock Discography", "rank" : "Excelent", "stars" : "10/10"}, 
+    { "journalist" : "Ben Edmonds", "media" : "The Rolling Stone Album Guide", "rank" : "Excelent", "stars" : "5 stars"}],
+  "_type": "Album"
+},
+{
+  "_id" : "3",
+  "name" : "The Wall",
+  "genre" : "Art rock",
+  "releaseYear" : 1979,
+  "popularity" : 8.5,
+  "availability" : ["EN", "FR", "ES", "JP", "PT", "NE"],
+  "formats" : ["Vinyl", "Album"],
+  "tracks" : ["7", "8", "9"],
+  "_type": "Album"
+},
+{
+  "_id" : "4",
+  "artist_id" : ["1"],
+  "genres" : ["Progressive rock"],
+  "length" : 13.32,
+  "name" : "Shine on you crazy diamond (I-V)",
+  "popularity" : 8.9,
+  "ratings" : [{"score" : 22.7, "voters" : 1273}],
+  "_type": "Track"
+},
+{
+  "_id" : "5",
+  "artist_id" : ["1"],
+  "genres" : ["Progressive rock", "Electronic rock"],
+  "length" : 7.31,
+  "name" : "Welcome to the machine",
+  "popularity" : 3.8,
+  "ratings" : [{"score" : 5.3, "voters" : 531}],
+  "_type": "Track"
+},
+{
+  "_id" : "6",
+  "artist_id" : ["1"],
+  "genres" : ["Vocal"],
+  "length" : 5.41,
+  "name" : "Wish you were here",
+  "popularity" : 6.9,
+  "ratings" : [{"score" : 33.1, "voters" : 3310}],
+  "_type": "Track"
+},
+{
+  "_id" : "7",
+  "artist_id" : ["1"],
+  "genres" : ["Art rock", "Progressive rock", "Disco"],
+  "length" : 3.09,
+  "name" : "Another Brick in the Wall (Part I)",
+  "popularity" : 7.1,
+  "_type": "Track"
+},
+{
+  "_id" : "8",
+  "artist_id" : ["1"],
+  "genres" : ["Progressive rock"],
+  "length" : 2.45,
+  "name" : "Goodbye Blue Sky",
+  "popularity" : 2.1,
+  "_type": "Track"
+},
+{
+  "_id" : "9",
+  "artist_id" : ["1"],
+  "genres" : ["Progressive rock"],
+  "length" : 6.24,
+  "name" : "Comfortably Numb",
+  "popularity" : 5.5,
+  "ratings" : [{"score" : 45.5, "voters" : 4550}],
+  "_type": "Track"
+},
+{
+  "_id" : "101",
+  "name" : "Pearl Jam",
+  "startingYear" : 1990,
+  "albums" : ["102", "103"],
+  "composedTracks" : ["104", "105", "106", "107", "108", "109"],
+  "lyricsTracks" : ["104", "105", "106", "109"],
+  "_type": "Artist"
+},
 
-  "albums":
-  [
-    {
-      "_id" : "2",
-      "name" : "Wish you were here",
-      "genre" : "Progressive rock",
-      "releaseYear" : 1975,
-      "popularity" : 7.7,
-      "availability" : ["EN", "FR"],
-      "formats" : ["Vinyl", "Album"],
-      "tracks" : ["4", "5", "6"],
-      "reviews" : [
-        { "journalist" : "Blender", "media" : "", "rank" : "Excelent", "stars" : "5/5" }, 
-        { "journalist" : "Martin C. Strong", "media" : "The Great Rock Discography", "rank" : "Excelent", "stars" : "10/10"}, 
-        { "journalist" : "Ben Edmonds", "media" : "The Rolling Stone Album Guide", "rank" : "Excelent", "stars" : "5 stars"}]
-    },
-    {
-      "_id" : "3",
-      "name" : "The Wall",
-      "genre" : "Art rock",
-      "releaseYear" : 1979,
-      "popularity" : 8.5,
-      "availability" : ["EN", "FR", "ES", "JP", "PT", "NE"],
-      "formats" : ["Vinyl", "Album"],
-      "tracks" : ["7", "8", "9"]
-    },
-    {
-      "_id" : "102",
-      "name" : "Ten",
-      "genre" : "Grunge",
-      "releaseYear" : 1991,
-      "popularity" : 9.8,
-      "availability" : "ES EN JP FR",
-      "formats" : ["LP", "Album", "Vinyl"],
-      "tracks" : ["104", "105", "106"],
-      "prizes" : [ 
-        { "event" : "100 Greatest Guitar Albums of All Time", "names" : ["Guitar world", "Acclaimed Music"], "units" : 15, "year" : 2006},
-        { "event" : "The 100 Masterpieces", "names" : ["Musik Express/Sounds", "Acclaimed Music"], "units" : 68, "year" : 1993}, 
-        { "certification" : "Platinum disk", "event" : "RIAA", "name" : "United Kingdom", "units" : 13000000, "year" : 2009}],
-      "reviews" : [ 
-        { "journalist" : "David Fricke", "media" : [{"name" : "Rolling stone", "type" : "magazine", "url" : "https://www.rollingstone.com/"}], "rank" : "Very good", "stars" : 4}, 
-        { "journalist" : "Steve Huey", "media" : "AllMusic", "rank" : "Excelent", "stars" : "5/5"}]
-    },
-    {
-      "_id" : "103",
-      "name" : "Yield",
-      "genres" : ["Grunge", "Alternative rock"],
-      "releaseYear" : 1998,
-      "popularity" : 7.2,
-      "availability" : ["ES", "EN", "FR", "PT", "JP"],
-      "formats" : ["LP", "Album", "Vinyl"],
-      "tracks" : ["107", "108", "109"]
-    }
-  ],
+{
+  "_id" : "102",
+  "name" : "Ten",
+  "genre" : "Grunge",
+  "releaseYear" : 1991,
+  "popularity" : 9.8,
+  "availability" : "ES EN JP FR",
+  "formats" : ["LP", "Album", "Vinyl"],
+  "tracks" : ["104", "105", "106"],
+  "prizes" : [ 
+    { "event" : "100 Greatest Guitar Albums of All Time", "names" : ["Guitar world", "Acclaimed Music"], "units" : 15, "year" : 2006},
+    { "event" : "The 100 Masterpieces", "names" : ["Musik Express/Sounds", "Acclaimed Music"], "units" : 68, "year" : 1993}, 
+    { "certification" : "Platinum disk", "event" : "RIAA", "name" : "United Kingdom", "units" : 13000000, "year" : 2009}],
+  "reviews" : [ 
+    { "journalist" : "David Fricke", "media" : [{"name" : "Rolling stone", "type" : "magazine", "url" : "https://www.rollingstone.com/"}], "rank" : "Very good", "stars" : 4}, 
+    { "journalist" : "Steve Huey", "media" : "AllMusic", "rank" : "Excelent", "stars" : "5/5"}],
+  "_type": "Album"
+},
 
-  "tracks":
-  [
-    {
-      "_id" : "4",
-      "artist_id" : ["1"],
-      "genres" : ["Progressive rock"],
-      "length" : 13.32,
-      "name" : "Shine on you crazy diamond (I-V)",
-      "popularity" : 8.9,
-      "ratings" : [{"score" : 22.7, "voters" : 1273}]
-    },
-    {
-      "_id" : "5",
-      "artist_id" : ["1"],
-      "genres" : ["Progressive rock", "Electronic rock"],
-      "length" : 7.31,
-      "name" : "Welcome to the machine",
-      "popularity" : 3.8,
-      "ratings" : [{"score" : 5.3, "voters" : 531}]
-    },
-    {
-      "_id" : "6",
-      "artist_id" : ["1"],
-      "genres" : ["Vocal"],
-      "length" : 5.41,
-      "name" : "Wish you were here",
-      "popularity" : 6.9,
-      "ratings" : [{"score" : 33.1, "voters" : 3310}]
-    },
-    {
-      "_id" : "7",
-      "artist_id" : ["1"],
-      "genres" : ["Art rock", "Progressive rock", "Disco"],
-      "length" : 3.09,
-      "name" : "Another Brick in the Wall (Part I)",
-      "popularity" : 7.1
-    },
-    {
-      "_id" : "8",
-      "artist_id" : ["1"],
-      "genres" : ["Progressive rock"],
-      "length" : 2.45,
-      "name" : "Goodbye Blue Sky",
-      "popularity" : 2.1
-    },
-    {
-      "_id" : "9",
-      "artist_id" : ["1"],
-      "genres" : ["Progressive rock"],
-      "length" : 6.24,
-      "name" : "Comfortably Numb",
-      "popularity" : 5.5,
-      "ratings" : [{"score" : 45.5, "voters" : 4550}]
-    },
-    {
-      "_id" : "104",
-      "artist_id" : ["101"],
-      "genres" : ["Alternative rock", "Power ballad"],
-      "length" : 5.43,
-      "name" : "Black",
-      "popularity" : 9.1,
-      "ratings" : [{"score" : 31.77, "voters" : 3177}]
-    },
-    {
-      "_id" : "105",
-      "artist_id" : ["101"],
-      "genres" : ["Alternative rock", "Grunge"],
-      "length" : 4.53,
-      "name" : "Even flow",
-      "popularity" : 5.3,
-      "ratings" : [{"score" : 9.56, "voters" : 956}]
-    },
-    {
-      "_id" : "106",
-      "artist_id" : ["101"],
-      "genres" : ["Alternative rock", "Grunge"],
-      "length" : 5.18,
-      "name" : "Jeremy",
-      "popularity" : 6.7,
-      "ratings" : [{"score" : 9.72, "voters" : 972}]
-    },
-    {
-      "_id" : "107",
-      "artist_id" : ["101"],
-      "genres" : ["Alternative rock"],
-      "length" : 4.19,
-      "name" : "No way",
-      "popularity" : 4.2
-    },
-    {
-      "_id" : "108",
-      "artist_id" : ["101"],
-      "genres" : ["Grunge"],
-      "length" : 3.49,
-      "name" : "Given to fly",
-      "popularity" : 7.0
-    },
-    {
-      "_id" : "109",
-      "artist_id" : ["101"],
-      "genres" : ["Post-grunge", "Garage rock", "Punk rock"],
-      "length" : 3.54,
-      "name" : "Do the evolution",
-      "popularity" : 7.5
-    },
-    {
-      "_id" : "202",
-      "name" : "Mezzanine",
-      "genre" : "Trip hop",
-      "releaseYear" : 1998,
-      "popularity" : 8.0,    
-      "availability" : ["ES", "EN", "FR"],
-      "formats" : ["LP", "Album"],
-      "tracks" : ["204", "205", "206"],
-      "prizes" : [
-        { "certification" : "Platinum disk", "event" : "RIAA", "name" : "Australia", "units" : 70000, "year" : 1998}, 
-        { "certification" : "2x Gold disk", "event" : "SNEP", "name" : "France", "units" : 243000, "year" : 1998}],
-      "reviews" : [ 
-        { "journalist" : "Barney Hoskyns", "media" : "Rolling stone", "rank" : "Very good", "stars" : "3.5/5"}, 
-        { "journalist" : "Alexis Petridis", "media" : [{ "name" : "The Guardian", "type" : "newspaper", "url" : "https://www.theguardian.com/us"}], "rank" : "Excelent", "stars" : 5}]
-    },
-    {
-      "_id" : "203",
-      "name" : "Collected",
-      "genres" : ["Trip hop", "Electronica"],
-      "releaseYear" : 2006,
-      "popularity" : 6.6,
-      "availability" : ["EN", "JP"],
-      "formats" : ["Album", "Vinyl"],
-      "tracks" : ["207", "208", "204"]
-    },
-    {
-      "_id" : "204",
-      "artist_id" : ["201"],
-      "genres" : ["Trip hop", "Industrial rock"],
-      "length" : 6.19,
-      "name" : "Angel",
-      "popularity" : 9.8,
-      "ratings" : [{"score" : 18.0, "voters" : 180}]
-    },
-    {
-      "_id" : "205",
-      "artist_id" : ["201"],
-      "genres" : ["Trip hop", "Downtempo"],
-      "length" : 5.31,
-      "name" : "Teardrop",
-      "popularity" : 6.1,
-      "ratings" : [{"score" : 19.0, "voters" : 190}]
-    },
-    {
-      "_id" : "206",
-      "artist_id" : ["201"],
-      "genres" : ["Trip hop"],
-      "length" : 6.06,
-      "name" : "Dissolved girl",
-      "popularity" : 7.7,
-      "ratings" : [{"score" : 5.0, "voters" : 50}]
-    },
-    {
-      "_id" : "207",
-      "artist_id" : ["201"],
-      "genres" : ["Trip hop"],
-      "length" : 5.14,
-      "name" : "Karmacoma",
-      "popularity" : 4.5
-    },
-    {
-      "_id" : "208",
-      "artist_id" : ["201"],
-      "genres" : ["Trip hop"],
-      "length" : 4.51,
-      "name" : "Live with me",
-      "popularity" : 5.0
-    }
-  ]
+{
+  "_id" : "103",
+  "name" : "Yield",
+  "genres" : ["Grunge", "Alternative rock"],
+  "releaseYear" : 1998,
+  "popularity" : 7.2,
+  "availability" : ["ES", "EN", "FR", "PT", "JP"],
+  "formats" : ["LP", "Album", "Vinyl"],
+  "tracks" : ["107", "108", "109"],
+  "_type": "Album"
+},
+
+{
+  "_id" : "104",
+  "artist_id" : ["101"],
+  "genres" : ["Alternative rock", "Power ballad"],
+  "length" : 5.43,
+  "name" : "Black",
+  "popularity" : 9.1,
+  "ratings" : [{"score" : 31.77, "voters" : 3177}],
+  "_type": "Track"
+},
+
+{
+  "_id" : "105",
+  "artist_id" : ["101"],
+  "genres" : ["Alternative rock", "Grunge"],
+  "length" : 4.53,
+  "name" : "Even flow",
+  "popularity" : 5.3,
+  "ratings" : [{"score" : 9.56, "voters" : 956}],
+  "_type": "Track"
+},
+
+{
+  "_id" : "106",
+  "artist_id" : ["101"],
+  "genres" : ["Alternative rock", "Grunge"],
+  "length" : 5.18,
+  "name" : "Jeremy",
+  "popularity" : 6.7,
+  "ratings" : [{"score" : 9.72, "voters" : 972}],
+  "_type": "Track"
+},
+
+{
+  "_id" : "107",
+  "artist_id" : ["101"],
+  "genres" : ["Alternative rock"],
+  "length" : 4.19,
+  "name" : "No way",
+  "popularity" : 4.2,
+  "_type": "Track"
+},
+
+{
+  "_id" : "108",
+  "artist_id" : ["101"],
+  "genres" : ["Grunge"],
+  "length" : 3.49,
+  "name" : "Given to fly",
+  "popularity" : 7.0,
+  "_type": "Track"
+},
+
+{
+  "_id" : "109",
+  "artist_id" : ["101"],
+  "genres" : ["Post-grunge", "Garage rock", "Punk rock"],
+  "length" : 3.54,
+  "name" : "Do the evolution",
+  "popularity" : 7.5,
+  "_type": "Track"
+},
+
+{
+  "_id" : "201",
+  "name" : "Massive Attack",
+  "startingYear" : 1988,
+  "albums" : [ "202", "203"],
+  "composedTracks" : [ "204", "205", "206", "207", "208"],
+  "_type": "Artist"
+},
+
+{
+  "_id" : "202",
+  "name" : "Mezzanine",
+  "genre" : "Trip hop",
+  "releaseYear" : 1998,
+  "popularity" : 8.0,    
+  "availability" : ["ES", "EN", "FR"],
+  "formats" : ["LP", "Album"],
+  "tracks" : ["204", "205", "206"],
+  "prizes" : [
+    { "certification" : "Platinum disk", "event" : "RIAA", "name" : "Australia", "units" : 70000, "year" : 1998}, 
+    { "certification" : "2x Gold disk", "event" : "SNEP", "name" : "France", "units" : 243000, "year" : 1998}],
+  "reviews" : [ 
+    { "journalist" : "Barney Hoskyns", "media" : "Rolling stone", "rank" : "Very good", "stars" : "3.5/5"}, 
+    { "journalist" : "Alexis Petridis", "media" : [{ "name" : "The Guardian", "type" : "newspaper", "url" : "https://www.theguardian.com/us"}], "rank" : "Excelent", "stars" : 5}],
+  "_type": "Album"
+},
+
+{
+  "_id" : "203",
+  "name" : "Collected",
+  "genres" : ["Trip hop", "Electronica"],
+  "releaseYear" : 2006,
+  "popularity" : 6.6,
+  "availability" : ["EN", "JP"],
+  "formats" : ["Album", "Vinyl"],
+  "tracks" : ["207", "208", "204"],
+  "_type": "Album"
+},
+
+{
+  "_id" : "204",
+  "artist_id" : ["201"],
+  "genres" : ["Trip hop", "Industrial rock"],
+  "length" : 6.19,
+  "name" : "Angel",
+  "popularity" : 9.8,
+  "ratings" : [{"score" : 18.0, "voters" : 180}],
+  "_type": "Track"
+},
+
+{
+  "_id" : "205",
+  "artist_id" : ["201"],
+  "genres" : ["Trip hop", "Downtempo"],
+  "length" : 5.31,
+  "name" : "Teardrop",
+  "popularity" : 6.1,
+  "ratings" : [{"score" : 19.0, "voters" : 190}],
+  "_type": "Track"
+},
+
+{
+  "_id" : "206",
+  "artist_id" : ["201"],
+  "genres" : ["Trip hop"],
+  "length" : 6.06,
+  "name" : "Dissolved girl",
+  "popularity" : 7.7,
+  "ratings" : [{"score" : 5.0, "voters" : 50}],
+  "_type": "Track"
+},
+
+{
+  "_id" : "207",
+  "artist_id" : ["201"],
+  "genres" : ["Trip hop"],
+  "length" : 5.14,
+  "name" : "Karmacoma",
+  "popularity" : 4.5,
+  "_type": "Track"
+},
+
+{
+  "_id" : "208",
+  "artist_id" : ["201"],
+  "genres" : ["Trip hop"],
+  "length" : 4.51,
+  "name" : "Live with me",
+  "popularity" : 5.0,
+  "_type": "Track"
 }
+]

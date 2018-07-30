@@ -40,7 +40,9 @@ public class Json2Db extends Source2Db
       for (JsonNode node : objArray)
       {
         ObjectNode obj = (ObjectNode)node;
-        obj.put("_id", new ObjectId().toString());
+        if (!obj.has("_id"))
+          obj.put("_id", new ObjectId().toString());
+
         String newCollName = obj.get("_type").asText();
         obj.remove("_type");
 
