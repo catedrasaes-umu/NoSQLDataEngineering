@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="urban">
   <entities name="Urban_words" root="true">
-    <variations variationId="1" count="242077" timestamp="1532940115850">
+    <variations variationId="1" count="242077" timestamp="1532948533763">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="author">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -46,12 +43,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="2" count="4042" timestamp="1532940115884">
+    <variations variationId="2" count="4042" timestamp="1532948533822">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="author">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -86,12 +80,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="3" count="1617365" timestamp="1532940115850">
+    <variations variationId="3" count="1617365" timestamp="1532948533763">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="author">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -126,12 +117,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="4" count="726988" timestamp="1532940115850">
+    <variations variationId="4" count="726988" timestamp="1532948533763">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="author">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -161,12 +149,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="5" count="2" timestamp="1532940126625">
+    <variations variationId="5" count="2" timestamp="1532948545561">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="author">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -195,12 +180,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="6" count="2283" timestamp="1532940115865">
+    <variations variationId="6" count="2283" timestamp="1532948533801">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="author">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -237,12 +219,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="7" count="15" timestamp="1532940117010">
+    <variations variationId="7" count="15" timestamp="1532948534976">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="author">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -274,12 +253,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="8" count="9693" timestamp="1532940115879">
+    <variations variationId="8" count="9693" timestamp="1532948533816">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="author">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -311,12 +287,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="9" count="3856" timestamp="1532940115910">
+    <variations variationId="9" count="3856" timestamp="1532948533850">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="author">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -343,12 +316,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="10" count="22" timestamp="1532940116540">
+    <variations variationId="10" count="22" timestamp="1532948534496">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="author">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -385,12 +355,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="11" count="108" timestamp="1532940115869">
+    <variations variationId="11" count="108" timestamp="1532948533806">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="author">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -422,12 +389,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="12" count="32" timestamp="1532940116272">
+    <variations variationId="12" count="32" timestamp="1532948534224">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="author">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -454,12 +418,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="13" count="1" timestamp="1532940296289">
+    <variations variationId="13" count="1" timestamp="1532948724733">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="author">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -491,12 +452,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="14" count="1" timestamp="1532940279825">
+    <variations variationId="14" count="1" timestamp="1532948707810">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="defid">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -533,12 +491,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="15" count="1" timestamp="1532940307470">
+    <variations variationId="15" count="1" timestamp="1532948736151">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="defid">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -570,12 +525,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="16" count="21" timestamp="1532940278244">
+    <variations variationId="16" count="21" timestamp="1532948706186">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="defid">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -607,12 +559,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="17" count="14" timestamp="1532940250468">
+    <variations variationId="17" count="14" timestamp="1532948677696">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Urban_words"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="defid">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>

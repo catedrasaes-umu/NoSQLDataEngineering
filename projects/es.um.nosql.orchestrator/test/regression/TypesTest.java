@@ -9,11 +9,9 @@ import org.junit.Test;
 
 import com.google.gson.JsonArray;
 
-import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
-import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.db.interfaces.EveryPolitician2Db;
 import es.um.nosql.s13e.db.util.DbType;
@@ -21,9 +19,9 @@ import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
 
 /**
- * Validation test: The inference process should be able to store for each variation a "_type" Attribute
- * with a PrimitiveType with value equal to the Entities name.
- * @fail: A _type attribute doesn't exist, or doesn't have the correct value.
+ * Validation test: The inference process should be able to use an internal "_type" Attribute
+ * which in the end doesn't show on the model.
+ * @fail: A _type attribute exists.
  */
 public class TypesTest
 {
@@ -59,13 +57,7 @@ public class TypesTest
       for (StructuralVariation ev : e.getVariations())
       {
         Optional<Property> prop = ev.getProperties().stream().filter(p -> p.getName().equals("_type")).findFirst();
-        if (e.isRoot())
-        {
-          Assert.assertTrue(prop.isPresent());
-          Assert.assertEquals(e.getName(), ((PrimitiveType)((Attribute)prop.get()).getType()).getName());
-        }
-        else
-          Assert.assertFalse(prop.isPresent());
+        Assert.assertFalse(prop.isPresent());
       }
   }
 }

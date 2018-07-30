@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="harvard">
   <entities name="Harvard_courses" root="true">
-    <variations variationId="1" count="1648" timestamp="1532938717806">
+    <variations variationId="1" count="1648" timestamp="1532947033323">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -10,9 +10,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -63,7 +60,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="2" count="1219" timestamp="1532938693174">
+    <variations variationId="2" count="1219" timestamp="1532947009023">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -72,9 +69,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -122,7 +116,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="3" count="71" timestamp="1532938690523">
+    <variations variationId="3" count="71" timestamp="1532947006629">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -131,9 +125,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -178,7 +169,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="4" count="9684" timestamp="1532938690002">
+    <variations variationId="4" count="9684" timestamp="1532947006144">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -187,9 +178,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -234,7 +222,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="5" count="4916" timestamp="1532938690003">
+    <variations variationId="5" count="4916" timestamp="1532947006144">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -243,9 +231,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -290,7 +275,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="6" count="57906" timestamp="1532938690004">
+    <variations variationId="6" count="57906" timestamp="1532947006148">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -299,9 +284,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -343,7 +325,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="7" count="12594" timestamp="1532938690003">
+    <variations variationId="7" count="12594" timestamp="1532947006144">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -352,9 +334,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -396,7 +375,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="8" count="152293" timestamp="1532938690003">
+    <variations variationId="8" count="152293" timestamp="1532947006145">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -405,9 +384,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -458,7 +434,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="9" count="107058" timestamp="1532938690003">
+    <variations variationId="9" count="107058" timestamp="1532947006145">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -467,9 +443,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -517,7 +490,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="10" count="1056" timestamp="1532938702047">
+    <variations variationId="10" count="1056" timestamp="1532947017593">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -526,9 +499,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -576,7 +546,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="11" count="110064" timestamp="1532938690005">
+    <variations variationId="11" count="110064" timestamp="1532947006150">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -585,9 +555,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -632,7 +599,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="12" count="4496" timestamp="1532938690005">
+    <variations variationId="12" count="4496" timestamp="1532947006150">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -641,9 +608,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -682,7 +646,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="13" count="81009" timestamp="1532938690005">
+    <variations variationId="13" count="81009" timestamp="1532947006149">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -691,9 +655,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -729,7 +690,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="14" count="164" timestamp="1532938717819">
+    <variations variationId="14" count="164" timestamp="1532947033335">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -738,9 +699,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -788,7 +746,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="15" count="53" timestamp="1532938691580">
+    <variations variationId="15" count="53" timestamp="1532947007550">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -797,9 +755,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -844,7 +799,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="16" count="8" timestamp="1532938691397">
+    <variations variationId="16" count="8" timestamp="1532947007379">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -853,9 +808,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -897,7 +849,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="17" count="655" timestamp="1532938690015">
+    <variations variationId="17" count="655" timestamp="1532947006170">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -906,9 +858,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -950,7 +899,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="18" count="133" timestamp="1532938691661">
+    <variations variationId="18" count="133" timestamp="1532947007630">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -959,9 +908,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1003,7 +949,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="19" count="305" timestamp="1532938691509">
+    <variations variationId="19" count="305" timestamp="1532947007480">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1012,9 +958,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1053,7 +996,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="20" count="2754" timestamp="1532938690012">
+    <variations variationId="20" count="2754" timestamp="1532947006168">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1062,9 +1005,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1103,7 +1043,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="21" count="13525" timestamp="1532938690009">
+    <variations variationId="21" count="13525" timestamp="1532947006165">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1112,9 +1052,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1162,7 +1099,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="22" count="9695" timestamp="1532938690006">
+    <variations variationId="22" count="9695" timestamp="1532947006152">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1171,9 +1108,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1218,7 +1152,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="23" count="7" timestamp="1532938741079">
+    <variations variationId="23" count="7" timestamp="1532947057445">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1227,9 +1161,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1274,7 +1205,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="24" count="11128" timestamp="1532938690007">
+    <variations variationId="24" count="11128" timestamp="1532947006154">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1283,9 +1214,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1327,7 +1255,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="25" count="614" timestamp="1532938690055">
+    <variations variationId="25" count="614" timestamp="1532947006211">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1336,9 +1264,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1374,7 +1299,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="26" count="5123" timestamp="1532938690029">
+    <variations variationId="26" count="5123" timestamp="1532947006185">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -1383,9 +1308,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1418,15 +1340,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="27" count="10" timestamp="1532938730937">
+    <variations variationId="27" count="10" timestamp="1532947046887">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1477,15 +1396,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="28" count="9" timestamp="1532938721116">
+    <variations variationId="28" count="9" timestamp="1532947036766">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1533,15 +1449,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="29" count="1" timestamp="1532938708280">
+    <variations variationId="29" count="1" timestamp="1532947023712">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1586,15 +1499,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="30" count="45" timestamp="1532938704076">
+    <variations variationId="30" count="45" timestamp="1532947019529">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1639,15 +1549,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="31" count="33" timestamp="1532938691809">
+    <variations variationId="31" count="33" timestamp="1532947007748">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1692,15 +1599,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="32" count="373" timestamp="1532938691894">
+    <variations variationId="32" count="373" timestamp="1532947007831">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1742,15 +1646,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="33" count="87" timestamp="1532938691817">
+    <variations variationId="33" count="87" timestamp="1532947007756">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1792,15 +1693,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="34" count="876" timestamp="1532938691772">
+    <variations variationId="34" count="876" timestamp="1532947007722">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1851,15 +1749,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="35" count="770" timestamp="1532938691855">
+    <variations variationId="35" count="770" timestamp="1532947007791">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1907,15 +1802,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="36" count="2" timestamp="1532938723885">
+    <variations variationId="36" count="2" timestamp="1532947039690">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -1963,15 +1855,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="37" count="675" timestamp="1532938691817">
+    <variations variationId="37" count="675" timestamp="1532947007756">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2016,15 +1905,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="38" count="46" timestamp="1532938696993">
+    <variations variationId="38" count="46" timestamp="1532947012786">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2063,15 +1949,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="39" count="597" timestamp="1532938691790">
+    <variations variationId="39" count="597" timestamp="1532947007732">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2107,15 +1990,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="40" count="4" timestamp="1532938742074">
+    <variations variationId="40" count="4" timestamp="1532947058487">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2154,15 +2034,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="41" count="14" timestamp="1532938692939">
+    <variations variationId="41" count="14" timestamp="1532947008797">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2201,15 +2078,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="42" count="133" timestamp="1532938696405">
+    <variations variationId="42" count="133" timestamp="1532947012185">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2257,15 +2131,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="43" count="85" timestamp="1532938691866">
+    <variations variationId="43" count="85" timestamp="1532947007803">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2310,15 +2181,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="44" count="77" timestamp="1532938696131">
+    <variations variationId="44" count="77" timestamp="1532947011911">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2360,15 +2228,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="45" count="5" timestamp="1532938698499">
+    <variations variationId="45" count="5" timestamp="1532947014293">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2404,15 +2269,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="46" count="59" timestamp="1532938694563">
+    <variations variationId="46" count="59" timestamp="1532947010330">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2445,15 +2307,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="47" count="3" timestamp="1532938727925">
+    <variations variationId="47" count="3" timestamp="1532947043807">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2501,15 +2360,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="48" count="1" timestamp="1532938734004">
+    <variations variationId="48" count="1" timestamp="1532947050057">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2554,15 +2410,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="49" count="19" timestamp="1532938707105">
+    <variations variationId="49" count="19" timestamp="1532947022528">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2604,15 +2457,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="50" count="9" timestamp="1532938694410">
+    <variations variationId="50" count="9" timestamp="1532947010176">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2654,15 +2504,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="51" count="93" timestamp="1532938691925">
+    <variations variationId="51" count="93" timestamp="1532947007862">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2701,15 +2548,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="52" count="16" timestamp="1532938693220">
+    <variations variationId="52" count="16" timestamp="1532947009056">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2748,15 +2592,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="53" count="226" timestamp="1532938692770">
+    <variations variationId="53" count="226" timestamp="1532947008641">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2804,15 +2645,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="54" count="287" timestamp="1532938692138">
+    <variations variationId="54" count="287" timestamp="1532947008068">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2857,15 +2695,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="55" count="1" timestamp="1532938727159">
+    <variations variationId="55" count="1" timestamp="1532947043032">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2910,15 +2745,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="56" count="176" timestamp="1532938691867">
+    <variations variationId="56" count="176" timestamp="1532947007804">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -2960,15 +2792,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="57" count="16" timestamp="1532938706021">
+    <variations variationId="57" count="16" timestamp="1532947021428">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3004,15 +2833,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="58" count="173" timestamp="1532938691880">
+    <variations variationId="58" count="173" timestamp="1532947007817">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3045,15 +2871,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="59" count="9" timestamp="1532938703328">
+    <variations variationId="59" count="9" timestamp="1532947018781">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3089,15 +2912,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="60" count="58" timestamp="1532938707402">
+    <variations variationId="60" count="58" timestamp="1532947022813">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3142,15 +2962,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="61" count="34" timestamp="1532938705168">
+    <variations variationId="61" count="34" timestamp="1532947020572">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3192,15 +3009,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="62" count="39" timestamp="1532938694260">
+    <variations variationId="62" count="39" timestamp="1532947010024">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3239,15 +3053,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="63" count="2" timestamp="1532938697907">
+    <variations variationId="63" count="2" timestamp="1532947013705">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3280,15 +3091,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="64" count="21" timestamp="1532938707800">
+    <variations variationId="64" count="21" timestamp="1532947023218">
       <properties xsi:type="NoSQLSchema:Attribute" name="LoE_DI">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3318,15 +3126,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="65" count="37" timestamp="1532938727880">
+    <variations variationId="65" count="37" timestamp="1532947043759">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3377,15 +3182,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="66" count="20" timestamp="1532938722012">
+    <variations variationId="66" count="20" timestamp="1532947037712">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3433,15 +3235,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="67" count="1" timestamp="1532938693950">
+    <variations variationId="67" count="1" timestamp="1532947009715">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3486,15 +3285,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="68" count="151" timestamp="1532938692142">
+    <variations variationId="68" count="151" timestamp="1532947008073">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3539,15 +3335,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="69" count="116" timestamp="1532938691793">
+    <variations variationId="69" count="116" timestamp="1532947007734">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3592,15 +3385,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="70" count="2659" timestamp="1532938691763">
+    <variations variationId="70" count="2659" timestamp="1532947007717">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3642,15 +3432,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="71" count="234" timestamp="1532938691794">
+    <variations variationId="71" count="234" timestamp="1532947007736">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3692,15 +3479,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="72" count="2765" timestamp="1532938691993">
+    <variations variationId="72" count="2765" timestamp="1532947007931">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3751,15 +3535,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="73" count="2115" timestamp="1532938691750">
+    <variations variationId="73" count="2115" timestamp="1532947007711">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3807,15 +3588,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="74" count="28" timestamp="1532938720962">
+    <variations variationId="74" count="28" timestamp="1532947036605">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3863,15 +3641,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="75" count="2638" timestamp="1532938691794">
+    <variations variationId="75" count="2638" timestamp="1532947007736">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3916,15 +3691,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="76" count="92" timestamp="1532938691940">
+    <variations variationId="76" count="92" timestamp="1532947007878">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -3963,15 +3735,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="77" count="2971" timestamp="1532938691782">
+    <variations variationId="77" count="2971" timestamp="1532947007727">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4007,15 +3776,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="78" count="2" timestamp="1532938734249">
+    <variations variationId="78" count="2" timestamp="1532947050311">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4063,15 +3829,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="79" count="3" timestamp="1532938724647">
+    <variations variationId="79" count="3" timestamp="1532947040427">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4116,15 +3879,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="80" count="12" timestamp="1532938692340">
+    <variations variationId="80" count="12" timestamp="1532947008248">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4166,15 +3926,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="81" count="1" timestamp="1532938723666">
+    <variations variationId="81" count="1" timestamp="1532947039458">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4216,15 +3973,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="82" count="3" timestamp="1532938735497">
+    <variations variationId="82" count="3" timestamp="1532947051633">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4263,15 +4017,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="83" count="35" timestamp="1532938692011">
+    <variations variationId="83" count="35" timestamp="1532947007948">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4310,15 +4061,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="84" count="198" timestamp="1532938691847">
+    <variations variationId="84" count="198" timestamp="1532947007783">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4366,15 +4114,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="85" count="118" timestamp="1532938692245">
+    <variations variationId="85" count="118" timestamp="1532947008163">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4419,15 +4164,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="86" count="210" timestamp="1532938691818">
+    <variations variationId="86" count="210" timestamp="1532947007757">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4469,15 +4211,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="87" count="8" timestamp="1532938692173">
+    <variations variationId="87" count="8" timestamp="1532947008102">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4513,15 +4252,12 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="88" count="70" timestamp="1532938691931">
+    <variations variationId="88" count="70" timestamp="1532947007869">
       <properties xsi:type="NoSQLSchema:Attribute" name="YoB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4554,12 +4290,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="89" count="25" timestamp="1532938721159">
+    <variations variationId="89" count="25" timestamp="1532947036810">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4610,12 +4343,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="90" count="16" timestamp="1532938694461">
+    <variations variationId="90" count="16" timestamp="1532947010227">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4663,12 +4393,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="91" count="1" timestamp="1532938706134">
+    <variations variationId="91" count="1" timestamp="1532947021535">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4713,12 +4440,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="92" count="89" timestamp="1532938691944">
+    <variations variationId="92" count="89" timestamp="1532947007882">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4763,12 +4487,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="93" count="30" timestamp="1532938692106">
+    <variations variationId="93" count="30" timestamp="1532947008038">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4813,12 +4534,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="94" count="587" timestamp="1532938691818">
+    <variations variationId="94" count="587" timestamp="1532947007757">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4860,12 +4578,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="95" count="89" timestamp="1532938691944">
+    <variations variationId="95" count="89" timestamp="1532947007882">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4907,12 +4622,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="96" count="1496" timestamp="1532938691955">
+    <variations variationId="96" count="1496" timestamp="1532947007893">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -4963,12 +4675,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="97" count="1296" timestamp="1532938691812">
+    <variations variationId="97" count="1296" timestamp="1532947007752">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5016,12 +4725,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="98" count="9" timestamp="1532938721697">
+    <variations variationId="98" count="9" timestamp="1532947037378">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5069,12 +4775,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="99" count="950" timestamp="1532938691831">
+    <variations variationId="99" count="950" timestamp="1532947007768">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5119,12 +4822,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="100" count="55" timestamp="1532938695731">
+    <variations variationId="100" count="55" timestamp="1532947011513">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5163,12 +4863,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="101" count="686" timestamp="1532938691773">
+    <variations variationId="101" count="686" timestamp="1532947007723">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5204,12 +4901,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="102" count="4" timestamp="1532938734145">
+    <variations variationId="102" count="4" timestamp="1532947050203">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5257,12 +4951,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="103" count="2" timestamp="1532938733772">
+    <variations variationId="103" count="2" timestamp="1532947049814">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5307,12 +4998,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="104" count="8" timestamp="1532938699160">
+    <variations variationId="104" count="8" timestamp="1532947014961">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5354,12 +5042,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="105" count="1" timestamp="1532938741298">
+    <variations variationId="105" count="1" timestamp="1532947057676">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5401,12 +5086,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="106" count="5" timestamp="1532938716762">
+    <variations variationId="106" count="5" timestamp="1532947032301">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5445,12 +5127,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="107" count="32" timestamp="1532938692910">
+    <variations variationId="107" count="32" timestamp="1532947008768">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5489,12 +5168,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="108" count="192" timestamp="1532938694253">
+    <variations variationId="108" count="192" timestamp="1532947010017">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5542,12 +5218,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="109" count="137" timestamp="1532938691871">
+    <variations variationId="109" count="137" timestamp="1532947007808">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5592,12 +5265,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="110" count="1" timestamp="1532938742387">
+    <variations variationId="110" count="1" timestamp="1532947058814">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5642,12 +5312,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="111" count="115" timestamp="1532938694183">
+    <variations variationId="111" count="115" timestamp="1532947009947">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5689,12 +5356,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="112" count="7" timestamp="1532938692203">
+    <variations variationId="112" count="7" timestamp="1532947008127">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5730,12 +5394,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="113" count="65" timestamp="1532938692203">
+    <variations variationId="113" count="65" timestamp="1532947008127">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5768,12 +5429,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="114" count="84" timestamp="1532938726820">
+    <variations variationId="114" count="84" timestamp="1532947042686">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5821,12 +5479,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="115" count="47" timestamp="1532938703826">
+    <variations variationId="115" count="47" timestamp="1532947019287">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5871,12 +5526,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="116" count="6" timestamp="1532938700703">
+    <variations variationId="116" count="6" timestamp="1532947016458">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5918,12 +5570,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="117" count="419" timestamp="1532938691939">
+    <variations variationId="117" count="419" timestamp="1532947007877">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -5965,12 +5614,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="118" count="198" timestamp="1532938691946">
+    <variations variationId="118" count="198" timestamp="1532947007884">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6012,12 +5658,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="119" count="1696" timestamp="1532938691787">
+    <variations variationId="119" count="1696" timestamp="1532947007729">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6056,12 +5699,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="120" count="503" timestamp="1532938691751">
+    <variations variationId="120" count="503" timestamp="1532947007711">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6100,12 +5740,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="121" count="7796" timestamp="1532938691863">
+    <variations variationId="121" count="7796" timestamp="1532947007800">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6153,12 +5790,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="122" count="7202" timestamp="1532938691751">
+    <variations variationId="122" count="7202" timestamp="1532947007711">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6203,12 +5837,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="123" count="27" timestamp="1532938721526">
+    <variations variationId="123" count="27" timestamp="1532947037194">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6253,12 +5884,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="124" count="4517" timestamp="1532938691778">
+    <variations variationId="124" count="4517" timestamp="1532947007725">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6300,12 +5928,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="125" count="229" timestamp="1532938691852">
+    <variations variationId="125" count="229" timestamp="1532947007788">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6341,12 +5966,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="126" count="2328" timestamp="1532938691772">
+    <variations variationId="126" count="2328" timestamp="1532947007722">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6379,12 +6001,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="127" count="19" timestamp="1532938710473">
+    <variations variationId="127" count="19" timestamp="1532947025975">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6429,12 +6048,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="128" count="4" timestamp="1532938730489">
+    <variations variationId="128" count="4" timestamp="1532947046447">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6476,12 +6092,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="129" count="20" timestamp="1532938692256">
+    <variations variationId="129" count="20" timestamp="1532947008174">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6520,12 +6133,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="130" count="8" timestamp="1532938729771">
+    <variations variationId="130" count="8" timestamp="1532947045702">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6564,12 +6174,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="131" count="34" timestamp="1532938708641">
+    <variations variationId="131" count="34" timestamp="1532947024085">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6605,12 +6212,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="132" count="124" timestamp="1532938692216">
+    <variations variationId="132" count="124" timestamp="1532947008138">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6646,12 +6250,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="133" count="923" timestamp="1532938692121">
+    <variations variationId="133" count="923" timestamp="1532947008053">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6696,12 +6297,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="134" count="539" timestamp="1532938692061">
+    <variations variationId="134" count="539" timestamp="1532947007994">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6743,12 +6341,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="135" count="450" timestamp="1532938691885">
+    <variations variationId="135" count="450" timestamp="1532947007822">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6787,12 +6382,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="136" count="67" timestamp="1532938691850">
+    <variations variationId="136" count="67" timestamp="1532947007786">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
@@ -6825,12 +6417,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="137" count="251" timestamp="1532938691821">
+    <variations variationId="137" count="251" timestamp="1532947007760">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Harvard_courses"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="certified">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>

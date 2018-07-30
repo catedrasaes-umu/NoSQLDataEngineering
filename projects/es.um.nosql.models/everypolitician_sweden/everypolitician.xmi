@@ -1,12 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="everypolitician">
   <entities name="Memberships" root="true">
-    <variations variationId="1" count="496" timestamp="1532938647189">
+    <variations variationId="1" count="496" timestamp="1532946962927">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Memberships"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="area_id" lowerBound="1" upperBound="1" refsTo="Areas" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="end_date">
@@ -28,12 +25,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="2" count="334" timestamp="1532938647188">
+    <variations variationId="2" count="334" timestamp="1532946962926">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Memberships"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="area_id" lowerBound="1" upperBound="1" refsTo="Areas" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="end_date">
@@ -52,12 +46,9 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Aggregate" name="sources" upperBound="1" aggregates="//@entities.9/@variations.0"/>
     </variations>
-    <variations variationId="3" count="443" timestamp="1532938647188">
+    <variations variationId="3" count="443" timestamp="1532946962926">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Memberships"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="area_id" lowerBound="1" upperBound="1" refsTo="Areas" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="legislative_period_id">
@@ -76,12 +67,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="4" count="1520" timestamp="1532938647188">
+    <variations variationId="4" count="1520" timestamp="1532946962926">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Memberships"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="area_id" lowerBound="1" upperBound="1" refsTo="Areas" originalType="String"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="legislative_period_id">
@@ -97,12 +85,9 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Aggregate" name="sources" upperBound="1" aggregates="//@entities.9/@variations.0"/>
     </variations>
-    <variations variationId="5" count="282" timestamp="1532938647188">
+    <variations variationId="5" count="282" timestamp="1532946962926">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Memberships"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="end_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -123,12 +108,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="6" count="283" timestamp="1532938647188">
+    <variations variationId="6" count="283" timestamp="1532946962926">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Memberships"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="end_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -146,12 +128,9 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Aggregate" name="sources" upperBound="1" aggregates="//@entities.9/@variations.0"/>
     </variations>
-    <variations variationId="7" count="275" timestamp="1532938647188">
+    <variations variationId="7" count="275" timestamp="1532946962926">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Memberships"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="legislative_period_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -169,12 +148,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="8" count="1516" timestamp="1532938647188">
+    <variations variationId="8" count="1516" timestamp="1532946962926">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Memberships"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="legislative_period_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -191,7 +167,7 @@
     </variations>
   </entities>
   <entities name="Identifier">
-    <variations variationId="1" count="1649" timestamp="1532938646670">
+    <variations variationId="1" count="1649" timestamp="1532946962435">
       <properties xsi:type="NoSQLSchema:Attribute" name="identifier">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -201,12 +177,9 @@
     </variations>
   </entities>
   <entities name="Events" root="true">
-    <variations variationId="1" count="50" timestamp="1532938647170">
+    <variations variationId="1" count="50" timestamp="1532946962909">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Events"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="classification">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -222,12 +195,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="2" count="12" timestamp="1532938647172">
+    <variations variationId="2" count="12" timestamp="1532946962911">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Events"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="classification">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -245,12 +215,9 @@
     </variations>
   </entities>
   <entities name="Persons" root="true">
-    <variations variationId="1" count="5" timestamp="1532938646810">
+    <variations variationId="1" count="5" timestamp="1532946962562">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Persons"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="birth_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -285,12 +252,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="2" count="1" timestamp="1532938647008">
+    <variations variationId="2" count="1" timestamp="1532946962758">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Persons"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="birth_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -325,12 +289,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="3" count="510" timestamp="1532938646670">
+    <variations variationId="3" count="510" timestamp="1532946962436">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Persons"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="birth_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -362,12 +323,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="4" count="1" timestamp="1532938646956">
+    <variations variationId="4" count="1" timestamp="1532946962705">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Persons"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="birth_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -399,12 +357,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="5" count="4" timestamp="1532938646815">
+    <variations variationId="5" count="4" timestamp="1532946962566">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Persons"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="birth_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -435,12 +390,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="6" count="46" timestamp="1532938646685">
+    <variations variationId="6" count="46" timestamp="1532946962448">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Persons"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="birth_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -470,12 +422,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="7" count="13" timestamp="1532938646680">
+    <variations variationId="7" count="13" timestamp="1532946962443">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Persons"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="birth_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -504,12 +453,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="8" count="85" timestamp="1532938646671">
+    <variations variationId="8" count="85" timestamp="1532946962436">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Persons"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="birth_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -540,12 +486,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="9" count="1" timestamp="1532938646778">
+    <variations variationId="9" count="1" timestamp="1532946962530">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Persons"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="birth_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -576,12 +519,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="10" count="30" timestamp="1532938646690">
+    <variations variationId="10" count="30" timestamp="1532946962452">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Persons"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="birth_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -610,12 +550,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="11" count="593" timestamp="1532938646670">
+    <variations variationId="11" count="593" timestamp="1532946962435">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Persons"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="birth_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -643,12 +580,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="12" count="2" timestamp="1532938646761">
+    <variations variationId="12" count="2" timestamp="1532946962513">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Persons"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="birth_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -676,12 +610,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="13" count="18" timestamp="1532938646680">
+    <variations variationId="13" count="18" timestamp="1532946962443">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Persons"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="birth_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -708,12 +639,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="14" count="280" timestamp="1532938646670">
+    <variations variationId="14" count="280" timestamp="1532946962435">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Persons"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="birth_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -741,12 +669,9 @@
     </variations>
   </entities>
   <entities name="Organizations" root="true">
-    <variations variationId="1" count="1" timestamp="1532938647136">
+    <variations variationId="1" count="1" timestamp="1532946962876">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Organizations"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="classification">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -764,12 +689,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="2" count="2" timestamp="1532938647131">
+    <variations variationId="2" count="2" timestamp="1532946962870">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Organizations"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="classification">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -784,12 +706,9 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Aggregate" name="other_names" upperBound="1" aggregates="//@entities.5/@variations.0"/>
     </variations>
-    <variations variationId="3" count="2" timestamp="1532938647130">
+    <variations variationId="3" count="2" timestamp="1532946962869">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Organizations"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="classification">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -804,12 +723,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="4" count="4" timestamp="1532938647132">
+    <variations variationId="4" count="4" timestamp="1532946962872">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Organizations"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="classification">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -821,12 +737,9 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Aggregate" name="other_names" upperBound="1" aggregates="//@entities.5/@variations.0"/>
     </variations>
-    <variations variationId="5" count="1" timestamp="1532938647136">
+    <variations variationId="5" count="1" timestamp="1532946962876">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Organizations"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="classification">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -842,12 +755,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="6" count="1" timestamp="1532938647131">
+    <variations variationId="6" count="1" timestamp="1532946962871">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Organizations"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="classification">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -858,7 +768,7 @@
     </variations>
   </entities>
   <entities name="Other_name">
-    <variations variationId="1" count="1220" timestamp="1532938646670">
+    <variations variationId="1" count="1220" timestamp="1532946962435">
       <properties xsi:type="NoSQLSchema:Attribute" name="lang">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -869,7 +779,7 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="2" count="5" timestamp="1532938646761">
+    <variations variationId="2" count="5" timestamp="1532946962513">
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -879,14 +789,14 @@
     </variations>
   </entities>
   <entities name="Image">
-    <variations variationId="1" count="1589" timestamp="1532938646670">
+    <variations variationId="1" count="1589" timestamp="1532946962435">
       <properties xsi:type="NoSQLSchema:Attribute" name="url">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
   </entities>
   <entities name="Contact_detail">
-    <variations variationId="1" count="580" timestamp="1532938646670">
+    <variations variationId="1" count="580" timestamp="1532946962436">
       <properties xsi:type="NoSQLSchema:Attribute" name="type">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -896,7 +806,7 @@
     </variations>
   </entities>
   <entities name="Link">
-    <variations variationId="1" count="1242" timestamp="1532938646670">
+    <variations variationId="1" count="1242" timestamp="1532946962435">
       <properties xsi:type="NoSQLSchema:Attribute" name="note">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -906,19 +816,16 @@
     </variations>
   </entities>
   <entities name="Source">
-    <variations variationId="1" count="5149" timestamp="1532938647188">
+    <variations variationId="1" count="5149" timestamp="1532946962926">
       <properties xsi:type="NoSQLSchema:Attribute" name="url">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
   </entities>
   <entities name="Areas" root="true">
-    <variations variationId="1" count="29" timestamp="1532938647156">
+    <variations variationId="1" count="29" timestamp="1532946962894">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Areas"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>

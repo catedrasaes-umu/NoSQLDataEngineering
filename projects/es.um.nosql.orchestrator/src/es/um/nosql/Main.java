@@ -12,12 +12,12 @@ public class Main
     Orchestrator inferenceTest = new Orchestrator(DbType.MONGODB);
 
     //inferenceTest.runCompaniesExample(InferenceMode.FILL_AND_INFER, ConfigConstants.COMPANIES_FILE);                //POJO
-    inferenceTest.runEveryPoliticianExample(InferenceMode.INFER_ONLY, ConfigConstants.EVERYPOLITICIAN_FILE);
+    //inferenceTest.runEveryPoliticianExample(InferenceMode.INFER_ONLY, ConfigConstants.EVERYPOLITICIAN_FILE);
     //inferenceTest.runFacebookExample(InferenceMode.INFER_ONLY, ConfigConstants.FACEBOOK_FOLDER);                //POJO
     //inferenceTest.runHarvardExample(InferenceMode.INFER_ONLY, ConfigConstants.HARVARD_FILE);                    //POJO
-    //inferenceTest.runJsonExample(InferenceMode.FILL_AND_INFER, ConfigConstants.JSON_FOLDER);
+    inferenceTest.runJsonExample(InferenceMode.FILL_AND_INFER, ConfigConstants.JSON_FOLDER);
     //inferenceTest.runLinksExample(InferenceMode.INFER_ONLY, ConfigConstants.LINKS_FOLDER);                      //POJO
-    //inferenceTest.runModelExample(InferenceMode.FILL_AND_INFER, ConfigConstants.MODEL_FILE);
+    ////////inferenceTest.runModelExample(InferenceMode.FILL_AND_INFER, ConfigConstants.MODEL_FILE);
     //inferenceTest.runOpenSanctionsExample(InferenceMode.INFER_ONLY, ConfigConstants.OPENSANCTIONS_FILE);
     //inferenceTest.runPleiadesExample(InferenceMode.FILL_AND_INFER, ConfigConstants.PLEIADES_FILE);                  //TODO: DOESNT WORK YET
     //inferenceTest.runProteinsExample(InferenceMode.INFER_ONLY, ConfigConstants.PROTEINS_FOLDER);                //POJO

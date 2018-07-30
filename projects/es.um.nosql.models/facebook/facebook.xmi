@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="facebook">
   <entities name="Pages" root="true">
-    <variations variationId="1" count="82" timestamp="1532938688573">
+    <variations variationId="1" count="82" timestamp="1532947004672">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Pages"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="page_name" lowerBound="1" upperBound="1" refsTo="Pages" originalType="String"/>
     </variations>
   </entities>
   <entities name="Comments" root="true">
-    <variations variationId="1" count="1011571" timestamp="1532938648008">
+    <variations variationId="1" count="1011571" timestamp="1532946963718">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Comments"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -33,12 +27,9 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="post_id" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
     </variations>
-    <variations variationId="2" count="25" timestamp="1532938648570">
+    <variations variationId="2" count="25" timestamp="1532946964302">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Comments"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -53,12 +44,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="3" count="26684" timestamp="1532938648029">
+    <variations variationId="3" count="26684" timestamp="1532946963726">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Comments"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -71,12 +59,9 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="post_id" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
     </variations>
-    <variations variationId="4" count="1" timestamp="1532938685571">
+    <variations variationId="4" count="1" timestamp="1532947001687">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Comments"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -89,12 +74,9 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="post_id" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
     </variations>
-    <variations variationId="5" count="25" timestamp="1532938648570">
+    <variations variationId="5" count="25" timestamp="1532946964302">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Comments"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -103,33 +85,24 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="6" count="13" timestamp="1532938648797">
+    <variations variationId="6" count="13" timestamp="1532946964540">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Comments"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="7" count="7" timestamp="1532938648570">
+    <variations variationId="7" count="7" timestamp="1532946964302">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Comments"/>
       </properties>
     </variations>
   </entities>
   <entities name="Posts" root="true">
-    <variations variationId="1" count="14543" timestamp="1532938688591">
+    <variations variationId="1" count="14543" timestamp="1532947004700">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Posts"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -169,12 +142,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="2" count="660" timestamp="1532938688618">
+    <variations variationId="2" count="660" timestamp="1532947004755">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Posts"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -211,12 +181,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="3" count="3953" timestamp="1532938688591">
+    <variations variationId="3" count="3953" timestamp="1532947004700">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Posts"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -253,12 +220,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="4" count="64" timestamp="1532938688863">
+    <variations variationId="4" count="64" timestamp="1532947005009">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Posts"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -292,12 +256,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="5" count="375" timestamp="1532938688693">
+    <variations variationId="5" count="375" timestamp="1532947004834">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Posts"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
@@ -331,12 +292,9 @@
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
-    <variations variationId="6" count="5" timestamp="1532938689225">
+    <variations variationId="6" count="5" timestamp="1532947005371">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Posts"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>

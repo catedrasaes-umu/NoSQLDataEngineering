@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="proteins">
   <entities name="Proteins" root="true">
-    <variations variationId="1" count="3436" timestamp="1532938757461">
+    <variations variationId="1" count="3436" timestamp="1532947073986">
       <properties xsi:type="NoSQLSchema:Attribute" name="Alternate_format_for_PDB_variant">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -47,14 +47,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Proteins"/>
-      </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="ddG">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="2" count="3313" timestamp="1532938757457">
+    <variations variationId="2" count="3313" timestamp="1532947073977">
       <properties xsi:type="NoSQLSchema:Attribute" name="Alternate_format_for_PDB_variant">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -91,14 +88,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Proteins"/>
-      </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="ddG">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="3" count="1" timestamp="1532938757622">
+    <variations variationId="3" count="1" timestamp="1532947074169">
       <properties xsi:type="NoSQLSchema:Attribute" name="Alternate_format_for_PDB_variant">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -144,14 +138,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Proteins"/>
-      </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="ddG">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="4" count="138" timestamp="1532938757637">
+    <variations variationId="4" count="138" timestamp="1532947074186">
       <properties xsi:type="NoSQLSchema:Attribute" name="Alternate_format_for_PDB_variant">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -194,14 +185,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Proteins"/>
-      </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="ddG">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="5" count="18" timestamp="1532938757870">
+    <variations variationId="5" count="18" timestamp="1532947074440">
       <properties xsi:type="NoSQLSchema:Attribute" name="Alternate_format_for_PDB_variant">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -235,14 +223,11 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Proteins"/>
-      </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="ddG">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
-    <variations variationId="6" count="1" timestamp="1532938757483">
+    <variations variationId="6" count="1" timestamp="1532947074015">
       <properties xsi:type="NoSQLSchema:Attribute" name="Alternate_format_for_PDB_variant">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -275,9 +260,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Proteins"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="ddG">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>

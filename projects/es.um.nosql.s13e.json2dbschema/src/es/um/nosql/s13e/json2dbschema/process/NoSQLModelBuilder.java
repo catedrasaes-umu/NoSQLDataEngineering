@@ -301,7 +301,6 @@ public class NoSQLModelBuilder
     if (sc instanceof NumberSC)
       return "Number";
 
-    // TODO: Check the _type parameter
     if (sc instanceof StringSC)
       return "String";
 

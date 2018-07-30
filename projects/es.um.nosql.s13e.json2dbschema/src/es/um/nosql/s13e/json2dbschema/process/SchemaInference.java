@@ -30,6 +30,7 @@ import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJNull;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJObject;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJObjectId;
 import es.um.nosql.s13e.json2dbschema.util.abstractjson.IAJTextual;
+import es.um.nosql.s13e.json2dbschema.util.constants.ConfigConstants;
 import es.um.nosql.s13e.json2dbschema.util.inflector.Inflector;
 
 import org.apache.commons.lang3.tuple.Pair;
@@ -160,7 +161,11 @@ public class SchemaInference
 
     // It is important this is a sorted set
     SortedSet<String> fields = new TreeSet<String>();
-    n.getFieldNames().forEachRemaining(fields::add);
+    n.getFieldNames().forEachRemaining(field ->
+    {
+      if (!ConfigConstants.IGNORED_ATTRIBUTES.contains(field))
+        fields.add(field);
+    });
 
     // Recursive phase
     schema.addAll(fields.stream()
@@ -234,8 +239,6 @@ public class SchemaInference
     return schema;
   }
 
-  // Be careful: If it is a StringSC we store the string value.
-  // Might be just "String" but also might be the _type attribute and so the entity name must be preserved.
   private SchemaComponent infer(IAJTextual n, String elementName)
   {
     StringSC schema = new StringSC();
