@@ -15,7 +15,7 @@ public class StringMultiValuedSC extends StringSC implements MultiValued
 
   public StringMultiValuedSC(String string)
   {
-    super(string);
+    super();
     values = new HashSet<String>();
   }
 

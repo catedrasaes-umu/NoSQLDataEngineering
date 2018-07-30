@@ -55,7 +55,7 @@ public class SchemaPrinter
       sb.append("Oid");
 
     if (sc instanceof StringSC)
-      sb.append( ((StringSC)sc).getValue());
+      sb.append("String");
 
     sb.append(' ');
 

@@ -238,7 +238,7 @@ public class SchemaInference
   // Might be just "String" but also might be the _type attribute and so the entity name must be preserved.
   private SchemaComponent infer(IAJTextual n, String elementName)
   {
-    StringSC schema = new StringSC(n.asString());
+    StringSC schema = new StringSC();
     return schema;
   }
 

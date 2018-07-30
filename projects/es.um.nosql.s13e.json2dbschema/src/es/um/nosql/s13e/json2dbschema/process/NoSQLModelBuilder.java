@@ -323,7 +323,7 @@ public class NoSQLModelBuilder
 
   private Property propertyFromSchemaComponent(String en, StringSC sc)
   {
-    return propertyFromPrimitive(en, sc, sc.getValue());
+    return propertyFromPrimitive(en, sc, "String");
   }
 
   private Property propertyFromSchemaComponent(String en, ObjectIdSC sc)
