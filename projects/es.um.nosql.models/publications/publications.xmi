@@ -1,168 +1,73 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<NoSQLSchema:NoSQLSchema
-    xmi:version="2.0"
-    xmlns:xmi="http://www.omg.org/XMI"
-    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema"
-    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../es.um.nosql.s13e/model/nosqlschema.ecore"
-    name="publications">
-  <entities
-      name="Publications">
-    <entityVariations
-        variationId="1"
-        >
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_id">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="ObjectId"/>
+<NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="publications">
+  <entities name="Publications" root="true">
+    <variations variationId="1" count="20012135" timestamp="1532938757990">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Publications"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Publications"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="article_title">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="article_title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="authors">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="authors">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="pmid">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="pmid">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="pub_year">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="pub_year">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-    </entityVariations>
-    <entityVariations
-        variationId="2"
-        >
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_id">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="ObjectId"/>
+    </variations>
+    <variations variationId="2" count="1750989" timestamp="1532938757993">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Publications"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Publications"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="article_title">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="article_title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="authors">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="authors">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="pmid">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="pmid">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-    </entityVariations>
-    <entityVariations
-        variationId="3"
-        >
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_id">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="ObjectId"/>
+    </variations>
+    <variations variationId="3" count="23548" timestamp="1532938758147">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Publications"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Publications"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="article_title">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="article_title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="pmid">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="pmid">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="pub_year">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="pub_year">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-    </entityVariations>
-    <entityVariations
-        variationId="4"
-        >
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_id">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="ObjectId"/>
+    </variations>
+    <variations variationId="4" count="1500" timestamp="1532938786721">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Publications"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_type">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Publications"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="article_title">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="article_title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="pmid">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="pmid">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-    </entityVariations>
+    </variations>
   </entities>
 </NoSQLSchema:NoSQLSchema>
