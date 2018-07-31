@@ -14,5 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface Type extends EObject {
+public interface Type extends EObject
+{
 } // Type

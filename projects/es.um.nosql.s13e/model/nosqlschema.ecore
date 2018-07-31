@@ -68,7 +68,7 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="valueType" eType="#//Type"
         containment="true"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="PSet">
+  <eClassifiers xsi:type="ecore:EClass" name="PSet" eSuperTypes="#//Type">
     <eStructuralFeatures xsi:type="ecore:EReference" name="elementType" eType="#//Type"
         containment="true"/>
   </eClassifiers>

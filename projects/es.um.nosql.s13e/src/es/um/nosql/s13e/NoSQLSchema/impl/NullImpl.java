@@ -14,24 +14,27 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class NullImpl extends PropertyImpl implements Null {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	protected NullImpl() {
-		super();
-	}
+public class NullImpl extends PropertyImpl implements Null
+{
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  protected NullImpl()
+  {
+    super();
+  }
 
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected EClass eStaticClass() {
-		return NoSQLSchemaPackage.Literals.NULL;
-	}
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  protected EClass eStaticClass()
+  {
+    return NoSQLSchemaPackage.Literals.NULL;
+  }
 
 } //NullImpl
