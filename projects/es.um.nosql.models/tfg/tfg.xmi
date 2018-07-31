@@ -1,207 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="json">
-  <entities name="Artist" root="true">
-    <variations variationId="1" count="2" timestamp="1532954068599">
-      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="albums" upperBound="-1" refsTo="Album" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="composedTracks" upperBound="-1" refsTo="Track" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="lyricsTracks" upperBound="-1" refsTo="Track" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Attribute" name="name">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="startingYear">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-    </variations>
-    <variations variationId="2" count="1" timestamp="1532954068599">
-      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="albums" upperBound="-1" refsTo="Album" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="composedTracks" upperBound="-1" refsTo="Track" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Attribute" name="name">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="startingYear">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-    </variations>
-  </entities>
-  <entities name="Medium">
-    <variations variationId="1">
-      <properties xsi:type="NoSQLSchema:Attribute" name="name">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="type">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="url">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-    </variations>
-  </entities>
-  <entities name="Date register">
-    <variations variationId="1" count="4" timestamp="1532954068696"/>
-  </entities>
-  <entities name="Rating">
-    <variations variationId="1" count="10" timestamp="1532954068710">
-      <properties xsi:type="NoSQLSchema:Attribute" name="score">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="voters">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-    </variations>
-  </entities>
-  <entities name="Album" root="true">
-    <variations variationId="1" count="1" timestamp="1532954068663">
-      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="availability">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="formats">
-        <type xsi:type="NoSQLSchema:PList">
-          <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="genre">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="name">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="popularity">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="-1" aggregates="//@entities.9/@variations.0 //@entities.9/@variations.1"/>
-      <properties xsi:type="NoSQLSchema:Attribute" name="releaseYear">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="reviews" upperBound="-1" aggregates="//@entities.6/@variations.0 //@entities.6/@variations.1"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="tracks" upperBound="-1" refsTo="Track" originalType="String"/>
-    </variations>
-    <variations variationId="2" count="1" timestamp="1532954068664">
-      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="availability">
-        <type xsi:type="NoSQLSchema:PList">
-          <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="formats">
-        <type xsi:type="NoSQLSchema:PList">
-          <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="genre">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="name">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="popularity">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="prizes" upperBound="1" aggregates="//@entities.9/@variations.1"/>
-      <properties xsi:type="NoSQLSchema:Attribute" name="releaseYear">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="reviews" upperBound="-1" aggregates="//@entities.6/@variations.1 //@entities.6/@variations.0"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="tracks" upperBound="-1" refsTo="Track" originalType="String"/>
-    </variations>
-    <variations variationId="3" count="1" timestamp="1532954068663">
-      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="availability">
-        <type xsi:type="NoSQLSchema:PList">
-          <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="formats">
-        <type xsi:type="NoSQLSchema:PList">
-          <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="genre">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="name">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="popularity">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="releaseYear">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="reviews" upperBound="1" aggregates="//@entities.6/@variations.1"/>
-      <properties xsi:type="NoSQLSchema:Reference" name="tracks" upperBound="-1" refsTo="Track" originalType="String"/>
-    </variations>
-    <variations variationId="4" count="1" timestamp="1532954068663">
-      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="availability">
-        <type xsi:type="NoSQLSchema:PList">
-          <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="formats">
-        <type xsi:type="NoSQLSchema:PList">
-          <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="genre">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="name">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="popularity">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="releaseYear">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="tracks" upperBound="-1" refsTo="Track" originalType="String"/>
-    </variations>
-    <variations variationId="5" count="2" timestamp="1532954068663">
-      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="availability">
-        <type xsi:type="NoSQLSchema:PList">
-          <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="formats">
-        <type xsi:type="NoSQLSchema:PList">
-          <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="genres">
-        <type xsi:type="NoSQLSchema:PList">
-          <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="name">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="popularity">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="releaseYear">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="tracks" upperBound="-1" refsTo="Track" originalType="String"/>
-    </variations>
-  </entities>
+<NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" name="tfg">
   <entities name="Address data" root="true">
     <variations variationId="1" count="1" timestamp="1532954068647">
       <properties xsi:type="NoSQLSchema:Attribute" name="CP Address">
@@ -297,37 +95,9 @@
       </properties>
     </variations>
   </entities>
-  <entities name="Review">
-    <variations variationId="1" count="2" timestamp="1532954068663">
-      <properties xsi:type="NoSQLSchema:Attribute" name="journalist">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="media" upperBound="1" aggregates="//@entities.1/@variations.0"/>
-      <properties xsi:type="NoSQLSchema:Attribute" name="rank">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="stars">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-    </variations>
-    <variations variationId="2" count="3" timestamp="1532954068663">
-      <properties xsi:type="NoSQLSchema:Attribute" name="journalist">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="media">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="rank">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="stars">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-    </variations>
-  </entities>
   <entities name="Extra data" root="true">
     <variations variationId="1" count="1" timestamp="1532954068696">
-      <properties xsi:type="NoSQLSchema:Aggregate" name="Date Register" lowerBound="1" upperBound="1" aggregates="//@entities.2/@variations.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="Date Register" lowerBound="1" upperBound="-1"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="Money">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -345,7 +115,7 @@
       </properties>
     </variations>
     <variations variationId="2" count="1" timestamp="1532954068696">
-      <properties xsi:type="NoSQLSchema:Aggregate" name="Date Register" lowerBound="1" upperBound="1" aggregates="//@entities.2/@variations.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="Date Register" lowerBound="1" upperBound="1"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="Money">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -360,7 +130,7 @@
       </properties>
     </variations>
     <variations variationId="3" count="1" timestamp="1532954068696">
-      <properties xsi:type="NoSQLSchema:Aggregate" name="Date Register" lowerBound="1" upperBound="1" aggregates="//@entities.2/@variations.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="Date Register" lowerBound="1" upperBound="1"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="Sons">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -375,7 +145,7 @@
       </properties>
     </variations>
     <variations variationId="4" count="1" timestamp="1532954068696">
-      <properties xsi:type="NoSQLSchema:Aggregate" name="Date Register" lowerBound="1" upperBound="1" aggregates="//@entities.2/@variations.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="Date Register" lowerBound="1" upperBound="1"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="Sons">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
@@ -422,41 +192,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-    </variations>
-  </entities>
-  <entities name="Prize">
-    <variations variationId="1" count="1" timestamp="1532954068663">
-      <properties xsi:type="NoSQLSchema:Attribute" name="event">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="names">
-        <type xsi:type="NoSQLSchema:PList">
-          <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="units">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="year">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-    </variations>
-    <variations variationId="2" count="2" timestamp="1532954068663">
-      <properties xsi:type="NoSQLSchema:Attribute" name="certification">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="event">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="name">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="units">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="year">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
   </entities>
@@ -799,49 +534,6 @@
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-    </variations>
-  </entities>
-  <entities name="Track" root="true">
-    <variations variationId="1" count="10" timestamp="1532954068710">
-      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="artist_id" upperBound="-1" refsTo="Artist" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Attribute" name="genres">
-        <type xsi:type="NoSQLSchema:PList">
-          <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="length">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="name">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="popularity">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="ratings" upperBound="1" aggregates="//@entities.3/@variations.0"/>
-    </variations>
-    <variations variationId="2" count="7" timestamp="1532954068710">
-      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="artist_id" upperBound="-1" refsTo="Artist" originalType="String"/>
-      <properties xsi:type="NoSQLSchema:Attribute" name="genres">
-        <type xsi:type="NoSQLSchema:PList">
-          <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-        </type>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="length">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="name">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
-      </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="popularity">
-        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
   </entities>

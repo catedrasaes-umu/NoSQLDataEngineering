@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="everypolitician_sweden">
+<NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" name="everypolitician_sweden">
   <entities name="Memberships" root="true">
     <variations variationId="1" count="496" timestamp="1532946962927">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
@@ -20,7 +20,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="role">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="sources" upperBound="1" aggregates="//@entities.9/@variations.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="sources" upperBound="-1" aggregates="//@entities.9/@variations.0"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="start_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -222,7 +222,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="birth_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="contact_details" upperBound="1" aggregates="//@entities.7/@variations.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="contact_details" upperBound="-1" aggregates="//@entities.7/@variations.0"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="death_date">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -238,16 +238,16 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="given_name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="identifiers" upperBound="1" aggregates="//@entities.1/@variations.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="identifiers" upperBound="-1" aggregates="//@entities.1/@variations.0"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="image">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="images" upperBound="1" aggregates="//@entities.6/@variations.0"/>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="links" upperBound="1" aggregates="//@entities.8/@variations.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="images" upperBound="-1" aggregates="//@entities.6/@variations.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="links" upperBound="-1" aggregates="//@entities.8/@variations.0"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="other_names" upperBound="1" aggregates="//@entities.5/@variations.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="other_names" upperBound="-1" aggregates="//@entities.5/@variations.0 //@entities.5/@variations.1"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="sort_name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
@@ -676,15 +676,15 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="classification">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="identifiers" upperBound="1" aggregates="//@entities.1/@variations.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="identifiers" upperBound="-1" aggregates="//@entities.1/@variations.0"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="image">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="links" upperBound="1" aggregates="//@entities.8/@variations.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="links" upperBound="-1" aggregates="//@entities.8/@variations.0"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="name">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Aggregate" name="other_names" upperBound="1" aggregates="//@entities.5/@variations.0"/>
+      <properties xsi:type="NoSQLSchema:Aggregate" name="other_names" upperBound="-1" aggregates="//@entities.5/@variations.0"/>
       <properties xsi:type="NoSQLSchema:Attribute" name="srgb">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>

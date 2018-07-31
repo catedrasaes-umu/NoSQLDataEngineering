@@ -1,0 +1,1211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="stackoverflow">
+  <entities name="Badges" root="true">
+    <variations variationId="1" count="2500002" timestamp="1532947850975">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Class">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Date">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Name">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="TagBased" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="UserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+  </entities>
+  <entities name="Comments" root="true">
+    <variations variationId="1" count="168" timestamp="1532947948609">
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Text">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="UserDisplayName" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="UserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="2" count="54524" timestamp="1532947948604">
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Text">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="UserDisplayName" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="3" count="2444741" timestamp="1532947948587">
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Text">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="UserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="4" count="569" timestamp="1532947949738">
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Text">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+  </entities>
+  <entities name="Posts" root="true">
+    <variations variationId="1" count="227" timestamp="1532948216004">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AcceptedAnswerId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AnswerCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Body">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ClosedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommentCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommunityOwnedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="FavoriteCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostTypeId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="Tags" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ViewCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="2" count="8" timestamp="1532948228279">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AcceptedAnswerId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AnswerCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Body">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ClosedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommentCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommunityOwnedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="FavoriteCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostTypeId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="Tags" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ViewCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="3" count="23" timestamp="1532948215647">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AcceptedAnswerId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AnswerCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Body">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ClosedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommentCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommunityOwnedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="FavoriteCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostTypeId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="Tags" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ViewCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="4" count="5" timestamp="1532948220143">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AcceptedAnswerId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AnswerCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Body">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ClosedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommentCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommunityOwnedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="FavoriteCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostTypeId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="Tags" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ViewCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="5" count="6" timestamp="1532948229860">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AcceptedAnswerId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AnswerCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Body">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ClosedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommentCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommunityOwnedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="FavoriteCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostTypeId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="Tags" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ViewCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="6" count="11" timestamp="1532948261472">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AcceptedAnswerId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AnswerCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Body">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ClosedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommentCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommunityOwnedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="FavoriteCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostTypeId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="Tags" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ViewCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="7" count="75" timestamp="1532948216064">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AcceptedAnswerId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AnswerCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Body">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ClosedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommentCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommunityOwnedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="FavoriteCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostTypeId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="Tags" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ViewCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="8" count="6" timestamp="1532948218700">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AcceptedAnswerId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AnswerCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Body">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ClosedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommentCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommunityOwnedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="FavoriteCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostTypeId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="Tags" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ViewCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="9" count="397" timestamp="1532948215656">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AcceptedAnswerId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AnswerCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Body">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ClosedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommentCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommunityOwnedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="FavoriteCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostTypeId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="Tags" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ViewCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="10" count="26" timestamp="1532948216122">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AcceptedAnswerId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AnswerCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Body">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ClosedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommentCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommunityOwnedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="FavoriteCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostTypeId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="Tags" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ViewCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="11" count="6" timestamp="1532948218302">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AcceptedAnswerId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AnswerCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Body">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ClosedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommentCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommunityOwnedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="FavoriteCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostTypeId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="Tags" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ViewCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="12" count="93" timestamp="1532948227637">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AcceptedAnswerId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AnswerCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Body">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ClosedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommentCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommunityOwnedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="FavoriteCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostTypeId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="Tags" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ViewCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="13" count="16" timestamp="1532948220595">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AcceptedAnswerId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AnswerCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Body">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ClosedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommentCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommunityOwnedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="OwnerUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostTypeId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="Tags" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ViewCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="14" count="2" timestamp="1532948231190">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AcceptedAnswerId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AnswerCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Body">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ClosedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommentCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommunityOwnedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="LastEditorUserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostTypeId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="Tags" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ViewCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="15" count="1" timestamp="1532948237456">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AcceptedAnswerId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AnswerCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Body">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ClosedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommentCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CommunityOwnedDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastActivityDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastEditorDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="OwnerDisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostTypeId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Score">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="Tags" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Title">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ViewCount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+  </entities>
+  <entities name="Votes" root="true">
+    <variations variationId="1" count="1609" timestamp="1532948086153">
+      <properties xsi:type="NoSQLSchema:Attribute" name="BountyAmount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="UserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="VoteTypeId" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="2" count="1271" timestamp="1532948088178">
+      <properties xsi:type="NoSQLSchema:Attribute" name="BountyAmount">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="VoteTypeId" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="3" count="141099" timestamp="1532948059675">
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="UserId" lowerBound="1" upperBound="1" refsTo="Users" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="VoteTypeId" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="4" count="2356023" timestamp="1532948049231">
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="VoteTypeId" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+  </entities>
+  <entities name="Users" root="true">
+    <variations variationId="1" count="89249" timestamp="1532948381254">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AboutMe">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AccountId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Age">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="DisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="DownVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastAccessDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Location">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ProfileImageUrl">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Reputation">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="UpVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Views">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="WebsiteUrl">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="2" count="2463" timestamp="1532948381256">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AboutMe">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AccountId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Age">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="DisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="DownVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastAccessDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Location">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ProfileImageUrl">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Reputation">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="UpVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Views">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="3" count="187401" timestamp="1532948381255">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AboutMe">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AccountId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Age">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="DisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="DownVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastAccessDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Location">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Reputation">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="UpVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Views">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="WebsiteUrl">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="4" count="12657" timestamp="1532948381259">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AboutMe">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AccountId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Age">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="DisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="DownVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastAccessDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Location">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Reputation">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="UpVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Views">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="5" count="16120" timestamp="1532948381297">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AboutMe">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AccountId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Age">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="DisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="DownVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastAccessDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ProfileImageUrl">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Reputation">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="UpVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Views">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="WebsiteUrl">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="6" count="661" timestamp="1532948381382">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AboutMe">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AccountId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Age">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="DisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="DownVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastAccessDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="ProfileImageUrl">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Reputation">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="UpVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Views">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="7" count="31600" timestamp="1532948381280">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AboutMe">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AccountId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Age">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="DisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="DownVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastAccessDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Reputation">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="UpVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Views">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="WebsiteUrl">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="8" count="4270" timestamp="1532948381288">
+      <properties xsi:type="NoSQLSchema:Attribute" name="AboutMe">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="AccountId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Age">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="DisplayName">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="DownVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LastAccessDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Reputation">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="UpVotes" lowerBound="1" upperBound="1" refsTo="Votes" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="Views">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+  </entities>
+  <entities name="Postlinks" root="true">
+    <variations variationId="1" count="2500002" timestamp="1532948129179">
+      <properties xsi:type="NoSQLSchema:Attribute" name="CreationDate">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="LinkTypeId">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="PostId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="RelatedPostId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+  </entities>
+  <entities name="Tags" root="true">
+    <variations variationId="1" count="35169" timestamp="1532948530339">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Count">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="ExcerptPostId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="TagName" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="WikiPostId" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+    <variations variationId="2" count="13204" timestamp="1532948530343">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Count">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Reference" name="TagName" lowerBound="1" upperBound="1" refsTo="Tags" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+  </entities>
+</NoSQLSchema:NoSQLSchema>
