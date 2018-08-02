@@ -7,7 +7,6 @@ import static java.util.stream.Collectors.toMap;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Collections;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -30,10 +29,11 @@ import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
 import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiationPackage;
 import es.um.nosql.s13e.EntityDifferentiation.StructuralVariationProp;
 import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
+import es.um.nosql.s13e.decisiontree.util.ClassifierPrettyPrinter;
 import es.um.nosql.s13e.decisiontree.util.ModelNode;
 import es.um.nosql.s13e.decisiontree.util.OpenJ48;
+import es.um.nosql.s13e.decisiontree.util.constants.ConfigConstants;
 import es.um.nosql.s13e.util.ModelLoader;
 import es.um.nosql.s13e.util.Serializer;
 import weka.classifiers.trees.j48.ClassifierTree;
@@ -55,7 +55,6 @@ public class EntityDiffToDecisionTree
   public DecisionTrees m2m(EntityDifferentiation entityDiff)
   {
     DecisionTrees decTrees = DecisionTreeFactory.eINSTANCE.createDecisionTrees();
-
     decTrees.setName(entityDiff.getName());
 
     entityDiff.getEntityDiffSpecs().stream().filter(ed -> ed.getVariationProps().size() > 1)
@@ -86,7 +85,7 @@ public class EntityDiffToDecisionTree
     Map<String, PropertySpec> features = propsByEv.values().stream().flatMap(l -> l.stream())
       .collect(toMap(Pair::getKey, Pair::getValue, (u,v) -> u, LinkedHashMap::new));
 
-    final List<String> fValues = Arrays.asList(new String[]{"yes","no"});
+    final List<String> fValues = Arrays.asList("yes", "no");
 
     // Attributes associated to each feature (propertyspec serialization)
     Map<String, Attribute> attrMap = features.keySet().stream().collect(toMap(Function.identity(),
@@ -131,19 +130,27 @@ public class EntityDiffToDecisionTree
     try
     {
       // Get Classification Tree
-      OpenJ48 tree = generateTree(dataset);
-      ClassifierTree root = tree.get_m_root();
+      OpenJ48 classifier = new OpenJ48();
+      classifier.setUnpruned(true);
+      classifier.setMinNumObj(1);
+      classifier.buildClassifier(dataset);
 
-      System.out.println(tree);
-      for (int i = 0; i < dataset.numInstances(); i++){
-        System.out.println(dataset.get(i).stringValue(tag)+": "
-            + tree.classifyInstance(dataset.get(i)));
+      ClassifierTree root = classifier.get_m_root();
+
+      ModelNode modelTree = getModelTree(root, classNameToEvp.entrySet().stream()
+          .collect(toMap(Map.Entry::getKey, v -> v.getValue().getVariation())), features);
+
+      if (ConfigConstants.DEBUG)
+      {
+        ClassifierPrettyPrinter printer = new ClassifierPrettyPrinter();
+        printer.printModelTree(eDiffSpec.getEntity(), modelTree);
       }
 
-      System.out.println(dataset);
-      ModelNode modelTree = getModelTree(root, classNameToEvp.entrySet().stream()
-    		  .collect(toMap(Map.Entry::getKey, v -> v.getValue().getVariation())), features);
-      printModelTree(eDiffSpec.getEntity(),modelTree);
+      if (ConfigConstants.GENERATE_PNG_FILE)
+      {
+        ClassifierPrettyPrinter printer = new ClassifierPrettyPrinter();
+        printer.generateTreePNG(classifier, eDiffSpec);
+      }
 
       return modelTree;
     } catch (Exception e)
@@ -160,7 +167,8 @@ public class EntityDiffToDecisionTree
     if (root.isLeaf())
     {
       LeafNode leafNode =  DecisionTreeFactory.eINSTANCE.createLeafNode();
-      leafNode.setIdentifiedVariation(root.getSv());
+      leafNode.setIdentifiedVariation(root.getStructuralVariation());
+
       return leafNode;
     }
     else
@@ -190,16 +198,6 @@ public class EntityDiffToDecisionTree
     }
   }
 
-  private OpenJ48 generateTree(Instances train) throws Exception
-  {
-    OpenJ48 classifier = new OpenJ48();
-    classifier.setUnpruned(true);
-    classifier.setMinNumObj(1);
-    classifier.buildClassifier(train);
-
-    return classifier;
-  }
-
   private ModelNode getModelTree(ClassifierTree tree, Map<String, StructuralVariation> entityVariations, Map<String, PropertySpec> properties) throws Exception
   {
     if (tree.isLeaf())
@@ -214,21 +212,20 @@ public class EntityDiffToDecisionTree
         return new ModelNode(ev);
       }
       else
-        throw new Exception("Invalid exp reg for: "+tag);
+        throw new IllegalArgumentException("Invalid exp reg for: "+tag);
     }
     else
     {
-      //ClassifierSplitModel classifierSplitModel = tree.getLocalModel();
       ClassifierTree[] sons = tree.getSons();
       String left = tree.getLocalModel().leftSide(tree.getTrainingData()).trim();
 
       PropertySpec propSpec = properties.get(left);
 
       if (propSpec == null)
-        throw new Exception("Unknown Property Name: " + left);
+        throw new IllegalArgumentException("Unknown Property Name: " + left);
 
       if (sons.length != 2)
-        throw new Exception("This is not a binary decision tree");
+        throw new IllegalArgumentException("This is not a binary decision tree");
 
       ModelNode m = new ModelNode(propSpec, left.startsWith("!"));
       for (int i = 0 ; i < sons.length; i++)
@@ -240,33 +237,10 @@ public class EntityDiffToDecisionTree
         else if (value.contentEquals("= no"))
           m.setNodeAbsent(node);
         else
-          throw new Exception("Unknown Right side: " + value.trim());
+          throw new IllegalArgumentException("Unknown Right side: " + value.trim());
       }
 
       return m;
-    }
-  }
-
-  private void printModelTree(EntityClass entity, ModelNode tree)
-  {
-    printModelTree(entity, tree, 0);
-  }
-
-  private void printModelTree(EntityClass entity, ModelNode tree, int level)
-  {
-    String indent = String.join("", Collections.nCopies(level, "  "));
-
-    if (tree.isLeaf())
-      System.out.println(indent + "Entity: " + entity.getName() + ", Variation: " + tree.getSv().getVariationId());
-    else
-    {
-      Function<Boolean,String> present = v -> v ? " is present." : " is NOT present."; 
-
-      System.out.println(indent + tree.getProperty().getProperty().getName() + present.apply(!tree.isCheckNot()));
-      printModelTree(entity, tree.getNodePresent(), level + 1);
-
-      System.out.println(indent + tree.getProperty().getProperty().getName() + present.apply(tree.isCheckNot()));
-      printModelTree(entity, tree.getNodeAbsent(), level + 1);
     }
   }
 

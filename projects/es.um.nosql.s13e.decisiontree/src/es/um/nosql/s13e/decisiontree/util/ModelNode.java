@@ -5,7 +5,7 @@ import es.um.nosql.s13e.EntityDifferentiation.PropertySpec;
 
 public class ModelNode
 {
-  private StructuralVariation sv;
+  private StructuralVariation structVariation;
   private PropertySpec property;
   private ModelNode nodePresent;
   private ModelNode nodeAbsent;
@@ -35,12 +35,12 @@ public class ModelNode
 
   public void setEv(StructuralVariation tag)
   {
-    this.sv = tag;
+    this.structVariation = tag;
   }
 
-  public StructuralVariation getSv()
+  public StructuralVariation getStructuralVariation()
   {
-    return sv;
+    return structVariation;
   }
 
   public void setNodePresent(ModelNode nodePresent)
