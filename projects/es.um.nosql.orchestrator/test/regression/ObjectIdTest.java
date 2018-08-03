@@ -27,7 +27,7 @@ import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
  */
 public class ObjectIdTest
 {
-  private String inputRoute = "testSources/ERROR_ObjectIds.json";
+  private String inputRoute = "testSources/ObjectIds.json";
   private String dbName = "DEBUG_ObjectIds";
   private EveryPolitician2Db controller;
 

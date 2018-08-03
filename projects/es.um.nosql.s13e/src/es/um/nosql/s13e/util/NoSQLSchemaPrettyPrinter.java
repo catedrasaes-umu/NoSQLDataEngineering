@@ -82,7 +82,7 @@ public class NoSQLSchemaPrettyPrinter
 
     StringBuilder result = new StringBuilder();
 
-    result.append(defTabs + "EntityVariation vId: " + eVariation.getVariationId() + ENDL);
+    result.append(defTabs + "EntityVariation vId: " + eVariation.getVariationId() + " count: " + eVariation.getCount() + " ts: " + eVariation.getTimestamp() + ENDL);
     for (Property prop : eVariation.getProperties())
       result.append(printPretty(prop, defTabs + TAB));
 

@@ -25,7 +25,7 @@ import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
  */
 public class TypesTest
 {
-  private String inputRoute = "testSources/ERROR_Types.json";
+  private String inputRoute = "testSources/Types.json";
   private String dbName = "DEBUG_Type";
   private EveryPolitician2Db controller;
 

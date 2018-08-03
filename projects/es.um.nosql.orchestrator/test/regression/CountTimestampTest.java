@@ -21,7 +21,7 @@ import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
  */
 public class CountTimestampTest
 {
-  private String inputRoute = "testSources/ERROR_CountTimestamp.json";
+  private String inputRoute = "testSources/CountTimestamp.json";
   private String dbName = "DEBUG_CountTimestamp";
   private EveryPolitician2Db controller;
 

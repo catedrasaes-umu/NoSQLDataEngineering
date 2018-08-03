@@ -4,13 +4,9 @@ import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
 
-/**
- * @author dsevilla
- *
- */
 public class MapReduceSources 
 {
-  public static class MalformedDirectoryStructure extends RuntimeException
+  private class MalformedDirectoryStructure extends RuntimeException
   {
     private static final long serialVersionUID = -8007805761335157818L;
   }

@@ -20,10 +20,6 @@ import com.mongodb.client.MongoDatabase;
 import es.um.nosql.s13e.nosqlimport.util.MapReduceSources;
 import es.um.nosql.s13e.nosqlimport.util.MongoDBStreamAdapter;
 
-/**
- * @author dsevilla
- *
- */
 public class MongoDBImport
 {
   private MongoDBStreamAdapter adapter;
