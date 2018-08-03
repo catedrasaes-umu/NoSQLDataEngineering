@@ -1194,11 +1194,6 @@
         </toolSections>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Entity Schema Diagram" label="Entity Schema Diagram" titleExpression="aql: 'Entity Schema: ' + self.name" domainClass="NoSQLSchema.EntityClass" enablePopupBars="true">
-      <defaultLayer name="Default" label="Default">
-        <containerMappings name="Entity" label="Entity" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.EntityClass" childrenPresentation="VerticalStack"/>
-      </defaultLayer>
-    </ownedRepresentations>
     <ownedJavaExtensions qualifiedClassName="es.um.nosql.s13e.design.services.NoSQLSchemaServices"/>
     <ownedJavaExtensions qualifiedClassName="es.um.nosql.s13e.design.services.PropertyServices"/>
   </ownedViewpoints>
