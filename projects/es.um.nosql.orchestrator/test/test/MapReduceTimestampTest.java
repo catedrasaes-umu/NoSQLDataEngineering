@@ -1,15 +1,12 @@
 package test;
 
 import org.junit.After;
-import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
 import com.google.gson.JsonArray;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
-import es.um.nosql.s13e.db.interfaces.EveryPolitician2Db;
 import es.um.nosql.s13e.db.interfaces.Webclick2Db;
 import es.um.nosql.s13e.db.util.DbType;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
@@ -41,7 +38,7 @@ public class MapReduceTimestampTest
 //    controller.run(inputRoute, dbName);
 
     MongoDBImport inferrer = new MongoDBImport();
-    JsonArray jArray = inferrer.mapRed2Array("localhost", dbName, "mapreduce/mongodb/v1/");
+    JsonArray jArray = inferrer.mapRed2Array("localhost", dbName, "mapreduce/mongodb/v2/");
 
     BuildNoSQLSchema builder = new BuildNoSQLSchema();
     NoSQLSchema nosqlschema = builder.buildFromGsonArray(dbName, jArray);

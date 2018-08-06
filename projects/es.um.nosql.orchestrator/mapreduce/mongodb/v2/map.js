@@ -2,9 +2,9 @@ function map()
 {
   function TimestampAnalyzer()
   {
-    var _format    = "";
-    var _attrName  = "timestamp";
-    var _value     = null;
+    this._format    = "";
+    this._attrName  = "timestamp";
+    this._value     = null;
   };
 
   TimestampAnalyzer.prototype.getAttrName = function()
@@ -22,13 +22,13 @@ function map()
 
   TimestampAnalyzer.prototype.setAttrValue = function(attrValue)
   {
-    this._value = this.attrValue;
+    this._value = attrValue;
   };
 
   TimestampAnalyzer.prototype.analyzeAttribute = function(attrName, attrValue)
   {
     if (attrName === this.getAttrName())
-      setAttrValue(attrValue);
+      this.setAttrValue(attrValue);
   };
 
   var tsAnalyzer = new TimestampAnalyzer();

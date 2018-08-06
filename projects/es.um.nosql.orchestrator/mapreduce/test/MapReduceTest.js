@@ -2,12 +2,12 @@
 
 var fileLoader = require("fs");
 var MongoClient = require("mongodb").MongoClient;
-var mapString = fileLoader.readFileSync("../mongodb/v1/map.js", "utf8");
-var reduceString = fileLoader.readFileSync("../mongodb/v1/reduce.js", "utf8");
-var mapFunction = new Function(mapString.substring(15));
-var reduceFunction = new Function("key", "values", reduceString.substring(29));
+var mapString = fileLoader.readFileSync("../mongodb/v2/map.js", "utf8");
+var reduceString = fileLoader.readFileSync("../mongodb/v2/reduce.js", "utf8");
+var mapFunction = new Function(mapString.substring(mapString.indexOf('\n')));
+var reduceFunction = new Function("key", "values", reduceString.substring(reduceString.indexOf('\n')));
 var databaseIP  = "mongodb://localhost:27017/";
-var dbName = "everypolitician";
+var dbName = "DEBUG_MapReduceTimestamp";
 
 MongoClient.connect(databaseIP, {useNewUrlParser: true}, function(error, dbConnection)
 {
