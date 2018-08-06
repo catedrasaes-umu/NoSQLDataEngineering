@@ -1,8 +1,4 @@
-package test;
-
-import org.junit.After;
-import org.junit.Before;
-import org.junit.Test;
+package es.um.nosql.s13e.evolution;
 
 import com.google.gson.JsonArray;
 
@@ -13,28 +9,13 @@ import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
 import es.um.nosql.s13e.util.NoSQLSchemaPrettyPrinter;
 
-public class MapReduceTimestampTest
+public class Main
 {
-  private String inputRoute = "testSources/MapReduceTimestamp.json";
-  private String dbName = "DEBUG_MapReduceTimestamp";
-  private Webclick2Db controller;
-
-  @Before
-  public void setUp() throws Exception
+  public static void main(String[] args)
   {
-    controller = new Webclick2Db(DbType.MONGODB, "localhost");
-  }
-
-  @After
-  public void tearDown() throws Exception
-  {
-    controller.getClient().cleanDb(dbName);
-    controller.shutdown();
-  }
-
-  @Test
-  public void test()
-  {
+    String inputRoute = "testSources/MapReduceTimestamp.json";
+    String dbName = "DEBUG_MapReduceTimestamp";
+    Webclick2Db controller = new Webclick2Db(DbType.MONGODB, "localhost");
     controller.run(inputRoute, dbName);
 
     MongoDBImport inferrer = new MongoDBImport("localhost", dbName);
@@ -44,5 +25,16 @@ public class MapReduceTimestampTest
     NoSQLSchema nosqlschema = builder.buildFromGsonArray(dbName, jArray);
 
     System.out.println(NoSQLSchemaPrettyPrinter.printPretty(nosqlschema));
+
+    controller.getClient().cleanDb(dbName);
+    controller.shutdown();
+
+    /* Modificar el MapRedSources para:
+      a) Cargar el mapReduce normal (MapRedSources)
+      b) Analizar el timestamp escogido
+      c) Cargarlo del fichero correspondiente
+      d) Sustituir el fragmento del map por el del timestamp escogido
+      e) Tests
+    */
   }
 }
