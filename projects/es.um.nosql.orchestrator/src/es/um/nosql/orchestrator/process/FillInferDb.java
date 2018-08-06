@@ -63,14 +63,14 @@ public class FillInferDb
     {
       case MONGODB:
       {
-        MongoDBImport inferrer = new MongoDBImport();
-        jArray = inferrer.mapRed2Array(ConfigConstants.DATABASE_IP, dbName, ConfigConstants.MONGODB_MAPREDUCE_FOLDER);
+        MongoDBImport inferrer = new MongoDBImport(ConfigConstants.DATABASE_IP, dbName);
+        jArray = inferrer.mapRed2Array(ConfigConstants.MONGODB_MAPREDUCE_FOLDER);
         break;
       }
       case COUCHDB:
       {
-        CouchDBImport inferrer = new CouchDBImport();
-        jArray = inferrer.mapRed2Array(ConfigConstants.DATABASE_IP, dbName, ConfigConstants.COUCHDB_MAPREDUCE_FOLDER);
+        CouchDBImport inferrer = new CouchDBImport(ConfigConstants.DATABASE_IP, dbName);
+        jArray = inferrer.mapRed2Array(ConfigConstants.COUCHDB_MAPREDUCE_FOLDER);
         break;
       }
     }

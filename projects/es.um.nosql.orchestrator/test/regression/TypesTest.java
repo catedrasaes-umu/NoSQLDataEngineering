@@ -47,8 +47,8 @@ public class TypesTest
   {
     controller.run(inputRoute, dbName);
 
-    MongoDBImport inferrer = new MongoDBImport();
-    JsonArray jArray = inferrer.mapRed2Array("localhost", dbName, "mapreduce/mongodb/v1/");
+    MongoDBImport inferrer = new MongoDBImport("localhost", dbName);
+    JsonArray jArray = inferrer.mapRed2Array("mapreduce/mongodb/v1/");
 
     BuildNoSQLSchema builder = new BuildNoSQLSchema();
     NoSQLSchema nosqlschema = builder.buildFromGsonArray(dbName, jArray);

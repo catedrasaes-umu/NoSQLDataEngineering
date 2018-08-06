@@ -15,10 +15,11 @@ public class MapReduceSources
   private String mapJSCode;
   private String reduceJSCode;
 
-  public String getDir()
+  private MapReduceSources(String dir)
   {
-    return dir;
+    this.dir = dir;
   }
+
   public String getMapJSCode()
   {
     return mapJSCode;
@@ -31,18 +32,13 @@ public class MapReduceSources
 
   public static MapReduceSources fromDir(String dir) throws MalformedDirectoryStructure
   {
-    MapReduceSources ret = new MapReduceSources(dir);
-    ret._init();
-    return ret;
+    MapReduceSources mrSources = new MapReduceSources(dir);
+    mrSources.initialize();
+
+    return mrSources;
   }
 
-  private MapReduceSources(String dir)
-  {
-    super();
-    this.dir = dir;
-  }
-
-  private void _init() throws MalformedDirectoryStructure
+  private void initialize() throws MalformedDirectoryStructure
   {
     try
     {

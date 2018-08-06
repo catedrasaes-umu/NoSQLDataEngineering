@@ -17,36 +17,52 @@ import com.google.gson.JsonObject;
 import es.um.nosql.s13e.nosqlimport.util.CouchDBStreamAdapter;
 import es.um.nosql.s13e.nosqlimport.util.MapReduceSources;
 
-/**
- * @author dsevilla
- */
 public class CouchDBImport
 {
   private CouchDBStreamAdapter adapter;
+  private String dbIP;
+  private String tableName;
 
-  public CouchDBImport()
+  public CouchDBImport(String dbIP, String tableName)
   {
     this.adapter = new CouchDBStreamAdapter();
+    this.dbIP = dbIP;
+    this.tableName = tableName;
   }
 
-  public Stream<JsonObject> mapRed2Stream(String dbIP, String tableName, String mapRedDir)
+  public Stream<JsonObject> mapRed2Stream(String mapRedDir)
   {
-    return performMapReduce(dbIP, tableName, mapRedDir);
+    return mapRed2Stream(MapReduceSources.fromDir(mapRedDir));
   }
 
-  public JsonArray mapRed2Array(String dbIP, String tableName, String mapRedDir)
+  public Stream<JsonObject> mapRed2Stream(MapReduceSources mrs)
   {
-    return adapter.stream2JsonArray(performMapReduce(dbIP, tableName, mapRedDir));
+    return performMapReduce(mrs);
   }
 
-  public void mapRed2File(String dbIP, String tableName, String mapRedDir, String outputFile)
+  public JsonArray mapRed2Array(String mapRedDir)
+  {
+    return mapRed2Array(MapReduceSources.fromDir(mapRedDir));
+  }
+
+  public JsonArray mapRed2Array(MapReduceSources mrs)
+  {
+    return adapter.stream2JsonArray(performMapReduce(mrs));
+  }
+
+  public void mapRed2File(String mapRedDir, String outputFile)
+  {
+    mapRed2File(MapReduceSources.fromDir(mapRedDir), outputFile);
+  }
+
+  public void mapRed2File(MapReduceSources mrs, String outputFile)
   {
     Gson gson = new GsonBuilder().setPrettyPrinting().create();
 
     try
     {
       PrintWriter writer = new PrintWriter(outputFile, "UTF-8");
-      writer.print(gson.toJson(adapter.stream2JsonObject(performMapReduce(dbIP, tableName, mapRedDir))));
+      writer.print(gson.toJson(adapter.stream2JsonObject(performMapReduce(mrs))));
       writer.close();
     } catch (IOException e)
     {
@@ -54,9 +70,8 @@ public class CouchDBImport
     }
   }
 
-  private Stream<JsonObject> performMapReduce(String dbIP, String tableName, String mapRedDir)
+  private Stream<JsonObject> performMapReduce(MapReduceSources mrs)
   {
-    MapReduceSources mrs = MapReduceSources.fromDir(mapRedDir);
     CouchDbProperties properties = new CouchDbProperties(tableName.toLowerCase(), true, "http", dbIP, 5984, null, null);
     CouchDbClient dbClient = new CouchDbClient(properties);
     MapReduce mapRedObj = new MapReduce();

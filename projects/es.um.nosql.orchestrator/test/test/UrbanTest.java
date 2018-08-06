@@ -39,8 +39,8 @@ public class UrbanTest
   {
     controller.run(INPUT_FILE, DBNAME);
     System.out.println("Starting inference...");
-    MongoDBImport inferrer = new MongoDBImport();
-    JsonArray jArray = inferrer.mapRed2Array(DATABASE_IP, DBNAME, MONGODB_MAPREDUCE_FOLDER);
+    MongoDBImport inferrer = new MongoDBImport(DATABASE_IP, DBNAME);
+    JsonArray jArray = inferrer.mapRed2Array(MONGODB_MAPREDUCE_FOLDER);
     System.out.println("Inference finished.");
 
     System.out.println(jArray);

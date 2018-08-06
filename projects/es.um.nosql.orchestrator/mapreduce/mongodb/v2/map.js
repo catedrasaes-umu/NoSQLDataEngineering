@@ -1,37 +1,12 @@
 function map()
 {
-  function TimestampAnalyzer()
+  ///// BEGIN TimestampAnalyzer declaration /////
+  var TimestampAnalyzer =
   {
-    this._format    = "";
-    this._attrName  = "timestamp";
-    this._value     = null;
+    getAttrValue: function() {return 0;},
+    analyzeAttribute: function(attrName, attrValue) {}
   };
-
-  TimestampAnalyzer.prototype.getAttrName = function()
-  {
-    return this._attrName;
-  };
-
-  TimestampAnalyzer.prototype.getAttrValue = function()
-  {
-    if (this._value === null)
-      return new Date().getTime();
-    else
-      return this._value;
-  };
-
-  TimestampAnalyzer.prototype.setAttrValue = function(attrValue)
-  {
-    this._value = attrValue;
-  };
-
-  TimestampAnalyzer.prototype.analyzeAttribute = function(attrName, attrValue)
-  {
-    if (attrName === this.getAttrName())
-      this.setAttrValue(attrValue);
-  };
-
-  var tsAnalyzer = new TimestampAnalyzer();
+  ///// END TimestampAnalyzer declaration /////
 
   function flatten_schema_str(obj, interesting_keys)
   {
@@ -60,7 +35,7 @@ function map()
 
       Object.keys(obj).sort().forEach(function (key)
       {
-        tsAnalyzer.analyzeAttribute(key, obj[key]);
+        TimestampAnalyzer.analyzeAttribute(key, obj[key]);
 
         //if (!obj.hasOwnProperty(key))
         //    return;
@@ -128,5 +103,5 @@ function map()
 
   var schema = flatten_schema_str(this, []);
 
-  emit(schema, {schema: schema, count: 1, timestamp: tsAnalyzer.getAttrValue()});
+  emit(schema, {schema: schema, count: 1, timestamp: TimestampAnalyzer.getAttrValue()});
 }
