@@ -32,7 +32,7 @@ public class CouchDBImport
 
   public Stream<JsonObject> mapRed2Stream(String mapRedDir)
   {
-    return mapRed2Stream(MapReduceSources.fromDir(mapRedDir));
+    return mapRed2Stream(new MapReduceSources(mapRedDir));
   }
 
   public Stream<JsonObject> mapRed2Stream(MapReduceSources mrs)
@@ -42,7 +42,7 @@ public class CouchDBImport
 
   public JsonArray mapRed2Array(String mapRedDir)
   {
-    return mapRed2Array(MapReduceSources.fromDir(mapRedDir));
+    return mapRed2Array(new MapReduceSources(mapRedDir));
   }
 
   public JsonArray mapRed2Array(MapReduceSources mrs)
@@ -52,7 +52,7 @@ public class CouchDBImport
 
   public void mapRed2File(String mapRedDir, String outputFile)
   {
-    mapRed2File(MapReduceSources.fromDir(mapRedDir), outputFile);
+    mapRed2File(new MapReduceSources(mapRedDir), outputFile);
   }
 
   public void mapRed2File(MapReduceSources mrs, String outputFile)
