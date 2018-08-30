@@ -1,9 +1,9 @@
-// This basic TimestampAnalyzer just looks for an attribute called "timestamp"
+// This basic TimestampAnalyzer just looks for an attribute with a given name,
 // given as a long, and captures its value as the timestamp value.
 var TimestampAnalyzer =
 {
-  _attrName:  "timestamp",
-  _value:     "",
+  _attrName: "timestamp",
+  _value: "",
 
   getAttrValue: function()
   {
