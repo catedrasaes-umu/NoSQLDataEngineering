@@ -11,7 +11,7 @@ public class ConfigConstants
   public static final String MODELS_FOLDER            = "models/";
   public static final String OUTPUT_FOLDER            = "models/";
   public static final String COUCHDB_MAPREDUCE_FOLDER = "mapreduce/couchdb/v1";
-  public static final String MONGODB_MAPREDUCE_FOLDER = "mapreduce/mongodb/v1";
+  public static final String MONGODB_MAPREDUCE_FOLDER = "mapreduce/mongodb/v2";
 
   /************************************************************/
   /********************** DATASET ROUTES **********************/
@@ -24,7 +24,7 @@ public class ConfigConstants
   public static final String LINKS_FOLDER             = "/home/lab/datasets/givealink/";
   public static final String MODEL_FILE               = "../es.um.nosql.models/mongomovies/mongomovies.xmi";
   public static final String OPENSANCTIONS_FILE       = "/home/lab/datasets/opensanctions/master.ijson";
-  public static final String PLEIADES_FILE            = "/media/alberto/tarsonis/datasets/pleiades/pleiades-places.json";
+  public static final String PLEIADES_FILE            = "/home/lab/datasets/pleiades/short.json";
   public static final String PROTEINS_FOLDER          = "/home/lab/datasets/proteins/";
   public static final String PUBLICATIONS_FILE        = "/media/alberto/tarsonis/datasets/publications/publications-nov-2013.csv";
   public static final String STACKOVERFLOW_FOLDER     = "/media/alberto/tarsonis/datasets/stackoverflow/";
