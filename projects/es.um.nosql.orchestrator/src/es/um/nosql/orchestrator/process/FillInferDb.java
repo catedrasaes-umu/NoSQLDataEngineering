@@ -42,7 +42,7 @@ public class FillInferDb
       System.out.println("Filling the " + dbType.toString() + " database...");
 
     for (String fileName : new File(sourceFolder).list())
-        controller.run(sourceFolder + fileName, dbName);
+      controller.run(sourceFolder + fileName, dbName);
 
     controller.shutdown();
 

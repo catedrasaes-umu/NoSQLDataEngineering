@@ -1,12 +1,11 @@
 package es.um.nosql.s13e.evolution.timestamp.gen
 
-import es.um.nosql.s13e.evolution.timestamp.gen.AbstractTimestampAnalyzer
 
-class DateTimestampAnalyzer extends AbstractTimestampAnalyzer
+class DateTimestampAnalyzer extends TimestampAnalyzer
 {
   String attrName;
   String format;
-//TODO: Still not working. User has to give a valid format and Date.parse() the string to get the date.
+
   new(String format)
   {
     this("timestamp", format);
@@ -20,11 +19,12 @@ class DateTimestampAnalyzer extends AbstractTimestampAnalyzer
 
   override toString()
   '''
-  // This Date TimestampAnalyzer just looks for an attribute with a given name,
-  // given as a long, and captures its value as the timestamp value.
+  // This Date TimestampAnalyzer looks for an attribute with a given name,
+  // and translates it to nanoseconds according to the given format.
   var TimestampAnalyzer =
   {
     _attrName: "«attrName»",
+    _format: "«format»",
     _value: "",
 
     getAttrValue: function()
@@ -36,9 +36,9 @@ class DateTimestampAnalyzer extends AbstractTimestampAnalyzer
     },
     analyzeAttribute: function(attrName, attrValue)
     {
-      if (attrName === this._attrName)
+      if (attrName === this._attrName && Date.parse(attrValue, format)...¿?)
         this._value = attrValue;
     }
   };
   '''
-}
+} //TODO: Still not working. User has to give a valid format and Date.parse() the string to get the date.

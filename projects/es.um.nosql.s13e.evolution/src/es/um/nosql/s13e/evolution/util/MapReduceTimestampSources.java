@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.regex.Pattern;
 
-import es.um.nosql.s13e.evolution.timestamp.gen.AbstractTimestampAnalyzer;
+import es.um.nosql.s13e.evolution.timestamp.gen.TimestampAnalyzer;
 import es.um.nosql.s13e.nosqlimport.util.MapReduceSources;
 
 public class MapReduceTimestampSources extends MapReduceSources
@@ -25,7 +25,7 @@ public class MapReduceTimestampSources extends MapReduceSources
     setTimestampCodeFile(tsCodeFile);
   }
 
-  public MapReduceTimestampSources(String mapReduceDir, AbstractTimestampAnalyzer analyzer)
+  public MapReduceTimestampSources(String mapReduceDir, TimestampAnalyzer analyzer)
   {
     super(mapReduceDir);
     timestampCode = new String(analyzer.toString());
@@ -54,7 +54,7 @@ public class MapReduceTimestampSources extends MapReduceSources
       throw new IllegalStateException("Timestamp code was not set before!");
 
     Pattern pattern = Pattern.compile(BEGIN_REPLACE_TIMESTAMP + ".*" + END_REPLACE_TIMESTAMP, Pattern.DOTALL);
-    //TODO: Does it even work?
+    //TODO: Does it even work? Seems like it works on Ubuntu and fails on Windows. Additional tests required.
     return pattern.matcher(super.getMapJSCode()).replaceFirst(timestampCode);
   }
 }

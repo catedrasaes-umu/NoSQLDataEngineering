@@ -1,8 +1,7 @@
 package es.um.nosql.s13e.evolution.timestamp.gen
 
-import es.um.nosql.s13e.evolution.timestamp.gen.AbstractTimestampAnalyzer
 
-class BasicTimestampAnalyzer extends AbstractTimestampAnalyzer
+class BasicTimestampAnalyzer extends TimestampAnalyzer
 {
   String attrName;
 

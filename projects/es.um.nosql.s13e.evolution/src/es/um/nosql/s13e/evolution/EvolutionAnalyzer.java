@@ -1,30 +1,39 @@
 package es.um.nosql.s13e.evolution;
 
-import com.google.gson.JsonArray;
-
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
+import es.um.nosql.s13e.evolution.output.OutputGen;
+import es.um.nosql.s13e.evolution.timestamp.TimestampInferrer;
 import es.um.nosql.s13e.evolution.timestamp.gen.BasicTimestampAnalyzer;
-import es.um.nosql.s13e.evolution.util.MapReduceTimestampSources;
-import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
-import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
 import es.um.nosql.s13e.util.NoSQLSchemaPrettyPrinter;
 
 public class EvolutionAnalyzer
 {
+  private TimestampInferrer inferrer;
+  private OutputGen output;
 
-  public void runWebclickExample(String dbName, String mapReduceDir)
+  public EvolutionAnalyzer()
   {
-    MongoDBImport inferrer = new MongoDBImport("localhost", dbName);
-    MapReduceTimestampSources mrtSources = new MapReduceTimestampSources(mapReduceDir, new BasicTimestampAnalyzer("timestamp"));
+    inferrer = new TimestampInferrer();
+    output = new OutputGen();
+  }
 
-    System.out.println(mrtSources.getMapJSCode());
-    // Call TimestampInferrer
+  public void runLinksExample(String dbName)
+  {
+    NoSQLSchema schema = inferrer.infer(dbName, new BasicTimestampAnalyzer("timestamp"));
+
+    System.out.println(NoSQLSchemaPrettyPrinter.printPretty(schema));
+    //TODO Format has to work properly.
+    //TODO: Join timestamps, create map, etc.
     // Generate conclusions
-/*    JsonArray jArray = inferrer.mapRed2Array(mrtSources);
+    // Filters? GreaterThan class, LessThan, GreaterOrEqual, LessOrEqual, Equal, Zero, Nonzero...how about a list of conditions?
+  }
 
-    BuildNoSQLSchema builder = new BuildNoSQLSchema();
-    NoSQLSchema nosqlschema = builder.buildFromGsonArray(dbName, jArray);
+  public void runWebclickExample(String dbName)
+  {
+    NoSQLSchema schema = inferrer.infer(dbName, new BasicTimestampAnalyzer("timestamp"));
 
-    System.out.println(NoSQLSchemaPrettyPrinter.printPretty(nosqlschema));*/
+    System.out.println(NoSQLSchemaPrettyPrinter.printPretty(schema));
+    //TODO: Join timestamps, create map, etc.
+    // Generate conclusions
   }
 }

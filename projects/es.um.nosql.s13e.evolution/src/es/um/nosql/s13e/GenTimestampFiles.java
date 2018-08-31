@@ -3,7 +3,7 @@ package es.um.nosql.s13e;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import es.um.nosql.s13e.evolution.timestamp.gen.AbstractTimestampAnalyzer;
+import es.um.nosql.s13e.evolution.timestamp.gen.TimestampAnalyzer;
 import es.um.nosql.s13e.evolution.timestamp.gen.BasicTimestampAnalyzer;
 import es.um.nosql.s13e.evolution.timestamp.gen.DefaultTimestampAnalyzer;
 
@@ -12,7 +12,7 @@ public class GenTimestampFiles
   private static String OUTPUT_DIR = "timestamp/";
   private static String EXTENSION = ".js";
 
-  private static void GENERATE_TIMESTAMP_FILE(AbstractTimestampAnalyzer analyzer)
+  private static void GENERATE_TIMESTAMP_FILE(TimestampAnalyzer analyzer)
   {
     try
     {
