@@ -10,7 +10,7 @@ import es.um.nosql.s13e.nosqlimport.util.MapReduceSources;
 
 public class MapReduceTimestampSources extends MapReduceSources
 {
-  private static final String BEGIN_REPLACE_TIMESTAMP = "///// BEGIN TimestampAnalyzer declaration /////\n";
+  private static final String BEGIN_REPLACE_TIMESTAMP = "///// BEGIN TimestampAnalyzer declaration /////";
   private static final String END_REPLACE_TIMESTAMP   = "///// END TimestampAnalyzer declaration /////";
   private String timestampCode;
 
@@ -54,7 +54,6 @@ public class MapReduceTimestampSources extends MapReduceSources
       throw new IllegalStateException("Timestamp code was not set before!");
 
     Pattern pattern = Pattern.compile(BEGIN_REPLACE_TIMESTAMP + ".*" + END_REPLACE_TIMESTAMP, Pattern.DOTALL);
-    //TODO: Does it even work? Seems like it works on Ubuntu and fails on Windows. Additional tests required.
     return pattern.matcher(super.getMapJSCode()).replaceFirst(timestampCode);
   }
 }

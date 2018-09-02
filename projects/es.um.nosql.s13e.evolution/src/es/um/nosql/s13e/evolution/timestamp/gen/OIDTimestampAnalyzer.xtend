@@ -27,8 +27,8 @@ class OIDTimestampAnalyzer extends TimestampAnalyzer
 
     getAttrValue: function()
     {
-      if (this._value === null)
-        return new Date().getTime();
+      if (this._value === "")
+        return 0;
       else
         return this._value;
     },
@@ -37,10 +37,10 @@ class OIDTimestampAnalyzer extends TimestampAnalyzer
       if (attrName === this._attrName)
       {
         if (attrValue instanceof ObjectId)
-          this._value = attrValue; // TODO: Extraer del objectId el timestamp...
-        // TODO: Si attrValue es string o number...pasar a objectid y extraer el timestamp.
+          this._value = Date.parse(attrValue.getTimestamp());
+        else if (((typeof attrValue) == 'number') || ((typeof attrValue) == 'string'))
+          this._value = Date.parse((new ObjectId(attrValue)).getTimestamp());
       }
-
     }
   };
   '''

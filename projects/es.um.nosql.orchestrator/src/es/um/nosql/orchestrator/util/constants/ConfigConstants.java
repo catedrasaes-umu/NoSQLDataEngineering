@@ -26,7 +26,7 @@ public class ConfigConstants
   public static final String OPENSANCTIONS_FILE       = "/home/lab/datasets/opensanctions/master.ijson";
   public static final String PLEIADES_FILE            = "/home/lab/datasets/pleiades/short.json";
   public static final String PROTEINS_FOLDER          = "/home/lab/datasets/proteins/";
-  public static final String PUBLICATIONS_FILE        = "/media/alberto/tarsonis/datasets/publications/publications-nov-2013.csv";
+  public static final String PUBLICATIONS_FILE        = "F:\\Informatica\\datasets\\publications\\publications-nov-2013_2.csv";
   public static final String STACKOVERFLOW_FOLDER     = "/media/alberto/tarsonis/datasets/stackoverflow/";
   public static final String URBANDICTIONARY_FILE     = "/media/alberto/tarsonis/datasets/urban/words.json";
   public static final String WEBCLICKS_FOLDER         = "/home/lab/datasets/webclicks/";

@@ -26,8 +26,8 @@ class BasicTimestampAnalyzer extends TimestampAnalyzer
 
     getAttrValue: function()
     {
-      if (this._value === null)
-        return new Date().getTime();
+      if (this._value === "")
+        return 0;
       else
         return this._value;
     },
