@@ -10,10 +10,11 @@ public class Main
 
     //TODO: I will check each example as soon as I am able to. With the results I will recreate each model with the timestamps correctly inferred.
     // Until then ignore timestamps, since all of them are new Date() results.
+    analyzer.runHarvardExample("harvard");
     //analyzer.runFacebookExample("facebook");
     //analyzer.runPublicationsExample("publications");
     //analyzer.runSanctionsExample("opensanctions");
-    analyzer.runProteinsExample("proteins");
+    //analyzer.runProteinsExample("proteins");
     //analyzer.runStackOverflowExample("stackoverflow");
     //analyzer.runLinksExample("links");
     //analyzer.runWebclickExample("webclicks");

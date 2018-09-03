@@ -4,15 +4,14 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema"
-    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore"
+    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../../es.um.nosql.s13e/model/nosqlschema.ecore"
     name="facebook">
   <entities
       name="Pages"
       root="true">
     <variations
         variationId="1"
-        count="82"
-        timestamp="1532947004672">
+        count="82">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -35,7 +34,7 @@
     <variations
         variationId="1"
         count="1011571"
-        timestamp="1532946963718">
+        timestamp="1422305107000">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -82,7 +81,7 @@
     <variations
         variationId="2"
         count="25"
-        timestamp="1532946964302">
+        timestamp="1423879299000">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -122,7 +121,7 @@
     <variations
         variationId="3"
         count="26684"
-        timestamp="1532946963726">
+        timestamp="1474069901000">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -162,7 +161,7 @@
     <variations
         variationId="4"
         count="1"
-        timestamp="1532947001687">
+        timestamp="1500039754000">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -201,8 +200,7 @@
     </variations>
     <variations
         variationId="5"
-        count="25"
-        timestamp="1532946964302">
+        count="25">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -227,8 +225,7 @@
     </variations>
     <variations
         variationId="6"
-        count="13"
-        timestamp="1532946964540">
+        count="13">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -246,8 +243,7 @@
     </variations>
     <variations
         variationId="7"
-        count="7"
-        timestamp="1532946964302">
+        count="7">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -263,7 +259,7 @@
     <variations
         variationId="1"
         count="14543"
-        timestamp="1532947004700">
+        timestamp="1424230968000">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -366,7 +362,7 @@
     <variations
         variationId="2"
         count="660"
-        timestamp="1532947004755">
+        timestamp="1424114868000">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -462,7 +458,7 @@
     <variations
         variationId="3"
         count="3953"
-        timestamp="1532947004700">
+        timestamp="1422305034000">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -558,7 +554,7 @@
     <variations
         variationId="4"
         count="64"
-        timestamp="1532947005009">
+        timestamp="1471617282000">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -647,7 +643,7 @@
     <variations
         variationId="5"
         count="375"
-        timestamp="1532947004834">
+        timestamp="1425567601000">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -736,7 +732,7 @@
     <variations
         variationId="6"
         count="5"
-        timestamp="1532947005371">
+        timestamp="1483759288000">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">

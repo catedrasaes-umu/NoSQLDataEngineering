@@ -4,14 +4,14 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema"
+    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../../es.um.nosql.s13e/model/nosqlschema.ecore"
     name="stackoverflow">
   <entities
       name="Badges"
       root="true">
     <variations
         variationId="1"
-        count="2500002"
-        timestamp="1532947850975">
+        count="2500002">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Class">
@@ -61,8 +61,8 @@
       root="true">
     <variations
         variationId="1"
-        count="168"
-        timestamp="1532947948609">
+        count="169"
+        timestamp="1220941098713">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="CreationDate">
@@ -115,8 +115,8 @@
     </variations>
     <variations
         variationId="2"
-        count="54524"
-        timestamp="1532947948604">
+        count="54651"
+        timestamp="1220897979830">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="CreationDate">
@@ -162,8 +162,8 @@
     </variations>
     <variations
         variationId="3"
-        count="2444741"
-        timestamp="1532947948587">
+        count="2444618"
+        timestamp="1220681230730">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="CreationDate">
@@ -209,8 +209,8 @@
     </variations>
     <variations
         variationId="4"
-        count="569"
-        timestamp="1532947949738">
+        count="564"
+        timestamp="1222945484943">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="CreationDate">
@@ -254,7 +254,7 @@
     <variations
         variationId="1"
         count="227"
-        timestamp="1532948216004">
+        timestamp="1218801675030">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AcceptedAnswerId">
@@ -399,7 +399,7 @@
     <variations
         variationId="2"
         count="8"
-        timestamp="1532948228279">
+        timestamp="1226309318877">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AcceptedAnswerId">
@@ -537,7 +537,7 @@
     <variations
         variationId="3"
         count="23"
-        timestamp="1532948215647">
+        timestamp="1217699510250">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AcceptedAnswerId">
@@ -675,7 +675,7 @@
     <variations
         variationId="4"
         count="5"
-        timestamp="1532948220143">
+        timestamp="1221993783973">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AcceptedAnswerId">
@@ -813,7 +813,7 @@
     <variations
         variationId="5"
         count="6"
-        timestamp="1532948229860">
+        timestamp="1227222271853">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AcceptedAnswerId">
@@ -944,7 +944,7 @@
     <variations
         variationId="6"
         count="11"
-        timestamp="1532948261472">
+        timestamp="1243312377620">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AcceptedAnswerId">
@@ -1075,7 +1075,7 @@
     <variations
         variationId="7"
         count="75"
-        timestamp="1532948216064">
+        timestamp="1218988257937">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AcceptedAnswerId">
@@ -1213,7 +1213,7 @@
     <variations
         variationId="8"
         count="6"
-        timestamp="1532948218700">
+        timestamp="1221590474670">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AcceptedAnswerId">
@@ -1344,7 +1344,7 @@
     <variations
         variationId="9"
         count="397"
-        timestamp="1532948215656">
+        timestamp="1217798301627">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AcceptedAnswerId">
@@ -1475,7 +1475,7 @@
     <variations
         variationId="10"
         count="26"
-        timestamp="1532948216122">
+        timestamp="1219094957643">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AcceptedAnswerId">
@@ -1599,7 +1599,7 @@
     <variations
         variationId="11"
         count="6"
-        timestamp="1532948218302">
+        timestamp="1221511796087">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AcceptedAnswerId">
@@ -1716,7 +1716,7 @@
     <variations
         variationId="12"
         count="93"
-        timestamp="1532948227637">
+        timestamp="1225899654507">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AcceptedAnswerId">
@@ -1833,7 +1833,7 @@
     <variations
         variationId="13"
         count="16"
-        timestamp="1532948220595">
+        timestamp="1222167268250">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AcceptedAnswerId">
@@ -1971,7 +1971,7 @@
     <variations
         variationId="14"
         count="2"
-        timestamp="1532948231190">
+        timestamp="1228221284073">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AcceptedAnswerId">
@@ -2102,7 +2102,7 @@
     <variations
         variationId="15"
         count="1"
-        timestamp="1532948237456">
+        timestamp="1232381818590">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AcceptedAnswerId">
@@ -2229,8 +2229,8 @@
       root="true">
     <variations
         variationId="1"
-        count="1609"
-        timestamp="1532948086153">
+        count="1608"
+        timestamp="1233010800000">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="BountyAmount">
@@ -2276,8 +2276,8 @@
     </variations>
     <variations
         variationId="2"
-        count="1271"
-        timestamp="1532948088178">
+        count="1269"
+        timestamp="1233615600000">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="BountyAmount">
@@ -2316,8 +2316,8 @@
     </variations>
     <variations
         variationId="3"
-        count="141099"
-        timestamp="1532948059675">
+        count="140976"
+        timestamp="1222984800000">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="CreationDate">
@@ -2356,8 +2356,8 @@
     </variations>
     <variations
         variationId="4"
-        count="2356023"
-        timestamp="1532948049231">
+        count="2356149"
+        timestamp="1217455200000">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="CreationDate">
@@ -2372,6 +2372,39 @@
           upperBound="1"
           refsTo="Posts"
           originalType="String"/>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="VoteTypeId">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
+    </variations>
+    <variations
+        variationId="5"
+        count="25"
+        timestamp="1217455200000">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="CreationDate">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Reference"
+          name="PostId"
+          lowerBound="1"
+          upperBound="1"
+          refsTo="Posts"
+          originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -2393,8 +2426,8 @@
       root="true">
     <variations
         variationId="1"
-        count="89249"
-        timestamp="1532948381254">
+        count="97144"
+        timestamp="1217506951287">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AboutMe">
@@ -2496,8 +2529,8 @@
     </variations>
     <variations
         variationId="2"
-        count="2463"
-        timestamp="1532948381256">
+        count="2712"
+        timestamp="1217585894520">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AboutMe">
@@ -2592,8 +2625,8 @@
     </variations>
     <variations
         variationId="3"
-        count="187401"
-        timestamp="1532948381255">
+        count="188209"
+        timestamp="1217506951287">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AboutMe">
@@ -2688,8 +2721,8 @@
     </variations>
     <variations
         variationId="4"
-        count="12657"
-        timestamp="1532948381259">
+        count="12582"
+        timestamp="1217596325870">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AboutMe">
@@ -2777,8 +2810,8 @@
     </variations>
     <variations
         variationId="5"
-        count="16120"
-        timestamp="1532948381297">
+        count="16499"
+        timestamp="1218250125570">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AboutMe">
@@ -2873,8 +2906,8 @@
     </variations>
     <variations
         variationId="6"
-        count="661"
-        timestamp="1532948381382">
+        count="663"
+        timestamp="1219487372323">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AboutMe">
@@ -2962,8 +2995,8 @@
     </variations>
     <variations
         variationId="7"
-        count="31600"
-        timestamp="1532948381280">
+        count="30446"
+        timestamp="1218008778830">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AboutMe">
@@ -3051,8 +3084,8 @@
     </variations>
     <variations
         variationId="8"
-        count="4270"
-        timestamp="1532948381288">
+        count="4144"
+        timestamp="1218104166923">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="AboutMe">
@@ -3138,7 +3171,7 @@
     <variations
         variationId="1"
         count="2500002"
-        timestamp="1532948129179">
+        timestamp="1272243588130">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="CreationDate">
@@ -3181,8 +3214,7 @@
       root="true">
     <variations
         variationId="1"
-        count="35169"
-        timestamp="1532948530339">
+        count="36088">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Count">
@@ -3221,8 +3253,7 @@
     </variations>
     <variations
         variationId="2"
-        count="13204"
-        timestamp="1532948530343">
+        count="13912">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Count">
