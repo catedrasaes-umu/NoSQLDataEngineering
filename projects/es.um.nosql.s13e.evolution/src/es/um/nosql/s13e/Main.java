@@ -13,8 +13,8 @@ public class Main
     //analyzer.runFacebookExample("facebook");
     //analyzer.runPublicationsExample("publications");
     //analyzer.runSanctionsExample("opensanctions");
-    //analyzer.runProteinsExample("proteins");
-    analyzer.runStackOverflowExample("stackoverflow");
+    analyzer.runProteinsExample("proteins");
+    //analyzer.runStackOverflowExample("stackoverflow");
     //analyzer.runLinksExample("links");
     //analyzer.runWebclickExample("webclicks");
     //TODO: In the future might be possible to give instead of a simple attribute, a map-like structure

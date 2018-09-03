@@ -86,7 +86,7 @@ public class BuildNoSQLSchema
   private void schema2File(NoSQLSchema schema, String outputFile)
   {
     NoSQLSchemaWriter writer = new NoSQLSchemaWriter();
-    writer.write(schema,  outputFile);
+    writer.write(schema, outputFile);
   }
 
   public static void main(String[] args) throws IOException
