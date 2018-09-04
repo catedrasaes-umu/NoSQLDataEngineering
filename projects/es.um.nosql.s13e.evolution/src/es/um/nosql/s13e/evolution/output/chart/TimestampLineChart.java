@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -26,7 +27,8 @@ import org.jfree.ui.ApplicationFrame;
 import org.jfree.ui.RefineryUtilities;
 
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
-
+// TODO: This may be configured to format by minute/hour/day/month/year...
+// TODO: What about a simple UI?
 public class TimestampLineChart extends ApplicationFrame
 {
   private static final long serialVersionUID = 4771567076282726708L;
@@ -37,9 +39,6 @@ public class TimestampLineChart extends ApplicationFrame
   private String entityName;
 
   private Map<String, Integer> plotMap;
-  //TODO: Iterate over each date inbetween these values and fill the plot with zeros.
-  private Date startingDate;
-  private Date finalDate;
 
   private final static DateFormat DATE_FORMATTER = new SimpleDateFormat("yyyy-MM-dd");
   private final static int WIDTH = 640;
@@ -47,13 +46,10 @@ public class TimestampLineChart extends ApplicationFrame
 
   public TimestampLineChart(String schemaName, String entityName, List<StructuralVariation> variations)
   {
-    super(schemaName + " - " + entityName + " variations classificated by timestamps");
+    super(schemaName + " - " + entityName + " variations classified by timestamps");
     this.schemaName = schemaName;
     this.entityName = entityName;
     this.plotMap = new HashMap<String, Integer>();
-
-    startingDate = new Date(variations.get(0).getTimestamp());
-    finalDate = new Date(variations.get(variations.size() - 1).getTimestamp());
 
     for (StructuralVariation var : variations)
     {
@@ -67,27 +63,43 @@ public class TimestampLineChart extends ApplicationFrame
         plotMap.put(formattedTs, 1);
     }
 
-    this.chart = ChartFactory.createTimeSeriesChart("\"" + entityName+ "\" variations",
-        "Timestamps", "Variations", createDataset(variations), false, true, false);
+    if (!plotMap.isEmpty())
+    {
+      LocalDate startingDate = LocalDate.parse(DATE_FORMATTER.format(plotMap.keySet().stream().map(date -> parseDate(date))
+        .min((date1, date2) -> { return Long.compare(date1.getTime(), date2.getTime());}).get()));
 
-    XYPlot plot = (XYPlot)chart.getPlot();
-    plot.setBackgroundPaint(Color.WHITE);
-    plot.getRangeAxis().setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+      LocalDate endingDate = LocalDate.parse(DATE_FORMATTER.format(plotMap.keySet().stream().map(date -> parseDate(date))
+        .max((date1, date2) -> { return Long.compare(date1.getTime(), date2.getTime());}).get()));
+
+      this.chart = ChartFactory.createTimeSeriesChart("\"" + entityName+ "\" variations",
+          "Timestamps", "Variations", createDataset(startingDate, endingDate), false, true, false);
+
+      XYPlot plot = (XYPlot)chart.getPlot();
+      plot.setBackgroundPaint(Color.WHITE);
+      plot.getRangeAxis().setStandardTickUnits(NumberAxis.createIntegerTickUnits());
+    }
   }
 
-  private XYDataset createDataset(List<StructuralVariation> variations)
+  private Date parseDate(String date)
+  {
+    try
+    {
+      return DATE_FORMATTER.parse(date);
+    } catch (ParseException e)
+    {
+      e.printStackTrace();
+    }
+
+    return null;
+  }
+
+  private XYDataset createDataset(LocalDate startingDate, LocalDate endingDate)
   {
     TimeSeriesCollection dataset = new TimeSeriesCollection();
     TimeSeries theSerie = new TimeSeries("Variations");
 
-    for (String key : plotMap.keySet())
-      try
-      {
-        theSerie.add(new Day(DATE_FORMATTER.parse(key)), plotMap.get(key));
-      } catch (ParseException e)
-      {
-        e.printStackTrace();
-      }
+    for (LocalDate date = startingDate; date.isBefore(endingDate) || date.isEqual(endingDate); date = date.plusDays(1))
+      theSerie.add(new Day(date.getDayOfMonth(), date.getMonthValue(), date.getYear()), plotMap.getOrDefault(date.toString(), 0));        
 
     dataset.addSeries(theSerie);
 
@@ -96,6 +108,12 @@ public class TimestampLineChart extends ApplicationFrame
 
   public void showChart()
   {
+    if (chart == null)
+    {
+      System.err.println(schemaName + " > " + entityName + " only contains variations without timestamps");
+      return;
+    }
+
     ChartPanel chartPanel = new ChartPanel(chart);
     chartPanel.setPreferredSize(new Dimension(WIDTH, HEIGHT));
     setContentPane(chartPanel);
@@ -107,6 +125,12 @@ public class TimestampLineChart extends ApplicationFrame
 
   public void saveChart(String route)
   {
+    if (chart == null)
+    {
+      System.err.println(schemaName + " > " + entityName + " only contains variations without timestamps");
+      return;
+    }
+
     try
     {
       new File(route).mkdirs();
