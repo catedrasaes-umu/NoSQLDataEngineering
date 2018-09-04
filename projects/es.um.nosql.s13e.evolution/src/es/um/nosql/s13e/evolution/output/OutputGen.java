@@ -1,5 +1,6 @@
 package es.um.nosql.s13e.evolution.output;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
@@ -17,6 +18,7 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
+import es.um.nosql.s13e.evolution.output.chart.TimestampLineChart;
 import es.um.nosql.s13e.evolution.util.constants.ConfigConstants;
 import es.um.nosql.s13e.util.NoSQLSchemaWriter;
 
@@ -39,21 +41,21 @@ public class OutputGen
     if (ConfigConstants.OUTPUT_CONSOLE)
       genConsole(schema);
 
-    if (ConfigConstants.OUTPUT_MODEL)
-      genModelFile(schema);
+    if (ConfigConstants.OUTPUT_CHART)
+      genChart(schema);
 
-    //TODO: Plots
-/*    if (ConfigConstants.OUTPUT_PLOT)
-      genPlot(schema);
-
-    if (ConfigConstants.OUTPUT_PLOT_FILE)
-      genPlotFile(schema);*/
+    if (ConfigConstants.OUTPUT_CHART_FILE)
+      genChartFile(schema);
   }
 
   private void genCSVFile(NoSQLSchema schema)
   {
+    new File(ConfigConstants.OUTPUT_FOLDER).mkdirs();
     String outputRoute = ConfigConstants.OUTPUT_FOLDER + schema.getName() + ".csv";
     Map<EntityClass, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
+
+    if (ConfigConstants.DEBUG)
+      System.out.println(schema.getName() + " > Generating CSV file...");
 
     CsvSchema csvSchema = CsvSchema.builder()
         .addColumn("entityName", CsvSchema.ColumnType.STRING)
@@ -77,10 +79,14 @@ public class OutputGen
     {
       e.printStackTrace();
     }
+
+    if (ConfigConstants.DEBUG)
+      System.out.println(schema.getName() + " > CSV file created: " + outputRoute);
   }
 
-  private void genModelFile(NoSQLSchema schema)
+  public void genModelFile(NoSQLSchema schema)
   {
+    new File(ConfigConstants.OUTPUT_FOLDER).mkdirs();
     String outputRoute = ConfigConstants.OUTPUT_FOLDER + schema.getName() + ".xmi";
     writer.write(schema, outputRoute);
   }
@@ -89,6 +95,9 @@ public class OutputGen
   {
     StringBuilder result = new StringBuilder();
     Map<EntityClass, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
+
+    if (ConfigConstants.DEBUG)
+      System.out.println(schema.getName() + " > Generating console output...");
 
     for (EntityClass entity : orderedMap.keySet())
     {
@@ -103,6 +112,9 @@ public class OutputGen
     }
 
     System.out.println(result.toString());
+
+    if (ConfigConstants.DEBUG)
+      System.out.println(schema.getName() + " > Console output finished.");
   }
 
   private Map<EntityClass, List<StructuralVariation>> genOrderedMap(NoSQLSchema schema)
@@ -116,5 +128,43 @@ public class OutputGen
     }
 
     return result;
+  }
+
+  private void genChart(NoSQLSchema schema)
+  {
+    if (ConfigConstants.DEBUG)
+      System.out.println(schema.getName() + " > Drawing timestamp charts...");
+
+    Map<EntityClass, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
+
+    for (EntityClass entity : orderedMap.keySet())
+    {
+      if (ConfigConstants.DEBUG)
+        System.out.println(schema.getName() + " > " + entity.getName() + " chart drawn.");
+
+      new TimestampLineChart(schema.getName(), entity.getName(), orderedMap.get(entity)).showChart();
+    }
+
+    if (ConfigConstants.DEBUG)
+      System.out.println(schema.getName() + " > Finished drawing charts.");
+  }
+
+  private void genChartFile(NoSQLSchema schema)
+  {
+    if (ConfigConstants.DEBUG)
+      System.out.println(schema.getName() + " > Creating timestamp chart images...");
+
+    Map<EntityClass, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
+
+    for (EntityClass entity : orderedMap.keySet())
+    {
+      if (ConfigConstants.DEBUG)
+        System.out.println(schema.getName() + " > " + entity.getName() + " chart created.");
+
+      new TimestampLineChart(schema.getName(), entity.getName(), orderedMap.get(entity)).saveChart(ConfigConstants.OUTPUT_FOLDER);
+    }
+
+    if (ConfigConstants.DEBUG)
+      System.out.println(schema.getName() + " > Finished creating charts.");
   }
 }

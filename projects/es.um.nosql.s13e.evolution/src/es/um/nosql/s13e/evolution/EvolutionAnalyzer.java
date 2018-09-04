@@ -1,11 +1,18 @@
 package es.um.nosql.s13e.evolution;
 
+import java.io.File;
+
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.evolution.output.OutputGen;
 import es.um.nosql.s13e.evolution.timestamp.TimestampInferrer;
 import es.um.nosql.s13e.evolution.timestamp.gen.BasicTimestampAnalyzer;
 import es.um.nosql.s13e.evolution.timestamp.gen.DateTimestampAnalyzer;
 import es.um.nosql.s13e.evolution.timestamp.gen.DefaultTimestampAnalyzer;
+import es.um.nosql.s13e.evolution.timestamp.gen.TimestampAnalyzer;
+import es.um.nosql.s13e.evolution.util.InferenceMode;
+import es.um.nosql.s13e.evolution.util.constants.ConfigConstants;
+import es.um.nosql.s13e.util.ModelLoader;
 
 //TODO: Filters? GreaterThan class, LessThan, GreaterOrEqual, LessOrEqual, Equal, Zero, Nonzero...how about a list of conditions?
 public class EvolutionAnalyzer
@@ -19,51 +26,63 @@ public class EvolutionAnalyzer
     output = new OutputGen();
   }
 
-  public void runLinksExample(String dbName)
+  public void runLinksExample(InferenceMode option, String dbName)
   {
-    NoSQLSchema schema = inferrer.infer(dbName, new BasicTimestampAnalyzer("timestamp"));
-    output.genOutput(schema);
+    runExample(option, dbName, new BasicTimestampAnalyzer("timestamp"));
   }
 
-  public void runWebclickExample(String dbName)
+  public void runWebclickExample(InferenceMode option, String dbName)
   {
-    NoSQLSchema schema = inferrer.infer(dbName, new BasicTimestampAnalyzer("timestamp"));
-    output.genOutput(schema);
+    runExample(option, dbName, new BasicTimestampAnalyzer("timestamp"));
   }
 
-  public void runPublicationsExample(String dbName)
+  public void runPublicationsExample(InferenceMode option, String dbName)
   {
-    NoSQLSchema schema = inferrer.infer(dbName, new DefaultTimestampAnalyzer());
-    output.genOutput(schema);
+    runExample(option, dbName, new DefaultTimestampAnalyzer());
   }
 
-  public void runFacebookExample(String dbName)
+  public void runFacebookExample(InferenceMode option, String dbName)
   {
-    NoSQLSchema schema = inferrer.infer(dbName, new DateTimestampAnalyzer("created_time"));
-    output.genOutput(schema);
+    runExample(option, dbName, new DateTimestampAnalyzer("created_time"));
   }
 
-  public void runSanctionsExample(String dbName)
+  public void runSanctionsExample(InferenceMode option, String dbName)
   {
-    NoSQLSchema schema = inferrer.infer(dbName, new DateTimestampAnalyzer("timestamp"));
-    output.genOutput(schema);
+    runExample(option, dbName, new DateTimestampAnalyzer("timestamp"));
   }
 
-  public void runProteinsExample(String dbName)
+  public void runProteinsExample(InferenceMode option, String dbName)
   {
-    NoSQLSchema schema = inferrer.infer(dbName, new DefaultTimestampAnalyzer());
-    output.genOutput(schema);
+    runExample(option, dbName, new DefaultTimestampAnalyzer());
   }
 
-  public void runStackOverflowExample(String dbName)
+  public void runStackOverflowExample(InferenceMode option, String dbName)
   {
-    NoSQLSchema schema = inferrer.infer(dbName, new DateTimestampAnalyzer("CreationDate"));
-    output.genOutput(schema);
+    runExample(option, dbName, new DateTimestampAnalyzer("CreationDate"));
   }
 
-  public void runHarvardExample(String dbName)
+  public void runHarvardExample(InferenceMode option, String dbName)
   {
-    NoSQLSchema schema = inferrer.infer(dbName, new DateTimestampAnalyzer("start_time_DI"));
-    output.genOutput(schema);
+    runExample(option, dbName, new DateTimestampAnalyzer("start_time_DI"));
+  }
+
+  private void runExample(InferenceMode option, String dbName, TimestampAnalyzer analyzer)
+  {
+    NoSQLSchema schema = null;
+
+    if (option != InferenceMode.ANALYZE_ONLY)
+    {
+      schema = inferrer.infer(dbName, analyzer);
+      output.genModelFile(schema);
+    }
+
+    if (option == InferenceMode.ANALYZE_ONLY)
+    {
+      ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
+      schema = loader.load(new File(ConfigConstants.MODELS_FOLDER + dbName + "/" + dbName + ".xmi"), NoSQLSchema.class);
+    }
+
+    if (option != InferenceMode.INFER_ONLY)
+      output.genOutput(schema);
   }
 }

@@ -22,7 +22,10 @@ public class Main
     //inferenceTest.runPleiadesExample(InferenceMode.FILL_AND_INFER, ConfigConstants.PLEIADES_FILE);                  //TODO: DOESNT WORK YET
     //inferenceTest.runProteinsExample(InferenceMode.INFER_ONLY, ConfigConstants.PROTEINS_FOLDER);                //POJO
     //inferenceTest.runPublicationsExample(InferenceMode.FILL_ONLY, ConfigConstants.PUBLICATIONS_FILE);          //POJO
-    //inferenceTest.runStackOverflowExample(InferenceMode.INFER_ONLY, ConfigConstants.STACKOVERFLOW_FOLDER);
+    inferenceTest.runStackOverflowExample(InferenceMode.FILL_ONLY, ConfigConstants.STACKOVERFLOW_FOLDER + "Badges.xml");
+    inferenceTest.runStackOverflowExample(InferenceMode.FILL_ONLY, ConfigConstants.STACKOVERFLOW_FOLDER + "Comments.xml");
+    inferenceTest.runStackOverflowExample(InferenceMode.FILL_ONLY, ConfigConstants.STACKOVERFLOW_FOLDER + "Votes.xml");
+    inferenceTest.runStackOverflowExample(InferenceMode.FILL_ONLY, ConfigConstants.STACKOVERFLOW_FOLDER + "Posts.xml");
     //inferenceTest.runUrbanDictionaryExample(InferenceMode.INFER_ONLY, ConfigConstants.URBANDICTIONARY_FILE);    //POJO
     //inferenceTest.runWebclickExample(InferenceMode.INFER_ONLY, ConfigConstants.WEBCLICKS_FOLDER);              //POJO
 
