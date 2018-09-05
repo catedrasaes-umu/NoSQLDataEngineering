@@ -14,7 +14,7 @@ public class Main
     //analyzer.runPublicationsExample(InferenceMode.ANALYZE_ONLY, "publications");
     //analyzer.runSanctionsExample(InferenceMode.ANALYZE_ONLY, "opensanctions");
     //analyzer.runProteinsExample(InferenceMode.ANALYZE_ONLY, "proteins");
-    analyzer.runStackOverflowExample(InferenceMode.ANALYZE_ONLY, "stackoverflow");
+    analyzer.runStackOverflowExample(InferenceMode.INFER_ONLY, "stackoverflow");
     //analyzer.runLinksExample(InferenceMode.ANALYZE_ONLY, "links");
     //analyzer.runWebclickExample(InferenceMode.ANALYZE_ONLY, "webclicks");
     //TODO: In the future might be possible to give instead of a simple attribute, a map-like structure

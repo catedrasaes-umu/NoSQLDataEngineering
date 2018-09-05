@@ -14,8 +14,8 @@ import es.um.nosql.s13e.db.util.DbType;
 
 public class StackOverflow2Db extends Source2Db
 {
-  //private int MAX_OBJECTS = 2500000;
-  private int MAX_LINES_BEFORE_STORE = 25000;
+  private int MAX_OBJECTS = 2500000;
+  private int MAX_LINES_BEFORE_STORE = 10000;
 
   public StackOverflow2Db(DbType db, String ip)
   {
@@ -69,8 +69,8 @@ public class StackOverflow2Db extends Source2Db
           numLines = 0;
           System.out.println("Line count: " + totalLines);
         }
-        //if (totalLines > MAX_OBJECTS)
-          //break;
+        if (totalLines > MAX_OBJECTS)
+          break;
       }
 
       if (jsonArray.size() > 0)
