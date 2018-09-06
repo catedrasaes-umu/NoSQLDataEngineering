@@ -9,8 +9,8 @@ public class ConfigConstants
   public static final String OUTPUT_FOLDER            = "output/";
   public static final String MODELS_FOLDER            = "../es.um.nosql.models/";
 
-  public static final boolean OUTPUT_CSV              = false;
+  public static final boolean OUTPUT_CSV              = true;
   public static final boolean OUTPUT_CONSOLE          = false;
   public static final boolean OUTPUT_CHART            = false;
-  public static final boolean OUTPUT_CHART_FILE       = true;
+  public static final boolean OUTPUT_CHART_FILE       = false;
 }
