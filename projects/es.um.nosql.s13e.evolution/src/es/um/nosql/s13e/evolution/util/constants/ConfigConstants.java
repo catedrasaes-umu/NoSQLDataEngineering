@@ -11,6 +11,6 @@ public class ConfigConstants
 
   public static final boolean OUTPUT_CSV              = false;
   public static final boolean OUTPUT_CONSOLE          = false;
-  public static final boolean OUTPUT_CHART            = true;
-  public static final boolean OUTPUT_CHART_FILE       = false;
+  public static final boolean OUTPUT_CHART            = false;
+  public static final boolean OUTPUT_CHART_FILE       = true;
 }

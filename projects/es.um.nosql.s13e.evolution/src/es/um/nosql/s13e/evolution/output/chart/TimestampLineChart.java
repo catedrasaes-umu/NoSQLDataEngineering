@@ -133,8 +133,9 @@ public class TimestampLineChart extends ApplicationFrame
 
     try
     {
-      new File(route).mkdirs();
-      ChartUtilities.saveChartAsPNG(new File(route + schemaName + "_" + entityName + ".png"), chart, WIDTH, HEIGHT);      
+      File folder = new File(route + schemaName + "/");
+      folder.mkdirs();
+      ChartUtilities.saveChartAsPNG(new File(folder.getAbsolutePath() + "/" + schemaName + "_" + entityName + ".png"), chart, WIDTH, HEIGHT);      
     } catch (IOException e)
     {
       e.printStackTrace();
