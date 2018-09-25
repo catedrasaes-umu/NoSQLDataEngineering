@@ -6,9 +6,11 @@ import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.Null;
 import es.um.nosql.s13e.NoSQLSchema.PList;
 import es.um.nosql.s13e.NoSQLSchema.PMap;
 import es.um.nosql.s13e.NoSQLSchema.PSet;
+import es.um.nosql.s13e.NoSQLSchema.PTuple;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
@@ -36,6 +38,8 @@ public class Serializer
       result.append(serialize((Attribute)property));
     else if (property instanceof Association)
       result.append(serialize((Association)property));
+    else if (property instanceof Null)
+      result.append(serialize((Null)property));
 
     return result.toString();
   }
@@ -61,6 +65,8 @@ public class Serializer
       result.append("PList<" + serialize(((PList)type).getElementType()) + ">");
     else if (type instanceof PSet)
         result.append("PSet<" + serialize(((PSet)type).getElementType()) + ">");
+    else if (type instanceof PTuple)
+      result.append("PTuple<" + ((PTuple)type).getElements().stream().map(e -> serialize(e)).collect(Collectors.joining(", ")) + ">");
     else if (type instanceof PMap)
         result.append("PMap<" + serialize(((PMap)type).getKeyType()) 
         	+ "," + serialize(((PMap)type).getValueType()) + ">");
@@ -105,6 +111,18 @@ public class Serializer
         result.append(":[" + oppositeRef.getLowerBound() + ".." + oppositeRef.getUpperBound() + "]]");
       }
     }
+
+    return result.toString();
+  }
+
+  public static String serialize(Null theNull)
+  {
+    if (theNull == null)
+      return null;
+
+    StringBuilder result = new StringBuilder();
+
+    result.append(theNull.getName() + ": Null");
 
     return result.toString();
   }

@@ -1,14 +1,15 @@
 package es.um.nosql.s13e.util;
 
 import java.io.File;
+import java.util.stream.Collectors;
 
 import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Property;
+import es.um.nosql.s13e.NoSQLSchema.ReferenceClass;
 
-// TODO: Adapt to version 2
 public class NoSQLSchemaPrettyPrinter
 {
   private static final String TAB = "  ";
@@ -44,8 +45,34 @@ public class NoSQLSchemaPrettyPrinter
 
     result.append("NoSQLSchema name: " + nosqlschema.getName() + ENDL);
 
+    for (ReferenceClass ref : nosqlschema.getRefClasses())
+      result.append(printPretty(ref, TAB));
+
     for (EntityClass entity : nosqlschema.getEntities())
       result.append(printPretty(entity, TAB));
+
+    return result.toString();
+  }
+
+  public static String printPretty(ReferenceClass ref)
+  {
+    return printPretty(ref, "");
+  }
+
+  private static String printPretty(ReferenceClass ref, String defTabs)
+  {
+    if (ref == null)
+      return null;
+
+    StringBuilder result = new StringBuilder();
+
+    result.append(defTabs + "ReferenceClass name: " + ref.getName() + ENDL);
+
+    if (!ref.getParents().isEmpty())
+      result.append(defTabs + "parents: " + ref.getParents().stream().map(parent -> parent.getName()).collect(Collectors.joining(", ")));
+
+    for (StructuralVariation stVariation : ref.getVariations())
+      result.append(printPretty(stVariation, defTabs + TAB));
 
     return result.toString();
   }
@@ -62,10 +89,13 @@ public class NoSQLSchemaPrettyPrinter
 
     StringBuilder result = new StringBuilder();
 
-    result.append(defTabs + "Entity name: " + entity.getName() + (entity.isRoot() ? " (root)" : "") + ENDL);
+    result.append(defTabs + "EntityClass name: " + entity.getName() + (entity.isRoot() ? " (root)" : "") + ENDL);
 
-    for (StructuralVariation eVariation : entity.getVariations())
-      result.append(printPretty(eVariation, defTabs + TAB));
+    if (!entity.getParents().isEmpty())
+      result.append(defTabs + "parents: " + entity.getParents().stream().map(parent -> parent.getName()).collect(Collectors.joining(", ")));
+
+    for (StructuralVariation stVariation : entity.getVariations())
+      result.append(printPretty(stVariation, defTabs + TAB));
 
     return result.toString();
   }
@@ -75,15 +105,15 @@ public class NoSQLSchemaPrettyPrinter
     return printPretty(eVariation, "");
   }
 
-  private static String printPretty(StructuralVariation eVariation, String defTabs)
+  private static String printPretty(StructuralVariation stVariation, String defTabs)
   {
-    if (eVariation == null)
+    if (stVariation == null)
       return null;
 
     StringBuilder result = new StringBuilder();
 
-    result.append(defTabs + "EntityVariation vId: " + eVariation.getVariationId() + " count: " + eVariation.getCount() + " ts: " + eVariation.getTimestamp() + ENDL);
-    for (Property prop : eVariation.getProperties())
+    result.append(defTabs + "StructuralVariation vId: " + stVariation.getVariationId() + " count: " + stVariation.getCount() + " ts: " + stVariation.getTimestamp() + ENDL);
+    for (Property prop : stVariation.getProperties())
       result.append(printPretty(prop, defTabs + TAB));
 
     return result.toString();
