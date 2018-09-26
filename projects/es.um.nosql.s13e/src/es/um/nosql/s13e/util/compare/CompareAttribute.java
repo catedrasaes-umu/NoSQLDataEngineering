@@ -13,6 +13,7 @@ public class CompareAttribute extends Comparator<Attribute>
     if (super.checkEquals(a1, a2))
       return true;
 
-    return new CompareType().compare(a1.getType(), a2.getType());
+    return (a1.getType() == null && a2.getType() == null)
+        || new CompareType().compare(a1.getType(), a2.getType());
   }
 }

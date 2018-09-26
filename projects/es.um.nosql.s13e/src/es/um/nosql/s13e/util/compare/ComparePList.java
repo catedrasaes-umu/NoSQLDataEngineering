@@ -13,9 +13,7 @@ public class ComparePList extends Comparator<PList>
     if (super.checkEquals(l1, l2))
       return true;
 
-    if (l1.getElementType() == null)
-      return l2.getElementType() == null;
-
-    return new CompareType().compare(l1.getElementType(), l2.getElementType());
+    return (l1.getElementType() == null && l2.getElementType() == null)
+        || new CompareType().compare(l1.getElementType(), l2.getElementType());
   }
 }

@@ -16,10 +16,10 @@ public class CompareProperty extends Comparator<Property>
     if (super.checkEquals(p1, p2))
       return true;
 
-    if (p1.getName() == null)
-      return p2.getName() == null;
+    if (p1.getName() == null ^ p2.getName() == null)
+      return false;
 
-    if (!p1.getName().equals(p2.getName()))
+    if (p1.getName() != null && !p1.getName().equals(p2.getName()))
       return false;
 
     if (p1 instanceof Association && p2 instanceof Association)

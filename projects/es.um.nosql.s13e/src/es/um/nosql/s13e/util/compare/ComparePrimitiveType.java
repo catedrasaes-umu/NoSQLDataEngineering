@@ -13,9 +13,10 @@ public class ComparePrimitiveType extends Comparator<PrimitiveType>
     if (super.checkEquals(p1, p2))
       return true;
 
-    if (p1.getName() == null)
-      return p2.getName() == null;
+    if (p1.getName() == null ^ p2.getName() == null)
+      return false;
 
-    return p1.getName().equals(p2.getName());
+    return (p1.getName() == null && p2.getName() == null)
+        || (p1.getName().equals(p2.getName()));
   }
 }

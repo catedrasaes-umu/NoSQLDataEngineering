@@ -18,8 +18,11 @@ public class ComparePTuple extends Comparator<PTuple>
     if (super.checkEquals(t1, t2))
       return true;
 
-    if (t1.getElements() == null)
-      return t2.getElements() == null;
+    if (t1.getElements() == null && t2.getElements() == null)
+      return true;
+
+    if (t1.getElements() == null ^ t2.getElements() == null)
+      return false;
 
     if (t1.getElements().size() != t2.getElements().size())
       return false;
