@@ -1,10 +1,16 @@
 package es.um.nosql.s13e.util.compare;
 
-public abstract class Comparator<Q> implements IComparator<Q>
+public abstract class Comparator<T>
 {
-  @Override
-  public boolean compare(Q t1, Q t2) 
+  public abstract boolean compare(T o1, T o2);
+
+  public boolean checkNulls(T o1, T o2)
   {
-    return t1 != null && t1 == t2 && t1.equals(t2);
+    return o1 == null || o2 == null;
+  }
+
+  public boolean checkEquals(T o1, T o2)
+  {
+    return o1 == o2 || o1.equals(o2);
   }
 }

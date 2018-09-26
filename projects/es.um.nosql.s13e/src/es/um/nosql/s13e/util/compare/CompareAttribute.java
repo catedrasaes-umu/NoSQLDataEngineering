@@ -1,17 +1,21 @@
 package es.um.nosql.s13e.util.compare;
 
-import org.eclipse.emf.ecore.util.EcoreUtil;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 
-public class CompareAttribute extends CompareProperty<Attribute>
+public class CompareAttribute extends Comparator<Attribute>
 {
   @Override
-  public boolean compare(Attribute t1, Attribute t2)
+  public boolean compare(Attribute a1, Attribute a2)
   {
-    if (!super.compare(t1, t2))
+    if (super.checkNulls(a1, a2))
       return false;
 
-    // Compare type
-    return (new EcoreUtil.EqualityHelper()).equals(t1.getType(), t2.getType());
+    if (super.checkEquals(a1, a2))
+      return true;
+
+    if (a1.getType() == null)
+      return a2.getType() == null;
+
+    return new CompareType().compare(a1.getType(), a2.getType());
   }
 }
