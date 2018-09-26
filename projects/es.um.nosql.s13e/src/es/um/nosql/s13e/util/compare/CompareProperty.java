@@ -16,6 +16,9 @@ public class CompareProperty extends Comparator<Property>
     if (super.checkEquals(p1, p2))
       return true;
 
+    if (p1.getName() == null)
+      return p2.getName() == null;
+
     if (!p1.getName().equals(p2.getName()))
       return false;
 
