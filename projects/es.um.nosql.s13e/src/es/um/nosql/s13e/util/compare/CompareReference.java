@@ -22,7 +22,7 @@ public class CompareReference extends Comparator<Reference>
     if (r1.getOpposite() == null ^ r2.getOpposite() == null)
       return false;
 
-    if (r1.getOpposite() != null && !new CompareReference().compare(r1.getOpposite(), r2.getOpposite()))
+    if (r1.getOpposite() != null && !new CompareProperty().compare(r1.getOpposite(), r2.getOpposite()))
       return false;
 
     if (r1.getFeatures() == null ^ r2.getFeatures() == null)

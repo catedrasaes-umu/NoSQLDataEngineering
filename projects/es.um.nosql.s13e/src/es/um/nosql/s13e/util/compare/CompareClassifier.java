@@ -51,11 +51,13 @@ public class CompareClassifier extends Comparator<Classifier>
         return false;
     }
 
-    if (c1 instanceof ReferenceClass && c2 instanceof ReferenceClass)
-      return new CompareReferenceClass().compare((ReferenceClass)c1, (ReferenceClass)c2);
+    if (c1 instanceof ReferenceClass && c2 instanceof ReferenceClass
+        && !new CompareReferenceClass().compare((ReferenceClass)c1, (ReferenceClass)c2))
+        return false;
 
-    if (c1 instanceof EntityClass && c2 instanceof EntityClass)
-      return new CompareEntityClass().compare((EntityClass)c1, (EntityClass)c2);
+    if (c1 instanceof EntityClass && c2 instanceof EntityClass
+        && !new CompareEntityClass().compare((EntityClass)c1, (EntityClass)c2))
+        return false;
 
     if (c1.getVariations() == null ^ c2.getVariations() == null)
       return false;

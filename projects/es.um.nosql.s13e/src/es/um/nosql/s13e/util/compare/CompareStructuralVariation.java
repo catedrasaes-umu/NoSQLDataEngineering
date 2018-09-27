@@ -45,6 +45,6 @@ public class CompareStructuralVariation extends Comparator<StructuralVariation>
         return false;
     }
 
-    return false;
+    return true;
   }
 }
