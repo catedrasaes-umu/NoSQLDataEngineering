@@ -1,0 +1,27 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: es.um.nosql.s13e.xtext
+Bundle-ManifestVersion: 2
+Bundle-Name: es.um.nosql.s13e.xtext
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: es.um.nosql.s13e.xtext; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: es.um.nosql.s13e,
+ org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.antlr.runtime,
+ org.eclipse.xtext.util,
+ org.eclipse.xtend.lib;bundle-version="2.14.0"
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Export-Package: es.um.nosql.s13e.xtext.serializer,
+ es.um.nosql.s13e.xtext.generator,
+ es.um.nosql.s13e.xtext,
+ es.um.nosql.s13e.xtext.parser.antlr,
+ es.um.nosql.s13e.xtext.validation,
+ es.um.nosql.s13e.xtext.services,
+ es.um.nosql.s13e.xtext.scoping,
+ es.um.nosql.s13e.xtext.parser.antlr.internal,
+ es.um.nosql.s13e.xtext.formatting2
+Import-Package: org.apache.log4j

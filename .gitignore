@@ -229,6 +229,7 @@ hs_err_pid*
 .metadata
 bin/
 xtend-gen/
+src-gen/
 tmp/
 *.tmp
 *.bak
