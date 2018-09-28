@@ -9,8 +9,8 @@ NoSQLSchema returns NoSQLSchema:
   'NoSQLSchema'
   name=EString
   '{'
-    ('entities' '{' entities+=EntityClass ( "," entities+=EntityClass)* '}' )?
-    ('refClasses' '{' refClasses+=ReferenceClass ( "," refClasses+=ReferenceClass)* '}' )?
+    (entities+=EntityClass ( "," entities+=EntityClass)* )?
+    (refClasses+=ReferenceClass ( "," refClasses+=ReferenceClass)* )?
   '}';
 
 Classifier returns Classifier:
@@ -20,7 +20,7 @@ Property returns Property:
   Attribute | Reference | Aggregate | Null;
 
 Type returns Type:
-  PList | PrimitiveType | PMap | PSet | PTuple;
+  PrimitiveType | PList | PSet | PMap | PTuple;
 
 EString returns ecore::EString:
   STRING | ID;
@@ -30,22 +30,21 @@ EntityClass returns EntityClass:
   'EntityClass'
   name=EString
   '{'
-    ('parents' '(' parents+=[Classifier|EString] ( "," parents+=[Classifier|EString])* ')' )?
-    'variations' '{' variations+=StructuralVariation ( "," variations+=StructuralVariation)* '}' 
+    ('parents' '{' parents+=[Classifier|EString] ( "," parents+=[Classifier|EString])* '}' )?
+    variations+=StructuralVariation ( "," variations+=StructuralVariation)* 
   '}';
 
 ReferenceClass returns ReferenceClass:
   'ReferenceClass'
   name=EString
   '{'
-    ('parents' '(' parents+=[Classifier|EString] ( "," parents+=[Classifier|EString])* ')' )?
-    'variations' '{' variations+=StructuralVariation ( "," variations+=StructuralVariation)* '}' 
+    ('parents' '{' parents+=[Classifier|EString] ( "," parents+=[Classifier|EString])* '}' )?
+    variations+=StructuralVariation ( "," variations+=StructuralVariation)*
   '}';
 
 StructuralVariation returns StructuralVariation:
-  'StructuralVariation'
+  'Variation' variationId=EInt
   '{'
-    'variationId' variationId=EInt
     ('count' count=ELong)?
     ('timestamp' timestamp=ELong)?
     'properties' '{' properties+=Property ( "," properties+=Property)* '}' 
@@ -61,11 +60,7 @@ ELong returns ecore::ELong:
   '-'? INT;
 
 Attribute returns Attribute:
-  'Attribute'
-  name=EString
-  '{'
-    'type' type=Type
-  '}';
+  'Attribute' name=EString '{' 'type' type=Type '}';
 
 Reference returns Reference:
   'Reference'
@@ -90,39 +85,24 @@ Aggregate returns Aggregate:
 
 Null returns Null:
   {Null}
-  'Null'
-  name=EString;
+  'Null' name=EString;
 
 PList returns PList:
   {PList}
-  'PList'
-  '{'
-    ('elementType' elementType=Type)?
-  '}';
+  'PList' '{' ('elementType' elementType=Type)? '}';
 
 PrimitiveType returns PrimitiveType:
   {PrimitiveType}
-  'PrimitiveType'
-  name=EString;
+  'PrimitiveType' name=EString;
 
 PMap returns PMap:
   {PMap}
-  'PMap'
-  '{'
-    ('keyType' keyType=PrimitiveType)?
-    ('valueType' valueType=Type)?
-  '}';
+  'PMap' '{' ('keyType' keyType=PrimitiveType)? ('valueType' valueType=Type)? '}';
 
 PSet returns PSet:
   {PSet}
-  'PSet'
-  '{'
-    ('elementType' elementType=Type)?
-  '}';
+  'PSet' '{' ('elementType' elementType=Type)? '}';
 
 PTuple returns PTuple:
   {PTuple}
-  'PTuple'
-  '{'
-    ('elements' '{' elements+=Type ( "," elements+=Type)* '}' )?
-  '}';
+  'PTuple' '{' ('elements' '{' elements+=Type ( "," elements+=Type)* '}' )? '}';

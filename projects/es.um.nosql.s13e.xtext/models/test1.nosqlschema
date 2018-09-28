@@ -1,0 +1,30 @@
+NoSQLSchema test1
+{
+  EntityClass e1
+  {
+    Variation 1
+    {
+      count 2 timestamp 3
+      properties
+      {
+        Null a
+      }
+    }
+  }
+
+  ReferenceClass r1
+  {
+    Variation 5
+    {
+      count 2 timestamp 3
+      properties
+      {
+        Aggregate aggr
+        {
+          lowerBound 1 upperBound 2
+          aggregates ( ??? )
+        }
+      }
+    }
+  }
+}
