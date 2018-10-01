@@ -1,0 +1,176 @@
+NoSQLSchema mongosongs
+{
+  root EntityClass Artist
+  {
+    Variation 1
+    {
+      properties
+      {
+        _id: PrimitiveType String,
+        name: PrimitiveType String,
+        startingYear: PrimitiveType Number,
+        albums: Reference[0..-1] refsTo Album { type String },
+        composedTracks: Reference[0..-1] refsTo Track { type String },
+        lyricsTracks: Reference[0..-1] refsTo Track { type String }
+      }
+    },
+    Variation 2
+    {
+      properties
+      {
+        _id: PrimitiveType String,
+        name: PrimitiveType String,
+        startingYear: PrimitiveType Number,
+        albums: Reference[0..-1] refsTo Album { type String },
+        composedTracks: Reference[0..-1] refsTo Track { type String }
+      }
+    }
+  },
+
+  root EntityClass Album
+  {
+    Variation 1
+    {
+      properties
+      {
+        _id: PrimitiveType String,
+        formats: PTuple<PrimitiveType String>,
+        name: PrimitiveType String,
+        releaseYear: PrimitiveType Number,
+        tracks: Reference[1..-1] refsTo Album {type String},
+        availability: PrimitiveType String,
+        genre: PrimitiveType String,
+        prizes: Aggregate[0..-1] aggregates (Prize_1, Prize_2),
+        reviews: Aggregate[0..-1] aggregates (Review_1, Review_2)
+      }
+    },
+    Variation 2
+    {
+      properties
+      {
+        _id: PrimitiveType String,
+        formats: PTuple<PrimitiveType String>,
+        name: PrimitiveType String,
+        releaseYear: PrimitiveType Number,
+        tracks: Reference[1..-1] refsTo Album {type String},
+        availability: PTuple<PrimitiveType String>,
+        genre: PrimitiveType String,
+        reviews: Aggregate[0..-1] aggregates (Review_1)
+      }
+    },
+    Variation 3
+    {
+      properties
+      {
+        _id: PrimitiveType String,
+        formats: PTuple<PrimitiveType String>,
+        name: PrimitiveType String,
+        releaseYear: PrimitiveType Number,
+        tracks: Reference[1..-1] refsTo Album {type String},
+        availability: PTuple<PrimitiveType String>,
+        genres: PTuple<PrimitiveType String>
+      }
+    }
+  },
+
+  root EntityClass Track
+  {
+    Variation 1
+    {
+      properties
+      {
+        _id: PrimitiveType String,
+        genres: PTuple<PrimitiveType String>,
+        length: PrimitiveType Double,
+        name: PrimitiveType String,
+        artist_id: Reference[1..-1] refsTo Artist {type String},
+        ratings: Aggregate[0..1] aggregates (Rating_1)
+      }
+    },
+    Variation 2
+    {
+      properties
+      {
+        _id: PrimitiveType String,
+        genres: PTuple<PrimitiveType String>,
+        length: PrimitiveType Double,
+        name: PrimitiveType String,
+        artist_id: Reference[1..-1] refsTo Artist {type String}
+      }
+    }
+  },
+
+  EntityClass Rating
+  {
+    Variation 1
+    {
+      properties
+      {
+        score: PrimitiveType Double,
+        voters: PrimitiveType Number
+      }
+    }
+  },
+
+  EntityClass Review
+  {
+    Variation 1
+    {
+      properties
+      {
+        journalist: PrimitiveType String,
+        rank: PrimitiveType String,
+        stars: PrimitiveType Number,
+        media: Aggregate[0..1] aggregates (Media_1)
+      }
+    },
+    Variation 2
+    {
+      properties
+      {
+        journalist: PrimitiveType String,
+        rank: PrimitiveType String,
+        media: PrimitiveType String,
+        stars: PrimitiveType String
+      }
+    }
+  },
+
+  EntityClass Prize
+  {
+    Variation 1
+    {
+      properties
+      {
+        event: PrimitiveType String,
+        units: PrimitiveType Number,
+        year: PrimitiveType Number,
+        certification: PrimitiveType String,
+        name: PrimitiveType String
+      }
+    },
+    Variation 2
+    {
+      properties
+      {
+        event: PrimitiveType String,
+        units: PrimitiveType Number,
+        year: PrimitiveType Number,
+        names: PTuple<PrimitiveType String>
+      }
+    }
+  },
+
+  EntityClass Media
+  {
+    Variation 1
+    {
+      properties
+      {
+        name: PrimitiveType String,
+        url: PrimitiveType String,
+        type: PrimitiveType String
+      }
+    }
+  }
+}

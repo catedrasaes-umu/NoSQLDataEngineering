@@ -7,7 +7,7 @@ NoSQLSchema test1
       count 2 timestamp 3
       properties
       {
-        Null a
+      	a: Null
       }
     }
   }
@@ -19,18 +19,19 @@ NoSQLSchema test1
       count 2 timestamp 3
       properties
       {
-        Reference ref [1..] refsTo e1,
-        Reference ref2 [1..3] refsTo e1
+      	ref1: Reference[1..] refsTo e1,
+      	ref2: Reference[1..3] refsTo e1
         {
           type string
-          opposite ref
+          opposite ref1
         },
-        Null a,
-        Attribute a2 type PrimitiveType bool,
-        Attribute a3 type PList type PrimitiveType string,
-        Attribute a4 type PSet type PrimitiveType string,
-        Attribute a5 type PMap key PrimitiveType string value PrimitiveType string,
-        Attribute a6 type PTuple types { PrimitiveType int, PrimitiveType double }        
+        a0: Null,
+        a1: PrimitiveType bool,
+        a2: PList<PrimitiveType string>,
+        a3: PSet<PrimitiveType string>,
+        a4: PSet<PrimitiveType string>,
+        a5: PMap<key PrimitiveType string value PrimitiveType string>,
+        a6: PTuple<PrimitiveType int, PrimitiveType double>
       }
     }
   }
