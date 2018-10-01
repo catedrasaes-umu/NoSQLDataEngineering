@@ -19,8 +19,8 @@ NoSQLSchema test1
       count 2 timestamp 3
       properties
       {
-      	ref1: Reference[1..] refsTo e1,
-      	ref2: Reference[1..3] refsTo e1
+      	ref1: Reference[1..] references e1,
+      	ref2: Reference[1..3] references e1
         {
           type string
           opposite ref1

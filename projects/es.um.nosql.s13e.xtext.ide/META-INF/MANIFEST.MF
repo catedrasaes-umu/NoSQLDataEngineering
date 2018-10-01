@@ -3,7 +3,7 @@ Automatic-Module-Name: es.um.nosql.s13e.xtext.ide
 Bundle-ManifestVersion: 2
 Bundle-Name: es.um.nosql.s13e.xtext.ide
 Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0
 Bundle-SymbolicName: es.um.nosql.s13e.xtext.ide; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: es.um.nosql.s13e.xtext,
@@ -13,5 +13,6 @@ Require-Bundle: es.um.nosql.s13e.xtext,
  org.antlr.runtime
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: es.um.nosql.s13e.xtext.ide.contentassist.antlr,
- es.um.nosql.s13e.xtext.ide.contentassist.antlr.internal
+ es.um.nosql.s13e.xtext.ide.contentassist.antlr.internal,
+ es.um.nosql.s13e.xtext.ide.highlight
 

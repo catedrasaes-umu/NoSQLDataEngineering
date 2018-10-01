@@ -9,9 +9,9 @@ NoSQLSchema mongosongs
         _id: PrimitiveType String,
         name: PrimitiveType String,
         startingYear: PrimitiveType Number,
-        albums: Reference[0..-1] refsTo Album { type String },
-        composedTracks: Reference[0..-1] refsTo Track { type String },
-        lyricsTracks: Reference[0..-1] refsTo Track { type String }
+        albums: Reference[0..-1] references Album { type String },
+        composedTracks: Reference[0..-1] references Track { type String },
+        lyricsTracks: Reference[0..-1] references Track { type String }
       }
     },
     Variation 2
@@ -21,8 +21,8 @@ NoSQLSchema mongosongs
         _id: PrimitiveType String,
         name: PrimitiveType String,
         startingYear: PrimitiveType Number,
-        albums: Reference[0..-1] refsTo Album { type String },
-        composedTracks: Reference[0..-1] refsTo Track { type String }
+        albums: Reference[0..-1] references Album { type String },
+        composedTracks: Reference[0..-1] references Track { type String }
       }
     }
   },
@@ -37,7 +37,7 @@ NoSQLSchema mongosongs
         formats: PTuple<PrimitiveType String>,
         name: PrimitiveType String,
         releaseYear: PrimitiveType Number,
-        tracks: Reference[1..-1] refsTo Album {type String},
+        tracks: Reference[1..-1] references Album {type String},
         availability: PrimitiveType String,
         genre: PrimitiveType String,
         prizes: Aggregate[0..-1] aggregates (Prize_1, Prize_2),
@@ -52,7 +52,7 @@ NoSQLSchema mongosongs
         formats: PTuple<PrimitiveType String>,
         name: PrimitiveType String,
         releaseYear: PrimitiveType Number,
-        tracks: Reference[1..-1] refsTo Album {type String},
+        tracks: Reference[1..-1] references Album {type String},
         availability: PTuple<PrimitiveType String>,
         genre: PrimitiveType String,
         reviews: Aggregate[0..-1] aggregates (Review_1)
@@ -66,7 +66,7 @@ NoSQLSchema mongosongs
         formats: PTuple<PrimitiveType String>,
         name: PrimitiveType String,
         releaseYear: PrimitiveType Number,
-        tracks: Reference[1..-1] refsTo Album {type String},
+        tracks: Reference[1..-1] references Album {type String},
         availability: PTuple<PrimitiveType String>,
         genres: PTuple<PrimitiveType String>
       }
@@ -83,7 +83,7 @@ NoSQLSchema mongosongs
         genres: PTuple<PrimitiveType String>,
         length: PrimitiveType Double,
         name: PrimitiveType String,
-        artist_id: Reference[1..-1] refsTo Artist {type String},
+        artist_id: Reference[1..-1] references Artist {type String},
         ratings: Aggregate[0..1] aggregates (Rating_1)
       }
     },
@@ -95,7 +95,7 @@ NoSQLSchema mongosongs
         genres: PTuple<PrimitiveType String>,
         length: PrimitiveType Double,
         name: PrimitiveType String,
-        artist_id: Reference[1..-1] refsTo Artist {type String}
+        artist_id: Reference[1..-1] references Artist {type String}
       }
     }
   },

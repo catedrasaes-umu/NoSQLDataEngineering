@@ -83,7 +83,12 @@ PTuple returns PTuple:
   'PTuple' ('<' elements+=Type ( "," elements+=Type)* '>' )?;
 
 EString returns ecore::EString:
-  STRING | ID;
+  STRING | ID | KEYWORD;
+
+KEYWORD: 'NoSQLSchema' | 'root' | 'EntityClass' | 'ReferenceClass' | 'parents' | 'Variation'
+  | 'count' | 'timestamp' | 'properties' | 'Reference' | 'references' | 'type' | 'opposite'
+  | 'features' | 'Aggregate' | 'aggregates' | 'PList' | 'PrimitiveType' | 'PMap' | 'key'
+  | 'value' | 'PSet' | 'PTuple';
 
 EBoolean returns ecore::EBoolean:
   'true' | 'false';

@@ -3,7 +3,7 @@ Automatic-Module-Name: es.um.nosql.s13e.xtext.ui
 Bundle-ManifestVersion: 2
 Bundle-Name: es.um.nosql.s13e.xtext.ui
 Bundle-Vendor: My Company
-Bundle-Version: 1.0.0.qualifier
+Bundle-Version: 1.0.0
 Bundle-SymbolicName: es.um.nosql.s13e.xtext.ui; singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: es.um.nosql.s13e.xtext,
