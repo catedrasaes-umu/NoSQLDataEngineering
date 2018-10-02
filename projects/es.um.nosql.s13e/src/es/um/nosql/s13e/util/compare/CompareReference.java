@@ -42,6 +42,6 @@ public class CompareReference extends Comparator<Reference>
       return false;
 
     return r1.getRefsTo() == null
-        || (r1.getRefsTo().getName() + r1.getRefsTo().isRoot()).equals(r2.getRefsTo().getName() + r2.getRefsTo().isRoot());
+        || (r1.getRefsTo().getName()).equals(r2.getRefsTo().getName());
   }
 }
