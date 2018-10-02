@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
+import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 
 public class CompareAggregate extends Comparator<Aggregate>
@@ -32,7 +33,11 @@ public class CompareAggregate extends Comparator<Aggregate>
       {
         Optional<StructuralVariation> variationToErase = s2VariationsCopy.stream().filter(v2 ->
         {
-          return new CompareStructuralVariation().compare(v1, v2);
+          if (v1.eContainer() == null ^ v2.eContainer() == null)
+            return false;
+
+          return v1.eContainer() == null || ((Classifier)v1.eContainer()).getName().equals(((Classifier)v2.eContainer()).getName());
+
         }).findFirst();
 
         if (variationToErase.isPresent())

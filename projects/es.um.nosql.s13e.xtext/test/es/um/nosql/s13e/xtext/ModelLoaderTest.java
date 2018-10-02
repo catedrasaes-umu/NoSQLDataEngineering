@@ -3,6 +3,8 @@ package es.um.nosql.s13e.xtext;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -16,7 +18,6 @@ import com.google.inject.Injector;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.util.ModelLoader;
-import es.um.nosql.s13e.util.NoSQLSchemaPrettyPrinter;
 import es.um.nosql.s13e.util.compare.CompareNoSQLSchema;
 
 public class ModelLoaderTest
