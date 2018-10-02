@@ -24,4 +24,5 @@ Export-Package: es.um.nosql.s13e.xtext.serializer,
  es.um.nosql.s13e.xtext.scoping,
  es.um.nosql.s13e.xtext.parser.antlr.internal,
  es.um.nosql.s13e.xtext.formatting2
-Import-Package: org.apache.log4j
+Import-Package: org.apache.log4j,
+ org.junit;version="4.12.0"

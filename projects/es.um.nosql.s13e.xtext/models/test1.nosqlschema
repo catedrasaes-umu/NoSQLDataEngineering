@@ -7,31 +7,29 @@ NoSQLSchema test1
       count 2 timestamp 3
       properties
       {
-      	a: Null
-      }
-    }
-  }
-
-  ReferenceClass r1
-  {
-    Variation 5
-    {
-      count 2 timestamp 3
-      properties
-      {
-      	ref1: Reference[1..] references e1,
-      	ref2: Reference[1..3] references e1
-        {
-          type string
-          opposite ref1
-        },
-        a0: Null,
+      	a0: Null,
         a1: PrimitiveType bool,
         a2: PList<PrimitiveType string>,
         a3: PSet<PrimitiveType string>,
         a4: PSet<PrimitiveType string>,
         a5: PMap<key PrimitiveType string value PrimitiveType string>,
         a6: PTuple<PrimitiveType int, PrimitiveType double>
+      }
+    }
+  },
+  EntityClass e2
+  {
+    Variation 1
+    {
+      count 10 timestamp 0
+      properties
+      {
+        ref1: Reference[1..] references e1,
+        ref2: Reference[1..3] references e1
+        {
+          type string
+          opposite ref1
+        }
       }
     }
   }

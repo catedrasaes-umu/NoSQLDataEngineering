@@ -49,7 +49,6 @@ public class StackOverflow2Db extends Source2Db
       else
       {
         collectionName = collectionName.substring(1, collectionName.length() - 1);
-        //TODO: Clean the collection before starting to load the file.
         System.out.println("Inserting " + collectionName + " collection");
         System.out.println("Storing each " + MAX_LINES_BEFORE_STORE);
       }
