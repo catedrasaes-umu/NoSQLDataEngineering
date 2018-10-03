@@ -2,8 +2,8 @@ package es.um.nosql.s13e.decisiontree.m2t
 
 import java.io.File
 import es.um.nosql.s13e.util.ModelLoader
-import es.um.nosql.s13e.DecisionTree.DecisionTrees
-import es.um.nosql.s13e.DecisionTree.DecisionTreePackage
+import es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTrees
+import es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTreePackage
 import es.um.nosql.s13e.decisiontree.m2t.commons.Commons
 import es.um.nosql.s13e.NoSQLSchema.EntityClass
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation

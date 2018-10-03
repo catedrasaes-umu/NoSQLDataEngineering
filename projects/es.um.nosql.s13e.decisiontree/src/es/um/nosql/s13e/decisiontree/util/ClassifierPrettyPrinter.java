@@ -6,8 +6,8 @@ import java.io.PrintStream;
 import java.util.Collections;
 import java.util.function.Function;
 
-import es.um.nosql.s13e.EntityDifferentiation.EntityDiffSpec;
-import es.um.nosql.s13e.EntityDifferentiation.EntityDifferentiation;
+import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDiffSpec;
+import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDifferentiation;
 import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.decisiontree.util.constants.ConfigConstants;
 import weka.core.Attribute;

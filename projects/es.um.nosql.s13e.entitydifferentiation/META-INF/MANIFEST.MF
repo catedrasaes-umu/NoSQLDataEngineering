@@ -17,11 +17,11 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.xtend
 Bundle-ActivationPolicy: lazy
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
-Export-Package: es.um.nosql.s13e.DecisionTree,
- es.um.nosql.s13e.DecisionTree.impl,
- es.um.nosql.s13e.DecisionTree.util,
- es.um.nosql.s13e.EntityDifferentiation,
- es.um.nosql.s13e.EntityDifferentiation.impl,
- es.um.nosql.s13e.EntityDifferentiation.util,
- es.um.nosql.s13e.util
+Export-Package: es.um.nosql.s13e.entitydifferentiation.DecisionTree,
+ es.um.nosql.s13e.entitydifferentiation.DecisionTree.impl,
+ es.um.nosql.s13e.entitydifferentiation.DecisionTree.util,
+ es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation,
+ es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.impl,
+ es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.util,
+ es.um.nosql.s13e.entitydifferentiation.util
 Automatic-Module-Name: es.um.nosql.s13e.entitydifferentiation

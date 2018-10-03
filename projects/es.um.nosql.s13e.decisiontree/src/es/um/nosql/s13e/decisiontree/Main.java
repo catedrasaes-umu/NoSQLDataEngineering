@@ -2,11 +2,11 @@ package es.um.nosql.s13e.decisiontree;
 
 import java.io.File;
 
-import es.um.nosql.s13e.DecisionTree.DecisionTrees;
+import es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTrees;
 import es.um.nosql.s13e.decisiontree.m2m.EntityDiffToDecisionTree;
 import es.um.nosql.s13e.decisiontree.m2t.DecisionTreeJSBaseGen;
 import es.um.nosql.s13e.decisiontree.m2t.DecisionTreeToJS;
-import es.um.nosql.s13e.util.DecisionTreeWriter;
+import es.um.nosql.s13e.entitydifferentiation.util.DecisionTreeWriter;
 
 public class Main 
 {

@@ -6,7 +6,7 @@
     usedGenPackages="../../es.um.nosql.s13e/model/nosqlschema.genmodel#//NoSQLSchema"
     operationReflection="true" importOrganizing="true">
   <foreignModel>entitydifferentiation.ecore</foreignModel>
-  <genPackages prefix="EntityDifferentiation" basePackage="es.um.nosql.s13e" disposableProviderFactory="true"
+  <genPackages prefix="EntityDifferentiation" basePackage="es.um.nosql.s13e.entitydifferentiation" disposableProviderFactory="true"
       ecorePackage="entitydifferentiation.ecore#/">
     <genClasses ecoreClass="entitydifferentiation.ecore#//EntityDifferentiation">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDifferentiation/entityDiffSpecs"/>

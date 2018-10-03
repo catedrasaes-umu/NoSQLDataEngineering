@@ -11,18 +11,18 @@ import es.um.nosql.s13e.NoSQLSchema.PTuple
 import es.um.nosql.s13e.NoSQLSchema.Reference
 import es.um.nosql.s13e.NoSQLSchema.Aggregate
 import es.um.nosql.s13e.NoSQLSchema.EntityClass
-import es.um.nosql.s13e.DecisionTree.DecisionTrees
-import es.um.nosql.s13e.DecisionTree.DecisionTreeForEntity
-import es.um.nosql.s13e.DecisionTree.PropertySpec2
-import es.um.nosql.s13e.DecisionTree.IntermediateNode
-import es.um.nosql.s13e.DecisionTree.LeafNode
+import es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTrees
+import es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTreeForEntity
+import es.um.nosql.s13e.entitydifferentiation.DecisionTree.PropertySpec2
+import es.um.nosql.s13e.entitydifferentiation.DecisionTree.IntermediateNode
+import es.um.nosql.s13e.entitydifferentiation.DecisionTree.LeafNode
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation
 import java.util.Deque
 import java.util.HashMap
 import java.util.Map
-import es.um.nosql.s13e.DecisionTree.DecisionTreeNode
+import es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTreeNode
 import es.um.nosql.s13e.util.ModelLoader
-import es.um.nosql.s13e.DecisionTree.DecisionTreePackage
+import es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTreePackage
 import es.um.nosql.s13e.decisiontree.m2t.commons.Commons
 
 class DecisionTreeToJS

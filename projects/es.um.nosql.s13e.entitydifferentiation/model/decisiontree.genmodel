@@ -6,7 +6,7 @@
     usedGenPackages="../../es.um.nosql.s13e/model/nosqlschema.genmodel#//NoSQLSchema"
     operationReflection="true" importOrganizing="true">
   <foreignModel>decisiontree.ecore</foreignModel>
-  <genPackages prefix="DecisionTree" basePackage="es.um.nosql.s13e" disposableProviderFactory="true"
+  <genPackages prefix="DecisionTree" basePackage="es.um.nosql.s13e.entitydifferentiation" disposableProviderFactory="true"
       ecorePackage="decisiontree.ecore#/">
     <genClasses image="false" ecoreClass="decisiontree.ecore#//DecisionTreeNode">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference decisiontree.ecore#//DecisionTreeNode/yesBranch"/>
