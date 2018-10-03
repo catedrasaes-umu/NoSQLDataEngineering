@@ -10,7 +10,7 @@ Require-Bundle: es.um.nosql.s13e.xtext,
  es.um.nosql.s13e,
  org.eclipse.xtext.ide,
  org.eclipse.xtext.xbase.ide,
- org.antlr.runtime
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
 Bundle-RequiredExecutionEnvironment: JavaSE-1.8
 Export-Package: es.um.nosql.s13e.xtext.ide.contentassist.antlr,
  es.um.nosql.s13e.xtext.ide.contentassist.antlr.internal,
