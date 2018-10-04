@@ -9,17 +9,16 @@ package es.um.nosql.s13e.xtext.validation
  *
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
-class NoSQLSchemaValidator extends AbstractNoSQLSchemaValidator {
-	
-//	public static val INVALID_NAME = 'invalidName'
+class NoSQLSchemaValidator extends AbstractNoSQLSchemaValidator
+{
+//  public static val INVALID_NAME = 'invalidName'
 //
-//	@Check
-//	def checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.name.charAt(0))) {
-//			warning('Name should start with a capital', 
-//					NoSQLSchemaPackage.Literals.GREETING__NAME,
-//					INVALID_NAME)
-//		}
-//	}
-	
+//  @Check
+//  def checkGreetingStartsWithCapital(Greeting greeting) {
+//    if (!Character.isUpperCase(greeting.name.charAt(0))) {
+//      warning('Name should start with a capital', 
+//          NoSQLSchemaPackage.Literals.GREETING__NAME,
+//          INVALID_NAME)
+//    }
+//  }
 }

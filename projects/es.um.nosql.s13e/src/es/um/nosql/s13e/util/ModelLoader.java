@@ -63,6 +63,11 @@ public class ModelLoader
       resourceSet.getPackageRegistry().put(p.getNsURI(), p);
   }
 
+  public <T> T load(String route, Class<T> c)
+  {
+    return load(new File(route), c);
+  }
+
   @SuppressWarnings("unchecked")
   public <T> T load(File file, Class<T> c)
   {

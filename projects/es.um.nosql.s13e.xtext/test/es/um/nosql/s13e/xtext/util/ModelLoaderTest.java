@@ -1,10 +1,11 @@
-package es.um.nosql.s13e.xtext;
+package es.um.nosql.s13e.xtext.util;
 
 import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import java.io.File;
 
+import org.junit.Before;
 import org.junit.Test;
 
 
@@ -21,18 +22,26 @@ public class ModelLoaderTest
   private String route2 = "models/test1.nosqlschema";
   private String route3 = "../es.um.nosql.models/facebook/facebook_Diff.xmi";
 
-  @Test
-  public void testUnifiedModelLoader()
+  private ModelLoader xtextLoader;
+  private es.um.nosql.s13e.util.ModelLoader xmiLoader;
+
+  @Before
+  public void setUp()
   {
-    ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
-    NoSQLSchema schema1 = loader.load(new File(route1), NoSQLSchema.class);
-    es.um.nosql.s13e.util.ModelLoader loader2 = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
-    NoSQLSchema schema2 = loader2.load(new File(route1), NoSQLSchema.class);
+    xtextLoader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
+    xmiLoader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
+  }
+
+  @Test
+  public void testXtextModelLoader()
+  {
+    NoSQLSchema schema1 = xtextLoader.load(new File(route1), NoSQLSchema.class);
+    NoSQLSchema schema2 = xmiLoader.load(new File(route1), NoSQLSchema.class);
 
     assertTrue(new CompareNoSQLSchema().compare(schema1, schema2));
-    assertNotNull(loader.load(new File(route2), NoSQLSchema.class));
+    assertNotNull(xtextLoader.load(new File(route2), NoSQLSchema.class));
 
-    ModelLoader loader3 = new ModelLoader(EntityDifferentiationPackage.eINSTANCE);
-    assertNotNull(loader3.load(new File(route3), EntityDifferentiation.class));
+    ModelLoader xtextLoader2 = new ModelLoader(EntityDifferentiationPackage.eINSTANCE);
+    assertNotNull(xtextLoader2.load(new File(route3), EntityDifferentiation.class));
   }
 }

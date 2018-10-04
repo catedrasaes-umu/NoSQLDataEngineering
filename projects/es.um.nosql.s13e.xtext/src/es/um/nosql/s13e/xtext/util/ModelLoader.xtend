@@ -11,18 +11,18 @@ class ModelLoader extends es.um.nosql.s13e.util.ModelLoader
 
   new()
   {
-    super();
+    super()
 
     // This createInjectorAndDoEMFRegistration() performs the magic. Dont know why, but
     // XtextResourceSet is not required to load models...
-    val injector = new NoSQLSchemaStandaloneSetup().createInjectorAndDoEMFRegistration();
-    resourceSet = injector.getInstance(XtextResourceSet);
-    resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE);
+    val injector = new NoSQLSchemaStandaloneSetup().createInjectorAndDoEMFRegistration()
+    resourceSet = injector.getInstance(XtextResourceSet)
+    resourceSet.addLoadOption(XtextResource.OPTION_RESOLVE_ALL, Boolean.TRUE)
   }
 
   new(EPackage thePackage)
   {
-    this();
-    super.registerPackages(thePackage);
+    this()
+    super.registerPackages(thePackage)
   }
 }

@@ -17,6 +17,8 @@ import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.Type;
 
+//TODO: Can't stand this duplicates the code for something quite trivial. We should unify this serializer with the Xtext one.
+//TODO: Also adapt decisionTree code because, for some reason, it uses this serializer to create the decision tree (¿?)
 public class Serializer
 {
   public static String serialize(StructuralVariation eVariation)

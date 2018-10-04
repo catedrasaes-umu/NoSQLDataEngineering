@@ -13,13 +13,14 @@ import org.eclipse.xtext.generator.IGeneratorContext
  * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
-class NoSQLSchemaGenerator extends AbstractGenerator {
-
-	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
-	}
+class NoSQLSchemaGenerator extends AbstractGenerator
+{
+  override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context)
+  {
+    //fsa.generateFile('greetings.txt', 'People to greet: ' + 
+    //  resource.allContents
+    //  .filter(Greeting)
+    //  .map[name]
+    //  .join(', '))
+  }
 }
