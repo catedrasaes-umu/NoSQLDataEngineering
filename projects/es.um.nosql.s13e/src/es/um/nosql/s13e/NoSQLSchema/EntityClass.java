@@ -19,8 +19,7 @@ package es.um.nosql.s13e.NoSQLSchema;
  * @model
  * @generated
  */
-public interface EntityClass extends Classifier
-{
+public interface EntityClass extends Classifier {
   /**
    * Returns the value of the '<em><b>Root</b></em>' attribute.
    * The default value is <code>"false"</code>.

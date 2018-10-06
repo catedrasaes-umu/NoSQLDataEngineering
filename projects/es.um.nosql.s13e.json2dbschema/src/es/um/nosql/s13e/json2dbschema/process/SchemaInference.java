@@ -73,7 +73,7 @@ public class SchemaInference
         Optional.ofNullable(triple.get("timestamp")).filter(IAJElement::isNumber).isPresent();
   }
 
-  private void innerCountAndTimestamp(Set<String> innerSchemaNames, Map<String, List<SchemaComponent>> rawEntities)
+  private void innerCountAndTimestamps(Set<String> innerSchemaNames, Map<String, List<SchemaComponent>> rawEntities)
   {
     // For each non-root entity...
     for (String innerSchema : innerSchemaNames)
@@ -93,8 +93,11 @@ public class SchemaInference
           {
             nonRootObj.count += osc.count;
 
-            if (nonRootObj.timestamp == 0 || osc.timestamp < nonRootObj.timestamp)
-              nonRootObj.timestamp = osc.timestamp;
+            if (nonRootObj.firstTimestamp == 0 || osc.firstTimestamp < nonRootObj.firstTimestamp)
+              nonRootObj.firstTimestamp = osc.firstTimestamp;
+
+            if (nonRootObj.lastTimestamp == 0 || osc.lastTimestamp > nonRootObj.lastTimestamp)
+              nonRootObj.lastTimestamp = osc.lastTimestamp;
           }
         });
       }
@@ -108,7 +111,7 @@ public class SchemaInference
     });
 
     joiner.joinAggregatedEntities(rawEntities, innerSchemaNames);
-    innerCountAndTimestamp(innerSchemaNames, rawEntities);
+    innerCountAndTimestamps(innerSchemaNames, rawEntities);
     merger.mergeEquivalentEVs(rawEntities);
 
     if (DEBUG)
@@ -145,7 +148,7 @@ public class SchemaInference
     return null;
   }
 
-  private SchemaComponent infer(IAJObject n, Optional<String> elementName, boolean isRoot, long count, long timestamp)
+  private SchemaComponent infer(IAJObject n, Optional<String> elementName, boolean isRoot, long count, long firstTimestamp, long lastTimestamp)
   {
     // Entity names are by convention capitalized
     Optional<String> typeName = Optional.empty();
@@ -156,7 +159,8 @@ public class SchemaInference
     ObjectSC schema = new ObjectSC();
     schema.isRoot = isRoot;
     schema.count = count;
-    schema.timestamp = timestamp;
+    schema.firstTimestamp = firstTimestamp;
+    schema.lastTimestamp = lastTimestamp;
     schema.entityName = typeName.orElse(Inflector.getInstance().capitalize(elementName.orElse("")));
 
     // It is important this is a sorted set

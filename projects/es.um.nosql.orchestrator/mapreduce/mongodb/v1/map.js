@@ -92,5 +92,5 @@ function map()
 
   var schema = flatten_schema_str(this, []);
 
-  emit(schema, {schema: schema, count: 1, timestamp: new Date().getTime()});
+  emit(schema, {schema: schema, count: 1, firstTimestamp: 0, lastTimestamp: 0});
 }

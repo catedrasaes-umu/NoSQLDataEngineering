@@ -13,6 +13,5 @@ package es.um.nosql.s13e.NoSQLSchema;
  * @model
  * @generated
  */
-public interface ReferenceClass extends Classifier
-{
+public interface ReferenceClass extends Classifier {
 } // ReferenceClass

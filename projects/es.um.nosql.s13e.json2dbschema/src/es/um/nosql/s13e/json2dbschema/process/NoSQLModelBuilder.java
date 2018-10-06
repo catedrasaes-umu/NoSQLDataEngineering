@@ -84,7 +84,8 @@ public class NoSQLModelBuilder
         StructuralVariation theEV = factory.createStructuralVariation();
         theEV.setVariationId(intIterator.next());
         theEV.setCount(obj.count);
-        theEV.setTimestamp(obj.timestamp);
+        theEV.setFirstTimestamp(obj.firstTimestamp);
+        theEV.setLastTimestamp(obj.lastTimestamp);
 
         EntityClass.getVariations().add(theEV);
         mStructuralVariations.put(schema, theEV);

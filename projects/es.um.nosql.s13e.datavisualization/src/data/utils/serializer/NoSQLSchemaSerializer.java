@@ -112,7 +112,7 @@ public class NoSQLSchemaSerializer
 		StringBuilder result = new StringBuilder();
 
 		result.append(tabs + "StructuralVariation - variationId: " + eVariation.getVariationId() +
-		    ", count: " + eVariation.getCount() + ", timestamp: " + eVariation.getTimestamp() + ENDLINE);
+		    ", count: " + eVariation.getCount() + ", firstTs: " + eVariation.getFirstTimestamp() + ", lastTs: " + eVariation.getLastTimestamp() + ENDLINE);
 
 		for (Property property : eVariation.getProperties())
 		{
@@ -139,7 +139,7 @@ public class NoSQLSchemaSerializer
 		String tabs = defTabs + TAB;
 		StringBuilder result = new StringBuilder();
 
-		result.append(tabs + "Attribute - name: " + attribute.getName() + ", " + stringify(attribute.getType()) + ENDLINE);
+		result.append(tabs + "Attribute - name: " + attribute.getName() + ", optional: " + attribute.isOptional() + ", " + stringify(attribute.getType()) + ENDLINE);
 
 		return result.toString();
 	}
@@ -197,7 +197,7 @@ public class NoSQLSchemaSerializer
 		String tabs = defTabs + TAB;
 		StringBuilder result = new StringBuilder();
 
-		result.append(" - name: " + association.getName() + ", ");
+		result.append(" - name: " + association.getName() + ", optional: " + association.isOptional() + ", ");
 		result.append("lowerBound: " + association.getLowerBound() + ", upperBound: " + association.getUpperBound() + ", ");
 
 		if (association instanceof Aggregate)

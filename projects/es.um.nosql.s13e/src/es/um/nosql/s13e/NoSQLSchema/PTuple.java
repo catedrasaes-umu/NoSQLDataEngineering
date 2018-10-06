@@ -20,8 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface PTuple extends Type
-{
+public interface PTuple extends Type {
   /**
    * Returns the value of the '<em><b>Elements</b></em>' containment reference list.
    * The list contents are of type {@link es.um.nosql.s13e.NoSQLSchema.Type}.

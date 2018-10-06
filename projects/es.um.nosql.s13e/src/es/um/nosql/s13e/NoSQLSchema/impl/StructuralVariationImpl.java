@@ -33,13 +33,13 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.StructuralVariationImpl#getVariationId <em>Variation Id</em>}</li>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.StructuralVariationImpl#getProperties <em>Properties</em>}</li>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.StructuralVariationImpl#getCount <em>Count</em>}</li>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.StructuralVariationImpl#getTimestamp <em>Timestamp</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.StructuralVariationImpl#getFirstTimestamp <em>First Timestamp</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.StructuralVariationImpl#getLastTimestamp <em>Last Timestamp</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class StructuralVariationImpl extends MinimalEObjectImpl.Container implements StructuralVariation
-{
+public class StructuralVariationImpl extends MinimalEObjectImpl.Container implements StructuralVariation {
   /**
    * The default value of the '{@link #getVariationId() <em>Variation Id</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -91,32 +91,51 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
   protected long count = COUNT_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
+   * The default value of the '{@link #getFirstTimestamp() <em>First Timestamp</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTimestamp()
+   * @see #getFirstTimestamp()
    * @generated
    * @ordered
    */
-  protected static final long TIMESTAMP_EDEFAULT = 0L;
+  protected static final long FIRST_TIMESTAMP_EDEFAULT = 0L;
 
   /**
-   * The cached value of the '{@link #getTimestamp() <em>Timestamp</em>}' attribute.
+   * The cached value of the '{@link #getFirstTimestamp() <em>First Timestamp</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getTimestamp()
+   * @see #getFirstTimestamp()
    * @generated
    * @ordered
    */
-  protected long timestamp = TIMESTAMP_EDEFAULT;
+  protected long firstTimestamp = FIRST_TIMESTAMP_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getLastTimestamp() <em>Last Timestamp</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLastTimestamp()
+   * @generated
+   * @ordered
+   */
+  protected static final long LAST_TIMESTAMP_EDEFAULT = 0L;
+
+  /**
+   * The cached value of the '{@link #getLastTimestamp() <em>Last Timestamp</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLastTimestamp()
+   * @generated
+   * @ordered
+   */
+  protected long lastTimestamp = LAST_TIMESTAMP_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected StructuralVariationImpl()
-  {
+  protected StructuralVariationImpl() {
     super();
   }
 
@@ -126,8 +145,7 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return NoSQLSchemaPackage.Literals.STRUCTURAL_VARIATION;
   }
 
@@ -136,8 +154,7 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getVariationId()
-  {
+  public int getVariationId() {
     return variationId;
   }
 
@@ -146,8 +163,7 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setVariationId(int newVariationId)
-  {
+  public void setVariationId(int newVariationId) {
     int oldVariationId = variationId;
     variationId = newVariationId;
     if (eNotificationRequired())
@@ -159,10 +175,8 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Property> getProperties()
-  {
-    if (properties == null)
-    {
+  public EList<Property> getProperties() {
+    if (properties == null) {
       properties = new EObjectContainmentEList<Property>(Property.class, this, NoSQLSchemaPackage.STRUCTURAL_VARIATION__PROPERTIES);
     }
     return properties;
@@ -173,8 +187,7 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public long getCount()
-  {
+  public long getCount() {
     return count;
   }
 
@@ -183,8 +196,7 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCount(long newCount)
-  {
+  public void setCount(long newCount) {
     long oldCount = count;
     count = newCount;
     if (eNotificationRequired())
@@ -196,9 +208,8 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public long getTimestamp()
-  {
-    return timestamp;
+  public long getFirstTimestamp() {
+    return firstTimestamp;
   }
 
   /**
@@ -206,12 +217,32 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setTimestamp(long newTimestamp)
-  {
-    long oldTimestamp = timestamp;
-    timestamp = newTimestamp;
+  public void setFirstTimestamp(long newFirstTimestamp) {
+    long oldFirstTimestamp = firstTimestamp;
+    firstTimestamp = newFirstTimestamp;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.STRUCTURAL_VARIATION__TIMESTAMP, oldTimestamp, timestamp));
+      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.STRUCTURAL_VARIATION__FIRST_TIMESTAMP, oldFirstTimestamp, firstTimestamp));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public long getLastTimestamp() {
+    return lastTimestamp;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setLastTimestamp(long newLastTimestamp) {
+    long oldLastTimestamp = lastTimestamp;
+    lastTimestamp = newLastTimestamp;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.STRUCTURAL_VARIATION__LAST_TIMESTAMP, oldLastTimestamp, lastTimestamp));
   }
 
   /**
@@ -220,10 +251,8 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    switch (featureID) {
       case NoSQLSchemaPackage.STRUCTURAL_VARIATION__PROPERTIES:
         return ((InternalEList<?>)getProperties()).basicRemove(otherEnd, msgs);
     }
@@ -236,18 +265,18 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case NoSQLSchemaPackage.STRUCTURAL_VARIATION__VARIATION_ID:
         return getVariationId();
       case NoSQLSchemaPackage.STRUCTURAL_VARIATION__PROPERTIES:
         return getProperties();
       case NoSQLSchemaPackage.STRUCTURAL_VARIATION__COUNT:
         return getCount();
-      case NoSQLSchemaPackage.STRUCTURAL_VARIATION__TIMESTAMP:
-        return getTimestamp();
+      case NoSQLSchemaPackage.STRUCTURAL_VARIATION__FIRST_TIMESTAMP:
+        return getFirstTimestamp();
+      case NoSQLSchemaPackage.STRUCTURAL_VARIATION__LAST_TIMESTAMP:
+        return getLastTimestamp();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -259,10 +288,8 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
    */
   @SuppressWarnings("unchecked")
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case NoSQLSchemaPackage.STRUCTURAL_VARIATION__VARIATION_ID:
         setVariationId((Integer)newValue);
         return;
@@ -273,8 +300,11 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
       case NoSQLSchemaPackage.STRUCTURAL_VARIATION__COUNT:
         setCount((Long)newValue);
         return;
-      case NoSQLSchemaPackage.STRUCTURAL_VARIATION__TIMESTAMP:
-        setTimestamp((Long)newValue);
+      case NoSQLSchemaPackage.STRUCTURAL_VARIATION__FIRST_TIMESTAMP:
+        setFirstTimestamp((Long)newValue);
+        return;
+      case NoSQLSchemaPackage.STRUCTURAL_VARIATION__LAST_TIMESTAMP:
+        setLastTimestamp((Long)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -286,10 +316,8 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.STRUCTURAL_VARIATION__VARIATION_ID:
         setVariationId(VARIATION_ID_EDEFAULT);
         return;
@@ -299,8 +327,11 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
       case NoSQLSchemaPackage.STRUCTURAL_VARIATION__COUNT:
         setCount(COUNT_EDEFAULT);
         return;
-      case NoSQLSchemaPackage.STRUCTURAL_VARIATION__TIMESTAMP:
-        setTimestamp(TIMESTAMP_EDEFAULT);
+      case NoSQLSchemaPackage.STRUCTURAL_VARIATION__FIRST_TIMESTAMP:
+        setFirstTimestamp(FIRST_TIMESTAMP_EDEFAULT);
+        return;
+      case NoSQLSchemaPackage.STRUCTURAL_VARIATION__LAST_TIMESTAMP:
+        setLastTimestamp(LAST_TIMESTAMP_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -312,18 +343,18 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.STRUCTURAL_VARIATION__VARIATION_ID:
         return variationId != VARIATION_ID_EDEFAULT;
       case NoSQLSchemaPackage.STRUCTURAL_VARIATION__PROPERTIES:
         return properties != null && !properties.isEmpty();
       case NoSQLSchemaPackage.STRUCTURAL_VARIATION__COUNT:
         return count != COUNT_EDEFAULT;
-      case NoSQLSchemaPackage.STRUCTURAL_VARIATION__TIMESTAMP:
-        return timestamp != TIMESTAMP_EDEFAULT;
+      case NoSQLSchemaPackage.STRUCTURAL_VARIATION__FIRST_TIMESTAMP:
+        return firstTimestamp != FIRST_TIMESTAMP_EDEFAULT;
+      case NoSQLSchemaPackage.STRUCTURAL_VARIATION__LAST_TIMESTAMP:
+        return lastTimestamp != LAST_TIMESTAMP_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -334,8 +365,7 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
    * @generated
    */
   @Override
-  public String toString()
-  {
+  public String toString() {
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
@@ -343,8 +373,10 @@ public class StructuralVariationImpl extends MinimalEObjectImpl.Container implem
     result.append(variationId);
     result.append(", count: ");
     result.append(count);
-    result.append(", timestamp: ");
-    result.append(timestamp);
+    result.append(", firstTimestamp: ");
+    result.append(firstTimestamp);
+    result.append(", lastTimestamp: ");
+    result.append(lastTimestamp);
     result.append(')');
     return result.toString();
   }

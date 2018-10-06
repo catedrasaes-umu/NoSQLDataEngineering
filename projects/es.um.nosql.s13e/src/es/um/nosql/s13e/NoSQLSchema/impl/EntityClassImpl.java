@@ -24,8 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class EntityClassImpl extends ClassifierImpl implements EntityClass
-{
+public class EntityClassImpl extends ClassifierImpl implements EntityClass {
   /**
    * The default value of the '{@link #isRoot() <em>Root</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -51,8 +50,7 @@ public class EntityClassImpl extends ClassifierImpl implements EntityClass
    * <!-- end-user-doc -->
    * @generated
    */
-  protected EntityClassImpl()
-  {
+  protected EntityClassImpl() {
     super();
   }
 
@@ -62,8 +60,7 @@ public class EntityClassImpl extends ClassifierImpl implements EntityClass
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return NoSQLSchemaPackage.Literals.ENTITY_CLASS;
   }
 
@@ -72,8 +69,7 @@ public class EntityClassImpl extends ClassifierImpl implements EntityClass
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isRoot()
-  {
+  public boolean isRoot() {
     return root;
   }
 
@@ -82,8 +78,7 @@ public class EntityClassImpl extends ClassifierImpl implements EntityClass
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRoot(boolean newRoot)
-  {
+  public void setRoot(boolean newRoot) {
     boolean oldRoot = root;
     root = newRoot;
     if (eNotificationRequired())
@@ -96,10 +91,8 @@ public class EntityClassImpl extends ClassifierImpl implements EntityClass
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case NoSQLSchemaPackage.ENTITY_CLASS__ROOT:
         return isRoot();
     }
@@ -112,10 +105,8 @@ public class EntityClassImpl extends ClassifierImpl implements EntityClass
    * @generated
    */
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case NoSQLSchemaPackage.ENTITY_CLASS__ROOT:
         setRoot((Boolean)newValue);
         return;
@@ -129,10 +120,8 @@ public class EntityClassImpl extends ClassifierImpl implements EntityClass
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.ENTITY_CLASS__ROOT:
         setRoot(ROOT_EDEFAULT);
         return;
@@ -146,10 +135,8 @@ public class EntityClassImpl extends ClassifierImpl implements EntityClass
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.ENTITY_CLASS__ROOT:
         return root != ROOT_EDEFAULT;
     }
@@ -162,8 +149,7 @@ public class EntityClassImpl extends ClassifierImpl implements EntityClass
    * @generated
    */
   @Override
-  public String toString()
-  {
+  public String toString() {
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());

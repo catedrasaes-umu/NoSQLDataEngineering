@@ -25,8 +25,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public abstract class AssociationImpl extends PropertyImpl implements Association
-{
+public abstract class AssociationImpl extends PropertyImpl implements Association {
   /**
    * The default value of the '{@link #getLowerBound() <em>Lower Bound</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -72,8 +71,7 @@ public abstract class AssociationImpl extends PropertyImpl implements Associatio
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AssociationImpl()
-  {
+  protected AssociationImpl() {
     super();
   }
 
@@ -83,8 +81,7 @@ public abstract class AssociationImpl extends PropertyImpl implements Associatio
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return NoSQLSchemaPackage.Literals.ASSOCIATION;
   }
 
@@ -93,8 +90,7 @@ public abstract class AssociationImpl extends PropertyImpl implements Associatio
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getLowerBound()
-  {
+  public int getLowerBound() {
     return lowerBound;
   }
 
@@ -103,8 +99,7 @@ public abstract class AssociationImpl extends PropertyImpl implements Associatio
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setLowerBound(int newLowerBound)
-  {
+  public void setLowerBound(int newLowerBound) {
     int oldLowerBound = lowerBound;
     lowerBound = newLowerBound;
     if (eNotificationRequired())
@@ -116,8 +111,7 @@ public abstract class AssociationImpl extends PropertyImpl implements Associatio
    * <!-- end-user-doc -->
    * @generated
    */
-  public int getUpperBound()
-  {
+  public int getUpperBound() {
     return upperBound;
   }
 
@@ -126,8 +120,7 @@ public abstract class AssociationImpl extends PropertyImpl implements Associatio
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setUpperBound(int newUpperBound)
-  {
+  public void setUpperBound(int newUpperBound) {
     int oldUpperBound = upperBound;
     upperBound = newUpperBound;
     if (eNotificationRequired())
@@ -140,10 +133,8 @@ public abstract class AssociationImpl extends PropertyImpl implements Associatio
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case NoSQLSchemaPackage.ASSOCIATION__LOWER_BOUND:
         return getLowerBound();
       case NoSQLSchemaPackage.ASSOCIATION__UPPER_BOUND:
@@ -158,10 +149,8 @@ public abstract class AssociationImpl extends PropertyImpl implements Associatio
    * @generated
    */
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case NoSQLSchemaPackage.ASSOCIATION__LOWER_BOUND:
         setLowerBound((Integer)newValue);
         return;
@@ -178,10 +167,8 @@ public abstract class AssociationImpl extends PropertyImpl implements Associatio
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.ASSOCIATION__LOWER_BOUND:
         setLowerBound(LOWER_BOUND_EDEFAULT);
         return;
@@ -198,10 +185,8 @@ public abstract class AssociationImpl extends PropertyImpl implements Associatio
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.ASSOCIATION__LOWER_BOUND:
         return lowerBound != LOWER_BOUND_EDEFAULT;
       case NoSQLSchemaPackage.ASSOCIATION__UPPER_BOUND:
@@ -216,8 +201,7 @@ public abstract class AssociationImpl extends PropertyImpl implements Associatio
    * @generated
    */
   @Override
-  public String toString()
-  {
+  public String toString() {
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());

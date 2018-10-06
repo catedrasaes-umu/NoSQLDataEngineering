@@ -72,7 +72,8 @@ public class SchemaPrinter
     if (sc.isRoot)
       sb.append("(root)");
     sb.append("(count: " + sc.count + ")");
-    sb.append("(ts: " + sc.timestamp + ")");
+    sb.append("(firstTs: " + sc.firstTimestamp + ")");
+    sb.append("(lastTs: " + sc.lastTimestamp + ")");
     sb.append("<" + sc.entityName + ">{");
     sc.getInners().forEach(e -> {
       _outname(e.getLeft(), sb);

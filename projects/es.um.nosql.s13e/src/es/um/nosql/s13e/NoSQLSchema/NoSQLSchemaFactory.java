@@ -12,8 +12,7 @@ import org.eclipse.emf.ecore.EFactory;
  * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage
  * @generated
  */
-public interface NoSQLSchemaFactory extends EFactory
-{
+public interface NoSQLSchemaFactory extends EFactory {
   /**
    * The singleton instance of the factory.
    * <!-- begin-user-doc -->

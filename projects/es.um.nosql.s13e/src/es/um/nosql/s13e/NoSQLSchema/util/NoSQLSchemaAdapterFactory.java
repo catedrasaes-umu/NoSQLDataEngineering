@@ -19,8 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage
  * @generated
  */
-public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
-{
+public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl {
   /**
    * The cached model package.
    * <!-- begin-user-doc -->
@@ -35,10 +34,8 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * <!-- end-user-doc -->
    * @generated
    */
-  public NoSQLSchemaAdapterFactory()
-  {
-    if (modelPackage == null)
-    {
+  public NoSQLSchemaAdapterFactory() {
+    if (modelPackage == null) {
       modelPackage = NoSQLSchemaPackage.eINSTANCE;
     }
   }
@@ -52,14 +49,11 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   @Override
-  public boolean isFactoryForType(Object object)
-  {
-    if (object == modelPackage)
-    {
+  public boolean isFactoryForType(Object object) {
+    if (object == modelPackage) {
       return true;
     }
-    if (object instanceof EObject)
-    {
+    if (object instanceof EObject) {
       return ((EObject)object).eClass().getEPackage() == modelPackage;
     }
     return false;
@@ -72,96 +66,77 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   protected NoSQLSchemaSwitch<Adapter> modelSwitch =
-    new NoSQLSchemaSwitch<Adapter>()
-    {
+    new NoSQLSchemaSwitch<Adapter>() {
       @Override
-      public Adapter caseNoSQLSchema(NoSQLSchema object)
-      {
+      public Adapter caseNoSQLSchema(NoSQLSchema object) {
         return createNoSQLSchemaAdapter();
       }
       @Override
-      public Adapter caseEntityClass(EntityClass object)
-      {
+      public Adapter caseEntityClass(EntityClass object) {
         return createEntityClassAdapter();
       }
       @Override
-      public Adapter caseStructuralVariation(StructuralVariation object)
-      {
+      public Adapter caseStructuralVariation(StructuralVariation object) {
         return createStructuralVariationAdapter();
       }
       @Override
-      public Adapter caseProperty(Property object)
-      {
+      public Adapter caseProperty(Property object) {
         return createPropertyAdapter();
       }
       @Override
-      public Adapter caseAttribute(Attribute object)
-      {
+      public Adapter caseAttribute(Attribute object) {
         return createAttributeAdapter();
       }
       @Override
-      public Adapter caseType(Type object)
-      {
+      public Adapter caseType(Type object) {
         return createTypeAdapter();
       }
       @Override
-      public Adapter casePList(PList object)
-      {
+      public Adapter casePList(PList object) {
         return createPListAdapter();
       }
       @Override
-      public Adapter caseAssociation(Association object)
-      {
+      public Adapter caseAssociation(Association object) {
         return createAssociationAdapter();
       }
       @Override
-      public Adapter caseReference(Reference object)
-      {
+      public Adapter caseReference(Reference object) {
         return createReferenceAdapter();
       }
       @Override
-      public Adapter caseAggregate(Aggregate object)
-      {
+      public Adapter caseAggregate(Aggregate object) {
         return createAggregateAdapter();
       }
       @Override
-      public Adapter casePrimitiveType(PrimitiveType object)
-      {
+      public Adapter casePrimitiveType(PrimitiveType object) {
         return createPrimitiveTypeAdapter();
       }
       @Override
-      public Adapter caseNull(Null object)
-      {
+      public Adapter caseNull(Null object) {
         return createNullAdapter();
       }
       @Override
-      public Adapter caseReferenceClass(ReferenceClass object)
-      {
+      public Adapter caseReferenceClass(ReferenceClass object) {
         return createReferenceClassAdapter();
       }
       @Override
-      public Adapter caseClassifier(Classifier object)
-      {
+      public Adapter caseClassifier(Classifier object) {
         return createClassifierAdapter();
       }
       @Override
-      public Adapter casePMap(PMap object)
-      {
+      public Adapter casePMap(PMap object) {
         return createPMapAdapter();
       }
       @Override
-      public Adapter casePSet(PSet object)
-      {
+      public Adapter casePSet(PSet object) {
         return createPSetAdapter();
       }
       @Override
-      public Adapter casePTuple(PTuple object)
-      {
+      public Adapter casePTuple(PTuple object) {
         return createPTupleAdapter();
       }
       @Override
-      public Adapter defaultCase(EObject object)
-      {
+      public Adapter defaultCase(EObject object) {
         return createEObjectAdapter();
       }
     };
@@ -175,8 +150,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   @Override
-  public Adapter createAdapter(Notifier target)
-  {
+  public Adapter createAdapter(Notifier target) {
     return modelSwitch.doSwitch((EObject)target);
   }
 
@@ -191,8 +165,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchema
    * @generated
    */
-  public Adapter createNoSQLSchemaAdapter()
-  {
+  public Adapter createNoSQLSchemaAdapter() {
     return null;
   }
 
@@ -206,8 +179,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.EntityClass
    * @generated
    */
-  public Adapter createEntityClassAdapter()
-  {
+  public Adapter createEntityClassAdapter() {
     return null;
   }
 
@@ -221,8 +193,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.StructuralVariation
    * @generated
    */
-  public Adapter createStructuralVariationAdapter()
-  {
+  public Adapter createStructuralVariationAdapter() {
     return null;
   }
 
@@ -236,8 +207,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.Property
    * @generated
    */
-  public Adapter createPropertyAdapter()
-  {
+  public Adapter createPropertyAdapter() {
     return null;
   }
 
@@ -251,8 +221,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.Attribute
    * @generated
    */
-  public Adapter createAttributeAdapter()
-  {
+  public Adapter createAttributeAdapter() {
     return null;
   }
 
@@ -266,8 +235,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.Type
    * @generated
    */
-  public Adapter createTypeAdapter()
-  {
+  public Adapter createTypeAdapter() {
     return null;
   }
 
@@ -281,8 +249,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.PList
    * @generated
    */
-  public Adapter createPListAdapter()
-  {
+  public Adapter createPListAdapter() {
     return null;
   }
 
@@ -296,8 +263,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.Association
    * @generated
    */
-  public Adapter createAssociationAdapter()
-  {
+  public Adapter createAssociationAdapter() {
     return null;
   }
 
@@ -311,8 +277,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.Reference
    * @generated
    */
-  public Adapter createReferenceAdapter()
-  {
+  public Adapter createReferenceAdapter() {
     return null;
   }
 
@@ -326,8 +291,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.Aggregate
    * @generated
    */
-  public Adapter createAggregateAdapter()
-  {
+  public Adapter createAggregateAdapter() {
     return null;
   }
 
@@ -341,8 +305,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.PrimitiveType
    * @generated
    */
-  public Adapter createPrimitiveTypeAdapter()
-  {
+  public Adapter createPrimitiveTypeAdapter() {
     return null;
   }
 
@@ -356,8 +319,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.Null
    * @generated
    */
-  public Adapter createNullAdapter()
-  {
+  public Adapter createNullAdapter() {
     return null;
   }
 
@@ -371,8 +333,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.ReferenceClass
    * @generated
    */
-  public Adapter createReferenceClassAdapter()
-  {
+  public Adapter createReferenceClassAdapter() {
     return null;
   }
 
@@ -386,8 +347,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.Classifier
    * @generated
    */
-  public Adapter createClassifierAdapter()
-  {
+  public Adapter createClassifierAdapter() {
     return null;
   }
 
@@ -401,8 +361,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.PMap
    * @generated
    */
-  public Adapter createPMapAdapter()
-  {
+  public Adapter createPMapAdapter() {
     return null;
   }
 
@@ -416,8 +375,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.PSet
    * @generated
    */
-  public Adapter createPSetAdapter()
-  {
+  public Adapter createPSetAdapter() {
     return null;
   }
 
@@ -431,8 +389,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.NoSQLSchema.PTuple
    * @generated
    */
-  public Adapter createPTupleAdapter()
-  {
+  public Adapter createPTupleAdapter() {
     return null;
   }
 
@@ -444,8 +401,7 @@ public class NoSQLSchemaAdapterFactory extends AdapterFactoryImpl
    * @return the new adapter.
    * @generated
    */
-  public Adapter createEObjectAdapter()
-  {
+  public Adapter createEObjectAdapter() {
     return null;
   }
 

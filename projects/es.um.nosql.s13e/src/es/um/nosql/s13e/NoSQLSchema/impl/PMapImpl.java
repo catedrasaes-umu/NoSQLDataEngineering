@@ -29,8 +29,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class PMapImpl extends TypeImpl implements PMap
-{
+public class PMapImpl extends TypeImpl implements PMap {
   /**
    * The cached value of the '{@link #getKeyType() <em>Key Type</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -56,8 +55,7 @@ public class PMapImpl extends TypeImpl implements PMap
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PMapImpl()
-  {
+  protected PMapImpl() {
     super();
   }
 
@@ -67,8 +65,7 @@ public class PMapImpl extends TypeImpl implements PMap
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return NoSQLSchemaPackage.Literals.PMAP;
   }
 
@@ -77,8 +74,7 @@ public class PMapImpl extends TypeImpl implements PMap
    * <!-- end-user-doc -->
    * @generated
    */
-  public PrimitiveType getKeyType()
-  {
+  public PrimitiveType getKeyType() {
     return keyType;
   }
 
@@ -87,12 +83,10 @@ public class PMapImpl extends TypeImpl implements PMap
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetKeyType(PrimitiveType newKeyType, NotificationChain msgs)
-  {
+  public NotificationChain basicSetKeyType(PrimitiveType newKeyType, NotificationChain msgs) {
     PrimitiveType oldKeyType = keyType;
     keyType = newKeyType;
-    if (eNotificationRequired())
-    {
+    if (eNotificationRequired()) {
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.PMAP__KEY_TYPE, oldKeyType, newKeyType);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
@@ -104,10 +98,8 @@ public class PMapImpl extends TypeImpl implements PMap
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setKeyType(PrimitiveType newKeyType)
-  {
-    if (newKeyType != keyType)
-    {
+  public void setKeyType(PrimitiveType newKeyType) {
+    if (newKeyType != keyType) {
       NotificationChain msgs = null;
       if (keyType != null)
         msgs = ((InternalEObject)keyType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NoSQLSchemaPackage.PMAP__KEY_TYPE, null, msgs);
@@ -125,8 +117,7 @@ public class PMapImpl extends TypeImpl implements PMap
    * <!-- end-user-doc -->
    * @generated
    */
-  public Type getValueType()
-  {
+  public Type getValueType() {
     return valueType;
   }
 
@@ -135,12 +126,10 @@ public class PMapImpl extends TypeImpl implements PMap
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValueType(Type newValueType, NotificationChain msgs)
-  {
+  public NotificationChain basicSetValueType(Type newValueType, NotificationChain msgs) {
     Type oldValueType = valueType;
     valueType = newValueType;
-    if (eNotificationRequired())
-    {
+    if (eNotificationRequired()) {
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.PMAP__VALUE_TYPE, oldValueType, newValueType);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
@@ -152,10 +141,8 @@ public class PMapImpl extends TypeImpl implements PMap
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setValueType(Type newValueType)
-  {
-    if (newValueType != valueType)
-    {
+  public void setValueType(Type newValueType) {
+    if (newValueType != valueType) {
       NotificationChain msgs = null;
       if (valueType != null)
         msgs = ((InternalEObject)valueType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NoSQLSchemaPackage.PMAP__VALUE_TYPE, null, msgs);
@@ -174,10 +161,8 @@ public class PMapImpl extends TypeImpl implements PMap
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PMAP__KEY_TYPE:
         return basicSetKeyType(null, msgs);
       case NoSQLSchemaPackage.PMAP__VALUE_TYPE:
@@ -192,10 +177,8 @@ public class PMapImpl extends TypeImpl implements PMap
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PMAP__KEY_TYPE:
         return getKeyType();
       case NoSQLSchemaPackage.PMAP__VALUE_TYPE:
@@ -210,10 +193,8 @@ public class PMapImpl extends TypeImpl implements PMap
    * @generated
    */
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PMAP__KEY_TYPE:
         setKeyType((PrimitiveType)newValue);
         return;
@@ -230,10 +211,8 @@ public class PMapImpl extends TypeImpl implements PMap
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PMAP__KEY_TYPE:
         setKeyType((PrimitiveType)null);
         return;
@@ -250,10 +229,8 @@ public class PMapImpl extends TypeImpl implements PMap
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PMAP__KEY_TYPE:
         return keyType != null;
       case NoSQLSchemaPackage.PMAP__VALUE_TYPE:

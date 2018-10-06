@@ -23,8 +23,7 @@ import org.eclipse.emf.ecore.EReference;
  * @model kind="package"
  * @generated
  */
-public interface NoSQLSchemaPackage extends EPackage
-{
+public interface NoSQLSchemaPackage extends EPackage {
   /**
    * The package name.
    * <!-- begin-user-doc -->
@@ -269,13 +268,22 @@ public interface NoSQLSchemaPackage extends EPackage
   int STRUCTURAL_VARIATION__COUNT = 2;
 
   /**
-   * The feature id for the '<em><b>Timestamp</b></em>' attribute.
+   * The feature id for the '<em><b>First Timestamp</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int STRUCTURAL_VARIATION__TIMESTAMP = 3;
+  int STRUCTURAL_VARIATION__FIRST_TIMESTAMP = 3;
+
+  /**
+   * The feature id for the '<em><b>Last Timestamp</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRUCTURAL_VARIATION__LAST_TIMESTAMP = 4;
 
   /**
    * The number of structural features of the '<em>Structural Variation</em>' class.
@@ -284,7 +292,7 @@ public interface NoSQLSchemaPackage extends EPackage
    * @generated
    * @ordered
    */
-  int STRUCTURAL_VARIATION_FEATURE_COUNT = 4;
+  int STRUCTURAL_VARIATION_FEATURE_COUNT = 5;
 
   /**
    * The number of operations of the '<em>Structural Variation</em>' class.
@@ -315,13 +323,22 @@ public interface NoSQLSchemaPackage extends EPackage
   int PROPERTY__NAME = 0;
 
   /**
+   * The feature id for the '<em><b>Optional</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PROPERTY__OPTIONAL = 1;
+
+  /**
    * The number of structural features of the '<em>Property</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int PROPERTY_FEATURE_COUNT = 1;
+  int PROPERTY_FEATURE_COUNT = 2;
 
   /**
    * The number of operations of the '<em>Property</em>' class.
@@ -350,6 +367,15 @@ public interface NoSQLSchemaPackage extends EPackage
    * @ordered
    */
   int ATTRIBUTE__NAME = PROPERTY__NAME;
+
+  /**
+   * The feature id for the '<em><b>Optional</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ATTRIBUTE__OPTIONAL = PROPERTY__OPTIONAL;
 
   /**
    * The feature id for the '<em><b>Type</b></em>' containment reference.
@@ -463,6 +489,15 @@ public interface NoSQLSchemaPackage extends EPackage
   int ASSOCIATION__NAME = PROPERTY__NAME;
 
   /**
+   * The feature id for the '<em><b>Optional</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ASSOCIATION__OPTIONAL = PROPERTY__OPTIONAL;
+
+  /**
    * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -516,6 +551,15 @@ public interface NoSQLSchemaPackage extends EPackage
    * @ordered
    */
   int REFERENCE__NAME = ASSOCIATION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Optional</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REFERENCE__OPTIONAL = ASSOCIATION__OPTIONAL;
 
   /**
    * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -607,6 +651,15 @@ public interface NoSQLSchemaPackage extends EPackage
    * @ordered
    */
   int AGGREGATE__NAME = ASSOCIATION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Optional</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AGGREGATE__OPTIONAL = ASSOCIATION__OPTIONAL;
 
   /**
    * The feature id for the '<em><b>Lower Bound</b></em>' attribute.
@@ -708,6 +761,15 @@ public interface NoSQLSchemaPackage extends EPackage
    * @ordered
    */
   int NULL__NAME = PROPERTY__NAME;
+
+  /**
+   * The feature id for the '<em><b>Optional</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NULL__OPTIONAL = PROPERTY__OPTIONAL;
 
   /**
    * The number of structural features of the '<em>Null</em>' class.
@@ -1011,15 +1073,26 @@ public interface NoSQLSchemaPackage extends EPackage
   EAttribute getStructuralVariation_Count();
 
   /**
-   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.StructuralVariation#getTimestamp <em>Timestamp</em>}'.
+   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.StructuralVariation#getFirstTimestamp <em>First Timestamp</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Timestamp</em>'.
-   * @see es.um.nosql.s13e.NoSQLSchema.StructuralVariation#getTimestamp()
+   * @return the meta object for the attribute '<em>First Timestamp</em>'.
+   * @see es.um.nosql.s13e.NoSQLSchema.StructuralVariation#getFirstTimestamp()
    * @see #getStructuralVariation()
    * @generated
    */
-  EAttribute getStructuralVariation_Timestamp();
+  EAttribute getStructuralVariation_FirstTimestamp();
+
+  /**
+   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.StructuralVariation#getLastTimestamp <em>Last Timestamp</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Last Timestamp</em>'.
+   * @see es.um.nosql.s13e.NoSQLSchema.StructuralVariation#getLastTimestamp()
+   * @see #getStructuralVariation()
+   * @generated
+   */
+  EAttribute getStructuralVariation_LastTimestamp();
 
   /**
    * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.Property <em>Property</em>}'.
@@ -1041,6 +1114,17 @@ public interface NoSQLSchemaPackage extends EPackage
    * @generated
    */
   EAttribute getProperty_Name();
+
+  /**
+   * Returns the meta object for the attribute '{@link es.um.nosql.s13e.NoSQLSchema.Property#isOptional <em>Optional</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Optional</em>'.
+   * @see es.um.nosql.s13e.NoSQLSchema.Property#isOptional()
+   * @see #getProperty()
+   * @generated
+   */
+  EAttribute getProperty_Optional();
 
   /**
    * Returns the meta object for class '{@link es.um.nosql.s13e.NoSQLSchema.Attribute <em>Attribute</em>}'.
@@ -1381,8 +1465,7 @@ public interface NoSQLSchemaPackage extends EPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  interface Literals
-  {
+  interface Literals {
     /**
      * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaImpl <em>No SQL Schema</em>}' class.
      * <!-- begin-user-doc -->
@@ -1470,12 +1553,20 @@ public interface NoSQLSchemaPackage extends EPackage
     EAttribute STRUCTURAL_VARIATION__COUNT = eINSTANCE.getStructuralVariation_Count();
 
     /**
-     * The meta object literal for the '<em><b>Timestamp</b></em>' attribute feature.
+     * The meta object literal for the '<em><b>First Timestamp</b></em>' attribute feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute STRUCTURAL_VARIATION__TIMESTAMP = eINSTANCE.getStructuralVariation_Timestamp();
+    EAttribute STRUCTURAL_VARIATION__FIRST_TIMESTAMP = eINSTANCE.getStructuralVariation_FirstTimestamp();
+
+    /**
+     * The meta object literal for the '<em><b>Last Timestamp</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRUCTURAL_VARIATION__LAST_TIMESTAMP = eINSTANCE.getStructuralVariation_LastTimestamp();
 
     /**
      * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.PropertyImpl <em>Property</em>}' class.
@@ -1494,6 +1585,14 @@ public interface NoSQLSchemaPackage extends EPackage
      * @generated
      */
     EAttribute PROPERTY__NAME = eINSTANCE.getProperty_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Optional</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PROPERTY__OPTIONAL = eINSTANCE.getProperty_Optional();
 
     /**
      * The meta object literal for the '{@link es.um.nosql.s13e.NoSQLSchema.impl.AttributeImpl <em>Attribute</em>}' class.

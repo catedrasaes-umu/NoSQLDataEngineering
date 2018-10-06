@@ -27,8 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class PSetImpl extends TypeImpl implements PSet
-{
+public class PSetImpl extends TypeImpl implements PSet {
   /**
    * The cached value of the '{@link #getElementType() <em>Element Type</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -44,8 +43,7 @@ public class PSetImpl extends TypeImpl implements PSet
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PSetImpl()
-  {
+  protected PSetImpl() {
     super();
   }
 
@@ -55,8 +53,7 @@ public class PSetImpl extends TypeImpl implements PSet
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return NoSQLSchemaPackage.Literals.PSET;
   }
 
@@ -65,8 +62,7 @@ public class PSetImpl extends TypeImpl implements PSet
    * <!-- end-user-doc -->
    * @generated
    */
-  public Type getElementType()
-  {
+  public Type getElementType() {
     return elementType;
   }
 
@@ -75,12 +71,10 @@ public class PSetImpl extends TypeImpl implements PSet
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetElementType(Type newElementType, NotificationChain msgs)
-  {
+  public NotificationChain basicSetElementType(Type newElementType, NotificationChain msgs) {
     Type oldElementType = elementType;
     elementType = newElementType;
-    if (eNotificationRequired())
-    {
+    if (eNotificationRequired()) {
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.PSET__ELEMENT_TYPE, oldElementType, newElementType);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
@@ -92,10 +86,8 @@ public class PSetImpl extends TypeImpl implements PSet
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setElementType(Type newElementType)
-  {
-    if (newElementType != elementType)
-    {
+  public void setElementType(Type newElementType) {
+    if (newElementType != elementType) {
       NotificationChain msgs = null;
       if (elementType != null)
         msgs = ((InternalEObject)elementType).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NoSQLSchemaPackage.PSET__ELEMENT_TYPE, null, msgs);
@@ -114,10 +106,8 @@ public class PSetImpl extends TypeImpl implements PSet
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PSET__ELEMENT_TYPE:
         return basicSetElementType(null, msgs);
     }
@@ -130,10 +120,8 @@ public class PSetImpl extends TypeImpl implements PSet
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PSET__ELEMENT_TYPE:
         return getElementType();
     }
@@ -146,10 +134,8 @@ public class PSetImpl extends TypeImpl implements PSet
    * @generated
    */
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PSET__ELEMENT_TYPE:
         setElementType((Type)newValue);
         return;
@@ -163,10 +149,8 @@ public class PSetImpl extends TypeImpl implements PSet
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PSET__ELEMENT_TYPE:
         setElementType((Type)null);
         return;
@@ -180,10 +164,8 @@ public class PSetImpl extends TypeImpl implements PSet
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PSET__ELEMENT_TYPE:
         return elementType != null;
     }

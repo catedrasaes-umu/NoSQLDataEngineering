@@ -14,15 +14,13 @@ import org.eclipse.emf.ecore.EClass;
  *
  * @generated
  */
-public class ReferenceClassImpl extends ClassifierImpl implements ReferenceClass
-{
+public class ReferenceClassImpl extends ClassifierImpl implements ReferenceClass {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ReferenceClassImpl()
-  {
+  protected ReferenceClassImpl() {
     super();
   }
 
@@ -32,8 +30,7 @@ public class ReferenceClassImpl extends ClassifierImpl implements ReferenceClass
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return NoSQLSchemaPackage.Literals.REFERENCE_CLASS;
   }
 

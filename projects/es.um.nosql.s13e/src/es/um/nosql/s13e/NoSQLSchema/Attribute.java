@@ -19,8 +19,7 @@ package es.um.nosql.s13e.NoSQLSchema;
  * @model
  * @generated
  */
-public interface Attribute extends Property
-{
+public interface Attribute extends Property {
   /**
    * Returns the value of the '<em><b>Type</b></em>' containment reference.
    * <!-- begin-user-doc -->

@@ -12,7 +12,8 @@ public class ObjectSC extends SchemaComponent
 
 	public boolean isRoot;
 	public long count;
-	public long timestamp;
+	public long firstTimestamp;
+  public long lastTimestamp;
 	public String entityName;
 
 	public ObjectSC()

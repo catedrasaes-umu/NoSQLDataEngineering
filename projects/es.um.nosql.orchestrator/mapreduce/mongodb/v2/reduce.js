@@ -4,9 +4,10 @@ function reduce(key, values)
     {
       return {schema: v2.schema,
               count: v1.count + v2.count,
-              timestamp: Math.min(v1.timestamp, v2.timestamp)
+              firstTimestamp: Math.min(v1.firstTimestamp, v2.firstTimestamp),
+              lastTimestamp: Math.max(v1.lastTimestamp, v2.lastTimestamp)
             };
-    }, {schema: null, count: 0, timestamp: new Date().getTime()});
+    }, {schema: null, count: 0, firstTimestamp: new Date().getTime(), lastTimestamp: 0});
 
   return v;
 }

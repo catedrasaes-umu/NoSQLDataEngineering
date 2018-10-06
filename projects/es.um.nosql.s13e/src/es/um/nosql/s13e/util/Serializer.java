@@ -51,7 +51,13 @@ public class Serializer
     if (attribute == null)
       return null;
 
-    return attribute.getName() + ": " + serialize(attribute.getType());
+    StringBuilder result = new StringBuilder();
+    result.append(attribute.getName() +  "(optional: " + attribute.isOptional() + "): " + serialize(attribute.getType()));
+
+    if (attribute.isOptional())
+      result.append(" (optional)");
+
+    return result.toString();
   }
 
   public static String serialize(Type type)
@@ -83,7 +89,7 @@ public class Serializer
 
     StringBuilder result = new StringBuilder();
 
-    result.append(association.getName() + ":");
+    result.append(association.getName() +  "(optional: " + association.isOptional() + "):");
 
     if (association instanceof Aggregate)
     {
@@ -123,8 +129,7 @@ public class Serializer
       return null;
 
     StringBuilder result = new StringBuilder();
-
-    result.append(theNull.getName() + ": Null");
+    result.append(theNull.getName() +  "(optional: " + theNull.isOptional() + "): Null");
 
     return result.toString();
   }

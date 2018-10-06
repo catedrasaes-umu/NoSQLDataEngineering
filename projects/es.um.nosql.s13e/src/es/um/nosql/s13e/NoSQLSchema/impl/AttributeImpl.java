@@ -27,8 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class AttributeImpl extends PropertyImpl implements Attribute
-{
+public class AttributeImpl extends PropertyImpl implements Attribute {
   /**
    * The cached value of the '{@link #getType() <em>Type</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -44,8 +43,7 @@ public class AttributeImpl extends PropertyImpl implements Attribute
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AttributeImpl()
-  {
+  protected AttributeImpl() {
     super();
   }
 
@@ -55,8 +53,7 @@ public class AttributeImpl extends PropertyImpl implements Attribute
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return NoSQLSchemaPackage.Literals.ATTRIBUTE;
   }
 
@@ -65,8 +62,7 @@ public class AttributeImpl extends PropertyImpl implements Attribute
    * <!-- end-user-doc -->
    * @generated
    */
-  public Type getType()
-  {
+  public Type getType() {
     return type;
   }
 
@@ -75,12 +71,10 @@ public class AttributeImpl extends PropertyImpl implements Attribute
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetType(Type newType, NotificationChain msgs)
-  {
+  public NotificationChain basicSetType(Type newType, NotificationChain msgs) {
     Type oldType = type;
     type = newType;
-    if (eNotificationRequired())
-    {
+    if (eNotificationRequired()) {
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ATTRIBUTE__TYPE, oldType, newType);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
@@ -92,10 +86,8 @@ public class AttributeImpl extends PropertyImpl implements Attribute
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setType(Type newType)
-  {
-    if (newType != type)
-    {
+  public void setType(Type newType) {
+    if (newType != type) {
       NotificationChain msgs = null;
       if (type != null)
         msgs = ((InternalEObject)type).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - NoSQLSchemaPackage.ATTRIBUTE__TYPE, null, msgs);
@@ -114,10 +106,8 @@ public class AttributeImpl extends PropertyImpl implements Attribute
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    switch (featureID) {
       case NoSQLSchemaPackage.ATTRIBUTE__TYPE:
         return basicSetType(null, msgs);
     }
@@ -130,10 +120,8 @@ public class AttributeImpl extends PropertyImpl implements Attribute
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case NoSQLSchemaPackage.ATTRIBUTE__TYPE:
         return getType();
     }
@@ -146,10 +134,8 @@ public class AttributeImpl extends PropertyImpl implements Attribute
    * @generated
    */
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case NoSQLSchemaPackage.ATTRIBUTE__TYPE:
         setType((Type)newValue);
         return;
@@ -163,10 +149,8 @@ public class AttributeImpl extends PropertyImpl implements Attribute
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.ATTRIBUTE__TYPE:
         setType((Type)null);
         return;
@@ -180,10 +164,8 @@ public class AttributeImpl extends PropertyImpl implements Attribute
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.ATTRIBUTE__TYPE:
         return type != null;
     }

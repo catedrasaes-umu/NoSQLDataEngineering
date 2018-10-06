@@ -38,8 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public abstract class ClassifierImpl extends MinimalEObjectImpl.Container implements Classifier
-{
+public abstract class ClassifierImpl extends MinimalEObjectImpl.Container implements Classifier {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -85,8 +84,7 @@ public abstract class ClassifierImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ClassifierImpl()
-  {
+  protected ClassifierImpl() {
     super();
   }
 
@@ -96,8 +94,7 @@ public abstract class ClassifierImpl extends MinimalEObjectImpl.Container implem
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return NoSQLSchemaPackage.Literals.CLASSIFIER;
   }
 
@@ -106,8 +103,7 @@ public abstract class ClassifierImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
-  {
+  public String getName() {
     return name;
   }
 
@@ -116,8 +112,7 @@ public abstract class ClassifierImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
-  {
+  public void setName(String newName) {
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
@@ -129,10 +124,8 @@ public abstract class ClassifierImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Classifier> getParents()
-  {
-    if (parents == null)
-    {
+  public EList<Classifier> getParents() {
+    if (parents == null) {
       parents = new EObjectResolvingEList<Classifier>(Classifier.class, this, NoSQLSchemaPackage.CLASSIFIER__PARENTS);
     }
     return parents;
@@ -143,10 +136,8 @@ public abstract class ClassifierImpl extends MinimalEObjectImpl.Container implem
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<StructuralVariation> getVariations()
-  {
-    if (variations == null)
-    {
+  public EList<StructuralVariation> getVariations() {
+    if (variations == null) {
       variations = new EObjectContainmentEList<StructuralVariation>(StructuralVariation.class, this, NoSQLSchemaPackage.CLASSIFIER__VARIATIONS);
     }
     return variations;
@@ -158,10 +149,8 @@ public abstract class ClassifierImpl extends MinimalEObjectImpl.Container implem
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    switch (featureID) {
       case NoSQLSchemaPackage.CLASSIFIER__VARIATIONS:
         return ((InternalEList<?>)getVariations()).basicRemove(otherEnd, msgs);
     }
@@ -174,10 +163,8 @@ public abstract class ClassifierImpl extends MinimalEObjectImpl.Container implem
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case NoSQLSchemaPackage.CLASSIFIER__NAME:
         return getName();
       case NoSQLSchemaPackage.CLASSIFIER__PARENTS:
@@ -195,10 +182,8 @@ public abstract class ClassifierImpl extends MinimalEObjectImpl.Container implem
    */
   @SuppressWarnings("unchecked")
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case NoSQLSchemaPackage.CLASSIFIER__NAME:
         setName((String)newValue);
         return;
@@ -220,10 +205,8 @@ public abstract class ClassifierImpl extends MinimalEObjectImpl.Container implem
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.CLASSIFIER__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -243,10 +226,8 @@ public abstract class ClassifierImpl extends MinimalEObjectImpl.Container implem
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.CLASSIFIER__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case NoSQLSchemaPackage.CLASSIFIER__PARENTS:
@@ -263,8 +244,7 @@ public abstract class ClassifierImpl extends MinimalEObjectImpl.Container implem
    * @generated
    */
   @Override
-  public String toString()
-  {
+  public String toString() {
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());

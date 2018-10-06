@@ -38,8 +38,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoSQLSchema
-{
+public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoSQLSchema {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -85,8 +84,7 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
    * <!-- end-user-doc -->
    * @generated
    */
-  protected NoSQLSchemaImpl()
-  {
+  protected NoSQLSchemaImpl() {
     super();
   }
 
@@ -96,8 +94,7 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA;
   }
 
@@ -106,8 +103,7 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
-  {
+  public String getName() {
     return name;
   }
 
@@ -116,8 +112,7 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
-  {
+  public void setName(String newName) {
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
@@ -129,10 +124,8 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<EntityClass> getEntities()
-  {
-    if (entities == null)
-    {
+  public EList<EntityClass> getEntities() {
+    if (entities == null) {
       entities = new EObjectContainmentEList<EntityClass>(EntityClass.class, this, NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES);
     }
     return entities;
@@ -143,10 +136,8 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<ReferenceClass> getRefClasses()
-  {
-    if (refClasses == null)
-    {
+  public EList<ReferenceClass> getRefClasses() {
+    if (refClasses == null) {
       refClasses = new EObjectContainmentEList<ReferenceClass>(ReferenceClass.class, this, NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES);
     }
     return refClasses;
@@ -158,10 +149,8 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    switch (featureID) {
       case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
         return ((InternalEList<?>)getEntities()).basicRemove(otherEnd, msgs);
       case NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES:
@@ -176,10 +165,8 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
         return getName();
       case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
@@ -197,10 +184,8 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
    */
   @SuppressWarnings("unchecked")
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
         setName((String)newValue);
         return;
@@ -222,10 +207,8 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -245,10 +228,8 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
@@ -265,8 +246,7 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
    * @generated
    */
   @Override
-  public String toString()
-  {
+  public String toString() {
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());

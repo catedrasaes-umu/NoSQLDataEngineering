@@ -103,5 +103,5 @@ function map()
 
   var schema = flatten_schema_str(this, []);
 
-  emit(schema, {schema: schema, count: 1, timestamp: TimestampAnalyzer.getAttrValue()});
+  emit(schema, {schema: schema, count: 1, firstTimestamp: TimestampAnalyzer.getAttrValue(), lastTimestamp: TimestampAnalyzer.getAttrValue()});
 }

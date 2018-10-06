@@ -19,8 +19,7 @@ package es.um.nosql.s13e.NoSQLSchema;
  * @model
  * @generated
  */
-public interface PSet extends Type
-{
+public interface PSet extends Type {
   /**
    * Returns the value of the '<em><b>Element Type</b></em>' containment reference.
    * <!-- begin-user-doc -->

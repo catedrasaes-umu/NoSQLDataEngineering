@@ -20,8 +20,7 @@ package es.um.nosql.s13e.NoSQLSchema;
  * @model
  * @generated
  */
-public interface PMap extends Type
-{
+public interface PMap extends Type {
   /**
    * Returns the value of the '<em><b>Key Type</b></em>' containment reference.
    * <!-- begin-user-doc -->

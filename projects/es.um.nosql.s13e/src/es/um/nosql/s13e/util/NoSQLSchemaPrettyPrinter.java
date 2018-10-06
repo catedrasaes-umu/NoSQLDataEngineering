@@ -112,7 +112,8 @@ public class NoSQLSchemaPrettyPrinter
 
     StringBuilder result = new StringBuilder();
 
-    result.append(defTabs + "StructuralVariation vId: " + stVariation.getVariationId() + " count: " + stVariation.getCount() + " ts: " + stVariation.getTimestamp() + ENDL);
+    result.append(defTabs + "StructuralVariation vId: " + stVariation.getVariationId() + " count: " + stVariation.getCount() +
+        " initTs: " + stVariation.getFirstTimestamp() + " lastTs: " + stVariation.getLastTimestamp() + ENDL);
     for (Property prop : stVariation.getProperties())
       result.append(printPretty(prop, defTabs + TAB));
 

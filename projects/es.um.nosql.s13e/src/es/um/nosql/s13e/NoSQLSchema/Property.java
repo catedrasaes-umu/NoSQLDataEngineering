@@ -14,14 +14,14 @@ import org.eclipse.emf.ecore.EObject;
  * </p>
  * <ul>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Property#getName <em>Name</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.Property#isOptional <em>Optional</em>}</li>
  * </ul>
  *
  * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getProperty()
  * @model abstract="true"
  * @generated
  */
-public interface Property extends EObject
-{
+public interface Property extends EObject {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
    * <!-- begin-user-doc -->
@@ -47,5 +47,32 @@ public interface Property extends EObject
    * @generated
    */
   void setName(String value);
+
+  /**
+   * Returns the value of the '<em><b>Optional</b></em>' attribute.
+   * The default value is <code>"false"</code>.
+   * <!-- begin-user-doc -->
+   * <p>
+   * If the meaning of the '<em>Optional</em>' attribute isn't clear,
+   * there really should be more of a description here...
+   * </p>
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Optional</em>' attribute.
+   * @see #setOptional(boolean)
+   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getProperty_Optional()
+   * @model default="false" required="true"
+   * @generated
+   */
+  boolean isOptional();
+
+  /**
+   * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.Property#isOptional <em>Optional</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Optional</em>' attribute.
+   * @see #isOptional()
+   * @generated
+   */
+  void setOptional(boolean value);
 
 } // Property

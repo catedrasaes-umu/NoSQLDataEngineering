@@ -36,7 +36,8 @@ public class EVariationMerger
               updateReferences(rawEntities, toConsider, sc);
 
               ((ObjectSC)sc).count += ((ObjectSC)toConsider).count;
-              ((ObjectSC)sc).timestamp = Math.min(((ObjectSC)sc).timestamp, ((ObjectSC)toConsider).timestamp);
+              ((ObjectSC)sc).firstTimestamp = Math.min(((ObjectSC)sc).firstTimestamp, ((ObjectSC)toConsider).firstTimestamp);
+              ((ObjectSC)sc).lastTimestamp = Math.max(((ObjectSC)sc).lastTimestamp, ((ObjectSC)toConsider).lastTimestamp);
 
               // remove toConsider
               it.remove();

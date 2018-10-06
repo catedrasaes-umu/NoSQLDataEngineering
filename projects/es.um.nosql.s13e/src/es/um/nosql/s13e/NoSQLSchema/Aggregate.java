@@ -20,8 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Aggregate extends Association
-{
+public interface Aggregate extends Association {
   /**
    * Returns the value of the '<em><b>Aggregates</b></em>' reference list.
    * The list contents are of type {@link es.um.nosql.s13e.NoSQLSchema.StructuralVariation}.

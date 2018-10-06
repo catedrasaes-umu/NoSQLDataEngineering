@@ -20,8 +20,7 @@ package es.um.nosql.s13e.NoSQLSchema;
  * @model abstract="true"
  * @generated
  */
-public interface Association extends Property
-{
+public interface Association extends Property {
   /**
    * Returns the value of the '<em><b>Lower Bound</b></em>' attribute.
    * <!-- begin-user-doc -->

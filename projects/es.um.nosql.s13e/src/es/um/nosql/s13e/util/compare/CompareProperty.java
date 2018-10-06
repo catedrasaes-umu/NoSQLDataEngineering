@@ -22,6 +22,9 @@ public class CompareProperty extends Comparator<Property>
     if (p1.getName() != null && !p1.getName().equals(p2.getName()))
       return false;
 
+    if (p1.isOptional() ^ p2.isOptional())
+      return false;
+
     if (p1 instanceof Association && p2 instanceof Association)
       return new CompareAssociation().compare((Association)p1, (Association)p2);
 

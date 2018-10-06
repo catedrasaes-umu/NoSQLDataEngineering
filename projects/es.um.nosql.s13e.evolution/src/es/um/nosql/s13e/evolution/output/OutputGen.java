@@ -61,7 +61,8 @@ public class OutputGen
         .addColumn("entityName", CsvSchema.ColumnType.STRING)
         .addColumn("variationId", CsvSchema.ColumnType.NUMBER)
         .addColumn("count", CsvSchema.ColumnType.NUMBER)
-        .addColumn("timestamp", CsvSchema.ColumnType.NUMBER)
+        .addColumn("firstTimestamp", CsvSchema.ColumnType.NUMBER)
+        .addColumn("lastTimestamp", CsvSchema.ColumnType.NUMBER)
         .build()
         .withHeader();
 
@@ -69,7 +70,7 @@ public class OutputGen
 
     for (EntityClass entity : orderedMap.keySet())
       for (StructuralVariation variation : orderedMap.get(entity))
-        objects.add(Arrays.asList(entity.getName(), variation.getVariationId(), variation.getCount(), variation.getTimestamp()));
+        objects.add(Arrays.asList(entity.getName(), variation.getVariationId(), variation.getCount(), variation.getFirstTimestamp(), variation.getLastTimestamp()));
 
     try
     {
@@ -106,7 +107,8 @@ public class OutputGen
       {
         result.append("  variationid: " + var.getVariationId());
         result.append(", count: " + var.getCount());
-        result.append(", timestamp: " + var.getTimestamp());
+        result.append(", firstTimestamp: " + var.getFirstTimestamp());
+        result.append(", lastTimestamp: " + var.getLastTimestamp());
         result.append("\n");
       }
     }
@@ -123,7 +125,7 @@ public class OutputGen
 
     for (EntityClass entity : schema.getEntities())
     {
-      ECollections.sort(entity.getVariations(), (var1, var2) -> Long.compare(var1.getTimestamp(), var2.getTimestamp()));
+      ECollections.sort(entity.getVariations(), (var1, var2) -> Long.compare(var1.getFirstTimestamp(), var2.getFirstTimestamp()));
       result.put(entity, entity.getVariations());
     }
 

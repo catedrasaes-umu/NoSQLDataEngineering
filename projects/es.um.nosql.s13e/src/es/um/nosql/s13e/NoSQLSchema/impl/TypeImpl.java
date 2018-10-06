@@ -16,15 +16,13 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public abstract class TypeImpl extends MinimalEObjectImpl.Container implements Type
-{
+public abstract class TypeImpl extends MinimalEObjectImpl.Container implements Type {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected TypeImpl()
-  {
+  protected TypeImpl() {
     super();
   }
 
@@ -34,8 +32,7 @@ public abstract class TypeImpl extends MinimalEObjectImpl.Container implements T
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return NoSQLSchemaPackage.Literals.TYPE;
   }
 

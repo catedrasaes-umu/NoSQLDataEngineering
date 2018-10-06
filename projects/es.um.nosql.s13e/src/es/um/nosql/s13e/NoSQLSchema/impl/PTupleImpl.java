@@ -31,8 +31,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class PTupleImpl extends TypeImpl implements PTuple
-{
+public class PTupleImpl extends TypeImpl implements PTuple {
   /**
    * The cached value of the '{@link #getElements() <em>Elements</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -48,8 +47,7 @@ public class PTupleImpl extends TypeImpl implements PTuple
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PTupleImpl()
-  {
+  protected PTupleImpl() {
     super();
   }
 
@@ -59,8 +57,7 @@ public class PTupleImpl extends TypeImpl implements PTuple
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return NoSQLSchemaPackage.Literals.PTUPLE;
   }
 
@@ -69,10 +66,8 @@ public class PTupleImpl extends TypeImpl implements PTuple
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<Type> getElements()
-  {
-    if (elements == null)
-    {
+  public EList<Type> getElements() {
+    if (elements == null) {
       elements = new EObjectContainmentEList<Type>(Type.class, this, NoSQLSchemaPackage.PTUPLE__ELEMENTS);
     }
     return elements;
@@ -84,10 +79,8 @@ public class PTupleImpl extends TypeImpl implements PTuple
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PTUPLE__ELEMENTS:
         return ((InternalEList<?>)getElements()).basicRemove(otherEnd, msgs);
     }
@@ -100,10 +93,8 @@ public class PTupleImpl extends TypeImpl implements PTuple
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PTUPLE__ELEMENTS:
         return getElements();
     }
@@ -117,10 +108,8 @@ public class PTupleImpl extends TypeImpl implements PTuple
    */
   @SuppressWarnings("unchecked")
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PTUPLE__ELEMENTS:
         getElements().clear();
         getElements().addAll((Collection<? extends Type>)newValue);
@@ -135,10 +124,8 @@ public class PTupleImpl extends TypeImpl implements PTuple
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PTUPLE__ELEMENTS:
         getElements().clear();
         return;
@@ -152,10 +139,8 @@ public class PTupleImpl extends TypeImpl implements PTuple
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PTUPLE__ELEMENTS:
         return elements != null && !elements.isEmpty();
     }

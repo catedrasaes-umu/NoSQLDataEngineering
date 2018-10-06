@@ -14,84 +14,78 @@ import org.eclipse.emf.common.util.ResourceLocator;
  * <!-- end-user-doc -->
  * @generated
  */
-public final class NosqlschemaEditorPlugin extends EMFPlugin
-{
+public final class NosqlschemaEditorPlugin extends EMFPlugin {
   /**
-	 * Keep track of the singleton.
-	 * <!-- begin-user-doc -->
+   * Keep track of the singleton.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public static final NosqlschemaEditorPlugin INSTANCE = new NosqlschemaEditorPlugin();
   
   /**
-	 * Keep track of the singleton.
-	 * <!-- begin-user-doc -->
+   * Keep track of the singleton.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   private static Implementation plugin;
 
   /**
-	 * Create the instance.
-	 * <!-- begin-user-doc -->
+   * Create the instance.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
-  public NosqlschemaEditorPlugin()
-  {
-		super
-			(new ResourceLocator [] {
-			});
-	}
+   * @generated
+   */
+  public NosqlschemaEditorPlugin() {
+    super
+      (new ResourceLocator [] {
+      });
+  }
 
   /**
-	 * Returns the singleton instance of the Eclipse plugin.
-	 * <!-- begin-user-doc -->
+   * Returns the singleton instance of the Eclipse plugin.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the singleton instance.
-	 * @generated
-	 */
+   * @return the singleton instance.
+   * @generated
+   */
   @Override
-  public ResourceLocator getPluginResourceLocator()
-  {
-		return plugin;
-	}
+  public ResourceLocator getPluginResourceLocator() {
+    return plugin;
+  }
   
   /**
-	 * Returns the singleton instance of the Eclipse plugin.
-	 * <!-- begin-user-doc -->
+   * Returns the singleton instance of the Eclipse plugin.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the singleton instance.
-	 * @generated
-	 */
-  public static Implementation getPlugin()
-  {
-		return plugin;
-	}
+   * @return the singleton instance.
+   * @generated
+   */
+  public static Implementation getPlugin() {
+    return plugin;
+  }
   
   /**
-	 * The actual implementation of the Eclipse <b>Plugin</b>.
-	 * <!-- begin-user-doc -->
+   * The actual implementation of the Eclipse <b>Plugin</b>.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
-  public static class Implementation extends EclipseUIPlugin
-  {
+   * @generated
+   */
+  public static class Implementation extends EclipseUIPlugin {
     /**
-		 * Creates an instance.
-		 * <!-- begin-user-doc -->
+     * Creates an instance.
+     * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-		 * @generated
-		 */
-    public Implementation()
-    {
-			super();
-	
-			// Remember the static instance.
-			//
-			plugin = this;
-		}
+     * @generated
+     */
+    public Implementation() {
+      super();
+  
+      // Remember the static instance.
+      //
+      plugin = this;
+    }
   }
 
 }

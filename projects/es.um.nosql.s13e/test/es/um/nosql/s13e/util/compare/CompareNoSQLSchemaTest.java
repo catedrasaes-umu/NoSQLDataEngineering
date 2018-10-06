@@ -211,7 +211,7 @@ public class CompareNoSQLSchemaTest
     StructuralVariation variation = NoSQLSchemaFactory.eINSTANCE.createStructuralVariation();
     variation.setVariationId(varId);
     variation.setCount(count);
-    variation.setTimestamp(ts);
+    variation.setFirstTimestamp(ts);
 
     for (String prop : props)
     {

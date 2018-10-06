@@ -22,8 +22,7 @@ package es.um.nosql.s13e.NoSQLSchema;
  * @model
  * @generated
  */
-public interface Reference extends Association
-{
+public interface Reference extends Association {
   /**
    * Returns the value of the '<em><b>Opposite</b></em>' reference.
    * <!-- begin-user-doc -->

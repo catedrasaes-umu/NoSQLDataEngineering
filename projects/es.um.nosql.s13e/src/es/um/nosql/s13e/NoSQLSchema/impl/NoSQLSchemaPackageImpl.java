@@ -35,8 +35,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaPackage
-{
+public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaPackage {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -171,8 +170,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * @see #init()
    * @generated
    */
-  private NoSQLSchemaPackageImpl()
-  {
+  private NoSQLSchemaPackageImpl() {
     super(eNS_URI, NoSQLSchemaFactory.eINSTANCE);
   }
 
@@ -195,8 +193,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * @see #initializePackageContents()
    * @generated
    */
-  public static NoSQLSchemaPackage init()
-  {
+  public static NoSQLSchemaPackage init() {
     if (isInited) return (NoSQLSchemaPackage)EPackage.Registry.INSTANCE.getEPackage(NoSQLSchemaPackage.eNS_URI);
 
     // Obtain or create and register package
@@ -224,8 +221,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getNoSQLSchema()
-  {
+  public EClass getNoSQLSchema() {
     return noSQLSchemaEClass;
   }
 
@@ -234,8 +230,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getNoSQLSchema_Name()
-  {
+  public EAttribute getNoSQLSchema_Name() {
     return (EAttribute)noSQLSchemaEClass.getEStructuralFeatures().get(0);
   }
 
@@ -244,8 +239,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getNoSQLSchema_Entities()
-  {
+  public EReference getNoSQLSchema_Entities() {
     return (EReference)noSQLSchemaEClass.getEStructuralFeatures().get(1);
   }
 
@@ -254,8 +248,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getNoSQLSchema_RefClasses()
-  {
+  public EReference getNoSQLSchema_RefClasses() {
     return (EReference)noSQLSchemaEClass.getEStructuralFeatures().get(2);
   }
 
@@ -264,8 +257,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getEntityClass()
-  {
+  public EClass getEntityClass() {
     return entityClassEClass;
   }
 
@@ -274,8 +266,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getEntityClass_Root()
-  {
+  public EAttribute getEntityClass_Root() {
     return (EAttribute)entityClassEClass.getEStructuralFeatures().get(0);
   }
 
@@ -284,8 +275,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getStructuralVariation()
-  {
+  public EClass getStructuralVariation() {
     return structuralVariationEClass;
   }
 
@@ -294,8 +284,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStructuralVariation_VariationId()
-  {
+  public EAttribute getStructuralVariation_VariationId() {
     return (EAttribute)structuralVariationEClass.getEStructuralFeatures().get(0);
   }
 
@@ -304,8 +293,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getStructuralVariation_Properties()
-  {
+  public EReference getStructuralVariation_Properties() {
     return (EReference)structuralVariationEClass.getEStructuralFeatures().get(1);
   }
 
@@ -314,8 +302,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStructuralVariation_Count()
-  {
+  public EAttribute getStructuralVariation_Count() {
     return (EAttribute)structuralVariationEClass.getEStructuralFeatures().get(2);
   }
 
@@ -324,8 +311,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getStructuralVariation_Timestamp()
-  {
+  public EAttribute getStructuralVariation_FirstTimestamp() {
     return (EAttribute)structuralVariationEClass.getEStructuralFeatures().get(3);
   }
 
@@ -334,8 +320,16 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getProperty()
-  {
+  public EAttribute getStructuralVariation_LastTimestamp() {
+    return (EAttribute)structuralVariationEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getProperty() {
     return propertyEClass;
   }
 
@@ -344,8 +338,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getProperty_Name()
-  {
+  public EAttribute getProperty_Name() {
     return (EAttribute)propertyEClass.getEStructuralFeatures().get(0);
   }
 
@@ -354,8 +347,16 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAttribute()
-  {
+  public EAttribute getProperty_Optional() {
+    return (EAttribute)propertyEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getAttribute() {
     return attributeEClass;
   }
 
@@ -364,8 +365,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAttribute_Type()
-  {
+  public EReference getAttribute_Type() {
     return (EReference)attributeEClass.getEStructuralFeatures().get(0);
   }
 
@@ -374,8 +374,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getType()
-  {
+  public EClass getType() {
     return typeEClass;
   }
 
@@ -384,8 +383,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPList()
-  {
+  public EClass getPList() {
     return pListEClass;
   }
 
@@ -394,8 +392,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPList_ElementType()
-  {
+  public EReference getPList_ElementType() {
     return (EReference)pListEClass.getEStructuralFeatures().get(0);
   }
 
@@ -404,8 +401,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAssociation()
-  {
+  public EClass getAssociation() {
     return associationEClass;
   }
 
@@ -414,8 +410,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAssociation_LowerBound()
-  {
+  public EAttribute getAssociation_LowerBound() {
     return (EAttribute)associationEClass.getEStructuralFeatures().get(0);
   }
 
@@ -424,8 +419,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getAssociation_UpperBound()
-  {
+  public EAttribute getAssociation_UpperBound() {
     return (EAttribute)associationEClass.getEStructuralFeatures().get(1);
   }
 
@@ -434,8 +428,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getReference()
-  {
+  public EClass getReference() {
     return referenceEClass;
   }
 
@@ -444,8 +437,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getReference_Opposite()
-  {
+  public EReference getReference_Opposite() {
     return (EReference)referenceEClass.getEStructuralFeatures().get(0);
   }
 
@@ -454,8 +446,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getReference_RefsTo()
-  {
+  public EReference getReference_RefsTo() {
     return (EReference)referenceEClass.getEStructuralFeatures().get(1);
   }
 
@@ -464,8 +455,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getReference_OriginalType()
-  {
+  public EAttribute getReference_OriginalType() {
     return (EAttribute)referenceEClass.getEStructuralFeatures().get(2);
   }
 
@@ -474,8 +464,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getReference_Features()
-  {
+  public EReference getReference_Features() {
     return (EReference)referenceEClass.getEStructuralFeatures().get(3);
   }
 
@@ -484,8 +473,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getAggregate()
-  {
+  public EClass getAggregate() {
     return aggregateEClass;
   }
 
@@ -494,8 +482,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getAggregate_Aggregates()
-  {
+  public EReference getAggregate_Aggregates() {
     return (EReference)aggregateEClass.getEStructuralFeatures().get(0);
   }
 
@@ -504,8 +491,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPrimitiveType()
-  {
+  public EClass getPrimitiveType() {
     return primitiveTypeEClass;
   }
 
@@ -514,8 +500,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPrimitiveType_Name()
-  {
+  public EAttribute getPrimitiveType_Name() {
     return (EAttribute)primitiveTypeEClass.getEStructuralFeatures().get(0);
   }
 
@@ -524,8 +509,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getNull()
-  {
+  public EClass getNull() {
     return nullEClass;
   }
 
@@ -534,8 +518,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getReferenceClass()
-  {
+  public EClass getReferenceClass() {
     return referenceClassEClass;
   }
 
@@ -544,8 +527,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getClassifier()
-  {
+  public EClass getClassifier() {
     return classifierEClass;
   }
 
@@ -554,8 +536,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getClassifier_Name()
-  {
+  public EAttribute getClassifier_Name() {
     return (EAttribute)classifierEClass.getEStructuralFeatures().get(0);
   }
 
@@ -564,8 +545,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClassifier_Parents()
-  {
+  public EReference getClassifier_Parents() {
     return (EReference)classifierEClass.getEStructuralFeatures().get(1);
   }
 
@@ -574,8 +554,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getClassifier_Variations()
-  {
+  public EReference getClassifier_Variations() {
     return (EReference)classifierEClass.getEStructuralFeatures().get(2);
   }
 
@@ -584,8 +563,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPMap()
-  {
+  public EClass getPMap() {
     return pMapEClass;
   }
 
@@ -594,8 +572,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPMap_KeyType()
-  {
+  public EReference getPMap_KeyType() {
     return (EReference)pMapEClass.getEStructuralFeatures().get(0);
   }
 
@@ -604,8 +581,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPMap_ValueType()
-  {
+  public EReference getPMap_ValueType() {
     return (EReference)pMapEClass.getEStructuralFeatures().get(1);
   }
 
@@ -614,8 +590,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPSet()
-  {
+  public EClass getPSet() {
     return pSetEClass;
   }
 
@@ -624,8 +599,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPSet_ElementType()
-  {
+  public EReference getPSet_ElementType() {
     return (EReference)pSetEClass.getEStructuralFeatures().get(0);
   }
 
@@ -634,8 +608,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPTuple()
-  {
+  public EClass getPTuple() {
     return pTupleEClass;
   }
 
@@ -644,8 +617,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPTuple_Elements()
-  {
+  public EReference getPTuple_Elements() {
     return (EReference)pTupleEClass.getEStructuralFeatures().get(0);
   }
 
@@ -654,8 +626,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public NoSQLSchemaFactory getNoSQLSchemaFactory()
-  {
+  public NoSQLSchemaFactory getNoSQLSchemaFactory() {
     return (NoSQLSchemaFactory)getEFactoryInstance();
   }
 
@@ -673,8 +644,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public void createPackageContents()
-  {
+  public void createPackageContents() {
     if (isCreated) return;
     isCreated = true;
 
@@ -691,10 +661,12 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
     createEAttribute(structuralVariationEClass, STRUCTURAL_VARIATION__VARIATION_ID);
     createEReference(structuralVariationEClass, STRUCTURAL_VARIATION__PROPERTIES);
     createEAttribute(structuralVariationEClass, STRUCTURAL_VARIATION__COUNT);
-    createEAttribute(structuralVariationEClass, STRUCTURAL_VARIATION__TIMESTAMP);
+    createEAttribute(structuralVariationEClass, STRUCTURAL_VARIATION__FIRST_TIMESTAMP);
+    createEAttribute(structuralVariationEClass, STRUCTURAL_VARIATION__LAST_TIMESTAMP);
 
     propertyEClass = createEClass(PROPERTY);
     createEAttribute(propertyEClass, PROPERTY__NAME);
+    createEAttribute(propertyEClass, PROPERTY__OPTIONAL);
 
     attributeEClass = createEClass(ATTRIBUTE);
     createEReference(attributeEClass, ATTRIBUTE__TYPE);
@@ -754,8 +726,7 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
    * <!-- end-user-doc -->
    * @generated
    */
-  public void initializePackageContents()
-  {
+  public void initializePackageContents() {
     if (isInitialized) return;
     isInitialized = true;
 
@@ -795,10 +766,12 @@ public class NoSQLSchemaPackageImpl extends EPackageImpl implements NoSQLSchemaP
     initEAttribute(getStructuralVariation_VariationId(), ecorePackage.getEInt(), "variationId", null, 1, 1, StructuralVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getStructuralVariation_Properties(), this.getProperty(), null, "properties", null, 1, -1, StructuralVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getStructuralVariation_Count(), ecorePackage.getELong(), "count", "0", 0, 1, StructuralVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getStructuralVariation_Timestamp(), ecorePackage.getELong(), "timestamp", null, 0, 1, StructuralVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStructuralVariation_FirstTimestamp(), ecorePackage.getELong(), "firstTimestamp", null, 0, 1, StructuralVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getStructuralVariation_LastTimestamp(), ecorePackage.getELong(), "lastTimestamp", null, 0, 1, StructuralVariation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(propertyEClass, Property.class, "Property", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getProperty_Name(), ecorePackage.getEString(), "name", null, 1, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getProperty_Optional(), ecorePackage.getEBoolean(), "optional", "false", 1, 1, Property.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(attributeEClass, Attribute.class, "Attribute", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getAttribute_Type(), this.getType(), null, "type", null, 1, 1, Attribute.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

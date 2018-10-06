@@ -21,12 +21,12 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  * </p>
  * <ul>
  *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.PropertyImpl#getName <em>Name</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.PropertyImpl#isOptional <em>Optional</em>}</li>
  * </ul>
  *
  * @generated
  */
-public abstract class PropertyImpl extends MinimalEObjectImpl.Container implements Property
-{
+public abstract class PropertyImpl extends MinimalEObjectImpl.Container implements Property {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -48,12 +48,31 @@ public abstract class PropertyImpl extends MinimalEObjectImpl.Container implemen
   protected String name = NAME_EDEFAULT;
 
   /**
+   * The default value of the '{@link #isOptional() <em>Optional</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isOptional()
+   * @generated
+   * @ordered
+   */
+  protected static final boolean OPTIONAL_EDEFAULT = false;
+
+  /**
+   * The cached value of the '{@link #isOptional() <em>Optional</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #isOptional()
+   * @generated
+   * @ordered
+   */
+  protected boolean optional = OPTIONAL_EDEFAULT;
+
+  /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PropertyImpl()
-  {
+  protected PropertyImpl() {
     super();
   }
 
@@ -63,8 +82,7 @@ public abstract class PropertyImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return NoSQLSchemaPackage.Literals.PROPERTY;
   }
 
@@ -73,8 +91,7 @@ public abstract class PropertyImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
-  {
+  public String getName() {
     return name;
   }
 
@@ -83,8 +100,7 @@ public abstract class PropertyImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
-  {
+  public void setName(String newName) {
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
@@ -96,13 +112,34 @@ public abstract class PropertyImpl extends MinimalEObjectImpl.Container implemen
    * <!-- end-user-doc -->
    * @generated
    */
+  public boolean isOptional() {
+    return optional;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public void setOptional(boolean newOptional) {
+    boolean oldOptional = optional;
+    optional = newOptional;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.PROPERTY__OPTIONAL, oldOptional, optional));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PROPERTY__NAME:
         return getName();
+      case NoSQLSchemaPackage.PROPERTY__OPTIONAL:
+        return isOptional();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -113,12 +150,13 @@ public abstract class PropertyImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PROPERTY__NAME:
         setName((String)newValue);
+        return;
+      case NoSQLSchemaPackage.PROPERTY__OPTIONAL:
+        setOptional((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -130,12 +168,13 @@ public abstract class PropertyImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PROPERTY__NAME:
         setName(NAME_EDEFAULT);
+        return;
+      case NoSQLSchemaPackage.PROPERTY__OPTIONAL:
+        setOptional(OPTIONAL_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -147,12 +186,12 @@ public abstract class PropertyImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PROPERTY__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case NoSQLSchemaPackage.PROPERTY__OPTIONAL:
+        return optional != OPTIONAL_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -163,13 +202,14 @@ public abstract class PropertyImpl extends MinimalEObjectImpl.Container implemen
    * @generated
    */
   @Override
-  public String toString()
-  {
+  public String toString() {
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (name: ");
     result.append(name);
+    result.append(", optional: ");
+    result.append(optional);
     result.append(')');
     return result.toString();
   }

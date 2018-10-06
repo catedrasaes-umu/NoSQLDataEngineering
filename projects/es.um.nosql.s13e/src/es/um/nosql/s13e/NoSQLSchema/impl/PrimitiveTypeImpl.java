@@ -24,8 +24,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
-{
+public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -51,8 +50,7 @@ public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PrimitiveTypeImpl()
-  {
+  protected PrimitiveTypeImpl() {
     super();
   }
 
@@ -62,8 +60,7 @@ public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return NoSQLSchemaPackage.Literals.PRIMITIVE_TYPE;
   }
 
@@ -72,8 +69,7 @@ public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
-  {
+  public String getName() {
     return name;
   }
 
@@ -82,8 +78,7 @@ public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
-  {
+  public void setName(String newName) {
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
@@ -96,10 +91,8 @@ public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PRIMITIVE_TYPE__NAME:
         return getName();
     }
@@ -112,10 +105,8 @@ public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
    * @generated
    */
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PRIMITIVE_TYPE__NAME:
         setName((String)newValue);
         return;
@@ -129,10 +120,8 @@ public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PRIMITIVE_TYPE__NAME:
         setName(NAME_EDEFAULT);
         return;
@@ -146,10 +135,8 @@ public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.PRIMITIVE_TYPE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
     }
@@ -162,8 +149,7 @@ public class PrimitiveTypeImpl extends TypeImpl implements PrimitiveType
    * @generated
    */
   @Override
-  public String toString()
-  {
+  public String toString() {
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());

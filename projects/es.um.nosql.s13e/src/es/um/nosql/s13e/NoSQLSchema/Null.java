@@ -13,6 +13,5 @@ package es.um.nosql.s13e.NoSQLSchema;
  * @model
  * @generated
  */
-public interface Null extends Property
-{
+public interface Null extends Property {
 } // Null

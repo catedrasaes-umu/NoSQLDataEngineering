@@ -22,8 +22,7 @@ import org.eclipse.emf.ecore.util.Switch;
  * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage
  * @generated
  */
-public class NoSQLSchemaSwitch<T> extends Switch<T>
-{
+public class NoSQLSchemaSwitch<T> extends Switch<T> {
   /**
    * The cached model package
    * <!-- begin-user-doc -->
@@ -38,10 +37,8 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * <!-- end-user-doc -->
    * @generated
    */
-  public NoSQLSchemaSwitch()
-  {
-    if (modelPackage == null)
-    {
+  public NoSQLSchemaSwitch() {
+    if (modelPackage == null) {
       modelPackage = NoSQLSchemaPackage.eINSTANCE;
     }
   }
@@ -55,8 +52,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @generated
    */
   @Override
-  protected boolean isSwitchFor(EPackage ePackage)
-  {
+  protected boolean isSwitchFor(EPackage ePackage) {
     return ePackage == modelPackage;
   }
 
@@ -68,72 +64,61 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @generated
    */
   @Override
-  protected T doSwitch(int classifierID, EObject theEObject)
-  {
-    switch (classifierID)
-    {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA:
-      {
+  protected T doSwitch(int classifierID, EObject theEObject) {
+    switch (classifierID) {
+      case NoSQLSchemaPackage.NO_SQL_SCHEMA: {
         NoSQLSchema noSQLSchema = (NoSQLSchema)theEObject;
         T result = caseNoSQLSchema(noSQLSchema);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.ENTITY_CLASS:
-      {
+      case NoSQLSchemaPackage.ENTITY_CLASS: {
         EntityClass entityClass = (EntityClass)theEObject;
         T result = caseEntityClass(entityClass);
         if (result == null) result = caseClassifier(entityClass);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.STRUCTURAL_VARIATION:
-      {
+      case NoSQLSchemaPackage.STRUCTURAL_VARIATION: {
         StructuralVariation structuralVariation = (StructuralVariation)theEObject;
         T result = caseStructuralVariation(structuralVariation);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.PROPERTY:
-      {
+      case NoSQLSchemaPackage.PROPERTY: {
         Property property = (Property)theEObject;
         T result = caseProperty(property);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.ATTRIBUTE:
-      {
+      case NoSQLSchemaPackage.ATTRIBUTE: {
         Attribute attribute = (Attribute)theEObject;
         T result = caseAttribute(attribute);
         if (result == null) result = caseProperty(attribute);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.TYPE:
-      {
+      case NoSQLSchemaPackage.TYPE: {
         Type type = (Type)theEObject;
         T result = caseType(type);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.PLIST:
-      {
+      case NoSQLSchemaPackage.PLIST: {
         PList pList = (PList)theEObject;
         T result = casePList(pList);
         if (result == null) result = caseType(pList);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.ASSOCIATION:
-      {
+      case NoSQLSchemaPackage.ASSOCIATION: {
         Association association = (Association)theEObject;
         T result = caseAssociation(association);
         if (result == null) result = caseProperty(association);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.REFERENCE:
-      {
+      case NoSQLSchemaPackage.REFERENCE: {
         Reference reference = (Reference)theEObject;
         T result = caseReference(reference);
         if (result == null) result = caseAssociation(reference);
@@ -141,8 +126,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.AGGREGATE:
-      {
+      case NoSQLSchemaPackage.AGGREGATE: {
         Aggregate aggregate = (Aggregate)theEObject;
         T result = caseAggregate(aggregate);
         if (result == null) result = caseAssociation(aggregate);
@@ -150,55 +134,48 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.PRIMITIVE_TYPE:
-      {
+      case NoSQLSchemaPackage.PRIMITIVE_TYPE: {
         PrimitiveType primitiveType = (PrimitiveType)theEObject;
         T result = casePrimitiveType(primitiveType);
         if (result == null) result = caseType(primitiveType);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.NULL:
-      {
+      case NoSQLSchemaPackage.NULL: {
         Null null_ = (Null)theEObject;
         T result = caseNull(null_);
         if (result == null) result = caseProperty(null_);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.REFERENCE_CLASS:
-      {
+      case NoSQLSchemaPackage.REFERENCE_CLASS: {
         ReferenceClass referenceClass = (ReferenceClass)theEObject;
         T result = caseReferenceClass(referenceClass);
         if (result == null) result = caseClassifier(referenceClass);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.CLASSIFIER:
-      {
+      case NoSQLSchemaPackage.CLASSIFIER: {
         Classifier classifier = (Classifier)theEObject;
         T result = caseClassifier(classifier);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.PMAP:
-      {
+      case NoSQLSchemaPackage.PMAP: {
         PMap pMap = (PMap)theEObject;
         T result = casePMap(pMap);
         if (result == null) result = caseType(pMap);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.PSET:
-      {
+      case NoSQLSchemaPackage.PSET: {
         PSet pSet = (PSet)theEObject;
         T result = casePSet(pSet);
         if (result == null) result = caseType(pSet);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case NoSQLSchemaPackage.PTUPLE:
-      {
+      case NoSQLSchemaPackage.PTUPLE: {
         PTuple pTuple = (PTuple)theEObject;
         T result = casePTuple(pTuple);
         if (result == null) result = caseType(pTuple);
@@ -220,8 +197,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseNoSQLSchema(NoSQLSchema object)
-  {
+  public T caseNoSQLSchema(NoSQLSchema object) {
     return null;
   }
 
@@ -236,8 +212,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEntityClass(EntityClass object)
-  {
+  public T caseEntityClass(EntityClass object) {
     return null;
   }
 
@@ -252,8 +227,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseStructuralVariation(StructuralVariation object)
-  {
+  public T caseStructuralVariation(StructuralVariation object) {
     return null;
   }
 
@@ -268,8 +242,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseProperty(Property object)
-  {
+  public T caseProperty(Property object) {
     return null;
   }
 
@@ -284,8 +257,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAttribute(Attribute object)
-  {
+  public T caseAttribute(Attribute object) {
     return null;
   }
 
@@ -300,8 +272,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseType(Type object)
-  {
+  public T caseType(Type object) {
     return null;
   }
 
@@ -316,8 +287,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePList(PList object)
-  {
+  public T casePList(PList object) {
     return null;
   }
 
@@ -332,8 +302,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAssociation(Association object)
-  {
+  public T caseAssociation(Association object) {
     return null;
   }
 
@@ -348,8 +317,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseReference(Reference object)
-  {
+  public T caseReference(Reference object) {
     return null;
   }
 
@@ -364,8 +332,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAggregate(Aggregate object)
-  {
+  public T caseAggregate(Aggregate object) {
     return null;
   }
 
@@ -380,8 +347,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePrimitiveType(PrimitiveType object)
-  {
+  public T casePrimitiveType(PrimitiveType object) {
     return null;
   }
 
@@ -396,8 +362,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseNull(Null object)
-  {
+  public T caseNull(Null object) {
     return null;
   }
 
@@ -412,8 +377,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseReferenceClass(ReferenceClass object)
-  {
+  public T caseReferenceClass(ReferenceClass object) {
     return null;
   }
 
@@ -428,8 +392,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseClassifier(Classifier object)
-  {
+  public T caseClassifier(Classifier object) {
     return null;
   }
 
@@ -444,8 +407,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePMap(PMap object)
-  {
+  public T casePMap(PMap object) {
     return null;
   }
 
@@ -460,8 +422,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePSet(PSet object)
-  {
+  public T casePSet(PSet object) {
     return null;
   }
 
@@ -476,8 +437,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePTuple(PTuple object)
-  {
+  public T casePTuple(PTuple object) {
     return null;
   }
 
@@ -493,8 +453,7 @@ public class NoSQLSchemaSwitch<T> extends Switch<T>
    * @generated
    */
   @Override
-  public T defaultCase(EObject object)
-  {
+  public T defaultCase(EObject object) {
     return null;
   }
 

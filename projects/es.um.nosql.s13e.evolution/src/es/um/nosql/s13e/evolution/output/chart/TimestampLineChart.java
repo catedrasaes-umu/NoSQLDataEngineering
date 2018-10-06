@@ -53,10 +53,10 @@ public class TimestampLineChart extends ApplicationFrame
 
     for (StructuralVariation var : variations)
     {
-      if (var.getTimestamp() == 0)
+      if (var.getFirstTimestamp() == 0)
         continue;
 
-      String formattedTs = DATE_FORMATTER.format(new Date(var.getTimestamp()));
+      String formattedTs = DATE_FORMATTER.format(new Date(var.getFirstTimestamp()));
       if (plotMap.containsKey(formattedTs))
         plotMap.put(formattedTs, plotMap.get(formattedTs) + 1);
       else

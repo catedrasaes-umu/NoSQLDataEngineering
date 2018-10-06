@@ -27,8 +27,7 @@ import org.eclipse.emf.ecore.util.EObjectResolvingEList;
  *
  * @generated
  */
-public class AggregateImpl extends AssociationImpl implements Aggregate
-{
+public class AggregateImpl extends AssociationImpl implements Aggregate {
   /**
    * The cached value of the '{@link #getAggregates() <em>Aggregates</em>}' reference list.
    * <!-- begin-user-doc -->
@@ -44,8 +43,7 @@ public class AggregateImpl extends AssociationImpl implements Aggregate
    * <!-- end-user-doc -->
    * @generated
    */
-  protected AggregateImpl()
-  {
+  protected AggregateImpl() {
     super();
   }
 
@@ -55,8 +53,7 @@ public class AggregateImpl extends AssociationImpl implements Aggregate
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return NoSQLSchemaPackage.Literals.AGGREGATE;
   }
 
@@ -65,10 +62,8 @@ public class AggregateImpl extends AssociationImpl implements Aggregate
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<StructuralVariation> getAggregates()
-  {
-    if (aggregates == null)
-    {
+  public EList<StructuralVariation> getAggregates() {
+    if (aggregates == null) {
       aggregates = new EObjectResolvingEList<StructuralVariation>(StructuralVariation.class, this, NoSQLSchemaPackage.AGGREGATE__AGGREGATES);
     }
     return aggregates;
@@ -80,10 +75,8 @@ public class AggregateImpl extends AssociationImpl implements Aggregate
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case NoSQLSchemaPackage.AGGREGATE__AGGREGATES:
         return getAggregates();
     }
@@ -97,10 +90,8 @@ public class AggregateImpl extends AssociationImpl implements Aggregate
    */
   @SuppressWarnings("unchecked")
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case NoSQLSchemaPackage.AGGREGATE__AGGREGATES:
         getAggregates().clear();
         getAggregates().addAll((Collection<? extends StructuralVariation>)newValue);
@@ -115,10 +106,8 @@ public class AggregateImpl extends AssociationImpl implements Aggregate
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.AGGREGATE__AGGREGATES:
         getAggregates().clear();
         return;
@@ -132,10 +121,8 @@ public class AggregateImpl extends AssociationImpl implements Aggregate
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.AGGREGATE__AGGREGATES:
         return aggregates != null && !aggregates.isEmpty();
     }

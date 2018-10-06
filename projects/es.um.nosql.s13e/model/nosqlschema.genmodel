@@ -7,8 +7,7 @@
     editPluginID="es.um.nosql.s13e.edit" editorPluginID="es.um.nosql.s13e.editor"
     operationReflection="true" importOrganizing="true">
   <foreignModel>nosqlschema.ecore</foreignModel>
-  <genPackages prefix="NoSQLSchema" basePackage="es.um.nosql.s13e" disposableProviderFactory="true"
-      ecorePackage="nosqlschema.ecore#/">
+  <genPackages prefix="NoSQLSchema" basePackage="es.um.nosql.s13e" disposableProviderFactory="true" ecorePackage="nosqlschema.ecore#/">
     <genClasses ecoreClass="nosqlschema.ecore#//NoSQLSchema">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//NoSQLSchema/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//NoSQLSchema/entities"/>
@@ -21,10 +20,12 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//StructuralVariation/variationId"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//StructuralVariation/properties"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//StructuralVariation/count"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//StructuralVariation/timestamp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//StructuralVariation/firstTimestamp"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//StructuralVariation/lastTimestamp"/>
     </genClasses>
     <genClasses image="false" ecoreClass="nosqlschema.ecore#//Property">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//Property/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//Property/optional"/>
     </genClasses>
     <genClasses ecoreClass="nosqlschema.ecore#//Attribute">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Attribute/type"/>

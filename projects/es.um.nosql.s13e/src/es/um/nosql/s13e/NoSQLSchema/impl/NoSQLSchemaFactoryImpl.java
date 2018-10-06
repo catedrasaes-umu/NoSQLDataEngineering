@@ -18,26 +18,21 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaFactory
-{
+public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaFactory {
   /**
    * Creates the default factory implementation.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  public static NoSQLSchemaFactory init()
-  {
-    try
-    {
+  public static NoSQLSchemaFactory init() {
+    try {
       NoSQLSchemaFactory theNoSQLSchemaFactory = (NoSQLSchemaFactory)EPackage.Registry.INSTANCE.getEFactory(NoSQLSchemaPackage.eNS_URI);
-      if (theNoSQLSchemaFactory != null)
-      {
+      if (theNoSQLSchemaFactory != null) {
         return theNoSQLSchemaFactory;
       }
     }
-    catch (Exception exception)
-    {
+    catch (Exception exception) {
       EcorePlugin.INSTANCE.log(exception);
     }
     return new NoSQLSchemaFactoryImpl();
@@ -49,8 +44,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public NoSQLSchemaFactoryImpl()
-  {
+  public NoSQLSchemaFactoryImpl() {
     super();
   }
 
@@ -60,10 +54,8 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * @generated
    */
   @Override
-  public EObject create(EClass eClass)
-  {
-    switch (eClass.getClassifierID())
-    {
+  public EObject create(EClass eClass) {
+    switch (eClass.getClassifierID()) {
       case NoSQLSchemaPackage.NO_SQL_SCHEMA: return createNoSQLSchema();
       case NoSQLSchemaPackage.ENTITY_CLASS: return createEntityClass();
       case NoSQLSchemaPackage.STRUCTURAL_VARIATION: return createStructuralVariation();
@@ -87,8 +79,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public NoSQLSchema createNoSQLSchema()
-  {
+  public NoSQLSchema createNoSQLSchema() {
     NoSQLSchemaImpl noSQLSchema = new NoSQLSchemaImpl();
     return noSQLSchema;
   }
@@ -98,8 +89,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public EntityClass createEntityClass()
-  {
+  public EntityClass createEntityClass() {
     EntityClassImpl entityClass = new EntityClassImpl();
     return entityClass;
   }
@@ -109,8 +99,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public StructuralVariation createStructuralVariation()
-  {
+  public StructuralVariation createStructuralVariation() {
     StructuralVariationImpl structuralVariation = new StructuralVariationImpl();
     return structuralVariation;
   }
@@ -120,8 +109,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public Attribute createAttribute()
-  {
+  public Attribute createAttribute() {
     AttributeImpl attribute = new AttributeImpl();
     return attribute;
   }
@@ -131,8 +119,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public PList createPList()
-  {
+  public PList createPList() {
     PListImpl pList = new PListImpl();
     return pList;
   }
@@ -142,8 +129,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public Reference createReference()
-  {
+  public Reference createReference() {
     ReferenceImpl reference = new ReferenceImpl();
     return reference;
   }
@@ -153,8 +139,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public Aggregate createAggregate()
-  {
+  public Aggregate createAggregate() {
     AggregateImpl aggregate = new AggregateImpl();
     return aggregate;
   }
@@ -164,8 +149,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public PrimitiveType createPrimitiveType()
-  {
+  public PrimitiveType createPrimitiveType() {
     PrimitiveTypeImpl primitiveType = new PrimitiveTypeImpl();
     return primitiveType;
   }
@@ -175,8 +159,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public Null createNull()
-  {
+  public Null createNull() {
     NullImpl null_ = new NullImpl();
     return null_;
   }
@@ -186,8 +169,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public ReferenceClass createReferenceClass()
-  {
+  public ReferenceClass createReferenceClass() {
     ReferenceClassImpl referenceClass = new ReferenceClassImpl();
     return referenceClass;
   }
@@ -197,8 +179,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public PMap createPMap()
-  {
+  public PMap createPMap() {
     PMapImpl pMap = new PMapImpl();
     return pMap;
   }
@@ -208,8 +189,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public PSet createPSet()
-  {
+  public PSet createPSet() {
     PSetImpl pSet = new PSetImpl();
     return pSet;
   }
@@ -219,8 +199,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public PTuple createPTuple()
-  {
+  public PTuple createPTuple() {
     PTupleImpl pTuple = new PTupleImpl();
     return pTuple;
   }
@@ -230,8 +209,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * <!-- end-user-doc -->
    * @generated
    */
-  public NoSQLSchemaPackage getNoSQLSchemaPackage()
-  {
+  public NoSQLSchemaPackage getNoSQLSchemaPackage() {
     return (NoSQLSchemaPackage)getEPackage();
   }
 
@@ -242,8 +220,7 @@ public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaF
    * @generated
    */
   @Deprecated
-  public static NoSQLSchemaPackage getPackage()
-  {
+  public static NoSQLSchemaPackage getPackage() {
     return NoSQLSchemaPackage.eINSTANCE;
   }
 

@@ -30,8 +30,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class ReferenceImpl extends AssociationImpl implements Reference
-{
+public class ReferenceImpl extends AssociationImpl implements Reference {
   /**
    * The cached value of the '{@link #getOpposite() <em>Opposite</em>}' reference.
    * <!-- begin-user-doc -->
@@ -87,8 +86,7 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ReferenceImpl()
-  {
+  protected ReferenceImpl() {
     super();
   }
 
@@ -98,8 +96,7 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return NoSQLSchemaPackage.Literals.REFERENCE;
   }
 
@@ -108,14 +105,11 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * <!-- end-user-doc -->
    * @generated
    */
-  public Reference getOpposite()
-  {
-    if (opposite != null && opposite.eIsProxy())
-    {
+  public Reference getOpposite() {
+    if (opposite != null && opposite.eIsProxy()) {
       InternalEObject oldOpposite = (InternalEObject)opposite;
       opposite = (Reference)eResolveProxy(oldOpposite);
-      if (opposite != oldOpposite)
-      {
+      if (opposite != oldOpposite) {
         if (eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, NoSQLSchemaPackage.REFERENCE__OPPOSITE, oldOpposite, opposite));
       }
@@ -128,8 +122,7 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * <!-- end-user-doc -->
    * @generated
    */
-  public Reference basicGetOpposite()
-  {
+  public Reference basicGetOpposite() {
     return opposite;
   }
 
@@ -138,8 +131,7 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setOpposite(Reference newOpposite)
-  {
+  public void setOpposite(Reference newOpposite) {
     Reference oldOpposite = opposite;
     opposite = newOpposite;
     if (eNotificationRequired())
@@ -151,14 +143,11 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * <!-- end-user-doc -->
    * @generated
    */
-  public EntityClass getRefsTo()
-  {
-    if (refsTo != null && refsTo.eIsProxy())
-    {
+  public EntityClass getRefsTo() {
+    if (refsTo != null && refsTo.eIsProxy()) {
       InternalEObject oldRefsTo = (InternalEObject)refsTo;
       refsTo = (EntityClass)eResolveProxy(oldRefsTo);
-      if (refsTo != oldRefsTo)
-      {
+      if (refsTo != oldRefsTo) {
         if (eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, NoSQLSchemaPackage.REFERENCE__REFS_TO, oldRefsTo, refsTo));
       }
@@ -171,8 +160,7 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * <!-- end-user-doc -->
    * @generated
    */
-  public EntityClass basicGetRefsTo()
-  {
+  public EntityClass basicGetRefsTo() {
     return refsTo;
   }
 
@@ -181,8 +169,7 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setRefsTo(EntityClass newRefsTo)
-  {
+  public void setRefsTo(EntityClass newRefsTo) {
     EntityClass oldRefsTo = refsTo;
     refsTo = newRefsTo;
     if (eNotificationRequired())
@@ -194,8 +181,7 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getOriginalType()
-  {
+  public String getOriginalType() {
     return originalType;
   }
 
@@ -204,8 +190,7 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setOriginalType(String newOriginalType)
-  {
+  public void setOriginalType(String newOriginalType) {
     String oldOriginalType = originalType;
     originalType = newOriginalType;
     if (eNotificationRequired())
@@ -217,14 +202,11 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * <!-- end-user-doc -->
    * @generated
    */
-  public StructuralVariation getFeatures()
-  {
-    if (features != null && features.eIsProxy())
-    {
+  public StructuralVariation getFeatures() {
+    if (features != null && features.eIsProxy()) {
       InternalEObject oldFeatures = (InternalEObject)features;
       features = (StructuralVariation)eResolveProxy(oldFeatures);
-      if (features != oldFeatures)
-      {
+      if (features != oldFeatures) {
         if (eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, NoSQLSchemaPackage.REFERENCE__FEATURES, oldFeatures, features));
       }
@@ -237,8 +219,7 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * <!-- end-user-doc -->
    * @generated
    */
-  public StructuralVariation basicGetFeatures()
-  {
+  public StructuralVariation basicGetFeatures() {
     return features;
   }
 
@@ -247,8 +228,7 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setFeatures(StructuralVariation newFeatures)
-  {
+  public void setFeatures(StructuralVariation newFeatures) {
     StructuralVariation oldFeatures = features;
     features = newFeatures;
     if (eNotificationRequired())
@@ -261,10 +241,8 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case NoSQLSchemaPackage.REFERENCE__OPPOSITE:
         if (resolve) return getOpposite();
         return basicGetOpposite();
@@ -286,10 +264,8 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * @generated
    */
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case NoSQLSchemaPackage.REFERENCE__OPPOSITE:
         setOpposite((Reference)newValue);
         return;
@@ -312,10 +288,8 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.REFERENCE__OPPOSITE:
         setOpposite((Reference)null);
         return;
@@ -338,10 +312,8 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case NoSQLSchemaPackage.REFERENCE__OPPOSITE:
         return opposite != null;
       case NoSQLSchemaPackage.REFERENCE__REFS_TO:
@@ -360,8 +332,7 @@ public class ReferenceImpl extends AssociationImpl implements Reference
    * @generated
    */
   @Override
-  public String toString()
-  {
+  public String toString() {
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
