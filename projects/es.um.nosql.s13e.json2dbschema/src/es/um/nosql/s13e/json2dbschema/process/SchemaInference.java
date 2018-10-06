@@ -70,7 +70,8 @@ public class SchemaInference
     IAJObject triple = iterator.next().asObject();
     return Optional.ofNullable(triple.get("schema")).filter(IAJElement::isObject).isPresent() &&
         Optional.ofNullable(triple.get("count")).filter(IAJElement::isNumber).isPresent() &&
-        Optional.ofNullable(triple.get("timestamp")).filter(IAJElement::isNumber).isPresent();
+        Optional.ofNullable(triple.get("firstTimestamp")).filter(IAJElement::isNumber).isPresent() &&
+        Optional.ofNullable(triple.get("lastTimestamp")).filter(IAJElement::isNumber).isPresent();
   }
 
   private void innerCountAndTimestamps(Set<String> innerSchemaNames, Map<String, List<SchemaComponent>> rawEntities)
@@ -107,7 +108,7 @@ public class SchemaInference
   public Map<String, List<SchemaComponent>> infer()
   {
     theArray.forEach(n -> {
-      infer(n.get("schema"), Optional.<String>empty(), ROOT_OBJECT, n.get("count").asLong(), n.get("timestamp").asLong());
+      infer(n.get("schema"), Optional.<String>empty(), ROOT_OBJECT, n.get("count").asLong(), n.get("firstTimestamp").asLong(), n.get("lastTimestamp").asLong());
     });
 
     joiner.joinAggregatedEntities(rawEntities, innerSchemaNames);
@@ -120,10 +121,10 @@ public class SchemaInference
     return rawEntities;
   }
 
-  private SchemaComponent infer(IAJElement n, Optional<String> elementName, boolean isRoot, long count, long timestamp)
+  private SchemaComponent infer(IAJElement n, Optional<String> elementName, boolean isRoot, long count, long firstTimestamp, long lastTimestamp)
   {
     if (n.isObject())
-      return infer(n.asObject(), elementName, isRoot, count, timestamp);
+      return infer(n.asObject(), elementName, isRoot, count, firstTimestamp, lastTimestamp);
 
     if (n.isArray())
       return infer(n.asArray(), elementName.get());
@@ -173,7 +174,7 @@ public class SchemaInference
 
     // Recursive phase
     schema.addAll(fields.stream()
-        .map(f -> Pair.of(f, infer(n.get(f), Optional.of(f), NON_ROOT_OBJECT, 0, 0)))::iterator);
+        .map(f -> Pair.of(f, infer(n.get(f), Optional.of(f), NON_ROOT_OBJECT, 0, 0, 0)))::iterator);
 
     // Now that we have the complete schema, try to compare it with any of the variations in the map
     List<SchemaComponent> entityVariations = rawEntities.get(schema.entityName);
@@ -216,7 +217,7 @@ public class SchemaInference
     // This way we simplify Aggr{V1, V2, V2, V2...V2} to Aggr{V1, V2}
     n.forEach(e ->
     {
-      SchemaComponent sComponent = infer(e, name, NON_ROOT_OBJECT, 0, 0);
+      SchemaComponent sComponent = infer(e, name, NON_ROOT_OBJECT, 0, 0, 0);
 
       if (!schema.getInners().stream().anyMatch(sc -> sc.equals(sComponent)))
         schema.add(sComponent);

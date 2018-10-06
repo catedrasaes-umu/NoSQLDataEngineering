@@ -25,7 +25,8 @@ public class MongoDBStreamAdapter extends AbstractStreamAdapter
 
       jObj.add("schema", parser.parse(docValue.getString("schema")));
       jObj.addProperty("count", docValue.getDouble("count").intValue());
-      jObj.addProperty("timestamp", docValue.getDouble("timestamp").longValue());
+      jObj.addProperty("firstTimestamp", docValue.getDouble("firstTimestamp").longValue());
+      jObj.addProperty("lastTimestamp", docValue.getDouble("lastTimestamp").longValue());
       jObj.getAsJsonObject("schema").addProperty("_type", e.getKey().substring(0, 1).toUpperCase() + e.getKey().substring(1));
 
       return jObj;
