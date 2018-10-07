@@ -54,24 +54,29 @@ public class CountTimestampTest
     Assert.assertEquals(2, entity.getVariations().size());
     Assert.assertEquals(1, entity.getVariations().get(0).getVariationId());
     Assert.assertEquals(1, entity.getVariations().get(0).getCount());
-    Assert.assertNotEquals(0, entity.getVariations().get(0).getFirstTimestamp());
+    Assert.assertEquals(0, entity.getVariations().get(0).getFirstTimestamp());
+    Assert.assertEquals(0, entity.getVariations().get(0).getLastTimestamp());
     Assert.assertEquals(2, entity.getVariations().get(1).getVariationId());
     Assert.assertEquals(1, entity.getVariations().get(1).getCount());
-    Assert.assertNotEquals(0, entity.getVariations().get(1).getFirstTimestamp());
+    Assert.assertEquals(0, entity.getVariations().get(1).getFirstTimestamp());
+    Assert.assertEquals(0, entity.getVariations().get(1).getLastTimestamp());
 
     entity = nosqlschema.getEntities().get(1);
     Assert.assertEquals(1, entity.getVariations().size());
     Assert.assertEquals(1, entity.getVariations().get(0).getVariationId());
     Assert.assertEquals(2, entity.getVariations().get(0).getCount());
-    Assert.assertNotEquals(0, entity.getVariations().get(0).getFirstTimestamp());
+    Assert.assertEquals(0, entity.getVariations().get(0).getFirstTimestamp());
+    Assert.assertEquals(0, entity.getVariations().get(0).getLastTimestamp());
 
     entity = nosqlschema.getEntities().get(2);
     Assert.assertEquals(2, entity.getVariations().size());
     Assert.assertEquals(1, entity.getVariations().get(0).getVariationId());
     Assert.assertEquals(8, entity.getVariations().get(0).getCount());
-    Assert.assertNotEquals(0, entity.getVariations().get(0).getFirstTimestamp());
+    Assert.assertEquals(0, entity.getVariations().get(0).getFirstTimestamp());
+    Assert.assertEquals(0, entity.getVariations().get(0).getLastTimestamp());
     Assert.assertEquals(2, entity.getVariations().get(1).getVariationId());
     Assert.assertEquals(3, entity.getVariations().get(1).getCount());
-    Assert.assertNotEquals(0, entity.getVariations().get(1).getFirstTimestamp());
+    Assert.assertEquals(0, entity.getVariations().get(1).getFirstTimestamp());
+    Assert.assertEquals(0, entity.getVariations().get(1).getLastTimestamp());
   }
 }

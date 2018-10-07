@@ -1,6 +1,5 @@
 package es.um.nosql.s13e.json2dbschema.process;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.HashSet;
@@ -33,6 +32,7 @@ import es.um.nosql.s13e.json2dbschema.intermediate.raw.ObjectIdSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.ObjectSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.SchemaComponent;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.StringSC;
+import es.um.nosql.s13e.json2dbschema.process.util.PropertyAnalyzer;
 import es.um.nosql.s13e.json2dbschema.process.util.ReferenceMatcher;
 import es.um.nosql.s13e.json2dbschema.util.inflector.Inflector;
 
@@ -43,20 +43,21 @@ public class NoSQLModelBuilder
   // Reverse indexes for finding StructuralVariations
   private Map<SchemaComponent, StructuralVariation> mStructuralVariations;
 
-  // List of Entities
-  private List<EntityClass> mEntities;
-
   // Reference matcher
   private ReferenceMatcher<EntityClass> refMatcher;
 
-  private String name;
+  private PropertyAnalyzer propAnalyzer;
 
-  public NoSQLModelBuilder(NoSQLSchemaFactory factory2, String name2)
+  private NoSQLSchema finalSchema;
+
+  public NoSQLModelBuilder(NoSQLSchemaFactory factory, String name)
   {
-    factory = factory2;
-    name = name2;
+    this.factory = factory;
 
-    mEntities = new ArrayList<EntityClass>(20);
+    finalSchema = factory.createNoSQLSchema();
+    finalSchema.setName(name);
+
+    propAnalyzer = new PropertyAnalyzer();
     mStructuralVariations = new HashMap<SchemaComponent, StructuralVariation>();
   }
 
@@ -67,18 +68,18 @@ public class NoSQLModelBuilder
     // { "$ref" : <type>, "$id" : <value>, "$db" : <value> }
 
     // Build reverse indices & Create Entities & Populate with StructuralVariations
-    rawEntities.forEach((EntityClassName, schemas) -> {
-      EntityClass EntityClass = factory.createEntityClass();
-      EntityClass.setName(EntityClassName);
-      EntityClass.setRoot(schemas.stream().anyMatch(schema -> {
-        return ((ObjectSC)schema).isRoot;
-      }));
+    rawEntities.forEach((entityClassName, schemas) ->
+    {
+      EntityClass entityClass = factory.createEntityClass();
+      entityClass.setName(entityClassName);
+      entityClass.setRoot(schemas.stream().anyMatch(schema -> {return ((ObjectSC)schema).isRoot;}));
 
-      mEntities.add(EntityClass);
+      finalSchema.getEntities().add(entityClass);
 
       OfInt intIterator = IntStream.iterate(1, i -> i+1).iterator();
 
-      schemas.forEach(schema -> {
+      schemas.forEach(schema ->
+      {
         ObjectSC obj = (ObjectSC)schema;
 
         StructuralVariation theEV = factory.createStructuralVariation();
@@ -87,7 +88,7 @@ public class NoSQLModelBuilder
         theEV.setFirstTimestamp(obj.firstTimestamp);
         theEV.setLastTimestamp(obj.lastTimestamp);
 
-        EntityClass.getVariations().add(theEV);
+        entityClass.getVariations().add(theEV);
         mStructuralVariations.put(schema, theEV);
       });
     });
@@ -97,6 +98,9 @@ public class NoSQLModelBuilder
 
     // Populate empty StructuralVariations
     mStructuralVariations.forEach((schema, ev) -> fillEV(schema, ev));
+
+    // Check properties optionality
+    finalSchema.getEntities().forEach(entity -> { propAnalyzer.setOptionalProperties(entity.getVariations());});
 
     /** TODO: We are removing the opposite calculations for the moment since there is no easy way
      * to infer these. On the near future we might try to complete this property but for the time being
@@ -121,17 +125,12 @@ public class NoSQLModelBuilder
       });
     });
 */
-
-    NoSQLSchema finalSchema = factory.createNoSQLSchema();
-    finalSchema.setName(name);
-    finalSchema.getEntities().addAll(mEntities);
-
     return finalSchema;
   }
 
   private ReferenceMatcher<EntityClass> createReferenceMatcher() 
   {
-    return new ReferenceMatcher<>(mEntities.stream()
+    return new ReferenceMatcher<>(finalSchema.getEntities().stream()
         .filter(EntityClass::isRoot)
         .map(e -> 
         Pair.of(new HashSet<String>(Arrays.asList(
