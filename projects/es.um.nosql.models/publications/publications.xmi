@@ -8,13 +8,13 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="article_title">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="authors">
+      <properties xsi:type="NoSQLSchema:Attribute" name="authors" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="pmid">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="pub_year">
+      <properties xsi:type="NoSQLSchema:Attribute" name="pub_year" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>
@@ -25,7 +25,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="article_title">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="authors">
+      <properties xsi:type="NoSQLSchema:Attribute" name="authors" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="pmid">
@@ -42,7 +42,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="pmid">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="pub_year">
+      <properties xsi:type="NoSQLSchema:Attribute" name="pub_year" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
     </variations>

@@ -13,34 +13,34 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
+      <properties xsi:type="NoSQLSchema:Attribute" name="created_time" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="from_id">
+      <properties xsi:type="NoSQLSchema:Attribute" name="from_id" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="from_name">
+      <properties xsi:type="NoSQLSchema:Attribute" name="from_name" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="message">
+      <properties xsi:type="NoSQLSchema:Attribute" name="message" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="post_id" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="post_id" optional="true" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
     </variations>
     <variations variationId="2" count="25" firstTimestamp="1423879299000" lastTimestamp="1500041726000">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
+      <properties xsi:type="NoSQLSchema:Attribute" name="created_time" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="from_id">
+      <properties xsi:type="NoSQLSchema:Attribute" name="from_id" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="from_name">
+      <properties xsi:type="NoSQLSchema:Attribute" name="from_name" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="message">
+      <properties xsi:type="NoSQLSchema:Attribute" name="message" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -48,40 +48,40 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
+      <properties xsi:type="NoSQLSchema:Attribute" name="created_time" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="from_id">
+      <properties xsi:type="NoSQLSchema:Attribute" name="from_id" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="from_name">
+      <properties xsi:type="NoSQLSchema:Attribute" name="from_name" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="post_id" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="post_id" optional="true" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
     </variations>
     <variations variationId="4" count="1" firstTimestamp="1500039754000" lastTimestamp="1500039754000">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
+      <properties xsi:type="NoSQLSchema:Attribute" name="created_time" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="from_id">
+      <properties xsi:type="NoSQLSchema:Attribute" name="from_id" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="message">
+      <properties xsi:type="NoSQLSchema:Attribute" name="message" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Reference" name="post_id" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
+      <properties xsi:type="NoSQLSchema:Reference" name="post_id" optional="true" lowerBound="1" upperBound="1" refsTo="Posts" originalType="String"/>
     </variations>
     <variations variationId="5" count="25">
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
+      <properties xsi:type="NoSQLSchema:Attribute" name="created_time" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="from_id">
+      <properties xsi:type="NoSQLSchema:Attribute" name="from_id" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -89,7 +89,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
+      <properties xsi:type="NoSQLSchema:Attribute" name="created_time" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -107,13 +107,13 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="description">
+      <properties xsi:type="NoSQLSchema:Attribute" name="description" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="link">
+      <properties xsi:type="NoSQLSchema:Attribute" name="link" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="message">
+      <properties xsi:type="NoSQLSchema:Attribute" name="message" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="page_id" lowerBound="1" upperBound="1" refsTo="Pages" originalType="String"/>
@@ -149,10 +149,10 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="description">
+      <properties xsi:type="NoSQLSchema:Attribute" name="description" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="link">
+      <properties xsi:type="NoSQLSchema:Attribute" name="link" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="page_id" lowerBound="1" upperBound="1" refsTo="Pages" originalType="String"/>
@@ -188,10 +188,10 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="link">
+      <properties xsi:type="NoSQLSchema:Attribute" name="link" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="message">
+      <properties xsi:type="NoSQLSchema:Attribute" name="message" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="page_id" lowerBound="1" upperBound="1" refsTo="Pages" originalType="String"/>
@@ -227,7 +227,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="link">
+      <properties xsi:type="NoSQLSchema:Attribute" name="link" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="page_id" lowerBound="1" upperBound="1" refsTo="Pages" originalType="String"/>
@@ -263,7 +263,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="created_time">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="message">
+      <properties xsi:type="NoSQLSchema:Attribute" name="message" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Reference" name="page_id" lowerBound="1" upperBound="1" refsTo="Pages" originalType="String"/>

@@ -5,31 +5,31 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="Alternate_format_for_PDB_variant">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Alternate_format_for_UniProt_variant">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Alternate_format_for_UniProt_variant" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Cluster_Number">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Entrez_Gene_ID">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Entrez_Gene_ID" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Gene_Symbol">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Gene_Symbol" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Identifier_for_representative_protein_chain">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_Entrez_Gene">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_Entrez_Gene" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_PDB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_UniProt">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_UniProt" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Mapped_Variant_in_UniProt">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Mapped_Variant_in_UniProt" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="PDB_chain">
@@ -38,7 +38,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="PDB_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="UniProt_Id">
+      <properties xsi:type="NoSQLSchema:Attribute" name="UniProt_Id" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Variant_in_PDB">
@@ -55,7 +55,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="Alternate_format_for_PDB_variant">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Alternate_format_for_UniProt_variant">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Alternate_format_for_UniProt_variant" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Cluster_Number">
@@ -67,10 +67,10 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_PDB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_UniProt">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_UniProt" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Mapped_Variant_in_UniProt">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Mapped_Variant_in_UniProt" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="PDB_chain">
@@ -79,7 +79,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="PDB_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="UniProt_Id">
+      <properties xsi:type="NoSQLSchema:Attribute" name="UniProt_Id" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Variant_in_PDB">
@@ -99,28 +99,28 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="Cluster_Number">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Comments">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Comments" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Entrez_Gene_ID">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Entrez_Gene_ID" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Gene_Symbol">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Gene_Symbol" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Identifier_for_representative_protein_chain">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_Entrez_Gene">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_Entrez_Gene" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_PDB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_UniProt">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_UniProt" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Mapped_Variant_in_UniProt">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Mapped_Variant_in_UniProt" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="PDB_chain">
@@ -129,7 +129,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="PDB_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="UniProt_Id">
+      <properties xsi:type="NoSQLSchema:Attribute" name="UniProt_Id" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Variant_in_PDB">
@@ -149,25 +149,25 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="Cluster_Number">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Comments">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Comments" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Entrez_Gene_ID">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Entrez_Gene_ID" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Gene_Symbol">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Gene_Symbol" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Identifier_for_representative_protein_chain">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_Entrez_Gene">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_Entrez_Gene" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_PDB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_UniProt">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_UniProt" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="PDB_chain">
@@ -176,7 +176,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="PDB_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="UniProt_Id">
+      <properties xsi:type="NoSQLSchema:Attribute" name="UniProt_Id" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Variant_in_PDB">
@@ -196,13 +196,13 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="Cluster_Number">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Comments">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Comments" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Entrez_Gene_ID">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Entrez_Gene_ID" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Gene_Symbol">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Gene_Symbol" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Identifier_for_representative_protein_chain">
@@ -234,7 +234,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="Cluster_Number">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Comments">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Comments" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Identifier_for_representative_protein_chain">
@@ -243,7 +243,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_PDB">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_UniProt">
+      <properties xsi:type="NoSQLSchema:Attribute" name="Link_to_UniProt" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="PDB_chain">
@@ -252,7 +252,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="PDB_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="UniProt_Id">
+      <properties xsi:type="NoSQLSchema:Attribute" name="UniProt_Id" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="Variant_in_PDB">

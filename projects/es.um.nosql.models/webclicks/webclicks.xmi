@@ -8,7 +8,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="count">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="from">
+      <properties xsi:type="NoSQLSchema:Attribute" name="from" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="timestamp">
