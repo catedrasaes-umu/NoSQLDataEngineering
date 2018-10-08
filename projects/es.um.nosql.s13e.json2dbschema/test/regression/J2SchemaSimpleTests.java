@@ -14,7 +14,7 @@ import es.um.nosql.s13e.json2dbschema.main.util.RawSchemaGen;
 
 public class J2SchemaSimpleTests
 {
-  private final static String HEADER = "(count: 0)(ts: 0)<null>";
+  private final static String HEADER = "(count: 0)(firstTs: 0)(lastTs: 0)<null>";
 
   @Test
   public void test1() 
