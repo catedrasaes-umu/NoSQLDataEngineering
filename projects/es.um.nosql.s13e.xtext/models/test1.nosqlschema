@@ -15,7 +15,7 @@ NoSQLSchema test1
     parents { noParent }
     Variation 1
     {
-      count 2 timestamp 3
+      count 2 firstTimestamp 3
       properties
       {
       	a0: Null,
@@ -32,7 +32,7 @@ NoSQLSchema test1
   {
     Variation 1
     {
-      count 10 timestamp 0
+      count 10 firstTimestamp 0
       properties
       {
         ref1: Reference[1..] references e1,
