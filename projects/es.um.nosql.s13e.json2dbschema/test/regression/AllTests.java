@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses(
-{ InflectorTest.class, J2SchemaSimpleTests.class })
+{ InflectorTest.class, J2SchemaSimpleTests.class, RemovePMapTest.class })
 public class AllTests
 {
 

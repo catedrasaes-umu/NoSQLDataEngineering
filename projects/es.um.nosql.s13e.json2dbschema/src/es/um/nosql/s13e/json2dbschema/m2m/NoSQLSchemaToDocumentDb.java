@@ -23,6 +23,8 @@ public class NoSQLSchemaToDocumentDb
 {
   private NoSQLSchemaFactory factory;
 
+  private final static String PMAP_ENTITY_PREFIX = "Map_";
+
   public NoSQLSchemaToDocumentDb()
   {
     factory = NoSQLSchemaFactory.eINSTANCE;
@@ -58,9 +60,10 @@ public class NoSQLSchemaToDocumentDb
   private void removePMap(NoSQLSchema schema, Attribute attr)
   {
     CompareStructuralVariation comparer = new CompareStructuralVariation();
-    String entityName = "Map" + Inflector.getInstance().capitalize(attr.getName());
+    String entityName = PMAP_ENTITY_PREFIX + Inflector.getInstance().capitalize(attr.getName());
     PMap attrMap = (PMap)attr.getType();
 
+    // First of all check if an entity with the same construction already exists. If not, just create it.
     EntityClass mapEntity = null;
     Optional<EntityClass> optEntity = schema.getEntities().stream().filter(entity -> {return entity.getName().equals(entityName);}).findFirst();
 
@@ -74,6 +77,7 @@ public class NoSQLSchemaToDocumentDb
       schema.getEntities().add(mapEntity);
     }
 
+    // Now create a StructuralVariation with two properties: Key and value.
     Attribute key = factory.createAttribute();
     key.setName("key");
     key.setType(attrMap.getKeyType());
@@ -82,25 +86,40 @@ public class NoSQLSchemaToDocumentDb
     value.setName("value");
     value.setType(attrMap.getValueType());
 
-    StructuralVariation theVar = factory.createStructuralVariation();
-    theVar.getProperties().add(key);
-    theVar.getProperties().add(value);
+    StructuralVariation compareVar = factory.createStructuralVariation();
+    compareVar.getProperties().add(key);
+    compareVar.getProperties().add(value);
 
-    if (mapEntity.getVariations().stream().noneMatch(var -> {return comparer.compare(theVar, var);}))
+    // Check if an equivalent StructuralVariation in the given Entity already exists.
+    Optional<StructuralVariation> optVar = mapEntity.getVariations().stream().filter(var -> {return comparer.compare(compareVar, var);}).findFirst();
+
+    StructuralVariation theVar;
+    if (optVar.isPresent())
+      theVar = optVar.get();
+    else
     {
+      theVar = compareVar;
       int varId = mapEntity.getVariations().size() + 1;
-      theVar.setVariationId(varId);
-      mapEntity.getVariations().add(theVar);
+      compareVar.setVariationId(varId);
+      mapEntity.getVariations().add(compareVar);
     }
 
+    // Exchange the PMap attribute with an aggregate.
     Aggregate aggr = factory.createAggregate();
     aggr.setName(attr.getName());
     aggr.setLowerBound(1);
     aggr.setUpperBound(1);
     aggr.setOptional(attr.isOptional());
     aggr.getAggregates().add(theVar);
+
+    // The new aggregate will point to the StructuralVariation.
+    // The old PMap attribute is unnecesary now.
     ((StructuralVariation)attr.eContainer()).getProperties().add(aggr);
-    ((StructuralVariation)attr.eContainer()).getProperties().remove(attr);    
-    // TODO: What if we have a Map<String, Map<String, Int>>?
+    ((StructuralVariation)attr.eContainer()).getProperties().remove(attr);
+
+    // Check this out! We do recursively remove every Map of a Map,
+    // so cases like Map<String, Map<String, Int>> do not make us cry.
+    if (value.getType() instanceof PMap)
+      removePMap(schema, value);
   }
 }
