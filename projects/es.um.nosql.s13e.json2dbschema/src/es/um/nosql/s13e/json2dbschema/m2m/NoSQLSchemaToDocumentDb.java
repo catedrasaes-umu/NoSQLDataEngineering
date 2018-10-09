@@ -23,6 +23,7 @@ public class NoSQLSchemaToDocumentDb
 {
   private NoSQLSchemaFactory factory;
 
+  private final static String REF_ENTITY_PREFIX = "Ref_";
   private final static String PMAP_ENTITY_PREFIX = "Map_";
 
   public NoSQLSchemaToDocumentDb()
@@ -32,24 +33,84 @@ public class NoSQLSchemaToDocumentDb
 
   public void adaptToDocumentDb(NoSQLSchema schema)
   {
+    List<ReferenceClass> refClasses = new ArrayList<ReferenceClass>();
+    List<Reference> varReferences = new ArrayList<Reference>();
+    List<Attribute> mapAttributes = new ArrayList<Attribute>();
+
     for (Classifier classifier : Stream.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
+    {
+      if (classifier instanceof ReferenceClass)
+        refClasses.add((ReferenceClass)classifier);
+
       for (StructuralVariation var : classifier.getVariations())
       {
-        List<Attribute> attrPMapList = new ArrayList<Attribute>();
+        varReferences.addAll(var.getProperties().stream().filter(prop ->
+        {
+          return (prop instanceof Reference && ((Reference)prop).getFeatures() != null);
+        }).map(prop -> (Reference)prop).collect(Collectors.toList()));
 
-        attrPMapList.addAll(var.getProperties().stream().filter(prop ->
+        mapAttributes.addAll(var.getProperties().stream().filter(prop ->
         {
           return (prop instanceof Attribute && ((Attribute)prop).getType() instanceof PMap);
         }).map(prop -> (Attribute)prop).collect(Collectors.toList()));
-
-        for (Attribute attr : attrPMapList)
-          removePMap(schema, attr);
       }
+    }
+
+    refClasses.forEach(refClass -> {refClassToEntityClass(schema, refClass);});
+    varReferences.forEach(ref -> {removeRefVar(schema, ref);});
+    mapAttributes.forEach(attr -> {removePMap(schema, attr);});
   }
 
+  /**
+   * This method translates every ReferenceClass on the current schema to an equivalent EntityClass.
+   * The new EntityClass will contain every variation that the previous ReferenceClass used to have,
+   * so any Reference pointing to a ReferenceClass variation will now point to an equivalent EntityClass variation.
+   * @param schema The schema being processed
+   * @param refClass The ReferenceClass being removed
+   */
   private void refClassToEntityClass(NoSQLSchema schema, ReferenceClass refClass)
-  {
-    //TODO: Remove ReferenceClass
+  {//TODO: Casi pero no. Si una referencia apuntaba a una ReferenceClass->Variation ahora apuntará a una EntityClass->Variation, lo que es ilegal
+    // Habrá que cambiar esta Reference a un Aggregate que tenga la verdadera referencia en su interior...
+    CompareStructuralVariation comparer = new CompareStructuralVariation();
+    List<Reference> lReferences = new ArrayList<Reference>();
+    String entityName = REF_ENTITY_PREFIX + Inflector.getInstance().capitalize(refClass.getName());
+
+    for (Classifier classifier : Stream.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
+      for (StructuralVariation var : classifier.getVariations())
+        lReferences.addAll(var.getProperties().stream()
+            .filter(prop -> {return prop instanceof Reference && refClass.getVariations().contains(((Reference)prop).getFeatures());})
+            .map(prop -> (Reference)prop)
+            .collect(Collectors.toList()));
+
+    EntityClass refEntity = null;
+    Optional<EntityClass> optEntity = schema.getEntities().stream().filter(entity -> {return entity.getName().equals(entityName);}).findFirst();
+
+    if (optEntity.isPresent())
+      refEntity = optEntity.get();
+    else
+    {
+      refEntity = factory.createEntityClass();
+      refEntity.setName(entityName);
+      refEntity.setRoot(false);
+      refEntity.getParents().addAll(refClass.getParents());
+      schema.getEntities().add(refEntity);
+    }
+
+    // If the entity already existed, before we transfer variations from the refClass we have to adjust the 
+    int varSize = refEntity.getVariations().size();
+    if (varSize != 0)
+    {
+      for (StructuralVariation var : refClass.getVariations())
+        if (refEntity.getVariations().stream().noneMatch(innerVar -> {return comparer.compare(innerVar, var);}))
+        {
+          var.setVariationId(varSize++);
+          refEntity.getVariations().add(var);
+        }
+    }
+    else
+      refEntity.getVariations().addAll(refClass.getVariations());
+
+    schema.getRefClasses().remove(refClass);
   }
 
   private void removeRefVar(NoSQLSchema schema, Reference ref)
@@ -57,6 +118,15 @@ public class NoSQLSchemaToDocumentDb
     //TODO: Remove Reference to StructuralVariation
   }
 
+  /**
+   * This method translated every PMap property to an equivalent Entity table with a variation with the same structure
+   * as the PMap, and an aggregation. This is done because document-based NoSQL databases usually do not support Map structures,
+   * but usually they support embedded documents. So for example, a property "pMapProp" of the type PMap<String, Int> will be
+   * translated to an Entity called "Map_Pmapprop" with a variation with two properties (key: String, value: Int) and an aggregation
+   * to that kind of variation, so the schema is unnafected. 
+   * @param schema The schema being processed
+   * @param attr The PMap attribute
+   */
   private void removePMap(NoSQLSchema schema, Attribute attr)
   {
     CompareStructuralVariation comparer = new CompareStructuralVariation();
