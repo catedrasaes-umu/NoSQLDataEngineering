@@ -5,30 +5,30 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="author">
+      <properties xsi:type="NoSQLSchema:Attribute" name="author" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="definition">
+      <properties xsi:type="NoSQLSchema:Attribute" name="definition" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="example">
+      <properties xsi:type="NoSQLSchema:Attribute" name="example" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="sounds">
+      <properties xsi:type="NoSQLSchema:Attribute" name="sounds" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="tags">
+      <properties xsi:type="NoSQLSchema:Attribute" name="tags" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
@@ -39,7 +39,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -47,25 +47,25 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="author">
+      <properties xsi:type="NoSQLSchema:Attribute" name="author" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="definition">
+      <properties xsi:type="NoSQLSchema:Attribute" name="definition" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="example">
+      <properties xsi:type="NoSQLSchema:Attribute" name="example" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="sounds">
+      <properties xsi:type="NoSQLSchema:Attribute" name="sounds" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
@@ -76,7 +76,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -84,25 +84,25 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="author">
+      <properties xsi:type="NoSQLSchema:Attribute" name="author" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="definition">
+      <properties xsi:type="NoSQLSchema:Attribute" name="definition" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="example">
+      <properties xsi:type="NoSQLSchema:Attribute" name="example" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="tags">
+      <properties xsi:type="NoSQLSchema:Attribute" name="tags" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
@@ -113,7 +113,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -121,19 +121,19 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="author">
+      <properties xsi:type="NoSQLSchema:Attribute" name="author" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="definition">
+      <properties xsi:type="NoSQLSchema:Attribute" name="definition" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="example">
+      <properties xsi:type="NoSQLSchema:Attribute" name="example" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
@@ -145,7 +145,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -153,22 +153,22 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="author">
+      <properties xsi:type="NoSQLSchema:Attribute" name="author" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="definition">
+      <properties xsi:type="NoSQLSchema:Attribute" name="definition" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="example">
+      <properties xsi:type="NoSQLSchema:Attribute" name="example" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="tags">
+      <properties xsi:type="NoSQLSchema:Attribute" name="tags" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
@@ -184,27 +184,27 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="author">
+      <properties xsi:type="NoSQLSchema:Attribute" name="author" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="definition">
+      <properties xsi:type="NoSQLSchema:Attribute" name="definition" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="sounds">
+      <properties xsi:type="NoSQLSchema:Attribute" name="sounds" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="tags">
+      <properties xsi:type="NoSQLSchema:Attribute" name="tags" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
@@ -215,7 +215,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -223,22 +223,22 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="author">
+      <properties xsi:type="NoSQLSchema:Attribute" name="author" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="definition">
+      <properties xsi:type="NoSQLSchema:Attribute" name="definition" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="sounds">
+      <properties xsi:type="NoSQLSchema:Attribute" name="sounds" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
@@ -249,7 +249,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -257,22 +257,22 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="author">
+      <properties xsi:type="NoSQLSchema:Attribute" name="author" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="definition">
+      <properties xsi:type="NoSQLSchema:Attribute" name="definition" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="tags">
+      <properties xsi:type="NoSQLSchema:Attribute" name="tags" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
@@ -283,7 +283,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -291,16 +291,16 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="author">
+      <properties xsi:type="NoSQLSchema:Attribute" name="author" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="definition">
+      <properties xsi:type="NoSQLSchema:Attribute" name="definition" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
@@ -312,7 +312,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -320,27 +320,27 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="author">
+      <properties xsi:type="NoSQLSchema:Attribute" name="author" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="example">
+      <properties xsi:type="NoSQLSchema:Attribute" name="example" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="sounds">
+      <properties xsi:type="NoSQLSchema:Attribute" name="sounds" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="tags">
+      <properties xsi:type="NoSQLSchema:Attribute" name="tags" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
@@ -351,7 +351,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -359,22 +359,22 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="author">
+      <properties xsi:type="NoSQLSchema:Attribute" name="author" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="example">
+      <properties xsi:type="NoSQLSchema:Attribute" name="example" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="tags">
+      <properties xsi:type="NoSQLSchema:Attribute" name="tags" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
@@ -385,7 +385,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -393,16 +393,16 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="author">
+      <properties xsi:type="NoSQLSchema:Attribute" name="author" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="example">
+      <properties xsi:type="NoSQLSchema:Attribute" name="example" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
@@ -414,7 +414,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -422,22 +422,22 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="author">
+      <properties xsi:type="NoSQLSchema:Attribute" name="author" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="definition">
+      <properties xsi:type="NoSQLSchema:Attribute" name="definition" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="example">
+      <properties xsi:type="NoSQLSchema:Attribute" name="example" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="tags">
+      <properties xsi:type="NoSQLSchema:Attribute" name="tags" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
@@ -448,7 +448,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -456,27 +456,27 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="definition">
+      <properties xsi:type="NoSQLSchema:Attribute" name="definition" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="example">
+      <properties xsi:type="NoSQLSchema:Attribute" name="example" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="sounds">
+      <properties xsi:type="NoSQLSchema:Attribute" name="sounds" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="tags">
+      <properties xsi:type="NoSQLSchema:Attribute" name="tags" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
@@ -487,7 +487,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -495,22 +495,22 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="definition">
+      <properties xsi:type="NoSQLSchema:Attribute" name="definition" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="example">
+      <properties xsi:type="NoSQLSchema:Attribute" name="example" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="sounds">
+      <properties xsi:type="NoSQLSchema:Attribute" name="sounds" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
@@ -521,7 +521,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -529,22 +529,22 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="definition">
+      <properties xsi:type="NoSQLSchema:Attribute" name="definition" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="example">
+      <properties xsi:type="NoSQLSchema:Attribute" name="example" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="tags">
+      <properties xsi:type="NoSQLSchema:Attribute" name="tags" optional="true">
         <type xsi:type="NoSQLSchema:PList">
           <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
         </type>
@@ -555,7 +555,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -563,16 +563,16 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="defid">
+      <properties xsi:type="NoSQLSchema:Attribute" name="defid" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="definition">
+      <properties xsi:type="NoSQLSchema:Attribute" name="definition" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="example">
+      <properties xsi:type="NoSQLSchema:Attribute" name="example" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="lowercase_word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
       <properties xsi:type="NoSQLSchema:Attribute" name="permalink">
@@ -584,7 +584,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="thumbs_up">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="word">
+      <properties xsi:type="NoSQLSchema:Attribute" name="word" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>

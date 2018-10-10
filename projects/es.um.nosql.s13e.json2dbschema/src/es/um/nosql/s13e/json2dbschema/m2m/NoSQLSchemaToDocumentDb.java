@@ -34,7 +34,6 @@ public class NoSQLSchemaToDocumentDb
   public void adaptToDocumentDb(NoSQLSchema schema)
   {
     List<ReferenceClass> refClasses = new ArrayList<ReferenceClass>();
-    List<Reference> varReferences = new ArrayList<Reference>();
     List<Attribute> mapAttributes = new ArrayList<Attribute>();
 
     for (Classifier classifier : Stream.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
@@ -44,11 +43,6 @@ public class NoSQLSchemaToDocumentDb
 
       for (StructuralVariation var : classifier.getVariations())
       {
-        varReferences.addAll(var.getProperties().stream().filter(prop ->
-        {
-          return (prop instanceof Reference && ((Reference)prop).getFeatures() != null);
-        }).map(prop -> (Reference)prop).collect(Collectors.toList()));
-
         mapAttributes.addAll(var.getProperties().stream().filter(prop ->
         {
           return (prop instanceof Attribute && ((Attribute)prop).getType() instanceof PMap);
@@ -57,7 +51,6 @@ public class NoSQLSchemaToDocumentDb
     }
 
     refClasses.forEach(refClass -> {refClassToEntityClass(schema, refClass);});
-    varReferences.forEach(ref -> {removeRefVar(schema, ref);});
     mapAttributes.forEach(attr -> {removePMap(schema, attr);});
   }
 
@@ -69,8 +62,7 @@ public class NoSQLSchemaToDocumentDb
    * @param refClass The ReferenceClass being removed
    */
   private void refClassToEntityClass(NoSQLSchema schema, ReferenceClass refClass)
-  {//TODO: Casi pero no. Si una referencia apuntaba a una ReferenceClass->Variation ahora apuntará a una EntityClass->Variation, lo que es ilegal
-    // Habrá que cambiar esta Reference a un Aggregate que tenga la verdadera referencia en su interior...
+  {
     CompareStructuralVariation comparer = new CompareStructuralVariation();
     List<Reference> lReferences = new ArrayList<Reference>();
     String entityName = REF_ENTITY_PREFIX + Inflector.getInstance().capitalize(refClass.getName());
@@ -96,6 +88,7 @@ public class NoSQLSchemaToDocumentDb
       schema.getEntities().add(refEntity);
     }
 
+    //TODO: At some point, work with lReferences.
     // If the entity already existed, before we transfer variations from the refClass we have to adjust the 
     int varSize = refEntity.getVariations().size();
     if (varSize != 0)
@@ -111,11 +104,6 @@ public class NoSQLSchemaToDocumentDb
       refEntity.getVariations().addAll(refClass.getVariations());
 
     schema.getRefClasses().remove(refClass);
-  }
-
-  private void removeRefVar(NoSQLSchema schema, Reference ref)
-  {
-    //TODO: Remove Reference to StructuralVariation
   }
 
   /**
