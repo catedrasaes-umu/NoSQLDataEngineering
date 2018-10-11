@@ -91,8 +91,8 @@ public class NoSQLSchemaToDocumentDb
       // BEWARE: At this point the aggregate aggregates a ReferenceClass variation, but we will change ReferenceClass to EntityClass later on.
       Aggregate newAggr = factory.createAggregate();
       newAggr.setName(ref.getName());
-      newAggr.setLowerBound(ref.getLowerBound());
-      newAggr.setUpperBound(ref.getUpperBound());
+      newAggr.setLowerBound(1);
+      newAggr.setUpperBound(1);
       newAggr.getAggregates().add(ref.getFeatures());
 
       var = (StructuralVariation)ref.eContainer();
@@ -115,15 +115,18 @@ public class NoSQLSchemaToDocumentDb
       schema.getEntities().add(refEntity);
     }
 
+    // If an EntityClass with the same name as a ReferenceClass existed, we add the variations but take care of the variationId identifier.
     int varSize = refEntity.getVariations().size();
     if (varSize != 0)
     {
+      List<StructuralVariation> varsToMove = new ArrayList<StructuralVariation>();
       for (StructuralVariation var : refClass.getVariations())
         if (refEntity.getVariations().stream().noneMatch(innerVar -> {return comparer.compare(innerVar, var);}))
         {
-          var.setVariationId(varSize++);
-          refEntity.getVariations().add(var);
+          var.setVariationId(++varSize);
+          varsToMove.add(var);
         }
+      refEntity.getVariations().addAll(varsToMove);
     }
     else
       refEntity.getVariations().addAll(refClass.getVariations());
