@@ -9,13 +9,14 @@ import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDiffer
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.PropertySpec;
 import es.um.nosql.s13e.util.ModelLoader;
 
-public class EntityDifferentiationPrettyPrinter
+public class EntityDifferentiationPrinter
 {
   private static final String TAB = "  ";
   private static final String ENDL = System.lineSeparator();
 
   public static void main(String[] args)
   {
+    EntityDifferentiationPrinter printer = new EntityDifferentiationPrinter();
     String INPUT_FOLDER = "../es.um.nosql.models/";
     String[] input_models = new String[] {"everypolitician_sweden", "facebook", "harvard", "links","mongomovies", "opensanctions",
         "proteins", "publications", "stackoverflow", "urban", "webclicks", "mongosongs"};
@@ -23,11 +24,11 @@ public class EntityDifferentiationPrettyPrinter
     for (String input_model : input_models)
     {
       String inputFile = INPUT_FOLDER + input_model + "/" + input_model + "_Diff.xmi";
-      System.out.println(printPretty(inputFile));
+      System.out.println(printer.printPretty(inputFile));
     }
   }
 
-  public static String printPretty(String inputFile)
+  public String printPretty(String inputFile)
   {
     ModelLoader loader = new ModelLoader(EntityDifferentiationPackage.eINSTANCE);
     EntityDifferentiation eDiff = loader.load(new File(inputFile), EntityDifferentiation.class);
@@ -35,7 +36,7 @@ public class EntityDifferentiationPrettyPrinter
     return printPretty(eDiff);
   }
 
-  public static String printPretty(EntityDifferentiation entityDifferentiation)
+  public String printPretty(EntityDifferentiation entityDifferentiation)
   {
     if (entityDifferentiation == null)
       return null;
@@ -50,12 +51,12 @@ public class EntityDifferentiationPrettyPrinter
     return result.toString();
   }
 
-  public static String printPretty(EntityDiffSpec eDiffSpec)
+  public String printPretty(EntityDiffSpec eDiffSpec)
   {
     return printPretty(eDiffSpec, "");
   }
 
-  private static String printPretty(EntityDiffSpec eDiffSpec, String defTabs)
+  private String printPretty(EntityDiffSpec eDiffSpec, String defTabs)
   {
     if (eDiffSpec == null)
       return null;
@@ -97,12 +98,12 @@ public class EntityDifferentiationPrettyPrinter
     return result.toString();
   }
 
-  public static String prettyPrint(PropertySpec pSpec)
+  public String prettyPrint(PropertySpec pSpec)
   {
     return prettyPrint(pSpec, "");
   }
 
-  private static String prettyPrint(PropertySpec pSpec, String defTabs)
+  private String prettyPrint(PropertySpec pSpec, String defTabs)
   {
     if (pSpec == null)
       return null;

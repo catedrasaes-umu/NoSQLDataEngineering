@@ -11,7 +11,7 @@ import es.um.nosql.s13e.db.interfaces.Webclick2Db;
 import es.um.nosql.s13e.db.util.DbType;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
 import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
-import es.um.nosql.s13e.util.NoSQLSchemaPrettyPrinter;
+import es.um.nosql.s13e.util.NoSQLSchemaPrinter;
 
 public class MapReduceTimestampTest
 {
@@ -43,6 +43,7 @@ public class MapReduceTimestampTest
     BuildNoSQLSchema builder = new BuildNoSQLSchema();
     NoSQLSchema nosqlschema = builder.buildFromGsonArray(dbName, jArray);
 
-    System.out.println(NoSQLSchemaPrettyPrinter.printPretty(nosqlschema));
+    NoSQLSchemaPrinter printer = new NoSQLSchemaPrinter();
+    System.out.println(printer.printPretty(nosqlschema));
   }
 }

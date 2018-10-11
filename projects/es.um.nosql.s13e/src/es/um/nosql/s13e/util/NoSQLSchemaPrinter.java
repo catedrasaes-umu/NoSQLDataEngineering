@@ -10,13 +10,14 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.ReferenceClass;
 
-public class NoSQLSchemaPrettyPrinter
+public class NoSQLSchemaPrinter
 {
   private static final String TAB = "  ";
   private static final String ENDL = System.lineSeparator();
 
   public static void main(String[] args)
   {
+    NoSQLSchemaPrinter printer = new NoSQLSchemaPrinter();
     String INPUT_FOLDER = "../es.um.nosql.models/";
     String[] input_models = new String[] {/*"everypolitician_sweden", "facebook", "harvard", "links","mongomovies", "opensanctions",
         "proteins", "publications", "stackoverflow", "urban", "webclicks",*/ "mongosongs"};
@@ -24,11 +25,11 @@ public class NoSQLSchemaPrettyPrinter
     for (String input_model : input_models)
     {
       String inputFile = INPUT_FOLDER + input_model + "/" + input_model + ".xmi";
-      System.out.println(printPretty(inputFile));
+      System.out.println(printer.printPretty(inputFile));
     }
   }
 
-  public static String printPretty(String inputFile)
+  public String printPretty(String inputFile)
   {
     ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
     NoSQLSchema nosqlschema = loader.load(new File(inputFile), NoSQLSchema.class);
@@ -36,7 +37,7 @@ public class NoSQLSchemaPrettyPrinter
     return printPretty(nosqlschema);
   }
 
-  public static String printPretty(NoSQLSchema nosqlschema)
+  public String printPretty(NoSQLSchema nosqlschema)
   {
     if (nosqlschema == null)
       return null;
@@ -54,12 +55,12 @@ public class NoSQLSchemaPrettyPrinter
     return result.toString();
   }
 
-  public static String printPretty(ReferenceClass ref)
+  public String printPretty(ReferenceClass ref)
   {
     return printPretty(ref, "");
   }
 
-  private static String printPretty(ReferenceClass ref, String defTabs)
+  private String printPretty(ReferenceClass ref, String defTabs)
   {
     if (ref == null)
       return null;
@@ -77,12 +78,12 @@ public class NoSQLSchemaPrettyPrinter
     return result.toString();
   }
 
-  public static String printPretty(EntityClass entity)
+  public String printPretty(EntityClass entity)
   {
     return printPretty(entity, "");
   }
 
-  private static String printPretty(EntityClass entity, String defTabs)
+  private String printPretty(EntityClass entity, String defTabs)
   {
     if (entity == null)
       return null;
@@ -100,12 +101,12 @@ public class NoSQLSchemaPrettyPrinter
     return result.toString();
   }
 
-  public static String printPretty(StructuralVariation eVariation)
+  public String printPretty(StructuralVariation eVariation)
   {
     return printPretty(eVariation, "");
   }
 
-  private static String printPretty(StructuralVariation stVariation, String defTabs)
+  private String printPretty(StructuralVariation stVariation, String defTabs)
   {
     if (stVariation == null)
       return null;
@@ -120,12 +121,12 @@ public class NoSQLSchemaPrettyPrinter
     return result.toString();
   }
 
-  public static String printPretty(Property property)
+  public String printPretty(Property property)
   {
     return printPretty(property, "");
   }
 
-  private static String printPretty(Property property, String defTabs)
+  private String printPretty(Property property, String defTabs)
   {
     if (property == null)
       return null;

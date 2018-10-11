@@ -18,7 +18,7 @@ import es.um.nosql.s13e.NoSQLSchema.ReferenceClass;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.Type;
 import es.um.nosql.s13e.json2dbschema.m2m.NoSQLSchemaToDocumentDb;
-import es.um.nosql.s13e.util.NoSQLSchemaPrettyPrinter;
+import es.um.nosql.s13e.util.NoSQLSchemaPrinter;
 
 public class ReferenceClassToEntityClassTest
 {

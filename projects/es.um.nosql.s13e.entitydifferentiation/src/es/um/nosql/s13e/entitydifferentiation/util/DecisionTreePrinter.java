@@ -12,13 +12,14 @@ import es.um.nosql.s13e.entitydifferentiation.DecisionTree.PropertySpec2;
 import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.util.ModelLoader;
 
-public class DecisionTreePrettyPrinter
+public class DecisionTreePrinter
 {
   private static final String TAB = "  ";
   private static final String ENDL = System.lineSeparator();
 
   public static void main(String[] args)
   {
+    DecisionTreePrinter printer = new DecisionTreePrinter();
     String INPUT_FOLDER = "../es.um.nosql.models/";
     String[] input_models = new String[] {"everypolitician_sweden", "facebook", "harvard", "links","mongomovies", "opensanctions",
         "proteins", "publications", "stackoverflow", "urban", "webclicks", "mongosongs"};
@@ -26,11 +27,11 @@ public class DecisionTreePrettyPrinter
     for (String input_model : input_models)
     {
       String inputFile = INPUT_FOLDER + input_model + "/" + input_model + "_Tree.xmi";
-      System.out.println(printPretty(inputFile));
+      System.out.println(printer.printPretty(inputFile));
     }
   }
 
-  public static String printPretty(String inputFile)
+  public String printPretty(String inputFile)
   {
     ModelLoader loader = new ModelLoader(DecisionTreePackage.eINSTANCE);
     DecisionTrees decTrees = loader.load(new File(inputFile), DecisionTrees.class);
@@ -38,7 +39,7 @@ public class DecisionTreePrettyPrinter
     return printPretty(decTrees);
   }
 
-  public static String printPretty(DecisionTrees decTrees)
+  public String printPretty(DecisionTrees decTrees)
   {
     if (decTrees == null)
       return null;
@@ -53,12 +54,12 @@ public class DecisionTreePrettyPrinter
     return result.toString();
   }
 
-  public static String printPretty(DecisionTreeForEntity decTreeEntity)
+  public String printPretty(DecisionTreeForEntity decTreeEntity)
   {
     return printPretty(decTreeEntity, "");
   }
 
-  private static String printPretty(DecisionTreeForEntity decTreeEntity, String defTabs)
+  private String printPretty(DecisionTreeForEntity decTreeEntity, String defTabs)
   {
     if (decTreeEntity == null)
       return null;
@@ -71,12 +72,12 @@ public class DecisionTreePrettyPrinter
     return result.toString();
   }
 
-  public static String printPretty(DecisionTreeNode dtNode)
+  public String printPretty(DecisionTreeNode dtNode)
   {
     return printPretty(dtNode, "");
   }
 
-  private static String printPretty(DecisionTreeNode dtNode, String defTabs)
+  private String printPretty(DecisionTreeNode dtNode, String defTabs)
   {
     if (dtNode == null)
       return null;
@@ -97,7 +98,7 @@ public class DecisionTreePrettyPrinter
     return result.toString();
   }
 
-  private static String printBranch(DecisionTreeNode dtNode, String defTabs)
+  private String printBranch(DecisionTreeNode dtNode, String defTabs)
   {
     if (dtNode == null)
       return null;
@@ -118,12 +119,12 @@ public class DecisionTreePrettyPrinter
     return result.toString();
   }
 
-  public static String printPretty(IntermediateNode iNode)
+  public String printPretty(IntermediateNode iNode)
   {
     return printPretty(iNode, "");
   }
 
-  private static String printPretty(IntermediateNode iNode, String defTabs)
+  private String printPretty(IntermediateNode iNode, String defTabs)
   {
     if (iNode == null)
       return null;
@@ -135,7 +136,7 @@ public class DecisionTreePrettyPrinter
     return result.toString();
   }
 
-  public static String printPretty(LeafNode lNode, String defTabs)
+  public String printPretty(LeafNode lNode, String defTabs)
   {
     if (lNode == null)
       return null;
@@ -149,7 +150,7 @@ public class DecisionTreePrettyPrinter
     return result.toString();
   }
 
-  public static String prettyPrint(PropertySpec2 pSpec2)
+  public String prettyPrint(PropertySpec2 pSpec2)
   {
     if (pSpec2 == null)
       return null;
