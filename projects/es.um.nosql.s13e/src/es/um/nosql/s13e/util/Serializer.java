@@ -5,6 +5,7 @@ import java.util.stream.Collectors;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
+import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.Null;
 import es.um.nosql.s13e.NoSQLSchema.PList;
@@ -118,6 +119,14 @@ public class Serializer
         result.append(oppositeRef.getName() + ":" + ((EntityClass)oppositeRef.getRefsTo()).getName());
         result.append(":[" + oppositeRef.getLowerBound() + ".." + oppositeRef.getUpperBound() + "]]");
       }
+
+      result.append("feat[");
+      StructuralVariation feature = reference.getFeatures();
+
+      if (feature == null)
+        result.append(feature + "]");
+      else
+        result.append(((Classifier)feature.eContainer()).getName() + "_" + feature.getVariationId() + "]");
     }
 
     return result.toString();

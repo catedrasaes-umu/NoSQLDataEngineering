@@ -54,8 +54,7 @@ public class ReferenceClassToEntityClassTest
     schema.setName("schema");
     schema.getRefClasses().add(refClass);
 
-
-//    schema2DDb.adaptToDocumentDb(schema);
+    schema2DDb.adaptToDocumentDb(schema);
   }
 
   @Test

@@ -67,6 +67,7 @@ public class NoSQLSchemaToDocumentDb
     List<Reference> lReferences = new ArrayList<Reference>();
     String entityName = REF_ENTITY_PREFIX + Inflector.getInstance().capitalize(refClass.getName());
 
+    // Get in a list each reference featuring a variation of the refClass
     for (Classifier classifier : Stream.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
       for (StructuralVariation var : classifier.getVariations())
         lReferences.addAll(var.getProperties().stream()
@@ -74,6 +75,32 @@ public class NoSQLSchemaToDocumentDb
             .map(prop -> (Reference)prop)
             .collect(Collectors.toList()));
 
+    for (Reference ref : lReferences)
+    {
+      // We take the featured StructuralVariation and add a new Reference field.
+      StructuralVariation var = ref.getFeatures();
+      Reference newRef = factory.createReference();
+      newRef.setName(ref.getName());
+      newRef.setLowerBound(ref.getLowerBound());
+      newRef.setUpperBound(ref.getUpperBound());
+      newRef.setOpposite(ref.getOpposite());
+      newRef.setRefsTo(ref.getRefsTo());
+      var.getProperties().add(newRef); // What to do if it already exists a property named as the ref?
+
+      // Now we replace the original reference with an aggregate.
+      // BEWARE: At this point the aggregate aggregates a ReferenceClass variation, but we will change ReferenceClass to EntityClass later on.
+      Aggregate newAggr = factory.createAggregate();
+      newAggr.setName(ref.getName());
+      newAggr.setLowerBound(ref.getLowerBound());
+      newAggr.setUpperBound(ref.getUpperBound());
+      newAggr.getAggregates().add(ref.getFeatures());
+
+      var = (StructuralVariation)ref.eContainer();
+      var.getProperties().remove(ref);
+      var.getProperties().add(newAggr);
+    }
+
+    // Create the new EntityClass from a ReferenceClass
     EntityClass refEntity = null;
     Optional<EntityClass> optEntity = schema.getEntities().stream().filter(entity -> {return entity.getName().equals(entityName);}).findFirst();
 
@@ -88,8 +115,6 @@ public class NoSQLSchemaToDocumentDb
       schema.getEntities().add(refEntity);
     }
 
-    //TODO: At some point, work with lReferences.
-    // If the entity already existed, before we transfer variations from the refClass we have to adjust the 
     int varSize = refEntity.getVariations().size();
     if (varSize != 0)
     {
