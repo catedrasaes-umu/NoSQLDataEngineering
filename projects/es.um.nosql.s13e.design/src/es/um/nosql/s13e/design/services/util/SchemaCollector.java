@@ -1,32 +1,25 @@
 package es.um.nosql.s13e.design.services.util;
 
-import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
-import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 
 public class SchemaCollector
 {
-  public static List<StructuralVariation> getEVariationsFromSchema(StructuralVariation eVariation)
+  public static List<StructuralVariation> getEVariationsFromSchema(StructuralVariation var)
   {
-    List<StructuralVariation> result = new ArrayList<StructuralVariation>();
-    result.addAll(getElementsFromSchema(eVariation).getLeft());
-
-    return result;
+    return getElementsFromSchema(var).getLeft().stream().collect(Collectors.toList());
   }
 
-  public static List<EntityClass> getEntitiesFromSchema(StructuralVariation eVariation)
+  public static List<EntityClass> getEntitiesFromSchema(StructuralVariation var)
   {
-    List<EntityClass> result = new ArrayList<EntityClass>();
-    result.addAll(getElementsFromSchema(eVariation).getRight());
-
-    return result;
+    return getElementsFromSchema(var).getRight().stream().collect(Collectors.toList());
   }
 
   /**
@@ -39,16 +32,17 @@ public class SchemaCollector
    */
   public static List<StructuralVariation> getReducedEVariationsFromSchema(StructuralVariation root)
   {
-    List<StructuralVariation> result = new ArrayList<StructuralVariation>();
     Pair<Set<StructuralVariation>, Set<EntityClass>> elementList = getElementsFromSchema(root);
 
-    for (EntityClass entity : elementList.getRight())
-      for (StructuralVariation eVariation : entity.getVariations())
-        elementList.getLeft().remove(eVariation);
+    elementList.getRight().forEach(entity ->
+    {
+      entity.getVariations().stream().forEach(var ->
+      {
+        elementList.getLeft().remove(var);
+      });
+    });
 
-    result.addAll(elementList.getLeft());
-
-    return result;
+    return elementList.getLeft().stream().collect(Collectors.toList());
   }
 
   private static Pair<Set<StructuralVariation>, Set<EntityClass>> getElementsFromSchema(StructuralVariation eVariation)
@@ -103,26 +97,19 @@ public class SchemaCollector
     return elementList;
   }
 
-  private static Set<StructuralVariation> getAllStructuralVariationsFor(StructuralVariation eVariation)
+  private static Set<StructuralVariation> getAllStructuralVariationsFor(StructuralVariation var)
   {
-    Set<StructuralVariation> neweVariations = new HashSet<StructuralVariation>();
-
-    for (Property property : eVariation.getProperties())
-      if (property instanceof Aggregate)
-        for (StructuralVariation refToeVariation : ((Aggregate) property).getAggregates())
-          neweVariations.add(refToeVariation);
-
-    return neweVariations;
+    return var.getProperties().stream()
+        .filter(prop -> prop instanceof Aggregate)
+        .flatMap(prop -> ((Aggregate)prop).getAggregates().stream())
+        .collect(Collectors.toSet());
   }
 
-  private static Set<EntityClass> getAllEntitiesFor(StructuralVariation eVariation)
+  private static Set<EntityClass> getAllEntitiesFor(StructuralVariation var)
   {
-    Set<EntityClass> newEntities = new HashSet<EntityClass>();
-
-    for (Property property : eVariation.getProperties())
-      if (property instanceof Reference)
-        newEntities.add(((Reference) property).getRefsTo());
-
-    return newEntities;
+    return var.getProperties().stream()
+        .filter(prop -> prop instanceof Reference)
+        .map(prop -> ((Reference)prop).getRefsTo())
+        .collect(Collectors.toSet());
   }
 }
