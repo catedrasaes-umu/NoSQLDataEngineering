@@ -280,7 +280,7 @@
         </edgeMappings>
         <containerMappings name="EntityClass" label="EntityClass" labelDirectEdit="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema2']/@defaultLayer/@toolSections.2/@ownedTools[name='Entity']" semanticCandidatesExpression="aql: self.entities" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema2']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity']" domainClass="NoSQLSchema.EntityClass" childrenPresentation="HorizontalStack">
           <subContainerMappings name="Common properties" label="Common properties" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.EntityClass" childrenPresentation="List">
-            <subNodeMappings name="Attribute" label="Attribute" deletionDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema2']/@defaultLayer/@toolSections.2/@ownedTools[name='Common%20attribute']" semanticCandidatesExpression="service: getCommonAttributesFromClassifier" domainClass="NoSQLSchema.Attribute">
+            <subNodeMappings name="Attribute" label="Attribute" deletionDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema2']/@defaultLayer/@toolSections.2/@ownedTools[name='Common%20attribute']" semanticCandidatesExpression="service: getCommonAttributesFromClassifier()" domainClass="NoSQLSchema.Attribute">
               <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -298,7 +298,7 @@
                 </style>
               </conditionnalStyles>
             </subNodeMappings>
-            <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getCommonAssociationsFromClassifier" domainClass="NoSQLSchema.Association">
+            <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getCommonAssociationsFromClassifier()" domainClass="NoSQLSchema.Association">
               <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -324,7 +324,7 @@
           </subContainerMappings>
           <subContainerMappings name="Variations" label="Variations" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.EntityClass">
             <subContainerMappings name="StructuralVariation" label="StructuralVariation" semanticCandidatesExpression="aql: self.variations" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema2']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20variation']" domainClass="NoSQLSchema.StructuralVariation" childrenPresentation="List">
-              <subNodeMappings name="Attribute" label="Attribute" labelDirectEdit="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema2']/@defaultLayer/@toolSections.2/@ownedTools[name='Primitive%20attribute']" semanticCandidatesExpression="service: getParticularAttributesFromVar" domainClass="NoSQLSchema.Attribute">
+              <subNodeMappings name="Attribute" label="Attribute" labelDirectEdit="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20Database%20schema2']/@defaultLayer/@toolSections.2/@ownedTools[name='Primitive%20attribute']" semanticCandidatesExpression="service: getParticularAttributesFromVar()" domainClass="NoSQLSchema.Attribute">
                 <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -342,7 +342,7 @@
                   </style>
                 </conditionnalStyles>
               </subNodeMappings>
-              <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getParticularAssociationsFromVar" domainClass="NoSQLSchema.Association">
+              <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getParticularAssociationsFromVar()" domainClass="NoSQLSchema.Association">
                 <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -614,7 +614,7 @@
               </style>
             </conditionnalStyles>
           </subNodeMappings>
-          <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service:getAssociationList()" domainClass="NoSQLSchema.Association">
+          <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service:getAssociationsFromClassifier()" domainClass="NoSQLSchema.Association">
             <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -698,7 +698,7 @@
         </containerMappings>
         <containerMappings name="Entity" label="Entity" semanticCandidatesExpression="service: getEntitiesFromSchema()" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(1)']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity']" domainClass="NoSQLSchema.EntityClass" childrenPresentation="HorizontalStack">
           <subContainerMappings name="Common properties" label="Common properties" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.EntityClass" childrenPresentation="List">
-            <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getCommonAttributesFromClassifier" domainClass="NoSQLSchema.Attribute">
+            <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getCommonAttributesFromClassifier()" domainClass="NoSQLSchema.Attribute">
               <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -716,7 +716,7 @@
                 </style>
               </conditionnalStyles>
             </subNodeMappings>
-            <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getCommonAssociationsFromClassifier" domainClass="NoSQLSchema.Association">
+            <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getCommonAssociationsFromClassifier()" domainClass="NoSQLSchema.Association">
               <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -820,7 +820,7 @@
           <subContainerMappings name="RefAggrPart" label="RefAggrPart" semanticCandidatesExpression="aql: self->select(ev | ev.properties->filter(NoSQLSchema::Association)->size() > 0)" domainClass="NoSQLSchema.StructuralVariation">
             <subContainerMappings name="Entity" label="Entity" semanticCandidatesExpression="aql: self.properties->filter(NoSQLSchema::Reference).refsTo" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity']" domainClass="NoSQLSchema.EntityClass" childrenPresentation="HorizontalStack">
               <subContainerMappings name="Common properties" label="Common properties" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.EntityClass" childrenPresentation="List">
-                <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getCommonAttributesFromClassifier" domainClass="NoSQLSchema.Attribute">
+                <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getCommonAttributesFromClassifier()" domainClass="NoSQLSchema.Attribute">
                   <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -838,7 +838,7 @@
                     </style>
                   </conditionnalStyles>
                 </subNodeMappings>
-                <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getCommonAssociationsFromClassifier" domainClass="NoSQLSchema.Association">
+                <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getCommonAssociationsFromClassifier()" domainClass="NoSQLSchema.Association">
                   <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                     <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -864,7 +864,7 @@
               </subContainerMappings>
               <subContainerMappings name="Variations" label="Variations" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.EntityClass">
                 <subContainerMappings name="StructuralVariations" label="StructuralVariations" semanticCandidatesExpression="aql: self.variations" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20variation']" domainClass="NoSQLSchema.StructuralVariation" childrenPresentation="List">
-                  <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getParticularAttributesFromVar" domainClass="NoSQLSchema.Attribute">
+                  <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getParticularAttributesFromVar()" domainClass="NoSQLSchema.Attribute">
                     <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                       <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                       <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -882,7 +882,7 @@
                       </style>
                     </conditionnalStyles>
                   </subNodeMappings>
-                  <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getParticularAssociationsFromVar" domainClass="NoSQLSchema.Association">
+                  <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getParticularAssociationsFromVar()" domainClass="NoSQLSchema.Association">
                     <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                       <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                       <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -940,7 +940,7 @@
         </containerMappings>
         <containerMappings name="Entity" label="Entity" semanticCandidatesExpression="service: getIndirectEntitiesFromSchema()" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity']" domainClass="NoSQLSchema.EntityClass" childrenPresentation="HorizontalStack">
           <subContainerMappings name="Common properties" label="Common properties" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.EntityClass" childrenPresentation="List">
-            <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getCommonAttributesFromClassifier" domainClass="NoSQLSchema.Attribute">
+            <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getCommonAttributesFromClassifier()" domainClass="NoSQLSchema.Attribute">
               <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -958,7 +958,7 @@
                 </style>
               </conditionnalStyles>
             </subNodeMappings>
-            <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getCommonAssociationsFromClassifier" domainClass="NoSQLSchema.Association">
+            <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getCommonAssociationsFromClassifier()" domainClass="NoSQLSchema.Association">
               <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -984,7 +984,7 @@
           </subContainerMappings>
           <subContainerMappings name="Variations" label="Variations" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.EntityClass">
             <subContainerMappings name="StructuralVariation" label="StructuralVariation" semanticCandidatesExpression="aql: self.variations" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='NoSQLSchema%20Diagram%20(2)']/@defaultLayer/@toolSections.0/@ownedTools[name='Click%20entity%20variation']" domainClass="NoSQLSchema.StructuralVariation" childrenPresentation="List">
-              <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getParticularAttributesFromVar" domainClass="NoSQLSchema.Attribute">
+              <subNodeMappings name="Attribute" label="Attribute" semanticCandidatesExpression="service: getParticularAttributesFromVar()" domainClass="NoSQLSchema.Attribute">
                 <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1002,7 +1002,7 @@
                   </style>
                 </conditionnalStyles>
               </subNodeMappings>
-              <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getParticularAssociationsFromVar" domainClass="NoSQLSchema.Association">
+              <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service: getParticularAssociationsFromVar()" domainClass="NoSQLSchema.Association">
                 <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1101,7 +1101,7 @@
               </style>
             </conditionnalStyles>
           </subNodeMappings>
-          <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service:getAssociationList()" domainClass="NoSQLSchema.Association">
+          <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service:getAssociationsFromClassifier()" domainClass="NoSQLSchema.Association">
             <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1145,7 +1145,7 @@
               </style>
             </conditionnalStyles>
           </subNodeMappings>
-          <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service:getAssociationList()" domainClass="NoSQLSchema.Association">
+          <subNodeMappings name="Association" label="Association" semanticCandidatesExpression="service:getAssociationsFromClassifier()" domainClass="NoSQLSchema.Association">
             <style xsi:type="style:CustomStyleDescription" labelExpression="aql: 'Unexpected type: ' + self.name" iconPath="/es.um.nosql.s13e.design/images/icons/Unexpected16.png" labelPosition="node" resizeKind="NSEW" id="Unexpected type">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
