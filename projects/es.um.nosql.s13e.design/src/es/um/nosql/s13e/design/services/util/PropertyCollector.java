@@ -19,7 +19,7 @@ public class PropertyCollector
     propComparer = new CompareProperty();
   }
 
-  public <T extends Property> List<T> getUnionProperties(EntityClass classifier, Class<T> theClass)
+  public <T extends Property> List<T> getUnionProperties(Classifier classifier, Class<T> theClass)
   {
     List<T> result = new ArrayList<T>();
 
@@ -37,7 +37,7 @@ public class PropertyCollector
     return result;
   }
 
-  public <T extends Property> List<T> getCommonProperties(EntityClass classifier, Class<T> theClass)
+  public <T extends Property> List<T> getCommonProperties(Classifier classifier, Class<T> theClass)
   {
     List<T> result = new ArrayList<T>();
 
