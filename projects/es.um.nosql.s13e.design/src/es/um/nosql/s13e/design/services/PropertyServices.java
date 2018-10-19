@@ -1,65 +1,89 @@
 package es.um.nosql.s13e.design.services;
 
-import java.util.List;
+import java.util.stream.Collectors;
 
+import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Classifier;
+import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.Null;
-import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
-import es.um.nosql.s13e.design.services.util.PropertyCollector;
+import es.um.nosql.s13e.NoSQLSchema.PList;
+import es.um.nosql.s13e.NoSQLSchema.PMap;
+import es.um.nosql.s13e.NoSQLSchema.PSet;
+import es.um.nosql.s13e.NoSQLSchema.PTuple;
+import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
+import es.um.nosql.s13e.NoSQLSchema.Reference;
+import es.um.nosql.s13e.NoSQLSchema.Type;
 
 public class PropertyServices
 {
-  private PropertyCollector propCollector;
-
-  public PropertyServices()
+  public String getNullLabel(Null nul)
   {
-    propCollector = new PropertyCollector();
+    StringBuilder result = new StringBuilder();
+    result.append(nul.getName() + ": Null");
+
+    return result.toString();
   }
 
-  public List<Attribute> getAttributesFromClassifier(Classifier classifier)
+  public String getAttributeLabel(Attribute attr)
   {
-    return propCollector.getUnionProperties(classifier, Attribute.class);
+    StringBuilder result = new StringBuilder();
+    result.append(attr.getName() + ": " + getTypeLabel(attr.getType()));
+
+    return result.toString();
   }
 
-  public List<Association> getAssociationsFromClassifier(Classifier classifier)
+  public String getTypeLabel(Type type)
   {
-    return propCollector.getUnionProperties(classifier, Association.class);
+    if (type == null)
+      return null;
+
+    StringBuilder result = new StringBuilder();
+
+    if (type instanceof PrimitiveType)
+      result.append(((PrimitiveType)type).getName());
+    else if (type instanceof PList)
+      result.append("PList<" + getTypeLabel(((PList)type).getElementType()) + ">");
+    else if (type instanceof PSet)
+        result.append("PSet<" + getTypeLabel(((PSet)type).getElementType()) + ">");
+    else if (type instanceof PTuple)
+      result.append("PTuple<" + ((PTuple)type).getElements().stream().map(e -> getTypeLabel(e)).collect(Collectors.joining(", ")) + ">");
+    else if (type instanceof PMap)
+        result.append("PMap<" + getTypeLabel(((PMap)type).getKeyType()) 
+          + "," + getTypeLabel(((PMap)type).getValueType()) + ">");
+
+    return result.toString();
   }
 
-  public List<Null> getNullsFromClassifier(Classifier classifier)
+  public String getAssociationLabel(Association association)
   {
-    return propCollector.getUnionProperties(classifier, Null.class);
-  }
+    StringBuilder result = new StringBuilder();
+    result.append(association.getName() + ": ");
 
-  public List<Attribute> getCommonAttributesFromClassifier(Classifier classifier)
-  {
-    return propCollector.getCommonProperties(classifier, Attribute.class);
-  }
+    if (association instanceof Aggregate)
+    {
+      Aggregate aggr = (Aggregate)association;
+      result.append(" [");
+      result.append(aggr.getLowerBound() != -1 ? aggr.getLowerBound() : "*");
+      result.append("..");
+      result.append(aggr.getUpperBound() != -1 ? aggr.getUpperBound() : "*");
+      result.append("] ");
+      result.append(aggr.getAggregates().stream().map(theAggr ->
+        ((Classifier)theAggr.eContainer()).getName() + "_" + theAggr.getVariationId()
+      ).collect(Collectors.joining(", ")));
+    }
+    else if (association instanceof Reference)
+    {
+      Reference ref = (Reference)association;
+      result.append(ref.getOriginalType() + " [");
+      result.append(ref.getLowerBound() != -1 ? ref.getLowerBound() : "*");
+      result.append("..");
+      result.append(ref.getUpperBound() != -1 ? ref.getUpperBound() : "*");
+      result.append("] " + ((EntityClass)ref.getRefsTo()).getName());
+      //TODO: Missing features and opposite
+    }
 
-  public List<Association> getCommonAssociationsFromClassifier(Classifier classifier)
-  {
-    return propCollector.getCommonProperties(classifier, Association.class);
-  }
-
-  public List<Null> getCommonNullsFromClassifier(Classifier classifier)
-  {
-    return propCollector.getCommonProperties(classifier, Null.class);
-  }
-
-  public List<Attribute> getParticularAttributesFromVar(StructuralVariation var)
-  {
-    return propCollector.getParticularProperties(var, Attribute.class);
-  }
-
-  public List<Association> getParticularAssociationsFromVar(StructuralVariation var)
-  {
-    return propCollector.getParticularProperties(var, Association.class);
-  }
-
-  public List<Null> getParticularNullsFromVar(StructuralVariation var)
-  {
-    return propCollector.getParticularProperties(var, Null.class);
+    return result.toString();
   }
 }

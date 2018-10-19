@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 import es.um.nosql.s13e.NoSQLSchema.Classifier;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.util.compare.CompareProperty;
@@ -65,10 +64,32 @@ public class PropertyCollector
     return result;
   }
 
+  public <T extends Property> List<T> getOptionalProperties(Classifier classifier, Class<T> theClass)
+  {
+    List<T> result = new ArrayList<T>();
+
+    if (!classifier.getVariations().isEmpty())
+    {
+      classifier.getVariations().forEach(var ->
+      {
+        // Watch out we are modifying the list as we iterate, so do not try to put that condition on a filter...
+        var.getProperties().stream().filter(prop -> theClass.isInstance(prop) && prop.isOptional()).forEach(prop ->
+        {
+          if (result.stream().noneMatch(prop2 -> propComparer.compare(prop, prop2)))
+            result.add(theClass.cast(prop));
+        });
+      });
+    }
+
+    result.sort((prop1, prop2) -> prop1.getName().compareTo(prop2.getName()));
+
+    return result;
+  }
+
   public <T extends Property> List<T> getParticularProperties(StructuralVariation var, Class<T> theClass)
   {
-    List<T> result = new ArrayList<T>();//TODO: Change EntityClass
-    List<T> commonProps = getCommonProperties((EntityClass)var.eContainer(), theClass);
+    List<T> result = new ArrayList<T>();
+    List<T> commonProps = getCommonProperties((Classifier)var.eContainer(), theClass);
 
     for (Property prop : var.getProperties())
       if (theClass.isInstance(prop))

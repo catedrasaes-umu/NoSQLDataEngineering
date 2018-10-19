@@ -39,14 +39,6 @@ public class NoSQLSchemaServices
     return result;
   }
 
-  public List<StructuralVariation> getEVariationsFromSchema(StructuralVariation root)
-  {
-    List<StructuralVariation> result = SchemaCollector.getEVariationsFromSchema(root);
-    result.sort((var1, var2) -> var1.getVariationId() > var2.getVariationId() ? 1 : -1);
-
-    return result;
-  }
-
   /**
    * Method used for the EntityClass Union Schema viewpoint to gather entities related
    * to any eVariation root.
