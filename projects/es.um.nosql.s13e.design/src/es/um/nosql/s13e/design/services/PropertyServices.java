@@ -81,7 +81,19 @@ public class PropertyServices
       result.append("..");
       result.append(ref.getUpperBound() != -1 ? ref.getUpperBound() : "*");
       result.append("] " + ((EntityClass)ref.getRefsTo()).getName());
-      //TODO: Missing features and opposite
+
+      if (ref.getOpposite() != null)
+      {
+        result.append("(opp: " + ref.getOpposite().getName() + ": " + ref.getOpposite().getOriginalType() + " [");
+        result.append(ref.getOpposite().getLowerBound() != -1 ? ref.getOpposite().getLowerBound() : "*");
+        result.append("..");
+        result.append(ref.getOpposite().getUpperBound() != -1 ? ref.getOpposite().getUpperBound() : "*");
+        result.append("] " + ((EntityClass)ref.getOpposite().getRefsTo()).getName() + ")");
+      }
+
+      if (ref.getFeatures() != null)
+        result.append("(feat:" + ((Classifier)ref.getFeatures().eContainer()).getName()
+            + "_" + ref.getFeatures().getVariationId() + ")");
     }
 
     return result.toString();
