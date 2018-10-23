@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
+import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
@@ -31,10 +32,15 @@ public class NoSQLSchemaServices
   {
     List<StructuralVariation> result = new ArrayList<StructuralVariation>();
 
-    model.getEntities().sort((entity1, entity2) -> entity1.getName().compareTo(entity2.getName()));
-
     for (EntityClass entity : model.getEntities())
       result.addAll(entity.getVariations());
+
+    result.sort((var1, var2) ->
+    {
+      int compareTo = ((Classifier)var1.eContainer()).getName().compareTo(((Classifier)var2.eContainer()).getName());
+
+      return compareTo != 0 ? compareTo : (var1.getVariationId() > var2.getVariationId() ? 1 : -1);
+    });
 
     return result;
   }
