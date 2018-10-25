@@ -14,14 +14,14 @@ public class Main
     //inferenceTest.runEveryPoliticianExample(InferenceMode.INFER_ONLY, ConfigConstants.EVERYPOLITICIAN_FILE);
     //inferenceTest.runFacebookExample(InferenceMode.INFER_ONLY, ConfigConstants.FACEBOOK_FOLDER);                //POJO
     //inferenceTest.runHarvardExample(InferenceMode.INFER_ONLY, ConfigConstants.HARVARD_FILE);                    //POJO
-    inferenceTest.runJsonExample(InferenceMode.FILL_AND_INFER, ConfigConstants.JSON_FOLDER);
+    //inferenceTest.runJsonExample(InferenceMode.FILL_AND_INFER, ConfigConstants.JSON_FOLDER);
     //inferenceTest.runLinksExample(InferenceMode.INFER_ONLY, ConfigConstants.LINKS_FOLDER);                      //POJO
     ////////inferenceTest.runModelExample(InferenceMode.FILL_AND_INFER, ConfigConstants.MODEL_FILE);
     //inferenceTest.runOpenSanctionsExample(InferenceMode.INFER_ONLY, ConfigConstants.OPENSANCTIONS_FILE);
     //inferenceTest.runPleiadesExample(InferenceMode.FILL_AND_INFER, ConfigConstants.PLEIADES_FILE);                  //TODO: DOESNT WORK YET
     //inferenceTest.runProteinsExample(InferenceMode.INFER_ONLY, ConfigConstants.PROTEINS_FOLDER);                //POJO
     //inferenceTest.runPublicationsExample(InferenceMode.FILL_ONLY, ConfigConstants.PUBLICATIONS_FILE);          //POJO
-    //inferenceTest.runStackOverflowExample(InferenceMode.INFER_ONLY, ConfigConstants.STACKOVERFLOW_FOLDER);
+    inferenceTest.runStackOverflowExample(InferenceMode.FILL_ONLY, ConfigConstants.STACKOVERFLOW_FOLDER);
     //inferenceTest.runUrbanDictionaryExample(InferenceMode.INFER_ONLY, ConfigConstants.URBANDICTIONARY_FILE);    //POJO
     //inferenceTest.runWebclickExample(InferenceMode.INFER_ONLY, ConfigConstants.WEBCLICKS_FOLDER);              //POJO
 
