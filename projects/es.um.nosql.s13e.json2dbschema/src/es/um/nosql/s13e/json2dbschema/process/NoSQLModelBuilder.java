@@ -34,6 +34,7 @@ import es.um.nosql.s13e.json2dbschema.intermediate.raw.SchemaComponent;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.StringSC;
 import es.um.nosql.s13e.json2dbschema.process.util.PropertyAnalyzer;
 import es.um.nosql.s13e.json2dbschema.process.util.ReferenceMatcher;
+import es.um.nosql.s13e.json2dbschema.process.util.StructuralVariationSorter;
 import es.um.nosql.s13e.json2dbschema.util.inflector.Inflector;
 
 public class NoSQLModelBuilder
@@ -48,6 +49,8 @@ public class NoSQLModelBuilder
 
   private PropertyAnalyzer propAnalyzer;
 
+  private StructuralVariationSorter varSorter;
+
   private NoSQLSchema finalSchema;
 
   public NoSQLModelBuilder(NoSQLSchemaFactory factory, String name)
@@ -58,6 +61,7 @@ public class NoSQLModelBuilder
     finalSchema.setName(name);
 
     propAnalyzer = new PropertyAnalyzer();
+    varSorter = new StructuralVariationSorter();
     mStructuralVariations = new HashMap<SchemaComponent, StructuralVariation>();
   }
 
@@ -101,6 +105,9 @@ public class NoSQLModelBuilder
 
     // Check properties optionality
     finalSchema.getEntities().forEach(entity -> { propAnalyzer.setOptionalProperties(entity.getVariations());});
+
+    // Finally try to sort each entity's StructuralVariations
+    finalSchema.getEntities().forEach(entity -> varSorter.sort(entity.getVariations()));
 
     /** TODO: We are removing the opposite calculations for the moment since there is no easy way
      * to infer these. On the near future we might try to complete this property but for the time being
