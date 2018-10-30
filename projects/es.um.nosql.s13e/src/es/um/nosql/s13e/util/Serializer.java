@@ -53,10 +53,8 @@ public class Serializer
       return null;
 
     StringBuilder result = new StringBuilder();
-    result.append(attribute.getName() +  "(optional: " + attribute.isOptional() + "): " + serialize(attribute.getType()));
-
-    if (attribute.isOptional())
-      result.append(" (optional)");
+    result.append("(optional: " + attribute.isOptional() + (attribute.isOptional() ? " " : "") + ") "
+      + attribute.getName() +  ": " + serialize(attribute.getType()));
 
     return result.toString();
   }
