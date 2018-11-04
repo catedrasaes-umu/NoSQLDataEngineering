@@ -35,7 +35,7 @@ class GanttChart:
 
   def __showChart(self, chartData):
 
-    figure1 = pyplot.figure(figsize=(20, 8))
+    figure1 = pyplot.figure()
     ax = figure1.add_subplot(111)
     for i in range(len(chartData.getYLabels())):
       startDate, endDate = chartData.getTaskDates()[chartData.getYLabels()[i]]
@@ -59,4 +59,5 @@ class GanttChart:
     ax.invert_yaxis()
     figure1.autofmt_xdate()
 
+    pyplot.get_current_fig_manager().window.state('zoomed')
     pyplot.show()
