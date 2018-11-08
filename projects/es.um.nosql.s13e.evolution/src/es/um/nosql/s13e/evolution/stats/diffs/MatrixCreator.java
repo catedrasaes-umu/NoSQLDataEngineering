@@ -1,6 +1,5 @@
-package es.um.nosql.s13e.evolution.diffs;
+package es.um.nosql.s13e.evolution.stats.diffs;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -11,10 +10,8 @@ import org.eclipse.emf.common.util.ECollections;
 
 import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
-import es.um.nosql.s13e.util.ModelLoader;
 import es.um.nosql.s13e.util.Serializer;
 import es.um.nosql.s13e.util.compare.CompareProperty;
 
@@ -80,15 +77,5 @@ public class MatrixCreator
       }
       System.out.println();
     }
-  }
-
-  public static void main(String[] args)
-  {
-    MatrixCreator matrix = new MatrixCreator();
-    ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
-    NoSQLSchema schema = loader.load(new File("../es.um.nosql.models/stackoverflow/stackoverflow.xmi"), NoSQLSchema.class);
-
-    matrix.analyze(schema);
-    matrix.printMatrix();
   }
 }

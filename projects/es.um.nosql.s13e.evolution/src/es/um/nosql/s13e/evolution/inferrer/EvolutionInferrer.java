@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.evolution.analyzer;
+package es.um.nosql.s13e.evolution.inferrer;
 
 import java.io.File;
 
@@ -15,12 +15,12 @@ import es.um.nosql.s13e.evolution.util.constants.ConfigConstants;
 import es.um.nosql.s13e.util.ModelLoader;
 
 //TODO: Filters? GreaterThan class, LessThan, GreaterOrEqual, LessOrEqual, Equal, Zero, Nonzero...how about a list of conditions?
-public class EvolutionAnalyzer
+public class EvolutionInferrer
 {
   private TimestampInferrer inferrer;
   private OutputGen output;
 
-  public EvolutionAnalyzer()
+  public EvolutionInferrer()
   {
     inferrer = new TimestampInferrer();
     output = new OutputGen();
