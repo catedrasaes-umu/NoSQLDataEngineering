@@ -13,4 +13,6 @@ public class ConfigConstants
   public static final boolean OUTPUT_CONSOLE          = false;
   public static final boolean OUTPUT_CHART            = false;
   public static final boolean OUTPUT_CHART_FILE       = true;
+
+  public final static double EPSILON = 0.0001;
 }
