@@ -14,33 +14,24 @@ import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 
 public class OutlierAnalyzer
 {
-  private double threshold;
   private Map<Classifier, List<StructuralVariation>> outliers;
+  private double threshold;
+  private double percentage;
 
   public OutlierAnalyzer(double threshold)
   {
-    this.threshold = threshold;
     this.outliers = new HashMap<Classifier, List<StructuralVariation>>();
   }
 
-  public void removeOutliers(NoSQLSchema schema)
-  {
-    removeOutliers(schema, threshold);
-  }
-
-  public void removeOutliers(NoSQLSchema schema, double threshold)
+  public void removeOutliersByEpsilon(NoSQLSchema schema, double threshold)
   {
     for (Classifier classifier : Streams.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
-      removeOutliers(classifier, threshold);    
+      removeOutliersByEpsilon(classifier, threshold);    
   }
 
-  public void removeOutliers(Classifier classifier)
+  public void removeOutliersByEpsilon(Classifier classifier, double threshold)
   {
-    removeOutliers(classifier, threshold);
-  }
-
-  public void removeOutliers(Classifier classifier, double threshold)
-  {
+    this.threshold = threshold;
     long totalCount = classifier.getVariations().stream().mapToLong(var -> var.getCount()).sum();
     double countThreshold = Math.round(totalCount * threshold);
     outliers.put(classifier, new ArrayList<StructuralVariation>());
@@ -48,14 +39,31 @@ public class OutlierAnalyzer
     classifier.getVariations().removeAll(outliers.get(classifier));
   }
 
-  public void resetAnalyzer()
+  // TODO: Under testing
+  public void removeOutliersByCoverage(Classifier classifier, double percentage)
   {
-    resetAnalyzer(threshold);
+    if (percentage < 0.0 || percentage > 100)
+      throw new IllegalArgumentException("Percentage must be greater than 0 but less than 100");
+
+    this.percentage = percentage;
+    long totalCount = classifier.getVariations().stream().mapToLong(var -> var.getCount()).sum();
+    double countCoverage = (totalCount * percentage) / 100;
+    double currentCoverage = 0;
+    outliers.put(classifier, new ArrayList<StructuralVariation>());
+
+    for (StructuralVariation var : classifier.getVariations())
+      if (currentCoverage > countCoverage)
+        outliers.get(classifier).add(var);
+      else
+        currentCoverage += var.getCount();
+
+    classifier.getVariations().removeAll(outliers.get(classifier));
   }
 
-  public void resetAnalyzer(double threshold)
+  public void resetAnalyzer()
   {
-    this.threshold = threshold;
+    this.threshold = 0.0;
+    this.percentage = 100;
     this.outliers.clear();
   }
 
