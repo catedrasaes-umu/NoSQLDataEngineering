@@ -48,7 +48,7 @@ public class OutputGen
       genChartFile(schema);
   }
 
-  private void genCSVFile(NoSQLSchema schema)
+  public void genCSVFile(NoSQLSchema schema)
   {
     new File(ConfigConstants.OUTPUT_FOLDER).mkdirs();
     String outputRoute = ConfigConstants.OUTPUT_FOLDER + schema.getName() + ".csv";
@@ -92,7 +92,7 @@ public class OutputGen
     writer.write(schema, outputRoute);
   }
 
-  private void genConsole(NoSQLSchema schema)
+  public void genConsole(NoSQLSchema schema)
   {
     StringBuilder result = new StringBuilder();
     Map<EntityClass, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
@@ -125,14 +125,14 @@ public class OutputGen
 
     for (EntityClass entity : schema.getEntities())
     {
-      ECollections.sort(entity.getVariations(), (var1, var2) -> Long.compare(var1.getFirstTimestamp(), var2.getFirstTimestamp()));
+      ECollections.sort(entity.getVariations(), (var1, var2) -> Integer.compare(var1.getVariationId(), var2.getVariationId()));
       result.put(entity, entity.getVariations());
     }
 
     return result;
   }
 
-  private void genChart(NoSQLSchema schema)
+  public void genChart(NoSQLSchema schema)
   {
     if (ConfigConstants.DEBUG)
       System.out.println(schema.getName() + " > Drawing timestamp charts...");
@@ -151,7 +151,7 @@ public class OutputGen
       System.out.println(schema.getName() + " > Finished drawing charts.");
   }
 
-  private void genChartFile(NoSQLSchema schema)
+  public void genChartFile(NoSQLSchema schema)
   {
     if (ConfigConstants.DEBUG)
       System.out.println(schema.getName() + " > Creating timestamp chart images...");

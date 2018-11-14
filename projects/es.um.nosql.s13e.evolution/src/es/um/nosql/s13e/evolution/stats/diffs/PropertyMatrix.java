@@ -43,8 +43,6 @@ public class PropertyMatrix
         }
       });
     });
-
-//    ECollections.sort(classifier.getVariations(), (var1, var2) -> var1.getCount() > var2.getCount() ? -1 : 1);
   }
 
   public String getMatrixSummary()

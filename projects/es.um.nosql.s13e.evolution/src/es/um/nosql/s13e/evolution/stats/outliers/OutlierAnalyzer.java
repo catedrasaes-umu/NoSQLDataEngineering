@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+import org.eclipse.emf.common.util.ECollections;
+
 import com.google.common.collect.Streams;
 
 import es.um.nosql.s13e.NoSQLSchema.Classifier;
@@ -18,7 +20,7 @@ public class OutlierAnalyzer
   private double threshold;
   private double percentage;
 
-  public OutlierAnalyzer(double threshold)
+  public OutlierAnalyzer()
   {
     this.outliers = new HashMap<Classifier, List<StructuralVariation>>();
   }
@@ -39,7 +41,12 @@ public class OutlierAnalyzer
     classifier.getVariations().removeAll(outliers.get(classifier));
   }
 
-  // TODO: Under testing
+  public void removeOutliersByCoverage(NoSQLSchema schema, double percentage)
+  {
+    for (Classifier classifier : Streams.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
+      removeOutliersByCoverage(classifier, percentage);
+  }
+
   public void removeOutliersByCoverage(Classifier classifier, double percentage)
   {
     if (percentage < 0.0 || percentage > 100)
@@ -47,9 +54,11 @@ public class OutlierAnalyzer
 
     this.percentage = percentage;
     long totalCount = classifier.getVariations().stream().mapToLong(var -> var.getCount()).sum();
-    double countCoverage = (totalCount * percentage) / 100;
+    long countCoverage = Math.round((totalCount * percentage) / 100);
     double currentCoverage = 0;
     outliers.put(classifier, new ArrayList<StructuralVariation>());
+
+    ECollections.sort(classifier.getVariations(), (var1, var2) -> Long.compare(var2.getCount(), var1.getCount()));
 
     for (StructuralVariation var : classifier.getVariations())
       if (currentCoverage > countCoverage)
@@ -81,10 +90,16 @@ public class OutlierAnalyzer
     {
       long totalCount = Streams.concat(classifier.getVariations().stream(), outliers.get(classifier).stream()).mapToLong(var -> var.getCount()).sum();
       int totalVariations = classifier.getVariations().size() + outliers.get(classifier).size();
-      double countThreshold = Math.round(totalCount * threshold);
+      long countThreshold = Math.round(totalCount * threshold);
+      long countCoverage = Math.round((totalCount * percentage) / 100);
 
       result.append("Classifier " + classifier.getName() + ": " + totalCount + " items" + endLine);
-      result.append("Variations with less than " + countThreshold + " should be treated as outliers" + endLine);
+
+      if (threshold != 0)
+        result.append("Variations with less than " + countThreshold + " should be treated as outliers" + endLine);
+      if (percentage != 100)
+        result.append("Coverage is of " + percentage + "% (" + countCoverage + " items)" + endLine);
+
       result.append("From " + totalVariations + " variations, " + classifier.getVariations().size() + " would remain" + endLine + endLine);
     }
 

@@ -22,10 +22,7 @@ public class DependencyDetector
   public void analyzeSchema(NoSQLSchema schema)
   {
     for (Classifier classifier : Streams.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
-    {
       matrixMap.put(classifier, new PropertyMatrix(classifier));
-      System.out.println(matrixMap.get(classifier).getMatrixSummary());
-    }
 
     // TODO: Call each detector.
   }
@@ -51,5 +48,15 @@ public class DependencyDetector
     // - When added, once it appears, then it appears on the remaining variations
     // - When deleted, once it disappears, it does not show again on any remaining variation
     // - When renamed, once it disappears, it does not show again but another property appears 
+  }
+
+  public String getSummary()
+  {
+    StringBuilder result = new StringBuilder();
+
+    for (Classifier classifier : matrixMap.keySet())
+      result.append(matrixMap.get(classifier).getMatrixSummary() + "\n");
+
+    return result.toString();
   }
 }
