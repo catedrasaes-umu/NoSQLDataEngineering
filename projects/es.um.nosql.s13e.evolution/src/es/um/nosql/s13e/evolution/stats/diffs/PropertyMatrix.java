@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
+import java.util.Set;
 
 import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.Property;
@@ -16,11 +17,11 @@ public class PropertyMatrix
 {
   private CompareProperty pComparer;
   private Classifier classifier;
-  private Map<Property, List<Integer>> propMatrix;
+  private Map<Property, List<StructuralVariation>> propMatrix;
 
   public PropertyMatrix(Classifier classifier)
   {
-    propMatrix = new HashMap<Property, List<Integer>>();
+    propMatrix = new HashMap<Property, List<StructuralVariation>>();
     pComparer = new CompareProperty();
     this.classifier = classifier;
     createPropMatrix();
@@ -34,15 +35,25 @@ public class PropertyMatrix
       {
         Optional<Property> propKey = propMatrix.keySet().stream().filter(prop2 -> pComparer.compare(prop1, prop2)).findFirst();
         if (propKey.isPresent())
-          propMatrix.get(propKey.get()).add(var.getVariationId());
+          propMatrix.get(propKey.get()).add(var);
         else
         {
-          List<Integer> varList = new ArrayList<Integer>();
-          varList.add(var.getVariationId());
+          List<StructuralVariation> varList = new ArrayList<StructuralVariation>();
+          varList.add(var);
           propMatrix.put(prop1, varList);
         }
       });
     });
+  }
+
+  public Set<Property> getProperties()
+  {
+    return propMatrix.keySet();
+  }
+
+  public List<StructuralVariation> getVarsFromProp(Property property)
+  {
+    return propMatrix.get(property);
   }
 
   public String getMatrixSummary()
@@ -63,15 +74,15 @@ public class PropertyMatrix
 
       for (int i = 0; i < classifier.getVariations().size(); i++)
       {
-        int varId = classifier.getVariations().get(i).getVariationId();
-        if (propMatrix.get(prop).contains(varId))
+        StructuralVariation var = classifier.getVariations().get(i);
+        if (propMatrix.get(prop).contains(var))
           result.append("X");
         else
           result.append("-");
         result.append("   ");
-        if (varId >= 10)
+        if (var.getVariationId() >= 10)
           result.append(" ");
-        if (varId >= 100)
+        if (var.getVariationId() >= 100)
           result.append(" ");
       }
       result.append(endLine);

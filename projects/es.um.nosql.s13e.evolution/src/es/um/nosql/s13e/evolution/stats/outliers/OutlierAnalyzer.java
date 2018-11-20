@@ -5,10 +5,9 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import org.eclipse.emf.common.util.ECollections;
-
-import com.google.common.collect.Streams;
 
 import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
@@ -27,7 +26,7 @@ public class OutlierAnalyzer
 
   public void removeOutliersByEpsilon(NoSQLSchema schema, double threshold)
   {
-    for (Classifier classifier : Streams.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
+    for (Classifier classifier : Stream.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
       removeOutliersByEpsilon(classifier, threshold);    
   }
 
@@ -43,7 +42,7 @@ public class OutlierAnalyzer
 
   public void removeOutliersByCoverage(NoSQLSchema schema, double percentage)
   {
-    for (Classifier classifier : Streams.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
+    for (Classifier classifier : Stream.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
       removeOutliersByCoverage(classifier, percentage);
   }
 
@@ -88,7 +87,7 @@ public class OutlierAnalyzer
 
     for (Classifier classifier : outliers.keySet())
     {
-      long totalCount = Streams.concat(classifier.getVariations().stream(), outliers.get(classifier).stream()).mapToLong(var -> var.getCount()).sum();
+      long totalCount = Stream.concat(classifier.getVariations().stream(), outliers.get(classifier).stream()).mapToLong(var -> var.getCount()).sum();
       int totalVariations = classifier.getVariations().size() + outliers.get(classifier).size();
       long countThreshold = Math.round(totalCount * threshold);
       long countCoverage = Math.round((totalCount * percentage) / 100);

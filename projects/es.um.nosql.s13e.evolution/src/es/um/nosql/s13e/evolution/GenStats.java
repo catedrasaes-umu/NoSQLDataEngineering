@@ -28,7 +28,7 @@ public class GenStats
     depDetector.analyzeSchema(schema);
     System.out.println(depDetector.getSummary());
 
-    OutputGen output = new OutputGen();
-    output.genConsole(schema);
+//    OutputGen output = new OutputGen();
+//    output.genConsole(schema);
   }
 }
