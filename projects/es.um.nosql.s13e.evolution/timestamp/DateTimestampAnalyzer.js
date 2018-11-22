@@ -1,9 +1,8 @@
-// This Date TimestampAnalyzer looks for an attribute with a given name,
-// and translates it to nanoseconds according to the given format.
-// Expected format: yyyy-MM-ddTHH:mm:ss
+// This Date TimestampAnalyzer looks for an attribute with a given name, or an array of attributes by name, finds the first occurrence and
+// and translates it to nanoseconds according to the given format. Expected format: yyyy-MM-ddTHH:mm:ss
 var TimestampAnalyzer =
 {
-  _attrName: "timestamp",
+  _attrName: ["timestamp"],
   _value: "",
 
   getAttrValue: function()
@@ -15,7 +14,7 @@ var TimestampAnalyzer =
   },
   analyzeAttribute: function(attrName, attrValue)
   {
-    if (attrName === this._attrName)
+    if (this._attrName.indexOf(attrName) > -1 && this._value === "")
       this._value = Date.parse(attrValue);
   }
 };

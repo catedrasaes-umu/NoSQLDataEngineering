@@ -7,7 +7,6 @@ import es.um.nosql.s13e.evolution.timestamp.gen.TimestampAnalyzer;
 import es.um.nosql.s13e.evolution.timestamp.gen.BasicTimestampAnalyzer;
 import es.um.nosql.s13e.evolution.timestamp.gen.DateTimestampAnalyzer;
 import es.um.nosql.s13e.evolution.timestamp.gen.DefaultTimestampAnalyzer;
-import es.um.nosql.s13e.evolution.timestamp.gen.MultipleBasicTimestampAnalyzer;
 import es.um.nosql.s13e.evolution.timestamp.gen.OIDTimestampAnalyzer;
 
 public class GenTimestampFiles
@@ -34,6 +33,5 @@ public class GenTimestampFiles
     GENERATE_TIMESTAMP_FILE(new BasicTimestampAnalyzer());
     GENERATE_TIMESTAMP_FILE(new DateTimestampAnalyzer());
     GENERATE_TIMESTAMP_FILE(new OIDTimestampAnalyzer());
-    GENERATE_TIMESTAMP_FILE(new MultipleBasicTimestampAnalyzer());
   }
 }

@@ -3,25 +3,30 @@ package es.um.nosql.s13e.evolution.timestamp.gen
 
 class BasicTimestampAnalyzer extends TimestampAnalyzer
 {
-  String attrName;
+  String[] attrNames;
 
   new()
   {
-    this("timestamp");
+    this(#["timestamp"]);
   }
 
   new(String attrName)
   {
-    this.attrName = attrName;
+    this(#[attrName]);
+  }
+
+  new(String[] attrNames)
+  {
+    this.attrNames = attrNames;
   }
 
   override toString()
   '''
-  // This basic TimestampAnalyzer just looks for an attribute with a given name,
-  // given as a long, and captures its value as the timestamp value.
+  // This Basic TimestampAnalyzer just looks for an attribute, or an array of given attribute names,
+  // and captures the first matching occurrence value as the timestamp value.
   var TimestampAnalyzer =
   {
-    _attrName: "«attrName»",
+    _attrName: [«attrNames.map[attr | "\"" + attr + "\""].join(", ")»],
     _value: "",
 
     getAttrValue: function()
@@ -33,7 +38,7 @@ class BasicTimestampAnalyzer extends TimestampAnalyzer
     },
     analyzeAttribute: function(attrName, attrValue)
     {
-      if (attrName === this._attrName)
+      if (this._attrName.indexOf(attrName) > -1 && this._value === "")
         this._value = attrValue;
     }
   };

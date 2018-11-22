@@ -3,26 +3,30 @@ package es.um.nosql.s13e.evolution.timestamp.gen
 
 class DateTimestampAnalyzer extends TimestampAnalyzer
 {
-  String attrName;
+  String[] attrNames;
 
   new()
   {
-    this("timestamp");
+    this(#["timestamp"]);
   }
 
   new(String attrName)
   {
-    this.attrName = attrName;
+    this(#[attrName]);
+  }
+
+  new(String[] attrNames)
+  {
+    this.attrNames = attrNames;
   }
 
   override toString()
   '''
-  // This Date TimestampAnalyzer looks for an attribute with a given name,
-  // and translates it to nanoseconds according to the given format.
-  // Expected format: yyyy-MM-ddTHH:mm:ss
+  // This Date TimestampAnalyzer looks for an attribute with a given name, or an array of attributes by name, finds the first occurrence and
+  // and translates it to nanoseconds according to the given format. Expected format: yyyy-MM-ddTHH:mm:ss
   var TimestampAnalyzer =
   {
-    _attrName: "«attrName»",
+    _attrName: [«attrNames.map[attr | "\"" + attr + "\""].join(", ")»],
     _value: "",
 
     getAttrValue: function()
@@ -34,7 +38,7 @@ class DateTimestampAnalyzer extends TimestampAnalyzer
     },
     analyzeAttribute: function(attrName, attrValue)
     {
-      if (attrName === this._attrName)
+      if (this._attrName.indexOf(attrName) > -1 && this._value === "")
         this._value = Date.parse(attrValue);
     }
   };
