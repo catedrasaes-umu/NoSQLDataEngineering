@@ -51,6 +51,16 @@ public class PropertyMatrix
     return propMatrix.keySet();
   }
 
+  public List<StructuralVariation> getVars()
+  {
+    return classifier.getVariations();
+  }
+
+  public Classifier getClassifier()
+  {
+    return classifier;
+  }
+
   public List<StructuralVariation> getVarsFromProp(Property property)
   {
     return propMatrix.get(property);
