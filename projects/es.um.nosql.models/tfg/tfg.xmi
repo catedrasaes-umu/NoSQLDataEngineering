@@ -7,12 +7,6 @@
     xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../../es.um.nosql.s13e/model/nosqlschema.ecore"
     name="tfg">
   <entities
-      name="Date register">
-    <variations
-        variationId="1"
-        count="4"/>
-  </entities>
-  <entities
       name="Address data"
       root="true">
     <variations
@@ -251,11 +245,12 @@
         variationId="1"
         count="1">
       <properties
-          xsi:type="NoSQLSchema:Aggregate"
-          name="Date Register"
-          lowerBound="1"
-          upperBound="1"
-          aggregates="//@entities.0/@variations.0"/>
+          xsi:type="NoSQLSchema:Attribute"
+          name="Date Register">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Money"
@@ -298,11 +293,12 @@
         variationId="2"
         count="1">
       <properties
-          xsi:type="NoSQLSchema:Aggregate"
-          name="Date Register"
-          lowerBound="1"
-          upperBound="1"
-          aggregates="//@entities.0/@variations.0"/>
+          xsi:type="NoSQLSchema:Attribute"
+          name="Date Register">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Money"
@@ -337,11 +333,12 @@
         variationId="3"
         count="1">
       <properties
-          xsi:type="NoSQLSchema:Aggregate"
-          name="Date Register"
-          lowerBound="1"
-          upperBound="1"
-          aggregates="//@entities.0/@variations.0"/>
+          xsi:type="NoSQLSchema:Attribute"
+          name="Date Register">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Sons">
@@ -376,11 +373,12 @@
         variationId="4"
         count="1">
       <properties
-          xsi:type="NoSQLSchema:Aggregate"
-          name="Date Register"
-          lowerBound="1"
-          upperBound="1"
-          aggregates="//@entities.0/@variations.0"/>
+          xsi:type="NoSQLSchema:Attribute"
+          name="Date Register">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Sons">
@@ -499,7 +497,7 @@
       root="true">
     <variations
         variationId="1"
-        count="1">
+        count="3">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -513,7 +511,7 @@
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -521,7 +519,7 @@
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -544,14 +542,6 @@
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="Photo"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -563,7 +553,7 @@
     </variations>
     <variations
         variationId="2"
-        count="1">
+        count="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -607,7 +597,15 @@
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="Photo"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -667,14 +665,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="Photo"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -705,7 +695,7 @@
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -724,6 +714,14 @@
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Name"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="Photo"
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -787,14 +785,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="Photo"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -817,7 +807,7 @@
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -825,7 +815,7 @@
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
+            name="String"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -851,6 +841,14 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
+          name="Photo"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
           name="_id">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -859,7 +857,7 @@
     </variations>
     <variations
         variationId="7"
-        count="1">
+        count="2">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -873,7 +871,7 @@
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -881,7 +879,7 @@
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
+            name="String"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -903,7 +901,7 @@
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
+            name="String"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -959,14 +957,6 @@
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="Photo"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
       <properties
@@ -1001,118 +991,6 @@
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="NIF">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="NIF Letter">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="Name"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_id">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-    </variations>
-    <variations
-        variationId="10"
-        count="2">
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="Birth Date">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="Last Name 1"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="Last Name 2"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="NIF">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="NIF Letter">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="Name"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_id">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-    </variations>
-    <variations
-        variationId="11"
-        count="2">
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="Birth Date">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="Last Name 1"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="Last Name 2"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
       <properties
@@ -1154,8 +1032,8 @@
       </properties>
     </variations>
     <variations
-        variationId="12"
-        count="3">
+        variationId="10"
+        count="1">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="Birth Date">
@@ -1169,7 +1047,127 @@
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="Last Name 2"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="NIF">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="NIF Letter">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="Name"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="Photo"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+    </variations>
+    <variations
+        variationId="11"
+        count="1">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="Birth Date">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="Last Name 1"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="Last Name 2"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="NIF">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="NIF Letter">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="Name"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+    </variations>
+    <variations
+        variationId="12"
+        count="1">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="Birth Date">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="Last Name 1"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -1199,7 +1197,7 @@
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"

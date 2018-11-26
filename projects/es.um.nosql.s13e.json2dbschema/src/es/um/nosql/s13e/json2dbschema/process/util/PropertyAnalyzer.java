@@ -14,7 +14,7 @@ public class PropertyAnalyzer
     // This comparer will tell us if two properties are the same based on the formal Property comparator
     CompareProperty comparer = new CompareProperty();
 
-    // At least each property of the first variation will be a common property.
+    // At most each property of the first variation will be a common property.
     List<Property> commonProps = new ArrayList<Property>();
     commonProps.addAll(variations.get(0).getProperties());
     List<Property> optionalProps = new ArrayList<Property>();

@@ -83,6 +83,8 @@ function map()
     {
       if (obj instanceof ObjectId)
         retschema = "oid";
+      else if (obj instanceof NumberLong)
+        retschema = 0;
       else
         retschema = _complex_obj(obj, true);
     }
