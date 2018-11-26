@@ -66,6 +66,8 @@ public class OutlierAnalyzer
         currentCoverage += var.getCount();
 
     classifier.getVariations().removeAll(outliers.get(classifier));
+
+    ECollections.sort(classifier.getVariations(), (var1, var2) -> Long.compare(var1.getVariationId(), var2.getVariationId()));
   }
 
   public void resetAnalyzer()

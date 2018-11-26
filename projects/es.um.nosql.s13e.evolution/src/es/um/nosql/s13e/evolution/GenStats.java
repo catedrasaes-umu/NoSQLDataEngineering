@@ -1,6 +1,10 @@
 package es.um.nosql.s13e.evolution;
 
 import java.io.File;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
+
+import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.evolution.output.OutputGen;
@@ -24,9 +28,12 @@ public class GenStats
 //    System.out.println(oAnalyzer.getSummary());
 
     // Analyze each property
-    DependencyDetector depDetector = new DependencyDetector();
-    depDetector.analyzeSchema(schema);
-    System.out.println(depDetector.getSummary());
+    for (Classifier classifier : Stream.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
+    {
+      DependencyDetector depDetector = new DependencyDetector(classifier);
+      System.out.println(depDetector.getSummary());      
+    }
+
 
 //    OutputGen output = new OutputGen();
 //    output.genConsole(schema);
