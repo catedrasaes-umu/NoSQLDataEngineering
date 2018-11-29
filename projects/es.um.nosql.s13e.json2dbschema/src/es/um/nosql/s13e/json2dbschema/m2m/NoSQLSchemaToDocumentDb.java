@@ -1,5 +1,6 @@
 package es.um.nosql.s13e.json2dbschema.m2m;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -12,11 +13,14 @@ import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.PMap;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.ReferenceClass;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.json2dbschema.util.inflector.Inflector;
+import es.um.nosql.s13e.util.ModelLoader;
+import es.um.nosql.s13e.util.NoSQLSchemaWriter;
 import es.um.nosql.s13e.util.compare.CompareStructuralVariation;
 
 public class NoSQLSchemaToDocumentDb
@@ -25,6 +29,17 @@ public class NoSQLSchemaToDocumentDb
 
   private final static String REF_ENTITY_PREFIX = "Ref_";
   private final static String PMAP_ENTITY_PREFIX = "Map_";
+
+  public static void main(String[] args)
+  {
+    NoSQLSchemaToDocumentDb var1 = new NoSQLSchemaToDocumentDb();
+
+    ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
+    NoSQLSchema schema = loader.load(new File("../es.um.nosql.models/dummy/dummy.xmi"), NoSQLSchema.class);
+    var1.adaptToDocumentDb(schema);
+    NoSQLSchemaWriter writer = new NoSQLSchemaWriter();
+    writer.write(schema, "../es.um.nosql.models/dummy/dummy3.xmi");
+  }
 
   public NoSQLSchemaToDocumentDb()
   {
@@ -84,6 +99,7 @@ public class NoSQLSchemaToDocumentDb
       newRef.setLowerBound(ref.getLowerBound());
       newRef.setUpperBound(ref.getUpperBound());
       newRef.setOpposite(ref.getOpposite());
+      newRef.setOriginalType(ref.getOriginalType());
       newRef.setRefsTo(ref.getRefsTo());
       var.getProperties().add(newRef); // What to do if it already exists a property named as the ref?
 

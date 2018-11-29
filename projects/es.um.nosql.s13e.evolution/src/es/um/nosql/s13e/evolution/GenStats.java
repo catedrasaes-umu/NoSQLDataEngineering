@@ -24,8 +24,9 @@ public class GenStats
 
     // Detect and remove outliers given Epsilon = 0.0001 or Coverage = 99.5%
     OutlierAnalyzer oAnalyzer = new OutlierAnalyzer();
+    //oAnalyzer.removeOutliersByEpsilon(schema, ConfigConstants.OUTLIER_EPSILON);
     oAnalyzer.removeOutliersByCoverage(schema, ConfigConstants.OUTLIER_COVERAGE);
-//    System.out.println(oAnalyzer.getSummary());
+    System.out.println(oAnalyzer.getSummary());
 
     // Analyze each property
     for (Classifier classifier : Stream.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))

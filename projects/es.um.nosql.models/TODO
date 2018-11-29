@@ -1,3 +1,0 @@
-OpenSanctions detects several separated aggregates but they all look the same (aliases)
-SOF detects a reference with originaltype string and number. Check this out.
-EveryPolitician.Organizations: other_names and identifiers cardinality is not correctly calculated.
