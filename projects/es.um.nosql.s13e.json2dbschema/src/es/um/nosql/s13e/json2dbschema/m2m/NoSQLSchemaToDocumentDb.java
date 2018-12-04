@@ -15,6 +15,7 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.PMap;
+import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.ReferenceClass;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
@@ -38,7 +39,7 @@ public class NoSQLSchemaToDocumentDb
     NoSQLSchema schema = loader.load(new File("../es.um.nosql.models/dummy/dummy.xmi"), NoSQLSchema.class);
     var1.adaptToDocumentDb(schema);
     NoSQLSchemaWriter writer = new NoSQLSchemaWriter();
-    writer.write(schema, "../es.um.nosql.models/dummy/dummy3.xmi");
+    writer.write(schema, "../es.um.nosql.models/dummy/dummy2.xmi");
   }
 
   public NoSQLSchemaToDocumentDb()
@@ -103,17 +104,24 @@ public class NoSQLSchemaToDocumentDb
       newRef.setRefsTo(ref.getRefsTo());
       var.getProperties().add(newRef); // What to do if it already exists a property named as the ref?
 
-      // Now we replace the original reference with an aggregate.
-      // BEWARE: At this point the aggregate aggregates a ReferenceClass variation, but we will change ReferenceClass to EntityClass later on.
-      Aggregate newAggr = factory.createAggregate();
-      newAggr.setName(ref.getName());
-      newAggr.setLowerBound(1);
-      newAggr.setUpperBound(1);
-      newAggr.getAggregates().add(ref.getFeatures());
+      if (!var.getProperties().stream().anyMatch(prop -> prop.getName().equals("_id")))
+      {
+        Attribute idAttr = factory.createAttribute();
+        idAttr.setName("_id");
+        PrimitiveType pType = factory.createPrimitiveType();
+        pType.setName("ObjectId");
+        idAttr.setType(pType);
+        var.getProperties().add(idAttr);
+      }
 
-      var = (StructuralVariation)ref.eContainer();
-      var.getProperties().remove(ref);
-      var.getProperties().add(newAggr);
+      Attribute theId = (Attribute)var.getProperties().stream().filter(prop -> prop.getName().equals("_id")).findFirst().get();
+      String idType = ((PrimitiveType)theId.getType()).getName();
+
+      // We modify the current reference to a new cardinality
+      ref.setLowerBound(1);
+      ref.setUpperBound(1);
+      ref.setOriginalType(idType);
+      ref.setFeatures(null);
     }
 
     // Create the new EntityClass from a ReferenceClass
@@ -130,6 +138,10 @@ public class NoSQLSchemaToDocumentDb
       refEntity.getParents().addAll(refClass.getParents());
       schema.getEntities().add(refEntity);
     }
+
+    // We also modify the current references to reference the new EntityClass
+    for (Reference ref : lReferences)
+      ref.setRefsTo(refEntity);
 
     // If an EntityClass with the same name as a ReferenceClass existed, we add the variations but take care of the variationId identifier.
     int varSize = refEntity.getVariations().size();

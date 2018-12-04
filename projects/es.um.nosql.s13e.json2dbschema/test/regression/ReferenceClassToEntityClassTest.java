@@ -6,6 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
+import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
@@ -88,7 +89,7 @@ public class ReferenceClassToEntityClassTest
 
     assertTrue(schema.getRefClasses().isEmpty());
     assertEquals(3, schema.getEntities().size());
-    assertTrue(schema.getEntities().get(0).getVariations().get(0).getProperties().stream().noneMatch(prop -> {return prop instanceof Reference;}));
+    assertTrue(schema.getEntities().get(0).getVariations().get(0).getProperties().stream().noneMatch(prop -> {return prop instanceof Aggregate;}));
   }
 
   @Test
