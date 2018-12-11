@@ -59,5 +59,6 @@ class GanttChart:
     ax.invert_yaxis()
     figure1.autofmt_xdate()
 
-    pyplot.get_current_fig_manager().window.state('zoomed')
+#  Works only on Windows.
+#    pyplot.get_current_fig_manager().window.state('zoomed')
     pyplot.show()
