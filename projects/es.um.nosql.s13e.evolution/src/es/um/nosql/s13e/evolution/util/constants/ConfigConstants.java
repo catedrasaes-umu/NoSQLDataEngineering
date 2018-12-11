@@ -15,5 +15,5 @@ public class ConfigConstants
   public static final boolean OUTPUT_CHART_FILE       = true;
 
   public final static double OUTLIER_EPSILON = 0.0001;
-  public final static double OUTLIER_COVERAGE = 99.8;
+  public final static double OUTLIER_COVERAGE = 99.9;
 }
