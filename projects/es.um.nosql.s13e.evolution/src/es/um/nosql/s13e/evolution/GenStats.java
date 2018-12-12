@@ -1,3 +1,4 @@
+
 package es.um.nosql.s13e.evolution;
 
 import java.io.File;
@@ -22,7 +23,7 @@ public class GenStats
     NoSQLSchema schema = loader.load(new File(INPUT_MODEL), NoSQLSchema.class);
 
     // Detect and remove outliers given Epsilon = 0.0001 or Coverage = 99.5%
-    OutlierAnalyzer oAnalyzer = new OutlierAnalyzer(OutlierMode.COVERAGE);
+    OutlierAnalyzer oAnalyzer = new OutlierAnalyzer(OutlierMode.EPSILON);
     oAnalyzer.removeOutliers(schema);
     System.out.println(oAnalyzer.getSummary());
 
