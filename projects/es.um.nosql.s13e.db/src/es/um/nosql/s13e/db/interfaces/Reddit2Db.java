@@ -4,18 +4,22 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import es.um.nosql.s13e.db.util.DbType;
 
-public class OpenSanctions2Db extends Source2Db
+public class Reddit2Db extends Source2Db
 {
-  private int MAX_LINES_BEFORE_STORE = 2000;
+  private int MAX_LINES_BEFORE_STORE = 50000;
 
-  public OpenSanctions2Db(DbType db, String ip)
+  public Reddit2Db(DbType db, String ip)
   {
     super(db, ip);
   }
@@ -71,18 +75,17 @@ public class OpenSanctions2Db extends Source2Db
       obj.put("_id", obj.get("id").asText());
       obj.remove("id");
     }
-    if (obj.has("identifiers"))
+
+    Iterator<String> fieldNames = obj.fieldNames();
+    List<String> nullFields = new ArrayList<String>();
+
+    while (fieldNames.hasNext())
     {
-      ArrayNode identifiers = (ArrayNode)obj.get("identifiers");
-      identifiers.forEach(id ->
-      {
-        if (id.has("number") && id.get("number").asInt() != 0)
-        {
-          ObjectNode objId = (ObjectNode)id;
-          objId.put("number", objId.get("number").asInt());
-        }
-      });
+      String fName = fieldNames.next();
+      if (obj.get(fName).isNull())
+        nullFields.add(fName);
     }
+    obj.remove(nullFields);
 
     return obj;
   }

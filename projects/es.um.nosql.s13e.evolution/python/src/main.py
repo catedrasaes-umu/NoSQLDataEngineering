@@ -1,6 +1,6 @@
 from charts.GanttChart import GanttChart
 
-CSV_ROUTE = "../output/stackoverflow/stackoverflow.csv"
+CSV_ROUTE = "../output/reddit/reddit.csv"
 
 def main():
   chartCreator = GanttChart(CSV_ROUTE)

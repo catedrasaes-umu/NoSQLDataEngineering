@@ -15,7 +15,7 @@ import es.um.nosql.s13e.util.ModelLoader;
 
 public class GenStats
 {
-  public final static String INPUT_MODEL = "../es.um.nosql.models/stackoverflow/stackoverflow.xmi";
+  public final static String INPUT_MODEL = "../es.um.nosql.models/reddit/reddit.xmi";
 
   public static void main(String[] args)
   {
@@ -26,7 +26,6 @@ public class GenStats
     OutlierAnalyzer oAnalyzer = new OutlierAnalyzer(OutlierMode.EPSILON);
     oAnalyzer.removeOutliers(schema);
     System.out.println(oAnalyzer.getSummary());
-
     // Analyze each property
     for (Classifier classifier : Stream.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
     {

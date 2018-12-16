@@ -11,6 +11,7 @@ import es.um.nosql.s13e.db.interfaces.Facebook2Db;
 import es.um.nosql.s13e.db.interfaces.Harvard2Db;
 import es.um.nosql.s13e.db.interfaces.Json2Db;
 import es.um.nosql.s13e.db.interfaces.Publications2Db;
+import es.um.nosql.s13e.db.interfaces.Reddit2Db;
 import es.um.nosql.s13e.db.interfaces.Links2Db;
 import es.um.nosql.s13e.db.interfaces.Model2Db;
 import es.um.nosql.s13e.db.interfaces.OpenSanctions2Db;
@@ -152,6 +153,14 @@ public class Orchestrator
     String outputModel = ConfigConstants.OUTPUT_FOLDER + dbName + ".xmi";
 
     runExample(option, new Webclick2Db(dbType, ConfigConstants.DATABASE_IP), dbName, sourceFolder, outputModel);
+  }
+
+  public void runRedditExample(InferenceMode option, String sourceFolder)
+  {
+    String dbName = "reddit";
+    String outputModel = ConfigConstants.OUTPUT_FOLDER + dbName + ".xmi";
+
+    runExample(option, new Reddit2Db(dbType, ConfigConstants.DATABASE_IP), dbName, sourceFolder, outputModel);
   }
 
   private void runExample(InferenceMode option, Source2Db source2Db, String dbName, String source, String outputModel)

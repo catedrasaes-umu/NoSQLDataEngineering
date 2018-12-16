@@ -30,4 +30,5 @@ public class ConfigConstants
   public static final String STACKOVERFLOW_FOLDER     = "F:\\Informatica\\datasets\\stackoverflow\\";
   public static final String URBANDICTIONARY_FILE     = "/media/alberto/tarsonis/datasets/urban/words.json";
   public static final String WEBCLICKS_FOLDER         = "/home/lab/datasets/webclicks/";
+  public static final String REDDIT_FOLDER            = "F:\\Informatica\\datasets\\reddit\\";
 }

@@ -11,7 +11,8 @@ public class Main
     Orchestrator inferenceTest = new Orchestrator(DbType.MONGODB);
 
     //inferenceTest.runCompaniesExample(InferenceMode.FILL_AND_INFER, ConfigConstants.COMPANIES_FILE);                //POJO
-    inferenceTest.runEveryPoliticianExample(InferenceMode.INFER_ONLY, ConfigConstants.EVERYPOLITICIAN_FILE);
+    inferenceTest.runRedditExample(InferenceMode.FILL_ONLY, ConfigConstants.REDDIT_FOLDER);
+    //inferenceTest.runEveryPoliticianExample(InferenceMode.INFER_ONLY, ConfigConstants.EVERYPOLITICIAN_FILE);
     //inferenceTest.runFacebookExample(InferenceMode.INFER_ONLY, ConfigConstants.FACEBOOK_FOLDER);                //POJO
     //inferenceTest.runHarvardExample(InferenceMode.INFER_ONLY, ConfigConstants.HARVARD_FILE);                    //POJO
     //inferenceTest.runJsonExample(InferenceMode.FILL_AND_INFER, ConfigConstants.JSON_FOLDER);

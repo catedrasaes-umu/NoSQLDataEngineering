@@ -66,6 +66,11 @@ public class EvolutionInferrer
     runExample(option, dbName, new DateTimestampAnalyzer("start_time_DI"));
   }
 
+  public void runRedditExample(InferenceMode option, String dbName)
+  {
+    runExample(option, dbName, new BasicTimestampAnalyzer("created_utc"));
+  }
+
   private void runExample(InferenceMode option, String dbName, TimestampAnalyzer analyzer)
   {
     NoSQLSchema schema = null;
