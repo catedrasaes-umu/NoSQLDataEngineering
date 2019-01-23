@@ -21,6 +21,8 @@ import java.util.ArrayList
 import java.util.Comparator
 import java.util.List
 import java.util.stream.IntStream
+import es.um.nosql.s13e.NoSQLSchema.PList
+import es.um.nosql.s13e.NoSQLSchema.PSet
 
 /**
  * Class designed to perform the Morphia code generation: Java
@@ -135,7 +137,8 @@ class DiffToMorphia
 		
 	protected def boolean entityHasMultipleCardinalityAttributes(EntityClass entity) {
 		entity.variations.exists[ev | ev.properties.exists[p | (p instanceof Association &&
-		      ((p as Association).lowerBound !== 1 || (p as Association).upperBound !== 1)) || (p instanceof Attribute && (p as Attribute).type instanceof PTuple)]]
+		      ((p as Association).lowerBound !== 1 || (p as Association).upperBound !== 1))
+		      || (p instanceof Attribute && ((p as Attribute).type instanceof PTuple) || (p as Attribute).type instanceof PList || (p as Attribute).type instanceof PSet)]]
 	}
 		
   protected def boolean entityReferencesObjectId(EntityClass entity) 
@@ -444,7 +447,7 @@ class DiffToMorphia
   /**
    * Shortcut method to generate a Tuple type.
    */
-  // TODO: Treat the different containers.
+  // TODO: Treat the PMap metaclass.
   private def dispatch CharSequence genAttributeType(PTuple tuple)
   {
     if (tuple.elements.size == 1)
@@ -453,6 +456,18 @@ class DiffToMorphia
       // Heterogeneous arrays. Too complex for now...
       '''List<Object>'''
   }
+
+  /**
+   * Shortcut method to generate a PList type
+   */
+  private def dispatch CharSequence genAttributeType(PList list)
+    '''List<«genAttributeType(list.elementType)»>'''
+
+  /**
+   * Shortcut method to generate a PSet type
+   */
+  private def dispatch CharSequence genAttributeType(PSet set)
+    '''List<«genAttributeType(set.elementType)»>'''
 
   private def dispatch CharSequence genAttributeType(String type)
   {

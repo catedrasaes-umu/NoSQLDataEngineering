@@ -22,6 +22,8 @@ import es.um.nosql.s13e.entitydifferentiation.m2t.commons.Commons
 import es.um.nosql.s13e.entitydifferentiation.m2t.commons.DependencyAnalyzer
 import es.um.nosql.s13e.entitydifferentiation.m2t.config.ConfigMongoose
 import java.util.HashMap
+import es.um.nosql.s13e.NoSQLSchema.PList
+import es.um.nosql.s13e.NoSQLSchema.PSet
 
 /**
  * Class designed to perform the Mongoose code generation: Javascript
@@ -141,7 +143,7 @@ class DiffToMongoose
     // if it is an association w lowerBound == 0. Proof: https://stackoverflow.com/questions/27268172/mongoose-schema-to-require-array-that-can-be-empty
     if (required && (!(spec.property instanceof Association) || (spec.property as Association).lowerBound != 0))
       props.put('required', true)
-    else if ((spec.property instanceof Attribute && (spec.property as Attribute).type instanceof PTuple) ||
+    else if ((spec.property instanceof Attribute && isAttrTypeClassifier(spec.property as Attribute)) ||
       (spec.property instanceof Association && ((spec.property as Association).upperBound !== 1 || (spec.property as Association).lowerBound !== 1)))
       props.put('default', label("undefined"))
     // This last condition is used because empty optional arrays are stored in Mongoose. This shouldn't be a thing.
@@ -150,6 +152,12 @@ class DiffToMongoose
     for (Pair<String, String> p : indexValGen.genValidatorsForField(e, spec.property.name))
       props.put(p.key, label(p.value))
     props
+  }
+
+  private def boolean isAttrTypeClassifier(Attribute attribute)
+  {
+    val type = attribute.type
+    return type instanceof PTuple || type instanceof PList || type instanceof PSet
   }
 
   private def CharSequence toJSONString(Object o)
@@ -211,6 +219,7 @@ class DiffToMongoose
     for (PropertySpec ps : typeList)
       reduceUnionProperty(ps.property, uniqueTypeList, typeShortcutList)
 
+    println(uniqueTypeList)
     // We reduced the union to a single type!
     if (uniqueTypeList.size == 1)
     {
@@ -241,11 +250,20 @@ class DiffToMongoose
       val typeTuple = (attr.type as PTuple).elements;
       if (typeTuple.size == 1)
       {
-        uniqueTypeList.add(attr);
-        typeShortcutList.add((typeTuple.get(0) as PrimitiveType).name);
+        addToReduceLists(attr, "[" + (typeTuple.get(0) as PrimitiveType).name + "]", uniqueTypeList, typeShortcutList);
       }
       else if (typeTuple.size > 1)
         addToReduceLists(attr, "[Mixed]", uniqueTypeList, typeShortcutList);
+    }
+    else if (attr.type instanceof PList)
+    {
+      val type = (attr.type as PList).elementType;
+      addToReduceLists(attr, "[" + (type as PrimitiveType).name + "]", uniqueTypeList, typeShortcutList);
+    }
+    else if (attr.type instanceof PSet)
+    {
+      val type = (attr.type as PSet).elementType;
+      addToReduceLists(attr, "[" + (type as PrimitiveType).name + "]", uniqueTypeList, typeShortcutList);
     }
   }
 
@@ -355,6 +373,22 @@ class DiffToMongoose
   }
 
   /**
+   * Generate code attribute for a PList Attribute
+   */
+  private def dispatch genAttributeType(PList type)
+  {
+    #{'type' -> genType(type)}
+  }
+
+  /**
+   * Generate code attribute for a PSet Attribute
+   */
+  private def dispatch genAttributeType(PSet type)
+  {
+    #{'type' -> genType(type)}
+  }
+
+  /**
    * Generate code attribute for PrimitiveType Attribute
    */
   private def dispatch genAttributeType(PrimitiveType type)
@@ -373,13 +407,29 @@ class DiffToMongoose
   /**
    * Shortcut method to generate a Tuple type.
    */
-  private def dispatch Object genType(PTuple tuple)
+  private def dispatch CharSequence genType(PTuple tuple)
   {
     if (tuple.elements.size == 1)
       '''[«genType(tuple.elements.get(0))»]'''
     else
       // Heterogeneous arrays. Too complex for now...
       '''[Mixed]'''
+  }
+
+  /**
+   * Shortcut method to generate a PList type.
+   */
+  private def dispatch CharSequence genType(PList list)
+  {
+    '''[«genType(list.elementType)»]'''
+  }
+
+  /**
+   * Shortcut method to generate a PSet type.
+   */
+  private def dispatch CharSequence genType(PSet set)
+  {
+    '''[«genType(set.elementType)»]'''
   }
 
   private def genTypeForPrimitiveString(String type)

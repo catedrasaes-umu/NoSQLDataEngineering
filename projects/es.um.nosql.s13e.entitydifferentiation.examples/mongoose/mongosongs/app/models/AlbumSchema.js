@@ -7,7 +7,7 @@ var UnionType = require('./util/UnionType.js');
 
 var AlbumSchema = new mongoose.Schema({
   _id: {type: String, required: true},
-  availability: UnionType("U_String_[String]_[String]", "String", "[String]", "[String]"),
+  availability: UnionType("U_String_[String]", "String", "[String]"),
   formats: {type: [String], required: true},
   genre: String,
   genres: {type: [String], default: undefined},
