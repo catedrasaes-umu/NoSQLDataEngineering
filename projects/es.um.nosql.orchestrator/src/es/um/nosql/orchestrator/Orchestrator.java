@@ -18,6 +18,7 @@ import es.um.nosql.s13e.db.interfaces.OpenSanctions2Db;
 import es.um.nosql.s13e.db.interfaces.Pleiades2Db;
 import es.um.nosql.s13e.db.interfaces.Proteins2Db;
 import es.um.nosql.s13e.db.interfaces.StackOverflow2Db;
+import es.um.nosql.s13e.db.interfaces.TheMovieDb2Db;
 import es.um.nosql.s13e.db.interfaces.Source2Db;
 import es.um.nosql.s13e.db.interfaces.UrbanDictionary2Db;
 import es.um.nosql.s13e.db.interfaces.Webclick2Db;
@@ -161,6 +162,14 @@ public class Orchestrator
     String outputModel = ConfigConstants.OUTPUT_FOLDER + dbName + ".xmi";
 
     runExample(option, new Reddit2Db(dbType, ConfigConstants.DATABASE_IP), dbName, sourceFolder, outputModel);
+  }
+
+  public void runTheMovieDBExample(InferenceMode option, String sourceFolder)
+  {
+    String dbName = "themoviedb";
+    String outputModel = ConfigConstants.OUTPUT_FOLDER + dbName + ".xmi";
+
+    runExample(option, new TheMovieDb2Db(dbType, ConfigConstants.DATABASE_IP), dbName, sourceFolder, outputModel);
   }
 
   private void runExample(InferenceMode option, Source2Db source2Db, String dbName, String source, String outputModel)
