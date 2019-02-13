@@ -16,22 +16,22 @@ import org.eclipse.emf.ecore.EClass;
  */
 public class NullImpl extends PropertyImpl implements Null {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected NullImpl() {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass() {
-    return NoSQLSchemaPackage.Literals.NULL;
-  }
+		return NoSQLSchemaPackage.Literals.NULL;
+	}
 
 } //NullImpl

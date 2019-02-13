@@ -40,220 +40,220 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoSQLSchema {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getEntities() <em>Entities</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getEntities() <em>Entities</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEntities()
-   * @generated
-   * @ordered
-   */
+	 * @see #getEntities()
+	 * @generated
+	 * @ordered
+	 */
   protected EList<EntityClass> entities;
 
   /**
-   * The cached value of the '{@link #getRefClasses() <em>Ref Classes</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getRefClasses() <em>Ref Classes</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRefClasses()
-   * @generated
-   * @ordered
-   */
+	 * @see #getRefClasses()
+	 * @generated
+	 * @ordered
+	 */
   protected EList<ReferenceClass> refClasses;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected NoSQLSchemaImpl() {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass() {
-    return NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA;
-  }
+		return NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public String getName() {
-    return name;
-  }
+		return name;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setName(String newName) {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME, oldName, name));
-  }
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME, oldName, name));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public EList<EntityClass> getEntities() {
-    if (entities == null) {
-      entities = new EObjectContainmentEList<EntityClass>(EntityClass.class, this, NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES);
-    }
-    return entities;
-  }
+		if (entities == null) {
+			entities = new EObjectContainmentEList<EntityClass>(EntityClass.class, this, NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES);
+		}
+		return entities;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public EList<ReferenceClass> getRefClasses() {
-    if (refClasses == null) {
-      refClasses = new EObjectContainmentEList<ReferenceClass>(ReferenceClass.class, this, NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES);
-    }
-    return refClasses;
-  }
+		if (refClasses == null) {
+			refClasses = new EObjectContainmentEList<ReferenceClass>(ReferenceClass.class, this, NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES);
+		}
+		return refClasses;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-        return ((InternalEList<?>)getEntities()).basicRemove(otherEnd, msgs);
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES:
-        return ((InternalEList<?>)getRefClasses()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
+				return ((InternalEList<?>)getEntities()).basicRemove(otherEnd, msgs);
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES:
+				return ((InternalEList<?>)getRefClasses()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
-        return getName();
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-        return getEntities();
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES:
-        return getRefClasses();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
+				return getName();
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
+				return getEntities();
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES:
+				return getRefClasses();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
-        setName((String)newValue);
-        return;
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-        getEntities().clear();
-        getEntities().addAll((Collection<? extends EntityClass>)newValue);
-        return;
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES:
-        getRefClasses().clear();
-        getRefClasses().addAll((Collection<? extends ReferenceClass>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
+				setName((String)newValue);
+				return;
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
+				getEntities().clear();
+				getEntities().addAll((Collection<? extends EntityClass>)newValue);
+				return;
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES:
+				getRefClasses().clear();
+				getRefClasses().addAll((Collection<? extends ReferenceClass>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
-        setName(NAME_EDEFAULT);
-        return;
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-        getEntities().clear();
-        return;
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES:
-        getRefClasses().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
+				getEntities().clear();
+				return;
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES:
+				getRefClasses().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-        return entities != null && !entities.isEmpty();
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES:
-        return refClasses != null && !refClasses.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
+				return entities != null && !entities.isEmpty();
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES:
+				return refClasses != null && !refClasses.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String toString() {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
+	}
 
 } //NoSQLSchemaImpl

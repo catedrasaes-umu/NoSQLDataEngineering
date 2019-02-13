@@ -16,22 +16,22 @@ import org.eclipse.emf.ecore.EClass;
  */
 public class ReferenceClassImpl extends ClassifierImpl implements ReferenceClass {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected ReferenceClassImpl() {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass() {
-    return NoSQLSchemaPackage.Literals.REFERENCE_CLASS;
-  }
+		return NoSQLSchemaPackage.Literals.REFERENCE_CLASS;
+	}
 
 } //ReferenceClassImpl

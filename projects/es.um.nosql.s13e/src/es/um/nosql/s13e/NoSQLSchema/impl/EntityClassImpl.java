@@ -26,137 +26,137 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  */
 public class EntityClassImpl extends ClassifierImpl implements EntityClass {
   /**
-   * The default value of the '{@link #isRoot() <em>Root</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #isRoot() <em>Root</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isRoot()
-   * @generated
-   * @ordered
-   */
+	 * @see #isRoot()
+	 * @generated
+	 * @ordered
+	 */
   protected static final boolean ROOT_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #isRoot() <em>Root</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #isRoot() <em>Root</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #isRoot()
-   * @generated
-   * @ordered
-   */
+	 * @see #isRoot()
+	 * @generated
+	 * @ordered
+	 */
   protected boolean root = ROOT_EDEFAULT;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected EntityClassImpl() {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass() {
-    return NoSQLSchemaPackage.Literals.ENTITY_CLASS;
-  }
+		return NoSQLSchemaPackage.Literals.ENTITY_CLASS;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public boolean isRoot() {
-    return root;
-  }
+		return root;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   public void setRoot(boolean newRoot) {
-    boolean oldRoot = root;
-    root = newRoot;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY_CLASS__ROOT, oldRoot, root));
-  }
+		boolean oldRoot = root;
+		root = newRoot;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY_CLASS__ROOT, oldRoot, root));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.ENTITY_CLASS__ROOT:
-        return isRoot();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.ENTITY_CLASS__ROOT:
+				return isRoot();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.ENTITY_CLASS__ROOT:
-        setRoot((Boolean)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.ENTITY_CLASS__ROOT:
+				setRoot((Boolean)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.ENTITY_CLASS__ROOT:
-        setRoot(ROOT_EDEFAULT);
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.ENTITY_CLASS__ROOT:
+				setRoot(ROOT_EDEFAULT);
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.ENTITY_CLASS__ROOT:
-        return root != ROOT_EDEFAULT;
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.ENTITY_CLASS__ROOT:
+				return root != ROOT_EDEFAULT;
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String toString() {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (root: ");
-    result.append(root);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (root: ");
+		result.append(root);
+		result.append(')');
+		return result.toString();
+	}
 
 } //EntityClassImpl
