@@ -113,7 +113,7 @@ public class TheMovieDbMapper
   }
 
   public static ObjectNode transformPerson(ObjectNode obj)
-  {//TODO: A veces external_ids es un objeto vacío...
+  {
     obj.put("external_ids", stripNulls((ObjectNode)obj.get("external_ids")));
 
     ArrayNode arrTranslations = (ArrayNode)obj.get("translations").get("translations");
@@ -227,7 +227,7 @@ public class TheMovieDbMapper
     while (fieldNames.hasNext())
     {
       String fName = fieldNames.next();
-      if (obj.get(fName).isNull() || (obj.get(fName).isArray() && obj.get(fName).size() == 0))
+      if (obj.get(fName).isNull() || ((obj.get(fName).isArray() || obj.get(fName).isObject()) && obj.get(fName).size() == 0))
         nullFields.add(fName);
     }
     obj.remove(nullFields);

@@ -42,7 +42,7 @@ public class People2Db
 
         if (++numLines == MAX_LINES_BEFORE_STORE)
         {
-          dbClient.insert(dbName, collectionName, peopleArray.toString());
+          //dbClient.insert(dbName, collectionName, peopleArray.toString());
           peopleArray.removeAll();
           numLines = 0;
           System.out.println("Line count: " + totalLines);

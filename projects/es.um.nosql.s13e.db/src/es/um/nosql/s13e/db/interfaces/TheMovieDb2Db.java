@@ -43,10 +43,10 @@ public class TheMovieDb2Db extends Source2Db
 
     switch (jsonFolderName)
     {
-      case "companies": { new Companies2Db(this.getClient()).inject(jsonRoute, dbName); break; }
-      case "companies_images": { new Companies_Images2Db(this.getClient()).inject(jsonRoute, dbName); break; }
-      case "genres": { new Genres2Db(this.getClient()).inject(jsonRoute, dbName); break; }
-      case "keywords": { new Keywords2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      //case "companies": { new Companies2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      //case "companies_images": { new Companies_Images2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      //case "genres": { new Genres2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      //case "keywords": { new Keywords2Db(this.getClient()).inject(jsonRoute, dbName); break; }
       case "networks": { new Networks2Db(this.getClient()).inject(jsonRoute, dbName); break; }
       case "people":
       {
@@ -57,7 +57,7 @@ public class TheMovieDb2Db extends Source2Db
       case "movies":
       {
         //TODO: Videos?
-        new Movies2Db(this.getClient()).inject(jsonRoute, dbName);
+        //new Movies2Db(this.getClient()).inject(jsonRoute, dbName);
         break;
       }
       case "tv": case "seasons": default: {break; }
