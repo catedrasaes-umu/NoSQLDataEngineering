@@ -30,6 +30,7 @@ public class ModelLoader
     resourceSet = new ResourceSetImpl();
     final ExtendedMetaData extendedMetaData = new BasicExtendedMetaData(resourceSet.getPackageRegistry());
     resourceSet.getLoadOptions().put(XMLResource.OPTION_EXTENDED_META_DATA, extendedMetaData);
+    resourceSet.getLoadOptions().put(XMLResource.OPTION_DEFER_IDREF_RESOLUTION, Boolean.TRUE);
   }
 
   public ModelLoader(EPackage thePackage)

@@ -25,6 +25,7 @@ public class NoSQLSchemaWriter
     options = new HashMap<Object,Object>();
     options.put(XMIResource.OPTION_SCHEMA_LOCATION, Boolean.TRUE);
     options.put(XMIResource.OPTION_ENCODING, "UTF-8");
+    options.put(XMIResource.OPTION_DEFER_IDREF_RESOLUTION, Boolean.TRUE);
   }
 
   public Map<Object, Object> getOptions()
