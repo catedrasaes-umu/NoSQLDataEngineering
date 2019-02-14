@@ -12,18 +12,18 @@ public class Main
 
     //inferenceTest.runCompaniesExample(InferenceMode.FILL_AND_INFER, ConfigConstants.COMPANIES_FILE);                //POJO
     //inferenceTest.runRedditExample(InferenceMode.FILL_ONLY, ConfigConstants.REDDIT_FOLDER);
-    //inferenceTest.runEveryPoliticianExample(InferenceMode.FILL_AND_INFER, ConfigConstants.EVERYPOLITICIAN_FILE);
+    //inferenceTest.runEveryPoliticianExample(InferenceMode.INFER_ONLY, ConfigConstants.EVERYPOLITICIAN_FILE);
     //inferenceTest.runFacebookExample(InferenceMode.FILL_AND_INFER, ConfigConstants.FACEBOOK_FOLDER);                //POJO
     //inferenceTest.runHarvardExample(InferenceMode.FILL_AND_INFER, ConfigConstants.HARVARD_FILE);                    //POJO
     //inferenceTest.runJsonExample(InferenceMode.FILL_AND_INFER, ConfigConstants.JSON_FOLDER);
     //inferenceTest.runLinksExample(InferenceMode.FILL_AND_INFER, ConfigConstants.LINKS_FOLDER);                      //POJO
     ////////inferenceTest.runModelExample(InferenceMode.FILL_AND_INFER, ConfigConstants.MODEL_FILE);
-    //inferenceTest.runOpenSanctionsExample(InferenceMode.INFER_ONLY, ConfigConstants.OPENSANCTIONS_FILE);
+    //inferenceTest.runOpenSanctionsExample(InferenceMode.FILL_ONLY, ConfigConstants.OPENSANCTIONS_FILE);
     //inferenceTest.runPleiadesExample(InferenceMode.FILL_AND_INFER, ConfigConstants.PLEIADES_FILE);                  //TODO: DOESNT WORK YET
     //inferenceTest.runProteinsExample(InferenceMode.FILL_AND_INFER, ConfigConstants.PROTEINS_FOLDER);                //POJO
-    inferenceTest.runPublicationsExample(InferenceMode.FILL_ONLY, ConfigConstants.PUBLICATIONS_FILE);          //POJO
+    //inferenceTest.runPublicationsExample(InferenceMode.FILL_ONLY, ConfigConstants.PUBLICATIONS_FILE);          //POJO
     //inferenceTest.runStackOverflowExample(InferenceMode.FILL_ONLY, ConfigConstants.STACKOVERFLOW_FOLDER);
-    //inferenceTest.runUrbanDictionaryExample(InferenceMode.FILL_AND_INFER, ConfigConstants.URBANDICTIONARY_FILE);    //POJO
+    inferenceTest.runUrbanDictionaryExample(InferenceMode.INFER_ONLY, ConfigConstants.URBANDICTIONARY_FILE);    //POJO
     //inferenceTest.runWebclickExample(InferenceMode.FILL_AND_INFER, ConfigConstants.WEBCLICKS_FOLDER);              //POJO
     //inferenceTest.runTheMovieDBExample(InferenceMode.FILL_ONLY, ConfigConstants.THEMOVIEDB_FOLDER);
 

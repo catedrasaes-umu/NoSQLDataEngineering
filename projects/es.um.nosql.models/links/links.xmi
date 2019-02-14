@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NoSQLSchema:NoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema" xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" name="links">
+  <entities name="Links" root="true">
+    <variations variationId="1" count="61665" firstTimestamp="1257034785" lastTimestamp="1259624048">
+      <properties xsi:type="NoSQLSchema:Attribute" name="_id">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="ObjectId"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="tags">
+        <type xsi:type="NoSQLSchema:PList">
+          <elementType xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+        </type>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="timestamp">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="Number"/>
+      </properties>
+      <properties xsi:type="NoSQLSchema:Attribute" name="url">
+        <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
+      </properties>
+    </variations>
+  </entities>
+</NoSQLSchema:NoSQLSchema>
