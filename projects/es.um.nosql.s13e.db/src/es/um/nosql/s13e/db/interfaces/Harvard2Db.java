@@ -51,7 +51,7 @@ public class Harvard2Db extends Source2Db
 
     try
     {
-      mappingIterator = csvMapper.reader(HarvardCourse.class).with(CsvSchema.emptySchema().withHeader()).readValues(new File(csvRoute));
+      mappingIterator = csvMapper.readerFor(HarvardCourse.class).with(CsvSchema.emptySchema().withHeader()).readValues(new File(csvRoute));
 
       while (mappingIterator.hasNext())
       {

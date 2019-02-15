@@ -46,7 +46,7 @@ public class Links2Db extends Source2Db
 
     try
     {
-      mappingIterator = mapper.reader(Link.class).readValues(jsonFile);
+      mappingIterator = mapper.readerFor(Link.class).readValues(jsonFile);
       collectionName = "links";
 
       int numLines = 0;

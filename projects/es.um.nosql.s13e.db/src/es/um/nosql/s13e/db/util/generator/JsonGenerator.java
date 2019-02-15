@@ -115,7 +115,7 @@ public class JsonGenerator
               else
               {
                 ArrayNode refArray = factory.arrayNode();
-                strObj.put(ref.getName(), refArray);
+                strObj.set(ref.getName(), refArray);
 
                 for (int j = 0; j < getRandomBetween(lBound, uBound); j++)
                   refArray.add(getRandomRefId(ref.getName()));
@@ -126,11 +126,11 @@ public class JsonGenerator
               Aggregate aggr = (Aggregate)property;
 
               if (aggr.getLowerBound() == 1 && aggr.getUpperBound() == 1)
-                strObj.put(aggr.getName(), getRandomAggr(aggr.getAggregates().get(0)));
+                strObj.set(aggr.getName(), getRandomAggr(aggr.getAggregates().get(0)));
               else
               {
                 ArrayNode array = factory.arrayNode();
-                strObj.put(aggr.getName(), array);
+                strObj.set(aggr.getName(), array);
                 // We keep all the aggregated variations in a banned list because we won't add them to the database as standalone objects.
                 for (StructuralVariation aggrEV : aggr.getAggregates())
                 {
@@ -231,7 +231,7 @@ public class JsonGenerator
   private void generatePTuple(ObjectNode strObj, String name, List<Type> elements)
   {
     ArrayNode array = factory.arrayNode();
-    strObj.put(name, array);
+    strObj.set(name, array);
 
     for (Type type : elements)
     {

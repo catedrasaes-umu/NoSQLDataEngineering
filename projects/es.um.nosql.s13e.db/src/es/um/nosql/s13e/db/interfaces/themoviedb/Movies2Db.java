@@ -32,34 +32,34 @@ public class Movies2Db
     int numLines = 0;
     int totalLines = 1;
 
-    try
-    {
-      ArrayNode movieArray = mapper.createArrayNode();
+    ArrayNode movieArray = mapper.createArrayNode();
 
-      for (File jsonFile : new File(jsonRoute).listFiles())
+    for (File jsonFile : new File(jsonRoute).listFiles())
+    {
+      try
       {
         String content = Files.readAllLines(jsonFile.toPath()).get(0);
         movieArray.add(TheMovieDbMapper.transformMovie((ObjectNode)mapper.readTree(content)));
-
-        if (++numLines == MAX_LINES_BEFORE_STORE)
-        {
-          dbClient.insert(dbName, collectionName, movieArray.toString());
-          movieArray.removeAll();
-          numLines = 0;
-          System.out.println("Line count: " + totalLines);
-        }
-
-        totalLines++;
-      }
-
-      if (movieArray.size() > 0)
+      } catch (IOException e)
       {
-        System.out.println("Storing remaining files...");
-        dbClient.insert(dbName, collectionName, movieArray.toString());
+        e.printStackTrace();
       }
-    } catch(IOException e)
+
+      if (++numLines == MAX_LINES_BEFORE_STORE)
+      {
+        dbClient.insert(dbName, collectionName, movieArray.toString());
+        movieArray.removeAll();
+        numLines = 0;
+        System.out.println("Line count: " + totalLines);
+      }
+
+      totalLines++;
+    }
+
+    if (movieArray.size() > 0)
     {
-      e.printStackTrace();
+      System.out.println("Storing remaining files...");
+      dbClient.insert(dbName, collectionName, movieArray.toString());
     }
   }
 }

@@ -62,18 +62,18 @@ public class Facebook2Db extends Source2Db
       if (csvFile.getName().contains("post"))
       {
         uniqueKeys.put("posts", new ArrayList<String>());
-        mappingIterator = csvMapper.reader(Post.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
+        mappingIterator = csvMapper.readerFor(Post.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
         collectionName = "posts";
       }
       else if (csvFile.getName().contains("pagename"))
       {
         uniqueKeys.put("pages", new ArrayList<String>());
-        mappingIterator = csvMapper.reader(Page.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
+        mappingIterator = csvMapper.readerFor(Page.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
         collectionName = "pages";
       }
       else if (csvFile.getName().contains("comment"))
       {
-        mappingIterator = csvMapper.reader(Comment.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
+        mappingIterator = csvMapper.readerFor(Comment.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
         collectionName = "comments";
       }
 

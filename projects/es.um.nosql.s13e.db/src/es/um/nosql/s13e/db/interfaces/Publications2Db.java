@@ -51,7 +51,7 @@ public class Publications2Db extends Source2Db
 
     try
     {
-      mappingIterator = csvMapper.reader(Publication.class).with(CsvSchema.emptySchema().withHeader()).readValues(new File(csvRoute));
+      mappingIterator = csvMapper.readerFor(Publication.class).with(CsvSchema.emptySchema().withHeader()).readValues(new File(csvRoute));
 
       while (mappingIterator.hasNext())
       {

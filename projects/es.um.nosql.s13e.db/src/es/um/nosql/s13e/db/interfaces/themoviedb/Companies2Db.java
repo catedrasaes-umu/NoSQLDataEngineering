@@ -38,11 +38,11 @@ public class Companies2Db
     int totalLines = 1;
     String parentFolder = new File(jsonRoute).getParent();
 
-    try
-    {
-      ArrayNode jsonArray = mapper.createArrayNode();
+    ArrayNode jsonArray = mapper.createArrayNode();
 
-      for (File jsonFile : new File(jsonRoute).listFiles())
+    for (File jsonFile : new File(jsonRoute).listFiles())
+    {
+      try
       {
         String content = Files.readAllLines(jsonFile.toPath()).get(0);
         ArrayNode logos = getLogos(Paths.get(parentFolder).resolve(IMAGES_FOLDER).resolve(jsonFile.getName()));
@@ -51,25 +51,25 @@ public class Companies2Db
         ObjectNode company = (ObjectNode)mapper.readTree(content);
         jsonArray.add(TheMovieDbMapper.transformCompany(company, logos, altNames));
 
-        if (++numLines == MAX_LINES_BEFORE_STORE)
-        {
-          dbClient.insert(dbName, collectionName, jsonArray.toString());
-          jsonArray.removeAll();
-          numLines = 0;
-          System.out.println("Line count: " + totalLines);
-        }
-
-        totalLines++;
-      }
-
-      if (jsonArray.size() > 0)
+      } catch (IOException e)
       {
-        System.out.println("Storing remaining files...");
-        dbClient.insert(dbName, collectionName, jsonArray.toString());
+        e.printStackTrace();
       }
-    } catch (IOException e)
+      if (++numLines == MAX_LINES_BEFORE_STORE)
+      {
+        dbClient.insert(dbName, collectionName, jsonArray.toString());
+        jsonArray.removeAll();
+        numLines = 0;
+        System.out.println("Line count: " + totalLines);
+      }
+
+      totalLines++;
+    }
+
+    if (jsonArray.size() > 0)
     {
-      e.printStackTrace();
+      System.out.println("Storing remaining files...");
+      dbClient.insert(dbName, collectionName, jsonArray.toString());
     }
   }
 

@@ -27,23 +27,23 @@ public class Companies_Images2Db
 
   public void inject(String jsonRoute, String dbName)
   {
-    try
-    {
-      ArrayNode jsonArray = mapper.createArrayNode();
+    ArrayNode jsonArray = mapper.createArrayNode();
 
-      for (File jsonFile : new File(jsonRoute).listFiles())
+    for (File jsonFile : new File(jsonRoute).listFiles())
+    {
+      try
       {
         String content = Files.readAllLines(jsonFile.toPath()).get(0);
         ObjectNode obj = (ObjectNode)mapper.readTree(content);
 
         if (obj.has("logos") && obj.get("logos").size() > 0)
           jsonArray.addAll(TheMovieDbMapper.transformLogo(obj));
+      } catch(IOException e)
+      {
+        e.printStackTrace();
       }
-
-      dbClient.insert(dbName, collectionName, jsonArray.toString());
-    } catch(IOException e)
-    {
-      e.printStackTrace();
     }
+
+    dbClient.insert(dbName, collectionName, jsonArray.toString());
   }
 }

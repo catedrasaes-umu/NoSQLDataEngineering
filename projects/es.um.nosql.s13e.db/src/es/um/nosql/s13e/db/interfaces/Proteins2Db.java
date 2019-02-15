@@ -49,7 +49,7 @@ public class Proteins2Db extends Source2Db
 
     try
     {
-      mappingIterator = csvMapper.reader(Protein.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
+      mappingIterator = csvMapper.readerFor(Protein.class).with(CsvSchema.emptySchema().withHeader()).readValues(csvFile);
       collectionName = "proteins";
 
       int numLines = 0;

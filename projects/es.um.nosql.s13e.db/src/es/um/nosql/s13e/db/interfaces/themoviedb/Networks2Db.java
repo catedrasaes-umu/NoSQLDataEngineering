@@ -27,20 +27,20 @@ public class Networks2Db
 
   public void inject(String jsonRoute, String dbName)
   {
-    try
-    {
-      ArrayNode jsonArray = mapper.createArrayNode();
+    ArrayNode jsonArray = mapper.createArrayNode();
 
-      for (File jsonFile : new File(jsonRoute).listFiles())
+    for (File jsonFile : new File(jsonRoute).listFiles())
+    {
+      try
       {
         String content = Files.readAllLines(jsonFile.toPath()).get(0);
         jsonArray.add(TheMovieDbMapper.transformNetwork((ObjectNode)mapper.readTree(content)));
+      } catch (IOException e)
+      {
+        e.printStackTrace();
       }
-
-      dbClient.insert(dbName, collectionName, jsonArray.toString());
-    } catch(IOException e)
-    {
-      e.printStackTrace();
     }
+
+    dbClient.insert(dbName, collectionName, jsonArray.toString());
   }
 }

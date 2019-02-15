@@ -46,7 +46,7 @@ public class Webclick2Db extends Source2Db
 
     try
     {
-      mappingIterator = mapper.reader(Webclick.class).readValues(jsonFile);
+      mappingIterator = mapper.readerFor(Webclick.class).readValues(jsonFile);
       collectionName = "webclicks";
 
       int numLines = 0;

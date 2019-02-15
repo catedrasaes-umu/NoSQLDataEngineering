@@ -32,33 +32,33 @@ public class People2Db
     int numLines = 0;
     int totalLines = 1;
 
-    try
+    ArrayNode peopleArray = mapper.createArrayNode();
+    for (File jsonFile : new File(jsonRoute).listFiles())
     {
-      ArrayNode peopleArray = mapper.createArrayNode();
-      for (File jsonFile : new File(jsonRoute).listFiles())
+      try
       {
         String content = Files.readAllLines(jsonFile.toPath()).get(0);
         peopleArray.add(TheMovieDbMapper.transformPerson((ObjectNode)mapper.readTree(content)));
-
-        if (++numLines == MAX_LINES_BEFORE_STORE)
-        {
-          //dbClient.insert(dbName, collectionName, peopleArray.toString());
-          peopleArray.removeAll();
-          numLines = 0;
-          System.out.println("Line count: " + totalLines);
-        }
-
-        totalLines++;
-      }
-
-      if (peopleArray.size() > 0)
+      } catch (IOException e)
       {
-        System.out.println("Storing remaining files...");
-        dbClient.insert(dbName, collectionName, peopleArray.toString());
+        e.printStackTrace();
       }
-    } catch(IOException e)
+
+      if (++numLines == MAX_LINES_BEFORE_STORE)
+      {
+        dbClient.insert(dbName, collectionName, peopleArray.toString());
+        peopleArray.removeAll();
+        numLines = 0;
+        System.out.println("Line count: " + totalLines);
+      }
+
+      totalLines++;
+    }
+
+    if (peopleArray.size() > 0)
     {
-      e.printStackTrace();
+      System.out.println("Storing remaining files...");
+      dbClient.insert(dbName, collectionName, peopleArray.toString());
     }
   }
 }

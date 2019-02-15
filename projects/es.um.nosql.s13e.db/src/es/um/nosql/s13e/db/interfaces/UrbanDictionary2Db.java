@@ -46,7 +46,7 @@ public class UrbanDictionary2Db extends Source2Db
 
     try
     {
-      mappingIterator = mapper.reader(Word.class).readValues(jsonFile);
+      mappingIterator = mapper.readerFor(Word.class).readValues(jsonFile);
       collectionName = "urban_words";
 
       int numLines = 0;
