@@ -3,19 +3,16 @@ package es.um.nosql.s13e.db.interfaces.themoviedb;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
-import java.util.ArrayList;
-import java.util.List;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import es.um.nosql.s13e.db.adapters.DbClient;
 
-public class Media2Db
+public class TV2Db
 {
-  private int MAX_LINES_BEFORE_STORE = 10000;
+  private int MAX_LINES_BEFORE_STORE = 5000;
 
   private DbClient dbClient;
 
@@ -23,14 +20,11 @@ public class Media2Db
 
   private ObjectMapper mapper;
 
-  private List<Integer> mediaIds;
-
-  public Media2Db(DbClient dbClient)
+  public TV2Db(DbClient dbClient)
   {
     this.dbClient = dbClient;
-    collectionName = "media";
+    collectionName = "tv";
     mapper = new ObjectMapper();
-    mediaIds = new ArrayList<Integer>();
   }
 
   public void inject(String jsonRoute, String dbName)
@@ -38,29 +32,23 @@ public class Media2Db
     int numLines = 0;
     int totalLines = 1;
 
-    ArrayNode mediaArray = mapper.createArrayNode();
+    ArrayNode tvArray = mapper.createArrayNode();
+
     for (File jsonFile : new File(jsonRoute).listFiles())
     {
       try
       {
         String content = Files.readAllLines(jsonFile.toPath()).get(0);
-        ArrayNode media = TheMovieDbMapper.transformMedia((ObjectNode)mapper.readTree(content));
-  
-        for (JsonNode medium : media)
-          if (!mediaIds.contains(medium.get("_id").asInt()))
-          {
-            mediaArray.add(medium);
-            mediaIds.add(medium.get("_id").asInt());
-          }
-      } catch(IOException e)
+        tvArray.add(TheMovieDbMapper.transformTV((ObjectNode)mapper.readTree(content)));
+      } catch (IOException e)
       {
         e.printStackTrace();
       }
 
       if (++numLines == MAX_LINES_BEFORE_STORE)
       {
-        dbClient.insert(dbName, "media", mediaArray.toString());
-        mediaArray.removeAll();
+        dbClient.insert(dbName, collectionName, tvArray.toString());
+        tvArray.removeAll();
         numLines = 0;
         System.out.println("Line count: " + totalLines);
       }
@@ -68,10 +56,10 @@ public class Media2Db
       totalLines++;
     }
 
-    if (mediaArray.size() > 0)
+    if (tvArray.size() > 0)
     {
       System.out.println("Storing remaining files...");
-      dbClient.insert(dbName, collectionName, mediaArray.toString());
+      dbClient.insert(dbName, collectionName, tvArray.toString());
     }
   }
 }

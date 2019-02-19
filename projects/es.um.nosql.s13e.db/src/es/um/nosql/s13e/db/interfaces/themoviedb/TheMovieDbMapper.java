@@ -1,6 +1,7 @@
 package es.um.nosql.s13e.db.interfaces.themoviedb;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,35 +14,176 @@ public class TheMovieDbMapper
 {
   private static ObjectMapper mapper = new ObjectMapper();
 
+  public static ObjectNode transformTV(ObjectNode tv)
+  {
+    //TODO: Hmm...for the moment
+    tv.remove("created_by");
+
+    // Genre
+    ArrayNode arrGenres = mapper.createArrayNode();
+    for (JsonNode genre : tv.get("genres"))
+      arrGenres.add(genre.get("id").asInt());
+    tv.set("genres", arrGenres);
+
+    // Production_companies
+    ArrayNode arrCompanies = mapper.createArrayNode();
+    for (JsonNode company : tv.get("production_companies"))
+      arrCompanies.add(company.get("id").asInt());
+    tv.set("production_companies", arrCompanies);
+
+    // Seasons
+    ArrayNode arrSeasons = mapper.createArrayNode();
+    for (JsonNode season : tv.get("seasons"))
+      arrSeasons.add(season.get("id").asInt());
+    tv.set("seasons", arrSeasons);
+
+    // Images
+    tv.set("images", transformImages((ArrayNode)tv.get("images").get("backdrops"), (ArrayNode)tv.get("images").get("posters")));
+
+    // Credits
+    tv.set("credits", transformCredits((ArrayNode)tv.get("credits").get("cast"), (ArrayNode)tv.get("credits").get("crew")));
+
+    tv.set("external_ids", stripNulls((ObjectNode)tv.get("external_ids")));
+
+    // Recommendations
+    ArrayNode arrRecommendations = mapper.createArrayNode();
+    for (JsonNode recommendation : tv.get("recommendations").get("results"))
+      arrRecommendations.add(recommendation.get("id").asInt());
+    tv.set("recommended_tv", arrRecommendations);
+    tv.remove("recommendations");
+
+    // Similar tv
+    ArrayNode arrSimilar = mapper.createArrayNode();
+    for (JsonNode similar : tv.get("similar").get("results"))
+      arrSimilar.add(similar.get("id").asInt());
+    tv.set("similar_tv", arrSimilar);
+    tv.remove("similar");
+
+    // Translation
+    tv.set("translations", transformTranslations((ObjectNode)tv.get("translations")));
+
+    if (!tv.get("next_episode_to_air").isNull())
+      tv.put("next_episode_to_air", tv.get("next_episode_to_air").get("id").asInt());
+
+    if (!tv.get("last_episode_to_air").isNull())
+      tv.put("last_episode_to_air", tv.get("last_episode_to_air").get("id").asInt());
+
+    ArrayNode arrNetworks = mapper.createArrayNode();
+    for (JsonNode network : tv.get("networks"))
+      arrNetworks.add(network.get("id").asInt());
+    tv.set("networks", arrNetworks);
+
+    // Keywords
+    ArrayNode arrKeywords = mapper.createArrayNode();
+    for (JsonNode keyword : tv.get("keywords").get("results"))
+      arrKeywords.add(keyword.get("id").asInt());
+    tv.set("keywords", arrKeywords);
+
+    // Screened theatrically
+    ArrayNode arrScreened = mapper.createArrayNode();
+    for (JsonNode screened : tv.get("screened_theatrically").get("results"))
+      arrScreened.add(screened.get("id").asInt());
+    tv.set("screened_theatrically", arrScreened);
+
+    // Videos
+    ArrayNode arrVideos = mapper.createArrayNode();
+    for (JsonNode video : tv.get("videos").get("results"))
+      arrVideos.add(video.get("id").asText());
+    tv.set("videos", arrVideos);
+
+    // Episode_groups
+    ArrayNode arrEpGroups = mapper.createArrayNode();
+    for (JsonNode epGroup : tv.get("episode_groups").get("results"))
+      arrEpGroups.add(epGroup.get("id").asText());
+    tv.set("episode_groups", arrEpGroups);
+
+    // Changes
+    ArrayNode arrChanges = mapper.createArrayNode();
+    for (JsonNode change : tv.get("changes").get("changes"))
+      arrChanges.add(change.get("id").asText());
+    tv.set("changes", arrChanges);
+
+    // Reviews
+    ArrayNode arrReviews = mapper.createArrayNode();
+    for (JsonNode review : tv.get("reviews").get("results"))
+      arrReviews.add(review.get("id").asText());
+    tv.set("reviews", arrReviews);
+
+    // Alternative titles
+    ArrayNode arrAltTitles = mapper.createArrayNode();
+    arrAltTitles.addAll((ArrayNode)tv.get("alternative_titles").get("results"));
+    for (JsonNode altTitle : arrAltTitles)
+      stripNulls((ObjectNode)altTitle);
+    tv.set("alternative_titles", arrAltTitles);
+
+    // Content ratings
+    ArrayNode arrContentRat = mapper.createArrayNode();
+    arrContentRat.addAll((ArrayNode)tv.get("content_ratings").get("results"));
+    for (JsonNode contentRat : arrContentRat)
+      stripNulls((ObjectNode)contentRat);
+    tv.set("content_ratings", arrContentRat);
+
+    return stripNulls(renameId(tv, Integer.class));
+  }
+
+  public static ArrayNode transformScreenedTheatrically(ArrayNode screened)
+  {
+    screened.forEach(change ->
+    {
+      stripNulls(renameId((ObjectNode)change, Integer.class));
+    });
+
+    return screened;
+  }
+
+  public static ArrayNode transformEpisodeGroups(ArrayNode epGroups)
+  {
+    epGroups.forEach(epGroup ->
+    {
+      if (epGroup.has("network") && !epGroup.get("network").isNull())
+        ((ObjectNode)epGroup).put("network_id", epGroup.get("network").get("id").asText());
+      stripNulls(renameId((ObjectNode)epGroup, String.class));
+    });
+
+    return epGroups;
+  }
+
+  public static ArrayNode transformChanges(ArrayNode changes)
+  {
+    changes.forEach(change ->
+    {
+      stripNulls(renameId((ObjectNode)change, String.class));
+    });
+
+    return changes;
+  }
+
+  public static ArrayNode transformReviews(ArrayNode reviews)
+  {
+    reviews.forEach(review ->
+    {
+      stripNulls(renameId((ObjectNode)review, String.class));
+    });
+
+    return reviews;
+  }
+
   public static ArrayNode transformEpisodes(ArrayNode episodes)
   {
     for (JsonNode episode : episodes)
     {
-      ObjectNode objEpisode = (ObjectNode)episode;
+      ObjectNode obj = (ObjectNode)episode;
 
-      if (objEpisode.has("show_id"))
+      if (obj.has("show_id"))
       {
-        objEpisode.set("tv_id", objEpisode.get("show_id"));
-        objEpisode.remove("show_id");
+        obj.set("tv_id", obj.get("show_id"));
+        obj.remove("show_id");
       }
 
-      if (objEpisode.has("crew"))
-      {
-        ArrayNode arrCredits = mapper.createArrayNode();
-        arrCredits.addAll((ArrayNode)objEpisode.get("crew"));
-        for (JsonNode credit : arrCredits)
-        {
-          ObjectNode objCredit = (ObjectNode)credit;
-          objCredit.remove("credit_id");
-          objCredit.set("person_id", objCredit.get("id"));
-          objCredit.remove("id");
-          stripNulls(objCredit);
-        }
-        objEpisode.set("credits", arrCredits);
-        objEpisode.remove("crew");
-      }
+      obj.set("credits", transformCredits((ArrayNode)obj.get("crew"), null));
+      obj.remove("crew");
 
-      stripNulls(renameId(objEpisode, Integer.class));
+      stripNulls(renameId(obj, Integer.class));
     }
 
     return episodes;
@@ -57,42 +199,14 @@ public class TheMovieDbMapper
       obj.set("episodes", arrEpisodes);
     }
 
-    if (obj.has("images"))
-    {
-      obj.set("images", obj.get("images").get("posters"));
+    obj.set("images", transformImages((ArrayNode)obj.get("images").get("posters"), null));
 
-      for (JsonNode image : obj.get("images"))
-      {
-        ObjectNode objImage = (ObjectNode)image;
-        if (objImage.has("media"))
-          objImage.set("media", objImage.get("media").get("id"));
-        stripNulls(objImage);
-      }
-    }
+    ArrayNode arrVideos = mapper.createArrayNode();
+    for (JsonNode video : obj.get("videos").get("results"))
+      arrVideos.add(video.get("id").asText());
+    obj.set("videos", arrVideos);
 
-    if (obj.has("videos"))
-    {
-      ArrayNode arrVideos = mapper.createArrayNode();
-      for (JsonNode video : obj.get("videos").get("results"))
-        arrVideos.add(video.get("id").asText());
-      obj.set("videos", arrVideos);
-    }
-
-    if (obj.has("credits"))
-    {
-      ArrayNode arrCredits = mapper.createArrayNode();
-      arrCredits.addAll((ArrayNode)obj.get("credits").get("cast"));
-      arrCredits.addAll((ArrayNode)obj.get("credits").get("crew"));
-      for (JsonNode credit : arrCredits)
-      {
-        ObjectNode objCredit = (ObjectNode)credit;
-        objCredit.remove("credit_id");
-        objCredit.set("person_id", objCredit.get("id"));
-        objCredit.remove("id");
-        stripNulls(objCredit);
-      }
-      obj.set("credits", arrCredits);
-    }
+    obj.set("credits", transformCredits((ArrayNode)obj.get("credits").get("cast"), (ArrayNode)obj.get("credits").get("crew")));
 
     return stripNulls(obj);
   }
@@ -131,13 +245,7 @@ public class TheMovieDbMapper
       stripNulls((ObjectNode)spokenLanguage);
 
     // Images
-    ArrayNode arrImages = mapper.createArrayNode();
-    arrImages.addAll((ArrayNode)obj.get("images").get("backdrops"));
-    arrImages.addAll((ArrayNode)obj.get("images").get("posters"));
-    for (JsonNode image : arrImages)
-      stripNulls((ObjectNode)image);
-
-    obj.set("images", arrImages);
+    obj.set("images", transformImages((ArrayNode)obj.get("images").get("backdrops"), (ArrayNode)obj.get("images").get("posters")));
 
     // Alternative titles
     ArrayNode arrAltTitles = mapper.createArrayNode();
@@ -154,18 +262,7 @@ public class TheMovieDbMapper
     obj.set("videos", arrVideos);
 
     // Credits
-    ArrayNode arrCredits = mapper.createArrayNode();
-    arrCredits.addAll((ArrayNode)obj.get("credits").get("cast"));
-    arrCredits.addAll((ArrayNode)obj.get("credits").get("crew"));
-    for (JsonNode credit : arrCredits)
-    {
-      ObjectNode objCredit = (ObjectNode)credit;
-      objCredit.remove("credit_id");
-      objCredit.set("person_id", objCredit.get("id"));
-      objCredit.remove("id");
-      stripNulls(objCredit);
-    }
-    obj.set("credits", arrCredits);
+    obj.set("credits", transformCredits((ArrayNode)obj.get("credits").get("cast"), (ArrayNode)obj.get("credits").get("crew")));
 
     // Keywords
     ArrayNode arrKeywords = mapper.createArrayNode();
@@ -194,64 +291,99 @@ public class TheMovieDbMapper
     ArrayNode arrRecommendations = mapper.createArrayNode();
     for (JsonNode recommendation : obj.get("recommendations").get("results"))
       arrRecommendations.add(recommendation.get("id").asInt());
-    obj.set("recommendations", arrRecommendations);
+    obj.set("recommended_movies", arrRecommendations);
+    obj.remove("recommendations");
 
     return stripNulls(renameId(obj, Integer.class));
-  }
-
-  public static ArrayNode transformMedia(ObjectNode obj)
-  {
-    ArrayNode arrMedia = mapper.createArrayNode();
-
-    for (JsonNode taggedImage : obj.get("tagged_images").get("results"))
-      arrMedia.add(stripNulls(renameId((ObjectNode)taggedImage.get("media"), Integer.class)));
-
-    return arrMedia;
   }
 
   public static ObjectNode transformPerson(ObjectNode obj)
   {
     obj.set("external_ids", stripNulls((ObjectNode)obj.get("external_ids")));
-
-    ArrayNode arrTranslations = (ArrayNode)obj.get("translations").get("translations");
-    for (JsonNode translation : arrTranslations)
-    {
-      ObjectNode objTranslation = (ObjectNode)translation;
-      objTranslation.set("biography", translation.get("data").get("biography"));
-      objTranslation.remove("data");
-      stripNulls(objTranslation);
-    }
-    obj.set("translations", arrTranslations);
-
-    ArrayNode arrCredits = mapper.createArrayNode();
-    arrCredits.addAll((ArrayNode)obj.get("combined_credits").get("cast"));
-    arrCredits.addAll((ArrayNode)obj.get("combined_credits").get("crew"));
-    for (JsonNode credit : arrCredits)
-    {
-      ObjectNode objCredit = (ObjectNode)credit;
-      objCredit.remove("credit_id");
-      objCredit.set(objCredit.get("media_type").asText() + "_id", objCredit.get("id"));
-      objCredit.remove("id");
-      stripNulls(objCredit);
-    }
-    obj.set("credits", arrCredits);
+    obj.set("translations", transformTranslations((ObjectNode)obj.get("translations")));
+    obj.set("credits", transformCredits((ArrayNode)obj.get("combined_credits").get("cast"), (ArrayNode)obj.get("combined_credits").get("crew")));
     obj.remove("combined_credits");
-
-    ArrayNode arrImages = mapper.createArrayNode();
-    arrImages.addAll((ArrayNode)obj.get("images").get("profiles"));
-    arrImages.addAll((ArrayNode)obj.get("tagged_images").get("results"));
-    for (JsonNode image : arrImages)
-    {
-      ObjectNode objImage = (ObjectNode)image;
-      if (objImage.has("media"))
-        objImage.set("media", objImage.get("media").get("id"));
-      stripNulls(objImage);
-    }
-
-    obj.set("images", arrImages);
+    obj.set("images", transformImages((ArrayNode)obj.get("images").get("profiles"), (ArrayNode)obj.get("tagged_images").get("results")));
     obj.remove("tagged_images");
 
     return stripNulls(renameId(obj, Integer.class));
+  }
+
+  public static ArrayNode transformImages(ArrayNode arr1, ArrayNode arr2)
+  {
+    ArrayNode arrImages = mapper.createArrayNode();
+
+    if (arr1 != null)
+      arrImages.addAll(arr1);
+    if (arr2 != null)
+      arrImages.addAll(arr2);
+
+    for (JsonNode image : arrImages)
+    {
+      ObjectNode objImage = (ObjectNode)image;
+      if (objImage.has("media_type") && objImage.has("media"))
+      {
+        objImage.set(objImage.get("media_type").asText() + "_id", objImage.get("media").get("id"));
+        objImage.remove("media");
+      }
+
+      stripNulls(objImage);
+    }
+
+    return arrImages;
+  }
+
+  public static ArrayNode transformCredits(ArrayNode arr1, ArrayNode arr2)
+  {
+    List<String> lAttrCredits = Arrays.asList("person_id", "tv_id", "movie_id", "department", "character", "job", "gender");
+    ArrayNode arrCredits = mapper.createArrayNode();
+
+    if (arr1 != null)
+      arrCredits.addAll(arr1);
+    if (arr2 != null)
+      arrCredits.addAll(arr2);
+
+    for (JsonNode credit : arrCredits)
+    {
+      List<String> removeFields = new ArrayList<String>();
+      ObjectNode objCredit = (ObjectNode)credit;
+
+      if (objCredit.has("media_type"))
+        objCredit.set(objCredit.get("media_type").asText() + "_id", objCredit.get("id"));
+      else
+        objCredit.set("person_id", objCredit.get("_id"));
+
+      Iterator<String> fieldNames = objCredit.fieldNames();
+
+      while (fieldNames.hasNext())
+      {
+        String fName = fieldNames.next();
+        if (!lAttrCredits.contains(fName))
+          removeFields.add(fName);
+      }
+
+      objCredit.remove(removeFields);
+      stripNulls(objCredit);
+    }
+
+    return arrCredits;
+  }
+
+  public static ArrayNode transformTranslations(ObjectNode obj)
+  {
+    ArrayNode arrTranslations = (ArrayNode)obj.get("translations");
+    for (JsonNode translation : arrTranslations)
+    {
+      ObjectNode objTranslation = (ObjectNode)translation;
+      if (translation.get("data").has("biography"))
+        objTranslation.set("biography", translation.get("data").get("biography"));
+      objTranslation.remove("data");
+      // TODO: Beware that translations coming from TV do not have Biography: Instead there are three attributes (name, overview, homepage)
+      // For the moment we do ignore these attributes
+      stripNulls(objTranslation);
+    }
+
+    return arrTranslations;
   }
 
   public static ObjectNode transformCompany(ObjectNode obj, ArrayNode logos, ArrayNode altNames)
@@ -318,6 +450,9 @@ public class TheMovieDbMapper
 
   private static ObjectNode stripNulls(ObjectNode obj)
   {
+    if (obj == null)
+      return obj;
+
     Iterator<String> fieldNames = obj.fieldNames();
     List<String> nullFields = new ArrayList<String>();
 
@@ -334,7 +469,6 @@ public class TheMovieDbMapper
 
   private static <T> ObjectNode renameId(ObjectNode obj, Class<T> theClass)
   {
-    
     if (obj.has("id"))
     {
       switch (theClass.getName())

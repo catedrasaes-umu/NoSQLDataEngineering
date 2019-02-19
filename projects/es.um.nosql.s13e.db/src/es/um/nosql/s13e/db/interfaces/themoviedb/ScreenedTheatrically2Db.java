@@ -10,7 +10,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import es.um.nosql.s13e.db.adapters.DbClient;
 
-public class Reviews2Db
+public class ScreenedTheatrically2Db
 {
   private int MAX_LINES_BEFORE_STORE = 5000;
 
@@ -20,10 +20,10 @@ public class Reviews2Db
 
   private ObjectMapper mapper;
 
-  public Reviews2Db(DbClient dbClient)
+  public ScreenedTheatrically2Db(DbClient dbClient)
   {
     this.dbClient = dbClient;
-    collectionName = "reviews";
+    collectionName = "screened_theatrically";
     mapper = new ObjectMapper();
   }
 
@@ -34,19 +34,19 @@ public class Reviews2Db
 
     try
     {
-      ArrayNode reviewsArray = mapper.createArrayNode();
+      ArrayNode scrThArray = mapper.createArrayNode();
       for (File jsonFile : new File(jsonRoute).listFiles())
       {
         String content = Files.readAllLines(jsonFile.toPath()).get(0);
         ObjectNode tv = (ObjectNode)mapper.readTree(content);
 
-        if (tv.has("reviews") && tv.get("reviews").get("results").size() > 0)
-          reviewsArray.addAll(TheMovieDbMapper.transformReviews((ArrayNode)tv.get("reviews").get("results")));
+        if (tv.has("screened_theatrically") && tv.get("screened_theatrically").get("results").size() > 0)
+          scrThArray.addAll(TheMovieDbMapper.transformScreenedTheatrically((ArrayNode)tv.get("screened_theatrically").get("results")));
 
         if (++numLines == MAX_LINES_BEFORE_STORE)
         {
-          dbClient.insert(dbName, collectionName, reviewsArray.toString());
-          reviewsArray.removeAll();
+          dbClient.insert(dbName, collectionName, scrThArray.toString());
+          scrThArray.removeAll();
           numLines = 0;
           System.out.println("Line count: " + totalLines);
         }
@@ -54,10 +54,10 @@ public class Reviews2Db
         totalLines++;
       }
 
-      if (reviewsArray.size() > 0)
+      if (scrThArray.size() > 0)
       {
         System.out.println("Storing remaining files...");
-        dbClient.insert(dbName, collectionName, reviewsArray.toString());
+        dbClient.insert(dbName, collectionName, scrThArray.toString());
       }
     } catch(IOException e)
     {

@@ -33,7 +33,7 @@ public class StructuralVariationSorter
 
   public void sortByCount(EList<StructuralVariation> vars)
   {
-    ECollections.sort(vars, (var1, var2) -> var1.getCount() > var2.getCount() ? -1 : 1);
+    //ECollections.sort(vars, (var1, var2) -> var1.getCount() > var2.getCount() ? -1 : 1);
     renameVariationIds(vars);
   }
 
