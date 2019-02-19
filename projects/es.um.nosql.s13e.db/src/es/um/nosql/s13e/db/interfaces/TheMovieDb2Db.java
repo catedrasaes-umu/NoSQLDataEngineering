@@ -54,7 +54,6 @@ public class TheMovieDb2Db extends Source2Db
       //case "networks": { new Networks2Db(this.getClient()).inject(jsonRoute, dbName); break; }
       case "people":
       {
-        //new Media2Db(this.getClient()).inject(jsonRoute, dbName);
         //new People2Db(this.getClient()).inject(jsonRoute, dbName);
         break;
       }

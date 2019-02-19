@@ -22,10 +22,10 @@ public class Main
     //inferenceTest.runPleiadesExample(InferenceMode.FILL_AND_INFER, ConfigConstants.PLEIADES_FILE);                  //TODO: DOESNT WORK YET
     //inferenceTest.runProteinsExample(InferenceMode.FILL_AND_INFER, ConfigConstants.PROTEINS_FOLDER);                //POJO
     //inferenceTest.runPublicationsExample(InferenceMode.FILL_ONLY, ConfigConstants.PUBLICATIONS_FILE);          //POJO
-    inferenceTest.runStackOverflowExample(InferenceMode.FILL_AND_INFER, ConfigConstants.STACKOVERFLOW_FOLDER);
+    //inferenceTest.runStackOverflowExample(InferenceMode.FILL_ONLY, ConfigConstants.STACKOVERFLOW_FOLDER);
     //inferenceTest.runUrbanDictionaryExample(InferenceMode.INFER_ONLY, ConfigConstants.URBANDICTIONARY_FILE);    //POJO
     //inferenceTest.runWebclickExample(InferenceMode.FILL_AND_INFER, ConfigConstants.WEBCLICKS_FOLDER);              //POJO
-    //inferenceTest.runTheMovieDBExample(InferenceMode.FILL_ONLY, ConfigConstants.THEMOVIEDB_FOLDER);
+    inferenceTest.runTheMovieDBExample(InferenceMode.FILL_ONLY, ConfigConstants.THEMOVIEDB_FOLDER);
 
     //TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
     // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.

@@ -14,7 +14,7 @@ public class Main
     //inferrer.runPublicationsExample(InferenceMode.INFER_ONLY, "publications");
     //inferrer.runSanctionsExample(InferenceMode.INFER_ONLY, "opensanctions");
     //inferrer.runProteinsExample(InferenceMode.INFER_ONLY, "proteins");
-    inferrer.runStackOverflowExample(InferenceMode.ANALYZE_ONLY, "stackoverflow");
+    inferrer.runStackOverflowExample(InferenceMode.INFER_ONLY, "stackoverflow");
     //inferrer.runRedditExample(InferenceMode.ANALYZE_ONLY, "reddit");
     //inferrer.runLinksExample(InferenceMode.INFER_ONLY, "links");
     //inferrer.runWebclickExample(InferenceMode.INFER_ONLY, "webclicks");
