@@ -98,10 +98,14 @@ public class TheMovieDbMapper
     tv.set("episode_groups", arrEpGroups);
 
     // Changes
-    ArrayNode arrChanges = mapper.createArrayNode();
-    for (JsonNode change : tv.get("changes").get("changes"))
-      arrChanges.add(change.get("id").asText());
-    tv.set("changes", arrChanges);
+    if (tv.has("changes") && tv.get("changes").has("changes"))
+    {
+      ArrayNode arrChanges = mapper.createArrayNode();
+      for (JsonNode change : tv.get("changes").get("changes"))
+        for (JsonNode item : change.get("items"))
+          arrChanges.add(item.get("id").asText());
+      tv.set("changes", arrChanges);
+    }
 
     // Reviews
     ArrayNode arrReviews = mapper.createArrayNode();
@@ -150,12 +154,21 @@ public class TheMovieDbMapper
 
   public static ArrayNode transformChanges(ArrayNode changes)
   {
+    ArrayNode arrChanges = mapper.createArrayNode();
+
     changes.forEach(change ->
     {
-      stripNulls(renameId((ObjectNode)change, String.class));
+      String key = change.get("key").asText();
+      ((ArrayNode)change.get("items")).forEach(item ->
+      {
+        ObjectNode oItem = (ObjectNode)item;
+        oItem.put("key", key);
+        stripNulls(renameId(oItem, String.class));
+        arrChanges.add(oItem);
+      });
     });
 
-    return changes;
+    return arrChanges;
   }
 
   public static ArrayNode transformReviews(ArrayNode reviews)
