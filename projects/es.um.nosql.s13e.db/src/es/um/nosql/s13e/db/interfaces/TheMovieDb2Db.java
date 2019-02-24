@@ -50,31 +50,31 @@ public class TheMovieDb2Db extends Source2Db
 
     switch (jsonFolderName)
     {
-      case "companies": { new Companies2Db(this.getClient()).inject(jsonRoute, dbName); break; }
-      case "companies_images": { new Companies_Images2Db(this.getClient()).inject(jsonRoute, dbName); break; }
-      case "genres": { new Genres2Db(this.getClient()).inject(jsonRoute, dbName); break; }
-      case "keywords": { new Keywords2Db(this.getClient()).inject(jsonRoute, dbName); break; }
-      case "networks": { new Networks2Db(this.getClient()).inject(jsonRoute, dbName); break; }
-      case "people": { new People2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      //case "companies": { new Companies2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      //case "companies_images": { new Companies_Images2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      //case "genres": { new Genres2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      //case "keywords": { new Keywords2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      //case "networks": { new Networks2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      //case "people": { new People2Db(this.getClient()).inject(jsonRoute, dbName); break; }
       case "movies":
       {
-        new Videos2Db(this.getClient()).inject(jsonRoute, dbName);
+        //////////new Videos2Db(this.getClient()).inject(jsonRoute, dbName);
         new Movies2Db(this.getClient()).inject(jsonRoute, dbName);
         break;
       }
       case "seasons":
       {
-        new Episodes2Db(this.getClient()).inject(jsonRoute, dbName);
-        new Seasons2Db(this.getClient()).inject(jsonRoute, dbName);
+        //new Episodes2Db(this.getClient()).inject(jsonRoute, dbName);
+        //new Seasons2Db(this.getClient()).inject(jsonRoute, dbName);
         break;
       }
       case "tv":
       {
-        new Reviews2Db(this.getClient()).inject(jsonRoute, dbName);
-        new Changes2Db(this.getClient()).inject(jsonRoute, dbName);
-        new EpisodeGroups2Db(this.getClient()).inject(jsonRoute, dbName);
-        new ScreenedTheatrically2Db(this.getClient()).inject(jsonRoute, dbName);
-        new TV2Db(this.getClient()).inject(jsonRoute, dbName);
+        //new Reviews2Db(this.getClient()).inject(jsonRoute, dbName);
+        //////////new Changes2Db(this.getClient()).inject(jsonRoute, dbName);
+        //////////new EpisodeGroups2Db(this.getClient()).inject(jsonRoute, dbName);
+        //////////new ScreenedTheatrically2Db(this.getClient()).inject(jsonRoute, dbName);
+        //new TV2Db(this.getClient()).inject(jsonRoute, dbName);
         break;
       }
     }
