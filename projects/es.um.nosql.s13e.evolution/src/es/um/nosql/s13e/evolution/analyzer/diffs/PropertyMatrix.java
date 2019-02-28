@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.evolution.stats.diffs;
+package es.um.nosql.s13e.evolution.analyzer.diffs;
 
 import java.util.ArrayList;
 import java.util.HashMap;

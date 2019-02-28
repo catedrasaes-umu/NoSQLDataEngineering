@@ -3,13 +3,13 @@ package es.um.nosql.s13e.evolution;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import es.um.nosql.s13e.evolution.timestamp.gen.TimestampAnalyzer;
-import es.um.nosql.s13e.evolution.timestamp.gen.BasicTimestampAnalyzer;
-import es.um.nosql.s13e.evolution.timestamp.gen.DateTimestampAnalyzer;
-import es.um.nosql.s13e.evolution.timestamp.gen.DefaultTimestampAnalyzer;
-import es.um.nosql.s13e.evolution.timestamp.gen.OIDTimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.gen.TimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.gen.BasicTimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.gen.DateTimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.gen.DefaultTimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.gen.OIDTimestampAnalyzer;
 
-public class GenTimestampFiles
+public class GenTimestampTemplates
 {
   private static String OUTPUT_DIR = "timestamp/";
   private static String EXTENSION = ".js";

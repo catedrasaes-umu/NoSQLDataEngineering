@@ -1,9 +1,9 @@
-package es.um.nosql.s13e.evolution.timestamp;
+package es.um.nosql.s13e.evolution.templates;
 
 import com.google.gson.JsonArray;
 
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
-import es.um.nosql.s13e.evolution.timestamp.gen.TimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.gen.TimestampAnalyzer;
 import es.um.nosql.s13e.evolution.util.MapReduceTimestampSources;
 import es.um.nosql.s13e.evolution.util.constants.ConfigConstants;
 import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
@@ -29,7 +29,7 @@ public class TimestampInferrer
     if (ConfigConstants.DEBUG)
     {
       System.out.println(dbName + " > Inference finished.");
-      System.out.println(dbName + " > Starting BuildNoSQLSchema...");      
+      System.out.println(dbName + " > Starting BuildNoSQLSchema...");
     }
 
     BuildNoSQLSchema builder = new BuildNoSQLSchema();

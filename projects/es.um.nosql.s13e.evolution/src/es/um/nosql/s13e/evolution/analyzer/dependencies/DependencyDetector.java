@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.evolution.stats.dependencies;
+package es.um.nosql.s13e.evolution.analyzer.dependencies;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -12,7 +12,7 @@ import java.util.stream.Collectors;
 import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
-import es.um.nosql.s13e.evolution.stats.diffs.PropertyMatrix;
+import es.um.nosql.s13e.evolution.analyzer.diffs.PropertyMatrix;
 
 public class DependencyDetector
 {

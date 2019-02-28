@@ -1,5 +1,4 @@
-package es.um.nosql.s13e.evolution.timestamp.gen
-
+package es.um.nosql.s13e.evolution.templates.gen
 
 class OIDTimestampAnalyzer extends TimestampAnalyzer
 {

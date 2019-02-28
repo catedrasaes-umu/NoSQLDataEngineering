@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.evolution.stats.outliers;
+package es.um.nosql.s13e.evolution.analyzer.outliers;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,10 +9,10 @@ import java.util.stream.Stream;
 import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
-import es.um.nosql.s13e.evolution.stats.outliers.modes.CoverageOutlierDetector;
-import es.um.nosql.s13e.evolution.stats.outliers.modes.EpsilonOutlierDetector;
-import es.um.nosql.s13e.evolution.stats.outliers.modes.OutlierDetector;
-import es.um.nosql.s13e.evolution.stats.outliers.modes.OutlierMode;
+import es.um.nosql.s13e.evolution.analyzer.outliers.modes.CoverageOutlierDetector;
+import es.um.nosql.s13e.evolution.analyzer.outliers.modes.EpsilonOutlierDetector;
+import es.um.nosql.s13e.evolution.analyzer.outliers.modes.OutlierDetector;
+import es.um.nosql.s13e.evolution.analyzer.outliers.modes.OutlierMode;
 
 public class OutlierAnalyzer
 {

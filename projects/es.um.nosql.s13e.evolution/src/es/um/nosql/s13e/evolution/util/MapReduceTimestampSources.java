@@ -5,7 +5,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.regex.Pattern;
 
-import es.um.nosql.s13e.evolution.timestamp.gen.TimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.gen.TimestampAnalyzer;
 import es.um.nosql.s13e.nosqlimport.util.MapReduceSources;
 
 public class MapReduceTimestampSources extends MapReduceSources

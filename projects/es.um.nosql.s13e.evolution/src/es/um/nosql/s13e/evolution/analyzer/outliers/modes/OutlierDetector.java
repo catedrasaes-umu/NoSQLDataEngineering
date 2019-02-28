@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.evolution.stats.outliers.modes;
+package es.um.nosql.s13e.evolution.analyzer.outliers.modes;
 
 import java.util.List;
 

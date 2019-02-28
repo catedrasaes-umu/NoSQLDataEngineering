@@ -200,7 +200,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Global schema" label="Global schema" titleExpression="aql: 'Global schema: ' + self.name" domainClass="NoSQLSchema.NoSQLSchema">
       <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
-      <defaultLayer name="Default" label="Default" reusedMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='Aggregate'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='Parent'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='Reference'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='Feature']" reusedTools="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20to%20Classifier%20union'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20to%20Variation%20schema']">
+      <defaultLayer name="Default" label="Default" reusedMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='Aggregate'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='Parent'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='Reference'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='EntityClass%20to%20ReferenceClass']" reusedTools="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20to%20Classifier%20union'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20to%20Variation%20schema']">
         <containerMappings name="Classifier" label="Classifier" labelDirectEdit="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20schema']/@defaultLayer/@toolSections.1/@ownedTools[name='Entity']" semanticCandidatesExpression="aql: self.entities->union(self.refClasses)" doubleClickDescription="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20to%20Classifier%20union']" domainClass="NoSQLSchema.Classifier" childrenPresentation="HorizontalStack">
           <subContainerMappings name="Common properties" label="Common properties" preconditionExpression="service:existsCommonPropertiesInClassifier()" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.Classifier" childrenPresentation="List">
             <subNodeMappings name="Null" label="Null" semanticCandidatesExpression="service: getCommonNullsFromClassifier" domainClass="NoSQLSchema.Null">
@@ -581,7 +581,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Classifier schema" label="Classifier schema" titleExpression="aql: 'Classifier schema: ' + self.name" domainClass="NoSQLSchema.NoSQLSchema">
       <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
-      <defaultLayer name="Default" label="Default" reusedMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='Aggregate'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='Parent'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='Reference'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='Feature']" reusedTools="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20to%20Classifier%20union'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20to%20Variation%20schema']">
+      <defaultLayer name="Default" label="Default" reusedMappings="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='Aggregate'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='Parent'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='Reference'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='EntityClass%20to%20ReferenceClass'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@edgeMappings[name='ReferenceClass%20to%20EntityClass']" reusedTools="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20to%20Classifier%20union'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Import%20mappings']/@defaultLayer/@toolSections.0/@ownedTools[name='Navigate%20to%20Variation%20schema']">
         <containerMappings name="Classifier" label="Classifier" semanticCandidatesExpression="aql: self.entities->union(self.refClasses)" domainClass="NoSQLSchema.Classifier" childrenPresentation="HorizontalStack">
           <subContainerMappings name="Required" label="Required" preconditionExpression="service:existsCommonPropertiesInClassifier()" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema.Classifier" childrenPresentation="List">
             <subNodeMappings name="Null" label="Null" semanticCandidatesExpression="service:getCommonNullsFromClassifier" domainClass="NoSQLSchema.Null">
@@ -1833,7 +1833,7 @@
     </ownedRepresentations>
     <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Import mappings" label="Import mappings" enablePopupBars="true">
       <defaultLayer name="Default">
-        <edgeMappings name="Reference" label="Reference" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20schema']/@defaultLayer/@containerMappings[name='Classifier'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Classifier%20schema']/@defaultLayer/@containerMappings[name='Classifier']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20schema']/@defaultLayer/@containerMappings[name='Classifier'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Classifier%20schema']/@defaultLayer/@containerMappings[name='Classifier']" targetFinderExpression="aql: self.variations.properties->filter(NoSQLSchema::Reference).refsTo">
+        <edgeMappings name="Reference" label="Reference" preconditionExpression="aql: self.variations.properties->filter(NoSQLSchema::Reference).features->isEmpty()" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20schema']/@defaultLayer/@containerMappings[name='Classifier'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Classifier%20schema']/@defaultLayer/@containerMappings[name='Classifier']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20schema']/@defaultLayer/@containerMappings[name='Classifier'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Classifier%20schema']/@defaultLayer/@containerMappings[name='Classifier']" targetFinderExpression="aql: self.variations.properties->filter(NoSQLSchema::Reference).refsTo">
           <style routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription labelExpression="aql: self.variations.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refsTo=view.targetNode.target)->asSet()->collect(ref | ref.name + ': ' + ref.originalType + ' [' + if (ref.lowerBound&lt;>-1) then ref.lowerBound else '*' endif + '..' + if (ref.upperBound&lt;>-1) then ref.upperBound else '*' endif + ']')->sep('\n')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png">
@@ -1849,10 +1849,10 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="Feature" label="Feature" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20schema']/@defaultLayer/@containerMappings[name='Classifier'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Classifier%20schema']/@defaultLayer/@containerMappings[name='Classifier']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20schema']/@defaultLayer/@containerMappings[name='Classifier'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Classifier%20schema']/@defaultLayer/@containerMappings[name='Classifier']" targetFinderExpression="aql: self.variations.properties->filter(NoSQLSchema::Reference).features.eContainer()">
+        <edgeMappings name="EntityClass to ReferenceClass" label="EntityClass to ReferenceClass" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20schema']/@defaultLayer/@containerMappings[name='Classifier'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Classifier%20schema']/@defaultLayer/@containerMappings[name='Classifier']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20schema']/@defaultLayer/@containerMappings[name='Classifier'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Classifier%20schema']/@defaultLayer/@containerMappings[name='Classifier']" targetFinderExpression="aql: self.variations.properties->filter(NoSQLSchema::Reference).features.eContainer()">
           <style lineStyle="dash" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription labelExpression="aql: self.variations.properties->filter(NoSQLSchema::Reference)->select(ref | ref.refsTo=view.targetNode.target)->asSet()->collect(ref | ref.name + ': ' + ref.originalType + ' [' + if (ref.lowerBound&lt;>-1) then ref.lowerBound else '*' endif + '..' + if (ref.upperBound&lt;>-1) then ref.upperBound else '*' endif + ']')->sep('\n')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Feat16.png">
+            <centerLabelStyleDescription labelExpression="aql: self.variations.properties->filter(NoSQLSchema::Reference)->select(ref | ref.name=view.targetNode.target.name)->asSet()->collect(ref | ref.name + ': ' + ref.originalType + ' [' + if (ref.lowerBound&lt;>-1) then ref.lowerBound else '*' endif + '..' + if (ref.upperBound&lt;>-1) then ref.upperBound else '*' endif + ']')->sep('\n')->toString()" iconPath="/es.um.nosql.s13e.design/images/icons/Feat16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -1861,6 +1861,14 @@
           <style lineStyle="dash" routingStyle="manhattan">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='gray']"/>
             <centerLabelStyleDescription labelExpression="aql: 'parent'" iconPath="/es.um.nosql.s13e.design/images/icons/Parent16.png">
+              <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            </centerLabelStyleDescription>
+          </style>
+        </edgeMappings>
+        <edgeMappings name="ReferenceClass to EntityClass" label="ReferenceClass to EntityClass" sourceMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20schema']/@defaultLayer/@containerMappings[name='Classifier'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Classifier%20schema']/@defaultLayer/@containerMappings[name='Classifier']" targetMapping="//@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Global%20schema']/@defaultLayer/@containerMappings[name='Classifier'] //@ownedViewpoints[name='NoSQLSchema']/@ownedRepresentations[name='Classifier%20schema']/@defaultLayer/@containerMappings[name='Classifier']" targetFinderExpression="aql: self.variations.eInverse()->filter(NoSQLSchema::Reference).refsTo">
+          <style lineStyle="dash" routingStyle="manhattan">
+            <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+            <centerLabelStyleDescription iconPath="/es.um.nosql.s13e.design/images/icons/Feat16.png">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -1910,7 +1918,7 @@
             </style>
           </subContainerMappings>
           <subContainerMappings name="EntityDiffSpecContainer2" label="EntityDiffSpecContainer2" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityDiffSpec" childrenPresentation="VerticalStack">
-            <subContainerMappings name="StructuralVariationProp" label="StructuralVariationProp" semanticCandidatesExpression="aql: self.StructuralVariationProps" domainClass="EntityDifferentiation::StructuralVariationProp" childrenPresentation="HorizontalStack">
+            <subContainerMappings name="StructuralVariationProp" label="StructuralVariationProp" semanticCandidatesExpression="aql: self.variationProps" domainClass="EntityDifferentiation::StructuralVariationProp" childrenPresentation="HorizontalStack">
               <subContainerMappings name="StructuralVariationPropContainer1" label="StructuralVariationPropContainer1" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::StructuralVariationProp" childrenPresentation="List">
                 <subNodeMappings name="PropertySpec" label="PropertySpec" semanticCandidatesExpression="aql: self.propertySpecs" domainClass="EntityDifferentiation::PropertySpec">
                   <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: self.property.eClass().name + ': ' + self.property.name + '\t(' + 'TCheck: ' + self.needsTypeCheck + ')'" labelPosition="node" resizeKind="NSEW" id="PropertySpecStyle">
@@ -1937,7 +1945,7 @@
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
               </subContainerMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: self.StructuralVariation.eContainer().name + '_' + self.StructuralVariation.variationId" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-1']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: self.variation.eContainer().name + '_' + self.variation.variationId" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-1']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1973,10 +1981,10 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="StructuralVariationProps" label="StructuralVariationProps" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityDiffSpec']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='StructuralVariationProp']" targetFinderExpression="aql: self.StructuralVariationProps">
+        <edgeMappings name="StructuralVariationProps" label="StructuralVariationProps" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityDiffSpec']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='StructuralVariationProp']" targetFinderExpression="aql: self.variationProps">
           <style sourceArrow="FillDiamond">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <centerLabelStyleDescription showIcon="false" labelExpression="aql: 'StructuralVariationProps'">
+            <centerLabelStyleDescription showIcon="false" labelExpression="aql: 'VariationProps'">
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </centerLabelStyleDescription>
           </style>
@@ -2036,9 +2044,9 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
           </style>
         </containerMappings>
-        <containerMappings name="StructuralVariationProp" label="StructuralVariationProp" semanticCandidatesExpression="aql: self.StructuralVariationProps" domainClass="EntityDifferentiation::StructuralVariationProp" childrenPresentation="List">
+        <containerMappings name="StructuralVariationProp" label="StructuralVariationProp" semanticCandidatesExpression="aql: self.variationProps" domainClass="EntityDifferentiation::StructuralVariationProp" childrenPresentation="List">
           <subNodeMappings name="StructuralVariationPropName" label="StructuralVariationPropName" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::StructuralVariationProp">
-            <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: 'ref(StructuralVariation): ' + self.StructuralVariation.eContainer().name + self.StructuralVariation.variationId" labelPosition="node" resizeKind="NSEW" id="StructuralVariationPropNameStyle">
+            <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: 'ref(StructuralVariation): ' + self.variation.eContainer().name + self.variation.variationId" labelPosition="node" resizeKind="NSEW" id="StructuralVariationPropNameStyle">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2051,7 +2059,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
           </style>
         </containerMappings>
-        <containerMappings name="PropertySpec" label="PropertySpec" semanticCandidatesExpression="aql: self.commonProps->concat(self.StructuralVariationProps.propertySpecs)->concat(self.StructuralVariationProps.notProps)" domainClass="EntityDifferentiation::PropertySpec" childrenPresentation="List">
+        <containerMappings name="PropertySpec" label="PropertySpec" semanticCandidatesExpression="aql: self.commonProps->concat(self.variationProps.propertySpecs)->concat(self.variationProps.notProps)" domainClass="EntityDifferentiation::PropertySpec" childrenPresentation="List">
           <subNodeMappings name="needsTypeCheck" label="needsTypeCheck" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::PropertySpec">
             <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: 'needsTypeCheck: ' + self.needsTypeCheck" labelPosition="node" resizeKind="NSEW" id="PropertySpecStyle">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2065,7 +2073,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </containerMappings>
-        <containerMappings name="Property" label="Property" semanticCandidatesExpression="aql: self.commonProps.property->concat(self.StructuralVariationProps.propertySpecs.property)->concat(self.StructuralVariationProps.notProps.property)" domainClass="NoSQLSchema::Property" childrenPresentation="List">
+        <containerMappings name="Property" label="Property" semanticCandidatesExpression="aql: self.commonProps.property->concat(self.variationProps.propertySpecs.property)->concat(self.variationProps.notProps.property)" domainClass="NoSQLSchema::Property" childrenPresentation="List">
           <subNodeMappings name="PropertyName" label="PropertyName" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema::Property">
             <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: 'name: ' + self.name" labelPosition="node" resizeKind="NSEW" id="PropertyNameStyle">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

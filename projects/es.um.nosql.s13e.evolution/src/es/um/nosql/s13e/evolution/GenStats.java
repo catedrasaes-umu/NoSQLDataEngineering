@@ -8,14 +8,14 @@ import java.util.stream.Stream;
 import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.s13e.evolution.stats.dependencies.DependencyDetector;
-import es.um.nosql.s13e.evolution.stats.outliers.OutlierAnalyzer;
-import es.um.nosql.s13e.evolution.stats.outliers.modes.OutlierMode;
+import es.um.nosql.s13e.evolution.analyzer.dependencies.DependencyDetector;
+import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierAnalyzer;
+import es.um.nosql.s13e.evolution.analyzer.outliers.modes.OutlierMode;
 import es.um.nosql.s13e.util.ModelLoader;
 
 public class GenStats
 {
-  public final static String INPUT_MODEL = "../es.um.nosql.models/reddit/reddit.xmi";
+  public final static String INPUT_MODEL = "../es.um.nosql.models/stackoverflow/stackoverflow.xmi";
 
   public static void main(String[] args)
   {

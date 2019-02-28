@@ -11,7 +11,7 @@ public class Main
     Orchestrator inferenceTest = new Orchestrator(DbType.MONGODB);
 
     //inferenceTest.runCompaniesExample(InferenceMode.FILL_AND_INFER, ConfigConstants.COMPANIES_FILE);                //POJO
-    //inferenceTest.runRedditExample(InferenceMode.FILL_ONLY, ConfigConstants.REDDIT_FOLDER);
+    inferenceTest.runRedditExample(InferenceMode.FILL_ONLY, ConfigConstants.REDDIT_FOLDER);
     //inferenceTest.runEveryPoliticianExample(InferenceMode.INFER_ONLY, ConfigConstants.EVERYPOLITICIAN_FILE);
     //inferenceTest.runFacebookExample(InferenceMode.FILL_AND_INFER, ConfigConstants.FACEBOOK_FOLDER);                //POJO
     //inferenceTest.runHarvardExample(InferenceMode.FILL_AND_INFER, ConfigConstants.HARVARD_FILE);                    //POJO
@@ -25,7 +25,7 @@ public class Main
     //inferenceTest.runStackOverflowExample(InferenceMode.FILL_ONLY, ConfigConstants.STACKOVERFLOW_FOLDER);
     //inferenceTest.runUrbanDictionaryExample(InferenceMode.INFER_ONLY, ConfigConstants.URBANDICTIONARY_FILE);    //POJO
     //inferenceTest.runWebclickExample(InferenceMode.FILL_AND_INFER, ConfigConstants.WEBCLICKS_FOLDER);              //POJO
-    inferenceTest.runTheMovieDBExample(InferenceMode.FILL_ONLY, ConfigConstants.THEMOVIEDB_FOLDER);
+    //inferenceTest.runTheMovieDBExample(InferenceMode.FILL_ONLY, ConfigConstants.THEMOVIEDB_FOLDER);
 
     //TODO: Before checking more datasets, we need to make sure "ObjectMapper oMapper = new ObjectMapper().setSerializationInclusion(Include.NON_NULL);"
     // Is in each interface. Thing is, this is only working por POJO objects and not readTree interfaces.
