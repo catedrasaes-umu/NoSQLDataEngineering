@@ -1897,12 +1897,12 @@
     <ownedJavaExtensions qualifiedClassName="es.um.nosql.s13e.design.services.PropertyServices"/>
   </ownedViewpoints>
   <ownedViewpoints name="EntityDifferentiation" label="EntityDifferentiation">
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Entity Differences Diagram" label="Entity Differences Diagram" domainClass="EntityDifferentiation::EntityDiffSpec">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Entity Differences Diagram" label="Entity Differences Diagram" domainClass="EntityDifferentiation.EntityDiff">
       <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
       <metamodel href="http://www.modelum.es/EntityDifferentiation#/"/>
       <defaultLayer name="Default">
-        <containerMappings name="EntityDiffSpec" label="EntityDiffSpec" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityDiffSpec" childrenPresentation="VerticalStack">
-          <subContainerMappings name="EntityDiffSpecContainer1" label="EntityDiffSpecContainer1" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityDiffSpec" childrenPresentation="List">
+        <containerMappings name="EntityDiff" label="EntityDiff" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation.EntityDiff" childrenPresentation="VerticalStack">
+          <subContainerMappings name="EntityDiffContainer1" label="EntityDiffContainer1" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityDiff" childrenPresentation="List">
             <subNodeMappings name="PropertySpec" label="PropertySpec" semanticCandidatesExpression="aql: self.commonProps" domainClass="EntityDifferentiation::PropertySpec">
               <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: self.property.eClass().name + ': ' + self.property.name + '\t(' + 'TCheck: ' + self.needsTypeCheck + ')'" labelPosition="node" resizeKind="NSEW" id="PropertySpecStyle">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1917,9 +1917,9 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             </style>
           </subContainerMappings>
-          <subContainerMappings name="EntityDiffSpecContainer2" label="EntityDiffSpecContainer2" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityDiffSpec" childrenPresentation="VerticalStack">
-            <subContainerMappings name="StructuralVariationProp" label="StructuralVariationProp" semanticCandidatesExpression="aql: self.variationProps" domainClass="EntityDifferentiation::StructuralVariationProp" childrenPresentation="HorizontalStack">
-              <subContainerMappings name="StructuralVariationPropContainer1" label="StructuralVariationPropContainer1" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::StructuralVariationProp" childrenPresentation="List">
+          <subContainerMappings name="EntityDiffContainer2" label="EntityDiffContainer2" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityDiff" childrenPresentation="VerticalStack">
+            <subContainerMappings name="StructuralVariationDiff" label="StructuralVariationDiff" semanticCandidatesExpression="aql: self.variationDiffs" domainClass="EntityDifferentiation::StructuralVariationDiff" childrenPresentation="HorizontalStack">
+              <subContainerMappings name="StructuralVariationDiffContainer1" label="StructuralVariationDiffContainer1" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::StructuralVariationDiff" childrenPresentation="List">
                 <subNodeMappings name="PropertySpec" label="PropertySpec" semanticCandidatesExpression="aql: self.propertySpecs" domainClass="EntityDifferentiation::PropertySpec">
                   <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: self.property.eClass().name + ': ' + self.property.name + '\t(' + 'TCheck: ' + self.needsTypeCheck + ')'" labelPosition="node" resizeKind="NSEW" id="PropertySpecStyle">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1932,7 +1932,7 @@
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 </style>
               </subContainerMappings>
-              <subContainerMappings name="StructuralVariationPropContainer2" label="StructuralVariationPropContainer2" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::StructuralVariationProp" childrenPresentation="List">
+              <subContainerMappings name="StructuralVariationDiffContainer2" label="StructuralVariationDiffContainer2" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::StructuralVariationDiff" childrenPresentation="List">
                 <subNodeMappings name="PropertySpec" label="PropertySpec" semanticCandidatesExpression="aql: self.notProps" domainClass="EntityDifferentiation::PropertySpec">
                   <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: self.property.eClass().name + ': ' + self.property.name + '\t(' + 'TCheck: ' + self.needsTypeCheck + ')'" labelPosition="node" resizeKind="NSEW" id="PropertySpecStyle">
                     <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1959,7 +1959,7 @@
               <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'EntityDiffSpec: ' + self.entity.name + ' (' + self.eContainer().name + ')'" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'EntityDiff: ' + self.entity.name + ' (' + self.eContainer().name + ')'" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -1969,11 +1969,11 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
-    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Entity Differences Diagram (Legacy)" label="Entity Differences Diagram (Legacy)" domainClass="EntityDifferentiation::EntityDiffSpec">
+    <ownedRepresentations xsi:type="description_2:DiagramDescription" name="Entity Differences Diagram (Legacy)" label="Entity Differences Diagram (Legacy)" domainClass="EntityDifferentiation.EntityDiff">
       <metamodel href="http://www.modelum.es/NoSQLSchema#/"/>
       <metamodel href="http://www.modelum.es/EntityDifferentiation#/"/>
       <defaultLayer name="Default">
-        <edgeMappings name="EntityDiffSpecs" label="EntityDiffSpecs" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityDifferentiation']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityDiffSpec']" targetFinderExpression="aql: self.entityDiffSpecs">
+        <edgeMappings name="EntityDiffs" label="EntityDiffs" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityDifferentiation']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityDiff']" targetFinderExpression="aql: self.entityDiffs">
           <style sourceArrow="FillDiamond">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql: 'entityDiffSpecs'">
@@ -1981,7 +1981,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="StructuralVariationProps" label="StructuralVariationProps" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityDiffSpec']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='StructuralVariationProp']" targetFinderExpression="aql: self.variationProps">
+        <edgeMappings name="StructuralVariationDiffs" label="StructuralVariationDiffs" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityDiff']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='StructuralVariationDiff']" targetFinderExpression="aql: self.variationDiffs">
           <style sourceArrow="FillDiamond">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql: 'VariationProps'">
@@ -1989,7 +1989,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="PropertySpecs" label="PropertySpecs" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='StructuralVariationProp']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='PropertySpec']" targetFinderExpression="aql: self.propertySpecs">
+        <edgeMappings name="PropertySpecs" label="PropertySpecs" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='StructuralVariationDiff']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='PropertySpec']" targetFinderExpression="aql: self.propertySpecs">
           <style sourceArrow="FillDiamond">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql: 'propertySpecs'">
@@ -1997,7 +1997,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="NotProps" label="NotProps" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='StructuralVariationProp']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='PropertySpec']" targetFinderExpression="aql: self.notProps">
+        <edgeMappings name="NotProps" label="NotProps" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='StructuralVariationDiff']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='PropertySpec']" targetFinderExpression="aql: self.notProps">
           <style sourceArrow="FillDiamond">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql: 'notProps'">
@@ -2005,7 +2005,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <edgeMappings name="CommonProps" label="CommonProps" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityDiffSpec']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='PropertySpec']" targetFinderExpression="aql: self.commonProps">
+        <edgeMappings name="CommonProps" label="CommonProps" sourceMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='EntityDiff']" targetMapping="//@ownedViewpoints[name='EntityDifferentiation']/@ownedRepresentations[name='Entity%20Differences%20Diagram%20(Legacy)']/@defaultLayer/@containerMappings[name='PropertySpec']" targetFinderExpression="aql: self.commonProps">
           <style sourceArrow="FillDiamond">
             <strokeColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <centerLabelStyleDescription showIcon="false" labelExpression="aql: 'commonProps'">
@@ -2021,7 +2021,7 @@
             </centerLabelStyleDescription>
           </style>
         </edgeMappings>
-        <containerMappings name="EntityDifferentiation" label="EntityDifferentiation" semanticCandidatesExpression="aql: self.eContainer()" domainClass="EntityDifferentiation::EntityDifferentiation" childrenPresentation="VerticalStack">
+        <containerMappings name="EntityDifferentiation" label="EntityDifferentiation" semanticCandidatesExpression="aql: self.eContainer()" domainClass="EntityDifferentiation.EntityDifferentiation" childrenPresentation="VerticalStack">
           <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'EntityDifferentiation: ' + self.name" roundedCorner="true" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2029,38 +2029,38 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_purple']"/>
           </style>
         </containerMappings>
-        <containerMappings name="EntityDiffSpec" label="EntityDiffSpec" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityDiffSpec" childrenPresentation="List">
-          <subNodeMappings name="EntityDiffSpecName" label="EntityDiffSpecName" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityDiffSpec">
-            <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: 'ref(Entity): ' + self.entity.name" labelPosition="node" resizeKind="NSEW" id="EntityDiffSpecStyle">
+        <containerMappings name="EntityDiff" label="EntityDiff" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation.EntityDiff" childrenPresentation="List">
+          <subNodeMappings name="EntityDiffSpecName" label="EntityDiffSpecName" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation.EntityDiff">
+            <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: 'ref(Entity): ' + self.entity.name" labelPosition="node" resizeKind="NSEW" id="EntityDiffStyle">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'EntityDiffSpec'" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'EntityDiff'" roundedCorner="true" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
           </style>
         </containerMappings>
-        <containerMappings name="StructuralVariationProp" label="StructuralVariationProp" semanticCandidatesExpression="aql: self.variationProps" domainClass="EntityDifferentiation::StructuralVariationProp" childrenPresentation="List">
-          <subNodeMappings name="StructuralVariationPropName" label="StructuralVariationPropName" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::StructuralVariationProp">
-            <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: 'ref(StructuralVariation): ' + self.variation.eContainer().name + self.variation.variationId" labelPosition="node" resizeKind="NSEW" id="StructuralVariationPropNameStyle">
+        <containerMappings name="StructuralVariationDiff" label="StructuralVariationDiff" semanticCandidatesExpression="aql: self.variationDiffs" domainClass="EntityDifferentiation.StructuralVariationDiff" childrenPresentation="List">
+          <subNodeMappings name="StructuralVariationDiffName" label="StructuralVariationDiffName" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation.StructuralVariationDiff">
+            <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: 'ref(StructuralVariation): ' + self.variation.eContainer().name + self.variation.variationId" labelPosition="node" resizeKind="NSEW" id="StructuralVariationDiffNameStyle">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             </style>
           </subNodeMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'StructuralVariationProp'" roundedCorner="true" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'StructuralVariationDiff'" roundedCorner="true" backgroundStyle="GradientTopToBottom">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='yellow']"/>
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_yellow']"/>
           </style>
         </containerMappings>
-        <containerMappings name="PropertySpec" label="PropertySpec" semanticCandidatesExpression="aql: self.commonProps->concat(self.variationProps.propertySpecs)->concat(self.variationProps.notProps)" domainClass="EntityDifferentiation::PropertySpec" childrenPresentation="List">
-          <subNodeMappings name="needsTypeCheck" label="needsTypeCheck" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::PropertySpec">
+        <containerMappings name="PropertySpec" label="PropertySpec" semanticCandidatesExpression="aql: self.commonProps->concat(self.variationDiffs.propertySpecs)->concat(self.variationDiffs.notProps)" domainClass="EntityDifferentiation::PropertySpec" childrenPresentation="List">
+          <subNodeMappings name="needsTypeCheck" label="needsTypeCheck" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation.PropertySpec">
             <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: 'needsTypeCheck: ' + self.needsTypeCheck" labelPosition="node" resizeKind="NSEW" id="PropertySpecStyle">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
@@ -2073,7 +2073,7 @@
             <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_green']"/>
           </style>
         </containerMappings>
-        <containerMappings name="Property" label="Property" semanticCandidatesExpression="aql: self.commonProps.property->concat(self.variationProps.propertySpecs.property)->concat(self.variationProps.notProps.property)" domainClass="NoSQLSchema::Property" childrenPresentation="List">
+        <containerMappings name="Property" label="Property" semanticCandidatesExpression="aql: self.commonProps.property->concat(self.variationDiffs.propertySpecs.property)->concat(self.variationDiffs.notProps.property)" domainClass="NoSQLSchema::Property" childrenPresentation="List">
           <subNodeMappings name="PropertyName" label="PropertyName" semanticCandidatesExpression="aql: self" domainClass="NoSQLSchema::Property">
             <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: 'name: ' + self.name" labelPosition="node" resizeKind="NSEW" id="PropertyNameStyle">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>

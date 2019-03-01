@@ -2,10 +2,8 @@ package es.um.nosql.s13e.db.interfaces;
 
 import java.nio.file.Paths;
 
-import es.um.nosql.s13e.db.interfaces.themoviedb.Changes2Db;
 import es.um.nosql.s13e.db.interfaces.themoviedb.Companies2Db;
 import es.um.nosql.s13e.db.interfaces.themoviedb.Companies_Images2Db;
-import es.um.nosql.s13e.db.interfaces.themoviedb.EpisodeGroups2Db;
 import es.um.nosql.s13e.db.interfaces.themoviedb.Episodes2Db;
 import es.um.nosql.s13e.db.interfaces.themoviedb.Genres2Db;
 import es.um.nosql.s13e.db.interfaces.themoviedb.Keywords2Db;
@@ -13,10 +11,8 @@ import es.um.nosql.s13e.db.interfaces.themoviedb.Movies2Db;
 import es.um.nosql.s13e.db.interfaces.themoviedb.Networks2Db;
 import es.um.nosql.s13e.db.interfaces.themoviedb.People2Db;
 import es.um.nosql.s13e.db.interfaces.themoviedb.Reviews2Db;
-import es.um.nosql.s13e.db.interfaces.themoviedb.ScreenedTheatrically2Db;
 import es.um.nosql.s13e.db.interfaces.themoviedb.Seasons2Db;
 import es.um.nosql.s13e.db.interfaces.themoviedb.TV2Db;
-import es.um.nosql.s13e.db.interfaces.themoviedb.Videos2Db;
 import es.um.nosql.s13e.db.util.DbType;
 
 public class TheMovieDb2Db extends Source2Db
@@ -50,12 +46,12 @@ public class TheMovieDb2Db extends Source2Db
 
     switch (jsonFolderName)
     {
-      //case "companies": { new Companies2Db(this.getClient()).inject(jsonRoute, dbName); break; }
-      //case "companies_images": { new Companies_Images2Db(this.getClient()).inject(jsonRoute, dbName); break; }
-      //case "genres": { new Genres2Db(this.getClient()).inject(jsonRoute, dbName); break; }
-      //case "keywords": { new Keywords2Db(this.getClient()).inject(jsonRoute, dbName); break; }
-      //case "networks": { new Networks2Db(this.getClient()).inject(jsonRoute, dbName); break; }
-      //case "people": { new People2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      case "companies": { new Companies2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      case "companies_images": { new Companies_Images2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      case "genres": { new Genres2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      case "keywords": { new Keywords2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      case "networks": { new Networks2Db(this.getClient()).inject(jsonRoute, dbName); break; }
+      case "people": { new People2Db(this.getClient()).inject(jsonRoute, dbName); break; }
       case "movies":
       {
         //////////new Videos2Db(this.getClient()).inject(jsonRoute, dbName);
@@ -64,17 +60,17 @@ public class TheMovieDb2Db extends Source2Db
       }
       case "seasons":
       {
-        //new Episodes2Db(this.getClient()).inject(jsonRoute, dbName);
-        //new Seasons2Db(this.getClient()).inject(jsonRoute, dbName);
+        new Episodes2Db(this.getClient()).inject(jsonRoute, dbName);
+        new Seasons2Db(this.getClient()).inject(jsonRoute, dbName);
         break;
       }
       case "tv":
       {
-        //new Reviews2Db(this.getClient()).inject(jsonRoute, dbName);
+        new Reviews2Db(this.getClient()).inject(jsonRoute, dbName);
         //////////new Changes2Db(this.getClient()).inject(jsonRoute, dbName);
         //////////new EpisodeGroups2Db(this.getClient()).inject(jsonRoute, dbName);
         //////////new ScreenedTheatrically2Db(this.getClient()).inject(jsonRoute, dbName);
-        //new TV2Db(this.getClient()).inject(jsonRoute, dbName);
+        new TV2Db(this.getClient()).inject(jsonRoute, dbName);
         break;
       }
     }

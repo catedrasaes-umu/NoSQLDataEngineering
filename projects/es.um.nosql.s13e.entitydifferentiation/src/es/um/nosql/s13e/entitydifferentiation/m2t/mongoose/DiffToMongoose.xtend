@@ -2,7 +2,7 @@ package es.um.nosql.s13e.entitydifferentiation.m2t.mongoose
 
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDifferentiation
 import java.io.File
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDiffSpec
+import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDiff
 import java.util.List
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.PropertySpec
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType
@@ -94,11 +94,11 @@ class DiffToMongoose
   /**
    * To generate imports, we just recreate the routes of the imports to be used.
    */
-  private def genIncludes(EntityClass entity, EntityDiffSpec spec) '''
+  private def genIncludes(EntityClass entity, EntityDiff spec) '''
     «FOR e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
       var «e.name»Schema = require('./«schemaFileName(e)»');
     «ENDFOR»
-    «IF spec.commonProps.exists[cp | cp.needsTypeCheck] || spec.variationProps.exists[ev | ev.propertySpecs.exists[ps | ps.needsTypeCheck]]»
+    «IF spec.commonProps.exists[cp | cp.needsTypeCheck] || spec.variationDiffs.exists[ev | ev.propertySpecs.exists[ps | ps.needsTypeCheck]]»
       var UnionType = require('./util/UnionType.js');
     «ENDIF»
   '''
@@ -113,7 +113,7 @@ class DiffToMongoose
    * s.key stores a PropertySpec
    * s.value stores "required" or not
    */
-  private def genSpecs(EntityClass e, EntityDiffSpec spec)
+  private def genSpecs(EntityClass e, EntityDiff spec)
   '''
     «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false])
       .reject[p | p.key.property.name.startsWith("_") && !p.key.property.name.equals("_id")]
@@ -122,9 +122,9 @@ class DiffToMongoose
     «ENDFOR»
   '''
 
-  private def specificProps(EntityDiffSpec spec)
+  private def specificProps(EntityDiff spec)
   {
-    spec.variationProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
+    spec.variationDiffs.map[propertySpecs].fold(<PropertySpec>newHashSet(),
       [result, neew |
         val names = result.map[p | p.property.name].toSet
         result.addAll(neew.filter[p | !names.contains(p.property.name)])

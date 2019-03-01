@@ -118,9 +118,9 @@ public class ObjectGen
   private void generateMetadata(ObjectNode oNode, EntityClass entity, Optional<Attribute> theId)
   {
     if (!theId.isPresent())
-      oNode.put("_id", pTypeGen.genTrustedObjectId("objectid"));
+      oNode.set("_id", pTypeGen.genTrustedObjectId("objectid"));
     else
-      oNode.put("_id", pTypeGen.genTrustedObjectId(((PrimitiveType)theId.get().getType()).getName()));
+      oNode.set("_id", pTypeGen.genTrustedObjectId(((PrimitiveType)theId.get().getType()).getName()));
 
     eIdMap.add(entity.getName(), oNode.get("_id"));
 
@@ -131,16 +131,16 @@ public class ObjectGen
   private void generateAttribute(ObjectNode oNode, Attribute attr)
   {
     if (attr.getType() instanceof PrimitiveType)
-      oNode.put(attr.getName(), pTypeGen.genPrimitiveType(((PrimitiveType)attr.getType()).getName()));
+      oNode.set(attr.getName(), pTypeGen.genPrimitiveType(((PrimitiveType)attr.getType()).getName()));
     else if (attr.getType() instanceof PTuple)
-      oNode.put(attr.getName(), tupleGen.genPTuple(((PTuple)attr.getType()).getElements()));
+      oNode.set(attr.getName(), tupleGen.genPTuple(((PTuple)attr.getType()).getElements()));
   }
 
   private void generateAssociation(ObjectNode oNode, Association assc)
   {
     if (assc instanceof Reference)
-      oNode.put(assc.getName(), refGen.genReference((Reference)assc, eIdMap));
+      oNode.set(assc.getName(), refGen.genReference((Reference)assc, eIdMap));
     if (assc instanceof Aggregate)
-      oNode.put(assc.getName(), aggrGen.genAggregate((Aggregate)assc, evMap));
+      oNode.set(assc.getName(), aggrGen.genAggregate((Aggregate)assc, evMap));
   }
 }

@@ -6,26 +6,25 @@
     usedGenPackages="../../es.um.nosql.s13e/model/nosqlschema.genmodel#//NoSQLSchema"
     operationReflection="true" importOrganizing="true">
   <foreignModel>entitydifferentiation.ecore</foreignModel>
-  <genPackages prefix="EntityDifferentiation" basePackage="es.um.nosql.s13e.entitydifferentiation" disposableProviderFactory="true"
-      ecorePackage="entitydifferentiation.ecore#/">
+  <genPackages prefix="EntityDifferentiation" basePackage="es.um.nosql.s13e.entitydifferentiation" disposableProviderFactory="true" ecorePackage="entitydifferentiation.ecore#/">
     <genClasses ecoreClass="entitydifferentiation.ecore#//EntityDifferentiation">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDifferentiation/entityDiffSpecs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDifferentiation/entityDiffs"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entitydifferentiation.ecore#//EntityDifferentiation/name"/>
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDifferentiation/schema"/>
     </genClasses>
-    <genClasses ecoreClass="entitydifferentiation.ecore#//EntityDiffSpec">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDiffSpec/entity"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDiffSpec/variationProps"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDiffSpec/commonProps"/>
+    <genClasses ecoreClass="entitydifferentiation.ecore#//EntityDiff">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDiff/entity"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDiff/variationDiffs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//EntityDiff/commonProps"/>
     </genClasses>
     <genClasses ecoreClass="entitydifferentiation.ecore#//PropertySpec">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//PropertySpec/property"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute entitydifferentiation.ecore#//PropertySpec/needsTypeCheck"/>
     </genClasses>
-    <genClasses ecoreClass="entitydifferentiation.ecore#//StructuralVariationProp">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//StructuralVariationProp/propertySpecs"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//StructuralVariationProp/variation"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//StructuralVariationProp/notProps"/>
+    <genClasses ecoreClass="entitydifferentiation.ecore#//StructuralVariationDiff">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//StructuralVariationDiff/propertySpecs"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//StructuralVariationDiff/variation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference entitydifferentiation.ecore#//StructuralVariationDiff/notProps"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

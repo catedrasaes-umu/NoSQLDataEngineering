@@ -2,9 +2,9 @@ package es.um.nosql.s13e.entitydifferentiation.util;
 
 import java.io.File;
 
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDiffSpec;
+import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDiff;
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDifferentiation;
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.StructuralVariationProp;
+import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.StructuralVariationDiff;
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDifferentiationPackage;
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.PropertySpec;
 import es.um.nosql.s13e.util.ModelLoader;
@@ -45,18 +45,18 @@ public class EntityDifferentiationPrinter
 
     result.append("EntityDifferentiation name: " + entityDifferentiation.getName() + ENDL);
 
-    for (EntityDiffSpec eDiffSpec : entityDifferentiation.getEntityDiffSpecs())
+    for (EntityDiff eDiffSpec : entityDifferentiation.getEntityDiffs())
       result.append(printPretty(eDiffSpec, TAB) + ENDL);
 
     return result.toString();
   }
 
-  public String printPretty(EntityDiffSpec eDiffSpec)
+  public String printPretty(EntityDiff eDiffSpec)
   {
     return printPretty(eDiffSpec, "");
   }
 
-  private String printPretty(EntityDiffSpec eDiffSpec, String defTabs)
+  private String printPretty(EntityDiff eDiffSpec, String defTabs)
   {
     if (eDiffSpec == null)
       return null;
@@ -72,9 +72,9 @@ public class EntityDifferentiationPrinter
         result.append(prettyPrint(pSpec, defTabs + TAB) + ENDL);
     }
 
-    if (!eDiffSpec.getVariationProps().isEmpty())
+    if (!eDiffSpec.getVariationDiffs().isEmpty())
     {
-      for (StructuralVariationProp evProp : eDiffSpec.getVariationProps())
+      for (StructuralVariationDiff evProp : eDiffSpec.getVariationDiffs())
       {
         result.append(defTabs + "EV " + evProp.getVariation().getVariationId() 
         		+ " ---------" + ENDL);

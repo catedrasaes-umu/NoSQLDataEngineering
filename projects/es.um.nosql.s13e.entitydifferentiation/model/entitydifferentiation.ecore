@@ -3,17 +3,17 @@
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="EntityDifferentiation" nsURI="http://www.modelum.es/EntityDifferentiation"
     nsPrefix="EntityDifferentiation">
   <eClassifiers xsi:type="ecore:EClass" name="EntityDifferentiation">
-    <eStructuralFeatures xsi:type="ecore:EReference" name="entityDiffSpecs" upperBound="-1"
-        eType="#//EntityDiffSpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entityDiffs" upperBound="-1"
+        eType="#//EntityDiff" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="schema" lowerBound="1"
         eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//NoSQLSchema"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="EntityDiffSpec">
+  <eClassifiers xsi:type="ecore:EClass" name="EntityDiff">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" lowerBound="1"
         eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//EntityClass"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="variationProps" upperBound="-1"
-        eType="#//StructuralVariationProp" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variationDiffs" upperBound="-1"
+        eType="#//StructuralVariationDiff" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="commonProps" upperBound="-1"
         eType="#//PropertySpec" containment="true"/>
   </eClassifiers>
@@ -22,7 +22,7 @@
         eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//Property"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="needsTypeCheck" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
-  <eClassifiers xsi:type="ecore:EClass" name="StructuralVariationProp">
+  <eClassifiers xsi:type="ecore:EClass" name="StructuralVariationDiff">
     <eStructuralFeatures xsi:type="ecore:EReference" name="propertySpecs" upperBound="-1"
         eType="#//PropertySpec" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="variation" lowerBound="1"

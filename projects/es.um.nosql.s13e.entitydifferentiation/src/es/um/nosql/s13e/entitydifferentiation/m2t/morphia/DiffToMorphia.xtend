@@ -1,6 +1,6 @@
 package es.um.nosql.s13e.entitydifferentiation.m2t.morphia
 
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDiffSpec
+import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDiff
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDifferentiation
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDifferentiationPackage
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.PropertySpec
@@ -153,7 +153,7 @@ class DiffToMorphia
    * s.key stores a PropertySpec
    * s.value stores "required" or not
    */
-  private def genSpecs(EntityClass entity, EntityDiffSpec spec)
+  private def genSpecs(EntityClass entity, EntityDiff spec)
   '''
     «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false])
     	.reject[p | p.key.property.name.startsWith("_") && !p.key.property.name.equals("_id")]
@@ -166,9 +166,9 @@ class DiffToMorphia
     «ENDFOR»
   '''
 
-  private def specificProps(EntityDiffSpec spec)
+  private def specificProps(EntityDiff spec)
   {
-    spec.variationProps.map[propertySpecs].fold(<PropertySpec>newHashSet(),
+    spec.variationDiffs.map[propertySpecs].fold(<PropertySpec>newHashSet(),
       [result, neew |
         val names = result.map[p | p.property.name].toSet
         result.addAll(neew.filter[p | !names.contains(p.property.name)])

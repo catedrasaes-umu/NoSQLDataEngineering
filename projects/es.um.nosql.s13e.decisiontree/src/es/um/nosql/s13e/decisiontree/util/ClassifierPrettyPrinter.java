@@ -6,7 +6,7 @@ import java.io.PrintStream;
 import java.util.Collections;
 import java.util.function.Function;
 
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDiffSpec;
+import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDiff;
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDifferentiation;
 import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.decisiontree.util.constants.ConfigConstants;
@@ -54,7 +54,7 @@ public class ClassifierPrettyPrinter
     }
   }
 
-  public void generateTreePNG(OpenJ48 classifier, EntityDiffSpec eDiffSpec)
+  public void generateTreePNG(OpenJ48 classifier, EntityDiff eDiffSpec)
   {
     File theFolder = new File(ConfigConstants.IMAGE_FOLDER + ((EntityDifferentiation)eDiffSpec.eContainer()).getName() + "/");
     if (!theFolder.exists())

@@ -197,11 +197,11 @@ class DiffMongooseBaseGen
   var db = mongoose.connection;
   db.on('error', console.error.bind(console, 'connection error: '));
 
-  «FOR e : diff.entityDiffSpecs.map[ed | ed.entity]»
+  «FOR e : diff.entityDiffs.map[ed | ed.entity]»
     var «e.name» = require('./app/models/«e.name»Schema');
   «ENDFOR»
 
-  «FOR e : diff.entityDiffSpecs.filter[ed | ed.entity.isRoot].map[ed | ed.entity]»
+  «FOR e : diff.entityDiffs.filter[ed | ed.entity.isRoot].map[ed | ed.entity]»
     «e.name».find(function(err, result)
     {
       if (err)

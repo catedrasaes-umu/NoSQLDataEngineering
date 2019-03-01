@@ -5,7 +5,7 @@ import es.um.nosql.s13e.NoSQLSchema.EntityClass
 import java.util.Set
 import java.util.List
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.PropertySpec
-import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDiffSpec
+import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDiff
 import es.um.nosql.s13e.NoSQLSchema.Aggregate
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDifferentiation
 
@@ -19,14 +19,14 @@ class DependencyAnalyzer
   List<EntityClass> topOrderEntities
   Map<EntityClass, Set<EntityClass>> entityDeps
   Map<EntityClass, Set<EntityClass>> inverseEntityDeps
-  Map<EntityClass, EntityDiffSpec> diffByEntity
+  Map<EntityClass, EntityDiff> diffByEntity
   Map<EntityClass, Map<String, List<PropertySpec>>> typeListByPropertyName
 
   def performAnalysis(EntityDifferentiation diff)
   {
-    val entities = diff.entityDiffSpecs.map[entity]
+    val entities = diff.entityDiffs.map[entity]
 
-    diffByEntity = newHashMap(diff.entityDiffSpecs.map[ed | ed.entity -> ed])
+    diffByEntity = newHashMap(diff.entityDiffs.map[ed | ed.entity -> ed])
     topOrderEntities = calculateDeps(entities)
     typeListByPropertyName = calcTypeListMatrix(entities)
   }
@@ -38,7 +38,7 @@ class DependencyAnalyzer
   def calcTypeListMatrix(List<EntityClass> entities)
   {
     entities.toInvertedMap[e |
-      diffByEntity.get(e).variationProps
+      diffByEntity.get(e).variationDiffs
         .map[propertySpecs]
         .flatten
         .filter[needsTypeCheck].groupBy[property.name]
