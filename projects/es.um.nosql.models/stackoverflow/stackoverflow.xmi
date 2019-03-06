@@ -51,7 +51,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="UserDisplayName">
+      <properties xsi:type="NoSQLSchema:Attribute" name="UserDisplayName" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>
@@ -70,7 +70,7 @@
       <properties xsi:type="NoSQLSchema:Attribute" name="_id">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
-      <properties xsi:type="NoSQLSchema:Attribute" name="UserDisplayName">
+      <properties xsi:type="NoSQLSchema:Attribute" name="UserDisplayName" optional="true">
         <type xsi:type="NoSQLSchema:PrimitiveType" name="String"/>
       </properties>
     </variations>

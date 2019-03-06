@@ -62,12 +62,12 @@ public class SOFPatcher
       if (rmUpVotes != null)
       {
         sv.getProperties().remove(rmUpVotes);
-        sv.getProperties().add(createAttribute("UpVotes", "Number"));
+        sv.getProperties().add(createAttribute("UpVotes", "Number", rmUpVotes.isOptional()));
       }
       if (rmDownVotes != null)
       {
         sv.getProperties().remove(rmDownVotes);
-        sv.getProperties().add(createAttribute("DownVotes", "Number"));
+        sv.getProperties().add(createAttribute("DownVotes", "Number", rmDownVotes.isOptional()));
       }
     }
   }
@@ -87,7 +87,7 @@ public class SOFPatcher
       if (rmTagBased != null)
       {
         sv.getProperties().remove(rmTagBased);
-        sv.getProperties().add(createAttribute("TagBased", "String"));
+        sv.getProperties().add(createAttribute("TagBased", "String", rmTagBased.isOptional()));
       }
     }
   }
@@ -107,7 +107,7 @@ public class SOFPatcher
       if (rmTagName != null)
       {
         sv.getProperties().remove(rmTagName);
-        sv.getProperties().add(createAttribute("TagName", "String"));
+        sv.getProperties().add(createAttribute("TagName", "String", rmTagName.isOptional()));
       }
     }
   }
@@ -135,7 +135,7 @@ public class SOFPatcher
       if (rmVoteTypeId != null)
       {
         sv.getProperties().remove(rmVoteTypeId);
-        sv.getProperties().add(createAttribute("VoteTypeId", "Number"));
+        sv.getProperties().add(createAttribute("VoteTypeId", "Number", rmVoteTypeId.isOptional()));
       }
     }
   }
@@ -155,7 +155,7 @@ public class SOFPatcher
       if (rmUserDisplayName != null)
       {
         sv.getProperties().remove(rmUserDisplayName);
-        sv.getProperties().add(createAttribute("UserDisplayName", "String"));
+        sv.getProperties().add(createAttribute("UserDisplayName", "String", rmUserDisplayName.isOptional()));
       }
     }
   }
@@ -175,16 +175,17 @@ public class SOFPatcher
       if (rmPostTypeId != null)
       {
         sv.getProperties().remove(rmPostTypeId);
-        sv.getProperties().add(createAttribute("PostTypeId", "Number"));
+        sv.getProperties().add(createAttribute("PostTypeId", "Number", rmPostTypeId.isOptional()));
       }
     }
   }
 
-  private Attribute createAttribute(String name, String type)
+  private Attribute createAttribute(String name, String type, boolean optional)
   {
     Attribute theAttribute = NoSQLSchemaFactory.eINSTANCE.createAttribute();
     theAttribute.setName(name);
     theAttribute.setType(createPrimitiveType(type));
+    theAttribute.setOptional(optional);
 
     return theAttribute;
   }
