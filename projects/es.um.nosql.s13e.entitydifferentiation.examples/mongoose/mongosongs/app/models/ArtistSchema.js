@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var ArtistSchema = new mongoose.Schema({
+var Artist = new mongoose.Schema({
   _id: {type: String, required: true},
   albums: {type: [String], ref: "Album", default: undefined},
   composedTracks: {type: [String], ref: "Track", default: undefined},
@@ -12,4 +12,4 @@ var ArtistSchema = new mongoose.Schema({
 }, { versionKey: false, collection: 'artist'});
 
 
-module.exports = mongoose.model('Artist', ArtistSchema);
+module.exports = mongoose.model('Artist', Artist);

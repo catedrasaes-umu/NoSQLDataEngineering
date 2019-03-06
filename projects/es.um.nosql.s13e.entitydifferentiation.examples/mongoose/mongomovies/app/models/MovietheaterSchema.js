@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var MovietheaterSchema = new mongoose.Schema({
+var Movietheater = new mongoose.Schema({
   _id: {type: String, required: true},
   city: {type: String, required: true},
   country: {type: String, required: true},
@@ -11,4 +11,4 @@ var MovietheaterSchema = new mongoose.Schema({
 }, { versionKey: false, collection: 'movietheater'});
 
 
-module.exports = mongoose.model('Movietheater', MovietheaterSchema);
+module.exports = mongoose.model('Movietheater', Movietheater);

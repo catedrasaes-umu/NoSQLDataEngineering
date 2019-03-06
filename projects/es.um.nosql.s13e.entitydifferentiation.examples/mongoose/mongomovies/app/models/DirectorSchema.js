@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var DirectorSchema = new mongoose.Schema({
+var Director = new mongoose.Schema({
   _id: {type: String, required: true},
   actor_movies: {type: [String], ref: "Movie", default: undefined},
   directed_movies: {type: [String], ref: "Movie", default: undefined},
@@ -10,4 +10,4 @@ var DirectorSchema = new mongoose.Schema({
 }, { versionKey: false, collection: 'director'});
 
 
-module.exports = mongoose.model('Director', DirectorSchema);
+module.exports = mongoose.model('Director', Director);

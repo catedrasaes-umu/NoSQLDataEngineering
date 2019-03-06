@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var AddressSchema = new mongoose.Schema({
+var Address = new mongoose.Schema({
   city: String,
   country: String,
   country_code: String,
@@ -15,4 +15,4 @@ var AddressSchema = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Address', AddressSchema);
+module.exports = mongoose.model('Address', Address);

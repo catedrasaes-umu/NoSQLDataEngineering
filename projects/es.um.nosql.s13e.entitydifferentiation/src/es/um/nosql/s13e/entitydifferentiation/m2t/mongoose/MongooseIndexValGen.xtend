@@ -27,7 +27,7 @@ class MongooseIndexValGen
       if (cEntity === null || cEntity.indexes === null)
       ''''''
       else
-      '''«FOR ConfigIndex i : cEntity.indexes SEPARATOR '\n'»«e.name»Schema.index(«genIndex(i)»);«ENDFOR»'''      
+      '''«FOR ConfigIndex i : cEntity.indexes SEPARATOR '\n'»«e.name».index(«genIndex(i)»);«ENDFOR»'''      
     }
   }
 

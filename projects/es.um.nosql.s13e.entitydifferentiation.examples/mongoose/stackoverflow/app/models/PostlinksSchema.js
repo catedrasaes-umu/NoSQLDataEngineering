@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var PostlinksSchema = new mongoose.Schema({
+var Postlinks = new mongoose.Schema({
   CreationDate: {type: String, required: true},
   LinkTypeId: {type: Number, required: true},
   PostId: {type: Number, ref: "Posts", required: true},
@@ -11,4 +11,4 @@ var PostlinksSchema = new mongoose.Schema({
 }, { versionKey: false, collection: 'postlinks'});
 
 
-module.exports = mongoose.model('Postlinks', PostlinksSchema);
+module.exports = mongoose.model('Postlinks', Postlinks);

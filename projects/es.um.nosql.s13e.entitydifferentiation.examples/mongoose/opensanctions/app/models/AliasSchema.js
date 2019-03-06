@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var AliasSchema = new mongoose.Schema({
+var Alias = new mongoose.Schema({
   description: String,
   father_name: String,
   first_name: String,
@@ -16,4 +16,4 @@ var AliasSchema = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Alias', AliasSchema);
+module.exports = mongoose.model('Alias', Alias);

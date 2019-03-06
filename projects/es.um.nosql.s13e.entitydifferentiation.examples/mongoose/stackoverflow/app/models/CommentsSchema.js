@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var CommentsSchema = new mongoose.Schema({
+var Comments = new mongoose.Schema({
   CreationDate: {type: String, required: true},
   PostId: {type: Number, ref: "Posts", required: true},
   Score: {type: Number, required: true},
@@ -13,4 +13,4 @@ var CommentsSchema = new mongoose.Schema({
 }, { versionKey: false, collection: 'comments'});
 
 
-module.exports = mongoose.model('Comments', CommentsSchema);
+module.exports = mongoose.model('Comments', Comments);

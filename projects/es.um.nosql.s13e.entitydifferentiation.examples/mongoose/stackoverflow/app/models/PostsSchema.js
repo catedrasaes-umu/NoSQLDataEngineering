@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var PostsSchema = new mongoose.Schema({
+var Posts = new mongoose.Schema({
   AcceptedAnswerId: String,
   AnswerCount: Number,
   Body: {type: String, required: true},
@@ -27,4 +27,4 @@ var PostsSchema = new mongoose.Schema({
 }, { versionKey: false, collection: 'posts'});
 
 
-module.exports = mongoose.model('Posts', PostsSchema);
+module.exports = mongoose.model('Posts', Posts);

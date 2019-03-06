@@ -1,29 +1,29 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var NationalitySchema = require('./NationalitySchema.js');
-var IdentifierSchema = require('./IdentifierSchema.js');
-var Birth_placeSchema = require('./Birth_placeSchema.js');
-var Birth_dateSchema = require('./Birth_dateSchema.js');
-var AliasSchema = require('./AliasSchema.js');
-var AddressSchema = require('./AddressSchema.js');
+var Nationality = require('./NationalitySchema.js');
+var Identifier = require('./IdentifierSchema.js');
+var Birth_place = require('./Birth_placeSchema.js');
+var Birth_date = require('./Birth_dateSchema.js');
+var Alias = require('./AliasSchema.js');
+var Address = require('./AddressSchema.js');
 var UnionType = require('./util/UnionType.js');
 
-var SanctionsSchema = new mongoose.Schema({
+var Sanctions = new mongoose.Schema({
   _id: {type: String, required: true},
-  addresses: {type: [AddressSchema.schema], default: undefined},
-  aliases: {type: [AliasSchema.schema], default: undefined},
-  birth_dates: {type: [Birth_dateSchema.schema], default: undefined},
-  birth_places: {type: [Birth_placeSchema.schema], default: undefined},
+  addresses: {type: [Address.schema], default: undefined},
+  aliases: {type: [Alias.schema], default: undefined},
+  birth_dates: {type: [Birth_date.schema], default: undefined},
+  birth_places: {type: [Birth_place.schema], default: undefined},
   father_name: String,
   first_name: String,
   function: String,
   gender: String,
-  identifiers: {type: [IdentifierSchema.schema], default: undefined},
+  identifiers: {type: [Identifier.schema], default: undefined},
   last_name: String,
   listed_at: String,
   name: String,
-  nationalities: {type: [NationalitySchema.schema], default: undefined},
+  nationalities: {type: [Nationality.schema], default: undefined},
   program: String,
   second_name: String,
   source: {type: String, required: true},
@@ -37,4 +37,4 @@ var SanctionsSchema = new mongoose.Schema({
 }, { versionKey: false, collection: 'sanctions'});
 
 
-module.exports = mongoose.model('Sanctions', SanctionsSchema);
+module.exports = mongoose.model('Sanctions', Sanctions);

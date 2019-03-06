@@ -2,10 +2,10 @@
 
 var mongoose = require('mongoose');
 
-var RatingSchema = new mongoose.Schema({
+var Rating = new mongoose.Schema({
   score: {type: Number, required: true},
   voters: {type: Number, required: true}
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Rating', RatingSchema);
+module.exports = mongoose.model('Rating', Rating);

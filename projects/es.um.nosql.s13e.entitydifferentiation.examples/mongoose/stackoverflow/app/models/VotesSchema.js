@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var VotesSchema = new mongoose.Schema({
+var Votes = new mongoose.Schema({
   BountyAmount: Number,
   CreationDate: {type: String, required: true},
   PostId: {type: Number, ref: "Posts", required: true},
@@ -12,4 +12,4 @@ var VotesSchema = new mongoose.Schema({
 }, { versionKey: false, collection: 'votes'});
 
 
-module.exports = mongoose.model('Votes', VotesSchema);
+module.exports = mongoose.model('Votes', Votes);

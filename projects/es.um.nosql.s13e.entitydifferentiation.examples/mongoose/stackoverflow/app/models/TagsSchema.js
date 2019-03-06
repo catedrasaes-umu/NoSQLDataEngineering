@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var TagsSchema = new mongoose.Schema({
+var Tags = new mongoose.Schema({
   Count: {type: Number, required: true},
   ExcerptPostId: {type: Number, ref: "Posts"},
   TagName: {type: String, required: true},
@@ -11,4 +11,4 @@ var TagsSchema = new mongoose.Schema({
 }, { versionKey: false, collection: 'tags'});
 
 
-module.exports = mongoose.model('Tags', TagsSchema);
+module.exports = mongoose.model('Tags', Tags);

@@ -82,13 +82,13 @@ class DiffToMongoose
     var mongoose = require('mongoose');
     «genIncludes(e, analyzer.getDiffByEntity().get(e))»
 
-    var «e.name»Schema = new mongoose.Schema({
+    var «e.name» = new mongoose.Schema({
       «genSpecs(e, analyzer.getDiffByEntity().get(e))»
     }, { versionKey: false, «IF (e.isRoot)»collection: '«e.name.toFirstLower»'«ELSE»_id : false«ENDIF»});
 
     «indexValGen.genIndexesForEntity(e)»
 
-    module.exports = mongoose.model('«e.name»', «e.name»Schema);
+    module.exports = mongoose.model('«e.name»', «e.name»);
   '''
 
   /**
@@ -96,7 +96,7 @@ class DiffToMongoose
    */
   private def genIncludes(EntityClass entity, EntityDiff spec) '''
     «FOR e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
-      var «e.name»Schema = require('./«schemaFileName(e)»');
+      var «e.name» = require('./«schemaFileName(e)»');
     «ENDFOR»
     «IF spec.commonProps.exists[cp | cp.needsTypeCheck] || spec.variationDiffs.exists[ev | ev.propertySpecs.exists[ps | ps.needsTypeCheck]]»
       var UnionType = require('./util/UnionType.js');
@@ -219,7 +219,6 @@ class DiffToMongoose
     for (PropertySpec ps : typeList)
       reduceUnionProperty(ps.property, uniqueTypeList, typeShortcutList)
 
-    println(uniqueTypeList)
     // We reduced the union to a single type!
     if (uniqueTypeList.size == 1)
     {
@@ -286,13 +285,13 @@ class DiffToMongoose
   {
     // Concatenate each type of the union removing the Schema.schema from the name if neccesary
     val unionName = "U_" + list.map[p | genCodeForProperty(p).values.get(0)]
-                                .map[o | if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema"))
+                                .map[o | if (o.toString.endsWith(".schema")) o.toString.substring(0, o.toString.indexOf(".schema"))
                                   else (if (o.toString.equals("mongoose.Schema.Types.ObjectId")) "ObjectId" else o)]
                                 .join('_');
 
     // Now, for the Union itself, concatenate each type of the union but with quotation marks and a different join character.
     '''UnionType("«unionName»", «list.map[p | genCodeForProperty(p).values.get(0)]
-                                      .map[o | "\"" + (if (o.toString.endsWith("Schema.schema")) o.toString.substring(0, o.toString.indexOf("Schema.schema"))
+                                      .map[o | "\"" + (if (o.toString.endsWith(".schema")) o.toString.substring(0, o.toString.indexOf(".schema"))
                                         else (if (o.toString.equals("mongoose.Schema.Types.ObjectId")) "ObjectId" else o)) + "\""]
                                       .join(', ')»)'''
   }
@@ -314,10 +313,10 @@ class DiffToMongoose
 
     // Lower bound might be 0 or 1. In any of those cases we only need a value, not an array
     if (aggr.upperBound == 1 && aggr.lowerBound == 1)
-      '''«entityName»Schema.schema'''
+      '''«entityName».schema'''
     else
     // Upper bound might be 2, 3, 4...-1. We need an array.
-      '''[«entityName»Schema.schema]'''
+      '''[«entityName».schema]'''
   }
 
   /**

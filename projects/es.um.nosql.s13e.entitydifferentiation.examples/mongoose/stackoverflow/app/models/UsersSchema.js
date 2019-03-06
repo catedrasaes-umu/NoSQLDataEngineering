@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var UsersSchema = new mongoose.Schema({
+var Users = new mongoose.Schema({
   AboutMe: String,
   AccountId: Number,
   Age: Number,
@@ -20,4 +20,4 @@ var UsersSchema = new mongoose.Schema({
 }, { versionKey: false, collection: 'users'});
 
 
-module.exports = mongoose.model('Users', UsersSchema);
+module.exports = mongoose.model('Users', Users);

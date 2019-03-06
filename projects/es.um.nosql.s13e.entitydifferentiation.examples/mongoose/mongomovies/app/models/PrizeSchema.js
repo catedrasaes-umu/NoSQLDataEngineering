@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var PrizeSchema = new mongoose.Schema({
+var Prize = new mongoose.Schema({
   event: {type: String, required: true},
   name: String,
   names: {type: [String], default: undefined},
@@ -10,4 +10,4 @@ var PrizeSchema = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Prize', PrizeSchema);
+module.exports = mongoose.model('Prize', Prize);

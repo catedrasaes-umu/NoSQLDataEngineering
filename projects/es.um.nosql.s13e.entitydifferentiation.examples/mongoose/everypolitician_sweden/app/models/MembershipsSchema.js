@@ -1,9 +1,9 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var SourceSchema = require('./SourceSchema.js');
+var Source = require('./SourceSchema.js');
 
-var MembershipsSchema = new mongoose.Schema({
+var Memberships = new mongoose.Schema({
   _id: {type: mongoose.Schema.Types.ObjectId, required: true},
   area_id: {type: String, ref: "Areas"},
   end_date: String,
@@ -12,9 +12,9 @@ var MembershipsSchema = new mongoose.Schema({
   organization_id: {type: String, ref: "Organizations", required: true},
   person_id: {type: String, ref: "Persons", required: true},
   role: {type: String, required: true},
-  sources: {type: [SourceSchema.schema], default: undefined},
+  sources: {type: [Source.schema], default: undefined},
   start_date: String
 }, { versionKey: false, collection: 'memberships'});
 
 
-module.exports = mongoose.model('Memberships', MembershipsSchema);
+module.exports = mongoose.model('Memberships', Memberships);

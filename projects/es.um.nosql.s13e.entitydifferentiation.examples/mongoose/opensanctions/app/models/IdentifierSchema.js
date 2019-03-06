@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var UnionType = require('./util/UnionType.js');
 
-var IdentifierSchema = new mongoose.Schema({
+var Identifier = new mongoose.Schema({
   country: String,
   country_code: String,
   description: String,
@@ -13,4 +13,4 @@ var IdentifierSchema = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Identifier', IdentifierSchema);
+module.exports = mongoose.model('Identifier', Identifier);

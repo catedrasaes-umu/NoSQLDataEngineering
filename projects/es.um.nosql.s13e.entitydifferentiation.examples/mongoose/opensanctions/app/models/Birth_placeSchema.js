@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var Birth_placeSchema = new mongoose.Schema({
+var Birth_place = new mongoose.Schema({
   country: String,
   country_code: String,
   place: String,
@@ -10,4 +10,4 @@ var Birth_placeSchema = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Birth_place', Birth_placeSchema);
+module.exports = mongoose.model('Birth_place', Birth_place);

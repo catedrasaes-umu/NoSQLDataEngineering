@@ -2,7 +2,7 @@
 
 var mongoose = require('mongoose');
 
-var BadgesSchema = new mongoose.Schema({
+var Badges = new mongoose.Schema({
   Class: {type: Number, required: true},
   Date: {type: String, required: true},
   Name: {type: String, required: true},
@@ -12,4 +12,4 @@ var BadgesSchema = new mongoose.Schema({
 }, { versionKey: false, collection: 'badges'});
 
 
-module.exports = mongoose.model('Badges', BadgesSchema);
+module.exports = mongoose.model('Badges', Badges);
