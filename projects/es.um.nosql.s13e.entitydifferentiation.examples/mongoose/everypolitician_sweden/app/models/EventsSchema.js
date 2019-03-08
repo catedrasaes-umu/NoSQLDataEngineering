@@ -1,7 +1,7 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var Identifier = require('./IdentifierSchema.js');
+var Identifier = require('./IdentifierSchema');
 
 var Events = new mongoose.Schema({
   _id: {type: String, required: true},

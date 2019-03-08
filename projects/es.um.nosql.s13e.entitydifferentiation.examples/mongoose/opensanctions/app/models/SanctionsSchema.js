@@ -1,12 +1,12 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var Nationality = require('./NationalitySchema.js');
-var Identifier = require('./IdentifierSchema.js');
-var Birth_place = require('./Birth_placeSchema.js');
-var Birth_date = require('./Birth_dateSchema.js');
-var Alias = require('./AliasSchema.js');
-var Address = require('./AddressSchema.js');
+var Nationality = require('./NationalitySchema');
+var Identifier = require('./IdentifierSchema');
+var Birth_place = require('./Birth_placeSchema');
+var Birth_date = require('./Birth_dateSchema');
+var Alias = require('./AliasSchema');
+var Address = require('./AddressSchema');
 var UnionType = require('./util/UnionType.js');
 
 var Sanctions = new mongoose.Schema({

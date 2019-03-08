@@ -1,7 +1,7 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var Media = require('./MediaSchema.js');
+var Media = require('./MediaSchema');
 var UnionType = require('./util/UnionType.js');
 
 var Criticism = new mongoose.Schema({

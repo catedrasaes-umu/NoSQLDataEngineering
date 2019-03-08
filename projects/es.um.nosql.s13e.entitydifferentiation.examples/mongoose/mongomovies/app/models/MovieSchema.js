@@ -1,9 +1,9 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var Rating = require('./RatingSchema.js');
-var Prize = require('./PrizeSchema.js');
-var Criticism = require('./CriticismSchema.js');
+var Rating = require('./RatingSchema');
+var Prize = require('./PrizeSchema');
+var Criticism = require('./CriticismSchema');
 var UnionType = require('./util/UnionType.js');
 
 var Movie = new mongoose.Schema({

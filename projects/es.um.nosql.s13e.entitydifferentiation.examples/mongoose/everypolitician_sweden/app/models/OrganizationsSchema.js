@@ -1,9 +1,9 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var Identifier = require('./IdentifierSchema.js');
-var Other_name = require('./Other_nameSchema.js');
-var Link = require('./LinkSchema.js');
+var Identifier = require('./IdentifierSchema');
+var Other_name = require('./Other_nameSchema');
+var Link = require('./LinkSchema');
 var UnionType = require('./util/UnionType.js');
 
 var Organizations = new mongoose.Schema({

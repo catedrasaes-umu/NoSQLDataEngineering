@@ -1,7 +1,7 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var Source = require('./SourceSchema.js');
+var Source = require('./SourceSchema');
 
 var Memberships = new mongoose.Schema({
   _id: {type: mongoose.Schema.Types.ObjectId, required: true},

@@ -1,8 +1,8 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var Prize = require('./PrizeSchema.js');
-var Review = require('./ReviewSchema.js');
+var Prize = require('./PrizeSchema');
+var Review = require('./ReviewSchema');
 var UnionType = require('./util/UnionType.js');
 
 var Album = new mongoose.Schema({

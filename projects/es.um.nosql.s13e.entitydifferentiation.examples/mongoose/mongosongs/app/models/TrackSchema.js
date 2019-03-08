@@ -1,7 +1,7 @@
 'use strict'
 
 var mongoose = require('mongoose');
-var Rating = require('./RatingSchema.js');
+var Rating = require('./RatingSchema');
 
 var Track = new mongoose.Schema({
   _id: {type: String, required: true},
