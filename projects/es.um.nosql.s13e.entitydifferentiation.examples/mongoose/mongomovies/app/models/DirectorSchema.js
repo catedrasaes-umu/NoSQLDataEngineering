@@ -10,4 +10,4 @@ var Director = new mongoose.Schema({
 }, { versionKey: false, collection: 'director'});
 
 
-module.exports = mongoose.model('Director', Director);
+module.exports = Director;

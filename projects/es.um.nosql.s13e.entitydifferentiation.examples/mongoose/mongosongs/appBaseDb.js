@@ -11,16 +11,16 @@ mongoose.set('debug', true);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 
-var Artist = require('./app/models/ArtistSchema');
-var Album = require('./app/models/AlbumSchema');
-var Track = require('./app/models/TrackSchema');
-var Prize = require('./app/models/PrizeSchema');
-var Review = require('./app/models/ReviewSchema');
-var Media = require('./app/models/MediaSchema');
-var Rating = require('./app/models/RatingSchema');
+var Artist = mongoose.model('Artist', require('./app/models/ArtistSchema'));
+var Album = mongoose.model('Album', require('./app/models/AlbumSchema'));
+var Track = mongoose.model('Track', require('./app/models/TrackSchema'));
+var Prize = mongoose.model('Prize', require('./app/models/PrizeSchema'));
+var Review = mongoose.model('Review', require('./app/models/ReviewSchema'));
+var Media = mongoose.model('Media', require('./app/models/MediaSchema'));
+var Rating = mongoose.model('Rating', require('./app/models/RatingSchema'));
 
 var N_ARTISTS = 2000;
-var N_ALBUMS = 3000;
+var N_ALBUMS = 5000;
 var N_TRACKS = 2000;
 
 testCheckConsistency();

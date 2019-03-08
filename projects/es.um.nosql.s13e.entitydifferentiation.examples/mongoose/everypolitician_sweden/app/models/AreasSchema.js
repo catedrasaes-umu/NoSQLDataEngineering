@@ -9,4 +9,4 @@ var Areas = new mongoose.Schema({
 }, { versionKey: false, collection: 'areas'});
 
 
-module.exports = mongoose.model('Areas', Areas);
+module.exports = Areas;

@@ -12,4 +12,4 @@ var Artist = new mongoose.Schema({
 }, { versionKey: false, collection: 'artist'});
 
 
-module.exports = mongoose.model('Artist', Artist);
+module.exports = Artist;

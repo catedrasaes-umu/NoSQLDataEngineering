@@ -12,4 +12,4 @@ var Badges = new mongoose.Schema({
 }, { versionKey: false, collection: 'badges'});
 
 
-module.exports = mongoose.model('Badges', Badges);
+module.exports = Badges;

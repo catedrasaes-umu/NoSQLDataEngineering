@@ -11,19 +11,19 @@ var UnionType = require('./util/UnionType.js');
 
 var Sanctions = new mongoose.Schema({
   _id: {type: String, required: true},
-  addresses: {type: [Address.schema], default: undefined},
-  aliases: {type: [Alias.schema], default: undefined},
-  birth_dates: {type: [Birth_date.schema], default: undefined},
-  birth_places: {type: [Birth_place.schema], default: undefined},
+  addresses: {type: [Address], default: undefined},
+  aliases: {type: [Alias], default: undefined},
+  birth_dates: {type: [Birth_date], default: undefined},
+  birth_places: {type: [Birth_place], default: undefined},
   father_name: String,
   first_name: String,
   function: String,
   gender: String,
-  identifiers: {type: [Identifier.schema], default: undefined},
+  identifiers: {type: [Identifier], default: undefined},
   last_name: String,
   listed_at: String,
   name: String,
-  nationalities: {type: [Nationality.schema], default: undefined},
+  nationalities: {type: [Nationality], default: undefined},
   program: String,
   second_name: String,
   source: {type: String, required: true},
@@ -37,4 +37,4 @@ var Sanctions = new mongoose.Schema({
 }, { versionKey: false, collection: 'sanctions'});
 
 
-module.exports = mongoose.model('Sanctions', Sanctions);
+module.exports = Sanctions;

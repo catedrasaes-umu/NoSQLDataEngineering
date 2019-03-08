@@ -11,4 +11,4 @@ var Postlinks = new mongoose.Schema({
 }, { versionKey: false, collection: 'postlinks'});
 
 
-module.exports = mongoose.model('Postlinks', Postlinks);
+module.exports = Postlinks;

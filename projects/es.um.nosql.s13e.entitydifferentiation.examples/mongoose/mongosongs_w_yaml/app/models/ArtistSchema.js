@@ -13,4 +13,4 @@ var Artist = new mongoose.Schema({
 
 Artist.index({name: -1}, {sparse: true, background: false, unique: true});
 
-module.exports = mongoose.model('Artist', Artist);
+module.exports = Artist;

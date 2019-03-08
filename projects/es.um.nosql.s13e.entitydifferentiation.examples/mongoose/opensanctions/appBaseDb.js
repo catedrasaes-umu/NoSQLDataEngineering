@@ -11,13 +11,13 @@ mongoose.set('debug', true);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 
-var Identifier = require('./app/models/IdentifierSchema');
-var Address = require('./app/models/AddressSchema');
-var Birth_date = require('./app/models/Birth_dateSchema');
-var Alias = require('./app/models/AliasSchema');
-var Nationality = require('./app/models/NationalitySchema');
-var Birth_place = require('./app/models/Birth_placeSchema');
-var Sanctions = require('./app/models/SanctionsSchema');
+var Identifier = mongoose.model('Identifier', require('./app/models/IdentifierSchema'));
+var Address = mongoose.model('Address', require('./app/models/AddressSchema'));
+var Birth_date = mongoose.model('Birth_date', require('./app/models/Birth_dateSchema'));
+var Alias = mongoose.model('Alias', require('./app/models/AliasSchema'));
+var Nationality = mongoose.model('Nationality', require('./app/models/NationalitySchema'));
+var Birth_place = mongoose.model('Birth_place', require('./app/models/Birth_placeSchema'));
+var Sanctions = mongoose.model('Sanctions', require('./app/models/SanctionsSchema'));
 
 var N_SANCTIONS = 30381;
 

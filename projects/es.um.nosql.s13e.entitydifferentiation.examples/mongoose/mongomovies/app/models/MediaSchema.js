@@ -8,4 +8,4 @@ var Media = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Media', Media);
+module.exports = Media;

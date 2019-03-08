@@ -11,4 +11,4 @@ var Movietheater = new mongoose.Schema({
 }, { versionKey: false, collection: 'movietheater'});
 
 
-module.exports = mongoose.model('Movietheater', Movietheater);
+module.exports = Movietheater;

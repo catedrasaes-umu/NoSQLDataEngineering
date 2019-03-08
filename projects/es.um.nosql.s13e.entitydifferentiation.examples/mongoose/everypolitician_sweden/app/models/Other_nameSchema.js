@@ -9,4 +9,4 @@ var Other_name = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Other_name', Other_name);
+module.exports = Other_name;

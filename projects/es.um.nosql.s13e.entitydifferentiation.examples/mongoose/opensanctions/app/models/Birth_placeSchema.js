@@ -10,4 +10,4 @@ var Birth_place = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Birth_place', Birth_place);
+module.exports = Birth_place;

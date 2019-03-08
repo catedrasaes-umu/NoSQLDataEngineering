@@ -11,13 +11,13 @@ mongoose.set('debug', true);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 
-var Movie = require('./app/models/MovieSchema');
-var Movietheater = require('./app/models/MovietheaterSchema');
-var Rating = require('./app/models/RatingSchema');
-var Media = require('./app/models/MediaSchema');
-var Director = require('./app/models/DirectorSchema');
-var Criticism = require('./app/models/CriticismSchema');
-var Prize = require('./app/models/PrizeSchema');
+var Movie = mongoose.model('Movie', require('./app/models/MovieSchema'));
+var Movietheater = mongoose.model('Movietheater', require('./app/models/MovietheaterSchema'));
+var Rating = mongoose.model('Rating', require('./app/models/RatingSchema'));
+var Media = mongoose.model('Media', require('./app/models/MediaSchema'));
+var Director = mongoose.model('Director', require('./app/models/DirectorSchema'));
+var Criticism = mongoose.model('Criticism', require('./app/models/CriticismSchema'));
+var Prize = mongoose.model('Prize', require('./app/models/PrizeSchema'));
 
 var N_MOVIETHEATER = 2000;
 var N_MOVIE = 5000;

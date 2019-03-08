@@ -88,7 +88,7 @@ class DiffToMongoose
 
     «indexValGen.genIndexesForEntity(e)»
 
-    module.exports = mongoose.model('«e.name»', «e.name»);
+    module.exports = «e.name»;
   '''
 
   /**
@@ -105,7 +105,7 @@ class DiffToMongoose
 
   private def schemaFileName(EntityClass e)
   {
-    e.name + "Schema.js"
+    e.name + "Schema"
   }
 
   /**
@@ -285,14 +285,12 @@ class DiffToMongoose
   {
     // Concatenate each type of the union removing the Schema.schema from the name if neccesary
     val unionName = "U_" + list.map[p | genCodeForProperty(p).values.get(0)]
-                                .map[o | if (o.toString.endsWith(".schema")) o.toString.substring(0, o.toString.indexOf(".schema"))
-                                  else (if (o.toString.equals("mongoose.Schema.Types.ObjectId")) "ObjectId" else o)]
+                                .map[o | if (o.toString.equals("mongoose.Schema.Types.ObjectId")) "ObjectId" else o]
                                 .join('_');
 
     // Now, for the Union itself, concatenate each type of the union but with quotation marks and a different join character.
     '''UnionType("«unionName»", «list.map[p | genCodeForProperty(p).values.get(0)]
-                                      .map[o | "\"" + (if (o.toString.endsWith(".schema")) o.toString.substring(0, o.toString.indexOf(".schema"))
-                                        else (if (o.toString.equals("mongoose.Schema.Types.ObjectId")) "ObjectId" else o)) + "\""]
+                                      .map[o | "\"" + if (o.toString.equals("mongoose.Schema.Types.ObjectId")) "ObjectId" else o + "\""]
                                       .join(', ')»)'''
   }
 
@@ -313,10 +311,10 @@ class DiffToMongoose
 
     // Lower bound might be 0 or 1. In any of those cases we only need a value, not an array
     if (aggr.upperBound == 1 && aggr.lowerBound == 1)
-      '''«entityName».schema'''
+      '''«entityName»'''
     else
     // Upper bound might be 2, 3, 4...-1. We need an array.
-      '''[«entityName».schema]'''
+      '''[«entityName»]'''
   }
 
   /**

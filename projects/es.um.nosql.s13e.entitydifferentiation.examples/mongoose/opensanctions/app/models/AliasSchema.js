@@ -16,4 +16,4 @@ var Alias = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Alias', Alias);
+module.exports = Alias;

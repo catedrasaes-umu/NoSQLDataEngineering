@@ -12,9 +12,9 @@ var Memberships = new mongoose.Schema({
   organization_id: {type: String, ref: "Organizations", required: true},
   person_id: {type: String, ref: "Persons", required: true},
   role: {type: String, required: true},
-  sources: {type: [Source.schema], default: undefined},
+  sources: {type: [Source], default: undefined},
   start_date: String
 }, { versionKey: false, collection: 'memberships'});
 
 
-module.exports = mongoose.model('Memberships', Memberships);
+module.exports = Memberships;

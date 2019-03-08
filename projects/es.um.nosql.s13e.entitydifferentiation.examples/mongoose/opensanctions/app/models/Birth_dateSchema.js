@@ -8,4 +8,4 @@ var Birth_date = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Birth_date', Birth_date);
+module.exports = Birth_date;

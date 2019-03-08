@@ -12,4 +12,4 @@ var Prize = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Prize', Prize);
+module.exports = Prize;

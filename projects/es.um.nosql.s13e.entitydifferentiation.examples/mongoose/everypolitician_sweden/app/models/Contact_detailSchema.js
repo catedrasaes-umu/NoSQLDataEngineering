@@ -8,4 +8,4 @@ var Contact_detail = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Contact_detail', Contact_detail);
+module.exports = Contact_detail;

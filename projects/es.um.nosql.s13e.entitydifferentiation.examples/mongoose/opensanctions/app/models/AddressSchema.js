@@ -15,4 +15,4 @@ var Address = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Address', Address);
+module.exports = Address;

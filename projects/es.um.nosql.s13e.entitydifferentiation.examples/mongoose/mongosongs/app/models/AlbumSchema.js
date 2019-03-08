@@ -12,11 +12,11 @@ var Album = new mongoose.Schema({
   genre: String,
   genres: {type: [String], default: undefined},
   name: {type: String, required: true},
-  prizes: {type: [Prize.schema], default: undefined},
+  prizes: {type: [Prize], default: undefined},
   releaseYear: {type: Number, required: true},
-  reviews: {type: [Review.schema], default: undefined},
+  reviews: {type: [Review], default: undefined},
   tracks: {type: [String], ref: "Track", required: true}
 }, { versionKey: false, collection: 'album'});
 
 
-module.exports = mongoose.model('Album', Album);
+module.exports = Album;

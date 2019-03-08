@@ -13,4 +13,4 @@ var Identifier = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Identifier', Identifier);
+module.exports = Identifier;

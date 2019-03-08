@@ -12,4 +12,4 @@ var Votes = new mongoose.Schema({
 }, { versionKey: false, collection: 'votes'});
 
 
-module.exports = mongoose.model('Votes', Votes);
+module.exports = Votes;

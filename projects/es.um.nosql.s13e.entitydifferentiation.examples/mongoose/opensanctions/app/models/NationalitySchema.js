@@ -8,4 +8,4 @@ var Nationality = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Nationality', Nationality);
+module.exports = Nationality;

@@ -11,13 +11,13 @@ mongoose.set('debug', true);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 
-var Badges = require('./app/models/BadgesSchema');
-var Comments = require('./app/models/CommentsSchema');
-var Posts = require('./app/models/PostsSchema');
-var Votes = require('./app/models/VotesSchema');
-var Users = require('./app/models/UsersSchema');
-var Postlinks = require('./app/models/PostlinksSchema');
-var Tags = require('./app/models/TagsSchema');
+var Badges = mongoose.model('Badges', require('./app/models/BadgesSchema'));
+var Comments = mongoose.model('Comments', require('./app/models/CommentsSchema'));
+var Posts = mongoose.model('Posts', require('./app/models/PostsSchema'));
+var Votes = mongoose.model('Votes', require('./app/models/VotesSchema'));
+var Users = mongoose.model('Users', require('./app/models/UsersSchema'));
+var Postlinks = mongoose.model('Postlinks', require('./app/models/PostlinksSchema'));
+var Tags = mongoose.model('Tags', require('./app/models/TagsSchema'));
 
 var N_BADGES = 25000;
 var N_COMMENTS = 25000;

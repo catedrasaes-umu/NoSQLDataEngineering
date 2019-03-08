@@ -12,12 +12,12 @@ var Album = new mongoose.Schema({
   genre: String,
   genres: {type: [String], default: undefined},
   name: {type: String, maxlength: [300, "This album's name is too long"], required: true},
-  prizes: {type: [Prize.schema], default: undefined},
+  prizes: {type: [Prize], default: undefined},
   releaseYear: {type: Number, required: true, min: 1900},
-  reviews: {type: [Review.schema], default: undefined},
+  reviews: {type: [Review], default: undefined},
   tracks: {type: [String], ref: "Track", required: true}
 }, { versionKey: false, collection: 'album'});
 
 Album.index({name: 1, releaseYear: 1}, {unique: true});
 
-module.exports = mongoose.model('Album', Album);
+module.exports = Album;

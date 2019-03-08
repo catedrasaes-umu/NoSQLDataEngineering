@@ -11,17 +11,17 @@ mongoose.set('debug', true);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 
-var Memberships = require('./app/models/MembershipsSchema');
-var Identifier = require('./app/models/IdentifierSchema');
-var Events = require('./app/models/EventsSchema');
-var Persons = require('./app/models/PersonsSchema');
-var Organizations = require('./app/models/OrganizationsSchema');
-var Other_name = require('./app/models/Other_nameSchema');
-var Image = require('./app/models/ImageSchema');
-var Contact_detail = require('./app/models/Contact_detailSchema');
-var Link = require('./app/models/LinkSchema');
-var Source = require('./app/models/SourceSchema');
-var Areas = require('./app/models/AreasSchema');
+var Memberships = mongoose.model('Memberships', require('./app/models/MembershipsSchema'));
+var Identifier = mongoose.model('Identifier', require('./app/models/IdentifierSchema'));
+var Events = mongoose.model('Events', require('./app/models/EventsSchema'));
+var Persons = mongoose.model('Persons', require('./app/models/PersonsSchema'));
+var Organizations = mongoose.model('Organizations', require('./app/models/OrganizationsSchema'));
+var Other_name = mongoose.model('Other_name', require('./app/models/Other_nameSchema'));
+var Image = mongoose.model('Image', require('./app/models/ImageSchema'));
+var Contact_detail = mongoose.model('Contact_detail', require('./app/models/Contact_detailSchema'));
+var Link = mongoose.model('Link', require('./app/models/LinkSchema'));
+var Source = mongoose.model('Source', require('./app/models/SourceSchema'));
+var Areas = mongoose.model('Areas', require('./app/models/AreasSchema'));
 
 var N_AREAS = 29;
 var N_ORGANIZATIONS = 11;

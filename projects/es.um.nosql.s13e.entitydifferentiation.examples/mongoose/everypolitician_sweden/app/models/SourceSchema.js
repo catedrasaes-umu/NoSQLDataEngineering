@@ -7,4 +7,4 @@ var Source = new mongoose.Schema({
 }, { versionKey: false, _id : false});
 
 
-module.exports = mongoose.model('Source', Source);
+module.exports = Source;

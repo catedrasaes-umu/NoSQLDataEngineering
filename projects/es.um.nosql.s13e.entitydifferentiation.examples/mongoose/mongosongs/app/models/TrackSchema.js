@@ -9,8 +9,8 @@ var Track = new mongoose.Schema({
   genres: {type: [String], required: true},
   length: {type: Number, required: true},
   name: {type: String, required: true},
-  ratings: {type: [Rating.schema], default: undefined}
+  ratings: {type: [Rating], default: undefined}
 }, { versionKey: false, collection: 'track'});
 
 
-module.exports = mongoose.model('Track', Track);
+module.exports = Track;

@@ -13,4 +13,4 @@ var Comments = new mongoose.Schema({
 }, { versionKey: false, collection: 'comments'});
 
 
-module.exports = mongoose.model('Comments', Comments);
+module.exports = Comments;

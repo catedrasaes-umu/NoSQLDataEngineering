@@ -27,4 +27,4 @@ var Posts = new mongoose.Schema({
 }, { versionKey: false, collection: 'posts'});
 
 
-module.exports = mongoose.model('Posts', Posts);
+module.exports = Posts;

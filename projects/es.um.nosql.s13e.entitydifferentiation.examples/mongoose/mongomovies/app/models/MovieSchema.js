@@ -8,12 +8,12 @@ var UnionType = require('./util/UnionType.js');
 
 var Movie = new mongoose.Schema({
   _id: {type: String, required: true},
-  criticisms: {type: [Criticism.schema], default: undefined},
+  criticisms: {type: [Criticism], default: undefined},
   director_id: {type: String, ref: "Director", required: true},
   genre: String,
   genres: {type: [String], default: undefined},
-  prizes: {type: [Prize.schema], default: undefined},
-  rating: Rating.schema,
+  prizes: {type: [Prize], default: undefined},
+  rating: Rating,
   running_time: Number,
   title: {type: String, required: true},
   writers: {type: [String], default: undefined},
@@ -21,4 +21,4 @@ var Movie = new mongoose.Schema({
 }, { versionKey: false, collection: 'movie'});
 
 
-module.exports = mongoose.model('Movie', Movie);
+module.exports = Movie;

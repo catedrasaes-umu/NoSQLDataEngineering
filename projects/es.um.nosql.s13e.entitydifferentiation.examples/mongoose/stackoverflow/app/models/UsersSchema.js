@@ -20,4 +20,4 @@ var Users = new mongoose.Schema({
 }, { versionKey: false, collection: 'users'});
 
 
-module.exports = mongoose.model('Users', Users);
+module.exports = Users;
