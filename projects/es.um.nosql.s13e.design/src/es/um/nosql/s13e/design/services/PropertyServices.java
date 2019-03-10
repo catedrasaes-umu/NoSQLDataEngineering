@@ -15,6 +15,7 @@ import es.um.nosql.s13e.NoSQLSchema.PTuple;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.Type;
+import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.PropertySpec;
 
 public class PropertyServices
 {
@@ -24,6 +25,18 @@ public class PropertyServices
     result.append(nul.getName() + ": Null");
 
     return result.toString();
+  }
+
+  public String getAttributeLabelFromPropSpec(PropertySpec propSpec)
+  {
+   return getAttributeLabel((Attribute)propSpec.getProperty())
+     + "\t(" + "TCheck: " + propSpec.isNeedsTypeCheck() + ")";
+  }
+
+  public String getAssociationLabelFromPropSpec(PropertySpec propSpec)
+  {
+   return getAssociationLabel((Association)propSpec.getProperty())
+     + "\t(" + "TCheck: " + propSpec.isNeedsTypeCheck() + ")";
   }
 
   public String getAttributeLabel(Attribute attr)

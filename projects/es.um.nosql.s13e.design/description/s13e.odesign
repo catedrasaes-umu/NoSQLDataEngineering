@@ -1904,67 +1904,181 @@
         <containerMappings name="EntityDiff" label="EntityDiff" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation.EntityDiff" childrenPresentation="VerticalStack">
           <subContainerMappings name="EntityDiffContainer1" label="EntityDiffContainer1" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityDiff" childrenPresentation="List">
             <subNodeMappings name="PropertySpec" label="PropertySpec" semanticCandidatesExpression="aql: self.commonProps" domainClass="EntityDifferentiation::PropertySpec">
-              <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: self.property.eClass().name + ': ' + self.property.name + '\t(' + 'TCheck: ' + self.needsTypeCheck + ')'" labelPosition="node" resizeKind="NSEW" id="PropertySpecStyle">
-                <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              </style>
+              <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Attribute) and self.property.type.oclIsTypeOf(NoSQLSchema::PrimitiveType)">
+                <style xsi:type="style:CustomStyleDescription" labelExpression="aql: self.property.name + ': ' + self.property.type.oclAsType(NoSQLSchema::PrimitiveType).name + '\t(' + 'TCheck: ' + self.needsTypeCheck + ')'" iconPath="/es.um.nosql.s13e.design/images/icons/Primitive16.png" labelPosition="node" resizeKind="NSEW" id="PrimitiveTypeStyle">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+              <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Attribute) and self.property.type.oclIsTypeOf(NoSQLSchema::PList)">
+                <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAttributeLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/List16.png" labelPosition="node" resizeKind="NSEW" id="PListStyle">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+              <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Attribute) and self.property.type.oclIsTypeOf(NoSQLSchema::PTuple)">
+                <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAttributeLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/Tuple16.png" labelPosition="node" resizeKind="NSEW" id="PTupleStyle">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+              <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Attribute) and self.property.type.oclIsTypeOf(NoSQLSchema::PMap)">
+                <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAttributeLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/Map16.png" labelPosition="node" resizeKind="NSEW" id="PMapStyle">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+              <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Attribute) and self.property.type.oclIsTypeOf(NoSQLSchema::PSet)">
+                <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAttributeLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/Set16.png" labelPosition="node" resizeKind="NSEW" id="PSetStyle">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+              <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Reference)">
+                <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAssociationLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png" labelPosition="node" resizeKind="NSEW" id="ReferenceStyle">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
+              <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Aggregate)">
+                <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAssociationLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/Aggr16.png" labelPosition="node" resizeKind="NSEW" id="AggrStyle">
+                  <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                </style>
+              </conditionnalStyles>
             </subNodeMappings>
             <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'Common properties'" backgroundStyle="GradientTopToBottom">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
+              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
             </style>
           </subContainerMappings>
           <subContainerMappings name="EntityDiffContainer2" label="EntityDiffContainer2" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::EntityDiff" childrenPresentation="VerticalStack">
             <subContainerMappings name="StructuralVariationDiff" label="StructuralVariationDiff" semanticCandidatesExpression="aql: self.variationDiffs" domainClass="EntityDifferentiation::StructuralVariationDiff" childrenPresentation="HorizontalStack">
               <subContainerMappings name="StructuralVariationDiffContainer1" label="StructuralVariationDiffContainer1" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::StructuralVariationDiff" childrenPresentation="List">
                 <subNodeMappings name="PropertySpec" label="PropertySpec" semanticCandidatesExpression="aql: self.propertySpecs" domainClass="EntityDifferentiation::PropertySpec">
-                  <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: self.property.eClass().name + ': ' + self.property.name + '\t(' + 'TCheck: ' + self.needsTypeCheck + ')'" labelPosition="node" resizeKind="NSEW" id="PropertySpecStyle">
-                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  </style>
+                  <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Attribute) and self.property.type.oclIsTypeOf(NoSQLSchema::PrimitiveType)">
+                    <style xsi:type="style:CustomStyleDescription" labelExpression="aql: self.property.name + ': ' + self.property.type.oclAsType(NoSQLSchema::PrimitiveType).name + '\t(' + 'TCheck: ' + self.needsTypeCheck + ')'" iconPath="/es.um.nosql.s13e.design/images/icons/Primitive16.png" labelPosition="node" resizeKind="NSEW" id="PrimitiveTypeStyle">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    </style>
+                  </conditionnalStyles>
+                  <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Attribute) and self.property.type.oclIsTypeOf(NoSQLSchema::PList)">
+                    <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAttributeLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/List16.png" labelPosition="node" resizeKind="NSEW" id="PListStyle">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    </style>
+                  </conditionnalStyles>
+                  <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Attribute) and self.property.type.oclIsTypeOf(NoSQLSchema::PTuple)">
+                    <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAttributeLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/Tuple16.png" labelPosition="node" resizeKind="NSEW" id="PTupleStyle">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    </style>
+                  </conditionnalStyles>
+                  <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Attribute) and self.property.type.oclIsTypeOf(NoSQLSchema::PMap)">
+                    <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAttributeLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/Map16.png" labelPosition="node" resizeKind="NSEW" id="PMapStyle">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    </style>
+                  </conditionnalStyles>
+                  <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Attribute) and self.property.type.oclIsTypeOf(NoSQLSchema::PSet)">
+                    <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAttributeLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/Set16.png" labelPosition="node" resizeKind="NSEW" id="PSetStyle">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    </style>
+                  </conditionnalStyles>
+                  <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Reference)">
+                    <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAssociationLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png" labelPosition="node" resizeKind="NSEW" id="ReferenceStyle">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    </style>
+                  </conditionnalStyles>
+                  <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Aggregate)">
+                    <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAssociationLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/Aggr16.png" labelPosition="node" resizeKind="NSEW" id="AggrStyle">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    </style>
+                  </conditionnalStyles>
                 </subNodeMappings>
-                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'Properties'" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-1']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']">
+                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'Properties'" backgroundStyle="GradientTopToBottom">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelFormat>bold</labelFormat>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
                 </style>
               </subContainerMappings>
               <subContainerMappings name="StructuralVariationDiffContainer2" label="StructuralVariationDiffContainer2" semanticCandidatesExpression="aql: self" domainClass="EntityDifferentiation::StructuralVariationDiff" childrenPresentation="List">
                 <subNodeMappings name="PropertySpec" label="PropertySpec" semanticCandidatesExpression="aql: self.notProps" domainClass="EntityDifferentiation::PropertySpec">
-                  <style xsi:type="style:CustomStyleDescription" showIcon="false" labelExpression="aql: self.property.eClass().name + ': ' + self.property.name + '\t(' + 'TCheck: ' + self.needsTypeCheck + ')'" labelPosition="node" resizeKind="NSEW" id="PropertySpecStyle">
-                    <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                    <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-                  </style>
+                  <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Attribute) and self.property.type.oclIsTypeOf(NoSQLSchema::PrimitiveType)">
+                    <style xsi:type="style:CustomStyleDescription" labelExpression="aql: self.property.name + ': ' + self.property.type.oclAsType(NoSQLSchema::PrimitiveType).name + '\t(' + 'TCheck: ' + self.needsTypeCheck + ')'" iconPath="/es.um.nosql.s13e.design/images/icons/Primitive16.png" labelPosition="node" resizeKind="NSEW" id="PrimitiveTypeStyle">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    </style>
+                  </conditionnalStyles>
+                  <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Attribute) and self.property.type.oclIsTypeOf(NoSQLSchema::PList)">
+                    <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAttributeLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/List16.png" labelPosition="node" resizeKind="NSEW" id="PListStyle">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    </style>
+                  </conditionnalStyles>
+                  <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Attribute) and self.property.type.oclIsTypeOf(NoSQLSchema::PTuple)">
+                    <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAttributeLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/Tuple16.png" labelPosition="node" resizeKind="NSEW" id="PTupleStyle">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    </style>
+                  </conditionnalStyles>
+                  <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Attribute) and self.property.type.oclIsTypeOf(NoSQLSchema::PMap)">
+                    <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAttributeLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/Map16.png" labelPosition="node" resizeKind="NSEW" id="PMapStyle">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    </style>
+                  </conditionnalStyles>
+                  <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Attribute) and self.property.type.oclIsTypeOf(NoSQLSchema::PSet)">
+                    <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAttributeLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/Set16.png" labelPosition="node" resizeKind="NSEW" id="PSetStyle">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    </style>
+                  </conditionnalStyles>
+                  <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Reference)">
+                    <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAssociationLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/Ref16.png" labelPosition="node" resizeKind="NSEW" id="ReferenceStyle">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    </style>
+                  </conditionnalStyles>
+                  <conditionnalStyles predicateExpression="aql: self.property.oclIsTypeOf(NoSQLSchema::Aggregate)">
+                    <style xsi:type="style:CustomStyleDescription" labelExpression="service: getAssociationLabelFromPropSpec" iconPath="/es.um.nosql.s13e.design/images/icons/Aggr16.png" labelPosition="node" resizeKind="NSEW" id="AggrStyle">
+                      <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                      <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                    </style>
+                  </conditionnalStyles>
                 </subNodeMappings>
-                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'Not properties'" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-1']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']">
+                <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'Not properties'" backgroundStyle="GradientTopToBottom">
                   <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                   <labelFormat>bold</labelFormat>
                   <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
+                  <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
+                  <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='white']"/>
                 </style>
               </subContainerMappings>
-              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: self.variation.eContainer().name + '_' + self.variation.variationId" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-1']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Yellow-2']">
+              <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: self.variation.eContainer().name + '_' + self.variation.variationId" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-3']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Purple-3']">
                 <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
                 <labelFormat>bold</labelFormat>
                 <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               </style>
             </subContainerMappings>
-            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'StructuralVariation properties'" backgroundStyle="GradientTopToBottom">
+            <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'StructuralVariation properties'" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Magenta-2']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Magenta-2']">
               <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
               <labelFormat>bold</labelFormat>
               <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-              <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='blue']"/>
-              <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
             </style>
           </subContainerMappings>
-          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'EntityDiff: ' + self.entity.name + ' (' + self.eContainer().name + ')'" backgroundStyle="GradientTopToBottom">
+          <style xsi:type="style:FlatContainerStyleDescription" borderSizeComputationExpression="1" showIcon="false" labelExpression="aql: 'EntityDiff: ' + self.entity.name + ' (' + self.eContainer().name + ')'" backgroundStyle="GradientTopToBottom" backgroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Magenta-2']" foregroundColor="//@userColorsPalettes[name='Palette']/@entries[name='Magenta-2']">
             <borderColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
             <labelFormat>bold</labelFormat>
             <labelColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='black']"/>
-            <backgroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
-            <foregroundColor xsi:type="description:SystemColor" href="environment:/viewpoint#//@systemColors/@entries[name='light_blue']"/>
           </style>
         </containerMappings>
       </defaultLayer>
@@ -2089,6 +2203,7 @@
         </containerMappings>
       </defaultLayer>
     </ownedRepresentations>
+    <ownedJavaExtensions qualifiedClassName="es.um.nosql.s13e.design.services.PropertyServices"/>
   </ownedViewpoints>
   <userColorsPalettes name="Palette">
     <entries xsi:type="description:UserFixedColor" red="255" green="240" blue="171" name="Yellow-1"/>
@@ -2097,5 +2212,10 @@
     <entries xsi:type="description:UserFixedColor" red="218" green="218" blue="255" name="Purple-2"/>
     <entries xsi:type="description:UserFixedColor" red="233" green="233" blue="255" name="Purple-3"/>
     <entries xsi:type="description:UserFixedColor" red="245" green="245" blue="255" name="Purple-4"/>
+    <entries xsi:type="description:UserFixedColor" red="235" green="153" blue="255" name="Magenta-1"/>
+    <entries xsi:type="description:UserFixedColor" red="204" green="155" blue="255" name="Magenta-2"/>
+    <entries xsi:type="description:UserFixedColor" red="210" green="255" blue="210" name="Green-1"/>
+    <entries xsi:type="description:UserFixedColor" red="225" green="255" blue="225" name="Green-2"/>
+    <entries xsi:type="description:UserFixedColor" red="233" green="255" blue="233" name="Green-3"/>
   </userColorsPalettes>
 </description:Group>
