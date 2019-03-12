@@ -25,7 +25,7 @@ import javax.validation.constraints.Size;
 
 @Entity(value = "album", noClassnameStored = true)
 @Indexes({
-  @Index(fields = {@Field(value = "name", type = IndexType.ASC), @Field(value = "releaseYear", type = IndexType.ASC)}, options = @IndexOptions(unique = true))
+  @Index(fields = {@Field(value = "name", type = IndexType.ASC), @Field(value = "releaseYear", type = IndexType.DESC)}, options = @IndexOptions(unique = true))
 })
 public class Album
 {

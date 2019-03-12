@@ -104,7 +104,7 @@ class MorphiaIndexValGen
   private def genIndex(ConfigIndex index)
   '''
   «var count = 0»
-  @Index(fields = {«FOR String attr : index.attr SEPARATOR ', '»@Field(value = "«attr»", type = IndexType.«index.type.get(count).toUpperCase»«IF index.weight !== null», weight = «index.weight.get(count++)»«ENDIF»)«ENDFOR»}«genIndexOptions(index)»)
+  @Index(fields = {«FOR String attr : index.attr SEPARATOR ', '»@Field(value = "«attr»", type = IndexType.«index.type.get(count++).toUpperCase»«IF index.weight !== null», weight = «index.weight.get(count-1)»«ENDIF»)«ENDFOR»}«genIndexOptions(index)»)
   '''
 
   private def genIndexOptions(ConfigIndex i)

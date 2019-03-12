@@ -70,7 +70,7 @@ class DiffToMongoose
     // Calc dependencies between entities
     analyzer = new DependencyAnalyzer();
     analyzer.performAnalysis(diff);
-    analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))]
+    analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e) + ".js", genSchema(e))]
   }
 
   /**

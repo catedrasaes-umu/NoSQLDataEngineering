@@ -18,6 +18,6 @@ var Album = new mongoose.Schema({
   tracks: {type: [String], ref: "Track", required: true}
 }, { versionKey: false, collection: 'album'});
 
-Album.index({name: 1, releaseYear: 1}, {unique: true});
+Album.index({name: 1, releaseYear: -1}, {unique: true});
 
 module.exports = Album;

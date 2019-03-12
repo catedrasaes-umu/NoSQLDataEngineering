@@ -64,7 +64,7 @@ class MongooseIndexValGen
   }
 
   private def genIndex(ConfigIndex index)
-  '''«var count = 0»{«FOR String attr : index.attr SEPARATOR ', '»«attr»: «translateIndexType(index.type.get(count))»«ENDFOR»}«genIndexOptions(index)»'''
+  '''«var count = 0»{«FOR String attr : index.attr SEPARATOR ', '»«attr»: «translateIndexType(index.type.get(count++))»«ENDFOR»}«genIndexOptions(index)»'''
 
   private def translateIndexType(String type)
   {
