@@ -54,19 +54,23 @@ public class OutlierAnalyzer
 
     for (Classifier classifier : outliers.keySet())
     {
-      long totalCount = Stream.concat(classifier.getVariations().stream(), outliers.get(classifier).stream()).mapToLong(var -> var.getCount()).sum();
-      int totalVariations = classifier.getVariations().size() + outliers.get(classifier).size();
-      long countThreshold = Math.round(totalCount * outlierDetector.getFactor());
-      long countCoverage = Math.round((totalCount * outlierDetector.getFactor()) / 100);
+      long numObjects = Stream.concat(classifier.getVariations().stream(), outliers.get(classifier).stream()).mapToLong(var -> var.getCount()).sum();
+      int numVariations = classifier.getVariations().size() + outliers.get(classifier).size();
 
-      result.append("Classifier " + classifier.getName() + ": " + totalCount + " items" + endLine);
+      result.append(classifier.getName() + ": " + numObjects + " items" + endLine);
 
-      if (outlierDetector.getFactor() != 0)
-        result.append("Variations with less than " + countThreshold + " should be treated as outliers" + endLine);
-      if (outlierDetector.getFactor() != 100)
-        result.append("Coverage is of " + outlierDetector.getFactor() + "% (" + countCoverage + " items)" + endLine);
+      if (outlierDetector instanceof CoverageOutlierDetector)
+      {
+        long countCoverage = Math.round((numObjects * outlierDetector.getFactor()) / 100);
+        result.append("Coverage factor: " + outlierDetector.getFactor() + "% (" + countCoverage + " items)" + endLine);
+      }
+      else if (outlierDetector instanceof EpsilonOutlierDetector)
+      {
+        long countThreshold = Math.round(numObjects * outlierDetector.getFactor());
+        result.append("Epsilon factor: " + String.format("%.4f", outlierDetector.getFactor()) + " (" + countThreshold + " items)" + endLine);
+      }
 
-      result.append("From " + totalVariations + " variations, " + classifier.getVariations().size() + " would remain" + endLine + endLine);
+      result.append("Variations before/after: " + numVariations + " => " + classifier.getVariations().size() + endLine + endLine);
     }
 
     return result.toString();

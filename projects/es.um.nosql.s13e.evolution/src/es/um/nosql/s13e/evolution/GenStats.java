@@ -22,10 +22,10 @@ public class GenStats
     ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
     NoSQLSchema schema = loader.load(new File(INPUT_MODEL), NoSQLSchema.class);
 
-    // Detect and remove outliers given Epsilon = 0.0001 or Coverage = 99.5%
-    OutlierAnalyzer oAnalyzer = new OutlierAnalyzer(OutlierMode.EPSILON);
+    // Detect and remove outliers given Epsilon = 0.0001 or Coverage = 99.9%
+    OutlierAnalyzer oAnalyzer = new OutlierAnalyzer(OutlierMode.COVERAGE);
     oAnalyzer.removeOutliers(schema);
-    System.out.println(oAnalyzer.getSummary());
+
     // Analyze each property
     for (Classifier classifier : Stream.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
     {

@@ -10,9 +10,9 @@ public class ConfigConstants
   public static final String MODELS_FOLDER            = "../es.um.nosql.models/";
 
   public static final boolean OUTPUT_CSV              = true;
-  public static final boolean OUTPUT_CONSOLE          = false;
+  public static final boolean OUTPUT_CONSOLE          = true;
   public static final boolean OUTPUT_CHART            = false;
-  public static final boolean OUTPUT_CHART_FILE       = true;
+  public static final boolean OUTPUT_CHART_FILE       = false;
 
   public final static double OUTLIER_EPSILON          = 0.0001;
   public final static double OUTLIER_COVERAGE         = 99.9;

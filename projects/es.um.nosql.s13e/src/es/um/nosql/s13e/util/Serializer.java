@@ -88,7 +88,7 @@ public class Serializer
 
     StringBuilder result = new StringBuilder();
 
-    result.append(association.getName() +  "(optional: " + association.isOptional() + "):");
+    result.append("(optional: " + association.isOptional() + (association.isOptional() ? " " : "") + ") " + association.getName() + ": ");
 
     if (association instanceof Aggregate)
     {
@@ -136,7 +136,7 @@ public class Serializer
       return null;
 
     StringBuilder result = new StringBuilder();
-    result.append(theNull.getName() +  "(optional: " + theNull.isOptional() + "): Null");
+    result.append("(optional: " + theNull.isOptional() + (theNull.isOptional() ? " " : "") + ") " + theNull.getName() + ": Null");
 
     return result.toString();
   }

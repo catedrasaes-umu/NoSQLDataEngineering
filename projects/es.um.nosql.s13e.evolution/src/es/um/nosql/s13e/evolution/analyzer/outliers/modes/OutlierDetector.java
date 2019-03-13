@@ -14,6 +14,4 @@ public interface OutlierDetector
   public List<StructuralVariation> removeOutliers(Classifier classifier);
 
   public void reset();
-
-  public String getSummary();
 }

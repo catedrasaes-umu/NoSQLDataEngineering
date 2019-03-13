@@ -32,5 +32,10 @@
   		<artifactId>jfreechart</artifactId>
   		<version>1.0.19</version>
   	</dependency>
+  	<dependency>
+  		<groupId>org.mongodb</groupId>
+  		<artifactId>mongo-java-driver</artifactId>
+  		<version>3.10.1</version>
+  	</dependency>
   </dependencies>
 </project>

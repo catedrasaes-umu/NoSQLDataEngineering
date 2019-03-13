@@ -58,13 +58,13 @@ public class OutputGen
       System.out.println(schema.getName() + " > Generating CSV file...");
 
     CsvSchema csvSchema = CsvSchema.builder()
-        .addColumn("entityName", CsvSchema.ColumnType.STRING)
-        .addColumn("variationId", CsvSchema.ColumnType.NUMBER)
-        .addColumn("count", CsvSchema.ColumnType.NUMBER)
-        .addColumn("firstTimestamp", CsvSchema.ColumnType.NUMBER)
-        .addColumn("lastTimestamp", CsvSchema.ColumnType.NUMBER)
-        .build()
-        .withHeader();
+      .addColumn("entityName", CsvSchema.ColumnType.STRING)
+      .addColumn("variationId", CsvSchema.ColumnType.NUMBER)
+      .addColumn("count", CsvSchema.ColumnType.NUMBER)
+      .addColumn("firstTimestamp", CsvSchema.ColumnType.NUMBER)
+      .addColumn("lastTimestamp", CsvSchema.ColumnType.NUMBER)
+      .build()
+      .withHeader();
 
     List<List<Object>> objects = new ArrayList<List<Object>>();
 
@@ -119,19 +119,6 @@ public class OutputGen
       System.out.println(schema.getName() + " > Console output finished.");
   }
 
-  private Map<EntityClass, List<StructuralVariation>> genOrderedMap(NoSQLSchema schema)
-  {
-    Map<EntityClass, List<StructuralVariation>> result = new HashMap<EntityClass, List<StructuralVariation>>();
-
-    for (EntityClass entity : schema.getEntities())
-    {
-      ECollections.sort(entity.getVariations(), (var1, var2) -> Integer.compare(var1.getVariationId(), var2.getVariationId()));
-      result.put(entity, entity.getVariations());
-    }
-
-    return result;
-  }
-
   public void genChart(NoSQLSchema schema)
   {
     if (ConfigConstants.DEBUG)
@@ -168,5 +155,18 @@ public class OutputGen
 
     if (ConfigConstants.DEBUG)
       System.out.println(schema.getName() + " > Finished creating charts.");
+  }
+
+  private Map<EntityClass, List<StructuralVariation>> genOrderedMap(NoSQLSchema schema)
+  {
+    Map<EntityClass, List<StructuralVariation>> result = new HashMap<EntityClass, List<StructuralVariation>>();
+
+    for (EntityClass entity : schema.getEntities())
+    {
+      ECollections.sort(entity.getVariations(), (var1, var2) -> Integer.compare(var1.getVariationId(), var2.getVariationId()));
+      result.put(entity, entity.getVariations());
+    }
+
+    return result;
   }
 }

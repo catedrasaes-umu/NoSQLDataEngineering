@@ -37,25 +37,22 @@ public class EpsilonOutlierDetector implements OutlierDetector
   @Override
   public List<StructuralVariation> removeOutliers(Classifier classifier)
   {
-    long totalCount = classifier.getVariations().stream().mapToLong(var -> var.getCount()).sum();
-    double countThreshold = Math.round(totalCount * threshold);
-    List<StructuralVariation> result = new ArrayList<StructuralVariation>();
+    if (threshold < 0.0)
+      throw new IllegalArgumentException("Epsilon value must be greater than 0");
 
-    result.addAll(classifier.getVariations().stream().filter(var -> var.getCount() < countThreshold).collect(Collectors.toList()));
-    classifier.getVariations().removeAll(result);
+    long numObjects = classifier.getVariations().stream().mapToLong(var -> var.getCount()).sum();
+    double countThreshold = Math.round(numObjects * threshold);
+    List<StructuralVariation> variationsToRemove = new ArrayList<StructuralVariation>();
 
-    return result;
+    variationsToRemove.addAll(classifier.getVariations().stream().filter(var -> var.getCount() < countThreshold).collect(Collectors.toList()));
+    classifier.getVariations().removeAll(variationsToRemove);
+
+    return variationsToRemove;
   }
 
   @Override
   public void reset()
   {
     this.threshold = ConfigConstants.OUTLIER_EPSILON;
-  }
-
-  @Override
-  public String getSummary()
-  {
-    return null;
   }
 }

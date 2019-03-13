@@ -3,11 +3,11 @@ package es.um.nosql.s13e.evolution;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-import es.um.nosql.s13e.evolution.templates.gen.TimestampAnalyzer;
-import es.um.nosql.s13e.evolution.templates.gen.BasicTimestampAnalyzer;
-import es.um.nosql.s13e.evolution.templates.gen.DateTimestampAnalyzer;
-import es.um.nosql.s13e.evolution.templates.gen.DefaultTimestampAnalyzer;
-import es.um.nosql.s13e.evolution.templates.gen.OIDTimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.TimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.BasicTimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.DateTimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.DefaultTimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.OIDTimestampAnalyzer;
 
 public class GenTimestampTemplates
 {

@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.evolution.templates.gen
+package es.um.nosql.s13e.evolution.templates
 
 class DateTimestampAnalyzer extends TimestampAnalyzer
 {

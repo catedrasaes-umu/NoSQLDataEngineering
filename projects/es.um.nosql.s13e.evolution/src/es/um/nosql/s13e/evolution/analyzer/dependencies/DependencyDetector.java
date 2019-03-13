@@ -16,8 +16,7 @@ import es.um.nosql.s13e.evolution.analyzer.diffs.PropertyMatrix;
 
 public class DependencyDetector
 {
-  private Classifier classifier;
-  private PropertyMatrix matrixMap;
+  private PropertyMatrix propMatrix;
   private List<List<Property>> dependentProps;
   private Map<Property, List<Property>> exclusionProps;
   private List<Property> schemaAddProps;
@@ -27,9 +26,7 @@ public class DependencyDetector
 
   public DependencyDetector(Classifier classifier)
   {
-    this.classifier = classifier;
-    this.matrixMap = new PropertyMatrix(classifier);
-
+    this.propMatrix = new PropertyMatrix(classifier);
     this.dependentProps = detectDependentProps();
     this.exclusionProps = detectExclusionProps();
     this.schemaAddProps = detectSchemaAddProps();
@@ -71,13 +68,13 @@ public class DependencyDetector
   private List<List<Property>> detectDependentProps()
   {
     List<List<Property>> depProps = new ArrayList<List<Property>>();
-    List<Property> optionalProps = matrixMap.getProperties().stream().filter(prop -> prop.isOptional()).collect(Collectors.toList());
+    List<Property> optionalProps = propMatrix.getProperties().stream().filter(prop -> prop.isOptional()).collect(Collectors.toList());
 
     // For each property, if the variations containing it are the same that to any grouped properties, then that property is added to the grouped properties
     // If there are not coincidences, then the property will create a new group
     for (Property prop : optionalProps)
     {
-      Optional<List<Property>> optList = depProps.stream().filter(list -> matrixMap.getVarsFromProp(prop).equals(matrixMap.getVarsFromProp(list.get(0)))).findFirst();
+      Optional<List<Property>> optList = depProps.stream().filter(list -> propMatrix.getVarsFromProp(prop).equals(propMatrix.getVarsFromProp(list.get(0)))).findFirst();
       if (optList.isPresent())
         optList.get().add(prop);
       else
@@ -93,19 +90,19 @@ public class DependencyDetector
   private Map<Property, List<Property>> detectExclusionProps()
   {
     Map<Property, List<Property>> exclProps = new HashMap<Property, List<Property>>();
-    List<Property> optionalProps = matrixMap.getProperties().stream().filter(prop -> prop.isOptional()).collect(Collectors.toList());
+    List<Property> optionalProps = propMatrix.getProperties().stream().filter(prop -> prop.isOptional()).collect(Collectors.toList());
 
     for (Property prop1 : optionalProps)
     {
       List<Property> exclusions = new ArrayList<Property>();
-      List<StructuralVariation> prop1List = matrixMap.getVarsFromProp(prop1);
+      List<StructuralVariation> prop1List = propMatrix.getVarsFromProp(prop1);
 
       for (Property prop2 : optionalProps)
       {
         if (prop1 == prop2)
           continue;
 
-        List<StructuralVariation> prop2List = matrixMap.getVarsFromProp(prop2);
+        List<StructuralVariation> prop2List = propMatrix.getVarsFromProp(prop2);
         if (prop1List.stream().filter(prop -> prop2List.contains(prop)).count() == 0)
           exclusions.add(prop2);
       }
@@ -119,12 +116,12 @@ public class DependencyDetector
   private List<Property> detectSchemaAddProps()
   {
     List<Property> schemaAddProps = new ArrayList<Property>();
-    List<Property> optionalProps = matrixMap.getProperties().stream().filter(prop -> prop.isOptional()).collect(Collectors.toList());
+    List<Property> optionalProps = propMatrix.getProperties().stream().filter(prop -> prop.isOptional()).collect(Collectors.toList());
 
     for (Property prop : optionalProps)
     {
       // Check if the ids are continuous. If they are not, this is not a schema change.
-      Integer[] ids = matrixMap.getVarsFromProp(prop).stream().map(var -> var.getVariationId()).toArray(Integer[]::new);
+      Integer[] ids = propMatrix.getVarsFromProp(prop).stream().map(var -> var.getVariationId()).toArray(Integer[]::new);
       boolean continuous = true;
       for (int i = 0; i < ids.length - 1 && continuous; i++)
         if (ids[i] + 1 != ids[i + 1])
@@ -132,8 +129,8 @@ public class DependencyDetector
       if (!continuous)
         continue;
 
-      int lastPropVarId = matrixMap.getVarsFromProp(prop).get(matrixMap.getVarsFromProp(prop).size() - 1).getVariationId();
-      int lastVarId = matrixMap.getVars().get(matrixMap.getVars().size() - 1).getVariationId();
+      int lastPropVarId = propMatrix.getVarsFromProp(prop).get(propMatrix.getVarsFromProp(prop).size() - 1).getVariationId();
+      int lastVarId = propMatrix.getVars().get(propMatrix.getVars().size() - 1).getVariationId();
 
       // If last propVarId is the same as lastVarId, then this property appears on the last variation.
       if (lastPropVarId == lastVarId)
@@ -149,12 +146,12 @@ public class DependencyDetector
   private List<Property> detectSchemaRemoveProps()
   {
     List<Property> schemaAddProps = new ArrayList<Property>();
-    List<Property> optionalProps = matrixMap.getProperties().stream().filter(prop -> prop.isOptional()).collect(Collectors.toList());
+    List<Property> optionalProps = propMatrix.getProperties().stream().filter(prop -> prop.isOptional()).collect(Collectors.toList());
 
     for (Property prop : optionalProps)
     {
       // Check if the ids are continuous. If they are not, this is not a schema change.
-      Integer[] ids = matrixMap.getVarsFromProp(prop).stream().map(var -> var.getVariationId()).toArray(Integer[]::new);
+      Integer[] ids = propMatrix.getVarsFromProp(prop).stream().map(var -> var.getVariationId()).toArray(Integer[]::new);
       boolean continuous = true;
       for (int i = 0; i < ids.length - 1 && continuous; i++)
         if (ids[i] + 1 != ids[i + 1])
@@ -162,8 +159,8 @@ public class DependencyDetector
       if (!continuous)
         continue;
 
-      int lastPropVarId = matrixMap.getVarsFromProp(prop).get(matrixMap.getVarsFromProp(prop).size() - 1).getVariationId();
-      int lastVarId = matrixMap.getVars().get(matrixMap.getVars().size() - 1).getVariationId();
+      int lastPropVarId = propMatrix.getVarsFromProp(prop).get(propMatrix.getVarsFromProp(prop).size() - 1).getVariationId();
+      int lastVarId = propMatrix.getVars().get(propMatrix.getVars().size() - 1).getVariationId();
 
       // If last propVarId is not equal as lastVarId, then this property does not appear on the last variation.
       if (lastPropVarId != lastVarId)
@@ -183,11 +180,11 @@ public class DependencyDetector
     // For each schema removal property, check if another property was added the next variation.
     for (Property removedProp : schemaRemoveProps)
     {
-      List<StructuralVariation> removedPropVars = matrixMap.getVarsFromProp(removedProp);
+      List<StructuralVariation> removedPropVars = propMatrix.getVarsFromProp(removedProp);
       int varId = removedPropVars.get(removedPropVars.size() - 1).getVariationId() + 1;
       Optional<Property> optionalRename = schemaAddProps.stream().filter(prop ->
       {
-        List<StructuralVariation> addedPropVars = matrixMap.getVarsFromProp(prop);
+        List<StructuralVariation> addedPropVars = propMatrix.getVarsFromProp(prop);
         return addedPropVars.get(0).getVariationId() == varId;
       }).findAny();
 
@@ -202,7 +199,7 @@ public class DependencyDetector
   private List<Property> detectOptionalProps()
   {
     List<Property> filteredOptionalProps = new ArrayList<Property>();
-    List<Property> optionalProps = matrixMap.getProperties().stream().filter(prop -> prop.isOptional()).collect(Collectors.toList());
+    List<Property> optionalProps = propMatrix.getProperties().stream().filter(prop -> prop.isOptional()).collect(Collectors.toList());
 
     filteredOptionalProps.addAll(optionalProps.stream().filter(prop ->
       !schemaAddProps.contains(prop) && !schemaRemoveProps.contains(prop)).collect(Collectors.toList()));
@@ -214,8 +211,8 @@ public class DependencyDetector
   {
     StringBuilder result = new StringBuilder();
 
-    result.append(">" + classifier.getName() + "\n");
-    result.append(matrixMap.getMatrixSummary() + "\n");
+    result.append(">" + propMatrix.getClassifier().getName() + "\n");
+    result.append(propMatrix.getMatrixSummary() + "\n");
 
     if (!dependentProps.isEmpty())
     {

@@ -2,27 +2,29 @@ package es.um.nosql.s13e.evolution.inferrer;
 
 import java.io.File;
 
+import com.google.gson.JsonArray;
+
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.evolution.output.OutputGen;
-import es.um.nosql.s13e.evolution.templates.TimestampInferrer;
-import es.um.nosql.s13e.evolution.templates.gen.TimestampAnalyzer;
-import es.um.nosql.s13e.evolution.templates.gen.BasicTimestampAnalyzer;
-import es.um.nosql.s13e.evolution.templates.gen.DateTimestampAnalyzer;
-import es.um.nosql.s13e.evolution.templates.gen.DefaultTimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.TimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.BasicTimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.DateTimestampAnalyzer;
+import es.um.nosql.s13e.evolution.templates.DefaultTimestampAnalyzer;
 import es.um.nosql.s13e.evolution.util.InferenceMode;
+import es.um.nosql.s13e.evolution.util.MapReduceTimestampSources;
 import es.um.nosql.s13e.evolution.util.constants.ConfigConstants;
+import es.um.nosql.s13e.json2dbschema.main.BuildNoSQLSchema;
+import es.um.nosql.s13e.nosqlimport.db.mongodb.MongoDBImport;
 import es.um.nosql.s13e.util.ModelLoader;
 
 //TODO: Filters? GreaterThan class, LessThan, GreaterOrEqual, LessOrEqual, Equal, Zero, Nonzero...how about a list of conditions?
 public class EvolutionInferrer
 {
-  private TimestampInferrer inferrer;
   private OutputGen output;
 
   public EvolutionInferrer()
   {
-    inferrer = new TimestampInferrer();
     output = new OutputGen();
   }
 
@@ -77,7 +79,7 @@ public class EvolutionInferrer
 
     if (option != InferenceMode.ANALYZE_ONLY)
     {
-      schema = inferrer.infer(dbName, analyzer);
+      schema = infer(dbName, analyzer);
       output.genModelFile(schema);
     }
 
@@ -89,5 +91,35 @@ public class EvolutionInferrer
 
     if (option != InferenceMode.INFER_ONLY)
       output.genOutput(schema);
+  }
+
+  private NoSQLSchema infer(String dbName, TimestampAnalyzer analyzer)
+  {
+    long startTime = System.currentTimeMillis();
+
+    if (ConfigConstants.DEBUG)
+      System.out.println(dbName + " > Connecting to the database...");
+
+    MongoDBImport inferrer = new MongoDBImport(ConfigConstants.DATABASE_IP, dbName);
+    MapReduceTimestampSources mrtSources = new MapReduceTimestampSources(ConfigConstants.MONGODB_MAPREDUCE_FOLDER, analyzer);
+
+    if (ConfigConstants.DEBUG)
+      System.out.println(dbName + " > Starting inference...");
+
+    JsonArray jArray = inferrer.mapRed2Array(mrtSources);
+
+    if (ConfigConstants.DEBUG)
+    {
+      System.out.println(dbName + " > Inference finished.");
+      System.out.println(dbName + " > Starting BuildNoSQLSchema...");
+    }
+
+    BuildNoSQLSchema builder = new BuildNoSQLSchema();
+    NoSQLSchema result = builder.buildFromGsonArray(dbName, jArray);
+
+    if (ConfigConstants.DEBUG)
+      System.out.println(dbName + " > BuildNoSQLSchema created in " + (System.currentTimeMillis() - startTime) + " ms");
+
+    return result;
   }
 }

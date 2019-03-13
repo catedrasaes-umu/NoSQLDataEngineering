@@ -41,34 +41,28 @@ public class CoverageOutlierDetector implements OutlierDetector
     if (percentage < 0.0 || percentage > 100)
       throw new IllegalArgumentException("Percentage must be greater than 0 but less than 100");
 
-    long totalCount = classifier.getVariations().stream().mapToLong(var -> var.getCount()).sum();
-    long countCoverage = Math.round((totalCount * percentage) / 100);
+    ArrayList<StructuralVariation> variationsToRemove = new ArrayList<StructuralVariation>();
+    long numObjects = classifier.getVariations().stream().mapToLong(var -> var.getCount()).sum();
+    long coveredObjects = Math.round((numObjects * percentage) / 100);
     double currentCoverage = 0;
-    ArrayList<StructuralVariation> result = new ArrayList<StructuralVariation>();
 
     ECollections.sort(classifier.getVariations(), (var1, var2) -> Long.compare(var2.getCount(), var1.getCount()));
 
     for (StructuralVariation var : classifier.getVariations())
-      if (currentCoverage > countCoverage)
-        result.add(var);
-      else
+      if (currentCoverage <= coveredObjects)
         currentCoverage += var.getCount();
+      else
+        variationsToRemove.add(var);
 
-    classifier.getVariations().removeAll(result);
+    classifier.getVariations().removeAll(variationsToRemove);
     ECollections.sort(classifier.getVariations(), (var1, var2) -> Long.compare(var1.getVariationId(), var2.getVariationId()));
 
-    return result;
+    return variationsToRemove;
   }
 
   @Override
   public void reset()
   {
     this.percentage = ConfigConstants.OUTLIER_COVERAGE;
-  }
-
-  @Override
-  public String getSummary()
-  {
-    return null;
   }
 }
