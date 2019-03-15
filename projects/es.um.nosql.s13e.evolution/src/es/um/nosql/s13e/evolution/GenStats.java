@@ -8,9 +8,10 @@ import java.util.stream.Stream;
 import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.s13e.evolution.analyzer.dependencies.DependencyDetector;
+import es.um.nosql.s13e.evolution.analyzer.dependencies.DependencyAnalyzer;
 import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierAnalyzer;
 import es.um.nosql.s13e.evolution.analyzer.outliers.modes.OutlierMode;
+import es.um.nosql.s13e.evolution.util.EvolutionPrinter;
 import es.um.nosql.s13e.util.ModelLoader;
 
 public class GenStats
@@ -21,6 +22,7 @@ public class GenStats
   {
     ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
     NoSQLSchema schema = loader.load(new File(INPUT_MODEL), NoSQLSchema.class);
+    EvolutionPrinter printer = new EvolutionPrinter();
 
     // Detect and remove outliers given Epsilon = 0.0001 or Coverage = 99.9%
     OutlierAnalyzer oAnalyzer = new OutlierAnalyzer(OutlierMode.COVERAGE);
@@ -29,8 +31,8 @@ public class GenStats
     // Analyze each property
     for (Classifier classifier : Stream.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
     {
-      DependencyDetector depDetector = new DependencyDetector(classifier);
-      System.out.println(depDetector.getSummary());      
+      DependencyAnalyzer depDetector = new DependencyAnalyzer(classifier);
+      System.out.println(printer.printPretty(depDetector));
     }
 
 //    OutputGen output = new OutputGen();
