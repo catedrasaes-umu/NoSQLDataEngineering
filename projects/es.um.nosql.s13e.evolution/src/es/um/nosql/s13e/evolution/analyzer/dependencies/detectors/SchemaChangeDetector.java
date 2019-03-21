@@ -62,7 +62,7 @@ public class SchemaChangeDetector
       if (lastPropVarId == lastVarId)
         schemaAddProps.add(prop);
     }
-    // Once a property appears, it should ALWAYS appear yo be a schema change.
+    // Once a property appears, it should ALWAYS appear to be a schema change.
     // Thing is, a property might have been optional at the beginning and then being changed to a schema changing add....
     // TODO: Need to test.
 

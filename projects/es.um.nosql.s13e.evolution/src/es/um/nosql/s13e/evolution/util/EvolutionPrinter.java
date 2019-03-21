@@ -22,7 +22,7 @@ public class EvolutionPrinter
     result.append("> " + detector.getClassifier().getName() + "\n");
     result.append(printPretty(detector.getPropertyMatrix()));
     result.append(printPretty(detector.getDependentProps()));
-    result.append(printPretty(detector.getSchemaChanges()));
+//    result.append(printPretty(detector.getSchemaChanges()));
   
     return result.toString();
   }
@@ -31,19 +31,27 @@ public class EvolutionPrinter
   {
     StringBuilder result = new StringBuilder();
 
-    if (!dProps.getDependentProps().isEmpty())
+    if (!dProps.getStrongDependencies().isEmpty())
     {
-      result.append("Dependent properties:\n");
-      for (List<Property> groupedProps : dProps.getDependentProps())
-        result.append("  (" + groupedProps.stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")\n");
+      result.append("Strong dependencies:\n");
+      for (List<Property> strDependencies : dProps.getStrongDependencies())
+        result.append("  (" + strDependencies.stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")\n");
       result.append("\n");
     }
 
-    if (!dProps.getExclusionProps().isEmpty())
+    if (!dProps.getWeakDependencies().isEmpty())
     {
-      result.append("Exclusion properties:\n");
-      for (Property exclusionProp : dProps.getExclusionProps().keySet())
-        result.append("  (" + exclusionProp.getName() + ": " + dProps.getExclusionProps().get(exclusionProp).stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")\n");
+      result.append("Weak dependencies:\n");
+      for (Property weakDependency : dProps.getWeakDependencies().keySet())
+        result.append("  (" + weakDependency.getName() + ": " + dProps.getWeakDependencies().get(weakDependency).stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")\n");
+      result.append("\n");
+    }
+
+    if (!dProps.getExcludingProps().isEmpty())
+    {
+      result.append("Exclusive properties:\n");
+      for (Property exclusionProp : dProps.getExcludingProps().keySet())
+        result.append("  (" + exclusionProp.getName() + ": " + dProps.getExcludingProps().get(exclusionProp).stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")\n");
       result.append("\n");
     }
 
