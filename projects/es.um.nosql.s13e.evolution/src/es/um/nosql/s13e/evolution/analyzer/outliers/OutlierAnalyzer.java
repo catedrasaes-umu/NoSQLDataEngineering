@@ -6,7 +6,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import es.um.nosql.s13e.NoSQLSchema.Classifier;
+import es.um.nosql.s13e.NoSQLSchema.SchemaType;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.evolution.analyzer.outliers.modes.CoverageOutlierDetector;
@@ -16,12 +16,12 @@ import es.um.nosql.s13e.evolution.analyzer.outliers.modes.OutlierMode;
 
 public class OutlierAnalyzer
 {
-  private Map<Classifier, List<StructuralVariation>> outliers;
+  private Map<SchemaType, List<StructuralVariation>> outliers;
   private OutlierDetector outlierDetector;
 
   public OutlierAnalyzer(OutlierMode mode)
   {
-    this.outliers = new HashMap<Classifier, List<StructuralVariation>>();
+    this.outliers = new HashMap<SchemaType, List<StructuralVariation>>();
 
     switch (mode)
     {
@@ -36,15 +36,15 @@ public class OutlierAnalyzer
     this.outliers.clear();
   }
 
-  public List<StructuralVariation> getOutliers(Classifier classifier)
+  public List<StructuralVariation> getOutliers(SchemaType schemaType)
   {
-    return outliers.get(classifier);
+    return outliers.get(schemaType);
   }
 
   public void removeOutliers(NoSQLSchema schema)
   {
-    for (Classifier classifier : Stream.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
-      outliers.put(classifier, outlierDetector.removeOutliers(classifier));
+    for (SchemaType schemaType : Stream.concat(schema.getEntities().stream(), schema.getRelationships().stream()).collect(Collectors.toList()))
+      outliers.put(schemaType, outlierDetector.removeOutliers(schemaType));
   }
 
   public String getSummary()
@@ -52,12 +52,12 @@ public class OutlierAnalyzer
     StringBuilder result = new StringBuilder();
     String endLine = "\n";
 
-    for (Classifier classifier : outliers.keySet())
+    for (SchemaType schemaType : outliers.keySet())
     {
-      long numObjects = Stream.concat(classifier.getVariations().stream(), outliers.get(classifier).stream()).mapToLong(var -> var.getCount()).sum();
-      int numVariations = classifier.getVariations().size() + outliers.get(classifier).size();
+      long numObjects = Stream.concat(schemaType.getVariations().stream(), outliers.get(schemaType).stream()).mapToLong(var -> var.getCount()).sum();
+      int numVariations = schemaType.getVariations().size() + outliers.get(schemaType).size();
 
-      result.append(classifier.getName() + ": " + numObjects + " items" + endLine);
+      result.append(schemaType.getName() + ": " + numObjects + " items" + endLine);
 
       if (outlierDetector instanceof CoverageOutlierDetector)
       {
@@ -70,7 +70,7 @@ public class OutlierAnalyzer
         result.append("Epsilon factor: " + String.format("%.4f", outlierDetector.getFactor()) + " (" + countThreshold + " items)" + endLine);
       }
 
-      result.append("Variations before/after: " + numVariations + " => " + classifier.getVariations().size() + endLine + endLine);
+      result.append("Variations before/after: " + numVariations + " => " + schemaType.getVariations().size() + endLine + endLine);
     }
 
     return result.toString();

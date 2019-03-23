@@ -6,7 +6,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses(
-{ CompareNoSQLSchemaTest.class, ComparePropertyTest.class, CompareTypeTest.class })
+{ CompareNoSQLSchemaTest.class, ComparePropertyTest.class, CompareDataTypeTest.class })
 public class AllTests
 {
 }

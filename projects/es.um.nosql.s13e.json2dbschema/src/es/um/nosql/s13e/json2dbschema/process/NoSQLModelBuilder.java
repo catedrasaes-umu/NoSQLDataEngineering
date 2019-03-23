@@ -15,7 +15,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
@@ -23,7 +23,7 @@ import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.PList;
 import es.um.nosql.s13e.NoSQLSchema.PTuple;
-import es.um.nosql.s13e.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.DataType;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.ArraySC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.BooleanSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.NullSC;
@@ -45,7 +45,7 @@ public class NoSQLModelBuilder
   private Map<SchemaComponent, StructuralVariation> mStructuralVariations;
 
   // Reference matcher
-  private ReferenceMatcher<EntityClass> refMatcher;
+  private ReferenceMatcher<EntityType> refMatcher;
 
   private PropertyAnalyzer propAnalyzer;
 
@@ -72,13 +72,13 @@ public class NoSQLModelBuilder
     // { "$ref" : <type>, "$id" : <value>, "$db" : <value> }
 
     // Build reverse indices & Create Entities & Populate with StructuralVariations
-    rawEntities.forEach((entityClassName, schemas) ->
+    rawEntities.forEach((entityTypeName, schemas) ->
     {
-      EntityClass entityClass = factory.createEntityClass();
-      entityClass.setName(entityClassName);
-      entityClass.setRoot(schemas.stream().anyMatch(schema -> {return ((ObjectSC)schema).isRoot;}));
+      EntityType entityType = factory.createEntityType();
+      entityType.setName(entityTypeName);
+      entityType.setRoot(schemas.stream().anyMatch(schema -> {return ((ObjectSC)schema).isRoot;}));
 
-      finalSchema.getEntities().add(entityClass);
+      finalSchema.getEntities().add(entityType);
 
       OfInt intIterator = IntStream.iterate(1, i -> i+1).iterator();
 
@@ -92,7 +92,7 @@ public class NoSQLModelBuilder
         theEV.setFirstTimestamp(obj.firstTimestamp);
         theEV.setLastTimestamp(obj.lastTimestamp);
 
-        entityClass.getVariations().add(theEV);
+        entityType.getVariations().add(theEV);
         mStructuralVariations.put(schema, theEV);
       });
     });
@@ -118,10 +118,10 @@ public class NoSQLModelBuilder
       eFrom.getStructuralVariations().forEach(ev -> {
         ev.getProperties().stream().filter(p -> p instanceof Reference).forEach(r -> {
           Reference ref = (Reference)r;
-          EntityClass eTo = ref.getRefTo();
+          EntityType eTo = ref.getRefTo();
 
           // Find a StructuralVariation of eTo that has a reference to the
-          // current EntityClass eFrom
+          // current EntityType eFrom
           Optional<Property> refTo =
             eTo.getStructuralVariations().stream().flatMap(evTo ->
             evTo.getProperties().stream().filter(pTo -> pTo instanceof Reference))
@@ -135,10 +135,10 @@ public class NoSQLModelBuilder
     return finalSchema;
   }
 
-  private ReferenceMatcher<EntityClass> createReferenceMatcher() 
+  private ReferenceMatcher<EntityType> createReferenceMatcher() 
   {
     return new ReferenceMatcher<>(finalSchema.getEntities().stream()
-        .filter(EntityClass::isRoot)
+        .filter(EntityType::isRoot)
         .map(e -> 
         Pair.of(new HashSet<String>(Arrays.asList(
             e.getName(),
@@ -262,7 +262,7 @@ public class NoSQLModelBuilder
     }
   }
 
-  private Type PListOrPTupleForArray(ArraySC sc)
+  private DataType PListOrPTupleForArray(ArraySC sc)
   {
 	// Return a list by default if empty array
     if (sc.size() == 0)
@@ -285,7 +285,7 @@ public class NoSQLModelBuilder
     return t;
   }
 
-  private Type schemaComponentToTypeRecursive(SchemaComponent sc)
+  private DataType schemaComponentToTypeRecursive(SchemaComponent sc)
   {
       // Recursive
       if (sc instanceof ArraySC)

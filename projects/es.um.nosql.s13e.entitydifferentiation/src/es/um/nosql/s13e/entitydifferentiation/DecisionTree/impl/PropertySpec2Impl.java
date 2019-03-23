@@ -29,8 +29,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class PropertySpec2Impl extends MinimalEObjectImpl.Container implements PropertySpec2
-{
+public class PropertySpec2Impl extends MinimalEObjectImpl.Container implements PropertySpec2 {
   /**
    * The default value of the '{@link #isNeedsTypeCheck() <em>Needs Type Check</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -66,8 +65,7 @@ public class PropertySpec2Impl extends MinimalEObjectImpl.Container implements P
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PropertySpec2Impl()
-  {
+  protected PropertySpec2Impl() {
     super();
   }
 
@@ -77,8 +75,7 @@ public class PropertySpec2Impl extends MinimalEObjectImpl.Container implements P
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return DecisionTreePackage.Literals.PROPERTY_SPEC2;
   }
 
@@ -87,8 +84,8 @@ public class PropertySpec2Impl extends MinimalEObjectImpl.Container implements P
    * <!-- end-user-doc -->
    * @generated
    */
-  public boolean isNeedsTypeCheck()
-  {
+  @Override
+  public boolean isNeedsTypeCheck() {
     return needsTypeCheck;
   }
 
@@ -97,8 +94,8 @@ public class PropertySpec2Impl extends MinimalEObjectImpl.Container implements P
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setNeedsTypeCheck(boolean newNeedsTypeCheck)
-  {
+  @Override
+  public void setNeedsTypeCheck(boolean newNeedsTypeCheck) {
     boolean oldNeedsTypeCheck = needsTypeCheck;
     needsTypeCheck = newNeedsTypeCheck;
     if (eNotificationRequired())
@@ -110,14 +107,12 @@ public class PropertySpec2Impl extends MinimalEObjectImpl.Container implements P
    * <!-- end-user-doc -->
    * @generated
    */
-  public Property getProperty()
-  {
-    if (property != null && property.eIsProxy())
-    {
+  @Override
+  public Property getProperty() {
+    if (property != null && property.eIsProxy()) {
       InternalEObject oldProperty = (InternalEObject)property;
       property = (Property)eResolveProxy(oldProperty);
-      if (property != oldProperty)
-      {
+      if (property != oldProperty) {
         if (eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, DecisionTreePackage.PROPERTY_SPEC2__PROPERTY, oldProperty, property));
       }
@@ -130,8 +125,7 @@ public class PropertySpec2Impl extends MinimalEObjectImpl.Container implements P
    * <!-- end-user-doc -->
    * @generated
    */
-  public Property basicGetProperty()
-  {
+  public Property basicGetProperty() {
     return property;
   }
 
@@ -140,8 +134,8 @@ public class PropertySpec2Impl extends MinimalEObjectImpl.Container implements P
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setProperty(Property newProperty)
-  {
+  @Override
+  public void setProperty(Property newProperty) {
     Property oldProperty = property;
     property = newProperty;
     if (eNotificationRequired())
@@ -154,10 +148,8 @@ public class PropertySpec2Impl extends MinimalEObjectImpl.Container implements P
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case DecisionTreePackage.PROPERTY_SPEC2__NEEDS_TYPE_CHECK:
         return isNeedsTypeCheck();
       case DecisionTreePackage.PROPERTY_SPEC2__PROPERTY:
@@ -173,10 +165,8 @@ public class PropertySpec2Impl extends MinimalEObjectImpl.Container implements P
    * @generated
    */
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case DecisionTreePackage.PROPERTY_SPEC2__NEEDS_TYPE_CHECK:
         setNeedsTypeCheck((Boolean)newValue);
         return;
@@ -193,10 +183,8 @@ public class PropertySpec2Impl extends MinimalEObjectImpl.Container implements P
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case DecisionTreePackage.PROPERTY_SPEC2__NEEDS_TYPE_CHECK:
         setNeedsTypeCheck(NEEDS_TYPE_CHECK_EDEFAULT);
         return;
@@ -213,10 +201,8 @@ public class PropertySpec2Impl extends MinimalEObjectImpl.Container implements P
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case DecisionTreePackage.PROPERTY_SPEC2__NEEDS_TYPE_CHECK:
         return needsTypeCheck != NEEDS_TYPE_CHECK_EDEFAULT;
       case DecisionTreePackage.PROPERTY_SPEC2__PROPERTY:
@@ -231,8 +217,7 @@ public class PropertySpec2Impl extends MinimalEObjectImpl.Container implements P
    * @generated
    */
   @Override
-  public String toString()
-  {
+  public String toString() {
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());

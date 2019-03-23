@@ -22,8 +22,7 @@ import org.eclipse.emf.ecore.util.Switch;
  * @see es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTreePackage
  * @generated
  */
-public class DecisionTreeSwitch<T> extends Switch<T>
-{
+public class DecisionTreeSwitch<T> extends Switch<T> {
   /**
    * The cached model package
    * <!-- begin-user-doc -->
@@ -38,10 +37,8 @@ public class DecisionTreeSwitch<T> extends Switch<T>
    * <!-- end-user-doc -->
    * @generated
    */
-  public DecisionTreeSwitch()
-  {
-    if (modelPackage == null)
-    {
+  public DecisionTreeSwitch() {
+    if (modelPackage == null) {
       modelPackage = DecisionTreePackage.eINSTANCE;
     }
   }
@@ -55,8 +52,7 @@ public class DecisionTreeSwitch<T> extends Switch<T>
    * @generated
    */
   @Override
-  protected boolean isSwitchFor(EPackage ePackage)
-  {
+  protected boolean isSwitchFor(EPackage ePackage) {
     return ePackage == modelPackage;
   }
 
@@ -68,49 +64,41 @@ public class DecisionTreeSwitch<T> extends Switch<T>
    * @generated
    */
   @Override
-  protected T doSwitch(int classifierID, EObject theEObject)
-  {
-    switch (classifierID)
-    {
-      case DecisionTreePackage.DECISION_TREE_NODE:
-      {
+  protected T doSwitch(int classifierID, EObject theEObject) {
+    switch (classifierID) {
+      case DecisionTreePackage.DECISION_TREE_NODE: {
         DecisionTreeNode decisionTreeNode = (DecisionTreeNode)theEObject;
         T result = caseDecisionTreeNode(decisionTreeNode);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DecisionTreePackage.LEAF_NODE:
-      {
+      case DecisionTreePackage.LEAF_NODE: {
         LeafNode leafNode = (LeafNode)theEObject;
         T result = caseLeafNode(leafNode);
         if (result == null) result = caseDecisionTreeNode(leafNode);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DecisionTreePackage.INTERMEDIATE_NODE:
-      {
+      case DecisionTreePackage.INTERMEDIATE_NODE: {
         IntermediateNode intermediateNode = (IntermediateNode)theEObject;
         T result = caseIntermediateNode(intermediateNode);
         if (result == null) result = caseDecisionTreeNode(intermediateNode);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DecisionTreePackage.DECISION_TREE_FOR_ENTITY:
-      {
+      case DecisionTreePackage.DECISION_TREE_FOR_ENTITY: {
         DecisionTreeForEntity decisionTreeForEntity = (DecisionTreeForEntity)theEObject;
         T result = caseDecisionTreeForEntity(decisionTreeForEntity);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DecisionTreePackage.DECISION_TREES:
-      {
+      case DecisionTreePackage.DECISION_TREES: {
         DecisionTrees decisionTrees = (DecisionTrees)theEObject;
         T result = caseDecisionTrees(decisionTrees);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DecisionTreePackage.PROPERTY_SPEC2:
-      {
+      case DecisionTreePackage.PROPERTY_SPEC2: {
         PropertySpec2 propertySpec2 = (PropertySpec2)theEObject;
         T result = casePropertySpec2(propertySpec2);
         if (result == null) result = defaultCase(theEObject);
@@ -131,8 +119,7 @@ public class DecisionTreeSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDecisionTreeNode(DecisionTreeNode object)
-  {
+  public T caseDecisionTreeNode(DecisionTreeNode object) {
     return null;
   }
 
@@ -147,8 +134,7 @@ public class DecisionTreeSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseLeafNode(LeafNode object)
-  {
+  public T caseLeafNode(LeafNode object) {
     return null;
   }
 
@@ -163,8 +149,7 @@ public class DecisionTreeSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseIntermediateNode(IntermediateNode object)
-  {
+  public T caseIntermediateNode(IntermediateNode object) {
     return null;
   }
 
@@ -179,8 +164,7 @@ public class DecisionTreeSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDecisionTreeForEntity(DecisionTreeForEntity object)
-  {
+  public T caseDecisionTreeForEntity(DecisionTreeForEntity object) {
     return null;
   }
 
@@ -195,8 +179,7 @@ public class DecisionTreeSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseDecisionTrees(DecisionTrees object)
-  {
+  public T caseDecisionTrees(DecisionTrees object) {
     return null;
   }
 
@@ -211,8 +194,7 @@ public class DecisionTreeSwitch<T> extends Switch<T>
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T casePropertySpec2(PropertySpec2 object)
-  {
+  public T casePropertySpec2(PropertySpec2 object) {
     return null;
   }
 
@@ -228,8 +210,7 @@ public class DecisionTreeSwitch<T> extends Switch<T>
    * @generated
    */
   @Override
-  public T defaultCase(EObject object)
-  {
+  public T defaultCase(EObject object) {
     return null;
   }
 

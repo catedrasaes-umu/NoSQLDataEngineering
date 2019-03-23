@@ -17,7 +17,7 @@ import org.eclipse.collections.api.tuple.Pair;
 import org.eclipse.collections.impl.set.strategy.mutable.UnifiedSetWithHashingStrategy;
 import org.eclipse.collections.impl.tuple.Tuples;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.entitydifferentiation.m2m.hashing.PropertyHashingStrategy;
 import es.um.nosql.s13e.entitydifferentiation.m2m.hashing.PropertyJustNameHashingStrategy;
@@ -33,7 +33,7 @@ import es.um.nosql.s13e.util.ModelLoader;
 
 public class NoSQLSchemaToEntityDiff
 {
-  private Map<EntityClass, Set<Property>> commonEntityProperties;
+  private Map<EntityType, Set<Property>> commonEntityProperties;
   private Map<StructuralVariation, Set<Property>> evOwnProperties;
   private Map<StructuralVariation, StructuralVariationDiff> evPropsByEv;
   private HashingStrategy<Property> propertyHashing;
@@ -77,7 +77,7 @@ public class NoSQLSchemaToEntityDiff
     initCalculations(schema);
 
     // Generate entity References
-    for (EntityClass e: schema.getEntities())
+    for (EntityType e: schema.getEntities())
       transformEntity(e, differentiation);
 
     return differentiation;
@@ -100,7 +100,7 @@ public class NoSQLSchemaToEntityDiff
     evPropsByEv = new HashMap<>();
   }
 
-  private void transformEntity(EntityClass e, EntityDifferentiation diff)
+  private void transformEntity(EntityType e, EntityDifferentiation diff)
   {
     // Holds the set of properties to check for each StructuralVariation. It will be used to
     // not to create duplicate checks
@@ -185,7 +185,7 @@ public class NoSQLSchemaToEntityDiff
     diff.getEntityDiffs().add(de);
   }
 
-  private Set<Property> calcCommonProperties(EntityClass e)
+  private Set<Property> calcCommonProperties(EntityType e)
   {
     Map<StructuralVariation, Set<Property>> allProperties =
         e.getVariations().stream()

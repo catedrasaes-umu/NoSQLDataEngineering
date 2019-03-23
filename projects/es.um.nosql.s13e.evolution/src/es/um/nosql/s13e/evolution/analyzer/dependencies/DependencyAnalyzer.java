@@ -1,32 +1,28 @@
 package es.um.nosql.s13e.evolution.analyzer.dependencies;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import es.um.nosql.s13e.NoSQLSchema.Classifier;
-import es.um.nosql.s13e.NoSQLSchema.Property;
+import es.um.nosql.s13e.NoSQLSchema.SchemaType;
 import es.um.nosql.s13e.evolution.analyzer.dependencies.detectors.DependentPropsDetector;
 import es.um.nosql.s13e.evolution.analyzer.dependencies.detectors.SchemaChangeDetector;
 import es.um.nosql.s13e.evolution.analyzer.diffs.PropertyMatrix;
 
 public class DependencyAnalyzer
 {
-  private Classifier classifier;
+  private SchemaType sType;
   private PropertyMatrix matrix;
   private DependentPropsDetector dPropsDetector;
   private SchemaChangeDetector sChangeDetector;
 
-  public DependencyAnalyzer(Classifier classifier)
+  public DependencyAnalyzer(SchemaType sType)
   {
-    this.classifier = classifier;
-    this.matrix = new PropertyMatrix(classifier);
+    this.sType = sType;
+    this.matrix = new PropertyMatrix(sType);
     this.dPropsDetector = new DependentPropsDetector(matrix);
 //    this.sChangeDetector = new SchemaChangeDetector(matrix);
   }
 
-  public Classifier getClassifier()
+  public SchemaType getSchemaType()
   {
-    return classifier;
+    return sType;
   }
 
   public PropertyMatrix getPropertyMatrix()
@@ -46,13 +42,6 @@ public class DependencyAnalyzer
 
   public void performAnalysis()
   {
-    List<List<Property>> identifyingSubtypes = new ArrayList<List<Property>>();
-
-    for (List<Property> strongDep : dPropsDetector.getStrongDependencies())
-    {
-      
-    }
-
     //detectSubtypes();
     //detectOptionalsFromSubtypes();
     //printSummary();

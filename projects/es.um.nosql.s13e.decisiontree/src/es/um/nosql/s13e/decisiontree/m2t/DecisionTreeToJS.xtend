@@ -6,11 +6,11 @@ import java.util.List
 import es.um.nosql.s13e.NoSQLSchema.Property
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType
 import es.um.nosql.s13e.NoSQLSchema.Attribute
-import es.um.nosql.s13e.NoSQLSchema.Type
+import es.um.nosql.s13e.NoSQLSchema.DataType
 import es.um.nosql.s13e.NoSQLSchema.PTuple
 import es.um.nosql.s13e.NoSQLSchema.Reference
 import es.um.nosql.s13e.NoSQLSchema.Aggregate
-import es.um.nosql.s13e.NoSQLSchema.EntityClass
+import es.um.nosql.s13e.NoSQLSchema.EntityType
 import es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTrees
 import es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTreeForEntity
 import es.um.nosql.s13e.entitydifferentiation.DecisionTree.PropertySpec2
@@ -67,8 +67,8 @@ class DecisionTreeToJS
 
   private def genCheckFunctions(List<DecisionTreeForEntity> list)
   '''
-    «FOR DecisionTreeForEntity decTreeEntityClass : list SEPARATOR ','»
-      «genCheckFunction(decTreeEntityClass)»
+    «FOR DecisionTreeForEntity decTreeEntityType : list SEPARATOR ','»
+      «genCheckFunction(decTreeEntityType)»
     «ENDFOR»
   '''
 
@@ -177,13 +177,13 @@ class DecisionTreeToJS
         obj.«a.name».every(function(e)
             { return (typeof e === 'object') && !(e.constructor === Array)
                 && («FOR rt : a.aggregates SEPARATOR " || "»
-                «modelName».«(rt.eContainer as EntityClass).name».checkEV_«(rt.eContainer as EntityClass).name»_«rt.variationId»(e)
+                «modelName».«(rt.eContainer as EntityType).name».checkEV_«(rt.container as EntityType).name»_«rt.variationId»(e)
                 «ENDFOR»);
             })
     «ELSE»
     «var aggToEV = a.aggregates.get(0)»
     (typeof obj.«a.name» === 'object') && !(obj.«a.name».constructor === Array)
-        && «modelName».«(aggToEV.eContainer as EntityClass).name».checkEV_«(aggToEV.eContainer as EntityClass).name»_«aggToEV.variationId»(obj.«a.name»)
+        && «modelName».«(aggToEV.eContainer as EntityType).name».checkEV_«(aggToEV.container as EntityType).name»_«aggToEV.variationId»(obj.«a.name»)
     «ENDIF»
   '''
 
@@ -204,7 +204,7 @@ class DecisionTreeToJS
     genTypeCheckLowLevel(a.type, "obj." + a.name);
   }
 
-  private def dispatch genTypeCheckLowLevel(Type type, String name)
+  private def dispatch genTypeCheckLowLevel(DataType type, String name)
   {
     throw new UnsupportedOperationException("TODO: auto-generated method stub")
   }

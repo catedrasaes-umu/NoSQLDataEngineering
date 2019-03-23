@@ -20,8 +20,7 @@ import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
  * @model
  * @generated
  */
-public interface LeafNode extends DecisionTreeNode
-{
+public interface LeafNode extends DecisionTreeNode {
   /**
    * Returns the value of the '<em><b>Identified Variation</b></em>' reference.
    * <!-- begin-user-doc -->

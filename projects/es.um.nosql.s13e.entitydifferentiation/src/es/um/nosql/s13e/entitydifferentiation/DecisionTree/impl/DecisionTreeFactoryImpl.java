@@ -18,26 +18,21 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DecisionTreeFactoryImpl extends EFactoryImpl implements DecisionTreeFactory
-{
+public class DecisionTreeFactoryImpl extends EFactoryImpl implements DecisionTreeFactory {
   /**
    * Creates the default factory implementation.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  public static DecisionTreeFactory init()
-  {
-    try
-    {
+  public static DecisionTreeFactory init() {
+    try {
       DecisionTreeFactory theDecisionTreeFactory = (DecisionTreeFactory)EPackage.Registry.INSTANCE.getEFactory(DecisionTreePackage.eNS_URI);
-      if (theDecisionTreeFactory != null)
-      {
+      if (theDecisionTreeFactory != null) {
         return theDecisionTreeFactory;
       }
     }
-    catch (Exception exception)
-    {
+    catch (Exception exception) {
       EcorePlugin.INSTANCE.log(exception);
     }
     return new DecisionTreeFactoryImpl();
@@ -49,8 +44,7 @@ public class DecisionTreeFactoryImpl extends EFactoryImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public DecisionTreeFactoryImpl()
-  {
+  public DecisionTreeFactoryImpl() {
     super();
   }
 
@@ -60,10 +54,8 @@ public class DecisionTreeFactoryImpl extends EFactoryImpl implements DecisionTre
    * @generated
    */
   @Override
-  public EObject create(EClass eClass)
-  {
-    switch (eClass.getClassifierID())
-    {
+  public EObject create(EClass eClass) {
+    switch (eClass.getClassifierID()) {
       case DecisionTreePackage.LEAF_NODE: return createLeafNode();
       case DecisionTreePackage.INTERMEDIATE_NODE: return createIntermediateNode();
       case DecisionTreePackage.DECISION_TREE_FOR_ENTITY: return createDecisionTreeForEntity();
@@ -79,8 +71,8 @@ public class DecisionTreeFactoryImpl extends EFactoryImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public LeafNode createLeafNode()
-  {
+  @Override
+  public LeafNode createLeafNode() {
     LeafNodeImpl leafNode = new LeafNodeImpl();
     return leafNode;
   }
@@ -90,8 +82,8 @@ public class DecisionTreeFactoryImpl extends EFactoryImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public IntermediateNode createIntermediateNode()
-  {
+  @Override
+  public IntermediateNode createIntermediateNode() {
     IntermediateNodeImpl intermediateNode = new IntermediateNodeImpl();
     return intermediateNode;
   }
@@ -101,8 +93,8 @@ public class DecisionTreeFactoryImpl extends EFactoryImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public DecisionTreeForEntity createDecisionTreeForEntity()
-  {
+  @Override
+  public DecisionTreeForEntity createDecisionTreeForEntity() {
     DecisionTreeForEntityImpl decisionTreeForEntity = new DecisionTreeForEntityImpl();
     return decisionTreeForEntity;
   }
@@ -112,8 +104,8 @@ public class DecisionTreeFactoryImpl extends EFactoryImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public DecisionTrees createDecisionTrees()
-  {
+  @Override
+  public DecisionTrees createDecisionTrees() {
     DecisionTreesImpl decisionTrees = new DecisionTreesImpl();
     return decisionTrees;
   }
@@ -123,8 +115,8 @@ public class DecisionTreeFactoryImpl extends EFactoryImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public PropertySpec2 createPropertySpec2()
-  {
+  @Override
+  public PropertySpec2 createPropertySpec2() {
     PropertySpec2Impl propertySpec2 = new PropertySpec2Impl();
     return propertySpec2;
   }
@@ -134,8 +126,8 @@ public class DecisionTreeFactoryImpl extends EFactoryImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public DecisionTreePackage getDecisionTreePackage()
-  {
+  @Override
+  public DecisionTreePackage getDecisionTreePackage() {
     return (DecisionTreePackage)getEPackage();
   }
 
@@ -146,8 +138,7 @@ public class DecisionTreeFactoryImpl extends EFactoryImpl implements DecisionTre
    * @generated
    */
   @Deprecated
-  public static DecisionTreePackage getPackage()
-  {
+  public static DecisionTreePackage getPackage() {
     return DecisionTreePackage.eINSTANCE;
   }
 

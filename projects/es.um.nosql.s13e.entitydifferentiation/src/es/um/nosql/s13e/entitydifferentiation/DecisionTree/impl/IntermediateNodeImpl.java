@@ -27,8 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements IntermediateNode
-{
+public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements IntermediateNode {
   /**
    * The cached value of the '{@link #getCheckedProperty() <em>Checked Property</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -44,8 +43,7 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
    * <!-- end-user-doc -->
    * @generated
    */
-  protected IntermediateNodeImpl()
-  {
+  protected IntermediateNodeImpl() {
     super();
   }
 
@@ -55,8 +53,7 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return DecisionTreePackage.Literals.INTERMEDIATE_NODE;
   }
 
@@ -65,8 +62,8 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
    * <!-- end-user-doc -->
    * @generated
    */
-  public PropertySpec2 getCheckedProperty()
-  {
+  @Override
+  public PropertySpec2 getCheckedProperty() {
     return checkedProperty;
   }
 
@@ -75,12 +72,10 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCheckedProperty(PropertySpec2 newCheckedProperty, NotificationChain msgs)
-  {
+  public NotificationChain basicSetCheckedProperty(PropertySpec2 newCheckedProperty, NotificationChain msgs) {
     PropertySpec2 oldCheckedProperty = checkedProperty;
     checkedProperty = newCheckedProperty;
-    if (eNotificationRequired())
-    {
+    if (eNotificationRequired()) {
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DecisionTreePackage.INTERMEDIATE_NODE__CHECKED_PROPERTY, oldCheckedProperty, newCheckedProperty);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
@@ -92,10 +87,9 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setCheckedProperty(PropertySpec2 newCheckedProperty)
-  {
-    if (newCheckedProperty != checkedProperty)
-    {
+  @Override
+  public void setCheckedProperty(PropertySpec2 newCheckedProperty) {
+    if (newCheckedProperty != checkedProperty) {
       NotificationChain msgs = null;
       if (checkedProperty != null)
         msgs = ((InternalEObject)checkedProperty).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DecisionTreePackage.INTERMEDIATE_NODE__CHECKED_PROPERTY, null, msgs);
@@ -114,10 +108,8 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    switch (featureID) {
       case DecisionTreePackage.INTERMEDIATE_NODE__CHECKED_PROPERTY:
         return basicSetCheckedProperty(null, msgs);
     }
@@ -130,10 +122,8 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case DecisionTreePackage.INTERMEDIATE_NODE__CHECKED_PROPERTY:
         return getCheckedProperty();
     }
@@ -146,10 +136,8 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
    * @generated
    */
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case DecisionTreePackage.INTERMEDIATE_NODE__CHECKED_PROPERTY:
         setCheckedProperty((PropertySpec2)newValue);
         return;
@@ -163,10 +151,8 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case DecisionTreePackage.INTERMEDIATE_NODE__CHECKED_PROPERTY:
         setCheckedProperty((PropertySpec2)null);
         return;
@@ -180,10 +166,8 @@ public class IntermediateNodeImpl extends DecisionTreeNodeImpl implements Interm
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case DecisionTreePackage.INTERMEDIATE_NODE__CHECKED_PROPERTY:
         return checkedProperty != null;
     }

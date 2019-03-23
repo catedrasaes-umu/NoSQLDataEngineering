@@ -4,7 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 
 public class ConfigEntity
@@ -72,7 +72,7 @@ public class ConfigEntity
     return result.toString();
   }
 
-  public boolean doCheck(EntityClass e)
+  public boolean doCheck(EntityType e)
   {
     List<Property> eProperties = e.getVariations().stream().flatMap(ev -> ev.getProperties().stream()).collect(Collectors.toList());
 

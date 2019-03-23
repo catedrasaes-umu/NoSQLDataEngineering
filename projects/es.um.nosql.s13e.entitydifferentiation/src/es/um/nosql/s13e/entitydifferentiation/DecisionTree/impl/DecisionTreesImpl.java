@@ -36,8 +36,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  *
  * @generated
  */
-public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements DecisionTrees
-{
+public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements DecisionTrees {
   /**
    * The cached value of the '{@link #getTrees() <em>Trees</em>}' containment reference list.
    * <!-- begin-user-doc -->
@@ -73,8 +72,7 @@ public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements D
    * <!-- end-user-doc -->
    * @generated
    */
-  protected DecisionTreesImpl()
-  {
+  protected DecisionTreesImpl() {
     super();
   }
 
@@ -84,8 +82,7 @@ public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements D
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return DecisionTreePackage.Literals.DECISION_TREES;
   }
 
@@ -94,10 +91,9 @@ public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements D
    * <!-- end-user-doc -->
    * @generated
    */
-  public EList<DecisionTreeForEntity> getTrees()
-  {
-    if (trees == null)
-    {
+  @Override
+  public EList<DecisionTreeForEntity> getTrees() {
+    if (trees == null) {
       trees = new EObjectContainmentEList<DecisionTreeForEntity>(DecisionTreeForEntity.class, this, DecisionTreePackage.DECISION_TREES__TREES);
     }
     return trees;
@@ -108,8 +104,8 @@ public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements D
    * <!-- end-user-doc -->
    * @generated
    */
-  public String getName()
-  {
+  @Override
+  public String getName() {
     return name;
   }
 
@@ -118,8 +114,8 @@ public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements D
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setName(String newName)
-  {
+  @Override
+  public void setName(String newName) {
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
@@ -132,10 +128,8 @@ public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements D
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    switch (featureID) {
       case DecisionTreePackage.DECISION_TREES__TREES:
         return ((InternalEList<?>)getTrees()).basicRemove(otherEnd, msgs);
     }
@@ -148,10 +142,8 @@ public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements D
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case DecisionTreePackage.DECISION_TREES__TREES:
         return getTrees();
       case DecisionTreePackage.DECISION_TREES__NAME:
@@ -167,10 +159,8 @@ public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements D
    */
   @SuppressWarnings("unchecked")
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case DecisionTreePackage.DECISION_TREES__TREES:
         getTrees().clear();
         getTrees().addAll((Collection<? extends DecisionTreeForEntity>)newValue);
@@ -188,10 +178,8 @@ public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements D
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case DecisionTreePackage.DECISION_TREES__TREES:
         getTrees().clear();
         return;
@@ -208,10 +196,8 @@ public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements D
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case DecisionTreePackage.DECISION_TREES__TREES:
         return trees != null && !trees.isEmpty();
       case DecisionTreePackage.DECISION_TREES__NAME:
@@ -226,8 +212,7 @@ public class DecisionTreesImpl extends MinimalEObjectImpl.Container implements D
    * @generated
    */
   @Override
-  public String toString()
-  {
+  public String toString() {
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());

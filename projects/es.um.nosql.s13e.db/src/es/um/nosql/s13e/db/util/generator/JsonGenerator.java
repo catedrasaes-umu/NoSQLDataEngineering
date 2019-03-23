@@ -16,14 +16,14 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.PTuple;
-import es.um.nosql.s13e.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.DataType;
 
 public class JsonGenerator
 {
@@ -58,7 +58,7 @@ public class JsonGenerator
     lStorage = factory.arrayNode();
 
     // First run to generate all the primitive types and tuples.
-    for (EntityClass entity : schema.getEntities())
+    for (EntityType entity : schema.getEntities())
     {
       entityIdMap.put(entity.getName().toLowerCase(), new ArrayList<String>());
       for (StructuralVariation eVariation : entity.getVariations())
@@ -97,7 +97,7 @@ public class JsonGenerator
     }
 
     // Second run to generate the references and aggregates since now all the variations and instances exist.
-    for (EntityClass entity : schema.getEntities())
+    for (EntityType entity : schema.getEntities())
       for (StructuralVariation eVariation : entity.getVariations())
         for (ObjectNode strObj : evMap.get(eVariation))
         {
@@ -228,12 +228,12 @@ public class JsonGenerator
    * @param name The tuple key.
    * @param elements The tuple to generate.
    */
-  private void generatePTuple(ObjectNode strObj, String name, List<Type> elements)
+  private void generatePTuple(ObjectNode strObj, String name, List<DataType> elements)
   {
     ArrayNode array = factory.arrayNode();
     strObj.set(name, array);
 
-    for (Type type : elements)
+    for (DataType type : elements)
     {
       if (type instanceof PrimitiveType)
         generatePrimitiveType(array, ((PrimitiveType)type).getName());
@@ -251,9 +251,9 @@ public class JsonGenerator
    * @param arrayObj The JsonArray in which the type is being inserted.
    * @param elements The tuple to generate.
    */
-  private void generateTuple(ArrayNode arrayObj, List<Type> elements)
+  private void generateTuple(ArrayNode arrayObj, List<DataType> elements)
   {
-    for (Type type : elements)
+    for (DataType type : elements)
     {
       if (type instanceof PrimitiveType)
         generatePrimitiveType(arrayObj, ((PrimitiveType)type).getName());

@@ -1,11 +1,11 @@
 package es.um.nosql.s13e.util.compare;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 
-public class CompareEntityClass extends Comparator<EntityClass>
+public class CompareEntityType extends Comparator<EntityType>
 {
   @Override
-  public boolean compare(EntityClass e1, EntityClass e2)
+  public boolean compare(EntityType e1, EntityType e2)
   {
     if (super.checkNulls(e1, e2))
       return false;

@@ -23,8 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DecisionTrees extends EObject
-{
+public interface DecisionTrees extends EObject {
   /**
    * Returns the value of the '<em><b>Trees</b></em>' containment reference list.
    * The list contents are of type {@link es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTreeForEntity}.

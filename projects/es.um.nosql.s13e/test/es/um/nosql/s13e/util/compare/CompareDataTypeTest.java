@@ -14,9 +14,9 @@ import es.um.nosql.s13e.NoSQLSchema.PMap;
 import es.um.nosql.s13e.NoSQLSchema.PSet;
 import es.um.nosql.s13e.NoSQLSchema.PTuple;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
-import es.um.nosql.s13e.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.DataType;
 
-public class CompareTypeTest
+public class CompareDataTypeTest
 {
   private ComparePrimitiveType cPrimitiveType;
   private ComparePMap cPMap;
@@ -129,7 +129,7 @@ public class CompareTypeTest
     assertTrue(cPSet.compare(createPSet(createPList(createPType("string"))), createPSet(createPList(createPType("string")))));
   }
 
-  private PMap createPMap(PrimitiveType key, Type value)
+  private PMap createPMap(PrimitiveType key, DataType value)
   {
     PMap pMap = NoSQLSchemaFactory.eINSTANCE.createPMap();
     pMap.setKeyType(key);
@@ -138,7 +138,7 @@ public class CompareTypeTest
     return pMap;
   }
 
-  private PTuple createPTuple(Type... elements)
+  private PTuple createPTuple(DataType... elements)
   {
     PTuple pTuple = NoSQLSchemaFactory.eINSTANCE.createPTuple();
     pTuple.getElements().addAll(Arrays.asList(elements));
@@ -146,7 +146,7 @@ public class CompareTypeTest
     return pTuple;
   }
 
-  private PSet createPSet(Type element)
+  private PSet createPSet(DataType element)
   {
     PSet pSet = NoSQLSchemaFactory.eINSTANCE.createPSet();
     pSet.setElementType(element);
@@ -154,7 +154,7 @@ public class CompareTypeTest
     return pSet;
   }
 
-  private PList createPList(Type element)
+  private PList createPList(DataType element)
   {
     PList pList = NoSQLSchemaFactory.eINSTANCE.createPList();
     pList.setElementType(element);

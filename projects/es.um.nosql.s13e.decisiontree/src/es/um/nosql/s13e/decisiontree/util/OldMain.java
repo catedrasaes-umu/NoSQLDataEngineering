@@ -17,7 +17,7 @@ import java.util.stream.IntStream;
 
 import org.apache.commons.lang3.tuple.Pair;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
@@ -64,7 +64,7 @@ public class OldMain {
   public static Map<String, List<String>> getClasses(NoSQLSchema schema)
   {
     Map<String, List<String>> classes = new HashMap<String, List<String>>();
-    for (EntityClass entity: schema.getEntities())
+    for (EntityType entity: schema.getEntities())
     {
       // FIXME
       if (!entity.isRoot())
@@ -77,7 +77,7 @@ public class OldMain {
             .map(Serializer::serialize)
             .collect(Collectors.toList());
 
-        // Add current EntityClass Variation to entities Map
+        // Add current EntityType Variation to entities Map
         String key = String.format("%1$s:%2$d", entity.getName(), entityVariation.getVariationId());
         classes.put(key, properties);
       }
@@ -176,7 +176,7 @@ public class OldMain {
       if (matcher.find())
       {
         StructuralVariation ev = entityVariations.get(matcher.group(1));
-        return new ModelTree((EntityClass)ev.eContainer(),ev);
+        return new ModelTree((EntityType)ev.getContainer(),ev);
       }
 
       else throw new Exception("Invalid exp reg for: "+tag);
@@ -225,8 +225,8 @@ public class OldMain {
 
     if (tree.isLeaf())
     {
-      EntityClass e = tree.getEntityClass();
-      System.out.println(indent+"EntityClass: "+e.getName()+", Variation: "+tree.getTag().getVariationId());
+      EntityType e = tree.getEntityType();
+      System.out.println(indent+"EntityType: "+e.getName()+", Variation: "+tree.getTag().getVariationId());
     }
     else
     {

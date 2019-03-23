@@ -27,8 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *
  * @generated
  */
-public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
-{
+public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode {
   /**
    * The cached value of the '{@link #getIdentifiedVariation() <em>Identified Variation</em>}' reference.
    * <!-- begin-user-doc -->
@@ -44,8 +43,7 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
    * <!-- end-user-doc -->
    * @generated
    */
-  protected LeafNodeImpl()
-  {
+  protected LeafNodeImpl() {
     super();
   }
 
@@ -55,8 +53,7 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return DecisionTreePackage.Literals.LEAF_NODE;
   }
 
@@ -65,14 +62,12 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
    * <!-- end-user-doc -->
    * @generated
    */
-  public StructuralVariation getIdentifiedVariation()
-  {
-    if (identifiedVariation != null && identifiedVariation.eIsProxy())
-    {
+  @Override
+  public StructuralVariation getIdentifiedVariation() {
+    if (identifiedVariation != null && identifiedVariation.eIsProxy()) {
       InternalEObject oldIdentifiedVariation = (InternalEObject)identifiedVariation;
       identifiedVariation = (StructuralVariation)eResolveProxy(oldIdentifiedVariation);
-      if (identifiedVariation != oldIdentifiedVariation)
-      {
+      if (identifiedVariation != oldIdentifiedVariation) {
         if (eNotificationRequired())
           eNotify(new ENotificationImpl(this, Notification.RESOLVE, DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION, oldIdentifiedVariation, identifiedVariation));
       }
@@ -85,8 +80,7 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
    * <!-- end-user-doc -->
    * @generated
    */
-  public StructuralVariation basicGetIdentifiedVariation()
-  {
+  public StructuralVariation basicGetIdentifiedVariation() {
     return identifiedVariation;
   }
 
@@ -95,8 +89,8 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setIdentifiedVariation(StructuralVariation newIdentifiedVariation)
-  {
+  @Override
+  public void setIdentifiedVariation(StructuralVariation newIdentifiedVariation) {
     StructuralVariation oldIdentifiedVariation = identifiedVariation;
     identifiedVariation = newIdentifiedVariation;
     if (eNotificationRequired())
@@ -109,10 +103,8 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
         if (resolve) return getIdentifiedVariation();
         return basicGetIdentifiedVariation();
@@ -126,10 +118,8 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
    * @generated
    */
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
         setIdentifiedVariation((StructuralVariation)newValue);
         return;
@@ -143,10 +133,8 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
         setIdentifiedVariation((StructuralVariation)null);
         return;
@@ -160,10 +148,8 @@ public class LeafNodeImpl extends DecisionTreeNodeImpl implements LeafNode
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case DecisionTreePackage.LEAF_NODE__IDENTIFIED_VARIATION:
         return identifiedVariation != null;
     }

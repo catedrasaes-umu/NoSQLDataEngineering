@@ -16,7 +16,7 @@ import com.fasterxml.jackson.databind.node.ObjectNode;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
@@ -71,7 +71,7 @@ public class ObjectGen
     Map<String, ArrayNode> result = new HashMap<String, ArrayNode>();
 
     // First run to generate all the primitive types and tuples.
-    for (EntityClass entity : schema.getEntities())
+    for (EntityType entity : schema.getEntities())
     {
       ArrayNode entityObjs = factory.arrayNode();
 
@@ -104,7 +104,7 @@ public class ObjectGen
     }
 
     // Second run to generate the references and aggregates since now all the variations and instances exist.
-    for (EntityClass entity : schema.getEntities())
+    for (EntityType entity : schema.getEntities())
       for (StructuralVariation eVariation : entity.getVariations())
         for (ObjectNode strObj : evMap.get(eVariation))
           eVariation.getProperties().stream().filter(p -> p instanceof Association).forEach(p -> this.generateAssociation(strObj, (Association)p));
@@ -115,7 +115,7 @@ public class ObjectGen
     return result;
   }
 
-  private void generateMetadata(ObjectNode oNode, EntityClass entity, Optional<Attribute> theId)
+  private void generateMetadata(ObjectNode oNode, EntityType entity, Optional<Attribute> theId)
   {
     if (!theId.isPresent())
       oNode.set("_id", pTypeGen.genTrustedObjectId("objectid"));

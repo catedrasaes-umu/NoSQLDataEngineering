@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
-import es.um.nosql.s13e.NoSQLSchema.ReferenceClass;
+import es.um.nosql.s13e.NoSQLSchema.RelationshipType;
 
 public class CompareNoSQLSchema extends Comparator<NoSQLSchema>
 {
@@ -25,21 +25,21 @@ public class CompareNoSQLSchema extends Comparator<NoSQLSchema>
     if (s1.getName() != null && !s1.getName().equals(s2.getName()))
       return false;
 
-    if (s1.getRefClasses() == null ^ s2.getRefClasses() == null)
+    if (s1.getRelationships() == null ^ s2.getRelationships() == null)
       return false;
 
-    if (s1.getRefClasses() != null && s2.getRefClasses() != null)
+    if (s1.getRelationships() != null && s2.getRelationships() != null)
     {
-      if (s1.getRefClasses().size() != s2.getRefClasses().size())
+      if (s1.getRelationships().size() != s2.getRelationships().size())
         return false;
 
-      List<ReferenceClass> s2RefCopy = new ArrayList<ReferenceClass>(s2.getRefClasses());
+      List<RelationshipType> s2RefCopy = new ArrayList<RelationshipType>(s2.getRelationships());
 
-      for (ReferenceClass ref1 : s1.getRefClasses())
+      for (RelationshipType ref1 : s1.getRelationships())
       {
-        Optional<ReferenceClass> refToErase = s2RefCopy.stream().filter(ref2 ->
+        Optional<RelationshipType> refToErase = s2RefCopy.stream().filter(ref2 ->
         {
-          return new CompareClassifier().compare(ref1, ref2);
+          return new CompareSchemaType().compare(ref1, ref2);
         }).findFirst();
 
         if (refToErase.isPresent())
@@ -58,13 +58,13 @@ public class CompareNoSQLSchema extends Comparator<NoSQLSchema>
       if (s1.getEntities().size() != s2.getEntities().size())
         return false;
 
-      List<EntityClass> s2EntityCopy = new ArrayList<EntityClass>(s2.getEntities());
+      List<EntityType> s2EntityCopy = new ArrayList<EntityType>(s2.getEntities());
 
-      for (EntityClass e1 : s1.getEntities())
+      for (EntityType e1 : s1.getEntities())
       {
-        Optional<EntityClass> entityToErase = s2EntityCopy.stream().filter(e2 ->
+        Optional<EntityType> entityToErase = s2EntityCopy.stream().filter(e2 ->
         {
-          return new CompareClassifier().compare(e1, e2);
+          return new CompareSchemaType().compare(e1, e2);
         }).findFirst();
 
         if (entityToErase.isPresent())

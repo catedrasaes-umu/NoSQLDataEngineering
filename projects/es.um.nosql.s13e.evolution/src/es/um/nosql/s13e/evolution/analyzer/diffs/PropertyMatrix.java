@@ -7,7 +7,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
-import es.um.nosql.s13e.NoSQLSchema.Classifier;
+import es.um.nosql.s13e.NoSQLSchema.SchemaType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.util.compare.CompareProperty;
@@ -15,21 +15,21 @@ import es.um.nosql.s13e.util.compare.CompareProperty;
 public class PropertyMatrix
 {
   private CompareProperty pComparer;
-  private Classifier classifier;
+  private SchemaType sType;
   private Map<Property, List<StructuralVariation>> propMatrix;
 
-  public PropertyMatrix(Classifier classifier)
+  public PropertyMatrix(SchemaType sType)
   {
     this.propMatrix = new HashMap<Property, List<StructuralVariation>>();
     this.pComparer = new CompareProperty();
-    this.classifier = classifier;
+    this.sType = sType;
 
     createPropMatrix();
   }
 
   private void createPropMatrix()
   {
-    classifier.getVariations().forEach(var ->
+    sType.getVariations().forEach(var ->
     {
       var.getProperties().forEach(prop1 ->
       {
@@ -46,9 +46,9 @@ public class PropertyMatrix
     });
   }
 
-  public Classifier getClassifier()
+  public SchemaType getSchemaType()
   {
-    return classifier;
+    return sType;
   }
 
   public Set<Property> getProperties()
@@ -58,7 +58,7 @@ public class PropertyMatrix
 
   public List<StructuralVariation> getVars()
   {
-    return classifier.getVariations();
+    return sType.getVariations();
   }
 
   public List<StructuralVariation> getVarsFromProperty(Property property)

@@ -5,8 +5,6 @@ import java.util.stream.Collectors;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.Classifier;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.Null;
 import es.um.nosql.s13e.NoSQLSchema.PList;
 import es.um.nosql.s13e.NoSQLSchema.PMap;
@@ -16,7 +14,7 @@ import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
-import es.um.nosql.s13e.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.DataType;
 
 //TODO: Can't stand this duplicates the code for something quite trivial. We should unify this serializer with the Xtext one.
 //TODO: Also adapt decisionTree code because, for some reason, it uses this serializer to create the decision tree (¿?)
@@ -27,7 +25,7 @@ public class Serializer
     if (eVariation == null)
       return null;
 
-    return ((EntityClass)eVariation.eContainer()).getName() + "_" + eVariation.getVariationId();
+    return eVariation.getContainer().getName() + "_" + eVariation.getVariationId();
   }
 
   public static String serialize(Property property)
@@ -59,7 +57,7 @@ public class Serializer
     return result.toString();
   }
 
-  public static String serialize(Type type)
+  public static String serialize(DataType type)
   {
     if (type == null)
       return null;
@@ -104,7 +102,7 @@ public class Serializer
     else if (association instanceof Reference)
     {
       Reference reference = (Reference)association;
-      result.append(((EntityClass)reference.getRefsTo()).getName());
+      result.append(reference.getRefsTo().getName());
       result.append(":[" + association.getLowerBound() + ".." + association.getUpperBound() + "]:");
       result.append("opp[");
 
@@ -114,17 +112,15 @@ public class Serializer
         result.append(oppositeRef + "]");
       else
       {
-        result.append(oppositeRef.getName() + ":" + ((EntityClass)oppositeRef.getRefsTo()).getName());
+        result.append(oppositeRef.getName() + ":" + oppositeRef.getRefsTo().getName());
         result.append(":[" + oppositeRef.getLowerBound() + ".." + oppositeRef.getUpperBound() + "]]");
       }
 
-      result.append("feat[");
-      StructuralVariation feature = reference.getFeatures();
-
-      if (feature == null)
-        result.append(feature + "]");
-      else
-        result.append(((Classifier)feature.eContainer()).getName() + "_" + feature.getVariationId() + "]");
+      if (reference.getFeatures() != null)
+      {
+        StructuralVariation feature = reference.getFeatures().get(0);
+        result.append("feat[" + feature.getContainer().getName() + "_" + feature.getVariationId() + "]");
+      }
     }
 
     return result.toString();

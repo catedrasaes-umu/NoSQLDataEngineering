@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import es.um.nosql.s13e.NoSQLSchema.PTuple;
-import es.um.nosql.s13e.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.DataType;
 
 public class ComparePTuple extends Comparator<PTuple>
 {
@@ -27,13 +27,13 @@ public class ComparePTuple extends Comparator<PTuple>
     if (t1.getElements().size() != t2.getElements().size())
       return false;
 
-    List<Type> t2ElemCopy = new ArrayList<Type>(t2.getElements());
+    List<DataType> t2ElemCopy = new ArrayList<DataType>(t2.getElements());
 
-    for (Type type1 : t1.getElements())
+    for (DataType type1 : t1.getElements())
     {
-      Optional<Type> typeToErase = t2ElemCopy.stream().filter(type2 ->
+      Optional<DataType> typeToErase = t2ElemCopy.stream().filter(type2 ->
       {
-        return new CompareType().compare(type1, type2);
+        return new CompareDataType().compare(type1, type2);
       }).findFirst();
 
       if (typeToErase.isPresent())

@@ -4,15 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import es.um.nosql.s13e.NoSQLSchema.Classifier;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
-import es.um.nosql.s13e.NoSQLSchema.ReferenceClass;
+import es.um.nosql.s13e.NoSQLSchema.SchemaType;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
+import es.um.nosql.s13e.NoSQLSchema.RelationshipType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 
-public class CompareClassifier extends Comparator<Classifier>
+public class CompareSchemaType extends Comparator<SchemaType>
 {
   @Override
-  public boolean compare(Classifier c1, Classifier c2)
+  public boolean compare(SchemaType c1, SchemaType c2)
   {
     if (super.checkNulls(c1, c2))
       return false;
@@ -34,13 +34,13 @@ public class CompareClassifier extends Comparator<Classifier>
       if (c1.getParents().size() != c2.getParents().size())
         return false;
 
-      List<Classifier> s2ParentsCopy = new ArrayList<Classifier>(c2.getParents());
+      List<SchemaType> s2ParentsCopy = new ArrayList<SchemaType>(c2.getParents());
 
-      for (Classifier p1 : c1.getParents())
+      for (SchemaType p1 : c1.getParents())
       {
-        Optional<Classifier> parentToErase = s2ParentsCopy.stream().filter(p2 ->
+        Optional<SchemaType> parentToErase = s2ParentsCopy.stream().filter(p2 ->
         {
-          return new CompareClassifier().compare(p1, p2);
+          return new CompareSchemaType().compare(p1, p2);
         }).findFirst();
 
         if (parentToErase.isPresent())
@@ -51,12 +51,12 @@ public class CompareClassifier extends Comparator<Classifier>
         return false;
     }
 
-    if (c1 instanceof ReferenceClass && c2 instanceof ReferenceClass
-        && !new CompareReferenceClass().compare((ReferenceClass)c1, (ReferenceClass)c2))
+    if (c1 instanceof RelationshipType && c2 instanceof RelationshipType
+        && !new CompareRelationshipType().compare((RelationshipType)c1, (RelationshipType)c2))
         return false;
 
-    if (c1 instanceof EntityClass && c2 instanceof EntityClass
-        && !new CompareEntityClass().compare((EntityClass)c1, (EntityClass)c2))
+    if (c1 instanceof EntityType && c2 instanceof EntityType
+        && !new CompareEntityType().compare((EntityType)c1, (EntityType)c2))
         return false;
 
     if (c1.getVariations() == null ^ c2.getVariations() == null)

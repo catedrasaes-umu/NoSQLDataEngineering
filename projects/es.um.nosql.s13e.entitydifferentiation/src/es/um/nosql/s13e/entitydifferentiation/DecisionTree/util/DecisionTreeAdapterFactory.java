@@ -19,8 +19,7 @@ import org.eclipse.emf.ecore.EObject;
  * @see es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTreePackage
  * @generated
  */
-public class DecisionTreeAdapterFactory extends AdapterFactoryImpl
-{
+public class DecisionTreeAdapterFactory extends AdapterFactoryImpl {
   /**
    * The cached model package.
    * <!-- begin-user-doc -->
@@ -35,10 +34,8 @@ public class DecisionTreeAdapterFactory extends AdapterFactoryImpl
    * <!-- end-user-doc -->
    * @generated
    */
-  public DecisionTreeAdapterFactory()
-  {
-    if (modelPackage == null)
-    {
+  public DecisionTreeAdapterFactory() {
+    if (modelPackage == null) {
       modelPackage = DecisionTreePackage.eINSTANCE;
     }
   }
@@ -52,14 +49,11 @@ public class DecisionTreeAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   @Override
-  public boolean isFactoryForType(Object object)
-  {
-    if (object == modelPackage)
-    {
+  public boolean isFactoryForType(Object object) {
+    if (object == modelPackage) {
       return true;
     }
-    if (object instanceof EObject)
-    {
+    if (object instanceof EObject) {
       return ((EObject)object).eClass().getEPackage() == modelPackage;
     }
     return false;
@@ -72,41 +66,33 @@ public class DecisionTreeAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   protected DecisionTreeSwitch<Adapter> modelSwitch =
-    new DecisionTreeSwitch<Adapter>()
-    {
+    new DecisionTreeSwitch<Adapter>() {
       @Override
-      public Adapter caseDecisionTreeNode(DecisionTreeNode object)
-      {
+      public Adapter caseDecisionTreeNode(DecisionTreeNode object) {
         return createDecisionTreeNodeAdapter();
       }
       @Override
-      public Adapter caseLeafNode(LeafNode object)
-      {
+      public Adapter caseLeafNode(LeafNode object) {
         return createLeafNodeAdapter();
       }
       @Override
-      public Adapter caseIntermediateNode(IntermediateNode object)
-      {
+      public Adapter caseIntermediateNode(IntermediateNode object) {
         return createIntermediateNodeAdapter();
       }
       @Override
-      public Adapter caseDecisionTreeForEntity(DecisionTreeForEntity object)
-      {
+      public Adapter caseDecisionTreeForEntity(DecisionTreeForEntity object) {
         return createDecisionTreeForEntityAdapter();
       }
       @Override
-      public Adapter caseDecisionTrees(DecisionTrees object)
-      {
+      public Adapter caseDecisionTrees(DecisionTrees object) {
         return createDecisionTreesAdapter();
       }
       @Override
-      public Adapter casePropertySpec2(PropertySpec2 object)
-      {
+      public Adapter casePropertySpec2(PropertySpec2 object) {
         return createPropertySpec2Adapter();
       }
       @Override
-      public Adapter defaultCase(EObject object)
-      {
+      public Adapter defaultCase(EObject object) {
         return createEObjectAdapter();
       }
     };
@@ -120,8 +106,7 @@ public class DecisionTreeAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   @Override
-  public Adapter createAdapter(Notifier target)
-  {
+  public Adapter createAdapter(Notifier target) {
     return modelSwitch.doSwitch((EObject)target);
   }
 
@@ -136,8 +121,7 @@ public class DecisionTreeAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTreeNode
    * @generated
    */
-  public Adapter createDecisionTreeNodeAdapter()
-  {
+  public Adapter createDecisionTreeNodeAdapter() {
     return null;
   }
 
@@ -151,8 +135,7 @@ public class DecisionTreeAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.entitydifferentiation.DecisionTree.LeafNode
    * @generated
    */
-  public Adapter createLeafNodeAdapter()
-  {
+  public Adapter createLeafNodeAdapter() {
     return null;
   }
 
@@ -166,8 +149,7 @@ public class DecisionTreeAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.entitydifferentiation.DecisionTree.IntermediateNode
    * @generated
    */
-  public Adapter createIntermediateNodeAdapter()
-  {
+  public Adapter createIntermediateNodeAdapter() {
     return null;
   }
 
@@ -181,8 +163,7 @@ public class DecisionTreeAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTreeForEntity
    * @generated
    */
-  public Adapter createDecisionTreeForEntityAdapter()
-  {
+  public Adapter createDecisionTreeForEntityAdapter() {
     return null;
   }
 
@@ -196,8 +177,7 @@ public class DecisionTreeAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTrees
    * @generated
    */
-  public Adapter createDecisionTreesAdapter()
-  {
+  public Adapter createDecisionTreesAdapter() {
     return null;
   }
 
@@ -211,8 +191,7 @@ public class DecisionTreeAdapterFactory extends AdapterFactoryImpl
    * @see es.um.nosql.s13e.entitydifferentiation.DecisionTree.PropertySpec2
    * @generated
    */
-  public Adapter createPropertySpec2Adapter()
-  {
+  public Adapter createPropertySpec2Adapter() {
     return null;
   }
 
@@ -224,8 +203,7 @@ public class DecisionTreeAdapterFactory extends AdapterFactoryImpl
    * @return the new adapter.
    * @generated
    */
-  public Adapter createEObjectAdapter()
-  {
+  public Adapter createEObjectAdapter() {
     return null;
   }
 

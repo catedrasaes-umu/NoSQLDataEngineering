@@ -11,7 +11,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="EntityDiff">
     <eStructuralFeatures xsi:type="ecore:EReference" name="entity" lowerBound="1"
-        eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//EntityClass"/>
+        eType="ecore:EClass ../../es.um.nosql.s13e/model/nosqlschema.ecore#//EntityType"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="variationDiffs" upperBound="-1"
         eType="#//StructuralVariationDiff" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="commonProps" upperBound="-1"

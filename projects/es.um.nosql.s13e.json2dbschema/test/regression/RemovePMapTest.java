@@ -8,14 +8,14 @@ import org.junit.Test;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.PMap;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
-import es.um.nosql.s13e.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.DataType;
 import es.um.nosql.s13e.json2dbschema.m2m.NoSQLSchemaToDocumentDb;
 
 public class RemovePMapTest
@@ -39,7 +39,7 @@ public class RemovePMapTest
     StructuralVariation var = factory.createStructuralVariation();
     var.setVariationId(1); var.getProperties().add(createPrimitiveType("attr1Str", "string")); var.getProperties().add(attrMap);
 
-    EntityClass entity = factory.createEntityClass();
+    EntityType entity = factory.createEntityType();
     entity.setName("entityName");
     entity.getVariations().add(var);
 
@@ -81,7 +81,7 @@ public class RemovePMapTest
     StructuralVariation var2 = factory.createStructuralVariation();
     var2.setVariationId(2); var2.getProperties().add(attrMap2);
 
-    EntityClass entity = factory.createEntityClass();
+    EntityType entity = factory.createEntityType();
     entity.setName("entityName");
     entity.getVariations().add(var);
     entity.getVariations().add(var2);
@@ -131,7 +131,7 @@ public class RemovePMapTest
     StructuralVariation var2 = factory.createStructuralVariation();
     var2.setVariationId(2); var2.getProperties().add(attrMap2);
 
-    EntityClass entity = factory.createEntityClass();
+    EntityType entity = factory.createEntityType();
     entity.setName("entityName");
     entity.getVariations().add(var1); entity.getVariations().add(var2);
 
@@ -155,7 +155,7 @@ public class RemovePMapTest
     return attr;
   }
 
-  private Attribute createPMap(String name, String key, Type value)
+  private Attribute createPMap(String name, String key, DataType value)
   {
     Attribute attr = factory.createAttribute();
     attr.setName(name);

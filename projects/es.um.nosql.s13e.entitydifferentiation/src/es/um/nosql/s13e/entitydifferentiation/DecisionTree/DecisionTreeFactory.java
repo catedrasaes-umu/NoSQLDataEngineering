@@ -12,8 +12,7 @@ import org.eclipse.emf.ecore.EFactory;
  * @see es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTreePackage
  * @generated
  */
-public interface DecisionTreeFactory extends EFactory
-{
+public interface DecisionTreeFactory extends EFactory {
   /**
    * The singleton instance of the factory.
    * <!-- begin-user-doc -->

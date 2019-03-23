@@ -2,7 +2,7 @@ package es.um.nosql.orchestrator.util;
 
 import java.io.File;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.json2dbschema.process.util.PropertyAnalyzer;
@@ -24,7 +24,7 @@ public class OptionalPatcher {
 
     PropertyAnalyzer analyzer = new PropertyAnalyzer();
 
-    for (EntityClass e : schema.getEntities())
+    for (EntityType e : schema.getEntities())
     {
       e.getVariations().forEach(var -> { var.getProperties().forEach(prop -> { prop.setOptional(false); }); });
       analyzer.setOptionalProperties(e.getVariations());

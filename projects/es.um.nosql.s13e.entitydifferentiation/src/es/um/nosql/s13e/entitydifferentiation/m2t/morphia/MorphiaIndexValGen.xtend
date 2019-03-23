@@ -1,7 +1,7 @@
 package es.um.nosql.s13e.entitydifferentiation.m2t.morphia
 
 import es.um.nosql.s13e.entitydifferentiation.m2t.config.ConfigMorphia
-import es.um.nosql.s13e.NoSQLSchema.EntityClass
+import es.um.nosql.s13e.NoSQLSchema.EntityType
 import es.um.nosql.s13e.entitydifferentiation.m2t.config.pojo.ConfigIndex
 import java.util.HashMap
 import es.um.nosql.s13e.entitydifferentiation.m2t.config.pojo.ConfigValidator
@@ -15,7 +15,7 @@ class MorphiaIndexValGen
     this.config = config;
   }
 
-  def genIncludesForEntity(EntityClass e)
+  def genIncludesForEntity(EntityType e)
   {
     if (config === null)
     ''''''
@@ -42,7 +42,7 @@ class MorphiaIndexValGen
     }
   }
 
-  def genValidatorsForField(EntityClass e, String field)
+  def genValidatorsForField(EntityType e, String field)
   {
     if (config === null)
     ''''''
@@ -66,7 +66,7 @@ class MorphiaIndexValGen
     }
   }
 
-  def genPopulateReferences(EntityClass e, String field)
+  def genPopulateReferences(EntityType e, String field)
   {
     if (config === null)
     ''', lazy = true'''
@@ -81,7 +81,7 @@ class MorphiaIndexValGen
   private def genMsg(ConfigValidator v)
   '''«IF v.message !== null», message = "«v.message»"«ENDIF»'''
 
-  def genIndexesForEntity(EntityClass e)
+  def genIndexesForEntity(EntityType e)
   {
     if (config === null)
     ''''''

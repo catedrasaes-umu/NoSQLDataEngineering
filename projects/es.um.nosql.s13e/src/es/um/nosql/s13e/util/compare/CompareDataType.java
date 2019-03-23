@@ -5,12 +5,12 @@ import es.um.nosql.s13e.NoSQLSchema.PMap;
 import es.um.nosql.s13e.NoSQLSchema.PSet;
 import es.um.nosql.s13e.NoSQLSchema.PTuple;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
-import es.um.nosql.s13e.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.DataType;
 
-public class CompareType extends Comparator<Type>
+public class CompareDataType extends Comparator<DataType>
 {
   @Override
-  public boolean compare(Type t1, Type t2)
+  public boolean compare(DataType t1, DataType t2)
   {
     if (super.checkNulls(t1, t2))
       return false;

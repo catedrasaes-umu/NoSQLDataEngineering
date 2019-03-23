@@ -7,7 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
@@ -22,7 +22,7 @@ public class Test2
   {
     NoSQLSchemaFactory factory = NoSQLSchemaFactory.eINSTANCE;
 
-    EntityClass persons = factory.createEntityClass(); persons.setName("Persons"); persons.setRoot(true);
+    EntityType persons = factory.createEntityType(); persons.setName("Persons"); persons.setRoot(true);
     StructuralVariation ev1 = factory.createStructuralVariation(); ev1.setVariationId(1);
     Attribute attrP1 = factory.createAttribute(); attrP1.setName("_id");
     PrimitiveType pTypeP1 = factory.createPrimitiveType(); pTypeP1.setName("ObjectId"); attrP1.setType(pTypeP1);

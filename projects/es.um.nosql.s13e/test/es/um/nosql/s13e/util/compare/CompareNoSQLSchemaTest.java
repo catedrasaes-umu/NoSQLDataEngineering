@@ -6,33 +6,33 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.Test;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.Null;
-import es.um.nosql.s13e.NoSQLSchema.ReferenceClass;
+import es.um.nosql.s13e.NoSQLSchema.RelationshipType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 
 public class CompareNoSQLSchemaTest
 {
   private CompareNoSQLSchema cSchema;
-  private CompareClassifier cClassifier;
-  private CompareReferenceClass cRef;
-  private CompareEntityClass cEntity;
+  private CompareSchemaType cClassifier;
+  private CompareRelationshipType cRef;
+  private CompareEntityType cEntity;
   private CompareStructuralVariation cVariation;
 
   @Before
   public void setUp()
   {
     cSchema = new CompareNoSQLSchema();
-    cClassifier = new CompareClassifier();
-    cRef = new CompareReferenceClass();
-    cEntity = new CompareEntityClass();
+    cClassifier = new CompareSchemaType();
+    cRef = new CompareRelationshipType();
+    cEntity = new CompareEntityType();
     cVariation = new CompareStructuralVariation();
   }
 
   /**
-   * TestNoSQLSchema SHOULD check: Name and ReferenceClass/EntityClass comparison with Classifier.
+   * TestNoSQLSchema SHOULD check: Name and RelationshipType/EntityType comparison with SchemaType.
    */
   @Test
   public void testNoSQLSchema()
@@ -54,7 +54,7 @@ public class CompareNoSQLSchemaTest
   }
 
   /**
-   * TestClassifier SHOULD check: Name, Parents, StructuralVariations and ReferenceClass/EntityClass comparison.
+   * TestClassifier SHOULD check: Name, Parents, StructuralVariations and RelationshipType/EntityType comparison.
    * TestClassifier SHOULD NOT check: IsRoot
    */
   @Test
@@ -62,8 +62,8 @@ public class CompareNoSQLSchemaTest
   {
     assertFalse(cClassifier.compare(null, null));
 
-    assertTrue(cClassifier.compare(createRef("name", null), createRef("name", null)));
-    assertFalse(cClassifier.compare(createRef("name1", null), createRef("name2", null)));
+    assertTrue(cClassifier.compare(createRel("name", null), createRel("name", null)));
+    assertFalse(cClassifier.compare(createRel("name1", null), createRel("name2", null)));
 
     assertTrue(cClassifier.compare(createEntity("name", false, null), createEntity("name", false, null)));
     assertFalse(cClassifier.compare(createEntity("name1", false, null), createEntity("name2", false, null)));
@@ -71,35 +71,35 @@ public class CompareNoSQLSchemaTest
     assertTrue(cClassifier.compare(createEntity("name", false, new String[] {"parent1", "parent2"}), createEntity("name", false, new String[] {"parent1", "parent2"})));
     assertFalse(cClassifier.compare(createEntity("name", false, new String[] {"parent1", "parent2"}), createEntity("name", false, new String[] {"parent1"})));
 
-    assertFalse(cClassifier.compare(createRef("name", null, 1, 2, 3), createRef("name", null, 1)));
-    assertTrue(cClassifier.compare(createRef("name", null, 1, 2, 3), createRef("name", null, 3, 2, 1)));
-    assertFalse(cClassifier.compare(createRef("name", null, 1, 2, 3), createRef("name", null, 1, 2, 3, 4)));
+    assertFalse(cClassifier.compare(createRel("name", null, 1, 2, 3), createRel("name", null, 1)));
+    assertTrue(cClassifier.compare(createRel("name", null, 1, 2, 3), createRel("name", null, 3, 2, 1)));
+    assertFalse(cClassifier.compare(createRel("name", null, 1, 2, 3), createRel("name", null, 1, 2, 3, 4)));
   }
 
   /**
-   * TestReferenceClass SHOULD NOT check: Name and StructuralVariation
+   * TestRelationshipType SHOULD NOT check: Name and StructuralVariation
    */
   @Test
-  public void testReferenceClass()
+  public void testRelationshipType()
   {
     assertFalse(cRef.compare(null, null));
 
-    assertFalse(cRef.compare(createRef("name", null), null));
-    assertFalse(cRef.compare(null, createRef("name", null)));
+    assertFalse(cRef.compare(createRel("name", null), null));
+    assertFalse(cRef.compare(null, createRel("name", null)));
 
-    assertTrue(cRef.compare(createRef("name", null, 1, 2, 3), createRef("name", null, 1, 2, 3)));
-    assertTrue(cRef.compare(createRef("name", null, 1, 2, 3), createRef("name", null, 1)));
+    assertTrue(cRef.compare(createRel("name", null, 1, 2, 3), createRel("name", null, 1, 2, 3)));
+    assertTrue(cRef.compare(createRel("name", null, 1, 2, 3), createRel("name", null, 1)));
 
-    assertTrue(cRef.compare(createRef(null, null), createRef("name", null)));
-    assertTrue(cRef.compare(createRef("aaa", null), createRef("bbb", null)));
+    assertTrue(cRef.compare(createRel(null, null), createRel("name", null)));
+    assertTrue(cRef.compare(createRel("aaa", null), createRel("bbb", null)));
   }
 
   /**
-   * TestEntityClass SHOULD check: IsRoot
-   * TestEntityClass SHOULD NOT check: Name and StructuralVariation
+   * TestEntityType SHOULD check: IsRoot
+   * TestEntityType SHOULD NOT check: Name and StructuralVariation
    */
   @Test
-  public void testEntityClass()
+  public void testEntityType()
   {
     assertFalse(cEntity.compare(null, null));
 
@@ -117,8 +117,8 @@ public class CompareNoSQLSchemaTest
   }
 
   /**
-   * TestEntityClass SHOULD check: Properties
-   * TestEntityClass SHOULD NOT check: VariationId, Count and Timestamp
+   * TestStructuralVariation SHOULD check: Properties
+   * TestStructuralVariation SHOULD NOT check: VariationId, Count and Timestamp
    */
   @Test
   public void testStructuralVariation()
@@ -143,7 +143,7 @@ public class CompareNoSQLSchemaTest
     if (entities != null)
       for (String e : entities)
       {
-        EntityClass entity = NoSQLSchemaFactory.eINSTANCE.createEntityClass();
+        EntityType entity = NoSQLSchemaFactory.eINSTANCE.createEntityType();
         entity.setName(e);
         schema.getEntities().add(entity);
       }
@@ -151,24 +151,24 @@ public class CompareNoSQLSchemaTest
     if (refs != null)
       for (String ref : refs)
       {
-        ReferenceClass reference = NoSQLSchemaFactory.eINSTANCE.createReferenceClass();
+        RelationshipType reference = NoSQLSchemaFactory.eINSTANCE.createRelationshipType();
         reference.setName(ref);
-        schema.getRefClasses().add(reference);
+        schema.getRelationships().add(reference);
       }
 
     return schema;
   }
 
-  private EntityClass createEntity(String name, boolean root, String[] parents, Integer... varIds)
+  private EntityType createEntity(String name, boolean root, String[] parents, Integer... varIds)
   {
-    EntityClass entity = NoSQLSchemaFactory.eINSTANCE.createEntityClass();
+    EntityType entity = NoSQLSchemaFactory.eINSTANCE.createEntityType();
     entity.setName(name);
     entity.setRoot(root);
 
     if (parents != null)
       for (String parentName : parents)
       {
-        EntityClass parent = NoSQLSchemaFactory.eINSTANCE.createEntityClass();
+        EntityType parent = NoSQLSchemaFactory.eINSTANCE.createEntityType();
         parent.setName(parentName);
         entity.getParents().add(parent);
       }
@@ -183,15 +183,15 @@ public class CompareNoSQLSchemaTest
     return entity;
   }
 
-  private ReferenceClass createRef(String name, String[] parents, Integer... varIds)
+  private RelationshipType createRel(String name, String[] parents, Integer... varIds)
   {
-    ReferenceClass ref = NoSQLSchemaFactory.eINSTANCE.createReferenceClass();
+    RelationshipType ref = NoSQLSchemaFactory.eINSTANCE.createRelationshipType();
     ref.setName(name);
 
     if (parents != null)
       for (String parentName : parents)
       {
-        EntityClass parent = NoSQLSchemaFactory.eINSTANCE.createEntityClass();
+        EntityType parent = NoSQLSchemaFactory.eINSTANCE.createEntityType();
         parent.setName(parentName);
         ref.getParents().add(parent);
       }

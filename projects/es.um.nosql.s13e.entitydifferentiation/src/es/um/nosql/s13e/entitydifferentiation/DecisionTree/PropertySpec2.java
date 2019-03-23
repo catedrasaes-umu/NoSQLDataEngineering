@@ -23,8 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface PropertySpec2 extends EObject
-{
+public interface PropertySpec2 extends EObject {
   /**
    * Returns the value of the '<em><b>Needs Type Check</b></em>' attribute.
    * <!-- begin-user-doc -->

@@ -23,8 +23,7 @@ import org.eclipse.emf.ecore.EReference;
  * @model kind="package"
  * @generated
  */
-public interface DecisionTreePackage extends EPackage
-{
+public interface DecisionTreePackage extends EPackage {
   /**
    * The package name.
    * <!-- begin-user-doc -->
@@ -544,8 +543,7 @@ public interface DecisionTreePackage extends EPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  interface Literals
-  {
+  interface Literals {
     /**
      * The meta object literal for the '{@link es.um.nosql.s13e.entitydifferentiation.DecisionTree.impl.DecisionTreeNodeImpl <em>Node</em>}' class.
      * <!-- begin-user-doc -->

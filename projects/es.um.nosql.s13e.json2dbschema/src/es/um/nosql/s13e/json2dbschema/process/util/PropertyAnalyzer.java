@@ -37,6 +37,8 @@ public class PropertyAnalyzer
       {
         if (!commonProps.stream().anyMatch(cProp -> { return comparer.compare(prop, cProp); }))
           prop.setOptional(true);
+        else
+          prop.setOptional(false);
       });
   }
 }

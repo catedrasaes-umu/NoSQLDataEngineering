@@ -14,14 +14,14 @@ import com.google.gson.JsonObject;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.PTuple;
-import es.um.nosql.s13e.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.DataType;
 
 /**
  * Class used to generate a random JSON file from a DBSCHEMA model.
@@ -76,7 +76,7 @@ public class JsonGenerator
 
 		// First run to generate all the primitive types, tuples and references.
 		int IDENTIFIER = 0;
-		for (EntityClass entity : schema.getEntities())
+		for (EntityType entity : schema.getEntities())
 		{
 			for (StructuralVariation eVariation : entity.getVariations())
 			{
@@ -125,7 +125,7 @@ public class JsonGenerator
 		}
 
 		// Second run to generate the aggregates since now all the variations and instances exist.
-		for (EntityClass entity : schema.getEntities())
+		for (EntityType entity : schema.getEntities())
 			for (StructuralVariation eVariation : entity.getVariations())
 				for (JsonObject strObj : mapEV.get(eVariation))
 				{
@@ -187,12 +187,12 @@ public class JsonGenerator
 	 * @param name The tuple key.
 	 * @param elements The tuple to generate.
 	 */
-	private void generatePTuple(JsonObject strObj, String name, List<Type> elements)
+	private void generatePTuple(JsonObject strObj, String name, List<DataType> elements)
 	{
 		JsonArray array = new JsonArray();
 		strObj.add(name, array);
 
-		for (Type type : elements)
+		for (DataType type : elements)
 		{
 			if (type instanceof PrimitiveType)
 				generatePrimitiveType(array, ((PrimitiveType)type).getName());
@@ -210,9 +210,9 @@ public class JsonGenerator
 	 * @param arrayObj The JsonArray in which the type is being inserted.
 	 * @param elements The tuple to generate.
 	 */
-	private void generatePTuple(JsonArray arrayObj, List<Type> elements)
+	private void generatePTuple(JsonArray arrayObj, List<DataType> elements)
 	{
-		for (Type type : elements)
+		for (DataType type : elements)
 		{
 			if (type instanceof PrimitiveType)
 			{

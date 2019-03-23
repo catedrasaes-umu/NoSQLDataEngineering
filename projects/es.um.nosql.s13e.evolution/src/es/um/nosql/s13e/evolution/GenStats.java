@@ -5,7 +5,7 @@ import java.io.File;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import es.um.nosql.s13e.NoSQLSchema.Classifier;
+import es.um.nosql.s13e.NoSQLSchema.SchemaType;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.evolution.analyzer.dependencies.DependencyAnalyzer;
@@ -29,9 +29,9 @@ public class GenStats
     //oAnalyzer.removeOutliers(schema);
 
     // Analyze each property
-    for (Classifier classifier : Stream.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
+    for (SchemaType sType : Stream.concat(schema.getEntities().stream(), schema.getRelationships().stream()).collect(Collectors.toList()))
     {
-      DependencyAnalyzer depDetector = new DependencyAnalyzer(classifier);
+      DependencyAnalyzer depDetector = new DependencyAnalyzer(sType);
       System.out.println(printer.printPretty(depDetector));
       depDetector.performAnalysis();
     }

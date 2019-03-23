@@ -19,7 +19,7 @@ public class EvolutionPrinter
   {
     StringBuilder result = new StringBuilder();
 
-    result.append("> " + detector.getClassifier().getName() + "\n");
+    result.append("> " + detector.getSchemaType().getName() + "\n");
     result.append(printPretty(detector.getPropertyMatrix()));
     result.append(printPretty(detector.getDependentProps()));
 //    result.append(printPretty(detector.getSchemaChanges()));
@@ -90,7 +90,7 @@ public class EvolutionPrinter
 
     result.append(createStr(spacing));
 
-    for (StructuralVariation var: matrix.getClassifier().getVariations())
+    for (StructuralVariation var: matrix.getSchemaType().getVariations())
       result.append(var.getVariationId() + " ");
     result.append("\n");
 
@@ -133,9 +133,9 @@ public class EvolutionPrinter
 
     result.append(createStr(serializeShort(property), spacing));
 
-    for (int i = 0; i < matrix.getClassifier().getVariations().size(); i++)
+    for (int i = 0; i < matrix.getSchemaType().getVariations().size(); i++)
     {
-      StructuralVariation var = matrix.getClassifier().getVariations().get(i);
+      StructuralVariation var = matrix.getSchemaType().getVariations().get(i);
       if (matrix.getVarsFromProperty(property).contains(var))
         result.append("X");
       else

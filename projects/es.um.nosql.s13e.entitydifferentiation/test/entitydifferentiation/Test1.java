@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
@@ -25,13 +25,13 @@ public class Test1
   {
     NoSQLSchemaFactory factory = NoSQLSchemaFactory.eINSTANCE;
 
-    EntityClass cdate1 = factory.createEntityClass(); cdate1.setName("CustomDate1"); cdate1.setRoot(false);
+    EntityType cdate1 = factory.createEntityType(); cdate1.setName("CustomDate1"); cdate1.setRoot(false);
     StructuralVariation ev10 = factory.createStructuralVariation(); ev10.setVariationId(10);
     Attribute attr1101 = factory.createAttribute(); attr1101.setName("date1");
     PrimitiveType pType1101 = factory.createPrimitiveType(); pType1101.setName("number"); attr1101.setType(pType1101);
     cdate1.getVariations().add(ev10); ev10.getProperties().add(attr1101);
 
-    EntityClass cdate2 = factory.createEntityClass(); cdate2.setName("CustomDate2"); cdate2.setRoot(true);
+    EntityType cdate2 = factory.createEntityType(); cdate2.setName("CustomDate2"); cdate2.setRoot(true);
     StructuralVariation ev20 = factory.createStructuralVariation(); ev20.setVariationId(20);
     Attribute attr2201 = factory.createAttribute(); attr2201.setName("_id");
     PrimitiveType pType2201 = factory.createPrimitiveType(); pType2201.setName("String"); attr2201.setType(pType2201);
@@ -39,7 +39,7 @@ public class Test1
     PrimitiveType pType2202 = factory.createPrimitiveType(); pType2202.setName("String"); attr2202.setType(pType2202);
     cdate2.getVariations().add(ev20); ev20.getProperties().add(attr2201); ev20.getProperties().add(attr2202);
 
-    EntityClass cdate3 = factory.createEntityClass(); cdate3.setName("CustomDate3"); cdate3.setRoot(true);
+    EntityType cdate3 = factory.createEntityType(); cdate3.setName("CustomDate3"); cdate3.setRoot(true);
     StructuralVariation ev30 = factory.createStructuralVariation(); ev30.setVariationId(30);
     Attribute attr3301 = factory.createAttribute(); attr3301.setName("_id");
     PrimitiveType pType3301 = factory.createPrimitiveType(); pType3301.setName("ObjectId"); attr3301.setType(pType3301);
@@ -47,7 +47,7 @@ public class Test1
     PrimitiveType pType3302 = factory.createPrimitiveType(); pType3302.setName("Number"); attr3302.setType(pType3302);
     cdate3.getVariations().add(ev30); ev30.getProperties().add(attr3301); ev30.getProperties().add(attr3302);
 
-    EntityClass persons = factory.createEntityClass(); persons.setName("Persons"); persons.setRoot(true);
+    EntityType persons = factory.createEntityType(); persons.setName("Persons"); persons.setRoot(true);
     StructuralVariation ev1 = factory.createStructuralVariation(); ev1.setVariationId(1);
     Attribute attrP1 = factory.createAttribute(); attrP1.setName("_id");
     PrimitiveType pTypeP1 = factory.createPrimitiveType(); pTypeP1.setName("String"); attrP1.setType(pTypeP1);

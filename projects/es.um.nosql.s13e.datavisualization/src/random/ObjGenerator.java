@@ -12,7 +12,7 @@ import com.google.gson.JsonObject;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
@@ -50,7 +50,7 @@ public class ObjGenerator
 
 	private NoSQLSchema schema;
 	private Map<String, StructuralVariation> mapEV;
-	private Map<String, EntityClass> mapE;
+	private Map<String, EntityType> mapE;
 	private Random random;
 
 	private JsonArray lStorage;
@@ -84,7 +84,7 @@ public class ObjGenerator
 	private ObjGenerator()
 	{
 		schema = NoSQLSchemaFactory.eINSTANCE.createNoSQLSchema();
-		mapE = new HashMap<String, EntityClass>();
+		mapE = new HashMap<String, EntityType>();
 		mapEV = new HashMap<String, StructuralVariation>();
 
 		random = new Random();
@@ -92,10 +92,10 @@ public class ObjGenerator
 
 		for (String entity : ENTITIES)
 		{
-			EntityClass oEntityClass = NoSQLSchemaFactory.eINSTANCE.createEntityClass();
-			oEntityClass.setName(entity);
-			schema.getEntities().add(oEntityClass);
-			mapE.put(entity, oEntityClass);
+		  EntityType oEntity = NoSQLSchemaFactory.eINSTANCE.createEntityType();
+		  oEntity.setName(entity);
+			schema.getEntities().add(oEntity);
+			mapE.put(entity, oEntity);
 		}
 
 		int IDENTIFIER = 0;
@@ -106,7 +106,7 @@ public class ObjGenerator
 			{
 			  StructuralVariation oev = NoSQLSchemaFactory.eINSTANCE.createStructuralVariation();
 				oev.setVariationId(++IDENTIFIER);
-				((EntityClass)oev.eContainer()).setRoot(true);
+				((EntityType)oev.getContainer()).setRoot(true);
 				mapE.get(entity).getVariations().add(oev);
 
 				JsonObject strObj = new JsonObject();
@@ -128,7 +128,7 @@ public class ObjGenerator
 				// Generate References.
 				for (int j = 0; j < getRandomBetween(MIN_REF, MAX_REF); j++)
 				{
-					EntityClass e = mapE.get(ENTITIES[random.nextInt(ENTITIES.length)]);
+					EntityType e = mapE.get(ENTITIES[random.nextInt(ENTITIES.length)]);
 
 					Reference ref = NoSQLSchemaFactory.eINSTANCE.createReference();
 					ref.setName(e.getName() + "_id_reference");
@@ -401,7 +401,7 @@ public class ObjGenerator
 
 				String evId = (String)mapEV.keySet().toArray()[random.nextInt(mapEV.size())];
 				StructuralVariation ev = mapEV.get(evId);
-				((EntityClass)ev.eContainer()).setRoot(false);
+				((EntityType)ev.getContainer()).setRoot(false);
 				aggr.getAggregates().add(ev);
 
 				for (JsonElement jElem : lStorage)
@@ -422,7 +422,7 @@ public class ObjGenerator
 				{
 					String evId = (String)mapEV.keySet().toArray()[random.nextInt(mapEV.size())];
 					StructuralVariation ev = mapEV.get(evId);
-					((EntityClass)ev.eContainer()).setRoot(false);
+					((EntityType)ev.getContainer()).setRoot(false);
 					aggr.getAggregates().add(ev);
 
 					for (JsonElement jElem : lStorage)

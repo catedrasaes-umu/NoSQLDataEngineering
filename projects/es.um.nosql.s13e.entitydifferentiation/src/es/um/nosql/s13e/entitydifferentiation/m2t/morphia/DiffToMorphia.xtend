@@ -7,7 +7,7 @@ import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.PropertySpec
 import es.um.nosql.s13e.NoSQLSchema.Aggregate
 import es.um.nosql.s13e.NoSQLSchema.Association
 import es.um.nosql.s13e.NoSQLSchema.Attribute
-import es.um.nosql.s13e.NoSQLSchema.EntityClass
+import es.um.nosql.s13e.NoSQLSchema.EntityType
 import es.um.nosql.s13e.NoSQLSchema.PTuple
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType
 import es.um.nosql.s13e.NoSQLSchema.Property
@@ -76,7 +76,7 @@ class DiffToMorphia
     analyzer.getTopOrderEntities().forEach[e | Commons.WRITE_TO_FILE(outputDir, schemaFileName(e), genSchema(e))];
   }
 
-  private def schemaFileName(EntityClass entity)
+  private def schemaFileName(EntityType entity)
   {
     entity.name + ".java";
   }
@@ -84,7 +84,7 @@ class DiffToMorphia
   /**
    * This method generates the basic structure of the Java class.
    */
-  private def genSchema(EntityClass entity)
+  private def genSchema(EntityType entity)
   '''
     package «importRoute»;
 
@@ -101,7 +101,7 @@ class DiffToMorphia
   /**
    * To generate imports, we just check the conditions in which these imports will be used.
    */
-  private def genIncludes(EntityClass entity)
+  private def genIncludes(EntityType entity)
   {
     val collListUnionProperties = analyzer.getTypeListByPropertyName.get(entity).values;
     '''
@@ -129,19 +129,19 @@ class DiffToMorphia
     «ENDIF»
     «indexValGen.genIncludesForEntity(entity)»
 
-    «FOR EntityClass e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
+    «FOR EntityType e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
       import «importRoute».«e.name»;
     «ENDFOR»
     '''
   }
 		
-	protected def boolean entityHasMultipleCardinalityAttributes(EntityClass entity) {
+	protected def boolean entityHasMultipleCardinalityAttributes(EntityType entity) {
 		entity.variations.exists[ev | ev.properties.exists[p | (p instanceof Association &&
 		      ((p as Association).lowerBound !== 1 || (p as Association).upperBound !== 1))
 		      || (p instanceof Attribute && ((p as Attribute).type instanceof PTuple) || (p as Attribute).type instanceof PList || (p as Attribute).type instanceof PSet)]]
 	}
 		
-  protected def boolean entityReferencesObjectId(EntityClass entity) 
+  protected def boolean entityReferencesObjectId(EntityType entity) 
   {
 	entity.variations.exists[ev | ev.properties.exists[p | (p instanceof Attribute && (p as Attribute).type instanceof PrimitiveType && ((p as Attribute).type as PrimitiveType).name.equals("ObjectId")) ||
 		(p instanceof Reference && (p as Reference).originalType.equals("ObjectId"))]]
@@ -153,7 +153,7 @@ class DiffToMorphia
    * s.key stores a PropertySpec
    * s.value stores "required" or not
    */
-  private def genSpecs(EntityClass entity, EntityDiff spec)
+  private def genSpecs(EntityType entity, EntityDiff spec)
   '''
     «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false])
     	.reject[p | p.key.property.name.startsWith("_") && !p.key.property.name.equals("_id")]
@@ -182,7 +182,7 @@ class DiffToMorphia
    * If the reduction is possible, we generate the property as any other.
    * If not, a Union is generated.
    */
-  private def genCodeForTypeCheckProperty(EntityClass entity, Property property, boolean required)
+  private def genCodeForTypeCheckProperty(EntityType entity, Property property, boolean required)
   {
     val typeList = analyzer.getTypeListByPropertyName().get(entity).get(property.name)
     // On uniqueTypeList we removed duplicated property types, such as a String PrimitiveType and a Reference w originalType String.
@@ -236,7 +236,7 @@ class DiffToMorphia
 
   // @Union_«theTypes.join('_')»
   «IF required»@NotNull(message = "«theName» can't be null")«ENDIF»
-  «indexValGen.genValidatorsForField(list.head.eContainer.eContainer as EntityClass, theName)»
+  «indexValGen.genValidatorsForField(list.head.eContainer.eContainer as EntityType, theName)»
   @SuppressWarnings("unused")
   private Object «theName»;
   public Object get«theName.toFirstUpper»()
@@ -369,7 +369,7 @@ class DiffToMorphia
   '''
     @Embedded
     «IF required»@NotNull(message = "«aggr.name» can't be null")«ENDIF»
-    «indexValGen.genValidatorsForField(aggr.eContainer.eContainer as EntityClass, aggr.name)»
+    «indexValGen.genValidatorsForField(aggr.eContainer.eContainer as EntityType, aggr.name)»
     private «genTypeForProperty(aggr)» «aggr.name»;
     public «genTypeForProperty(aggr)» get«aggr.name.toFirstUpper»() {return this.«aggr.name»;}
     public void set«aggr.name.toFirstUpper»(«genTypeForProperty(aggr)» «aggr.name») {this.«aggr.name» = «aggr.name»;}
@@ -380,7 +380,7 @@ class DiffToMorphia
    */
   private def dispatch genTypeForProperty(Aggregate aggr)
   {
-    var entityName = (aggr.aggregates.get(0).eContainer as EntityClass).name;
+    var entityName = (aggr.aggregates.get(0).container as EntityType).name;
     if (aggr.lowerBound !== 1 || aggr.upperBound !== 1)
       entityName = "List<" + entityName + ">";
 
@@ -393,9 +393,9 @@ class DiffToMorphia
    */
   private def dispatch genCodeForProperty(Reference ref, boolean required)
   '''
-    @Reference«IF !Commons.IS_DBREF(ref)»(idOnly = true«indexValGen.genPopulateReferences(ref.eContainer.eContainer as EntityClass, ref.name)»)«ENDIF»
+    @Reference«IF !Commons.IS_DBREF(ref)»(idOnly = true«indexValGen.genPopulateReferences(ref.eContainer.eContainer as EntityType, ref.name)»)«ENDIF»
     «IF required»@NotNull(message = "«ref.name» can't be null")«ENDIF»
-    «indexValGen.genValidatorsForField(ref.eContainer.eContainer as EntityClass, ref.name)»
+    «indexValGen.genValidatorsForField(ref.eContainer.eContainer as EntityType, ref.name)»
     private «genTypeForProperty(ref)» «ref.name»;
     public «genTypeForProperty(ref)» get«ref.name.toFirstUpper»() {return this.«ref.name»;}
     public void set«ref.name.toFirstUpper»(«genTypeForProperty(ref)» «ref.name») {this.«ref.name» = «ref.name»;}
@@ -422,7 +422,7 @@ class DiffToMorphia
   '''
     «IF a.name.toLowerCase.equals("_id")»@Id«ELSE»@Property«ENDIF»
     «IF required»@NotNull(message = "«a.name» can't be null")«ENDIF»
-    «indexValGen.genValidatorsForField(a.eContainer.eContainer as EntityClass, a.name)»
+    «indexValGen.genValidatorsForField(a.eContainer.eContainer as EntityType, a.name)»
     private «genTypeForProperty(a)» «a.name»;
     public «genTypeForProperty(a)» get«a.name.toFirstUpper»() {return this.«a.name»;}
     public void set«a.name.toFirstUpper»(«genTypeForProperty(a)» «a.name») {this.«a.name» = «a.name»;}

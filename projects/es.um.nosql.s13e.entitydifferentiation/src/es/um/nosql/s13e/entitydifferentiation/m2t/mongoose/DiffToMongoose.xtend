@@ -10,7 +10,7 @@ import es.um.nosql.s13e.NoSQLSchema.Attribute
 import es.um.nosql.s13e.NoSQLSchema.PTuple
 import es.um.nosql.s13e.NoSQLSchema.Reference
 import es.um.nosql.s13e.NoSQLSchema.Aggregate
-import es.um.nosql.s13e.NoSQLSchema.EntityClass
+import es.um.nosql.s13e.NoSQLSchema.EntityType
 import java.util.Map
 import java.util.Comparator
 import es.um.nosql.s13e.NoSQLSchema.Property
@@ -76,7 +76,7 @@ class DiffToMongoose
   /**
    * This method generates the basic structure of the Javascript class.
    */
-  private def genSchema(EntityClass e) '''
+  private def genSchema(EntityType e) '''
     'use strict'
 
     var mongoose = require('mongoose');
@@ -94,7 +94,7 @@ class DiffToMongoose
   /**
    * To generate imports, we just recreate the routes of the imports to be used.
    */
-  private def genIncludes(EntityClass entity, EntityDiff spec) '''
+  private def genIncludes(EntityType entity, EntityDiff spec) '''
     «FOR e : analyzer.getEntityDeps().get(entity).sortWith(Comparator.comparing[e | analyzer.getTopOrderEntities().indexOf(e)])»
       var «e.name» = require('./«schemaFileName(e)»');
     «ENDFOR»
@@ -103,7 +103,7 @@ class DiffToMongoose
     «ENDIF»
   '''
 
-  private def schemaFileName(EntityClass e)
+  private def schemaFileName(EntityType e)
   {
     e.name + "Schema"
   }
@@ -113,7 +113,7 @@ class DiffToMongoose
    * s.key stores a PropertySpec
    * s.value stores "required" or not
    */
-  private def genSpecs(EntityClass e, EntityDiff spec)
+  private def genSpecs(EntityType e, EntityDiff spec)
   '''
     «FOR s : (spec.commonProps.map[cp | cp -> true] + spec.specificProps.map[sp | sp -> false])
       .reject[p | p.key.property.name.startsWith("_") && !p.key.property.name.equals("_id")]
@@ -132,7 +132,7 @@ class DiffToMongoose
       ])
   }
 
-  private def mongooseOptionsForPropertySpec(EntityClass e, PropertySpec spec, boolean required)
+  private def mongooseOptionsForPropertySpec(EntityType e, PropertySpec spec, boolean required)
   {
     val props = new HashMap<String,Object>()
 
@@ -193,7 +193,7 @@ class DiffToMongoose
   /**
    * Method used to check if a property needs type check, and call the neccesary method.
    */
-  private def genPropSpec(EntityClass e, PropertySpec ps)
+  private def genPropSpec(EntityType e, PropertySpec ps)
   {
     if (ps.needsTypeCheck)
       genCodeForTypeCheckProperty(e, ps.property)
@@ -207,7 +207,7 @@ class DiffToMongoose
    * If the reduction is possible, we generate the property as any other.
    * If not, a Union is generated.
    */
-  private def genCodeForTypeCheckProperty(EntityClass e, Property property)
+  private def genCodeForTypeCheckProperty(EntityType e, Property property)
   {
     val typeList = analyzer.getTypeListByPropertyName().get(e).get(property.name)
     // On uniqueTypeList we removed duplicated property types, such as a String PrimitiveType and a Reference w originalType String.
@@ -232,7 +232,7 @@ class DiffToMongoose
 
   private def dispatch reduceUnionProperty(Aggregate aggr, List<Property> uniqueTypeList, List<String> typeShortcutList)
   {
-    addToReduceLists(aggr, (aggr.aggregates.get(0).eContainer as EntityClass).name, uniqueTypeList, typeShortcutList);
+    addToReduceLists(aggr, (aggr.aggregates.get(0).container as EntityType).name, uniqueTypeList, typeShortcutList);
   }
 
   private def dispatch reduceUnionProperty(Reference ref, List<Property> uniqueTypeList, List<String> typeShortcutList)
@@ -307,7 +307,7 @@ class DiffToMongoose
    */
   private def aggregateType(Aggregate aggr)
   {
-    val entityName = (aggr.aggregates.get(0).eContainer as EntityClass).name
+    val entityName = (aggr.aggregates.get(0).eContainer as EntityType).name
 
     // Lower bound might be 0 or 1. In any of those cases we only need a value, not an array
     if (aggr.upperBound == 1 && aggr.lowerBound == 1)

@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.ECollections;
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.evolution.output.chart.TimestampLineChart;
@@ -52,7 +52,7 @@ public class OutputGen
   {
     new File(ConfigConstants.OUTPUT_FOLDER).mkdirs();
     String outputRoute = ConfigConstants.OUTPUT_FOLDER + schema.getName() + ".csv";
-    Map<EntityClass, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
+    Map<EntityType, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
 
     if (ConfigConstants.DEBUG)
       System.out.println(schema.getName() + " > Generating CSV file...");
@@ -68,7 +68,7 @@ public class OutputGen
 
     List<List<Object>> objects = new ArrayList<List<Object>>();
 
-    for (EntityClass entity : orderedMap.keySet())
+    for (EntityType entity : orderedMap.keySet())
       for (StructuralVariation variation : orderedMap.get(entity))
         objects.add(Arrays.asList(entity.getName(), variation.getVariationId(), variation.getCount(), variation.getFirstTimestamp(), variation.getLastTimestamp()));
 
@@ -95,12 +95,12 @@ public class OutputGen
   public void genConsole(NoSQLSchema schema)
   {
     StringBuilder result = new StringBuilder();
-    Map<EntityClass, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
+    Map<EntityType, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
 
     if (ConfigConstants.DEBUG)
       System.out.println(schema.getName() + " > Generating console output...");
 
-    for (EntityClass entity : orderedMap.keySet())
+    for (EntityType entity : orderedMap.keySet())
     {
       result.append("Entity: " + entity.getName() + "\n");
       for (StructuralVariation var : orderedMap.get(entity))
@@ -124,9 +124,9 @@ public class OutputGen
     if (ConfigConstants.DEBUG)
       System.out.println(schema.getName() + " > Drawing timestamp charts...");
 
-    Map<EntityClass, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
+    Map<EntityType, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
 
-    for (EntityClass entity : orderedMap.keySet())
+    for (EntityType entity : orderedMap.keySet())
     {
       if (ConfigConstants.DEBUG)
         System.out.println(schema.getName() + " > " + entity.getName() + " chart drawn.");
@@ -143,9 +143,9 @@ public class OutputGen
     if (ConfigConstants.DEBUG)
       System.out.println(schema.getName() + " > Creating timestamp chart images...");
 
-    Map<EntityClass, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
+    Map<EntityType, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
 
-    for (EntityClass entity : orderedMap.keySet())
+    for (EntityType entity : orderedMap.keySet())
     {
       if (ConfigConstants.DEBUG)
         System.out.println(schema.getName() + " > " + entity.getName() + " chart created.");
@@ -157,11 +157,11 @@ public class OutputGen
       System.out.println(schema.getName() + " > Finished creating charts.");
   }
 
-  private Map<EntityClass, List<StructuralVariation>> genOrderedMap(NoSQLSchema schema)
+  private Map<EntityType, List<StructuralVariation>> genOrderedMap(NoSQLSchema schema)
   {
-    Map<EntityClass, List<StructuralVariation>> result = new HashMap<EntityClass, List<StructuralVariation>>();
+    Map<EntityType, List<StructuralVariation>> result = new HashMap<EntityType, List<StructuralVariation>>();
 
-    for (EntityClass entity : schema.getEntities())
+    for (EntityType entity : schema.getEntities())
     {
       ECollections.sort(entity.getVariations(), (var1, var2) -> Integer.compare(var1.getVariationId(), var2.getVariationId()));
       result.put(entity, entity.getVariations());

@@ -3,12 +3,12 @@ package es.um.nosql.s13e.util;
 import java.io.File;
 import java.util.stream.Collectors;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Property;
-import es.um.nosql.s13e.NoSQLSchema.ReferenceClass;
+import es.um.nosql.s13e.NoSQLSchema.RelationshipType;
 
 public class NoSQLSchemaPrinter
 {
@@ -46,51 +46,51 @@ public class NoSQLSchemaPrinter
 
     result.append("NoSQLSchema name: " + nosqlschema.getName() + ENDL);
 
-    for (ReferenceClass ref : nosqlschema.getRefClasses())
-      result.append(printPretty(ref, TAB));
+    for (RelationshipType rel : nosqlschema.getRelationships())
+      result.append(printPretty(rel, TAB));
 
-    for (EntityClass entity : nosqlschema.getEntities())
+    for (EntityType entity : nosqlschema.getEntities())
       result.append(printPretty(entity, TAB));
 
     return result.toString();
   }
 
-  public String printPretty(ReferenceClass ref)
+  public String printPretty(RelationshipType rel)
   {
-    return printPretty(ref, "");
+    return printPretty(rel, "");
   }
 
-  private String printPretty(ReferenceClass ref, String defTabs)
+  private String printPretty(RelationshipType rel, String defTabs)
   {
-    if (ref == null)
+    if (rel == null)
       return null;
 
     StringBuilder result = new StringBuilder();
 
-    result.append(defTabs + "ReferenceClass name: " + ref.getName() + ENDL);
+    result.append(defTabs + "RelationshipType name: " + rel.getName() + ENDL);
 
-    if (!ref.getParents().isEmpty())
-      result.append(defTabs + "parents: " + ref.getParents().stream().map(parent -> parent.getName()).collect(Collectors.joining(", ")));
+    if (!rel.getParents().isEmpty())
+      result.append(defTabs + "parents: " + rel.getParents().stream().map(parent -> parent.getName()).collect(Collectors.joining(", ")));
 
-    for (StructuralVariation stVariation : ref.getVariations())
+    for (StructuralVariation stVariation : rel.getVariations())
       result.append(printPretty(stVariation, defTabs + TAB));
 
     return result.toString();
   }
 
-  public String printPretty(EntityClass entity)
+  public String printPretty(EntityType entity)
   {
     return printPretty(entity, "");
   }
 
-  private String printPretty(EntityClass entity, String defTabs)
+  private String printPretty(EntityType entity, String defTabs)
   {
     if (entity == null)
       return null;
 
     StringBuilder result = new StringBuilder();
 
-    result.append(defTabs + "EntityClass name: " + entity.getName() + (entity.isRoot() ? " (root)" : "") + ENDL);
+    result.append(defTabs + "EntityType name: " + entity.getName() + (entity.isRoot() ? " (root)" : "") + ENDL);
 
     if (!entity.getParents().isEmpty())
       result.append(defTabs + "parents: " + entity.getParents().stream().map(parent -> parent.getName()).collect(Collectors.joining(", ")));

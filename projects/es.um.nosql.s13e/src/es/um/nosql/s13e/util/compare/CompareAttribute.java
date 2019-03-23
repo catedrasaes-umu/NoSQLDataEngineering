@@ -14,6 +14,6 @@ public class CompareAttribute extends Comparator<Attribute>
       return true;
 
     return (a1.getType() == null && a2.getType() == null)
-        || new CompareType().compare(a1.getType(), a2.getType());
+        || new CompareDataType().compare(a1.getType(), a2.getType());
   }
 }

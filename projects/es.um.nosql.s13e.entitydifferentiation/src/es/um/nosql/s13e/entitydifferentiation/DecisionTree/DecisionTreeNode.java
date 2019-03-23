@@ -21,8 +21,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model abstract="true"
  * @generated
  */
-public interface DecisionTreeNode extends EObject
-{
+public interface DecisionTreeNode extends EObject {
   /**
    * Returns the value of the '<em><b>Yes Branch</b></em>' containment reference.
    * <!-- begin-user-doc -->

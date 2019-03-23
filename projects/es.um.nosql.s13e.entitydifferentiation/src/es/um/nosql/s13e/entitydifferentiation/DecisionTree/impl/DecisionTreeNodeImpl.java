@@ -28,8 +28,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public abstract class DecisionTreeNodeImpl extends MinimalEObjectImpl.Container implements DecisionTreeNode
-{
+public abstract class DecisionTreeNodeImpl extends MinimalEObjectImpl.Container implements DecisionTreeNode {
   /**
    * The cached value of the '{@link #getYesBranch() <em>Yes Branch</em>}' containment reference.
    * <!-- begin-user-doc -->
@@ -55,8 +54,7 @@ public abstract class DecisionTreeNodeImpl extends MinimalEObjectImpl.Container 
    * <!-- end-user-doc -->
    * @generated
    */
-  protected DecisionTreeNodeImpl()
-  {
+  protected DecisionTreeNodeImpl() {
     super();
   }
 
@@ -66,8 +64,7 @@ public abstract class DecisionTreeNodeImpl extends MinimalEObjectImpl.Container 
    * @generated
    */
   @Override
-  protected EClass eStaticClass()
-  {
+  protected EClass eStaticClass() {
     return DecisionTreePackage.Literals.DECISION_TREE_NODE;
   }
 
@@ -76,8 +73,8 @@ public abstract class DecisionTreeNodeImpl extends MinimalEObjectImpl.Container 
    * <!-- end-user-doc -->
    * @generated
    */
-  public DecisionTreeNode getYesBranch()
-  {
+  @Override
+  public DecisionTreeNode getYesBranch() {
     return yesBranch;
   }
 
@@ -86,12 +83,10 @@ public abstract class DecisionTreeNodeImpl extends MinimalEObjectImpl.Container 
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetYesBranch(DecisionTreeNode newYesBranch, NotificationChain msgs)
-  {
+  public NotificationChain basicSetYesBranch(DecisionTreeNode newYesBranch, NotificationChain msgs) {
     DecisionTreeNode oldYesBranch = yesBranch;
     yesBranch = newYesBranch;
-    if (eNotificationRequired())
-    {
+    if (eNotificationRequired()) {
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DecisionTreePackage.DECISION_TREE_NODE__YES_BRANCH, oldYesBranch, newYesBranch);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
@@ -103,10 +98,9 @@ public abstract class DecisionTreeNodeImpl extends MinimalEObjectImpl.Container 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setYesBranch(DecisionTreeNode newYesBranch)
-  {
-    if (newYesBranch != yesBranch)
-    {
+  @Override
+  public void setYesBranch(DecisionTreeNode newYesBranch) {
+    if (newYesBranch != yesBranch) {
       NotificationChain msgs = null;
       if (yesBranch != null)
         msgs = ((InternalEObject)yesBranch).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DecisionTreePackage.DECISION_TREE_NODE__YES_BRANCH, null, msgs);
@@ -124,8 +118,8 @@ public abstract class DecisionTreeNodeImpl extends MinimalEObjectImpl.Container 
    * <!-- end-user-doc -->
    * @generated
    */
-  public DecisionTreeNode getNoBranch()
-  {
+  @Override
+  public DecisionTreeNode getNoBranch() {
     return noBranch;
   }
 
@@ -134,12 +128,10 @@ public abstract class DecisionTreeNodeImpl extends MinimalEObjectImpl.Container 
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetNoBranch(DecisionTreeNode newNoBranch, NotificationChain msgs)
-  {
+  public NotificationChain basicSetNoBranch(DecisionTreeNode newNoBranch, NotificationChain msgs) {
     DecisionTreeNode oldNoBranch = noBranch;
     noBranch = newNoBranch;
-    if (eNotificationRequired())
-    {
+    if (eNotificationRequired()) {
       ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DecisionTreePackage.DECISION_TREE_NODE__NO_BRANCH, oldNoBranch, newNoBranch);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
@@ -151,10 +143,9 @@ public abstract class DecisionTreeNodeImpl extends MinimalEObjectImpl.Container 
    * <!-- end-user-doc -->
    * @generated
    */
-  public void setNoBranch(DecisionTreeNode newNoBranch)
-  {
-    if (newNoBranch != noBranch)
-    {
+  @Override
+  public void setNoBranch(DecisionTreeNode newNoBranch) {
+    if (newNoBranch != noBranch) {
       NotificationChain msgs = null;
       if (noBranch != null)
         msgs = ((InternalEObject)noBranch).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DecisionTreePackage.DECISION_TREE_NODE__NO_BRANCH, null, msgs);
@@ -173,10 +164,8 @@ public abstract class DecisionTreeNodeImpl extends MinimalEObjectImpl.Container 
    * @generated
    */
   @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    switch (featureID) {
       case DecisionTreePackage.DECISION_TREE_NODE__YES_BRANCH:
         return basicSetYesBranch(null, msgs);
       case DecisionTreePackage.DECISION_TREE_NODE__NO_BRANCH:
@@ -191,10 +180,8 @@ public abstract class DecisionTreeNodeImpl extends MinimalEObjectImpl.Container 
    * @generated
    */
   @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
+  public Object eGet(int featureID, boolean resolve, boolean coreType) {
+    switch (featureID) {
       case DecisionTreePackage.DECISION_TREE_NODE__YES_BRANCH:
         return getYesBranch();
       case DecisionTreePackage.DECISION_TREE_NODE__NO_BRANCH:
@@ -209,10 +196,8 @@ public abstract class DecisionTreeNodeImpl extends MinimalEObjectImpl.Container 
    * @generated
    */
   @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
+  public void eSet(int featureID, Object newValue) {
+    switch (featureID) {
       case DecisionTreePackage.DECISION_TREE_NODE__YES_BRANCH:
         setYesBranch((DecisionTreeNode)newValue);
         return;
@@ -229,10 +214,8 @@ public abstract class DecisionTreeNodeImpl extends MinimalEObjectImpl.Container 
    * @generated
    */
   @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
+  public void eUnset(int featureID) {
+    switch (featureID) {
       case DecisionTreePackage.DECISION_TREE_NODE__YES_BRANCH:
         setYesBranch((DecisionTreeNode)null);
         return;
@@ -249,10 +232,8 @@ public abstract class DecisionTreeNodeImpl extends MinimalEObjectImpl.Container 
    * @generated
    */
   @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
+  public boolean eIsSet(int featureID) {
+    switch (featureID) {
       case DecisionTreePackage.DECISION_TREE_NODE__YES_BRANCH:
         return yesBranch != null;
       case DecisionTreePackage.DECISION_TREE_NODE__NO_BRANCH:

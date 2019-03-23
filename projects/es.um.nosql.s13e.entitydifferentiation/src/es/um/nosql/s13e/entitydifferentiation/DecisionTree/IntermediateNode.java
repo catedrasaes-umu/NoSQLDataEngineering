@@ -19,8 +19,7 @@ package es.um.nosql.s13e.entitydifferentiation.DecisionTree;
  * @model
  * @generated
  */
-public interface IntermediateNode extends DecisionTreeNode
-{
+public interface IntermediateNode extends DecisionTreeNode {
   /**
    * Returns the value of the '<em><b>Checked Property</b></em>' containment reference.
    * <!-- begin-user-doc -->

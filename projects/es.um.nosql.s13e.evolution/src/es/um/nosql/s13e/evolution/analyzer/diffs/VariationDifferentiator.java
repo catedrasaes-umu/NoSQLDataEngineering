@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.Property;
@@ -36,7 +36,7 @@ public class VariationDifferentiator
 
   public void analyze(NoSQLSchema schema)
   {
-    EntityClass entity = schema.getEntities().stream().filter(e -> e.getName().equals("Users")).findFirst().get();
+    EntityType entity = schema.getEntities().stream().filter(e -> e.getName().equals("Users")).findFirst().get();
 
     for (int i = 1; i < entity.getVariations().size(); i++)
       getDifferences(entity.getVariations().get(i - 1), entity.getVariations().get(i));

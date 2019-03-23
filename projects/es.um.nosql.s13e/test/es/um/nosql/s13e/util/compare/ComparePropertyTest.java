@@ -8,7 +8,7 @@ import org.junit.Test;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.Null;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
@@ -154,7 +154,7 @@ public class ComparePropertyTest
 
     if (entityName != null)
     {
-      EntityClass entity = NoSQLSchemaFactory.eINSTANCE.createEntityClass();
+      EntityType entity = NoSQLSchemaFactory.eINSTANCE.createEntityType();
       entity.setName(entityName);
       theRef.setRefsTo(entity);
     }
@@ -163,7 +163,7 @@ public class ComparePropertyTest
     {
       StructuralVariation var = NoSQLSchemaFactory.eINSTANCE.createStructuralVariation();
       var.setVariationId(varId);
-      theRef.setFeatures(var);
+      theRef.getFeatures().add(var);
     }
 
     return theRef;

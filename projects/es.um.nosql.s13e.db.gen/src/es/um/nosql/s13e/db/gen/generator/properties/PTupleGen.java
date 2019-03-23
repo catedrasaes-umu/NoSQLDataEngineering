@@ -7,7 +7,7 @@ import com.fasterxml.jackson.databind.node.JsonNodeFactory;
 
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.PTuple;
-import es.um.nosql.s13e.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.DataType;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.BooleanGen;
 import es.um.nosql.s13e.db.gen.generator.primitivetypes.NumberGen;
 import es.um.nosql.s13e.db.gen.util.constants.ConfigConstants;
@@ -26,11 +26,11 @@ public class PTupleGen
     boolGen = BooleanGen.GET_INSTANCE();
   }
 
-  public ArrayNode genPTuple(List<Type> elements)
+  public ArrayNode genPTuple(List<DataType> elements)
   {
     ArrayNode result = JsonNodeFactory.instance.arrayNode();
 
-    for (Type type : elements)
+    for (DataType type : elements)
       for (int i = 0; i < numGen.getInclusiveRandom(ConfigConstants.GET_TUPLE_MIN_TUPLE_ELEMENTS(), ConfigConstants.GET_TUPLE_MAX_TUPLE_ELEMENTS()); i++)
         if (type instanceof PrimitiveType)
         {

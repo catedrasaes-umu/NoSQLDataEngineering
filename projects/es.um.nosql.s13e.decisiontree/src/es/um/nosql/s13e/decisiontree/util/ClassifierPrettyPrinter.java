@@ -8,7 +8,7 @@ import java.util.function.Function;
 
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDiff;
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDifferentiation;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.decisiontree.util.constants.ConfigConstants;
 import weka.core.Attribute;
 import weka.core.Instances;
@@ -31,12 +31,12 @@ public class ClassifierPrettyPrinter
     System.out.println(dataset);
   }
 
-  public void printModelTree(EntityClass entity, ModelNode tree)
+  public void printModelTree(EntityType entity, ModelNode tree)
   {
     printModelTree(entity, tree, 0);
   }
 
-  private void printModelTree(EntityClass entity, ModelNode tree, int level)
+  private void printModelTree(EntityType entity, ModelNode tree, int level)
   {
     String indent = String.join("", Collections.nCopies(level, "  "));
 

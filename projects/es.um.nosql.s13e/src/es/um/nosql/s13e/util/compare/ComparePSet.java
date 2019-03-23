@@ -14,6 +14,6 @@ public class ComparePSet extends Comparator<PSet>
       return true;
 
     return (s1.getElementType() == null && s2.getElementType() == null)
-        || new CompareType().compare(s1.getElementType(), s2.getElementType());
+        || new CompareDataType().compare(s1.getElementType(), s2.getElementType());
   }
 }

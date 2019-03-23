@@ -26,8 +26,7 @@ import org.eclipse.emf.ecore.impl.EPackageImpl;
  * <!-- end-user-doc -->
  * @generated
  */
-public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTreePackage
-{
+public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTreePackage {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -85,8 +84,7 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * @see #init()
    * @generated
    */
-  private DecisionTreePackageImpl()
-  {
+  private DecisionTreePackageImpl() {
     super(eNS_URI, DecisionTreeFactory.eINSTANCE);
   }
 
@@ -109,8 +107,7 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * @see #initializePackageContents()
    * @generated
    */
-  public static DecisionTreePackage init()
-  {
+  public static DecisionTreePackage init() {
     if (isInited) return (DecisionTreePackage)EPackage.Registry.INSTANCE.getEPackage(DecisionTreePackage.eNS_URI);
 
     // Obtain or create and register package
@@ -141,8 +138,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDecisionTreeNode()
-  {
+  @Override
+  public EClass getDecisionTreeNode() {
     return decisionTreeNodeEClass;
   }
 
@@ -151,8 +148,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDecisionTreeNode_YesBranch()
-  {
+  @Override
+  public EReference getDecisionTreeNode_YesBranch() {
     return (EReference)decisionTreeNodeEClass.getEStructuralFeatures().get(0);
   }
 
@@ -161,8 +158,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDecisionTreeNode_NoBranch()
-  {
+  @Override
+  public EReference getDecisionTreeNode_NoBranch() {
     return (EReference)decisionTreeNodeEClass.getEStructuralFeatures().get(1);
   }
 
@@ -171,8 +168,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getLeafNode()
-  {
+  @Override
+  public EClass getLeafNode() {
     return leafNodeEClass;
   }
 
@@ -181,8 +178,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getLeafNode_IdentifiedVariation()
-  {
+  @Override
+  public EReference getLeafNode_IdentifiedVariation() {
     return (EReference)leafNodeEClass.getEStructuralFeatures().get(0);
   }
 
@@ -191,8 +188,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getIntermediateNode()
-  {
+  @Override
+  public EClass getIntermediateNode() {
     return intermediateNodeEClass;
   }
 
@@ -201,8 +198,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getIntermediateNode_CheckedProperty()
-  {
+  @Override
+  public EReference getIntermediateNode_CheckedProperty() {
     return (EReference)intermediateNodeEClass.getEStructuralFeatures().get(0);
   }
 
@@ -211,8 +208,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDecisionTreeForEntity()
-  {
+  @Override
+  public EClass getDecisionTreeForEntity() {
     return decisionTreeForEntityEClass;
   }
 
@@ -221,8 +218,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDecisionTreeForEntity_Root()
-  {
+  @Override
+  public EReference getDecisionTreeForEntity_Root() {
     return (EReference)decisionTreeForEntityEClass.getEStructuralFeatures().get(0);
   }
 
@@ -231,8 +228,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDecisionTreeForEntity_Entity()
-  {
+  @Override
+  public EReference getDecisionTreeForEntity_Entity() {
     return (EReference)decisionTreeForEntityEClass.getEStructuralFeatures().get(1);
   }
 
@@ -241,8 +238,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getDecisionTrees()
-  {
+  @Override
+  public EClass getDecisionTrees() {
     return decisionTreesEClass;
   }
 
@@ -251,8 +248,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getDecisionTrees_Trees()
-  {
+  @Override
+  public EReference getDecisionTrees_Trees() {
     return (EReference)decisionTreesEClass.getEStructuralFeatures().get(0);
   }
 
@@ -261,8 +258,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getDecisionTrees_Name()
-  {
+  @Override
+  public EAttribute getDecisionTrees_Name() {
     return (EAttribute)decisionTreesEClass.getEStructuralFeatures().get(1);
   }
 
@@ -271,8 +268,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getPropertySpec2()
-  {
+  @Override
+  public EClass getPropertySpec2() {
     return propertySpec2EClass;
   }
 
@@ -281,8 +278,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getPropertySpec2_NeedsTypeCheck()
-  {
+  @Override
+  public EAttribute getPropertySpec2_NeedsTypeCheck() {
     return (EAttribute)propertySpec2EClass.getEStructuralFeatures().get(0);
   }
 
@@ -291,8 +288,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getPropertySpec2_Property()
-  {
+  @Override
+  public EReference getPropertySpec2_Property() {
     return (EReference)propertySpec2EClass.getEStructuralFeatures().get(1);
   }
 
@@ -301,8 +298,8 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public DecisionTreeFactory getDecisionTreeFactory()
-  {
+  @Override
+  public DecisionTreeFactory getDecisionTreeFactory() {
     return (DecisionTreeFactory)getEFactoryInstance();
   }
 
@@ -320,8 +317,7 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public void createPackageContents()
-  {
+  public void createPackageContents() {
     if (isCreated) return;
     isCreated = true;
 
@@ -363,8 +359,7 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
    * <!-- end-user-doc -->
    * @generated
    */
-  public void initializePackageContents()
-  {
+  public void initializePackageContents() {
     if (isInitialized) return;
     isInitialized = true;
 
@@ -397,7 +392,7 @@ public class DecisionTreePackageImpl extends EPackageImpl implements DecisionTre
 
     initEClass(decisionTreeForEntityEClass, DecisionTreeForEntity.class, "DecisionTreeForEntity", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDecisionTreeForEntity_Root(), this.getDecisionTreeNode(), null, "root", null, 0, 1, DecisionTreeForEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getDecisionTreeForEntity_Entity(), theNoSQLSchemaPackage.getEntityClass(), null, "entity", null, 1, 1, DecisionTreeForEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDecisionTreeForEntity_Entity(), theNoSQLSchemaPackage.getEntityType(), null, "entity", null, 1, 1, DecisionTreeForEntity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(decisionTreesEClass, DecisionTrees.class, "DecisionTrees", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getDecisionTrees_Trees(), this.getDecisionTreeForEntity(), null, "trees", null, 0, -1, DecisionTrees.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

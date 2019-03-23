@@ -14,6 +14,6 @@ public class ComparePMap extends Comparator<PMap>
       return true;
 
     return ((m1.getKeyType() == null && m2.getKeyType() == null) || new ComparePrimitiveType().compare(m1.getKeyType(), m2.getKeyType()))
-        && ((m1.getValueType() == null && m2.getValueType() == null) || new CompareType().compare(m1.getValueType(), m2.getValueType()));
+        && ((m1.getValueType() == null && m2.getValueType() == null) || new CompareDataType().compare(m1.getValueType(), m2.getValueType()));
   }
 }

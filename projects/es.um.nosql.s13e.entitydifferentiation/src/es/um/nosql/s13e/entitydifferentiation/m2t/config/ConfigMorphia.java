@@ -3,7 +3,7 @@ package es.um.nosql.s13e.entitydifferentiation.m2t.config;
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.entitydifferentiation.m2t.config.pojo.ConfigEntity;
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.EntityDifferentiation;
 
@@ -66,7 +66,7 @@ public class ConfigMorphia extends BaseConfig
 
     for (ConfigEntity e : getEntities())
     {
-      EntityClass schemaE =
+      EntityType schemaE =
     		  diff.getSchema().getEntities().stream()
     		    .filter(innerE -> innerE.getName().equals(e.getName())).findFirst()
     		    .orElseThrow(() -> 

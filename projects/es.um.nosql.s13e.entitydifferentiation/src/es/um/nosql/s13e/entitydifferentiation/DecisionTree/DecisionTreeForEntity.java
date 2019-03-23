@@ -2,7 +2,7 @@
  */
 package es.um.nosql.s13e.entitydifferentiation.DecisionTree;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 
 import org.eclipse.emf.ecore.EObject;
 
@@ -23,8 +23,7 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface DecisionTreeForEntity extends EObject
-{
+public interface DecisionTreeForEntity extends EObject {
   /**
    * Returns the value of the '<em><b>Root</b></em>' containment reference.
    * <!-- begin-user-doc -->
@@ -60,12 +59,12 @@ public interface DecisionTreeForEntity extends EObject
    * </p>
    * <!-- end-user-doc -->
    * @return the value of the '<em>Entity</em>' reference.
-   * @see #setEntity(EntityClass)
+   * @see #setEntity(EntityType)
    * @see es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTreePackage#getDecisionTreeForEntity_Entity()
    * @model required="true"
    * @generated
    */
-  EntityClass getEntity();
+  EntityType getEntity();
 
   /**
    * Sets the value of the '{@link es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTreeForEntity#getEntity <em>Entity</em>}' reference.
@@ -75,6 +74,6 @@ public interface DecisionTreeForEntity extends EObject
    * @see #getEntity()
    * @generated
    */
-  void setEntity(EntityClass value);
+  void setEntity(EntityType value);
 
 } // DecisionTreeForEntity

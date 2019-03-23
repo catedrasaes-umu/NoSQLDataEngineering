@@ -2,6 +2,7 @@ package es.um.nosql.s13e.json2dbschema.m2m;
 
 import java.io.File;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -9,15 +10,15 @@ import java.util.stream.Stream;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.Classifier;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.SchemaType;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.NoSQLSchema.PMap;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
-import es.um.nosql.s13e.NoSQLSchema.ReferenceClass;
+import es.um.nosql.s13e.NoSQLSchema.RelationshipType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.json2dbschema.util.inflector.Inflector;
 import es.um.nosql.s13e.util.ModelLoader;
@@ -49,15 +50,15 @@ public class NoSQLSchemaToDocumentDb
 
   public void adaptToDocumentDb(NoSQLSchema schema)
   {
-    List<ReferenceClass> refClasses = new ArrayList<ReferenceClass>();
+    List<RelationshipType> refClasses = new ArrayList<RelationshipType>();
     List<Attribute> mapAttributes = new ArrayList<Attribute>();
 
-    for (Classifier classifier : Stream.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
+    for (SchemaType schemaT : Stream.concat(schema.getEntities().stream(), schema.getRelationships().stream()).collect(Collectors.toList()))
     {
-      if (classifier instanceof ReferenceClass)
-        refClasses.add((ReferenceClass)classifier);
+      if (schemaT instanceof RelationshipType)
+        refClasses.add((RelationshipType)schemaT);
 
-      for (StructuralVariation var : classifier.getVariations())
+      for (StructuralVariation var : schemaT.getVariations())
       {
         mapAttributes.addAll(var.getProperties().stream().filter(prop ->
         {
@@ -66,89 +67,91 @@ public class NoSQLSchemaToDocumentDb
       }
     }
 
-    refClasses.forEach(refClass -> {refClassToEntityClass(schema, refClass);});
+    refClasses.forEach(refClass -> {relTypeToEntityType(schema, refClass);});
     mapAttributes.forEach(attr -> {removePMap(schema, attr);});
   }
 
   /**
-   * This method translates every ReferenceClass on the current schema to an equivalent EntityClass.
-   * The new EntityClass will contain every variation that the previous ReferenceClass used to have,
-   * so any Reference pointing to a ReferenceClass variation will now point to an equivalent EntityClass variation.
+   * This method translates every RelationshipType on the current schema to an equivalent EntityType.
+   * The new EntityType will contain every variation that the previous RelationshipType used to have,
+   * so any Reference pointing to a RelationshipType variation will now point to an equivalent EntityType variation.
    * @param schema The schema being processed
-   * @param refClass The ReferenceClass being removed
+   * @param relClass The RelationshipType being removed
    */
-  private void refClassToEntityClass(NoSQLSchema schema, ReferenceClass refClass)
+  private void relTypeToEntityType(NoSQLSchema schema, RelationshipType relType)
   {
     CompareStructuralVariation comparer = new CompareStructuralVariation();
     List<Reference> lReferences = new ArrayList<Reference>();
-    String entityName = REF_ENTITY_PREFIX + Inflector.getInstance().capitalize(refClass.getName());
+    String entityName = REF_ENTITY_PREFIX + Inflector.getInstance().capitalize(relType.getName());
 
     // Get in a list each reference featuring a variation of the refClass
-    for (Classifier classifier : Stream.concat(schema.getEntities().stream(), schema.getRefClasses().stream()).collect(Collectors.toList()))
-      for (StructuralVariation var : classifier.getVariations())
+    for (SchemaType schemaType : Stream.concat(schema.getEntities().stream(), schema.getRelationships().stream()).collect(Collectors.toList()))
+      for (StructuralVariation var : schemaType.getVariations())
         lReferences.addAll(var.getProperties().stream()
-            .filter(prop -> {return prop instanceof Reference && refClass.getVariations().contains(((Reference)prop).getFeatures());})
+            .filter(prop -> {return prop instanceof Reference && !Collections.disjoint(relType.getVariations(), ((Reference)prop).getFeatures());})
             .map(prop -> (Reference)prop)
             .collect(Collectors.toList()));
 
     for (Reference ref : lReferences)
     {
-      // We take the featured StructuralVariation and add a new Reference field.
-      StructuralVariation var = ref.getFeatures();
-      Reference newRef = factory.createReference();
-      newRef.setName(ref.getName());
-      newRef.setLowerBound(ref.getLowerBound());
-      newRef.setUpperBound(ref.getUpperBound());
-      newRef.setOpposite(ref.getOpposite());
-      newRef.setOriginalType(ref.getOriginalType());
-      newRef.setRefsTo(ref.getRefsTo());
-      var.getProperties().add(newRef); // What to do if it already exists a property named as the ref?
-
-      if (!var.getProperties().stream().anyMatch(prop -> prop.getName().equals("_id")))
+      for (StructuralVariation var : ref.getFeatures())
       {
-        Attribute idAttr = factory.createAttribute();
-        idAttr.setName("_id");
-        PrimitiveType pType = factory.createPrimitiveType();
-        pType.setName("ObjectId");
-        idAttr.setType(pType);
-        var.getProperties().add(idAttr);
-      }
+        // We take the featured StructuralVariation and add a new Reference field.
+        Reference newRef = factory.createReference();
+        newRef.setName(ref.getName());
+        newRef.setLowerBound(ref.getLowerBound());
+        newRef.setUpperBound(ref.getUpperBound());
+        newRef.setOpposite(ref.getOpposite());
+        newRef.setOriginalType(ref.getOriginalType());
+        newRef.setRefsTo(ref.getRefsTo());
+        var.getProperties().add(newRef); // What to do if it already exists a property named as the ref?
 
-      Attribute theId = (Attribute)var.getProperties().stream().filter(prop -> prop.getName().equals("_id")).findFirst().get();
-      String idType = ((PrimitiveType)theId.getType()).getName();
+        if (!var.getProperties().stream().anyMatch(prop -> prop.getName().equals("_id")))
+        {
+          Attribute idAttr = factory.createAttribute();
+          idAttr.setName("_id");
+          PrimitiveType pType = factory.createPrimitiveType();
+          pType.setName("ObjectId");
+          idAttr.setType(pType);
+          var.getProperties().add(idAttr);
+        }
+
+        Attribute theId = (Attribute)var.getProperties().stream().filter(prop -> prop.getName().equals("_id")).findFirst().get();
+        String idType = ((PrimitiveType)theId.getType()).getName();
+        ref.setOriginalType(idType);
+      }
 
       // We modify the current reference to a new cardinality
       ref.setLowerBound(1);
       ref.setUpperBound(1);
-      ref.setOriginalType(idType);
-      ref.setFeatures(null);
+      ref.getFeatures().clear();
     }
 
-    // Create the new EntityClass from a ReferenceClass
-    EntityClass refEntity = null;
-    Optional<EntityClass> optEntity = schema.getEntities().stream().filter(entity -> {return entity.getName().equals(entityName);}).findFirst();
+    // Create the new EntityType from a RelationshipType
+    EntityType refEntity = null;
+    Optional<EntityType> optEntity = schema.getEntities().stream().filter(entity -> {return entity.getName().equals(entityName);}).findFirst();
 
     if (optEntity.isPresent())
       refEntity = optEntity.get();
     else
     {
-      refEntity = factory.createEntityClass();
+      refEntity = factory.createEntityType();
       refEntity.setName(entityName);
       refEntity.setRoot(false);
-      refEntity.getParents().addAll(refClass.getParents());
+      refEntity.getParents().addAll(relType.getParents());
       schema.getEntities().add(refEntity);
     }
 
-    // We also modify the current references to reference the new EntityClass
+    // We also modify the current references to reference the new EntityType
     for (Reference ref : lReferences)
       ref.setRefsTo(refEntity);
 
-    // If an EntityClass with the same name as a ReferenceClass existed, we add the variations but take care of the variationId identifier.
+    // If an EntityType with the same name as a RelationshipType existed, we add the variations but take care of the variationId identifier.
     int varSize = refEntity.getVariations().size();
     if (varSize != 0)
     {
       List<StructuralVariation> varsToMove = new ArrayList<StructuralVariation>();
-      for (StructuralVariation var : refClass.getVariations())
+      for (StructuralVariation var : relType.getVariations())
         if (refEntity.getVariations().stream().noneMatch(innerVar -> {return comparer.compare(innerVar, var);}))
         {
           var.setVariationId(++varSize);
@@ -157,9 +160,9 @@ public class NoSQLSchemaToDocumentDb
       refEntity.getVariations().addAll(varsToMove);
     }
     else
-      refEntity.getVariations().addAll(refClass.getVariations());
+      refEntity.getVariations().addAll(relType.getVariations());
 
-    schema.getRefClasses().remove(refClass);
+    schema.getRelationships().remove(relType);
   }
 
   /**
@@ -178,14 +181,14 @@ public class NoSQLSchemaToDocumentDb
     PMap attrMap = (PMap)attr.getType();
 
     // First of all check if an entity with the same construction already exists. If not, just create it.
-    EntityClass mapEntity = null;
-    Optional<EntityClass> optEntity = schema.getEntities().stream().filter(entity -> {return entity.getName().equals(entityName);}).findFirst();
+    EntityType mapEntity = null;
+    Optional<EntityType> optEntity = schema.getEntities().stream().filter(entity -> {return entity.getName().equals(entityName);}).findFirst();
 
     if (optEntity.isPresent())
       mapEntity = optEntity.get();
     else
     {
-      mapEntity = factory.createEntityClass();
+      mapEntity = factory.createEntityType();
       mapEntity.setName(entityName);
       mapEntity.setRoot(false);
       schema.getEntities().add(mapEntity);

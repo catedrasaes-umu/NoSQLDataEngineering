@@ -11,13 +11,12 @@ import org.apache.commons.lang3.tuple.Pair;
 import Variation_Diff.Variation_DiffFactory;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 import es.um.nosql.s13e.NoSQLSchema.PTuple;
-import es.um.nosql.s13e.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.DataType;
 import data.utils.serializer.NoSQLSchemaSerializer;
 import Variation_Diff.HasField;
 import Variation_Diff.HasNotField;
@@ -73,7 +72,7 @@ public class M2M
 		differenceModel.setName(baseModel.getName());
 		Map<StructuralVariation, List<Pair<String, FieldType>>> evMap;
 
-		for (EntityClass entity : baseModel.getEntities())
+		for (es.um.nosql.s13e.NoSQLSchema.EntityType entity : baseModel.getEntities())
 		{
 			evMap = getEVPropertiesMap(entity);
 
@@ -91,15 +90,15 @@ public class M2M
 	}
 
 	/**
-	 * Method used to get a map in which properties (name, value) are associated to each StructuralVariation of an EntityClass.
-	 * @param baseEntityClass The EntityClass containing the StructuralVariations to be mapped.
+	 * Method used to get a map in which properties (name, value) are associated to each StructuralVariation of an EntityType.
+	 * @param baseEntityType The EntityType containing the StructuralVariations to be mapped.
 	 * @return A Map<StructuralVariation, List<Pair<String, String>>> in which the mapping is stored.
 	 */
-	private Map<StructuralVariation, List<Pair<String, FieldType>>> getEVPropertiesMap(EntityClass baseEntityClass)
+	private Map<StructuralVariation, List<Pair<String, FieldType>>> getEVPropertiesMap(es.um.nosql.s13e.NoSQLSchema.EntityType baseEntityType)
 	{
 		Map<StructuralVariation, List<Pair<String, FieldType>>> evMap = new HashMap<StructuralVariation, List<Pair<String, FieldType>>>();
 
-		for (StructuralVariation ev : baseEntityClass.getVariations())
+		for (StructuralVariation ev : baseEntityType.getVariations())
 		{
 			List<Pair<String, FieldType>> pairList = new ArrayList<Pair<String, FieldType>>();
 			evMap.put(ev, pairList);
@@ -111,7 +110,7 @@ public class M2M
 
 				if (property instanceof Attribute)
 				{
-					Type theType = ((Attribute)property).getType();
+				  DataType theType = ((Attribute)property).getType();
 
 					if (theType instanceof es.um.nosql.s13e.NoSQLSchema.PrimitiveType)
 					{
@@ -130,7 +129,7 @@ public class M2M
 					{
 						type = Variation_DiffFactory.eINSTANCE.createHeterogeneousTupleType();
 
-						for (Type tupleType : ((PTuple)theType).getElements())
+						for (DataType tupleType : ((PTuple)theType).getElements())
 						{
 							if (tupleType instanceof es.um.nosql.s13e.NoSQLSchema.PrimitiveType)
 								((HeterogeneousTupleType)type).getType().add(((es.um.nosql.s13e.NoSQLSchema.PrimitiveType)tupleType).getName());
@@ -162,7 +161,7 @@ public class M2M
 					((AggregateType)type).setLowerBound(((Aggregate)property).getLowerBound());
 					((AggregateType)type).setUpperBound(((Aggregate)property).getUpperBound());
 					for (StructuralVariation aggregatedEV : ((Aggregate)property).getAggregates())
-						((AggregateType)type).getType().add(((EntityClass)aggregatedEV.eContainer()).getName() + "_" + String.valueOf(aggregatedEV.getVariationId()));
+						((AggregateType)type).getType().add(((es.um.nosql.s13e.NoSQLSchema.EntityType)aggregatedEV.getContainer()).getName() + "_" + String.valueOf(aggregatedEV.getVariationId()));
 				}
 
 				pairList.add(new MutablePair<String, FieldType>(name, type));
@@ -178,7 +177,7 @@ public class M2M
 			if (!typeIsDefined)
 			{
 				FieldType type = Variation_DiffFactory.eINSTANCE.createEntityType();
-				((EntityType)type).setType(baseEntityClass.getName());
+				((EntityType)type).setType(baseEntityType.getName());
 				pairList.add(new MutablePair<String, FieldType>("type", type));
 			}
 				

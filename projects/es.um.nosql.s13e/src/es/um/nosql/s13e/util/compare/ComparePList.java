@@ -14,6 +14,6 @@ public class ComparePList extends Comparator<PList>
       return true;
 
     return (l1.getElementType() == null && l2.getElementType() == null)
-        || new CompareType().compare(l1.getElementType(), l2.getElementType());
+        || new CompareDataType().compare(l1.getElementType(), l2.getElementType());
   }
 }

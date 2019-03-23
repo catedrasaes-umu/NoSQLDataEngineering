@@ -5,7 +5,7 @@ import java.io.File;
 import org.eclipse.emf.common.util.EList;
 
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
@@ -28,7 +28,7 @@ public class SOFPatcher
     ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
     NoSQLSchema schema = loader.load(new File(modelRoute), NoSQLSchema.class);
 
-    for (EntityClass e : schema.getEntities())
+    for (EntityType e : schema.getEntities())
       switch (e.getName())
       {
         case "Users": {patchUsers(e.getVariations()); break;}

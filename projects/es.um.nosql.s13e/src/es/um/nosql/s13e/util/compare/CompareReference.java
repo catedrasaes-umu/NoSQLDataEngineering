@@ -1,6 +1,5 @@
 package es.um.nosql.s13e.util.compare;
 
-import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 
 public class CompareReference extends Comparator<Reference>
@@ -26,15 +25,18 @@ public class CompareReference extends Comparator<Reference>
     if (r1.getOpposite() != null && !new CompareProperty().compare(r1.getOpposite(), r2.getOpposite()))
       return false;
 
-    if (r1.getFeatures() == null ^ r2.getFeatures() == null)
+    if (r1.getFeatures().isEmpty() ^ r2.getFeatures().isEmpty())
       return false;
 
-    if (r1.getFeatures() != null)
+    if (!r1.getFeatures().isEmpty() && !r2.getFeatures().isEmpty())
     {
-      if (r1.getFeatures().eContainer() != null ^ r2.getFeatures().eContainer() != null)
+      if (r1.getFeatures().size() != r2.getFeatures().size())
         return false;
 
-      if (r1.getFeatures().eContainer() != null && !(((Classifier)r1.getFeatures().eContainer()).getName().equals(((Classifier)r2.getFeatures().eContainer()).getName())))
+      if (r1.getFeatures().get(0).getContainer() != null ^ r2.getFeatures().get(0).getContainer() != null)
+        return false;
+
+      if (r1.getFeatures().get(0).getContainer() != null && !(r1.getFeatures().get(0).getContainer().getName().equals(r2.getFeatures().get(0).getContainer().getName())))
         return false;
     }
 

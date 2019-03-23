@@ -9,7 +9,7 @@ import es.um.nosql.s13e.entitydifferentiation.DecisionTree.DecisionTrees;
 import es.um.nosql.s13e.entitydifferentiation.DecisionTree.IntermediateNode;
 import es.um.nosql.s13e.entitydifferentiation.DecisionTree.LeafNode;
 import es.um.nosql.s13e.entitydifferentiation.DecisionTree.PropertySpec2;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.util.ModelLoader;
 
 public class DecisionTreePrinter
@@ -144,7 +144,7 @@ public class DecisionTreePrinter
     StringBuilder result = new StringBuilder();
 
     result.append(defTabs + "LeafNode: " 
-      + ((EntityClass)lNode.getIdentifiedVariation().eContainer()).getName() 
+      + ((EntityType)lNode.getIdentifiedVariation().getContainer()).getName() 
       + "_" + lNode.getIdentifiedVariation().getVariationId() + ENDL);
 
     return result.toString();
