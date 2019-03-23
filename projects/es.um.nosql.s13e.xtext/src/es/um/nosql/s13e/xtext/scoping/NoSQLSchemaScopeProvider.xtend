@@ -4,7 +4,7 @@ import org.eclipse.emf.ecore.EObject
 import org.eclipse.emf.ecore.EReference
 import es.um.nosql.s13e.NoSQLSchema.Aggregate
 import org.eclipse.xtext.scoping.Scopes
-import es.um.nosql.s13e.NoSQLSchema.EntityClass
+import es.um.nosql.s13e.NoSQLSchema.EntityType
 
 /**
  * This class contains custom scoping description.
@@ -20,7 +20,7 @@ class NoSQLSchemaScopeProvider extends AbstractNoSQLSchemaScopeProvider
     {
       //TODO: Solve Aggregations...
       val aggr = context as Aggregate
-      return Scopes.scopeFor((aggr.eContainer.eContainer as EntityClass).variations)
+      return Scopes.scopeFor((aggr.eContainer.eContainer as EntityType).variations)
     }
 
     return super.getScope(context, reference)
