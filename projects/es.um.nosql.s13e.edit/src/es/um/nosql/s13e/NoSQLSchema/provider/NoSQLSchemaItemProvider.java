@@ -103,7 +103,7 @@ public class NoSQLSchemaItemProvider
     if (childrenFeatures == null) {
       super.getChildrenFeatures(object);
       childrenFeatures.add(NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA__ENTITIES);
-      childrenFeatures.add(NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA__REF_CLASSES);
+      childrenFeatures.add(NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA__RELATIONSHIPS);
     }
     return childrenFeatures;
   }
@@ -163,7 +163,7 @@ public class NoSQLSchemaItemProvider
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
       case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__REF_CLASSES:
+      case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
     }
@@ -184,12 +184,12 @@ public class NoSQLSchemaItemProvider
     newChildDescriptors.add
       (createChildParameter
         (NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA__ENTITIES,
-         NoSQLSchemaFactory.eINSTANCE.createEntityClass()));
+         NoSQLSchemaFactory.eINSTANCE.createEntityType()));
 
     newChildDescriptors.add
       (createChildParameter
-        (NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA__REF_CLASSES,
-         NoSQLSchemaFactory.eINSTANCE.createReferenceClass()));
+        (NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA__RELATIONSHIPS,
+         NoSQLSchemaFactory.eINSTANCE.createRelationshipType()));
   }
 
   /**

@@ -3,7 +3,7 @@
 package es.um.nosql.s13e.NoSQLSchema.provider;
 
 
-import es.um.nosql.s13e.NoSQLSchema.ReferenceClass;
+import es.um.nosql.s13e.NoSQLSchema.RelationshipType;
 
 import java.util.Collection;
 import java.util.List;
@@ -14,19 +14,19 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
 
 /**
- * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.ReferenceClass} object.
+ * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.RelationshipType} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ReferenceClassItemProvider extends ClassifierItemProvider {
+public class RelationshipTypeItemProvider extends SchemaTypeItemProvider {
   /**
    * This constructs an instance from a factory and a notifier.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  public ReferenceClassItemProvider(AdapterFactory adapterFactory) {
+  public RelationshipTypeItemProvider(AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
 
@@ -46,14 +46,14 @@ public class ReferenceClassItemProvider extends ClassifierItemProvider {
   }
 
   /**
-   * This returns ReferenceClass.gif.
+   * This returns RelationshipType.gif.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   @Override
   public Object getImage(Object object) {
-    return overlayImage(object, getResourceLocator().getImage("full/obj16/ReferenceClass"));
+    return overlayImage(object, getResourceLocator().getImage("full/obj16/RelationshipType"));
   }
 
   /**
@@ -64,10 +64,10 @@ public class ReferenceClassItemProvider extends ClassifierItemProvider {
    */
   @Override
   public String getText(Object object) {
-    String label = ((ReferenceClass)object).getName();
+    String label = ((RelationshipType)object).getName();
     return label == null || label.length() == 0 ?
-      getString("_UI_ReferenceClass_type") :
-      getString("_UI_ReferenceClass_type") + " " + label;
+      getString("_UI_RelationshipType_type") :
+      getString("_UI_RelationshipType_type") + " " + label;
   }
 
 

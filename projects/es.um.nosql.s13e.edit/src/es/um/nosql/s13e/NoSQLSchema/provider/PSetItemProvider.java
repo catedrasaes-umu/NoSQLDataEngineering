@@ -24,7 +24,7 @@ import org.eclipse.emf.edit.provider.ViewerNotification;
  * <!-- end-user-doc -->
  * @generated
  */
-public class PSetItemProvider extends TypeItemProvider {
+public class PSetItemProvider extends DataTypeItemProvider {
   /**
    * This constructs an instance from a factory and a notifier.
    * <!-- begin-user-doc -->

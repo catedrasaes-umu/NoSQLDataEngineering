@@ -3,9 +3,9 @@
 package es.um.nosql.s13e.NoSQLSchema.provider;
 
 
-import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaFactory;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
+import es.um.nosql.s13e.NoSQLSchema.SchemaType;
 
 import java.util.Collection;
 import java.util.List;
@@ -29,12 +29,12 @@ import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
 /**
- * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Classifier} object.
+ * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.SchemaType} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class ClassifierItemProvider 
+public class SchemaTypeItemProvider 
   extends ItemProviderAdapter
   implements
     IEditingDomainItemProvider,
@@ -48,7 +48,7 @@ public class ClassifierItemProvider
    * <!-- end-user-doc -->
    * @generated
    */
-  public ClassifierItemProvider(AdapterFactory adapterFactory) {
+  public SchemaTypeItemProvider(AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
 
@@ -80,9 +80,9 @@ public class ClassifierItemProvider
       (createItemPropertyDescriptor
         (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
          getResourceLocator(),
-         getString("_UI_Classifier_name_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Classifier_name_feature", "_UI_Classifier_type"),
-         NoSQLSchemaPackage.Literals.CLASSIFIER__NAME,
+         getString("_UI_SchemaType_name_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_SchemaType_name_feature", "_UI_SchemaType_type"),
+         NoSQLSchemaPackage.Literals.SCHEMA_TYPE__NAME,
          true,
          false,
          false,
@@ -102,9 +102,9 @@ public class ClassifierItemProvider
       (createItemPropertyDescriptor
         (((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
          getResourceLocator(),
-         getString("_UI_Classifier_parents_feature"),
-         getString("_UI_PropertyDescriptor_description", "_UI_Classifier_parents_feature", "_UI_Classifier_type"),
-         NoSQLSchemaPackage.Literals.CLASSIFIER__PARENTS,
+         getString("_UI_SchemaType_parents_feature"),
+         getString("_UI_PropertyDescriptor_description", "_UI_SchemaType_parents_feature", "_UI_SchemaType_type"),
+         NoSQLSchemaPackage.Literals.SCHEMA_TYPE__PARENTS,
          true,
          false,
          true,
@@ -125,7 +125,7 @@ public class ClassifierItemProvider
   public Collection<? extends EStructuralFeature> getChildrenFeatures(Object object) {
     if (childrenFeatures == null) {
       super.getChildrenFeatures(object);
-      childrenFeatures.add(NoSQLSchemaPackage.Literals.CLASSIFIER__VARIATIONS);
+      childrenFeatures.add(NoSQLSchemaPackage.Literals.SCHEMA_TYPE__VARIATIONS);
     }
     return childrenFeatures;
   }
@@ -151,10 +151,10 @@ public class ClassifierItemProvider
    */
   @Override
   public String getText(Object object) {
-    String label = ((Classifier)object).getName();
+    String label = ((SchemaType)object).getName();
     return label == null || label.length() == 0 ?
-      getString("_UI_Classifier_type") :
-      getString("_UI_Classifier_type") + " " + label;
+      getString("_UI_SchemaType_type") :
+      getString("_UI_SchemaType_type") + " " + label;
   }
 
 
@@ -169,11 +169,11 @@ public class ClassifierItemProvider
   public void notifyChanged(Notification notification) {
     updateChildren(notification);
 
-    switch (notification.getFeatureID(Classifier.class)) {
-      case NoSQLSchemaPackage.CLASSIFIER__NAME:
+    switch (notification.getFeatureID(SchemaType.class)) {
+      case NoSQLSchemaPackage.SCHEMA_TYPE__NAME:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
         return;
-      case NoSQLSchemaPackage.CLASSIFIER__VARIATIONS:
+      case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
         fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), true, false));
         return;
     }
@@ -193,7 +193,7 @@ public class ClassifierItemProvider
 
     newChildDescriptors.add
       (createChildParameter
-        (NoSQLSchemaPackage.Literals.CLASSIFIER__VARIATIONS,
+        (NoSQLSchemaPackage.Literals.SCHEMA_TYPE__VARIATIONS,
          NoSQLSchemaFactory.eINSTANCE.createStructuralVariation()));
   }
 

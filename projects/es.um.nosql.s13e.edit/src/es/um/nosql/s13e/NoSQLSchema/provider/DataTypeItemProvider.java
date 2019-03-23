@@ -20,12 +20,12 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemProviderAdapter;
 
 /**
- * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.Type} object.
+ * This is the item provider adapter for a {@link es.um.nosql.s13e.NoSQLSchema.DataType} object.
  * <!-- begin-user-doc -->
  * <!-- end-user-doc -->
  * @generated
  */
-public class TypeItemProvider 
+public class DataTypeItemProvider 
   extends ItemProviderAdapter
   implements
     IEditingDomainItemProvider,
@@ -39,7 +39,7 @@ public class TypeItemProvider
    * <!-- end-user-doc -->
    * @generated
    */
-  public TypeItemProvider(AdapterFactory adapterFactory) {
+  public DataTypeItemProvider(AdapterFactory adapterFactory) {
     super(adapterFactory);
   }
 
@@ -66,7 +66,7 @@ public class TypeItemProvider
    */
   @Override
   public String getText(Object object) {
-    return getString("_UI_Type_type");
+    return getString("_UI_DataType_type");
   }
 
 

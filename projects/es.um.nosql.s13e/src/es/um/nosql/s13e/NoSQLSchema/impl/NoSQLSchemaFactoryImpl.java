@@ -20,208 +20,222 @@ import org.eclipse.emf.ecore.plugin.EcorePlugin;
  */
 public class NoSQLSchemaFactoryImpl extends EFactoryImpl implements NoSQLSchemaFactory {
   /**
-	 * Creates the default factory implementation.
-	 * <!-- begin-user-doc -->
+   * Creates the default factory implementation.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public static NoSQLSchemaFactory init() {
-		try {
-			NoSQLSchemaFactory theNoSQLSchemaFactory = (NoSQLSchemaFactory)EPackage.Registry.INSTANCE.getEFactory(NoSQLSchemaPackage.eNS_URI);
-			if (theNoSQLSchemaFactory != null) {
-				return theNoSQLSchemaFactory;
-			}
-		}
-		catch (Exception exception) {
-			EcorePlugin.INSTANCE.log(exception);
-		}
-		return new NoSQLSchemaFactoryImpl();
-	}
+    try {
+      NoSQLSchemaFactory theNoSQLSchemaFactory = (NoSQLSchemaFactory)EPackage.Registry.INSTANCE.getEFactory(NoSQLSchemaPackage.eNS_URI);
+      if (theNoSQLSchemaFactory != null) {
+        return theNoSQLSchemaFactory;
+      }
+    }
+    catch (Exception exception) {
+      EcorePlugin.INSTANCE.log(exception);
+    }
+    return new NoSQLSchemaFactoryImpl();
+  }
 
   /**
-	 * Creates an instance of the factory.
-	 * <!-- begin-user-doc -->
+   * Creates an instance of the factory.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   public NoSQLSchemaFactoryImpl() {
-		super();
-	}
+    super();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   @Override
   public EObject create(EClass eClass) {
-		switch (eClass.getClassifierID()) {
-			case NoSQLSchemaPackage.NO_SQL_SCHEMA: return createNoSQLSchema();
-			case NoSQLSchemaPackage.ENTITY_CLASS: return createEntityClass();
-			case NoSQLSchemaPackage.STRUCTURAL_VARIATION: return createStructuralVariation();
-			case NoSQLSchemaPackage.ATTRIBUTE: return createAttribute();
-			case NoSQLSchemaPackage.PLIST: return createPList();
-			case NoSQLSchemaPackage.REFERENCE: return createReference();
-			case NoSQLSchemaPackage.AGGREGATE: return createAggregate();
-			case NoSQLSchemaPackage.PRIMITIVE_TYPE: return createPrimitiveType();
-			case NoSQLSchemaPackage.NULL: return createNull();
-			case NoSQLSchemaPackage.REFERENCE_CLASS: return createReferenceClass();
-			case NoSQLSchemaPackage.PMAP: return createPMap();
-			case NoSQLSchemaPackage.PSET: return createPSet();
-			case NoSQLSchemaPackage.PTUPLE: return createPTuple();
-			default:
-				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
-		}
-	}
+    switch (eClass.getClassifierID()) {
+      case NoSQLSchemaPackage.NO_SQL_SCHEMA: return createNoSQLSchema();
+      case NoSQLSchemaPackage.ENTITY_TYPE: return createEntityType();
+      case NoSQLSchemaPackage.STRUCTURAL_VARIATION: return createStructuralVariation();
+      case NoSQLSchemaPackage.ATTRIBUTE: return createAttribute();
+      case NoSQLSchemaPackage.PLIST: return createPList();
+      case NoSQLSchemaPackage.REFERENCE: return createReference();
+      case NoSQLSchemaPackage.AGGREGATE: return createAggregate();
+      case NoSQLSchemaPackage.PRIMITIVE_TYPE: return createPrimitiveType();
+      case NoSQLSchemaPackage.NULL: return createNull();
+      case NoSQLSchemaPackage.RELATIONSHIP_TYPE: return createRelationshipType();
+      case NoSQLSchemaPackage.PMAP: return createPMap();
+      case NoSQLSchemaPackage.PSET: return createPSet();
+      case NoSQLSchemaPackage.PTUPLE: return createPTuple();
+      default:
+        throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
+    }
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  @Override
   public NoSQLSchema createNoSQLSchema() {
-		NoSQLSchemaImpl noSQLSchema = new NoSQLSchemaImpl();
-		return noSQLSchema;
-	}
+    NoSQLSchemaImpl noSQLSchema = new NoSQLSchemaImpl();
+    return noSQLSchema;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
-  public EntityClass createEntityClass() {
-		EntityClassImpl entityClass = new EntityClassImpl();
-		return entityClass;
-	}
+   * @generated
+   */
+  @Override
+  public EntityType createEntityType() {
+    EntityTypeImpl entityType = new EntityTypeImpl();
+    return entityType;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  @Override
   public StructuralVariation createStructuralVariation() {
-		StructuralVariationImpl structuralVariation = new StructuralVariationImpl();
-		return structuralVariation;
-	}
+    StructuralVariationImpl structuralVariation = new StructuralVariationImpl();
+    return structuralVariation;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  @Override
   public Attribute createAttribute() {
-		AttributeImpl attribute = new AttributeImpl();
-		return attribute;
-	}
+    AttributeImpl attribute = new AttributeImpl();
+    return attribute;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  @Override
   public PList createPList() {
-		PListImpl pList = new PListImpl();
-		return pList;
-	}
+    PListImpl pList = new PListImpl();
+    return pList;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  @Override
   public Reference createReference() {
-		ReferenceImpl reference = new ReferenceImpl();
-		return reference;
-	}
+    ReferenceImpl reference = new ReferenceImpl();
+    return reference;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  @Override
   public Aggregate createAggregate() {
-		AggregateImpl aggregate = new AggregateImpl();
-		return aggregate;
-	}
+    AggregateImpl aggregate = new AggregateImpl();
+    return aggregate;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  @Override
   public PrimitiveType createPrimitiveType() {
-		PrimitiveTypeImpl primitiveType = new PrimitiveTypeImpl();
-		return primitiveType;
-	}
+    PrimitiveTypeImpl primitiveType = new PrimitiveTypeImpl();
+    return primitiveType;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  @Override
   public Null createNull() {
-		NullImpl null_ = new NullImpl();
-		return null_;
-	}
+    NullImpl null_ = new NullImpl();
+    return null_;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
-  public ReferenceClass createReferenceClass() {
-		ReferenceClassImpl referenceClass = new ReferenceClassImpl();
-		return referenceClass;
-	}
+   * @generated
+   */
+  @Override
+  public RelationshipType createRelationshipType() {
+    RelationshipTypeImpl relationshipType = new RelationshipTypeImpl();
+    return relationshipType;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  @Override
   public PMap createPMap() {
-		PMapImpl pMap = new PMapImpl();
-		return pMap;
-	}
+    PMapImpl pMap = new PMapImpl();
+    return pMap;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  @Override
   public PSet createPSet() {
-		PSetImpl pSet = new PSetImpl();
-		return pSet;
-	}
+    PSetImpl pSet = new PSetImpl();
+    return pSet;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  @Override
   public PTuple createPTuple() {
-		PTupleImpl pTuple = new PTupleImpl();
-		return pTuple;
-	}
+    PTupleImpl pTuple = new PTupleImpl();
+    return pTuple;
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
+  @Override
   public NoSQLSchemaPackage getNoSQLSchemaPackage() {
-		return (NoSQLSchemaPackage)getEPackage();
-	}
+    return (NoSQLSchemaPackage)getEPackage();
+  }
 
   /**
-	 * <!-- begin-user-doc -->
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @deprecated
-	 * @generated
-	 */
+   * @deprecated
+   * @generated
+   */
   @Deprecated
   public static NoSQLSchemaPackage getPackage() {
-		return NoSQLSchemaPackage.eINSTANCE;
-	}
+    return NoSQLSchemaPackage.eINSTANCE;
+  }
 
 } //NoSQLSchemaFactoryImpl

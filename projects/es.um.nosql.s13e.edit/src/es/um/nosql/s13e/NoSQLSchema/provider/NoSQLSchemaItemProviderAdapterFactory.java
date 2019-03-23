@@ -95,26 +95,26 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.EntityClass} instances.
+   * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.EntityType} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected EntityClassItemProvider entityClassItemProvider;
+  protected EntityTypeItemProvider entityTypeItemProvider;
 
   /**
-   * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.EntityClass}.
+   * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.EntityType}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   @Override
-  public Adapter createEntityClassAdapter() {
-    if (entityClassItemProvider == null) {
-      entityClassItemProvider = new EntityClassItemProvider(this);
+  public Adapter createEntityTypeAdapter() {
+    if (entityTypeItemProvider == null) {
+      entityTypeItemProvider = new EntityTypeItemProvider(this);
     }
 
-    return entityClassItemProvider;
+    return entityTypeItemProvider;
   }
 
   /**
@@ -279,26 +279,26 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   }
 
   /**
-   * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.ReferenceClass} instances.
+   * This keeps track of the one adapter used for all {@link es.um.nosql.s13e.NoSQLSchema.RelationshipType} instances.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected ReferenceClassItemProvider referenceClassItemProvider;
+  protected RelationshipTypeItemProvider relationshipTypeItemProvider;
 
   /**
-   * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.ReferenceClass}.
+   * This creates an adapter for a {@link es.um.nosql.s13e.NoSQLSchema.RelationshipType}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
   @Override
-  public Adapter createReferenceClassAdapter() {
-    if (referenceClassItemProvider == null) {
-      referenceClassItemProvider = new ReferenceClassItemProvider(this);
+  public Adapter createRelationshipTypeAdapter() {
+    if (relationshipTypeItemProvider == null) {
+      relationshipTypeItemProvider = new RelationshipTypeItemProvider(this);
     }
 
-    return referenceClassItemProvider;
+    return relationshipTypeItemProvider;
   }
 
   /**
@@ -476,7 +476,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
   @Override
   public void dispose() {
     if (noSQLSchemaItemProvider != null) noSQLSchemaItemProvider.dispose();
-    if (entityClassItemProvider != null) entityClassItemProvider.dispose();
+    if (entityTypeItemProvider != null) entityTypeItemProvider.dispose();
     if (structuralVariationItemProvider != null) structuralVariationItemProvider.dispose();
     if (attributeItemProvider != null) attributeItemProvider.dispose();
     if (pListItemProvider != null) pListItemProvider.dispose();
@@ -484,7 +484,7 @@ public class NoSQLSchemaItemProviderAdapterFactory extends NoSQLSchemaAdapterFac
     if (aggregateItemProvider != null) aggregateItemProvider.dispose();
     if (primitiveTypeItemProvider != null) primitiveTypeItemProvider.dispose();
     if (nullItemProvider != null) nullItemProvider.dispose();
-    if (referenceClassItemProvider != null) referenceClassItemProvider.dispose();
+    if (relationshipTypeItemProvider != null) relationshipTypeItemProvider.dispose();
     if (pMapItemProvider != null) pMapItemProvider.dispose();
     if (pSetItemProvider != null) pSetItemProvider.dispose();
     if (pTupleItemProvider != null) pTupleItemProvider.dispose();

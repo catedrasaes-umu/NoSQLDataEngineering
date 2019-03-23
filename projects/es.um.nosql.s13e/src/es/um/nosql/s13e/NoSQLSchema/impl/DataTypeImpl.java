@@ -2,25 +2,27 @@
  */
 package es.um.nosql.s13e.NoSQLSchema.impl;
 
+import es.um.nosql.s13e.NoSQLSchema.DataType;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.s13e.NoSQLSchema.Null;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Null</b></em>'.
+ * An implementation of the model object '<em><b>Data Type</b></em>'.
  * <!-- end-user-doc -->
  *
  * @generated
  */
-public class NullImpl extends PropertyImpl implements Null {
+public abstract class DataTypeImpl extends MinimalEObjectImpl.Container implements DataType {
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected NullImpl() {
+  protected DataTypeImpl() {
     super();
   }
 
@@ -31,7 +33,7 @@ public class NullImpl extends PropertyImpl implements Null {
    */
   @Override
   protected EClass eStaticClass() {
-    return NoSQLSchemaPackage.Literals.NULL;
+    return NoSQLSchemaPackage.Literals.DATA_TYPE;
   }
 
-} //NullImpl
+} //DataTypeImpl

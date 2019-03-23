@@ -2,8 +2,8 @@
  */
 package es.um.nosql.s13e.NoSQLSchema.impl;
 
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 
 import org.eclipse.emf.common.notify.Notification;
 
@@ -13,44 +13,44 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Primitive Type</b></em>'.
+ * An implementation of the model object '<em><b>Entity Type</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.PrimitiveTypeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.EntityTypeImpl#isRoot <em>Root</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
+public class EntityTypeImpl extends SchemaTypeImpl implements EntityType {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The default value of the '{@link #isRoot() <em>Root</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #isRoot()
    * @generated
    * @ordered
    */
-  protected static final String NAME_EDEFAULT = null;
+  protected static final boolean ROOT_EDEFAULT = false;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+   * The cached value of the '{@link #isRoot() <em>Root</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
+   * @see #isRoot()
    * @generated
    * @ordered
    */
-  protected String name = NAME_EDEFAULT;
+  protected boolean root = ROOT_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected PrimitiveTypeImpl() {
+  protected EntityTypeImpl() {
     super();
   }
 
@@ -61,7 +61,7 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
    */
   @Override
   protected EClass eStaticClass() {
-    return NoSQLSchemaPackage.Literals.PRIMITIVE_TYPE;
+    return NoSQLSchemaPackage.Literals.ENTITY_TYPE;
   }
 
   /**
@@ -70,8 +70,8 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
    * @generated
    */
   @Override
-  public String getName() {
-    return name;
+  public boolean isRoot() {
+    return root;
   }
 
   /**
@@ -80,11 +80,11 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
    * @generated
    */
   @Override
-  public void setName(String newName) {
-    String oldName = name;
-    name = newName;
+  public void setRoot(boolean newRoot) {
+    boolean oldRoot = root;
+    root = newRoot;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.PRIMITIVE_TYPE__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.ENTITY_TYPE__ROOT, oldRoot, root));
   }
 
   /**
@@ -95,8 +95,8 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-      case NoSQLSchemaPackage.PRIMITIVE_TYPE__NAME:
-        return getName();
+      case NoSQLSchemaPackage.ENTITY_TYPE__ROOT:
+        return isRoot();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -109,8 +109,8 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-      case NoSQLSchemaPackage.PRIMITIVE_TYPE__NAME:
-        setName((String)newValue);
+      case NoSQLSchemaPackage.ENTITY_TYPE__ROOT:
+        setRoot((Boolean)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -124,8 +124,8 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
-      case NoSQLSchemaPackage.PRIMITIVE_TYPE__NAME:
-        setName(NAME_EDEFAULT);
+      case NoSQLSchemaPackage.ENTITY_TYPE__ROOT:
+        setRoot(ROOT_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -139,8 +139,8 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
-      case NoSQLSchemaPackage.PRIMITIVE_TYPE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+      case NoSQLSchemaPackage.ENTITY_TYPE__ROOT:
+        return root != ROOT_EDEFAULT;
     }
     return super.eIsSet(featureID);
   }
@@ -155,10 +155,10 @@ public class PrimitiveTypeImpl extends DataTypeImpl implements PrimitiveType {
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
+    result.append(" (root: ");
+    result.append(root);
     result.append(')');
     return result.toString();
   }
 
-} //PrimitiveTypeImpl
+} //EntityTypeImpl

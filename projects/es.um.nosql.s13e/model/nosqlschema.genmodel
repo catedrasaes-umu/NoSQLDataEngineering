@@ -11,10 +11,10 @@
     <genClasses ecoreClass="nosqlschema.ecore#//NoSQLSchema">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//NoSQLSchema/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//NoSQLSchema/entities"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//NoSQLSchema/refClasses"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//NoSQLSchema/relationships"/>
     </genClasses>
-    <genClasses ecoreClass="nosqlschema.ecore#//EntityClass">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//EntityClass/root"/>
+    <genClasses ecoreClass="nosqlschema.ecore#//EntityType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//EntityType/root"/>
     </genClasses>
     <genClasses ecoreClass="nosqlschema.ecore#//StructuralVariation">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//StructuralVariation/variationId"/>
@@ -22,6 +22,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//StructuralVariation/count"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//StructuralVariation/firstTimestamp"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//StructuralVariation/lastTimestamp"/>
+      <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference nosqlschema.ecore#//StructuralVariation/container"/>
     </genClasses>
     <genClasses image="false" ecoreClass="nosqlschema.ecore#//Property">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//Property/name"/>
@@ -30,7 +31,7 @@
     <genClasses ecoreClass="nosqlschema.ecore#//Attribute">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Attribute/type"/>
     </genClasses>
-    <genClasses image="false" ecoreClass="nosqlschema.ecore#//Type"/>
+    <genClasses image="false" ecoreClass="nosqlschema.ecore#//DataType"/>
     <genClasses ecoreClass="nosqlschema.ecore#//PList">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//PList/elementType"/>
     </genClasses>
@@ -51,11 +52,11 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//PrimitiveType/name"/>
     </genClasses>
     <genClasses ecoreClass="nosqlschema.ecore#//Null"/>
-    <genClasses ecoreClass="nosqlschema.ecore#//ReferenceClass"/>
-    <genClasses image="false" ecoreClass="nosqlschema.ecore#//Classifier">
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//Classifier/name"/>
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Classifier/parents"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//Classifier/variations"/>
+    <genClasses ecoreClass="nosqlschema.ecore#//RelationshipType"/>
+    <genClasses image="false" ecoreClass="nosqlschema.ecore#//SchemaType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//SchemaType/name"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//SchemaType/parents"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//SchemaType/variations"/>
     </genClasses>
     <genClasses ecoreClass="nosqlschema.ecore#//PMap">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//PMap/keyType"/>

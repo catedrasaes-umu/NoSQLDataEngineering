@@ -2,10 +2,9 @@
  */
 package es.um.nosql.s13e.NoSQLSchema.impl;
 
-import es.um.nosql.s13e.NoSQLSchema.EntityType;
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
-import es.um.nosql.s13e.NoSQLSchema.RelationshipType;
+import es.um.nosql.s13e.NoSQLSchema.SchemaType;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 
 import java.util.Collection;
 
@@ -20,25 +19,26 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
+import org.eclipse.emf.ecore.util.EObjectContainmentWithInverseEList;
+import org.eclipse.emf.ecore.util.EObjectResolvingEList;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>No SQL Schema</b></em>'.
+ * An implementation of the model object '<em><b>Schema Type</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaImpl#getName <em>Name</em>}</li>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaImpl#getEntities <em>Entities</em>}</li>
- *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaImpl#getRelationships <em>Relationships</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.SchemaTypeImpl#getName <em>Name</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.SchemaTypeImpl#getParents <em>Parents</em>}</li>
+ *   <li>{@link es.um.nosql.s13e.NoSQLSchema.impl.SchemaTypeImpl#getVariations <em>Variations</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoSQLSchema {
+public abstract class SchemaTypeImpl extends MinimalEObjectImpl.Container implements SchemaType {
   /**
    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -60,31 +60,31 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getEntities() <em>Entities</em>}' containment reference list.
+   * The cached value of the '{@link #getParents() <em>Parents</em>}' reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEntities()
+   * @see #getParents()
    * @generated
    * @ordered
    */
-  protected EList<EntityType> entities;
+  protected EList<SchemaType> parents;
 
   /**
-   * The cached value of the '{@link #getRelationships() <em>Relationships</em>}' containment reference list.
+   * The cached value of the '{@link #getVariations() <em>Variations</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRelationships()
+   * @see #getVariations()
    * @generated
    * @ordered
    */
-  protected EList<RelationshipType> relationships;
+  protected EList<StructuralVariation> variations;
 
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    */
-  protected NoSQLSchemaImpl() {
+  protected SchemaTypeImpl() {
     super();
   }
 
@@ -95,7 +95,7 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
    */
   @Override
   protected EClass eStaticClass() {
-    return NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA;
+    return NoSQLSchemaPackage.Literals.SCHEMA_TYPE;
   }
 
   /**
@@ -118,7 +118,7 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
     String oldName = name;
     name = newName;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME, oldName, name));
+      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.SCHEMA_TYPE__NAME, oldName, name));
   }
 
   /**
@@ -127,11 +127,11 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
    * @generated
    */
   @Override
-  public EList<EntityType> getEntities() {
-    if (entities == null) {
-      entities = new EObjectContainmentEList<EntityType>(EntityType.class, this, NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES);
+  public EList<SchemaType> getParents() {
+    if (parents == null) {
+      parents = new EObjectResolvingEList<SchemaType>(SchemaType.class, this, NoSQLSchemaPackage.SCHEMA_TYPE__PARENTS);
     }
-    return entities;
+    return parents;
   }
 
   /**
@@ -140,11 +140,26 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
    * @generated
    */
   @Override
-  public EList<RelationshipType> getRelationships() {
-    if (relationships == null) {
-      relationships = new EObjectContainmentEList<RelationshipType>(RelationshipType.class, this, NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS);
+  public EList<StructuralVariation> getVariations() {
+    if (variations == null) {
+      variations = new EObjectContainmentWithInverseEList<StructuralVariation>(StructuralVariation.class, this, NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS, NoSQLSchemaPackage.STRUCTURAL_VARIATION__CONTAINER);
     }
-    return relationships;
+    return variations;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @SuppressWarnings("unchecked")
+  @Override
+  public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+    switch (featureID) {
+      case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
+        return ((InternalEList<InternalEObject>)(InternalEList<?>)getVariations()).basicAdd(otherEnd, msgs);
+    }
+    return super.eInverseAdd(otherEnd, featureID, msgs);
   }
 
   /**
@@ -155,10 +170,8 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
     switch (featureID) {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-        return ((InternalEList<?>)getEntities()).basicRemove(otherEnd, msgs);
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
-        return ((InternalEList<?>)getRelationships()).basicRemove(otherEnd, msgs);
+      case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
+        return ((InternalEList<?>)getVariations()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -171,12 +184,12 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
     switch (featureID) {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
+      case NoSQLSchemaPackage.SCHEMA_TYPE__NAME:
         return getName();
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-        return getEntities();
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
-        return getRelationships();
+      case NoSQLSchemaPackage.SCHEMA_TYPE__PARENTS:
+        return getParents();
+      case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
+        return getVariations();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -190,16 +203,16 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
   @Override
   public void eSet(int featureID, Object newValue) {
     switch (featureID) {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
+      case NoSQLSchemaPackage.SCHEMA_TYPE__NAME:
         setName((String)newValue);
         return;
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-        getEntities().clear();
-        getEntities().addAll((Collection<? extends EntityType>)newValue);
+      case NoSQLSchemaPackage.SCHEMA_TYPE__PARENTS:
+        getParents().clear();
+        getParents().addAll((Collection<? extends SchemaType>)newValue);
         return;
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
-        getRelationships().clear();
-        getRelationships().addAll((Collection<? extends RelationshipType>)newValue);
+      case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
+        getVariations().clear();
+        getVariations().addAll((Collection<? extends StructuralVariation>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -213,14 +226,14 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
   @Override
   public void eUnset(int featureID) {
     switch (featureID) {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
+      case NoSQLSchemaPackage.SCHEMA_TYPE__NAME:
         setName(NAME_EDEFAULT);
         return;
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-        getEntities().clear();
+      case NoSQLSchemaPackage.SCHEMA_TYPE__PARENTS:
+        getParents().clear();
         return;
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
-        getRelationships().clear();
+      case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
+        getVariations().clear();
         return;
     }
     super.eUnset(featureID);
@@ -234,12 +247,12 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
   @Override
   public boolean eIsSet(int featureID) {
     switch (featureID) {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
+      case NoSQLSchemaPackage.SCHEMA_TYPE__NAME:
         return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-        return entities != null && !entities.isEmpty();
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
-        return relationships != null && !relationships.isEmpty();
+      case NoSQLSchemaPackage.SCHEMA_TYPE__PARENTS:
+        return parents != null && !parents.isEmpty();
+      case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
+        return variations != null && !variations.isEmpty();
     }
     return super.eIsSet(featureID);
   }
@@ -260,4 +273,4 @@ public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoS
     return result.toString();
   }
 
-} //NoSQLSchemaImpl
+} //SchemaTypeImpl

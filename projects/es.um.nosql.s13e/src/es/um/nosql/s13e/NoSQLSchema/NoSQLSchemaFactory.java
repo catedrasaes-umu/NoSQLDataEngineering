@@ -14,137 +14,137 @@ import org.eclipse.emf.ecore.EFactory;
  */
 public interface NoSQLSchemaFactory extends EFactory {
   /**
-	 * The singleton instance of the factory.
-	 * <!-- begin-user-doc -->
+   * The singleton instance of the factory.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @generated
-	 */
+   * @generated
+   */
   NoSQLSchemaFactory eINSTANCE = es.um.nosql.s13e.NoSQLSchema.impl.NoSQLSchemaFactoryImpl.init();
 
   /**
-	 * Returns a new object of class '<em>No SQL Schema</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>No SQL Schema</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>No SQL Schema</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>No SQL Schema</em>'.
+   * @generated
+   */
   NoSQLSchema createNoSQLSchema();
 
   /**
-	 * Returns a new object of class '<em>Entity Class</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Entity Type</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Entity Class</em>'.
-	 * @generated
-	 */
-  EntityClass createEntityClass();
+   * @return a new object of class '<em>Entity Type</em>'.
+   * @generated
+   */
+  EntityType createEntityType();
 
   /**
-	 * Returns a new object of class '<em>Structural Variation</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Structural Variation</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Structural Variation</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Structural Variation</em>'.
+   * @generated
+   */
   StructuralVariation createStructuralVariation();
 
   /**
-	 * Returns a new object of class '<em>Attribute</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Attribute</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Attribute</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Attribute</em>'.
+   * @generated
+   */
   Attribute createAttribute();
 
   /**
-	 * Returns a new object of class '<em>PList</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>PList</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>PList</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>PList</em>'.
+   * @generated
+   */
   PList createPList();
 
   /**
-	 * Returns a new object of class '<em>Reference</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Reference</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Reference</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Reference</em>'.
+   * @generated
+   */
   Reference createReference();
 
   /**
-	 * Returns a new object of class '<em>Aggregate</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Aggregate</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Aggregate</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Aggregate</em>'.
+   * @generated
+   */
   Aggregate createAggregate();
 
   /**
-	 * Returns a new object of class '<em>Primitive Type</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Primitive Type</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Primitive Type</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Primitive Type</em>'.
+   * @generated
+   */
   PrimitiveType createPrimitiveType();
 
   /**
-	 * Returns a new object of class '<em>Null</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Null</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Null</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>Null</em>'.
+   * @generated
+   */
   Null createNull();
 
   /**
-	 * Returns a new object of class '<em>Reference Class</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>Relationship Type</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Reference Class</em>'.
-	 * @generated
-	 */
-  ReferenceClass createReferenceClass();
+   * @return a new object of class '<em>Relationship Type</em>'.
+   * @generated
+   */
+  RelationshipType createRelationshipType();
 
   /**
-	 * Returns a new object of class '<em>PMap</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>PMap</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>PMap</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>PMap</em>'.
+   * @generated
+   */
   PMap createPMap();
 
   /**
-	 * Returns a new object of class '<em>PSet</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>PSet</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>PSet</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>PSet</em>'.
+   * @generated
+   */
   PSet createPSet();
 
   /**
-	 * Returns a new object of class '<em>PTuple</em>'.
-	 * <!-- begin-user-doc -->
+   * Returns a new object of class '<em>PTuple</em>'.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return a new object of class '<em>PTuple</em>'.
-	 * @generated
-	 */
+   * @return a new object of class '<em>PTuple</em>'.
+   * @generated
+   */
   PTuple createPTuple();
 
   /**
-	 * Returns the package supported by this factory.
-	 * <!-- begin-user-doc -->
+   * Returns the package supported by this factory.
+   * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-	 * @return the package supported by this factory.
-	 * @generated
-	 */
+   * @return the package supported by this factory.
+   * @generated
+   */
   NoSQLSchemaPackage getNoSQLSchemaPackage();
 
 } //NoSQLSchemaFactory
