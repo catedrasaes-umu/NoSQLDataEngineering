@@ -1,17 +1,17 @@
 package es.um.nosql.s13e.xtext.ide.highlight
 
 import org.eclipse.xtext.ide.editor.syntaxcoloring.DefaultSemanticHighlightingCalculator
+import javax.inject.Inject
+import es.um.nosql.s13e.xtext.services.NoSQLSchemaGrammarAccess
 import org.eclipse.emf.ecore.EObject
 import org.eclipse.xtext.ide.editor.syntaxcoloring.IHighlightedPositionAcceptor
 import org.eclipse.xtext.util.CancelIndicator
-import es.um.nosql.s13e.xtext.services.NoSQLSchemaGrammarAccess
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema
+import es.um.nosql.s13e.NoSQLSchema.SchemaType
+import es.um.nosql.s13e.NoSQLSchema.Property
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage
 import org.eclipse.xtext.ide.editor.syntaxcoloring.HighlightingStyles
-import es.um.nosql.s13e.NoSQLSchema.Property
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType
-import es.um.nosql.s13e.NoSQLSchema.Classifier
-import javax.inject.Inject
 
 class NoSQLSchemaSemanticHighlightingCalculator extends DefaultSemanticHighlightingCalculator
 {
@@ -27,9 +27,9 @@ class NoSQLSchemaSemanticHighlightingCalculator extends DefaultSemanticHighlight
       {
         highlightFeature(acceptor, object, NoSQLSchemaPackage.eINSTANCE.noSQLSchema_Name, HighlightingStyles.DEFAULT_ID)
       }
-      Classifier:
+      SchemaType:
       {
-        highlightFeature(acceptor, object, NoSQLSchemaPackage.eINSTANCE.classifier_Name, HighlightingStyles.DEFAULT_ID)
+        highlightFeature(acceptor, object, NoSQLSchemaPackage.eINSTANCE.schemaType_Name, HighlightingStyles.DEFAULT_ID)
       }
       Property:
       {

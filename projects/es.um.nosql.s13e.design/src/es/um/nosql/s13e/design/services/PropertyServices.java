@@ -5,8 +5,7 @@ import java.util.stream.Collectors;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.Classifier;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.Null;
 import es.um.nosql.s13e.NoSQLSchema.PList;
 import es.um.nosql.s13e.NoSQLSchema.PMap;
@@ -14,7 +13,7 @@ import es.um.nosql.s13e.NoSQLSchema.PSet;
 import es.um.nosql.s13e.NoSQLSchema.PTuple;
 import es.um.nosql.s13e.NoSQLSchema.PrimitiveType;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
-import es.um.nosql.s13e.NoSQLSchema.Type;
+import es.um.nosql.s13e.NoSQLSchema.DataType;
 import es.um.nosql.s13e.entitydifferentiation.EntityDifferentiation.PropertySpec;
 
 public class PropertyServices
@@ -47,7 +46,7 @@ public class PropertyServices
     return result.toString();
   }
 
-  public String getTypeLabel(Type type)
+  public String getTypeLabel(DataType type)
   {
     if (type == null)
       return null;
@@ -83,7 +82,7 @@ public class PropertyServices
       result.append(aggr.getUpperBound() != -1 ? aggr.getUpperBound() : "*");
       result.append("] ");
       result.append(aggr.getAggregates().stream().map(theAggr ->
-        ((Classifier)theAggr.eContainer()).getName() + "_" + theAggr.getVariationId()
+        theAggr.getContainer().getName() + "_" + theAggr.getVariationId()
       ).collect(Collectors.joining(", ")));
     }
     else if (association instanceof Reference)
@@ -93,7 +92,7 @@ public class PropertyServices
       result.append(ref.getLowerBound() != -1 ? ref.getLowerBound() : "*");
       result.append("..");
       result.append(ref.getUpperBound() != -1 ? ref.getUpperBound() : "*");
-      result.append("] " + ((EntityClass)ref.getRefsTo()).getName());
+      result.append("] " + ((EntityType)ref.getRefsTo()).getName());
 
       if (ref.getOpposite() != null)
       {
@@ -101,12 +100,12 @@ public class PropertyServices
         result.append(ref.getOpposite().getLowerBound() != -1 ? ref.getOpposite().getLowerBound() : "*");
         result.append("..");
         result.append(ref.getOpposite().getUpperBound() != -1 ? ref.getOpposite().getUpperBound() : "*");
-        result.append("] " + ((EntityClass)ref.getOpposite().getRefsTo()).getName() + ")");
+        result.append("] " + ((EntityType)ref.getOpposite().getRefsTo()).getName() + ")");
       }
 
-      if (ref.getFeatures() != null)
-        result.append("(feat:" + ((Classifier)ref.getFeatures().eContainer()).getName()
-            + "_" + ref.getFeatures().getVariationId() + ")");
+      if (!ref.getFeatures().isEmpty())
+        result.append("(feat:" + ref.getFeatures().get(0).getContainer().getName()
+            + "_" + ref.getFeatures().get(0).getVariationId() + ")");
     }
 
     return result.toString();

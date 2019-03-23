@@ -50,13 +50,13 @@ public class NoSQLSchemaToDocumentDb
 
   public void adaptToDocumentDb(NoSQLSchema schema)
   {
-    List<RelationshipType> refClasses = new ArrayList<RelationshipType>();
+    List<RelationshipType> relTypes = new ArrayList<RelationshipType>();
     List<Attribute> mapAttributes = new ArrayList<Attribute>();
 
     for (SchemaType schemaT : Stream.concat(schema.getEntities().stream(), schema.getRelationships().stream()).collect(Collectors.toList()))
     {
       if (schemaT instanceof RelationshipType)
-        refClasses.add((RelationshipType)schemaT);
+        relTypes.add((RelationshipType)schemaT);
 
       for (StructuralVariation var : schemaT.getVariations())
       {
@@ -67,7 +67,7 @@ public class NoSQLSchemaToDocumentDb
       }
     }
 
-    refClasses.forEach(refClass -> {relTypeToEntityType(schema, refClass);});
+    relTypes.forEach(refClass -> {relTypeToEntityType(schema, refClass);});
     mapAttributes.forEach(attr -> {removePMap(schema, attr);});
   }
 

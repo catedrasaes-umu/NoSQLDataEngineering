@@ -1,7 +1,7 @@
 package es.um.nosql.s13e.xtext.util
 
-import es.um.nosql.s13e.xtext.NoSQLSchemaStandaloneSetup
 import org.eclipse.xtext.resource.XtextResourceSet
+import es.um.nosql.s13e.xtext.NoSQLSchemaStandaloneSetup
 import org.eclipse.xtext.resource.XtextResource
 import org.eclipse.emf.ecore.EPackage
 

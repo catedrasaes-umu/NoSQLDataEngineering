@@ -1,12 +1,12 @@
 package es.um.nosql.s13e.xtext.util
 
-import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema
-import org.eclipse.emf.common.util.URI
-import org.eclipse.xtext.resource.XtextResource
-import java.io.IOException
 import org.eclipse.xtext.resource.XtextResourceSet
 import es.um.nosql.s13e.xtext.NoSQLSchemaStandaloneSetup
+import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema
+import org.eclipse.xtext.resource.XtextResource
 import java.io.FileOutputStream
+import org.eclipse.emf.common.util.URI
+import java.io.IOException
 
 class NoSQLSchemaWriter extends es.um.nosql.s13e.util.NoSQLSchemaWriter
 {

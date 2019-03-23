@@ -4,8 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
-import es.um.nosql.s13e.NoSQLSchema.Classifier;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
@@ -18,9 +17,9 @@ public class NoSQLSchemaServices
     return model.getEntities().stream().anyMatch(entity -> entity.isRoot());
   }
 
-  public List<EntityClass> getEntitiesForTreeSchemaBranch(NoSQLSchema model)
+  public List<EntityType> getEntitiesForTreeSchemaBranch(NoSQLSchema model)
   {
-    List<EntityClass> result = new ArrayList<EntityClass>();
+    List<EntityType> result = new ArrayList<EntityType>();
 
     result.addAll(model.getEntities().stream().filter(entity -> entity.isRoot()).collect(Collectors.toList()));
     result.sort((entity1, entity2) -> entity1.getName().compareTo(entity2.getName()));
@@ -32,12 +31,12 @@ public class NoSQLSchemaServices
   {
     List<StructuralVariation> result = new ArrayList<StructuralVariation>();
 
-    for (EntityClass entity : model.getEntities())
+    for (EntityType entity : model.getEntities())
       result.addAll(entity.getVariations());
 
     result.sort((var1, var2) ->
     {
-      int compareTo = ((Classifier)var1.eContainer()).getName().compareTo(((Classifier)var2.eContainer()).getName());
+      int compareTo = var1.getContainer().getName().compareTo(var2.getContainer().getName());
 
       return compareTo != 0 ? compareTo : (var1.getVariationId() > var2.getVariationId() ? 1 : -1);
     });
@@ -46,14 +45,14 @@ public class NoSQLSchemaServices
   }
 
   /**
-   * Method used for the EntityClass Union Schema viewpoint to gather entities related
+   * Method used for the EntityType Union Schema viewpoint to gather entities related
    * to any eVariation root.
    * @param entity The entity of which the union is being performed
    * @return A list of Entities
    */
-  public List<EntityClass> getEntitiesFromEntityClassUnion(EntityClass entity)
+  public List<EntityType> getEntitiesFromEntityClassUnion(EntityType entity)
   {
-    List<EntityClass> result = new ArrayList<EntityClass>();
+    List<EntityType> result = new ArrayList<EntityType>();
 
     if (entity.isRoot())
       entity.getVariations().stream().forEach(var -> result.addAll(getEntitiesFromSchema(var)));      
@@ -66,9 +65,9 @@ public class NoSQLSchemaServices
    * @param root The eVariation of which we want to collect all the entities
    * @return A list of Entities
    */
-  public List<EntityClass> getEntitiesFromSchema(StructuralVariation root)
+  public List<EntityType> getEntitiesFromSchema(StructuralVariation root)
   {
-    List<EntityClass> result = SchemaCollector.getEntitiesFromSchema(root);
+    List<EntityType> result = SchemaCollector.getEntitiesFromSchema(root);
     result.sort((entity1, entity2) -> entity1.getName().compareTo(entity2.getName()));
 
     return result;
@@ -80,7 +79,7 @@ public class NoSQLSchemaServices
    * @param entity The entity of which the union is being performed
    * @return A list of eVariations
    */
-  public List<StructuralVariation> getEVariationsFromEntityClassUnion(EntityClass entity)
+  public List<StructuralVariation> getEVariationsFromEntityTypeUnion(EntityType entity)
   {
     List<StructuralVariation> result = new ArrayList<StructuralVariation>();
 
@@ -95,9 +94,9 @@ public class NoSQLSchemaServices
     return SchemaCollector.getReducedEVariationsFromSchema(root);
   }
 
-  public List<EntityClass> getIndirectEntitiesFromSchema(StructuralVariation root)
+  public List<EntityType> getIndirectEntitiesFromSchema(StructuralVariation root)
   {
-    List<EntityClass> result = SchemaCollector.getEntitiesFromSchema(root);
+    List<EntityType> result = SchemaCollector.getEntitiesFromSchema(root);
 
     root.getProperties().stream().filter(prop -> prop instanceof Reference).forEach(prop ->
     {

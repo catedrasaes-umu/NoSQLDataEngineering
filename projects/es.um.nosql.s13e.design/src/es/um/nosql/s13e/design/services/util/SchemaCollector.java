@@ -6,7 +6,7 @@ import java.util.Set;
 import java.util.stream.Collectors;
 
 import es.um.nosql.s13e.NoSQLSchema.Aggregate;
-import es.um.nosql.s13e.NoSQLSchema.EntityClass;
+import es.um.nosql.s13e.NoSQLSchema.EntityType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.Reference;
 
@@ -17,7 +17,7 @@ public class SchemaCollector
     return getElementsFromSchema(var).getLeft().stream().collect(Collectors.toList());
   }
 
-  public static List<EntityClass> getEntitiesFromSchema(StructuralVariation var)
+  public static List<EntityType> getEntitiesFromSchema(StructuralVariation var)
   {
     return getElementsFromSchema(var).getRight().stream().collect(Collectors.toList());
   }
@@ -32,7 +32,7 @@ public class SchemaCollector
    */
   public static List<StructuralVariation> getReducedEVariationsFromSchema(StructuralVariation root)
   {
-    Pair<Set<StructuralVariation>, Set<EntityClass>> elementList = getElementsFromSchema(root);
+    Pair<Set<StructuralVariation>, Set<EntityType>> elementList = getElementsFromSchema(root);
 
     elementList.getRight().forEach(entity ->
     {
@@ -45,17 +45,17 @@ public class SchemaCollector
     return elementList.getLeft().stream().collect(Collectors.toList());
   }
 
-  private static Pair<Set<StructuralVariation>, Set<EntityClass>> getElementsFromSchema(StructuralVariation eVariation)
+  private static Pair<Set<StructuralVariation>, Set<EntityType>> getElementsFromSchema(StructuralVariation eVariation)
   {
     boolean keepDiscovering;
-    Pair<Set<StructuralVariation>, Set<EntityClass>> elementList = new Pair<Set<StructuralVariation>, Set<EntityClass>>(
-        new HashSet<StructuralVariation>(), new HashSet<EntityClass>());
+    Pair<Set<StructuralVariation>, Set<EntityType>> elementList = new Pair<Set<StructuralVariation>, Set<EntityType>>(
+        new HashSet<StructuralVariation>(), new HashSet<EntityType>());
 
     keepDiscovering = true;
 
     Set<StructuralVariation> eVToDiscover = new HashSet<StructuralVariation>();
     Set<StructuralVariation> newStructuralVariations = new HashSet<StructuralVariation>();
-    Set<EntityClass> newEntities = new HashSet<EntityClass>();
+    Set<EntityType> newEntities = new HashSet<EntityType>();
 
     eVToDiscover.add(eVariation);
 
@@ -77,7 +77,7 @@ public class SchemaCollector
       eVToDiscover.clear();
       eVToDiscover.addAll(newStructuralVariations);
 
-      for (EntityClass entity : newEntities)
+      for (EntityType entity : newEntities)
         eVToDiscover.addAll(entity.getVariations());
 
       // Now remove StructuralVariations that were already discovered before.
@@ -105,7 +105,7 @@ public class SchemaCollector
         .collect(Collectors.toSet());
   }
 
-  private static Set<EntityClass> getAllEntitiesFor(StructuralVariation var)
+  private static Set<EntityType> getAllEntitiesFor(StructuralVariation var)
   {
     return var.getProperties().stream()
         .filter(prop -> prop instanceof Reference)

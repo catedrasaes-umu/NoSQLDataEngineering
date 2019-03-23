@@ -4,7 +4,6 @@ import java.util.List;
 
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Attribute;
-import es.um.nosql.s13e.NoSQLSchema.Classifier;
 import es.um.nosql.s13e.NoSQLSchema.Null;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.design.services.util.PropertyCollector;
@@ -24,7 +23,7 @@ public class StructuralVariationServices
     List<StructuralVariation> result = SchemaCollector.getEVariationsFromSchema(root);
     result.sort((var1, var2) ->
     {
-      int compareTo = ((Classifier)var1.eContainer()).getName().compareTo(((Classifier)var2.eContainer()).getName());
+      int compareTo = var1.getContainer().getName().compareTo(var2.getContainer().getName());
 
       return compareTo != 0 ? compareTo : (var1.getVariationId() > var2.getVariationId() ? 1 : -1);
     });

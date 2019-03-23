@@ -7,7 +7,7 @@
 			class="es.um.nosql.s13e.xtext.ui.NoSQLSchemaExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
 			contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
 			default="true"
-			extensions="nosqlschema"
+			extensions="nschema"
 			id="es.um.nosql.s13e.xtext.NoSQLSchema"
 			name="NoSQLSchema Editor">
 		</editor>
@@ -207,7 +207,7 @@
 	<extension point="org.eclipse.core.contenttype.contentTypes">
 		<content-type
 			base-type="org.eclipse.core.runtime.text"
-			file-extensions="nosqlschema"
+			file-extensions="nschema"
 			id="es.um.nosql.s13e.xtext.NoSQLSchema.contenttype"
 			name="NoSQLSchema File"
 			priority="normal">
@@ -218,13 +218,13 @@
 		point="org.eclipse.emf.ecore.extension_parser">
 		<parser
 			class="es.um.nosql.s13e.xtext.ui.NoSQLSchemaExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
-			type="nosqlschema">
+			type="nschema">
 		</parser>
 	</extension>
 	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
 		<resourceServiceProvider
 			class="es.um.nosql.s13e.xtext.ui.NoSQLSchemaExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
-			uriExtension="nosqlschema">
+			uriExtension="nschema">
 		</resourceServiceProvider>
 	</extension>
 	<!-- marker definitions for es.um.nosql.s13e.xtext.NoSQLSchema -->
@@ -261,7 +261,7 @@
 	<extension point="org.eclipse.xtext.builder.participant">
 		<participant
 			class="es.um.nosql.s13e.xtext.ui.NoSQLSchemaExecutableExtensionFactory:org.eclipse.xtext.builder.IXtextBuilderParticipant"
-			fileExtensions="nosqlschema"/>
+			fileExtensions="nschema"/>
 	</extension>
 	<extension point="org.eclipse.ui.preferencePages">
 		<page
@@ -404,7 +404,7 @@
 	<extension point="org.eclipse.compare.contentViewers">
 		<viewer id="es.um.nosql.s13e.xtext.NoSQLSchema.compare.contentViewers"
 			class="es.um.nosql.s13e.xtext.ui.NoSQLSchemaExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-			extensions="nosqlschema">
+			extensions="nschema">
 		</viewer>
 		<contentTypeBinding
 			contentTypeId="es.um.nosql.s13e.xtext.NoSQLSchema.contenttype"
@@ -413,7 +413,7 @@
 	<extension point="org.eclipse.compare.contentMergeViewers">
 		<viewer id="es.um.nosql.s13e.xtext.NoSQLSchema.compare.contentMergeViewers"
 			class="es.um.nosql.s13e.xtext.ui.NoSQLSchemaExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
-			extensions="nosqlschema" label="NoSQLSchema Compare">
+			extensions="nschema" label="NoSQLSchema Compare">
 		</viewer>
 		<contentTypeBinding
 			contentTypeId="es.um.nosql.s13e.xtext.NoSQLSchema.contenttype"
@@ -422,12 +422,12 @@
 	<extension point="org.eclipse.ui.editors.documentProviders">
 		<provider id="es.um.nosql.s13e.xtext.NoSQLSchema.editors.documentProviders"
 			class="es.um.nosql.s13e.xtext.ui.NoSQLSchemaExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
-			extensions="nosqlschema">
+			extensions="nschema">
 		</provider>
 	</extension>
 	<extension point="org.eclipse.team.core.fileTypes">
 		<fileTypes
-			extension="nosqlschema"
+			extension="nschema"
 			type="text">
 		</fileTypes>
 	</extension>

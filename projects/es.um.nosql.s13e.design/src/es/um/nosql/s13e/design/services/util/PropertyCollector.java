@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import es.um.nosql.s13e.NoSQLSchema.Classifier;
+import es.um.nosql.s13e.NoSQLSchema.SchemaType;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.util.compare.CompareProperty;
@@ -18,11 +18,11 @@ public class PropertyCollector
     propComparer = new CompareProperty();
   }
 
-  public <T extends Property> List<T> getUnionProperties(Classifier classifier, Class<T> theClass)
+  public <T extends Property> List<T> getUnionProperties(SchemaType schemaT, Class<T> theClass)
   {
     List<T> result = new ArrayList<T>();
 
-    classifier.getVariations().forEach(var ->
+    schemaT.getVariations().forEach(var ->
     {
       var.getProperties().stream().filter(prop -> theClass.isInstance(prop)).forEach(prop ->
       {
@@ -36,22 +36,22 @@ public class PropertyCollector
     return result;
   }
 
-  public <T extends Property> List<T> getCommonProperties(Classifier classifier, Class<T> theClass)
+  public <T extends Property> List<T> getCommonProperties(SchemaType schemaT, Class<T> theClass)
   {
     List<T> result = new ArrayList<T>();
 
-    if (!classifier.getVariations().isEmpty())
+    if (!schemaT.getVariations().isEmpty())
     {
-      result.addAll(classifier.getVariations().get(0).getProperties().stream()
+      result.addAll(schemaT.getVariations().get(0).getProperties().stream()
           .filter(prop -> theClass.isInstance(prop))
           .map(prop -> theClass.cast(prop))
           .collect(Collectors.toList()));
 
-      if (classifier.getVariations().size() > 1)
+      if (schemaT.getVariations().size() > 1)
       {
         result = result.stream().filter(prop ->
         {
-          return classifier.getVariations().stream().skip(1).allMatch(var ->
+          return schemaT.getVariations().stream().skip(1).allMatch(var ->
           {
             return var.getProperties().stream().anyMatch(prop2 -> propComparer.compare(prop, prop2));
           });
@@ -64,13 +64,13 @@ public class PropertyCollector
     return result;
   }
 
-  public <T extends Property> List<T> getOptionalProperties(Classifier classifier, Class<T> theClass)
+  public <T extends Property> List<T> getOptionalProperties(SchemaType schemaT, Class<T> theClass)
   {
     List<T> result = new ArrayList<T>();
 
-    if (!classifier.getVariations().isEmpty())
+    if (!schemaT.getVariations().isEmpty())
     {
-      classifier.getVariations().forEach(var ->
+      schemaT.getVariations().forEach(var ->
       {
         // Watch out we are modifying the list as we iterate, so do not try to put that condition on a filter...
         var.getProperties().stream().filter(prop -> theClass.isInstance(prop) && prop.isOptional()).forEach(prop ->
@@ -89,7 +89,7 @@ public class PropertyCollector
   public <T extends Property> List<T> getParticularProperties(StructuralVariation var, Class<T> theClass)
   {
     List<T> result = new ArrayList<T>();
-    List<T> commonProps = getCommonProperties((Classifier)var.eContainer(), theClass);
+    List<T> commonProps = getCommonProperties(var.getContainer(), theClass);
 
     for (Property prop : var.getProperties())
       if (theClass.isInstance(prop))
