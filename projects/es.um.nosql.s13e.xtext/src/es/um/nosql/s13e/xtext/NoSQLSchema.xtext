@@ -30,12 +30,9 @@ RelationshipType returns RelationshipType:
   '}';
 
 StructuralVariation returns StructuralVariation:
-  'Variation' variationId=EInt
+  'Variation' variationId=EInt ('(' ('count' count=ELong)? ('firstTimestamp' firstTimestamp=ELong)? ('lastTimestamp' lastTimestamp=ELong)? ')')?
   '{'
-    ('count' count=ELong)?
-    ('firstTimestamp' firstTimestamp=ELong)?
-    ('lastTimestamp' lastTimestamp=ELong)?
-    'properties' '{' properties+=Property ( "," properties+=Property)* '}' 
+    properties+=Property ( "," properties+=Property)*
   '}';
 
 Property returns Property:
