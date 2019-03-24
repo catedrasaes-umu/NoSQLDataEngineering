@@ -1,6 +1,6 @@
 NoSQLSchema test1
 {
-  EntityClass noParent
+  EntityType noParent
   {
     Variation 1
     {
@@ -10,7 +10,7 @@ NoSQLSchema test1
       }
     }
   },
-  EntityClass e1
+  EntityType e1
   {
     parents { noParent }
     Variation 1
@@ -28,7 +28,7 @@ NoSQLSchema test1
       }
     }
   },
-  EntityClass e2
+  EntityType e2
   {
     Variation 1
     {
@@ -44,7 +44,7 @@ NoSQLSchema test1
       }
     }
   }
-  ReferenceClass ref1
+  RelationshipType ref1
   {
     parents { noParent, e2 }
     Variation 1

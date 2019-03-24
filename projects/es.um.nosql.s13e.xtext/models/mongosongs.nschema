@@ -1,6 +1,6 @@
 NoSQLSchema mongosongs
 {
-  root EntityClass Artist
+  root EntityType Artist
   {
     Variation 1
     {
@@ -27,7 +27,7 @@ NoSQLSchema mongosongs
     }
   },
 
-  root EntityClass Album
+  root EntityType Album
   {
     Variation 1
     {
@@ -73,7 +73,7 @@ NoSQLSchema mongosongs
     }
   },
 
-  root EntityClass Track
+  root EntityType Track
   {
     Variation 1
     {
@@ -100,7 +100,7 @@ NoSQLSchema mongosongs
     }
   },
 
-  EntityClass Rating
+  EntityType Rating
   {
     Variation 1
     {
@@ -112,7 +112,7 @@ NoSQLSchema mongosongs
     }
   },
 
-  EntityClass Review
+  EntityType Review
   {
     Variation 1
     {
@@ -136,7 +136,7 @@ NoSQLSchema mongosongs
     }
   },
 
-  EntityClass Prize
+  EntityType Prize
   {
     Variation 1
     {
@@ -161,7 +161,7 @@ NoSQLSchema mongosongs
     }
   },
 
-  EntityClass Media
+  EntityType Media
   {
     Variation 1
     {

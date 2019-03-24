@@ -5,134 +5,98 @@ import "http://www.modelum.es/NoSQLSchema"
 import "http://www.eclipse.org/emf/2002/Ecore" as ecore
 
 NoSQLSchema returns NoSQLSchema:
-	{NoSQLSchema}
-	'NoSQLSchema'
-	name=EString
-	'{'
-		('entities' '{' entities+=EntityType ( "," entities+=EntityType)* '}' )?
-		('relationships' '{' relationships+=RelationshipType ( "," relationships+=RelationshipType)* '}' )?
-	'}';
-
-
+  {NoSQLSchema}
+  'NoSQLSchema' name=EString
+  '{'
+    (entities+=EntityType ( "," entities+=EntityType)* )?
+    (relationships+=RelationshipType ( "," relationships+=RelationshipType)* )?
+  '}';
 
 SchemaType returns SchemaType:
-	EntityType | RelationshipType;
-
-
-Property returns Property:
-	Attribute | Reference | Aggregate | Null;
-
-DataType returns DataType:
-	PList | PrimitiveType | PMap | PSet | PTuple;
-
-
-
-EString returns ecore::EString:
-	STRING | ID;
+  EntityType | RelationshipType;
 
 EntityType returns EntityType:
-	(root?='root')?
-	'EntityType'
-	name=EString
-	'{'
-		('parents' '(' parents+=[SchemaType|EString] ( "," parents+=[SchemaType|EString])* ')' )?
-		'variations' '{' variations+=StructuralVariation ( "," variations+=StructuralVariation)* '}' 
-	'}';
+  (root?='root')? 'EntityType' name=EString
+  '{'
+    ('parents' '{' parents+=[SchemaType|EString] ( "," parents+=[SchemaType|EString])* '}' )?
+    variations+=StructuralVariation ( "," variations+=StructuralVariation)*
+  '}';
 
 RelationshipType returns RelationshipType:
-	'RelationshipType'
-	name=EString
-	'{'
-		('parents' '(' parents+=[SchemaType|EString] ( "," parents+=[SchemaType|EString])* ')' )?
-		'variations' '{' variations+=StructuralVariation ( "," variations+=StructuralVariation)* '}' 
-	'}';
+  'RelationshipType' name=EString
+  '{'
+    ('parents' '{' parents+=[SchemaType|EString] ( "," parents+=[SchemaType|EString])* '}' )?
+    variations+=StructuralVariation ( "," variations+=StructuralVariation)*
+  '}';
 
 StructuralVariation returns StructuralVariation:
-	'StructuralVariation'
-	'{'
-		'variationId' variationId=EInt
-		('count' count=ELong)?
-		('firstTimestamp' firstTimestamp=ELong)?
-		('lastTimestamp' lastTimestamp=ELong)?
-		'properties' '{' properties+=Property ( "," properties+=Property)* '}' 
-	'}';
+  'Variation' variationId=EInt
+  '{'
+    ('count' count=ELong)?
+    ('firstTimestamp' firstTimestamp=ELong)?
+    ('lastTimestamp' lastTimestamp=ELong)?
+    'properties' '{' properties+=Property ( "," properties+=Property)* '}' 
+  '}';
 
-EBoolean returns ecore::EBoolean:
-	'true' | 'false';
-
-EInt returns ecore::EInt:
-	'-'? INT;
-
-ELong returns ecore::ELong:
-	'-'? INT;
-
-Attribute returns Attribute:
-	(optional?='optional')?
-	'Attribute'
-	name=EString
-	'{'
-		'type' type=DataType
-	'}';
+Property returns Property:
+  Attribute | Reference | Aggregate | Null;
 
 Reference returns Reference:
-	(optional?='optional')?
-	'Reference'
-	name=EString
-	'{'
-		('lowerBound' lowerBound=EInt)?
-		('upperBound' upperBound=EInt)?
-		('originalType' originalType=EString)?
-		('opposite' opposite=[Reference|EString])?
-		'refsTo' refsTo=[EntityType|EString]
-		('features' '(' features+=[StructuralVariation|EString] ( "," features+=[StructuralVariation|EString])* ')' )?
-	'}';
+  (optional?='optional')? name=EString ':' 'Reference' ('[' (lowerBound=EInt)?'..'(upperBound=EInt)? ']')?
+    'references' refsTo=[EntityType|EString]
+  ('{'
+    ('type' originalType=EString)?
+    ('opposite' opposite=[Reference|EString])?
+    ('features' '(' features+=[StructuralVariation|EString] ( "," features+=[StructuralVariation|EString])* ')' )?
+  '}')?;
 
 Aggregate returns Aggregate:
-	(optional?='optional')?
-	'Aggregate'
-	name=EString
-	'{'
-		('lowerBound' lowerBound=EInt)?
-		('upperBound' upperBound=EInt)?
-		'aggregates' '(' aggregates+=[StructuralVariation|EString] ( "," aggregates+=[StructuralVariation|EString])* ')' 
-	'}';
+  (optional?='optional')? name=EString ':' 'Aggregate' ('[' (lowerBound=EInt)?'..'(upperBound=EInt)? ']')?
+    'aggregates' '(' aggregates+=[StructuralVariation|EString] ( "," aggregates+=[StructuralVariation|EString])* ')';
 
 Null returns Null:
-	{Null}
-	(optional?='optional')?
-	'Null'
-	name=EString;
+  {Null}
+  (optional?='optional')? name=EString ':' 'Null';
 
-PList returns PList:
-	{PList}
-	'PList'
-	'{'
-		('elementType' elementType=DataType)?
-	'}';
+Attribute returns Attribute:
+  (optional?='optional')? name=EString ':' type=DataType;
+
+DataType returns DataType:
+  PrimitiveType | PList | PMap | PSet | PTuple;
 
 PrimitiveType returns PrimitiveType:
-	{PrimitiveType}
-	'PrimitiveType'
-	name=EString;
+  {PrimitiveType}
+  'PrimitiveType' name=EString;
+
+PList returns PList:
+  {PList}
+  'PList' ('<' elementType=DataType '>')?;
 
 PMap returns PMap:
-	{PMap}
-	'PMap'
-	'{'
-		('keyType' keyType=PrimitiveType)?
-		('valueType' valueType=DataType)?
-	'}';
+  {PMap}
+  'PMap' ('<' ('key' keyType=PrimitiveType)? ('value' valueType=DataType)? '>')?;
 
 PSet returns PSet:
-	{PSet}
-	'PSet'
-	'{'
-		('elementType' elementType=DataType)?
-	'}';
+  {PSet}
+  'PSet' ('<' elementType=DataType '>')?;
 
 PTuple returns PTuple:
-	{PTuple}
-	'PTuple'
-	'{'
-		('elements' '{' elements+=DataType ( "," elements+=DataType)* '}' )?
-	'}';
+  {PTuple}
+  'PTuple' ('<' elements+=DataType ( "," elements+=DataType)* '>' )?;
+
+EString returns ecore::EString:
+  STRING | ID | KEYWORD;
+
+KEYWORD: 'NoSQLSchema' | 'root' | 'EntityType' | 'RelationshipType' | 'parents' | 'Variation'
+  | 'count' | 'firstTimestamp' | 'lastTimestamp' | 'properties' | 'Reference' | 'references'
+  | 'type' | 'opposite' | 'features' | 'Aggregate' | 'aggregates' | 'PList' | 'PrimitiveType'
+  | 'PMap' | 'key' | 'value' | 'PSet' | 'PTuple' | 'optional';
+
+EBoolean returns ecore::EBoolean:
+  'true' | 'false';
+
+EInt returns ecore::EInt:
+  '-'? INT;
+
+ELong returns ecore::ELong:
+  '-'? INT;
