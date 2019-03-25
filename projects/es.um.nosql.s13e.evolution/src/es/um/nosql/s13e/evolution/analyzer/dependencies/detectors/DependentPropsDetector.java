@@ -75,7 +75,9 @@ public class DependentPropsDetector
       for (Property prop2 : dependencyMap.get(prop1))
       {
         // If we already detected a strong dependency between these properties, go on.
-        if (strongDependencies.stream().anyMatch(list -> list.contains(prop1) && list.contains(prop2)))
+        // If dependency list is of different sizes, there is no strong dependency.
+        if (strongDependencies.stream().anyMatch(list -> list.contains(prop1) && list.contains(prop2))
+            || dependencyMap.get(prop1).size() != dependencyMap.get(prop2).size())
           continue;
 
         // Property A: <PropB, PropC, PropD>
@@ -87,7 +89,7 @@ public class DependentPropsDetector
         auxList.add(prop1);
 
         // Once we know Props A and B are strongly dependent, we try to insert them were they belong.
-        if (auxList.equals(dependencyMap.get(prop2)))
+        if (auxList.containsAll(dependencyMap.get(prop2)))
         {
           Optional<List<Property>> optList = strongDependencies.stream().filter(list -> list.contains(prop1)).findFirst();
           if (optList.isPresent())
@@ -149,5 +151,29 @@ public class DependentPropsDetector
     }
     // Two properties are exclusive if, and only if, when one of them occurs, then the other do not occur.
     return excludingProps;
+  }
+
+  public String detectSubtypes()
+  {
+    StringBuilder result = new StringBuilder();
+
+    // About to detect subtypes...
+    for (List<Property> subtypeProps : strongDependencies)
+    {
+      result.append("  Subtype detected:\n");
+      result.append("    Identified by: ");
+      result.append("(" + subtypeProps.stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")");
+      result.append("\n");
+
+      result.append("    Optionals:     ");
+      result.append("(" + weakDependencies.keySet().stream()
+          .filter(weakProp -> weakDependencies.get(weakProp).containsAll(subtypeProps))
+          .map(weakProp -> weakProp.getName())
+          .collect(Collectors.joining(", ")) + ")");
+
+      result.append("\n\n");
+    }
+
+    return result.toString();
   }
 }

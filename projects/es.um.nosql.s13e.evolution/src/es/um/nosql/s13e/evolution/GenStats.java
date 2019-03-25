@@ -25,15 +25,15 @@ public class GenStats
     EvolutionPrinter printer = new EvolutionPrinter();
 
     // Detect and remove outliers given Epsilon = 0.0001 or Coverage = 99.9%
-    //OutlierAnalyzer oAnalyzer = new OutlierAnalyzer(OutlierMode.COVERAGE);
-    //oAnalyzer.removeOutliers(schema);
+    OutlierAnalyzer oAnalyzer = new OutlierAnalyzer(OutlierMode.COVERAGE);
+    oAnalyzer.removeOutliers(schema);
 
     // Analyze each property
     for (SchemaType sType : Stream.concat(schema.getEntities().stream(), schema.getRelationships().stream()).collect(Collectors.toList()))
     {
       DependencyAnalyzer depDetector = new DependencyAnalyzer(sType);
-      System.out.println(printer.printPretty(depDetector));
       depDetector.performAnalysis();
+//      System.out.println(printer.printPretty(depDetector));
     }
 
 //    OutputGen output = new OutputGen();

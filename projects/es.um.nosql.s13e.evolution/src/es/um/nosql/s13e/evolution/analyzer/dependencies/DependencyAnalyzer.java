@@ -42,8 +42,9 @@ public class DependencyAnalyzer
 
   public void performAnalysis()
   {
-    //detectSubtypes();
-    //detectOptionalsFromSubtypes();
-    //printSummary();
+    System.out.println("> " + sType.getName());
+    System.out.println(dPropsDetector.detectSubtypes());
+    //TODO: Print entity optionals
+    // Schema changes
   }
 }

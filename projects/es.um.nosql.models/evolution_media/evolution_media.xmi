@@ -4,7 +4,7 @@
     xmlns:xmi="http://www.omg.org/XMI"
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:NoSQLSchema="http://www.modelum.es/NoSQLSchema"
-    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema platform:/resource/es.um.nosql.s13e/model/nosqlschema.ecore" 
+    xsi:schemaLocation="http://www.modelum.es/NoSQLSchema ../../es.um.nosql.s13e/model/nosqlschema.ecore"
     name="Evolution_media">
   <entities
       name="Webpage">
@@ -88,7 +88,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="owner"
+          name="frequency"
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -96,8 +96,57 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="affiliation"
+          name="broadcast_area"
           optional="true">
+        <type
+            xsi:type="NoSQLSchema:PList">
+          <elementType
+              xsi:type="NoSQLSchema:PrimitiveType"
+              name="String"/>
+        </type>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="location"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Aggregate"
+          name="webpage"
+          lowerBound="1"
+          upperBound="1"
+          aggregates="//@entities.0/@variations.0"/>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="foundation_year"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
+    </variations>
+    <variations
+        variationId="2">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="name">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="media_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -113,25 +162,6 @@
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="first_emission"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="format"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PList">
-          <elementType
-              xsi:type="NoSQLSchema:PrimitiveType"
-              name="String"/>
-        </type>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="slogan"
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -164,6 +194,79 @@
           aggregates="//@entities.0/@variations.0"/>
     </variations>
     <variations
+        variationId="3">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="name">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="media_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="frequency"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="first_emission"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="broadcast_area"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PList">
+          <elementType
+              xsi:type="NoSQLSchema:PrimitiveType"
+              name="String"/>
+        </type>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="location"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Aggregate"
+          name="webpage"
+          lowerBound="1"
+          upperBound="1"
+          aggregates="//@entities.0/@variations.0"/>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="foundation_year"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
+    </variations>
+    <variations
         variationId="4">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -193,14 +296,6 @@
           upperBound="1"
           aggregates="//@entities.0/@variations.0"/>
       <properties
-          xsi:type="NoSQLSchema:Reference"
-          name="owner"
-          optional="true"
-          lowerBound="1"
-          upperBound="1"
-          refsTo="//@entities.3"
-          originalType="Number"/>
-      <properties
           xsi:type="NoSQLSchema:Attribute"
           name="languages"
           optional="true">
@@ -229,11 +324,60 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="launched"
+          name="registration"
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
+      </properties>
+    </variations>
+    <variations
+        variationId="5">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="name">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="media_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Aggregate"
+          name="webpage"
+          lowerBound="1"
+          upperBound="1"
+          aggregates="//@entities.0/@variations.0"/>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="languages"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PList">
+          <elementType
+              xsi:type="NoSQLSchema:PrimitiveType"
+              name="String"/>
+        </type>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="alexa_rank"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -275,7 +419,7 @@
           aggregates="//@entities.0/@variations.0"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="country"
+          name="issn"
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -283,52 +427,58 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
-          name="founder"
+          name="editors"
           optional="true"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           refsTo="//@entities.3"
           originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="foundation"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="genre"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="language"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="price"
+          name="foundation_year"
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="Number"/>
       </properties>
       <properties
-          xsi:type="NoSQLSchema:Reference"
-          name="owner"
-          optional="true"
+          xsi:type="NoSQLSchema:Attribute"
+          name="release_frequency"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+    </variations>
+    <variations
+        variationId="7">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="name">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="media_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Aggregate"
+          name="webpage"
           lowerBound="1"
           upperBound="1"
-          refsTo="//@entities.3"
-          originalType="Number"/>
+          aggregates="//@entities.0/@variations.0"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="issn"
@@ -339,15 +489,53 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Reference"
-          name="director"
+          name="editors"
           optional="true"
           lowerBound="1"
-          upperBound="1"
+          upperBound="-1"
           refsTo="//@entities.3"
           originalType="Number"/>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="format"
+          name="foundation_year"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
+    </variations>
+    <variations
+        variationId="8">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="name">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="media_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Aggregate"
+          name="webpage"
+          lowerBound="1"
+          upperBound="1"
+          aggregates="//@entities.0/@variations.0"/>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="issn"
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -359,9 +547,25 @@
           optional="true"
           upperBound="1"
           aggregates="//@entities.1/@variations.0"/>
+      <properties
+          xsi:type="NoSQLSchema:Reference"
+          name="editors"
+          optional="true"
+          lowerBound="1"
+          upperBound="-1"
+          refsTo="//@entities.3"
+          originalType="Number"/>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="foundation_year"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
     </variations>
     <variations
-        variationId="8">
+        variationId="9">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -399,22 +603,6 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="programming"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="location"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
           name="transmission_area"
           optional="true">
         <type
@@ -426,15 +614,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="quote"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="image_format"
+          name="location"
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -471,24 +651,8 @@
           upperBound="1"
           aggregates="//@entities.0/@variations.0"/>
       <properties
-          xsi:type="NoSQLSchema:Reference"
-          name="editors"
-          optional="true"
-          lowerBound="1"
-          upperBound="-1"
-          refsTo="//@entities.3"
-          originalType="Number"/>
-      <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="foundation_year"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="speciality"
+          name="channel_type"
           optional="true">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
@@ -496,11 +660,14 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="release_frequency"
+          name="transmission_area"
           optional="true">
         <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
+            xsi:type="NoSQLSchema:PList">
+          <elementType
+              xsi:type="NoSQLSchema:PrimitiveType"
+              name="String"/>
+        </type>
       </properties>
     </variations>
   </entities>

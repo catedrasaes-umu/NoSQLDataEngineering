@@ -116,7 +116,7 @@ public class Serializer
         result.append(":[" + oppositeRef.getLowerBound() + ".." + oppositeRef.getUpperBound() + "]]");
       }
 
-      if (reference.getFeatures() != null)
+      if (!reference.getFeatures().isEmpty())
       {
         StructuralVariation feature = reference.getFeatures().get(0);
         result.append("feat[" + feature.getContainer().getName() + "_" + feature.getVariationId() + "]");
