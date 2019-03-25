@@ -4,18 +4,18 @@ NoSQLSchema mongosongs
   {
     Variation 1
     {
-      _id: PrimitiveType String,
-      name: PrimitiveType String,
-      startingYear: PrimitiveType Number,
+      _id: String,
+      name: String,
+      startingYear: Number,
       albums: Reference[0..-1] references Album { type String },
       composedTracks: Reference[0..-1] references Track { type String },
       lyricsTracks: Reference[0..-1] references Track { type String }
     },
     Variation 2
     {
-      _id: PrimitiveType String,
-      name: PrimitiveType String,
-      startingYear: PrimitiveType Number,
+      _id: String,
+      name: String,
+      startingYear: Number,
       albums: Reference[0..-1] references Album { type String },
       composedTracks: Reference[0..-1] references Track { type String }
     }
@@ -25,36 +25,36 @@ NoSQLSchema mongosongs
   {
     Variation 1
     {
-      _id: PrimitiveType String,
-      formats: PTuple<PrimitiveType String>,
-      name: PrimitiveType String,
-      releaseYear: PrimitiveType Number,
+      _id: String,
+      formats: PTuple<String>,
+      name: String,
+      releaseYear: Number,
       tracks: Reference[1..-1] references Album {type String},
-      availability: PrimitiveType String,
-      genre: PrimitiveType String,
+      availability: String,
+      genre: String,
       prizes: Aggregate[0..-1] aggregates (Prize_1, Prize_2),
       reviews: Aggregate[0..-1] aggregates (Review_1, Review_2)
     },
     Variation 2
     {
-      _id: PrimitiveType String,
-      formats: PTuple<PrimitiveType String>,
-      name: PrimitiveType String,
-      releaseYear: PrimitiveType Number,
+      _id: String,
+      formats: PTuple<String>,
+      name: String,
+      releaseYear: Number,
       tracks: Reference[1..-1] references Album {type String},
-      availability: PTuple<PrimitiveType String>,
-      genre: PrimitiveType String,
+      availability: PTuple<String>,
+      genre: String,
       reviews: Aggregate[0..-1] aggregates (Review_1)
     },
     Variation 3
     {
-      _id: PrimitiveType String,
-      formats: PTuple<PrimitiveType String>,
-      name: PrimitiveType String,
-      releaseYear: PrimitiveType Number,
+      _id: String,
+      formats: PTuple<String>,
+      name: String,
+      releaseYear: Number,
       tracks: Reference[1..-1] references Album {type String},
-      availability: PTuple<PrimitiveType String>,
-      genres: PTuple<PrimitiveType String>
+      availability: PTuple<String>,
+      genres: PTuple<String>
     }
   },
 
@@ -62,19 +62,19 @@ NoSQLSchema mongosongs
   {
     Variation 1
     {
-      _id: PrimitiveType String,
-      genres: PTuple<PrimitiveType String>,
-      length: PrimitiveType Double,
-      name: PrimitiveType String,t
+      _id: String,
+      genres: PTuple<String>,
+      length: Double,
+      name: String,
       artist_id: Reference[1..-1] references Artist {type String},
       ratings: Aggregate[0..1] aggregates (Rating_1)
     },
     Variation 2
     {
-      _id: PrimitiveType String,
-      genres: PTuple<PrimitiveType String>,
-      length: PrimitiveType Double,
-      name: PrimitiveType String,
+      _id: String,
+      genres: PTuple<String>,
+      length: Double,
+      name: String,
       artist_id: Reference[1..-1] references Artist {type String}
     }
   },
@@ -83,8 +83,8 @@ NoSQLSchema mongosongs
   {
     Variation 1
     {
-      score: PrimitiveType Double,
-      voters: PrimitiveType Number
+      score: Double,
+      voters: Number
     }
   },
 
@@ -92,17 +92,17 @@ NoSQLSchema mongosongs
   {
     Variation 1
     {
-      journalist: PrimitiveType String,
-      rank: PrimitiveType String,
-      stars: PrimitiveType Number,
+      journalist: String,
+      rank: String,
+      stars: Number,
       media: Aggregate[0..1] aggregates (Media_1)
     },
     Variation 2
     {
-      journalist: PrimitiveType String,
-      rank: PrimitiveType String,
-      media: PrimitiveType String,
-      stars: PrimitiveType String
+      journalist: String,
+      rank: String,
+      media: String,
+      stars: String
     }
   },
 
@@ -110,18 +110,18 @@ NoSQLSchema mongosongs
   {
     Variation 1
     {
-      event: PrimitiveType String,
-      units: PrimitiveType Number,
-      year: PrimitiveType Number,
-      certification: PrimitiveType String,
-      name: PrimitiveType String
+      event: String,
+      units: Number,
+      year: Number,
+      certification: String,
+      name: String
     },
     Variation 2
     {
-      event: PrimitiveType String,
-      units: PrimitiveType Number,
-      year: PrimitiveType Number,
-      names: PTuple<PrimitiveType String>
+      event: String,
+      units: Number,
+      year: Number,
+      names: PTuple<String>
     }
   },
 
@@ -129,9 +129,9 @@ NoSQLSchema mongosongs
   {
     Variation 1
     {
-      name: PrimitiveType String,
-      url: PrimitiveType String,
-      type: PrimitiveType String
+      name: String,
+      url: String,
+      type: String
     }
   }
 }

@@ -4,55 +4,40 @@ NoSQLSchema test1
   {
     Variation 1
     {
-      properties
-      {
-        name: PrimitiveType String
-      }
+      name: String
     }
   },
-  EntityType e1
+  EntityType e1 (parents { noParent } )
   {
-    parents { noParent }
-    Variation 1
+    Variation 1 (count 2 firstTimestamp 3)
     {
-      count 2 firstTimestamp 3
-      properties
-      {
-      	a0: Null,
-        a1: PrimitiveType bool,
-        a2: PList<PrimitiveType string>,
-        a3: PSet<PrimitiveType string>,
-        a4: PSet<PrimitiveType string>,
-        a5: PMap<key PrimitiveType string value PrimitiveType string>,
-        a6: PTuple<PrimitiveType int, PrimitiveType double>
-      }
+      a: Null,
+      a0: Null,
+      a1: Bool,
+      a2: PList<String>,
+      a3: PSet<String>,
+      a4: PSet<String>,
+      a5: PMap<key String value String>,
+      a6: PTuple<Int, Double>
     }
   },
   EntityType e2
   {
-    Variation 1
+    Variation 1 (count 10 firstTimestamp 0)
     {
-      count 10 firstTimestamp 0
-      properties
+      ref1: Reference[1..] references e1,
+      ref2: Reference[1..3] references e1
       {
-        ref1: Reference[1..] references e1,
-        ref2: Reference[1..3] references e1
-        {
-          type string
-          opposite ref1
-        }
+        type String
+        opposite ref1
       }
     }
   }
-  RelationshipType ref1
+  RelationshipType ref1 (parents { noParent, e2 })
   {
-    parents { noParent, e2 }
     Variation 1
     {
-      properties
-      {
-        prop : Null
-      }
+      prop : Null
     }
   }
 }
