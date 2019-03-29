@@ -40,8 +40,8 @@ public class Main
       String inputFile = INPUT_FOLDER + input_model + "/" + input_model + ".xmi";
       String outputFile = OUTPUT_FOLDER + input_model + "/" + input_model + "_Diff.xmi";
       prepareM2MExample(new File(inputFile), new File(outputFile));
-      prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER + input_model), new File(YAML_CONFIG_ROUTE));
-      prepareM2MorphiaExample(new File(outputFile), new File(MORPHIA_OUTPUT_GEN_BASE_FOLDER), new File(YAML_CONFIG_ROUTE));
+      prepareM2MongooseExample(new File(outputFile), new File(MONGOOSE_OUTPUT_GEN_BASE_FOLDER + input_model));
+      prepareM2MorphiaExample(new File(outputFile), new File(MORPHIA_OUTPUT_GEN_BASE_FOLDER));
     }
   }
 
@@ -56,6 +56,11 @@ public class Main
     writer.write(diffModel, outputFile.getAbsolutePath());
 
     System.out.println("Transformation model finished");
+  }
+
+  public static void prepareM2MongooseExample(File inputFile, File outputFolder)
+  {
+    prepareM2MongooseExample(inputFile, outputFolder, null);
   }
 
   public static void prepareM2MongooseExample(File inputFile, File outputFolder, File configFile)
@@ -75,6 +80,11 @@ public class Main
     diff2Mongoose.m2t(inputFile, outputFolder, configFile);
 
     System.out.println("Code generation finished");
+  }
+
+  public static void prepareM2MorphiaExample(File inputFile, File outputFolder)
+  {
+    prepareM2MorphiaExample(inputFile, outputFolder, null);
   }
 
   public static void prepareM2MorphiaExample(File inputFile, File outputFolder, File configFile)

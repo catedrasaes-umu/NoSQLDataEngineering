@@ -134,17 +134,18 @@ class DiffToMorphia
     «ENDFOR»
     '''
   }
-		
-	protected def boolean entityHasMultipleCardinalityAttributes(EntityType entity) {
-		entity.variations.exists[ev | ev.properties.exists[p | (p instanceof Association &&
-		      ((p as Association).lowerBound !== 1 || (p as Association).upperBound !== 1))
-		      || (p instanceof Attribute && ((p as Attribute).type instanceof PTuple) || (p as Attribute).type instanceof PList || (p as Attribute).type instanceof PSet)]]
-	}
-		
+
+  protected def boolean entityHasMultipleCardinalityAttributes(EntityType entity)
+  {
+    entity.variations.exists[ev | ev.properties.exists[p | (p instanceof Association &&
+          ((p as Association).lowerBound !== 1 || (p as Association).upperBound !== 1))
+          || (p instanceof Attribute && ((p as Attribute).type instanceof PTuple || (p as Attribute).type instanceof PList || (p as Attribute).type instanceof PSet))]]
+  }
+
   protected def boolean entityReferencesObjectId(EntityType entity) 
   {
-	entity.variations.exists[ev | ev.properties.exists[p | (p instanceof Attribute && (p as Attribute).type instanceof PrimitiveType && ((p as Attribute).type as PrimitiveType).name.equals("ObjectId")) ||
-		(p instanceof Reference && (p as Reference).originalType.equals("ObjectId"))]]
+    entity.variations.exists[ev | ev.properties.exists[p | (p instanceof Attribute && (p as Attribute).type instanceof PrimitiveType && ((p as Attribute).type as PrimitiveType).name.equals("ObjectId")) ||
+      (p instanceof Reference && (p as Reference).originalType.equals("ObjectId"))]]
   }
 
   /**
