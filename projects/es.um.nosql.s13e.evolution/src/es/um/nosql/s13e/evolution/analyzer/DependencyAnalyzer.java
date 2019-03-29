@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.evolution.analyzer.dependencies;
+package es.um.nosql.s13e.evolution.analyzer;
 
 import es.um.nosql.s13e.NoSQLSchema.SchemaType;
 import es.um.nosql.s13e.evolution.analyzer.dependencies.detectors.DependentPropsDetector;
