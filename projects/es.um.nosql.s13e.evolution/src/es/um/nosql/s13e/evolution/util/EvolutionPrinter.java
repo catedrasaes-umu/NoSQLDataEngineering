@@ -8,8 +8,8 @@ import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.evolution.analyzer.DependencyAnalyzer;
-import es.um.nosql.s13e.evolution.analyzer.dependencies.detectors.DependentPropsDetector;
-import es.um.nosql.s13e.evolution.analyzer.dependencies.detectors.SchemaChangeDetector;
+import es.um.nosql.s13e.evolution.analyzer.detectors.DependentPropsDetector;
+import es.um.nosql.s13e.evolution.analyzer.detectors.SchemaChangeDetector;
 import es.um.nosql.s13e.evolution.analyzer.diffs.PropertyMatrix;
 import es.um.nosql.s13e.util.Serializer;
 

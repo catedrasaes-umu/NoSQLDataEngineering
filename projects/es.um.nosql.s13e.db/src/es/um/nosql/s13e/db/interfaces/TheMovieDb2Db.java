@@ -35,12 +35,12 @@ public class TheMovieDb2Db extends Source2Db
     }
     else
     {
-      storeJsonContent(jsonRoute, dbName);
+      storeJSONContent(jsonRoute, dbName);
       System.out.println(dbName + ":" + jsonFolderName + " table created in " + (System.currentTimeMillis() - startTime) + " ms");
     }
   }
 
-  private void storeJsonContent(String jsonRoute, String dbName)
+  private void storeJSONContent(String jsonRoute, String dbName)
   {
     String jsonFolderName = Paths.get(jsonRoute).getFileName().toString();
 

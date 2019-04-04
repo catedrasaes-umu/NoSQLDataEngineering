@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.evolution.analyzer;
+package es.um.nosql.s13e.evolution.analyzer.outliers;
 
 import java.util.HashMap;
 import java.util.List;

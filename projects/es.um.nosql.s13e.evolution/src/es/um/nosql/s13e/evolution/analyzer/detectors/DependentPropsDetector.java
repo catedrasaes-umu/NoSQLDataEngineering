@@ -1,4 +1,4 @@
-package es.um.nosql.s13e.evolution.analyzer.dependencies.detectors;
+package es.um.nosql.s13e.evolution.analyzer.detectors;
 
 import java.util.ArrayList;
 import java.util.Arrays;

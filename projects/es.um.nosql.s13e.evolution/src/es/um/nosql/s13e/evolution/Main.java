@@ -14,8 +14,8 @@ public class Main
     //inferrer.runPublicationsExample(InferenceMode.INFER_ONLY, "publications");
     //inferrer.runSanctionsExample(InferenceMode.INFER_ONLY, "opensanctions");
     //inferrer.runProteinsExample(InferenceMode.INFER_ONLY, "proteins");
-    inferrer.runStackOverflowExample(InferenceMode.INFER_ONLY, "stackoverflow");
-    //inferrer.runRedditExample(InferenceMode.ANALYZE_ONLY, "reddit");
+    //inferrer.runStackOverflowExample(InferenceMode.INFER_ONLY, "stackoverflow");
+    inferrer.runRedditExample(InferenceMode.INFER_ONLY, "reddit");
     //inferrer.runLinksExample(InferenceMode.INFER_ONLY, "links");
     //inferrer.runWebclickExample(InferenceMode.INFER_ONLY, "webclicks");
     //TODO: In the future might be possible to give instead of a simple attribute, a map-like structure
