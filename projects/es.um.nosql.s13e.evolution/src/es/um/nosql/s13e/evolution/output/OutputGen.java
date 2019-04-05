@@ -4,13 +4,13 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.nio.file.Paths;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.ECollections;
+import org.eclipse.emf.common.util.EList;
 
 import com.fasterxml.jackson.dataformat.csv.CsvMapper;
 import com.fasterxml.jackson.dataformat.csv.CsvSchema;
@@ -33,10 +33,10 @@ public class OutputGen
     mapper = new CsvMapper();
   }
 
-  public void genOutput(NoSQLSchema schema)
+  public void genOutput(String route, NoSQLSchema schema)
   {
     if (ConfigConstants.OUTPUT_CSV)
-      genCSVFile(schema);
+      genCSVFile(route, schema);
 
     if (ConfigConstants.OUTPUT_CONSOLE)
       genConsole(schema);
@@ -45,14 +45,14 @@ public class OutputGen
       genChart(schema);
 
     if (ConfigConstants.OUTPUT_CHART_FILE)
-      genChartFile(schema);
+      genChartFile(route, schema);
   }
 
-  public void genCSVFile(NoSQLSchema schema)
+  public void genCSVFile(String route, NoSQLSchema schema)
   {
-    new File(ConfigConstants.OUTPUT_FOLDER).mkdirs();
-    String outputRoute = ConfigConstants.OUTPUT_FOLDER + schema.getName() + ".csv";
-    Map<EntityType, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
+    new File(route).mkdirs();
+    String outputRoute = Paths.get(route).resolve(schema.getName()) + ".csv";
+    Map<EntityType, EList<StructuralVariation>> orderedMap = genOrderedMap(schema);
 
     if (ConfigConstants.DEBUG)
       System.out.println(schema.getName() + " > Generating CSV file...");
@@ -66,16 +66,27 @@ public class OutputGen
       .build()
       .withHeader();
 
-    List<List<Object>> objects = new ArrayList<List<Object>>();
+    EList<EList<String>> csvContent = new BasicEList<EList<String>>();
 
     for (EntityType entity : orderedMap.keySet())
       for (StructuralVariation variation : orderedMap.get(entity))
-        objects.add(Arrays.asList(entity.getName(), variation.getVariationId(), variation.getCount(), variation.getFirstTimestamp(), variation.getLastTimestamp()));
+      {
+        EList<String> list = new BasicEList<String>();
+        list.add(entity.getName());
+        list.add(String.valueOf(variation.getVariationId()));
+        list.add(String.valueOf(variation.getCount()));
+        list.add(String.valueOf(variation.getFirstTimestamp()));
+        list.add(String.valueOf(variation.getLastTimestamp()));
+
+        csvContent.add(list);
+      }
+
+    ECollections.sort(csvContent, (l1, l2) -> l1.get(0).compareTo(l2.get(0)));
 
     try
     {
       OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(outputRoute));
-      mapper.writer(csvSchema).writeValue(writer, objects);
+      mapper.writer(csvSchema).writeValue(writer, csvContent);
     } catch (IOException e)
     {
       e.printStackTrace();
@@ -87,15 +98,17 @@ public class OutputGen
 
   public void genModelFile(NoSQLSchema schema)
   {
-    new File(ConfigConstants.OUTPUT_FOLDER).mkdirs();
-    String outputRoute = ConfigConstants.OUTPUT_FOLDER + schema.getName() + ".xmi";
+    File schemaFolder = Paths.get(ConfigConstants.OUTPUT_FOLDER).resolve(schema.getName()).toFile();
+    schemaFolder.mkdirs();
+    String outputRoute = Paths.get(schemaFolder.getAbsolutePath()).resolve(schema.getName()) + ".xmi";
+
     writer.write(schema, outputRoute);
   }
 
   public void genConsole(NoSQLSchema schema)
   {
     StringBuilder result = new StringBuilder();
-    Map<EntityType, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
+    Map<EntityType, EList<StructuralVariation>> orderedMap = genOrderedMap(schema);
 
     if (ConfigConstants.DEBUG)
       System.out.println(schema.getName() + " > Generating console output...");
@@ -124,7 +137,7 @@ public class OutputGen
     if (ConfigConstants.DEBUG)
       System.out.println(schema.getName() + " > Drawing timestamp charts...");
 
-    Map<EntityType, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
+    Map<EntityType, EList<StructuralVariation>> orderedMap = genOrderedMap(schema);
 
     for (EntityType entity : orderedMap.keySet())
     {
@@ -138,28 +151,30 @@ public class OutputGen
       System.out.println(schema.getName() + " > Finished drawing charts.");
   }
 
-  public void genChartFile(NoSQLSchema schema)
+  public void genChartFile(String route, NoSQLSchema schema)
   {
     if (ConfigConstants.DEBUG)
       System.out.println(schema.getName() + " > Creating timestamp chart images...");
 
-    Map<EntityType, List<StructuralVariation>> orderedMap = genOrderedMap(schema);
+    new File(route).mkdirs();
+
+    Map<EntityType, EList<StructuralVariation>> orderedMap = genOrderedMap(schema);
 
     for (EntityType entity : orderedMap.keySet())
     {
       if (ConfigConstants.DEBUG)
         System.out.println(schema.getName() + " > " + entity.getName() + " chart created.");
 
-      new TimestampLineChart(schema.getName(), entity.getName(), orderedMap.get(entity)).saveChart(ConfigConstants.OUTPUT_FOLDER);
+      new TimestampLineChart(schema.getName(), entity.getName(), orderedMap.get(entity)).saveChart(route);
     }
 
     if (ConfigConstants.DEBUG)
       System.out.println(schema.getName() + " > Finished creating charts.");
   }
 
-  private Map<EntityType, List<StructuralVariation>> genOrderedMap(NoSQLSchema schema)
+  private Map<EntityType, EList<StructuralVariation>> genOrderedMap(NoSQLSchema schema)
   {
-    Map<EntityType, List<StructuralVariation>> result = new HashMap<EntityType, List<StructuralVariation>>();
+    Map<EntityType, EList<StructuralVariation>> result = new HashMap<EntityType, EList<StructuralVariation>>();
 
     for (EntityType entity : schema.getEntities())
     {

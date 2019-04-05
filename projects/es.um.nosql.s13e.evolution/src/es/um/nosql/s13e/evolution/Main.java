@@ -13,7 +13,6 @@ public class Main
     //inferrer.runFacebookExample(InferenceMode.INFER_ONLY, "facebook");
     //inferrer.runPublicationsExample(InferenceMode.INFER_ONLY, "publications");
     //inferrer.runSanctionsExample(InferenceMode.INFER_ONLY, "opensanctions");
-    //inferrer.runProteinsExample(InferenceMode.INFER_ONLY, "proteins");
     //inferrer.runStackOverflowExample(InferenceMode.INFER_ONLY, "stackoverflow");
     inferrer.runRedditExample(InferenceMode.INFER_ONLY, "reddit");
     //inferrer.runLinksExample(InferenceMode.INFER_ONLY, "links");

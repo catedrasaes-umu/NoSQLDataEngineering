@@ -1,16 +1,22 @@
 package es.um.nosql.s13e.evolution.util;
 
 import java.util.List;
+import java.util.Map;
 import java.util.Map.Entry;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import es.um.nosql.s13e.NoSQLSchema.Association;
 import es.um.nosql.s13e.NoSQLSchema.Property;
+import es.um.nosql.s13e.NoSQLSchema.SchemaType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.evolution.analyzer.DependencyAnalyzer;
 import es.um.nosql.s13e.evolution.analyzer.detectors.DependentPropsDetector;
 import es.um.nosql.s13e.evolution.analyzer.detectors.SchemaChangeDetector;
 import es.um.nosql.s13e.evolution.analyzer.diffs.PropertyMatrix;
+import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierAnalyzer;
+import es.um.nosql.s13e.evolution.analyzer.outliers.modes.CoverageOutlierDetector;
+import es.um.nosql.s13e.evolution.analyzer.outliers.modes.EpsilonOutlierDetector;
 import es.um.nosql.s13e.util.Serializer;
 
 public class EvolutionPrinter
@@ -113,6 +119,37 @@ public class EvolutionPrinter
     }
 
     result.append("\n");
+
+    return result.toString();
+  }
+
+  public String printPretty(OutlierAnalyzer analyzer)
+  {
+    StringBuilder result = new StringBuilder();
+    String endLine = "\n";
+    Map<SchemaType, List<StructuralVariation>> outliers = analyzer.getOutliers();
+
+    for (SchemaType schemaType : outliers.keySet())
+    {
+      long numObjects = Stream.concat(schemaType.getVariations().stream(), outliers.get(schemaType).stream()).mapToLong(var -> var.getCount()).sum();
+      int numVariations = schemaType.getVariations().size() + outliers.get(schemaType).size();
+      double factor = analyzer.getOutlierDetector().getFactor();
+
+      result.append(schemaType.getName() + ": " + numObjects + " items" + endLine);
+
+      if (analyzer.getOutlierDetector() instanceof CoverageOutlierDetector)
+      {
+        long countCoverage = Math.round((numObjects * factor) / 100);
+        result.append("Coverage factor: " + factor + "% (" + countCoverage + " items)" + endLine);
+      }
+      else if (analyzer.getOutlierDetector() instanceof EpsilonOutlierDetector)
+      {
+        long countThreshold = Math.round(numObjects * factor);
+        result.append("Epsilon factor: " + String.format("%.4f", factor) + " (" + countThreshold + " items)" + endLine);
+      }
+
+      result.append("Variations before/after: " + numVariations + " => " + schemaType.getVariations().size() + endLine + endLine);
+    }
 
     return result.toString();
   }

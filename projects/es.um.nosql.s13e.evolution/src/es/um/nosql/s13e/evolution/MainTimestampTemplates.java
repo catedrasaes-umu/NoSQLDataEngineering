@@ -9,7 +9,7 @@ import es.um.nosql.s13e.evolution.templates.DateTimestampAnalyzer;
 import es.um.nosql.s13e.evolution.templates.DefaultTimestampAnalyzer;
 import es.um.nosql.s13e.evolution.templates.OIDTimestampAnalyzer;
 
-public class GenTimestampTemplates
+public class MainTimestampTemplates
 {
   private static String OUTPUT_DIR = "timestamp/";
   private static String EXTENSION = ".js";

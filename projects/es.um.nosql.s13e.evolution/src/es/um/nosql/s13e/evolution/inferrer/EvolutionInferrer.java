@@ -1,6 +1,7 @@
 package es.um.nosql.s13e.evolution.inferrer;
 
 import java.io.File;
+import java.nio.file.Paths;
 
 import com.google.gson.JsonArray;
 
@@ -53,11 +54,6 @@ public class EvolutionInferrer
     runExample(option, dbName, new DateTimestampAnalyzer("timestamp"));
   }
 
-  public void runProteinsExample(InferenceMode option, String dbName)
-  {
-    runExample(option, dbName, new DefaultTimestampAnalyzer());
-  }
-
   public void runStackOverflowExample(InferenceMode option, String dbName)
   {
     runExample(option, dbName, new DateTimestampAnalyzer("CreationDate"));
@@ -90,7 +86,7 @@ public class EvolutionInferrer
     }
 
     if (option != InferenceMode.INFER_ONLY)
-      output.genOutput(schema);
+      output.genOutput(Paths.get(ConfigConstants.OUTPUT_FOLDER).resolve(schema.getName()).toString(), schema);
   }
 
   private NoSQLSchema infer(String dbName, TimestampAnalyzer analyzer)
