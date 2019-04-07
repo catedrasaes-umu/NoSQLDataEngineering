@@ -40,7 +40,7 @@ public class Reddit2Db extends Source2Db
 
     switch (jsonFolderName)
     {
-      case "authors":
+/*      case "authors":
       {
         for (File authorFile : new File(jsonRoute).listFiles())
         {
@@ -68,10 +68,14 @@ public class Reddit2Db extends Source2Db
           storeContent(subredditFile, dbName, "subreddits");
         }
         break;
-      }
+      }*/
       case "comments":
       {
-        storeContent(new File(jsonRoute), dbName, "comments");
+        for (File commentFile : new File(jsonRoute).listFiles())
+        {
+          System.out.println(dbName + ": Storing " + commentFile.getName());
+          storeContent(commentFile, dbName, "comments");
+        }
         break;
       }
     }
