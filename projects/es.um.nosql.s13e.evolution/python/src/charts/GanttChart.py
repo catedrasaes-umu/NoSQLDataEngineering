@@ -45,7 +45,7 @@ class GanttChart:
     pos = np.arange(0.5, iLen * 0.5 + 0.5, 0.5)
     locsy, labelsy = pyplot.yticks(pos, chartData.getYLabels())
     pyplot.setp(labelsy, fontsize = 8)
-    ax.set_ylim(ymin = -0.1, ymax = iLen*0.5+0.5)
+    ax.set_ylim(bottom = -0.1, top = iLen*0.5+0.5)
     ax.grid(color = 'lightblue', linestyle = ':')
     ax.xaxis_date()
   
@@ -54,7 +54,7 @@ class GanttChart:
     pyplot.setp(ax.get_xticklabels(), rotation=30, fontsize=8)
   
     font = font_manager.FontProperties(size='small')
-    ax.legend(loc=1,prop=font)
+    #ax.legend(loc=1,prop=font)
   
     ax.invert_yaxis()
     figure1.autofmt_xdate()

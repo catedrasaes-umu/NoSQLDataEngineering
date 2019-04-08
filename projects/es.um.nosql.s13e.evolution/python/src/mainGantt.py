@@ -8,7 +8,7 @@ SOF_CSV_LIVEVARS_ROUTE = "../../output/stackoverflow/stackoverflow_livevars.csv"
 
 def main():
 
-  chartCreator = GanttChart(REDDIT_CSV_ROUTE)
+  chartCreator = GanttChart(SOF_CSV_OUTLIERS_ROUTE)
   chartCreator.showCharts()
 
 main()

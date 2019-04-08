@@ -39,8 +39,8 @@ public class Reddit2Db extends Source2Db
     String jsonFolderName = Paths.get(jsonRoute).getFileName().toString();
 
     switch (jsonFolderName)
-    {
-/*      case "authors":
+    {/*
+      case "authors":
       {
         for (File authorFile : new File(jsonRoute).listFiles())
         {
@@ -132,6 +132,9 @@ public class Reddit2Db extends Source2Db
       obj.set("user_data", moderators);
       obj.remove("moderator_data");
     }
+
+    if (obj.has("created_utc") && obj.get("created_utc").isTextual())
+      obj.put("created_utc", Long.parseLong(obj.get("created_utc").asText()));
 
     Iterator<String> fieldNames = obj.fieldNames();
     List<String> nullFields = new ArrayList<String>();
