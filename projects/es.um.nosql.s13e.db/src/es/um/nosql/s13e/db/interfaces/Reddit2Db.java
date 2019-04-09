@@ -39,7 +39,7 @@ public class Reddit2Db extends Source2Db
     String jsonFolderName = Paths.get(jsonRoute).getFileName().toString();
 
     switch (jsonFolderName)
-    {/*
+    {
       case "authors":
       {
         for (File authorFile : new File(jsonRoute).listFiles())
@@ -68,7 +68,7 @@ public class Reddit2Db extends Source2Db
           storeContent(subredditFile, dbName, "subreddits");
         }
         break;
-      }*/
+      }
       case "comments":
       {
         for (File commentFile : new File(jsonRoute).listFiles())

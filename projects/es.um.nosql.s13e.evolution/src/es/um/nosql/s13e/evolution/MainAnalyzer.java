@@ -1,14 +1,18 @@
 package es.um.nosql.s13e.evolution;
 
 import java.io.File;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 import es.um.nosql.s13e.NoSQLSchema.SchemaType;
+import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.evolution.analyzer.DependencyAnalyzer;
 import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierAnalyzer;
+import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierMigrator;
 import es.um.nosql.s13e.evolution.analyzer.outliers.modes.OutlierMode;
 import es.um.nosql.s13e.evolution.util.EvolutionPrinter;
 import es.um.nosql.s13e.util.ModelLoader;
@@ -25,7 +29,7 @@ public class MainAnalyzer
     // Detect and remove outliers given Epsilon = 0.0001 or Coverage = 99.9%
     OutlierAnalyzer oAnalyzer = new OutlierAnalyzer(OutlierMode.COVERAGE);
     oAnalyzer.removeOutliers(schema);
-    analyzeOutliers(schema);
+    analyzeOutliers(schema, oAnalyzer.getOutliers());
   }
 
   private static void analyzeIdentifyingProperties(NoSQLSchema schema)
@@ -42,9 +46,11 @@ public class MainAnalyzer
     }
   }
 
-  private static void analyzeOutliers(NoSQLSchema schema)
+  private static void analyzeOutliers(NoSQLSchema schema, Map<SchemaType, List<StructuralVariation>> outliers)
   {
-    EvolutionPrinter printer = new EvolutionPrinter();
+    OutlierMigrator migrator = new OutlierMigrator(schema, outliers);
+    migrator.analyzeAlternativeMigrations(1);
+//    EvolutionPrinter printer = new EvolutionPrinter();
 //    oAnalyzer.getNoSQLSchemaFromOutliers(schema);
     //oAnalyzer.getOutliers(schemaType);
 
