@@ -21,9 +21,9 @@ class GanttChart:
     entityDict = {}
 
     for line in csvContent:
-      entityName, varId, _, firstTimestamp, lastTimestamp = line.rstrip().split(',')
+      entityName, varId, count, firstTimestamp, lastTimestamp = line.rstrip().split(',')
       if firstTimestamp != "0" and lastTimestamp != "0":
-        entityDict.setdefault(entityName,[]).append({"entityName": entityName, "varId": varId, "firstTimestamp": firstTimestamp, "lastTimestamp": lastTimestamp})
+        entityDict.setdefault(entityName,[]).append({"entityName": entityName, "varId": varId, "count": count, "firstTimestamp": firstTimestamp, "lastTimestamp": lastTimestamp})
 
     for key in entityDict:
       self.__chartData[key] = ChartData()

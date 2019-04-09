@@ -5,16 +5,21 @@ class ChartData:
 
   __yLabels = None
   __taskDates = None
+  __outliers = None
 
   def __init__(self):
     self.__yLabels = []
     self.__taskDates = {}
+    self.__outliers = []
 
   def getYLabels(self):
     return self.__yLabels
 
   def getTaskDates(self):
     return self.__taskDates
+
+  def isOutlier(self, index):
+    return self.__outliers[index]
 
   def process(self, variations):
 
