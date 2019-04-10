@@ -12,7 +12,7 @@ import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.evolution.analyzer.DependencyAnalyzer;
 import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierAnalyzer;
-import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierMigrator;
+import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierTransformer;
 import es.um.nosql.s13e.evolution.analyzer.outliers.modes.OutlierMode;
 import es.um.nosql.s13e.evolution.util.EvolutionPrinter;
 import es.um.nosql.s13e.util.ModelLoader;
@@ -48,14 +48,10 @@ public class MainAnalyzer
 
   private static void analyzeOutliers(NoSQLSchema schema, Map<SchemaType, List<StructuralVariation>> outliers)
   {
-    OutlierMigrator migrator = new OutlierMigrator(schema, outliers);
-    migrator.analyzeAlternativeMigrations(1);
-//    EvolutionPrinter printer = new EvolutionPrinter();
-//    oAnalyzer.getNoSQLSchemaFromOutliers(schema);
-    //oAnalyzer.getOutliers(schemaType);
+    OutlierTransformer transformer = new OutlierTransformer(schema, outliers);
+    transformer.analyzeAlternativeVariations(3);
 
-    // Detect outliers
-    // Extract CSV: All variations, only not outliers, only outliers
-    // Analizar para cada outlier qué variación se acerca.
+    EvolutionPrinter printer = new EvolutionPrinter();
+    System.out.println(printer.printPretty(transformer));
   }
 }

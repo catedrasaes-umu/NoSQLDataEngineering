@@ -6,7 +6,7 @@ import java.nio.file.Paths;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchema;
 import es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage;
 import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierAnalyzer;
-import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierMigrator;
+import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierTransformer;
 import es.um.nosql.s13e.evolution.analyzer.outliers.modes.OutlierMode;
 import es.um.nosql.s13e.evolution.output.OutputGen;
 import es.um.nosql.s13e.evolution.util.constants.ConfigConstants;
@@ -33,11 +33,11 @@ public class MainGenCSVs
       // Detect and remove outliers given Epsilon = 0.0001 or Coverage = 99.9%
       OutlierAnalyzer oAnalyzer = new OutlierAnalyzer(OutlierMode.COVERAGE);
       oAnalyzer.removeOutliers(schema);
-      schema.setName(schemaName + "_livevars");
+      schema.setName(schemaName + "_filtered");
       output.genOutput(folder, schema);
 
-      OutlierMigrator oMigrator = new OutlierMigrator(schema, oAnalyzer.getOutliers());
-      output.genOutput(folder, oMigrator.createNoSQLSchemaFromOutliers(schemaName + "_outliers"));
+      OutlierTransformer oTransform = new OutlierTransformer(schema, oAnalyzer.getOutliers());
+      output.genOutput(folder, oTransform.getFilteredSchema());
     }
   }
 }

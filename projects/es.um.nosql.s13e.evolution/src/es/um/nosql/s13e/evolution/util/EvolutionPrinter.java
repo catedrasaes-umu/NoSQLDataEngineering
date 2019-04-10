@@ -1,5 +1,6 @@
 package es.um.nosql.s13e.evolution.util;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -15,12 +16,21 @@ import es.um.nosql.s13e.evolution.analyzer.detectors.DependentPropsDetector;
 import es.um.nosql.s13e.evolution.analyzer.detectors.SchemaChangeDetector;
 import es.um.nosql.s13e.evolution.analyzer.diffs.PropertyMatrix;
 import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierAnalyzer;
+import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierTransformer;
 import es.um.nosql.s13e.evolution.analyzer.outliers.modes.CoverageOutlierDetector;
 import es.um.nosql.s13e.evolution.analyzer.outliers.modes.EpsilonOutlierDetector;
 import es.um.nosql.s13e.util.Serializer;
+import es.um.nosql.s13e.util.compare.CompareProperty;
 
 public class EvolutionPrinter
 {
+  private CompareProperty propComparer;
+
+  public EvolutionPrinter()
+  {
+    propComparer = new CompareProperty();
+  }
+
   public String printPretty(DependencyAnalyzer detector)
   {
     StringBuilder result = new StringBuilder();
@@ -150,6 +160,45 @@ public class EvolutionPrinter
 
       result.append("Variations before/after: " + numVariations + " => " + schemaType.getVariations().size() + endLine + endLine);
     }
+
+    return result.toString();
+  }
+
+  public String printPretty(OutlierTransformer transformer)
+  {
+    StringBuilder result = new StringBuilder();
+
+    for (SchemaType key : transformer.getOutliersAlternatives().keySet())
+    {
+      result.append("\n" + key.getName() + ":\n");
+      for (StructuralVariation outlier : transformer.getOutliersAlternatives().get(key).keySet())
+      {
+        result.append("  [" + outlier.getVariationId() + " -> " + transformer.getOutliersAlternatives().get(key).get(outlier).stream()
+            .map(alt -> Integer.toString(alt.getVariationId()))
+            .collect(Collectors.joining(", ")) + "]:\n");
+        result.append(getDifferences(outlier, transformer.getOutliersAlternatives().get(key).get(outlier).get(0), 4));
+      }
+    }
+
+    return result.toString();
+  }
+
+  public String getDifferences(StructuralVariation var1, StructuralVariation var2)
+  {
+    return getDifferences(var1, var2, 0);
+  }
+
+  public String getDifferences(StructuralVariation var1, StructuralVariation var2, int numSpaces)
+  {
+    StringBuilder result = new StringBuilder();
+    List<Property> var1OnlyProps = new ArrayList<Property>();
+    List<Property> var2OnlyProps = new ArrayList<Property>();
+
+    var1OnlyProps = var1.getProperties().stream().filter(prop -> var2.getProperties().stream().noneMatch(prop2 -> propComparer.compare(prop, prop2))).collect(Collectors.toList());
+    var2OnlyProps = var2.getProperties().stream().filter(prop -> var1.getProperties().stream().noneMatch(prop2 -> propComparer.compare(prop, prop2))).collect(Collectors.toList());
+
+    var1OnlyProps.forEach(prop -> result.append(createStr(numSpaces) + "-   " + serializeShort(prop) + "\n"));
+    var2OnlyProps.forEach(prop -> result.append(createStr(numSpaces) + "+   " + serializeShort(prop) + "\n"));
 
     return result.toString();
   }
