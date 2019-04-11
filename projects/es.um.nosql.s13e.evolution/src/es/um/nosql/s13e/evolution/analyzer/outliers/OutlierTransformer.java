@@ -112,7 +112,7 @@ public class OutlierTransformer
     // auxCandidates.sort((var1, var2) -> var1.getCount() > var2.getCount() ? -1 : 1);
     // Option 3
     // Sort candidates by properties number: Less new properties variations will be the preferred ones.
-    auxCandidates.sort((var1, var2) -> var1.getProperties().size() < var2.getProperties().size() ? -1 : 1);
+    auxCandidates.sort((var1, var2) -> Integer.compare(var1.getProperties().size(), var2.getProperties().size()));
 
     if (alternatives == 0)
       return result;

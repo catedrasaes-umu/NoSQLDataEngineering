@@ -32,7 +32,7 @@ class ChartData:
       self.__taskDates[task] = customDates[i]
 
   def __createDate(self, timestamp):
-#    time = datetime.datetime.fromtimestamp(float(timestamp))
-    time = datetime.datetime.fromtimestamp(float(timestamp) // 1000)
+    time = datetime.datetime.fromtimestamp(float(timestamp))
+#    time = datetime.datetime.fromtimestamp(float(timestamp) // 1000)
 
     return matplotlib.dates.date2num(time)

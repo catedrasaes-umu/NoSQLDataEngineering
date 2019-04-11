@@ -14,7 +14,7 @@ public class OptionalPatcher {
   public static void main(String[] args)
   {
     OptionalPatcher patcher = new OptionalPatcher();
-    patcher.patch("../es.um.nosql.models/stackoverflow/stackoverflow_reduced.xmi");
+    patcher.patch("../es.um.nosql.models/reddit/reddit.xmi");
   }
 
   public void patch(String modelRoute)

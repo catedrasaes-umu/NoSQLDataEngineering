@@ -49,7 +49,7 @@ public class MainAnalyzer
   private static void analyzeOutliers(NoSQLSchema schema, Map<SchemaType, List<StructuralVariation>> outliers)
   {
     OutlierTransformer transformer = new OutlierTransformer(schema, outliers);
-    transformer.analyzeAlternativeVariations(3);
+    transformer.analyzeAlternativeVariations(1);
 
     EvolutionPrinter printer = new EvolutionPrinter();
     System.out.println(printer.printPretty(transformer));

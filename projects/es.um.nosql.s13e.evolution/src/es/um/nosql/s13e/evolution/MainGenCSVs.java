@@ -16,7 +16,7 @@ public class MainGenCSVs
 {
   public static void main(String[] args)
   {
-    String[] inputModels = new String[] {"facebook", "harvard", "links", "opensanctions", "stackoverflow", "webclicks"};
+    String[] inputModels = new String[] {"facebook", "harvard", "links", "opensanctions", "stackoverflow", "reddit", "webclicks"};
 
     ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
 
@@ -33,11 +33,12 @@ public class MainGenCSVs
       // Detect and remove outliers given Epsilon = 0.0001 or Coverage = 99.9%
       OutlierAnalyzer oAnalyzer = new OutlierAnalyzer(OutlierMode.COVERAGE);
       oAnalyzer.removeOutliers(schema);
-      schema.setName(schemaName + "_filtered");
+      schema.setName(schemaName + "_livevars");
       output.genOutput(folder, schema);
+      schema.setName(schemaName);
 
       OutlierTransformer oTransform = new OutlierTransformer(schema, oAnalyzer.getOutliers());
-      output.genOutput(folder, oTransform.getFilteredSchema());
+      output.genOutput(folder, oTransform.getOutlierSchema());
     }
   }
 }
