@@ -19,14 +19,14 @@ import es.um.nosql.s13e.util.ModelLoader;
 
 public class MainAnalyzer
 {
-  public final static String INPUT_MODEL = "../es.um.nosql.models/stackoverflow/stackoverflow.xmi";
+  public final static String INPUT_MODEL = "../es.um.nosql.models/reddit/reddit.xmi";
 
   public static void main(String[] args)
   {
     ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
     NoSQLSchema schema = loader.load(new File(INPUT_MODEL), NoSQLSchema.class);
 
-    // Detect and remove outliers given Epsilon = 0.0001 or Coverage = 99.9%
+    // Detect and remove outliers given Epsilon = 0.0001 or Coverage = 99%
     OutlierAnalyzer oAnalyzer = new OutlierAnalyzer(OutlierMode.COVERAGE);
     oAnalyzer.removeOutliers(schema);
     analyzeOutliers(schema, oAnalyzer.getOutliers());
