@@ -49,6 +49,7 @@ public class RedditPatcher
       Property rmSubreddit = null;
       Property rmAuthor_flair_css_class = null;
       Property rmAuthor_flair_text = null;
+      Property rmParent = null;
 
       for (Property p : sv.getProperties())
         if (p.getName().equals("subreddit"))
@@ -57,6 +58,8 @@ public class RedditPatcher
           rmAuthor_flair_css_class = p;
         else if (p.getName().equals("author_flair_text"))
           rmAuthor_flair_text = p;
+        else if (p.getName().contentEquals("parent_id"))
+          rmParent = p;
 
       if (rmSubreddit != null)
       {
@@ -72,6 +75,18 @@ public class RedditPatcher
       {
         sv.getProperties().remove(rmAuthor_flair_text);
         sv.getProperties().add(createAttribute("author_flair_text", "String", rmAuthor_flair_text.isOptional()));
+      }
+      if (rmParent != null)
+      {
+        sv.getProperties().remove(rmParent);
+        Reference ref = NoSQLSchemaFactory.eINSTANCE.createReference();
+        ref.setName("parent_id");
+        ref.setLowerBound(1);
+        ref.setUpperBound(1);
+        ref.setOriginalType("String");
+        EntityType eT = ((NoSQLSchema)sv.getContainer().eContainer()).getEntities().stream().filter(entity -> entity.getName().equals("Comments")).findFirst().get();
+        ref.setRefsTo(eT);
+        sv.getProperties().add(ref);
       }
     }
   }
