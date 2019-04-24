@@ -15,6 +15,8 @@ A NoSQL schema is a schema used to define which data and in which format is bein
 - [Database import](#database-import)
 - [Random data generation](#random-data-generation)
 ***
+- [Schema evolution](#schema-evolution)
+***
 - [Object Document mappers](#object-document-mappers)
 ***
 - [NoSQL Schema visualization](#nosql-schema-visualization)
@@ -72,7 +74,7 @@ The most important elements of this projects are, apart from the metamodel defin
 ## The NoSQL schema metamodel
 
 <figure>
-    <img src="figures/nosqlschema_metamodel.png" align="center"/>
+    <img src="figures/nosqlschema_metamodel" align="center"/>
 </figure>
 <br/>
 
@@ -84,7 +86,7 @@ The most important elements of this projects are, apart from the metamodel defin
 * An **Aggregate** is a kind of **Property** with a cardinality, a _name_ and potentially several associated _EntityVersions_. This way an object may embed several other objects inside of it.
 
 <figure>
-    <img src="figures/nosqlschema_example.png" align="center"/>
+    <img src="figures/nosqlschema_example" align="center"/>
 </figure>
 <br/>
 
@@ -114,7 +116,7 @@ This project is aimed to import JSON data from a NoSQL database. It is provided 
 * A MapReduce folder containing a **map.js** file and a **reduce.js** file. These files contain JavaScript code, they may be found on the corresponding folder and are not likely to change.
 
 <figure>
-    <img src="figures/nosqlimport.png" align="center"/>
+    <img src="figures/nosqlimport" align="center"/>
 </figure>
 <br/>
 
@@ -160,7 +162,7 @@ As an example of the usage the user may check the **Main** class. The process go
 * Now the controller will apply the input method with the given client, filling the database.
 
 <figure>
-    <img src="figures/dbimport.png" align="center"/>
+    <img src="figures/dbimport" align="center"/>
 </figure>
 <br/>
 
@@ -177,7 +179,7 @@ The purpose for this project is to provide the user a meaningful dataset of a ce
 The general structure of the project is as follows:
 
 <figure>
-    <img src="figures/dbgen.png" align="center"/>
+    <img src="figures/dbgen" align="center"/>
 </figure>
 <br/>
 
@@ -243,6 +245,39 @@ The Java project involved in the __Random data generation__ project is the follo
 
 ***
 
+# Schema evolution
+
+This project is intended to analyze a NoSQLSchema model, its entities and its variations, in order to classify variations depending on their **count** as outliers or non-outliers. The **count** attribute stores, for each variation, how many objects of that variation exist on the database. Once variations are classified then several analysis may be performed: Outliers may be transformed to non-outliers variations by proposing migrations, and non-outliers variations will be studied in the future **TODO**.
+
+There are several independent processes on this project. We list and explain them below:
+
+* A process is presented to generate some **MapReduce** templates in order to launch the inference process with different options to catch the **timestamp** field.
+* Another process is available to generate a CSV file from an input NoSQLSchema.
+* A third process allows the user to detect outliers and propose transformations from a NoSQLSchema.
+* The last process takes a NoSQLSchema model as an input, removes outliers, and then studies the remaining variations, in order to catch dependencies.
+
+As explained, one of the generated outputs for a NoSQLSchema model when analyzing outliers is a CSV file in which for each Entity, its **count** number and its **timestamps** are stored in columns. By doing this, it is fairly easy to create a plot in Python in which variations with their lifelines may be presented, as seen in the next Figure.
+
+<figure>
+    <img src="figures/evolution_comments" align="center"/>
+</figure>
+<br/>
+
+The project also contains a utility to suggest some transformations in order to make outliers dissapear, by migrating outlier variations to non-outlier variations. The criteria for this suggestions is as follows:
+  * For any outlier variation, search for the non-outlier variations with most properties in common.
+  * From all these non-outlier variations, select the one with less properties not in common with the outlier.
+This way the proposed migration will try to perform as less changes as possible to each variation. An example of these suggestions may be seen on the Figure below:
+
+<figure>
+    <img src="figures/evolution_transformations" align="center"/>
+</figure>
+<br/>
+
+The Java project involved in the __Schema evolution analysis__ project is the following one:
+
+* `es.um.nosql.s13e.evolution`: This project contains some **MapReduce** templates to be used on the MapReduce inference process in order to extract the initial and last timestamps for each variation. It also contains the executables to extract and analyze outliers from a NoSQLSchema model. Lastly it contains some Python utilities to create charts from an outlier CSV file. There are several **Main** classes, each one of them launches a certain process.
+
+***
 # Object document mappers
 
 TODO:
