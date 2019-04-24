@@ -74,7 +74,7 @@ The most important elements of this projects are, apart from the metamodel defin
 ## The NoSQL schema metamodel
 
 <figure>
-    <img src="figures/nosqlschema_metamodel" align="center"/>
+    <img src="figures/nosqlschema_metamodel.png" align="center"/>
 </figure>
 <br/>
 
@@ -86,7 +86,7 @@ The most important elements of this projects are, apart from the metamodel defin
 * An **Aggregate** is a kind of **Property** with a cardinality, a _name_ and potentially several associated _EntityVersions_. This way an object may embed several other objects inside of it.
 
 <figure>
-    <img src="figures/nosqlschema_example" align="center"/>
+    <img src="figures/nosqlschema_example.png" align="center"/>
 </figure>
 <br/>
 
@@ -116,7 +116,7 @@ This project is aimed to import JSON data from a NoSQL database. It is provided 
 * A MapReduce folder containing a **map.js** file and a **reduce.js** file. These files contain JavaScript code, they may be found on the corresponding folder and are not likely to change.
 
 <figure>
-    <img src="figures/nosqlimport" align="center"/>
+    <img src="figures/nosqlimport.png" align="center"/>
 </figure>
 <br/>
 
@@ -162,7 +162,7 @@ As an example of the usage the user may check the **Main** class. The process go
 * Now the controller will apply the input method with the given client, filling the database.
 
 <figure>
-    <img src="figures/dbimport" align="center"/>
+    <img src="figures/dbimport.png" align="center"/>
 </figure>
 <br/>
 
@@ -179,7 +179,7 @@ The purpose for this project is to provide the user a meaningful dataset of a ce
 The general structure of the project is as follows:
 
 <figure>
-    <img src="figures/dbgen" align="center"/>
+    <img src="figures/dbgen.png" align="center"/>
 </figure>
 <br/>
 
@@ -259,7 +259,7 @@ There are several independent processes on this project. We list and explain the
 As explained, one of the generated outputs for a NoSQLSchema model when analyzing outliers is a CSV file in which for each Entity, its **count** number and its **timestamps** are stored in columns. By doing this, it is fairly easy to create a plot in Python in which variations with their lifelines may be presented, as seen in the next Figure.
 
 <figure>
-    <img src="figures/evolution_comments" align="center"/>
+    <img src="figures/evolution_comments.jpg" align="center"/>
 </figure>
 <br/>
 
@@ -269,7 +269,7 @@ The project also contains a utility to suggest some transformations in order to 
 This way the proposed migration will try to perform as less changes as possible to each variation. An example of these suggestions may be seen on the Figure below:
 
 <figure>
-    <img src="figures/evolution_transformations" align="center"/>
+    <img src="figures/evolution_transformations.jpg" align="center"/>
 </figure>
 <br/>
 
