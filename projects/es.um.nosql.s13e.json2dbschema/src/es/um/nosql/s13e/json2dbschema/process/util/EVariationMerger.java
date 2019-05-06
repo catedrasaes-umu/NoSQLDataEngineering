@@ -10,7 +10,6 @@ import es.um.nosql.s13e.json2dbschema.intermediate.raw.ArraySC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.ObjectSC;
 import es.um.nosql.s13e.json2dbschema.intermediate.raw.SchemaComponent;
 
-//TODO: I suspect this is not used anymore...how can we test this?
 public class EVariationMerger
 {
   public void mergeEquivalentEVs(Map<String, List<SchemaComponent>> rawEntities)
