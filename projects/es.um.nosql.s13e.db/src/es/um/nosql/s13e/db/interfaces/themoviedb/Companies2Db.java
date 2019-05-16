@@ -2,9 +2,11 @@ package es.um.nosql.s13e.db.interfaces.themoviedb;
 
 import java.io.File;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
@@ -44,13 +46,19 @@ public class Companies2Db
     {
       try
       {
-        String content = Files.readAllLines(jsonFile.toPath()).get(0);
-        ArrayNode logos = getLogos(Paths.get(parentFolder).resolve(IMAGES_FOLDER).resolve(jsonFile.getName()));
-        ArrayNode altNames = getAlternativeNames(Paths.get(parentFolder).resolve(ALTERNATIVE_NAME_FOLDER).resolve(jsonFile.getName()));
-
-        ObjectNode company = (ObjectNode)mapper.readTree(content);
-        jsonArray.add(TheMovieDbMapper.transformCompany(company, logos, altNames));
-
+    	String path = jsonFile.getPath();
+		if (!path.substring(path.lastIndexOf('/') + 1).startsWith("."))
+    	{
+    		List<String> readAllLines = Files.readAllLines(jsonFile.toPath(), StandardCharsets.UTF_8);
+	        if (readAllLines.size() > 0) {
+				String content = readAllLines.get(0);
+		        ArrayNode logos = getLogos(Paths.get(parentFolder).resolve(IMAGES_FOLDER).resolve(jsonFile.getName()));
+		        ArrayNode altNames = getAlternativeNames(Paths.get(parentFolder).resolve(ALTERNATIVE_NAME_FOLDER).resolve(jsonFile.getName()));
+		
+		        ObjectNode company = (ObjectNode)mapper.readTree(content);
+		        jsonArray.add(TheMovieDbMapper.transformCompany(company, logos, altNames));
+	        }
+    	}
       } catch (IOException e)
       {
         e.printStackTrace();

@@ -51,7 +51,11 @@ public class TheMovieDbMapper
     tv.remove("similar");
 
     // Translation
-    tv.set("translations", transformTranslations((ObjectNode)tv.get("translations")));
+    ArrayNode transformTranslations = transformTranslations((ObjectNode)tv.get("translations"));
+    if (transformTranslations != null)
+    {
+    	tv.set("translations", transformTranslations);
+    }
 
     ArrayNode arrNetworks = mapper.createArrayNode();
     for (JsonNode network : tv.get("networks"))
@@ -321,15 +325,20 @@ public class TheMovieDbMapper
 
   public static ArrayNode transformTranslations(ObjectNode obj)
   {
-    ArrayNode arrTranslations = (ArrayNode)obj.get("translations");
-    for (JsonNode translation : arrTranslations)
+    JsonNode jsonNode = obj.get("translations");
+    if (jsonNode != null)
     {
-      ObjectNode objTranslation = (ObjectNode)translation;
-      objTranslation.remove("data");
-      stripNulls(objTranslation);
+		ArrayNode arrTranslations = (ArrayNode)jsonNode;
+	    for (JsonNode translation : arrTranslations)
+	    {
+	      ObjectNode objTranslation = (ObjectNode)translation;
+	      objTranslation.remove("data");
+	      stripNulls(objTranslation);
+	    }
+	    return arrTranslations;
     }
 
-    return arrTranslations;
+    return null;
   }
 
   public static ObjectNode transformCompany(ObjectNode obj, ArrayNode logos, ArrayNode altNames)
