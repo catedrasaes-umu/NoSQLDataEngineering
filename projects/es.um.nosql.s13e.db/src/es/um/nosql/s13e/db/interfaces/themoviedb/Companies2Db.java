@@ -46,11 +46,11 @@ public class Companies2Db
     {
       try
       {
-    	String path = jsonFile.getPath();
-		if (!path.substring(path.lastIndexOf('/') + 1).startsWith("."))
+    	if (!jsonFile.getName().startsWith("."))
     	{
     		List<String> readAllLines = Files.readAllLines(jsonFile.toPath(), StandardCharsets.UTF_8);
-	        if (readAllLines.size() > 0) {
+	        if (readAllLines.size() > 0) 
+	        {
 				String content = readAllLines.get(0);
 		        ArrayNode logos = getLogos(Paths.get(parentFolder).resolve(IMAGES_FOLDER).resolve(jsonFile.getName()));
 		        ArrayNode altNames = getAlternativeNames(Paths.get(parentFolder).resolve(ALTERNATIVE_NAME_FOLDER).resolve(jsonFile.getName()));
