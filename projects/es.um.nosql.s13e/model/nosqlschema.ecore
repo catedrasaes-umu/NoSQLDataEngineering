@@ -23,6 +23,7 @@
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastTimestamp" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//ELong"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="container" lowerBound="1"
         eType="#//SchemaType" eOpposite="#//SchemaType/variations"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="key" upperBound="-1" eType="#//Property"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Property" abstract="true">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>

@@ -40,237 +40,237 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public abstract class SchemaTypeImpl extends MinimalEObjectImpl.Container implements SchemaType {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getParents() <em>Parents</em>}' reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getParents() <em>Parents</em>}' reference list.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getParents()
-   * @generated
-   * @ordered
-   */
+	 * @see #getParents()
+	 * @generated
+	 * @ordered
+	 */
   protected EList<SchemaType> parents;
 
   /**
-   * The cached value of the '{@link #getVariations() <em>Variations</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getVariations() <em>Variations</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getVariations()
-   * @generated
-   * @ordered
-   */
+	 * @see #getVariations()
+	 * @generated
+	 * @ordered
+	 */
   protected EList<StructuralVariation> variations;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected SchemaTypeImpl() {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass() {
-    return NoSQLSchemaPackage.Literals.SCHEMA_TYPE;
-  }
+		return NoSQLSchemaPackage.Literals.SCHEMA_TYPE;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String getName() {
-    return name;
-  }
+		return name;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void setName(String newName) {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.SCHEMA_TYPE__NAME, oldName, name));
-  }
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.SCHEMA_TYPE__NAME, oldName, name));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public EList<SchemaType> getParents() {
-    if (parents == null) {
-      parents = new EObjectResolvingEList<SchemaType>(SchemaType.class, this, NoSQLSchemaPackage.SCHEMA_TYPE__PARENTS);
-    }
-    return parents;
-  }
+		if (parents == null) {
+			parents = new EObjectResolvingEList<SchemaType>(SchemaType.class, this, NoSQLSchemaPackage.SCHEMA_TYPE__PARENTS);
+		}
+		return parents;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public EList<StructuralVariation> getVariations() {
-    if (variations == null) {
-      variations = new EObjectContainmentWithInverseEList<StructuralVariation>(StructuralVariation.class, this, NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS, NoSQLSchemaPackage.STRUCTURAL_VARIATION__CONTAINER);
-    }
-    return variations;
-  }
+		if (variations == null) {
+			variations = new EObjectContainmentWithInverseEList<StructuralVariation>(StructuralVariation.class, this, NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS, NoSQLSchemaPackage.STRUCTURAL_VARIATION__CONTAINER);
+		}
+		return variations;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
-        return ((InternalEList<InternalEObject>)(InternalEList<?>)getVariations()).basicAdd(otherEnd, msgs);
-    }
-    return super.eInverseAdd(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
+				return ((InternalEList<InternalEObject>)(InternalEList<?>)getVariations()).basicAdd(otherEnd, msgs);
+		}
+		return super.eInverseAdd(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
-        return ((InternalEList<?>)getVariations()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
+				return ((InternalEList<?>)getVariations()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.SCHEMA_TYPE__NAME:
-        return getName();
-      case NoSQLSchemaPackage.SCHEMA_TYPE__PARENTS:
-        return getParents();
-      case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
-        return getVariations();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.SCHEMA_TYPE__NAME:
+				return getName();
+			case NoSQLSchemaPackage.SCHEMA_TYPE__PARENTS:
+				return getParents();
+			case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
+				return getVariations();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.SCHEMA_TYPE__NAME:
-        setName((String)newValue);
-        return;
-      case NoSQLSchemaPackage.SCHEMA_TYPE__PARENTS:
-        getParents().clear();
-        getParents().addAll((Collection<? extends SchemaType>)newValue);
-        return;
-      case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
-        getVariations().clear();
-        getVariations().addAll((Collection<? extends StructuralVariation>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.SCHEMA_TYPE__NAME:
+				setName((String)newValue);
+				return;
+			case NoSQLSchemaPackage.SCHEMA_TYPE__PARENTS:
+				getParents().clear();
+				getParents().addAll((Collection<? extends SchemaType>)newValue);
+				return;
+			case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
+				getVariations().clear();
+				getVariations().addAll((Collection<? extends StructuralVariation>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.SCHEMA_TYPE__NAME:
-        setName(NAME_EDEFAULT);
-        return;
-      case NoSQLSchemaPackage.SCHEMA_TYPE__PARENTS:
-        getParents().clear();
-        return;
-      case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
-        getVariations().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.SCHEMA_TYPE__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case NoSQLSchemaPackage.SCHEMA_TYPE__PARENTS:
+				getParents().clear();
+				return;
+			case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
+				getVariations().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.SCHEMA_TYPE__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case NoSQLSchemaPackage.SCHEMA_TYPE__PARENTS:
-        return parents != null && !parents.isEmpty();
-      case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
-        return variations != null && !variations.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.SCHEMA_TYPE__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case NoSQLSchemaPackage.SCHEMA_TYPE__PARENTS:
+				return parents != null && !parents.isEmpty();
+			case NoSQLSchemaPackage.SCHEMA_TYPE__VARIATIONS:
+				return variations != null && !variations.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String toString() {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
+	}
 
 } //SchemaTypeImpl

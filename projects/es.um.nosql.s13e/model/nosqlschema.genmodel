@@ -7,7 +7,8 @@
     editPluginID="es.um.nosql.s13e.edit" editorPluginID="es.um.nosql.s13e.editor"
     operationReflection="true" importOrganizing="true">
   <foreignModel>nosqlschema.ecore</foreignModel>
-  <genPackages prefix="NoSQLSchema" basePackage="es.um.nosql.s13e" disposableProviderFactory="true" ecorePackage="nosqlschema.ecore#/">
+  <genPackages prefix="NoSQLSchema" basePackage="es.um.nosql.s13e" disposableProviderFactory="true"
+      ecorePackage="nosqlschema.ecore#/">
     <genClasses ecoreClass="nosqlschema.ecore#//NoSQLSchema">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//NoSQLSchema/name"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//NoSQLSchema/entities"/>
@@ -23,6 +24,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//StructuralVariation/firstTimestamp"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//StructuralVariation/lastTimestamp"/>
       <genFeatures property="None" notify="false" createChild="false" ecoreFeature="ecore:EReference nosqlschema.ecore#//StructuralVariation/container"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference nosqlschema.ecore#//StructuralVariation/key"/>
     </genClasses>
     <genClasses image="false" ecoreClass="nosqlschema.ecore#//Property">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute nosqlschema.ecore#//Property/name"/>

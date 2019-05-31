@@ -16,22 +16,22 @@ import org.eclipse.emf.ecore.EClass;
  */
 public class RelationshipTypeImpl extends SchemaTypeImpl implements RelationshipType {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected RelationshipTypeImpl() {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass() {
-    return NoSQLSchemaPackage.Literals.RELATIONSHIP_TYPE;
-  }
+		return NoSQLSchemaPackage.Literals.RELATIONSHIP_TYPE;
+	}
 
 } //RelationshipTypeImpl

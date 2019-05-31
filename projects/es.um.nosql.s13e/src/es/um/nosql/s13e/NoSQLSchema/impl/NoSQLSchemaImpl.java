@@ -40,224 +40,224 @@ import org.eclipse.emf.ecore.util.InternalEList;
  */
 public class NoSQLSchemaImpl extends MinimalEObjectImpl.Container implements NoSQLSchema {
   /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The default value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
   protected static final String NAME_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
+	 * @see #getName()
+	 * @generated
+	 * @ordered
+	 */
   protected String name = NAME_EDEFAULT;
 
   /**
-   * The cached value of the '{@link #getEntities() <em>Entities</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getEntities() <em>Entities</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getEntities()
-   * @generated
-   * @ordered
-   */
+	 * @see #getEntities()
+	 * @generated
+	 * @ordered
+	 */
   protected EList<EntityType> entities;
 
   /**
-   * The cached value of the '{@link #getRelationships() <em>Relationships</em>}' containment reference list.
-   * <!-- begin-user-doc -->
+	 * The cached value of the '{@link #getRelationships() <em>Relationships</em>}' containment reference list.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getRelationships()
-   * @generated
-   * @ordered
-   */
+	 * @see #getRelationships()
+	 * @generated
+	 * @ordered
+	 */
   protected EList<RelationshipType> relationships;
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected NoSQLSchemaImpl() {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass() {
-    return NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA;
-  }
+		return NoSQLSchemaPackage.Literals.NO_SQL_SCHEMA;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String getName() {
-    return name;
-  }
+		return name;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void setName(String newName) {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME, oldName, name));
-  }
+		String oldName = name;
+		name = newName;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME, oldName, name));
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public EList<EntityType> getEntities() {
-    if (entities == null) {
-      entities = new EObjectContainmentEList<EntityType>(EntityType.class, this, NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES);
-    }
-    return entities;
-  }
+		if (entities == null) {
+			entities = new EObjectContainmentEList<EntityType>(EntityType.class, this, NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES);
+		}
+		return entities;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public EList<RelationshipType> getRelationships() {
-    if (relationships == null) {
-      relationships = new EObjectContainmentEList<RelationshipType>(RelationshipType.class, this, NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS);
-    }
-    return relationships;
-  }
+		if (relationships == null) {
+			relationships = new EObjectContainmentEList<RelationshipType>(RelationshipType.class, this, NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS);
+		}
+		return relationships;
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-        return ((InternalEList<?>)getEntities()).basicRemove(otherEnd, msgs);
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
-        return ((InternalEList<?>)getRelationships()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
+				return ((InternalEList<?>)getEntities()).basicRemove(otherEnd, msgs);
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
+				return ((InternalEList<?>)getRelationships()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
-        return getName();
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-        return getEntities();
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
-        return getRelationships();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
+				return getName();
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
+				return getEntities();
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
+				return getRelationships();
+		}
+		return super.eGet(featureID, resolve, coreType);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
-        setName((String)newValue);
-        return;
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-        getEntities().clear();
-        getEntities().addAll((Collection<? extends EntityType>)newValue);
-        return;
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
-        getRelationships().clear();
-        getRelationships().addAll((Collection<? extends RelationshipType>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
+				setName((String)newValue);
+				return;
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
+				getEntities().clear();
+				getEntities().addAll((Collection<? extends EntityType>)newValue);
+				return;
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
+				getRelationships().clear();
+				getRelationships().addAll((Collection<? extends RelationshipType>)newValue);
+				return;
+		}
+		super.eSet(featureID, newValue);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public void eUnset(int featureID) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
-        setName(NAME_EDEFAULT);
-        return;
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-        getEntities().clear();
-        return;
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
-        getRelationships().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
+				setName(NAME_EDEFAULT);
+				return;
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
+				getEntities().clear();
+				return;
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
+				getRelationships().clear();
+				return;
+		}
+		super.eUnset(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public boolean eIsSet(int featureID) {
-    switch (featureID) {
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
-        return entities != null && !entities.isEmpty();
-      case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
-        return relationships != null && !relationships.isEmpty();
-    }
-    return super.eIsSet(featureID);
-  }
+		switch (featureID) {
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__NAME:
+				return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__ENTITIES:
+				return entities != null && !entities.isEmpty();
+			case NoSQLSchemaPackage.NO_SQL_SCHEMA__RELATIONSHIPS:
+				return relationships != null && !relationships.isEmpty();
+		}
+		return super.eIsSet(featureID);
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   public String toString() {
-    if (eIsProxy()) return super.toString();
+		if (eIsProxy()) return super.toString();
 
-    StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(')');
-    return result.toString();
-  }
+		StringBuilder result = new StringBuilder(super.toString());
+		result.append(" (name: ");
+		result.append(name);
+		result.append(')');
+		return result.toString();
+	}
 
 } //NoSQLSchemaImpl

@@ -21,29 +21,29 @@ package es.um.nosql.s13e.NoSQLSchema;
  */
 public interface PSet extends DataType {
   /**
-   * Returns the value of the '<em><b>Element Type</b></em>' containment reference.
-   * <!-- begin-user-doc -->
+	 * Returns the value of the '<em><b>Element Type</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
    * <p>
    * If the meaning of the '<em>Element Type</em>' containment reference isn't clear,
    * there really should be more of a description here...
    * </p>
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Element Type</em>' containment reference.
-   * @see #setElementType(DataType)
-   * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getPSet_ElementType()
-   * @model containment="true"
-   * @generated
-   */
+	 * @return the value of the '<em>Element Type</em>' containment reference.
+	 * @see #setElementType(DataType)
+	 * @see es.um.nosql.s13e.NoSQLSchema.NoSQLSchemaPackage#getPSet_ElementType()
+	 * @model containment="true"
+	 * @generated
+	 */
   DataType getElementType();
 
   /**
-   * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.PSet#getElementType <em>Element Type</em>}' containment reference.
-   * <!-- begin-user-doc -->
+	 * Sets the value of the '{@link es.um.nosql.s13e.NoSQLSchema.PSet#getElementType <em>Element Type</em>}' containment reference.
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Element Type</em>' containment reference.
-   * @see #getElementType()
-   * @generated
-   */
+	 * @param value the new value of the '<em>Element Type</em>' containment reference.
+	 * @see #getElementType()
+	 * @generated
+	 */
   void setElementType(DataType value);
 
 } // PSet

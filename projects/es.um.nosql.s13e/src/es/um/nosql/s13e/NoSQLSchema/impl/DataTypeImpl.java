@@ -18,22 +18,22 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  */
 public abstract class DataTypeImpl extends MinimalEObjectImpl.Container implements DataType {
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   protected DataTypeImpl() {
-    super();
-  }
+		super();
+	}
 
   /**
-   * <!-- begin-user-doc -->
+	 * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @generated
-   */
+	 * @generated
+	 */
   @Override
   protected EClass eStaticClass() {
-    return NoSQLSchemaPackage.Literals.DATA_TYPE;
-  }
+		return NoSQLSchemaPackage.Literals.DATA_TYPE;
+	}
 
 } //DataTypeImpl
