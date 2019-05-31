@@ -3,7 +3,6 @@ package es.um.nosql.s13e.evolution.util;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -13,12 +12,12 @@ import es.um.nosql.s13e.NoSQLSchema.SchemaType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.evolution.analyzer.DependencyAnalyzer;
 import es.um.nosql.s13e.evolution.analyzer.detectors.DependentPropsDetector;
-import es.um.nosql.s13e.evolution.analyzer.detectors.SchemaChangeDetector;
 import es.um.nosql.s13e.evolution.analyzer.diffs.PropertyMatrix;
 import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierAnalyzer;
 import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierTransformer;
 import es.um.nosql.s13e.evolution.analyzer.outliers.modes.CoverageOutlierDetector;
 import es.um.nosql.s13e.evolution.analyzer.outliers.modes.EpsilonOutlierDetector;
+import es.um.nosql.s13e.evolution.types.EntitySubtype;
 import es.um.nosql.s13e.util.Serializer;
 import es.um.nosql.s13e.util.compare.CompareProperty;
 
@@ -38,8 +37,7 @@ public class EvolutionPrinter
     result.append("> " + detector.getSchemaType().getName() + "\n");
     result.append(printPretty(detector.getPropertyMatrix()));
     result.append(printPretty(detector.getDependentProps()));
-//    result.append(printPretty(detector.getSchemaChanges()));
-  
+
     return result.toString();
   }
 
@@ -68,27 +66,6 @@ public class EvolutionPrinter
       result.append("Exclusive properties:\n");
       for (Property exclusionProp : dProps.getExcludingProps().keySet())
         result.append("  (" + exclusionProp.getName() + ": " + dProps.getExcludingProps().get(exclusionProp).stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")\n");
-      result.append("\n");
-    }
-
-    return result.toString();
-  }
-
-  public String printPretty(SchemaChangeDetector sChanges)
-  {
-    StringBuilder result = new StringBuilder();
-
-    if (!sChanges.getSchemaAddProps().isEmpty())
-      result.append("Schema add properties:\n  (" + sChanges.getSchemaAddProps().stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")\n\n");
-
-    if (!sChanges.getSchemaRemoveProps().isEmpty())
-      result.append("Schema remove properties:\n  (" + sChanges.getSchemaRemoveProps().stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")\n\n");
-
-    if (!sChanges.getSchemaRenameProps().isEmpty())
-    {
-      result.append("Schema rename properties:\n");
-      for (Entry<Property, Property> entry : sChanges.getSchemaRenameProps().entrySet())
-        result.append("  (" + entry.getKey().getName() + ": " + entry.getValue().getName() + ")\n");
       result.append("\n");
     }
 
@@ -179,6 +156,47 @@ public class EvolutionPrinter
         result.append(getDifferences(outlier, transformer.getOutliersAlternatives().get(key).get(outlier).get(0), 4));
       }
     }
+
+    return result.toString();
+  }
+
+  public String printPretty(List<EntitySubtype> subtypes)
+  {
+    StringBuilder result = new StringBuilder();
+
+    for (EntitySubtype subtype : subtypes)
+      result.append(printPretty(subtype));
+
+    return result.toString();    
+  }
+
+  public String printPretty(EntitySubtype subtype)
+  {
+    StringBuilder result = new StringBuilder();
+    result.append("Subtype:\n");
+    result.append("  Variations: " + subtype.getVariations().stream().map(var -> Integer.toString(var.getVariationId())).collect(Collectors.joining(", ")) + "\n");
+
+    if (!subtype.getIdentifiers().isEmpty())
+      result.append("  Req Props : (" + subtype.getIdentifiers().stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")\n");
+
+    if (!subtype.getOptionals().isEmpty())
+      result.append("  Opt Props : (" + subtype.getOptionals().stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")\n");
+
+    if (!subtype.getSchemaAdds().isEmpty())
+      result.append("  Schema add: (" + subtype.getSchemaAdds().stream()
+          .map(schemaAdd -> schemaAdd.getAddedProperty().getName() + " in " + schemaAdd.getFirstVariation().getVariationId())
+          .collect(Collectors.joining(", ")) + ")\n");
+
+    if (!subtype.getSchemaRemoves().isEmpty())
+      result.append("  Schema rem: (" + subtype.getSchemaRemoves().stream()
+          .map(schemaRem -> schemaRem.getRemovedProperty().getName() + " in " + schemaRem.getLastVariation().getVariationId())
+          .collect(Collectors.joining(", ")) + ")\n");
+
+    if (!subtype.getSchemaChanges().isEmpty())
+      result.append("  Schema chg: (" + subtype.getSchemaChanges().stream()
+          .map(schemaChg -> schemaChg.getRemovedProperty().getName() + " in " + schemaChg.getFirstVariation().getVariationId() + " for " +
+          schemaChg.getAddedProperty().getName() + " in " + schemaChg.getSecondVariation().getVariationId())
+          .collect(Collectors.joining(", ")) + ")\n");
 
     return result.toString();
   }

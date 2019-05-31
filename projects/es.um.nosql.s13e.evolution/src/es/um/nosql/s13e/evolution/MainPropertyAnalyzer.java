@@ -15,7 +15,7 @@ import es.um.nosql.s13e.util.ModelLoader;
 
 public class MainPropertyAnalyzer
 {
-  public final static String INPUT_MODEL = "../es.um.nosql.models/stackoverflow/stackoverflow.xmi";
+  public final static String INPUT_MODEL = "../es.um.nosql.models/products/products.xmi";
 
   public static void main(String[] args)
   {
@@ -30,15 +30,15 @@ public class MainPropertyAnalyzer
 
   private static void analyzeIdentifyingProperties(NoSQLSchema schema)
   {
-    //TODO: Work for the evolution project.
+    // Do some merges if neccesary
     EvolutionPrinter printer = new EvolutionPrinter();
 
     // Analyze each property
     for (SchemaType sType : Stream.concat(schema.getEntities().stream(), schema.getRelationships().stream()).collect(Collectors.toList()))
     {
       DependencyAnalyzer depDetector = new DependencyAnalyzer(sType);
-      depDetector.performAnalysis();
       System.out.println(printer.printPretty(depDetector));
+      System.out.println(printer.printPretty(depDetector.getSubtypes()));
     }
   }
 }

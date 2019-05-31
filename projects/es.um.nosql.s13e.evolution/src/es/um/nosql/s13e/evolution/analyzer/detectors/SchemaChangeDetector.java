@@ -1,104 +1,74 @@
 package es.um.nosql.s13e.evolution.analyzer.detectors;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
-import es.um.nosql.s13e.evolution.analyzer.diffs.PropertyMatrix;
+import es.um.nosql.s13e.evolution.types.EntitySubtype;
+import es.um.nosql.s13e.evolution.types.changes.SchemaAdd;
+import es.um.nosql.s13e.evolution.types.changes.SchemaRemove;
+import es.um.nosql.s13e.util.compare.CompareProperty;
 
 public class SchemaChangeDetector
 {
-  private List<Property> schemaAddProps;
-  private List<Property> schemaRemoveProps;
-  private Map<Property, Property> schemaRenameProps;
+  private CompareProperty pComparer;
 
-  public SchemaChangeDetector(PropertyMatrix matrix)
+  public SchemaChangeDetector(List<EntitySubtype> subtypes)
   {
-    this.schemaAddProps = detectSchemaAddProps(matrix);
-    this.schemaRemoveProps = detectSchemaRemoveProps(matrix);
-    this.schemaRenameProps = detectSchemaRenameProps(matrix);
-  }
+    pComparer = new CompareProperty();
 
-  public List<Property> getSchemaAddProps()
-  {
-    return schemaAddProps;
-  }
-
-  public List<Property> getSchemaRemoveProps()
-  {
-    return schemaRemoveProps;
-  }
-
-  public Map<Property, Property> getSchemaRenameProps()
-  {
-    return schemaRenameProps;
-  }
-
-  private List<Property> detectSchemaAddProps(PropertyMatrix matrix)
-  {
-    List<Property> schemaAddProps = new ArrayList<Property>();
-    List<Property> optionalProps = matrix.getProperties().stream().filter(prop -> prop.isOptional()).collect(Collectors.toList());
-
-    for (Property prop : optionalProps)
+    for (EntitySubtype subtype : subtypes)
     {
-      // Check if the ids are continuous. If they are not, this is not a schema change.
-      Integer[] ids = matrix.getVarsFromProperty(prop).stream().map(var -> var.getVariationId()).toArray(Integer[]::new);
-      boolean continuous = true;
-      for (int i = 0; i < ids.length - 1 && continuous; i++)
-        if (ids[i] + 1 != ids[i + 1])
-          continuous = false;
-      if (!continuous)
-        continue;
-
-      int lastPropVarId = matrix.getVarsFromProperty(prop).get(matrix.getVarsFromProperty(prop).size() - 1).getVariationId();
-      int lastVarId = matrix.getVars().get(matrix.getVars().size() - 1).getVariationId();
-
-      // If last propVarId is the same as lastVarId, then this property appears on the last variation.
-      if (lastPropVarId == lastVarId)
-        schemaAddProps.add(prop);
+      detectSchemaAddProps(subtype);
+      detectSchemaRemoveProps(subtype);
+      detectSchemaRenameProps(subtype);
     }
-    // Once a property appears, it should ALWAYS appear to be a schema change.
-    // Thing is, a property might have been optional at the beginning and then being changed to a schema changing add....
-    // TODO: Need to test.
-
-    return schemaAddProps;
   }
 
-  private List<Property> detectSchemaRemoveProps(PropertyMatrix matrix)
+  private void detectSchemaAddProps(EntitySubtype subtype)
   {
-    List<Property> schemaAddProps = new ArrayList<Property>();
-    List<Property> optionalProps = matrix.getProperties().stream().filter(prop -> prop.isOptional()).collect(Collectors.toList());
+    boolean itAppears = false;
 
-    for (Property prop : optionalProps)
+    for (Property optional : subtype.getOptionals())
     {
-      // Check if the ids are continuous. If they are not, this is not a schema change.
-      Integer[] ids = matrix.getVarsFromProperty(prop).stream().map(var -> var.getVariationId()).toArray(Integer[]::new);
-      boolean continuous = true;
-      for (int i = 0; i < ids.length - 1 && continuous; i++)
-        if (ids[i] + 1 != ids[i + 1])
-          continuous = false;
-      if (!continuous)
-        continue;
-
-      int lastPropVarId = matrix.getVarsFromProperty(prop).get(matrix.getVarsFromProperty(prop).size() - 1).getVariationId();
-      int lastVarId = matrix.getVars().get(matrix.getVars().size() - 1).getVariationId();
-
-      // If last propVarId is not equal as lastVarId, then this property does not appear on the last variation.
-      if (lastPropVarId != lastVarId)
-        schemaAddProps.add(prop);
+      for (StructuralVariation variation : subtype.getVariations())
+        if (variation.getProperties().stream().anyMatch(prop -> pComparer.compare(prop, optional)))
+          itAppears = true;
+        else if (itAppears)
+        {
+          itAppears = false;
+          break;
+        }
+      if (itAppears)
+        subtype.addSchemaAdd(new SchemaAdd(optional, subtype.getVariations().stream().filter(var -> var.getProperties().contains(optional)).findFirst().get()));
     }
-    // Once a property disappears, it should NEVER show again.
-    // Thing is, a property might have been optional at the beginning and then being changed to a schema changing remove....
-    // TODO: Need to test.
-
-    return schemaAddProps;
   }
 
+  private void detectSchemaRemoveProps(EntitySubtype subtype)
+  {
+    boolean itDissapears = false;
+
+    for (Property optional : subtype.getOptionals())
+    {
+      for (StructuralVariation variation : subtype.getVariations())
+        if (variation.getProperties().stream().noneMatch(prop -> pComparer.compare(prop, optional)))
+          itDissapears = true;
+        else if (itDissapears)
+        {
+          itDissapears = false;
+          break;
+        }
+      if (itDissapears)
+        subtype.addSchemaRemove(new SchemaRemove(optional, subtype.getVariations().stream().filter(var -> var.getProperties().contains(optional)).reduce((var1, var2) -> var2).get()));
+    }
+  }
+
+  private void detectSchemaRenameProps(EntitySubtype subtype)
+  {
+    //TODO: Schema rename. No lo tengo muy claro...
+  }
+
+  /*
   private Map<Property, Property> detectSchemaRenameProps(PropertyMatrix matrix)
   {
     Map<Property, Property> schemaRenameProps = new HashMap<Property, Property>();
@@ -120,5 +90,5 @@ public class SchemaChangeDetector
     //TODO: Need to test
 
     return schemaRenameProps;
-  }
+  }*/
 }

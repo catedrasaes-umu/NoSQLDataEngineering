@@ -152,28 +152,4 @@ public class DependentPropsDetector
     // Two properties are exclusive if, and only if, when one of them occurs, then the other do not occur.
     return excludingProps;
   }
-
-  public String detectSubtypes()
-  {
-    StringBuilder result = new StringBuilder();
-
-    // About to detect subtypes...
-    for (List<Property> subtypeProps : strongDependencies)
-    {
-      result.append("  Subtype detected:\n");
-      result.append("    Identified by: ");
-      result.append("(" + subtypeProps.stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")");
-      result.append("\n");
-
-      result.append("    Optionals:     ");
-      result.append("(" + weakDependencies.keySet().stream()
-          .filter(weakProp -> weakDependencies.get(weakProp).containsAll(subtypeProps))
-          .map(weakProp -> weakProp.getName())
-          .collect(Collectors.joining(", ")) + ")");
-
-      result.append("\n\n");
-    }
-
-    return result.toString();
-  }
 }

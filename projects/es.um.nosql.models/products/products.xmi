@@ -26,7 +26,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="product_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -82,55 +82,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="model"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="processor"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="memory"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-    </variations>
-    <variations
-        variationId="3">
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_id">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="ObjectId"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="description">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="product_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -169,7 +121,7 @@
       </properties>
     </variations>
     <variations
-        variationId="4">
+        variationId="3">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -186,7 +138,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="product_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -225,7 +177,7 @@
       </properties>
     </variations>
     <variations
-        variationId="5">
+        variationId="4">
       <properties
           xsi:type="NoSQLSchema:Attribute"
           name="_id">
@@ -242,55 +194,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="size"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="model"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="length"
-          optional="true">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="Number"/>
-      </properties>
-    </variations>
-    <variations
-        variationId="6">
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="_id">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="ObjectId"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="description">
-        <type
-            xsi:type="NoSQLSchema:PrimitiveType"
-            name="String"/>
-      </properties>
-      <properties
-          xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="product_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -321,6 +225,102 @@
       </properties>
     </variations>
     <variations
+        variationId="5">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="description">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="product_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="model"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="processor"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="memory"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+    </variations>
+    <variations
+        variationId="6">
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="_id">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="ObjectId"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="description">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="product_type">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="size"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="model"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="String"/>
+      </properties>
+      <properties
+          xsi:type="NoSQLSchema:Attribute"
+          name="length"
+          optional="true">
+        <type
+            xsi:type="NoSQLSchema:PrimitiveType"
+            name="Number"/>
+      </properties>
+    </variations>
+    <variations
         variationId="7">
       <properties
           xsi:type="NoSQLSchema:Attribute"
@@ -338,7 +338,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="product_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>
@@ -386,7 +386,7 @@
       </properties>
       <properties
           xsi:type="NoSQLSchema:Attribute"
-          name="type">
+          name="product_type">
         <type
             xsi:type="NoSQLSchema:PrimitiveType"
             name="String"/>

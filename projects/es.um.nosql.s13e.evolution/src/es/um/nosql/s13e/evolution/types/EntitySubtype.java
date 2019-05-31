@@ -9,7 +9,7 @@ import es.um.nosql.s13e.evolution.types.changes.SchemaAdd;
 import es.um.nosql.s13e.evolution.types.changes.SchemaChange;
 import es.um.nosql.s13e.evolution.types.changes.SchemaRemove;
 
-public class Subtype
+public class EntitySubtype
 {
   List<StructuralVariation> variations;
   private List<Property> identifiers;
@@ -18,7 +18,7 @@ public class Subtype
   private List<SchemaRemove> schemaRemoves;
   private List<SchemaChange> schemaChanges;
 
-  public Subtype(List<StructuralVariation> variations, List<Property> identifiers, List<Property> optionals)
+  public EntitySubtype(List<StructuralVariation> variations, List<Property> identifiers, List<Property> optionals)
   {
     this.variations = variations;
     this.identifiers = identifiers;
