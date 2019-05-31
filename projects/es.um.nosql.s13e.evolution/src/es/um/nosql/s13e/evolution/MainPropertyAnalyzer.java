@@ -1,6 +1,8 @@
 package es.um.nosql.s13e.evolution;
 
 import java.io.File;
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -15,7 +17,9 @@ import es.um.nosql.s13e.util.ModelLoader;
 
 public class MainPropertyAnalyzer
 {
-  public final static String INPUT_MODEL = "../es.um.nosql.models/products/products.xmi";
+  public final static String DB_NAME = "stackoverflow";
+
+  public final static String INPUT_MODEL = "../es.um.nosql.models/" + DB_NAME + "/" + DB_NAME + ".xmi";
 
   public static void main(String[] args)
   {
@@ -36,9 +40,10 @@ public class MainPropertyAnalyzer
     // Analyze each property
     for (SchemaType sType : Stream.concat(schema.getEntities().stream(), schema.getRelationships().stream()).collect(Collectors.toList()))
     {
-      DependencyAnalyzer depDetector = new DependencyAnalyzer(sType);
+      DependencyAnalyzer depDetector = new DependencyAnalyzer(DB_NAME, sType);
       System.out.println(printer.printPretty(depDetector));
       System.out.println(printer.printPretty(depDetector.getSubtypes()));
+//      System.out.println(printer.printPretty(depDetector.getDiscriminatorField()));
     }
   }
 }

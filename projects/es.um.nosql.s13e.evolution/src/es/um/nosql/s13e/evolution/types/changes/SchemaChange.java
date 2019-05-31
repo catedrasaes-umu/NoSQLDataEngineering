@@ -6,9 +6,9 @@ import es.um.nosql.s13e.util.compare.CompareProperty;
 
 public class SchemaChange extends AbstractSchemaChange
 {
-  private Property propertyAdd;
-
   private Property propertyRemove;
+
+  private Property propertyAdd;
 
   private StructuralVariation variation1;
 
@@ -20,25 +20,30 @@ public class SchemaChange extends AbstractSchemaChange
 
   private CompareProperty comparer;
 
-  public SchemaChange(Property propertyAdd, StructuralVariation variation1, Property propertyRemove, StructuralVariation variation2)
+  public SchemaChange(SchemaRemove schemaRemove, SchemaAdd schemaAdd)
   {
-    this.propertyAdd = propertyAdd;
-    this.variation1 = variation1;
+    this(schemaRemove.getRemovedProperty(), schemaRemove.getLastVariation(), schemaAdd.getAddedProperty(), schemaAdd.getFirstVariation());
+  }
+
+  public SchemaChange(Property propertyRemove, StructuralVariation variation1, Property propertyAdd, StructuralVariation variation2)
+  {
     this.propertyRemove = propertyRemove;
+    this.variation1 = variation1;
+    this.propertyAdd = propertyAdd;
     this.variation2 = variation2;
     this.timestamp1 = variation1.getFirstTimestamp();
     this.timestamp2 = variation2.getFirstTimestamp();
     this.comparer = new CompareProperty();
   }
 
-  public Property getAddedProperty()
-  {
-    return propertyAdd;
-  }
-
   public Property getRemovedProperty()
   {
     return propertyRemove;
+  }
+
+  public Property getAddedProperty()
+  {
+    return propertyAdd;
   }
 
   public StructuralVariation getFirstVariation()

@@ -5,9 +5,11 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import es.um.nosql.s13e.NoSQLSchema.Attribute;
 import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.SchemaType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
+import es.um.nosql.s13e.evolution.analyzer.db.DbDiscriminatorSeeker;
 import es.um.nosql.s13e.evolution.analyzer.detectors.DependentPropsDetector;
 import es.um.nosql.s13e.evolution.analyzer.detectors.SchemaChangeDetector;
 import es.um.nosql.s13e.evolution.analyzer.diffs.PropertyMatrix;
@@ -15,19 +17,23 @@ import es.um.nosql.s13e.evolution.types.EntitySubtype;
 
 public class DependencyAnalyzer
 {
+  private String dbName;
   private SchemaType sType;
   private PropertyMatrix matrix;
   private DependentPropsDetector dPropsDetector;
   private SchemaChangeDetector sChangeDetector;
   private List<EntitySubtype> subtypes;
+  private Property discriminatorField;
 
-  public DependencyAnalyzer(SchemaType sType)
+  public DependencyAnalyzer(String dbName, SchemaType sType)
   {
+    this.dbName = dbName;
     this.sType = sType;
     this.matrix = new PropertyMatrix(sType);
     this.dPropsDetector = new DependentPropsDetector(matrix);
     this.subtypes = detectSubtypes();
     this.sChangeDetector = new SchemaChangeDetector(this.subtypes);
+    this.discriminatorField = detectDiscriminatorField();
   }
 
   public SchemaType getSchemaType()
@@ -55,11 +61,16 @@ public class DependencyAnalyzer
     return subtypes;
   }
 
+  public Property getDiscriminatorField()
+  {
+    return discriminatorField;
+  }
+
   private List<EntitySubtype> detectSubtypes()
   {
     List<EntitySubtype> subtypes = new ArrayList<EntitySubtype>();
     List<Property> allSubtypeProps = new ArrayList<Property>();
-    List<StructuralVariation> remainingVars = sType.getVariations();
+    List<StructuralVariation> remainingVars = new ArrayList<StructuralVariation>(sType.getVariations());
 
     // About to detect subtypes...
     for (List<Property> subtypeRequiredProps : dPropsDetector.getStrongDependencies())
@@ -103,11 +114,24 @@ public class DependencyAnalyzer
     }
 
     // Finally, create a new subtype grouping all variations not belonging to any subtype.
+    // TODO: Are you sure?
     if (!remainingVars.isEmpty())
       subtypes.add(new EntitySubtype(remainingVars, new ArrayList<Property>(), new ArrayList<Property>()));
 
     return subtypes;
   }
-    //TODO: Schema changes
-    //TODO: Detect discriminator.
+
+  private Property detectDiscriminatorField()
+  {
+    List<Attribute> candidates = new ArrayList<Attribute>(sType.getVariations().get(0).getProperties().stream()
+        .filter(prop -> !prop.isOptional() && prop instanceof Attribute)
+        .map(prop -> (Attribute)prop)
+        .collect(Collectors.toList()));
+
+    // In order to identify an object to a subtype, that subtype NEEDS to have some identifying properties
+    // So if a subtype was created in order to group remaining variations, that subtype must be sustracted.
+    List<EntitySubtype> filteredSubtypes = subtypes.stream().filter(subtype -> !subtype.getIdentifiers().isEmpty()).collect(Collectors.toList());
+
+    return new DbDiscriminatorSeeker(dbName, sType.getName().toLowerCase(), filteredSubtypes, candidates).getDiscriminator();
+  }
 }
