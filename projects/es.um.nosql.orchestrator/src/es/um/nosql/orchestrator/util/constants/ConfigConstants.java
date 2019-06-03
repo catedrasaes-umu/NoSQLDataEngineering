@@ -20,7 +20,7 @@ public class ConfigConstants
   public static final String EVERYPOLITICIAN_FILE     = "F:\\Informatica\\datasets\\everypolitician\\Sweden_Riksdag.json";
   public static final String FACEBOOK_FOLDER          = "F:\\Informatica\\datasets\\facebook\\";
   public static final String HARVARD_FILE             = "F:\\Informatica\\datasets\\harvard\\HMXPC13_DI_v2_5-14-14.csv";
-  public static final String JSON_FOLDER              = "F:\\Informatica\\NoSQLDataEngineering\\projects\\es.um.nosql.models\\tfg\\json\\";
+  public static final String JSON_FOLDER              = "F:\\Informatica\\NoSQLDataEngineering\\projects\\es.um.nosql.models\\products\\json\\";
   public static final String LINKS_FOLDER             = "F:\\Informatica\\datasets\\givealink\\";
   public static final String MODEL_FILE               = "../es.um.nosql.models/mongomovies/mongomovies.xmi";
   public static final String OPENSANCTIONS_FILE       = "F:\\Informatica\\datasets\\opensanctions\\master.ijson";

@@ -89,6 +89,23 @@ public class ObjectGen
 
           eVariation.getProperties().stream().filter(p -> p instanceof Attribute && !p.getName().equals("_id")).forEach(p -> this.generateAttribute(oNode, (Attribute)p));
 
+          /////////////////////////////////////////////////////
+          // TODO: Placeholder. This can and WILL be removed.
+          /////////////////////////////////////////////////////
+          if (entity.getName().equals("Products"))
+          {
+            switch (eVariation.getVariationId())
+            {
+              case 1: case 2: case 3: case 4: { oNode.put("product_type", "printed media"); break; }
+              case 5: { oNode.put("product_type", "laptops"); break;}
+              case 6: case 7: { oNode.put("product_type", "clothing"); break; }
+              case 8: { oNode.put("product_type", "toys"); break;}
+            }
+          }
+          /////////////////////////////////////////////////////
+          // TODO: Placeholder. This can and WILL be removed.
+          /////////////////////////////////////////////////////
+
           if (entity.isRoot())
           {
             entityObjs.add(oNode);

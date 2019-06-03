@@ -1,12 +1,12 @@
 input:
-  model: ../es.um.nosql.models/stackoverflow/stackoverflow.xmi
-  debug: true
+  model: ../es.um.nosql.models/products/products.xmi
+  debug: false
   splits: 1
 
 entities:
   variations:
-    minInstances: 1500
-    maxInstances: 1500
+    minInstances: 1000
+    maxInstances: 1000
   includeType: true
 #  dateFormat: "dd-MM-yyyy HH:mm:ss" 
 #  timestamp: 17-6-1988 13:05:11
@@ -23,7 +23,7 @@ attributes:
     stringSurnamesFile: config/surnames.txt
     stringWordsFile: config/words.txt
     minIntegerAllowed: 0
-    maxIntegerAllowed: 1000
+    maxIntegerAllowed: 100
     minDoubleAllowed: 0.0
     maxDoubleAllowed: 1000.0
     doubleDecimalsAllowed: 2
@@ -43,9 +43,9 @@ associations:
     maxAggregateAllowed: 2
 
 output:
-  #database: localhost
-  #databaseCollection: generated_collection
-  folder: ../es.um.nosql.models/stackoverflow/stackoverflow/json/
+  database: localhost
+  databaseCollection: generated_collection
+  #folder: ../es.um.nosql.models/products/json/
   #console: false
 
 # Generate images?
