@@ -11,6 +11,7 @@ import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.NoSQLSchema.SchemaType;
 import es.um.nosql.s13e.NoSQLSchema.StructuralVariation;
 import es.um.nosql.s13e.evolution.analyzer.DependencyAnalyzer;
+import es.um.nosql.s13e.evolution.analyzer.db.DbDiscriminatorSeeker;
 import es.um.nosql.s13e.evolution.analyzer.detectors.DependentPropsDetector;
 import es.um.nosql.s13e.evolution.analyzer.diffs.PropertyMatrix;
 import es.um.nosql.s13e.evolution.analyzer.outliers.OutlierAnalyzer;
@@ -176,11 +177,11 @@ public class EvolutionPrinter
     result.append("Subtype:\n");
     result.append("  Variations: " + subtype.getVariations().stream().map(var -> Integer.toString(var.getVariationId())).collect(Collectors.joining(", ")) + "\n");
 
-    if (!subtype.getIdentifiers().isEmpty())
-      result.append("  Req Props : (" + subtype.getIdentifiers().stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")\n");
+    if (!subtype.getSubtypeRequiredProps().isEmpty())
+      result.append("  Req Props : (" + subtype.getSubtypeRequiredProps().stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")\n");
 
-    if (!subtype.getOptionals().isEmpty())
-      result.append("  Opt Props : (" + subtype.getOptionals().stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")\n");
+    if (!subtype.getSubtypeOptionalProps().isEmpty())
+      result.append("  Opt Props : (" + subtype.getSubtypeOptionalProps().stream().map(prop -> prop.getName()).collect(Collectors.joining(", ")) + ")\n");
 
     if (!subtype.getSchemaAdds().isEmpty())
       result.append("  Schema add: (" + subtype.getSchemaAdds().stream()
@@ -197,6 +198,19 @@ public class EvolutionPrinter
           .map(schemaChg -> schemaChg.getRemovedProperty().getName() + " in " + schemaChg.getFirstVariation().getVariationId() + " for " +
           schemaChg.getAddedProperty().getName() + " in " + schemaChg.getSecondVariation().getVariationId())
           .collect(Collectors.joining(", ")) + ")\n");
+
+    return result.toString();
+  }
+
+  public String printPretty(DbDiscriminatorSeeker discriminatorSeeker)
+  {
+    StringBuilder result = new StringBuilder();
+
+    if (discriminatorSeeker != null)
+    {
+      result.append("Discriminator field detected: " + serializeShort(discriminatorSeeker.getDiscriminator()) + "\n");
+      result.append("Subtype values: " + discriminatorSeeker.getDiscriminatorValues().values());      
+    }
 
     return result.toString();
   }

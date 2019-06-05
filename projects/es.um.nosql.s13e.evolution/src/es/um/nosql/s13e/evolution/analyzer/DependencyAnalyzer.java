@@ -23,9 +23,9 @@ public class DependencyAnalyzer
   private DependentPropsDetector dPropsDetector;
   private SchemaChangeDetector sChangeDetector;
   private List<EntitySubtype> subtypes;
-  private Property discriminatorField;
+  private DbDiscriminatorSeeker discriminatorSeeker;
 
-  public DependencyAnalyzer(String dbName, SchemaType sType)
+  public DependencyAnalyzer(String dbName, SchemaType sType, boolean detectDiscriminatorField)
   {
     this.dbName = dbName;
     this.sType = sType;
@@ -33,7 +33,11 @@ public class DependencyAnalyzer
     this.dPropsDetector = new DependentPropsDetector(matrix);
     this.subtypes = detectSubtypes();
     this.sChangeDetector = new SchemaChangeDetector(this.subtypes);
-    this.discriminatorField = detectDiscriminatorField();
+
+    if (detectDiscriminatorField)
+      createDiscriminatorSeeker();
+    else
+      this.discriminatorSeeker = null;
   }
 
   public SchemaType getSchemaType()
@@ -61,9 +65,9 @@ public class DependencyAnalyzer
     return subtypes;
   }
 
-  public Property getDiscriminatorField()
+  public DbDiscriminatorSeeker getDiscriminatorSeeker()
   {
-    return discriminatorField;
+    return discriminatorSeeker;
   }
 
   private List<EntitySubtype> detectSubtypes()
@@ -102,6 +106,7 @@ public class DependencyAnalyzer
       return true;
     }).collect(Collectors.toList());
 
+    // TODO: So there is a small mistake here: Once a remainingProp is identified as exclusive for a subtype, the rest of remainingProps must be recalculated. Products2 model
     for (Property remProp : remainingProps)
     {
       List<Property> subtypeOptionalProps = dPropsDetector.getWeakDependencies().keySet().stream()
@@ -114,14 +119,14 @@ public class DependencyAnalyzer
     }
 
     // Finally, create a new subtype grouping all variations not belonging to any subtype.
-    // TODO: Are you sure?
-    if (!remainingVars.isEmpty())
-      subtypes.add(new EntitySubtype(remainingVars, new ArrayList<Property>(), new ArrayList<Property>()));
+    // Note that this subtype wont be used to detect the discriminator field.
+    //    if (!remainingVars.isEmpty())
+    //      subtypes.add(new EntitySubtype(remainingVars, new ArrayList<Property>(), new ArrayList<Property>()));
 
     return subtypes;
   }
 
-  private Property detectDiscriminatorField()
+  private void createDiscriminatorSeeker()
   {
     List<Attribute> candidates = new ArrayList<Attribute>(sType.getVariations().get(0).getProperties().stream()
         .filter(prop -> !prop.isOptional() && prop instanceof Attribute)
@@ -130,8 +135,8 @@ public class DependencyAnalyzer
 
     // In order to identify an object to a subtype, that subtype NEEDS to have some identifying properties
     // So if a subtype was created in order to group remaining variations, that subtype must be sustracted.
-    List<EntitySubtype> filteredSubtypes = subtypes.stream().filter(subtype -> !subtype.getIdentifiers().isEmpty()).collect(Collectors.toList());
+    List<EntitySubtype> filteredSubtypes = subtypes.stream().filter(subtype -> !subtype.getSubtypeRequiredProps().isEmpty()).collect(Collectors.toList());
 
-    return new DbDiscriminatorSeeker(dbName, sType.getName().toLowerCase(), filteredSubtypes, candidates).getDiscriminator();
+    this.discriminatorSeeker = new DbDiscriminatorSeeker(dbName, sType.getName().toLowerCase(), filteredSubtypes, candidates);
   }
 }

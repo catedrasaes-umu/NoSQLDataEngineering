@@ -31,7 +31,7 @@ public class SchemaChangeDetector
   {
     boolean itAppears = false;
 
-    for (Property optional : subtype.getOptionals())
+    for (Property optional : subtype.getSubtypeOptionalProps())
     {
       for (StructuralVariation variation : subtype.getVariations())
         if (variation.getProperties().stream().anyMatch(prop -> pComparer.compare(prop, optional)))
@@ -42,7 +42,8 @@ public class SchemaChangeDetector
           break;
         }
       if (itAppears)
-        subtype.addSchemaAdd(new SchemaAdd(optional, subtype.getVariations().stream().filter(var -> var.getProperties().contains(optional)).findFirst().get()));
+        subtype.addSchemaAdd(new SchemaAdd(optional, subtype.getVariations().stream()
+            .filter(var -> var.getProperties().stream().anyMatch(prop -> pComparer.compare(prop, optional))).findFirst().get()));
     }
   }
 
@@ -50,7 +51,7 @@ public class SchemaChangeDetector
   {
     boolean itDissapears = false;
 
-    for (Property optional : subtype.getOptionals())
+    for (Property optional : subtype.getSubtypeOptionalProps())
     {
       for (StructuralVariation variation : subtype.getVariations())
         if (variation.getProperties().stream().noneMatch(prop -> pComparer.compare(prop, optional)))
@@ -61,7 +62,11 @@ public class SchemaChangeDetector
           break;
         }
       if (itDissapears)
-        subtype.addSchemaRemove(new SchemaRemove(optional, subtype.getVariations().stream().filter(var -> var.getProperties().contains(optional)).reduce((var1, var2) -> var2).get()));
+      {
+        subtype.addSchemaRemove(new SchemaRemove(optional, subtype.getVariations().stream()
+            .filter(var -> var.getProperties().stream().anyMatch(prop -> pComparer.compare(prop,  optional)))
+            .reduce((var1, var2) -> var1.getVariationId() > var2.getVariationId() ? var1 : var2).get()));
+      }
     }
   }
 

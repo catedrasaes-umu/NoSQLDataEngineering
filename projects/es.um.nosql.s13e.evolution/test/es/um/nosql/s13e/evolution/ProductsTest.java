@@ -28,7 +28,7 @@ import es.um.nosql.s13e.evolution.analyzer.outliers.modes.OutlierMode;
 import es.um.nosql.s13e.evolution.types.EntitySubtype;
 import es.um.nosql.s13e.util.ModelLoader;
 
-public class StackoverflowTest
+public class ProductsTest
 {
   private MongoDbClient client;
   private String dbName;
@@ -39,7 +39,7 @@ public class StackoverflowTest
   public void setUp() throws Exception
   {
     client = MongoDbAdapter.getMongoDbClient("localhost");
-    dbName = "stackoverflow";
+    dbName = "products";
     inputModel = "../es.um.nosql.models/" + dbName + "/" + dbName + ".xmi";
 
     ModelLoader loader = new ModelLoader(NoSQLSchemaPackage.eINSTANCE);
@@ -55,8 +55,8 @@ public class StackoverflowTest
   @Test
   public void testSubtypes()
   {
-    String collName = "Posts";
-    // Detect and remove outliers given Epsilon = 0.0001 or Coverage = 99.9%
+    String collName = "Products";
+    // Detect and remove outliers given Coverage = 99.9%
     OutlierAnalyzer oAnalyzer = new OutlierAnalyzer(OutlierMode.COVERAGE);
     oAnalyzer.removeOutliers(schema);
 
@@ -64,21 +64,29 @@ public class StackoverflowTest
     for (SchemaType sType : schema.getEntities().stream().filter(ent -> ent.getName().equals(collName)).collect(Collectors.toList()))
     {
       DependencyAnalyzer depDetector = new DependencyAnalyzer(dbName, sType, true);
-      assertEquals(2, depDetector.getSubtypes().size());
+      assertEquals(4, depDetector.getSubtypes().size());
 
       EntitySubtype subtype0 = depDetector.getSubtypes().get(0);
-      assertEquals(4, subtype0.getSubtypeRequiredProps().size());
-      assertEquals(3, subtype0.getSubtypeOptionalProps().size());
+      assertEquals(2, subtype0.getSubtypeRequiredProps().size());
+      assertEquals(2, subtype0.getSubtypeOptionalProps().size());
 
       EntitySubtype subtype1 = depDetector.getSubtypes().get(1);
-      assertEquals(1, subtype1.getSubtypeRequiredProps().size());
+      assertEquals(2, subtype1.getSubtypeRequiredProps().size());
       assertEquals(0, subtype1.getSubtypeOptionalProps().size());
 
+      EntitySubtype subtype2 = depDetector.getSubtypes().get(2);
+      assertEquals(1, subtype2.getSubtypeRequiredProps().size());
+      assertEquals(1, subtype2.getSubtypeOptionalProps().size());
+
+      EntitySubtype subtype3 = depDetector.getSubtypes().get(3);
+      assertEquals(1, subtype3.getSubtypeRequiredProps().size());
+      assertEquals(0, subtype3.getSubtypeOptionalProps().size());
+
       Property discriminator = depDetector.getDiscriminatorSeeker().getDiscriminator();
-      assertEquals("PostTypeId", discriminator.getName());
-      List<String> discriminatorValues = depDetector.getDiscriminatorSeeker().getDiscriminatorValues().values().stream().map(obj -> ((String)obj)).collect(Collectors.toList());
+      assertEquals("product_type", discriminator.getName());
+      List<String> discriminatorValues = depDetector.getDiscriminatorSeeker().getDiscriminatorValues().values().stream().map(obj -> (String)obj).collect(Collectors.toList());
       Collections.sort(discriminatorValues);
-      assertEquals(Arrays.asList("1", "2"), discriminatorValues);
+      assertEquals(Arrays.asList("clothing", "laptops", "printed media", "toys"), discriminatorValues);
 
       MongoCollection<Document> documents = client.getDatabase(dbName).getCollection(collName);
       List<EntitySubtype> filteredSubtypes = depDetector.getSubtypes().stream().filter(subtype -> !subtype.getSubtypeRequiredProps().isEmpty()).collect(Collectors.toList());
@@ -89,7 +97,7 @@ public class StackoverflowTest
         if (theSubtype == null)
           continue;
 
-        assertEquals(depDetector.getDiscriminatorSeeker().getDiscriminatorValues().get(theSubtype), doc.get("PostTypeId"));
+        assertEquals(depDetector.getDiscriminatorSeeker().getDiscriminatorValues().get(theSubtype), doc.get("product_type"));
       }
     }
   }

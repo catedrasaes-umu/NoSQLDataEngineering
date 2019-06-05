@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 import org.bson.Document;
 
@@ -14,29 +15,32 @@ import es.um.nosql.s13e.NoSQLSchema.Property;
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbAdapter;
 import es.um.nosql.s13e.db.adapters.mongodb.MongoDbClient;
 import es.um.nosql.s13e.evolution.types.EntitySubtype;
-import es.um.nosql.s13e.util.compare.CompareProperty;
 
 public class DbDiscriminatorSeeker
 {
-  private MongoDbClient client;
-  private String dbName;
-  private String collName;
   private List<EntitySubtype> subtypes;
-  private List<Attribute> candidates;
-  private CompareProperty pComparer;
+  private Map<EntitySubtype, Object> discriminatorValues;
+  private Property discriminator;
 
   public DbDiscriminatorSeeker(String dbName, String collName, List<EntitySubtype> subtypes, List<Attribute> candidates)
   {
-    this.client = MongoDbAdapter.getMongoDbClient("localhost");
-    this.dbName = dbName;
-    this.collName = collName;
     this.subtypes = subtypes;
-    this.candidates = candidates;
-    pComparer = new CompareProperty();
+    seekDiscriminator(dbName, collName, candidates);
+  }
+
+  public Map<EntitySubtype, Object> getDiscriminatorValues()
+  {
+    return discriminatorValues;
   }
 
   public Property getDiscriminator()
   {
+    return discriminator;
+  }
+
+  private void seekDiscriminator(String dbName, String collName, List<Attribute> candidates)
+  {
+    MongoDbClient client = MongoDbAdapter.getMongoDbClient("localhost");
     MongoCollection<Document> documents = client.getDatabase(dbName).getCollection(collName);
     Map<Attribute, Map<EntitySubtype, Object>> candidateMap = new HashMap<Attribute, Map<EntitySubtype, Object>>();
     List<Attribute> candidatesToBeRemoved = new ArrayList<Attribute>();
@@ -46,15 +50,18 @@ public class DbDiscriminatorSeeker
 
     for (Document doc : documents.find())
     {
-      // Para cada propiedad candidata, determina para este objeto a qué subtipo pertenece:
-      // ¿Estaba la propiedad ya inicializada?
-      // Sí: ¿Coincide el valor?
-      //     Sí: Todo bien.
-      //     No: Elimina la propiedad de las candidatas
-      // No: Inicializa el valor de la propiedad al valor leído.
-      // Al acabar, de entre todas las propiedades candidatas restantes, quedarte con la que tenga TODo valores distintos.
+      // For each candidate property, get this document subtype
+      // Was the candidate property initialized?
+      // Yes: Are the stored value and the read value the same?
+      //     Yes: Go on!
+      //     No: Then eliminate this property as candidate
+      // No: Then initialize the property value with the read value
+      // When finishing, among all remaining candidate properties, get the one with all distinct values between subtypes.
 
       EntitySubtype theSubtype = detectSubtype(doc);
+      if (theSubtype == null)
+        continue;
+      // If subtype couldnt be identified then the object is an outlier. Ignore it and continue.
 
       for (Attribute candidate : candidates)
       {
@@ -75,12 +82,29 @@ public class DbDiscriminatorSeeker
 
     client.close();
 
-    // TODO: Qué candidato tiene todo valores distintos? Devolver ese.
+    // From all remaining candidates, get the one with all distinct values for each subtype.
+    for (Property candidate : candidateMap.keySet())
+      if (candidateMap.get(candidate).values().stream().distinct().count() != candidateMap.get(candidate).size())
+        candidates.remove(candidate);
+
+    discriminatorValues = candidateMap.get(candidates.get(0));
+    discriminator = candidates.get(0);
   }
 
   private EntitySubtype detectSubtype(Document doc)
   {
-    // TODO: ¿A qué subtipo pertenece este doc? Ver EntitySubtype.getIdentifiers.
-    return null;
+    Optional<EntitySubtype> optional = subtypes.stream()
+        .filter(subtype ->
+        {
+          // Check each subtype identifying property appears on the document, regardless of its value.
+          return subtype.getSubtypeRequiredProps().stream().allMatch(prop -> doc.containsKey(prop.getName()));
+          // Apparently we only have to check properties by name, not by type value, so...
+        })
+        .findAny();
+
+    if (optional.isPresent())
+      return optional.get();
+    else
+      return null;
   }
 }

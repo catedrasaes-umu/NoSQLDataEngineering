@@ -12,17 +12,17 @@ import es.um.nosql.s13e.evolution.types.changes.SchemaRemove;
 public class EntitySubtype
 {
   List<StructuralVariation> variations;
-  private List<Property> identifiers;
-  private List<Property> optionals;
+  private List<Property> subtypeRequiredProps;
+  private List<Property> subtypeOptionalProps;
   private List<SchemaAdd> schemaAdds;
   private List<SchemaRemove> schemaRemoves;
   private List<SchemaChange> schemaChanges;
 
-  public EntitySubtype(List<StructuralVariation> variations, List<Property> identifiers, List<Property> optionals)
+  public EntitySubtype(List<StructuralVariation> variations, List<Property> subtypeRequiredProps, List<Property> subtypeOptionalProps)
   {
     this.variations = variations;
-    this.identifiers = identifiers;
-    this.optionals = optionals;
+    this.subtypeRequiredProps = subtypeRequiredProps;
+    this.subtypeOptionalProps = subtypeOptionalProps;
     this.schemaAdds = new ArrayList<SchemaAdd>();
     this.schemaRemoves = new ArrayList<SchemaRemove>();
     this.schemaChanges = new ArrayList<SchemaChange>();
@@ -33,14 +33,14 @@ public class EntitySubtype
     return variations;
   }
 
-  public List<Property> getIdentifiers()
+  public List<Property> getSubtypeRequiredProps()
   {
-    return identifiers;
+    return subtypeRequiredProps;
   }
 
-  public List<Property> getOptionals()
+  public List<Property> getSubtypeOptionalProps()
   {
-    return optionals;
+    return subtypeOptionalProps;
   }
 
   public List<SchemaAdd> getSchemaAdds()
