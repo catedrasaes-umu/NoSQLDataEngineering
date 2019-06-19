@@ -1,6 +1,7 @@
 package es.um.nosql.s13e.evolution;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 import java.io.File;
 import java.util.Arrays;
@@ -56,7 +57,8 @@ public class StackoverflowTest
   public void testSubtypes()
   {
     String collName = "Posts";
-    // Detect and remove outliers given Epsilon = 0.0001 or Coverage = 99.9%
+    // Detect and remove outliers given Coverage = 99.5%
+    // Be careful: Changing the coverage will change the results.
     OutlierAnalyzer oAnalyzer = new OutlierAnalyzer(OutlierMode.COVERAGE);
     oAnalyzer.removeOutliers(schema);
 
@@ -72,7 +74,7 @@ public class StackoverflowTest
 
       EntitySubtype subtype1 = depDetector.getSubtypes().get(1);
       assertEquals(1, subtype1.getSubtypeRequiredProps().size());
-      assertEquals(0, subtype1.getSubtypeOptionalProps().size());
+      assertEquals(1, subtype1.getSubtypeOptionalProps().size());
 
       Property discriminator = depDetector.getDiscriminatorSeeker().getDiscriminator();
       assertEquals("PostTypeId", discriminator.getName());
@@ -87,7 +89,7 @@ public class StackoverflowTest
       {
         EntitySubtype theSubtype = detectSubtype(filteredSubtypes, doc);
         if (theSubtype == null)
-          continue;
+          assertFalse(Arrays.asList("1", "2").contains(doc.get("PostTypeId")));
 
         assertEquals(depDetector.getDiscriminatorSeeker().getDiscriminatorValues().get(theSubtype), doc.get("PostTypeId"));
       }

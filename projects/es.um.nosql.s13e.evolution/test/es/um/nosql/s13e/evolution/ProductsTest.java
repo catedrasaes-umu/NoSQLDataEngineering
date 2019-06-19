@@ -1,6 +1,7 @@
 package es.um.nosql.s13e.evolution;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.io.File;
 import java.util.Arrays;
@@ -94,9 +95,7 @@ public class ProductsTest
       for (Document doc : documents.find())
       {
         EntitySubtype theSubtype = detectSubtype(filteredSubtypes, doc);
-        if (theSubtype == null)
-          continue;
-
+        assertNotNull(theSubtype);
         assertEquals(depDetector.getDiscriminatorSeeker().getDiscriminatorValues().get(theSubtype), doc.get("product_type"));
       }
     }

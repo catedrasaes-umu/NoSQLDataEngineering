@@ -24,7 +24,7 @@ public class MainPropertyAnalyzer
 
   public final static String INPUT_MODEL = "../es.um.nosql.models/" + DB_NAME + "/" + DB_NAME + ".xmi";
 
-  public final static List<String> collections = Arrays.asList("Products", "Posts");
+  public final static List<String> collections = Arrays.asList("Products", "Posts", "Figures");
 
   public static void main(String[] args)
   {
