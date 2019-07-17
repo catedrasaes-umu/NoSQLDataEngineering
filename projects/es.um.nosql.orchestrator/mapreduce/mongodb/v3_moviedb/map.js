@@ -464,7 +464,7 @@ function map()
       retschema = true;
     } else if ((typeof obj == 'string'))
     {
-      retschema = "string";
+      retschema = "s";
     }
 
     return retschema;

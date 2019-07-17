@@ -7,7 +7,10 @@ function reduce(key, values)
               firstTimestamp: Math.min(v1.firstTimestamp, v2.firstTimestamp),
               lastTimestamp: Math.max(v1.lastTimestamp, v2.lastTimestamp)
             };
-    }, {schema: null, count: 0, firstTimestamp: new Date().getTime(), lastTimestamp: 0});
+    }, {schema: null,
+        count: 0,
+        firstTimestamp: new Date().getTime(),
+        lastTimestamp: 0});
 
   return v;
 }
