@@ -3,9 +3,19 @@ body
   padding-top:120px
 }
 
+.img-logo
+{
+  padding-top: 80px;
+}
+
 div.section-separator
 {
   padding-top: 15px;
+}
+
+p, dd
+{
+  text-align: justify;
 }
 
 #footer
