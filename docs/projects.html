@@ -12,9 +12,10 @@
     <nav class="navbar navbar-expand-lg fixed-top">
   <!-- navbar-light bg-light-->
       <div class="container">
-        <a class="navbar-brand" href="index.html">ModelUM</a>
+        <!--<a class="navbar-brand" href="index.html">ModelUM</a>-->
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav navbar-right">
+            <li class="nav-item"><a class="nav-link" href="index.html"><b>ModelUM</b></a></li>
             <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
             <li class="nav-item"><a class="nav-link" href="projects.html">Projects</a></li>
             <li class="nav-item"><a class="nav-link" href="publications.html">Publications</a></li>
@@ -27,15 +28,72 @@
 
     <div class="container">
       <div class="row">
+        <h2>YSAAN - A Model-Based Environment to Support NoSQL Data Engineering</h2>
         <div class="col-md-12">
-          <h1>Under construction...</h1>
+          <br>
+          <dl class="row">
+            <dt class="col-sm-3">Reference</dt><dd class="col-sm-9">TIN2017-86853-P - Proyectos de I+D (Excelencia) - Convocatoria 2017<br>Ministerio de Ciencia, Innovación y Universidades</dd>
+            <dt class="col-sm-3">Duration</dt><dd class="col-sm-9">01.01.2018 - 31.12.2020 (Six month extension requested)</dd>
+            <dt class="col-sm-3">Funding</dt><dd class="col-sm-9">35.100€</dd>
+            <dt class="col-sm-3">Public repository</dt><dd class="col-sm-9"><a href="https://github.com/catedrasaes-umu/NoSQLDataEngineering">https://github.com/catedrasaes-umu/NoSQLDataEngineering</a></dd>
+            <dt class="col-sm-3">Keywords</dt>
+            <dd class="col-sm-4"><ul><li>NoSQL databases</li><li>data engineering</li><li>MDE</li><li>database schemas</li></ul></dd>
+            <dd class="col-sm-4"><ul><li>data models</li><li>database design</li><li>code generation</li><li>database tooling</li></ul></dd>
+          </dl>
         </div>
       </div>
+      <div class="row">
+        <h3>Abstract</h3>
+        <p>
+          Modern applications (e.g., social media, Internet of Things, and Big Data) have evidenced the limitations of relational systems to meet their scalability and performance demands. This has motivated a continuously growing number of non-relational systems with the purpose of tackling these requirements. “NoSQL” (Not SQL/Not only SQL) is used to denote this new generation of database systems (225 are listed in nosql-database.org). They are commonly classified in four major categories: document, wide column, key-value stores, and graph-based databases. A large number of companies have already embraced NoSQL databases, and adoption will rise considerably in the next years.
+        </p>
+        <p>
+          As the use of NoSQL grows, the need of database tools which provide functionality similar to those available for relational databases is more evident. The building of these tools must tackle the schemaless nature of most of NoSQL databases. While relational systems require the prior definition of the database schema that guides the data organization, most NoSQL databases store data without the need of having a previously defined schema. A recent report (“Insights into NoSQL Modeling”, Dataversity, 2015) has remarked that data modeling will be a crucial activity for NoSQL databases, and has also drawn attention on the need for NoSQL tools that provide three main functionalities: model visualization, code generation, and metadata management. These three kinds of capabilities are better provided with the knowledge of the database schema. Moreover, these tools should alleviate developers from the error-prone task of writing database code when the schema is not declared, but implicit into code and data. Schemaless provide a larger flexibility (e.g. non-uniform data is possible and data evolution is favored), but the advantages of using schemas are lost, e.g. schemas guarantee that data are correctly accessed. Our initial hypothesis is that NoSQL systems will continue growing in the next future, and that their construction will involve a great effort in R&D.
+        </p>
+        <p>
+          Our research group has recently obtained some results in the area of NoSQL Data Engineering, namely a schema inference process for document stores, and we have showed how the inferred schemas are useful to create several utilities. These results have served as a foundation for the 3-years research project here presented. The aim of the project is the design and implementation of an extensible environment and toolset to support the development and management of NoSQL-based applications. The central element of this toolset would be a unified metamodel able to represent schemas (conceptual, logical and physical) of any kind of NoSQL database, ii) metrics for optimizing the data layout and querying, and iii) batch and on-line data migration processes. The environment will support a set of basic functionality, such as: i) visualization and querying of inferred schemas, ii) code generators (e.g., code for Object-Document mappers, REST services and GraphQL), iii) assistants for database design and migration, iv) compute on-line statistics. This functionality will be modularized by the environment, and offered as building blocks of a workflow DSL that will allow users to automate high-level processes over databases.
+        </p>
+        <p>
+          Research challenges include the definition of a unified metamodel, visualization of large schemas, automation of the database design and migration, and the design of an extensible architecture.
+        </p>
+      </div>
+
+      <div class="row">
+        <h3>Publications</h3>
+        <div class="col-md-12">
+          <h3>2020</h3>
+          <ul>
+            <li>Pablo Muñoz Sánchez, Carlos Javier Fernández Candel, Jesús García Molina, Diego Sevilla Ruiz, <b>Extracting Physical and Logical Schemas for Document Stores</b>. CoMoNoS 2020, under ER 2020 conference, Vienna, Austria.</li>
+            <li>Alberto Hernández Chillón, Diego Sevilla Ruiz, Jesús García Molina, <b>Deimos: A Model-based NoSQL Data Generation Language</b>. CoMoNoS 2020, under ER 2020 conference, Vienna, Austria.</li>
+            <li>Thibaud Masson, Romain Ravet, Francisco Javier Bermúdez, Souhaila Serbout, Diego Sevilla Ruiz, Anthony Cleve, <b>Defining Referential Integrity Constraints in Graph-oriented Datastores</b>. MODELSWARD 2020: 409-416, Valletta, Malta.<a target="_blank" href="https://www.researchgate.net/publication/339208533_Defining_Referential_Integrity_Constraints_in_Graph-oriented_Datastores"><i class="fa fa-download"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h3>2019</h3>
+          <ul>
+            <li>Alberto Hernández Chillón, Diego Sevilla Ruiz, Jesús García Molina, <b>Análisis de esquemas NoSQL para el procesamiento de variaciones de entidad atípicas</b>. XXIV Jornadas de Ingeniería del Software y Bases de Datos, JISBD 2019, Cáceres, Spain.<a target="_blank" href="https://biblioteca.sistedes.es/submissions//descargas/2019/JISBD/2019-JISBD-096.pdf"><i class="fa fa-download"></i></a></li>
+            <li>Carlos Javier Fernández Candel, Diego Sevilla Ruiz, Jesús García Molina, <b>Utilización de Neo4j para consultar esquemas de bases de datos NoSQL</b>. XXIV Jornadas de Ingeniería del Software y Bases de Datos, JISBD 2019, Cáceres, Spain.<a target="_blank" href="https://biblioteca.sistedes.es/wp-content/uploads/descargas/2019/JISBD/2019-JISBD-082.pdf"><i class="fa fa-download"></i></a></li>
+            <li>Alberto Hernández Chillón, Diego Sevilla Ruiz, Jesús García Molina, Severino Feliciano Morales, <b>A Model-Driven Approach to Generate Schemas for Object-Document Mappers</b>. IEEE Access 7: 59126-59142.<a target="_blank" href="https://ieeexplore.ieee.org/document/8708919"><i class="fa fa-download"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-md-12">
+          <h3>2018</h3>
+          <ul>
+            <li>Alberto Hernández Chillón, Diego Sevilla Ruiz, Jesús García Molina, <b>Generación de datos NoSQL usando esquemas de bases de datos inferidos</b>. XXIII Jornadas de Ingeniería del Software y Bases de Datos, JISBD 2018, Sevilla, Spain.<a target="_blank" href="https://biblioteca.sistedes.es/submissions/descargas/2018/JISBD/2018-JISBD-037.pdf"><i class="fa fa-download"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
     </div>
 
-<!--    <div id="footer">
-      &copy; Copyright note
-    </div>-->
+
+    <div id="footer">&copy; ModelUM research group - Department of Computer Science and Systems, Faculty of Computer Science, University of Murcia, Murcia, Spain</div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
