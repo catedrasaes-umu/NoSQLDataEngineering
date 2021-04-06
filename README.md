@@ -15,6 +15,7 @@ A NoSQL schema is a schema used to define which data and in which format is bein
 - [Database import](#database-import)
 - [Random data generation](#random-data-generation)
 ***
+- [Subtype discovery](#subtype-discovery)
 - [Schema evolution](#schema-evolution)
 ***
 - [Object Document mappers](#object-document-mappers)
@@ -244,7 +245,24 @@ The Java project involved in the __Random data generation__ project is the follo
 * `es.um.nosql.s13e.db.gen`: This project contains several classes to be used as **POJOs** for the YAML configuration file, the **data generator** itself and the **output module** in which several output modes are defined. There is also a **main** class and a **controller** used as a running example of the project.
 
 ***
+# Subtype discovery
 
+This project is intended to analyze a NoSQLSchema model, its entities and its variations, and create a Variation matrix from it. A variation matrix is a data structure that holds a row for each property, and a column for each variation. Each cell is marked if a variation has a certain property. This data structure allows us to infer **strong**, **weak** and **exclusion** dependencies. Once these dependencies are inferred, this project also contains a process able to connect to a MongoDB database and discover the discriminator property of a database.
+
+This project also contains a **main** class that performs the whole process based on the Figure below:
+
+<figure>
+    <img src="figures/subtype_discovery.png" align="center"/>
+</figure>
+<br/>
+
+The Java project involved in the __Subtype discovery process__ project is the following one:
+
+* `es.um.nosql.s13e.evolution`: This project the data structures necessary to analyze a NoSQLSchema model, obtain the strong/weak/exclusion dependencies and discovery of the discriminator property.
+
+This project is related to the following one, so please, be sure to check it out.
+
+***
 # Schema evolution
 
 This project is intended to analyze a NoSQLSchema model, its entities and its variations, in order to classify variations depending on their **count** as outliers or non-outliers. The **count** attribute stores, for each variation, how many objects of that variation exist on the database. Once variations are classified then several analysis may be performed: Outliers may be transformed to non-outliers variations by proposing migrations, and non-outliers variations will be studied in the future **TODO**.
