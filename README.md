@@ -6,6 +6,9 @@ A NoSQL schema is a schema used to define which data and in which format is bein
 
 # Table of contents
 
+- [The Athena Language](#athena-language)
+- [The Orion Language](#orion-language)
+***
 - [Schema models](#schema-models)
 - [Inference process](#inference-process)
 - [NoSQLSchema metamodel](#nosql-schema-metamodel)
@@ -25,6 +28,52 @@ A NoSQL schema is a schema used to define which data and in which format is bein
 ***
 - [Decision tree](#decision-tree)
 ***
+
+# The Athena language
+
+Athena (_Abstract Schema Definition Language_) is a textual DSL aimed to define abstract schemas in a platform-independent way. For doing so Athena reunites concepts of all NoSQL paradigms, based on the U-Schema metamodel. Athena has been designed using _Xtext_ and the _Eclipse Modeling Framework_. Examples of Athena schemas may be found on the _models_ folder.
+
+The following figure contains an example of an Athena Schema:
+
+<figure>
+    <img src="figures/athena_example.png" align="center"/>
+</figure>
+<br/>
+
+Athena defines several transformations to other systems in order to assure compatibility:
+* A _model~to~model_ transformation to/from Athena and U-Schema.
+* A _model~to~model_ transformation to/from Athena and Orion.
+* A _model~to~text_ transformation to generate MySQL schemas.
+* A _model~to~text_ transformation to generate Cassandra schemas.
+* A _model~to~text_ transformation to generate MongoDB validators.
+
+The following projects provide the basics to create Athena schemas:
+* `es.um.unosql.xtext.athena`
+* `es.um.unosql.xtext.athena.ide`
+* `es.um.unosql.xtext.athena.ui`
+
+# The Orion language
+
+Orion (_Operations over Athena schemas_) is a textual DSL aimed to specify operations to be executed over an Athena schema in order to update (evolve) it along with the associated data. Orion has been designed using _Xtext_ and the _Eclipse Modeling Framework_. Examples of Orion specifications may be found on the Athena project.
+
+The following figure contains an example of an Orion Specification:
+
+<figure>
+    <img src="figures/orion_example.png" align="center"/>
+</figure>
+<br/>
+
+An Orion process typically starts with an Athena schema and an Orion specification, and gives as a result an updated Athena schema resulting from applying the defined operations on the input Athena schema, and a database specific script able to migrate data to the new schema. By doing so the schema evolves and also the data can be migrated.
+
+Orion defines several transformations to other systems in order to assure compatibility:
+* A _model~to~model_ transformation to/from Orion and Athena.
+* A _model~to~text_ transformation to generate MongoDB native code.
+* A _model~to~text_ transformation to generate CQL (Cassandra) native code.
+
+The following projects provide the basics to create Orion specifications:
+* `es.um.unosql.xtext.orion`
+* `es.um.unosql.xtext.orion.ide`
+* `es.um.unosql.xtext.orion.ui`
 
 # Schema models
 
