@@ -1,0 +1,42 @@
+Cass_OneOfEach_References operations
+
+ADD ENTITY EntityDummy { +id: String }
+ADD ENTITY EntityRefs { +id: Identifier }
+
+ADD REF EntityRefs::nullRefSimple: String+ TO EntityDummy
+ADD REF EntityRefs::nullRefArray: String* TO EntityDummy
+ADD REF EntityRefs::strRefSimple: String+ TO EntityDummy
+ADD REF EntityRefs::strRefArray: String* TO EntityDummy
+ADD REF EntityRefs::numRefSimple: Number+ TO EntityDummy
+ADD REF EntityRefs::numRefArray: Number* TO EntityDummy
+
+ADD REF EntityRefs::nullRefSimpleChange: String+ TO EntityDummy
+ADD REF EntityRefs::nullRefArrayChange: String* TO EntityDummy
+ADD REF EntityRefs::strRefSimpleChange: String+ TO EntityDummy
+ADD REF EntityRefs::strRefArrayChange: String* TO EntityDummy
+ADD REF EntityRefs::numRefSimpleChange: Number+ TO EntityDummy
+ADD REF EntityRefs::numRefArrayChange: Number* TO EntityDummy
+
+CARD REF EntityRefs::nullRefSimpleChange TO *
+CARD REF EntityRefs::nullRefArrayChange TO +
+CARD REF EntityRefs::strRefSimpleChange TO *
+CARD REF EntityRefs::strRefArrayChange TO +
+CARD REF EntityRefs::numRefSimpleChange TO *
+CARD REF EntityRefs::numRefArrayChange TO +
+
+ADD ENTITY EntityRef1 { +id: String("refId1"), value1: String("value1"), value2: String("value2") }
+ADD ENTITY EntityRef2 { +id: String("refId2"), value3: String("value3"), value4: String("value4") }
+ADD ENTITY EntityRef3 { +id: String("refId3"), value5: String("value6"), value6: String("value6") }
+ADD ENTITY EntityRef4 { +id: String("refId4"), value7: String("value7"), value8: String("value8") }
+
+ADD ENTITY EntityMorphRef { +id: String }
+
+ADD REF EntityMorphRef::refToEntity1: String("refId1")+ TO EntityRef1
+ADD REF EntityMorphRef::refToEntity2: String("refId2")+ TO EntityRef2
+ADD REF EntityMorphRef::refToEntity3: String("refId3")* TO EntityRef3
+ADD REF EntityMorphRef::refToEntity4: String("refId4")* TO EntityRef4
+
+MORPH REF EntityMorphRef::refToEntity1 TO aggrEntity1
+MORPH REF EntityMorphRef::refToEntity2 ( rmEntity ) TO aggrEntity2
+MORPH REF EntityMorphRef::refToEntity3 TO aggrEntity3
+MORPH REF EntityMorphRef::refToEntity4 ( rmEntity ) TO aggrEntity4

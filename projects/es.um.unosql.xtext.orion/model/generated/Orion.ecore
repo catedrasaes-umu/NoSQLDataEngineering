@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="orion" nsURI="http://www.um.es/unosql/xtext/orion/Orion" nsPrefix="orion">
+  <eClassifiers xsi:type="ecore:EClass" name="OrionOperations">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" eType="ecore:EClass platform:/resource/es.um.unosql.xtext.athena/model/generated/Athena.ecore#//Import"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
+        eType="#//BasicOperation" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="evolBlocks" upperBound="-1"
+        eType="#//EvolBlock" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EvolBlock">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EInt"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operations" upperBound="-1"
+        eType="#//BasicOperation" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="BasicOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityOp" eSuperTypes="#//BasicOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureOp" eSuperTypes="#//BasicOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeOp" eSuperTypes="#//BasicOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceOp" eSuperTypes="#//BasicOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="AggregateOp" eSuperTypes="#//BasicOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityAddOp" eSuperTypes="#//EntityOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//EntityAdd"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityDeleteOp" eSuperTypes="#//EntityOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//EntityDel"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityRenameOp" eSuperTypes="#//EntityOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//EntityRename"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntitySplitOp" eSuperTypes="#//EntityOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//EntitySplit"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityExtractOp" eSuperTypes="#//EntityOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//EntityExtract"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityMergeOp" eSuperTypes="#//EntityOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//EntityMerge"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityDelVarOp" eSuperTypes="#//EntityOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//EntityDelVar"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityAdaptOp" eSuperTypes="#//EntityOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//EntityAdapt"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityUnionOp" eSuperTypes="#//EntityOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//EntityUnion"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureDeleteOp" eSuperTypes="#//FeatureOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//FeatureDel"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureRenameOp" eSuperTypes="#//FeatureOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//FeatureRename"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureCopyOp" eSuperTypes="#//FeatureOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//FeatureAllocate"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureMoveOp" eSuperTypes="#//FeatureOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//FeatureAllocate"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureNestOp" eSuperTypes="#//FeatureOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//FeatureNest"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureUnnestOp" eSuperTypes="#//FeatureOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//FeatureUnnest"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeAddOp" eSuperTypes="#//AttributeOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//AttrAdd"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeCastOp" eSuperTypes="#//AttributeOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//AttrOrRefCast"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributePromoteOp" eSuperTypes="#//AttributeOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//AttrPromote"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttributeDemoteOp" eSuperTypes="#//AttributeOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//AttrDemote"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceAddOp" eSuperTypes="#//ReferenceOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//RefAdd"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceCastOp" eSuperTypes="#//ReferenceOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//AttrOrRefCast"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceCardinalityOp" eSuperTypes="#//ReferenceOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//RefOrAggrCard"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceMorphOp" eSuperTypes="#//ReferenceOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//RefMorph"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AggregateAddOp" eSuperTypes="#//AggregateOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//AggrAdd"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AggregateCardinalityOp" eSuperTypes="#//AggregateOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//RefOrAggrCard"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AggregateMorphOp" eSuperTypes="#//AggregateOp">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="spec" eType="#//AggrMorph"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityAdd">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//SimpleDataFeature" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityDel">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityRename">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntitySplit">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features1" eType="#//SplitFeatures"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features2" eType="#//SplitFeatures"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityExtract">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" eType="#//SplitFeatures"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityMerge">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//ConditionDecl"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityDelVar">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityAdapt">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityUnion">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureDel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selector" eType="#//FeatureSelector"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureRename">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selector" eType="#//FeatureSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureAllocate">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sourceSelector" eType="#//FeatureSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetSelector" eType="#//FeatureSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="condition" eType="#//ConditionDecl"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureNest">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selector" eType="#//FeatureSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="features" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureUnnest">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selector" eType="#//FeatureSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="features" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttrAdd">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unique" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selector" eType="#//FeatureSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/es.um.unosql.xtext.athena/model/generated/Athena.ecore#//DataType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttrOrRefCast">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selector" eType="#//FeatureSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/es.um.unosql.xtext.athena/model/generated/Athena.ecore#//PrimitiveType"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttrPromote">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selector" eType="#//FeatureSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="features" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AttrDemote">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selector" eType="#//FeatureSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="features" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefAdd">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selector" eType="#//FeatureSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/es.um.unosql.xtext.athena/model/generated/Athena.ecore#//PrimitiveType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cardinality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefOrAggrCard">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selector" eType="#//FeatureSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cardinality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RefMorph">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selector" eType="#//FeatureSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deleteId" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="deleteEntity" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AggrAdd">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selector" eType="#//FeatureSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//SimpleDataFeature" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="cardinality" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AggrMorph">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="selector" eType="#//FeatureSelector"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeatureSelector">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="ref" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="variations" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="forAll" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="target" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SimpleDataFeature">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="key" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="optional" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unique" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="ecore:EClass platform:/resource/es.um.unosql.xtext.athena/model/generated/Athena.ecore#//DataType"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="defaultValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="SplitFeatures">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="features" unique="false"
+        upperBound="-1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ConditionDecl">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="c1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="c2" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>

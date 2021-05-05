@@ -1,0 +1,17 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: es.um.unosql.xtext.athena.ide
+Bundle-ManifestVersion: 2
+Bundle-Name: es.um.unosql.xtext.athena.ide
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: es.um.unosql.xtext.athena.ide; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: es.um.unosql.xtext.athena,
+ org.eclipse.xtext.ide,
+ org.eclipse.xtext.xbase.ide,
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: es.um.unosql.xtext.athena.ide.contentassist.antlr.internal,
+ es.um.unosql.xtext.athena.ide.contentassist.antlr,
+ es.um.unosql.xtext.athena.ide.contentassist.antlr.lexer,
+ es.um.unosql.xtext.athena.ide.highlighting

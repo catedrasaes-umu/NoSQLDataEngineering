@@ -1,0 +1,168 @@
+Schema SQLExample_Northwind
+
+root entity Customers
+  SQL CREATE TABLE Customers (
+    CustomerID           VARCHAR(5)          NOT NULL,
+    CompanyName          VARCHAR(40)         NOT NULL,
+    ContactName          VARCHAR(30)                 ,
+    ContactTitle         VARCHAR(30)                 ,
+    Address              VARCHAR(60)                 ,
+    City                 VARCHAR(15)                 ,
+    Region               VARCHAR(15)                 ,
+    PostalCode           VARCHAR(10)                 ,
+    Country              VARCHAR(15)                 ,
+    Phone                VARCHAR(24)                 ,
+    Fax                  VARCHAR(24)                 ,
+    PRIMARY KEY          (CustomerID)
+);
+
+root entity Employees
+  SQL CREATE TABLE Employees (
+    EmployeeID           MEDIUMINT           NOT NULL,
+    LastName             VARCHAR(20)         NOT NULL,
+    FirstName            VARCHAR(10)         NOT NULL,
+    Title                VARCHAR(30)                 ,
+    TitleOfCourtesy      VARCHAR(25)                 ,
+    BirthDate            DATE                        ,
+    HireDate             DATE                        ,
+    Address              VARCHAR(60)                 ,
+    City                 VARCHAR(15)                 ,
+    Region               VARCHAR(15)                 ,
+    PostalCode           VARCHAR(10)                 ,
+    Country              VARCHAR(15)                 ,
+    HomePhone            VARCHAR(24)                 ,
+    Extension            VARCHAR(4)                  ,
+    Photo                BLOB                        ,
+    Notes                TEXT                NOT NULL,
+    ReportsTo            MEDIUMINT               NULL,
+    PhotoPath            VARCHAR(255)                ,
+    Salary               INT                         ,
+    PRIMARY KEY          (EmployeeID)                ,
+    FOREIGN KEY (ReportsTo) REFERENCES Employees (EmployeeID)
+);
+
+root entity Region
+  SQL CREATE TABLE Region (
+    RegionID             TINYINT             NOT NULL,
+    RegionDescription    VARCHAR(50)         NOT NULL,
+    PRIMARY KEY          (RegionID)
+);
+
+root entity Territories
+  SQL CREATE TABLE Territories (
+    TerritoryID          VARCHAR(20)         NOT NULL,
+    TerritoryDescription VARCHAR(50)         NOT NULL,
+    RegionID             TINYINT             NOT NULL,
+    PRIMARY KEY          (TerritoryID)               ,
+    FOREIGN KEY (RegionID) REFERENCES Region (RegionID)
+);
+
+root entity EmployeeTerritories
+  SQL CREATE TABLE EmployeeTerritories (
+    EmployeeID           MEDIUMINT           NOT NULL,
+    TerritoryID          VARCHAR(20)         NOT NULL,
+    PRIMARY KEY          (EmployeeID, TerritoryID)   ,
+    FOREIGN KEY (EmployeeID) REFERENCES Employees (EmployeeID),
+    FOREIGN KEY (TerritoryID) REFERENCES Territories (TerritoryID)
+);
+
+root entity Categories
+  SQL CREATE TABLE Categories (
+    CategoryID           TINYINT             NOT NULL,
+    CategoryName         VARCHAR(30)         NOT NULL,
+    Description          TEXT                        ,
+    Picture              BLOB                        ,
+    PRIMARY KEY          (CategoryID)
+);
+
+root entity Suppliers
+  SQL CREATE TABLE Suppliers (
+    SupplierID           SMALLINT            NOT NULL,
+    CompanyName          VARCHAR(40)         NOT NULL,
+    ContactName          VARCHAR(30)                 ,
+    ContactTitle         VARCHAR(30)                 ,
+    Address              VARCHAR(60)                 ,
+    City                 VARCHAR(15)                 ,
+    Region               VARCHAR(15)                 ,
+    PostalCode           VARCHAR(10)                 ,
+    Country              VARCHAR(15)                 ,
+    Phone                VARCHAR(24)                 ,
+    Fax                  VARCHAR(24)                 ,
+    HomePage             TEXT,
+    PRIMARY KEY          (SupplierID)
+);
+
+root entity Products
+  SQL CREATE TABLE Products (
+    ProductID            SMALLINT            NOT NULL,
+    ProductName          VARCHAR(40)         NOT NULL,
+    SupplierID           SMALLINT            NOT NULL,
+    CategoryID           TINYINT             NOT NULL,
+    QuantityPerUnit      VARCHAR(20)                 ,
+    UnitPrice            DECIMAL(10,5)               ,
+    UnitsInStock         SMALLINT                    ,
+    UnitsOnOrder         SMALLINT                    ,
+    ReorderLevel         SMALLINT                    ,
+    Discontinued         BOOLEAN             NOT NULL,
+    PRIMARY KEY          (ProductID)                 ,
+    FOREIGN KEY (CategoryID) REFERENCES Categories (CategoryID),
+    FOREIGN KEY (SupplierID) REFERENCES Suppliers (SupplierID)
+);
+
+root entity Shippers
+  SQL CREATE TABLE Shippers (
+    ShipperID            TINYINT             NOT NULL,
+    CompanyName          VARCHAR(40)         NOT NULL,
+    Phone                VARCHAR(24)                 ,
+    PRIMARY KEY          (ShipperID)
+);
+
+root entity Orders
+  SQL CREATE TABLE Orders (
+    OrderID              INT                 NOT NULL,
+    CustomerID           VARCHAR(5)                  ,
+    EmployeeID           MEDIUMINT           NOT NULL,
+    OrderDate            DATE                        ,
+    RequiredDate         DATE                        ,
+    ShippedDate          DATE                        ,
+    ShipVia              TINYINT                     ,
+    Freight              DECIMAL(10,2)               ,
+    ShipName             VARCHAR(40)                 ,
+    ShipAddress          VARCHAR(60)                 ,
+    ShipCity             VARCHAR(15)                 ,
+    ShipRegion           VARCHAR(15)                 ,
+    ShipPostalCode       VARCHAR(10)                 ,
+    ShipCountry          VARCHAR(15)                 ,
+    PRIMARY KEY          (OrderID)                   ,
+    FOREIGN KEY (CustomerID) REFERENCES Customers (CustomerID),
+    FOREIGN KEY (EmployeeID) REFERENCES Employees (EmployeeID),
+    FOREIGN KEY (ShipVia)    REFERENCES Shippers  (ShipperID)
+);
+
+root entity Order_Details
+  SQL CREATE TABLE Order_Details (
+    OrderID              INT                 NOT NULL,
+    ProductID            SMALLINT            NOT NULL,
+    UnitPrice            DECIMAL(8,2)        NOT NULL,
+    Quantity             SMALLINT(2)         NOT NULL,
+    Discount             DOUBLE(8,0)         NOT NULL,
+    PRIMARY KEY          (OrderID, ProductID)        ,
+    FOREIGN KEY (OrderID)   REFERENCES Orders   (OrderID),
+    FOREIGN KEY (ProductID) REFERENCES Products (ProductID)
+);
+
+root entity CustomerDemographics
+  SQL CREATE TABLE CustomerDemographics (
+    CustomerTypeID       VARCHAR(10)         NOT NULL,
+    CustomerDesc         TEXT                        ,
+    PRIMARY KEY          (CustomerTypeID)
+);
+
+root entity CustomerCustomerDemo
+  SQL CREATE TABLE CustomerCustomerDemo (
+    CustomerID           VARCHAR(5)          NOT NULL,
+    CustomerTypeID       VARCHAR(10)         NOT NULL,
+    PRIMARY KEY          (CustomerID, CustomerTypeID),
+    FOREIGN KEY (CustomerTypeID) REFERENCES CustomerDemographics (CustomerTypeID),
+    FOREIGN KEY (CustomerID) REFERENCES Customers (CustomerID)
+);

@@ -1,0 +1,19 @@
+Cass_OneOfEach_Attributes operations
+
+ADD ENTITY EntityToAdd { +id: String }
+
+ADD ATTR *::addAttrStr: String
+ADD ATTR *::addAttrNum: Number
+ADD ATTR *::addAttrDouble: Double
+ADD ATTR *::addAttrBool: Boolean
+ADD ATTR *::addAttrSet: Set<String>
+ADD ATTR *::addAttrList: List<String>
+ADD ATTR *::addAttrTuple: Tuple<String, Integer>
+ADD ATTR *::addAttrMap: Map<String, String>
+
+ADD ENTITY EntityToCast { +id: Identifier, attrToCastStr: Boolean, attrToCastNum: String, attrToCastDouble: Number, attrToCastBool: Double}
+
+CAST ATTR EntityToCast::attrToCastBool TO Boolean
+CAST ATTR EntityToCast::attrToCastDouble TO Double
+CAST ATTR EntityToCast::attrToCastNum TO Number
+CAST ATTR EntityToCast::attrToCastStr TO String

@@ -1,0 +1,87 @@
+spec SongsDB_generation
+
+Input:
+  schema:      SongsDB
+  names:       txt    ( "file://./config/names.txt",
+    order = sequential , cycle = repeat )
+  pagenames:   csv    ( "https://github.com/[...]/fb_news_pagenames.csv",
+    { names: $4, pagenames: $5 } )
+  surnames:    json   ( "file://./config/json/surnames.json" )
+  years:       python ( "file://./config/scripts/fakerYears.py", cycle = once )
+
+Output:
+  schema_name: "SongsDB_generation"
+  database:    mongodb ( localhost:7777 )
+  folder:      json ( "file://./output/songsdb/json/" )
+  folder:      csv  ( "file://./output/songsdb/csv/" )
+  Console
+
+Rules:
+  default        : Number { range[0..10] }
+  default        : String { fixed: "default_value" }
+  variationRule  : Variation { range[5..100] }
+  nameRule       : String { src: names, strange: 0.02, range[5..10] }
+  yearRule       : Number { src: years, range[1900..2020] }
+  formatRule     : String { enum["LP", "CD", "Vinyl"], null: 0.01 }
+  reviewsAggrRule: Aggr { null: 0.05, range[4..5] }
+  popularityRule : Double { range [0..1] }
+  doublePrecisionRule::popularityRule: Double { precision: 2 }
+
+/*Mapping:
+  Album
+  {
+    name: nameRule
+    Variation 1
+    {
+      reviews: reviewsAggrRule
+    }
+
+    Variation 2
+    {
+      reviews: reviewsAggrRule      
+    }
+
+    Variation 3
+    {
+      
+    }
+  }
+
+  Review
+  {
+    
+  }
+
+  Medium
+  {
+    
+  }
+
+   refRule: Reference { strange: 0.01, range [1..2] }
+   aggrRule: Aggregate { null: 0.01, range [1..2] }
+   tupleRule: Tuple { range [1..1] }
+   doubleRule: Double { range [0..1]}
+   doublePrecisionRule::doubleRule: Double { precision: 2 }
+   intRule: Integer { range [0..1000]} 
+   simpleStrRule: String { src: wordsFile, strange: 0.02 }
+   complexStrRule: String { src: namesFile, strange: 0.02, null: 0.02, range[1..10]}
+   enumStrRule: String { enum[ "Printed_media", "Laptops", "Toys", "Clothes" ] }
+   // includeType: boolean
+   // timestamp: randomIntervalMargin, randomIntervalProbability
+
+root entity Album
+{
+  common      { _id: String, formats: List<String>, name: String, popularity: Double, releaseYear: Number, tracks: ref<Track as String>* }
+  variation 1 { availability: String, reviews: aggr<Review>* }
+  variation 2 { availability: List<String>, reviews: aggr<Review>* }
+  variation 3 { availability: List<String> }
+}
+
+entity Review
+{
+  common      { journalist: String, rank: String, stars: Number }
+  variation 1 { media: aggr<Medium>+}
+  variation 2 { media: String }
+}
+
+entity Medium { {name: String, type: String, url: String} }*/

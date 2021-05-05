@@ -1,0 +1,28 @@
+Spec JISBDSpec
+
+Input:
+  schema: mongosongs
+  wordsFile:    txt ( "config/words.txt"    )
+  namesFile:    txt ( "config/names.txt"    )
+  surnamesFile: txt ( "config/surnames.txt" )
+
+Output:
+  schema_name: "gen_mongosongs"
+  database: mongodb ( localhost )
+  folder: json ( "../es.um.unosql.models/mongosongs/json/" )
+  Console
+
+Rules:
+   variationRule: Variation { range [1000..2000] }
+   tsRule: Timestamp { format: "dd-MM-yyyy HH:mm:ss", interval: 2000 }
+   refRule: Reference { strange: 0.01, range [1..2] }
+   aggrRule: Aggregate { null: 0.01, range [1..2] }
+   tupleRule: Tuple { range [1..1] }
+   doubleRule: Double { range [0..1]}
+   doublePrecisionRule::doubleRule: Double { precision: 2 }
+   intRule: Integer { range [0..1000]} 
+   simpleStrRule: String { src: wordsFile, strange: 0.02 }
+   complexStrRule: String { src: namesFile, strange: 0.02, null: 0.02, range[1..10]}
+   enumStrRule: String { enum[ "Printed_media", "Laptops", "Toys", "Clothes" ] }
+   // includeType: boolean
+   // timestamp: randomIntervalMargin, randomIntervalProbability

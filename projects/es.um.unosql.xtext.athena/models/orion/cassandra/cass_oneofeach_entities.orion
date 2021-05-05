@@ -1,0 +1,18 @@
+Cass_OneOfEach_Entities operations
+
+ADD ENTITY EntityAdded1 { +id: Identifier }
+ADD ENTITY EntityAdded2 { +id: Identifier }
+ADD ENTITY EntityAdded3 { +id: Identifier }
+
+DELETE ENTITY EntityAdded2
+RENAME ENTITY EntityAdded3 TO EntityRenamed
+
+ADD ENTITY EntityToExtract { +id: String("id"), feat1: String("feat1"), feat2: String("feat2"), feat3: String("feat3"), feat4: String("feat4") }
+EXTRACT ENTITY EntityToExtract INTO EntityExtracted(id, feat2, feat4)
+
+ADD ENTITY EntityToSplit {+id: String("id"), attr1: String("attr1"), attr2: String("attr2"), attr3: String("attr3"), attr4: String("attr4"), attr5: String("attr5"), attr6: String("attr6")}
+SPLIT ENTITY EntityToSplit INTO EntitySplit1(id, attr1, attr2, attr3), EntitySplit2(id, attr1, attr5, attr6)
+
+ADD ENTITY EntityToMerge1 { +id: String("id"), a: String("a"), b: Number(33) }
+ADD ENTITY EntityToMerge2 { +id: String("id"), c: List<String>, b: String("b") }
+MERGE ENTITY EntityToMerge1, EntityToMerge2 INTO EntityMerged WHERE EntityToMerge1.id = EntityToMerge2.id

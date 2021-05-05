@@ -1,0 +1,15 @@
+Schema Cass_OneOfEach_References
+
+root entity EntityDummy { +id: String }
+
+root entity EntityRefs { +id: Identifier, nullRefSimple: ref<EntityDummy as String>+, nullRefArray: ref<EntityDummy as String>*, strRefSimple: ref<EntityDummy as String>+, strRefArray: ref<EntityDummy as String>*, numRefSimple: ref<EntityDummy as Number>+, numRefArray: ref<EntityDummy as Number>*, nullRefSimpleChange: ref<EntityDummy as String>*, nullRefArrayChange: ref<EntityDummy as String>+, strRefSimpleChange: ref<EntityDummy as String>*, strRefArrayChange: ref<EntityDummy as String>+, numRefSimpleChange: ref<EntityDummy as Number>*, numRefArrayChange: ref<EntityDummy as Number>+ }
+
+entity EntityRef1 { +id: String, value1: String, value2: String }
+
+entity EntityRef2 { +id: String, value3: String, value4: String }
+
+entity EntityRef3 { +id: String, value5: String, value6: String }
+
+entity EntityRef4 { +id: String, value7: String, value8: String }
+
+root entity EntityMorphRef { +id: String, refToEntity1: aggr<EntityRef1>+, refToEntity2: aggr<EntityRef2>+, refToEntity3: aggr<EntityRef3>*, refToEntity4: aggr<EntityRef4>* }

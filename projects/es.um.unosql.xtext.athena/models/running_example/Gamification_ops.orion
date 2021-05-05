@@ -1,0 +1,30 @@
+Gamification_ops operations
+
+Using Gamification_athena
+
+// What to do with Stage
+
+// What to do with Minigame
+CAST ATTR *::points TO Double
+DELETE Minigame::isActive
+
+// What to do with User
+ADAPT ENTITY User::v 1 TO v 2
+NEST User::email TO personalInfo
+MORPH AGGR User::personalInfo TO privateData
+RENAME ENTITY User TO Employee
+
+// What to do with PrivateData
+CAST ATTR PrivateData::postcode TO String
+NEST PrivateData::city, postcode, street TO Address
+
+// What to do with MinigameSummary
+RENAME MinigameSummary::completedAt TO isCompleted
+CAST ATTR MinigameSummary::isCompleted TO Boolean
+RENAME ENTITY MinigameSummary TO Summary
+
+// Others
+ADD ENTITY Company { +id: Identifier, code: String, name: String, numOfEmployees: Number }
+PROMOTE ATTR Company::code
+ADD REF Company::staff* TO Employee
+ADD AGGR Company::media: { twitterProf: String, fbProf: String, webUrl: String, ytProf: String}+

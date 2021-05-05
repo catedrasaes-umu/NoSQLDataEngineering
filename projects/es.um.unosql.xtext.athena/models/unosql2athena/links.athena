@@ -1,0 +1,7 @@
+Schema links
+
+root entity Links
+{
+	common { +_id: Identifier, tags: List<String>, timestamp: Number, url: String }
+	variation 1
+}

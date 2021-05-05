@@ -1,0 +1,62 @@
+Schema SQLExample_Employees
+
+root entity Employees
+  SQL CREATE TABLE employees (
+    emp_no      INT         NOT NULL,
+    birth_date  DATE        NOT NULL,
+    first_name  VARCHAR(14) NOT NULL,
+    last_name   VARCHAR(16) NOT NULL,
+    gender      TEXT(10)    NOT NULL,
+    hire_date   DATE        NOT NULL,
+    PRIMARY KEY (emp_no)
+);
+
+root entity Departments
+  SQL CREATE TABLE departments (
+    dept_no     CHAR(4)     NOT NULL,
+    dept_name   VARCHAR(40) NOT NULL,
+    PRIMARY KEY (dept_no)           ,
+    UNIQUE  KEY (dept_name)
+);
+
+root entity Dept_emp
+  SQL CREATE TABLE dept_emp (
+    emp_no      INT         NOT NULL,
+    dept_no     CHAR(4)     NOT NULL,
+    from_date   DATE        NOT NULL,
+    to_date     DATE        NOT NULL,
+    FOREIGN KEY (emp_no) REFERENCES Employees (emp_no),
+    FOREIGN KEY (dept_no) REFERENCES Departments (dept_no),
+    PRIMARY KEY (emp_no, dept_no)
+);
+
+root entity Dept_manager
+  SQL CREATE TABLE dept_manager (
+    dept_no     CHAR(4)     NOT NULL,
+    emp_no      INT         NOT NULL,
+    from_date   DATE        NOT NULL,
+    to_date     DATE        NOT NULL,
+    FOREIGN KEY (emp_no)  REFERENCES Employees (emp_no),
+    FOREIGN KEY (dept_no) REFERENCES Departments (dept_no),
+    PRIMARY KEY (emp_no, dept_no)
+);
+
+root entity Titles
+  SQL CREATE TABLE titles (
+    emp_no      INT         NOT NULL,
+    title       VARCHAR(50) NOT NULL,
+    from_date   DATE        NOT NULL,
+    to_date     DATE                ,
+    FOREIGN KEY (emp_no) REFERENCES Employees (emp_no),
+    PRIMARY KEY (emp_no, title, from_date)
+);
+
+root entity Salaries
+  SQL CREATE TABLE salaries (
+    emp_no      INT         NOT NULL,
+    salary      INT         NOT NULL,
+    from_date   DATE        NOT NULL,
+    to_date     DATE        NOT NULL,
+    FOREIGN KEY (emp_no) REFERENCES Employees (emp_no),
+    PRIMARY KEY (emp_no, from_date)
+);

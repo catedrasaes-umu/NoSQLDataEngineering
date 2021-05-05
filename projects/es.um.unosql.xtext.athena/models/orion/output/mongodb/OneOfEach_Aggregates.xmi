@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uNoSQLSchema:uNoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uNoSQLSchema="http://www.modelum.es/uNoSQLSchema" xsi:schemaLocation="http://www.modelum.es/uNoSQLSchema platform:/resource/es.um.unosql/model/unosqlschema.ecore" name="OneOfEach_Aggregates">
+  <entities name="EntityToAggr" root="true">
+    <variations variationId="1" logicalFeatures="//@entities.0/@variations.0/@features.1" structuralFeatures="//@entities.0/@variations.0/@features.0 //@entities.0/@variations.0/@features.2 //@entities.0/@variations.0/@features.3 //@entities.0/@variations.0/@features.4 //@entities.0/@variations.0/@features.5 //@entities.0/@variations.0/@features.6 //@entities.0/@variations.0/@features.7 //@entities.0/@variations.0/@features.8 //@entities.0/@variations.0/@features.9 //@entities.0/@variations.0/@features.10 //@entities.0/@variations.0/@features.11">
+      <features xsi:type="uNoSQLSchema:Attribute" name="_id" key="//@entities.0/@variations.0/@features.1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Identifier"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Key" attributes="//@entities.0/@variations.0/@features.0"/>
+      <features xsi:type="uNoSQLSchema:Aggregate" name="aggrSimple" aggregates="//@entities.1/@variations.0" upperBound="1" lowerBound="1"/>
+      <features xsi:type="uNoSQLSchema:Aggregate" name="aggrList" aggregates="//@entities.2/@variations.0" upperBound="-1"/>
+      <features xsi:type="uNoSQLSchema:Aggregate" name="nullAggrSimpleChange" aggregates="//@entities.5/@variations.0" upperBound="-1"/>
+      <features xsi:type="uNoSQLSchema:Aggregate" name="nullAggrArrayChange" aggregates="//@entities.6/@variations.0" upperBound="1" lowerBound="1"/>
+      <features xsi:type="uNoSQLSchema:Aggregate" name="strAggrSimpleChange" aggregates="//@entities.7/@variations.0" upperBound="-1"/>
+      <features xsi:type="uNoSQLSchema:Aggregate" name="strAggrArrayChange" aggregates="//@entities.8/@variations.0" upperBound="1" lowerBound="1"/>
+      <features xsi:type="uNoSQLSchema:Aggregate" name="numAggrSimpleChange" aggregates="//@entities.9/@variations.0" upperBound="-1"/>
+      <features xsi:type="uNoSQLSchema:Aggregate" name="numAggrArrayChange" aggregates="//@entities.10/@variations.0" upperBound="1" lowerBound="1"/>
+      <features xsi:type="uNoSQLSchema:Aggregate" name="aggrByHand1" aggregates="//@entities.11/@variations.0" upperBound="-1"/>
+      <features xsi:type="uNoSQLSchema:Aggregate" name="aggrByHand2" aggregates="//@entities.12/@variations.0" upperBound="1" lowerBound="1"/>
+    </variations>
+  </entities>
+  <entities name="AggrSimple">
+    <variations variationId="1" structuralFeatures="//@entities.1/@variations.0/@features.0 //@entities.1/@variations.0/@features.1 //@entities.1/@variations.0/@features.2 //@entities.1/@variations.0/@features.3 //@entities.1/@variations.0/@features.4 //@entities.1/@variations.0/@features.5">
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr2">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Number"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr3">
+        <type xsi:type="uNoSQLSchema:PMap">
+          <keyType name="String"/>
+          <valueType xsi:type="uNoSQLSchema:Null"/>
+        </type>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr4">
+        <type xsi:type="uNoSQLSchema:PList">
+          <elementType xsi:type="uNoSQLSchema:Null"/>
+        </type>
+      </features>
+      <features xsi:type="uNoSQLSchema:Aggregate" name="innerAggrSimple" aggregates="//@entities.3/@variations.0" upperBound="1" lowerBound="1"/>
+      <features xsi:type="uNoSQLSchema:Aggregate" name="innerAggrList" aggregates="//@entities.4/@variations.0" upperBound="-1"/>
+    </variations>
+  </entities>
+  <entities name="AggrList">
+    <variations variationId="1" structuralFeatures="//@entities.2/@variations.0/@features.0 //@entities.2/@variations.0/@features.1 //@entities.2/@variations.0/@features.2 //@entities.2/@variations.0/@features.3">
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr2">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Number"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr3">
+        <type xsi:type="uNoSQLSchema:PMap">
+          <keyType name="String"/>
+          <valueType xsi:type="uNoSQLSchema:Null"/>
+        </type>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr4">
+        <type xsi:type="uNoSQLSchema:PList">
+          <elementType xsi:type="uNoSQLSchema:Null"/>
+        </type>
+      </features>
+    </variations>
+  </entities>
+  <entities name="InnerAggrSimple">
+    <variations variationId="1" structuralFeatures="//@entities.3/@variations.0/@features.0 //@entities.3/@variations.0/@features.1 //@entities.3/@variations.0/@features.2 //@entities.3/@variations.0/@features.3">
+      <features xsi:type="uNoSQLSchema:Attribute" name="innerAttr1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="innerAttr2">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Number"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="innerAttr3">
+        <type xsi:type="uNoSQLSchema:PMap">
+          <keyType name="String"/>
+          <valueType xsi:type="uNoSQLSchema:Null"/>
+        </type>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="innerAttr4">
+        <type xsi:type="uNoSQLSchema:PList">
+          <elementType xsi:type="uNoSQLSchema:Null"/>
+        </type>
+      </features>
+    </variations>
+  </entities>
+  <entities name="InnerAggrList">
+    <variations variationId="1" structuralFeatures="//@entities.4/@variations.0/@features.0 //@entities.4/@variations.0/@features.1 //@entities.4/@variations.0/@features.2 //@entities.4/@variations.0/@features.3">
+      <features xsi:type="uNoSQLSchema:Attribute" name="innerAttr1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="innerAttr2">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Number"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="innerAttr3">
+        <type xsi:type="uNoSQLSchema:PMap">
+          <keyType name="String"/>
+          <valueType xsi:type="uNoSQLSchema:Null"/>
+        </type>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="innerAttr4">
+        <type xsi:type="uNoSQLSchema:PList">
+          <elementType xsi:type="uNoSQLSchema:Null"/>
+        </type>
+      </features>
+    </variations>
+  </entities>
+  <entities name="NullAggrSimpleChange">
+    <variations variationId="1"/>
+  </entities>
+  <entities name="NullAggrArrayChange">
+    <variations variationId="1"/>
+  </entities>
+  <entities name="StrAggrSimpleChange">
+    <variations variationId="1" structuralFeatures="//@entities.7/@variations.0/@features.0 //@entities.7/@variations.0/@features.1">
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr2">
+        <type xsi:type="uNoSQLSchema:Null"/>
+      </features>
+    </variations>
+  </entities>
+  <entities name="StrAggrArrayChange">
+    <variations variationId="1" structuralFeatures="//@entities.8/@variations.0/@features.0 //@entities.8/@variations.0/@features.1">
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr2">
+        <type xsi:type="uNoSQLSchema:Null"/>
+      </features>
+    </variations>
+  </entities>
+  <entities name="NumAggrSimpleChange">
+    <variations variationId="1" structuralFeatures="//@entities.9/@variations.0/@features.0 //@entities.9/@variations.0/@features.1">
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Number"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr2">
+        <type xsi:type="uNoSQLSchema:Null"/>
+      </features>
+    </variations>
+  </entities>
+  <entities name="NumAggrArrayChange">
+    <variations variationId="1" structuralFeatures="//@entities.10/@variations.0/@features.0 //@entities.10/@variations.0/@features.1">
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Number"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr2">
+        <type xsi:type="uNoSQLSchema:Null"/>
+      </features>
+    </variations>
+  </entities>
+  <entities name="AggrByHand1">
+    <variations variationId="1" structuralFeatures="//@entities.11/@variations.0/@features.0 //@entities.11/@variations.0/@features.1 //@entities.11/@variations.0/@features.2 //@entities.11/@variations.0/@features.3 //@entities.11/@variations.0/@features.4">
+      <features xsi:type="uNoSQLSchema:Attribute" name="string1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="nullAttrSimpleChange">
+        <type xsi:type="uNoSQLSchema:Null"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="nullAttrArrayChange">
+        <type xsi:type="uNoSQLSchema:PList">
+          <elementType xsi:type="uNoSQLSchema:Null"/>
+        </type>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="strAttrSimpleChange">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="strAttrArrayChange">
+        <type xsi:type="uNoSQLSchema:PList">
+          <elementType xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+        </type>
+      </features>
+    </variations>
+  </entities>
+  <entities name="AggrByHand2">
+    <variations variationId="1" structuralFeatures="//@entities.12/@variations.0/@features.0 //@entities.12/@variations.0/@features.1 //@entities.12/@variations.0/@features.2">
+      <features xsi:type="uNoSQLSchema:Attribute" name="string2">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="numAttrSimpleChange">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Number"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="numAttrArrayChange">
+        <type xsi:type="uNoSQLSchema:PList">
+          <elementType xsi:type="uNoSQLSchema:PrimitiveType" name="Number"/>
+        </type>
+      </features>
+    </variations>
+  </entities>
+  <entities name="EntityMorphAggr" root="true">
+    <variations variationId="1" logicalFeatures="//@entities.13/@variations.0/@features.2 //@entities.13/@variations.0/@features.4 //@entities.13/@variations.0/@features.6 //@entities.13/@variations.0/@features.8" structuralFeatures="//@entities.13/@variations.0/@features.0 //@entities.13/@variations.0/@features.1 //@entities.13/@variations.0/@features.3 //@entities.13/@variations.0/@features.5 //@entities.13/@variations.0/@features.7">
+      <features xsi:type="uNoSQLSchema:Attribute" name="_id">
+        <type xsi:type="uNoSQLSchema:Null"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="refToAggr1" references="//@entities.13/@variations.0/@features.2">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Identifier"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Reference" refsTo="//@entities.14" attributes="//@entities.13/@variations.0/@features.1" upperBound="1" lowerBound="1"/>
+      <features xsi:type="uNoSQLSchema:Attribute" name="refToAggr2" references="//@entities.13/@variations.0/@features.4">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Identifier"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Reference" refsTo="//@entities.15" attributes="//@entities.13/@variations.0/@features.3" upperBound="1" lowerBound="1"/>
+      <features xsi:type="uNoSQLSchema:Attribute" name="refToAggr3" references="//@entities.13/@variations.0/@features.6">
+        <type xsi:type="uNoSQLSchema:PList">
+          <elementType xsi:type="uNoSQLSchema:PrimitiveType" name="Identifier"/>
+        </type>
+      </features>
+      <features xsi:type="uNoSQLSchema:Reference" refsTo="//@entities.16" attributes="//@entities.13/@variations.0/@features.5" upperBound="-1"/>
+      <features xsi:type="uNoSQLSchema:Attribute" name="refToAggr4" references="//@entities.13/@variations.0/@features.8">
+        <type xsi:type="uNoSQLSchema:PList">
+          <elementType xsi:type="uNoSQLSchema:PrimitiveType" name="Identifier"/>
+        </type>
+      </features>
+      <features xsi:type="uNoSQLSchema:Reference" refsTo="//@entities.17" attributes="//@entities.13/@variations.0/@features.7" upperBound="-1"/>
+    </variations>
+  </entities>
+  <entities name="Aggr1" root="true">
+    <variations variationId="1" logicalFeatures="//@entities.14/@variations.0/@features.3" structuralFeatures="//@entities.14/@variations.0/@features.0 //@entities.14/@variations.0/@features.1 //@entities.14/@variations.0/@features.2">
+      <features xsi:type="uNoSQLSchema:Attribute" name="string1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="string2">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="_id" key="//@entities.14/@variations.0/@features.3">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Identifier"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Key" attributes="//@entities.14/@variations.0/@features.2"/>
+    </variations>
+  </entities>
+  <entities name="Aggr2" root="true">
+    <variations variationId="1" logicalFeatures="//@entities.15/@variations.0/@features.3" structuralFeatures="//@entities.15/@variations.0/@features.0 //@entities.15/@variations.0/@features.1 //@entities.15/@variations.0/@features.2">
+      <features xsi:type="uNoSQLSchema:Attribute" name="aList">
+        <type xsi:type="uNoSQLSchema:PList">
+          <elementType xsi:type="uNoSQLSchema:Null"/>
+        </type>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="aMap">
+        <type xsi:type="uNoSQLSchema:PMap">
+          <keyType name="String"/>
+          <valueType xsi:type="uNoSQLSchema:Null"/>
+        </type>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="_id" key="//@entities.15/@variations.0/@features.3">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Identifier"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Key" attributes="//@entities.15/@variations.0/@features.2"/>
+    </variations>
+  </entities>
+  <entities name="Aggr3" root="true">
+    <variations variationId="1" logicalFeatures="//@entities.16/@variations.0/@features.3" structuralFeatures="//@entities.16/@variations.0/@features.0 //@entities.16/@variations.0/@features.1 //@entities.16/@variations.0/@features.2">
+      <features xsi:type="uNoSQLSchema:Attribute" name="string5">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="string6">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="_id" key="//@entities.16/@variations.0/@features.3">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Identifier"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Key" attributes="//@entities.16/@variations.0/@features.2"/>
+    </variations>
+  </entities>
+  <entities name="Aggr4" root="true">
+    <variations variationId="1" logicalFeatures="//@entities.17/@variations.0/@features.3" structuralFeatures="//@entities.17/@variations.0/@features.0 //@entities.17/@variations.0/@features.1 //@entities.17/@variations.0/@features.2">
+      <features xsi:type="uNoSQLSchema:Attribute" name="aSet">
+        <type xsi:type="uNoSQLSchema:PSet">
+          <elementType xsi:type="uNoSQLSchema:Null"/>
+        </type>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="aTuple">
+        <type xsi:type="uNoSQLSchema:PTuple">
+          <elements xsi:type="uNoSQLSchema:Null"/>
+        </type>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="_id" key="//@entities.17/@variations.0/@features.3">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Identifier"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Key" attributes="//@entities.17/@variations.0/@features.2"/>
+    </variations>
+  </entities>
+</uNoSQLSchema:uNoSQLSchema>

@@ -1,0 +1,182 @@
+OneOfEach_Phased operations
+
+EBlock 1 // Create entities - Not transactional
+{
+  ADD ENTITY EntityAdded1 { +_id: Identifier }
+  ADD ENTITY EntityAdded2 { +_id: Identifier }
+  ADD ENTITY EntityAdded3 { +_id: Identifier }
+
+  DELETE ENTITY EntityAdded2
+  RENAME ENTITY EntityAdded3 TO EntityRenamed
+
+  ADD ENTITY EntityToSplit {+_id: Identifier, attr1: String, attr2: String, attr3: String, attr4: String, attr5: String, attr6: String}
+  SPLIT ENTITY EntityToSplit INTO EntitySplit1(_id, attr1, attr2, attr3), EntitySplit2(_id, attr1, attr5, attr6)
+
+  ADD ENTITY EntityToMerge1 { +_id: String("id"), a: String, b: Number }
+  ADD ENTITY EntityToMerge2 { +_id: String("id"), c: List, b }
+  MERGE ENTITY EntityToMerge1, EntityToMerge2 INTO EntityMerged WHERE EntityToMerge1._id = EntityToMerge2._id
+
+  ADD ENTITY EntityToExtract { +_id: Identifier, feat1, feat2, feat3, feat4 }
+  EXTRACT ENTITY EntityToExtract INTO EntityExtracted(_id, feat2, feat4)
+
+  ADD ENTITY EntityToRemove { +_id: Identifier, attrToDel, attrToDelStr: String, attrToDelNum: Number, attrToDelDouble: Double, attrToDelBool: Boolean,
+      +attrToRen, +attrToRenStr: String, +attrToRenNum: Number, +attrToRenDouble: Double, +attrToRenBool: Boolean}
+
+  ADD ENTITY EntityToCopySource1 { +_id: String("id1"), valueToCopy1: String("COPY_THIS"), valueToCopy2: List, valueToCopy3: Map}
+  ADD ENTITY EntityToCopySource2 { +_id: String("id2"), valueToCopy4: String("COPY_THAT")}
+  ADD ENTITY EntityToCopyTarget { +_id: String, thisRef: String("id1"), thatRef: String("id2") }
+  ADD ENTITY EntityToMoveSource1 { +_id: String("id1"), valueToMove1: String("MOVE_THIS"), valueToMove2: List, valueToMove3: Map}
+  ADD ENTITY EntityToMoveSource2 { +_id: String("id2"), valueToMove4: String("MOVE_THAT")}
+  ADD ENTITY EntityToMoveTarget { +_id: String, thisRef: String("id1"), thatRef: String("id2") }
+  ADD ENTITY EntityToNest { +_id: String, name, age, street, postalCode, city, aList: List, aMap: Map}
+  ADD ENTITY EntityToUnnest { +_id: String, name, age }
+  ADD ENTITY EntityToAdd { +_id: String }
+  ADD ENTITY EntityToCast { +_id: Identifier, +attrToCast, attrToCastNull: null, attrToCastStr: String, attrToCastNum: Number, attrToCastDouble: Double, attrToCastBool: Boolean}
+  ADD ENTITY EntityToAggr { +_id: Identifier }
+  ADD ENTITY EntityMorphAggr { _id }
+
+  ADD ENTITY EntityDummy { +_id: String }
+  ADD ENTITY EntityRefs { +_id: Identifier }
+  ADD ENTITY EntityRef1 { +_id: String("refId1"), value1: String("value1"), value2: String("value2") }
+  ADD ENTITY EntityRef2 { +_id: String("refId2"), value3: String("value3"), value4: String("value4") }
+  ADD ENTITY EntityRef3 { +_id: String("refId3"), value5: String("value6"), value6: String("value6") }
+  ADD ENTITY EntityRef4 { +_id: String("refId4"), value7: String("value7"), value8: String("value8") }
+  ADD ENTITY EntityRef5 { +_id: String("refId5"), value9: String("value9"), value10: String("value10") }
+  ADD ENTITY EntityMorphRef { +_id }
+}
+
+EBlock 2 // Feature operations - Transactional
+{
+  DELETE EntityToRemove::attrToDel
+  DELETE EntityToRemove::attrToDelStr
+  DELETE EntityToRemove::attrToDelNum
+  DELETE EntityToRemove::attrToDelDouble
+  DELETE EntityToRemove::attrToDelBool
+
+  RENAME EntityToRemove::attrToRen TO attrTrue1
+  RENAME EntityToRemove::attrToRenStr TO attrTrue2
+  RENAME EntityToRemove::attrToRenNum TO attrTrue3
+  RENAME EntityToRemove::attrToRenDouble TO attrTrue4
+  RENAME EntityToRemove::attrToRenBool TO attrTrue5
+
+  COPY EntityToCopySource1::valueToCopy1 TO EntityToCopyTarget::copy1 WHERE _id = thisRef
+  COPY EntityToCopySource1::valueToCopy2 TO EntityToCopyTarget::copy2 WHERE _id = thisRef
+  COPY EntityToCopySource1::valueToCopy3 TO EntityToCopyTarget::copy3 WHERE _id = thisRef
+  COPY EntityToCopySource2::valueToCopy4 TO EntityToCopyTarget::valueToCopy4 WHERE _id = thatRef
+
+  MOVE EntityToMoveSource1::valueToMove1 TO EntityToMoveTarget::move1 WHERE _id = thisRef
+  MOVE EntityToMoveSource1::valueToMove2 TO EntityToMoveTarget::move2 WHERE _id = thisRef
+  MOVE EntityToMoveSource1::valueToMove3 TO EntityToMoveTarget::move3 WHERE _id = thisRef
+  MOVE EntityToMoveSource2::valueToMove4 TO EntityToMoveTarget::move4 WHERE _id = thatRef
+
+  ADD AGGR EntityToNest::nestAggrNest1: {nest1, nest2, nest3}+
+  ADD AGGR EntityToNest::nestAggrNest2: {nest4, nest5, nest6}*
+  NEST EntityToNest::street, postalCode, city, nestAggrNest1, nestAggrNest2 TO nestedAggr
+
+  ADD AGGR EntityToUnnest::unnestAggrNest1: {nest1, nest2, nest3, street, postalCode, city, aList: List, aMap: Map}+
+  ADD AGGR EntityToUnnest::unnestAggrNest2: {nest4, nest5, nest6}+
+  UNNEST EntityToUnnest::unnestAggrNest1.street, unnestAggrNest1.postalCode, unnestAggrNest1.city, unnestAggrNest1.aList, unnestAggrNest1.aMap, unnestAggrNest2.nest4
+}
+
+EBlock 3 // Attribute operations - Transactional
+{
+  ADD ATTR *::addAttrSinTipo
+  ADD ATTR *::addAttrStr: String
+  ADD ATTR *::addAttrNum: Number
+  ADD ATTR *::addAttrDouble: Double
+  ADD ATTR *::addAttrBool: Boolean
+  ADD ATTR *::addAttrSet: Set
+  ADD ATTR *::addAttrList: List
+  ADD ATTR *::addAttrTuple: Tuple
+  ADD ATTR *::addAttrMap: Map
+  ADD ATTR *::addAttrNull: Null
+  ADD ATTR *::addAttrStrVal: String ("initValue")
+  ADD ATTR *::addAttrNumVal: Number (33)
+  ADD ATTR *::addAttrDoubleVal: Double (33.1)
+  ADD ATTR *::addAttrBoolVal: Boolean (false)
+
+  CAST ATTR EntityToCast::attrToCast TO Bool
+  CAST ATTR EntityToCast::attrToCastNull TO Number
+  CAST ATTR EntityToCast::attrToCastStr TO Bool
+  CAST ATTR EntityToCast::attrToCastNum TO String
+  CAST ATTR EntityToCast::attrToCastDouble TO Bool
+  CAST ATTR EntityToCast::attrToCastBool TO String
+}
+
+EBlock 4 // Aggregate operations - Transactional
+{
+  ADD AGGR EntityToAggr::aggrSimple : {attr1: String, attr2: Number, attr3: Map, attr4: List}+
+  ADD AGGR EntityToAggr::aggrList : {attr1: String, attr2: Number, attr3: Map, attr4: List}*
+  ADD AGGR EntityToAggr::aggrSimple.innerAggrSimple: {innerAttr1: String, innerAttr2: Number, innerAttr3: Map, innerAttr4: List}+
+  ADD AGGR EntityToAggr::aggrSimple.innerAggrList: {innerAttr1: String, innerAttr2: Number, innerAttr3: Map, innerAttr4: List}*
+
+  ADD AGGR EntityToAggr::strAggrSimpleChange: {attr1: String, attr2}+
+  ADD AGGR EntityToAggr::strAggrArrayChange: {attr1: String, attr2}*
+  ADD AGGR EntityToAggr::numAggrSimpleChange: {attr1: Number, attr2}+
+  ADD AGGR EntityToAggr::numAggrArrayChange: {attr1: Number, attr2}*
+
+  CARD AGGR EntityToAggr::strAggrSimpleChange TO *
+  CARD AGGR EntityToAggr::strAggrArrayChange TO +
+  CARD AGGR EntityToAggr::numAggrSimpleChange TO *
+  CARD AGGR EntityToAggr::numAggrArrayChange TO +
+
+  ADD AGGR EntityToAggr::aggrByHand1: {string1: String}+
+  ADD ATTR EntityToAggr::aggrByHand1.nullAttrSimpleChange
+  ADD ATTR EntityToAggr::aggrByHand1.nullAttrArrayChange: List 
+  ADD ATTR EntityToAggr::aggrByHand1.strAttrSimpleChange: String ("ref1")
+  ADD ATTR EntityToAggr::aggrByHand1.strAttrArrayChange: List<String> ("ref1")
+  ADD AGGR EntityToAggr::aggrByHand2: {string2: String}+
+  ADD ATTR EntityToAggr::aggrByHand2.numAttrSimpleChange: Number (33)
+  ADD ATTR EntityToAggr::aggrByHand2.numAttrArrayChange: List<Number> (44)
+
+  CARD AGGR EntityToAggr::aggrByHand1 TO *
+
+  ADD AGGR EntityMorphAggr::aggr1: { string1: String, string2: String }+
+  ADD AGGR EntityMorphAggr::aggr2: { aList: List, aMap: Map }+
+  ADD AGGR EntityMorphAggr::aggr3: { string5: String, string6: String }*
+  ADD AGGR EntityMorphAggr::aggr4: { aSet: Set, aTuple: Tuple }*
+}
+
+EBlock 5 // Reference operations - Transactional
+{
+  ADD REF EntityRefs::nullRefSimple+ TO EntityDummy
+  ADD REF EntityRefs::nullRefArray* TO EntityDummy
+  ADD REF EntityRefs::strRefSimple: String+ TO EntityDummy
+  ADD REF EntityRefs::strRefArray: String* TO EntityDummy
+  ADD REF EntityRefs::numRefSimple: Number+ TO EntityDummy
+  ADD REF EntityRefs::numRefArray: Number* TO EntityDummy
+  
+  ADD REF EntityRefs::nullRefSimpleChange+ TO EntityDummy
+  ADD REF EntityRefs::nullRefArrayChange* TO EntityDummy
+  ADD REF EntityRefs::strRefSimpleChange: String+ TO EntityDummy
+  ADD REF EntityRefs::strRefArrayChange: String* TO EntityDummy
+  ADD REF EntityRefs::numRefSimpleChange: Number+ TO EntityDummy
+  ADD REF EntityRefs::numRefArrayChange: Number* TO EntityDummy
+  
+  CARD REF EntityRefs::nullRefSimpleChange TO *
+  CARD REF EntityRefs::nullRefArrayChange TO +
+  CARD REF EntityRefs::strRefSimpleChange TO *
+  CARD REF EntityRefs::strRefArrayChange TO +
+  CARD REF EntityRefs::numRefSimpleChange TO *
+  CARD REF EntityRefs::numRefArrayChange TO +
+
+  ADD REF EntityMorphRef::refToEntity1: String("refId1")+ TO EntityRef1
+  ADD REF EntityMorphRef::refToEntity2: String("refId2")+ TO EntityRef2
+  ADD REF EntityMorphRef::refToEntity3: String("refId3")+ TO EntityRef3
+  ADD REF EntityMorphRef::refToEntity4: String("refId4")* TO EntityRef4
+  ADD REF EntityMorphRef::refToEntity5: String("refId5")* TO EntityRef5
+}
+
+EBlock 6 // Morph operations - Not transactional
+{
+  MORPH AGGR EntityMorphAggr::aggr1 TO refToAggr1
+  MORPH AGGR EntityMorphAggr::aggr2 TO refToAggr2
+  MORPH AGGR EntityMorphAggr::aggr3 TO refToAggr3
+  MORPH AGGR EntityMorphAggr::aggr4 TO refToAggr4
+
+  MORPH REF EntityMorphRef::refToEntity1 TO aggrEntity1
+  MORPH REF EntityMorphRef::refToEntity2 ( rmId ) TO aggrEntity2
+  MORPH REF EntityMorphRef::refToEntity3 ( rmEntity ) TO aggrEntity3
+  MORPH REF EntityMorphRef::refToEntity4 TO aggrEntity4
+  MORPH REF EntityMorphRef::refToEntity5 ( rmId rmEntity ) TO aggrEntity5
+}

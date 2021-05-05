@@ -1,0 +1,72 @@
+Schema OneOfEach 0.01
+
+FSet struct1 { attr1: String } + ( { attr2: Number } ) U { attr3: Boolean}
+
+FSet struct2 struct1 I ( { attr3: Boolean } )
+
+FSet struct3 struct1 - { attr2 }
+
+Entity Entity1 {aNull: Null, aList1: List, aList2: List<String>, aSet1: Set, aSet2: Set<String> }
+root EnTiTy Entity2 {aMap1: Map<,>, aMap2: Map<String,>, aMap3: Map<,Integer>, aMap4: Map<String, Integer> }
+root ENTITY Entity3 :: Entity1, Entity2 {aTuple1: Tuple, aTuple2: Tuple<String>, aTuple3: Tuple<Integer, Boolean> }
+
+entity Entity4
+{
+  common      { attr1: Identifier }
+  variation 1 { attr2 }
+  VARIATION 2 { attr3: Boolean, attr4: Bool, attr5: Integer, attr6: Int, attr7: Number, attr8: Float, attr9: Double, attr10: String }
+  variation 3 { attr11: Timestamp }
+}
+
+entity Entity5 { common { +attr1: String } variation 1 }
+
+entity Entity6 { attr }
+
+relationship Rel1 {+attr1: String, ? attr2: Integer, ! attr3: Int}
+
+relationship Rel2
+{
+  common {attr1: String}
+  variation 1 {attr2: String}
+  VARIATION 2 {attr3: String}
+}
+
+relationship Rel3 { variation 1 { attr1: String }}
+
+relationship Rel4 { attr }
+
+// Test operators with Structs
+relationship Rel5 { variation 1 struct1 U struct2 variation 2 struct1 + struct2 variation 3 struct1 - struct2 variation 4 (struct1 + {attr5}) I struct2}
+
+// Test operators with Structs and Entities
+relationship Rel6 { variation 1 struct1 U Entity1 variation 2 struct1 + Entity1 variation 3 struct1 - Entity1 variation 4 (struct1 + {attr1: Boolean}) I Entity1 }
+
+// Test operators with Structs and Variations
+relationship Rel7 { variation 1 struct1 U Entity5.1 variation 2 struct1 + Entity5.1 variation 3 struct1 - Entity5.1 variation 4 (struct1 + {attr3: String}) I Entity4.2 }
+
+// Test operators with Structs and Relationships
+relationship Rel8 { variation 1 struct1 U Rel1 variation 2 struct1 + Rel1 variation 3 struct1 - Rel1 variation 4 (struct1 + {attr5: String}) I Rel1 }
+
+// Test operators with Entities
+relationship Rel9 { variation 1 Entity1 U Entity2 variation 2 Entity1 + Entity2 variation 3 Entity1 - Entity2 variation 4 (Entity1 + {aNull: Null}) I Entity2 }
+
+// Test operators with Entities and Variations
+relationship Rel10 { variation 1 Entity1 U Entity5.1 variation 2 Entity1 + Entity5.1 variation 3 Entity1 - Entity5.1 variation 4 (Entity1 + {attr2: String}) I Entity5.1 }
+
+// Test operators with Entities and Relationships
+relationship Rel11 { variation 1 Entity1 U Rel1 variation 2 Entity1 + Rel1 variation 3 Entity1 - Rel1 variation 4 (Entity1 + {attr5: String}) I Rel1 }
+
+// Test operators with Variations and Relationships
+relationship Rel12 { variation 1 Entity5.1 U Rel1 variation 2 Entity5.1 + Rel1 variation 3 Entity5.1 - Rel1 variation 4 (Entity5.1 + {attr5: String}) I Rel1 }
+
+// Test optionals and keys
+entity Entity8 { variation 1 {+a, +b} U struct1 variation 2 {a, b} + struct1 variation 3 {+a, b} - struct1 variation 4 {a, b, attr1} I struct1 }
+
+// Test refs, aggrs and random stuff
+entity Entity9
+{
+  variation 1 {refE1: ref<Entity5>, refE2: ref<Entity5>+, refE3: ref<Entity5>*, refE4: ref<Entity5 as String>, refE5: ref<Entity5 feat Rel5>}
+  variation 2 {aggrE1: aggr<Entity5>, aggrE2: aggr<Entity5>+, aggrE3: aggr<Entity5>*, aggrE4: aggr<Entity5.1>}
+  variation 3 { (key1, key2): ref<Entity5>, (key1, key2, key3): ref<Entity5> }
+}
+//StructureFromCreateTable

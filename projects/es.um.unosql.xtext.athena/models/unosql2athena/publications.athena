@@ -1,0 +1,10 @@
+Schema publications
+
+root entity Publications
+{
+	common { +_id: Identifier, article_title: String, pmid: Number }
+	variation 1 { authors: String, pub_year: Number }
+	variation 2 { authors: String }
+	variation 3 { pub_year: Number }
+	variation 4
+}

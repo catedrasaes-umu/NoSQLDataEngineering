@@ -1,0 +1,27 @@
+OneOfEach_Attributes operations
+
+ADD ENTITY EntityToAdd { +_id: String }
+
+ADD ATTR *::addAttrSinTipo
+ADD ATTR *::addAttrStr: String
+ADD ATTR *::addAttrNum: Number
+ADD ATTR *::addAttrDouble: Double
+ADD ATTR *::addAttrBool: Boolean
+ADD ATTR *::addAttrSet: Set
+ADD ATTR *::addAttrList: List
+ADD ATTR *::addAttrTuple: Tuple
+ADD ATTR *::addAttrMap: Map
+ADD ATTR *::addAttrNull: Null
+ADD ATTR *::addAttrStrVal: String ("initValue")
+ADD ATTR *::addAttrNumVal: Number (33)
+ADD ATTR *::addAttrDoubleVal: Double (33.1)
+ADD ATTR *::addAttrBoolVal: Boolean (false)
+
+ADD ENTITY EntityToCast { +_id: Identifier, +attrToCast, attrToCastNull: null, attrToCastStr: String, attrToCastNum: Number, attrToCastDouble: Double, attrToCastBool: Boolean}
+
+CAST ATTR EntityToCast::attrToCast TO Bool
+CAST ATTR EntityToCast::attrToCastNull TO Number
+CAST ATTR EntityToCast::attrToCastStr TO Bool
+CAST ATTR EntityToCast::attrToCastNum TO String
+CAST ATTR EntityToCast::attrToCastDouble TO Bool
+CAST ATTR EntityToCast::attrToCastBool TO String

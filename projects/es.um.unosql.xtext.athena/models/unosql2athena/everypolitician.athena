@@ -1,0 +1,94 @@
+Schema everypolitician
+
+root entity Memberships
+{
+	common { +_id: Identifier, legislative_period_id: String, on_behalf_of_id: String, organization_id: ref<Organizations as String>+, person_id: ref<Persons as String>+, role: String, sources: aggr<Source.1>* }
+	variation 1 { area_id: ref<Areas as String>+, end_date: String, start_date: String }
+	variation 2 { area_id: ref<Areas as String>+, end_date: String }
+	variation 3 { area_id: ref<Areas as String>+, start_date: String }
+	variation 4 { area_id: ref<Areas as String>+ }
+	variation 5 { end_date: String, start_date: String }
+	variation 6 { end_date: String }
+	variation 7 { start_date: String }
+	variation 8
+}
+
+entity Identifier
+{
+	common { identifier: String, scheme: String }
+	variation 1
+}
+
+root entity Events
+{
+	common { +_id: String, classification: String, end_date: String, name: String, start_date: String }
+	variation 1 { identifiers: aggr<Identifier.1>* }
+	variation 2 { organization_id: ref<Organizations as String>+ }
+}
+
+root entity Persons
+{
+	common { +_id: String, birth_date: String, family_name: String, gender: String, given_name: String, identifiers: aggr<Identifier.1>*, image: String, images: aggr<Image.1>*, name: String, sort_name: String }
+	variation 1 { contact_details: aggr<Contact_detail.1>*, death_date: String, email: String, links: aggr<Link.1>*, other_names: aggr<Other_name.1>* }
+	variation 2 { contact_details: aggr<Contact_detail.1>*, death_date: String, email: String, links: aggr<Link.1>*, other_names: aggr<Other_name.2 , Other_name.1>* }
+	variation 3 { contact_details: aggr<Contact_detail.1>*, email: String, links: aggr<Link.1>*, other_names: aggr<Other_name.1>* }
+	variation 4 { contact_details: aggr<Contact_detail.1>*, email: String, links: aggr<Link.1>*, other_names: aggr<Other_name.2 , Other_name.1>* }
+	variation 5 { contact_details: aggr<Contact_detail.1>*, email: String, links: aggr<Link.1>* }
+	variation 6 { contact_details: aggr<Contact_detail.1>*, email: String }
+	variation 7 { contact_details: aggr<Contact_detail.1>*, links: aggr<Link.1>*, other_names: aggr<Other_name.1>* }
+	variation 8 { death_date: String, links: aggr<Link.1>*, other_names: aggr<Other_name.1>* }
+	variation 9 { death_date: String, links: aggr<Link.1>*, other_names: aggr<Other_name.2 , Other_name.1>* }
+	variation 10 { death_date: String }
+	variation 11 { links: aggr<Link.1>*, other_names: aggr<Other_name.1>* }
+	variation 12 { links: aggr<Link.1>*, other_names: aggr<Other_name.2 , Other_name.1>* }
+	variation 13 { links: aggr<Link.1>* }
+	variation 14
+}
+
+root entity Organizations
+{
+	common { +_id: String, classification: String, name: String }
+	variation 1 { identifiers: aggr<Identifier.1>*, image: String, links: aggr<Link.1>*, other_names: aggr<Other_name.1>*, srgb: String }
+	variation 2 { identifiers: aggr<Identifier.1>*, image: String, links: aggr<Link.1>*, other_names: aggr<Other_name.1>* }
+	variation 3 { identifiers: aggr<Identifier.1>*, links: aggr<Link.1>*, other_names: aggr<Other_name.1>*, srgb: String }
+	variation 4 { identifiers: aggr<Identifier.1>*, links: aggr<Link.1>*, other_names: aggr<Other_name.1>* }
+	variation 5 { identifiers: aggr<Identifier.1>*, seats: Number, type: String }
+	variation 6
+}
+
+entity Other_name
+{
+	common { name: String, note: String }
+	variation 1 { lang: String }
+	variation 2
+}
+
+entity Image
+{
+	common { url: String }
+	variation 1
+}
+
+entity Contact_detail
+{
+	common { type: String, value: String }
+	variation 1
+}
+
+entity Link
+{
+	common { note: String, url: String }
+	variation 1
+}
+
+entity Source
+{
+	common { url: String }
+	variation 1
+}
+
+root entity Areas
+{
+	common { +_id: String, name: String, type: String }
+	variation 1
+}

@@ -1,0 +1,5 @@
+Schema OneOfEach_Attributes
+
+root entity EntityToAdd { +_id: String, addAttrSinTipo, addAttrStr: String, addAttrNum: Number, addAttrDouble: Double, addAttrBool: Boolean, addAttrSet: Set, addAttrList: List, addAttrTuple: Tuple, addAttrMap: Map, addAttrNull: Null, addAttrStrVal: String, addAttrNumVal: Number, addAttrDoubleVal: Double, addAttrBoolVal: Boolean }
+
+root entity EntityToCast { +_id: Identifier, +attrToCast: Bool, attrToCastNull: Number, attrToCastStr: Bool, attrToCastNum: String, attrToCastDouble: Bool, attrToCastBool: String }

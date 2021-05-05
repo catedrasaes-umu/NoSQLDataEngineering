@@ -1,0 +1,44 @@
+Cass_OneOfEach_Features operations
+
+ADD ENTITY EntityToRemove { +id: Identifier, attrToDel: String, attrToDelStr: String, attrToDelNum: Number, attrToDelDouble: Double, attrToDelBool: Boolean,
+    attrToRen: List<String>, attrToRenStr: String, attrToRenNum: Number, attrToRenDouble: Double, attrToRenBool: Boolean}
+
+DELETE EntityToRemove::attrToDel
+DELETE EntityToRemove::attrToDelStr
+DELETE EntityToRemove::attrToDelNum
+DELETE EntityToRemove::attrToDelDouble
+DELETE EntityToRemove::attrToDelBool
+
+RENAME EntityToRemove::attrToRen TO attrTrue1
+RENAME EntityToRemove::attrToRenStr TO attrTrue2
+RENAME EntityToRemove::attrToRenNum TO attrTrue3
+RENAME EntityToRemove::attrToRenDouble TO attrTrue4
+RENAME EntityToRemove::attrToRenBool TO attrTrue5
+
+ADD ENTITY EntityToCopySource1 { +id: String("id1"), aRef: String("idRef"), valueToCopy1: String("COPY_THIS"), valueToCopy2: List<String>, valueToCopy3: Map<String, Boolean>}
+ADD ENTITY EntityToCopySource2 { +id: String("id2"), aRef: String("idRef"), valueToCopy4: String("COPY_THAT")}
+ADD ENTITY EntityToCopyTarget { +id: String("idRef") }
+
+COPY EntityToCopySource1::valueToCopy1 TO EntityToCopyTarget::copy1 WHERE aRef = id
+COPY EntityToCopySource1::valueToCopy2 TO EntityToCopyTarget::copy2 WHERE aRef = id
+COPY EntityToCopySource1::valueToCopy3 TO EntityToCopyTarget::copy3 WHERE aRef = id
+COPY EntityToCopySource2::valueToCopy4 TO EntityToCopyTarget::valueToCopy4 WHERE aRef = id
+
+ADD ENTITY EntityToMoveSource1 { +id: String("id1"), aRef: String("idRef"), valueToMove1: String("MOVE_THIS"), valueToMove2: List<String>, valueToMove3: Map<String, Boolean>}
+ADD ENTITY EntityToMoveSource2 { +id: String("id2"), aRef: String("idRef"), valueToMove4: String("MOVE_THAT")}
+ADD ENTITY EntityToMoveTarget { +id: String }
+
+MOVE EntityToMoveSource1::valueToMove1 TO EntityToMoveTarget::move1 WHERE aRef = id
+MOVE EntityToMoveSource1::valueToMove2 TO EntityToMoveTarget::move2 WHERE aRef = id
+MOVE EntityToMoveSource1::valueToMove3 TO EntityToMoveTarget::move3 WHERE aRef = id
+MOVE EntityToMoveSource2::valueToMove4 TO EntityToMoveTarget::move4 WHERE aRef = id
+
+ADD ENTITY EntityToNest { +id: String, name: String, age: Integer, street: String, postalCode: String, city: String, aList: List<String>, aMap: Map<String, Boolean>}
+ADD AGGR EntityToNest::nestAggrNest1: {nest1: Double, nest2: String, nest3: Boolean}+
+ADD AGGR EntityToNest::nestAggrNest2: {nest4: Double, nest5: String, nest6: Boolean}*
+NEST EntityToNest::street, postalCode, city, nestAggrNest1, nestAggrNest2 TO nestedAggr
+
+ADD ENTITY EntityToUnnest { +id: String, name: String, age: Integer }
+ADD AGGR EntityToUnnest::unnestAggrNest1: {nest1: Double, nest2: String, nest3: Boolean, street: String, postalCode: String, city: String, aList: List<String>, aMap: Map<String, Boolean>}+
+ADD AGGR EntityToUnnest::unnestAggrNest2: {nest4: Double, nest5: String, nest6: Boolean}+
+UNNEST EntityToUnnest::unnestAggrNest1.street, unnestAggrNest1.postalCode, unnestAggrNest1.city, unnestAggrNest1.aList, unnestAggrNest1.aMap, unnestAggrNest2.nest4

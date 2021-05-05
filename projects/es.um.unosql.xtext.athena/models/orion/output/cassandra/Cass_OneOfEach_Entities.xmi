@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<uNoSQLSchema:uNoSQLSchema xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:uNoSQLSchema="http://www.modelum.es/uNoSQLSchema" xsi:schemaLocation="http://www.modelum.es/uNoSQLSchema platform:/resource/es.um.unosql/model/unosqlschema.ecore" name="Cass_OneOfEach_Entities">
+  <entities name="EntityAdded1" root="true">
+    <variations variationId="1" logicalFeatures="//@entities.0/@variations.0/@features.1" structuralFeatures="//@entities.0/@variations.0/@features.0">
+      <features xsi:type="uNoSQLSchema:Attribute" name="id" key="//@entities.0/@variations.0/@features.1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Identifier"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Key" attributes="//@entities.0/@variations.0/@features.0"/>
+    </variations>
+  </entities>
+  <entities name="EntityRenamed" root="true">
+    <variations variationId="1" logicalFeatures="//@entities.1/@variations.0/@features.1" structuralFeatures="//@entities.1/@variations.0/@features.0">
+      <features xsi:type="uNoSQLSchema:Attribute" name="id" key="//@entities.1/@variations.0/@features.1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Identifier"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Key" attributes="//@entities.1/@variations.0/@features.0"/>
+    </variations>
+  </entities>
+  <entities name="EntityToExtract" root="true">
+    <variations variationId="1" logicalFeatures="//@entities.2/@variations.0/@features.1" structuralFeatures="//@entities.2/@variations.0/@features.0 //@entities.2/@variations.0/@features.2 //@entities.2/@variations.0/@features.3 //@entities.2/@variations.0/@features.4 //@entities.2/@variations.0/@features.5">
+      <features xsi:type="uNoSQLSchema:Attribute" name="id" key="//@entities.2/@variations.0/@features.1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Key" attributes="//@entities.2/@variations.0/@features.0"/>
+      <features xsi:type="uNoSQLSchema:Attribute" name="feat1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="feat2">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="feat3">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="feat4">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+    </variations>
+  </entities>
+  <entities name="EntityExtracted" root="true">
+    <variations variationId="1" logicalFeatures="//@entities.3/@variations.0/@features.1" structuralFeatures="//@entities.3/@variations.0/@features.0 //@entities.3/@variations.0/@features.2 //@entities.3/@variations.0/@features.3">
+      <features xsi:type="uNoSQLSchema:Attribute" name="id" key="//@entities.3/@variations.0/@features.1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Key" attributes="//@entities.3/@variations.0/@features.0"/>
+      <features xsi:type="uNoSQLSchema:Attribute" name="feat2">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="feat4">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+    </variations>
+  </entities>
+  <entities name="EntitySplit1" root="true">
+    <variations variationId="1" logicalFeatures="//@entities.4/@variations.0/@features.1" structuralFeatures="//@entities.4/@variations.0/@features.0 //@entities.4/@variations.0/@features.2 //@entities.4/@variations.0/@features.3 //@entities.4/@variations.0/@features.4">
+      <features xsi:type="uNoSQLSchema:Attribute" name="id" key="//@entities.4/@variations.0/@features.1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Key" attributes="//@entities.4/@variations.0/@features.0"/>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr2">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr3">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+    </variations>
+  </entities>
+  <entities name="EntitySplit2" root="true">
+    <variations variationId="1" logicalFeatures="//@entities.5/@variations.0/@features.1" structuralFeatures="//@entities.5/@variations.0/@features.0 //@entities.5/@variations.0/@features.2 //@entities.5/@variations.0/@features.3 //@entities.5/@variations.0/@features.4">
+      <features xsi:type="uNoSQLSchema:Attribute" name="id" key="//@entities.5/@variations.0/@features.1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Key" attributes="//@entities.5/@variations.0/@features.0"/>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr5">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="attr6">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+    </variations>
+  </entities>
+  <entities name="EntityMerged" root="true">
+    <variations variationId="1" logicalFeatures="//@entities.6/@variations.0/@features.1" structuralFeatures="//@entities.6/@variations.0/@features.0 //@entities.6/@variations.0/@features.2 //@entities.6/@variations.0/@features.3 //@entities.6/@variations.0/@features.4">
+      <features xsi:type="uNoSQLSchema:Attribute" name="id" key="//@entities.6/@variations.0/@features.1">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Key" attributes="//@entities.6/@variations.0/@features.0"/>
+      <features xsi:type="uNoSQLSchema:Attribute" name="a">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="b">
+        <type xsi:type="uNoSQLSchema:PrimitiveType" name="Number"/>
+      </features>
+      <features xsi:type="uNoSQLSchema:Attribute" name="c">
+        <type xsi:type="uNoSQLSchema:PList">
+          <elementType xsi:type="uNoSQLSchema:PrimitiveType" name="String"/>
+        </type>
+      </features>
+    </variations>
+  </entities>
+</uNoSQLSchema:uNoSQLSchema>

@@ -1,0 +1,48 @@
+Schema tfg
+
+root entity Address_data
+{
+	common { CP_Address: Number, +_id: String }
+	variation 1 { Floor_Address: Number, Name_Address: String, Number_Address: String }
+	variation 2 { Floor_Address: Number, Name_Address: String, Number_Address: Number }
+	variation 3 { Floor_Address: Number, Name_Address: Number, Number_Address: Number }
+	variation 4 { Name_Address: String, Number_Address: String }
+	variation 5 { Name_Address: String, Number_Address: Number }
+	variation 6 { Name_Address: Number, Number_Address: Number }
+}
+
+root entity Extra_data
+{
+	common { Date_Register: Number, Sons: Number, Vehicle: Boolean, +_id: String }
+	variation 1 { Money: Number, Weight: Number }
+	variation 2 { Money: Number }
+	variation 3 { Weight: Number }
+	variation 4
+}
+
+root entity Contact_data
+{
+	common { Telephone: Number, +_id: String }
+	variation 1 { Email: String, Fax: Number }
+	variation 2 { Email: String }
+	variation 3 { Email: Number }
+}
+
+root entity Personal_data
+{
+	common { Birth_Date: String, NIF: Number, NIF_Letter: String, +_id: String }
+	variation 1 { Last_Name_1: String, Last_Name_2: String, Name: String, Photo: Number }
+	variation 2 { Last_Name_1: String, Last_Name_2: String, Name: String }
+	variation 3 { Last_Name_1: String, Last_Name_2: String, Name: Number, Photo: Number }
+	variation 4 { Last_Name_1: String, Last_Name_2: String, Name: Number }
+	variation 5 { Last_Name_1: String, Last_Name_2: Number, Name: String, Photo: Number }
+	variation 6 { Last_Name_1: String, Last_Name_2: Number, Name: String }
+	variation 7 { Last_Name_1: String, Last_Name_2: Number, Name: Number }
+	variation 8 { Last_Name_1: Number, Last_Name_2: String, Name: String, Photo: Number }
+	variation 9 { Last_Name_1: Number, Last_Name_2: String, Name: String }
+	variation 10 { Last_Name_1: Number, Last_Name_2: String, Name: Number }
+	variation 11 { Last_Name_1: Number, Last_Name_2: Number, Name: String, Photo: Number }
+	variation 12 { Last_Name_1: Number, Last_Name_2: Number, Name: String }
+	variation 13 { Last_Name_1: Number, Last_Name_2: Number, Name: Number, Photo: Number }
+	variation 14 { Last_Name_1: Number, Last_Name_2: Number, Name: Number }
+}

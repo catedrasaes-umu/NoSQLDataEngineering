@@ -1,0 +1,15 @@
+Schema Cass_OneOfEach_Entities
+
+root entity EntityAdded1 { +id: Identifier }
+
+root entity EntityRenamed { +id: Identifier }
+
+root entity EntityToExtract { +id: String, feat1: String, feat2: String, feat3: String, feat4: String }
+
+root entity EntityExtracted { +id: String, feat2: String, feat4: String }
+
+root entity EntitySplit1 { +id: String, attr1: String, attr2: String, attr3: String }
+
+root entity EntitySplit2 { +id: String, attr1: String, attr5: String, attr6: String }
+
+root entity EntityMerged { +id: String, a: String, b: Number, c: List<String> }

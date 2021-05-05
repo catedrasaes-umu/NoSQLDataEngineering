@@ -1,0 +1,50 @@
+Gamification_orion operations
+
+ADD ENTITY Stage
+{
+  +id:         Identifier,
+  category:    String,
+  description: String,
+  name:        String
+}
+
+ADD ENTITY Minigame
+{
+  +id:         Identifier,
+  categories:  List<String>,
+  isActive:    Boolean,
+  name:        String,
+  points:      Integer (0 .. 99)
+}
+
+ADD ATTR Stage::createdAt   : Timestamp
+ADD ATTR Stage::updatedAt   : Timestamp
+ADD ATTR Minigame::createdAt: Timestamp
+ADD ATTR Minigame::updatedAt: Timestamp
+
+ADD REF  Minigame::stageIds : Identifier* TO Stage
+
+ADD ENTITY User
+{
+  +id:         Identifier,
+  avatarUrl:   String,
+  email:       String /"^.+@.+\\.com$"/,
+  ? points:      Integer  (0 .. 9999)
+}
+
+ADD AGGR User::personalInfo:
+{
+  city:        String,
+  name:        String /"^[A-Z][a-z]*$"/,
+  number:      Integer,
+  ? postcode:    Integer,
+  street:      String
+} +
+ADD AGGR ? User::minigameSummary:
+{
+  scheduledAt: Timestamp,
+  ? completedAt: Timestamp,
+  ? points:      Integer
+}*
+ADD REF  User::minigameSummary.gameId: Identifier+ TO Minigame
+RENAME   User::minigameSummary TO games

@@ -1,0 +1,33 @@
+Schema SongsDB
+
+root entity Album
+{
+  common      { +_id: String, formats: List<String>, name: String, popularity: Double, releaseYear: Number, tracks: ref<Track as String>* }
+  variation 1 { availability: String, reviews: aggr<Review>* }
+  variation 2 { availability: List<String>, reviews: aggr<Review>* }
+  variation 3 { availability: List<String> }
+}
+
+root entity Artist
+{
+  common      { +_id: String, albums: ref<Album as String>*, composedTracks: ref<Track as String>*, name: String, startingYear: Number }
+  variation 1 { lyricsTracks: ref<Track as String>* }
+  variation 2
+}
+
+root entity Track
+{
+  common      { +_id: String, artist_id: ref<Artist as String>*, genres: List<String>, length: Number, name: String, popularity: Double }
+  variation 1 { ratings: aggr<Rating>+ }
+  variation 2
+}
+
+entity Review
+{
+  common      { journalist: String, rank: String, stars: Number }
+  variation 1 { media: aggr<Medium>+}
+  variation 2 { media: String }
+}
+
+entity Rating {score: Number, voters: Number}
+entity Medium {name: String, type: String, url: String}

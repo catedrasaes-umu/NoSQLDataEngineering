@@ -1,0 +1,23 @@
+Schema urban
+
+root entity Urban_words
+{
+	common { +_id: Identifier, permalink: String, thumbs_down: Number, thumbs_up: Number }
+	variation 1 { author: String, defid: Number, definition: String, example: String, lowercase_word: String, sounds: List<String>, tags: List<String>, word: String }
+	variation 2 { author: String, defid: Number, definition: String, example: String, lowercase_word: String, sounds: List<String>, word: String }
+	variation 3 { author: String, defid: Number, definition: String, example: String, lowercase_word: String, tags: List<String>, word: String }
+	variation 4 { author: String, defid: Number, definition: String, example: String, lowercase_word: String, word: String }
+	variation 5 { author: String, defid: Number, definition: String, example: String, tags: List<String> }
+	variation 6 { author: String, defid: Number, definition: String, lowercase_word: String, sounds: List<String>, tags: List<String>, word: String }
+	variation 7 { author: String, defid: Number, definition: String, lowercase_word: String, sounds: List<String>, word: String }
+	variation 8 { author: String, defid: Number, definition: String, lowercase_word: String, tags: List<String>, word: String }
+	variation 9 { author: String, defid: Number, definition: String, lowercase_word: String, word: String }
+	variation 10 { author: String, defid: Number, example: String, lowercase_word: String, sounds: List<String>, tags: List<String>, word: String }
+	variation 11 { author: String, defid: Number, example: String, lowercase_word: String, tags: List<String>, word: String }
+	variation 12 { author: String, defid: Number, example: String, lowercase_word: String, word: String }
+	variation 13 { author: String, definition: String, example: String, lowercase_word: String, tags: List<String>, word: String }
+	variation 14 { defid: Number, definition: String, example: String, lowercase_word: String, sounds: List<String>, tags: List<String>, word: String }
+	variation 15 { defid: Number, definition: String, example: String, lowercase_word: String, sounds: List<String>, word: String }
+	variation 16 { defid: Number, definition: String, example: String, lowercase_word: String, tags: List<String>, word: String }
+	variation 17 { defid: Number, definition: String, example: String, lowercase_word: String, word: String }
+}

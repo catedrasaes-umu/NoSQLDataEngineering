@@ -1,0 +1,8 @@
+Schema CrossRef1
+
+import CrossRef2
+
+FSet fSet1 { attr1, attr2 }
+FSet fSet2 CrossRef2.Hello
+FSet fSet3 CrossRef2.Hello.1
+FSet fSet4 CrossRef2.World
