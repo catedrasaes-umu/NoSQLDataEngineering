@@ -6,8 +6,8 @@ A NoSQL schema is a schema used to define which data and in which format is bein
 
 # Table of contents
 
-- [The Athena Language](#athena-language)
-- [The Orion Language](#orion-language)
+- [The Athena Language](#the-athena-language)
+- [The Orion Language](#the-orion-language)
 ***
 - [Schema models](#schema-models)
 - [Inference process](#inference-process)
@@ -41,11 +41,11 @@ The following figure contains an example of an Athena Schema:
 <br/>
 
 Athena defines several transformations to other systems in order to assure compatibility:
-* A _model~to~model_ transformation to/from Athena and U-Schema.
-* A _model~to~model_ transformation to/from Athena and Orion.
-* A _model~to~text_ transformation to generate MySQL schemas.
-* A _model~to~text_ transformation to generate Cassandra schemas.
-* A _model~to~text_ transformation to generate MongoDB validators.
+* A _model to model_ transformation to/from Athena and U-Schema.
+* A _model to model_ transformation to/from Athena and Orion.
+* A _model to text_ transformation to generate MySQL schemas.
+* A _model to text_ transformation to generate Cassandra schemas.
+* A _model to text_ transformation to generate MongoDB validators.
 
 The following projects provide the basics to create Athena schemas:
 * `es.um.unosql.xtext.athena`
@@ -66,9 +66,9 @@ The following figure contains an example of an Orion Specification:
 An Orion process typically starts with an Athena schema and an Orion specification, and gives as a result an updated Athena schema resulting from applying the defined operations on the input Athena schema, and a database specific script able to migrate data to the new schema. By doing so the schema evolves and also the data can be migrated.
 
 Orion defines several transformations to other systems in order to assure compatibility:
-* A _model~to~model_ transformation to/from Orion and Athena.
-* A _model~to~text_ transformation to generate MongoDB native code.
-* A _model~to~text_ transformation to generate CQL (Cassandra) native code.
+* A _model to model_ transformation to/from Orion and Athena.
+* A _model to text_ transformation to generate MongoDB native code.
+* A _model to text_ transformation to generate CQL (Cassandra) native code.
 
 The following projects provide the basics to create Orion specifications:
 * `es.um.unosql.xtext.orion`
