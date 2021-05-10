@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="skiql" nsURI="http://www.um.es/skiql" nsPrefix="skiql">
+  <eClassifiers xsi:type="ecore:EClass" name="SkiQLModel">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="query" lowerBound="1" eType="#//Query"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Query" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RelationshipQuery" eSuperTypes="#//Query">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="from" lowerBound="1" eType="#//EntitySpec"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="to" lowerBound="1" upperBound="-1"
+        eType="#//RelationshipSpec" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityQuery" eSuperTypes="#//Query">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entitySpec" lowerBound="1"
+        eType="#//EntitySpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="operation" eType="#//Operation"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="having" eType="#//Having"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntitySpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variationFilter" eType="#//VariationFilter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityOperation" abstract="true" eSuperTypes="#//Operation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Type" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="SpecificityTypeEnum">
+    <eLiterals name="ALL"/>
+    <eLiterals name="SHARED" value="7" literal="SHARED"/>
+    <eLiterals name="NON_SHARED" value="3" literal="NON_SHARED"/>
+    <eLiterals name="SPECIFIC" value="3"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VersionHistory" abstract="true" eSuperTypes="#//EntityOperation"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Before" eSuperTypes="#//VersionHistory">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dateTime" lowerBound="1"
+        eType="#//DateTime" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="After" eSuperTypes="#//VersionHistory">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="dateTime" lowerBound="1"
+        eType="#//DateTime" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Between" eSuperTypes="#//VersionHistory">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="afterDateTime" lowerBound="1"
+        eType="#//DateTime" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="beforeDateTime" lowerBound="1"
+        eType="#//DateTime" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="DateTime">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="day" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="month" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="year" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="hour" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="minutes" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="seconds" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="All" eSuperTypes="#//VersionHistory"/>
+  <eClassifiers xsi:type="ecore:EClass" name="CountOperation" eSuperTypes="#//EntityOperation"/>
+  <eClassifiers xsi:type="ecore:EEnum" name="PropertyTypeEnum">
+    <eLiterals name="ALL"/>
+    <eLiterals name="ATTRIBUTES" value="1"/>
+    <eLiterals name="REFERENCES" value="2"/>
+    <eLiterals name="AGGREGATIONS" value="3"/>
+    <eLiterals name="KEYS" value="4"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="VariationFilter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="propertySpecs" upperBound="-1"
+        eType="#//PropertySpec" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="only" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertySpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" eType="#//Type" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertySelectorSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//PropertyTypeEnum"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="specifity" eType="#//SpecificityTypeEnum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Operation" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RelationshipSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetExpression" lowerBound="1"
+        eType="#//TargetExpression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="indirect" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relationSpec" eType="#//RelationSpec"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="AggregationSpec" eSuperTypes="#//RelationSpec"/>
+  <eClassifiers xsi:type="ecore:EClass" name="ReferenceSpec" eSuperTypes="#//RelationSpec">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="variationFilter" eType="#//VariationFilter"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="TargetExpression" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="RelationshipExpression" eSuperTypes="#//TargetExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relationshipQuery" lowerBound="1"
+        eType="#//RelationshipQuery" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="EntityExpression" eSuperTypes="#//TargetExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="entitySpec" lowerBound="1"
+        eType="#//EntitySpec" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PrimitiveType" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="type" eType="#//TypeEnum"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="array" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RelationshipType" eSuperTypes="#//Type">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetEntityName" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="relationType" eType="#//RelationshipTypeEnum"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="RelationshipTypeEnum">
+    <eLiterals name="RELATIONSHIP"/>
+    <eLiterals name="REFERENCE" value="1"/>
+    <eLiterals name="AGGREGATION" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RelationSpec">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PropertyFilter" eSuperTypes="#//Operation">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="propertySelectorSpecs"
+        lowerBound="1" upperBound="-1" eType="#//PropertySelectorSpec" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="TypeEnum">
+    <eLiterals name="STRING"/>
+    <eLiterals name="NUMBER" value="1"/>
+    <eLiterals name="BOOLEAN" value="2"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Having">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="negative" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Boolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="havingType" lowerBound="1"
+        eType="#//HavingType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="HavingType" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HavingKeys" eSuperTypes="#//HavingType"/>
+  <eClassifiers xsi:type="ecore:EClass" name="HavingVariations" eSuperTypes="#//HavingType">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lowerBounds" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="upperBounds" eType="ecore:EDataType http://www.eclipse.org/emf/2003/XMLType#//Int"/>
+  </eClassifiers>
+</ecore:EPackage>

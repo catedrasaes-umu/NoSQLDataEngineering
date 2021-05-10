@@ -1,0 +1,28 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: es.um.unosql.xtext.skiql.ui
+Bundle-ManifestVersion: 2
+Bundle-Name: es.um.unosql.xtext.skiql.ui
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: es.um.unosql.xtext.skiql.ui; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: es.um.unosql.xtext.skiql,
+ es.um.unosql.xtext.skiql.ide,
+ es.um.unosql.xtext.skiql.metamodel,
+ org.eclipse.xtext.ui,
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.xtext.ui.codetemplates.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.ui,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtend.lib;bundle-version="2.14.0";resolution:=optional,
+ es.um.unosql.xtext.skiql.neo4j;bundle-version="1.0.0"
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.8
+Bundle-Activator: es.um.unosql.xtext.skiql.ui.internal.SkiqlActivator
+Export-Package: es.um.unosql.xtext.skiql.ui.quickfix,
+ es.um.unosql.xtext.skiql.ui.contentassist,
+ es.um.unosql.xtext.skiql.ui.internal

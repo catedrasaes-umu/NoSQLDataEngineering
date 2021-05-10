@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.um.unosql.xtext.skiql.metamodel/src" modelPluginID="es.um.unosql.xtext.skiql.metamodel"
+    modelName="SkiQL" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="8.0" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>SkiQL.ecore</foreignModel>
+  <genPackages prefix="Skiql" basePackage="es.um.unosql.xtext.skiql.metamodel" disposableProviderFactory="true"
+      ecorePackage="SkiQL.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SkiQL.ecore#//SpecificityTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="SkiQL.ecore#//SpecificityTypeEnum/ALL"/>
+      <genEnumLiterals ecoreEnumLiteral="SkiQL.ecore#//SpecificityTypeEnum/SHARED"/>
+      <genEnumLiterals ecoreEnumLiteral="SkiQL.ecore#//SpecificityTypeEnum/NON_SHARED"/>
+      <genEnumLiterals ecoreEnumLiteral="SkiQL.ecore#//SpecificityTypeEnum/SPECIFIC"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SkiQL.ecore#//PropertyTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="SkiQL.ecore#//PropertyTypeEnum/ALL"/>
+      <genEnumLiterals ecoreEnumLiteral="SkiQL.ecore#//PropertyTypeEnum/ATTRIBUTES"/>
+      <genEnumLiterals ecoreEnumLiteral="SkiQL.ecore#//PropertyTypeEnum/REFERENCES"/>
+      <genEnumLiterals ecoreEnumLiteral="SkiQL.ecore#//PropertyTypeEnum/AGGREGATIONS"/>
+      <genEnumLiterals ecoreEnumLiteral="SkiQL.ecore#//PropertyTypeEnum/KEYS"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SkiQL.ecore#//RelationshipTypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="SkiQL.ecore#//RelationshipTypeEnum/RELATIONSHIP"/>
+      <genEnumLiterals ecoreEnumLiteral="SkiQL.ecore#//RelationshipTypeEnum/REFERENCE"/>
+      <genEnumLiterals ecoreEnumLiteral="SkiQL.ecore#//RelationshipTypeEnum/AGGREGATION"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="SkiQL.ecore#//TypeEnum">
+      <genEnumLiterals ecoreEnumLiteral="SkiQL.ecore#//TypeEnum/STRING"/>
+      <genEnumLiterals ecoreEnumLiteral="SkiQL.ecore#//TypeEnum/NUMBER"/>
+      <genEnumLiterals ecoreEnumLiteral="SkiQL.ecore#//TypeEnum/BOOLEAN"/>
+    </genEnums>
+    <genClasses ecoreClass="SkiQL.ecore#//SkiQLModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//SkiQLModel/query"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="SkiQL.ecore#//Query"/>
+    <genClasses ecoreClass="SkiQL.ecore#//RelationshipQuery">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//RelationshipQuery/from"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//RelationshipQuery/to"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//EntityQuery">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//EntityQuery/entitySpec"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//EntityQuery/operation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//EntityQuery/having"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//EntitySpec">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//EntitySpec/variationFilter"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//EntitySpec/name"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="SkiQL.ecore#//EntityOperation"/>
+    <genClasses ecoreClass="SkiQL.ecore#//Type"/>
+    <genClasses image="false" ecoreClass="SkiQL.ecore#//VersionHistory"/>
+    <genClasses ecoreClass="SkiQL.ecore#//Before">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//Before/dateTime"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//After">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//After/dateTime"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//Between">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//Between/afterDateTime"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//Between/beforeDateTime"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//DateTime">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//DateTime/day"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//DateTime/month"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//DateTime/year"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//DateTime/hour"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//DateTime/minutes"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//DateTime/seconds"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//All"/>
+    <genClasses ecoreClass="SkiQL.ecore#//CountOperation"/>
+    <genClasses ecoreClass="SkiQL.ecore#//VariationFilter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//VariationFilter/propertySpecs"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//VariationFilter/only"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//PropertySpec">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//PropertySpec/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//PropertySpec/type"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//PropertySelectorSpec">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//PropertySelectorSpec/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//PropertySelectorSpec/specifity"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="SkiQL.ecore#//Operation"/>
+    <genClasses ecoreClass="SkiQL.ecore#//RelationshipSpec">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//RelationshipSpec/targetExpression"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//RelationshipSpec/indirect"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//RelationshipSpec/relationSpec"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//AggregationSpec"/>
+    <genClasses ecoreClass="SkiQL.ecore#//ReferenceSpec">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//ReferenceSpec/variationFilter"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//TargetExpression"/>
+    <genClasses ecoreClass="SkiQL.ecore#//RelationshipExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//RelationshipExpression/relationshipQuery"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//EntityExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//EntityExpression/entitySpec"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//PrimitiveType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//PrimitiveType/type"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//PrimitiveType/array"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//RelationshipType">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//RelationshipType/targetEntityName"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//RelationshipType/relationType"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//RelationSpec">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//RelationSpec/name"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//PropertyFilter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//PropertyFilter/propertySelectorSpecs"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//Having">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//Having/negative"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference SkiQL.ecore#//Having/havingType"/>
+    </genClasses>
+    <genClasses ecoreClass="SkiQL.ecore#//HavingType"/>
+    <genClasses ecoreClass="SkiQL.ecore#//HavingKeys"/>
+    <genClasses ecoreClass="SkiQL.ecore#//HavingVariations">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//HavingVariations/lowerBounds"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute SkiQL.ecore#//HavingVariations/upperBounds"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

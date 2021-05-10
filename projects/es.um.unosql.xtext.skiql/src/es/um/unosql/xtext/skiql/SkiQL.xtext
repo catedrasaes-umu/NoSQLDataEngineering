@@ -1,0 +1,251 @@
+grammar es.um.unosql.xtext.skiql.SkiQL with org.eclipse.xtext.common.Terminals
+
+import "http://www.um.es/skiql"
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+SkiQLModel returns SkiQLModel:
+	{SkiQLModel}
+	query=Query
+;
+
+Query returns Query:
+	EntityQuery | RelationshipQuery
+;
+
+EntityQuery returns EntityQuery:
+	{EntityQuery}
+	'ENTITY' entitySpec=EntitySpec 
+	(
+		 (operation=Operation)
+		|(having=HavingSpec)
+	)?
+;
+
+HavingSpec returns Having:
+	{Having}
+	(negative?='NOT')? 'HAVING'
+	(
+		 (havingType=HavingKeysSpec) 
+		|(havingType=HavingVariationsSpec)
+	)
+;
+
+HavingKeysSpec returns HavingKeys:
+	{HavingKeys}
+	'keys'
+;
+
+HavingVariationsSpec returns HavingVariations:
+	{HavingVariations}
+	'variations' 
+	(
+		 (lowerBounds=INT '..' upperBounds=INT)
+		|(lowerBounds=INT '..')
+		|('..' upperBounds=INT)
+	)?
+;
+
+Operation returns Operation:
+	PropertyFilter | EntityOperation
+;
+
+EntityOperation returns EntityOperation:
+	VersionHistory | CountOperation
+;
+
+EntitySpec returns EntitySpec:
+	{EntitySpec}
+	name=(ID | '*') variationFilter=VariationFilter?
+;
+
+ReferenceEntitySpec returns EntitySpec:
+	{EntitySpec}
+	name=(ID | '*' | '_') variationFilter=ReferenceVariationFilter?
+;
+
+RelationshipQuery returns RelationshipQuery:
+	{RelationshipQuery}
+	'FROM' from=ReferenceEntitySpec
+	'TO' (to+=RelationshipSpec | => to+=IndirectRelationshipSpec)
+	(=> ',' (to+=RelationshipSpec | => to+=IndirectRelationshipSpec))*
+;
+
+NestedRelationshipQuery returns RelationshipQuery:
+	{RelationshipQuery}
+	'{'
+	'FROM'? from=ReferenceEntitySpec
+	'TO' (to+=RelationshipSpec | => to+=IndirectRelationshipSpec)
+	(=> ',' (to+=RelationshipSpec | => to+=IndirectRelationshipSpec))*
+	'}'
+;
+
+RelationshipSpec returns RelationshipSpec:
+	{RelationshipSpec}
+	targetExpression=TargetExpression
+	(=> relationSpec=RelationTypeSpec?)
+;
+
+RelationTypeSpec returns RelationSpec:
+	RelationSpec | ReferenceSpec | AggregationSpec
+;
+
+RelationSpec returns RelationSpec:
+	{RelationSpec}
+	'ANY' name=ID
+;
+
+ReferenceSpec returns ReferenceSpec:
+	{ReferenceSpec}
+	'REF' (name=ID)? variationFilter=VariationFilter?
+;
+
+AggregationSpec returns AggregationSpec:
+	{AggregationSpec}
+	'AGGR' (name=ID)?
+;
+
+IndirectRelationshipSpec returns RelationshipSpec:
+	{RelationshipSpec}
+	indirect?='>>'
+	targetExpression=TargetExpression
+	(=> relationSpec=IndirectRelationTypeSpec?)
+;
+
+IndirectRelationTypeSpec returns RelationSpec:
+	IndirectReferenceSpec | IndirectAggregationSpec
+;
+
+IndirectReferenceSpec returns ReferenceSpec:
+	{ReferenceSpec}
+	'REF'
+;
+
+IndirectAggregationSpec returns AggregationSpec:
+	{AggregationSpec}
+	'AGGR'
+;
+
+TargetExpression returns TargetExpression:
+	RelationshipExpression | EntityExpression
+;
+
+RelationshipExpression returns RelationshipExpression:
+	{RelationshipExpression}
+	relationshipQuery=NestedRelationshipQuery
+;
+
+EntityExpression returns EntityExpression:
+	{EntityExpression}
+	entitySpec=ToReferenceEntitySpec
+;
+
+ToReferenceEntitySpec returns EntitySpec:
+	{EntitySpec}
+	name=(ID | '*' | '_')
+;
+
+ReferenceVariationFilter returns VariationFilter:
+	{VariationFilter}
+	('[]' | '[' (propertySpecs+=ReferencePropertySpec (',' propertySpecs+=ReferencePropertySpec)*)? ']')
+;
+
+ReferencePropertySpec returns PropertySpec:
+	{PropertySpec}
+	name=ID (':' type=PrimitiveType)?
+;
+
+VariationFilter returns VariationFilter:
+	{VariationFilter}
+	('[]' | '[' (propertySpecs+=PropertySpec (',' propertySpecs+=PropertySpec)*)? ']' (only?='only')?)
+;
+
+PropertySpec returns PropertySpec:
+	{PropertySpec}
+	name=ID (':' type=Type)?
+;
+
+Type returns Type:
+	PrimitiveType | RelationshipType
+;
+
+PrimitiveType returns PrimitiveType:
+	{PrimitiveType}
+	type=TypeEnum (array?='[]')?
+;
+
+enum TypeEnum returns TypeEnum:
+	STRING='String' | NUMBER='Number' | BOOLEAN='Boolean'
+;
+
+RelationshipType returns RelationshipType:
+	{RelationshipType}
+	relationType=RelationshipTypeEnum targetEntityName=ID?
+;
+
+enum RelationshipTypeEnum returns RelationshipTypeEnum:
+	RELATIONSHIP='ANY' | REFERENCE='REF' | AGGREGATION='AGGR'
+;
+
+PropertyFilter returns PropertyFilter:
+	{PropertyFilter}
+	'properties'
+	'('
+	(propertySelectorSpecs+=AllPropertySelector | (propertySelectorSpecs+=PropertySelectorSpec (','
+	propertySelectorSpecs+=PropertySelectorSpec)*))
+	')'
+;
+
+AllPropertySelector returns PropertySelectorSpec:
+	{PropertySelectorSpec}
+	'all'
+;
+
+PropertySelectorSpec returns PropertySelectorSpec:
+	{PropertySelectorSpec}
+	((type=PropertyTypeEnum specifity=SpecificityTypeEnum)
+	| (specifity=SpecificityTypeEnum type=PropertyTypeEnum)
+	| (type=PropertyTypeEnum)
+	| (specifity=SpecificityTypeEnum))
+;
+
+enum PropertyTypeEnum returns PropertyTypeEnum:
+	ATTRIBUTES='attributes' | REFERENCES='references' | AGGREGATIONS='aggregations' | KEYS='keys'
+;
+
+enum SpecificityTypeEnum returns SpecificityTypeEnum:
+	SHARED='shared' | NON_SHARED='non shared' | SPECIFIC='specific'
+;
+
+CountOperation returns CountOperation:
+	{CountOperation}
+	'count'
+;
+
+VersionHistory returns VersionHistory:
+	AllHistory | BeforeHistory | AfterHistory | BetweenHistory
+;
+
+AllHistory returns All:
+	{All}
+	'history'
+;
+
+BeforeHistory returns Before:
+	{Before}
+	'history' 'before' '(' dateTime=DateTime ')'
+;
+
+AfterHistory returns After:
+	{After}
+	'history' 'after' '(' dateTime=DateTime ')'
+;
+
+BetweenHistory returns Between:
+	{Between}
+	('history') 'between' '(' afterDateTime=DateTime ',' beforeDateTime=DateTime ')'
+;
+
+DateTime returns DateTime:
+	{DateTime}
+	(year=INT) '-' (month=INT) '-' (day=INT) (hour=INT ':' minutes=INT ':' seconds=INT)?
+;

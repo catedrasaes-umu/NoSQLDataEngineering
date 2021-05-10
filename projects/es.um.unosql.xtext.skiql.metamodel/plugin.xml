@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+-->
+
+<plugin>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <!-- @generated SkiQL -->
+      <package
+            uri="http://www.um.es/skiql"
+            class="es.um.unosql.xtext.skiql.metamodel.skiql.SkiqlPackage"
+            genModel="model/SkiQL.genmodel"/>
+   </extension>
+
+</plugin>

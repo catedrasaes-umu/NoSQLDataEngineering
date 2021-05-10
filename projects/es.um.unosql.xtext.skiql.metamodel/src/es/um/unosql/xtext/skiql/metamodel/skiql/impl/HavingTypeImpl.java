@@ -1,0 +1,39 @@
+/**
+ */
+package es.um.unosql.xtext.skiql.metamodel.skiql.impl;
+
+import es.um.unosql.xtext.skiql.metamodel.skiql.HavingType;
+import es.um.unosql.xtext.skiql.metamodel.skiql.SkiqlPackage;
+
+import org.eclipse.emf.ecore.EClass;
+
+import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+/**
+ * <!-- begin-user-doc -->
+ * An implementation of the model object '<em><b>Having Type</b></em>'.
+ * <!-- end-user-doc -->
+ *
+ * @generated
+ */
+public abstract class HavingTypeImpl extends MinimalEObjectImpl.Container implements HavingType {
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected HavingTypeImpl() {
+		super();
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	protected EClass eStaticClass() {
+		return SkiqlPackage.Literals.HAVING_TYPE;
+	}
+
+} //HavingTypeImpl
