@@ -1,0 +1,28 @@
+
+Posts:
+  [6 -> 5]:
+    +   message? : String
+  [4 -> 2]:
+    +   description? : String
+
+Comments:
+  [5 -> 3]:
+    +   from_name? : String
+    +   post_id? : String (refs: Posts)
+    +   null[1..1] : Posts (attrs: post_id)
+  [6 -> 3]:
+    +   from_id? : String
+    +   from_name? : String
+    +   post_id? : String (refs: Posts)
+    +   null[1..1] : Posts (attrs: post_id)
+  [4 -> 1]:
+    +   from_name? : String
+  [2 -> 1]:
+    +   post_id? : String (refs: Posts)
+    +   null[1..1] : Posts (attrs: post_id)
+  [7 -> 3]:
+    +   created_time? : String
+    +   from_id? : String
+    +   from_name? : String
+    +   post_id? : String (refs: Posts)
+    +   null[1..1] : Posts (attrs: post_id)

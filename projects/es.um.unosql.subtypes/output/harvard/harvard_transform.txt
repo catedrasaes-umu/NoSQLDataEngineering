@@ -1,0 +1,249 @@
+
+Harvard_courses:
+  [43 -> 22]:
+    +   YoB? : String
+  [48 -> 2]:
+    +   YoB? : String
+    +   gender? : String
+  [59 -> 20]:
+    +   YoB? : String
+    +   gender? : String
+  [91 -> 2]:
+    +   LoE_DI? : String
+    +   YoB? : String
+    +   ndays_act? : Number
+  [106 -> 94]:
+    +   grade? : String
+  [31 -> 5]:
+    +   YoB? : String
+  [109 -> 97]:
+    +   grade? : String
+  [115 -> 2]:
+    +   LoE_DI? : String
+    +   YoB? : String
+    +   gender? : String
+  [137 -> 126]:
+    +   grade? : String
+  [52 -> 7]:
+    +   YoB? : String
+    +   gender? : String
+  [128 -> 2]:
+    +   LoE_DI? : String
+    +   YoB? : String
+    +   gender? : String
+    +   grade? : String
+  [64 -> 26]:
+    +   YoB? : String
+    +   gender? : String
+  [41 -> 20]:
+    +   YoB? : String
+  [104 -> 17]:
+    +   LoE_DI? : String
+    +   YoB? : String
+  [130 -> 5]:
+    +   LoE_DI? : String
+    +   YoB? : String
+    +   gender? : String
+    +   grade? : String
+  [28 -> 2]:
+    +   YoB? : String
+  [65 -> 1]:
+    +   LoE_DI? : String
+  [98 -> 96]:
+    +   nchapters? : Number
+  [36 -> 10]:
+    +   YoB? : String
+  [47 -> 1]:
+    +   YoB? : String
+    +   gender? : String
+  [15 -> 2]:
+    +   grade? : String
+  [82 -> 70]:
+    +   grade? : String
+  [111 -> 99]:
+    +   grade? : String
+  [42 -> 21]:
+    +   YoB? : String
+  [58 -> 39]:
+    +   gender? : String
+  [110 -> 96]:
+    +   grade? : String
+    +   nchapters? : Number
+  [49 -> 4]:
+    +   YoB? : String
+    +   gender? : String
+  [56 -> 37]:
+    +   gender? : String
+  [63 -> 25]:
+    +   YoB? : String
+    +   gender? : String
+  [18 -> 5]:
+    +   grade? : String
+  [30 -> 4]:
+    +   YoB? : String
+  [23 -> 10]:
+    +   grade? : String
+  [81 -> 5]:
+    +   LoE_DI? : String
+    +   grade? : String
+  [44 -> 24]:
+    +   YoB? : String
+  [103 -> 2]:
+    +   LoE_DI? : String
+    +   YoB? : String
+    +   grade? : String
+  [54 -> 35]:
+    +   gender? : String
+  [27 -> 1]:
+    +   YoB? : String
+  [33 -> 7]:
+    +   YoB? : String
+  [57 -> 12]:
+    +   YoB? : String
+    +   gender? : String
+  [60 -> 21]:
+    +   YoB? : String
+    +   gender? : String
+  [74 -> 10]:
+    +   LoE_DI? : String
+  [87 -> 25]:
+    +   LoE_DI? : String
+  [40 -> 6]:
+    +   YoB? : String
+    +   grade? : String
+  [46 -> 26]:
+    +   YoB? : String
+  [14 -> 1]:
+    +   grade? : String
+  [78 -> 1]:
+    +   LoE_DI? : String
+    +   grade? : String
+  [125 -> 117]:
+    +   incomplete_flag? : Number
+    +   ndays_act? : Number
+  [19 -> 6]:
+    +   grade? : String
+  [102 -> 1]:
+    +   LoE_DI? : String
+    +   YoB? : String
+    +   grade? : String
+  [131 -> 119]:
+    +   grade? : String
+  [86 -> 24]:
+    +   LoE_DI? : String
+  [55 -> 10]:
+    +   YoB? : String
+    +   gender? : String
+  [66 -> 2]:
+    +   LoE_DI? : String
+  [68 -> 4]:
+    +   LoE_DI? : String
+  [83 -> 20]:
+    +   LoE_DI? : String
+  [107 -> 20]:
+    +   LoE_DI? : String
+    +   YoB? : String
+  [61 -> 22]:
+    +   YoB? : String
+    +   gender? : String
+  [85 -> 22]:
+    +   LoE_DI? : String
+  [132 -> 120]:
+    +   grade? : String
+  [38 -> 12]:
+    +   YoB? : String
+  [113 -> 101]:
+    +   grade? : String
+  [71 -> 7]:
+    +   LoE_DI? : String
+  [93 -> 5]:
+    +   LoE_DI? : String
+    +   YoB? : String
+  [76 -> 12]:
+    +   LoE_DI? : String
+  [88 -> 26]:
+    +   LoE_DI? : String
+  [100 -> 12]:
+    +   LoE_DI? : String
+    +   YoB? : String
+  [3 -> 2]:
+    +   ndays_act? : Number
+  [16 -> 2]:
+    +   grade? : String
+    +   ndays_act? : Number
+  [84 -> 21]:
+    +   LoE_DI? : String
+  [79 -> 2]:
+    +   LoE_DI? : String
+    +   grade? : String
+  [90 -> 2]:
+    +   LoE_DI? : String
+    +   YoB? : String
+  [89 -> 1]:
+    +   LoE_DI? : String
+    +   YoB? : String
+  [95 -> 7]:
+    +   LoE_DI? : String
+    +   YoB? : String
+  [116 -> 2]:
+    +   LoE_DI? : String
+    +   YoB? : String
+    +   gender? : String
+    +   ndays_act? : Number
+  [136 -> 135]:
+    +   ndays_act? : Number
+    +   nevents? : Number
+  [32 -> 6]:
+    +   YoB? : String
+  [80 -> 17]:
+    +   LoE_DI? : String
+  [129 -> 117]:
+    +   grade? : String
+  [114 -> 1]:
+    +   LoE_DI? : String
+    +   YoB? : String
+    +   gender? : String
+  [50 -> 5]:
+    +   YoB? : String
+    +   gender? : String
+  [67 -> 2]:
+    +   LoE_DI? : String
+    +   ndays_act? : Number
+  [53 -> 34]:
+    +   gender? : String
+  [127 -> 1]:
+    +   LoE_DI? : String
+    +   YoB? : String
+    +   gender? : String
+    +   grade? : String
+  [51 -> 6]:
+    +   YoB? : String
+    +   gender? : String
+  [105 -> 5]:
+    +   LoE_DI? : String
+    +   YoB? : String
+    +   grade? : String
+  [112 -> 25]:
+    +   LoE_DI? : String
+    +   YoB? : String
+  [62 -> 24]:
+    +   YoB? : String
+    +   gender? : String
+  [69 -> 5]:
+    +   LoE_DI? : String
+  [92 -> 4]:
+    +   LoE_DI? : String
+    +   YoB? : String
+  [123 -> 121]:
+    +   nchapters? : Number
+  [118 -> 5]:
+    +   LoE_DI? : String
+    +   YoB? : String
+    +   gender? : String
+  [29 -> 2]:
+    +   YoB? : String
+    +   ndays_act? : Number
+  [108 -> 96]:
+    +   grade? : String
+  [45 -> 25]:
+    +   YoB? : String
