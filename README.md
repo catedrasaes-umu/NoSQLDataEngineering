@@ -258,7 +258,7 @@ The Java project involved in the __Random data generation__ project is the follo
 ***
 # Subtype discovery
 
-This project is intended to analyze a NoSQLSchema model, its entities and its variations, and create a Variation matrix from it. A variation matrix is a data structure that holds a row for each property, and a column for each variation. Each cell is marked if a variation has a certain property. This data structure allows us to infer **strong**, **weak** and **exclusion** dependencies. Once these dependencies are inferred, this project also contains a process able to connect to a MongoDB database and discover the discriminator property of a database.
+This project is intended to analyze a U-Schema model, its entities and its variations, and create a Variation matrix from it. A variation matrix is a data structure that holds a row for each feature, and a column for each variation. Each cell is marked if a variation has a certain feature. This data structure allows us to infer **strong**, **weak** and **exclusion** dependencies. Once these dependencies are inferred, this project also contains a process able to connect to a MongoDB database and discover the discriminator property of a database.
 
 This project also contains a **main** class that performs the whole process based on the Figure below:
 
@@ -269,23 +269,23 @@ This project also contains a **main** class that performs the whole process base
 
 The Java project involved in the __Subtype discovery process__ project is the following one:
 
-* `es.um.nosql.s13e.evolution`: This project the data structures necessary to analyze a NoSQLSchema model, obtain the strong/weak/exclusion dependencies and discovery of the discriminator property.
+* `es.um.unosql.subtypes`: This project the data structures necessary to analyze a U-Schema model, obtain the strong/weak/exclusion dependencies and discovery of the discriminator property.
 
 This project is related to the following one, so please, be sure to check it out.
 
 ***
 # Schema evolution
 
-This project is intended to analyze a NoSQLSchema model, its entities and its variations, in order to classify variations depending on their **count** as outliers or non-outliers. The **count** attribute stores, for each variation, how many objects of that variation exist on the database. Once variations are classified then several analysis may be performed: Outliers may be transformed to non-outliers variations by proposing migrations, and non-outliers variations will be studied in the future **TODO**.
+This project is intended to analyze a U-Schema model, its entities and its variations, in order to classify variations depending on their **count** as outliers or non-outliers. The **count** attribute stores, for each variation, how many objects of that variation exist on the database. Once variations are classified then several analysis may be performed: Outliers may be transformed to non-outliers variations by proposing migrations, and non-outliers variations will be studied in the future **TODO**.
 
 There are several independent processes on this project. We list and explain them below:
 
 * A process is presented to generate some **MapReduce** templates in order to launch the inference process with different options to catch the **timestamp** field.
-* Another process is available to generate a CSV file from an input NoSQLSchema.
-* A third process allows the user to detect outliers and propose transformations from a NoSQLSchema.
-* The last process takes a NoSQLSchema model as an input, removes outliers, and then studies the remaining variations, in order to catch dependencies.
+* Another process is available to generate a CSV file from an input U-Schema.
+* A third process allows the user to detect outliers and propose transformations from a U-Schema.
+* The last process takes a U-Schema model as an input, removes outliers, and then studies the remaining variations, in order to catch dependencies.
 
-As explained, one of the generated outputs for a NoSQLSchema model when analyzing outliers is a CSV file in which for each Entity, its **count** number and its **timestamps** are stored in columns. By doing this, it is fairly easy to create a plot in Python in which variations with their lifelines may be presented, as seen in the next Figure.
+As explained, one of the generated outputs for a U-Schema model when analyzing outliers is a CSV file in which for each Entity, its **count** number and its **timestamps** are stored in columns. By doing this, it is fairly easy to create a plot in Python in which variations with their lifelines may be presented, as seen in the next Figure.
 
 <figure>
     <img src="figures/evolution_comments.jpg" align="center"/>
@@ -304,7 +304,7 @@ This way the proposed migration will try to perform as less changes as possible 
 
 The Java project involved in the __Schema evolution analysis__ project is the following one:
 
-* `es.um.nosql.s13e.evolution`: This project contains some **MapReduce** templates to be used on the MapReduce inference process in order to extract the initial and last timestamps for each variation. It also contains the executables to extract and analyze outliers from a NoSQLSchema model. Lastly it contains some Python utilities to create charts from an outlier CSV file. There are several **Main** classes, each one of them launches a certain process.
+* `es.um.unosql.subtypes`: This project contains some **MapReduce** templates to be used on the MapReduce inference process in order to extract the initial and last timestamps for each variation. It also contains the executables to extract and analyze outliers from a U-Schema model. Lastly it contains some Python utilities to create charts from an outlier CSV file. There are several **Main** classes, each one of them launches a certain process.
 
 ***
 # Object document mappers
