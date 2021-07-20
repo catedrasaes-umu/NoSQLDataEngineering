@@ -1,0 +1,58 @@
+Schema Campaigns:1
+
+root entity Stage
+{
+  +_id: Identifier,
+  __v: Integer,
+  imageUrl: String,
+  name: String,
+  description: String,
+  createdAt: Timestamp,
+  updatedAt: Timestamp,
+  categories: List<String>
+}
+
+root entity Campaign
+{
+  +_id: Identifier,
+  __v: Integer,
+  active: Boolean,
+  points: Integer,
+  imageUrl: String,
+  name: String,
+  description: String,
+  qr: String,
+  category: String,
+  stageId: ref<Stage>+,
+  createdAt: Timestamp,
+  updatedAt: Timestamp
+}
+
+root entity User
+{
+  +_id: Identifier,
+  __v: Integer,
+  firebaseTokens: List<String>,
+  points: Integer,
+  avatarUrl: String,
+  role: String,
+  firstName: String,
+  lastName: String,
+  employeeNumber: Integer,
+  phoneNumber: String,
+  office: String,
+  email: String,
+  password: String,
+  tokens: List<String>,
+  campaigns: aggr<CampaignSummary>*,
+  createdAt: Timestamp,
+  updatedAt: Timestamp
+}
+
+entity CampaignSummary
+{
+  campaignId: ref<Campaign>+,
+  scheduledAt: Timestamp,
+  ? points: Integer,
+  ? completedAt: Timestamp
+}

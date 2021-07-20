@@ -1,0 +1,29 @@
+Schema OneOfEach_Features:1
+
+root entity EntityToRemove { +_id: Identifier, +attrTrue1, +attrTrue2: String, +attrTrue3: Number, +attrTrue4: Double, +attrTrue5: Boolean }
+
+root entity EntityToCopySource1 { +_id: String, valueToCopy1: String, valueToCopy2: List, valueToCopy3: Map }
+
+root entity EntityToCopySource2 { +_id: String, valueToCopy4: String }
+
+root entity EntityToCopyTarget { +_id: String, thisRef: String, thatRef: String, copy1: String, copy2: List, copy3: Map, valueToCopy4: String }
+
+root entity EntityToMoveSource1 { +_id: String }
+
+root entity EntityToMoveSource2 { +_id: String }
+
+root entity EntityToMoveTarget { +_id: String, thisRef: String, thatRef: String, move1: String, move2: List, move3: Map, move4: String }
+
+root entity EntityToNest { +_id: String, name, age, aList: List, aMap: Map, nestedAggr: aggr<NestedAggr>+ }
+
+entity NestAggrNest1 { nest1, nest2, nest3 }
+
+entity NestAggrNest2 { nest4, nest5, nest6 }
+
+entity NestedAggr { postalCode, city, nestAggrNest1: aggr<NestAggrNest1>+, nestAggrNest2: aggr<NestAggrNest2>*, street }
+
+root entity EntityToUnnest { +_id: String, name, age, unnestAggrNest1: aggr<UnnestAggrNest1>+, unnestAggrNest2: aggr<UnnestAggrNest2>+, postalCode, city, aList: List, aMap: Map, nest4, street }
+
+entity UnnestAggrNest1 { nest1, nest2, nest3 }
+
+entity UnnestAggrNest2 { nest5, nest6 }

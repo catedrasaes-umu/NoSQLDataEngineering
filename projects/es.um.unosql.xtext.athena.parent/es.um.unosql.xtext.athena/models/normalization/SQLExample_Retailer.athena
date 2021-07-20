@@ -1,0 +1,108 @@
+Schema SQLExample_Retailer:1
+
+root entity Offices
+  SQL CREATE TABLE offices (
+    officeCode             VARCHAR(10)         NOT NULL,
+    city                   VARCHAR(50)         NOT NULL,
+    phone                  VARCHAR(50)         NOT NULL,
+    addressLine1           VARCHAR(50)         NOT NULL,
+    addressLine2           VARCHAR(50)                 ,
+    state                  VARCHAR(50)                 ,
+    country                VARCHAR(50)         NOT NULL,
+    postalCode             VARCHAR(15)         NOT NULL,
+    territory              VARCHAR(10)         NOT NULL,
+    PRIMARY KEY            (officeCode)
+);
+
+root entity Employees
+  SQL CREATE TABLE employees (
+    employeeNumber         INT                 NOT NULL,
+    lastName               VARCHAR(50)         NOT NULL,
+    firstName              VARCHAR(50)         NOT NULL,
+    extension              VARCHAR(10)         NOT NULL,
+    email                  VARCHAR(100)        NOT NULL,
+    officeCode             VARCHAR(10)         NOT NULL,
+    reportsTo              INT                         ,
+    jobTitle               VARCHAR(50)         NOT NULL,
+    PRIMARY KEY            (employeeNumber)            ,
+    FOREIGN KEY (reportsTo) REFERENCES Employees (employeeNumber),
+    FOREIGN KEY (officeCode) REFERENCES Offices (officeCode)
+);
+
+root entity Customers
+  SQL CREATE TABLE customers (
+    customerNumber         INT                 NOT NULL,
+    customerName           VARCHAR(50)         NOT NULL,
+    contactLastName        VARCHAR(50)         NOT NULL,
+    contactFirstName       VARCHAR(50)         NOT NULL,
+    phone                  VARCHAR(50)         NOT NULL,
+    addressLine1           VARCHAR(50)         NOT NULL,
+    addressLine2           VARCHAR(50)                 ,
+    city                   VARCHAR(50)         NOT NULL,
+    state                  VARCHAR(50)                 ,
+    postalCode             VARCHAR(15)                 ,
+    country                VARCHAR(50)         NOT NULL,
+    salesRepEmployeeNumber INT                         ,
+    creditLimit            INT                         ,
+    PRIMARY KEY            (customerNumber)            ,
+    FOREIGN KEY (salesRepEmployeeNumber) REFERENCES Employees (employeeNumber)
+);
+
+root entity Products
+  SQL CREATE TABLE products (
+    productCode            VARCHAR(15)         NOT NULL,
+    productName            VARCHAR(70)         NOT NULL,
+    productLine            VARCHAR(50)         NOT NULL,
+    productScale           VARCHAR(10)         NOT NULL,
+    productVendor          VARCHAR(50)         NOT NULL,
+    productDescription     TEXT                NOT NULL,
+    quantityInStock        SMALLINT            NOT NULL,
+    buyPrice               DECIMAL(8,2)        NOT NULL,
+    MSRP                   DECIMAL(8,2)        NOT NULL,
+    PRIMARY KEY            (productCode)
+);
+
+root entity ProductLines
+  SQL CREATE TABLE productlines (
+    productLine            VARCHAR(50)         NOT NULL,
+    textDescription        VARCHAR(4000)               ,
+    htmlDescription        TEXT                        ,
+    image                  BLOB                        ,
+    PRIMARY KEY            (productLine)               ,
+    FOREIGN KEY (productLine) REFERENCES Products (productLine)
+);
+
+root entity Orders
+  SQL CREATE TABLE orders (
+    orderNumber            INT                 NOT NULL,
+    orderDate              DATE                NOT NULL,
+    requiredDate           DATE                NOT NULL,
+    shippedDate            DATE                        ,
+    status                 VARCHAR(15)         NOT NULL,
+    comments               TEXT                        ,
+    customerNumber         INT                 NOT NULL,
+    PRIMARY KEY            (orderNumber)               ,
+    FOREIGN KEY (customerNumber) REFERENCES Customers (customerNumber)
+);
+
+root entity OrderDetails
+  SQL CREATE TABLE orderdetails (
+    orderNumber            INT                 NOT NULL,
+    productCode            VARCHAR(15)         NOT NULL,
+    quantityOrdered        SMALLINT            NOT NULL,
+    priceEach              DECIMAL(7,2)        NOT NULL,
+    orderLineNumber        TINYINT             NOT NULL,
+    PRIMARY KEY            (orderNumber,productCode)   ,
+    FOREIGN KEY (orderNumber) REFERENCES Orders (orderNumber),
+    FOREIGN KEY (productCode) REFERENCES Products (productCode)
+);
+
+root entity Payments
+  SQL CREATE TABLE payments (
+    customerNumber         INT                 NOT NULL,
+    checkNumber            VARCHAR(50)         NOT NULL,
+    paymentDate            DATE                NOT NULL,
+    amount                 DECIMAL(8,2)        NOT NULL,
+    PRIMARY KEY            (customerNumber,checkNumber),
+    FOREIGN KEY (customerNumber) REFERENCES Customers (customerNumber)
+);

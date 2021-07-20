@@ -1,0 +1,11 @@
+Schema RestrictedTypesExample:1
+
+root entity Entity1
+{
+  +_id: Identifier,
+  enumString: String in ( "val1", "val2" ),
+  regexpString: String /[a-z]*/,
+  enumNumber: Number in ( 1, 2, 3),
+  rangeNumber: Number (3..10),
+  rangeDouble: Double (9..10)
+}

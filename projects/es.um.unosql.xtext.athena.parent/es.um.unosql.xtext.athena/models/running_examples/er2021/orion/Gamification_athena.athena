@@ -1,0 +1,20 @@
+Schema Gamification_athena:2
+
+fset timeData { createdAt: Timestamp, updatedAt: Timestamp }
+
+root entity Stage
+{ +id: Identifier, category: String, description: String, name: String, createdAt: Timestamp, updatedAt: Timestamp }
+
+root entity Minigame
+{ +id: Identifier, categories: List<String>, isActive: Boolean, name: String, points: Double, stageIds: ref<Stage as Identifier>*, createdAt: Timestamp, updatedAt: Timestamp }
+
+root entity User
+{
+	common { +id: Identifier, avatarUrl: String, email: String /^.+@.+\\.com$/, personalInfo: aggr<PersonalInfo>+ }
+	variation 1
+	variation 2 { games: aggr<MinigameSummary>*, points: Double}
+}
+
+entity PersonalInfo { city: String, name: String /^[A-Z][a-z]*$/, number: Integer, street: String, ? postcode: Integer}
+
+entity MinigameSummary { gameId: ref<Minigame as Identifier>+, scheduledAt: Timestamp, ? completedAt: Timestamp, ? points: Double }

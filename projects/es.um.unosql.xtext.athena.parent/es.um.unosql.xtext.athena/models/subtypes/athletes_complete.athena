@@ -1,0 +1,44 @@
+Schema Athletes_complete:1
+
+Root entity Athlete
+{
+  name: String,
+  sport_name: String
+}
+
+Root entity Athlete_Football::Athlete
+{
+	Common
+	{
+		debut_date: Timestamp,
+		debut_team: String
+	}
+	Variation 1 { sponsors: List<String>, current_team: String }
+  Variation 2 { sponsors: List<String>, position: Integer    }
+  Variation 3 { current_team: String, position: Integer      }
+  Variation 4 { position: Integer                            }
+}
+
+Root entity Athlete_Chess::Athlete
+{
+	current_elo: Integer,
+	max_elo: Integer,
+	career_earnings: Double
+}
+
+Root entity Athlete_Tennis::Athlete
+{
+	Common
+	{
+    atp_ranking: Integer,
+    career_earnings: Double
+	}
+	Variation 1 { grand_slams: Integer   }
+	Variation 2 { sponsors: List<String> }
+}
+
+Root entity Athlete_Swimming::Athlete
+{
+  sponsors: List<String>,
+  strokes: List<String>
+}

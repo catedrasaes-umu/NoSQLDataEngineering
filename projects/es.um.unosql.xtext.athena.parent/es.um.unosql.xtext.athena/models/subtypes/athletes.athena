@@ -1,0 +1,7 @@
+Schema Athletes:1
+
+Root entity Athlete
+{
+  name: String,
+  sport_name: String
+}

@@ -1,0 +1,15 @@
+Schema Movies:1
+
+Import Social_Network:1
+
+Root entity Movie
+{
+  + id: Identifier,
+  viewers: Ref<Social_Network:1.User>*
+}
+
+Root entity Friend :: Social_Network:1.User
+{
+  friends: Ref<Friend>*,
+  favouriteMovies: Ref<Movie>*
+}

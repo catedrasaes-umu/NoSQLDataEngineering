@@ -1,0 +1,37 @@
+mongosongs_phased operations
+
+SCRIPT MODE
+
+EBlock 1
+{
+  ADD ENTITY Album: {+id: Identifier, name: String, formats: List<String>, popularity: Number, releaseYear: Number }
+  ADD ENTITY Track: {+id: Identifier}
+  ADD ENTITY Artist: {+id: Identifier}
+}
+
+EBlock 2
+{
+  ADD REF Album::tracks : String* TO Track
+  ADD ATTR Album::availability: String
+  ADD AGGR Album::prizes: {event: String, units: Number, year: Number, names: List<String>}*
+  ADD AGGR Album::reviews: {journalist: String, rank: String, media: String, stars: String}*
+}
+
+EBlock 3
+{
+  ADD ATTR Artist::name: String
+  ADD ATTR Artist::startingYear: Number
+  ADD REF Artist::albums : String* TO Album
+  ADD REF Artist::composedTracks : String* TO Track
+  ADD REF Artist::lyricsTracks: String* TO Track
+}
+
+EBlock 4
+{
+  ADD ATTR Track::name: String
+  ADD ATTR Track::genres: List<String>
+  ADD ATTR Track::length: Number
+  ADD ATTR Track::popularity: Number
+  ADD REF Track::artist_id: String+ TO Artist
+  ADD AGGR Track::ratings: {score: Number, voters: Number}+
+}

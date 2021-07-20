@@ -1,0 +1,42 @@
+Cass_OneOfEach_Aggregates operations
+
+SCRIPT MODE
+
+ADD ENTITY EntityToAggr: { +id: Identifier }
+
+ADD AGGR EntityToAggr::aggrSimple : {attr1: String, attr2: Number, attr3: Map<String, Integer>, attr4: List<Integer>}+
+ADD AGGR EntityToAggr::aggrList : {attr1: String, attr2: Number, attr3: Map<String, Integer>, attr4: List<Integer>}*
+ADD AGGR EntityToAggr::aggrSimple.innerAggrSimple: {innerAttr1: String, innerAttr2: Number, innerAttr3: Map<String, Boolean>, innerAttr4: List<String>}+
+ADD AGGR EntityToAggr::aggrSimple.innerAggrList: {innerAttr1: String, innerAttr2: Number, innerAttr3: Map<String, String>, innerAttr4: List<String>}*
+
+ADD AGGR EntityToAggr::strAggrSimpleChange: {attr1: String, attr2: Integer}+
+ADD AGGR EntityToAggr::strAggrArrayChange: {attr1: String, attr2: Integer}*
+ADD AGGR EntityToAggr::numAggrSimpleChange: {attr1: Number, attr2: Integer}+
+ADD AGGR EntityToAggr::numAggrArrayChange: {attr1: Number, attr2: Integer}*
+
+CARD AGGR EntityToAggr::strAggrSimpleChange TO *
+CARD AGGR EntityToAggr::strAggrArrayChange TO +
+CARD AGGR EntityToAggr::numAggrSimpleChange TO *
+CARD AGGR EntityToAggr::numAggrArrayChange TO +
+
+ADD AGGR EntityToAggr::aggrByHand1: {string1: String}+
+ADD ATTR EntityToAggr::aggrByHand1.nullAttrArrayChange: List<Integer>
+ADD ATTR EntityToAggr::aggrByHand1.strAttrSimpleChange: String
+ADD ATTR EntityToAggr::aggrByHand1.strAttrArrayChange: List<String>
+
+ADD AGGR EntityToAggr::aggrByHand2: {string2: String}+
+ADD ATTR EntityToAggr::aggrByHand2.numAttrSimpleChange: Number
+ADD ATTR EntityToAggr::aggrByHand2.numAttrArrayChange: List<Number>
+
+CARD AGGR EntityToAggr::aggrByHand1 TO *
+
+ADD ENTITY EntityMorphAggr: { +id: String }
+ADD AGGR EntityMorphAggr::aggr1: { string1: String, string2: String }+
+ADD AGGR EntityMorphAggr::aggr2: { aList: List<Integer>, aMap: Map<String, Integer> }+
+ADD AGGR EntityMorphAggr::aggr3: { string5: String, string6: String }*
+ADD AGGR EntityMorphAggr::aggr4: { aSet: Set<Integer>, aTuple: Tuple<String> }*
+
+MORPH AGGR EntityMorphAggr::aggr1 TO refToAggr1
+MORPH AGGR EntityMorphAggr::aggr2 TO refToAggr2
+MORPH AGGR EntityMorphAggr::aggr3 TO refToAggr3
+MORPH AGGR EntityMorphAggr::aggr4 TO refToAggr4

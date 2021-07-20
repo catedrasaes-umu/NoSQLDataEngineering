@@ -1,0 +1,194 @@
+Schema SQLExample_Sakila:1
+
+root entity Actor
+  SQL CREATE TABLE actor (
+    actor_id             SMALLINT      NOT NULL,
+    first_name           VARCHAR(45)   NOT NULL,
+    last_name            VARCHAR(45)   NOT NULL,
+    last_update          TIMESTAMP     NOT NULL,
+    PRIMARY KEY          (actor_id)
+  );
+
+root entity Language
+  SQL CREATE TABLE language (
+    language_id          TINYINT       NOT NULL,
+    name                 CHAR(20)      NOT NULL,
+    last_update          TIMESTAMP     NOT NULL,
+    PRIMARY KEY          (language_id)
+  );
+
+root entity Film
+  SQL CREATE TABLE film (
+    film_id              SMALLINT      NOT NULL,
+    title                VARCHAR(255)  NOT NULL,
+    description          TEXT                  ,
+    release_year         YEAR                  ,
+    language_id          TINYINT       NOT NULL,
+    original_language_id TINYINT               ,
+    rental_duration      TINYINT       NOT NULL,
+    rental_rate          DECIMAL       NOT NULL,
+    length               SMALLINT              ,
+    replacement_cost     DECIMAL(5)    NOT NULL,
+    rating               TEXT(10)              ,
+    special_features     TEXT(10)              ,
+    last_update          TIMESTAMP     NOT NULL,
+    PRIMARY KEY          (film_id)             ,
+    CONSTRAINT fk_film_language FOREIGN KEY (language_id) REFERENCES Language (language_id),
+    CONSTRAINT fk_film_language_original FOREIGN KEY (original_language_id) REFERENCES Language (language_id)
+);
+
+root entity Film_actor
+  SQL CREATE TABLE film_actor (
+    actor_id             SMALLINT      NOT NULL,
+    film_id              SMALLINT      NOT NULL,
+    last_update          TIMESTAMP     NOT NULL,
+    PRIMARY KEY          (actor_id, film_id)   ,
+    CONSTRAINT fk_film_actor_actor FOREIGN KEY (actor_id) REFERENCES Actor (actor_id), 
+    CONSTRAINT fk_film_actor_film FOREIGN KEY (film_id) REFERENCES Film (film_id)
+);
+
+root entity Category
+  SQL CREATE TABLE category (
+    category_id          TINYINT       NOT NULL,
+    name                 VARCHAR(25)   NOT NULL,
+    last_update          TIMESTAMP     NOT NULL,
+    PRIMARY KEY          (category_id)
+);
+
+root entity Film_category
+  SQL CREATE TABLE film_category (
+    film_id              SMALLINT      NOT NULL,
+    category_id          TINYINT       NOT NULL,
+    last_update          TIMESTAMP     NOT NULL,
+    PRIMARY KEY          (film_id, category_id),
+    CONSTRAINT fk_film_category_film FOREIGN KEY (film_id) REFERENCES Film (film_id),
+    CONSTRAINT fk_film_category_category FOREIGN KEY (category_id) REFERENCES Category (category_id) 
+);
+
+root entity Film_text
+  SQL CREATE TABLE film_text (
+    film_id              SMALLINT      NOT NULL,
+    title                VARCHAR(255)  NOT NULL,
+    description          TEXT                  ,
+    PRIMARY KEY          (film_id)
+);
+
+root entity Inventory
+  SQL CREATE TABLE inventory (
+    inventory_id         INT           NOT NULL,
+    film_id              SMALLINT      NOT NULL,
+    store_id             TINYINT       NOT NULL,
+    last_update          TIMESTAMP     NOT NULL,
+    PRIMARY KEY          (inventory_id)        ,
+    CONSTRAINT fk_inventory_store FOREIGN KEY (store_id) REFERENCES Store (store_id),
+    CONSTRAINT fk_inventory_film FOREIGN KEY (film_id) REFERENCES Film (film_id)
+);
+
+root entity Staff
+  SQL CREATE TABLE staff (
+    staff_id             TINYINT       NOT NULL,
+    first_name           VARCHAR(45)   NOT NULL,
+    last_name            VARCHAR(45)   NOT NULL,
+    address_id           SMALLINT      NOT NULL,
+    picture              BLOB                  ,
+    email                VARCHAR(50)           ,
+    store_id             TINYINT       NOT NULL,
+    active               BOOLEAN       NOT NULL,
+    username             VARCHAR(16)   NOT NULL,
+    password             VARCHAR(40)           ,
+    last_update          TIMESTAMP     NOT NULL,
+    PRIMARY KEY          (staff_id)            ,
+    CONSTRAINT fk_staff_store FOREIGN KEY (store_id) REFERENCES Store (store_id),
+    CONSTRAINT fk_staff_address FOREIGN KEY (address_id) REFERENCES Address (address_id)
+);
+
+root entity Store
+  SQL CREATE TABLE store (
+    store_id             TINYINT       NOT NULL,
+    manager_staff_id     TINYINT       NOT NULL,
+    address_id           SMALLINT      NOT NULL,
+    last_update          TIMESTAMP     NOT NULL,
+    PRIMARY KEY          (store_id)            ,
+    UNIQUE KEY idx_unique_manager (manager_staff_id),
+    CONSTRAINT fk_store_staff FOREIGN KEY (manager_staff_id) REFERENCES Staff (staff_id),
+    CONSTRAINT fk_store_address FOREIGN KEY (address_id) REFERENCES Address (address_id) 
+);
+
+root entity Customer
+  SQL CREATE TABLE customer (
+    customer_id          SMALLINT      NOT NULL,
+    store_id             TINYINT       NOT NULL,
+    first_name           VARCHAR(45)   NOT NULL,
+    last_name            VARCHAR(45)   NOT NULL,
+    email                VARCHAR(50)           ,
+    address_id           SMALLINT      NOT NULL,
+    active               BOOLEAN       NOT NULL,
+    create_date          DATETIME      NOT NULL,
+    last_update          TIMESTAMP             ,
+    PRIMARY KEY          (customer_id)         ,
+    CONSTRAINT fk_customer_address FOREIGN KEY (address_id) REFERENCES Address (address_id),
+    CONSTRAINT fk_customer_store FOREIGN KEY (store_id) REFERENCES Store (store_id)
+);
+
+root entity Rental
+  SQL CREATE TABLE rental (
+    rental_id            INT           NOT NULL,
+    rental_date          DATETIME      NOT NULL,
+    inventory_id         MEDIUMINT     NOT NULL,
+    customer_id          SMALLINT      NOT NULL,
+    return_date          DATETIME          NULL,
+    staff_id             TINYINT       NOT NULL,
+    last_update          TIMESTAMP     NOT NULL,
+    PRIMARY KEY          (rental_id)           ,
+    UNIQUE KEY           (rental_date, inventory_id, customer_id),
+    CONSTRAINT fk_rental_staff FOREIGN KEY (staff_id) REFERENCES Staff (staff_id),
+    CONSTRAINT fk_rental_inventory FOREIGN KEY (inventory_id) REFERENCES Inventory (inventory_id),
+    CONSTRAINT fk_rental_customer FOREIGN KEY (customer_id) REFERENCES Customer (customer_id)
+);
+
+root entity Payment
+  SQL CREATE TABLE payment (
+    payment_id           SMALLINT      NOT NULL,
+    customer_id          SMALLINT      NOT NULL,
+    staff_id             TINYINT       NOT NULL,
+    rental_id            INT                   ,
+    amount               DECIMAL(5)    NOT NULL,
+    payment_date         DATETIME      NOT NULL,
+    last_update          TIMESTAMP             ,
+    PRIMARY KEY          (payment_id)          ,
+    CONSTRAINT fk_payment_rental FOREIGN KEY (rental_id) REFERENCES Rental (rental_id),
+    CONSTRAINT fk_payment_customer FOREIGN KEY (customer_id) REFERENCES Customer (customer_id),
+    CONSTRAINT fk_payment_staff FOREIGN KEY (staff_id) REFERENCES Staff (staff_id)
+);
+
+root entity Address
+  SQL CREATE TABLE address (
+    address_id           SMALLINT      NOT NULL,
+    address              VARCHAR(50)   NOT NULL,
+    address2             VARCHAR(50)           ,
+    district             VARCHAR(20)   NOT NULL,
+    city_id              SMALLINT      NOT NULL,
+    postal_code          VARCHAR(10)           ,
+    phone                VARCHAR(20)   NOT NULL,
+    last_update          TIMESTAMP     NOT NULL,
+    PRIMARY KEY          (address_id)          ,
+    CONSTRAINT fk_address_city FOREIGN KEY (city_id) REFERENCES City (city_id)
+);
+
+root entity City
+  SQL CREATE TABLE city (
+    city_id              SMALLINT      NOT NULL,
+    city                 VARCHAR(50)   NOT NULL,
+    country_id           SMALLINT      NOT NULL,
+    last_update          TIMESTAMP     NOT NULL,
+    PRIMARY KEY          (city_id)             ,
+    CONSTRAINT fk_city_country FOREIGN KEY (country_id) REFERENCES Country (country_id)
+);
+
+root entity Country
+  SQL CREATE TABLE country (
+    country_id           SMALLINT      NOT NULL,
+    country              VARCHAR(50)   NOT NULL,
+    last_update          TIMESTAMP     NOT NULL,
+    PRIMARY KEY          (country_id)
+);

@@ -1,0 +1,17 @@
+schema LoaderTest:1
+
+entity Hello
+{
+  common
+  {
+    +_id: String,
+    hello: String,
+    world: Number
+  }
+
+  Variation 1
+  {
+    in_the: Boolean,
+    morning: List<String>
+  }
+}

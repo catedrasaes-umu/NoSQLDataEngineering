@@ -1,0 +1,143 @@
+Schema harvard:1
+
+root entity Harvard_courses
+{
+	common { +_id: Identifier, certified: Number, course_id: String, explored: Number, final_cc_cname_DI: String, nforum_posts: Number, registered: Number, start_time_DI: String, userid_DI: String, viewed: Number }
+	variation 1 { LoE_DI: String, YoB: String, gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number, nplay_video: Number }
+	variation 2 { LoE_DI: String, YoB: String, gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number }
+	variation 3 { LoE_DI: String, YoB: String, gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number }
+	variation 4 { LoE_DI: String, YoB: String, gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, ndays_act: Number }
+	variation 5 { LoE_DI: String, YoB: String, gender: String, grade: String, incomplete_flag: Number, nchapters: Number, ndays_act: Number }
+	variation 6 { LoE_DI: String, YoB: String, gender: String, grade: String, incomplete_flag: Number, nchapters: Number }
+	variation 7 { LoE_DI: String, YoB: String, gender: String, grade: String, incomplete_flag: Number, ndays_act: Number }
+	variation 8 { LoE_DI: String, YoB: String, gender: String, grade: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 9 { LoE_DI: String, YoB: String, gender: String, grade: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number }
+	variation 10 { LoE_DI: String, YoB: String, gender: String, grade: String, last_event_DI: String, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 11 { LoE_DI: String, YoB: String, gender: String, grade: String, last_event_DI: String, ndays_act: Number, nevents: Number }
+	variation 12 { LoE_DI: String, YoB: String, gender: String, grade: String, last_event_DI: String }
+	variation 13 { LoE_DI: String, YoB: String, gender: String, grade: String }
+	variation 14 { LoE_DI: String, YoB: String, gender: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number, nplay_video: Number }
+	variation 15 { LoE_DI: String, YoB: String, gender: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number }
+	variation 16 { LoE_DI: String, YoB: String, gender: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number }
+	variation 17 { LoE_DI: String, YoB: String, gender: String, incomplete_flag: Number, last_event_DI: String, ndays_act: Number }
+	variation 18 { LoE_DI: String, YoB: String, gender: String, incomplete_flag: Number, nchapters: Number, ndays_act: Number }
+	variation 19 { LoE_DI: String, YoB: String, gender: String, incomplete_flag: Number, nchapters: Number }
+	variation 20 { LoE_DI: String, YoB: String, gender: String, incomplete_flag: Number, ndays_act: Number }
+	variation 21 { LoE_DI: String, YoB: String, gender: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 22 { LoE_DI: String, YoB: String, gender: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number }
+	variation 23 { LoE_DI: String, YoB: String, gender: String, last_event_DI: String, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 24 { LoE_DI: String, YoB: String, gender: String, last_event_DI: String, ndays_act: Number, nevents: Number }
+	variation 25 { LoE_DI: String, YoB: String, gender: String, last_event_DI: String }
+	variation 26 { LoE_DI: String, YoB: String, gender: String }
+	variation 27 { LoE_DI: String, gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number, nplay_video: Number }
+	variation 28 { LoE_DI: String, gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number }
+	variation 29 { LoE_DI: String, gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number }
+	variation 30 { LoE_DI: String, gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, ndays_act: Number }
+	variation 31 { LoE_DI: String, gender: String, grade: String, incomplete_flag: Number, nchapters: Number, ndays_act: Number }
+	variation 32 { LoE_DI: String, gender: String, grade: String, incomplete_flag: Number, nchapters: Number }
+	variation 33 { LoE_DI: String, gender: String, grade: String, incomplete_flag: Number, ndays_act: Number }
+	variation 34 { LoE_DI: String, gender: String, grade: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 35 { LoE_DI: String, gender: String, grade: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number }
+	variation 36 { LoE_DI: String, gender: String, grade: String, last_event_DI: String, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 37 { LoE_DI: String, gender: String, grade: String, last_event_DI: String, ndays_act: Number, nevents: Number }
+	variation 38 { LoE_DI: String, gender: String, grade: String, last_event_DI: String }
+	variation 39 { LoE_DI: String, gender: String, grade: String }
+	variation 40 { LoE_DI: String, gender: String, incomplete_flag: Number, nchapters: Number }
+	variation 41 { LoE_DI: String, gender: String, incomplete_flag: Number, ndays_act: Number }
+	variation 42 { LoE_DI: String, gender: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 43 { LoE_DI: String, gender: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number }
+	variation 44 { LoE_DI: String, gender: String, last_event_DI: String, ndays_act: Number, nevents: Number }
+	variation 45 { LoE_DI: String, gender: String, last_event_DI: String }
+	variation 46 { LoE_DI: String, gender: String }
+	variation 47 { LoE_DI: String, grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number, nplay_video: Number }
+	variation 48 { LoE_DI: String, grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number }
+	variation 49 { LoE_DI: String, grade: String, incomplete_flag: Number, last_event_DI: String, ndays_act: Number }
+	variation 50 { LoE_DI: String, grade: String, incomplete_flag: Number, nchapters: Number, ndays_act: Number }
+	variation 51 { LoE_DI: String, grade: String, incomplete_flag: Number, nchapters: Number }
+	variation 52 { LoE_DI: String, grade: String, incomplete_flag: Number, ndays_act: Number }
+	variation 53 { LoE_DI: String, grade: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 54 { LoE_DI: String, grade: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number }
+	variation 55 { LoE_DI: String, grade: String, last_event_DI: String, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 56 { LoE_DI: String, grade: String, last_event_DI: String, ndays_act: Number, nevents: Number }
+	variation 57 { LoE_DI: String, grade: String, last_event_DI: String }
+	variation 58 { LoE_DI: String, grade: String }
+	variation 59 { LoE_DI: String, incomplete_flag: Number, ndays_act: Number }
+	variation 60 { LoE_DI: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 61 { LoE_DI: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number }
+	variation 62 { LoE_DI: String, last_event_DI: String, ndays_act: Number, nevents: Number }
+	variation 63 { LoE_DI: String, last_event_DI: String }
+	variation 64 { LoE_DI: String }
+	variation 65 { YoB: String, gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number, nplay_video: Number }
+	variation 66 { YoB: String, gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number }
+	variation 67 { YoB: String, gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number }
+	variation 68 { YoB: String, gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, ndays_act: Number }
+	variation 69 { YoB: String, gender: String, grade: String, incomplete_flag: Number, nchapters: Number, ndays_act: Number }
+	variation 70 { YoB: String, gender: String, grade: String, incomplete_flag: Number, nchapters: Number }
+	variation 71 { YoB: String, gender: String, grade: String, incomplete_flag: Number, ndays_act: Number }
+	variation 72 { YoB: String, gender: String, grade: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 73 { YoB: String, gender: String, grade: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number }
+	variation 74 { YoB: String, gender: String, grade: String, last_event_DI: String, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 75 { YoB: String, gender: String, grade: String, last_event_DI: String, ndays_act: Number, nevents: Number }
+	variation 76 { YoB: String, gender: String, grade: String, last_event_DI: String }
+	variation 77 { YoB: String, gender: String, grade: String }
+	variation 78 { YoB: String, gender: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number, nplay_video: Number }
+	variation 79 { YoB: String, gender: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number }
+	variation 80 { YoB: String, gender: String, incomplete_flag: Number, last_event_DI: String, ndays_act: Number }
+	variation 81 { YoB: String, gender: String, incomplete_flag: Number, nchapters: Number, ndays_act: Number }
+	variation 82 { YoB: String, gender: String, incomplete_flag: Number, nchapters: Number }
+	variation 83 { YoB: String, gender: String, incomplete_flag: Number, ndays_act: Number }
+	variation 84 { YoB: String, gender: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 85 { YoB: String, gender: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number }
+	variation 86 { YoB: String, gender: String, last_event_DI: String, ndays_act: Number, nevents: Number }
+	variation 87 { YoB: String, gender: String, last_event_DI: String }
+	variation 88 { YoB: String, gender: String }
+	variation 89 { gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number, nplay_video: Number }
+	variation 90 { gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number }
+	variation 91 { gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number }
+	variation 92 { gender: String, grade: String, incomplete_flag: Number, last_event_DI: String, ndays_act: Number }
+	variation 93 { gender: String, grade: String, incomplete_flag: Number, nchapters: Number, ndays_act: Number }
+	variation 94 { gender: String, grade: String, incomplete_flag: Number, nchapters: Number }
+	variation 95 { gender: String, grade: String, incomplete_flag: Number, ndays_act: Number }
+	variation 96 { gender: String, grade: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 97 { gender: String, grade: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number }
+	variation 98 { gender: String, grade: String, last_event_DI: String, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 99 { gender: String, grade: String, last_event_DI: String, ndays_act: Number, nevents: Number }
+	variation 100 { gender: String, grade: String, last_event_DI: String }
+	variation 101 { gender: String, grade: String }
+	variation 102 { gender: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number, nplay_video: Number }
+	variation 103 { gender: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number }
+	variation 104 { gender: String, incomplete_flag: Number, last_event_DI: String, ndays_act: Number }
+	variation 105 { gender: String, incomplete_flag: Number, nchapters: Number, ndays_act: Number }
+	variation 106 { gender: String, incomplete_flag: Number, nchapters: Number }
+	variation 107 { gender: String, incomplete_flag: Number, ndays_act: Number }
+	variation 108 { gender: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 109 { gender: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number }
+	variation 110 { gender: String, last_event_DI: String, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 111 { gender: String, last_event_DI: String, ndays_act: Number, nevents: Number }
+	variation 112 { gender: String, last_event_DI: String }
+	variation 113 { gender: String }
+	variation 114 { grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number, nplay_video: Number }
+	variation 115 { grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number }
+	variation 116 { grade: String, incomplete_flag: Number, last_event_DI: String, nchapters: Number }
+	variation 117 { grade: String, incomplete_flag: Number, last_event_DI: String, ndays_act: Number }
+	variation 118 { grade: String, incomplete_flag: Number, nchapters: Number, ndays_act: Number }
+	variation 119 { grade: String, incomplete_flag: Number, nchapters: Number }
+	variation 120 { grade: String, incomplete_flag: Number, ndays_act: Number }
+	variation 121 { grade: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 122 { grade: String, last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number }
+	variation 123 { grade: String, last_event_DI: String, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 124 { grade: String, last_event_DI: String, ndays_act: Number, nevents: Number }
+	variation 125 { grade: String, last_event_DI: String }
+	variation 126 { grade: String }
+	variation 127 { incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number, nplay_video: Number }
+	variation 128 { incomplete_flag: Number, last_event_DI: String, nchapters: Number, ndays_act: Number }
+	variation 129 { incomplete_flag: Number, last_event_DI: String, ndays_act: Number }
+	variation 130 { incomplete_flag: Number, nchapters: Number, ndays_act: Number }
+	variation 131 { incomplete_flag: Number, nchapters: Number }
+	variation 132 { incomplete_flag: Number, ndays_act: Number }
+	variation 133 { last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number, nplay_video: Number }
+	variation 134 { last_event_DI: String, nchapters: Number, ndays_act: Number, nevents: Number }
+	variation 135 { last_event_DI: String, ndays_act: Number, nevents: Number }
+	variation 136 { last_event_DI: String }
+	variation 137
+}

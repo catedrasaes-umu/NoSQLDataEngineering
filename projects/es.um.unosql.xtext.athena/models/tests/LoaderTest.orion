@@ -1,9 +1,0 @@
-LoaderTest OPERATIONS
-
-USING LoaderTest
-
-ADD ENTITY NewEntity { attr1: String }
-ADD ENTITY DelEntity
-
-DELETE ENTITY DelEntity
-RENAME ENTITY NewEntity TO RenamedEntity

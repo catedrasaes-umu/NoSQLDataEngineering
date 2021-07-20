@@ -1,0 +1,17 @@
+Schema SimplifierTest:1
+
+FSet fs1 fs2 U { c:Integer, (f,g) : ref<E3>, z: List, y: Set<String>, x: Map<String, Integer> }
+FSet fs2 { b , c: Option<Bool, String >, d: String, e: Bool }
+FSet fs4 fs2 - {b} - {d} - {c: Option<Bool, Integer, String>}
+FSet fs5 fs4 - {z: List, y: Set<String>, x: Map<String, Integer>}
+
+entity E1 {+a}
+
+entity E2
+{
+  variation 1 fs1 + E1 + {a: String}
+}
+
+entity E3 {+a}
+
+FSet str0 fs1 I {b, c, d, (f, g): ref<E3>, zxcv: ref<E1 as Integer>}

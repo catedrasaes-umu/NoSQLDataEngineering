@@ -1,0 +1,27 @@
+Schema InnerStructuresTest:1
+
+Root entity Entity1
+{
+  variation 1 { inner_aggr: { attr1: String, attr2: Number, attr3: Bool } }
+}
+
+Root entity Entity2
+{
+  variation 1
+  {
+    inner_aggr: { attr: String, attr2: Number, ? attr3: Bool },
+    inner_inner_aggr: { attr4: String, attr5: { attr6: String, attr7: Timestamp } }
+  }
+}
+
+root entity E3 { +_id: String }
+
+root entity E4
+{
+  variation 1
+  {
+    +_id: Identifier,
+    inner_aggr: { attr: String, attr2: Number, ? attr3: Bool },
+    inner_array_aggr: [{ a1: String, ? a2: Number}, {a1: String, ? a3: Boolean}]
+  }
+}

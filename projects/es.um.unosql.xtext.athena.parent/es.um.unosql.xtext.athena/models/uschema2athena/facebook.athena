@@ -1,0 +1,30 @@
+Schema facebook:1
+
+root entity Pages
+{
+	common { +_id: String, page_name: ref<Pages as String>+ }
+	variation 1
+}
+
+root entity Comments
+{
+	common { +_id: Identifier }
+	variation 1 { created_time: String, from_id: String, from_name: String, message: String, post_id: ref<Posts as String>+ }
+	variation 2 { created_time: String, from_id: String, from_name: String, message: String }
+	variation 3 { created_time: String, from_id: String, from_name: String, post_id: ref<Posts as String>+ }
+	variation 4 { created_time: String, from_id: String, message: String, post_id: ref<Posts as String>+ }
+	variation 5 { created_time: String, from_id: String }
+	variation 6 { created_time: String }
+	variation 7
+}
+
+root entity Posts
+{
+	common { +_id: String, created_time: String, page_id: ref<Pages as String>+, react_angry: Number, react_haha: Number, react_like: Number, react_love: Number, react_sad: Number, react_wow: Number, scrape_time: String, shares: Number }
+	variation 1 { description: String, link: String, message: String }
+	variation 2 { description: String, link: String }
+	variation 3 { link: String, message: String }
+	variation 4 { link: String }
+	variation 5 { message: String }
+	variation 6
+}

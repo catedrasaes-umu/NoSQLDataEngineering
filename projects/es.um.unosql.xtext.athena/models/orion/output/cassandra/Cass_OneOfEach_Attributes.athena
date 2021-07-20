@@ -1,5 +1,0 @@
-Schema Cass_OneOfEach_Attributes
-
-root entity EntityToAdd { +id: String, addAttrStr: String, addAttrNum: Number, addAttrDouble: Double, addAttrBool: Boolean, addAttrSet: Set<String>, addAttrList: List<String>, addAttrTuple: Tuple<String, Integer>, addAttrMap: Map<String, String> }
-
-root entity EntityToCast { +id: Identifier, attrToCastStr: String, attrToCastNum: Number, attrToCastDouble: Double, attrToCastBool: Boolean }
