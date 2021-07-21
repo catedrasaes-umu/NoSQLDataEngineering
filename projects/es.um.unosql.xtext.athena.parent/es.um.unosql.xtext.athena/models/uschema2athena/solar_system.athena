@@ -1,0 +1,103 @@
+Schema solar_system:1
+
+entity Mass
+{
+  common
+  {
+    massExponent: Number,
+    massValue: Number
+  }
+  variation 1
+}
+
+entity Vol
+{
+  common
+  {
+    volExponent: Number,
+    volValue: Number
+  }
+  variation 1
+}
+
+entity Aroundplanet
+{
+  common
+  {
+    planet: String,
+    rel: String
+  }
+  variation 1
+}
+
+entity Moon
+{
+  common
+  {
+    moon: String,
+    rel: String
+  }
+  variation 1
+}
+
+root entity Bodies
+{
+  common
+  {
+    +_id: String,
+    alternativeName: String,
+    aphelion: Number,
+    axialTilt: Number,
+    density: Number,
+    dimension: String,
+    discoveredBy: String,
+    discoveryDate: String,
+    eccentricity: Number,
+    englishName: String,
+    equaRadius: Number,
+    escape: Number,
+    flattening: Number,
+    gravity: Number,
+    inclination: Number,
+    isPlanet: Boolean,
+    meanRadius: Number,
+    name: String,
+    perihelion: Number,
+    polarRadius: Number,
+    rel: String,
+    semimajorAxis: Number,
+    sideralOrbit: Number,
+    sideralRotation: Number
+  }
+  variation 1
+  {
+    aroundPlanet: aggr<Aroundplanet.1>&,
+    mass: aggr<Mass.1>&,
+    vol: aggr<Vol.1>&
+  }
+  variation 2
+  {
+    aroundPlanet: aggr<Aroundplanet.1>&,
+    mass: aggr<Mass.1>&
+  }
+  variation 3
+  {
+    aroundPlanet: aggr<Aroundplanet.1>&
+  }
+  variation 4
+  {
+    mass: aggr<Mass.1>&,
+    moons: aggr<Moon.1>?,
+    vol: aggr<Vol.1>&
+  }
+  variation 5
+  {
+    mass: aggr<Mass.1>&,
+    vol: aggr<Vol.1>&
+  }
+  variation 6
+  {
+    mass: aggr<Mass.1>&
+  }
+  variation 7
+}

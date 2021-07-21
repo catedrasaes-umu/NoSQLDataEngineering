@@ -233,13 +233,12 @@ class USchema2Athena
 
   private def String getMultiplicity(int lBound, int uBound)
   {
-    if (lBound == 1 && uBound == 1)
-      return "+"
-    else if (uBound == 1 || uBound == -1)
-      return "*"
-    else
-      throw new IllegalArgumentException("Error: Can't create multiplicity for upper bound different of 1 and -1")
-    // Lower bound == 1 ? return "+" : return "*"
+    lBound == 0 && uBound == 1 ? return "?";
+    lBound == 1 && uBound == 1 ? return "&";
+    lBound == 0 && uBound == -1 ? return "*";
+    lBound == 1 && uBound == -1 ? return "+";
+
+    throw new IllegalArgumentException("Error: Can't create multiplicity for bounds different of 0, 1 and -1")
   }
 
   private def uNoSQLTypeToAthenaType(PrimitiveType type)

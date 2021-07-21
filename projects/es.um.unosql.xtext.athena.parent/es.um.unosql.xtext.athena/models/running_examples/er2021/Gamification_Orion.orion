@@ -23,7 +23,7 @@ ADD ENTITY Minigame:
   updatedAt:   Timestamp
 }
 
-ADD REF  Minigame::stageIds : Identifier* TO Stage
+ADD REF  Minigame::stageIds : Identifier+ TO Stage
 
 ADD ENTITY User:
 {
@@ -47,5 +47,5 @@ ADD AGGR ? User::minigameSummary:
   ? completedAt: Timestamp,
   ? points:      Integer
 }*
-ADD REF  User::minigameSummary.gameId: Identifier+ TO Minigame
+ADD REF  User::minigameSummary.gameId: Identifier& TO Minigame
 RENAME   User::minigameSummary TO games

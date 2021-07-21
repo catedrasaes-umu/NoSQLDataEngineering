@@ -2,50 +2,116 @@ Schema mongomovies:1
 
 root entity Movie
 {
-	common { +_id: String, director_id: ref<Director as String>+, title: String, year: Number }
-	variation 1 { criticisms: aggr<Criticism.1 , Criticism.2>*, genre: String, prizes: aggr<Prize.1 , Prize.2>* }
-	variation 2 { criticisms: aggr<Criticism.1 , Criticism.2>*, genre: String, rating: aggr<Rating.1>+ }
-	variation 3 { genre: String, prizes: aggr<Prize.2>* }
-	variation 4 { genre: String, running_time: Number }
-	variation 5
+  common
+  {
+    +_id: String,
+    director_id: ref<Director as String>&,
+    title: String,
+    year: Number
+  }
+  variation 1
+  {
+    criticisms: aggr<Criticism.1 , Criticism.2>*,
+    genre: String,
+    prizes: aggr<Prize.1 , Prize.2>*
+  }
+  variation 2
+  {
+    criticisms: aggr<Criticism.1 , Criticism.2>*,
+    genre: String,
+    rating: aggr<Rating.1>&
+  }
+  variation 3
+  {
+    genre: String,
+    prizes: aggr<Prize.2>?
+  }
+  variation 4
+  {
+    genre: String,
+    running_time: Number
+  }
+  variation 5
 }
 
 root entity Movietheater
 {
-	common { +_id: String, city: String, country: String, name: String }
-	variation 1 { noOfRooms: Number }
-	variation 2
+  common
+  {
+    +_id: String,
+    city: String,
+    country: String,
+    name: String
+  }
+  variation 1
+  {
+    noOfRooms: Number
+  }
+  variation 2
 }
 
 entity Medium
 {
-	common { name: String, url: String }
-	variation 1
+  common
+  {
+    name: String,
+    url: String
+  }
+  variation 1
 }
 
 entity Rating
 {
-	common { score: Number, voters: Number }
-	variation 1
+  common
+  {
+    score: Number,
+    voters: Number
+  }
+  variation 1
 }
 
 root entity Director
 {
-	common { +_id: String, directed_movies: ref<Movie as String>*, name: String }
-	variation 1 { actor_movies: ref<Movie as String>* }
-	variation 2
+  common
+  {
+    +_id: String,
+    directed_movies: ref<Movie as String>*,
+    name: String
+  }
+  variation 1
+  {
+    actor_movies: ref<Movie as String>*
+  }
+  variation 2
 }
 
 entity Criticism
 {
-	common { color: String, journalist: String }
-	variation 1 { media: aggr<Medium.1>* }
-	variation 2 { media: String }
+  common
+  {
+    color: String,
+    journalist: String
+  }
+  variation 1
+  {
+    media: aggr<Medium.1>?
+  }
+  variation 2
+  {
+    media: String
+  }
 }
 
 entity Prize
 {
-	common { event: String, year: Number }
-	variation 1
-	variation 2 { name: String }
+  common
+  {
+    event: String,
+    year: Number
+  }
+  variation 1
+  variation 2
+  {
+    name: String
+  }
 }

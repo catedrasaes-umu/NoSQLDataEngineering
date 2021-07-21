@@ -307,9 +307,9 @@ class Athena2USchema
 
   private def int getUpperBound(String multiplicity)
   {
-    if (multiplicity === null || multiplicity.equals("*"))
+    if (multiplicity === null || multiplicity.equals("*") || multiplicity.equals("+"))
       return -1
-    else if (multiplicity.equals("+"))
+    else if (multiplicity.equals("?") || multiplicity.equals("&"))
       return 1
     else
       return 0 // Uh-oh
@@ -317,7 +317,9 @@ class Athena2USchema
 
   private def int getLowerBound(String multiplicity)
   {
-    if (multiplicity.equals("+"))
+    if (multiplicity === null || multiplicity.equals("?") || multiplicity.equals("*"))
+      return 0
+    else if (multiplicity.equals("&") || multiplicity.equals("+"))
       return 1
     else
       return 0

@@ -107,16 +107,16 @@ class Athena2MongoDBSchemaValidator
 
   private def dispatch CharSequence generateType(SimpleReferenceTarget type, String name, boolean optional)
   '''
-    bsonType: "«IF type.multiplicity.equals("*")»array«ELSE»«athenaTypeToMongoDBType(type.type)»«ENDIF»",
-    «IF type.multiplicity.equals("*")»items: { bsonType: "«athenaTypeToMongoDBType(type.type)»" } ,«ENDIF»
-    description: "Field «name» must be of type «IF type.multiplicity.equals("*")»array«ELSE»«athenaTypeToMongoDBType(type.type)»«ENDIF»«IF !optional» and IS required«ENDIF»."
+    bsonType: "«IF type.multiplicity.equals("*") || type.multiplicity.equals("+")»array«ELSE»«athenaTypeToMongoDBType(type.type)»«ENDIF»",
+    «IF type.multiplicity.equals("*") || type.multiplicity.equals("+")»items: { bsonType: "«athenaTypeToMongoDBType(type.type)»" } ,«ENDIF»
+    description: "Field «name» must be of type «IF type.multiplicity.equals("*") || type.multiplicity.equals("+")»array«ELSE»«athenaTypeToMongoDBType(type.type)»«ENDIF»«IF !optional» and IS required«ENDIF»."
   '''
 
   private def dispatch CharSequence generateType(SimpleAggregateTarget type, String name, boolean optional)
   '''
     «val aggregatedFeatures = handler.getFeaturesInAggregate(type.aggr).filter(SimpleFeature)»
-    bsonType: "«IF type.multiplicity.equals("*")»array«ELSE»object«ENDIF»",
-    «IF type.multiplicity.equals("*")»items: { bsonType: "object" } ,«ENDIF»
+    bsonType: "«IF type.multiplicity.equals("*") || type.multiplicity.equals("+")»array«ELSE»object«ENDIF»",
+    «IF type.multiplicity.equals("*") || type.multiplicity.equals("+")»items: { bsonType: "object" } ,«ENDIF»
     «IF aggregatedFeatures.exists[f | !f.isOptional]»required: [ «FOR feat : aggregatedFeatures.filter[f | !f.isOptional] SEPARATOR ", "»"«feat.name»"«ENDFOR» ],«ENDIF»
     properties:
     {
@@ -124,7 +124,7 @@ class Athena2MongoDBSchemaValidator
         «generateFeature(feat)»
       «ENDFOR»
     },
-    description: "Field «name» must be of type «IF type.multiplicity.equals("*")»array«ELSE»object«ENDIF»«IF !optional» and IS required«ENDIF»."
+    description: "Field «name» must be of type «IF type.multiplicity.equals("*") || type.multiplicity.equals("+")»array«ELSE»object«ENDIF»«IF !optional» and IS required«ENDIF»."
   '''
 
   private def dispatch generateType(List type, String name, boolean optional)

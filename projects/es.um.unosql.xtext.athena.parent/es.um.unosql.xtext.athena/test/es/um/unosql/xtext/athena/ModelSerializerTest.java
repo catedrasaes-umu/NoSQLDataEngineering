@@ -11,6 +11,7 @@ import es.um.unosql.xtext.athena.athena.AthenaSchema;
 import es.um.unosql.xtext.athena.athena.FeatureSetDecl;
 import es.um.unosql.xtext.athena.athena.RegularEntityDecl;
 import es.um.unosql.xtext.athena.athena.ShortEntityDecl;
+import es.um.unosql.xtext.athena.athena.SimpleFeature;
 import es.um.unosql.xtext.athena.athena.VariationDecl;
 import es.um.unosql.xtext.athena.utils.AthenaFactory;
 import es.um.unosql.xtext.athena.utils.io.AthenaIO;
@@ -34,8 +35,11 @@ public class ModelSerializerTest
   {
     AthenaSchema schema = factory.createAthenaSchema("ModelSerializerTest");
 
+    SimpleFeature idKey = factory.createSimpleFeature("_id", factory.createUnrestrictedPrimitiveType("String"));
+    idKey.setKey(true);
+
     FeatureSetDecl commons = factory.createFeatureSetDecl("commons", factory.createStructureLiteral(factory.createFeatureSet(
-        factory.createSimpleFeature("_id", factory.createUnrestrictedPrimitiveType("String")),
+        idKey,
         factory.createSimpleFeature("name", factory.createUnrestrictedPrimitiveType("String")))));
     schema.getFeatureSets().add(commons);
 
@@ -69,7 +73,7 @@ public class ModelSerializerTest
     regularEntity2.getVariations().add(var);
     var.setStructure(factory.createStructureLiteral(factory.createFeatureSet(
         factory.createSimpleFeature("attr2", factory.createUnrestrictedPrimitiveType("Number")),
-        factory.createSimpleFeature("attr3", factory.createSimpleAggr(shortEntity, "+")))));
+        factory.createSimpleFeature("attr3", factory.createSimpleAggr(shortEntity, "&")))));
 
     var = factory.createVariationDecl(2);
     regularEntity2.getVariations().add(var);
@@ -86,9 +90,9 @@ public class ModelSerializerTest
 
     var = factory.createVariationDecl(1);
     var.setStructure(factory.createStructureLiteral(factory.createFeatureSet(
-        factory.createSimpleFeature("ratings", factory.createSimpleAggr(shortEntity, "+")),
-        factory.createSimpleFeature("prizes", factory.createSimpleAggr(regularEntity1.getVariations().get(0), "*")),
-        factory.createSimpleFeature("reviews", factory.createSimpleAggr(regularEntity2.getVariations().get(0), "*")))));
+        factory.createSimpleFeature("ratings", factory.createSimpleAggr(shortEntity, "&")),
+        factory.createSimpleFeature("prizes", factory.createSimpleAggr(regularEntity1.getVariations().get(0), "+")),
+        factory.createSimpleFeature("reviews", factory.createSimpleAggr(regularEntity2.getVariations().get(0), "+")))));
     regularRootEntity1.getVariations().add(var);
 
     RegularEntityDecl regularRootEntity2 = factory.createRegularEntityDecl("RegularRootEntity2", true); schema.getEntities().add(regularRootEntity2);
@@ -97,16 +101,16 @@ public class ModelSerializerTest
         factory.createSimpleFeature("attr2", factory.createUnrestrictedPrimitiveType("Double"))))));
 
     regularRootEntity2.getCommon().setStructure(factory.createStructureLiteral(factory.createFeatureSet(
-        factory.createSimpleFeature("ref1", factory.createSimpleRef(regularRootEntity1, "*")))));
+        factory.createSimpleFeature("ref1", factory.createSimpleRef(regularRootEntity1, "+")))));
     var = factory.createVariationDecl(1);
-    var.setStructure(factory.createStructureLiteral(factory.createFeatureSet(factory.createSimpleFeature("ref2", factory.createSimpleRef(regularRootEntity1, "*")))));
+    var.setStructure(factory.createStructureLiteral(factory.createFeatureSet(factory.createSimpleFeature("ref2", factory.createSimpleRef(regularRootEntity1, "+")))));
     regularRootEntity2.getVariations().add(var);
 
     assertEquals("Schema ModelSerializerTest:1\r\n" + 
         "\r\n" + 
         "fset commons\r\n"
         + "{\r\n"
-        + "  _id: String,\r\n"
+        + "  +_id: String,\r\n"
         + "  name: String\r\n"
         + "}\r\n" + 
         "\r\n" + 
@@ -144,7 +148,7 @@ public class ModelSerializerTest
         "  variation 1\r\n"
         + "  {\r\n"
         + "    attr2: Number,\r\n"
-        + "    attr3: aggr<ShortEmbeddedEntity>+\r\n"
+        + "    attr3: aggr<ShortEmbeddedEntity>&\r\n"
         + "  }\r\n" + 
         "  variation 2\r\n"
         + "  {\r\n"
@@ -164,9 +168,9 @@ public class ModelSerializerTest
         + "  }\r\n" + 
         "  variation 1\r\n"
         + "  {\r\n"
-        + "    ratings: aggr<ShortEmbeddedEntity>+,\r\n"
-        + "    prizes: aggr<RegularEmbeddedEntity1.1>*,\r\n"
-        + "    reviews: aggr<RegularEmbeddedEntity2.1>*\r\n"
+        + "    ratings: aggr<ShortEmbeddedEntity>&,\r\n"
+        + "    prizes: aggr<RegularEmbeddedEntity1.1>+,\r\n"
+        + "    reviews: aggr<RegularEmbeddedEntity2.1>+\r\n"
         + "  }\r\n" + 
         "}\r\n" + 
         "\r\n" + 
@@ -174,11 +178,11 @@ public class ModelSerializerTest
         "{\r\n" + 
         "  common\r\n"
         + "  {\r\n"
-        + "    ref1: ref<RegularRootEntity1>*\r\n"
+        + "    ref1: ref<RegularRootEntity1>+\r\n"
         + "  }\r\n" + 
         "  variation 1\r\n"
         + "  {\r\n"
-        + "    ref2: ref<RegularRootEntity1>*\r\n"
+        + "    ref2: ref<RegularRootEntity1>+\r\n"
         + "  }\r\n" + 
         "}\r\n", athenaIO.serialize(schema));
   }

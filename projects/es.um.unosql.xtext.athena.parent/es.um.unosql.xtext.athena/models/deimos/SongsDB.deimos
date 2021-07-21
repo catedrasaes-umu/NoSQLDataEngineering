@@ -70,16 +70,16 @@ Rules:
 
 root entity Album
 {
-  common      { _id: String, formats: List<String>, name: String, popularity: Double, releaseYear: Number, tracks: ref<Track as String>* }
-  variation 1 { availability: String, reviews: aggr<Review>* }
-  variation 2 { availability: List<String>, reviews: aggr<Review>* }
+  common      { +_id: String, formats: List<String>, name: String, popularity: Double, releaseYear: Number, tracks: ref<Track as String>+ }
+  variation 1 { availability: String, reviews: aggr<Review>+ }
+  variation 2 { availability: List<String>, reviews: aggr<Review>+ }
   variation 3 { availability: List<String> }
 }
 
 entity Review
 {
   common      { journalist: String, rank: String, stars: Number }
-  variation 1 { media: aggr<Medium>+}
+  variation 1 { media: aggr<Medium>&}
   variation 2 { media: String }
 }
 

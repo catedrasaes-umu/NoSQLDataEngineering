@@ -65,7 +65,7 @@ public class ModelWriterTest
       "  variation 1\r\n"
       + "  {\r\n"
       + "    attr2: Number,\r\n"
-      + "    attr3: aggr<ShortEmbeddedEntity>+\r\n"
+      + "    attr3: aggr<ShortEmbeddedEntity>&\r\n"
       + "  }\r\n" + 
       "  variation 2\r\n"
       + "  {\r\n"
@@ -85,9 +85,9 @@ public class ModelWriterTest
       + "  }\r\n" + 
       "  variation 1\r\n"
       + "  {\r\n"
-      + "    ratings: aggr<ShortEmbeddedEntity>+,\r\n"
-      + "    prizes: aggr<RegularEmbeddedEntity1.1>*,\r\n"
-      + "    reviews: aggr<RegularEmbeddedEntity2.1>*\r\n"
+      + "    ratings: aggr<ShortEmbeddedEntity>&,\r\n"
+      + "    prizes: aggr<RegularEmbeddedEntity1.1>+,\r\n"
+      + "    reviews: aggr<RegularEmbeddedEntity2.1>+\r\n"
       + "  }\r\n" + 
       "}\r\n" + 
       "\r\n" + 
@@ -95,11 +95,11 @@ public class ModelWriterTest
       "{\r\n" + 
       "  common\r\n"
       + "  {\r\n"
-      + "    ref1: ref<RegularRootEntity1>*\r\n"
+      + "    ref1: ref<RegularRootEntity1>+\r\n"
       + "  }\r\n" + 
       "  variation 1\r\n"
       + "  {\r\n"
-      + "    ref2: ref<RegularRootEntity1>*\r\n"
+      + "    ref2: ref<RegularRootEntity1>+\r\n"
       + "  }\r\n" + 
       "}\r\n";
 
@@ -158,7 +158,7 @@ public class ModelWriterTest
     regularEntity2.getVariations().add(var);
     var.setStructure(factory.createStructureLiteral(factory.createFeatureSet(
         factory.createSimpleFeature("attr2", factory.createUnrestrictedPrimitiveType("Number")),
-        factory.createSimpleFeature("attr3", factory.createSimpleAggr(shortEntity, "+")))));
+        factory.createSimpleFeature("attr3", factory.createSimpleAggr(shortEntity, "&")))));
 
     var = factory.createVariationDecl(2);
     regularEntity2.getVariations().add(var);
@@ -175,9 +175,9 @@ public class ModelWriterTest
 
     var = factory.createVariationDecl(1);
     var.setStructure(factory.createStructureLiteral(factory.createFeatureSet(
-        factory.createSimpleFeature("ratings", factory.createSimpleAggr(shortEntity, "+")),
-        factory.createSimpleFeature("prizes", factory.createSimpleAggr(regularEntity1.getVariations().get(0), "*")),
-        factory.createSimpleFeature("reviews", factory.createSimpleAggr(regularEntity2.getVariations().get(0), "*")))));
+        factory.createSimpleFeature("ratings", factory.createSimpleAggr(shortEntity, "&")),
+        factory.createSimpleFeature("prizes", factory.createSimpleAggr(regularEntity1.getVariations().get(0), "+")),
+        factory.createSimpleFeature("reviews", factory.createSimpleAggr(regularEntity2.getVariations().get(0), "+")))));
     regularRootEntity1.getVariations().add(var);
 
     RegularEntityDecl regularRootEntity2 = factory.createRegularEntityDecl("RegularRootEntity2", true); schema.getEntities().add(regularRootEntity2);
@@ -186,9 +186,9 @@ public class ModelWriterTest
         factory.createSimpleFeature("attr2", factory.createUnrestrictedPrimitiveType("Double"))))));
 
     regularRootEntity2.getCommon().setStructure(factory.createStructureLiteral(factory.createFeatureSet(
-        factory.createSimpleFeature("ref1", factory.createSimpleRef(regularRootEntity1, "*")))));
+        factory.createSimpleFeature("ref1", factory.createSimpleRef(regularRootEntity1, "+")))));
     var = factory.createVariationDecl(1);
-    var.setStructure(factory.createStructureLiteral(factory.createFeatureSet(factory.createSimpleFeature("ref2", factory.createSimpleRef(regularRootEntity1, "*")))));
+    var.setStructure(factory.createStructureLiteral(factory.createFeatureSet(factory.createSimpleFeature("ref2", factory.createSimpleRef(regularRootEntity1, "+")))));
     regularRootEntity2.getVariations().add(var);
 
     return schema;

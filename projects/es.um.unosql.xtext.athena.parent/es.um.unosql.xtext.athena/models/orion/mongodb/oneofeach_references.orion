@@ -5,26 +5,26 @@ SCRIPT MODE
 ADD ENTITY EntityDummy: { +_id: String }
 ADD ENTITY EntityRefs: { +_id: Identifier }
 
-ADD REF EntityRefs::nullRefSimple+ TO EntityDummy
-ADD REF EntityRefs::nullRefArray* TO EntityDummy
-ADD REF EntityRefs::strRefSimple: String+ TO EntityDummy
-ADD REF EntityRefs::strRefArray: String* TO EntityDummy
-ADD REF EntityRefs::numRefSimple: Number+ TO EntityDummy
-ADD REF EntityRefs::numRefArray: Number* TO EntityDummy
+ADD REF EntityRefs::nullRefSimple& TO EntityDummy
+ADD REF EntityRefs::nullRefArray+ TO EntityDummy
+ADD REF EntityRefs::strRefSimple: String& TO EntityDummy
+ADD REF EntityRefs::strRefArray: String+ TO EntityDummy
+ADD REF EntityRefs::numRefSimple: Number& TO EntityDummy
+ADD REF EntityRefs::numRefArray: Number+ TO EntityDummy
 
-ADD REF EntityRefs::nullRefSimpleChange+ TO EntityDummy
-ADD REF EntityRefs::nullRefArrayChange* TO EntityDummy
-ADD REF EntityRefs::strRefSimpleChange: String+ TO EntityDummy
-ADD REF EntityRefs::strRefArrayChange: String* TO EntityDummy
-ADD REF EntityRefs::numRefSimpleChange: Number+ TO EntityDummy
-ADD REF EntityRefs::numRefArrayChange: Number* TO EntityDummy
+ADD REF EntityRefs::nullRefSimpleChange& TO EntityDummy
+ADD REF EntityRefs::nullRefArrayChange+ TO EntityDummy
+ADD REF EntityRefs::strRefSimpleChange: String& TO EntityDummy
+ADD REF EntityRefs::strRefArrayChange: String+ TO EntityDummy
+ADD REF EntityRefs::numRefSimpleChange: Number& TO EntityDummy
+ADD REF EntityRefs::numRefArrayChange: Number+ TO EntityDummy
 
-CARD REF EntityRefs::nullRefSimpleChange TO *
-CARD REF EntityRefs::nullRefArrayChange TO +
-CARD REF EntityRefs::strRefSimpleChange TO *
-CARD REF EntityRefs::strRefArrayChange TO +
-CARD REF EntityRefs::numRefSimpleChange TO *
-CARD REF EntityRefs::numRefArrayChange TO +
+CARD REF EntityRefs::nullRefSimpleChange TO +
+CARD REF EntityRefs::nullRefArrayChange TO &
+CARD REF EntityRefs::strRefSimpleChange TO +
+CARD REF EntityRefs::strRefArrayChange TO &
+CARD REF EntityRefs::numRefSimpleChange TO +
+CARD REF EntityRefs::numRefArrayChange TO &
 
 ADD ENTITY EntityRef1: { +_id: String("refId1"), value1: String("value1"), value2: String("value2") }
 ADD ENTITY EntityRef2: { +_id: String("refId2"), value3: String("value3"), value4: String("value4") }
@@ -34,11 +34,11 @@ ADD ENTITY EntityRef5: { +_id: String("refId5"), value9: String("value9"), value
 
 ADD ENTITY EntityMorphRef: { +_id }
 
-ADD REF EntityMorphRef::refToEntity1: String("refId1")+ TO EntityRef1
-ADD REF EntityMorphRef::refToEntity2: String("refId2")+ TO EntityRef2
-ADD REF EntityMorphRef::refToEntity3: String("refId3")+ TO EntityRef3
-ADD REF EntityMorphRef::refToEntity4: String("refId4")* TO EntityRef4
-ADD REF EntityMorphRef::refToEntity5: String("refId5")* TO EntityRef5
+ADD REF EntityMorphRef::refToEntity1: String("refId1")& TO EntityRef1
+ADD REF EntityMorphRef::refToEntity2: String("refId2")& TO EntityRef2
+ADD REF EntityMorphRef::refToEntity3: String("refId3")& TO EntityRef3
+ADD REF EntityMorphRef::refToEntity4: String("refId4")+ TO EntityRef4
+ADD REF EntityMorphRef::refToEntity5: String("refId5")+ TO EntityRef5
 
 MORPH REF EntityMorphRef::refToEntity1 TO aggrEntity1
 MORPH REF EntityMorphRef::refToEntity2 ( rmId ) TO aggrEntity2

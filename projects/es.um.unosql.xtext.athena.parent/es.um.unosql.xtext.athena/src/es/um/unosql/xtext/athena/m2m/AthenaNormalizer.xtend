@@ -84,10 +84,10 @@ class AthenaNormalizer
           if (simpleFeat.type instanceof SimpleAggregateTarget && !((simpleFeat.type as SimpleAggregateTarget).aggr as EList<EObject>).filter(VariationDecl).exists[v | v.name.equals(result.name)])
             ((simpleFeat.type as SimpleAggregateTarget).aggr as EList<EObject>).add(result) // We checked that the Variation was not already aggregated.
           else
-            simpleFeat.type = factory.createSimpleAggr(new BasicEList(Arrays.asList(result)), "*")
+            simpleFeat.type = factory.createSimpleAggr(new BasicEList(Arrays.asList(result)), "+")
         }
         if (result instanceof EntityDecl && !(simpleFeat.type instanceof SimpleAggregateTarget)) // The second comparison is to check that the Aggregate was not already initialized
-          simpleFeat.type = factory.createSimpleAggr(result, "*")
+          simpleFeat.type = factory.createSimpleAggr(result, "+")
       }
     }
   }
@@ -103,9 +103,9 @@ class AthenaNormalizer
       val result = transformInnerStructureLiteral(schema, simpleFeat.name.toFirstUpper, innerStruct)
 
       if (result instanceof VariationDecl)
-        simpleFeat.type = factory.createSimpleAggr(new BasicEList(Arrays.asList(result)), "+")
+        simpleFeat.type = factory.createSimpleAggr(new BasicEList(Arrays.asList(result)), "&")
       if (result instanceof EntityDecl)
-        simpleFeat.type = factory.createSimpleAggr(result, "+")
+        simpleFeat.type = factory.createSimpleAggr(result, "&")
 
       innerStruct = EcoreUtil2.getAllContentsOfType(schema, InnerStructureLiteral).head
     }

@@ -11,7 +11,7 @@ class USchema2AthenaMain
 {
   def static void main(String[] args)
   {
-    // val custom_args = newArrayList("-f", "models/subtypes_output/", "-o", "models/subtypes/")
+    // val custom_args = newArrayList("-f", "../../es.um.unosql.models/", "-o", "models/uschema2athena/")
 
     val config = new USchema2AthenaConfig(args)
 
@@ -38,7 +38,7 @@ class USchema2AthenaMain
     {
       println("ATHENA>> Model: " + model.name)
       val schema = transformer.m2m(loader.load(model, uNoSQLSchema))
-      athenaIO.write(schema, outputPath.resolve(schema.id.name + "_" + schema.id.version + ".athena"))
+      athenaIO.write(schema, outputPath.resolve(schema.id.name + ".athena"))
     }
 
     println("ATHENA> Athena generation finished!")

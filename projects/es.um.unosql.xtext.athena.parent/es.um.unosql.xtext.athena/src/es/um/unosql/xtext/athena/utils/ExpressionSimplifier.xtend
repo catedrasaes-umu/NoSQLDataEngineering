@@ -312,7 +312,7 @@ class ExpressionSimplifier
       val newFeature = factory.createSimpleFeature(element.name)
 
       if (element.refs !== null)
-        newFeature.type = factory.createSimpleRef(element.refs.ref, "+", sqlTypeToAthenaType(element.type))
+        newFeature.type = factory.createSimpleRef(element.refs.ref, "&", sqlTypeToAthenaType(element.type))
       else
         newFeature.type = sqlTypeToAthenaType(element.type)
 
@@ -351,7 +351,7 @@ class ExpressionSimplifier
           else
           {
             val feature = result.features.findFirst[f | f instanceof SimpleFeature && (f as SimpleFeature).name.equals(element.colNames.head)] as SimpleFeature
-            feature.type = factory.createSimpleRef(element.refs.ref, "+", feature.type as PrimitiveType)
+            feature.type = factory.createSimpleRef(element.refs.ref, "&", feature.type as PrimitiveType)
           }
         }
       }

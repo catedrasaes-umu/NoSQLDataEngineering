@@ -220,6 +220,8 @@ class AthenaFormatter extends AbstractFormatter2
   {
     ref.regionFor.keyword("<").prepend[noSpace].append[noSpace]
     ref.regionFor.keyword(">").prepend[noSpace]
+    ref.regionFor.keyword("?").prepend[noSpace]
+    ref.regionFor.keyword("&").prepend[noSpace]
     ref.regionFor.keyword("+").prepend[noSpace]
     ref.regionFor.keyword("*").prepend[noSpace]
   }
@@ -228,6 +230,8 @@ class AthenaFormatter extends AbstractFormatter2
   {
     aggr.regionFor.keyword("<").prepend[noSpace].append[noSpace]
     aggr.regionFor.keyword(">").prepend[noSpace]
+    aggr.regionFor.keyword("?").prepend[noSpace]
+    aggr.regionFor.keyword("&").prepend[noSpace]
     aggr.regionFor.keyword("+").prepend[noSpace]
     aggr.regionFor.keyword("*").prepend[noSpace]
   }

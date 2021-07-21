@@ -10,7 +10,7 @@ NEST Posts::CreationDate, LastActivityDate TO PostMetadata
 NEST Posts::LastEditDate, LastEditorUserId, LastEditorDisplayName TO PostEditionInfo
 NEST Users::CreationDate, LastAccessDate, DownVotes, UpVotes TO UserMetadata
 
-CARD REF Posts::Tags TO *
+CARD REF Posts::Tags TO +
 
 COPY Postlinks::_id TO Posts::postlinkId WHERE Postlinks.PostId = Posts._id
 
@@ -19,5 +19,5 @@ MORPH REF Posts::postlinkId ( rmId rmEntity ) TO Postlinks
 
 COPY Badges::_id TO Users::badgeId WHERE Badges.UserId = Users._id
 MORPH REF Users::badgeId ( rmId rmEntity ) TO Badges
-CARD AGGR Users::badgeId TO *
+CARD AGGR Users::badgeId TO +
 RENAME Users::badgeId TO badges

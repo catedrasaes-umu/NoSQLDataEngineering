@@ -65,8 +65,8 @@ entity Entity8 { variation 1 {+a, +b} U struct1 variation 2 {a, b} + struct1 var
 // Test refs, aggrs and random stuff
 entity Entity9
 {
-  variation 1 {refE1: ref<Entity5>, refE2: ref<Entity5>+, refE3: ref<Entity5>*, refE4: ref<Entity5 as String>, refE5: ref<Entity5 feat Rel5>}
-  variation 2 {aggrE1: aggr<Entity5>, aggrE2: aggr<Entity5>+, aggrE3: aggr<Entity5>*, aggrE4: aggr<Entity5.1>}
+  variation 1 {refE1: ref<Entity5>, refE2: ref<Entity5>&, refE3: ref<Entity5>*, refE4: ref<Entity5 as String>, refE5: ref<Entity5 feat Rel5>}
+  variation 2 {aggrE1: aggr<Entity5>, aggrE2: aggr<Entity5>&, aggrE3: aggr<Entity5>*, aggrE4: aggr<Entity5.1>}
   variation 3 { (key1, key2): ref<Entity5>, (key1, key2, key3): ref<Entity5> }
 }
 //StructureFromCreateTable

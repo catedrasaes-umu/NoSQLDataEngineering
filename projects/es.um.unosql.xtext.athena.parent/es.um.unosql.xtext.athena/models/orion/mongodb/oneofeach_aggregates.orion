@@ -30,7 +30,7 @@ ADD ATTR EntityToAggr::aggrByHand2.numAttrArrayChange: List<Number> (44)
 
 CARD AGGR EntityToAggr::aggrByHand1 TO *
 
-ADD ENTITY EntityMorphAggr: { _id }
+ADD ENTITY EntityMorphAggr: { +_id }
 ADD AGGR EntityMorphAggr::aggr1: { string1: String, string2: String }+
 ADD AGGR EntityMorphAggr::aggr2: { aList: List, aMap: Map }+
 ADD AGGR EntityMorphAggr::aggr3: { string5: String, string6: String }*

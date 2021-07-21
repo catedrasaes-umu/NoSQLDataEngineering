@@ -26,5 +26,5 @@ RENAME ENTITY MinigameSummary TO Summary
 // Others
 ADD ENTITY Company: { +id: Identifier, code: String, name: String, numOfEmployees: Number }
 PROMOTE ATTR Company::code
-ADD REF Company::staff* TO Employee
-ADD AGGR Company::media: { twitterProf: String, fbProf: String, webUrl: String, ytProf: String}+
+ADD REF Company::staff+ TO Employee
+ADD AGGR Company::media: { twitterProf: String, fbProf: String, webUrl: String, ytProf: String}&

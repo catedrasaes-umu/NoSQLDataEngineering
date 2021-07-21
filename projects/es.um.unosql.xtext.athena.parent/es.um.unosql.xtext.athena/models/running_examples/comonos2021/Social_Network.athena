@@ -32,7 +32,7 @@ Root entity Post
   message:       String,
   social:        { views: Integer, reactions: Integer, shares: Number },
   title:         String,
-  user_id:       ref<User>+,
+  user_id:       ref<User>&,
   ? tags:        List<String>
 } U Timestamp_features
   U Vote_features
@@ -44,7 +44,7 @@ Root entity User
     + id:     Identifier,
     ! email:  String /^.+@.+\\.com$/,
     type:     String in ( "Guest", "User", "Admin" ), 
-    user_data: Aggr<UserData>+
+    user_data: Aggr<UserData>&
   }
   Variation 1 { is_active: Boolean }
   Variation 2 { suspended_acc: Option<Integer, Boolean> }
@@ -54,5 +54,5 @@ Entity UserData
 {
   address:       String,
   name:          String /^[A-Z][a-z]*$/,
-  ? about_me:     String
+  ? about_me:    String
 }

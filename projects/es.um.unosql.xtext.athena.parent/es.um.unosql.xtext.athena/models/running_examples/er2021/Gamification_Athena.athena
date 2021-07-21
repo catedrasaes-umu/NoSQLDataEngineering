@@ -21,7 +21,7 @@ Root entity Minigame
   isActive:      Boolean,
   name:          String,
   points:        Integer (0 .. 99),
-  stageIds:      Ref<Stage as Identifier>*
+  stageIds:      Ref<Stage as Identifier>+
 } + timeData
 
 Root entity User
@@ -31,12 +31,12 @@ Root entity User
     +id:           Identifier,
     avatarUrl:     String,
     email:         String /^.+@.+\\.com$/,
-    personalInfo:  Aggr<PersonalInfo>+
+    personalInfo:  Aggr<PersonalInfo>&
   }
   Variation 1
   Variation 2
   {
-    games:         Aggr<MinigameSummary>*,
+    games:         Aggr<MinigameSummary>+,
     points:        Integer (0 .. 9999)
   }
 }
@@ -52,7 +52,7 @@ Entity PersonalInfo
 
 Entity MinigameSummary
 {
-  gameId:        Ref<Minigame>+,
+  gameId:        Ref<Minigame>&,
   scheduledAt:   Timestamp,
   ? completedAt: Timestamp,
   ? points:      Integer

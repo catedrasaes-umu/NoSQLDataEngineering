@@ -77,8 +77,8 @@ class CassandraValidator
   {
     if (ref.multiplicity === null)
     {
-      warningLog.add("SimpleFeature - In Cassandra a reference must have a multiplicity. Setting it to 0..1: " + athenaIO.serialize(ref.eContainer) + "\n")
-      ref.multiplicity = "+"
+      warningLog.add("SimpleFeature - In Cassandra a reference must have a multiplicity. Setting it to 1..1: " + athenaIO.serialize(ref.eContainer) + "\n")
+      ref.multiplicity = "&"
     }
 
     return ref
@@ -88,8 +88,8 @@ class CassandraValidator
   {
     if (aggr.multiplicity === null)
     {
-      warningLog.add("SimpleFeature - In Cassandra a reference must have a multiplicity. Setting it to 0..1: " + athenaIO.serialize(aggr.eContainer) + "\n")
-      aggr.multiplicity = "+"
+      warningLog.add("SimpleFeature - In Cassandra a reference must have a multiplicity. Setting it to 1..1: " + athenaIO.serialize(aggr.eContainer) + "\n")
+      aggr.multiplicity = "&"
     }
 
     return aggr

@@ -10,10 +10,10 @@ root entity EntityListSet
 root entity EntityAggrRef
 {
   +id: Number,
-  aSimpleRef: ref<EntityReferenced>+,
-  aMultiRef: ref<EntityReferenced>*,
-  aSimpleAggr: aggr<EntityAggregated>+,
-  aMultiAggr: aggr<EntityAggregated>*,
+  aSimpleRef: ref<EntityReferenced>&,
+  aMultiRef: ref<EntityReferenced>+,
+  aSimpleAggr: aggr<EntityAggregated>&,
+  aMultiAggr: aggr<EntityAggregated>+,
   a1: String,
   a2: String,
   (a1, a2): ref<EntityMultiKey>

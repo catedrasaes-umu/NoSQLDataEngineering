@@ -141,32 +141,32 @@ EBlock 4 // Aggregate operations - Transactional
 
 EBlock 5 // Reference operations - Transactional
 {
-  ADD REF EntityRefs::nullRefSimple+ TO EntityDummy
-  ADD REF EntityRefs::nullRefArray* TO EntityDummy
-  ADD REF EntityRefs::strRefSimple: String+ TO EntityDummy
-  ADD REF EntityRefs::strRefArray: String* TO EntityDummy
-  ADD REF EntityRefs::numRefSimple: Number+ TO EntityDummy
-  ADD REF EntityRefs::numRefArray: Number* TO EntityDummy
+  ADD REF EntityRefs::nullRefSimple& TO EntityDummy
+  ADD REF EntityRefs::nullRefArray+ TO EntityDummy
+  ADD REF EntityRefs::strRefSimple: String& TO EntityDummy
+  ADD REF EntityRefs::strRefArray: String+ TO EntityDummy
+  ADD REF EntityRefs::numRefSimple: Number& TO EntityDummy
+  ADD REF EntityRefs::numRefArray: Number+ TO EntityDummy
   
-  ADD REF EntityRefs::nullRefSimpleChange+ TO EntityDummy
-  ADD REF EntityRefs::nullRefArrayChange* TO EntityDummy
-  ADD REF EntityRefs::strRefSimpleChange: String+ TO EntityDummy
-  ADD REF EntityRefs::strRefArrayChange: String* TO EntityDummy
-  ADD REF EntityRefs::numRefSimpleChange: Number+ TO EntityDummy
-  ADD REF EntityRefs::numRefArrayChange: Number* TO EntityDummy
+  ADD REF EntityRefs::nullRefSimpleChange& TO EntityDummy
+  ADD REF EntityRefs::nullRefArrayChange+ TO EntityDummy
+  ADD REF EntityRefs::strRefSimpleChange: String& TO EntityDummy
+  ADD REF EntityRefs::strRefArrayChange: String+ TO EntityDummy
+  ADD REF EntityRefs::numRefSimpleChange: Number& TO EntityDummy
+  ADD REF EntityRefs::numRefArrayChange: Number+ TO EntityDummy
   
-  CARD REF EntityRefs::nullRefSimpleChange TO *
-  CARD REF EntityRefs::nullRefArrayChange TO +
-  CARD REF EntityRefs::strRefSimpleChange TO *
-  CARD REF EntityRefs::strRefArrayChange TO +
-  CARD REF EntityRefs::numRefSimpleChange TO *
-  CARD REF EntityRefs::numRefArrayChange TO +
+  CARD REF EntityRefs::nullRefSimpleChange TO +
+  CARD REF EntityRefs::nullRefArrayChange TO &
+  CARD REF EntityRefs::strRefSimpleChange TO +
+  CARD REF EntityRefs::strRefArrayChange TO &
+  CARD REF EntityRefs::numRefSimpleChange TO +
+  CARD REF EntityRefs::numRefArrayChange TO &
 
-  ADD REF EntityMorphRef::refToEntity1: String("refId1")+ TO EntityRef1
-  ADD REF EntityMorphRef::refToEntity2: String("refId2")+ TO EntityRef2
-  ADD REF EntityMorphRef::refToEntity3: String("refId3")+ TO EntityRef3
-  ADD REF EntityMorphRef::refToEntity4: String("refId4")* TO EntityRef4
-  ADD REF EntityMorphRef::refToEntity5: String("refId5")* TO EntityRef5
+  ADD REF EntityMorphRef::refToEntity1: String("refId1")& TO EntityRef1
+  ADD REF EntityMorphRef::refToEntity2: String("refId2")& TO EntityRef2
+  ADD REF EntityMorphRef::refToEntity3: String("refId3")& TO EntityRef3
+  ADD REF EntityMorphRef::refToEntity4: String("refId4")+ TO EntityRef4
+  ADD REF EntityMorphRef::refToEntity5: String("refId5")+ TO EntityRef5
 }
 
 EBlock 6 // Morph operations - Not transactional

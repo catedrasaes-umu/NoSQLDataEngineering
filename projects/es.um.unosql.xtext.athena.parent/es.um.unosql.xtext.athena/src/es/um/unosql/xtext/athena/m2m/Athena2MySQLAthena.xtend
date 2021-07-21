@@ -28,28 +28,28 @@ class Athena2MySQLAthena
     if (mysqlNormalizeRelations)
     {
       // Transform each Reference 1..* by moving it to target Entity and letting it reference the original Entity container.
-      for (ref : EcoreUtil2.getAllContentsOfType(schema, SimpleReferenceTarget).filter[r | r.multiplicity.equals("*")])
+      for (ref : EcoreUtil2.getAllContentsOfType(schema, SimpleReferenceTarget).filter[r | r.multiplicity.equals("*") || r.multiplicity.equals("+")])
       {
         val oldContainer = EcoreUtil2.getContainerOfType(ref, EntityDecl)
-  
+
         handler.addFeatureToSchemaType(ref.ref, ref.eContainer as SimpleFeature)
         ref.ref = oldContainer
-        ref.multiplicity = "+"
+        ref.multiplicity = "&"
         val keyFeat = handler.getKeyInSchemaType(oldContainer)
-  
+
         if (keyFeat !== null && keyFeat.type !== null && keyFeat.type instanceof PrimitiveType)
           ref.type = EcoreUtil2.copy(keyFeat.type) as PrimitiveType
       }
   
       // Transform each Aggregate 1..* by moving it to target Entity and letting it reference the original Entity container.
-      for (aggr : EcoreUtil2.getAllContentsOfType(schema, SimpleAggregateTarget).filter[a | a.multiplicity.equals("*")])
+      for (aggr : EcoreUtil2.getAllContentsOfType(schema, SimpleAggregateTarget).filter[a | a.multiplicity.equals("*") || a.multiplicity.equals("+")])
       {
         val oldContainer = EcoreUtil2.getContainerOfType(aggr, EntityDecl)
   
         handler.addFeatureToSchemaType(aggr.aggr.head instanceof EntityDecl ? aggr.aggr.head as EntityDecl : aggr.aggr.head.eContainer as EntityDecl, aggr.eContainer as SimpleFeature)
         aggr.aggr.clear
         aggr.aggr.add(oldContainer)
-        aggr.multiplicity = "+"
+        aggr.multiplicity = "&"
       }
     }
 
@@ -155,13 +155,13 @@ class Athena2MySQLAthena
 
     if (handler.getKeyInSchemaType(unionEntity) === null)
     {
-      val key1 = factory.createSimpleFeature("id1", factory.createSimpleRef(entity1, "+", factory.createUnrestrictedPrimitiveType((handler.getKeyInSchemaType(entity1).type as SinglePrimitiveType).typename)))
+      val key1 = factory.createSimpleFeature("id1", factory.createSimpleRef(entity1, "&", factory.createUnrestrictedPrimitiveType((handler.getKeyInSchemaType(entity1).type as SinglePrimitiveType).typename)))
       key1.key = true
       handler.addFeatureToSchemaType(unionEntity, key1)
 
       if (handler.getFeaturesInSchemaType(entity2).filter(SimpleFeature).filter[f | f.isKey].size == 1)
       {
-        val key2 = factory.createSimpleFeature("id2", factory.createSimpleRef(entity2, "+", factory.createUnrestrictedPrimitiveType((handler.getKeyInSchemaType(entity2).type as SinglePrimitiveType).typename)))
+        val key2 = factory.createSimpleFeature("id2", factory.createSimpleRef(entity2, "&", factory.createUnrestrictedPrimitiveType((handler.getKeyInSchemaType(entity2).type as SinglePrimitiveType).typename)))
         key2.key = true
         handler.addFeatureToSchemaType(unionEntity, key2)
       }

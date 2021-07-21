@@ -2,7 +2,16 @@ Schema webclicks:1
 
 root entity Webclicks
 {
-	common { +_id: Identifier, count: Number, timestamp: Number, to: String }
-	variation 1 { from: String }
-	variation 2
+  common
+  {
+    +_id: Identifier,
+    count: Number,
+    timestamp: Number,
+    to: String
+  }
+  variation 1
+  {
+    from: String
+  }
+  variation 2
 }

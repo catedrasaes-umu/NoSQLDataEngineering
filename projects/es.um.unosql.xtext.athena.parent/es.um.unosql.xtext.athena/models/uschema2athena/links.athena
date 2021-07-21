@@ -2,6 +2,12 @@ Schema links:1
 
 root entity Links
 {
-	common { +_id: Identifier, tags: List<String>, timestamp: Number, url: String }
-	variation 1
+  common
+  {
+    +_id: Identifier,
+    tags: List<String>,
+    timestamp: Number,
+    url: String
+  }
+  variation 1
 }

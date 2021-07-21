@@ -37,7 +37,7 @@ public class InnerStructureLiteralTest
         "{\r\n" +
         "  variation 1\r\n"
         + "  {\r\n"
-        + "    inner_aggr: aggr<Inner_aggr.1>+\r\n"
+        + "    inner_aggr: aggr<Inner_aggr.1>&\r\n"
         + "  }\r\n" +
         "}\r\n" +
         "\r\n" +
@@ -45,8 +45,8 @@ public class InnerStructureLiteralTest
         "{\r\n" +
         "  variation 1\r\n"
         + "  {\r\n"
-        + "    inner_aggr: aggr<Inner_aggr.2>+,\r\n"
-        + "    inner_inner_aggr: aggr<Inner_inner_aggr.1>+\r\n"
+        + "    inner_aggr: aggr<Inner_aggr.2>&,\r\n"
+        + "    inner_inner_aggr: aggr<Inner_inner_aggr.1>&\r\n"
         + "  }\r\n" +
         "}\r\n" +
         "\r\n" +
@@ -60,8 +60,8 @@ public class InnerStructureLiteralTest
         "  variation 1\r\n"
         + "  {\r\n"
         + "    +_id: Identifier,\r\n"
-        + "    inner_aggr: aggr<Inner_aggr.2>+,\r\n"
-        + "    inner_array_aggr: aggr<Inner_array_aggr.1 , Inner_array_aggr.2>*\r\n"
+        + "    inner_aggr: aggr<Inner_aggr.2>&,\r\n"
+        + "    inner_array_aggr: aggr<Inner_array_aggr.1 , Inner_array_aggr.2>+\r\n"
         + "  }\r\n" +
         "}\r\n" +
         "\r\n" +
@@ -100,7 +100,7 @@ public class InnerStructureLiteralTest
         "  variation 1\r\n"
         + "  {\r\n"
         + "    attr4: String,\r\n"
-        + "    attr5: aggr<Attr5.1>+\r\n"
+        + "    attr5: aggr<Attr5.1>&\r\n"
         + "  }\r\n" + 
         "}\r\n" + 
         "\r\n" + 

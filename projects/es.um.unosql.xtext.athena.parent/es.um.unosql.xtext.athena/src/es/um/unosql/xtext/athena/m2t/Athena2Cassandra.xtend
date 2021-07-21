@@ -82,10 +82,10 @@ class Athena2Cassandra
   '''«feat.name» «IF freeze && !(feat.type instanceof PrimitiveType || feat.type instanceof SimpleReferenceTarget)»frozen<«ENDIF»«generateType(feat.type)»«IF freeze && !(feat.type instanceof PrimitiveType || feat.type instanceof SimpleReferenceTarget)»>«ENDIF»'''
 
   private def dispatch CharSequence generateType(SimpleReferenceTarget type)
-  '''«IF type.multiplicity.equals("*")»list<«ENDIF»«IF type.type !== null»«generateType(type.type)»«ELSE»«generateType((handler.getFeaturesInSchemaType(type.ref).findFirst[f | f instanceof SimpleFeature && (f as SimpleFeature).key] as SimpleFeature).type)»«ENDIF»«IF type.multiplicity.equals("*")»>«ENDIF»'''
+  '''«IF type.multiplicity.equals("*") || type.multiplicity.equals("+")»list<«ENDIF»«IF type.type !== null»«generateType(type.type)»«ELSE»«generateType((handler.getFeaturesInSchemaType(type.ref).findFirst[f | f instanceof SimpleFeature && (f as SimpleFeature).key] as SimpleFeature).type)»«ENDIF»«IF type.multiplicity.equals("*") || type.multiplicity.equals("+")»>«ENDIF»'''
 
   private def dispatch CharSequence generateType(SimpleAggregateTarget type)
-  '''«IF type.multiplicity.equals("*")»list<frozen<«ENDIF»«type.aggr.head instanceof EntityDecl ? (type.aggr.head as EntityDecl).name : ((type.aggr.head as VariationDecl).eContainer as EntityDecl).name»«IF type.multiplicity.equals("*")»>>«ENDIF»'''
+  '''«IF type.multiplicity.equals("*") || type.multiplicity.equals("+")»list<frozen<«ENDIF»«type.aggr.head instanceof EntityDecl ? (type.aggr.head as EntityDecl).name : ((type.aggr.head as VariationDecl).eContainer as EntityDecl).name»«IF type.multiplicity.equals("*") || type.multiplicity.equals("+")»>>«ENDIF»'''
 
   private def dispatch CharSequence generateType(List type)
   '''list<«IF !(type.elementType instanceof PrimitiveType)»frozen<«ENDIF»«generateType(type.elementType)»«IF !(type.elementType instanceof PrimitiveType)»>«ENDIF»>'''

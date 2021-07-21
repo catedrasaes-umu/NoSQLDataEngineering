@@ -23,7 +23,7 @@ root entity Campaign
   description: String,
   qr: String,
   category: String,
-  stageId: ref<Stage>+,
+  stageId: ref<Stage>&,
   createdAt: Timestamp,
   updatedAt: Timestamp
 }
@@ -44,14 +44,14 @@ root entity User
   email: String,
   password: String,
   tokens: List<String>,
-  campaigns: aggr<CampaignSummary>*,
+  campaigns: aggr<CampaignSummary>+,
   createdAt: Timestamp,
   updatedAt: Timestamp
 }
 
 entity CampaignSummary
 {
-  campaignId: ref<Campaign>+,
+  campaignId: ref<Campaign>&,
   scheduledAt: Timestamp,
   ? points: Integer,
   ? completedAt: Timestamp

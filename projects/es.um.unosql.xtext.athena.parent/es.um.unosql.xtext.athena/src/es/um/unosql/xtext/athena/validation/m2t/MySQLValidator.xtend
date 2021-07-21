@@ -33,10 +33,10 @@ class MySQLValidator
     if (!EcoreUtil2.getAllContentsOfType(schema, RelationshipDecl).empty)
       warningLog.add("RelationshipType - A RelationshipType is not allowed in MySQL. It will be ignored.")
 
-    if (EcoreUtil2.getAllContentsOfType(schema, SimpleReferenceTarget).exists[r | r.multiplicity.equals("*")])
+    if (EcoreUtil2.getAllContentsOfType(schema, SimpleReferenceTarget).exists[r | r.multiplicity.equals("*") || r.multiplicity.equals("+")])
       errorLog.add("SimpleReferenceTarget - A SimpleReferenceTarget[..*] is not allowed in MySQL. Please allow the MYSQL_NORMALIZE option.")
 
-    if (EcoreUtil2.getAllContentsOfType(schema, SimpleAggregateTarget).exists[a | a.multiplicity.equals("*")])
+    if (EcoreUtil2.getAllContentsOfType(schema, SimpleAggregateTarget).exists[a | a.multiplicity.equals("*") || a.multiplicity.equals("+")])
       errorLog.add("SimpleAggregateTarget - A SimpleAggregateTarget[..*] is not allowed in MySQL. Please allow the MYSQL_NORMALIZE option.")
 
     if (!EcoreUtil2.getAllContentsOfType(schema, List).empty)
@@ -85,8 +85,8 @@ class MySQLValidator
   {
     if (ref.multiplicity === null)
     {
-      warningLog.add("SimpleFeature - In MySQL a reference must have a multiplicity. Setting it to 0..1: " + athenaIO.serialize(ref.eContainer) + "\n")
-      ref.multiplicity = "+"
+      warningLog.add("SimpleFeature - In MySQL a reference must have a multiplicity. Setting it to 1..1: " + athenaIO.serialize(ref.eContainer) + "\n")
+      ref.multiplicity = "&"
     }
 
     return ref
@@ -96,8 +96,8 @@ class MySQLValidator
   {
     if (aggr.multiplicity === null)
     {
-      warningLog.add("SimpleFeature - In MySQL a reference must have a multiplicity. Setting it to 0..1: " + athenaIO.serialize(aggr.eContainer) + "\n")
-      aggr.multiplicity = "+"
+      warningLog.add("SimpleFeature - In MySQL a reference must have a multiplicity. Setting it to 1..1: " + athenaIO.serialize(aggr.eContainer) + "\n")
+      aggr.multiplicity = "&"
     }
 
     return aggr

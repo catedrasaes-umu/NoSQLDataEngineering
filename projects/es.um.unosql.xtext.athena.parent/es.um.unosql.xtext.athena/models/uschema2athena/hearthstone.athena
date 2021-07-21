@@ -1,0 +1,1914 @@
+Schema hearthstone:1
+
+root entity Hearthstone
+{
+  common
+  {
+    +_id: String,
+    cardClass: String,
+    collectible: Boolean,
+    dbfId: Number,
+    name: String,
+    rarity: String,
+    set: String,
+    type: String
+  }
+  variation 1
+  {
+    armor: Number,
+    artist: String,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 2
+  {
+    armor: Number,
+    artist: String,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 3
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    race: String,
+    techLevel: Number,
+    text: String
+  }
+  variation 4
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    techLevel: Number,
+    text: String
+  }
+  variation 5
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    referencedTags: List<String>,
+    techLevel: Number,
+    text: String
+  }
+  variation 6
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    text: String
+  }
+  variation 7
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    techLevel: Number,
+    text: String
+  }
+  variation 8
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 9
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    race: String,
+    techLevel: Number,
+    text: String
+  }
+  variation 10
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    techLevel: Number,
+    text: String
+  }
+  variation 11
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    race: String,
+    techLevel: Number,
+    text: String
+  }
+  variation 12
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    race: String,
+    text: String
+  }
+  variation 13
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    targetingArrowText: String,
+    techLevel: Number,
+    text: String
+  }
+  variation 14
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    techLevel: Number,
+    text: String
+  }
+  variation 15
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 16
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    race: String,
+    techLevel: Number,
+    text: String
+  }
+  variation 17
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    referencedTags: List<String>,
+    targetingArrowText: String,
+    techLevel: Number,
+    text: String
+  }
+  variation 18
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    referencedTags: List<String>,
+    techLevel: Number,
+    text: String
+  }
+  variation 19
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 20
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    targetingArrowText: String,
+    techLevel: Number,
+    text: String
+  }
+  variation 21
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    techLevel: Number,
+    text: String
+  }
+  variation 22
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    text: String
+  }
+  variation 23
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    techLevel: Number,
+    text: String
+  }
+  variation 24
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 25
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    targetingArrowText: String,
+    techLevel: Number,
+    text: String
+  }
+  variation 26
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    techLevel: Number,
+    text: String
+  }
+  variation 27
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 28
+  {
+    artist: String,
+    attack: Number,
+    battlegroundsPremiumDbfId: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    race: String,
+    techLevel: Number,
+    text: String
+  }
+  variation 29
+  {
+    artist: String,
+    attack: Number,
+    classes: List<String>,
+    collectionText: String,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    multiClassGroup: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 30
+  {
+    artist: String,
+    attack: Number,
+    classes: List<String>,
+    collectionText: String,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    multiClassGroup: String,
+    text: String
+  }
+  variation 31
+  {
+    artist: String,
+    attack: Number,
+    classes: List<String>,
+    collectionText: String,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    multiClassGroup: String,
+    race: String,
+    text: String
+  }
+  variation 32
+  {
+    artist: String,
+    attack: Number,
+    classes: List<String>,
+    cost: Number,
+    durability: Number,
+    flavor: String,
+    mechanics: List<String>,
+    multiClassGroup: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 33
+  {
+    artist: String,
+    attack: Number,
+    classes: List<String>,
+    cost: Number,
+    durability: Number,
+    flavor: String,
+    mechanics: List<String>,
+    multiClassGroup: String,
+    text: String
+  }
+  variation 34
+  {
+    artist: String,
+    attack: Number,
+    classes: List<String>,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    multiClassGroup: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 35
+  {
+    artist: String,
+    attack: Number,
+    classes: List<String>,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    multiClassGroup: String,
+    text: String
+  }
+  variation 36
+  {
+    artist: String,
+    attack: Number,
+    classes: List<String>,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    multiClassGroup: String,
+    race: String,
+    text: String
+  }
+  variation 37
+  {
+    artist: String,
+    attack: Number,
+    classes: List<String>,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    multiClassGroup: String,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 38
+  {
+    artist: String,
+    attack: Number,
+    classes: List<String>,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    multiClassGroup: String,
+    text: String
+  }
+  variation 39
+  {
+    artist: String,
+    attack: Number,
+    classes: List<String>,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    multiClassGroup: String,
+    text: String
+  }
+  variation 40
+  {
+    artist: String,
+    attack: Number,
+    collectionText: String,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    text: String
+  }
+  variation 41
+  {
+    artist: String,
+    attack: Number,
+    collectionText: String,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 42
+  {
+    artist: String,
+    attack: Number,
+    collectionText: String,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    text: String
+  }
+  variation 43
+  {
+    artist: String,
+    attack: Number,
+    collectionText: String,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 44
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    durability: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 45
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    durability: Number,
+    elite: Boolean,
+    flavor: String,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 46
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    durability: Number,
+    elite: Boolean,
+    flavor: String,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 47
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    durability: Number,
+    elite: Boolean,
+    flavor: String,
+    text: String
+  }
+  variation 48
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    durability: Number,
+    flavor: String,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 49
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    durability: Number,
+    flavor: String,
+    howToEarn: String,
+    howToEarnGolden: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 50
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    durability: Number,
+    flavor: String,
+    howToEarn: String,
+    howToEarnGolden: String,
+    text: String
+  }
+  variation 51
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    durability: Number,
+    flavor: String,
+    howToEarn: String,
+    howToEarnGolden: String
+  }
+  variation 52
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    durability: Number,
+    flavor: String,
+    mechanics: List<String>,
+    overload: Number,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 53
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    durability: Number,
+    flavor: String,
+    mechanics: List<String>,
+    overload: Number,
+    text: String
+  }
+  variation 54
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    durability: Number,
+    flavor: String,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 55
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    durability: Number,
+    flavor: String,
+    mechanics: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 56
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    durability: Number,
+    flavor: String,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 57
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    durability: Number,
+    flavor: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 58
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    durability: Number,
+    flavor: String,
+    text: String
+  }
+  variation 59
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    faction: String,
+    flavor: String,
+    health: Number,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 60
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    faction: String,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 61
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    faction: String,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 62
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    race: String,
+    text: String
+  }
+  variation 63
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 64
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 65
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 66
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    howToEarnGolden: String,
+    text: String
+  }
+  variation 67
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    overload: Number,
+    race: String,
+    text: String
+  }
+  variation 68
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    referencedTags: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 69
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 70
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    spellDamage: Number,
+    text: String
+  }
+  variation 71
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 72
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    text: String
+  }
+  variation 73
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 74
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 75
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    spellDamage: Number,
+    text: String
+  }
+  variation 76
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 77
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 78
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    race: String,
+    text: String
+  }
+  variation 79
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 80
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    health: Number,
+    text: String
+  }
+  variation 81
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    health: Number,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    race: String,
+    text: String
+  }
+  variation 82
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    health: Number,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    spellDamage: Number,
+    text: String
+  }
+  variation 83
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    health: Number,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 84
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    health: Number,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 85
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    health: Number,
+    howToEarnGolden: String,
+    race: String
+  }
+  variation 86
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    referencedTags: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 87
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 88
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    text: String
+  }
+  variation 89
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 90
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 91
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 92
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 93
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    health: Number,
+    race: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 94
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    overload: Number,
+    race: String,
+    text: String
+  }
+  variation 95
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    race: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 96
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    race: String,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 97
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    race: String,
+    text: String
+  }
+  variation 98
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 99
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 100
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    spellDamage: Number,
+    text: String
+  }
+  variation 101
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 102
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 103
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    race: String,
+    text: String
+  }
+  variation 104
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    race: String
+  }
+  variation 105
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 106
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarn: String,
+    howToEarnGolden: String,
+    text: String
+  }
+  variation 107
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    race: String,
+    text: String
+  }
+  variation 108
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    spellDamage: Number,
+    text: String
+  }
+  variation 109
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 110
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 111
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarnGolden: String,
+    race: String
+  }
+  variation 112
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    howToEarnGolden: String
+  }
+  variation 113
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    overload: Number,
+    race: String,
+    spellDamage: Number,
+    text: String
+  }
+  variation 114
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    overload: Number,
+    race: String,
+    text: String
+  }
+  variation 115
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    overload: Number,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 116
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    overload: Number,
+    text: String
+  }
+  variation 117
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    referencedTags: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 118
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 119
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    spellDamage: Number,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 120
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    spellDamage: Number,
+    text: String
+  }
+  variation 121
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 122
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    race: String,
+    text: String
+  }
+  variation 123
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 124
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 125
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    spellDamage: Number,
+    text: String
+  }
+  variation 126
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 127
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 128
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    race: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 129
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    race: String,
+    text: String
+  }
+  variation 130
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    race: String
+  }
+  variation 131
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 132
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number,
+    text: String
+  }
+  variation 133
+  {
+    artist: String,
+    attack: Number,
+    cost: Number,
+    flavor: String,
+    health: Number
+  }
+  variation 134
+  {
+    artist: String,
+    classes: List<String>,
+    cost: Number,
+    flavor: String,
+    mechanics: List<String>,
+    multiClassGroup: String,
+    overload: Number,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 135
+  {
+    artist: String,
+    classes: List<String>,
+    cost: Number,
+    flavor: String,
+    mechanics: List<String>,
+    multiClassGroup: String,
+    overload: Number,
+    text: String
+  }
+  variation 136
+  {
+    artist: String,
+    classes: List<String>,
+    cost: Number,
+    flavor: String,
+    mechanics: List<String>,
+    multiClassGroup: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 137
+  {
+    artist: String,
+    classes: List<String>,
+    cost: Number,
+    flavor: String,
+    mechanics: List<String>,
+    multiClassGroup: String,
+    text: String
+  }
+  variation 138
+  {
+    artist: String,
+    classes: List<String>,
+    cost: Number,
+    flavor: String,
+    multiClassGroup: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 139
+  {
+    artist: String,
+    classes: List<String>,
+    cost: Number,
+    flavor: String,
+    multiClassGroup: String,
+    text: String
+  }
+  variation 140
+  {
+    artist: String,
+    collectionText: String,
+    cost: Number,
+    flavor: String,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 141
+  {
+    artist: String,
+    collectionText: String,
+    cost: Number,
+    flavor: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 142
+  {
+    artist: String,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    mechanics: List<String>,
+    questReward: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 143
+  {
+    artist: String,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    mechanics: List<String>,
+    questReward: String,
+    text: String
+  }
+  variation 144
+  {
+    artist: String,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 145
+  {
+    artist: String,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 146
+  {
+    artist: String,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 147
+  {
+    artist: String,
+    cost: Number,
+    elite: Boolean,
+    flavor: String,
+    text: String
+  }
+  variation 148
+  {
+    artist: String,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 149
+  {
+    artist: String,
+    cost: Number,
+    faction: String,
+    flavor: String,
+    text: String
+  }
+  variation 150
+  {
+    artist: String,
+    cost: Number,
+    flavor: String,
+    hideStats: Boolean,
+    text: String
+  }
+  variation 151
+  {
+    artist: String,
+    cost: Number,
+    flavor: String,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 152
+  {
+    artist: String,
+    cost: Number,
+    flavor: String,
+    howToEarn: String,
+    howToEarnGolden: String,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 153
+  {
+    artist: String,
+    cost: Number,
+    flavor: String,
+    howToEarn: String,
+    howToEarnGolden: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 154
+  {
+    artist: String,
+    cost: Number,
+    flavor: String,
+    howToEarn: String,
+    howToEarnGolden: String,
+    text: String
+  }
+  variation 155
+  {
+    artist: String,
+    cost: Number,
+    flavor: String,
+    mechanics: List<String>,
+    overload: Number,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 156
+  {
+    artist: String,
+    cost: Number,
+    flavor: String,
+    mechanics: List<String>,
+    overload: Number,
+    text: String
+  }
+  variation 157
+  {
+    artist: String,
+    cost: Number,
+    flavor: String,
+    mechanics: List<String>,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 158
+  {
+    artist: String,
+    cost: Number,
+    flavor: String,
+    mechanics: List<String>,
+    text: String
+  }
+  variation 159
+  {
+    artist: String,
+    cost: Number,
+    flavor: String,
+    referencedTags: List<String>,
+    text: String
+  }
+  variation 160
+  {
+    artist: String,
+    cost: Number,
+    flavor: String,
+    targetingArrowText: String,
+    text: String
+  }
+  variation 161
+  {
+    artist: String,
+    cost: Number,
+    flavor: String,
+    text: String
+  }
+  variation 162
+  {
+    health: Number
+  }
+}
