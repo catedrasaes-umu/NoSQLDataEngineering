@@ -1,0 +1,30 @@
+ImportEntity_Ops operations
+
+USING EntitySchema:1
+
+ADD ENTITY EntityToAdd_1: { +id: Identifier, attr: String }
+ADD ENTITY EntityToAdd_2: { +id: Identifier, attr: String }
+
+DELETE ENTITY EntityToDel_1
+DELETE ENTITY EntityToDel_2
+
+RENAME ENTITY EntityToRename_1 TO EntityRenamed_1
+RENAME ENTITY EntityToRename_2 TO EntityRenamed_2
+
+EXTRACT ENTITY EntityToExtract_1 INTO EntityExtracted_1(key, attr1, attr3)
+EXTRACT ENTITY EntityToExtract_2 INTO EntityExtracted_2(key, attr1, attr3)
+
+SPLIT ENTITY EntityToSplit_1 INTO EntitySplit11(key, attr1, attr3), EntitySplit12(key, attr1, attr2)
+SPLIT ENTITY EntityToSplit_2 INTO EntitySplit21(key, attr1, attr3), EntitySplit22(key, attr1, attr2)
+
+MERGE ENTITY EntityToMerge_1, EntityToMerge_2 INTO EntityMerged WHERE EntityToMerge_1.key = EntityToMerge_2.key
+
+DELVAR ENTITY EntityToDelVar_1::33
+DELVAR ENTITY EntityToDelVar_2::2
+
+ADAPT ENTITY EntityToAdapt_1::v 33 TO v 125
+ADAPT ENTITY EntityToAdapt_2::2 TO 45
+ADAPT ENTITY EntityToAdapt_2::2 TO 3
+
+UNION ENTITY EntityToUnion_1
+UNION ENTITY EntityToUnion_2

@@ -1,0 +1,24 @@
+ScriptAggregate_Ops operations
+
+USING AggregateSchema:1
+
+ADD AGGR EntityAddAggr1::aggr1: { aggrAttr1, aggrAttr2 }& TO AggregateDummy_1
+ADD AGGR EntityAddAggr1::aggr2: { aggrAttr1, aggrAttr2 }+ TO AggregateDummy_2
+
+ADD AGGR EntityAddAggr2::aggr1: { aggrAttr1, aggrAttr2 }& TO AggregateDummy_1
+ADD AGGR EntityAddAggr2::aggr2: { aggrAttr1, aggrAttr2 }+ TO AggregateDummy_2
+
+ADD AGGR EntityAddAggr3(1)::aggr1: { aggrAttr1, aggrAttr2 }& TO AggregateDummy_1
+ADD AGGR EntityAddAggr3(2)::aggr2: { aggrAttr1, aggrAttr2 }+ TO AggregateDummy_2
+
+MULT AGGR EntityMultAggr1::aggr1, aggr2 TO +
+MULT AGGR EntityMultAggr1::aggr1, aggr2 TO &
+
+MULT AGGR EntityMultAggr2(2)::aggr1, aggr3 TO +
+MULT AGGR EntityMultAggr3(1, 3)::aggr1, aggr2 TO &
+
+MORPH AGGR EntityMorphAggr1::aggr1 TO refEntity1
+MORPH AGGR EntityMorphAggr2::aggr2 TO refEntity2
+MORPH AGGR EntityMorphAggr2::aggr3 TO refEntity3
+MORPH AGGR EntityMorphAggr3(1)::aggr4 TO refEntity4
+MORPH AGGR EntityMorphAggr3(1, 2, 3)::aggr5 TO refEntity5

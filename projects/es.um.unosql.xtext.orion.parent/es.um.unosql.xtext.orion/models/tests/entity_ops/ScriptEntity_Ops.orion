@@ -1,0 +1,22 @@
+ScriptEntity_Ops operations
+
+SCRIPT MODE
+
+ADD ENTITY EntityAdded1: { +id: Identifier }
+ADD ENTITY EntityAdded2: { +id: Identifier }
+ADD ENTITY EntityAdded3: { +id: Identifier }
+
+DELETE ENTITY EntityAdded2
+RENAME ENTITY EntityAdded3 TO EntityRenamed
+
+ADD ENTITY EntityToSplit: {+id: Identifier, attr1: String, attr2: String, attr3: String, attr4: String, attr5: String, attr6: String}
+SPLIT ENTITY EntityToSplit INTO EntitySplit1(id, attr1, attr2, attr3), EntitySplit2(id, attr1, attr5, attr6)
+
+ADD ENTITY EntityToMerge1: { +id: String("id"), a: String, b: Number }
+ADD ENTITY EntityToMerge2: { +id: String("id"), c: List, b }
+MERGE ENTITY EntityToMerge1, EntityToMerge2 INTO EntityMerged WHERE EntityToMerge1.id = EntityToMerge2.id
+
+ADD ENTITY EntityToExtract: { +id: Identifier, feat1, feat2, feat3, feat4 }
+EXTRACT ENTITY EntityToExtract INTO EntityExtracted(id, feat2, feat4)
+
+// We will not test variation operations here because we cannot create variations directly with ADD ENTITY

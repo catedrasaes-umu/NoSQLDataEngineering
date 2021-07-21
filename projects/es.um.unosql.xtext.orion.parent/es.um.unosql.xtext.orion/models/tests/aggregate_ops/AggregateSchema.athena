@@ -1,0 +1,71 @@
+Schema AggregateSchema:1
+
+entity AggregateDummy { attr1, attr2, attr3 }
+
+Root entity EntityAddAggr1
+{
+  +id: Identifier
+}
+
+Root entity EntityAddAggr2
+{
+  Common { +id: Identifier }
+  Variation 1 { attr1 }
+  Variation 2 { attr2 }
+}
+
+Root entity EntityAddAggr3
+{
+  Common { +id: Identifier }
+  Variation 1 { attr1 }
+  Variation 2 { attr2 }
+}
+
+Root entity EntityMultAggr1
+{
+  +id: Identifier,
+  aggr1: aggr<AggregateDummy>&,
+  aggr2: aggr<AggregateDummy>+
+}
+
+Root entity EntityMultAggr2
+{
+  Common { +id: Identifier, aggr1: aggr<AggregateDummy>& }
+  Variation 1 { aggr2: aggr<AggregateDummy>& }
+  Variation 2 { aggr3: aggr<AggregateDummy>+ }
+}
+
+Root entity EntityMultAggr3
+{
+  Common { +id: Identifier }
+  Variation 1 { aggr1: aggr<AggregateDummy>&, attr1 }
+  Variation 2 { aggr1: aggr<AggregateDummy>& }
+  Variation 3 { attr3 }
+}
+
+Entity EntityAggr1 { attr1 }
+Entity EntityAggr2 { attr1 }
+Entity EntityAggr3 { attr1 }
+Entity EntityAggr4 { attr1 }
+Entity EntityAggr5 { attr1 }
+
+Root entity EntityMorphAggr1
+{
+  +id: Identifier,
+  aggr1: aggr<EntityAggr1>&
+}
+
+Root entity EntityMorphAggr2
+{
+  Common { +id: Identifier, aggr1: aggr<AggregateDummy>& }
+  Variation 1 { aggr2: aggr<EntityAggr2>& }
+  Variation 2 { aggr3: aggr<EntityAggr3>+ }
+}
+
+Root entity EntityMorphAggr3
+{
+  Common { +id: Identifier }
+  Variation 1 { aggr4: aggr<EntityAggr4>&, attr1 }
+  Variation 2 { aggr4: aggr<EntityAggr4>& }
+  Variation 3 { attr3 }
+}

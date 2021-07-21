@@ -1,0 +1,154 @@
+Schema FeatureSchema:1
+
+Root entity EntityDelFeature_1
+{
+  +id: Identifier,
+  attrToDel,
+  attrNotToDel
+}
+
+Root entity EntityDelFeature_2
+{
+  Common { +id: Identifier }
+  Variation 1 { attrToDel, attrNotToDel }
+  Variation 2 { attrToDelBool: Boolean, attrNotToDel }
+  Variation 3 { attrToDelBool: Boolean, attrToDelDouble: Double}
+}
+
+Root entity EntityRenameFeature_1
+{
+  +id: Identifier,
+  attrToRen_1,
+  attrToRen_2,
+  attrRenamed,
+  attrNotToRen
+}
+
+Root entity EntityRenameFeature_2
+{
+  Common { +id: Identifier, attrRenamed }
+  Variation 1 { attrToRen, attrNotToRen }
+  Variation 2 { attrToRenBool: Boolean, attrNotToRen }
+  Variation 3 { attrToRenBool: Boolean, attrToRenDouble: Double}
+}
+
+Root entity EntityToCopySource_11
+{
+  +id: Identifier,
+  valToCopy1: String,
+  valToCopy2: List,
+  valToCopy3: Map
+}
+
+Root entity EntityToCopySource_12
+{
+  +id: Identifier,
+  valToCopy4: String
+}
+
+Root entity EntityToCopyTarget_1
+{
+  +id: Identifier,
+  thisRef: ref<EntityToCopySource_11>&,
+  thatRef: ref<EntityToCopySource_12>&
+}
+
+Root entity EntityToCopySource_21
+{
+  Common { +id: Identifier, attr1 }
+  Variation 1 { attr2 }
+  Variation 2 { attr3 }
+}
+
+Root entity EntityToCopySource_22
+{
+  Common { +id: Identifier, attr4 }
+  Variation 1 { attr5 }
+  Variation 2 { attr6 }
+}
+
+Root entity EntityToCopyTarget_2
+{
+  +id: Identifier,
+  thisRef: ref<EntityToCopySource_21>&,
+  thatRef: ref<EntityToCopySource_22>&
+}
+
+Root entity EntityToMoveSource_11
+{
+  +id: Identifier,
+  valToMove1: String,
+  valToMove2: List,
+  valToMove3: Map
+}
+
+Root entity EntityToMoveSource_12
+{
+  +id: Identifier,
+  valToMove4: String
+}
+
+Root entity EntityToMoveTarget_1
+{
+  +id: Identifier,
+  thisRef: ref<EntityToMoveSource_11>&,
+  thatRef: ref<EntityToMoveSource_12>&
+}
+
+Root entity EntityToMoveSource_21
+{
+  Common { +id: Identifier, attr1 }
+  Variation 1 { attr2, attrN }
+  Variation 2 { attr3, attrN }
+}
+
+Root entity EntityToMoveSource_22
+{
+  Common { +id: Identifier, attr4 }
+  Variation 1 { attr5, attrN }
+  Variation 2 { attr6, attrN }
+}
+
+Root entity EntityToMoveTarget_2
+{
+  +id: Identifier,
+  thisRef: ref<EntityToMoveSource_21>&,
+  thatRef: ref<EntityToMoveSource_22>&
+}
+
+Root entity EntityToNest_1
+{
+  +id: Identifier,
+  name,
+  age,
+  street,
+  postalCode,
+  city,
+  aList,
+  aMap,
+  nest: { nest1, nest2 }
+}
+
+Root entity EntityToNest_2
+{
+  Common { +id: Identifier, name, nest: { nest1, nest2 } }
+  Variation 1 { age, street, postalCode }
+  Variation 2 { city, aList, aMap}
+}
+
+entity MyNest_1 { nest1, nest2, nest3 }
+entity MyNest_2 { nest1, nest2, nest3 }
+entity MyNest_3 { nest4, nest5, nest6 }
+
+Root entity EntityToUnnest_1
+{
+  +id: Identifier,
+  nest: aggr<MyNest_1>&
+}
+
+Root entity EntityToUnnest_2
+{
+  Common { +id: Identifier }
+  Variation 1 { nest_2: aggr<MyNest_2>& }
+  Variation 2 { nest_3: aggr<MyNest_3>& }
+}

@@ -1,0 +1,45 @@
+ScriptFeature_Ops operations
+
+USING FeatureSchema:1
+
+DELETE EntityDelFeature_1(3)::attrNotToDel
+DELETE EntityDelFeature_1::attrToDel
+
+DELETE EntityDelFeature_2(2)::attrNotToDel
+DELETE EntityDelFeature_2::attrToDel
+DELETE EntityDelFeature_2(3)::attrToDelBool
+
+RENAME EntityRenameFeature_1::attrToRen_1 TO attrRename
+RENAME EntityRenameFeature_1::attrToRen_2 TO attrRenamed_2
+RENAME EntityRenameFeature_1(2, 4, 6)::attrNotToRen TO attrNotToRenamed
+
+RENAME EntityRenameFeature_2::attrToRen TO attrRenamed_1
+RENAME EntityRenameFeature_2(2)::attrNotToRen TO attrToRen_1
+RENAME EntityRenameFeature_2(2, 3)::attrToRenBool TO attrToRenBool_1
+
+COPY EntityToCopySource_11::valToCopy1 TO EntityToCopyTarget_1::copy1 WHERE id = thisRef
+COPY EntityToCopySource_11::valToCopy2 TO EntityToCopyTarget_1::copy2 WHERE id = thisRef
+COPY EntityToCopySource_11::valToCopy3 TO EntityToCopyTarget_1::copy3 WHERE id = thisRef
+COPY EntityToCopySource_12::valToCopy4 TO EntityToCopyTarget_1::valToCopy4 WHERE id = thatRef
+
+COPY EntityToCopySource_21::attr1 TO EntityToCopyTarget_2::copy1 WHERE id = thisRef
+COPY EntityToCopySource_21::attr2 TO EntityToCopyTarget_2::copy2 WHERE id = thisRef
+COPY EntityToCopySource_21::attr3 TO EntityToCopyTarget_2::copy3 WHERE id = thisRef
+COPY EntityToCopySource_22::attr4 TO EntityToCopyTarget_2::valToCopy4 WHERE id = thatRef
+
+MOVE EntityToMoveSource_11::valToMove1 TO EntityToMoveTarget_1::move1 WHERE id = thisRef
+MOVE EntityToMoveSource_11::valToMove2 TO EntityToMoveTarget_1::move2 WHERE id = thisRef
+MOVE EntityToMoveSource_11::valToMove3 TO EntityToMoveTarget_1::move3 WHERE id = thisRef
+MOVE EntityToMoveSource_12::valToMove4 TO EntityToMoveTarget_1::valToMove4 WHERE id = thatRef
+
+MOVE EntityToMoveSource_21::attr1 TO EntityToMoveTarget_2::move1 WHERE id = thisRef
+MOVE EntityToMoveSource_21::attr2 TO EntityToMoveTarget_2::move2 WHERE id = thisRef
+MOVE EntityToMoveSource_21::attr3 TO EntityToMoveTarget_2::move3 WHERE id = thisRef
+MOVE EntityToMoveSource_22::attr4 TO EntityToMoveTarget_2::valToMove4 WHERE id = thatRef
+
+NEST EntityToNest_1::street, postalCode, city, nest TO nestedAggr_1
+NEST EntityToNest_2::name, nest, age, city TO nestedAggr_2
+
+UNNEST EntityToUnnest_1::nest.nest1, nest.nest3
+UNNEST EntityToUnnest_2::nest_2.nest1, nest_2.nest2
+UNNEST EntityToUnnest_2::nest_3.nest4, nest_3.nest5

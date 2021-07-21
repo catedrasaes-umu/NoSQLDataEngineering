@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Automatic-Module-Name: es.um.unosql.xtext.orion
+Bundle-ManifestVersion: 2
+Bundle-Name: es.um.unosql.xtext.orion
+Bundle-Vendor: My Company
+Bundle-Version: 1.0.0.qualifier
+Bundle-SymbolicName: es.um.unosql.xtext.orion; singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: org.eclipse.xtext,
+ org.eclipse.xtext.xbase,
+ org.eclipse.equinox.common;bundle-version="3.5.0",
+ es.um.unosql.xtext.athena;bundle-version="1.0.0",
+ org.eclipse.emf.ecore,
+ org.eclipse.xtext.xbase.lib;bundle-version="2.14.0",
+ org.eclipse.xtext.util,
+ org.eclipse.emf.common,
+ org.eclipse.xtend.lib;bundle-version="2.14.0",
+ org.antlr.runtime;bundle-version="[3.2.0,3.2.1)"
+Bundle-RequiredExecutionEnvironment: JavaSE-11
+Export-Package: es.um.unosql.xtext.orion,
+ es.um.unosql.xtext.orion.formatting2,
+ es.um.unosql.xtext.orion.generator,
+ es.um.unosql.xtext.orion.orion,
+ es.um.unosql.xtext.orion.orion.impl,
+ es.um.unosql.xtext.orion.orion.util,
+ es.um.unosql.xtext.orion.parser.antlr,
+ es.um.unosql.xtext.orion.parser.antlr.internal,
+ es.um.unosql.xtext.orion.parser.antlr.lexer,
+ es.um.unosql.xtext.orion.scoping,
+ es.um.unosql.xtext.orion.serializer,
+ es.um.unosql.xtext.orion.services,
+ es.um.unosql.xtext.orion.utils,
+ es.um.unosql.xtext.orion.utils.io,
+ es.um.unosql.xtext.orion.validation
+Import-Package: org.apache.log4j,
+ org.junit.jupiter.api;version="5.7.1"

@@ -1,0 +1,92 @@
+Schema EntitySchema:1
+
+Entity EntityToAdd_1    { +key: String }
+Entity EntityToDel_1    { +key: String }
+Entity EntityToRename_1 { +key: String, attr1: Number }
+Entity EntityRenamed_1  { +key: String, attr3: Boolean }
+Entity EntityToRename_2 { +key: String, attr2: String }
+
+Entity EntityToExtract_1
+{
+  +key: String,
+  attr1: Number,
+  attr2: String,
+  attr3: List<Option<String, Boolean>>
+}
+
+Entity EntityToExtract_2
+{
+  Common      { +key: String, attr1: Number }
+  Variation 1 { attr2: String }
+  Variation 2 { attr3: List<Option<String, Boolean>> }
+}
+
+Entity EntityToSplit_1
+{
+  +key: String,
+  attr1: Number,
+  attr2: String,
+  attr3: List<Option<String, Boolean>>
+}
+
+Entity EntityToSplit_2
+{
+  Common      { +key: String, attr1: Number }
+  Variation 1 { attr2: String }
+  Variation 2 { attr3: List<Option<String, Boolean>> }
+}
+
+Entity EntityToMerge_1
+{
+  +key: String,
+  attr1: List<Option<String, Boolean>>
+}
+
+Entity EntityToMerge_2
+{
+  Common      { +key: String, attr2: Number }
+  Variation 1 { attr3: String }
+  Variation 2 { attr4: List<Option<String, Boolean>> }
+}
+
+Entity EntityToDelVar_1
+{
+  +key: String,
+  attr1: Number
+}
+
+Entity EntityToDelVar_2
+{
+  Common { +key: String, attr: Number }
+  Variation 1 { attr1: String }
+  Variation 2 { attr2: Boolean }
+  Variation 3 { attr3: List<Option<String, Boolean>> }
+}
+
+Entity EntityToAdapt_1
+{
+  +key: String,
+  attr1: Number
+}
+
+Entity EntityToAdapt_2
+{
+  Common { +key: String, attr: Number }
+  Variation 1 { attr1: String }
+  Variation 2 { attr2: Boolean }
+  Variation 3 { attr3: List<Option<String, Boolean>> }
+}
+
+Entity EntityToUnion_1
+{
+  +key: String,
+  attr1: Number
+}
+
+Entity EntityToUnion_2
+{
+  Common { +key: String, attr: Number }
+  Variation 1 { attr1: String }
+  Variation 2 { attr2: Boolean }
+  Variation 3 { attr3: List<Option<String, Boolean>> }
+}

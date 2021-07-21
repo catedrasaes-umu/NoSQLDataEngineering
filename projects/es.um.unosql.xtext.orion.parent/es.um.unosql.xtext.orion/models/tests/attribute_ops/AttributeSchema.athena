@@ -1,0 +1,65 @@
+Schema AttributeSchema:1
+
+Root entity EntityAddAttribute_1
+{
+  +id: Identifier
+}
+
+Root entity EntityAddAttribute_2
+{
+  Common { +id: Identifier }
+  Variation 1 { attr1 }
+  Variation 2 { attr2 }
+  Variation 3 { attr3 }
+}
+
+Root entity EntityCastAttribute_1
+{
+  +id: Identifier,
+  attr1: String,
+  attr2: Boolean,
+  attr3: List<Option<Boolean, Number>>,
+  attr4: String,
+  attr5: Boolean,
+  attr6: List<Option<Boolean, Number>>
+}
+
+Root entity EntityCastAttribute_2
+{
+  Common { +id: Identifier }
+  Variation 1 { attr1: String }
+  Variation 2 { attr2: Boolean }
+  Variation 3 { attr3: List<Option<Boolean, Number>> }
+}
+
+Root entity EntityToPromote_1
+{
+  +id: Identifier,
+  key1,
+  key2,
+  key3
+}
+
+Root entity EntityToPromote_2
+{
+  Common { +id: Identifier }
+  Variation 1 { key1 }
+  Variation 2 { key2 }
+  Variation 3 { key3 }
+}
+
+Root entity EntityToDemote_1
+{
+  +id: Identifier,
+  +key1,
+  +key2,
+  +key3
+}
+
+Root entity EntityToDemote_2
+{
+  Common { +id: Identifier }
+  Variation 1 { +key1 }
+  Variation 2 { +key2 }
+  Variation 3 { +key2, +key3 }
+}

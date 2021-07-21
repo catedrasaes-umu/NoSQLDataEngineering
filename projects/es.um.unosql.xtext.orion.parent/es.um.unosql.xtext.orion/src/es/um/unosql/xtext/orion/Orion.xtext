@@ -1,0 +1,273 @@
+grammar es.um.unosql.xtext.orion.Orion with es.um.unosql.xtext.athena.Athena
+
+generate orion "http://www.um.es/unosql/xtext/orion/Orion"
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+
+OrionOperations:
+  name=ValidId 'OPERATIONS'
+  ( ( 'USING' imports=Import ) | ( scriptMode?='SCRIPT' 'MODE' ) )
+  ( operations+=BasicOperation+ | evolBlocks+=EvolBlock+ )
+;
+
+EvolBlock:
+  'EBlock' name=INT
+  '{'
+    ( operations+=BasicOperation )+
+  '}'
+;
+
+//TODO: What about an operation to make mandatory a feature?
+//TODO: What about an operation to set an Attribute as a Reference and vice versa?
+BasicOperation:
+  EntityOp | FeatureOp | AttributeOp | ReferenceOp | AggregateOp //TODO: | RelationshipOp
+;
+
+EntityOp:
+  EntityAddOp | EntityDeleteOp | EntityRenameOp | EntitySplitOp | EntityMergeOp | EntityExtractOp | EntityDelVarOp | EntityAdaptOp | EntityUnionOp
+;
+
+FeatureOp:
+  FeatureDeleteOp | FeatureRenameOp | FeatureCopyOp | FeatureMoveOp | FeatureNestOp | FeatureUnnestOp
+;
+
+AttributeOp:
+  AttributeAddOp | AttributeCastOp | AttributePromoteOp | AttributeDemoteOp
+;
+
+ReferenceOp:
+  ReferenceAddOp | ReferenceCastOp | ReferenceMultiplicityOp | ReferenceMorphOp
+;
+
+AggregateOp:
+  AggregateAddOp | AggregateMultiplicityOp | AggregateMorphOp
+;
+
+// MongoDB: CreateCollection. UpdateMany(AddFields).
+// Cassandra: CreateTable. InsertInto(AddFields).
+EntityAddOp:            'ADD'     'ENTITY' spec=EntityAddSpec;
+// MongoDB: Drop.
+// Cassandra: DropTable.
+EntityDeleteOp:         'DELETE'  'ENTITY' spec=EntityDeleteSpec;
+// MongoDB: RenameCollection.
+// Cassandra: CopyTo. DropTable. CreateTable. CopyFrom.
+EntityRenameOp:         'RENAME'  'ENTITY' spec=EntityRenameSpec;
+// MongoDB: 2x Aggregate(Project, Out). Drop.
+// Cassandra: CopyTo. CreateTable. CopyFrom. CopyTo. CreateTable. CopyFrom. DropTable.
+EntitySplitOp:          'SPLIT'   'ENTITY' spec=EntitySplitSpec;
+// MongoDB: Aggregate(Project, Out).
+// Cassandra: CopyTo. CreateTable. CopyFrom.
+EntityExtractOp:        'EXTRACT' 'ENTITY' spec=EntityExtractSpec;
+// MongoDB: 2x Aggregate(Merge). 2x Drop.
+// Cassandra: CreateTable. 2x CopyTo. 2x CopyFrom. 2x DropTable.
+EntityMergeOp:          'MERGE'   'ENTITY' spec=EntityMergeSpec;
+EntityDelVarOp:         'DELVAR'  'ENTITY' spec=EntityDelVarSpec;
+EntityAdaptOp:          'ADAPT'   'ENTITY' spec=EntityAdaptSpec;
+EntityUnionOp:          'UNION'   'ENTITY' spec=EntityUnionSpec;
+// MongoDB: UpdateMany(Unset).
+// Cassandra: AlterTableDrop.
+FeatureDeleteOp:        'DELETE'           spec=FeatureDeleteSpec;
+// MongoDB: UpdateMany(Rename).
+// Cassandra: CopyTo. AlterTableDrop. AlterTableAdd. CopyFrom.
+FeatureRenameOp:        'RENAME'           spec=FeatureRenameSpec;
+// MongoDB: ForEach(UpdateMany(Set)).
+// Cassandra: CopyTo. AlterTableAdd. CopyFrom.
+FeatureCopyOp:          'COPY'             spec=FeatureAllocateSpec;
+// MongoDB: ForEach(UpdateMany(Set)). UpdateMany(Unset).
+// Cassandra: CopyTo. AlterTableAdd. AlterTableDrop. CopyFrom.
+FeatureMoveOp:          'MOVE'             spec=FeatureAllocateSpec;
+// MongoDB: UpdateMany(Rename).
+// Cassandra: CreateType. AlterTableAdd. AlterTableDrop.  Limitation: Can't move values to the nested type.
+FeatureNestOp:          'NEST'             spec=FeatureNestSpec;
+// MongoDB: UpdateMany(Rename).
+// Cassandra: AlterTableAdd.                              Limitation: Can't move values from the nested type. Can't modify the user type according to the new aggregate.
+FeatureUnnestOp:        'UNNEST'           spec=FeatureUnnestSpec;
+// MongoDB: UpdateMany(AddFields).
+// Cassandra: AlterTableAdd.
+AttributeAddOp:         'ADD'     'ATTR'   spec=AttributeAddSpec;
+// MongoDB: UpdateMany(AddFields, Convert).
+// Cassandra: CopyTo. DropTable. CreateTable. CopyFrom.
+AttributeCastOp:        'CAST'    'ATTR'   spec=AttributeOrReferenceCastSpec;
+AttributePromoteOp:     'PROMOTE' 'ATTR'   spec=AttributePromoteSpec;
+AttributeDemoteOp:      'DEMOTE'  'ATTR'   spec=AttributeDemoteSpec;
+// MongoDB: UpdateMany(AddFields).
+// Cassandra: AlterTableAdd.
+ReferenceAddOp:         'ADD'     'REF'    spec=ReferenceAddSpec;
+// MongoDB:UpdateMany(AddFields, Convert).
+// Cassandra: CopyTo. DropTable. CreateTable. CopyFrom.
+ReferenceCastOp:        'CAST'    'REF'    spec=AttributeOrReferenceCastSpec;
+// MongoDB: UpdateMany(AddFields).
+// Cassandra: CopyTo. DropTable. CreateTable. CopyFrom.
+ReferenceMultiplicityOp: 'MULT'    'REF'   spec=ReferenceOrAggregateMultiplicitySpec;
+// MongoDB: Aggregate(Lookup, AddFields, Out). UpdateMany(Unset). Drop.
+// Cassandra: CreateType. AlterTableAdd. DropTable.       Limitation: Can't move values to the User-defined type.
+ReferenceMorphOp:       'MORPH'   'REF'    spec=ReferenceMorphSpec;
+// MongoDB: UpdateMany(AddFields).
+// Cassandra: CreateType. AlterTableAdd.
+AggregateAddOp:         'ADD'     'AGGR'   spec=AggregateAddSpec;
+// MongoDB: UpdateMany(AddFields).
+// Cassandra: CopyTo. DropTable. CreateTable. CopyFrom.
+AggregateMultiplicityOp: 'MULT'    'AGGR'  spec=ReferenceOrAggregateMultiplicitySpec;
+// MongoDB: ForEach(Insert, UpdateMany(Set)). InsertMany. UpdateMany(Set).
+// Cassandra: CreateTable. AlterTableAdd.                 Limitation: Can't move values from the User-defined type to the new table.
+AggregateMorphOp:       'MORPH'   'AGGR'   spec=AggregateMorphSpec;
+////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////// Entity operations ///////////////////////
+
+EntityAddSpec:
+  name=ValidId ( ':' '{' features+=SimpleDataFeature (',' features+=SimpleDataFeature )* '}' )?
+;
+
+EntityDeleteSpec:
+  ref=ValidId
+;
+
+EntityRenameSpec:
+  ref=ValidId 'TO' name=ValidId
+;
+
+EntitySplitSpec:
+  ref=ValidId 'INTO' name1=ValidId features1=SplitFeatures ',' name2=ValidId features2=SplitFeatures
+;
+
+EntityExtractSpec:
+  ref=ValidId 'INTO' name=ValidId features=SplitFeatures
+;
+
+EntityMergeSpec:
+  ref1=ValidId ',' ref2=ValidId 'INTO' name=ValidId 'WHERE' condition=ConditionDecl
+;
+
+EntityDelVarSpec: //TODO: EntityDelVar. En validadores, Orion2Cass y Orion2Mongo
+  ref=ValidId '::' 'v'? target=VariationIdSpec
+;
+
+EntityAdaptSpec: //TODO: EntityAdapt. En validadores, Orion2Cass y Orion2Mongo
+  ref=ValidId '::' 'v'? source=VariationIdSpec 'TO' 'v'? target=VariationIdSpec 
+;
+
+EntityUnionSpec: //TODO: EntityUnion. En validadores, Orion2Cass y Orion2Mongo
+  ref=ValidId
+;
+////////////////////// Entity operations ///////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////// Feature operations //////////////////////
+
+FeatureDeleteSpec:
+  selector=MultipleFeatureSelector
+;
+
+FeatureRenameSpec:
+  selector=SingleFeatureSelector 'TO' name=QualifiedName
+;
+
+FeatureAllocateSpec:
+  sourceSelector=SingleFeatureSelector 'TO' targetSelector=SingleFeatureSelector 'WHERE' condition=ConditionDecl
+;
+
+FeatureNestSpec:
+  selector=MultipleFeatureSelector 'TO' name=QualifiedName
+;
+
+FeatureUnnestSpec:
+  selector=MultipleFeatureSelector
+;
+
+////////////////////// Feature operations //////////////////////
+////////////////////////////////////////////////////////////////
+///////////////////// Attribute operations /////////////////////
+
+AttributeAddSpec:
+  ( key?='+' | ( ( optional?='?' )? ( unique?='!' )? ) ) selector=SingleFeatureSelector ( ':' type=DataType ( '(' defaultValue=DefaultValue ')' )? )?
+;
+
+AttributeOrReferenceCastSpec:
+  selector=MultipleFeatureSelector 'TO' type=PrimitiveType
+;
+
+AttributePromoteSpec: //TODO: AttrPromote. En Orion2Cass
+  selector=MultipleFeatureSelector
+;
+
+AttributeDemoteSpec: //TODO: AttrDemote. En Orion2Cass
+  selector=MultipleFeatureSelector
+;
+
+//////////////////// Attribute operations //////////////////////
+////////////////////////////////////////////////////////////////
+//////////////////// Reference operations //////////////////////
+
+ReferenceAddSpec:
+  ( optional?='?' )? selector=SingleFeatureSelector  ( ':' type=PrimitiveType ( '(' defaultValue=DefaultValue ')' )? )? ( multiplicity=('?'|'&'|'*'|'+') )? 'TO' ref=ValidId
+;
+
+ReferenceOrAggregateMultiplicitySpec:
+  selector=MultipleFeatureSelector 'TO' multiplicity=('?'|'&'|'*'|'+')
+;
+
+ReferenceMorphSpec:
+  selector=SingleFeatureSelector ( '(' ( deleteId?='rmId' )? ( deleteEntity?='rmEntity' )? ')' )? 'TO' name=ValidId
+;
+
+//////////////////// Reference operations //////////////////////
+////////////////////////////////////////////////////////////////
+//////////////////// Aggregate operations //////////////////////
+
+AggregateAddSpec:
+  ( optional?='?' )? selector=SingleFeatureSelector ':' '{' features+=SimpleDataFeature (',' features+=SimpleDataFeature )* '}' ( multiplicity=('?'|'&'|'*'|'+') )? ( 'TO' name=ValidId )?
+;
+
+AggregateMorphSpec:
+  selector=SingleFeatureSelector 'TO' name=ValidId
+;
+
+//////////////////// Aggregate operations //////////////////////
+////////////////////////////////////////////////////////////////
+////////////////////////// Other stuff /////////////////////////
+
+FeatureSelector:
+  SingleFeatureSelector | MultipleFeatureSelector
+;
+
+SingleFeatureSelector:
+  ( ( ref=ValidId ( '(' 'v'? variations+=VariationIdSpec ( ',' 'v'? variations+=VariationIdSpec )* ')' )? ) | forAll?='*' ) '::' target=QualifiedName
+;
+
+MultipleFeatureSelector:
+  ( ( ref=ValidId ( '(' 'v'? variations+=VariationIdSpec ( ',' 'v'? variations+=VariationIdSpec )* ')' )? ) | forAll?='*' ) '::' targets+=QualifiedName ( ',' targets+=QualifiedName )*
+;
+
+SimpleDataFeature:
+  ( key?='+' | ( ( optional?='?' )? ( unique?='!' )? ) ) name=QualifiedName ( ':' type=DataType ( '(' defaultValue=DefaultValue ')' )? )?
+;
+
+SplitFeatures:
+  '(' features+=QualifiedName (',' features+=QualifiedName)* ')'
+;
+
+DefaultValue:
+  EString | EDouble | EInt | EBoolean
+;
+
+EDouble returns ecore::EDouble:
+  '-' ? INT '.' INT
+;
+
+EString returns ecore::EString:
+  STRING
+;
+
+EBoolean returns ecore::EBoolean:
+  'true' | 'false'
+;
+
+ConditionDecl:
+  c1=QualifiedName '=' c2=QualifiedName// Condition hierarchy ( op=('&&'|'||') '(' c3=ConditionDecl ')' )?
+;
+
+QualifiedName: ValidId ( '.' ValidId )*;
+
+@Override
+KEYWORD: 'EBlock' | 'ADD' | 'DELETE' | 'RENAME' | 'SPLIT' | 'EXTRACT' | 'MERGE' | 'COPY' | 'MOVE' | 'NEST' | 'UNNEST' |
+         'ATTR' | 'CAST' | 'MULT' | 'MORPH' | 'TO' | 'INTO' | 'WHERE' | 'true' | 'false' | Athena::KEYWORD
+;

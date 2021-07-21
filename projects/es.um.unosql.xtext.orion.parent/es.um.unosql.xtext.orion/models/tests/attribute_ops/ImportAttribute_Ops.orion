@@ -1,0 +1,30 @@
+ScriptAttribute_Ops operations
+
+USING AttributeSchema:1
+
+ADD ATTR EntityAddAttribute_1::attr1: String (36)
+ADD ATTR EntityAddAttribute_1::attr2: List<Option<Bool, String>>
+ADD ATTR EntityAddAttribute_1::attr3
+
+ADD ATTR EntityAddAttribute_2(2, 3)::attr11: String (36)
+ADD ATTR EntityAddAttribute_2(1)::attr22: List<Option<Bool, String>>
+ADD ATTR EntityAddAttribute_2::attr33
+
+CAST ATTR EntityCastAttribute_1::attr1, attr2, attr3 TO String
+CAST ATTR EntityCastAttribute_1::attr5, attr6, attrN TO Number
+
+CAST ATTR EntityCastAttribute_2(1)::attr1 TO Timestamp
+CAST ATTR EntityCastAttribute_2(2, 3)::attr1, attr2, attr3 TO String
+CAST ATTR EntityCastAttribute_2(1, 2, 3)::attr5, attr6, attrN TO Number
+
+PROMOTE ATTR EntityToPromote_1::key1, key3
+PROMOTE ATTR EntityToPromote_1::key2, key4
+
+PROMOTE ATTR EntityToPromote_2(1, 2, 3)::key1, key3
+PROMOTE ATTR EntityToPromote_2(2)::key2, key3
+
+DEMOTE ATTR EntityToDemote_1::key1, key3
+DEMOTE ATTR EntityToDemote_1::key2, key4
+
+DEMOTE ATTR EntityToDemote_2(1, 2, 3)::key1, key3
+DEMOTE ATTR EntityToDemote_2(2)::key2, key3

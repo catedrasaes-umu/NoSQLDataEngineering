@@ -1,0 +1,42 @@
+OneOfEach_Aggregates operations
+
+SCRIPT MODE
+
+ADD ENTITY EntityToAggr: { +id: Identifier }
+
+ADD AGGR EntityToAggr::aggrSimple : {attr1: String, attr2: Number, attr3: Map, attr4: List}&
+ADD AGGR EntityToAggr::aggrList : {attr1: String, attr2: Number, attr3: Map, attr4: List}+
+ADD AGGR EntityToAggr::aggrSimple.innerAggrSimple: {innerAttr1: String, innerAttr2: Number, innerAttr3: Map, innerAttr4: List}&
+ADD AGGR EntityToAggr::aggrSimple.innerAggrList: {innerAttr1: String, innerAttr2: Number, innerAttr3: Map, innerAttr4: List}+
+
+ADD AGGR EntityToAggr::strAggrSimpleChange: {attr1: String, attr2}&
+ADD AGGR EntityToAggr::strAggrArrayChange: {attr1: String, attr2}+
+ADD AGGR EntityToAggr::numAggrSimpleChange: {attr1: Number, attr2}&
+ADD AGGR EntityToAggr::numAggrArrayChange: {attr1: Number, attr2}+
+
+MULT AGGR EntityToAggr::strAggrSimpleChange TO +
+MULT AGGR EntityToAggr::strAggrArrayChange TO &
+MULT AGGR EntityToAggr::numAggrSimpleChange TO +
+MULT AGGR EntityToAggr::numAggrArrayChange TO &
+
+ADD AGGR EntityToAggr::aggrByHand1: {string1: String}&
+ADD ATTR EntityToAggr::aggrByHand1.nullAttrSimpleChange
+ADD ATTR EntityToAggr::aggrByHand1.nullAttrArrayChange: List 
+ADD ATTR EntityToAggr::aggrByHand1.strAttrSimpleChange: String ("ref1")
+ADD ATTR EntityToAggr::aggrByHand1.strAttrArrayChange: List<String> ("ref1")
+ADD AGGR EntityToAggr::aggrByHand2: {string2: String}&
+ADD ATTR EntityToAggr::aggrByHand2.numAttrSimpleChange: Number (33)
+ADD ATTR EntityToAggr::aggrByHand2.numAttrArrayChange: List<Number> (44)
+
+MULT AGGR EntityToAggr::aggrByHand1 TO +
+
+ADD ENTITY EntityMorphAggr: { +id }
+ADD AGGR EntityMorphAggr::aggr1: { string1: String, string2: String }&
+ADD AGGR EntityMorphAggr::aggr2: { aList: List, aMap: Map }&
+ADD AGGR EntityMorphAggr::aggr3: { string5: String, string6: String }+
+ADD AGGR EntityMorphAggr::aggr4: { aSet: Set, aTuple: Tuple }+
+
+MORPH AGGR EntityMorphAggr::aggr1 TO refToAggr1
+MORPH AGGR EntityMorphAggr::aggr2 TO refToAggr2
+MORPH AGGR EntityMorphAggr::aggr3 TO refToAggr3
+MORPH AGGR EntityMorphAggr::aggr4 TO refToAggr4

@@ -1,0 +1,32 @@
+OneOfEach_Attributes operations
+
+SCRIPT MODE
+
+ADD ENTITY EntityToAdd: { +id: String }
+
+ADD ATTR *::addAttrSinTipo
+ADD ATTR *::addAttrStr: String
+ADD ATTR *::addAttrNum: Number
+ADD ATTR *::addAttrDouble: Double
+ADD ATTR *::addAttrBool: Boolean
+ADD ATTR *::addAttrSet: Set
+ADD ATTR *::addAttrList: List
+ADD ATTR *::addAttrTuple: Tuple
+ADD ATTR *::addAttrMap: Map
+ADD ATTR *::addAttrNull: Null
+ADD ATTR *::addAttrStrVal: String ("initValue")
+ADD ATTR *::addAttrNumVal: Number (33)
+ADD ATTR *::addAttrDoubleVal: Double (33.1)
+ADD ATTR *::addAttrBoolVal: Boolean (false)
+
+ADD ENTITY EntityToCast: { +id: Identifier, +attrToCast, attrToCastNull: null, attrToCastStr: String, attrToCastNum: Number, attrToCastDouble: Double, attrToCastBool: Boolean}
+
+CAST ATTR EntityToCast::attrToCast, attrToCastStr, attrToCastDouble, attrDoesntExist TO Bool
+CAST ATTR EntityToCast::attrToCastNull, attrDoesntExist TO Number
+CAST ATTR EntityToCast::attrToCastNum, attrToCastBool, attrDoesntExist TO String
+
+ADD ENTITY EntityToPromote: { +id: Identifier, attr1, attr2 }
+PROMOTE ATTR EntityToPromote::attr1, attr2, attrDoesntExist
+
+ADD ENTITY EntityToDemote: { +id: Identifier, +key1, +key2 }
+DEMOTE ATTR EntityToDemote::key1, key2, attrDoesntExist

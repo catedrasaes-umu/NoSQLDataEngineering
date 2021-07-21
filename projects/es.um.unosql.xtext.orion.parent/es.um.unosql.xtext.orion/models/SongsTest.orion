@@ -1,0 +1,25 @@
+Songs OPERATIONS
+
+SCRIPT MODE
+
+RENAME *::name1 TO name2
+RENAME *::name1 TO name2
+
+Add entity a1
+delete entity a1
+delete entity a1
+
+Add entity a1:
+{
+  attr1,
+  attr2
+}
+
+Add entity a2:
+{
+  attr1,
+  attr2
+}
+
+add aggr *::a1: { n1, n2 }&
+add aggr *::a2: { n1, n2 }&

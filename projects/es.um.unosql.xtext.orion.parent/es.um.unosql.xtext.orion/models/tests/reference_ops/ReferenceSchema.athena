@@ -1,0 +1,93 @@
+Schema ReferenceSchema:1
+
+Root entity EntityDummy { +id: Identifier }
+
+Root entity EntityAddRef1
+{
+  +id: Identifier
+}
+
+Root entity EntityAddRef2
+{
+  Common { +id: Identifier }
+  Variation 1 { attr1 }
+  Variation 2 { attr2 }
+}
+
+Root entity EntityAddRef3
+{
+  Common { +id: Identifier }
+  Variation 1 { attr1 }
+  Variation 2 { attr2 }
+}
+
+Root entity EntityCastRef1
+{
+  +id: Identifier,
+  ref1: ref<EntityDummy as Identifier>&,
+  ref2: ref<EntityDummy>+
+}
+
+Root entity EntityCastRef2
+{
+  Common { +id: Identifier, ref1: ref<EntityDummy as Identifier>& }
+  Variation 1 { ref2: ref<EntityDummy>& }
+  Variation 2 { ref3: ref<EntityDummy>+ }
+}
+
+Root entity EntityCastRef3
+{
+  Common { +id: Identifier }
+  Variation 1 { ref1: ref<EntityDummy as Identifier>&, attr1 }
+  Variation 2 { ref1: ref<EntityDummy as Identifier>& }
+  Variation 3 { attr3 }
+}
+
+Root entity EntityMultRef1
+{
+  +id: Identifier,
+  ref1: ref<EntityDummy as Identifier>&,
+  ref2: ref<EntityDummy>+
+}
+
+Root entity EntityMultRef2
+{
+  Common { +id: Identifier, ref1: ref<EntityDummy as Identifier>& }
+  Variation 1 { ref2: ref<EntityDummy>& }
+  Variation 2 { ref3: ref<EntityDummy>+ }
+}
+
+Root entity EntityMultRef3
+{
+  Common { +id: Identifier }
+  Variation 1 { ref1: ref<EntityDummy as Identifier>&, attr1 }
+  Variation 2 { ref1: ref<EntityDummy as Identifier>& }
+  Variation 3 { attr3 }
+}
+
+Root entity EntityRef1 { +id: String, attr1 }
+Root entity EntityRef2 { +id: String, attr1 }
+Root entity EntityRef3 { +id: String, attr1 }
+Root entity EntityRef4 { +id: String, attr1 }
+Root entity EntityRef5 { +id: String, attr1 }
+
+Root entity EntityMorphRef1
+{
+  +id: Identifier,
+  ref1: ref<EntityRef1 as String>&
+}
+
+Root entity EntityMorphRef2
+{
+  Common { +id: Identifier, ref1: ref<EntityDummy as Identifier>& }
+  Variation 1 { ref2: ref<EntityRef2>& }
+  Variation 2 { ref3: ref<EntityRef3>+ }
+}
+
+Root entity EntityMorphRef3
+{
+  Common { +id: Identifier }
+  Variation 1 { ref4: ref<EntityRef4 as String>&, attr1 }
+  Variation 2 { ref4: ref<EntityRef4 as String>& }
+  Variation 3 { attr3 }
+}
