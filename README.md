@@ -1,8 +1,11 @@
 # NoSQLDataEngineering
 
-This repository stores the last versions of all the projects available to infer a schema from an Aggregate-oriented NoSQL database. It uses a model-driven engineering approach based on Eclipse Modeling Framework. It also contains several utility projects used to visualize, classify and generate code from a NoSQL schema model.
+## Warning: This repository stores previous versions of all the projects available to infer a schema from an Aggregate-oriented NoSQL database.
 
-A NoSQL schema is a schema used to define which data and in which format is being stored in a NoSQL database. This schema is not explicitly defined but inferred by a data-oriented infererence process.
+## The new, up-to-date repository with U-Schema, inference and engineering processes is stored in our [ModelUM GitHub](https://github.com/modelum/)
+
+
+A NoSQL schema (now known as a U-Schema) is a schema used to define which data and in which format is being stored in a NoSQL database. This schema is not explicitly defined but inferred by a data-oriented infererence process.
 
 # Table of contents
 
@@ -31,11 +34,11 @@ A NoSQL schema is a schema used to define which data and in which format is bein
 
 # The Athena language
 
-For an extended reference of the Athena language please visit <https://catedrasaes-umu.github.io/NoSQLDataEngineering/tools.html>
+For an extended reference of the Athena language please visit <https://modelum.github.io/tools.html>
 
 # The Orion language
 
-For an extended reference of the Orion language please visit <https://catedrasaes-umu.github.io/NoSQLDataEngineering/tools.html>
+For an extended reference of the Orion language please visit <https://modelum.github.io/tools.html>
 
 # Schema models
 
